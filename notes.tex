@@ -9,6 +9,58 @@
 \usepackage[protrusion=true,expansion=true]{microtype}
 \usepackage{hyperref}
 
+\usepackage{tikz}
+\usetikzlibrary{calc,shapes.callouts,shapes.arrows}
+\newcommand{\hcancel}[5]{%
+    \tikz[baseline=(tocancel.base)]{
+        \node[inner sep=0pt,outer sep=0pt] (tocancel) {#1};
+        \draw[red, line width=0.5mm] ($(tocancel.south west)+(#2,#3)$) -- ($(tocancel.north east)+(#4,#5)$);
+    }%
+}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{ex}[defn]{Example}
+
+\theoremstyle{plain}
+
+\newtheorem{prop}[defn]{Proposition}
+\newtheorem{lemma}[defn]{Lemma}
+\newtheorem{thm}[defn]{Theorem}
+
+\theoremstyle{remark}
+\newtheorem{rem}[defn]{Remark}
+
+\newcommand{\ZZ}{\mathbb{Z}}
+\renewcommand{\AA}{\mathbb{A}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\D}{\mathcal{D}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\G}{\mathcal{G}}
+\renewcommand{\O}{\mathcal{O}}
+\renewcommand{\P}{\mathcal{P}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\GG}{\mathbb{G}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\Aut}[1]{\operatorname{Aut}(#1)}
+\newcommand{\GL}{\mathrm{GL}}
+\newcommand{\freist}{\_{}\_{}}
+\newcommand{\Set}{\mathrm{Set}}
+\newcommand{\Grp}{\mathrm{Grp}}
+\newcommand{\Vect}{\mathrm{Vect}}
+\newcommand{\Sh}{\mathrm{Sh}}
+\newcommand{\Zar}{\mathrm{Zar}}
+\newcommand{\Sch}{\mathrm{Sch}}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\colim}{colim}
+\newcommand{\?}{\,{:}\,}
+\renewcommand{\_}{\mathpunct{.}\,}
+\newcommand{\speak}[1]{\ulcorner\text{#1}\urcorner}
+\newcommand{\Ll}{:\Longleftrightarrow}
+
 \title{Using the internal language of toposes in algebraic geometry}
 \author{Ingo Blechschmidt}
 \email{iblech@web.de}
@@ -28,7 +80,7 @@
   satisfying a certain condition). The translation of internal statements and
   proofs is facilitated by an easy mechanical procedure.
 
-  These notes give an introduction to this topic and show how the internal
+  These expository notes give an introduction to this topic and show how the internal
   point of view can be exploited to give simpler definitions and more conceptual
   proofs of the basic notions and observations in algebraic geometry.
 \end{abstract}
@@ -38,9 +90,90 @@
 \section{Introduction}
 
 \section{Kripke--Joyal semantics}
+
+Let~$X$ be a topological space. Later, $X$ will be the underlying space of a
+scheme.
+
+\begin{defn}[Kripke--Joyal semantics of a sheaf topos]The meaning of 
+\[ U \models \varphi \quad\text{(``$\varphi$ holds on $U$'')} \]
+for open subsets~$U \subseteq X$ and formulas~$\varphi$ is given by
+the following rules, recursively in the structure of~$\varphi$:
+\[ \renewcommand{\arraystretch}{1.3}\begin{array}{@{}lcl@{}}
+  U \models f = g \? \F &\Ll& f|_U = g|_U \in \Gamma(U, \F) \\
+  U \models \varphi \wedge \psi &\Ll&
+    \text{$U \models \varphi$ and $U \models \psi$} \\
+  U \models \varphi \vee \psi &\Ll&
+    \hcancel{\text{$U \models \varphi$ or $U \models \psi$}}{0pt}{3pt}{0pt}{-2pt} \\
+  && \text{there exists a covering $U = \bigcup_i U_i$ s.\,th. for all~$i$:} \\
+  && \quad\quad \text{$U_i \models \varphi$ or $U_i \models \psi$} \\
+  U \models \varphi \Rightarrow \psi &\Ll&
+    \text{for all open~$V \subseteq U$: } 
+  \text{$V \models \varphi$ implies $V \models \psi$} \\
+  U \models \forall f \? \F\_ \varphi(f) &\Ll&
+    \text{for all sections~$f \in \Gamma(V, \F), V \subseteq U$: $V \models
+    \varphi(f)$} \\
+  U \models \exists f \? \F\_ \varphi(f) &\Ll&
+    \hcancel{\text{there exists a section~$f \in \Gamma(U,\F)$ s.\,th. $U
+    \models \varphi(f)$}}{0pt}{3pt}{0pt}{-2pt} \\
+  &&
+    \text{there exists a covering $U = \bigcup_i U_i$ s.\,th. for all~$i$:} \\
+  && \quad\quad \text{there exists~$f_i \in \Gamma(U_i, \F)$ s.\,th.
+  $U_i \models \varphi(f_i)$} \\
+  U \models \forall \F\_ \varphi(\F) &\Ll&
+    \text{for all sheaves $\F$ on $V$, $V \subseteq U$: $V \models \varphi(\F)$} \\
+  U \models \exists \F\_ \varphi(\F) &\Ll&
+    \text{there exists a covering $U = \bigcup_i U_i$ s.\,th. for all~$i$:} \\
+  && \quad\quad \text{there exists a sheaf~$\F_i$ on~$U_i$ s.\,th.
+  $U_i \models \varphi(\F_i)$}
+\end{array} \]
+\end{defn}
+
+\begin{rem}The last two rules, concerning \emph{unbounded quantification}, are
+not part of the classical Kripke--Joyal semantics, but instead of Mike
+Shulman's stack semantics~\cite{shulman:stack}, a slight extension. They are
+needed so that we can use formulate universal properties in the internal
+language.
+\end{rem}
+
+The rules are not all arbitrary. They are finely concerted to make the
+following propositions true, which are crucial for a proper appreciation of the
+internal language.
+
+\begin{prop}[Locality of the internal language]
+Let~$U = \bigcup_i U_i$ be covered by open subsets. Let~$\varphi$
+be a formula. Then
+\[ U \models \varphi \qquad\text{iff}\qquad
+  \text{$U_i \models \varphi$ for each $i$}. \]
+\end{prop}
+\begin{proof}Induction on the structure of~$\varphi$. Note that the canceled
+rules would make this proposition false.\end{proof}
+
+\begin{prop}[Soundness of the internal language]
+If a formula~$\varphi$ implies a further formula~$\psi$ in intuitionistic logic, then
+\[ U \models \varphi \qquad\text{implies}\qquad
+  U \models \psi. \]
+\end{prop}
+\begin{proof}
+Proof by induction on the structure of formal intuitionistic proofs; we are to
+show that any inference rule of intuitionistic logic is satisfied by the
+Kripke--Joyal semantics. For instance, there is the following rule governing
+disjunction:
+\begin{quote}
+If~$\varphi \vee \psi$ holds, and both $\varphi$ and $\psi$ imply a further
+formula~$\chi$, then~$\chi$ holds.
+\end{quote}
+So we are to prove that if~$U \models \varphi \vee \psi$, $U \models (\varphi
+\Rightarrow \chi)$, and $U \models (\psi \Rightarrow \chi)$, then $U \models \chi$.
+This is done as follows: By assumption, there exists a covering~$U = \bigcup_i
+U_i$ such that on each~$U_i$, $U_i \models \varphi$ or $U_i \models \psi$.
+Again by assumption, we may conclude that~$U_i \models \chi$ for each~$i$. The statement
+follows because of the locality of the internal language.
+
+A complete list of which rules are to prove is
+in~\cite[D1.3.1]{johnstone:elephant}.
+\end{proof}
+
 \begin{itemize}
-\item definition
-\item fundamental properties
 \item geometric formulas
 \item geometric constructions
 \end{itemize}

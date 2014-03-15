@@ -1,4 +1,4 @@
-\documentclass{amsart}
+\documentclass[10pt]{amsart}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage{amsmath,amsthm,amssymb,stmaryrd,color,graphicx}
@@ -25,6 +25,7 @@
 \theoremstyle{plain}
 
 \newtheorem{prop}[defn]{Proposition}
+\newtheorem{cor}[defn]{Corollary}
 \newtheorem{lemma}[defn]{Lemma}
 \newtheorem{thm}[defn]{Theorem}
 
@@ -58,7 +59,7 @@
 \DeclareMathOperator{\colim}{colim}
 \newcommand{\?}{\,{:}\,}
 \renewcommand{\_}{\mathpunct{.}\,}
-\newcommand{\speak}[1]{\ulcorner\text{#1}\urcorner}
+\newcommand{\speak}[1]{\ulcorner\text{\textnormal{#1}}\urcorner}
 \newcommand{\Ll}{:\Longleftrightarrow}
 
 \title{Using the internal language of toposes in algebraic geometry}
@@ -132,7 +133,7 @@ the following rules, recursively in the structure of~$\varphi$:
 \begin{rem}The last two rules, concerning \emph{unbounded quantification}, are
 not part of the classical Kripke--Joyal semantics, but instead of Mike
 Shulman's stack semantics~\cite{shulman:stack}, a slight extension. They are
-needed so that we can use formulate universal properties in the internal
+needed so that we can formulate universal properties in the internal
 language.
 \end{rem}
 
@@ -177,12 +178,84 @@ in~\cite[D1.3.1]{johnstone:elephant}.
 \begin{itemize}
 \item geometric formulas
 \item geometric constructions
+\item simplification rules
+\item first steps: invertibility, nilpotency (needed later)
 \end{itemize}
 
 \section{Sheaves of rings}
+
+\subsection{Reducedness} Recall that a scheme~$X$ is \emph{reduced} if and only
+if all stalks~$\O_{X,x}$ are reduced rings. Since the condition on a ring~$R$
+to be reduced is a geometric implication,
+\[ \forall s\?R\_ s^2 = 0 \Longrightarrow s = 0, \]
+we immediately obtain the following characterization of reducedness in the
+internal language:
+\begin{prop}A scheme~$X$ is reduced iff, from the internal point of view, the
+ring~$\O_X$ is reduced.\end{prop}
+
+
+\subsection{Locality} Recall the usual definition of a local ring: a ring
+possessing exactly one maximal ideal. This is a higher-order condition and in
+particular not of a geometric form. Therefore, for our purposes, it's better to
+adopt the following elementary definition of a local ring.
+\begin{defn}A \emph{local ring} is a ring~$R$ such that~$1 \neq 0$ in~$R$ and
+for all~$x,y \in R$
+\[ \text{$x+y$ invertible} \quad\Longrightarrow\quad
+  \text{$x$ invertible}\ \vee\ \text{$y$ invertible}. \]
+\end{defn}
+In classical logic, it's an easy exercise to show the equivalence of this
+definition with the usual one. In intuitionistic logic, we would need to be
+more precise in order to even ask the question of equivalence, since
+intuitionistically, the notion of a maximal ideal bifurcates into several non-equivalent notions.
+
+\begin{prop}In the internal language of a scheme~$X$ (or a locally ringed
+space), the ring~$\O_X$ is a local ring.\end{prop}
+\begin{proof}The stated locality condition is a conjunction of two geometric
+implications (the first one being~$1 = 0 \Rightarrow \bot$, the second being
+the displayed one) and holds on each stalk.\end{proof}
+
+
+\subsection{Field properties} From the internal point of view, the structure
+sheaf~$\O_X$ of a scheme~$X$ is \emph{almost} a field, in the sense that any
+element which is not invertible is nilpotent. This is a genuine property of
+schemes, not shared with general locally ringed spaces.
+
+\begin{prop}Let~$X$ be a scheme. Then
+\[ \Sh(X) \models \forall s\?\O_X\_ \neg(\speak{$s$ invertible}) \Rightarrow
+\speak{$s$ nilpotent}. \]
+\end{prop}
+\begin{proof}By the locality of the internal language and since~$X$ can be
+covered by open affine subsets, it's enough to show that for any affine
+scheme~$X = \Spec A$ and global function~$s \in \Gamma(X,\O_X) = A$ it holds
+that
+\[ X \models \neg(\speak{$s$ invertible}) \quad\text{implies}\quad
+  X \models \speak{$s$ nilpotent}. \]
+The meaning of the antecedent is that any open subset on which~$s$ is
+invertible is empty. So in particular, the standard open subset~$D(s)$ is
+empty. Therefore~$s$ is an element of any prime ideal of~$A$ and thus
+nilpotent. This implies the a priori weaker statement~$X \models \speak{$s$
+nilpotent}$ (which would allow~$s$ to have different indices of nilpotency on
+an open covering).
+\end{proof}
+
+\begin{cor}Let~$X$ be a scheme. If~$X$ is reduced, the ring~$\O_X$ is a field
+from the internal point of view, in the sense that
+\[ \Sh(X) \models \forall s\?\O_X\_ \neg(\speak{$s$ invertible}) \Rightarrow
+s=0. \]
+The converse holds as well.\end{cor}
+\begin{proof}We can prove this purely in the internal language: It suffices to
+give an intuitionistic proof of the fact that a local ring which satisfies the
+condition of the previous proposition fulfills the stated field condition if
+and only if it is reduced. This is straightforward.
+\end{proof}
+
+This field property is very useful. We will put it to good use when giving a
+simple proof of the fact that~$\O_X$-modules of finite type on a reduced scheme
+are locally free on a dense open subset (proposition~\ref{modules:densefree}).
+
 \begin{itemize}
-\item reducedness
-\item field property
+\item Remark that intuitionistically, the notion of a field bifurcates into
+several inequivalent notions
 \item discreteness
 \end{itemize}
 
@@ -215,15 +288,21 @@ in~\cite[D1.3.1]{johnstone:elephant}.
 
 \section{Unsorted}
 \begin{itemize}
+\item ``functoriality''
 \item Kähler differentials
 \item completion of the natural numbers, rank function
-\item closed and open subschemes, Koszul resolution
-\item meta properties
+\item closed and open subschemes
+\item reduced closed subscheme
+\item Koszul resolution
+\item meta properties, uses (e.g. nilpotent on stalks iff globally nilpotent,
+some lemmas about limits of modules)
 \item locally small categories
 \item big Zariski topos
 \item open/closed immersions
 \item morphisms of schemes...
 \item proper maps...
+\item limits and colimits...
+\item related work: Mulvey/Burden, Wraith, Vickers, the Bohr topos crew, Awodey, ...
 \end{itemize}
 
 \end{document}

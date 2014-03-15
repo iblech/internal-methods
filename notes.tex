@@ -34,6 +34,7 @@
 
 \newcommand{\ZZ}{\mathbb{Z}}
 \renewcommand{\AA}{\mathbb{A}}
+\newcommand{\A}{\mathcal{A}}
 \newcommand{\C}{\mathcal{C}}
 \newcommand{\D}{\mathcal{D}}
 \newcommand{\E}{\mathcal{E}}
@@ -49,6 +50,7 @@
 \newcommand{\Aut}[1]{\operatorname{Aut}(#1)}
 \newcommand{\GL}{\mathrm{GL}}
 \newcommand{\freist}{\_{}\_{}}
+\newcommand{\ul}[1]{\underline{#1}}
 \newcommand{\Set}{\mathrm{Set}}
 \newcommand{\Grp}{\mathrm{Grp}}
 \newcommand{\Vect}{\mathrm{Vect}}
@@ -57,6 +59,7 @@
 \newcommand{\Sch}{\mathrm{Sch}}
 \DeclareMathOperator{\Spec}{Spec}
 \DeclareMathOperator{\colim}{colim}
+\DeclareMathOperator{\rank}{rank}
 \newcommand{\?}{\,{:}\,}
 \renewcommand{\_}{\mathpunct{.}\,}
 \newcommand{\speak}[1]{\ulcorner\text{\textnormal{#1}}\urcorner}
@@ -179,10 +182,12 @@ in~\cite[D1.3.1]{johnstone:elephant}.
 \item geometric formulas
 \item geometric constructions
 \item simplification rules
+\item notation: $\Sh(X) \models \varphi$ means~$X \models \varphi$
 \item remark: do not confuse $\Sh(X) \models \neg\varphi$ with $\Sh(X)
 \not\models \varphi$
 \item first steps: invertibility, nilpotency (needed later)
 \end{itemize}
+
 
 \section{Sheaves of rings}
 
@@ -270,6 +275,161 @@ several inequivalent notions
 \item important hard exercise
 \end{itemize}
 
+
+\section{Upper semicontinuous functions}
+
+\subsection{Interlude on natural numbers}
+In classical logic, the natural numbers are complete in the sense that any
+inhabited set of natural numbers possesses a minimal element. This statement
+can not be proven intuitionistically -- intuitively, this is because one cannot
+explicitly pinpoint the (classically existing) minimal element of an arbitrary
+inhabited set. In intuitionistic logic, this principle can be salvaged in two
+essentially different ways: either be strengthening the premise, or by
+weakening the conclusion.
+
+\begin{lemma}Let~$U \subseteq \NN$ be an inhabited subset of the natural
+numbers.
+\begin{enumerate}
+\item Assume~$U$ to be \emph{detachable}, i.\,e. assume that for any natural
+number~$n$, either~$n \in U$ or~$n \not\in U$. Then~$U$ possesses a minimal
+element.
+\item In any case,~$U$ does \emph{not not} possess a minimal element.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+\begin{enumerate}
+\item By induction on the witness of inhabitation, i.\,e. the given number~$n$ such
+that~$n \in U$. Details omitted, since we will not need this statement.
+\item We give a careful proof since logical subtleties matter. To simplify the
+exposition, we assume that~$U$ is upward-closed, i.\,e. that any number
+larger than some element of~$U$ lies in~$U$ as well. Any subset can be closed
+in this way (by considering~$\{ n \in \NN \,|\, \exists m \in U\_ n \geq m \}$)
+and a minimal element of the closure will be a minimal element for~$U$ as well.
+
+We induct on the number~$n \in U$ given by the assumption that~$U$ is
+inhabited. In the case~$n = 0$ we are done since~$0$ is a minimal element
+of~$U$. For the induction step~$n \to n+1$, the weak law of excluded middle
+gives
+\[ \neg\neg(n \in U \vee n \not\in U). \]
+If we can show that~$n \in U \vee n \not\in U$ implies the conclusion, we're
+done by XXX. So assume~$n \in U \vee n \not\in U$.
+If~$n \in U$, then~$U$ does not not possess a minimal element by the induction
+hypothesis. If~$n \not\in U$, then~$n+1$ is a minimal element (and so, in
+particular,~$U$ does not not possess a minimal element): For if~$m$ is
+any element of~$U$, we have~$m \geq n+1$ or~$m \leq n$. In the first case,
+we're done. In the second case, it follows that~$n \in U$ because~$U$ is
+upward-closed and so we obtain a contradiction. From this contradiction we can
+deduce~$m \geq n+1$. \qedhere
+\end{enumerate}
+\end{proof}
+
+If we want to work with a complete set of natural numbers in intuitionistic
+logic, we have to construction a completion.
+\begin{defn}The partially ordered set of \emph{completed natural numbers} is
+the set~$\widehat{\NN}$ of all inhabited upward-closed subsets of~$\NN$, ordered by
+reverse inclusion.\end{defn}
+\begin{lemma}The poset of completed natural numbers is the least partially
+ordered set containing~$\NN$ and possessing minima
+of arbitrary inhabited subsets.\end{lemma}
+\begin{proof}
+The embedding $\NN \hookrightarrow \widehat\NN$ is given by
+\[ n \in \NN \longmapsto {\uparrow}(n) := \{ m \in \NN \,|\, m \geq n \}. \]
+If~$M \subseteq \widehat\NN$ is an inhabited subset, its minimum is
+\[ \min M = \bigcup M \in \widehat\NN. \]
+The proof of the universal property is left to the reader.
+\end{proof}
+
+\begin{rem}In classical logic, the map~$\widehat\NN \to \NN,\ U \mapsto \min U$
+is a well-defined isomorphism of partially ordered sets.\end{rem}
+
+
+\subsection{A geometric interpretation}
+We are interested in the completed natural numbers for the following reason: A
+completed natural number of the topos of sheaves on a topological space~$X$ is
+the same as an upper semicontinuous function~$X \to \NN$.
+
+\begin{lemma}Let~$X$ be a topological space. The sheaf~$\widehat\NN$ of
+completed natural numbers on~$X$ is canonically isomorphic to the sheaf of upper
+semicontinuous~$\NN$-valued functions on~$X$.\end{lemma}
+\begin{proof}
+When referring to the natural numbers in the internal language, we actually
+refer to the constant sheaf~$\ul{\NN}$ on~$X$. (This is because the
+sheaf~$\ul{\NN}$ fulfills the axioms of a natural numbers object,
+cf.~\cite[XXX]{johnstone:elephant/moerdijk}.) Recall that its sections on an
+open subset~$U \subseteq X$ are continuous functions~$U \to \NN$, where~$\NN$
+is equipped with the discrete topology.
+
+Therefore, a section of~$\widehat\NN$ on an open subset~$U \subseteq X$ is
+given by a subsheaf~$\A \hookrightarrow \ul{\NN}|_U$ such that
+\[ U \models \exists n\?\ul{\NN}\_ n \in \A
+  \quad\text{and}\quad
+  U \models \forall n,m\?\ul{\NN}\_ n \geq m \wedge n \in \A \Rightarrow m \in
+  \A. \]
+Since these conditions are geometric, they are satisfied if and only if any
+stalk~$\A_x$ is an inhabited upward-closed subset of~$\ul{\NN}_x \cong \NN$.
+The association
+\[ x \in X \longrightarrow \min\{ n \in \NN \,|\, n \in \A_x \} \]
+thus defines a map~$X \to \NN$. This map is indeed upper semicontinuous, since
+if~$n \in \A_x$, there exists a neighbourhood~$V$ of~$x$ such that the constant
+function with value~$n$ is an element of~$\Gamma(V,\A)$ and therefore~$n \in
+\A_y$ for all~$y \in V$.
+
+Conversely, let~$\alpha : U \to \NN$ be a upper semi-continous function. Then
+\[ V \subseteq X \longmapsto \{ f : V \to \NN \,|\, \text{$f$
+continuous,\ $f \geq \alpha$ on~$V$} \} \]
+is a subobject of~$\ul{\NN}|_U$ which internally is inhabited and upward-closed.
+Further details are left to the reader.
+\end{proof}
+
+Under the correspondence given by the lemma, locally \emph{constant}
+functions map exactly to the (image of the) \emph{ordinary} internal natural numbers
+(in the completed natural numbers).
+
+\begin{rem}In a similar vein, the sheaf given by the internal construction of
+the set of \emph{all} upward-closed subsets of the natural numbers (not
+necessarily only the inhabited ones) is canonically isomorphic to the sheaf of
+upper semicontinuous functions with values in~$\NN \cup \{ +\infty
+\}$.\end{rem}
+
+
+\subsection{The upper semicontinuous rank function of an~$\O_X$-module of
+finite type.} Recall that the rank of an~$\O_X$-module~$\F$ on a scheme~$X$ (or
+locally ringed space) at a point~$x \in X$ is defined as the~$k(x)$-dimension
+of the vector space~$\F_x \otimes_{\O_{X,x}} k(x)$. If we assume that~$\F$ is
+of finite type around~$x$, this dimension is finite and equals the minimal
+number of elements needed to generate~$\F_x$ as an~$\O_{X,x}$-module (by
+Nakayama's lemma).
+
+In the internal language, we can define an element of~$\widehat\NN$ by
+\[ \rank\F := \min\{ n \in \NN \,|\, \speak{there is a gen. family
+for~$\F$ consisting of~$n$ elements} \} \in \widehat\NN. \]
+If~$\F$ is locally finitely free, it will be a finitely free module from the
+internal point of view and the rank defined in this way will be an
+actual natural number; but in general, the rank is really an element of the
+completion.
+
+\begin{prop}
+Let~$\F$ be an~$\O_X$-module of finite type on a scheme~$X$ (or locally ringed
+space). Under the correspondence given by the previous lemma, the internally
+defined rank maps to the rank function of~$\F$.
+\end{prop}
+\begin{proof}
+We have to show that for any point~$x \in X$ and natural number~$n$, there
+exists a generating family for~$\F_x$ consisting of~$n$
+elements if and only if there exists a neighbourhood~$U$ of~$x$ such that
+\[ U \models \speak{there exists a generating family
+for~$\F$ consisting of~$n$ elements}. \]
+The ``if'' direction is obvious. For the ``only if'' direction, consider
+(liftings to local sections of a)
+generating family~$s_1,\ldots,s_n$ of~$\F_x$. Since~$\F$ is of finite type,
+there also exist sections~$t_1,\ldots,t_m$ on some neighbourhood~$V$ of~$x$ which
+generate any stalk~$\F_y$, $y \in V$. Since the~$t_i$ can be expressed as a
+linear combination of the~$s_j$ in~$\F_x$, the same is true on some open
+neighbourhood~$U \subseteq V$ of~$x$. On this neighbourhood, the~$s_j$ generate
+any stalk~$\F_y$, $y \in U$, so we have
+\[ U \models \speak{$s_1,\ldots,s_n$ generate~$\F$}. \qedhere \]
+\end{proof}
+
 \section{Rational functions and Cartier divisors}
 \begin{itemize}
 \item internal definition of $K_X$
@@ -309,3 +469,5 @@ some lemmas about limits of modules)
 \end{itemize}
 
 \end{document}
+
+XXX: ``completed natural number'' is a misnomer.

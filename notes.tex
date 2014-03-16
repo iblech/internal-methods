@@ -41,6 +41,7 @@
 \newcommand{\F}{\mathcal{F}}
 \newcommand{\G}{\mathcal{G}}
 \renewcommand{\O}{\mathcal{O}}
+\newcommand{\K}{\mathcal{K}}
 \renewcommand{\P}{\mathcal{P}}
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\RR}{\mathbb{R}}
@@ -273,6 +274,11 @@ several inequivalent notions
 \item basic lemmas
 \item flatness
 \item important hard exercise
+\item torsion (check Liu p. 174)
+\item quasicoherence: give presentation condition and affine condition in
+internal language; discuss equivalence with~$M[f^{-1}]$ being an~$f$-sheaf for
+any~$f:\O$; discuss easy condition for a submodule to be quasicoherent; give
+examples (nilradical and annihilator ideal)
 \end{itemize}
 
 
@@ -392,8 +398,8 @@ upper semicontinuous functions with values in~$\NN \cup \{ +\infty
 \}$.\end{rem}
 
 
-\subsection{The upper semicontinuous rank function of an~$\O_X$-module of
-finite type.} Recall that the rank of an~$\O_X$-module~$\F$ on a scheme~$X$ (or
+\subsection{The upper semicontinuous rank function}
+Recall that the rank of an~$\O_X$-module~$\F$ on a scheme~$X$ (or
 locally ringed space) at a point~$x \in X$ is defined as the~$k(x)$-dimension
 of the vector space~$\F_x \otimes_{\O_{X,x}} k(x)$. If we assume that~$\F$ is
 of finite type around~$x$, this dimension is finite and equals the minimal
@@ -429,13 +435,30 @@ neighbourhood~$U \subseteq V$ of~$x$. On this neighbourhood, the~$s_j$ generate
 any stalk~$\F_y$, $y \in U$, so we have
 \[ U \models \speak{$s_1,\ldots,s_n$ generate~$\F$}. \qedhere \]
 \end{proof}
+\begin{rem}Once we understand when properties holding at a stalk spread to a
+neighbourhood, we will be able to give a simpler proof of the proposition (see
+XXX).\end{rem}
+
 
 \section{Rational functions and Cartier divisors}
+
+\subsection{The sheaf of rational functions} Recall that the sheaf~$\K_X$ of rational
+functions on a scheme~$X$ (or ringed space) can be defined as the sheaf
+associated to the presheaf
+\[ U \subseteq X \longmapsto \Gamma(U,\O_X)[S(U)^{-1}], \]
+where~$S(U)$ is the multiplicative set of those sections of~$\O_X$ on~$U$,
+which are regular in each stalk~$\O_{X,x}$, $x \in U$. Recall also there are
+some wrong definitions in the literature~\cite{kleiman:misconceptions}.
+
 \begin{itemize}
-\item internal definition of $K_X$
+\item internal definition of $\K_X$
+\item discuss stalks of~$\K_X$; discuss that on a locally Noetherian scheme,
+regularity spreads from stalk to neighbourhood
+\item show~$\K_X = j_*(\O_X)$?
 \item internal definition of Cartier divisors
-\item correspondence between Cartier divisors and sub-$O_X$-modules of $K_X$
+\item correspondence between Cartier divisors and sub-$\O_X$-modules of $\K_X$
 \end{itemize}
+
 
 \section{Relative spectrum}
 \begin{itemize}
@@ -453,7 +476,6 @@ any stalk~$\F_y$, $y \in U$, so we have
 \begin{itemize}
 \item ``functoriality''
 \item Kähler differentials
-\item completion of the natural numbers, rank function
 \item closed and open subschemes
 \item reduced closed subscheme
 \item Koszul resolution

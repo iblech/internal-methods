@@ -273,6 +273,42 @@ several inequivalent notions
 \end{itemize}
 
 \section{Sheaves of modules}
+
+\subsection{Finite type, finite presentation, coherence}
+Recall the conditions of an~$\O_X$-module~$\F$ on a scheme~$X$ (or ringed
+space) to be of finite type, of finite presentation and to be coherent:
+\begin{itemize}
+\item $\F$ is \emph{of finite type} if and only if there exists a covering of~$X$ by
+open subsets~$U$ such that on each such~$U$, there exists an exact sequence
+\[ (\O_X|_U)^n \longrightarrow \F|_U \longrightarrow 0 \]
+of~$\O_X|_U$-modules.
+\item $\F$ is \emph{of finite presentation} if and only if there exists a covering of~$X$ by
+open subsets~$U$ such that on each such~$U$, there exists an exact sequence
+\[ (\O_X|_U)^m \longrightarrow (\O_X|_U)^n \longrightarrow \F|_U \longrightarrow 0. \]
+\item $\F$ is \emph{coherent} if and only if~$\F$ is of finite type and the
+kernel of any~$\O_X|_U$-linear morphism~$(\O_X|_U)^n \to \F|_U$, $U \subseteq
+X$ any open subset, is of finite type.
+\end{itemize}
+
+The following proposition gives translations of these definitions into the
+internal language.
+\begin{prop}Let~$X$ be a scheme (or ringed locale). Let~$\F$ be
+an~$\O_X$-module. Then:
+\begin{enumerate}
+\item $\F$ is of finite type if and only if~$\F$, considered as an ordinary
+module from the internal perspective, is finitely generated, i.\,e. if
+\[ \Sh(X) \models
+  \bigvee_{n \geq 0}
+  \exists x_1,\ldots,x_n\?\F\_
+  \forall x\?\F\_
+  \exists a_1,\ldots,a_n\?\F\_
+  x = \textstyle\sum\limits_i a_i x_i. \]
+\item $\F$ is of finite presentation if and only if~$\F$ is a finitely
+presented module from the internal perspective, i.\,e. if \ldots
+\item $\F$ is coherent if and only if \ldots
+\end{enumerate}
+\end{prop}
+
 \begin{itemize}
 \item of finite type, of finite presentation, coherent
 \item basic lemmas

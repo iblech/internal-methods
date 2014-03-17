@@ -49,11 +49,12 @@
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\RR}{\mathbb{R}}
 \newcommand{\GG}{\mathbb{G}}
+\newcommand{\ppp}{\mathfrak{p}}
 \newcommand{\Hom}{\mathrm{Hom}}
 \newcommand{\id}{\mathrm{id}}
 \newcommand{\Aut}[1]{\operatorname{Aut}(#1)}
 \newcommand{\GL}{\mathrm{GL}}
-\newcommand{\freist}{\_{}\_{}}
+\newcommand{\placeholder}{\underline{\quad}}
 \newcommand{\ul}[1]{\underline{#1}}
 \newcommand{\Set}{\mathrm{Set}}
 \newcommand{\Grp}{\mathrm{Grp}}
@@ -316,10 +317,6 @@ presented module from the internal perspective, i.\,e. if \ldots
 \item flatness
 \item important hard exercise
 \item torsion (check Liu p. 174)
-\item quasicoherence: give presentation condition and affine condition in
-internal language; discuss equivalence with~$M[f^{-1}]$ being an~$f$-sheaf for
-any~$f:\O$; discuss easy condition for a submodule to be quasicoherent; give
-examples (nilradical and annihilator ideal)
 \end{itemize}
 
 
@@ -573,6 +570,7 @@ This ideal satisfies the quasicoherence condition (proposition~XXX):
 Let~$f:\O_X$ be arbitrary and assume~$\speak{$f$ inv.} \Rightarrow t \in I$.
 By~XXX (here the assumption that~$X$ is a scheme enters) it follows that~$f^n
 st = 0$ for some~$n\?\NN$, i.\,e. that~$f^n t \in I$.
+% XXX: refer to example in the section on quasicoherence
 
 Thus~$I$ is a quasicoherent submodule of a finitely generated module. Since~$X$ is
 locally Noetherian, it follows that~$I$ is finitely generated as well. By
@@ -607,6 +605,134 @@ local rings~$\O_{X,x}$.\end{cor}
 \item spreading of properties from stalk to neighbourhood
 \item internal sheafification
 \end{itemize}
+
+
+\section{Quasicoherent sheaves of modules}
+
+Recall that an~$\O_X$-module~$\F$ on a ringed space~$X$ is \emph{quasicoherent}
+if and only if there exists a covering of~$X$ by open subsets~$U$ such that on
+each such~$U$, there exists an exact sequence
+\[ (\O_X|_U)^J \longrightarrow (\O_X|_U)^I \longrightarrow \F|_U \longrightarrow 0 \]
+of~$\O_X|_U$-modules, where~$I$ and~$J$ are arbitrary sets (which may depend
+on~$U$). If~$X$ is indeed a scheme, quasicoherence can also be characterized in
+terms of inclusions of distinguished open subsets of affines:
+An~$\O_X$-module~$\F$ is quasicoherent if and only if for any open affine
+subscheme~$U = \Spec A$ of~$X$ and any function~$f \in A$, the canonical map
+\[ \Gamma(U,\F)[f^{-1}] \longrightarrow \Gamma(D(f),\F),\ 
+  \tfrac{s}{f^n} \longmapsto f^{-n} s|_{D(f)} \]
+is an isomorphism of~$A[f^{-1}]$-modules. Here~$D(f) \subseteq U$ denotes the
+standard open subset~$\{ \ppp \in \Spec A \,|\, f \not\in \ppp \}$. Both
+conditions can be internalized.
+
+\begin{prop}Let~$X$ be a ringed space. Let~$\F$ be an~$\O_X$-module. Then~$\F$
+is quasicoherent if and only if
+\[ \Sh(X) \models \exists I,J\ \mathrm{lc}\_ \speak{there exists an
+  exact sequence~$\O_X^J \to \O_X^I \to \F \to 0$}. \]
+The ``$\mathrm{lc}$'' indicates that when interpreting this internal statement with the
+Kripke--Joyal semantics,~$I$ and~$J$ should only be instantiated with
+\emph{locally constant} sheaves.
+\end{prop}
+\begin{proof} We only sketch the proof.
+The translation of the internal statement is that there exists a covering
+of~$X$ by open subsets~$U$ such that for each such~$U$, there exist sets~$I,J$
+and an exact sequence
+\[ (\O_X|_U)^{\ul{J}} \longrightarrow (\O_X|_U)^{\ul{I}} \longrightarrow \F|_U
+\longrightarrow 0 \]
+where~$\ul{I}$ and~$\ul{J}$ are the constant sheaves associated to~$I$
+respectively~$J$. The term~``$(\O_X|_U)^{\ul{I}}$'' refers to the internally
+defined free~$\O_X$-module with basis the elements of~$\ul{I}$. By exploiting
+that~$\ul{I}$ is a discrete set from the internal point of view (i.\,e. any two
+elements are either equal or not), one can show that this is the same
+as~$(\O_X|_U)^I$; similarly for~$J$. With this observation, the statement
+follows.
+\end{proof}
+
+In practice, the internal condition given by the proposition is not very
+useful, since at the moment, we do not know of any internal characterization of
+locally constant sheaves. The internal condition given by the following
+proposition does not have this defect.
+
+\begin{prop}\label{qcoh:sheafchar}
+Let~$X$ be scheme. Let~$\F$ be an~$\O_X$-module. Then~$\F$ is
+quasicoherent if and only if, from the internal perspective, the localized
+module~$\F[f^{-1}]$ is a sheaf for the modal operator~$(\speak{$f$ inv.}
+\Rightarrow \placeholder)$ for any~$f\?\O_X$.
+\end{prop}
+
+In detail, the internal condition is that for any~$f\?\O_X$, it holds that
+\[ \forall s\?\F[f^{-1}]\_
+  (\speak{$f$ inv.} \Rightarrow s = 0) \Longrightarrow s = 0 \]
+and for any subsingleton~$S \subseteq \F[f^{-1}]$ it holds that
+\[ (\speak{$f$ inv.} \Rightarrow \speak{$S$ inhabited}) \Longrightarrow
+  \exists s\?\F[f^{-1}]\_
+  (\speak{$f$ inv.} \Rightarrow s \in S). \]
+Unlike with the internalizations of finite type, finite presentation and
+coherence, this condition is \emph{not} a standard condition of commutative
+algebra. In fact, in classical logic, this condition is always satisfied --
+for trivial logical reasons if~$f$ is invertible and because~$\F[f^{-1}]$ is
+the zero module if~$f$ is not invertible (since then, it's nilpotent). This is
+to be expected: \emph{Any} module~$M$ in commutative algebra is quasicoherent in
+the sense that the associated sheaf of modules~$M^\sim$ is quasicoherent.
+
+The proof will explain the origin of this condition.
+
+\begin{proof}[Proof of proposition~\ref{qcoh:sheafchar}]\ldots\end{proof}
+
+\begin{cor}Let~$X$ be a scheme. Let~$\F$ be a quasicoherent~$\O_X$-module.
+Let~$\G \subseteq \F$ be a submodule. Then~$\G$ is quasicoherent if and only
+if
+\[ \Sh(X) \models \forall f\?\O_X\_
+  \forall s\?\F\_
+  (\speak{$f$ inv.} \Rightarrow s \in \G) \Longrightarrow
+  \bigvee_{n \geq 0} f^n s \in \G. \]
+\end{cor}
+\begin{proof}We can give a purely internal proof. Let~$f\?\O_X$.
+Since subpresheaves of separated sheaves are separated, the module~$\G[f^{-1}]$
+is in any case separated with respect to the modal operator~$(\speak{$f$ inv.}
+\Rightarrow \placeholder)$.
+
+Now suppose that~$\G$ is quasicoherent. Let~$f\?\O_X$. Let $s\?\F$ and assume that
+if~$f$ were invertible,~$s$ would be an element of~$\G$. Define the
+subsingleton~$S := \{ t\?\G[f^{-1}] \,|\, \speak{$f$ inv.} \wedge t=s/1 \}$.
+Then~$S$ would be inhabited by~$s/1$ if~$f$ were invertible. Since~$\G[f^{-1}]$
+is a sheaf, it follows that there exists an element~$u/f^n$ of~$\G[f^{-1}]$
+such that, if~$f$ were invertible, it would be the case that~$u/f^n = s/1 \in
+\G[f^{-1}] \subseteq \F[f^{-1}]$.
+Since~$\F[f^{-1}]$ is separated, it follows that it actually holds that~$u/f^n
+= s/1 \in \F[f^{-1}]$. Therefore there exists~$m\?\NN$ such that $f^m f^n s =
+f^m u \in \F$. Thus~$f^{m+n} s$ is an element of~$\G$.
+
+For the converse direction, assume that~$\G$ fulfills the stated condition.
+Let$f\?\O_X$. Let~$S \subseteq \G[f^{-1}]$ be a subsingleton which would be
+inhabited if~$f$ were invertible. By regarding~$S$ as a subset of~$\F[f^{-1}]$,
+it follows that there exists an element~$u/f^n \in \F[f^{-1}]$ such that,
+if~$f$ were invertible, $u/f^n$ would be an element of~$S$. In particular,~$u$
+would be an element of~$\G$. By assumption
+it follows that there exists~$m\?\NN$ such that~$f^m u \in G$. Thus~$(f^m u) /
+(f^m f^n)$ is an element of~$\G[f^{-1}]$ such that, if~$f$ were invertible, it
+would be an element of~$S$.
+\end{proof}
+
+\begin{ex}Let~$X$ be a scheme and~$s$ be a global section of~$\O_X$. Then the
+annihilator of~$s$, i.\,e. the sheaf of ideals internally defined by the
+formula
+\[ I := \Ann_{\O_X}(s) = \{ t\?\O_X \,|\, st = 0 \} \subseteq \O_X \]
+is quasicoherent. To prove this in the internal language, it suffices to
+verify the condition of the proposition.
+So let~$f:\O_X$ be arbitrary and assume~$\speak{$f$ inv.} \Rightarrow t \in I$,
+i.\,e. assume that if~$f$ were invertible,~$st$ would be zero. By~XXX it
+follows that~$f^n st = 0$ for some~$n\?\NN$, i.\,e. that~$f^n t \in I$.
+\end{ex}
+
+\begin{itemize}
+\item is the condition good enough to show that modules of finite type are
+quasicoherent?
+\item discussion meaning of the sheaf condition in external language
+\item give more examples: $\sqrt{(0)}$, $(h)$, \ldots
+\item Noetherian hypotheses: for example, that any quasicoherent submodule of a
+module of finite type is of finite type as well
+\end{itemize}
+
 
 \section{Unsorted}
 \begin{itemize}

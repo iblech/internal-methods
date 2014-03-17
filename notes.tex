@@ -8,6 +8,7 @@
 \usepackage{comment}
 \usepackage[protrusion=true,expansion=true]{microtype}
 \usepackage{hyperref}
+\usepackage[all]{xy}
 
 \usepackage{tikz}
 \usetikzlibrary{calc,shapes.callouts,shapes.arrows}
@@ -43,6 +44,8 @@
 \renewcommand{\O}{\mathcal{O}}
 \newcommand{\K}{\mathcal{K}}
 \renewcommand{\P}{\mathcal{P}}
+\newcommand{\R}{\mathcal{R}}
+\renewcommand{\S}{\mathcal{S}}
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\RR}{\mathbb{R}}
 \newcommand{\GG}{\mathbb{G}}
@@ -61,6 +64,7 @@
 \DeclareMathOperator{\Spec}{Spec}
 \DeclareMathOperator{\colim}{colim}
 \DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Ann}{Ann}
 \newcommand{\?}{\,{:}\,}
 \renewcommand{\_}{\mathpunct{.}\,}
 \newcommand{\speak}[1]{\ulcorner\text{\textnormal{#1}}\urcorner}
@@ -445,15 +449,106 @@ XXX).\end{rem}
 \subsection{The sheaf of rational functions} Recall that the sheaf~$\K_X$ of rational
 functions on a scheme~$X$ (or ringed space) can be defined as the sheaf
 associated to the presheaf
-\[ U \subseteq X \longmapsto \Gamma(U,\O_X)[S(U)^{-1}], \]
-where~$S(U)$ is the multiplicative set of those sections of~$\O_X$ on~$U$,
+\[ U \subseteq X \longmapsto \Gamma(U,\O_X)[\Gamma(U,\S)^{-1}], \]
+where~$\Gamma(U,\S)$ is the multiplicative set of those sections of~$\O_X$ on~$U$,
 which are regular in each stalk~$\O_{X,x}$, $x \in U$. Recall also there are
 some wrong definitions in the literature~\cite{kleiman:misconceptions}.
 
+Using the internal language, we can give a simpler definition of~$\K_X$.
+Recall that we can associate to any ring~$R$ its total quotient ring, i.\,e.
+its localization at the multiplicative subset of regular elements. Since from
+the internal perspective~$\O_X$ is an ordinary ring, we can associate to it its
+total quotient ring $\O_X[\S^{-1}]$,
+where~$\S$ is internally defined by the formula
+\[ \S := \{ s\?\O_X \,|\, \speak{$s$ is regular} \} \subseteq \O_X. \]
+Externally, this ring is the sheaf~$\K_X$.
+\begin{prop}Let~$X$ be a scheme (or a ringed space). The sheaf of rings defined
+in the internal language by localizing~$\O_X$ at its set of regular elements is
+(canonically isomorphic to) the sheaf~$\K_X$ of rational functions.
+\end{prop}
+\begin{proof}Internally, the ring~$\O_X[\S^{-1}]$ fulfills the following
+universal property: For any ring~$R$ and any homomorphism~$\O_X \to R$ which
+maps the elements of~$\S$ to units, there exists exactly one
+homomorphism~$\O_X[\S^{-1}] \to R$ which makes the evident diagram commute.
+\[ \xymatrix{
+  \O_X \ar[rr] \ar[dr] && R \\
+  & \O_X[\S^{-1}] \ar@{-->}[ru]
+} \]
+The translation using the Kripke--Joyal semantics gives the following universal
+property: For any open subset~$U \subseteq X$, any sheaf of rings~$\R$ and any
+homomorphism~$\O_X \to \R$ which maps all elements of~$\Gamma(V,\S)$, $V
+\subseteq U$ to units, there exists exactly one homomorphism~$\O_X[\S^{-1}] \to
+\R$ which makes the evident diagram commute.
+It is well-known~\cite{???} that the sheaf~$\K_X$ as usually defined satisfies
+this universal property as well.
+\end{proof}
+
+\begin{prop}Let~$X$ be a scheme (or ringed space). Then the stalks of~$\K_X$
+are given by
+\[ \K_{X,x} = \O_{X,x}[\S_x^{-1}]. \]
+The elements of~$\S_x$ are exactly the germs of those local sections which are
+regular not only in~$\O_{X,x}$, but in all rings~$\O_{X,y}$ where~$y$
+ranges over some neighbourhood of~$x$ (depending on the section).\end{prop}
+\begin{proof}
+Since localization is a geometric construction, the first statement is entirely
+trivial. The second statement follows since
+\[ \Gamma(U,\S) = \{ s\in\Gamma(U,\O_X) \,|\, U \models \speak{$s$ is regular}
+\} \]
+and regularity is a geometric implication, so that
+$U \models \speak{$s$ is regular}$ if and only iff the germ~$s_y$ is regular
+in~$\O_{X,y}$ for all~$y \in U$.
+\end{proof}
+
+
+\subsection{Regularity of local functions}
+It is well known that on a locally Noetherian scheme, regularity spreads from
+stalks to neighbourhoods, i.\,e. a section of~$\O_X$ is regular
+in~$\O_{X,x}$ if and only if it is regular on some neighbourhood on~$x$.
+This fact has a simple proof in the internal language:
+\begin{prop}Let~$X$ be a locally Noetherian scheme. Let~$s \in \Gamma(U,\O_X)$
+be a local function on~$X$. Let~$x \in U$. Then the following statements are
+equivalent:
+\begin{enumerate}
+\item The section~$s$ is regular in~$\O_{X,x}$.
+\item The section~$s$ is regular in all local rings~$\O_{X,y}$ where~$y$ ranges
+over some neighbourhood of~$x$.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+Let~$\Box$ be the modal operator defined by~$\Box(\varphi) :\equiv ((\varphi
+\Rightarrow {!x}) \Rightarrow {!x})$. By XXX, we are to show that the following
+statements of the internal language
+are equivalent:
+\begin{enumerate}
+\item $(\speak{$s$ is regular})^\Box$, i.\,e.
+$\forall t\?\O_X\_ st = 0 \Rightarrow \Box(t = 0)$.
+\item $\Box(\speak{$s$ is regular})$, i.\,e.
+$\Box(\forall t\?\O_X\_ st = 0 \Rightarrow t = 0)$.
+\end{enumerate}
+It is clear that the second statement implies the first -- in fact, this is true
+without any assumptions on~$X$: Let~$t\?\O_X$ be such that~$st = 0$. Since we want to
+prove the boxed statement~$\Box(t=0)$, we may assume that~$s$ is regular and
+prove~$t = 0$. This follows by definition.
+
+For the converse direction, consider the annihilator of~$s$, i.\,e. the ideal
+\[ I := \Ann_{\O_X}(s) = \{ t\?\O_X \,|\, st = 0 \} \subseteq \O_X. \]
+This ideal satisfies the quasicoherence condition (proposition~XXX):
+Let~$f:\O_X$ be arbitrary and assume~$\speak{$f$ inv.} \Rightarrow t \in I$.
+By~XXX (here the assumption that~$X$ is a scheme enters) it follows that~$f^n
+st = 0$ for some~$n\?\NN$, i.\,e. that~$f^n t \in I$.
+
+Thus~$I$ is a quasicoherent submodule of a finitely generated module. Since~$X$ is
+locally Noetherian, it follows that~$I$ is finitely generated as well. By
+assumption, each generator~$x_i \in I$ fulfills~$\Box(x_i = 0)$. Since we want
+to prove a boxed statement, we may in fact assume~$x_i = 0$. Thus~$I = (0)$ and
+the assertion, that~$s$ is regular, follows.
+\end{proof}
+
+\begin{cor}Let~$X$ be a locally Noetherian scheme. Then the stalks~$\K_{X,x}$
+of the sheaf of rational functions are given by the total quotient rings of the
+local rings~$\O_{X,x}$.\end{cor}
+
 \begin{itemize}
-\item internal definition of $\K_X$
-\item discuss stalks of~$\K_X$; discuss that on a locally Noetherian scheme,
-regularity spreads from stalk to neighbourhood
 \item show~$\K_X = j_*(\O_X)$?
 \item internal definition of Cartier divisors
 \item correspondence between Cartier divisors and sub-$\O_X$-modules of $\K_X$

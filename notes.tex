@@ -509,9 +509,9 @@ homomorphism~$\O_X[\S^{-1}] \to R$ which makes the evident diagram commute.
   & \O_X[\S^{-1}] \ar@{-->}[ru]
 } \]
 The translation using the Kripke--Joyal semantics gives the following universal
-property: For any open subset~$U \subseteq X$, any sheaf of rings~$\R$ and any
-homomorphism~$\O_X \to \R$ which maps all elements of~$\Gamma(V,\S)$, $V
-\subseteq U$ to units, there exists exactly one homomorphism~$\O_X[\S^{-1}] \to
+property: For any open subset~$U \subseteq X$, any sheaf of rings~$\R$ on~$U$ and any
+homomorphism~$\O_X|_U \to \R$ which maps all elements of~$\Gamma(V,\S)$, $V
+\subseteq U$ to units, there exists exactly one homomorphism~$\O_X[\S^{-1}]|_U \to
 \R$ which makes the evident diagram commute.
 It is well-known~\cite{???} that the sheaf~$\K_X$ as usually defined satisfies
 this universal property as well.
@@ -628,7 +628,7 @@ conditions can be internalized.
 is quasicoherent if and only if
 \[ \Sh(X) \models \exists I,J\ \mathrm{lc}\_ \speak{there exists an
   exact sequence~$\O_X^J \to \O_X^I \to \F \to 0$}. \]
-The ``$\mathrm{lc}$'' indicates that when interpreting this internal statement with the
+The ``\textnormal{lc}'' indicates that when interpreting this internal statement with the
 Kripke--Joyal semantics,~$I$ and~$J$ should only be instantiated with
 \emph{locally constant} sheaves.
 \end{prop}
@@ -673,6 +673,9 @@ for trivial logical reasons if~$f$ is invertible and because~$\F[f^{-1}]$ is
 the zero module if~$f$ is not invertible (since then, it's nilpotent). This is
 to be expected: \emph{Any} module~$M$ in commutative algebra is quasicoherent in
 the sense that the associated sheaf of modules~$M^\sim$ is quasicoherent.
+% XXX: More to the point, commutative algebra does not deal with
+% quasicoherence, since quasicoherence is an interesting condition only on on
+% arbitrary schemes, not on affine schemes.
 
 The proof will explain the origin of this condition.
 
@@ -726,7 +729,7 @@ follows that~$f^n st = 0$ for some~$n\?\NN$, i.\,e. that~$f^n t \in I$.
 
 \begin{itemize}
 \item is the condition good enough to show that modules of finite type are
-quasicoherent?
+quasicoherent? To show that cokernels are quasicoherent?
 \item discussion meaning of the sheaf condition in external language
 \item give more examples: $\sqrt{(0)}$, $(h)$, \ldots
 \item Noetherian hypotheses: for example, that any quasicoherent submodule of a

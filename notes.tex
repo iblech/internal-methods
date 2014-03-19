@@ -185,6 +185,33 @@ A complete list of which rules are to prove is
 in~\cite[D1.3.1]{johnstone:elephant}.
 \end{proof}
 
+Because of the multitude of quantifiers, literal translations of internal statements
+can sometimes get slightly unwieldy. There are simplification rules for certain
+often-occuring special cases:
+\begin{prop}
+    \[ \renewcommand{\arraystretch}{1.3}\begin{array}{@{}lcl@{}}
+      U \models \forall s\?\F\_ \forall t\?\G\_ \varphi(s,t)
+      &\Longleftrightarrow&
+      \text{for all open~$V \subseteq U$,} \\
+      && \text{sections~$s \in \Gamma(V,\F)$, $t \in \Gamma(V,\G)$:
+      $V \models \varphi(s,t)$} \\[0.3em]
+      U \models \forall s\?\F\_ \varphi(s) \Rightarrow \psi(s)
+      &\Longleftrightarrow&
+      \text{for all open~$V \subseteq U$, sections~$s \in \Gamma(V,\F)$:} \\
+      &&\qquad\qquad \text{$V \models \varphi(s)$ implies $V \models \psi(s)$}
+      \\[0.3em]
+      U \models \exists!s\?\F\_ \varphi(s)
+      &\Longleftrightarrow&
+      \text{for all open~$V \subseteq U$,} \\
+      &&
+      \text{there is exactly one section~$s \in \Gamma(V,\F)$ with:} \\
+      &&\qquad\qquad V \models \varphi(s)
+    \end{array} \]
+\end{prop}
+\begin{proof}Omitted.\end{proof}
+% XXX: Give details for at least the last simplification rule?
+% XXX: Give motto -- "unique existence is global existence".
+
 \begin{itemize}
 \item geometric formulas
 \item geometric constructions

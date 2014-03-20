@@ -106,10 +106,11 @@
 Let~$X$ be a topological space. Later, $X$ will be the underlying space of a
 scheme.
 
-\begin{defn}[Kripke--Joyal semantics of a sheaf topos]The meaning of 
+\begin{defn}The meaning of 
 \[ U \models \varphi \quad\text{(``$\varphi$ holds on $U$'')} \]
 for open subsets~$U \subseteq X$ and formulas~$\varphi$ is given by
 the following rules, recursively in the structure of~$\varphi$:
+% XXX: introduce term "Kripke--Joyal semantic"
 \[ \renewcommand{\arraystretch}{1.3}\begin{array}{@{}lcl@{}}
   U \models f = g \? \F &\Ll& f|_U = g|_U \in \Gamma(U, \F) \\
   U \models \top &\Ll& U = U \text{ (always fulfilled)} \\
@@ -170,8 +171,7 @@ rules would make this proposition false.\end{proof}
 
 \begin{prop}[Soundness of the internal language]
 If a formula~$\varphi$ implies a further formula~$\psi$ in intuitionistic logic, then
-\[ U \models \varphi \qquad\text{implies}\qquad
-  U \models \psi. \]
+$U \models \varphi$ implies $U \models \psi$.
 \end{prop}
 \begin{proof}
 Proof by induction on the structure of formal intuitionistic proofs; we are to
@@ -192,6 +192,8 @@ follows because of the locality of the internal language.
 A complete list of which rules are to prove is
 in~\cite[D1.3.1]{johnstone:elephant}.
 \end{proof}
+% XXX: Put rules into an appendix and give some explanation regarding contexts
+% etc.
 
 Because of the multitude of quantifiers, literal translations of internal statements
 can sometimes get slightly unwieldy. There are simplification rules for certain
@@ -466,6 +468,7 @@ explicitly pinpoint the (classically existing) minimal element of an arbitrary
 inhabited set. In intuitionistic logic, this principle can be salvaged in two
 essentially different ways: either be strengthening the premise, or by
 weakening the conclusion.
+% XXX: Give sheaf-theoretic interpretation of the failure.
 
 \begin{lemma}Let~$U \subseteq \NN$ be an inhabited subset of the natural
 numbers.
@@ -473,6 +476,9 @@ numbers.
 \item Assume~$U$ to be \emph{detachable}, i.\,e. assume that for any natural
 number~$n$, either~$n \in U$ or~$n \not\in U$. Then~$U$ possesses a minimal
 element.
+% XXX: Give sheaf-theoretic interpretation of detachability. With this
+% interpretation, it should be totally clear that $U$ possesses a minimal
+% element.
 \item In any case,~$U$ does \emph{not not} possess a minimal element.
 \end{enumerate}
 \end{lemma}

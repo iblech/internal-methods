@@ -112,6 +112,8 @@ for open subsets~$U \subseteq X$ and formulas~$\varphi$ is given by
 the following rules, recursively in the structure of~$\varphi$:
 \[ \renewcommand{\arraystretch}{1.3}\begin{array}{@{}lcl@{}}
   U \models f = g \? \F &\Ll& f|_U = g|_U \in \Gamma(U, \F) \\
+  U \models \top &\Ll& U = U \text{ (always fulfilled)} \\
+  U \models \bot &\Ll& U = \emptyset \\
   U \models \varphi \wedge \psi &\Ll&
     \text{$U \models \varphi$ and $U \models \psi$} \\
   U \models \varphi \vee \psi &\Ll&
@@ -122,23 +124,29 @@ the following rules, recursively in the structure of~$\varphi$:
     \text{for all open~$V \subseteq U$: } 
   \text{$V \models \varphi$ implies $V \models \psi$} \\
   U \models \forall f \? \F\_ \varphi(f) &\Ll&
-    \text{for all sections~$f \in \Gamma(V, \F), V \subseteq U$: $V \models
+    \text{for all sections~$f \in \Gamma(V, \F)$, open $V \subseteq U$: $V \models
     \varphi(f)$} \\
   U \models \exists f \? \F\_ \varphi(f) &\Ll&
     \hcancel{\text{there exists a section~$f \in \Gamma(U,\F)$ s.\,th. $U
     \models \varphi(f)$}}{0pt}{3pt}{0pt}{-2pt} \\
   &&
-    \text{there exists a covering $U = \bigcup_i U_i$ s.\,th. for all~$i$:} \\
+    \text{there exists an open covering $U = \bigcup_i U_i$ s.\,th. for all~$i$:} \\
   && \quad\quad \text{there exists~$f_i \in \Gamma(U_i, \F)$ s.\,th.
   $U_i \models \varphi(f_i)$} \\
   U \models \forall \F\_ \varphi(\F) &\Ll&
-    \text{for all sheaves $\F$ on $V$, $V \subseteq U$: $V \models \varphi(\F)$} \\
+    \text{for all sheaves $\F$ on $V$, open $V \subseteq U$: $V \models \varphi(\F)$} \\
   U \models \exists \F\_ \varphi(\F) &\Ll&
-    \text{there exists a covering $U = \bigcup_i U_i$ s.\,th. for all~$i$:} \\
+    \text{there exists an open covering $U = \bigcup_i U_i$ s.\,th. for all~$i$:} \\
   && \quad\quad \text{there exists a sheaf~$\F_i$ on~$U_i$ s.\,th.
   $U_i \models \varphi(\F_i)$}
 \end{array} \]
+The translation of~$U \models \neg\varphi$ does not have to be defined, since
+negation can be expressed using other symbols: $\neg\varphi :\equiv (\varphi
+\Rightarrow \bot)$. If we want to emphasize the particular topos, we write
+\[ \Sh(X) \models \varphi \quad\Ll\quad X \models \varphi. \]
 \end{defn}
+% XXX: Explanation of \top and \bot.
+% XXX: Rule for \in.
 
 \begin{rem}The last two rules, concerning \emph{unbounded quantification}, are
 not part of the classical Kripke--Joyal semantics, but instead of Mike
@@ -225,12 +233,17 @@ They therefore glue to a section~$s \in \Gamma(V,\F)$. Since~$V_i \models
 conclude that~$V \models \varphi(s)$.
 \end{proof}
 
+\begin{rem}Note that~$\Sh(X) \models \neg\varphi$ is in general a much stronger
+statement that merely supposing that~$\Sh(X) \models \varphi$ does not hold:
+The former always implies the latter (unless~$X = \emptyset$, in which case
+\emph{any} internal statement is true), but the converse does not hold: The
+former statement means that~$U = \emptyset$ is the \emph{only} open subset on
+which~$\varphi$ holds.\end{rem}
+% XXX: Find appropriate place for this remark.
+
 \begin{itemize}
 \item geometric formulas
 \item geometric constructions
-\item notation: $\Sh(X) \models \varphi$ means~$X \models \varphi$
-\item remark: do not confuse $\Sh(X) \models \neg\varphi$ with $\Sh(X)
-\not\models \varphi$
 \item crash course on intuitionistic logic
 \item first steps: invertibility, nilpotency (needed later)
 \end{itemize}

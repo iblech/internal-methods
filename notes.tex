@@ -156,6 +156,36 @@ needed so that we can formulate universal properties in the internal
 language.
 \end{rem}
 
+\begin{ex}Let~$\alpha : \F \to \G$ be a morphism of sheaves on~$X$. Then
+$\alpha$ is a monomorphism of sheaves if and only if, from the internal
+perspective,~$\alpha$ is simply an injective map:
+\begin{align*}
+  & X \models \speak{$\alpha$ is injective} \\[0.5em]
+  \Longleftrightarrow\
+  & X \models \forall s,t\?\F\_ \alpha(s) = \alpha(t) \Rightarrow s = t \\[0.5em]
+  \Longleftrightarrow\ &
+    \text{for all open~$U \subseteq X$, sections $s, t \in \Gamma(U, \F)$:} \\
+  &\qquad\qquad
+      U \models \alpha(s) = \alpha(t) \Rightarrow s = t \\[0.5em]
+  \Longleftrightarrow\ &
+    \text{for all open~$U \subseteq X$, sections $s, t \in \Gamma(U, \F)$:} \\
+  &\qquad\qquad
+      \text{for all open~$V \subseteq U$:} \\
+  &\qquad\qquad\qquad\qquad
+        \text{$\alpha_V(s|_V) = \alpha_V(t|_V)$ implies $s|_V = t|_V$} \\[0.5em]
+  \Longleftrightarrow\ &
+    \text{for all open~$U \subseteq X$, sections $s, t \in \Gamma(U, \F)$:} \\
+  &\qquad\qquad
+        \text{$\alpha_U(s|_U) = \alpha_U(t|_U)$ implies $s|_U = t|_U$} \\[0.5em]
+  \Longleftrightarrow\ &
+    \text{$\alpha$ is a monomorphism of sheaves}
+\end{align*}
+The corner quotes ``$\speak{\ldots}$'' indicate that translation into formal
+language is left to the reader. Similarly,~$\alpha$ is an epimorphism of
+sheaves if and only if, from the internal perspective,~$\alpha$ is a
+surjective map.
+\end{ex}
+
 The rules are not all arbitrary. They are finely concerted to make the
 following propositions true, which are crucial for a proper appreciation of the
 internal language.

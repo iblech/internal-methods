@@ -208,14 +208,26 @@ often-occuring special cases:
       &&\qquad\qquad V \models \varphi(s)
     \end{array} \]
 \end{prop}
-\begin{proof}Omitted.\end{proof}
-% XXX: Give details for at least the last simplification rule?
-% XXX: Give motto -- "unique existence is global existence".
+\begin{proof}Straightforward. By way of example, we prove the existence claim
+in the ``only if'' direction of the last rule. (Note that this rule formalizes
+the saying ``unique existence is global existence''.) By definition of~$\exists!$, it
+holds that
+\[ U \models \exists s\?\F\_ \varphi(s) \]
+and
+\[ U \models \forall s,t\?\F\_ \varphi(s) \wedge \varphi(t) \Rightarrow s = t.  \]
+Let~$V \subseteq U$ be an arbitrary open subset. Then there exist local
+section~$s_i \in \Gamma(V_i,\F)$ such that~$V_i \models \varphi(s_i)$, where~$V
+= \bigcup_i V_i$ is an open covering. By the locality of the internal language,
+on intersections it holds that~$V_i \cap V_j \models \varphi(s_i)$, so by the
+uniqueness assumption, it follows that the local sections agree on intersections.
+They therefore glue to a section~$s \in \Gamma(V,\F)$. Since~$V_i \models
+\varphi(s)$ for any~$i$, the locality of the internal language allows us to
+conclude that~$V \models \varphi(s)$.
+\end{proof}
 
 \begin{itemize}
 \item geometric formulas
 \item geometric constructions
-\item simplification rules
 \item notation: $\Sh(X) \models \varphi$ means~$X \models \varphi$
 \item remark: do not confuse $\Sh(X) \models \neg\varphi$ with $\Sh(X)
 \not\models \varphi$

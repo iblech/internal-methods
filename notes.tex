@@ -143,7 +143,9 @@ the following rules, recursively in the structure of~$\varphi$:
 \end{array} \]
 The translation of~$U \models \neg\varphi$ does not have to be defined, since
 negation can be expressed using other symbols: $\neg\varphi :\equiv (\varphi
-\Rightarrow \bot)$. If we want to emphasize the particular topos, we write
+\Rightarrow \bot)$. Analogously to the rules for~$\wedge$ and~$\vee$, we can
+define rules for arbitrary set-indexed conjuctions~($\bigwedge_{j \in J}$) and
+disjunctions~($\bigvee_{j \in J}$). If we want to emphasize the particular topos, we write
 \[ \Sh(X) \models \varphi \quad\Ll\quad X \models \varphi. \]
 \end{defn}
 % XXX: Explanation of \top and \bot.
@@ -273,8 +275,60 @@ former statement means that~$U = \emptyset$ is the \emph{only} open subset on
 which~$\varphi$ holds.\end{rem}
 % XXX: Find appropriate place for this remark.
 
+
+\subsection{Geometric formulas and constructions} In categorical logic,
+so-called geometric formulas play a special role, because their meaning is
+preserved under pullback with geometric morphisms. % XXX gibberish!
+\begin{defn}A formula is \emph{geometric} if and only if it consists only of
+\[ {=} \quad {\top} \quad {\bot} \quad {\wedge} \quad {\vee} \quad
+{\bigvee} \quad {\exists}, \]
+% XXX: \in
+but not~``$\bigwedge$'' nor ``$\Rightarrow$'' nor~``$\forall$'' (and thus
+not~``$\neg$'' either, since this is defined using~``$\Rightarrow$'').
+A \emph{geometric implication} is a formula of the form
+\[ \forall \cdots \forall\_ (\cdots) \Rightarrow (\cdots) \]
+with the bracketed subformulas being geometric.
+\end{defn}
+We say that a formula~$\varphi$ holds \emph{at a point~$x \in X$} if and only
+if the formula obtained by substituting all parameters in~$\varphi$ (e.\,g.
+sheaves being quantified over) with their stalks at~$x$ holds in the usual
+mathematical sense.
+% XXX: "e.g." list is not complete
+
+\begin{lemma}Let~$x \in X$ be a point. Let~$\varphi$ be a geometric formula.
+Then~$\varphi$ holds at~$x$ if and only if there exists a neighbourhood~$U
+\subseteq X$ of~$x$ such that~$\varphi$ holds on~$U$.
+\end{lemma}
+% XXX: Need to reformulate this for the relative case of \varphi
+% being a formula with parameters defined only over some open subset U.
+\begin{proof}This is a very general instance of the phenomenom that sometimes,
+truth at a point spreads to truth on a neighbourhood. It can be proven by
+induction on the structure of~$\varphi$, but we will give a more conceptual
+proof later (lemma~XXX).
+\end{proof}
+
+\begin{cor}A geometric implication holds on~$X$ if and only if it holds at
+every point of~$X$.\end{cor}
+\begin{proof}For notational simplicity, we consider a geometric implication of
+the form
+\[ \forall s\?\F\_ \varphi(s) \Rightarrow \psi(s). \]
+For the ``only if'' direction, assume that this formula holds on~$X$ and let~$x
+\in X$ be an arbitrary point. Let~$s_x \in \F_x$ be the germ of an arbitrary
+local section~$s$ of~$\F$ and assume that~$\varphi(s)$ holds at~$x$. Then by
+the lemma, it follows that~$\varphi(s)$ holds on some open neighbourhood of~$x$. By
+assumption,~$\psi(s)$ holds on this neighbourhood as well. Again by the
+lemma,~$\psi(s)$ holds at~$x$.
+
+For the ``if'' direction, assume that the geometric implication holds at every
+point. Let~$U \subseteq X$ be an arbitrary open subset and let~$s \in
+\Gamma(U,\F)$ be a local section such that~$\varphi(s)$ holds on~$U$. By the
+lemma and the locality of the internal language, to show that~$\psi(s)$ holds
+on~$U$, it suffices to show that~$\psi(s)$
+holds at every point of~$U$. This is clear, since again by the
+lemma,~$\varphi(s)$ holds at every point of~$U$.
+\end{proof}
+
 \begin{itemize}
-\item geometric formulas
 \item geometric constructions
 \item crash course on intuitionistic logic
 \item first steps: invertibility, nilpotency (needed later)

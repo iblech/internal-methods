@@ -225,7 +225,7 @@ A complete list of which rules are to prove is
 in~\cite[D1.3.1]{johnstone:elephant}.
 \end{proof}
 % XXX: Put rules into an appendix and give some explanation regarding contexts
-% etc.
+% etc. Don't forget the rules for \in, \bigwedge, \bigvee.
 
 Because of the multitude of quantifiers, literal translations of internal statements
 can sometimes get slightly unwieldy. There are simplification rules for certain
@@ -329,6 +329,11 @@ lemma,~$\varphi(s)$ holds at every point of~$U$.
 \end{proof}
 
 \begin{itemize}
+\item remark on how, even though injectivity and surjectivity are notions of an
+element-based language, the Kripke--Joyal semantics manages to incorporate
+\emph{all} elements, not only global ones
+\item remark that since injectivity and surjectivity are geometric
+implications, monos/epis are stalkwise injective/surjective (and vice versa)
 \item geometric constructions
 \item crash course on intuitionistic logic
 \item first steps: invertibility, nilpotency (needed later)
@@ -827,9 +832,23 @@ local rings~$\O_{X,x}$.\end{cor}
 
 \section{Modalities}
 \begin{itemize}
-\item negneg
-\item spreading of properties from stalk to neighbourhood
-\item internal sheafification
+\item define modal operators as certain maps~$\Omega \to \Omega$;
+explain than classically, there are only two such operators (both not
+interesting), but that internal to a sheaf topos, there are many interesting
+such operators
+\item introduce the notation~$X_\Box$; explain the relationship
+between~$\Sh(X_\Box)$ and~$\Sh(X)$ (given by pushforward/pullback resp.
+forget/sheafify from the internal perspective)
+\item explain the meaning of $U \models \box\varphi$
+\item introduce the~$\Box$-translation; give basic lemmas
+\item explain that~$\Sh(X) \models \varphi^\Box$ iff~$\Sh(X_\Box) \models
+\varphi$; specialize to the four most important modal operators~($\neg\neg$, $U
+\Rightarrow \placeholder$, $\placeholder \vee A^c$, $(\placeholder \Rightarrow
+!x) \Rightarrow !x$)
+\item spreading of properties from stalk to neighbourhood: give general
+metatheorem for geometric statements; give many examples
+\item internal sheafification? To what extent is a description necessary?
+Contemplate what I want to say about the geometric meaning of~$\K_X$
 \end{itemize}
 
 

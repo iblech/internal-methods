@@ -67,10 +67,12 @@
 \DeclareMathOperator{\colim}{colim}
 \DeclareMathOperator{\rank}{rank}
 \DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\Int}{int}
 \newcommand{\?}{\,{:}\,}
 \renewcommand{\_}{\mathpunct{.}\,}
 \newcommand{\speak}[1]{\ulcorner\text{\textnormal{#1}}\urcorner}
 \newcommand{\Ll}{:\Longleftrightarrow}
+\newcommand{\notat}[1]{{!#1}}
 
 \title{Using the internal language of toposes in algebraic geometry}
 \author{Ingo Blechschmidt}
@@ -922,16 +924,84 @@ The modus ponens rule justifies the following proof scheme: In showing
 that a boxed statement~$\Box\psi$ holds given that a further boxed
 statement~$\Box\varphi$ holds, we may assume that indeed~$\varphi$ holds.
 
+
+\subsection{Geometric meaning} Let~$X$ be a topological space. As discussed
+above, an open subset~$U \subseteq X$ defines an internal truth value also
+denoted by~``$U$'' such that
+\[ V \models U \quad\Longleftrightarrow\quad V \subseteq U \]
+for any open subset~$V \subseteq X$. (Shortcutting the various intermediate
+steps, this can also be taken as a definition of~``$V \models U$''.)
+If~$A \subseteq X$ is a closed subset, there is thus an internal truth
+value~$A^c$ corresponding to the open subset~$A^c = X \setminus A$. If~$x \in
+X$ is a point, we define~``$\notat{x}$'' to denote the truth value
+corresponding to~$\Int(X \setminus \{x\})$, such that
+\[ V \models \notat{x} \quad\Longleftrightarrow\quad V \subseteq \Int(X
+\setminus \{ x \}) \quad\Longleftrightarrow\quad x \not\in V. \]
+
+\begin{prop}Let~$U \subseteq X$ be a fixed open and~$A \subseteq X$ be a fixed
+closed subset. Let~$x \in X$. Then, for any open subset~$V \subseteq X$, it
+holds that:
+\[ \renewcommand{\arraystretch}{1.3}\begin{array}{@{}lcl@{}}
+  V \models (U \Rightarrow \varphi) &\Longleftrightarrow&
+    V \cap U \models \varphi. \\[0.3em]
+  V \models (\varphi \vee A^c) &\Longleftrightarrow&
+    \textnormal{there is an open subset~$W \subseteq V$} \\
+  && \quad\quad \textnormal{containing~$A \cap V$ s.\,th. $W \models \varphi$.} \\[0.3em]
+  V \models \neg\neg\varphi &\Longleftrightarrow&
+    \textnormal{there is a dense open subset~$W \subseteq V$ s.\,th. $W \models
+    \varphi$.} \\[0.3em]
+  V \models ((\varphi \Rightarrow \notat{x}) \Rightarrow \notat{x}) &\Longleftrightarrow&
+    \textnormal{$x \not\in V$ or there is an open neighbourhood~$W \subseteq V$} \\
+  && \quad\quad \textnormal{of~$x$ s.\,th. $W \models \varphi$.}
+\end{array} \]
+\end{prop}
+\begin{proof}
+\begin{enumerate}
+\item Omitted.
+
+\item Let~$V \models \varphi \vee A^c$. Then there exists an open covering~$V =
+\bigcup_i V_i$ such that for each~$i$, $V_i \models \varphi$ or $V_i \subseteq
+A^c$. Let~$W \subseteq V$ be the union of those~$V_i$ such that~$V_i \models \varphi$.
+Then~$W \models \varphi$ by the locality of the internal language and~$A \cap V
+\subseteq W$.
+
+Conversely, let~$W \subseteq V$ be an open subset containing~$A \cap V$ such
+that~$W \models \varphi$. Then~$V = W \cup (V \cap A^c)$ is an open covering
+attesting~$V \models \varphi \vee A^c$.
+
+\item For the ``only if'' direction, let~$W \subseteq V$ be the largest
+open subset on which~$\varphi$ holds, i.\,e. the union of all open subsets
+of~$V$ on which~$\varphi$ holds. For the ``if'' direction, we may assume that
+the given~$W$ is also the largest open subset on which~$\varphi$ holds (by
+enlarging~$W$ if necessary). The claim then follows by the following chain of
+equivalences:
+\begin{align*}
+  &\ V \models \neg\neg\varphi \\
+  \Longleftrightarrow&\ \forall \text{$Y \subseteq V$ open}\_
+    \left[\forall \text{$Z \subseteq Y$ open}\_ Z \models \varphi \Rightarrow Z
+    = \emptyset\right] \Longrightarrow Y = \emptyset \\
+  \Longleftrightarrow&\ \forall \text{$Y \subseteq V$ open}\_
+    \left[\forall \text{$Z \subseteq Y$ open}\_ Z \subseteq W \Rightarrow Z
+    = \emptyset\right] \Longrightarrow Y = \emptyset \\
+  \Longleftrightarrow&\ \forall \text{$Y \subseteq V$ open}\_
+    Y \cap W = \emptyset \Longrightarrow Y = \emptyset \\
+  \Longleftrightarrow&\ \text{$W$ is dense in~$V$.}
+\end{align*}
+
+\item Straightforward, since the interpretation of the internal statement with
+the Kripke--Joyal semantics is
+\[ \forall \text{$Y \subseteq V$ open}\_
+  \left[\forall \text{$Z \subseteq Y$ open}\_
+    Z \models \varphi \Rightarrow x \not\in Z\right] \Longrightarrow x \not\in
+    Y. \qedhere \]
+\end{enumerate}
+\end{proof}
+
 \begin{itemize}
 \item general explanation of modalities (as for instance in philosophy)
-\item define modal operators as certain maps~$\Omega \to \Omega$;
-explain that classically, there are only two such operators (both not
-interesting), but that internal to a sheaf topos, there are many interesting
-such operators
 \item introduce the notation~$X_\Box$; explain the relationship
 between~$\Sh(X_\Box)$ and~$\Sh(X)$ (given by pushforward/pullback resp.
 forget/sheafify from the internal perspective)
-\item explain the meaning of $U \models \Box\varphi$
 \item introduce the~$\Box$-translation; give basic lemmas
 \item explain that~$\Sh(X) \models \varphi^\Box$ iff~$\Sh(X_\Box) \models
 \varphi$; specialize to the four most important modal operators~($\neg\neg$, $U
@@ -1099,3 +1169,5 @@ some lemmas about limits of modules)
 XXX: ``completed natural number'' is a misnomer.
 
 XXX: standardize level of generality: ringed locales, where possible?
+
+XXX: remark that for simplicity, we work in a classical metatheory

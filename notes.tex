@@ -833,6 +833,95 @@ local rings~$\O_{X,x}$.\end{cor}
 \end{itemize}
 
 \section{Modalities}
+
+\subsection{Basics on truth values and modal operators}
+
+\begin{defn}The \emph{set of truth values~$\Omega$} is the powerset of the
+singleton set~$1 := \{\star\}$, where~$\star$ is a formal symbol.\end{defn}
+
+In classical logic, any subset of~$\{\star\}$ is either empty or inhabited, so
+that~$\Omega$ contains exactly two elements, the empty set (``false'')
+and~$\{\star\}$ (``true''). But
+in intuitionistic logic, this can not be shown; indeed, if we interpret the
+definition in the topos of sheaves on a space~$X$, we obtain a sheaf~$\Omega$
+with
+\[ \text{$U \subseteq X$ open} \longmapsto \Gamma(V,\Omega) = \{ V \subseteq U \,|\, \text{$V$
+open} \}. \]
+(This is because sections of~$\Omega$ on an open subset~$U$ correspond to
+subsheaves~$\F \hookrightarrow 1|_U$ of the restriction of the terminal sheaf
+to~$U$, and those are given by the greatest open subset~$V \subseteq U$ such
+that~$\Gamma(V,\F)$ is inhabited.)
+
+The \emph{truth value} of a formula~$\varphi$ is by definition the subset
+$\{ x \in 1 \,|\, \varphi \} \in \Omega$, where~``$x$'' is a fresh variable not
+appearing in~$\varphi$. This subset is inhabited if and only
+if~$\varphi$ holds and is empty if and only if~$\neg\varphi$ holds.
+Conversely, we can associate to a subset~$F \subseteq 1$ the
+formula~$\speak{$F$ is inhabited}$.
+
+Under this correspondence of formulas with truth values, logical operations
+like~$\wedge$ and~$\vee$ map to set-theoretic operations like~$\cap$ and~$\cup$
+-- for instance, we have
+\[ \{ x \in 1 \,|\, \varphi \} \cap \{ x \in 1 \,|\, \psi \} =
+  \{ x \in 1 \,|\, \varphi \wedge \psi \}. \]
+This justifies a certain abuse of notation: We will sometimes treat elements
+of~$\Omega$ as propositions and use logical instead of set-theoretic
+connectives. In particular, if~$\varphi$ and~$\psi$ are elements of~$\Omega$,
+we will write~``$\varphi \Rightarrow \psi$'' to mean~$\varphi \subseteq \psi$;
+``$\bot$'' to mean~$\emptyset$; and~``$\top$'' to mean~$1$.
+
+\begin{defn}A \emph{modal operator} is a map~$\Box : \Omega \to \Omega$ such
+that for all~$\varphi, \psi \in \Omega$,
+\begin{enumerate}
+\item $\varphi \Longrightarrow \Box\varphi$,
+\item $\Box\Box\varphi \Longrightarrow \varphi$,
+\item $\Box(\varphi \wedge \psi) \Longleftrightarrow \Box\varphi \wedge \Box\psi$.
+\end{enumerate}
+\end{defn}
+
+The intuition is that~$\Box\varphi$ is a certain weakening of~$\varphi$, where
+the precise meaning of ``weaker'' depends on the modal operator.
+
+In classical logic, where~$\Omega = \{ \bot, \top \}$, there are only two modal
+operators: the identity function and the constant function with value~$\top$.
+Both of these are not very interesting: The identity operator does not weaken
+propositions at all, while the constant operator weakens every proposition to
+the trivial statement~$\top$.
+
+In intuitionistic logic, there can potentially exist further modal operators.
+For applications to algebraic geometry, the following four operators will have
+a clear geometric meaning and be of particular importance:
+\begin{enumerate}
+\item $\Box\varphi :\equiv (\alpha \Rightarrow \varphi)$, where~$\alpha$ is a
+fixed proposition.
+\item $\Box\varphi :\equiv (\varphi \vee \alpha)$, where~$\alpha$ is a
+fixed proposition.
+\item $\Box\varphi :\equiv \neg\neg\varphi$ (the \emph{double negation
+modality}).
+\item $\Box\varphi :\equiv ((\varphi \Rightarrow \alpha) \Rightarrow \alpha)$,
+where~$\alpha$ is a fixed proposition.
+\end{enumerate}
+
+\begin{lemma}Any modal operator~$\Box$ is monotonic, i.\,e. if~$\varphi
+\Rightarrow \psi$, then~$\Box\varphi \Rightarrow \Box\psi$. Furthermore, there
+holds a modus ponens rule: If~$\Box\varphi$ holds, and~$\varphi$
+implies~$\Box\psi$, then~$\Box\psi$ holds as well.\end{lemma}
+\begin{proof}Assume~$\varphi \Rightarrow \psi$. This is equivalent to
+supposing~$\varphi \wedge \psi \Leftrightarrow \varphi$. We are to show
+that~$\Box\varphi \Rightarrow \Box\psi$, i.\,e. that~$\Box\varphi \wedge
+\Box\psi \Leftrightarrow \Box\varphi$. The statement follows since by the third
+axiom on a modal operator, we have~$\Box\varphi \wedge \Box\psi \Leftrightarrow
+\Box(\varphi \wedge \psi)$.
+
+For the second statement, consider that if~$\varphi \Rightarrow \Box\psi$, by
+monotonicity and the second axiom on a modal operator it follows
+that~$\Box\varphi \Rightarrow \Box\Box\psi \Rightarrow \Box\psi$.
+\end{proof}
+
+The modus ponens rule justifies the following proof scheme: In showing
+that a boxed statement~$\Box\psi$ holds given that a further boxed
+statement~$\Box\varphi$ holds, we may assume that indeed~$\varphi$ holds.
+
 \begin{itemize}
 \item general explanation of modalities (as for instance in philosophy)
 \item define modal operators as certain maps~$\Omega \to \Omega$;

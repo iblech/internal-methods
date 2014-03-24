@@ -74,6 +74,8 @@
 \newcommand{\Ll}{:\Longleftrightarrow}
 \newcommand{\notat}[1]{{!#1}}
 
+\definecolor{gray}{rgb}{0.7,0.7,0.7}
+
 \title{Using the internal language of toposes in algebraic geometry}
 \author{Ingo Blechschmidt}
 \email{iblech@web.de}
@@ -997,6 +999,86 @@ the Kripke--Joyal semantics is
 \end{enumerate}
 \end{proof}
 
+% XXX: introduce notion of Box-stability
+
+
+\subsection{The~$\Box$-translation} There is certain well-known transformation~$\varphi
+\mapsto \varphi^{\neg\neg}$ on formulas, the \emph{double negation
+translation}, with the following curious property: A formula~$\varphi$ is
+derivable in classical logic if and only if its
+translation~$\varphi^{\neg\neg}$ is derivable in intuitionistic logic. The
+translation~$\varphi^{\neg\neg}$ is obtained from~$\varphi$ by putting
+``$\neg\neg$'' before any subformula, i.\,e. before any~``$\exists$''
+and~``$\forall$'', around any logical connective and around any atomic
+statement (``$x=y$'', ``$x \in A$'').
+
+We will describe a slight generalization of the double negation translation,
+the~$\Box$-translation for any modal operator~$\Box$. It has the following
+crucial property:
+\begin{prop}Let~$X$ be a topological space. Let~$\Box$ be a modal operator
+in~$\Sh(X)$. Let~$\varphi$ be a formula. Then
+\[ \Sh(X) \models \varphi^\Box \quad\text{iff}\quad
+  \Sh(X_\Box) \models \varphi. \]
+\end{prop}
+Here,~``$X_\Box$'' denotes the sublocale of~$X$ defined by~$\Box$; we will
+explain this notion further down. Of particular importance is the
+case~$\Box\varphi :\equiv ((\varphi \Rightarrow \notat{x}) \Rightarrow
+\notat{x})$ where~$x \in X$ is a point, since for this modal operator, the
+proposition specializes to
+\[ \Sh(X) \models \varphi^\Box \quad\text{iff}\quad
+  \text{$\varphi$ holds at~$x$}. \]
+Thus the question whether truth of a proposition~$\varphi$ at a point~$x$ spreads
+to a neighbourhood of~$x$ can be formulated in the following way:
+\emph{Does~$\varphi^\Box$ imply~$\Box\varphi$?} We can give a general
+answer to this question.
+% XXX: Some of those paragraphs are probably introduction material.
+
+\begin{defn}The~\emph{$\Box$-translation} is recursively defined as follows.
+\newcommand{\optBox}{\textcolor{gray}{\Box}}
+\begin{align*}
+  (f = g)^\Box &:\equiv \Box(f = g) \\
+  (x \in A)^\Box &:\equiv \Box(x \in A) \\
+  \top^\Box &:\equiv \Box\top \equiv \top \\
+  \bot^\Box &:\equiv \Box\bot \\
+  (\varphi \wedge \psi)^\Box &:\equiv \optBox(\varphi^\Box \wedge \psi^\Box) &
+  \textstyle (\bigwedge_i \varphi_i)^\Box &:\equiv \textstyle \optBox(\bigwedge_i \varphi_i^\Box) \\
+  (\varphi \vee \psi)^\Box &:\equiv \Box(\varphi^\Box \vee \psi^\Box) &
+  \textstyle (\bigvee_i \varphi_i)^\Box &:\equiv \textstyle \Box(\bigvee_i \varphi_i^\Box) \\
+  (\varphi \Rightarrow \psi)^\Box &:\equiv \optBox(\varphi^\Box \Rightarrow \psi^\Box) \\
+  (\forall x\?X\_ \varphi)^\Box &:\equiv \optBox(\forall x\?X\_ \varphi^\Box) &
+  (\forall X\_ \varphi)^\Box &:\equiv \optBox(\forall X\_ \varphi^\Box) \\
+  (\exists x\?X\_ \varphi)^\Box &:\equiv \Box(\exists x\?X\_ \varphi^\Box) &
+  (\exists X\_ \varphi)^\Box &:\equiv \Box(\exists X\_ \varphi^\Box)
+\end{align*}
+\end{defn}
+
+\begin{lemma}\begin{enumerate}
+\item Formulas in the image of the $\Box$-translation are~$\Box$-stable,
+i.\,e. for any formula~$\varphi$ it holds that
+$\Box(\varphi^\Box) \Longrightarrow \varphi^\Box$.
+\item In the definition of the~$\Box$-translation, one may omit the boxes
+printed in gray.
+\end{enumerate}\end{lemma}
+
+\begin{lemma}\ldots, then $\Box\varphi \Rightarrow \varphi^\Box$.\end{lemma}
+
+\begin{lemma}\ldots, then $\varphi^\Box \Rightarrow \Box\varphi$.\end{lemma}
+
+%\begin{cor}Let~$X$ be a topological space.
+%\begin{enumerate}
+%\item Let~$U \subseteq X$ be an open subset and let~$\Box\varphi :\equiv (U
+%\Rightarrow \varphi)$. Then
+%\[ \Sh(X) \models \varphi^\Box \quad\text{iff}\quad \Sh(U) \models \varphi. \]
+%\item Let~$A \subseteq X$ be a closed subset and let~$\Box\varphi :\equiv
+%(\varphi \vee A^c)$. Then
+%\[ \Sh(X) \models \varphi^\Box \quad\text{iff}\quad \Sh(A) \models \varphi. \]
+%\item Let~$x \in X$ be a point and let~$\Box\varphi :\equiv ((\varphi
+%\Rightarrow \notat{x}) \Rightarrow \notat{x})$. Then
+%\[ \Sh(X) \models \varphi^\Box \quad\text{iff}\quad \text{$\varphi$ holds
+%at~$x$}. \]
+%\end{enumerate}
+%\end{cor}
+
 \begin{itemize}
 \item general explanation of modalities (as for instance in philosophy)
 \item introduce the notation~$X_\Box$; explain the relationship
@@ -1007,6 +1089,8 @@ forget/sheafify from the internal perspective)
 \varphi$; specialize to the four most important modal operators~($\neg\neg$, $U
 \Rightarrow \placeholder$, $\placeholder \vee A^c$, $(\placeholder \Rightarrow
 !x) \Rightarrow !x$)
+\item explain that for some modal operators, the~$\Box$-translation of the law
+of excluded middle is valid; explain consequences
 \item spreading of properties from stalk to neighbourhood: give general
 metatheorem for geometric statements; give many examples
 \item internal sheafification? To what extent is a description necessary?

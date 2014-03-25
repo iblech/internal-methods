@@ -421,6 +421,27 @@ This field property is very useful. We will put it to good use when giving a
 simple proof of the fact that~$\O_X$-modules of finite type on a reduced scheme
 are locally free on a dense open subset (proposition~\ref{modules:densefree}).
 
+The following proposition says that one can deduce a certain unconditional
+statement from the premise that an element~$s\?\O_X$ is zero under the
+assumption that some further element~$f\?\O_X$ is invertible.
+
+\begin{prop}\label{prop:cond-zero}
+Let~$X$ be a scheme. Then
+\[ \Sh(X) \models
+  \forall f\?\O_X\_
+  \forall s\?\O_X\_
+  (\speak{$f$ inv.} \Rightarrow s = 0) \Longrightarrow
+  \textstyle
+  \bigvee_{n \geq 0} f^n s = 0. \]
+\end{prop}
+\begin{proof}It's enough to show that for any affine scheme~$X = \Spec A$ and
+global functions~$f, s \in A$ such that
+\[ X \models (\speak{$f$ inv.} \Rightarrow s = 0), \]
+it holds that $X \models \textstyle \bigvee_{n \geq 0} f^n s = 0$. This is
+obvious, since by assumption such a function~$s$ is zero on~$D(f)$, i.\,e. $s$
+is zero as an element of~$A[f^{-1}]$.
+\end{proof}
+
 \begin{itemize}
 \item Remark that intuitionistically, the notion of a field bifurcates into
 several inequivalent notions
@@ -806,13 +827,8 @@ prove~$t = 0$. This follows by definition.
 
 For the converse direction, consider the annihilator of~$s$, i.\,e. the ideal
 \[ I := \Ann_{\O_X}(s) = \{ t\?\O_X \,|\, st = 0 \} \subseteq \O_X. \]
-This ideal satisfies the quasicoherence condition (proposition~XXX):
-Let~$f:\O_X$ be arbitrary and assume~$\speak{$f$ inv.} \Rightarrow t \in I$.
-By~XXX (here the assumption that~$X$ is a scheme enters) it follows that~$f^n
-st = 0$ for some~$n\?\NN$, i.\,e. that~$f^n t \in I$.
-% XXX: refer to example in the section on quasicoherence
-
-Thus~$I$ is a quasicoherent submodule of a finitely generated module. Since~$X$ is
+This ideal satisfies the quasicoherence condition (example~\ref{ex:annihilator-qcoh}),
+thus~$I$ is a quasicoherent submodule of a finitely generated module. Since~$X$ is
 locally Noetherian, it follows that~$I$ is finitely generated as well. By
 assumption, each generator~$x_i \in I$ fulfills~$\Box(x_i = 0)$. Since we want
 to prove a boxed statement, we may in fact assume~$x_i = 0$. Thus~$I = (0)$ and
@@ -1254,15 +1270,17 @@ it follows that there exists~$m\?\NN$ such that~$f^m u \in G$. Thus~$(f^m u) /
 would be an element of~$S$.
 \end{proof}
 
-\begin{ex}Let~$X$ be a scheme and~$s$ be a global section of~$\O_X$. Then the
+\begin{ex}\label{ex:annihilator-qcoh}
+Let~$X$ be a scheme and~$s$ be a global section of~$\O_X$. Then the
 annihilator of~$s$, i.\,e. the sheaf of ideals internally defined by the
 formula
 \[ I := \Ann_{\O_X}(s) = \{ t\?\O_X \,|\, st = 0 \} \subseteq \O_X \]
 is quasicoherent. To prove this in the internal language, it suffices to
 verify the condition of the proposition.
 So let~$f:\O_X$ be arbitrary and assume~$\speak{$f$ inv.} \Rightarrow t \in I$,
-i.\,e. assume that if~$f$ were invertible,~$st$ would be zero. By~XXX it
-follows that~$f^n st = 0$ for some~$n\?\NN$, i.\,e. that~$f^n t \in I$.
+i.\,e. assume that if~$f$ were invertible,~$st$ would be zero. By
+proposition~\ref{prop:cond-zero} it follows that~$f^n st = 0$ for
+some~$n\?\NN$, i.\,e. that~$f^n t \in I$.
 \end{ex}
 
 \begin{itemize}

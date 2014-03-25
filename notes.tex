@@ -192,7 +192,9 @@ perspective,~$\alpha$ is simply an injective map:
 The corner quotes ``$\speak{\ldots}$'' indicate that translation into formal
 language is left to the reader. Similarly,~$\alpha$ is an epimorphism of
 sheaves if and only if, from the internal perspective,~$\alpha$ is a
-surjective map.
+surjective map. Notice that injectivity and surjectivity are
+notions of a simple element-based language, and the Kripke--Joyal semantics
+takes care to properly handle \emph{all} sections, not only global ones.
 \end{ex}
 
 The rules are not all arbitrary. They are finely concerted to make the
@@ -335,12 +337,13 @@ holds at every point of~$U$. This is clear, since again by the
 lemma,~$\varphi(s)$ holds at every point of~$U$.
 \end{proof}
 
+\begin{ex}Injectivity and surjectivity are geometric implications (surjectivity
+can be spelled~$\forall y\?\G\_ \top \Rightarrow \exists x\?\F\_ \alpha(x) =
+y$). Thus the corollary gives a deeper reason for the well-known fact that a
+morphism of sheaves is a monomorphism resp. an epimorphism if and only if it is
+stalkwise injective resp. surjective.\end{ex}
+
 \begin{itemize}
-\item remark on how, even though injectivity and surjectivity are notions of an
-element-based language, the Kripke--Joyal semantics manages to incorporate
-\emph{all} elements, not only global ones
-\item remark that since injectivity and surjectivity are geometric
-implications, monos/epis are stalkwise injective/surjective (and vice versa)
 \item geometric constructions
 \item crash course on intuitionistic logic
 \item first steps: invertibility, nilpotency (needed later)

@@ -68,6 +68,8 @@
 \DeclareMathOperator{\rank}{rank}
 \DeclareMathOperator{\Ann}{Ann}
 \DeclareMathOperator{\Int}{int}
+\DeclareMathOperator{\Clos}{cl}
+\newcommand{\Open}{\mathrm{Op}}
 \newcommand{\?}{\,{:}\,}
 \renewcommand{\_}{\mathpunct{.}\,}
 \newcommand{\speak}[1]{\ulcorner\text{\textnormal{#1}}\urcorner}
@@ -944,7 +946,8 @@ corresponding to~$\Int(X \setminus \{x\})$, such that
 \[ V \models \notat{x} \quad\Longleftrightarrow\quad V \subseteq \Int(X
 \setminus \{ x \}) \quad\Longleftrightarrow\quad x \not\in V. \]
 
-\begin{prop}Let~$U \subseteq X$ be a fixed open and~$A \subseteq X$ be a fixed
+\begin{prop}\label{prop:modops-kripke}
+Let~$U \subseteq X$ be a fixed open and~$A \subseteq X$ be a fixed
 closed subset. Let~$x \in X$. Then, for any open subset~$V \subseteq X$, it
 holds that:
 \[ \renewcommand{\arraystretch}{1.3}\begin{array}{@{}lcl@{}}
@@ -1002,6 +1005,44 @@ the Kripke--Joyal semantics is
     Y. \qedhere \]
 \end{enumerate}
 \end{proof}
+
+Any modal operator~$\Box : \Omega \to \Omega$ in the sheaf topos of~$X$ induces
+on global sections a map
+\[ j : \Open(X) \to \Open(X), \]
+where~$\Open(X) = \Gamma(X,\Omega)$ is the set of open subsets of~$X$. By the
+axioms on a modal operator, the map~$j$ fulfills similar axioms: For any open
+subsets~$U, V \subseteq X$,
+\begin{enumerate}
+\item $U \subseteq j(U)$,
+\item $j(j(U)) \subseteq j(U)$,
+\item $j(U \cap V) = j(U) \cap j(V)$.
+\end{enumerate}
+Such a map is called a \emph{nucleus} on~$\Open(X)$. Table~\ref{table:nuclei}
+lists the nuclei associated to the four modal operators
+of proposition~\ref{prop:modops-kripke}.
+% XXX: Now describe X_Box.
+
+\begin{table}
+  \centering
+  \setlength{\extrarowheight}{0.4em}
+  \begin{tabular}{lll}
+    Modal operator & associated nucleus: $j(V) = \cdots$ & $j(V) = X$ iff \ldots \\\hline
+    $\Box\varphi :\equiv (U \Rightarrow \varphi)$ &
+      $\Int(U^c \cup V)$ & $U \subseteq V$ \\
+    $\Box\varphi :\equiv (\varphi \vee A^c)$ &
+      $V \cup A^c$ & $A \subseteq V$ \\
+    $\Box\varphi :\equiv \neg\neg\varphi$ &
+      $\Int(\Clos(V))$ & $V$ is dense in $X$ \\
+    $\Box\varphi :\equiv ((\varphi \Rightarrow \notat{x}) \Rightarrow \notat{x})$ &
+      $\Int(\Clos(V \cap \Clos\{x\}) \cup (X \setminus \Clos\{x\}))$ &
+      $x \in V$ \\
+    & $= \begin{cases}X \setminus \Clos\{x\}, & \text{if $x
+    \not\in V$} \\ X, & \text{if $x \in V$}\end{cases}$
+  \end{tabular}
+
+  \caption{\label{table:nuclei}List of important modal operators and their
+  associated nuclei (notation as in proposition~\ref{prop:modops-kripke}).}
+\end{table}
 
 % XXX: introduce notion of Box-stability
 

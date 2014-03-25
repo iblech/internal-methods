@@ -81,7 +81,6 @@
 \email{iblech@web.de}
 
 \begin{document}
-\maketitle
 
 \begin{abstract}
   There are several important topoi associated to a scheme, for instance the
@@ -100,6 +99,8 @@
   proofs of the basic notions and observations in algebraic geometry. No prior
   knowledge about topos theory and formal logic is assumed.
 \end{abstract}
+
+\maketitle
 
 \tableofcontents
 
@@ -849,12 +850,12 @@ and~$\{\star\}$ (``true''). But
 in intuitionistic logic, this can not be shown; indeed, if we interpret the
 definition in the topos of sheaves on a space~$X$, we obtain a sheaf~$\Omega$
 with
-\[ \text{$U \subseteq X$ open} \longmapsto \Gamma(V,\Omega) = \{ V \subseteq U \,|\, \text{$V$
+\[ \text{$U \subseteq X$ open} \longmapsto \Gamma(U,\Omega) = \{ V \subseteq U \,|\, \text{$V$
 open} \}. \]
-(This is because sections of~$\Omega$ on an open subset~$U$ correspond to
-subsheaves~$\F \hookrightarrow 1|_U$ of the restriction of the terminal sheaf
-to~$U$, and those are given by the greatest open subset~$V \subseteq U$ such
-that~$\Gamma(V,\F)$ is inhabited.)
+(This is because by definition of~$\Omega$ as the power object of the terminal
+sheaf~$1$, sections of~$\Omega$ on an open subset~$U$ correspond to
+subsheaves~$\F \hookrightarrow 1|_U$, and those are given by the greatest open
+subset~$V \subseteq U$ such that~$\Gamma(V,\F)$ is inhabited.)
 
 The \emph{truth value} of a formula~$\varphi$ is by definition the subset
 $\{ x \in 1 \,|\, \varphi \} \in \Omega$, where~``$x$'' is a fresh variable not
@@ -862,6 +863,7 @@ appearing in~$\varphi$. This subset is inhabited if and only
 if~$\varphi$ holds and is empty if and only if~$\neg\varphi$ holds.
 Conversely, we can associate to a subset~$F \subseteq 1$ the
 formula~$\speak{$F$ is inhabited}$.
+% XXX: "formula" is not the correct term here.
 
 Under this correspondence of formulas with truth values, logical operations
 like~$\wedge$ and~$\vee$ map to set-theoretic operations like~$\cap$ and~$\cup$
@@ -878,13 +880,14 @@ we will write~``$\varphi \Rightarrow \psi$'' to mean~$\varphi \subseteq \psi$;
 that for all~$\varphi, \psi \in \Omega$,
 \begin{enumerate}
 \item $\varphi \Longrightarrow \Box\varphi$,
-\item $\Box\Box\varphi \Longrightarrow \varphi$,
+\item $\Box\Box\varphi \Longrightarrow \Box\varphi$,
 \item $\Box(\varphi \wedge \psi) \Longleftrightarrow \Box\varphi \wedge \Box\psi$.
 \end{enumerate}
 \end{defn}
 
 The intuition is that~$\Box\varphi$ is a certain weakening of~$\varphi$, where
-the precise meaning of ``weaker'' depends on the modal operator.
+the precise meaning of ``weaker'' depends on the modal operator. By the second
+axiom, weakening twice is the same as weakening once.
 
 In classical logic, where~$\Omega = \{ \bot, \top \}$, there are only two modal
 operators: the identity function and the constant function with value~$\top$.
@@ -928,7 +931,8 @@ statement~$\Box\varphi$ holds, we may assume that indeed~$\varphi$ holds.
 
 
 \subsection{Geometric meaning} Let~$X$ be a topological space. As discussed
-above, an open subset~$U \subseteq X$ defines an internal truth value also
+above, an open subset~$U \subseteq X$ defines an internal truth value (a global
+section of the sheaf~$\Omega$) also
 denoted by~``$U$'' such that
 \[ V \models U \quad\Longleftrightarrow\quad V \subseteq U \]
 for any open subset~$V \subseteq X$. (Shortcutting the various intermediate
@@ -1020,7 +1024,7 @@ in~$\Sh(X)$. Let~$\varphi$ be a formula. Then
 \[ \Sh(X) \models \varphi^\Box \quad\text{iff}\quad
   \Sh(X_\Box) \models \varphi. \]
 \end{prop}
-Here,~``$X_\Box$'' denotes the sublocale of~$X$ defined by~$\Box$; we will
+Here,~``$X_\Box$'' denotes the subspace (really ``sublocale'') of~$X$ defined by~$\Box$; we will
 explain this notion further down. Of particular importance is the
 case~$\Box\varphi :\equiv ((\varphi \Rightarrow \notat{x}) \Rightarrow
 \notat{x})$ where~$x \in X$ is a point, since for this modal operator, the
@@ -1038,7 +1042,7 @@ answer to this question.
 \begin{align*}
   (f = g)^\Box &:\equiv \Box(f = g) \\
   (x \in A)^\Box &:\equiv \Box(x \in A) \\
-  \top^\Box &:\equiv \Box\top \equiv \top \\
+  \top^\Box &:\equiv \Box\top \quad \text{($\Leftrightarrow \top$)} \\
   \bot^\Box &:\equiv \Box\bot \\
   (\varphi \wedge \psi)^\Box &:\equiv \optBox(\varphi^\Box \wedge \psi^\Box) &
   \textstyle (\bigwedge_i \varphi_i)^\Box &:\equiv \textstyle \optBox(\bigwedge_i \varphi_i^\Box) \\

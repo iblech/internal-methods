@@ -461,6 +461,44 @@ several inequivalent notions
 
 \section{Sheaves of modules}
 
+\subsection{Local finite freeness}
+
+Recall that an~$\O_X$-module~$\F$ is \emph{locally finitely free} if and only
+if there exists a covering of~$X$ by open subsets~$U$ such that on each
+such~$U$, the restricted module~$\F|_U$ is isomorphic as an~$\O_X|_U$-module
+to~$(\O_X|_U)^n$ for some natural number~$n$ (which may depend on~$U$).
+
+\begin{prop}Let~$X$ be a scheme (or ringed space). Let~$\F$ be
+an~$\O_X$-module. Then~$\F$ is locally finitely free if and only if, from the
+internal perspective,~$\F$ is a finitely free module, i.\,e.
+\[ \Sh(X) \models \bigvee_{n \geq 0} \speak{$\F \cong (\O_X)^n$} \]
+or more elementary
+\[ \Sh(X) \models \bigvee_{n \geq 0}
+  \exists x_1,\ldots,x_n\?\F\_
+  \forall x\?\F\_
+  \exists! a_1,\ldots,a_n\?\O_X\_
+  x = \textstyle\sum\limits_i a_i x_i. \]
+\end{prop}
+\begin{proof}By the expression~``$(\O_X)^n$'' in the internal language we mean
+the internally constructed object~$\O_X \times \cdots \times \O_X$ with its
+pointwise~$\O_X$-module structure. This coincides with the sheaf~$(\O_X)^n$ as
+usually understood.
+
+It is clear that the two stated internal conditions are equivalent, since the
+corresponding proof in linear algebra is intuitionistic. The equivalence with
+the external notion of locally finite freeness is obvious, since the
+interpretation of the first condition with the Kripke--Joyal semantics is the
+following: There exists a covering of~$X$ by open subsets~$U$ such that for
+each such~$U$, there exists a natural number~$n$ and a morphism of
+sheaves~$\varphi : \F|_U \to (\O_X|_U)^n$ such that
+\[ U \models \speak{$\varphi$ is~$\O_X$-linear} \quad\text{and}\quad
+  U \models \speak{$\varphi$ is bijective}. \]
+The first subcondition means that~$\varphi$ is a morphism of sheaves
+of~$\O_X$-modules and the second one means that~$\varphi$ is an isomorphism of
+sheaves.
+\end{proof}
+
+
 \subsection{Finite type, finite presentation, coherence}
 Recall the conditions of an~$\O_X$-module~$\F$ on a scheme~$X$ (or ringed
 space) to be of finite type, of finite presentation and to be coherent:

@@ -171,7 +171,12 @@ perspective,~$\alpha$ is simply an injective map:
 \begin{align*}
   & X \models \speak{$\alpha$ is injective} \\[0.5em]
   \Longleftrightarrow\
-  & X \models \forall s,t\?\F\_ \alpha(s) = \alpha(t) \Rightarrow s = t \\[0.5em]
+  & X \models \forall s\?\F_ \forall t\?\F\_ \alpha(s) = \alpha(t) \Rightarrow s = t \\[0.5em]
+  \Longleftrightarrow\ &
+    \text{for all open~$U \subseteq X$, sections $s \in \Gamma(U, \F)$:} \\
+  & \text{for all open~$V \subseteq U$, sections $t \in \Gamma(V, \F)$:} \\
+  &\qquad\qquad
+      V \models \alpha(s) = \alpha(t) \Rightarrow s = t \\[0.5em]
   \Longleftrightarrow\ &
     \text{for all open~$U \subseteq X$, sections $s, t \in \Gamma(U, \F)$:} \\
   &\qquad\qquad
@@ -179,9 +184,9 @@ perspective,~$\alpha$ is simply an injective map:
   \Longleftrightarrow\ &
     \text{for all open~$U \subseteq X$, sections $s, t \in \Gamma(U, \F)$:} \\
   &\qquad\qquad
-      \text{for all open~$V \subseteq U$:} \\
+      \text{for all open~$W \subseteq U$:} \\
   &\qquad\qquad\qquad\qquad
-        \text{$\alpha_V(s|_V) = \alpha_V(t|_V)$ implies $s|_V = t|_V$} \\[0.5em]
+        \text{$\alpha_W(s|_W) = \alpha_W(t|_W)$ implies $s|_W = t|_W$} \\[0.5em]
   \Longleftrightarrow\ &
     \text{for all open~$U \subseteq X$, sections $s, t \in \Gamma(U, \F)$:} \\
   &\qquad\qquad

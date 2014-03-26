@@ -77,6 +77,7 @@
 \newcommand{\Ll}{:\Longleftrightarrow}
 \newcommand{\notat}[1]{{!#1}}
 \newcommand{\lra}{\longrightarrow}
+\newcommand{\brak}[1]{{\llbracket{#1}\rrbracket}}
 
 \definecolor{gray}{rgb}{0.7,0.7,0.7}
 
@@ -294,6 +295,43 @@ which~$\varphi$ holds.\end{rem}
 % XXX: Find appropriate place for this remark.
 
 
+\subsection{Internal constructions} The Kripke--Joyal semantics defines the
+interpretation of internal statements. The interpretation of internal
+constructions is given by the following definition.
+
+\begin{defn}The interpretation of an internal construction~$T$
+is denoted by~$\brak{T} \in \Sh(X)$ and given by the following rules.
+\begin{itemize}\item If~$\F$ and~$\G$ are sheaves, $\brak{\F \times \G}$ is the
+categorical product of~$\F$ and~$\G$ (i.\,e. their product as presheaves).
+\item If~$\F$ and~$\G$ are sheaves, $\brak{\F \amalg \G}$ is the categorical
+coproduct of~$\F$ and~$\G$, i.\,e. the sheafification of the presheaf
+$U \mapsto \Gamma(U,\F) \amalg \Gamma(U,\G)$.
+\item If~$\F$ is a sheaf, the interpretation~$\brak{\P(\F)}$ of the power set
+construction is the sheaf given by
+\[ \text{$U \subseteq X$ open} \longmapsto \{ \G \hookrightarrow \F|_U \}, \]
+i.\,e. sections on an open set~$U$ are subsheaves of~$\F|_U$ (either literally
+or isomorphism classes of general monomorphisms into~$\F|_U$).
+\item If~$\F$ is a sheaf and~$\varphi(s)$ is a formula containing a free
+variable~$s\?\F$, the interpretation~$\brak{\{s\?\F\,|\,\varphi(s)\}}$ is given
+by the subsheaf of~$\F$ defined by
+\[ \text{$U \subseteq X$ open} \longmapsto \{ s \in \Gamma(U,\F) \ |\ 
+  U \models \varphi(s) \}. \]
+\end{itemize}
+\end{defn}
+
+The definition is made in such a way that, from the internal perspective, the
+constructions enjoy their expected properties. For instance, it holds that
+\[ \Sh(X) \models
+  \bigl[\forall x\?\brak{\{s\?\F \,|\, \varphi(s)\}}\_ \psi(x)\bigr]
+  \Longleftrightarrow
+  \bigl[\forall x\?\F\_ \varphi(x) \Rightarrow \psi(x)\bigr]. \]
+We gloss over several details here. See~\cite[???]{johnstone:elephant} for
+a proper treatment.
+
+% XXX: remark that dependent types are necessary for a full support of ordinary
+% mathematics; cite Awodey/Bauer for how to interpret those.
+
+
 \subsection{Geometric formulas and constructions} In categorical logic,
 so-called geometric formulas play a special role, because their meaning is
 preserved under pullback with geometric morphisms. % XXX gibberish!
@@ -356,8 +394,6 @@ stalkwise injective resp. surjective.\end{ex}
 \item geometric constructions
 \item crash course on intuitionistic logic
 \item first steps: invertibility, nilpotency (needed later)
-\item somewhere, the external interpretation of power sets has to be explained
-(needed for instance for completed natural numbers and~$\Box$-sheaves)
 \end{itemize}
 
 

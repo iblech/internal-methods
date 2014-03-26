@@ -112,8 +112,7 @@
 
 \section{The internal language of a sheaf topos}
 
-\subsection{Kripke--Joyal semantics}
-
+\subsection{Internal statements}
 Let~$X$ be a topological space. Later, $X$ will be the underlying space of a
 scheme. The meaning of internal statements is given by a set of rules, the
 \emph{Kripke--Joyal semantics} of the topos of sheaves on~$X$.
@@ -124,7 +123,7 @@ for open subsets~$U \subseteq X$ and formulas~$\varphi$ is given by
 the following rules, recursively in the structure of~$\varphi$:
 % XXX: introduce term "Kripke--Joyal semantic"
 \[ \renewcommand{\arraystretch}{1.3}\begin{array}{@{}lcl@{}}
-  U \models f = g \? \F &\Ll& f|_U = g|_U \in \Gamma(U, \F) \\
+  U \models s = t \? \F &\Ll& s|_U = t|_U \in \Gamma(U, \F) \\
   U \models \top &\Ll& U = U \text{ (always fulfilled)} \\
   U \models \bot &\Ll& U = \emptyset \\
   U \models \varphi \wedge \psi &\Ll&
@@ -136,16 +135,16 @@ the following rules, recursively in the structure of~$\varphi$:
   U \models \varphi \Rightarrow \psi &\Ll&
     \text{for all open~$V \subseteq U$: } 
   \text{$V \models \varphi$ implies $V \models \psi$} \\
-  U \models \forall f \? \F\_ \varphi(f) &\Ll&
-    \text{for all sections~$f \in \Gamma(V, \F)$, open $V \subseteq U$: $V \models
-    \varphi(f)$} \\
-  U \models \exists f \? \F\_ \varphi(f) &\Ll&
-    \hcancel{\text{there exists a section~$f \in \Gamma(U,\F)$ s.\,th. $U
-    \models \varphi(f)$}}{0pt}{3pt}{0pt}{-2pt} \\
+  U \models \forall s \? \F\_ \varphi(s) &\Ll&
+    \text{for all sections~$s \in \Gamma(V, \F)$, open $V \subseteq U$: $V \models
+    \varphi(s)$} \\
+  U \models \exists s \? \F\_ \varphi(s) &\Ll&
+    \hcancel{\text{there exists a section~$s \in \Gamma(U,\F)$ s.\,th. $U
+    \models \varphi(s)$}}{0pt}{3pt}{0pt}{-2pt} \\
   &&
     \text{there exists an open covering $U = \bigcup_i U_i$ s.\,th. for all~$i$:} \\
-  && \quad\quad \text{there exists~$f_i \in \Gamma(U_i, \F)$ s.\,th.
-  $U_i \models \varphi(f_i)$} \\
+  && \quad\quad \text{there exists~$s_i \in \Gamma(U_i, \F)$ s.\,th.
+  $U_i \models \varphi(s_i)$} \\
   U \models \forall \F\_ \varphi(\F) &\Ll&
     \text{for all sheaves $\F$ on $V$, open $V \subseteq U$: $V \models \varphi(\F)$} \\
   U \models \exists \F\_ \varphi(\F) &\Ll&
@@ -1438,3 +1437,5 @@ XXX: ``completed natural number'' is a misnomer.
 XXX: standardize level of generality: ringed locales, where possible?
 
 XXX: remark that for simplicity, we work in a classical metatheory
+
+XXX: replace []'s with ()'s where appropriate

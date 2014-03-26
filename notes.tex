@@ -53,6 +53,7 @@
 \newcommand{\GG}{\mathbb{G}}
 \newcommand{\ppp}{\mathfrak{p}}
 \newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\HOM}{\mathcal{H}\mathrm{om}}
 \newcommand{\id}{\mathrm{id}}
 \newcommand{\Aut}[1]{\operatorname{Aut}(#1)}
 \newcommand{\GL}{\mathrm{GL}}
@@ -390,8 +391,31 @@ y$). Thus the corollary gives a deeper reason for the well-known fact that a
 morphism of sheaves is a monomorphism resp. an epimorphism if and only if it is
 stalkwise injective resp. surjective.\end{ex}
 
+A construction is \emph{geometric} if and only if it commutes with pullback
+under arbitrary geometric morphisms. We do not want to discuss the notion of
+geometric morphisms here; suffice it to say that calculating the stalk at a
+point~$x \in X$ is an instance of such a pullback. Among others, the following
+constructions are geometric:
 \begin{itemize}
-\item geometric constructions
+\item finite product: $(\F \times \G)_x \cong \F_x \times \G_x$
+\item finite coproduct: $(\F \amalg \G)_x \cong \F_x \amalg \G_x$
+\item arbitrary coproduct: $(\coprod_i \F_i)_x \cong \coprod_i (\F_i)_x$
+\item set comprehension with respect to a \emph{geometric} formula~$\varphi$:
+\[ \brak{\{ s\?\F \,|\, \varphi(s) \}}_x \cong \{ [s]\in\F_x \,|\,
+\text{$\varphi(s)$ holds at $x$} \} \]
+\item free module: $(\O_X\langle \F \rangle)_x \cong \O_{X,x}\langle \F_x
+\rangle$
+\end{itemize}
+
+The following constructions are not in general geometric:
+\begin{itemize}
+\item arbitrary product
+\item set comprehension with respect to a non-geometric formula
+\item powerset
+\item internal Hom: $\HOM(\F,\G)_x \not\cong \HOM(\F_x,\G_x)$
+\end{itemize}
+
+\begin{itemize}
 \item crash course on intuitionistic logic
 \item first steps: invertibility, nilpotency (needed later)
 \end{itemize}

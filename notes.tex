@@ -50,6 +50,7 @@
 \renewcommand{\S}{\mathcal{S}}
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
 \newcommand{\GG}{\mathbb{G}}
 \newcommand{\ppp}{\mathfrak{p}}
 \newcommand{\Hom}{\mathrm{Hom}}
@@ -1129,7 +1130,7 @@ monotonicity and the second axiom on a modal operator it follows
 that~$\Box\varphi \Rightarrow \Box\Box\psi \Rightarrow \Box\psi$.
 \end{proof}
 
-The modus ponens rule justifies the following proof scheme: In showing
+The modus ponens rule justifies the following proof scheme: When showing
 that a boxed statement~$\Box\psi$ holds given that a further boxed
 statement~$\Box\varphi$ holds, we may assume that indeed~$\varphi$ holds.
 
@@ -1208,6 +1209,8 @@ the Kripke--Joyal semantics is
 \end{enumerate}
 \end{proof}
 
+
+\subsection{The subspace associated to a modal operator}
 Any modal operator~$\Box : \Omega \to \Omega$ in the sheaf topos of~$X$ induces
 on global sections a map
 \[ j : \Open(X) \to \Open(X), \]
@@ -1222,29 +1225,68 @@ subsets~$U, V \subseteq X$,
 Such a map is called a \emph{nucleus} on~$\Open(X)$. Table~\ref{table:nuclei}
 lists the nuclei associated to the four modal operators
 of proposition~\ref{prop:modops-kripke}.
-% XXX: Now describe X_Box.
 
 \begin{table}
   \centering
   \setlength{\extrarowheight}{0.4em}
-  \begin{tabular}{lll}
-    Modal operator & associated nucleus: $j(V) = \cdots$ & $j(V) = X$ iff \ldots \\\hline
+  \begin{tabular}{llll}
+    Modal operator & associated nucleus &
+      $j(V) = X$ iff \ldots &
+      subspace \\\hline
     $\Box\varphi :\equiv (U \Rightarrow \varphi)$ &
-      $\Int(U^c \cup V)$ & $U \subseteq V$ \\
+      $j(V) = \Int(U^c \cup V)$ & $U \subseteq V$ & $U$ \\
     $\Box\varphi :\equiv (\varphi \vee A^c)$ &
-      $V \cup A^c$ & $A \subseteq V$ \\
+      $j(V) = V \cup A^c$ & $A \subseteq V$ & $A$ \\
     $\Box\varphi :\equiv \neg\neg\varphi$ &
-      $\Int(\Clos(V))$ & $V$ is dense in $X$ \\
+      $j(V) = \Int(\Clos(V))$ & $V$ is dense in $X$ & (see text) \\
     $\Box\varphi :\equiv ((\varphi \Rightarrow \notat{x}) \Rightarrow \notat{x})$ &
-      $\Int(\Clos(V \cap \Clos\{x\}) \cup (X \setminus \Clos\{x\}))$ &
-      $x \in V$ \\
-    & $= \begin{cases}X \setminus \Clos\{x\}, & \text{if $x
-    \not\in V$} \\ X, & \text{if $x \in V$}\end{cases}$
+%      $\Int(\Clos(V \cap \Clos\{x\}) \cup (X \setminus \Clos\{x\}))$ &
+      $j(V) = \begin{cases}
+        X \setminus \Clos\{x\}, & \text{if $x \not\in V$} \\
+        X, & \text{if $x \in V$}
+      \end{cases}$ &
+      $x \in V$ & $\{x\}$
   \end{tabular}
 
   \caption{\label{table:nuclei}List of important modal operators and their
   associated nuclei (notation as in proposition~\ref{prop:modops-kripke}).}
 \end{table}
+
+Any nucleus~$j$ defines a subspace~$X_j$ of~$X$, with a small caveat: In
+general, the subspace~$X_j$ can not be realized as a topological subspace, but
+only as a so-called \emph{sublocale}; the notion of a locale is a slight
+generalization of the notion of a topological space, in which an underlying set
+of points is not part of the definition. Instead, a locale is simply given by a
+lattice of general \emph{opens} -- these may, but do not necessarily have to,
+be sets of points. Sheaf theory carries over to locales essentially unchanged,
+since the notions of a presheaf and a sheaf only need opens and coverings.
+% XXX: give introductory reference
+
+The lattice of opens of~$X_j$ is given by
+\[ \Open(X_j) := \{ U \in \Open(X) \,|\, j(U) = U \}. \]
+If~$j$ is induced by a modal operator~$\Box$, we also write~``$X_\Box$''
+for~$X_j$. In three of the four cases listed in table~\ref{table:nuclei}, the
+sublocale~$X_\Box$ can indeed be realized as a topological subspace. The only
+exception is the sublocale~$X_{\neg\neg}$ associated to the double negation
+modality. It can be also be described as the \emph{smallest dense sublocale}
+of~$X$; this is obviously a true locale-theoretic notion, since a topological
+space does not have (in general) a smallest dense topological subspace
+(consider~$\RR$ and its dense subsets~$\QQ$ and~$\RR \setminus \QQ$).
+% XXX: word "true"
+
+The inclusion~$i : X_j \hookrightarrow X$ can not in general be described on the
+level of points, since~$X_j$ might not be realizable as a topological subspace.
+But for sheaf-theoretic purposes, it suffices to describe~$i$ on the level of
+opens. This is done as follows:
+\[ i^{-1} : \Open(X) \lra \Open(X_j), \quad U \longmapsto j(U). \]
+Thus we can define the pullback of a sheaf on~$X$ and the pushforward of a
+sheaf on~$X_j$ as usual.
+\begin{align*}
+  i^{-1} \F &= \text{sheafification of $(U \mapsto \colim_{U \preceq i^{-1}V} \Gamma(V,\F))$} \\
+  i_* \G &= (U \mapsto \Gamma(i^{-1}U, \G) = \Gamma(j(U), \G)) \\
+\end{align*}
+
+% XXX: next step: describe internal sheaves and equivalence Sh_Box(Sh X) = Sh(X_Box).
 
 % XXX: introduce notion of Box-stability
 

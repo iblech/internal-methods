@@ -64,6 +64,7 @@
 \newcommand{\Grp}{\mathrm{Grp}}
 \newcommand{\Vect}{\mathrm{Vect}}
 \newcommand{\Sh}{\mathrm{Sh}}
+\newcommand{\PSh}{\mathrm{PSh}}
 \newcommand{\Zar}{\mathrm{Zar}}
 \newcommand{\Sch}{\mathrm{Sch}}
 \DeclareMathOperator{\Spec}{Spec}
@@ -1259,7 +1260,7 @@ generalization of the notion of a topological space, in which an underlying set
 of points is not part of the definition. Instead, a locale is simply given by a
 lattice of general \emph{opens} -- these may, but do not necessarily have to,
 be sets of points. Sheaf theory carries over to locales essentially unchanged,
-since the notions of a presheaf and a sheaf only need opens and coverings.
+since the notions of presheaves and sheaves only need opens and coverings.
 % XXX: give introductory reference
 
 The lattice of opens of~$X_j$ is given by
@@ -1279,12 +1280,85 @@ level of points, since~$X_j$ might not be realizable as a topological subspace.
 But for sheaf-theoretic purposes, it suffices to describe~$i$ on the level of
 opens. This is done as follows:
 \[ i^{-1} : \Open(X) \lra \Open(X_j), \quad U \longmapsto j(U). \]
-Thus we can define the pullback of a sheaf on~$X$ and the pushforward of a
-sheaf on~$X_j$ as usual.
+Thus we can relate the toposes of sheaves on~$X_j$ and~$X$ by the usual
+pushforward and pullback functors.
 \begin{align*}
   i^{-1} \F &= \text{sheafification of $(U \mapsto \colim_{U \preceq i^{-1}V} \Gamma(V,\F))$} \\
-  i_* \G &= (U \mapsto \Gamma(i^{-1}U, \G) = \Gamma(j(U), \G)) \\
+  i_* \G &= (U \mapsto \Gamma(i^{-1}U, \G) = \Gamma(j(U), \G))
 \end{align*}
+As familiar from honest topological subspace inclusions, the pushforward
+functor~$i_* : \Sh(X_j) \to \Sh(X)$ is fully faithful and the composition~$i^{-1}
+\circ i_* : \Sh(X_j) \to \Sh(X_j)$ is (isomorphic to) the identity.
+
+
+\subsection{Internal sheaves and sheafification} It turns out that the image of
+the pushforward functor~$i_* : \Sh(X_\Box) \to \Sh(X)$, where~$\Box$ is a modal
+operator in~$\Sh(X)$, can be explicitly described: Namely, it consists exactly
+of those sheaves which from the internal point of view
+are so-called~\emph{$\Box$-sheaves}, a notion explained below.
+
+Furthermore, if we identify~$\Sh(X_\Box)$ with its image in~$\Sh(X)$, the
+pullback functor is given by an internal sheafification process with respect to
+the modality~$\Box$. Thus the external situation of pushforward/pullback
+translates to forget/sheafify. This broadens the scope of the internal
+language: It can not only be used to talk about sheaves on~$X$ in a simple,
+element-based language, but also to talk about sheaves on arbitrary subspaces
+of~$X$.
+
+To describe the notion of~$\Box$-sheaves and related ones, we switch to the internal
+perspective and thus forget~$X$; we are simply given a model operator~$\Box :
+\Omega \to \Omega$ and have to take care that our proofs are intuitionistic.
+
+\begin{defn}A set~$F$ is \emph{$\Box$-separated} if and only if
+\[ \forall x,y\?F\_ \Box(x = y) \Longrightarrow x = y. \]
+A set~$F$ is a \emph{$\Box$-sheaf} if and only if it is~$\Box$-separated and
+\[ \forall S \subseteq F\_
+  \Box(\speak{$S$ is a singleton}) \Longrightarrow
+  \exists x\?F\_ \Box(x \in S). \]
+\end{defn}
+
+The two conditions can be combined: A set~$F$ is a~$\Box$-sheaf if and only if
+\[ \forall S \subseteq F\_
+  \Box(\speak{$S$ is a singleton}) \Longrightarrow
+  \exists! x\?F\_ \Box(x \in S). \]
+
+\begin{defn}The \emph{plus construction} of a set~$F$ with respect to~$\Box$ is the set
+\[ F^+ := \{ S \subseteq F \,|\, \Box(\speak{$S$ is a singleton}) \}/{\sim},
+\]
+where the equivalence relation is defined by~$S \sim T :\Leftrightarrow
+\Box(S = T)$. There is a canonical map~$F \to F^+$ given by~$x \mapsto
+[\{x\}]$. The \emph{$\Box$-sheafi\-fi\-ca\-tion} of a set~$F$ is the
+set~$F^{++}$.
+\end{defn}
+
+\begin{rem}The topos of \emph{pre}sheaves on a topological space~$X$ admits an
+internal language as well~\cite[???]{moerdijk}. In it, there
+exists a modal operator~$\Box$ reflecting the topology of~$X$. A presheaf is separated
+in the usual sense if, from the internal perspective of~$\PSh(X)$, it
+is~$\Box$-separated; and it is a sheaf if, from the internal perspective, it
+is a~$\Box$-sheaf. Furthermore, the~$\Box$-sheafification of a presheaf
+(considered as a set from the internal perspective) coincides with the usual
+sheafification.\end{rem}
+
+\begin{lemma}For any set~$F$, it holds that: \begin{enumerate}
+\item $F^+$ is~$\Box$-separated.
+\item The canonical map~$F \to F^+$ is injective if and only if~$F$
+is~$\Box$-separated.
+\item If~$F$ is~$\Box$-separated, $F^+$ is a~$\Box$-sheaf.
+\item If~$F$ is a~$\Box$-sheaf, the canonical map~$F \to F^+$ is bijective.
+\end{enumerate}
+Let``$\Sh_\Box(\Set)$'' denote the full subcategory of~$\Set$ consisting of
+the~$\Box$-sheaves. Then it holds that:
+\begin{enumerate}
+\addtocounter{enumi}{4}
+\item The functor~$(\placeholder)^+ : \Set \to \Set$ is left exact.
+\item The functor~$(\placeholder)^{++} : \Set \to \Sh_\Box(\Set)$ is left exact and left
+adjoint to the forgetful functor~$\Sh_\Box(\Set) \to \Set,\ F \mapsto F$.
+\end{enumerate}\end{lemma}
+\begin{proof}These are all straightforward, and it fact simpler than their
+classical counterparts, since there are no colimit constructions which would have to
+be dealt with.
+\end{proof}
 
 % XXX: next step: describe internal sheaves and equivalence Sh_Box(Sh X) = Sh(X_Box).
 
@@ -1552,3 +1626,5 @@ XXX: standardize level of generality: ringed locales, where possible?
 XXX: remark that for simplicity, we work in a classical metatheory
 
 XXX: replace []'s with ()'s where appropriate
+
+XXX: word "intuitionistic"

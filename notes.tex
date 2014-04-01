@@ -1376,6 +1376,7 @@ and~``$\forall$'', around any logical connective and around any atomic
 statement (``$x=y$'', ``$x \in A$'').
 
 We will describe a slight generalization of the double negation translation,
+% check http://arxiv.org/pdf/1101.5442.pdf for references to cite
 the~$\Box$-translation for any modal operator~$\Box$. It has the following
 crucial property:
 \begin{prop}Let~$X$ be a topological space. Let~$\Box$ be a modal operator
@@ -1383,8 +1384,8 @@ in~$\Sh(X)$. Let~$\varphi$ be a formula. Then
 \[ \Sh(X) \models \varphi^\Box \quad\text{iff}\quad
   \Sh(X_\Box) \models \varphi. \]
 \end{prop}
-Here,~``$X_\Box$'' denotes the subspace (really ``sublocale'') of~$X$ defined by~$\Box$; we will
-explain this notion further down. Of particular importance is the
+Recall from the previous section that~``$X_\Box$'' denotes the sublocale of~$X$
+defined by~$\Box$. Of particular importance is the
 case~$\Box\varphi :\equiv ((\varphi \Rightarrow \notat{x}) \Rightarrow
 \notat{x})$ where~$x \in X$ is a point, since for this modal operator, the
 proposition specializes to
@@ -1422,10 +1423,61 @@ $\Box(\varphi^\Box) \Longrightarrow \varphi^\Box$.
 \item In the definition of the~$\Box$-translation, one may omit the boxes
 printed in gray.
 \end{enumerate}\end{lemma}
+\begin{proof}The first statement is obvious, since one of the axioms on a modal
+operator demands that~$\Box\Box\varphi \Rightarrow \varphi$ for any
+formula~$\varphi$. The second statement follows by an induction on the
+formula structure. By way of example, we prove the case for~``$\Rightarrow$'':
+\newcommand{\withgray}{\text{$\Box$ with the gray parts}}
+\newcommand{\withoutgray}{\text{$\Box$ without the gray parts}}
+\begin{align*}
+  &\ (\varphi \Rightarrow \psi)^\withgray \\
+  \Longleftrightarrow &\ \Box(\varphi^\withgray \Rightarrow \psi^\withgray) \\
+  \Longleftrightarrow &\ (\varphi^\withgray \Rightarrow \psi^\withgray) \\
+  \Longleftrightarrow &\ (\varphi^\withoutgray \Rightarrow \psi^\withoutgray) \\
+  \Longleftrightarrow &\ (\varphi \Rightarrow \psi)^\withoutgray
+\end{align*}
+The first step is by definition; the second by~$\Box$-stability
+of~$\psi^\withgray$; the third by the induction hypothesis; the fourth by
+definition.
+\end{proof}
 
-\begin{lemma}\ldots, then $\Box\varphi \Rightarrow \varphi^\Box$.\end{lemma}
+\begin{lemma}Let~$\varphi$ be a formula such that for any subformulas~$\psi$
+appearing as antecedents of implications, it holds that~$\psi^\Box \Rightarrow
+\Box\psi$. (In particular, this condition is satisfied if there is
+no~``$\Rightarrow$'' in~$\varphi$.) Then $\Box\varphi \Rightarrow
+\varphi^\Box$.\end{lemma}
+\begin{proof}We prove this by an induction on the formula structure. All cases
+except for~``$\Rightarrow$'' are obvious. For this case, assume~$\Box(\varphi
+\Rightarrow \psi)$; we are to show that~$(\varphi^\Box \Rightarrow \psi^\Box)$.
+Since this is a~$\Box$-stable statement, we can in fact assume that~$(\varphi
+\Rightarrow \psi)$. We thus have
+\[ \varphi^\Box \Longrightarrow \Box\varphi \Longrightarrow \Box\psi
+\Longrightarrow \psi^\Box, \]
+with the first step being by the requirement on antecedents, the second by the
+monotonicity of~$\Box$, and the third by the induction hypothesis.
+\end{proof}
 
-\begin{lemma}\ldots, then $\varphi^\Box \Rightarrow \Box\varphi$.\end{lemma}
+\begin{lemma}Let~$\varphi$ be a geometric formula.
+Then $\varphi^\Box \Rightarrow \Box\varphi$.\end{lemma}
+\begin{proof}By induction on the formula structure. By way of example, we prove
+the case for~``$\bigvee$''. So assume~$\Box(\bigvee_i \varphi_i^\Box)$; we are
+to show that~$\Box(\bigvee_i \varphi_i)$. Since this is a boxed statement, we
+may in fact assume~$\bigvee_i \varphi_i^\Box$, so for some index~$j$, it holds
+that~$\varphi_j^\Box$. By the induction hypothesis, it follows
+that~$\Box\varphi_j$. By~$\varphi_j \Rightarrow \bigvee_i \varphi_i$ and the
+monotonicity of~$\Box$, it follows that that~$\Box(\bigvee_i \varphi_i)$.
+\end{proof}
+
+%\begin{ex}The failure of~$(\bigwedge_i \varphi_i)^\Box \equiv \bigwedge_i
+%\varphi_i^\Box \Rightarrow \Box(\bigwedge_i \varphi_i)$ can be nicely
+%illustrated with the internal language of a sheaf topos~$\Sh(X)$.
+%\end{ex}
+
+\begin{rem}In the special case that~$\Box$ is the double negation modality, the
+lemma holds with slightly weaker hypotheses: Namely, implications may occur
+in~$\varphi$, provided that for their antecedents~$\psi$ it holds that~$\psi
+\Rightarrow \psi^\Box$.\end{rem}
+% is this remark useful?
 
 %\begin{cor}Let~$X$ be a topological space.
 %\begin{enumerate}
@@ -1444,10 +1496,6 @@ printed in gray.
 
 \begin{itemize}
 \item general explanation of modalities (as for instance in philosophy)
-\item introduce the notation~$X_\Box$; explain the relationship
-between~$\Sh(X_\Box)$ and~$\Sh(X)$ (given by pushforward/pullback resp.
-forget/sheafify from the internal perspective)
-\item introduce the~$\Box$-translation; give basic lemmas
 \item explain that~$\Sh(X) \models \varphi^\Box$ iff~$\Sh(X_\Box) \models
 \varphi$; specialize to the four most important modal operators~($\neg\neg$, $U
 \Rightarrow \placeholder$, $\placeholder \vee A^c$, $(\placeholder \Rightarrow

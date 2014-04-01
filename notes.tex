@@ -114,6 +114,117 @@
 
 \section{Introduction}
 
+A \emph{topos} is a category which shares certain categorical properties with
+the category of sets; the archetypical example is the the category of sets, and
+the most important example for the purposes of these notes is the category of
+set-valued sheaves on a topological space.
+
+Any topos~$\E$ supports an \emph{internal language}. This is a device which
+allows one to \emph{pretend} that the objects of~$\E$ are plain sets and that
+the morphisms are plain maps between sets, even if in fact they are not. For
+instance, consider a morphism~$\alpha : X \to Y$ in~$\E$. From the \emph{internal
+point of view}, this looks like a map between sets, and we can formulate the
+condition that this map is surjective; we write this as
+\[ \E \models \forall y\?Y\_ \exists x\?X\_ \alpha(x) = y. \]
+The appearance of the colons instead of the usual element signs remind us that
+this expression is not to be taken literally --~$X$ and~$Y$ are objects of~$\E$
+and thus not necessarily sets. The definition of the internal language is made
+in such a way so that the meaning of this internal statement is that~$\alpha$
+is an epimorphism. Similarly, the translation of the internal statement
+that~$\alpha$ is injective is that~$\alpha$ is a monomorphism.
+
+Furthermore, we can \emph{reason} with the internal language. There is a
+metatheorem to the effect that if some statement~$\varphi$ holds from the
+internal point of view of a topos~$\E$ and if~$\varphi$ logically implies some
+further statement~$\psi$, then~$\psi$ holds in~$\E$ as well. As a simple
+example, consider the elementary fact that the composition of surjective maps
+is surjective. Interpreting this statement in the internal language of~$\E$, we
+obtain the more abstract result that the composition of epimorphisms in~$\E$ is
+epic.
+
+There is, however, a slight caveat to this metatheorem. Namely, the internal
+language of a topos is in general only \emph{intuitionistic}, not
+\emph{classical}. This means that internally, one can not use the law of
+excluded middle~($\varphi \vee \neg\varphi$), nor the law of double negation
+elimination~($\neg\neg\varphi \Rightarrow \varphi$), nor the axiom of choice.
+For instance, one rendition of the axiom of choice is that any surjection
+splits. But it need not be the case that an epimorphism in a general topos
+splits.
+% XXX: the translation of splitting would be that locally (!), there is a right
+% inverse.
+
+We apply this internal language to algebraic geometry as follows. If~$X$ is a
+scheme, the structure sheaf~$\O_X$ is a sheaf of rings, i.\,e. the sets of
+local sections carry rings structures and these ring strictures are compatible
+with restriction. From the internal point of view of the topos of set-valued
+sheaves on~$X$,~$\O_X$ looks much simpler: It looks just like a plain ring (and
+not a sheaf of rings). Similarly, a sheaf of~$\O_X$-modules looks just like a
+plain module on that ring.
+
+This allows to import notions and facts from basic linear and commutative
+algebra into the sheaf setting. For instance, it turns out that a sheaf
+of~$\O_X$-modules is of finite type if and only if, from the internal
+perspective, it is finitely generated as an~$\O_X$-module. Now consider the
+fact of linear algebra that if in a short exact sequence of modules the two
+outer ones are finitely generated the middle one is too. The usual proof of
+this fact is intuitionistically acceptable and can thus be interpreted in the
+internal language. It then \emph{automatically} yields the more advanced
+proposition that if in a short exact sequence of sheaves of~$\O_X$-modules the
+two outer ones are of finite type the middle one is too.
+
+The internal language machinery thus allows us to understand the basic notions
+and statements of scheme theory as notions and statements of linear and
+commutative algebra, interpreted in a suitable sheaf topos. This brings
+conceptual clarity and reduces technical overhead.
+
+In these notes, we explain how the internal language works and then develop a
+\emph{dictionary} between common notions of scheme theory and corresponding
+notions of algebra. Once built, this dictionary can be used arbitrarily often.
+
+Two highlights of our approach are the following. Let~$X$ be a reduced scheme
+and~$\F$ a sheaf of~$\O_X$-modules of finite type. Then it is well-known
+that~$\F$ is locally free on some dense open subset of~$X$; for instance, this
+is stated in Vakil's lecture notes as an ``important hard
+exercise''~\cite[exercise~13.7.K]{vakil}. In fact, this fact is just the
+interpretation of the following statement of intuitionistic linear algebra in
+the sheaf topos: Any finitely generated vector space is \emph{not not} free.
+The proof of this statement is entirely straightforward.\footnote{Intuitionistically,
+the statement that any finitely generated vector space is free is stronger that
+the double negated version and can not be shown. It would imply that any sheaf
+of finite type is not only locally free on some dense open subset, but locally
+free on the whole space.}
+
+The second highlight is that we can shed light on the phenomenon that
+sometimes, truth of a property at a point~$x$ spreads to some open
+neighbourhood of~$x$; and in particular that sometimes, truth of a property at
+the generic point spreads to some dense open subset. For instance, if the stalk
+of a sheaf of finite type is zero at some point, the sheaf is even zero on some
+open neighbourhood; but this spreading does not occur for general sheaves which
+may fail to be of finite type.
+
+We formalize this by introducing a \emph{modal operator}~$\Box$ into the
+internal language, such that the internal statement~$\Box\varphi$ means
+that~$\varphi$ holds on some open neighbourhood of~$x$. Furthermore, we
+introduce a simple operation on formulas, the~\emph{$\Box$-translation}
+$\varphi \mapsto \varphi^\Box$, such that~$\varphi^\Box$ means that~$\varphi$
+holds at the point~$x$. The question whether truth at~$x$ spreads to truth on a
+neighbourhood can thus be formulated in the following way: Does~$\varphi^\Box$
+intuitionistically imply~$\Box\varphi$?
+
+This allows to deal with the question in a simpler, more logical way, with the
+technicalities of sheaves blinded out. We can also give a metatheorem which
+covers a wide range of cases. Namely, spreading occurs for all those properties
+which can be formulated in the internal language without
+using~``$\Rightarrow$'',~``$\forall$'', and~``$\neg$''.
+
+To illustrate the example above, consider that the property of a module~$\F$ being
+the zero module is formulated as~$(\forall x\?\F\_ x = 0)$ in the internal
+language. Because of the appearance of~``$\forall$'', the metatheorem is not
+applicable to this statement. But if~$\F$ is of finite type, there are
+generators~$x_1,\ldots,x_n\?\F$ from the internal point of view, and the
+condition can be reformulated as~$x_1 = 0 \wedge \cdots \wedge x_n = 0$; the
+metatheorem is applicable to this statement.
+
 %Of particular importance is the
 %case~$\Box\varphi :\equiv ((\varphi \Rightarrow \notat{x}) \Rightarrow
 %\notat{x})$ where~$x \in X$ is a point, since for this modal operator, the
@@ -130,7 +241,8 @@
 are notions of linear algebra, interpreted in a suitable topos; (some) statements of
 scheme theory are statements of linear algebra, interpreted in a suitable
 topos; dictionary; intuitionistic logic; microscope/telescope into another
-universe; (dependent types to encompass almost all mathematics)
+universe; types instead of sets; (dependent types to encompass almost all
+mathematics)
 \item explain highlights: hard exercise, spreading of truth
 \item explain that with the internal language business, it becomes more
 transparent where scheme condition enters

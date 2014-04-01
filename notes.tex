@@ -125,6 +125,10 @@
 %\emph{Does~$\varphi^\Box$ imply~$\Box\varphi$?} We can give a general
 %answer to this question.
 
+\begin{itemize}
+\item see where scheme condition enters
+\end{itemize}
+
 
 \section{The internal language of a sheaf topos}
 
@@ -191,7 +195,7 @@ perspective,~$\alpha$ is simply an injective map:
 \begin{align*}
   & X \models \speak{$\alpha$ is injective} \\[0.5em]
   \Longleftrightarrow\
-  & X \models \forall s\?\F_ \forall t\?\F\_ \alpha(s) = \alpha(t) \Rightarrow s = t \\[0.5em]
+  & X \models \forall s\?\F\_ \forall t\?\F\_ \alpha(s) = \alpha(t) \Rightarrow s = t \\[0.5em]
   \Longleftrightarrow\ &
     \text{for all open~$U \subseteq X$, sections $s \in \Gamma(U, \F)$:} \\
   & \text{for all open~$V \subseteq U$, sections $t \in \Gamma(V, \F)$:} \\
@@ -351,7 +355,7 @@ a proper treatment.
 so-called geometric formulas play a special role, because their meaning is
 preserved under pullback with geometric morphisms. % XXX gibberish!
 \begin{defn}A formula is \emph{geometric} if and only if it consists only of
-\[ {=} \quad {\top} \quad {\bot} \quad {\wedge} \quad {\vee} \quad
+\[ {=} \quad {\in} \quad {\top} \quad {\bot} \quad {\wedge} \quad {\vee} \quad
 {\bigvee} \quad {\exists}, \]
 % XXX: \in
 but not~``$\bigwedge$'' nor ``$\Rightarrow$'' nor~``$\forall$'' (and thus
@@ -537,8 +541,10 @@ is zero as an element of~$A[f^{-1}]$.
 \begin{itemize}
 \item Remark that intuitionistically, the notion of a field bifurcates into
 several inequivalent notions
+\item normal rings, principal ideal domains, \ldots
 \item discreteness
 \end{itemize}
+
 
 \section{Sheaves of modules}
 
@@ -1298,7 +1304,7 @@ But for sheaf-theoretic purposes, it suffices to describe~$i$ on the level of
 opens. This is done as follows:
 \[ i^{-1} : \Open(X) \lra \Open(X_j), \quad U \longmapsto j(U). \]
 Thus we can relate the toposes of sheaves on~$X_j$ and~$X$ by the usual
-pushforward and pullback functors.
+pullback and pushforward functors.
 \begin{align*}
   i^{-1} \F &= \text{sheafification of $(U \mapsto \colim_{U \preceq i^{-1}V} \Gamma(V,\F))$} \\
   i_* \G &= (U \mapsto \Gamma(i^{-1}U, \G) = \Gamma(j(U), \G))
@@ -1376,8 +1382,6 @@ adjoint to the forgetful functor~$\Sh_\Box(\Set) \to \Set,\ F \mapsto F$.
 classical counterparts, since there are no colimit constructions which would have to
 be dealt with.
 \end{proof}
-
-% XXX: next step: describe internal sheaves and equivalence Sh_Box(Sh X) = Sh(X_Box).
 
 % XXX: introduce notion of Box-stability
 

@@ -159,7 +159,7 @@ local sections carry rings structures and these ring strictures are compatible
 with restriction. From the internal point of view of the topos of set-valued
 sheaves on~$X$,~$\O_X$ looks much simpler: It looks just like a plain ring (and
 not a sheaf of rings). Similarly, a sheaf of~$\O_X$-modules looks just like a
-plain module on that ring.
+plain module over that ring.
 
 This allows to import notions and facts from basic linear and commutative
 algebra into the sheaf setting. For instance, it turns out that a sheaf
@@ -246,6 +246,7 @@ mathematics)
 \item explain highlights: hard exercise, spreading of truth
 \item explain that with the internal language business, it becomes more
 transparent where scheme condition enters
+\item discuss limitations (here or somewhere else)
 \item give pointers to introductory literature
 \end{itemize}
 
@@ -384,6 +385,9 @@ in~\cite[D1.3.1]{johnstone:elephant}.
 \end{proof}
 % XXX: Put rules into an appendix and give some explanation regarding contexts
 % etc. Don't forget the rules for \in, \bigwedge, \bigvee.
+
+% XXX: Is it clear that any constructively valid statement yields a valid sheaf
+% statement?
 
 Because of the multitude of quantifiers, literal translations of internal statements
 can sometimes get slightly unwieldy. There are simplification rules for certain
@@ -1837,6 +1841,7 @@ module of finite type is of finite type as well
 \item Koszul resolution
 \item meta properties, uses (e.g. nilpotent on stalks iff globally nilpotent,
 some lemmas about limits of modules)
+\item compactness principle for ``$f$ inv.''
 \item locally small categories
 \item big Zariski topos
 \item open/closed immersions
@@ -1857,3 +1862,6 @@ XXX: remark that for simplicity, we work in a classical metatheory
 XXX: replace []'s with ()'s where appropriate
 
 XXX: word "intuitionistic"
+
+XXX: check whether the negneg translation ``finitely generated ==> free''
+implies the hard but important exercise

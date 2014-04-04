@@ -569,8 +569,32 @@ The following constructions are not in general geometric:
 
 \section{Sheaves of rings}
 
-% XXX: Explain that a sheaf of rings really does satisfy the ring axioms from
-% the internal point of view
+Recall that a \emph{sheaf of rings} can be categorically described as a
+sheaf of sets~$\R$ together with maps of sheaves $+, \cdot : \R \times \R \to
+\R$ and global elements~$0, 1$ such that certain axioms hold. For instance, the
+axiom on the commutativity of addition is rendered in diagrammatic form as
+follows:
+\[ \xymatrix{
+  \R \times \R \ar[rr]^{\mathrm{swap}} \ar[rd]_{+} && \R \times \R \ar[ld]^{+} \\
+  & \R
+} \]
+
+From the internal perspective, a sheaf of rings looks just like a plain ring.
+This is the content of the following proposition:
+
+\begin{prop}\label{prop:rings-internally}
+Let~$X$ be a topological space. Let~$\R$ be a sheaf of sets on~$X$.
+Let~$+, \cdot : \R \times \R \to \R$ be maps of sheaves and let~$0, 1$ be
+global elements of~$\R$. Then these data define a sheaf of rings if and only
+if, from the internal perspective, these data fulfill the usual equational ring
+axioms.\end{prop}
+\begin{proof}We only discuss the commutativity axiom. The internal statement
+\[ \Sh(X) \models \forall x,y\?\R\_ x + y = y + x \]
+means that for any open subset~$U \subseteq X$ and any local sections~$x,y \in
+\Gamma(U,\R)$, it holds that~$x + y = y + x \in \Gamma(U,\R)$. This is
+precisely the external commutativity condition.
+\end{proof}
+
 
 \subsection{Reducedness} Recall that a scheme~$X$ is \emph{reduced} if and only
 if all stalks~$\O_{X,x}$ are reduced rings. Since the condition on a ring~$R$
@@ -672,6 +696,12 @@ several inequivalent notions
 
 
 \section{Sheaves of modules}
+
+From the internal perspective, a sheaf of~$\R$-modules, where~$\R$ is a sheaf
+of rings, looks just like a plain module over the plain ring~$\R$. This is
+proven just as the correspondence between sheaf of rings and internal rings
+(proposition~\ref{prop:rings-internally}).
+
 
 \subsection{Local finite freeness}
 

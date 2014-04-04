@@ -73,6 +73,7 @@
 \DeclareMathOperator{\Ann}{Ann}
 \DeclareMathOperator{\Int}{int}
 \DeclareMathOperator{\Clos}{cl}
+\DeclareMathOperator{\Kernel}{ker}
 \newcommand{\Open}{\mathrm{Op}}
 \newcommand{\?}{\,{:}\,}
 \renewcommand{\_}{\mathpunct{.}\,}
@@ -728,22 +729,35 @@ X$ any open subset, is of finite type.
 
 The following proposition gives translations of these definitions into the
 internal language.
-\begin{prop}Let~$X$ be a scheme (or ringed locale). Let~$\F$ be
+\begin{prop}Let~$X$ be a scheme (or ringed space). Let~$\F$ be
 an~$\O_X$-module. Then:
-\begin{enumerate}
+\begin{itemize}
 \item $\F$ is of finite type if and only if~$\F$, considered as an ordinary
 module from the internal perspective, is finitely generated, i.\,e. if
-\[ \Sh(X) \models
+\[ {\qquad\qquad} \Sh(X) \models
   \bigvee_{n \geq 0}
   \exists x_1,\ldots,x_n\?\F\_
   \forall x\?\F\_
   \exists a_1,\ldots,a_n\?\F\_
   x = \textstyle\sum\limits_i a_i x_i. \]
 \item $\F$ is of finite presentation if and only if~$\F$ is a finitely
-presented module from the internal perspective, i.\,e. if \ldots
-\item $\F$ is coherent if and only if \ldots
-\end{enumerate}
+presented module from the internal perspective, i.\,e. if
+\[ {\qquad\qquad} \Sh(X) \models \bigvee_{n,m \geq 0}
+  \speak{there is a short exact sequence $\O_X^m \to \O_X^n \to \F \to 0$}.
+  \]
+\item $\F$ is coherent if and only if
+\begin{multline*}
+{\qquad\qquad\qquad}
+  \Sh(X) \models \speak{$\F$ is finitely generated} \mathop{\wedge} \\
+  \bigwedge_{n \geq 0} \forall \varphi \? \HOM(\O_X^n,\F)\_
+  \speak{$\Kernel \varphi$ is finitely generated}.
+\end{multline*}
+\end{itemize}
 \end{prop}
+\begin{proof}Straightforward: The translations of the internal statements using
+the Kripke--Joyal semantics are precisely the corresponding external
+statements.
+\end{proof}
 
 
 \subsection{Tensor product} Recall that the tensor product
@@ -902,7 +916,6 @@ kernel of such a matrix is finitely free of rank zero.
 
 
 \begin{itemize}
-\item of finite type, of finite presentation, coherent
 \item basic lemmas: finite type in exact sequences, filtered colimits,
 flatness, surjective implies iso, \ldots
 \item important hard exercise

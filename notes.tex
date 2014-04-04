@@ -15,7 +15,7 @@
 \newcommand{\hcancel}[5]{%
     \tikz[baseline=(tocancel.base)]{
         \node[inner sep=0pt,outer sep=0pt] (tocancel) {#1};
-        \draw[red, line width=0.5mm] ($(tocancel.south west)+(#2,#3)$) -- ($(tocancel.north east)+(#4,#5)$);
+        \draw[red, line width=0.3mm] ($(tocancel.south west)+(#2,#3)$) -- ($(tocancel.north east)+(#4,#5)$);
     }%
 }
 
@@ -92,7 +92,7 @@
 
 \begin{abstract}
   There are several important topoi associated to a scheme, for instance the
-  petit and gros Zariski topoi. These come with an internal mathematical language
+  petit and gros Zariski topoi. These support an internal mathematical language
   which closely resembles the usual formal language of mathematics, but is ``local
   on the base scheme'':
 
@@ -189,8 +189,8 @@ exercise''~\cite[exercise~13.7.K]{vakil}. In fact, this fact is just the
 interpretation of the following statement of intuitionistic linear algebra in
 the sheaf topos: Any finitely generated vector space is \emph{not not} free.
 The proof of this statement is entirely straightforward.\footnote{Intuitionistically,
-the statement that any finitely generated vector space is free is stronger that
-the double negated version and can not be shown. It would imply that any sheaf
+the statement that any finitely generated vector space is free is stronger than
+the doubly negated version and can not be shown. It would imply that any sheaf
 of finite type is not only locally free on some dense open subset, but locally
 free on the whole space.}
 

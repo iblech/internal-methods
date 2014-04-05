@@ -261,54 +261,70 @@ scheme. The meaning of internal statements is given by a set of rules, the
 
 \begin{defn}The meaning of 
 \[ U \models \varphi \quad\text{(``$\varphi$ holds on $U$'')} \]
-for open subsets~$U \subseteq X$ and formulas~$\varphi$ is given by
-the following rules, recursively in the structure of~$\varphi$:
-% XXX: introduce term "Kripke--Joyal semantic"
-\[ \renewcommand{\arraystretch}{1.3}\begin{array}{@{}lcl@{}}
-  U \models s = t \? \F &\Ll& s|_U = t|_U \in \Gamma(U, \F) \\
-  U \models \top &\Ll& U = U \text{ (always fulfilled)} \\
-  U \models \bot &\Ll& U = \emptyset \\
-  U \models \varphi \wedge \psi &\Ll&
-    \text{$U \models \varphi$ and $U \models \psi$} \\
-  U \models \varphi \vee \psi &\Ll&
-    \hcancel{\text{$U \models \varphi$ or $U \models \psi$}}{0pt}{3pt}{0pt}{-2pt} \\
-  && \text{there exists a covering $U = \bigcup_i U_i$ s.\,th. for all~$i$:} \\
-  && \quad\quad \text{$U_i \models \varphi$ or $U_i \models \psi$} \\
-  U \models \varphi \Rightarrow \psi &\Ll&
-    \text{for all open~$V \subseteq U$: } 
-  \text{$V \models \varphi$ implies $V \models \psi$} \\
-  U \models \forall s \? \F\_ \varphi(s) &\Ll&
-    \text{for all sections~$s \in \Gamma(V, \F)$, open $V \subseteq U$: $V \models
-    \varphi(s)$} \\
-  U \models \exists s \? \F\_ \varphi(s) &\Ll&
-    \hcancel{\text{there exists a section~$s \in \Gamma(U,\F)$ s.\,th. $U
-    \models \varphi(s)$}}{0pt}{3pt}{0pt}{-2pt} \\
-  &&
-    \text{there exists an open covering $U = \bigcup_i U_i$ s.\,th. for all~$i$:} \\
-  && \quad\quad \text{there exists~$s_i \in \Gamma(U_i, \F)$ s.\,th.
-  $U_i \models \varphi(s_i)$} \\
-  U \models \forall \F\_ \varphi(\F) &\Ll&
-    \text{for all sheaves $\F$ on $V$, open $V \subseteq U$: $V \models \varphi(\F)$} \\
-  U \models \exists \F\_ \varphi(\F) &\Ll&
-    \text{there exists an open covering $U = \bigcup_i U_i$ s.\,th. for all~$i$:} \\
-  && \quad\quad \text{there exists a sheaf~$\F_i$ on~$U_i$ s.\,th.
-  $U_i \models \varphi(\F_i)$}
-\end{array} \]
+for open subsets~$U \subseteq X$ and formulas~$\varphi$ over~$U$ is given by
+the rules listed in table~\ref{table:kripke-joyal}, recursively in the structure of~$\varphi$.
+In a \emph{formula over~$U$} there may appear sheaves defined on~$U$ as domains
+of quantifications,~$U$-sections of sheaves as terms and morphisms of sheaves
+on~$U$ as function symbols. The symbols~``$\top$'' and~``$\bot$'' denote truth
+and falsehold, respectively. The universal and existential quantifiers come in
+two flavors: for bounded and unbounded quantification.
 The translation of~$U \models \neg\varphi$ does not have to be defined, since
 negation can be expressed using other symbols: $\neg\varphi :\equiv (\varphi
-\Rightarrow \bot)$. Analogously to the rules for~$\wedge$ and~$\vee$, we can
-define rules for arbitrary set-indexed conjuctions~($\bigwedge_{j \in J}$) and
-disjunctions~($\bigvee_{j \in J}$). If we want to emphasize the particular topos, we write
+\Rightarrow \bot)$. If we want to emphasize the particular topos, we write
 \[ \Sh(X) \models \varphi \quad\Ll\quad X \models \varphi. \]
 \end{defn}
-% XXX: Explanation of \top and \bot.
-% XXX: Rule for \in.
 
-\begin{rem}The last two rules, concerning \emph{unbounded quantification}, are
-not part of the classical Kripke--Joyal semantics, but instead of Mike
-Shulman's stack semantics~\cite{shulman:stack}, a slight extension. They are
-needed so that we can formulate universal properties in the internal
-language.
+\begin{table}
+  \centering
+  \[ \renewcommand{\arraystretch}{1.3}\begin{array}{@{}lcl@{}}
+    U \models s = t \? \F &\Ll& s|_U = t|_U \in \Gamma(U, \F) \\
+    U \models s \in \G &\Ll& s|_U \in \Gamma(U,\G) \quad\quad\text{($\G$ a
+    subsheaf of~$\F$, $s$ a section of~$\F$)} \\
+    U \models \top &\Ll& U = U \text{ (always fulfilled)} \\
+    U \models \bot &\Ll& U = \emptyset \\
+    U \models \varphi \wedge \psi &\Ll&
+      \text{$U \models \varphi$ and $U \models \psi$} \\
+    U \models \bigwedge_{j \in J} \varphi_j &\Ll&
+      \text{for all~$j \in J$: $U \models \varphi_j$} \quad\quad\text{($J$ an
+      index set)} \\
+    U \models \varphi \vee \psi &\Ll&
+      \hcancel{\text{$U \models \varphi$ or $U \models \psi$}}{0pt}{3pt}{0pt}{-2pt} \\
+    && \text{there exists a covering $U = \bigcup_i U_i$ such that for all~$i$:} \\
+    && \quad\quad \text{$U_i \models \varphi$ or $U_i \models \psi$} \\
+    U \models \bigvee_{j \in J} \varphi_j &\Ll&
+      \hcancel{\text{$U \models \varphi_j$ for some~$j \in J$}}{0pt}{3pt}{0pt}{-2pt}
+      \quad\quad\text{($J$ an index set)} \\
+    && \text{there exists a covering $U = \bigcup_i U_i$ such that for all~$i$:} \\
+    && \quad\quad \text{$U_i \models \varphi_j$ for some~$j \in J$} \\
+    U \models \varphi \Rightarrow \psi &\Ll&
+      \text{for all open~$V \subseteq U$:
+      $V \models \varphi$ implies $V \models \psi$} \\
+    U \models \forall s \? \F\_ \varphi(s) &\Ll&
+      \text{for all sections~$s \in \Gamma(V, \F)$, open $V \subseteq U$: $V \models
+      \varphi(s)$} \\
+    U \models \exists s \? \F\_ \varphi(s) &\Ll&
+      \hcancel{\text{there exists a section~$s \in \Gamma(U,\F)$ such that $U
+      \models \varphi(s)$}}{0pt}{3pt}{0pt}{-2pt} \\
+    &&
+      \text{there exists an open covering $U = \bigcup_i U_i$ such that for all~$i$:} \\
+    && \quad\quad \text{there exists~$s_i \in \Gamma(U_i, \F)$ such that
+    $U_i \models \varphi(s_i)$} \\
+    U \models \forall \F\_ \varphi(\F) &\Ll&
+      \text{for all sheaves $\F$ on $V$, open $V \subseteq U$: $V \models \varphi(\F)$} \\
+    U \models \exists \F\_ \varphi(\F) &\Ll&
+      \text{there exists an open covering $U = \bigcup_i U_i$ such that for all~$i$:} \\
+    && \quad\quad \text{there exists a sheaf~$\F_i$ on~$U_i$ such that
+    $U_i \models \varphi(\F_i)$}
+  \end{array} \]
+  \caption{\label{table:kripke-joyal}The Kripke--Joyal semantics of a sheaf
+  topos.}
+\end{table}
+
+\begin{rem}The last two rules in table~\ref{table:kripke-joyal}, concerning
+\emph{unbounded quantification}, and are not part of the classical Kripke--Joyal
+semantics, but instead of Mike Shulman's stack semantics~\cite{shulman:stack},
+a slight extension. They are needed so that we can formulate universal
+properties in the internal language.
 \end{rem}
 
 \begin{ex}Let~$\alpha : \F \to \G$ be a morphism of sheaves on~$X$. Then
@@ -354,7 +370,7 @@ internal language.
 
 \begin{prop}[Locality of the internal language]
 Let~$U = \bigcup_i U_i$ be covered by open subsets. Let~$\varphi$
-be a formula. Then
+be a formula over~$U$. Then
 \[ U \models \varphi \qquad\text{iff}\qquad
   \text{$U_i \models \varphi$ for each $i$}. \]
 \end{prop}
@@ -482,7 +498,6 @@ preserved under pullback with geometric morphisms. % XXX gibberish!
 \begin{defn}A formula is \emph{geometric} if and only if it consists only of
 \[ {=} \quad {\in} \quad {\top} \quad {\bot} \quad {\wedge} \quad {\vee} \quad
 {\bigvee} \quad {\exists}, \]
-% XXX: \in
 but not~``$\bigwedge$'' nor ``$\Rightarrow$'' nor~``$\forall$'' (and thus
 not~``$\neg$'' either, since this is defined using~``$\Rightarrow$'').
 A \emph{geometric implication} is a formula of the form
@@ -490,25 +505,27 @@ A \emph{geometric implication} is a formula of the form
 with the bracketed subformulas being geometric.
 \end{defn}
 We say that a formula~$\varphi$ holds \emph{at a point~$x \in X$} if and only
-if the formula obtained by substituting all parameters in~$\varphi$ (e.\,g.
-sheaves being quantified over) with their stalks at~$x$ holds in the usual
+if the formula obtained by substituting all parameters in~$\varphi$ (sheaves
+being quantified over, sections of sheaves appearing as terms and morphisms of
+sheaves appearing as function symbols) with their stalks at~$x$ holds in the usual
 mathematical sense.
-% XXX: "e.g." list is not complete
 
 \begin{lemma}\label{lemma:geometric-stalk-neighbourhood}
-Let~$x \in X$ be a point. Let~$\varphi$ be a geometric formula.
+Let~$x \in X$ be a point. Let~$\varphi$ be a geometric formula (over some open
+neighbourhood of~$x$).
 Then~$\varphi$ holds at~$x$ if and only if there exists a neighbourhood~$U
 \subseteq X$ of~$x$ such that~$\varphi$ holds on~$U$.
 \end{lemma}
-% XXX: Need to reformulate this for the relative case of \varphi
-% being a formula with parameters defined only over some open subset U.
 \begin{proof}This is a very general instance of the phenomenom that sometimes,
 truth at a point spreads to truth on a neighbourhood. It can be proven by
 induction on the structure of~$\varphi$, but we will give a more conceptual
 proof later (corollary~\ref{cor:geometric-spreading}).
 \end{proof}
 
-% comment that this lemma is very useful
+This lemma is in fact a very useful metatheorem. We will properly discuss its
+significance in section~\ref{sect:spreading}. For now, we just use it to prove a
+simple criterion for the internal truth of a geometric implication; we will
+apply this criterion many times.
 
 \begin{cor}A geometric implication holds on~$X$ if and only if it holds at
 every point of~$X$.\end{cor}
@@ -1665,7 +1682,7 @@ thus~$\alpha$.
 \end{proof}
 
 
-\subsection{Truth at stalks vs. truth on neighbourhoods}
+\subsection{Truth at stalks vs. truth on neighbourhoods}\label{sect:spreading}
 We now state the crucial property of the~$\Box$-translation. Recall
 that~``$X_\Box$'' denotes the sublocale of~$X$ induced by~$\Box$
 (definition~\ref{defn:subspace-by-nucleus}).

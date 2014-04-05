@@ -78,6 +78,7 @@
 \DeclareMathOperator{\Int}{int}
 \DeclareMathOperator{\Clos}{cl}
 \DeclareMathOperator{\Kernel}{ker}
+\DeclareMathOperator{\supp}{supp}
 \newcommand{\Open}{\mathrm{Op}}
 \newcommand{\?}{\,{:}\,}
 \renewcommand{\_}{\mathpunct{.}\,}
@@ -914,11 +915,37 @@ geometric implications; therefore it holds internally if and only if it holds at
 any stalk.
 \end{proof}
 
+% XXX: F^ tensor F ~~ O_X
+
+
+\subsection{Support} Recall that the \emph{support} of an~$\O_X$-module~$\F$ is
+the subset~$\supp\F := \{ x \in X \,|\, \F_x \neq 0 \} \subseteq X$. If~$\F$ is
+of finite type, this set is closed, since its complement is then open by XXX.
+
+\begin{prop}\label{prop:characterization-support}
+Let~$X$ be a scheme (or ringed space). Let~$\F$ be
+an~$\O_X$-module. Then the interior of the complement of the support of~$\F$
+can be characterized as the largest open subset of~$X$ on which the internal
+statement~$\F = 0$ holds.
+\end{prop}
+\begin{proof}
+For any open subset~$U \subseteq X$, it holds that:
+\begin{align*}
+  &\ U \subseteq \Int(X \setminus \supp \F) \\
+  \Longleftrightarrow&\ U \subseteq X \setminus \supp \F \\
+  \Longleftrightarrow&\ U \subseteq \{ x \in X \,|\, \forall s \in \F_x\_ s = 0 \} \\
+  \Longleftrightarrow&\ U \models \forall s\?\F\_ s = 0 \\
+  \Longleftrightarrow&\ U \models \speak{$\F = 0$}
+\end{align*}
+The second to last equivalence is because~``$\forall s\?\F\_ s = 0$'' is a
+geometric implication and can thus be checked stalkwise.
+\end{proof}
+
 
 \subsection{Internal proofs of common lemmas}
 
 \begin{lemma}Let~$X$ be a scheme (or ringed space). Let
-\[ 0 \lra \F \lra \G \lra \H \to 0 \]
+\[ 0 \lra \F \lra \G \lra \H \lra 0 \]
 be a short exact sequence of~$\O_X$-modules. If~$\F$ and~$\H$ are of finite
 type, so is~$\G$; similarly, if~$\F$ and~$\H$ are locally finitely free, so
 ist~$\G$.
@@ -986,12 +1013,27 @@ This follows from the proof of the previous lemma, since it shows that the
 kernel of such a matrix is finitely free of rank zero.
 \end{proof}
 
+\begin{lemma}Let~$X$ be a scheme (or ringed space). Let
+$0 \to \F \to \G \to \H \to 0$ be a short exact sequence of~$\O_X$-modules.
+Then
+$\Clos \supp \G = \Clos \supp \F \cup \Clos \supp \H$.
+\end{lemma}
+\begin{proof}Switching to complements, we have to prove that
+\[ \Int(X \setminus \supp\G) = \Int(X \setminus \supp\F) \cap \Int(X \setminus
+\supp\H). \]
+By proposition~\ref{prop:characterization-support}, it suffices to prove
+\[ \Sh(X) \models (\G = 0 \Longleftrightarrow \F = 0 \wedge \H = 0); \]
+this is a basic observation in linear algebra, valid intuitionistically.
+\end{proof}
+% XXX: This is kind of a lame example.
+
 
 \begin{itemize}
 \item basic lemmas: finite type in exact sequences, filtered colimits,
 flatness, surjective implies iso, \ldots
 \item important hard exercise
 \item torsion (check Liu p. 174)
+\item reorganize? place lemmas directly in their corresponding sections?
 \end{itemize}
 
 

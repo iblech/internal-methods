@@ -19,6 +19,10 @@
     }%
 }
 
+\usepackage[natbib=true,style=numeric]{biblatex}
+\usepackage[babel]{csquotes}
+\bibliography{bibliography}
+
 \theoremstyle{definition}
 \newtheorem{defn}{Definition}[section]
 \newtheorem{ex}[defn]{Example}
@@ -186,7 +190,7 @@ Two highlights of our approach are the following. Let~$X$ be a reduced scheme
 and~$\F$ a sheaf of~$\O_X$-modules of finite type. Then it is well-known
 that~$\F$ is locally free on some dense open subset of~$X$; for instance, this
 is stated in Vakil's lecture notes as an ``important hard
-exercise''~\cite[exercise~13.7.K]{vakil}. In fact, this fact is just the
+exercise''~\cite[exercise~13.7.K]{vakil:foag}. In fact, this fact is just the
 interpretation of the following statement of intuitionistic linear algebra in
 the sheaf topos: Any finitely generated vector space is \emph{not not} free.
 The proof of this statement is entirely straightforward.\footnote{Intuitionistically,
@@ -1560,7 +1564,7 @@ set~$F^{++}$.
 \end{defn}
 
 \begin{rem}The topos of \emph{pre}sheaves on a topological space~$X$ admits an
-internal language as well~\cite[???]{moerdijk}. In it, there
+internal language as well~\cite[???]{moerdijk-maclane:sheaves-logic}. In it, there
 exists a modal operator~$\Box$ reflecting the topology of~$X$. A presheaf is separated
 in the usual sense if, from the internal perspective of~$\PSh(X)$, it
 is~$\Box$-separated; and it is a sheaf if, from the internal perspective, it
@@ -1931,6 +1935,10 @@ some lemmas about limits of modules)
 \item limits and colimits...
 \item related work: Mulvey/Burden, Wraith, Vickers, the Bohr topos crew, Awodey, ...
 \end{itemize}
+
+
+\nocite{*}
+\printbibliography
 
 \end{document}
 

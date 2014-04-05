@@ -409,7 +409,7 @@ in~\cite[D1.3.1]{johnstone:elephant}.
 Because of the multitude of quantifiers, literal translations of internal statements
 can sometimes get slightly unwieldy. There are simplification rules for certain
 often-occuring special cases:
-\begin{prop}
+\begin{prop}\label{prop:simplification}
     \[ \renewcommand{\arraystretch}{1.3}\begin{array}{@{}lcl@{}}
       U \models \forall s\?\F\_ \forall t\?\G\_ \varphi(s,t)
       &\Longleftrightarrow&
@@ -580,7 +580,6 @@ The following constructions are not in general geometric:
 
 \begin{itemize}
 \item crash course on intuitionistic logic
-\item first steps: invertibility, nilpotency (needed later)
 \end{itemize}
 
 
@@ -610,6 +609,27 @@ axioms.\end{prop}
 means that for any open subset~$U \subseteq X$ and any local sections~$x,y \in
 \Gamma(U,\R)$, it holds that~$x + y = y + x \in \Gamma(U,\R)$. This is
 precisely the external commutativity condition.
+\end{proof}
+
+\begin{lemma}Let~~$X$ be a topological space. Let~$\R$ be a sheaf of rings
+on~$X$. Let~$f$ be a global section of~$\R$. Then the following statements are
+equivalent:
+\begin{enumerate}
+\item $f$ is invertible from the internal point of view, i.\,e. $\Sh(X) \models
+\exists g\?\R\_ fg = 1$.
+\item $f$ is is invertible in all stalks~$\R_x$.
+\item $f$ is in invertible in~$\Gamma(X,\R)$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}Since invertibility is a geometric implication, the equivalence of
+the first two statements is clear. Also, it's obvious that the third statement
+implies the other two. For the remaining direction, note that the
+uniqueness of inverses in rings can be proven intuitionistically. Therefore, if~$f$ is invertible
+from the internal point of view, it actually holds that
+\[ \Sh(X) \models \exists! g\?\R\_ fg = 1. \]
+Since unique internal existence implies global existence
+(proposition~\ref{prop:simplification}), this shows that the first statement
+implies the third.
 \end{proof}
 
 
@@ -662,6 +682,7 @@ that
   X \models \speak{$s$ nilpotent}. \]
 The meaning of the antecedent is that any open subset on which~$s$ is
 invertible is empty. So in particular, the standard open subset~$D(s)$ is
+% XXX: missing: "Let's assume the antecedent to be true"
 empty. Therefore~$s$ is an element of any prime ideal of~$A$ and thus
 nilpotent. This implies the a priori weaker statement~$X \models \speak{$s$
 nilpotent}$ (which would allow~$s$ to have different indices of nilpotency on

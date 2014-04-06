@@ -90,6 +90,7 @@
 \newcommand{\lhra}{\ensuremath{\lhook\joinrel\relbar\joinrel\rightarrow}}
 \newcommand{\hra}{\hookrightarrow}
 \newcommand{\brak}[1]{{\llbracket{#1}\rrbracket}}
+\newcommand{\notnot}{\emph{not not}\xspace}
 
 \definecolor{gray}{rgb}{0.7,0.7,0.7}
 
@@ -700,7 +701,8 @@ nilpotent}$ (which would allow~$s$ to have different indices of nilpotency on
 an open covering).
 \end{proof}
 
-\begin{cor}Let~$X$ be a scheme. If~$X$ is reduced, the ring~$\O_X$ is a field
+\begin{cor}\label{cor:field-reduced}
+Let~$X$ be a scheme. If~$X$ is reduced, the ring~$\O_X$ is a field
 from the internal point of view, in the sense that
 \[ \Sh(X) \models \forall s\?\O_X\_ \neg(\speak{$s$ invertible}) \Rightarrow
 s=0. \]
@@ -1310,7 +1312,47 @@ of the sheaf of rational functions are given by the total quotient rings of the
 local rings~$\O_{X,x}$.\end{cor}
 
 
-\subsection{Geometric interpretation of the sheaf of rational functions}
+\subsection{Geometric interpretation of rational functions}
+
+\begin{prop}Let~$X$ be a reduced scheme. Then~$\K_X$ is
+the~$\neg\neg$-sheafification of~$\O_X$.\end{prop}
+\begin{proof}Recall from corollary~\ref{cor:field-reduced} that
+\[ \Sh(X) \models \forall s\?\O_X\_ \neg(\speak{$s$ invertible}) \Leftrightarrow
+s=0. \]
+From this we can deduce that~$\O_X$ is~$\neg\neg$-separated:
+Assume~$\neg\neg(s=0)$ for~$s\?\O_X$. If~$s$ were invertible, we would
+have~$\neg\neg(1=0)$ and thus~$\bot$. Therefore~$s$ is not invertible and thus
+zero.
+
+Furthermore, we can can deduce that internally, an element~$s\?\O_X$ is regular
+if and only if it is \notnot invertible: For the ``only if'' direction,
+note that a regular element is not zero (if it were, then the true statement~$0
+\cdot 0 = 0 \cdot 1$ would imply the false statement~$0 = 1$). For the ``if''
+direction, let~$st = 0$ in~$\O_X$. Since~$s$ is \notnot invertible, it follows
+that~$t$ is \notnot zero. Since~$\O_X$ is~$\neg\neg$-separated, this implies
+that~$t$ really is zero.
+
+With these observations, we can proceed to that~$\K_X$ is~$\neg\neg$-separated.
+So assume~$\neg\neg(a/s = 0)$ for~$a/s \? \K_X$. Since~$\K_X$ is obtained
+from~$\O_X$ at regular elements, it holds that~$a/s = 0$ in~$\K_X$ if and only
+if~$a = 0$ in~$\O_X$. Thus it follows that~$\neg\neg(a = 0)$ in~$\O_X$ and
+thus~$a = 0$ in~$\O_X$; in particular, $a/s = 0$ in~$\K_X$.
+
+We defer the proof that~$\K_X$ is a~$\neg\neg$-sheaf to the end and first
+verify the universal property of~$\neg\neg$-sheafification.
+% grammar?
+So let~$G$ be a~$\neg\neg$-sheaf and let~$\alpha : \O_X \to G$ be a map. We
+can define an extension~$\bar\alpha : \K_X \to G$ in the following way:
+Let~$f \? \K_X$. Define the subsingleton~$S := \{ x \? G \,|\, \exists
+b\?\O_X\_ f = b/1 \wedge x = \alpha(b) \} \subseteq G$. Since~$f$ can be
+written in the form~$a/s$ with~$s$ \notnot invertible, it follows that~$S$
+is \notnot inhabited. Since~$G$ is a~$\neg\neg$-sheaf, there exists a
+unique~$x\?G$ such that~$\neg\neg(x \in S)$. We declare~$\bar\alpha(f)$ to be
+this~$x$. It is straightforward to check that the composition~$\O_X \to \K_X
+\to G$ equals~$\alpha$ and that~$\bar\alpha$ is unique with this property.
+\end{proof}
+% XXX: finish proof!
+
 
 \subsection{Cartier divisors} Let~$X$ be a scheme (or ringed space). Recall
 that a \emph{Cartier divisor} on~$x$ is a global section of the sheaf of

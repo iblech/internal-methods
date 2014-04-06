@@ -4,6 +4,7 @@
 \usepackage{amsmath,amsthm,amssymb,stmaryrd,color,graphicx,multirow}
 \usepackage{setspace}
 \usepackage{bussproofs}
+\usepackage{xspace}
 \usepackage{array}
 \usepackage{comment}
 \usepackage[protrusion=true,expansion=true]{microtype}
@@ -90,6 +91,8 @@
 \newcommand{\lhra}{\ensuremath{\lhook\joinrel\relbar\joinrel\rightarrow}}
 \newcommand{\hra}{\hookrightarrow}
 \newcommand{\brak}[1]{{\llbracket{#1}\rrbracket}}
+\newcommand{\ie}{i.\,e.\@\xspace}
+\newcommand{\eg}{e.\,g.\@\xspace}
 \newcommand{\notnot}{\emph{not not}\xspace}
 
 \definecolor{gray}{rgb}{0.7,0.7,0.7}
@@ -136,7 +139,7 @@ instance, consider a morphism~$\alpha : X \to Y$ in~$\E$. From the \emph{interna
 point of view}, this looks like a map between sets, and we can formulate the
 condition that this map is surjective; we write this as
 \[ \E \models \forall y\?Y\_ \exists x\?X\_ \alpha(x) = y. \]
-The appearance of the colons instead of the usual element signs remind us that
+The appearance of the colons instead of the usual element signs reminds us that
 this expression is not to be taken literally --~$X$ and~$Y$ are objects of~$\E$
 and thus not necessarily sets. The definition of the internal language is made
 in such a way so that the meaning of this internal statement is that~$\alpha$
@@ -158,14 +161,14 @@ language of a topos is in general only \emph{intuitionistic}, not
 excluded middle~($\varphi \vee \neg\varphi$), nor the law of double negation
 elimination~($\neg\neg\varphi \Rightarrow \varphi$), nor the axiom of choice.
 For instance, one rendition of the axiom of choice is that any surjection
-splits. But it need not be the case that an epimorphism in a general topos
+splits. But it need not be the case that an epimorphism in a topos
 splits.
 % XXX: the translation of splitting would be that locally (!), there is a right
 % inverse.
 
 We apply this internal language to algebraic geometry as follows. If~$X$ is a
-scheme, the structure sheaf~$\O_X$ is a sheaf of rings, i.\,e. the sets of
-local sections carry ring structures and these ring strictures are compatible
+scheme, the structure sheaf~$\O_X$ is a sheaf of rings, \ie the sets of
+local sections carry ring structures and these ring structures are compatible
 with restriction. From the internal point of view of the topos of set-valued
 sheaves on~$X$,~$\O_X$ looks much simpler: It looks just like a plain ring (and
 not a sheaf of rings). Similarly, a sheaf of~$\O_X$-modules looks just like a
@@ -474,14 +477,14 @@ constructions is given by the following definition.
 \begin{defn}The interpretation of an internal construction~$T$
 is denoted by~$\brak{T} \in \Sh(X)$ and given by the following rules.
 \begin{itemize}\item If~$\F$ and~$\G$ are sheaves, $\brak{\F \times \G}$ is the
-categorical product of~$\F$ and~$\G$ (i.\,e. their product as presheaves).
+categorical product of~$\F$ and~$\G$ (\ie their product as presheaves).
 \item If~$\F$ and~$\G$ are sheaves, $\brak{\F \amalg \G}$ is the categorical
-coproduct of~$\F$ and~$\G$, i.\,e. the sheafification of the presheaf
+coproduct of~$\F$ and~$\G$, \ie the sheafification of the presheaf
 $U \mapsto \Gamma(U,\F) \amalg \Gamma(U,\G)$.
 \item If~$\F$ is a sheaf, the interpretation~$\brak{\P(\F)}$ of the power set
 construction is the sheaf given by
 \[ \text{$U \subseteq X$ open} \longmapsto \{ \G \hookrightarrow \F|_U \}, \]
-i.\,e. sections on an open set~$U$ are subsheaves of~$\F|_U$ (either literally
+\ie sections on an open set~$U$ are subsheaves of~$\F|_U$ (either literally
 or isomorphism classes of general monomorphisms into~$\F|_U$).
 \item If~$\F$ is a sheaf and~$\varphi(s)$ is a formula containing a free
 variable~$s\?\F$, the interpretation~$\brak{\{s\?\F\,|\,\varphi(s)\}}$ is given
@@ -580,6 +583,7 @@ constructions are geometric:
 \text{$\varphi(s)$ holds at $x$} \} \]
 \item free module: $(\R\langle \F \rangle)_x \cong \R_x\langle \F_x
 \rangle$ ($\R$ a sheaf of rings, $\F$ a sheaf of sets)
+\item localization of a module: $\F[\S^{-1}]_x \cong \F_x[\S_x^{-1}]$
 \end{itemize}
 
 The following constructions are not in general geometric:
@@ -627,7 +631,7 @@ precisely the external commutativity condition.
 on~$X$. Let~$f$ be a global section of~$\R$. Then the following statements are
 equivalent:
 \begin{enumerate}
-\item $f$ is invertible from the internal point of view, i.\,e. $\Sh(X) \models
+\item $f$ is invertible from the internal point of view, \ie $\Sh(X) \models
 \exists g\?\R\_ fg = 1$.
 \item $f$ is is invertible in all stalks~$\R_x$.
 \item $f$ is in invertible in~$\Gamma(X,\R)$.
@@ -734,7 +738,7 @@ Let~$X$ be a scheme. Then
 global functions~$f, s \in A$ such that
 \[ X \models (\speak{$f$ inv.} \Rightarrow s = 0), \]
 it holds that $X \models \textstyle \bigvee_{n \geq 0} f^n s = 0$. This is
-obvious, since by assumption such a function~$s$ is zero on~$D(f)$, i.\,e. $s$
+obvious, since by assumption such a function~$s$ is zero on~$D(f)$, \ie $s$
 is zero as an element of~$A[f^{-1}]$.
 \end{proof}
 
@@ -763,7 +767,7 @@ to~$(\O_X|_U)^n$ for some natural number~$n$ (which may depend on~$U$).
 
 \begin{prop}Let~$X$ be a scheme (or ringed space). Let~$\F$ be
 an~$\O_X$-module. Then~$\F$ is locally finitely free if and only if, from the
-internal perspective,~$\F$ is a finitely free module, i.\,e.
+internal perspective,~$\F$ is a finitely free module, \ie
 \[ \Sh(X) \models \bigvee_{n \geq 0} \speak{$\F \cong (\O_X)^n$} \]
 or more elementary
 \[ \Sh(X) \models \bigvee_{n \geq 0}
@@ -814,7 +818,7 @@ internal language.
 an~$\O_X$-module. Then:
 \begin{itemize}
 \item $\F$ is of finite type if and only if~$\F$, considered as an ordinary
-module from the internal perspective, is finitely generated, i.\,e. if
+module from the internal perspective, is finitely generated, \ie if
 \[ {\qquad\qquad} \Sh(X) \models
   \bigvee_{n \geq 0}
   \exists x_1,\ldots,x_n\?\F\_
@@ -822,7 +826,7 @@ module from the internal perspective, is finitely generated, i.\,e. if
   \exists a_1,\ldots,a_n\?\F\_
   x = \textstyle\sum\limits_i a_i x_i. \]
 \item $\F$ is of finite presentation if and only if~$\F$ is a finitely
-presented module from the internal perspective, i.\,e. if
+presented module from the internal perspective, \ie if
 \[ {\qquad\qquad} \Sh(X) \models \bigvee_{n,m \geq 0}
   \speak{there is a short exact sequence $\O_X^m \to \O_X^n \to \F \to 0$}.
   \]
@@ -1002,7 +1006,7 @@ kernel is~$m-n$.
 \end{proof}
 
 \begin{rem}The internal language machinery gives no reason to believe that the
-dual statement is true, i.\,e. that the cokernel of a monomorphism of locally
+dual statement is true, \ie that the cokernel of a monomorphism of locally
 finitely free~$\O_X$-modules is locally finitely free: This would follow from
 an intuitionistic proof of the statement that the cokernel of an injective map
 between finitely free modules over a local ring is finitely free. But this
@@ -1060,7 +1064,7 @@ weakening the conclusion.
 \begin{lemma}Let~$U \subseteq \NN$ be an inhabited subset of the natural
 numbers.
 \begin{enumerate}
-\item Assume~$U$ to be \emph{detachable}, i.\,e. assume that for any natural
+\item Assume~$U$ to be \emph{detachable}, \ie assume that for any natural
 number~$n$, either~$n \in U$ or~$n \not\in U$. Then~$U$ possesses a minimal
 element.
 % XXX: Give sheaf-theoretic interpretation of detachability. With this
@@ -1071,10 +1075,10 @@ element.
 \end{lemma}
 \begin{proof}
 \begin{enumerate}
-\item By induction on the witness of inhabitation, i.\,e. the given number~$n$ such
+\item By induction on the witness of inhabitation, \ie the given number~$n$ such
 that~$n \in U$. Details omitted, since we will not need this statement.
 \item We give a careful proof since logical subtleties matter. To simplify the
-exposition, we assume that~$U$ is upward-closed, i.\,e. that any number
+exposition, we assume that~$U$ is upward-closed, \ie that any number
 larger than some element of~$U$ lies in~$U$ as well. Any subset can be closed
 in this way (by considering~$\{ n \in \NN \,|\, \exists m \in U\_ n \geq m \}$)
 and a minimal element of the closure will be a minimal element for~$U$ as well.
@@ -1218,7 +1222,7 @@ which are regular in each stalk~$\O_{X,x}$, $x \in U$. Recall also there are
 some wrong definitions in the literature~\cite{kleiman:misconceptions}.
 
 Using the internal language, we can give a simpler definition of~$\K_X$.
-Recall that we can associate to any ring~$R$ its total quotient ring, i.\,e.
+Recall that we can associate to any ring~$R$ its total quotient ring, \ie
 its localization at the multiplicative subset of regular elements. Since from
 the internal perspective~$\O_X$ is an ordinary ring, we can associate to it its
 total quotient ring $\O_X[\S^{-1}]$,
@@ -1246,7 +1250,8 @@ It is well-known~\cite{???} that the sheaf~$\K_X$ as usually defined satisfies
 this universal property as well.
 \end{proof}
 
-\begin{prop}Let~$X$ be a scheme (or ringed space). Then the stalks of~$\K_X$
+\begin{prop}\label{prop:stalks-kx}
+Let~$X$ be a scheme (or ringed space). Then the stalks of~$\K_X$
 are given by
 \[ \K_{X,x} = \O_{X,x}[\S_x^{-1}]. \]
 The elements of~$\S_x$ are exactly the germs of those local sections which are
@@ -1258,21 +1263,22 @@ trivial. The second statement follows since
 \[ \Gamma(U,\S) = \{ s\in\Gamma(U,\O_X) \,|\, U \models \speak{$s$ is regular}
 \} \]
 and regularity is a geometric implication, so that
-$U \models \speak{$s$ is regular}$ if and only iff the germ~$s_y$ is regular
+$U \models \speak{$s$ is regular}$ if and only if the germ~$s_y$ is regular
 in~$\O_{X,y}$ for all~$y \in U$.
 \end{proof}
 
 \begin{rem}Speaking internally, the multiplicative set~$\S$ is saturated.
 Therefore an element~$s/t \? \K_X$ is invertible in~$\K_X$ if and only if the
-numerator~$s$ belongs to~$\S$, i.\,e. is an regular element of~$\O_X$.\end{rem}
+numerator~$s$ belongs to~$\S$, \ie is an regular element of~$\O_X$.\end{rem}
 
 
 \subsection{Regularity of local functions}
 It is well known that on a locally Noetherian scheme, regularity spreads from
-stalks to neighbourhoods, i.\,e. a section of~$\O_X$ is regular
+stalks to neighbourhoods, \ie a section of~$\O_X$ is regular
 in~$\O_{X,x}$ if and only if it is regular on some neighbourhood on~$x$.
 This fact has a simple proof in the internal language:
-\begin{prop}Let~$X$ be a locally Noetherian scheme. Let~$s \in \Gamma(U,\O_X)$
+\begin{prop}\label{prop:regularity-spreading}
+Let~$X$ be a locally Noetherian scheme. Let~$s \in \Gamma(U,\O_X)$
 be a local function on~$X$. Let~$x \in U$. Then the following statements are
 equivalent:
 \begin{enumerate}
@@ -1287,9 +1293,9 @@ Let~$\Box$ be the modal operator defined by~$\Box(\varphi) :\equiv ((\varphi
 statements of the internal language
 are equivalent:
 \begin{enumerate}
-\item $(\speak{$s$ is regular})^\Box$, i.\,e.
+\item $(\speak{$s$ is regular})^\Box$, \ie
 $\forall t\?\O_X\_ st = 0 \Rightarrow \Box(t = 0)$.
-\item $\Box(\speak{$s$ is regular})$, i.\,e.
+\item $\Box(\speak{$s$ is regular})$, \ie
 $\Box(\forall t\?\O_X\_ st = 0 \Rightarrow t = 0)$.
 \end{enumerate}
 It is clear that the second statement implies the first -- in fact, this is true
@@ -1297,12 +1303,12 @@ without any assumptions on~$X$: Let~$t\?\O_X$ be such that~$st = 0$. Since we wa
 prove the boxed statement~$\Box(t=0)$, we may assume that~$s$ is regular and
 prove~$t = 0$. This follows by definition.
 
-For the converse direction, consider the annihilator of~$s$, i.\,e. the ideal
+For the converse direction, consider the annihilator of~$s$, \ie the ideal
 \[ I := \Ann_{\O_X}(s) = \{ t\?\O_X \,|\, st = 0 \} \subseteq \O_X. \]
 This ideal satisfies the quasicoherence condition (example~\ref{ex:annihilator-qcoh}),
 thus~$I$ is a quasicoherent submodule of a finitely generated module. Since~$X$ is
 locally Noetherian, it follows that~$I$ is finitely generated as well. By
-assumption, each generator~$x_i \in I$ fulfills~$\Box(x_i = 0)$. Since we want
+assumption, each generator~$x_i \? I$ fulfills~$\Box(x_i = 0)$. Since we want
 to prove a boxed statement, we may in fact assume~$x_i = 0$. Thus~$I = (0)$ and
 the assertion, that~$s$ is regular, follows.
 \end{proof}
@@ -1310,6 +1316,8 @@ the assertion, that~$s$ is regular, follows.
 \begin{cor}Let~$X$ be a locally Noetherian scheme. Then the stalks~$\K_{X,x}$
 of the sheaf of rational functions are given by the total quotient rings of the
 local rings~$\O_{X,x}$.\end{cor}
+\begin{proof}Combine proposition~\ref{prop:stalks-kx} and
+proposition~\ref{prop:regularity-spreading}.\end{proof}
 
 
 \subsection{Geometric interpretation of rational functions}
@@ -1393,7 +1401,7 @@ is the~$\O_X$-submodule
 of~$\K_X$. Here we are abusing language for~``$gD \in \O_X$'' to mean that~$gf
 \in \O_X$ if~$D = [f]$ with~$f\?\K_X$; and for~``$D^{-1} \O_X$'' to
 mean~$f^{-1}\O_X$. This condition resp. submodule does not depend on the
-representative~$f$, this~$f$ is well-defined up to multiplication by an element
+representative~$f$, since~$f$ is well-defined up to multiplication by an element
 of~$\O_X^*$.\end{defn}
 
 The submodule~$\O_X(D)$ is indeed locally free of rank~$1$, since
@@ -1402,9 +1410,9 @@ and only if~$\O_X(-D)$ is a subset of~$\O_X$ from the internal perspective. In
 this case, we can define the \emph{support} of~$D$ to be the closed subscheme
 of~$X$ associated to the sheaf of ideals~$\O_X(-D) \subseteq \O_X$.
 
-\begin{defn}The \emph{Cartier divisor associated to a rank-one submodule}~$\L \subseteq
-\K_X$ is~$D := [f^{-1}]$, where~$f\?\K_X$ is the unique element of some basis
-of~$\L$.\end{defn}
+\begin{defn}The \emph{Cartier divisor associated to a free submodule~$\L \subseteq
+\K_X$ of rank~1} is~$D := [f^{-1}]$, where~$f\?\K_X$ is the unique element of
+some one-element-basis of~$\L$.\end{defn}
 
 The basis element~$f\?\K_X$ does indeed lie in~$\K_X^*$: Write~$f
 = s/t$ with~$s,t \? \O_X$. It suffices to show that~$s$ is a regular element
@@ -1545,13 +1553,13 @@ modality}).
 where~$\alpha$ is a fixed proposition.
 \end{enumerate}
 
-\begin{lemma}Any modal operator~$\Box$ is monotonic, i.\,e. if~$\varphi
+\begin{lemma}Any modal operator~$\Box$ is monotonic, \ie if~$\varphi
 \Rightarrow \psi$, then~$\Box\varphi \Rightarrow \Box\psi$. Furthermore, there
 holds a modus ponens rule: If~$\Box\varphi$ holds, and~$\varphi$
 implies~$\Box\psi$, then~$\Box\psi$ holds as well.\end{lemma}
 \begin{proof}Assume~$\varphi \Rightarrow \psi$. This is equivalent to
 supposing~$\varphi \wedge \psi \Leftrightarrow \varphi$. We are to show
-that~$\Box\varphi \Rightarrow \Box\psi$, i.\,e. that~$\Box\varphi \wedge
+that~$\Box\varphi \Rightarrow \Box\psi$, \ie that~$\Box\varphi \wedge
 \Box\psi \Leftrightarrow \Box\varphi$. The statement follows since by the third
 axiom on a modal operator, we have~$\Box\varphi \wedge \Box\psi \Leftrightarrow
 \Box(\varphi \wedge \psi)$.
@@ -1589,13 +1597,13 @@ holds that:
     V \cap U \models \varphi. \\[0.3em]
   V \models (\varphi \vee A^c) &\Longleftrightarrow&
     \textnormal{there is an open subset~$W \subseteq V$} \\
-  && \quad\quad \textnormal{containing~$A \cap V$ s.\,th. $W \models \varphi$.} \\[0.3em]
+  && \quad\quad \textnormal{containing~$A \cap V$ such that $W \models \varphi$.} \\[0.3em]
   V \models \neg\neg\varphi &\Longleftrightarrow&
-    \textnormal{there is a dense open subset~$W \subseteq V$ s.\,th. $W \models
+    \textnormal{there is a dense open subset~$W \subseteq V$ s.\,th.\@ $W \models
     \varphi$.} \\[0.3em]
   V \models ((\varphi \Rightarrow \notat{x}) \Rightarrow \notat{x}) &\Longleftrightarrow&
     \textnormal{$x \not\in V$ or there is an open neighbourhood~$W \subseteq V$} \\
-  && \quad\quad \textnormal{of~$x$ s.\,th. $W \models \varphi$.}
+  && \quad\quad \textnormal{of~$x$ such that $W \models \varphi$.}
 \end{array} \]
 \end{prop}
 \begin{proof}
@@ -1613,7 +1621,7 @@ that~$W \models \varphi$. Then~$V = W \cup (V \cap A^c)$ is an open covering
 attesting~$V \models \varphi \vee A^c$.
 
 \item For the ``only if'' direction, let~$W \subseteq V$ be the largest
-open subset on which~$\varphi$ holds, i.\,e. the union of all open subsets
+open subset on which~$\varphi$ holds, \ie the union of all open subsets
 of~$V$ on which~$\varphi$ holds. For the ``if'' direction, we may assume that
 the given~$W$ is also the largest open subset on which~$\varphi$ holds (by
 enlarging~$W$ if necessary). The claim then follows by the following chain of
@@ -1863,7 +1871,7 @@ translation}, with the following curious property: A formula~$\varphi$ is
 derivable in classical logic if and only if its
 translation~$\varphi^{\neg\neg}$ is derivable in intuitionistic logic. The
 translation~$\varphi^{\neg\neg}$ is obtained from~$\varphi$ by putting
-``$\neg\neg$'' before any subformula, i.\,e. before any~``$\exists$''
+``$\neg\neg$'' before any subformula, \ie before any~``$\exists$''
 and~``$\forall$'', around any logical connective and around any atomic
 statement (``$x=y$'', ``$x \in A$'').
 
@@ -1892,7 +1900,7 @@ the~$\Box$-translation for any modal operator~$\Box$.
 
 \begin{lemma}\begin{enumerate}
 \item Formulas in the image of the $\Box$-translation are~$\Box$-stable,
-i.\,e. for any formula~$\varphi$ it holds that
+\ie for any formula~$\varphi$ it holds that
 $\Box(\varphi^\Box) \Longrightarrow \varphi^\Box$.
 \item In the definition of the~$\Box$-translation, one may omit the boxes
 printed in gray.
@@ -1958,7 +1966,7 @@ in~$\varphi$, provided that for their antecedents~$\psi$ it holds that~$\psi
 proposition, the~$\Box$-translation of the law of excluded middle holds.
 In particular, this is for the~$\Box = \neg\neg$, where~$\alpha =
 \bot$.\end{lemma}
-\begin{proof}We are to show that~$(\varphi \vee \neg\varphi)^\Box$, i.\,e. that
+\begin{proof}We are to show that~$(\varphi \vee \neg\varphi)^\Box$, \ie that
 \[ (((\varphi^\Box \vee (\varphi^\Box \Rightarrow \alpha)) \Longrightarrow
 \alpha) \Longrightarrow \alpha. \]
 So assume that the antecedent holds. If~$\varphi^\Box$ would hold, then in
@@ -2081,7 +2089,7 @@ and an exact sequence
 where~$\ul{I}$ and~$\ul{J}$ are the constant sheaves associated to~$I$
 respectively~$J$. The term~``$(\O_X|_U)^{\ul{I}}$'' refers to the internally
 defined free~$\O_X$-module with basis the elements of~$\ul{I}$. By exploiting
-that~$\ul{I}$ is a discrete set from the internal point of view (i.\,e. any two
+that~$\ul{I}$ is a discrete set from the internal point of view (\ie any two
 elements are either equal or not), one can show that this is the same
 as~$(\O_X|_U)^I$; similarly for~$J$. With this observation, the statement
 follows.
@@ -2158,15 +2166,15 @@ would be an element of~$S$.
 
 \begin{ex}\label{ex:annihilator-qcoh}
 Let~$X$ be a scheme and~$s$ be a global section of~$\O_X$. Then the
-annihilator of~$s$, i.\,e. the sheaf of ideals internally defined by the
+annihilator of~$s$, \ie the sheaf of ideals internally defined by the
 formula
 \[ I := \Ann_{\O_X}(s) = \{ t\?\O_X \,|\, st = 0 \} \subseteq \O_X \]
 is quasicoherent. To prove this in the internal language, it suffices to
 verify the condition of the proposition.
 So let~$f:\O_X$ be arbitrary and assume~$\speak{$f$ inv.} \Rightarrow t \in I$,
-i.\,e. assume that if~$f$ were invertible,~$st$ would be zero. By
+\ie assume that if~$f$ were invertible,~$st$ would be zero. By
 proposition~\ref{prop:cond-zero} it follows that~$f^n st = 0$ for
-some~$n\?\NN$, i.\,e. that~$f^n t \in I$.
+some~$n\?\NN$, \ie that~$f^n t \in I$.
 \end{ex}
 
 \begin{itemize}

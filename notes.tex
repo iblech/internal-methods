@@ -1699,7 +1699,8 @@ To describe the notion of~$\Box$-sheaves and related ones, we switch to the inte
 perspective and thus forget~$X$; we are simply given a model operator~$\Box :
 \Omega \to \Omega$ and have to take care that our proofs are intuitionistic.
 
-\begin{defn}A set~$F$ is \emph{$\Box$-separated} if and only if
+\begin{defn}\label{defn:box-sheaves}
+A set~$F$ is \emph{$\Box$-separated} if and only if
 \[ \forall x,y\?F\_ \Box(x = y) \Longrightarrow x = y. \]
 A set~$F$ is a \emph{$\Box$-sheaf} if and only if it is~$\Box$-separated and
 \[ \forall S \subseteq F\_
@@ -1720,6 +1721,12 @@ where the equivalence relation is defined by~$S \sim T :\Leftrightarrow
 [\{x\}]$. The \emph{$\Box$-sheafi\-fi\-ca\-tion} of a set~$F$ is the
 set~$F^{++}$.
 \end{defn}
+
+If~$F$ is~$\Box$-separated, then for any subset~$S \subseteq F$ it holds
+that
+\[ \Box(\speak{$S$ is a singleton}) \quad\Longleftrightarrow\quad
+  \speak{$S$ is a subsingleton} \wedge \Box(\speak{$S$ is inhabited}). \]
+% XXX: introduce "singleton", "subsingleton"
 
 \begin{rem}The topos of \emph{pre}sheaves on a topological space~$X$ admits an
 internal language as well~\cite[???]{moerdijk-maclane:sheaves-logic}. In it, there
@@ -1748,6 +1755,61 @@ adjoint to the forgetful functor~$\Sh_\Box(\Set) \to \Set,\ F \mapsto F$.
 \begin{proof}These are all straightforward, and it fact simpler than their
 classical counterparts, since there are no colimit constructions which would have to
 be dealt with.
+\end{proof}
+
+
+\subsection{Sheaves for the double negation modality}
+% XXX: introductory words
+
+\begin{prop}Let~$X$ be a topological space. Let~$\F$ be a sheaf on~$X$. Then:
+\begin{enumerate}
+\item $\F$ is~$\neg\neg$-separated if and only if it is sufficient for local
+sections to be equal to agree on a dense open subset of their common domain.
+\item $\F$ is a~$\neg\neg$-sheaf if and only if it is~$\neg\neg$-separated and
+for any open subset~$U \subseteq X$ and any open subset~$V \subseteq U$ dense
+in~$U$, any~$V$-section of~$\F$ extends to a~$U$-section of~$\F$.
+\item If~$\F$ is~$\neg\neg$-separated, the sections of $\F^+$ on an open
+subset~$U \subseteq X$ can be described as pairs~$(V,s)$, where~$V$ is a dense
+open subset of~$U$ and~$s$ is a section of~$\F$ on~$V$. Two such pairs~$(V,s),
+(V',s')$ give the same element in~$\Gamma(U,\F^+)$ if and only if~$s$ and~$s'$
+agree on~$V \cap V'$.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+The first statement is obvious from the definition of~$\neg\neg$-separatedness
+(definition~\ref{defn:box-sheaves} for~$\Box = \neg\neg$) and the geometric
+interpretation of double negation (proposition~\ref{prop:modops-kripke}).
+
+For the second statement, it suffices to show that if~$\F$
+is~$\neg\neg$-separated,~$\F$ has the extension property if and only if
+\begin{multline*}
+  \Sh(X) \models \forall \S \? \P(\F)\_
+  \speak{$\S$ is a subsingleton} \wedge
+  \neg\neg(\speak{$\S$ is inhabited}) \Longrightarrow \\
+  \exists x\?\F\_ \neg\neg(x \in \S).
+\end{multline*}
+Note that a section~$\S \in \Gamma(U,\P(\F))$ which internally is a
+subsingleton and not not inhabited is precisely a subsheaf~$\S \hookrightarrow
+\F$ such that all stalks~$\S_x$, $x \in U$ are subsingletons and such that for
+some dense open subset~$V \subseteq U$, the stalks~$\S_x$, $x \in V$ are
+inhabited. This is precisely the datum of a section of~$\F$ defined on some
+dense open subset of~$U$: Consider the gluing of the unique germs in~$\S_x$ for
+those points~$x$ such that~$\S_x$ is inhabited. (Conversely, a section~$s \in
+\Gamma(V,\F)$ defines a subsheaf~$\S$ by setting~$\Gamma(W,\S) := \{ s|_W \,|\,
+W \subseteq V \}$.)
+
+In view of this explicit description and the observation that the existence in
+question~(``$\exists x\?\F\_ \neg\neg(x \in \S)$'') is actually a question of
+unique existence, the second statement follows.
+% this is hard to understand
+
+For the third statement, one can check that the presheaf on~$X$ defined by
+\[ \text{$U \subseteq X$ open} \longmapsto
+  \{ (V,s) \,|\, \text{$V \subseteq U$ dense open},\ s \in \Gamma(V,\F)
+  \}/{\sim} \]
+is in fact a sheaf (with respect to the topology of~$X$), a $\neg\neg$-sheaf
+and that it fulfills the universal property of the~$\neg\neg$-sheafification
+of~$\F$.
 \end{proof}
 
 % XXX: introduce notion of Box-stability
@@ -2118,3 +2180,16 @@ By appealing to the axiom of unique choice (see~XXX), we can
 define a morphism of sheaves~$\O_X(D) \otimes \O_X(D') \to \O_X(D + D')$ by
 internally describing a suitable map using representatives~$D = [f]$,~$D' =
 [f']$, as long as the resulting map does not depend on the choice of representatives.
+
+For the third statement, note that it is equivalent to show that
+\[ \Gamma(U,\F^+) = \{ (V,s) \,|\,
+  \text{$V \subseteq U$ dense open},\ 
+  s \in \Gamma(V,\F),\ 
+  \text{$(V,s)$ maximal} \}, \]
+where~``$(V,s)$ maximal'' means that for any other such pair~$(W,t)$ such
+that~$V \subseteq W$ and~$t|_V = s$, it holds that~$V = W$. This follows from
+the fact that the plus construction can also be defined as
+\[ \F^+ := \{ S \subseteq F \,|\,
+  \speak{$S$ subsingleton},\ 
+  \neg\neg(\speak{$S$ inhabited}),\ 
+  \speak{$S$ $\neg\neg$-stable} \}. \]

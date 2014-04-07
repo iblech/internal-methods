@@ -256,6 +256,8 @@ mathematics)
 \item explain that with the internal language business, it becomes more
 transparent where scheme condition enters
 \item discuss limitations (here or somewhere else)
+\item note that in-depth knowledge of formal logic or topos theory is not necessary for
+applications
 \item give pointers to introductory literature
 \end{itemize}
 
@@ -591,7 +593,7 @@ The following constructions are not in general geometric:
 \item arbitrary product
 \item set comprehension with respect to a non-geometric formula
 \item powerset
-\item internal Hom: $\HOM(\F,\G)_x \not\cong \HOM(\F_x,\G_x)$
+\item internal Hom: $\HOM(\F,\G)_x \not\cong \Hom(\F_x,\G_x)$
 \end{itemize}
 
 \begin{itemize}
@@ -834,7 +836,7 @@ presented module from the internal perspective, \ie if
 \begin{multline*}
 {\qquad\qquad\qquad}
   \Sh(X) \models \speak{$\F$ is finitely generated} \mathop{\wedge} \\
-  \bigwedge_{n \geq 0} \forall \varphi \? \HOM(\O_X^n,\F)\_
+  \bigwedge_{n \geq 0} \forall \varphi \? \HOM_{\O_X}(\O_X^n,\F)\_
   \speak{$\Kernel \varphi$ is finitely generated}.
 \end{multline*}
 \end{itemize}
@@ -1733,7 +1735,7 @@ pullback and pushforward functors.
 \end{align*}
 As familiar from honest topological subspace inclusions, the pushforward
 functor~$i_* : \Sh(X_j) \to \Sh(X)$ is fully faithful and the composition~$i^{-1}
-\circ i_* : \Sh(X_j) \to \Sh(X_j)$ is (isomorphic to) the identity.
+\circ i_* : \Sh(X_j) \to \Sh(X_j)$ is (canonically isomorphic to) the identity.
 
 
 \subsection{Internal sheaves and sheafification} It turns out that the image of

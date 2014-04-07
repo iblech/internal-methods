@@ -1928,7 +1928,8 @@ of~$\psi^\withgray$; the third by the induction hypothesis; the fourth by
 definition.
 \end{proof}
 
-\begin{lemma}Let~$\varphi$ be a formula such that for any subformulas~$\psi$
+\begin{lemma}\label{lemma:open-stalk}
+Let~$\varphi$ be a formula such that for any subformulas~$\psi$
 appearing as antecedents of implications, it holds that~$\psi^\Box \Rightarrow
 \Box\psi$. (In particular, this condition is satisfied if there is
 no~``$\Rightarrow$'' in~$\varphi$.) Then $\Box\varphi \Rightarrow
@@ -1944,7 +1945,8 @@ with the first step being by the requirement on antecedents, the second by the
 monotonicity of~$\Box$, and the third by the induction hypothesis.
 \end{proof}
 
-\begin{lemma}Let~$\varphi$ be a geometric formula.
+\begin{lemma}\label{lemma:stalk-open}
+Let~$\varphi$ be a geometric formula.
 Then $\varphi^\Box \Rightarrow \Box\varphi$.\end{lemma}
 \begin{proof}By induction on the formula structure. By way of example, we prove
 the case for~``$\bigvee$''. So assume~$\Box(\bigvee_i \varphi_i^\Box)$; we are
@@ -1965,6 +1967,29 @@ lemma holds with slightly weaker hypotheses: Namely, implications may occur
 in~$\varphi$, provided that for their antecedents~$\psi$ it holds that~$\psi
 \Rightarrow \psi^\Box$.\end{rem}
 % is this remark useful?
+
+\begin{lemma}\label{lemma:stalk-open-with-hypothesis}
+Let~$\varphi, \varphi', \psi$ be formulas. Assume that:
+\begin{itemize}
+\item The formula $\varphi'$ is geometric.
+\item There is an intuitionistic proof that~$\varphi$
+and~$\varphi'$ are equivalent under the (only) hypothesis~$\psi$.
+\item Both~$\Box\psi$ and~$\psi^\Box$ hold.
+\end{itemize}
+Then $\varphi^\Box \Rightarrow \Box\varphi$.
+\end{lemma}
+\begin{proof}
+Assume~$\varphi^\Box$. Since~$\psi^\Box$, $(\varphi \wedge \psi)^\Box$. Because
+the~$\Box$-translation is sound with respect to intuitionistic logic (see~XXX),
+it follows that~$(\varphi')^\Box$. As~$\varphi'$ is geometric, it follows
+that~$\Box\varphi'$. Since~$\Box\psi$ holds, it follows that~$\Box\varphi$.
+\end{proof}
+
+\begin{rem}The requirement that there exists an intuitionistic proof is
+stronger than merely \emph{knowing} that the equivalence holds.
+\end{rem}
+% XXX: move this remark to the place where soundness of the Box-translation is
+% discussed
 
 \begin{lemma}For the modality~$\Box$ defined by~$\Box\varphi :\equiv ((\varphi
 \Rightarrow \alpha) \Rightarrow \alpha)$, where~$\alpha$ is a fixed

@@ -1208,7 +1208,7 @@ any stalk~$\F_y$, $y \in U$, so we have
 \end{proof}
 \begin{rem}Once we understand when properties holding at a stalk spread to a
 neighbourhood, we will be able to give a simpler proof of the proposition (see
-XXX).\end{rem}
+proposition~\ref{prop:gen-family-n}).\end{rem}
 
 
 \section{Rational functions and Cartier divisors}
@@ -2068,6 +2068,56 @@ that~$\varphi^\Box \Leftrightarrow \Box\varphi$.
 function~$f\?\O_X$ to be nilpotent is geometric (it is~$\bigvee_{n \geq 0} f^n
 = 0$), nilpotency of~$f$ at a point is equivalent to nilpotency on some open
 neighbourhood.\end{ex}
+
+\begin{prop}\label{prop:gen-family-n}
+Let~$X$ be a scheme (or ringed space). Let~$\F$ be an~$\O_X$-module
+of finite type. Let~$x \in X$ be a point. Let~$n$ be a natural number. Then the
+following statements are equivalent:
+\begin{enumerate}
+\item There exists a generating family for~$\F_x$ consisting of~$n$ elements.
+\item There exists an open neighbourhood~$U$ of~$x$ such that
+\[ U \models \speak{there exists a generating family for~$\F$ consisting of~$n$
+elements}. \]
+\end{enumerate}
+\end{prop}
+\begin{proof}Using the modal operator~$\Box$ defined by~$\Box\varphi :\equiv
+((\varphi \Rightarrow \notat{x}) \Rightarrow \notat{x})$, we have to show that
+the following statements in the internal language are equivalent:
+\begin{enumerate}
+\item $\speak{there exists a generating family
+for~$\F$ consisting of~$n$ elements}^\Box$.
+\item $\Box(\speak{there exists a generating family
+for~$\F$ consisting of~$n$ elements})$.
+\end{enumerate}
+By lemma~\ref{lemma:open-stalk}, the second statement implies the first -- note
+that in a formal spelling of the statement in quotes,
+\begin{equation}
+  \tag{$\star$}
+  \exists x_1,\ldots,x_n\?\F\_
+  \forall x\?\F\_
+  \exists a_1,\ldots,a_n\?\O_X\_
+  x = \textstyle\sum_i a_i x_i,
+\end{equation}
+no implication signs occur. To show the converse direction,
+we may assume that there is a generating family~$y_1,\ldots,y_m\?\F$ for~$\F$
+(since~$\F$ is, externally speaking, of finite type). Then it
+the~$\Box$-translation of the statement that the~$y_i$ generate~$\F$ holds as
+well (again by lemma~\ref{lemma:open-stalk}). Since there is an intuitionistic
+proof of
+\begin{multline*}
+  \speak{$y_1,\ldots,y_m$ generate~$\F$} \Longrightarrow \\
+  \bigl(\speak{there exist $x_1,\ldots,x_n\?\F$ which generate~$\F$}
+    \Longleftrightarrow \\
+    \exists x_1,\ldots,x_n\?\F\_
+    \exists A\?\O^{m \times n}\_ \speak{$\vec y = A \vec x$}\bigr),
+\end{multline*}
+we can substitute the non-geometric formula~$(\star)$ by the geometric
+formula
+\[ \exists x_1,\ldots,x_n\?\F\_ \exists A\?\O^{m \times n}\_ \speak{$\vec
+y = A \vec x$} \]
+(lemma~\ref{lemma:stalk-open-with-hypothesis}). Thus the claim follows.
+\end{proof}
+% XXX: give backreference
 
 \begin{itemize}
 \item general explanation of modalities (as for instance in philosophy)

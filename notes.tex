@@ -528,7 +528,7 @@ mathematical sense.
 \begin{lemma}\label{lemma:geometric-stalk-neighbourhood}
 Let~$x \in X$ be a point. Let~$\varphi$ be a geometric formula (over some open
 neighbourhood of~$x$).
-Then~$\varphi$ holds at~$x$ if and only if there exists a neighbourhood~$U
+Then~$\varphi$ holds at~$x$ if and only if there exists an open neighbourhood~$U
 \subseteq X$ of~$x$ such that~$\varphi$ holds on~$U$.
 \end{lemma}
 \begin{proof}This is a very general instance of the phenomenom that sometimes,
@@ -1147,7 +1147,7 @@ stalk~$\A_x$ is an inhabited upward-closed subset of~$\ul{\NN}_x \cong \NN$.
 The association
 \[ x \in X \longmapsto \min\{ n \in \NN \,|\, n \in \A_x \} \]
 thus defines a map~$X \to \NN$. This map is indeed upper semicontinuous, since
-if~$n \in \A_x$, there exists a neighbourhood~$V$ of~$x$ such that the constant
+if~$n \in \A_x$, there exists an open neighbourhood~$V$ of~$x$ such that the constant
 function with value~$n$ is an element of~$\Gamma(V,\A)$ and therefore~$n \in
 \A_y$ for all~$y \in V$.
 
@@ -1193,7 +1193,7 @@ defined rank maps to the rank function of~$\F$.
 \begin{proof}
 We have to show that for any point~$x \in X$ and natural number~$n$, there
 exists a generating family for~$\F_x$ consisting of~$n$
-elements if and only if there exists a neighbourhood~$U$ of~$x$ such that
+elements if and only if there exists an open neighbourhood~$U$ of~$x$ such that
 \[ U \models \speak{there exists a generating family
 for~$\F$ consisting of~$n$ elements}. \]
 The ``if'' direction is obvious. For the ``only if'' direction, consider
@@ -1342,9 +1342,9 @@ that~$t$ really is zero.
 
 With these observations, we can proceed to that~$\K_X$ is~$\neg\neg$-separated.
 So assume~$\neg\neg(a/s = 0)$ for~$a/s \? \K_X$. Since~$\K_X$ is obtained
-from~$\O_X$ at regular elements, it holds that~$a/s = 0$ in~$\K_X$ if and only
-if~$a = 0$ in~$\O_X$. Thus it follows that~$\neg\neg(a = 0)$ in~$\O_X$ and
-thus~$a = 0$ in~$\O_X$; in particular, $a/s = 0$ in~$\K_X$.
+from~$\O_X$ by localizing at regular elements, it holds that~$a/s = 0$
+in~$\K_X$ if and only if~$a = 0$ in~$\O_X$. Thus it follows that~$\neg\neg(a =
+0)$ in~$\O_X$ and thus~$a = 0$ in~$\O_X$; in particular, $a/s = 0$ in~$\K_X$.
 
 We defer the proof that~$\K_X$ is a~$\neg\neg$-sheaf to the end and first
 verify the universal property of~$\neg\neg$-sheafification.
@@ -1358,8 +1358,13 @@ is \notnot inhabited. Since~$G$ is a~$\neg\neg$-sheaf, there exists a
 unique~$x\?G$ such that~$\neg\neg(x \in S)$. We declare~$\bar\alpha(f)$ to be
 this~$x$. It is straightforward to check that the composition~$\O_X \to \K_X
 \to G$ equals~$\alpha$ and that~$\bar\alpha$ is unique with this property.
+
+Up to this point, the proof did not need that~$X$ is a scheme -- it was enough
+for~$X$ to be a ringed space such that the display equivalence above holds and
+such that~$\neg(0 = 1)$ in~$\O_X$. Only now, to show that~$\K_X$ is
+a~$\neg\neg$-sheaf, the scheme condition enters.
+% XXX: finish proof
 \end{proof}
-% XXX: finish proof!
 
 
 \subsection{Cartier divisors} Let~$X$ be a scheme (or ringed space). Recall

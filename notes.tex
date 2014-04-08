@@ -971,7 +971,8 @@ free) as well. It is well-known that this follows; and since the usual proof of
 this fact is intuitionistic, we are done.
 \end{proof}
 
-\begin{lemma}Let~$X$ be a scheme (or locally ringed space). Let~$\alpha : \G
+\begin{lemma}\label{lemma:kernel-of-epi-fingen}
+Let~$X$ be a scheme (or locally ringed space). Let~$\alpha : \G
 \to \H$ be an epimorphism of locally finitely free~$\O_X$-modules. Then the
 kernel of~$\alpha$ is locally finitely free as well.\end{lemma}
 \begin{proof}It suffices to give an intuitionistic proof of the following
@@ -1063,7 +1064,8 @@ essentially different ways: either be strengthening the premise, or by
 weakening the conclusion.
 % XXX: Give sheaf-theoretic interpretation of the failure.
 
-\begin{lemma}Let~$U \subseteq \NN$ be an inhabited subset of the natural
+\begin{lemma}\label{lemma:minimum-subset-naturals}
+Let~$U \subseteq \NN$ be an inhabited subset of the natural
 numbers.
 \begin{enumerate}
 \item Assume~$U$ to be \emph{detachable}, \ie assume that for any natural
@@ -1118,8 +1120,14 @@ If~$M \subseteq \widehat\NN$ is an inhabited subset, its minimum is
 The proof of the universal property is left to the reader.
 \end{proof}
 
-\begin{rem}In classical logic, the map~$\widehat\NN \to \NN,\ U \mapsto \min U$
-is a well-defined isomorphism of partially ordered sets.\end{rem}
+\begin{rem}\label{rem:surjectivity-embedding}
+In classical logic, the map~$\widehat\NN \to \NN,\ U \mapsto \min U$
+is a well-defined isomorphism of partially ordered sets. In fact, it is the
+inverse of the canonical embedding~$\NN \hookrightarrow \widehat\NN$. In
+intuitionistic logic, this embedding is still injective, but it can not be
+shown to be surjective: It's only the cases that any element of~$\widehat\NN$
+possesses \notnot a preimage (by lemma~\ref{lemma:minimum-subset-naturals}).
+\end{rem}
 
 
 \subsection{A geometric interpretation}
@@ -1184,7 +1192,7 @@ In the internal language, we can define an element of~$\widehat\NN$ by
 for~$\F$ consisting of~$n$ elements} \} \in \widehat\NN. \]
 If~$\F$ is locally finitely free, it will be a finitely free module from the
 internal point of view and the rank defined in this way will be an
-actual natural number; but in general, the rank is really an element of the
+actual natural number (see below); but in general, the rank is really an element of the
 completion.
 
 \begin{prop}
@@ -1205,12 +1213,61 @@ there also exist sections~$t_1,\ldots,t_m$ on some neighbourhood~$V$ of~$x$ whic
 generate any stalk~$\F_y$, $y \in V$. Since the~$t_i$ can be expressed as a
 linear combination of the~$s_j$ in~$\F_x$, the same is true on some open
 neighbourhood~$U \subseteq V$ of~$x$. On this neighbourhood, the~$s_j$ generate
-any stalk~$\F_y$, $y \in U$, so we have
+any stalk~$\F_y$, $y \in U$, so by geometricity we have
 \[ U \models \speak{$s_1,\ldots,s_n$ generate~$\F$}. \qedhere \]
 \end{proof}
 \begin{rem}Once we understand when properties holding at a stalk spread to a
 neighbourhood, we will be able to give a simpler proof of the proposition (see
 proposition~\ref{prop:gen-family-n}).\end{rem}
+
+\begin{lemma}Let~$X$ be a locally ringed space. Let~$\F$ be an~$\O_X$-module of
+finite type. If~$\F$ is locally finitely free, its rank function is locally
+constant. The converse holds if~$X$ is a reduced scheme.
+\end{lemma}
+\begin{proof}The rank function is locally constant if and only if internally,
+the rank of~$\F$ is an actual natural number. Furthermore, if~$X$ is a reduced
+scheme, the structure sheaf fulfills an appropriate field condition
+(corollary~\ref{cor:field-reduced}). Therefore it suffices to give a
+proof of the following fact of intuitionistic linear algebra: Let~$R$ be a
+local ring. Let~$M$ be a finitely generated~$R$-module. If~$M$ is finitely
+free, its rank is an actual natural number. The converse holds if~$R$ fulfills
+the field condition that any element which is not invertible is zero.
+
+So assume that such a module~$M$ is finitely free. Then it is isomorphic
+to~$R^n$ for some actual natural number~$n$; by the internal proof in
+lemma~\ref{lemma:kernel-of-epi-fingen}, the rank of~$M$ is therefore this
+number~$n$ (for any surjection~$R^m \twoheadrightarrow R^n$ it holds that~$m
+\geq n$).
+
+Conversely, assume that the rank of~$M$ is an actual natural number. Then
+there exists a minimal generating family~$x_1,\ldots,x_n\?M$. This family is
+linearly independent (and thus a basis, demonstrating that~$M$ is finitely
+free): Let~$\sum_i a_i x_i = 0$ with~$a_i\?\R$. If any~$a_i$ were
+invertible, the family~$x_1,\ldots,x_{i-1},x_{i+1},\ldots,x_n$ would too
+generate~$M$, contradicting the minimality. So each~$a_i$ is not invertible.
+Since~$R$ fulfills the appropriate field condition, each~$a_i$ is zero.
+\end{proof}
+
+\begin{lemma}Let~$X$ be a reduced scheme. Let~$\F$ be an~$\O_X$-module of
+finite type. Then~$\F$ is locally free on a dense open subset.\end{lemma}
+\begin{proof}Since ``dense open'' translates to ``not not'' in the internal
+language (proposition~\ref{prop:modops-kripke}), it suffices to give an
+intuitionistic proof of the following fact: Let~$R$ be a local ring which fulfills an
+appropriate field condition. Let~$M$ be a finitely generated~$R$-module.
+Then~$R$ is \notnot finitely free.
+
+By remark~\ref{rem:surjectivity-embedding}, the rank of such a module~$M$ is
+\notnot an actual natural number. By the last part of the
+previous proof, it thus follows that~$M$ is \notnot finitely free.
+\end{proof}
+
+\begin{rem}Note that besides basics on natural numbers in an intuitionistic
+setting and some dictionary terms (``reduced'', ``locally finitely free'',
+``finite type``, ``dense open''), this proof does not depend on any further
+tools. In particular, Nakayama's lemma and facts about semicontinuous functions
+do not enter. For the (more complex) standard proof of this fact, see for
+instance~\cite{vakil:foag}, where the claim is dubbed an ``important hard
+exercise'' (exercise~13.7.K).\end{rem}
 
 
 \section{Rational functions and Cartier divisors}

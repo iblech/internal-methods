@@ -123,6 +123,7 @@
 
 \maketitle
 
+\setcounter{tocdepth}{1}
 \tableofcontents
 
 \section{Introduction}
@@ -1270,281 +1271,6 @@ instance~\cite{vakil:foag}, where the claim is dubbed an ``important hard
 exercise'' (exercise~13.7.K).\end{rem}
 
 
-\section{Rational functions and Cartier divisors}
-
-\subsection{The sheaf of rational functions} Recall that the sheaf~$\K_X$ of rational
-functions on a scheme~$X$ (or ringed space) can be defined as the sheaf
-associated to the presheaf
-\[ \text{$U \subseteq X$ open} \longmapsto \Gamma(U,\O_X)[\Gamma(U,\S)^{-1}], \]
-where~$\Gamma(U,\S)$ is the multiplicative set of those sections of~$\O_X$ on~$U$,
-which are regular in each stalk~$\O_{X,x}$, $x \in U$. Recall also there are
-some wrong definitions in the literature~\cite{kleiman:misconceptions}.
-
-Using the internal language, we can give a simpler definition of~$\K_X$.
-Recall that we can associate to any ring~$R$ its total quotient ring, \ie
-its localization at the multiplicative subset of regular elements. Since from
-the internal perspective~$\O_X$ is an ordinary ring, we can associate to it its
-total quotient ring $\O_X[\S^{-1}]$,
-where~$\S$ is internally defined by the formula
-\[ \S := \{ s\?\O_X \,|\, \speak{$s$ is regular} \} \subseteq \O_X. \]
-Externally, this ring is the sheaf~$\K_X$.
-\begin{prop}Let~$X$ be a scheme (or a ringed space). The sheaf of rings defined
-in the internal language by localizing~$\O_X$ at its set of regular elements is
-(canonically isomorphic to) the sheaf~$\K_X$ of rational functions.
-\end{prop}
-\begin{proof}Internally, the ring~$\O_X[\S^{-1}]$ fulfills the following
-universal property: For any ring~$R$ and any homomorphism~$\O_X \to R$ which
-maps the elements of~$\S$ to units, there exists exactly one
-homomorphism~$\O_X[\S^{-1}] \to R$ which makes the evident diagram commute.
-\[ \xymatrix{
-  \O_X \ar[rr] \ar[dr] && R \\
-  & \O_X[\S^{-1}] \ar@{-->}[ru]
-} \]
-The translation using the Kripke--Joyal semantics gives the following universal
-property: For any open subset~$U \subseteq X$, any sheaf of rings~$\R$ on~$U$ and any
-homomorphism~$\O_X|_U \to \R$ which maps all elements of~$\Gamma(V,\S)$, $V
-\subseteq U$ to units, there exists exactly one homomorphism~$\O_X[\S^{-1}]|_U \to
-\R$ which makes the evident diagram commute.
-It is well-known~\cite{???} that the sheaf~$\K_X$ as usually defined satisfies
-this universal property as well.
-\end{proof}
-
-\begin{prop}\label{prop:stalks-kx}
-Let~$X$ be a scheme (or ringed space). Then the stalks of~$\K_X$
-are given by
-\[ \K_{X,x} = \O_{X,x}[\S_x^{-1}]. \]
-The elements of~$\S_x$ are exactly the germs of those local sections which are
-regular not only in~$\O_{X,x}$, but in all rings~$\O_{X,y}$ where~$y$
-ranges over some neighbourhood of~$x$ (depending on the section).\end{prop}
-\begin{proof}
-Since localization is a geometric construction, the first statement is entirely
-trivial. The second statement follows since
-\[ \Gamma(U,\S) = \{ s\in\Gamma(U,\O_X) \,|\, U \models \speak{$s$ is regular}
-\} \]
-and regularity is a geometric implication, so that
-$U \models \speak{$s$ is regular}$ if and only if the germ~$s_y$ is regular
-in~$\O_{X,y}$ for all~$y \in U$.
-\end{proof}
-
-\begin{rem}Speaking internally, the multiplicative set~$\S$ is saturated.
-Therefore an element~$s/t \? \K_X$ is invertible in~$\K_X$ if and only if the
-numerator~$s$ belongs to~$\S$, \ie is an regular element of~$\O_X$.\end{rem}
-
-
-\subsection{Regularity of local functions}
-It is well known that on a locally Noetherian scheme, regularity spreads from
-stalks to neighbourhoods, \ie a section of~$\O_X$ is regular
-in~$\O_{X,x}$ if and only if it is regular on some neighbourhood on~$x$.
-This fact has a simple proof in the internal language:
-\begin{prop}\label{prop:regularity-spreading}
-Let~$X$ be a locally Noetherian scheme. Let~$s \in \Gamma(U,\O_X)$
-be a local function on~$X$. Let~$x \in U$. Then the following statements are
-equivalent:
-\begin{enumerate}
-\item The section~$s$ is regular in~$\O_{X,x}$.
-\item The section~$s$ is regular in all local rings~$\O_{X,y}$ where~$y$ ranges
-over some neighbourhood of~$x$.
-\end{enumerate}
-\end{prop}
-\begin{proof}
-Let~$\Box$ be the modal operator defined by~$\Box(\varphi) :\equiv ((\varphi
-\Rightarrow {!x}) \Rightarrow {!x})$. By XXX, we are to show that the following
-statements of the internal language
-are equivalent:
-\begin{enumerate}
-\item $(\speak{$s$ is regular})^\Box$, \ie
-$\forall t\?\O_X\_ st = 0 \Rightarrow \Box(t = 0)$.
-\item $\Box(\speak{$s$ is regular})$, \ie
-$\Box(\forall t\?\O_X\_ st = 0 \Rightarrow t = 0)$.
-\end{enumerate}
-It is clear that the second statement implies the first -- in fact, this is true
-without any assumptions on~$X$: Let~$t\?\O_X$ be such that~$st = 0$. Since we want to
-prove the boxed statement~$\Box(t=0)$, we may assume that~$s$ is regular and
-prove~$t = 0$. This follows by definition.
-
-For the converse direction, consider the annihilator of~$s$, \ie the ideal
-\[ I := \Ann_{\O_X}(s) = \{ t\?\O_X \,|\, st = 0 \} \subseteq \O_X. \]
-This ideal satisfies the quasicoherence condition (example~\ref{ex:annihilator-qcoh}),
-thus~$I$ is a quasicoherent submodule of a finitely generated module. Since~$X$ is
-locally Noetherian, it follows that~$I$ is finitely generated as well. By
-assumption, each generator~$x_i \? I$ fulfills~$\Box(x_i = 0)$. Since we want
-to prove a boxed statement, we may in fact assume~$x_i = 0$. Thus~$I = (0)$ and
-the assertion, that~$s$ is regular, follows.
-\end{proof}
-
-\begin{cor}Let~$X$ be a locally Noetherian scheme. Then the stalks~$\K_{X,x}$
-of the sheaf of rational functions are given by the total quotient rings of the
-local rings~$\O_{X,x}$.\end{cor}
-\begin{proof}Combine proposition~\ref{prop:stalks-kx} and
-proposition~\ref{prop:regularity-spreading}.\end{proof}
-
-
-\subsection{Geometric interpretation of rational functions}
-
-\begin{prop}Let~$X$ be a reduced scheme. Then~$\K_X$ is
-the~$\neg\neg$-sheafification of~$\O_X$.\end{prop}
-\begin{proof}Recall from corollary~\ref{cor:field-reduced} that
-\[ \Sh(X) \models \forall s\?\O_X\_ \neg(\speak{$s$ invertible}) \Leftrightarrow
-s=0. \]
-From this we can deduce that~$\O_X$ is~$\neg\neg$-separated:
-Assume~$\neg\neg(s=0)$ for~$s\?\O_X$. If~$s$ were invertible, we would
-have~$\neg\neg(1=0)$ and thus~$\bot$. Therefore~$s$ is not invertible and thus
-zero.
-
-Furthermore, we can can deduce that internally, an element~$s\?\O_X$ is regular
-if and only if it is \notnot invertible: For the ``only if'' direction,
-note that a regular element is not zero (if it were, then the true statement~$0
-\cdot 0 = 0 \cdot 1$ would imply the false statement~$0 = 1$). For the ``if''
-direction, let~$st = 0$ in~$\O_X$. Since~$s$ is \notnot invertible, it follows
-that~$t$ is \notnot zero. Since~$\O_X$ is~$\neg\neg$-separated, this implies
-that~$t$ really is zero.
-
-With these observations, we can proceed to that~$\K_X$ is~$\neg\neg$-separated.
-So assume~$\neg\neg(a/s = 0)$ for~$a/s \? \K_X$. Since~$\K_X$ is obtained
-from~$\O_X$ by localizing at regular elements, it holds that~$a/s = 0$
-in~$\K_X$ if and only if~$a = 0$ in~$\O_X$. Thus it follows that~$\neg\neg(a =
-0)$ in~$\O_X$ and thus~$a = 0$ in~$\O_X$; in particular, $a/s = 0$ in~$\K_X$.
-
-We defer the proof that~$\K_X$ is a~$\neg\neg$-sheaf to the end and first
-verify the universal property of~$\neg\neg$-sheafification.
-% grammar?
-So let~$G$ be a~$\neg\neg$-sheaf and let~$\alpha : \O_X \to G$ be a map. We
-can define an extension~$\bar\alpha : \K_X \to G$ in the following way:
-Let~$f \? \K_X$. Define the subsingleton~$S := \{ x \? G \,|\, \exists
-b\?\O_X\_ f = b/1 \wedge x = \alpha(b) \} \subseteq G$. Since~$f$ can be
-written in the form~$a/s$ with~$s$ \notnot invertible, it follows that~$S$
-is \notnot inhabited. Since~$G$ is a~$\neg\neg$-sheaf, there exists a
-unique~$x\?G$ such that~$\neg\neg(x \in S)$. We declare~$\bar\alpha(f)$ to be
-this~$x$. It is straightforward to check that the composition~$\O_X \to \K_X
-\to G$ equals~$\alpha$ and that~$\bar\alpha$ is unique with this property.
-
-Up to this point, the proof did not need that~$X$ is a scheme -- it was enough
-for~$X$ to be a ringed space such that the display equivalence above holds and
-such that~$\neg(0 = 1)$ in~$\O_X$. Only now, to show that~$\K_X$ is
-a~$\neg\neg$-sheaf, the scheme condition enters.
-% XXX: finish proof
-\end{proof}
-
-
-\subsection{Cartier divisors} Let~$X$ be a scheme (or ringed space). Recall
-that a \emph{Cartier divisor} on~$x$ is a global section of the sheaf of
-groups~$\K_X^* / \O_X^*$. This sheaf can be constructed internally, with the
-same notation: It is the quotient of the group of invertible elements of the
-ring~$\K_X$ by the subgroup of invertible elements of the ring~$\O_X$. So an
-arbitrary section of~$\K_X^*/\O_X^*$ is internally of the form~$[s/t]$
-with~$s,t\?\O_X$ being regular elements; this is a simpler description than the
-usual external one (as a family~$(f_i)_i$ of functions~$f_i \in
-\Gamma(U_i,\K_X^*)$ such that~$f_i^{-1}|_{U_i \cap U_j} \cdot f_j|_{U_i \cap
-U_j} \in \Gamma(U_i \cap U_j, \O_X^*)$ for all~$i,j$).
-
-We can sketch the basic theory of Cartier divisors completely from the internal
-perspective. In accordance with common practice, we will write the group
-operation of~$\K_X^*/\O_X^*$ (which is induced by multiplication of elements
-in~$\K_X^*$) additively.
-
-\begin{defn}A Cartier divisor is \emph{effective} if and only if, from the
-internal perspective, it can be written in the form~$[s/1]$ with~$s\?\O_X$
-being a regular element.\end{defn}
-
-Thus a Cartier divisor~$[s/t]$ is effective if and only if~$s$ is
-an~$\O_X$-multiple of~$t$.
-
-\begin{defn}A Cartier divisor~$D$ is \emph{principal} if and only if there
-exists a global section~$f \in \Gamma(X,\K_X^*)$ such that internally,~$D = [f]$.
-Two Cartier divisors are \emph{linearly equivalent} if and only if their
-difference is a principal divisor.
-\end{defn}
-
-Note that decidedly, principality is a global notion: For any divisor~$D$ it is
-true that locally there exists sections~$f$ of~$\K_X^*$ such that~$D = [f]$.
-
-\begin{defn}The \emph{line bundle associated to a Cartier divisor}~$D$
-is the~$\O_X$-submodule
-\[ \O_X(D) := \{ g \in \K_X \,|\, g D \in \O_X \} = D^{-1} \O_X \subseteq \K_X
-\]
-of~$\K_X$. Here we are abusing language for~``$gD \in \O_X$'' to mean that~$gf
-\in \O_X$ if~$D = [f]$ with~$f\?\K_X$; and for~``$D^{-1} \O_X$'' to
-mean~$f^{-1}\O_X$. This condition resp. submodule does not depend on the
-representative~$f$, since~$f$ is well-defined up to multiplication by an element
-of~$\O_X^*$.\end{defn}
-
-The submodule~$\O_X(D)$ is indeed locally free of rank~$1$, since
-internally~$f^{-1}$ gives an one-element basis. Note that~$D$ is effective if
-and only if~$\O_X(-D)$ is a subset of~$\O_X$ from the internal perspective. In
-this case, we can define the \emph{support} of~$D$ to be the closed subscheme
-of~$X$ associated to the sheaf of ideals~$\O_X(-D) \subseteq \O_X$.
-
-\begin{defn}The \emph{Cartier divisor associated to a free submodule~$\L \subseteq
-\K_X$ of rank~1} is~$D := [f^{-1}]$, where~$f\?\K_X$ is the unique element of
-some one-element-basis of~$\L$.\end{defn}
-
-The basis element~$f\?\K_X$ does indeed lie in~$\K_X^*$: Write~$f
-= s/t$ with~$s,t \? \O_X$. It suffices to show that~$s$ is a regular element
-of~$\O_X$. So let~$h\?\O_X$ such that~$sh = 0$ in~$\O_X$. Then in
-particular~$hf = 0$ in~$\K_X$. By linear independence, it follows that~$h = 0$
-in~$\K_X$ and thus~$h = 0$ in~$\O_X$.
-
-Furthermore, the associated divisor does not depend on the choice of~$f$,
-since~$f$ is well-defined up to multiplication by an element of~$\O_X^*$: If~$f
-\O_X = g \O_X \subseteq \K_X$, then there exist~$u,v\?\O_X$ such that~$fu = g$
-and~$gv = f$ in~$\K_X$. It follows that~$uv = fuvf^{-1} = gvf^{-1} = ff^{-1} =
-1$ in~$\K_X$ and thus in~$\O_X$, by injectivity of the canonical map~$\O_X \to
-\K_X$. Therefore~$u$ and~$v$ are elements of~$\O_X^*$.
-
-\begin{lemma}Let~$D$ and~$D'$ be divisors on~$X$. Then~$\O_X(D) \otimes_{\O_X}
-\O_X(D') \cong \O_X(D + D')$.\end{lemma}
-\begin{proof}The wanted morphism of sheaves~$\O_X(D) \otimes \O_X(D') \to
-\O_X(D + D')$ is given by multiplication. That this is well-defined and an
-isomorphism can be checked from the internal point of view, where the claims
-are obvious.\end{proof}
-
-\begin{prop}The association~$D \mapsto \O_X(D)$ defines an one-to-one
-correspondence between Cartier divisors on~$X$ and rank-one submodules
-of~$\K_X$. This correpondence descends to an one-to-one correspondence between
-Cartier divisiors up to linear equivalance and rank-one submodules of~$\K_X$ up
-to isomorphism.\end{prop}
-\begin{proof}The first statement is obvious from the definitions. For the
-second statement, it suffices to show that~$\O_X(D)$ is isomorphic to~$\O_X$ if
-and only if~$D$ is principal. A given isomorphism~$\O_X \to \O_X(D)$ gives a
-global section~$f \in \K_X^*$ (by considering the image of the unit element)
-such that internally,~$D = [f^{-1}]$; this shows that~$D$ is principal. The
-converse is similar.
-\end{proof}
-
-\begin{rem}Locally principal subschemes (closed subschemes which are locally
-the vanishing subscheme of a regular section of~$\O_X$) up to isomorphisms of
-subschemes are in one-to-one correspondence with rank-1 submodules of~$\O_X$
-(see~XXX). Thus locally principal subschemes (up to isomorphisms of abstract
-schemes) are in one-to-one correspondence with effective Cartier divisors (up
-to linear equivalence).\end{rem}
-% XXX: check this.
-
-\begin{prop}Assume that~$X$ is an integral scheme. Then any line bundle on~$X$
-is (uncanonically) a submodule of~$\K_X$.\end{prop}
-% XXX: weaker hypothesis possible?
-\begin{proof}Let~$\xi$ be the generic point of~$X$ and let~$\Box := \neg\neg$
-denote the modal operator such that internal sheafification with respect
-to~$\Box$ is the same as pulling back to~$\{\xi\}$ and then pushing forward
-to~$X$ again (see~XXX). Let~$\L$ be a line bundle on~$X$. Since~$\L_\xi \cong
-\O_{X,\xi}$ (uncanonically), there is some injection~$\L_\xi \to \K_{X,\xi}$;
-this corresponds internally to an injection~$\L^{++} \to \K_X^{++}$.
-Since~$\K_X$ is already a~$\Box$-sheaf (see~XXX) and~$\L$ is~$\Box$-separated
-(being isomorphic to~$\O_X$), we have the global injection
-\[ \L \lhra \L^{++} \lhra \K_X^{++} \stackrel{({\cong})^{-1}}{\longrightarrow} \K_X. \qedhere \]
-\end{proof}
-
-\begin{itemize}
-\item on reduced schemes, $\K_X$ is the sheaf of meromorphic functions
-\item show~$\K_X = j_*(\O_X)$?
-\item divisor associated to rational sections
-\end{itemize}
-
-
-\section{Relative spectrum}
-\begin{itemize}
-\item ...
-\end{itemize}
-
 \section{Modalities}
 
 \subsection{Basics on truth values and modal operators}
@@ -2270,6 +1996,282 @@ of excluded middle is valid; explain consequences
 % $\G \to \F$ injective at~$x$, $\F$ coherent, $\G$ of finite type ==> injective on neighbourhood
 \item give proof of the expressions for the nuclei listed in the table
 \item baby version of Barr's theorem
+\end{itemize}
+
+
+\section{Rational functions and Cartier divisors}
+
+\subsection{The sheaf of rational functions} Recall that the sheaf~$\K_X$ of rational
+functions on a scheme~$X$ (or ringed space) can be defined as the sheaf
+associated to the presheaf
+\[ \text{$U \subseteq X$ open} \longmapsto \Gamma(U,\O_X)[\Gamma(U,\S)^{-1}], \]
+where~$\Gamma(U,\S)$ is the multiplicative set of those sections of~$\O_X$ on~$U$,
+which are regular in each stalk~$\O_{X,x}$, $x \in U$. Recall also there are
+some wrong definitions in the literature~\cite{kleiman:misconceptions}.
+
+Using the internal language, we can give a simpler definition of~$\K_X$.
+Recall that we can associate to any ring~$R$ its total quotient ring, \ie
+its localization at the multiplicative subset of regular elements. Since from
+the internal perspective~$\O_X$ is an ordinary ring, we can associate to it its
+total quotient ring $\O_X[\S^{-1}]$,
+where~$\S$ is internally defined by the formula
+\[ \S := \{ s\?\O_X \,|\, \speak{$s$ is regular} \} \subseteq \O_X. \]
+Externally, this ring is the sheaf~$\K_X$.
+\begin{prop}Let~$X$ be a scheme (or a ringed space). The sheaf of rings defined
+in the internal language by localizing~$\O_X$ at its set of regular elements is
+(canonically isomorphic to) the sheaf~$\K_X$ of rational functions.
+\end{prop}
+\begin{proof}Internally, the ring~$\O_X[\S^{-1}]$ fulfills the following
+universal property: For any ring~$R$ and any homomorphism~$\O_X \to R$ which
+maps the elements of~$\S$ to units, there exists exactly one
+homomorphism~$\O_X[\S^{-1}] \to R$ which makes the evident diagram commute.
+\[ \xymatrix{
+  \O_X \ar[rr] \ar[dr] && R \\
+  & \O_X[\S^{-1}] \ar@{-->}[ru]
+} \]
+The translation using the Kripke--Joyal semantics gives the following universal
+property: For any open subset~$U \subseteq X$, any sheaf of rings~$\R$ on~$U$ and any
+homomorphism~$\O_X|_U \to \R$ which maps all elements of~$\Gamma(V,\S)$, $V
+\subseteq U$ to units, there exists exactly one homomorphism~$\O_X[\S^{-1}]|_U \to
+\R$ which makes the evident diagram commute.
+It is well-known~\cite{???} that the sheaf~$\K_X$ as usually defined satisfies
+this universal property as well.
+\end{proof}
+
+\begin{prop}\label{prop:stalks-kx}
+Let~$X$ be a scheme (or ringed space). Then the stalks of~$\K_X$
+are given by
+\[ \K_{X,x} = \O_{X,x}[\S_x^{-1}]. \]
+The elements of~$\S_x$ are exactly the germs of those local sections which are
+regular not only in~$\O_{X,x}$, but in all rings~$\O_{X,y}$ where~$y$
+ranges over some neighbourhood of~$x$ (depending on the section).\end{prop}
+\begin{proof}
+Since localization is a geometric construction, the first statement is entirely
+trivial. The second statement follows since
+\[ \Gamma(U,\S) = \{ s\in\Gamma(U,\O_X) \,|\, U \models \speak{$s$ is regular}
+\} \]
+and regularity is a geometric implication, so that
+$U \models \speak{$s$ is regular}$ if and only if the germ~$s_y$ is regular
+in~$\O_{X,y}$ for all~$y \in U$.
+\end{proof}
+
+\begin{rem}Speaking internally, the multiplicative set~$\S$ is saturated.
+Therefore an element~$s/t \? \K_X$ is invertible in~$\K_X$ if and only if the
+numerator~$s$ belongs to~$\S$, \ie is an regular element of~$\O_X$.\end{rem}
+
+
+\subsection{Regularity of local functions}
+It is well known that on a locally Noetherian scheme, regularity spreads from
+stalks to neighbourhoods, \ie a section of~$\O_X$ is regular
+in~$\O_{X,x}$ if and only if it is regular on some neighbourhood on~$x$.
+This fact has a simple proof in the internal language:
+\begin{prop}\label{prop:regularity-spreading}
+Let~$X$ be a locally Noetherian scheme. Let~$s \in \Gamma(U,\O_X)$
+be a local function on~$X$. Let~$x \in U$. Then the following statements are
+equivalent:
+\begin{enumerate}
+\item The section~$s$ is regular in~$\O_{X,x}$.
+\item The section~$s$ is regular in all local rings~$\O_{X,y}$ where~$y$ ranges
+over some neighbourhood of~$x$.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+Let~$\Box$ be the modal operator defined by~$\Box(\varphi) :\equiv ((\varphi
+\Rightarrow {!x}) \Rightarrow {!x})$. By XXX, we are to show that the following
+statements of the internal language
+are equivalent:
+\begin{enumerate}
+\item $(\speak{$s$ is regular})^\Box$, \ie
+$\forall t\?\O_X\_ st = 0 \Rightarrow \Box(t = 0)$.
+\item $\Box(\speak{$s$ is regular})$, \ie
+$\Box(\forall t\?\O_X\_ st = 0 \Rightarrow t = 0)$.
+\end{enumerate}
+It is clear that the second statement implies the first -- in fact, this is true
+without any assumptions on~$X$: Let~$t\?\O_X$ be such that~$st = 0$. Since we want to
+prove the boxed statement~$\Box(t=0)$, we may assume that~$s$ is regular and
+prove~$t = 0$. This follows by definition.
+
+For the converse direction, consider the annihilator of~$s$, \ie the ideal
+\[ I := \Ann_{\O_X}(s) = \{ t\?\O_X \,|\, st = 0 \} \subseteq \O_X. \]
+This ideal satisfies the quasicoherence condition (example~\ref{ex:annihilator-qcoh}),
+thus~$I$ is a quasicoherent submodule of a finitely generated module. Since~$X$ is
+locally Noetherian, it follows that~$I$ is finitely generated as well. By
+assumption, each generator~$x_i \? I$ fulfills~$\Box(x_i = 0)$. Since we want
+to prove a boxed statement, we may in fact assume~$x_i = 0$. Thus~$I = (0)$ and
+the assertion, that~$s$ is regular, follows.
+\end{proof}
+
+\begin{cor}Let~$X$ be a locally Noetherian scheme. Then the stalks~$\K_{X,x}$
+of the sheaf of rational functions are given by the total quotient rings of the
+local rings~$\O_{X,x}$.\end{cor}
+\begin{proof}Combine proposition~\ref{prop:stalks-kx} and
+proposition~\ref{prop:regularity-spreading}.\end{proof}
+
+
+\subsection{Geometric interpretation of rational functions}
+
+\begin{prop}Let~$X$ be a reduced scheme. Then~$\K_X$ is
+the~$\neg\neg$-sheafification of~$\O_X$.\end{prop}
+\begin{proof}Recall from corollary~\ref{cor:field-reduced} that
+\[ \Sh(X) \models \forall s\?\O_X\_ \neg(\speak{$s$ invertible}) \Leftrightarrow
+s=0. \]
+From this we can deduce that~$\O_X$ is~$\neg\neg$-separated:
+Assume~$\neg\neg(s=0)$ for~$s\?\O_X$. If~$s$ were invertible, we would
+have~$\neg\neg(1=0)$ and thus~$\bot$. Therefore~$s$ is not invertible and thus
+zero.
+
+Furthermore, we can can deduce that internally, an element~$s\?\O_X$ is regular
+if and only if it is \notnot invertible: For the ``only if'' direction,
+note that a regular element is not zero (if it were, then the true statement~$0
+\cdot 0 = 0 \cdot 1$ would imply the false statement~$0 = 1$). For the ``if''
+direction, let~$st = 0$ in~$\O_X$. Since~$s$ is \notnot invertible, it follows
+that~$t$ is \notnot zero. Since~$\O_X$ is~$\neg\neg$-separated, this implies
+that~$t$ really is zero.
+
+With these observations, we can proceed to that~$\K_X$ is~$\neg\neg$-separated.
+So assume~$\neg\neg(a/s = 0)$ for~$a/s \? \K_X$. Since~$\K_X$ is obtained
+from~$\O_X$ by localizing at regular elements, it holds that~$a/s = 0$
+in~$\K_X$ if and only if~$a = 0$ in~$\O_X$. Thus it follows that~$\neg\neg(a =
+0)$ in~$\O_X$ and thus~$a = 0$ in~$\O_X$; in particular, $a/s = 0$ in~$\K_X$.
+
+We defer the proof that~$\K_X$ is a~$\neg\neg$-sheaf to the end and first
+verify the universal property of~$\neg\neg$-sheafification.
+% grammar?
+So let~$G$ be a~$\neg\neg$-sheaf and let~$\alpha : \O_X \to G$ be a map. We
+can define an extension~$\bar\alpha : \K_X \to G$ in the following way:
+Let~$f \? \K_X$. Define the subsingleton~$S := \{ x \? G \,|\, \exists
+b\?\O_X\_ f = b/1 \wedge x = \alpha(b) \} \subseteq G$. Since~$f$ can be
+written in the form~$a/s$ with~$s$ \notnot invertible, it follows that~$S$
+is \notnot inhabited. Since~$G$ is a~$\neg\neg$-sheaf, there exists a
+unique~$x\?G$ such that~$\neg\neg(x \in S)$. We declare~$\bar\alpha(f)$ to be
+this~$x$. It is straightforward to check that the composition~$\O_X \to \K_X
+\to G$ equals~$\alpha$ and that~$\bar\alpha$ is unique with this property.
+
+Up to this point, the proof did not need that~$X$ is a scheme -- it was enough
+for~$X$ to be a ringed space such that the display equivalence above holds and
+such that~$\neg(0 = 1)$ in~$\O_X$. Only now, to show that~$\K_X$ is
+a~$\neg\neg$-sheaf, the scheme condition enters.
+% XXX: finish proof
+\end{proof}
+
+
+\subsection{Cartier divisors} Let~$X$ be a scheme (or ringed space). Recall
+that a \emph{Cartier divisor} on~$x$ is a global section of the sheaf of
+groups~$\K_X^* / \O_X^*$. This sheaf can be constructed internally, with the
+same notation: It is the quotient of the group of invertible elements of the
+ring~$\K_X$ by the subgroup of invertible elements of the ring~$\O_X$. So an
+arbitrary section of~$\K_X^*/\O_X^*$ is internally of the form~$[s/t]$
+with~$s,t\?\O_X$ being regular elements; this is a simpler description than the
+usual external one (as a family~$(f_i)_i$ of functions~$f_i \in
+\Gamma(U_i,\K_X^*)$ such that~$f_i^{-1}|_{U_i \cap U_j} \cdot f_j|_{U_i \cap
+U_j} \in \Gamma(U_i \cap U_j, \O_X^*)$ for all~$i,j$).
+
+We can sketch the basic theory of Cartier divisors completely from the internal
+perspective. In accordance with common practice, we will write the group
+operation of~$\K_X^*/\O_X^*$ (which is induced by multiplication of elements
+in~$\K_X^*$) additively.
+
+\begin{defn}A Cartier divisor is \emph{effective} if and only if, from the
+internal perspective, it can be written in the form~$[s/1]$ with~$s\?\O_X$
+being a regular element.\end{defn}
+
+Thus a Cartier divisor~$[s/t]$ is effective if and only if~$s$ is
+an~$\O_X$-multiple of~$t$.
+
+\begin{defn}A Cartier divisor~$D$ is \emph{principal} if and only if there
+exists a global section~$f \in \Gamma(X,\K_X^*)$ such that internally,~$D = [f]$.
+Two Cartier divisors are \emph{linearly equivalent} if and only if their
+difference is a principal divisor.
+\end{defn}
+
+Note that decidedly, principality is a global notion: For any divisor~$D$ it is
+true that locally there exists sections~$f$ of~$\K_X^*$ such that~$D = [f]$.
+
+\begin{defn}The \emph{line bundle associated to a Cartier divisor}~$D$
+is the~$\O_X$-submodule
+\[ \O_X(D) := \{ g \in \K_X \,|\, g D \in \O_X \} = D^{-1} \O_X \subseteq \K_X
+\]
+of~$\K_X$. Here we are abusing language for~``$gD \in \O_X$'' to mean that~$gf
+\in \O_X$ if~$D = [f]$ with~$f\?\K_X$; and for~``$D^{-1} \O_X$'' to
+mean~$f^{-1}\O_X$. This condition resp. submodule does not depend on the
+representative~$f$, since~$f$ is well-defined up to multiplication by an element
+of~$\O_X^*$.\end{defn}
+
+The submodule~$\O_X(D)$ is indeed locally free of rank~$1$, since
+internally~$f^{-1}$ gives an one-element basis. Note that~$D$ is effective if
+and only if~$\O_X(-D)$ is a subset of~$\O_X$ from the internal perspective. In
+this case, we can define the \emph{support} of~$D$ to be the closed subscheme
+of~$X$ associated to the sheaf of ideals~$\O_X(-D) \subseteq \O_X$.
+
+\begin{defn}The \emph{Cartier divisor associated to a free submodule~$\L \subseteq
+\K_X$ of rank~1} is~$D := [f^{-1}]$, where~$f\?\K_X$ is the unique element of
+some one-element-basis of~$\L$.\end{defn}
+
+The basis element~$f\?\K_X$ does indeed lie in~$\K_X^*$: Write~$f
+= s/t$ with~$s,t \? \O_X$. It suffices to show that~$s$ is a regular element
+of~$\O_X$. So let~$h\?\O_X$ such that~$sh = 0$ in~$\O_X$. Then in
+particular~$hf = 0$ in~$\K_X$. By linear independence, it follows that~$h = 0$
+in~$\K_X$ and thus~$h = 0$ in~$\O_X$.
+
+Furthermore, the associated divisor does not depend on the choice of~$f$,
+since~$f$ is well-defined up to multiplication by an element of~$\O_X^*$: If~$f
+\O_X = g \O_X \subseteq \K_X$, then there exist~$u,v\?\O_X$ such that~$fu = g$
+and~$gv = f$ in~$\K_X$. It follows that~$uv = fuvf^{-1} = gvf^{-1} = ff^{-1} =
+1$ in~$\K_X$ and thus in~$\O_X$, by injectivity of the canonical map~$\O_X \to
+\K_X$. Therefore~$u$ and~$v$ are elements of~$\O_X^*$.
+
+\begin{lemma}Let~$D$ and~$D'$ be divisors on~$X$. Then~$\O_X(D) \otimes_{\O_X}
+\O_X(D') \cong \O_X(D + D')$.\end{lemma}
+\begin{proof}The wanted morphism of sheaves~$\O_X(D) \otimes \O_X(D') \to
+\O_X(D + D')$ is given by multiplication. That this is well-defined and an
+isomorphism can be checked from the internal point of view, where the claims
+are obvious.\end{proof}
+
+\begin{prop}The association~$D \mapsto \O_X(D)$ defines an one-to-one
+correspondence between Cartier divisors on~$X$ and rank-one submodules
+of~$\K_X$. This correpondence descends to an one-to-one correspondence between
+Cartier divisiors up to linear equivalance and rank-one submodules of~$\K_X$ up
+to isomorphism.\end{prop}
+\begin{proof}The first statement is obvious from the definitions. For the
+second statement, it suffices to show that~$\O_X(D)$ is isomorphic to~$\O_X$ if
+and only if~$D$ is principal. A given isomorphism~$\O_X \to \O_X(D)$ gives a
+global section~$f \in \K_X^*$ (by considering the image of the unit element)
+such that internally,~$D = [f^{-1}]$; this shows that~$D$ is principal. The
+converse is similar.
+\end{proof}
+
+\begin{rem}Locally principal subschemes (closed subschemes which are locally
+the vanishing subscheme of a regular section of~$\O_X$) up to isomorphisms of
+subschemes are in one-to-one correspondence with rank-1 submodules of~$\O_X$
+(see~XXX). Thus locally principal subschemes (up to isomorphisms of abstract
+schemes) are in one-to-one correspondence with effective Cartier divisors (up
+to linear equivalence).\end{rem}
+% XXX: check this.
+
+\begin{prop}Assume that~$X$ is an integral scheme. Then any line bundle on~$X$
+is (uncanonically) a submodule of~$\K_X$.\end{prop}
+% XXX: weaker hypothesis possible?
+\begin{proof}Let~$\xi$ be the generic point of~$X$ and let~$\Box := \neg\neg$
+denote the modal operator such that internal sheafification with respect
+to~$\Box$ is the same as pulling back to~$\{\xi\}$ and then pushing forward
+to~$X$ again (see~XXX). Let~$\L$ be a line bundle on~$X$. Since~$\L_\xi \cong
+\O_{X,\xi}$ (uncanonically), there is some injection~$\L_\xi \to \K_{X,\xi}$;
+this corresponds internally to an injection~$\L^{++} \to \K_X^{++}$.
+Since~$\K_X$ is already a~$\Box$-sheaf (see~XXX) and~$\L$ is~$\Box$-separated
+(being isomorphic to~$\O_X$), we have the global injection
+\[ \L \lhra \L^{++} \lhra \K_X^{++} \stackrel{({\cong})^{-1}}{\longrightarrow} \K_X. \qedhere \]
+\end{proof}
+
+\begin{itemize}
+\item on reduced schemes, $\K_X$ is the sheaf of meromorphic functions
+\item show~$\K_X = j_*(\O_X)$?
+\item divisor associated to rational sections
+\end{itemize}
+
+
+\section{Relative spectrum}
+\begin{itemize}
+\item ...
 \end{itemize}
 
 

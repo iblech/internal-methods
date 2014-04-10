@@ -1728,6 +1728,19 @@ classical counterparts, since there are no colimit constructions which would hav
 be dealt with.
 \end{proof}
 
+\begin{rem}As is to be expected from the familiar inclusion of sheaves in
+presheaves on topological spaces, the forgetful functor~$\Sh_\Box(\Set) \to \Set$
+does not in general preserve colimits. It is instructive to see why
+epimorphisms in~$\Sh_\Box(\Set)$ need not be epimorphisms in~$\Set$: A map~$f:A
+\to B$ between~$\Box$-sheaves is an epimorphism in~$\Sh_\Box(\Set)$ if and only
+if
+\[ \forall y\?B\_ \Box(\exists x\?X\_ f(x) = y), \]
+\ie preimages do not need to exist, but merely need to~``$\Box$-exist''.
+(Using results about the~$\Box$-translation, to be introduced below, this
+characterization will be obvious.) This condition is intuitionistically weaker
+that the condition that~$f$ is an epimorphism in~$\Set$, \ie that~$f$ is
+surjective.\end{rem}
+
 
 \subsection{Sheaves for the double negation modality}
 % XXX: introductory words

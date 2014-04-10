@@ -511,7 +511,7 @@ often-occuring special cases:
 \end{prop}
 \begin{proof}Straightforward. By way of example, we prove the existence claim
 in the ``only if'' direction of the last rule. (Note that this rule formalizes
-the saying ``unique existence is global existence''.) By definition of~$\exists!$, it
+the saying ``unique existence implies global existence''.) By definition of~$\exists!$, it
 holds that
 \[ U \models \exists s\?\F\_ \varphi(s) \]
 and
@@ -1000,7 +1000,9 @@ any stalk.
 
 \subsection{Support} Recall that the \emph{support} of an~$\O_X$-module~$\F$ is
 the subset~$\supp\F := \{ x \in X \,|\, \F_x \neq 0 \} \subseteq X$. If~$\F$ is
-of finite type, this set is closed, since its complement is then open by XXX.
+of finite type, this set is closed, since its complement is then open by a
+standard lemma. (We will give an internal proof of this lemma in
+proposition~\ref{prop:module-zero-point-neighbourhood}.)
 
 \begin{prop}\label{prop:characterization-support}
 Let~$X$ be a scheme (or ringed space). Let~$\F$ be
@@ -1981,7 +1983,8 @@ y = A \vec x$} \]
 \end{proof}
 % XXX: give backreference
 
-\begin{prop}Let~$X$ be a scheme (or ringed space). Let~$\F$ be an~$\O_X$-module
+\begin{prop}\label{prop:module-zero-point-neighbourhood}
+Let~$X$ be a scheme (or ringed space). Let~$\F$ be an~$\O_X$-module
 of finite type.
 \begin{itemize}
 \item Let~$x \in X$ be a point. Then the stalk~$\F_x$ is zero if and
@@ -1993,7 +1996,7 @@ subset of~$X$ containing~$A$.
 \end{prop}
 \begin{proof}\emph{Both} statements are simply internalizations of
 example~\ref{ex:module-zero-geometric}, using the modal operators~$\Box =
-(\placeholder \vee A^c)$ respectively~$\Box = ((\placeholder \Rightarrow
+(\placeholder \vee A^c)$ and~$\Box = ((\placeholder \Rightarrow
 \notat{x}) \Rightarrow \notat{x})$.
 \end{proof}
 

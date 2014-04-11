@@ -662,6 +662,8 @@ constructions are geometric:
 \rangle$ ($\R$ a sheaf of rings, $\F$ a sheaf of sets)
 \item localization of a module: $\F[\S^{-1}]_x \cong \F_x[\S_x^{-1}]$
 \end{itemize}
+% XXX: compatibility with stalks is not sufficient for geometricity.
+% This list makes one think it is.
 
 The following constructions are not in general geometric:
 \begin{itemize}
@@ -729,7 +731,7 @@ implies the third.
 \subsection{Reducedness} Recall that a scheme~$X$ is \emph{reduced} if and only
 if all stalks~$\O_{X,x}$ are reduced rings. Since the condition on a ring~$R$
 to be reduced is a geometric implication,
-\[ \forall s\?R\_ s^2 = 0 \Longrightarrow s = 0, \]
+\[ \forall s\?R\_ \Bigl(\bigvee_{n \geq 0} s^n = 0\Bigr) \Longrightarrow s = 0, \]
 we immediately obtain the following characterization of reducedness in the
 internal language:
 \begin{prop}A scheme~$X$ is reduced iff, from the internal point of view, the

@@ -1016,8 +1016,6 @@ geometric implications; therefore it holds internally if and only if it holds at
 any stalk.
 \end{proof}
 
-% XXX: F^ tensor F ~~ O_X
-
 
 \subsection{Support} Recall that the \emph{support} of an~$\O_X$-module~$\F$ is
 the subset~$\supp\F := \{ x \in X \,|\, \F_x \neq 0 \} \subseteq X$. If~$\F$ is
@@ -1167,6 +1165,34 @@ global sections~$s_1,\ldots,s_n \in \Gamma(X,\F)$ generate~$\F$ if and only if,
 for any point~$x \in X$, the images~$s_i \in \F|_x$ in the fibers do not vanish
 simultaneously.
 \end{rem}
+
+\begin{lemma}Let~$X$ be a scheme (or ringed space). Let~$\L$ be a locally finitely
+free~$\O_X$-module. Then~$\L^\vee \otimes_{\O_X} \L \cong \O_X$.\end{lemma}
+\begin{proof}Recall that the dual is defined by~$\L^\vee :=
+\HOM_{\O_X}(\L,\O_X)$. Since~``$\HOM$'' looks like~``$\Hom$'' from the internal
+point of view, the dual sheaf~$\L^\vee$ looks just like the ordinary dual
+module. However, to prove the claim, it does \emph{not} suffice to give an
+intuitionistic proof of the following fact of linear algebra: Let~$L$ be a
+free~$R$-module of rank~1. Then there exists an isomorphism~$L^\vee \otimes_R L
+\to R$. Since the interpretation of ``$\exists$'' using the Kripke--Joyal
+semantics is local existence, this would only show that~$\L^\vee \otimes_{\O_X}
+\L$ is \emph{locally} isomorphic to~$\O_X$.
+
+Instead, we have to actually \emph{write down} (\ie explicitly give) an
+isomorphism in the internal language -- not using the assumption that~$L$ is
+free of rank~1, as this would introduce an existential quantifier again (see XXX).
+So we have to prove the following fact: Let~$L$ be an~$R$-module. Then there
+explicitly exists a linear map~$L^\vee \otimes_R L \to R$ such that this map is
+an isomorphism if~$L$ is free of rank~1.
+
+This is done as usual: Define~$\alpha : L^\vee \otimes_R L \to R$ by~$\lambda
+\otimes x \mapsto \lambda(x)$. Since~$L$ is free of rank~1, there is an
+isomorphism~$L \cong R$. Precomposing~$\alpha$
+with the induced isomorphism~$R^\vee \otimes_R R \to L^\vee \otimes_R L$,
+we obtain the linear map~$R^\vee \otimes_R R \to R$ given by the same
+term: $\lambda \otimes x \mapsto \lambda(x)$. One can check that an inverse is given
+by~$x \mapsto \id_R \otimes x$.
+\end{proof}
 
 
 \begin{itemize}

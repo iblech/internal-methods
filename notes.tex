@@ -2135,8 +2135,33 @@ lemma~\ref{lemma:stalk-open-with-hypothesis}.\end{proof}
 ringed spaces). Let~$\F$ be an~$\O_A$-module. Then~$i_*\F$ is of finite type if
 and only if~$\F$ is of finite type.\end{prop}
 \begin{proof}
+Let~$\Box$ be the modal operator defined by~$\Box\varphi :\equiv (\varphi \vee
+A^c)$. From the internal perspective, we have a surjective ring homomorphism~$i^\sharp
+: \O_X \to \O_A$, where we omit the forgetful functor~$i_*$ from~$\Box$-sheaves
+to arbitrary sets in the notation, and an~$\O_A$-module~$\F$. Furthermore, we
+may assume that~$\F$ is a~$\Box$-sheaf. We can regard~$\F$ as an~$\O_X$-module
+by~$i^\sharp$.
+
+Note that~$A^c \Rightarrow \F = 0$, by~$\Box$-separatedness of~$\F$.
+
+We are to show that~$\F$ is a finitely generated~$\O_X$-module if and only if
+the~$\Box$-translation of ``$\F$ is a finitely generated~$\O_A$-module'' holds.
+In explicit terms, we have to show the equivalence of the following statements:
+\begin{enumerate}
+\item $\bigvee_{n \geq 0} \exists x_1,\ldots,x_n\?\F\_
+  \forall x\?\F\_ \exists a_1,\ldots,a_n\?\O_X\_ x = \sum_i i^\sharp(a_i) x_i$.
+\item $\Box(\bigvee_{n \geq 0} \Box(\exists x_1,\ldots,x_n\?\F\_
+  \forall x\?\F\_ \Box(\exists b_1,\ldots,b_n\?\O_A\_ \Box(
+    x = \sum_i b_i x_i))))$.
+\end{enumerate}
+It is clear that the first statement implies the second. For the converse
+direction, we just have to repeatedly use the observation that~$\Box\varphi$
+implies~$\varphi \vee (\F = 0)$ (once for each occurence of~$\Box$). So in each
+step, we either obtain the statement we want~($\varphi$) or may assume
+that~$\F$ is the trivial module, in which case any subclaim trivially follows. By
+surjectivity of~$i^\sharp$, we may write any~$b\?\O_A$ as~$b =
+i^\sharp(a)$ for some~$a\?\O_X$.
 \end{proof}
-% XXX: fill in!
 
 \begin{prop}Let~$X$ be a scheme. Let~$\F$ and~$\G$ be~$\O_X$-modules. Let~$x
 \in X$. Then $\HOM_{\O_X}(\F,\G)_x \cong \Hom_{\O_{X,x}}(\F_x,\G_x)$ if~$\F$ is

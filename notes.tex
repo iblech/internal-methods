@@ -798,7 +798,7 @@ and only if it is reduced. This is straightforward.
 
 This field property is very useful. We will put it to good use when giving a
 simple proof of the fact that~$\O_X$-modules of finite type on a reduced scheme
-are locally free on a dense open subset (proposition~\ref{modules:densefree}).
+are locally free on a dense open subset (lemma~\ref{lemma:locally-free-dense}).
 
 The following proposition says that one can deduce a certain unconditional
 statement from the premise that an element~$s\?\O_X$ is zero under the
@@ -1038,7 +1038,7 @@ if and only if it holds at any stalk.
 the subset~$\supp\F := \{ x \in X \,|\, \F_x \neq 0 \} \subseteq X$. If~$\F$ is
 of finite type, this set is closed, since its complement is then open by a
 standard lemma. (We will give an internal proof of this lemma in
-proposition~\ref{prop:module-zero-point-neighbourhood}.)
+lemma~\ref{lemma:module-zero-point-neighbourhood}.)
 
 \begin{prop}\label{prop:characterization-support}
 Let~$X$ be a scheme (or ringed space). Let~$\F$ be
@@ -1330,7 +1330,7 @@ semicontinuous~$\NN$-valued functions on~$X$.\end{lemma}
 When referring to the natural numbers in the internal language, we actually
 refer to the constant sheaf~$\ul{\NN}$ on~$X$. (This is because the
 sheaf~$\ul{\NN}$ fulfills the axioms of a natural numbers object,
-cf.~\cite[XXX]{johnstone:elephant/moerdijk}.) Recall that its sections on an
+cf.~\cite[section~VI.1]{moerdijk-maclane:sheaves-logic}.) Recall that its sections on an
 open subset~$U \subseteq X$ are continuous functions~$U \to \NN$, where~$\NN$
 is equipped with the discrete topology.
 
@@ -1406,7 +1406,7 @@ any stalk~$\F_y$, $y \in U$, so by geometricity we have
 \end{proof}
 \begin{rem}Once we understand when properties holding at a stalk spread to a
 neighbourhood, we will be able to give a simpler proof of the proposition (see
-proposition~\ref{prop:gen-family-n}).\end{rem}
+lemma~\ref{lemma:gen-family-n}).\end{rem}
 
 \begin{lemma}Let~$X$ be a locally ringed space. Let~$\F$ be an~$\O_X$-module of
 finite type. If~$\F$ is locally finitely free, its rank function is locally
@@ -1436,7 +1436,8 @@ generate~$M$, contradicting the minimality. So each~$a_i$ is not invertible.
 Since~$R$ fulfills the appropriate field condition, each~$a_i$ is zero.
 \end{proof}
 
-\begin{lemma}Let~$X$ be a reduced scheme. Let~$\F$ be an~$\O_X$-module of
+\begin{lemma}\label{lemma:locally-free-dense}
+Let~$X$ be a reduced scheme. Let~$\F$ be an~$\O_X$-module of
 finite type. Then~$\F$ is locally free on a dense open subset.\end{lemma}
 \begin{proof}Since ``dense open'' translates to ``not not'' in the internal
 language (proposition~\ref{prop:modops-kripke}), it suffices to give an
@@ -2081,7 +2082,7 @@ neighbourhood.\end{ex}
 
 \subsection{Internal proofs of common lemmas}
 
-\begin{prop}\label{prop:gen-family-n}
+\begin{lemma}\label{lemma:gen-family-n}
 Let~$X$ be a scheme (or ringed space). Let~$\F$ be an~$\O_X$-module
 of finite type. Let~$x \in X$ be a point. Let~$n$ be a natural number. Then the
 following statements are equivalent:
@@ -2091,7 +2092,7 @@ following statements are equivalent:
 \[ U \models \speak{there exists a generating family for~$\F$ consisting of~$n$
 elements}. \]
 \end{enumerate}
-\end{prop}
+\end{lemma}
 \begin{proof}Using the modal operator~$\Box$ defined by~$\Box\varphi :\equiv
 ((\varphi \Rightarrow \notat{x}) \Rightarrow \notat{x})$, we have to show that
 the following statements in the internal language are equivalent:
@@ -2131,7 +2132,7 @@ y = A \vec x$} \]
 \end{proof}
 % XXX: give backreference
 
-\begin{prop}\label{prop:module-zero-point-neighbourhood}
+\begin{lemma}\label{lemma:module-zero-point-neighbourhood}
 Let~$X$ be a scheme (or ringed space). Let~$\F$ be an~$\O_X$-module
 of finite type.
 \begin{itemize}
@@ -2141,7 +2142,7 @@ only if~$\F$ is zero on some open neighbourhood of~$x$.
 the pullback of~$\F$ to~$A$) is zero if and only if~$\F$ is zero on some open
 subset of~$X$ containing~$A$.
 \end{itemize}
-\end{prop}
+\end{lemma}
 \begin{proof}\emph{Both} statements are simply internalizations of
 example~\ref{ex:module-zero-geometric}, using the modal operators~$\Box =
 (\placeholder \vee A^c)$ and~$\Box = ((\placeholder \Rightarrow
@@ -2152,10 +2153,10 @@ example~\ref{ex:module-zero-geometric}, using the modal operators~$\Box =
 that~$\F$ is of finite type. Indeed, in this case one cannot reformulate the
 condition that~$\F$ is zero in a geometric way.\end{rem}
 
-\begin{prop}Let~$X$ be a scheme (or ringed space). Let~$\alpha : \F \to \G$ be
+\begin{lemma}Let~$X$ be a scheme (or ringed space). Let~$\alpha : \F \to \G$ be
 a morphism of~$\O_X$-modules. Let~$\G$ be of finite type and assume
 that~$\alpha_x : \F_x \to \G_x$ is surjective for some point~$x \in X$.
-Then~$\alpha$ is an epimorphism on some open neighbourhood of~$x$.\end{prop}
+Then~$\alpha$ is an epimorphism on some open neighbourhood of~$x$.\end{lemma}
 \begin{proof}In the presence of generators~$y_1,\ldots,y_n\?\G$, the
 non-geometric surjectivity condition ($\forall y\?\G\_ \exists x\?\F\_
 \alpha(x) = y$) can be reformulated in a geometric way: $\bigwedge_{i=1}^n
@@ -2172,9 +2173,9 @@ lemma~\ref{lemma:coherent-stuff} and zero at~$x$. By the previous lemma, it is
 therefore zero on some open neighbourhood of~$x$.
 \end{proof}
 
-\begin{prop}Let~$i : A \hookrightarrow X$ be a closed immersion of schemes (or
+\begin{lemma}Let~$i : A \hookrightarrow X$ be a closed immersion of schemes (or
 ringed spaces). Let~$\F$ be an~$\O_A$-module. Then~$i_*\F$ is of finite type if
-and only if~$\F$ is of finite type.\end{prop}
+and only if~$\F$ is of finite type.\end{lemma}
 \begin{proof}
 Let~$\Box$ be the modal operator defined by~$\Box\varphi :\equiv (\varphi \vee
 A^c)$. From the internal perspective, we have a surjective ring homomorphism~$i^\sharp
@@ -2204,9 +2205,9 @@ surjectivity of~$i^\sharp$, we may write any~$b\?\O_A$ as~$b =
 i^\sharp(a)$ for some~$a\?\O_X$.
 \end{proof}
 
-\begin{prop}Let~$X$ be a scheme. Let~$\F$ and~$\G$ be~$\O_X$-modules. Let~$x
+\begin{lemma}Let~$X$ be a scheme. Let~$\F$ and~$\G$ be~$\O_X$-modules. Let~$x
 \in X$. Then $\HOM_{\O_X}(\F,\G)_x \cong \Hom_{\O_{X,x}}(\F_x,\G_x)$ if~$\F$ is
-of finite presentation around~$x$.\end{prop}
+of finite presentation around~$x$.\end{lemma}
 \begin{proof}It suffices to give an intuitionistic proof of the following fact:
 The construction~$\Hom_R(M,\placeholder)$ is geometric, if~$M$ is a finitely
 presented~$R$-module. So assume that~$M$ is the cokernel of a presentation
@@ -2218,10 +2219,10 @@ and this construction is patently geometric (set comprehension with respect to
 a geometric formula).
 \end{proof}
 
-\begin{prop}Let~$X$ be a scheme. Let~$\F$ be an~$\O_X$-module of finite
+\begin{lemma}Let~$X$ be a scheme. Let~$\F$ be an~$\O_X$-module of finite
 presentation. Let~$x \in X$. Then the stalk~$\F_x$ is a finitely
 free~$\O_{X,x}$-module if and only if~$\F$ is locally free on some open
-neighbourhood of~$x$.\end{prop}
+neighbourhood of~$x$.\end{lemma}
 \begin{proof}The internal statement that~$\F$ is a free module is not geometric:
 \[ \bigvee_{n \geq 0}
   \exists x_1,\ldots,x_n\?\F\_

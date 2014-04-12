@@ -2153,7 +2153,7 @@ lemma.
 The cases for
 \[ \top \quad \bot \quad \wedge \quad \bigwedge \quad \vee \quad \bigvee \quad \implies \]
 are trivial. The cases for unbounded~``$\forall$'' and~``$\exists$'' are
-trivial as well. The case for~``$=$'' is more interesting; let~$\varphi(x,y)
+trivial as well. The case for~``$=$'' is slightly more interesting; let~$\varphi(x,y)
 \equiv (x = y)$. Then we are to show that~$\varphi^\Box(x,y) \equiv \Box(x=y)$
 (equality in some set~$F$) is equivalent to~$\varphi^\boxplus([\{x\}],[\{y\}])
 \equiv \Box([\{x\}] = [\{y\}])$ (equality in~$F^+$). This is obvious. The case
@@ -2209,7 +2209,7 @@ that in a formal spelling of the statement in quotes,
 \end{equation}
 no implication signs occur. To show the converse direction,
 we may assume that there is a generating family~$y_1,\ldots,y_m\?\F$ for~$\F$
-(since~$\F$ is, externally speaking, of finite type). Then it
+(since~$\F$ is, externally speaking, of finite type). Then
 the~$\Box$-translation of the statement that the~$y_i$ generate~$\F$ holds as
 well (again by lemma~\ref{lemma:open-stalk}). Since there is an intuitionistic
 proof of
@@ -2264,8 +2264,8 @@ a morphism of~$\O_X$-modules. Let~$\F$ be of finite type and~$\G$ be coherent.
 Suppose that~$\alpha_x$ is injective at some point~$x \in X$. Then~$\alpha$ is
 a monomorphism on some open neighbourhood of~$x$.
 \end{lemma}
-\begin{proof}The kernel of~$\alpha$ is of finite type by
-lemma~\ref{lemma:coherent-stuff} and zero at~$x$. By the previous lemma, it is
+\begin{proof}The kernel of~$\alpha$ is of finite type (by
+lemma~\ref{lemma:coherent-stuff}) and zero at~$x$. By the previous lemma, it is
 therefore zero on some open neighbourhood of~$x$.
 \end{proof}
 
@@ -2305,9 +2305,9 @@ i^\sharp(a)$ for some~$a\?\O_X$.
 \in X$. Then $\HOM_{\O_X}(\F,\G)_x \cong \Hom_{\O_{X,x}}(\F_x,\G_x)$ if~$\F$ is
 of finite presentation around~$x$.\end{lemma}
 \begin{proof}It suffices to give an intuitionistic proof of the following fact:
-The construction~$\Hom_R(M,\placeholder)$ is geometric, if~$M$ is a finitely
+The construction~$\Hom_R(M,\placeholder)$ is geometric if~$M$ is a finitely
 presented~$R$-module. So assume that~$M$ is the cokernel of a presentation
-matrix~$(a_{ij}) \in \O_X^{n \times m}$. Then we can calculate the Hom with
+matrix~$(a_{ij}) \in R^{n \times m}$. Then we can calculate the Hom with
 any~$R$-module~$N$ as
 \[ \Hom_R(M,N) \cong \Bigl\{ x \? N^n \ \Big|\ \bigwedge_{j=1}^m \sum_{i=1}^n a_{ij}
 x_i = 0 \? N \Bigr\}, \]
@@ -2456,7 +2456,8 @@ proposition~\ref{prop:regularity-spreading}.\end{proof}
 
 \subsection{Geometric interpretation of rational functions}
 
-\begin{prop}Let~$X$ be a reduced scheme. Then~$\K_X$ is
+\begin{prop}\label{prop:kx-is-negneg-sheafification}
+Let~$X$ be a reduced scheme. Then~$\K_X$ is
 the~$\neg\neg$-sheafification of~$\O_X$.\end{prop}
 \begin{proof}Recall from corollary~\ref{cor:field-reduced} that
 \[ \Sh(X) \models \forall s\?\O_X\_ \neg(\speak{$s$ invertible}) \Leftrightarrow
@@ -2603,7 +2604,8 @@ to~$\Box$ is the same as pulling back to~$\{\xi\}$ and then pushing forward
 to~$X$ again (see~XXX). Let~$\L$ be a line bundle on~$X$. Since~$\L_\xi \cong
 \O_{X,\xi}$ (uncanonically), there is some injection~$\L_\xi \to \K_{X,\xi}$;
 this corresponds internally to an injection~$\L^{++} \to \K_X^{++}$.
-Since~$\K_X$ is already a~$\Box$-sheaf (see~XXX) and~$\L$ is~$\Box$-separated
+Since~$\K_X$ is already a~$\Box$-sheaf (see
+proposition~\ref{prop:kx-is-negneg-sheafification}) and~$\L$ is~$\Box$-separated
 (being isomorphic to~$\O_X$), we have the global injection
 \[ \L \lhra \L^{++} \lhra \K_X^{++} \stackrel{({\cong})^{-1}}{\longrightarrow} \K_X. \qedhere \]
 \end{proof}

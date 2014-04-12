@@ -2133,6 +2133,48 @@ latter means~$j(U) = \sup \emptyset = j(\emptyset)$, so the claim follows from
 the first two axioms on a nucleus.
 \end{proof}
 
+\begin{lemma}Let~$\Box$ be a modal operator. Let~$\varphi$ be a formula.
+Let~$\psi :\equiv \varphi^\Box$ be the~$\Box$-translation of~$\varphi$.
+Let~$\psi'$ be the formula obtained from~$\psi$ by substituting any occuring
+domain of quantification by its~$\Box$-sheafification. Then~$\varphi$
+and~$\varphi'$ are equivalent.
+\end{lemma}
+\begin{proof}
+For any formula~$\varphi$, we denote by~``$\varphi^\boxplus$'' the result of
+first applying the~$\Box$-translation to~$\varphi$ and then substituting any
+set~$F$ occuring in~$\varphi$ as a domain of quantification by the plus
+construction~$F^+$. Recall that for any such~$F$ there is a canonical map~$F
+\to F^+, x \mapsto [\{x\}]$. We are going to show by induction that for any
+formula~$\varphi(x_1,\ldots,x_n)$ in which elements~$x_i\?F_i$ may occur as
+terms, it holds that~$\varphi^\Box(x_1,\ldots,x_n)$ is equivalent
+to~$\varphi^\boxplus([\{x_1\}],\ldots,[\{x_n\}])$. This suffices to prove the
+lemma.
+
+The cases for
+\[ \top \quad \bot \quad \wedge \quad \bigwedge \quad \vee \quad \bigvee \quad \implies \]
+are trivial. The cases for unbounded~``$\forall$'' and~``$\exists$'' are
+trivial as well. The case for~``$=$'' is more interesting; let~$\varphi(x,y)
+\equiv (x = y)$. Then we are to show that~$\varphi^\Box(x,y) \equiv \Box(x=y)$
+(equality in some set~$F$) is equivalent to~$\varphi^\boxplus([\{x\}],[\{y\}])
+\equiv \Box([\{x\}] = [\{y\}])$ (equality in~$F^+$). This is obvious. The case
+for~``$\in$'' is similar.
+
+Let~$\varphi \equiv (\exists x\?F\_ \psi(x))$, where we have dropped further
+variables occuring in~$\psi$ for simplicity. Then we are to show
+that~$\varphi^\Box \equiv \Box(\exists x\?F\_ \psi^\Box(x))$ is equivalent
+to~$\varphi^\boxplus \equiv \Box(\exists \bar x\?F^+\_ \psi^\boxplus(\bar x))$.
+The ``only if'' direction is trivial (set~$\bar x := [\{x\}]$). For the ``if''
+direction, we may assume that there exists~$\bar x\?F^+$ such
+that~$\psi^\boxplus(\bar x)$ since we want to prove a boxed statement. By
+definition of the plus construction, it holds that~$\Box(\speak{$\bar x$ is a
+singleton})$. So, again since we want to prove a boxed statement, we may assume
+that~$\bar x$ is actually a singleton. Therefore there exists~$x\?F$ such
+that~$\bar x = [\{x\}]$ and that~$\psi^\boxplus([\{x\})$ holds. By the induction
+hypothesis, it follows that~$\psi^\Box(x)$. From this the claim follows.
+
+The case for~``$\forall$'' is similar.
+\end{proof}
+
 
 \subsection{Internal proofs of common lemmas}
 

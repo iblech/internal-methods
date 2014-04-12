@@ -1060,6 +1060,10 @@ geometric implication and can thus be checked stalkwise.
 \end{proof}
 
 
+\subsection{Torsion} Omitted from this first draft.
+% XXX
+
+
 \subsection{Internal proofs of common lemmas}
 
 \begin{lemma}Let~$X$ be a scheme (or ringed space). Let
@@ -1073,6 +1077,25 @@ of modules with the outer ones being finitely generated (resp. finitely free)
 and we have to show that the middle one is finitely generated (resp. finitely
 free) as well. It is well-known that this follows; and since the usual proof of
 this fact is intuitionistic, we are done.
+\end{proof}
+
+\begin{lemma}\label{lemma:coherent-stuff}
+Let~$X$ be a scheme (or ringed space). Then:
+\begin{itemize}
+\item Let~$0 \to \F \to \G \to \H \to 0$ be an exact sequence
+of~$\O_X$-modules. If two of the three modules are coherent, so is the third.
+\item Let~$\F \to \G$ be a morphism of~$\O_X$-modules such that~$\F$ is
+of finite type and~$\G$ is coherent. Then its kernel is of finite type as well.
+\item If~$\F$ is a finitely presented~$\O_X$-module and~$\G$ is a
+coherent~$\O_X$-module, the~$\O_X$-modules~$\HOM(\F,\G)$ and~$\F \otimes \G$
+are coherent as well.
+\end{itemize}
+\end{lemma}
+\begin{proof}These statements follow directly from interpreting the
+corresponding standard proofs of commutative algebra in the internal language.
+For those standard proofs, see for instance the lecture notes of Ravi
+Vakil~\cite[section~13.8]{vakil:foag}, where they are given as a series of
+exercises.
 \end{proof}
 
 \begin{lemma}\label{lemma:kernel-of-epi-fingen}
@@ -1213,11 +1236,7 @@ by~$x \mapsto \id_R \otimes x$.
 
 
 \begin{itemize}
-\item basic lemmas: finite type in exact sequences, filtered colimits,
-flatness, surjective implies iso, \ldots
-\item important hard exercise
-\item torsion (check Liu p. 174)
-\item reorganize? place lemmas directly in their corresponding sections?
+\item basic lemmas: filtered colimits, flatness, \ldots
 \end{itemize}
 
 
@@ -2059,6 +2078,9 @@ function~$f\?\O_X$ to be nilpotent is geometric (it is~$\bigvee_{n \geq 0} f^n
 = 0$), nilpotency of~$f$ at a point is equivalent to nilpotency on some open
 neighbourhood.\end{ex}
 
+
+\subsection{Internal proofs of common lemmas}
+
 \begin{prop}\label{prop:gen-family-n}
 Let~$X$ be a scheme (or ringed space). Let~$\F$ be an~$\O_X$-module
 of finite type. Let~$x \in X$ be a point. Let~$n$ be a natural number. Then the
@@ -2140,6 +2162,16 @@ non-geometric surjectivity condition ($\forall y\?\G\_ \exists x\?\F\_
 \exists x\?\F\_ \alpha(x) = y_i$. Thus the claim follows by
 lemma~\ref{lemma:stalk-open-with-hypothesis}.\end{proof}
 
+\begin{lemma}Let~$X$ be a scheme (or ringed space). Let~$\alpha : \F \to \G$ be
+a morphism of~$\O_X$-modules. Let~$\F$ be of finite type and~$\G$ be coherent.
+Suppose that~$\alpha_x$ is injective at some point~$x \in X$. Then~$\alpha$ is
+a monomorphism on some open neighbourhood of~$x$.
+\end{lemma}
+\begin{proof}The kernel of~$\alpha$ is of finite type by
+lemma~\ref{lemma:coherent-stuff} and zero at~$x$. By the previous lemma, it is
+therefore zero on some open neighbourhood of~$x$.
+\end{proof}
+
 \begin{prop}Let~$i : A \hookrightarrow X$ be a closed immersion of schemes (or
 ringed spaces). Let~$\F$ be an~$\O_A$-module. Then~$i_*\F$ is of finite type if
 and only if~$\F$ is of finite type.\end{prop}
@@ -2212,7 +2244,6 @@ calculating~$\HOM_{\O_X}(\F,\placeholder)$ resp.~$\HOM_{\O_X}(\O_X^n,\placeholde
 \item explain that for some modal operators, the~$\Box$-translation of the law
 of excluded middle is valid; explain consequences
 \item spreading of properties from stalk to neighbourhood: give many examples
-% $\G \to \F$ injective at~$x$, $\F$ coherent, $\G$ of finite type ==> injective on neighbourhood
 \item give proof of the expressions for the nuclei listed in the table
 \item baby version of Barr's theorem
 \end{itemize}

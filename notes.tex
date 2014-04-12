@@ -2025,6 +2025,15 @@ where on the right hand side, all parameters occuring in~$\varphi$ were pulled
 back to~$X_\Box$ by the inclusion~$X_\Box \hookrightarrow X$.
 \end{thm}
 
+We have not explicitly stated the Kripke--Joyal semantics for a sheaf topos
+over a locale, which~$X_\Box$ is in general. The definition is exactly the same
+as in the case for sheaf toposes over a topological space, only that any
+mention of ``open sets'' has to be substituted by the more general ``opens''
+and any mention of the union operator~``$\bigcup$'' has to be interpreted by
+the supremum operator in the lattice of opens of the locale. For~$X_\Box$, this
+is~$\sup U_i = j(\bigcup_i U_i)$. Before giving a proof of the theorem, we want
+to discuss some of its consequences.
+
 \begin{cor}\label{cor:spreading}
 Let~$X$ be a topological space.
 \begin{enumerate}
@@ -2070,14 +2079,59 @@ that~$\varphi^\Box \Leftrightarrow \Box\varphi$.
 % discuss the case x = generic point, and discuss that for us, absence of a
 % generic point is no problem
 
-\begin{proof}[Proof of theorem~\ref{thm:box-translation-semantically}]
-\ldots
-\end{proof}
-
 \begin{ex}Let~$X$ be a scheme (or a ringed space). Since the condition for a
 function~$f\?\O_X$ to be nilpotent is geometric (it is~$\bigvee_{n \geq 0} f^n
 = 0$), nilpotency of~$f$ at a point is equivalent to nilpotency on some open
 neighbourhood.\end{ex}
+
+\begin{proof}[Proof of theorem~\ref{thm:box-translation-semantically}]
+A fancy proof goes as follows. First, one shows intuitionistically that for a
+modal operator~$\Box$ in~$\Set$, it holds that
+\[ \Set \models \varphi^\Box \quad\Longleftrightarrow\quad
+  \Sh_\Box(\Set) \models \varphi. \]
+This can be done by an easy and nontechnical induction on the structure of
+formulas~$\varphi$. Then one interprets this result in the sheaf topos~$\Sh(X)$:
+\begin{align*}
+  &\ \Sh(X) \models \varphi^\Box \\
+  \Longleftrightarrow&\ 
+  \Sh(X) \models \speak{$\Set \models \varphi^\Box$} &&\text{by idempotency}\\
+  \Longleftrightarrow&\ 
+  \Sh(X) \models \speak{$\Sh_\Box(\Set) \models \varphi$} &&\text{by the first step} \\
+  \Longleftrightarrow&\ 
+  \Sh_\Box(\Sh(X)) \models \varphi &&\text{by idempotency} \\
+  \Longleftrightarrow&\ 
+  \Sh(X_\Box) \models \varphi &&\text{since~$\Sh_\Box(\Sh(X)) \simeq
+  \Sh(X_\Box)$}
+\end{align*}
+By \emph{idempotency}, we mean that internally employing the Kripke--Joyal
+semantics to interpret doubly-internal statements is the same as using the
+Kripke--Joyal semantics once. However, we do not want to discuss this here any further;
+some details can be found in the original article on the stack
+semantics~\cite[lemma~7.20]{shulman:stack}, but the lemma given there is not
+general enough to justify the second use of idempotency above. For this, one
+needs to extend the stack semantics to support internal statements about
+locally internal categories like~$\Sh(X_\Box) \hookrightarrow \Sh(X)$ (which
+then look like locally small categories from the internal point of view). This
+is worthwhile for other reasons too, but shall not be pursued in these notes.
+
+Therefore, we give a more explicit proof. By induction, we are going to prove
+that for any open subset~$U \subseteq X$ and any formula~$\varphi$ over~$U$, it
+holds that
+\[ U \models_X \varphi^\Box \quad\Longleftrightarrow\quad j(U) \models_{X_\Box}
+\varphi, \]
+where the internal statements are to be interpreted by the Kripke--Joyal
+semantics of~$X$ and~$X_\Box$ respectively and~$j$ is the nucleus associated
+to~$\Box$. We may assume that any sheaves occuring in~$\varphi$ as domains of
+quantifications are in fact~$\Box$-sheaves; we justify this in a separate lemma
+below.
+
+The cases~$\varphi \equiv \top$,~$\varphi \equiv (\psi \wedge \chi)$,
+and~$\varphi \equiv \bigwedge_i \psi_i$ are trivial. For~$\varphi \equiv \bot$,
+the claim is that~$U \models_X \Box\varphi$ if and only if~$j(U)
+\models_{X_\Box} \bot$. The former means~$U \subseteq j(\emptyset)$ and the
+latter means~$j(U) = \sup \emptyset = j(\emptyset)$, so the claim follows from
+the first two axioms on a nucleus.
+\end{proof}
 
 
 \subsection{Internal proofs of common lemmas}

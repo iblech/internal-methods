@@ -2745,17 +2745,30 @@ formula
 \[ I := \Ann_{\O_X}(s) = \{ t\?\O_X \,|\, st = 0 \} \subseteq \O_X \]
 is quasicoherent. To prove this in the internal language, it suffices to
 verify the condition of the proposition.
-So let~$f:\O_X$ be arbitrary and assume~$\speak{$f$ inv.} \Rightarrow t \in I$,
+So let~$f\?\O_X$ and~$t\?\O_X$ be arbitrary and assume~$\speak{$f$ inv.} \Rightarrow t \in I$,
 \ie assume that if~$f$ were invertible,~$st$ would be zero. By
 proposition~\ref{prop:cond-zero} it follows that~$f^n st = 0$ for
 some~$n\?\NN$, \ie that~$f^n t \in I$.
 \end{ex}
 
+\begin{ex}\label{ex:radical-qcoh} Let~$X$ be a scheme and~$\I \subseteq \O_X$
+be a quasicoherent ideal sheaf.  Then the radical of~$\I$, internally definable
+as \[ \sqrt{\I} := \Bigl\{ s\?\O_X \,\Big|\, \bigvee_{n \geq 0} s^n \in \I \Bigr\}, \] is
+quasicoherent as well: Let~$f\?\O_X$ and~$s\?\O_X$ be arbitrary and
+assume~$\speak{$f$ inv.} \Rightarrow s \in \sqrt{\I}$, \ie assume that if~$f$
+were invertible, some power~$s^n$ would be an element of~$\I$. Since
+\emph{assuming that~$f$ is invertible commutes with directed disjunctions}
+(example~\ref{ex:df-locally-compact}), it follows that for some natural
+number~$n$, it holds that~$\speak{$f$ inv.} \Rightarrow s^n \in \I$. By
+quasicoherence of~$\I$, we may deduce that for some natural number~$m$, it
+holds that~$f^m s^n \in \I$. Thus~$fs \in \sqrt{\I}$.\end{ex}
+
+
 \begin{itemize}
 \item is the condition good enough to show that modules of finite type are
 quasicoherent? To show that cokernels are quasicoherent?
 \item discussion meaning of the sheaf condition in external language
-\item give more examples: $\sqrt{(0)}$, $(h)$, \ldots
+\item give more examples: $(h)$, \ldots
 \item Noetherian hypotheses: for example, that any quasicoherent submodule of a
 module of finite type is of finite type as well
 \end{itemize}

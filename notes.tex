@@ -6,9 +6,8 @@
 \usepackage{bussproofs}
 \usepackage{xspace}
 \usepackage{array}
-\usepackage{comment}
 \usepackage[protrusion=true,expansion=true]{microtype}
-\usepackage{hyperref}
+\usepackage[bookmarksdepth=2,pdfencoding=auto]{hyperref}
 \usepackage[all]{xy}
 
 \usepackage{tikz}
@@ -42,11 +41,11 @@
 \newcommand{\FF}{\mathbb{F}}
 \renewcommand{\AA}{\mathbb{A}}
 \newcommand{\A}{\mathcal{A}}
-\newcommand{\C}{\mathcal{C}}
+\renewcommand{\C}{\mathcal{C}}
 \newcommand{\D}{\mathcal{D}}
 \newcommand{\E}{\mathcal{E}}
 \newcommand{\F}{\mathcal{F}}
-\newcommand{\G}{\mathcal{G}}
+\renewcommand{\G}{\mathcal{G}}
 \renewcommand{\H}{\mathcal{H}}
 \renewcommand{\O}{\mathcal{O}}
 \newcommand{\K}{\mathcal{K}}
@@ -64,7 +63,6 @@
 \newcommand{\Hom}{\mathrm{Hom}}
 \newcommand{\HOM}{\mathcal{H}\mathrm{om}}
 \newcommand{\id}{\mathrm{id}}
-\newcommand{\Aut}[1]{\operatorname{Aut}(#1)}
 \newcommand{\GL}{\mathrm{GL}}
 \newcommand{\placeholder}{\underline{\quad}}
 \newcommand{\ul}[1]{\underline{#1}}
@@ -1878,7 +1876,8 @@ of~$\F$.
 % XXX: introduce notion of Box-stability
 
 
-\subsection{The~$\Box$-translation} There is certain well-known transformation~$\varphi
+\subsection{\texorpdfstring{The~$\Box$-translation}{The □-translation}}
+There is certain well-known transformation~$\varphi
 \mapsto \varphi^{\neg\neg}$ on formulas, the \emph{double negation
 translation}, with the following curious property: A formula~$\varphi$ is
 derivable in classical logic if and only if its
@@ -3141,7 +3140,7 @@ we do not want to discuss this further.
 
 For the second statement, internally define the ideal~$\I := \sqrt{\{ s\?\O_X \,|\, s = 0 \vee
 A^c \}} \subseteq \O_X$. Then~$1 \in \I$ if and only if~$A^c$, thus by
-proposition~\ref{prop:basics-closed-subscheme} the closed ringed subspace defined
+proposition~\ref{prop:basics-closed-subspace} the closed ringed subspace defined
 by~$\I$ has~$A$ as underlying topological space. It is reduced since~$\I$ is a
 radical ideal.\end{proof}
 

@@ -2678,7 +2678,8 @@ only if~$X = U_i$. With these observations the claim is obvious.
 
 % XXX: formulate for locally constant index sheaves I as well.
 
-\begin{ex}Let~$X$ be a quasicompact scheme (or quasicompact ringed space).
+\begin{ex}\label{ex:nilpotency-directed}
+Let~$X$ be a quasicompact scheme (or quasicompact ringed space).
 Let~$f \in \Gamma(X,\O_X)$ be a global function. Endow the set of natural
 numbers with the usual ordering. Then the family of formulas given by~$(f^n =
 0)_{n \in \NN}$ is monotone. Thus, if it internally holds that~$f$ is
@@ -2817,20 +2818,20 @@ useful, since at the moment, we do not know of any internal characterization of
 locally constant sheaves. The internal condition given by the following
 proposition does not have this defect.
 
-\begin{prop}\label{qcoh:sheafchar}
+\begin{thm}\label{thm:qcoh-sheafchar}
 Let~$X$ be scheme. Let~$\F$ be an~$\O_X$-module. Then~$\F$ is
 quasicoherent if and only if, from the internal perspective, the localized
 module~$\F[f^{-1}]$ is a sheaf for the modal operator~$(\speak{$f$ inv.}
 \Rightarrow \placeholder)$ for any~$f\?\O_X$.
-\end{prop}
+\end{thm}
 
 In detail, the internal condition is that for any~$f\?\O_X$, it holds that
 \[ \forall s\?\F[f^{-1}]\_
   (\speak{$f$ inv.} \Rightarrow s = 0) \Longrightarrow s = 0 \]
-and for any subsingleton~$S \subseteq \F[f^{-1}]$ it holds that
-\[ (\speak{$f$ inv.} \Rightarrow \speak{$S$ inhabited}) \Longrightarrow
+and for any subsingleton~$\S \subseteq \F[f^{-1}]$ it holds that
+\[ (\speak{$f$ inv.} \Rightarrow \speak{$\S$ inhabited}) \Longrightarrow
   \exists s\?\F[f^{-1}]\_
-  (\speak{$f$ inv.} \Rightarrow s \in S). \]
+  (\speak{$f$ inv.} \Rightarrow s \in \S). \]
 Unlike with the internalizations of finite type, finite presentation and
 coherence, this condition is \emph{not} a standard condition of commutative
 algebra. In fact, in classical logic, this condition is always satisfied --
@@ -2842,14 +2843,13 @@ the sense that the associated sheaf of modules~$M^\sim$ is quasicoherent.
 % quasicoherence, since quasicoherence is an interesting condition only on on
 % arbitrary schemes, not on affine schemes.
 
+We give the proof below, after first discussing some examples and consequences.
 The proof will explain the origin of this condition.
 
 \begin{ex}The zero~$\O_X$-module is quasicoherent, since (it and) all
 localizations of it are singleton sets from the internal perspective and
 thus~$\Box$-sheaves for any modal operator~$\Box$
 (example~\ref{ex:special-sets-sheaves}).\end{ex}
-
-\begin{proof}[Proof of proposition~\ref{qcoh:sheafchar}]\ldots\end{proof}
 
 \begin{cor}Let~$X$ be a scheme. Let~$\F$ be a quasicoherent~$\O_X$-module.
 Let~$\G \subseteq \F$ be a submodule. Then~$\G$ is quasicoherent if and only
@@ -2911,6 +2911,101 @@ number~$n$, it holds that~$\speak{$f$ inv.} \Rightarrow s^n \in \I$. By
 quasicoherence of~$\I$, we may deduce that for some natural number~$m$, it
 holds that~$f^m s^n \in \I$. Thus~$fs \in \sqrt{\I}$.\end{ex}
 
+
+\begin{proof}[Proof of theorem~\ref{thm:qcoh-sheafchar}]
+By the well-known characterization of quasicoherence in terms of inclusions of
+distinguished open subsets, an~$\O_X$-module~$\F$ is quasicoherent if and only
+if for any affine open subset~$U \subseteq X$ and function~$f \in
+\Gamma(U,\O_U)$, the canonical map
+\begin{equation}\label{eqn:restr-map}
+  \Gamma(U,\F)[f^{-1}] \lra \Gamma(D(f),\F), \ s/f^n \longmapsto
+  f^{-n} s|_{D(f)}
+\end{equation}
+is bijective. We will see that this map is injective for all such~$U$ and~$f$
+if and only if from the internal perspective, the set~$\F[f^{-1}]$ is a
+separated presheaf with respect to the modal operator~$(\speak{$f$ inv.}
+\Rightarrow \placeholder)$ for any~$f\?\O_X$; and we will see that in this
+case, the map is additionally surjective for all such~$U$ and~$f$ if the full
+sheaf condition is fulfilled.
+
+Since the sheaf~$\F[f^{-1}]$ does not appear in the stated characterization, we
+will first reformulate the separatedness and the sheaf condition in terms
+of~$\F$ instead of~$\F[f^{-1}]$. To this end, note that the separatedness
+condition is equivalent to
+\begin{equation}\label{eqn:separated}
+  \forall f\?\O_X\_ \forall s\?\F\_
+  (\speak{$f$ inv.} \Rightarrow s = 0 \? \F) \Longrightarrow
+  \bigvee_{n \geq 0} f^n s = 0 \? \F.
+\end{equation}
+The equivalence can easily be proven in the internal language. The sheaf
+condition is equivalent to (the conjunction of the separatedness condition and)
+\begin{multline}\label{eqn:sheaf}
+  \forall f\?\O_X\_ \forall \K \subseteq \F\_
+  (\speak{$f$ inv.} \Rightarrow \speak{$K$ is a singleton})
+  \Longrightarrow \\
+  \bigvee_{n \geq 0} \exists s\?\F\_
+  \speak{$f$ inv.} \Rightarrow f^{-n} s \in \K.
+\end{multline}
+In one direction, a set~$\S \subseteq \F[f^{-1}]$ is given; construct~$K := \{
+s\?\F \,|\, s/1 \in \S \} \subseteq \F$. In the other direction, a set~$\K
+\subseteq \F$ is given; construct~$S := \{ s\?\F[f^{-1}] \,|\, \exists
+s'\?\F\_ s' \in \K \wedge s = s'/1 \} \subseteq \F[f^{-1}]$. The remaining
+details can easily be filled out.
+
+We now interpret the internal statement~\eqref{eqn:separated} using the
+Kripke--Joyal semantics: Using the simplification rules, the external meaning
+is that for any affine open subset~$U \subseteq X$ and any function~$f \in
+\Gamma(U,\O_U)$ the following condition is satisfied: For any section~$s \in
+\Gamma(U,\F)$ it should hold that
+\[ U \models (\speak{$f$ inv.} \Rightarrow s = 0) \quad\text{implies}\quad
+  U \models \bigvee_{n \geq 0} f^n s = 0. \]
+The antecedent is equivalent to saying that~$s$ is zero in~$\Gamma(D(f),\F)$.
+The consequent is (by quasicompactness of~$U$, see
+example~\ref{ex:nilpotency-directed}) equivalent to saying that for some~$n \geq 0$, the
+section~$f^n s$ is zero in~$\Gamma(U,\F)$, \ie that~$s$ is zero
+in~$\Gamma(U,\F)[f^{-1}]$. So this condition is precisely the injectivity of
+the canonical map~\eqref{eqn:restr-map}.
+
+The external meaning of statement~\eqref{eqn:sheaf} is that for any affine open
+subset~$U \subseteq X$ and any function~$f \in \Gamma(U,\O_U)$ the following
+condition is satisfied: For any subsheaf~$\K \subseteq \F|_U$ it should hold
+that
+\begin{multline*}
+  U \models (\speak{$f$ inv.} \Rightarrow \speak{$\K$ is a singleton})
+  \quad\text{implies} \\
+  U \models \bigvee_{n \geq 0} \exists s\?\F\_
+  \speak{$f$ inv.} \Rightarrow f^{-n} s \in \K.
+\end{multline*}
+Given the injectivity of the canonical map~\eqref{eqn:restr-map} (for any
+affine open subset, not only~$U$), this condition is equivalent to its
+surjectivity: To see that surjectivity is sufficient, let a subsheaf~$\K
+\subseteq \F|_U$ verifying the antecedent be given. Since~$\K|_{D(f)}$ is a
+singleton sheaf, we can consider its unique section~$u \in \Gamma(D(f),\K)
+\subseteq \Gamma(D(f),\F)$. By surjectivity, there exists a preimage, \ie a
+fraction~$s/f^n \in \Gamma(U,\F)[f^{-1}]$ such that~$u = f^{-n} s|_{D(f)}$
+in~$\Gamma(D(f),\F)$. Thus~$U \models f^{-n}s \in \K$ holds and the consequent
+is verified.
+
+To see that surjectivity is necessary, let a section~$u \in \Gamma(D(f),\F)$ be
+given. Define a subsheaf~$\K \subseteq \F|_U$ by setting~$\Gamma(V,\K) := \{
+u|_V \,|\, V \subseteq D(f) \}$. Then~$\K$ verifies the antecedent. Thus the
+consequent holds: There exists an open covering~$U = \bigcup_i U_i$ such that
+for each~$i$, there exists a natural number~$n_i$ and a section~$s_i \in
+\Gamma(U_i,\F)$ such that~$f^{-n_i} s_i = u$ on~$U_i \cap D(f)$. Without loss of
+generality, we may assume that the~$U_i$ are distinguished open subsets~$D(g_i)
+\subseteq U$; that they are finite in number; and that the natural
+numbers~$n_i$ agree with each other and thus equal some number~$n$. Since~$s_i
+= s_j$ in~$\Gamma(U_i \cap U_j \cap D(f), \F)$, injectivity of the canonical
+map~\eqref{eqn:restr-map} (on the affine set~$U_i \cap U_j = D(g_i g_j)$)
+implies that~$s_i = s_j$ in~$\Gamma(U_i \cap U_j, \F)[f^{-1}]$. Thus for
+any~$i,j$ there exists a natural number~$m_{ij}$ such that~$f^{m_{ij}} s_i =
+f^{m_{ij}} s_j$ in~$\Gamma(U_i \cap U_j, \F)$. We may assume that the
+numbers~$m_{ij}$ equal some common number~$m$; thus the local sections~$f^m s_i$
+glue to a section~$s \in \Gamma(U,\F)$. The sought preimage of~$u$ is the
+fraction~$s/f^{n+m}$, since~$f^{-(n+m)} s|_{D(f)}$ equals~$u$
+in~$\Gamma(D(f),\F)$ (as this is true on the covering~$D(f) = \bigcup_i (D(f)
+\cap U_i)$).
+\end{proof}
 
 \begin{itemize}
 \item is the condition good enough to show that modules of finite type are

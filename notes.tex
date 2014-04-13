@@ -2631,6 +2631,145 @@ proposition~\ref{prop:kx-is-negneg-sheafification}) and~$\L$ is~$\Box$-separated
 \end{itemize}
 
 
+\section{Compactness principles}
+
+As stated in the introduction, quasicompactness of a space can not be detected
+by the internal language: There cannot exist a formula~$\varphi$ such that a
+topological space is quasicompact if and only if~$\Sh(X) \models \varphi$,
+since the latter is always a local property on~$X$ while quasicompactness is not.
+However, quasicompactness can be characterized by a \emph{metaproperty} of the
+internal language.
+
+This result is best stated in a way which does not explicitly refer to a notion
+of finiteness. So recall that quasicompactness of a topological space~$X$ can
+be phrased in the following way: For any directed set~$I$ and any monotone
+family~$(U_i)_{i \in I}$ of open subsets, if~$X = \bigcup_i U_i$ then~$X = U_i$
+for some~$i \in I$. As usual, a \emph{directed set} is an inhabited partially
+ordered set such that for any two elements, there exists a common upper bound.
+A family~$(U_i)_{i \in I}$ is \emph{monotone} if and only if~$i \preceq j$
+implies~$U_i \subseteq U_j$.
+
+\begin{prop}Let~$X$ be a topological space. Then~$X$ is quasicompact if and
+only if the internal language of~$\Sh(X)$ fulfills the following metaproperty:
+For any directed set~$I$ and any monotone family~$(\varphi_i)_{i \in I}$ of
+formulas over~$X$, it holds that
+\[ \Sh(X) \models \bigvee_{i \in I} \varphi_i
+  \quad\text{implies}\quad
+  \text{for some~$i \in I$, $\Sh(X) \models \varphi_i$}. \]
+The monotonicity condition means that~$\Sh(X) \models (\varphi_i \Rightarrow
+\varphi_j)$ for any~$i \preceq j$ in~$I$.
+\end{prop}
+
+Stated more succintly, a topological space~$X$ is quasicompact if and only
+if~``$\Sh(X) \models$'' commutes with directed~``$\bigvee_{i \in I}$'''s.
+
+\begin{proof}For the ``only if'' direction, let such a family of formulas be
+given. Declare~$U_i$ to be the largest open subset of~$X$ where~$\varphi_i$
+holds. Then by assumption, the~$U_i$ form a monotone family and cover~$X$. By
+quasicompactness of~$X$, some single~$U_i$ covers~$X$ as well, such that the
+corresponding formula~$\varphi_i$ holds on~$X$.
+
+For the ``if'' direction, note that a monotone family~$(U_i)$ of open subsets
+induces a monotone family of formulas by defining~$\varphi_i :\equiv U_i$. This
+correspondence is such that~$\Sh(X) \models \bigvee_i \varphi_i$ holds if and
+only if~$X = \bigcup_i U_i$ and such that~$\Sh(X) \models \varphi_i$ if and
+only if~$X = U_i$. With these observations the claim is obvious.
+\end{proof}
+
+% XXX: formulate for locally constant index sheaves I as well.
+
+\begin{ex}Let~$X$ be a quasicompact scheme (or quasicompact ringed space).
+Let~$f \in \Gamma(X,\O_X)$ be a global function. Endow the set of natural
+numbers with the usual ordering. Then the family of formulas given by~$(f^n =
+0)_{n \in \NN}$ is monotone. Thus, if it internally holds that~$f$ is
+nilpotent, then~$f$ is nilpotent as an element of~$\Gamma(X,\O_X)$ as
+well.\end{ex}
+
+\begin{prop}Let~$X$ be a topological space. Let~$K \subseteq X$ be an open
+subset which is \emph{locally quasicompact} in the sense that there exists an open
+covering~$X = \bigcup_j U_j$ such that each~$K \cap U_j$ is quasicompact. Then the
+internal language of~$\Sh(X)$ fulfills the following metaproperty: For any
+directed set~$I$ and monotone family~$(\varphi_i)_{i \in I}$ of formulas
+over~$X$ it holds that
+\[ \Sh(X) \models \bigl(K \Rightarrow \bigvee_i \varphi_i\bigr)
+  \quad\text{implies}\quad
+  \Sh(X) \models \bigvee_i (K \Rightarrow \varphi_i). \]
+If additionally for any open subset~$V \subseteq X$ the set~$K \cap V$ is
+locally quasicompact in~$V$, the following stronger and purely internal
+statement holds:
+\[ \Sh(X) \models \bigl(K \Rightarrow \bigvee_i \varphi_i\bigr)
+  \Longrightarrow
+  \bigvee_i (K \Rightarrow \varphi_i). \]
+\end{prop}
+\begin{proof}Assume that~$\Sh(X) \models (K \Rightarrow \bigvee_i \varphi_i)$.
+This is equivalent to~$K \models \bigvee_i \varphi_i$. By the locality of the
+internal language, it follows that~$K \cap U_j \models \bigvee_i \varphi_i$.
+Since~$K \cap U_j$ is quasicompact, it follows by the previous proposition that
+there exists an index~$i_j \in I$ such that~$K \cap U_j \models \varphi_{i_j}$.
+This is equivalent to~$U_j \models (K \Rightarrow \varphi_{i_j})$. In
+particular, it holds that~$U_j \models \bigvee_i (K \Rightarrow \varphi_i)$.
+Since this is true for any~$j$, it follows that~$X \models \bigvee_i (K
+\Rightarrow \varphi_i)$, again by the locality of the internal language.
+
+The second statement is a corollary of the first one.
+\end{proof}
+
+\begin{ex}\label{ex:df-locally-compact}
+Let~$X$ be a scheme and~$f \in \Gamma(X,\O_X)$ be a global function.
+Then the open set~$D(f) = \{ x \in X \,|\, \text{$f_x$ is invertible in~$\O_{X,x}$}
+\}$ is locally quasicompact in the sense of the proposition, even in the
+stronger sense: Let~$V \subseteq X$ be any open set and consider a covering~$V = \bigcup_i
+U_i$ by open affine subsets~$U_i = \Spec A_i$. Then~$D(f) \cap U_i \cong \Spec
+A_i[f^{-1}]$ is quasicompact.\end{ex}
+
+From this example, it will trivially follow that the nilradical~$\sqrt{(0)}
+\subseteq \O_X$ of a scheme and indeed the radical of any quasicoherent ideal
+sheaf is quasicoherent (lemma~\ref{ex:radical-qcoh}).
+
+\begin{rem}In applications, the open set~$K$ of the proposition will be given
+as the largest open subset on which some formula~$\psi$ holds. Then the
+conclusion of the proposition is that \emph{assuming that~$\psi$ holds commutes
+with directed disjunctions}.\end{rem}
+
+A stronger condition on a topological space~$X$ than quasicompactness is
+locality: A topological space is \emph{local} if and only if for any open
+covering~$X = \bigcup_i U_i$ (not necessarily directed) a certain single~$U_i$
+covers~$X$ as well.  Locality has a similar characterization as a metaproperty
+of~$\Sh(X)$:
+
+\begin{prop}Let~$X$ be a topological space. Then~$X$ is local if and
+only if the internal language of~$\Sh(X)$ fulfills the following metaproperty:
+For any set~$I$ and any family~$(\varphi_i)_{i \in I}$ of
+formulas over~$X$, it holds that
+\[ \Sh(X) \models \bigvee_{i \in I} \varphi_i
+  \quad\text{implies}\quad
+  \text{for some~$i \in I$, $\Sh(X) \models \varphi_i$}. \]
+Furthermore, this metaproperty is equivalent to the following one: For any
+sheaf~$\F$ on~$X$ and any formula~$\varphi(s)$ containing a variable~$s\?\F$,
+it holds that
+\[ \Sh(X) \models \exists s\?\F\_ \varphi(s)
+  \quad\text{implies}\quad
+  \text{for some~$s \in \Gamma(X,\F)$, $\Sh(X) \models \varphi(s)$}. \]
+\end{prop}
+\begin{proof}The proof of the first part is very similar to the proof of the
+previous proposition. For the ``only if'' direction of the second part, note
+that the antecedent implies that there exist local section~$s_i \in
+\Gamma(U_i,\F)$ such that~$U_i \models \varphi(s_i)$ for some open covering~$X
+= \bigcup_i U_i$. By locality of~$X$, one such~$U_i$ suffices to cover~$X$; so
+the corresponding section~$s_i$ is actually a global section and verifies~$X
+\models \varphi(s_i)$.
+
+For the converse direction, note that given a family~$(U_i)_{i \in I}$ of open
+subsets, we can define a sheaf on~$X$ by the internal definition
+\[ \F := \{ M \in \Omega \,|\, \bigvee_{i \in I} (M = U_i) \}. \]
+Recall that~$\Omega$ is the object of truth values, internally defined as the
+power set of~$1 := \{\star\}$ and that~``$M = U_i$'' is abuse of notation
+and means~$M = \{ x \in 1 \,|\, U_i \}$.
+% XXX: the global sections of \F are not those which I expected! Is the claim
+% true?
+\end{proof}
+
+
 \section{Quasicoherent sheaves of modules}
 
 Recall that an~$\O_X$-module~$\F$ on a ringed space~$X$ is \emph{quasicoherent}
@@ -2781,145 +2920,6 @@ quasicoherent? To show that cokernels are quasicoherent?
 \item Noetherian hypotheses: for example, that any quasicoherent submodule of a
 module of finite type is of finite type as well
 \end{itemize}
-
-
-\section{Compactness principles}
-
-As stated in the introduction, quasicompactness of a space can not be detected
-by the internal language: There cannot exist a formula~$\varphi$ such that a
-topological space is quasicompact if and only if~$\Sh(X) \models \varphi$,
-since the latter is always a local property on~$X$ while quasicompactness is not.
-However, quasicompactness can be characterized by a \emph{metaproperty} of the
-internal language.
-
-This result is best stated in a way which does not explicitly refer to a notion
-of finiteness. So recall that quasicompactness of a topological space~$X$ can
-be phrased in the following way: For any directed set~$I$ and any monotone
-family~$(U_i)_{i \in I}$ of open subsets, if~$X = \bigcup_i U_i$ then~$X = U_i$
-for some~$i \in I$. As usual, a \emph{directed set} is an inhabited partially
-ordered set such that for any two elements, there exists a common upper bound.
-A family~$(U_i)_{i \in I}$ is \emph{monotone} if and only if~$i \preceq j$
-implies~$U_i \subseteq U_j$.
-
-\begin{prop}Let~$X$ be a topological space. Then~$X$ is quasicompact if and
-only if the internal language of~$\Sh(X)$ fulfills the following metaproperty:
-For any directed set~$I$ and any monotone family~$(\varphi_i)_{i \in I}$ of
-formulas over~$X$, it holds that
-\[ \Sh(X) \models \bigvee_{i \in I} \varphi_i
-  \quad\text{implies}\quad
-  \text{for some~$i \in I$, $\Sh(X) \models \varphi_i$}. \]
-The monotonicity condition means that~$\Sh(X) \models (\varphi_i \Rightarrow
-\varphi_j)$ for any~$i \preceq j$ in~$I$.
-\end{prop}
-
-Stated more succintly, a topological space~$X$ is quasicompact if and only
-if~``$\Sh(X) \models$'' commutes with directed~``$\bigvee_{i \in I}$'''s.
-
-\begin{proof}For the ``only if'' direction, let such a family of formulas be
-given. Declare~$U_i$ to be the largest open subset of~$X$ where~$\varphi_i$
-holds. Then by assumption, the~$U_i$ form a monotone family and cover~$X$. By
-quasicompactness of~$X$, some single~$U_i$ covers~$X$ as well, such that the
-corresponding formula~$\varphi_i$ holds on~$X$.
-
-For the ``if'' direction, note that a monotone family~$(U_i)$ of open subsets
-induces a monotone family of formulas by defining~$\varphi_i :\equiv U_i$. This
-correspondence is such that~$\Sh(X) \models \bigvee_i \varphi_i$ holds if and
-only if~$X = \bigcup_i U_i$ and such that~$\Sh(X) \models \varphi_i$ if and
-only if~$X = U_i$. With these observations the claim is obvious.
-\end{proof}
-
-% XXX: formulate for locally constant index sheaves I as well.
-
-\begin{ex}Let~$X$ be a quasicompact scheme (or quasicompact ringed space).
-Let~$f \in \Gamma(X,\O_X)$ be a global function. Endow the set of natural
-numbers with the usual ordering. Then the family of formulas given by~$(f^n =
-0)_{n \in \NN}$ is monotone. Thus, if it internally holds that~$f$ is
-nilpotent, then~$f$ is nilpotent as an element of~$\Gamma(X,\O_X)$ as
-well.\end{ex}
-
-\begin{prop}Let~$X$ be a topological space. Let~$K \subseteq X$ be an open
-subset which is \emph{locally quasicompact} in the sense that there exists an open
-covering~$X = \bigcup_j U_j$ such that each~$K \cap U_j$ is quasicompact. Then the
-internal language of~$\Sh(X)$ fulfills the following metaproperty: For any
-directed set~$I$ and monotone family~$(\varphi_i)_{i \in I}$ of formulas
-over~$X$ it holds that
-\[ \Sh(X) \models \bigl(K \Rightarrow \bigvee_i \varphi_i\bigr)
-  \quad\text{implies}\quad
-  \Sh(X) \models \bigvee_i (K \Rightarrow \varphi_i). \]
-If additionally for any open subset~$V \subseteq X$ the set~$K \cap V$ is
-locally quasicompact in~$V$, the following stronger and purely internal
-statement holds:
-\[ \Sh(X) \models \bigl(K \Rightarrow \bigvee_i \varphi_i\bigr)
-  \Longrightarrow
-  \bigvee_i (K \Rightarrow \varphi_i). \]
-\end{prop}
-\begin{proof}Assume that~$\Sh(X) \models (K \Rightarrow \bigvee_i \varphi_i)$.
-This is equivalent to~$K \models \bigvee_i \varphi_i$. By the locality of the
-internal language, it follows that~$K \cap U_j \models \bigvee_i \varphi_i$.
-Since~$K \cap U_j$ is quasicompact, it follows by the previous proposition that
-there exists an index~$i_j \in I$ such that~$K \cap U_j \models \varphi_{i_j}$.
-This is equivalent to~$U_j \models (K \Rightarrow \varphi_{i_j})$. In
-particular, it holds that~$U_j \models \bigvee_i (K \Rightarrow \varphi_i)$.
-Since this is true for any~$j$, it follows that~$X \models \bigvee_i (K
-\Rightarrow \varphi_i)$, again by the locality of the internal language.
-
-The second statement is a corollary of the first one.
-\end{proof}
-
-\begin{ex}\label{ex:df-locally-compact}
-Let~$X$ be a scheme and~$f \in \Gamma(X,\O_X)$ be a global function.
-Then the open set~$D(f) = \{ x \in X \,|\, \text{$f_x$ is invertible in~$\O_{X,x}$}
-\}$ is locally quasicompact in the sense of the proposition, even in the
-stronger sense: Let~$V \subseteq X$ be any open set and consider a covering~$V = \bigcup_i
-U_i$ by open affine subsets~$U_i = \Spec A_i$. Then~$D(f) \cap U_i \cong \Spec
-A_i[f^{-1}]$ is quasicompact.\end{ex}
-
-From this example, it will trivially follow that the nilradical~$\sqrt{(0)}
-\subseteq \O_X$ of a scheme and indeed the radical of any quasicoherent ideal
-sheaf is quasicoherent (lemma~\ref{ex:radical-qcoh}).
-
-\begin{rem}In applications, the open set~$K$ of the proposition will be given
-as the largest open subset on which some formula~$\psi$ holds. Then the
-conclusion of the proposition is that \emph{assuming that~$\psi$ holds commutes
-with directed disjunctions}.\end{rem}
-
-A stronger condition on a topological space~$X$ than quasicompactness is
-locality: A topological space is \emph{local} if and only if for any open
-covering~$X = \bigcup_i U_i$ (not necessarily directed) a certain single~$U_i$
-covers~$X$ as well.  Locality has a similar characterization as a metaproperty
-of~$\Sh(X)$:
-
-\begin{prop}Let~$X$ be a topological space. Then~$X$ is local if and
-only if the internal language of~$\Sh(X)$ fulfills the following metaproperty:
-For any set~$I$ and any family~$(\varphi_i)_{i \in I}$ of
-formulas over~$X$, it holds that
-\[ \Sh(X) \models \bigvee_{i \in I} \varphi_i
-  \quad\text{implies}\quad
-  \text{for some~$i \in I$, $\Sh(X) \models \varphi_i$}. \]
-Furthermore, this metaproperty is equivalent to the following one: For any
-sheaf~$\F$ on~$X$ and any formula~$\varphi(s)$ containing a variable~$s\?\F$,
-it holds that
-\[ \Sh(X) \models \exists s\?\F\_ \varphi(s)
-  \quad\text{implies}\quad
-  \text{for some~$s \in \Gamma(X,\F)$, $\Sh(X) \models \varphi(s)$}. \]
-\end{prop}
-\begin{proof}The proof of the first part is very similar to the proof of the
-previous proposition. For the ``only if'' direction of the second part, note
-that the antecedent implies that there exist local section~$s_i \in
-\Gamma(U_i,\F)$ such that~$U_i \models \varphi(s_i)$ for some open covering~$X
-= \bigcup_i U_i$. By locality of~$X$, one such~$U_i$ suffices to cover~$X$; so
-the corresponding section~$s_i$ is actually a global section and verifies~$X
-\models \varphi(s_i)$.
-
-For the converse direction, note that given a family~$(U_i)_{i \in I}$ of open
-subsets, we can define a sheaf on~$X$ by the internal definition
-\[ \F := \{ M \in \Omega \,|\, \bigvee_{i \in I} (M = U_i) \}. \]
-Recall that~$\Omega$ is the object of truth values, internally defined as the
-power set of~$1 := \{\star\}$ and that~``$M = U_i$'' is abuse of notation
-and means~$M = \{ x \in 1 \,|\, U_i \}$.
-% XXX: the global sections of \F are not those which I expected! Is the claim
-% true?
-\end{proof}
 
 
 \section{Subschemes}

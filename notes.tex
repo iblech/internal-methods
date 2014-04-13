@@ -50,9 +50,11 @@
 \renewcommand{\H}{\mathcal{H}}
 \renewcommand{\O}{\mathcal{O}}
 \newcommand{\K}{\mathcal{K}}
+\newcommand{\N}{\mathcal{N}}
 \renewcommand{\L}{\mathcal{L}}
 \renewcommand{\P}{\mathcal{P}}
 \newcommand{\R}{\mathcal{R}}
+\newcommand{\I}{\mathcal{I}}
 \renewcommand{\S}{\mathcal{S}}
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\RR}{\mathbb{R}}
@@ -73,6 +75,7 @@
 \newcommand{\PSh}{\mathrm{PSh}}
 \newcommand{\Zar}{\mathrm{Zar}}
 \newcommand{\Sch}{\mathrm{Sch}}
+\newcommand{\Mod}{\mathrm{Mod}}
 \DeclareMathOperator{\Spec}{Spec}
 \DeclareMathOperator{\colim}{colim}
 \DeclareMathOperator{\rank}{rank}
@@ -1059,6 +1062,12 @@ The second to last equivalence is because~``$\forall s\?\F\_ s = 0$'' is a
 geometric implication and can thus be checked stalkwise.
 \end{proof}
 
+\begin{rem}\label{rem:support-sheaf-of-sets}
+The support of a sheaf of \emph{sets}~$\F$ is defined as the subset~$\{ x \in X \,|\,
+\text{$\F_x$ is not a singleton} \}$. A similar proof shows that the interior
+of its complement can be characterized as the largest open subset of~$X$ where
+the internal statement~$\speak{$\F$ is a singleton}$ holds.\end{rem}
+
 
 \subsection{Torsion} Omitted from this first draft.
 % XXX
@@ -1710,7 +1719,8 @@ functor~$i_* : \Sh(X_j) \to \Sh(X)$ is fully faithful and the composition~$i^{-1
 \circ i_* : \Sh(X_j) \to \Sh(X_j)$ is (canonically isomorphic to) the identity.
 
 
-\subsection{Internal sheaves and sheafification} It turns out that the image of
+\subsection{Internal sheaves and sheafification}\label{sect:internal-sheaves}
+It turns out that the image of
 the pushforward functor~$i_* : \Sh(X_\Box) \to \Sh(X)$, where~$\Box$ is a modal
 operator in~$\Sh(X)$, can be explicitly described: Namely, it consists exactly
 of those sheaves which from the internal point of view
@@ -2617,12 +2627,6 @@ proposition~\ref{prop:kx-is-negneg-sheafification}) and~$\L$ is~$\Box$-separated
 \end{itemize}
 
 
-\section{Relative spectrum}
-\begin{itemize}
-\item ...
-\end{itemize}
-
-
 \section{Quasicoherent sheaves of modules}
 
 Recall that an~$\O_X$-module~$\F$ on a ringed space~$X$ is \emph{quasicoherent}
@@ -2757,12 +2761,237 @@ module of finite type is of finite type as well
 \end{itemize}
 
 
+\section{Subschemes}
+
+\subsection{Sheaves on open and closed subspaces}
+
+\begin{lemma}\label{lemma:extension-by-empty-set}
+Let~$X$ be a topological space. Let~$j : U \hookrightarrow X$ be the inclusion
+of an open subspace. Then there is a canonical functor~$j_! : \Sh(U) \to
+\Sh(X)$ called \emph{extension by the empty set} with the following properties:
+\begin{enumerate}
+\item The functor~$j_!$ is left adjoint to the restriction functor~$j^{-1} : \Sh(X) \to
+\Sh(U)$.
+\item The composition~$j^{-1} \circ j_! : \Sh(U) \to \Sh(U)$ is (canonically
+isomorphic to) the identity.
+\item The essential image of~$j_!$ consists of exactly those sheaves~$\F$ on~$X$
+whose stalks are empty at all points of~$U^c$. In this case, it holds
+that~$j_!j^{-1}\F \cong \F$ (canonically).
+\end{enumerate}
+\end{lemma}
+\begin{proof}Internally, for a set~$\F$, we can define~$j_!(\F)$ simply be the
+set comprehension
+\[ j_!(\F) := \{ x\?\F \,|\, U \}. \]
+Externally, the sections of the thusly defined sheaf on an open subset~$V
+\subseteq X$ are given by~$\{ x \in \Gamma(V,\F) \,|\, V \subseteq U \}$,
+\ie the whole of~$\Gamma(V,\F)$ if~$V \subseteq U$ and the empty set otherwise.
+With this short internal description, all of the stated properties can be
+easily verified in the internal language.
+
+For instance, recall that internally the functor~$j^{-1}$ is given by
+sheafifying with respect to the modal operator~$\Box :\equiv (U \Rightarrow
+\placeholder)$. Thus, to show the second statement, we have to give a
+bijection~$(j_!(\F))^{++} \to \F$ for any~$\Box$-sheaf~$\F$. (This map has to
+be given explicitly, to not only show a weaker statement about a local
+isomorphism, see discussion at XXX). To this end, we can use the composition
+\[ (j_!(\F))^{++} \lhra \F^{++} \stackrel{({\cong})^{-1}}{\lra} \F, \]
+where the first map is injective since sheafifying is exact. It is also
+surjective, since the~$\Box$-translation of the statement~$\speak{$j_!(F) \to
+\F$ is surjective}$ holds: For any element~$x\?\F$, it holds
+that~$\Box(\speak{$x$ possesses a preimage})$.
+
+For the third property, note that a sheaf~$\F$ on~$X$ fulfills the stated
+condition on stalks if and only if, from the internal perspective, it holds
+that~$U \Rightarrow \speak{$\F$ is inhabited}$. We omit further details.
+\end{proof}
+
+\begin{lemma}\label{lemma:extension-by-zero}
+Let~$X$ be a ringed space. Let~$j : U \hookrightarrow X$ be the inclusion
+of an open subspace. Then there is a canonical functor~$j_! : \Mod_U(\O_U) \to
+\Mod_X(\O_X)$ called \emph{extension by zero} with the following properties:
+\begin{enumerate}
+\item The functor~$j_!$ is left adjoint to the restriction functor~$j^{-1} :
+\Mod_X(\O_X) \to \Mod_U(\O_U)$.
+\item The composition~$j^{-1} \circ j_! : \Mod_U(\O_U) \to \Mod_U(\O_U)$ is (canonically
+isomorphic to) the identity.
+\item The essential image of~$j_!$ consists of exactly those~$\O_X$-modules
+whose stalks are zero at all points of~$U^c$. In this case, it holds
+that~$j_!j^{-1}\F \cong \F$ (canonically).
+\end{enumerate}
+\end{lemma}
+\begin{proof}Internally, a sheaf of modules on~$\O_U$ is simply a module
+on~$\O_X^{++}$ which is a~$\Box$-sheaf, where~$\Box :\equiv (U \Rightarrow
+\placeholder)$. The suitable internal definition for the extension by zero of
+such a module~$\F$ is
+\[ j_!(\F) := \{ x\?\F \,|\, (x = 0) \vee U \}. \]
+With this description, all necessary verifications are easy. Note that
+an~$\O_X$-module~$\F$ fulfills the stated condition on stalks if and only if
+internally, it holds that~$\forall x\?\F\_ (x = 0) \vee U$.
+\end{proof}
+
+\begin{lemma}\label{lemma:essim-closed-immersion}
+Let~$X$ be a topological space. Let~$i : A \hookrightarrow X$ be the inclusion
+of a closed subspace. The essential image of the
+inclusion~$i_* : \Sh(A) \to \Sh(X)$ consists of exactly those sheaves~$\F$ whose support
+is a subset of~$A$. In this case, it holds that~$i_* i^{-1} \F \cong \F$
+(canonically).\end{lemma}
+\begin{proof}Recall that the modal operator associated to~$A$ is~$\Box\varphi
+:\equiv (\varphi \vee A^c)$, and that by section~\ref{sect:internal-sheaves} the
+essential image of~$i_*$ consists of exactly those sheaves which
+are~$\Box$-sheaves from the internal perspective. Let~$\F$ be a sheaf on~$X$.
+Then it holds that
+\[ \supp\F \subseteq A \quad\Longleftrightarrow\quad
+  A^c \subseteq X \setminus \supp\F \quad\Longleftrightarrow\quad
+  A^c \subseteq \Int(X \setminus \supp\F). \]
+Since the interior of the complement of~$\supp\F$ can be characterized as the
+largest open subset of~$X$ on which the internal statement~``$\F$ is a
+singleton'' holds (remark~\ref{rem:support-sheaf-of-sets}), the condition on
+the support is fulfilled if and only if
+\[ Sh(X) \models (A^c \Rightarrow \speak{$\F$ is a singleton}). \]
+We thus have to show that this internal condition is equivalent to~$\F$ being
+a~$\Box$-sheaf. For the ``if'' direction, assume~$A^c$. Then the empty subset~$S
+\subseteq \F$ trivially verifies the condition that~$\Box(\speak{$S$ is a
+singleton})$. There thus exists an element~$x\?\F$ (such that~$\Box(x \in S)$).
+If we're given a further element~$y\?\F$, it trivially holds that~$\Box(x =
+y)$. By~$\Box$-separatedness, it thus follows that~$x = y$. Thus~$\F$ is the
+singleton~$\{x\}$. The proof of the ``only if'' direction is similar.
+
+The second statement says that internally, sheafifying a~$\Box$-sheaf with
+respect to the modal operator~$\Box$ and then forgetting that the result is
+a~$\Box$-sheaf amounts to doing nothing. This is obvious.
+\end{proof}
+
+\subsection{Closed subschemes} Let~$X$ be a ringed space. Recall
+that an ideal sheaf~$\I \subseteq \O_X$ defines a closed subset~$V(\I) = \{ x
+\in X \,|\, \I_x \neq (1) \subseteq \O_{X,x} \}$, a sheaf of
+rings~$\O_X/\I$, and a ringed space~$(V(\I), \O_{V(\I)})$ where~$\O_{V(\I)}$ is
+the pullback of~$\O_X/\I$ to~$V(\I)$. In the internal universe, we can
+reify~$V(\I)$ by giving a modal operator~$\Box$ such that externally, the
+subspace~$X_\Box$ coincides with~$V(\I)$.
+
+\begin{prop}\label{prop:basics-closed-subspace}
+Let~$X$ be a ringed space. Let~$\I \subseteq \O_X$ be an ideal
+sheaf. Then:
+\begin{enumerate}
+\item The subspace of~$X$ associated to the modal operator~$\Box$ defined
+by~$\Box\varphi :\equiv (\varphi \vee (1 \in \I))$ is~$V(\I)$.
+\item The support of~$\O_X/\I$ is exactly~$V(\I)$.
+\item The canonical morphism~$i : V(\I) \to X$ is a closed immersion
+of ringed spaces.
+\end{enumerate}\end{prop}
+\begin{proof}For any open subset~$U \subseteq X$, it holds that~$U \models 1
+\in \I$ if and only if~$U \subseteq D(\I) = X \setminus V(\I)$. Thus~$D(\I)$
+can be characterized as the largest open subset on which~``$1 \in \I$'' holds.
+According to table~\ref{table:nuclei} on page~\pageref{table:nuclei}, the
+stated modal operator thus defines the subspace~$D(\I)^c$, \ie~$V(\I)$.
+
+For the second statement, note that since~$\O_X/\I$ is a sheaf of rings, its
+support is closed.  Therefore the largest open subset of~$X$ where the internal
+statement~``$\O_X/\I = 0$'' holds is the complement of the support
+(proposition~\ref{prop:characterization-support}). Since~$D(\I)$ is the largest
+open subset where the internal statement~``$\I = (1)$'' holds, it suffices to
+show that internally,~$\O_X/\I = 0$ if and only if~$\I = (1)$. This is obvious.
+
+The topological part of the third statement is clear. For the ring-theoretic
+part, we have to show that the canonical ring homomorphism~$\O_X \to i_*
+\O_{V(\I)}$, that is the canonical projection~$\O_X \to \O_X/(\I)$, is an
+epimorphism of sheaves. This is obvious.
+\end{proof}
+
+By lemma~\ref{lemma:essim-closed-immersion}, the sheaf~$\O_X/\I$ is
+thus a~$\Box$-sheaf from the internal perspective.
+
+\begin{prop}Let~$X$ be a locally ringed space. Let~$\I \subseteq \O_X$ be an
+ideal sheaf. Then the ringed space~$(V(\I), \O_{V(\I)})$ is too locally
+ringed.\end{prop}
+\begin{proof}We have to show that
+\[ \Sh(V(\I)) \models \speak{$\O_{V(\I)}$ is a local ring}. \]
+By theorem~\ref{thm:box-translation-semantically}, this is equivalent to
+\[ \Sh(X) \models (\speak{$\O_X/\I$ is a local ring})^\Box, \]
+where~$\Box$ is the modal operator given by~$\Box\varphi :\equiv (\varphi \vee
+(1 \in \I))$. We therefore have to give an intuitionistic proof of the fact
+\[ \forall x,y\?\O_X/\I\_ \speak{$x+y$ inv.} \Longrightarrow
+  \Box(\speak{$x$ inv.} \vee \speak{$y$ inv.}). \]
+So let~$x = [s], y = [t] \? \O_X/\I$ such that~$x + y$ is invertible
+in~$\O_X/\I$. This means that there exists~$u\?\O_X$ and~$v\?\I$ such that~$us
++ ut + v = 1$ in~$\O_X$. Since~$\O_X$ is a local ring, it follows
+that~$us$,~$ut$, or~$v$ is invertible. In the first two cases, it follows
+that~$x$ respectively~$y$ are invertible in~$\O_X/\I$. In the third case, it
+follows that~$1 \in \I$ and thus any boxed statement is trivially true.
+\end{proof}
+
+If~$X$ is a scheme and~$\I \subseteq \O_X$ is an ideal sheaf, it is well-known
+that the locally ringed space~$V(\I)$ is a scheme if and only if~$\I$ is
+quasicoherent. We cannot give an internal proof of this fact since we lack an
+internal characterization of being a scheme.
+
+\begin{lemma}Let~$X$ be a scheme (or ringed space). Let~$\I \subseteq \O_X$ be
+an ideal sheaf. The ringed space~$V(\I)$ is reduced if and only if, from the
+internal perspective of~$\Sh(X)$, the ideal~$\I$ is a radical ideal.\end{lemma}
+\begin{proof}The following chain of equivalences holds:
+\begin{align*}
+  &\ \Sh(V(\I)) \models \speak{$\O_{V(\I)}$ is a reduced ring} \\
+  \Longleftrightarrow&\ 
+    \Sh(V(\I)) \models \bigwedge_{n \geq 0} \forall s\?\O_{V(\I)}\_
+      s^n = 0 \Longrightarrow s = 0 \\
+  \Longleftrightarrow&\ 
+    \Sh(X) \models \bigl(\bigwedge_{n \geq 0} \forall s\?\O_X/\I\_ s^n = 0
+    \Rightarrow s = 0\bigr)^\Box \\
+  \Longleftrightarrow&\ 
+    \Sh(X) \models \bigwedge_{n \geq 0} \forall s\?\O_X/\I\_ s^n = 0 \Rightarrow \Box(s = 0) \\
+  \Longleftrightarrow&\ 
+    \Sh(X) \models \bigwedge_{n \geq 0} \forall s\?\O_X\_ s^n \in \I
+    \Rightarrow \Box(s \in \I) \\
+  \Longleftrightarrow&\ 
+    \Sh(X) \models \bigwedge_{n \geq 0} \forall s\?\O_X\_ s^n \in \I
+    \Rightarrow s \in \I \\
+  \Longleftrightarrow&\ 
+    \Sh(X) \models \speak{$\I$ is a radical ideal}
+\end{align*}
+In the second-to-last step, we used that~$\Box(s \in \I) \equiv ((s \in \I) \vee
+(1 \in \I))$ implies~$s \in \I$. This is trivial in both cases of the
+disjunction.
+\end{proof}
+
+\begin{lemma}Let~$X$ be a scheme (or ringed space).
+\begin{enumerate}
+\item There exists a reduced closed sub-ringed space~$X_\mathrm{red}
+\hookrightarrow X$ having the same underlying topological space as~$X$ such
+that the following universal property is fulfilled: Any morphism~$Y \to X$
+of (ringed or locally ringed) spaces such that~$Y$ is reduced factors uniquely
+over the closed immersion~$X_\mathrm{red} \hookrightarrow X$.
+\item Let~$A \subseteq X$ be a closed subset. Then there exists a structure of
+a reduced closed ringed subspace on~$A$ fulfilling a similar universal
+property.
+\end{enumerate}
+\end{lemma}
+\begin{proof}For the first statement, let~$\N \subseteq \O_X$ be the nilradical
+of~$\O_X$. This can internally be simply defined by~$\N := \sqrt{(0)} = \{
+s\?\O_X \,|\, \bigvee_{n \geq 0} s^n = 0 \}$. Define~$X_\mathrm{red}$ as the closed
+subspace associated to this ideal sheaf. This ringed space is reduced by the
+previous lemma. The proof of the universal property can also be done in the
+internal language, by using that the well-known fact of locale theory that the
+category of locales over~$X$ is equivalent to internal locales in~$\Sh(X)$; but
+we do not want to discuss this further.
+
+For the second statement, internally define the ideal~$\I := \sqrt{\{ s\?\O_X \,|\, s = 0 \vee
+A^c \}} \subseteq \O_X$. Then~$1 \in \I$ if and only if~$A^c$, thus by
+proposition~\ref{prop:basics-closed-subscheme} the closed ringed subspace defined
+by~$\I$ has~$A$ as underlying topological space. It is reduced since~$\I$ is a
+radical ideal.\end{proof}
+
+\begin{itemize}
+\item open subschemes
+\item Koszul resolution
+\end{itemize}
+
+
 \section{Unsorted}
 \begin{itemize}
 \item ``functoriality''
 \item Kähler differentials
 \item closed and open subschemes
-\item reduced closed subscheme; $j_!$; $j_! \O_U$ flat over~$\O_X$, \ldots
+\item $j_! \O_U$ flat over~$\O_X$, \ldots
 \item Koszul resolution
 \item meta properties, uses (e.g. nilpotent on stalks iff globally nilpotent,
 some lemmas about limits of modules)
@@ -2773,6 +3002,7 @@ some lemmas about limits of modules)
 \item morphisms of schemes...
 \item proper maps...
 \item limits and colimits...
+\item relative spectrum...
 \end{itemize}
 
 
@@ -2812,3 +3042,5 @@ the fact that the plus construction can also be defined as
   \speak{$S$ subsingleton},\ 
   \neg\neg(\speak{$S$ inhabited}),\ 
   \speak{$S$ $\neg\neg$-stable} \}. \]
+
+XXX: simplification rule "box(phi) => box(psi) iff phi => box(psi)".

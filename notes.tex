@@ -5,6 +5,8 @@
 \usepackage{setspace}
 \usepackage{bussproofs}
 \usepackage{xspace}
+\usepackage{longtable}
+\usepackage{booktabs}
 \usepackage{array}
 \usepackage[protrusion=true,expansion=true]{microtype}
 \usepackage[bookmarksdepth=2,pdfencoding=auto]{hyperref}
@@ -397,7 +399,8 @@ a slight extension. They are needed so that we can formulate universal
 properties in the internal language.
 \end{rem}
 
-\begin{ex}Let~$\alpha : \F \to \G$ be a morphism of sheaves on~$X$. Then
+\begin{ex}\label{ex:injective-surjective}
+Let~$\alpha : \F \to \G$ be a morphism of sheaves on~$X$. Then
 $\alpha$ is a monomorphism of sheaves if and only if, from the internal
 perspective,~$\alpha$ is simply an injective map:
 \allowdisplaybreaks
@@ -735,7 +738,8 @@ to be reduced is a geometric implication,
 \[ \forall s\?R\_ \Bigl(\bigvee_{n \geq 0} s^n = 0\Bigr) \Longrightarrow s = 0, \]
 we immediately obtain the following characterization of reducedness in the
 internal language:
-\begin{prop}A scheme~$X$ is reduced iff, from the internal point of view, the
+\begin{prop}\label{prop:reduced-ring}
+A scheme~$X$ is reduced iff, from the internal point of view, the
 ring~$\O_X$ is reduced.\end{prop}
 
 
@@ -754,7 +758,8 @@ more precise in order to even state the question of equivalence, since
 intuitionistically, the notion of a maximal ideal bifurcates into several
 non-equivalent notions.
 
-\begin{prop}In the internal language of a scheme~$X$ (or a locally ringed
+\begin{prop}\label{prop:local-ring}
+In the internal language of a scheme~$X$ (or a locally ringed
 space), the ring~$\O_X$ is a local ring.\end{prop}
 \begin{proof}The stated locality condition is a conjunction of two geometric
 implications (the first one being~$1 = 0 \Rightarrow \bot$, the second being
@@ -846,7 +851,8 @@ if there exists a covering of~$X$ by open subsets~$U$ such that on each
 such~$U$, the restricted module~$\F|_U$ is isomorphic as an~$\O_X|_U$-module
 to~$(\O_X|_U)^n$ for some natural number~$n$ (which may depend on~$U$).
 
-\begin{prop}Let~$X$ be a scheme (or ringed space). Let~$\F$ be
+\begin{prop}\label{prop:locally-free}
+Let~$X$ be a scheme (or ringed space). Let~$\F$ be
 an~$\O_X$-module. Then~$\F$ is locally finitely free if and only if, from the
 internal perspective,~$\F$ is a finitely free module, \ie
 \[ \Sh(X) \models \bigvee_{n \geq 0} \speak{$\F \cong (\O_X)^n$} \]
@@ -895,7 +901,8 @@ X$ any open subset, is of finite type.
 
 The following proposition gives translations of these definitions into the
 internal language.
-\begin{prop}Let~$X$ be a scheme (or ringed space). Let~$\F$ be
+\begin{prop}\label{prop:finite-type-and-co}
+Let~$X$ be a scheme (or ringed space). Let~$\F$ be
 an~$\O_X$-module. Then:
 \begin{itemize}
 \item $\F$ is of finite type if and only if~$\F$, considered as an ordinary
@@ -972,7 +979,8 @@ This internal construction will give rise to the same sheaf
 of modules as the externally defined tensor product:
 % XXX: grammar
 
-\begin{prop}Let~$X$ be scheme (or a ringed space). Let~$\F$ and~$\G$
+\begin{prop}\label{prop:internal-tensor-product}
+Let~$X$ be scheme (or a ringed space). Let~$\F$ and~$\G$
 be~$\O_X$-modules. Then the internally constructed tensor product~$\F
 \otimes_{\O_X} \G$ coincides with the external one.
 \end{prop}
@@ -1012,7 +1020,8 @@ construction.
 Recall that an~$\O_X$-module~$\F$ is \emph{flat} if and only if all
 stalks~$\F_x$ are flat~$\O_{X,x}$-modules. We can characterize flatness in the
 internal language.
-\begin{prop}Let~$X$ be a scheme (or ringed space). Let~$\F$ be
+\begin{prop}\label{prop:flatness}
+Let~$X$ be a scheme (or ringed space). Let~$\F$ be
 an~$\O_X$-module. Then~$\F$ is flat if and only if, from the internal
 perspective,~$\F$ is a flat~$\O_X$-module.
 \end{prop}
@@ -1330,7 +1339,8 @@ We are interested in the completed natural numbers for the following reason: A
 completed natural number of the topos of sheaves on a topological space~$X$ is
 the same as an upper semicontinuous function~$X \to \NN$.
 
-\begin{lemma}Let~$X$ be a topological space. The sheaf~$\widehat\NN$ of
+\begin{lemma}\label{lemma:upper-semicontinuous-functions}
+Let~$X$ be a topological space. The sheaf~$\widehat\NN$ of
 completed natural numbers on~$X$ is canonically isomorphic to the sheaf of upper
 semicontinuous~$\NN$-valued functions on~$X$.\end{lemma}
 \begin{proof}
@@ -1390,7 +1400,7 @@ internal point of view and the rank defined in this way will be an
 actual natural number (see below); but in general, the rank is really an element of the
 completion.
 
-\begin{prop}
+\begin{prop}\label{prop:rank-function-internally}
 Let~$\F$ be an~$\O_X$-module of finite type on a scheme~$X$ (or locally ringed
 space). Under the correspondence given by the previous lemma, the internally
 defined rank maps to the rank function of~$\F$.
@@ -1822,7 +1832,8 @@ surjective.\end{rem}
 \subsection{Sheaves for the double negation modality}
 % XXX: introductory words
 
-\begin{prop}Let~$X$ be a topological space. Let~$\F$ be a sheaf on~$X$. Then:
+\begin{prop}\label{prop:negneg-sheaves}
+Let~$X$ be a topological space. Let~$\F$ be a sheaf on~$X$. Then:
 \begin{enumerate}
 \item $\F$ is~$\neg\neg$-separated if and only if it is sufficient for local
 sections to be equal to agree on a dense open subset of their common domain.
@@ -2447,7 +2458,8 @@ total quotient ring $\O_X[\S^{-1}]$,
 where~$\S$ is internally defined by the formula
 \[ \S := \{ s\?\O_X \,|\, \speak{$s$ is regular} \} \subseteq \O_X. \]
 Externally, this ring is the sheaf~$\K_X$.
-\begin{prop}Let~$X$ be a scheme (or a ringed space). The sheaf of rings defined
+\begin{prop}\label{prop:kx-internally}
+Let~$X$ be a scheme (or a ringed space). The sheaf of rings defined
 in the internal language by localizing~$\O_X$ at its set of regular elements is
 (canonically isomorphic to) the sheaf~$\K_X$ of rational functions.
 \end{prop}
@@ -2601,7 +2613,8 @@ perspective. In accordance with common practice, we will write the group
 operation of~$\K_X^*/\O_X^*$ (which is induced by multiplication of elements
 in~$\K_X^*$) additively.
 
-\begin{defn}A Cartier divisor is \emph{effective} if and only if, from the
+\begin{defn}\label{defn:effective-cartier-divisor}
+A Cartier divisor is \emph{effective} if and only if, from the
 internal perspective, it can be written in the form~$[s/1]$ with~$s\?\O_X$
 being a regular element.\end{defn}
 
@@ -2617,7 +2630,8 @@ difference is a principal divisor.
 Note that decidedly, principality is a global notion: For any divisor~$D$ it is
 true that locally there exists sections~$f$ of~$\K_X^*$ such that~$D = [f]$.
 
-\begin{defn}The \emph{line bundle associated to a Cartier divisor}~$D$
+\begin{defn}\label{defn:line-bundle-of-divisor}
+The \emph{line bundle associated to a Cartier divisor}~$D$
 is the~$\O_X$-submodule
 \[ \O_X(D) := \{ g \in \K_X \,|\, g D \in \O_X \} = D^{-1} \O_X \subseteq \K_X
 \]
@@ -3252,7 +3266,8 @@ that the locally ringed space~$V(\I)$ is a scheme if and only if~$\I$ is
 quasicoherent. We cannot give an internal proof of this fact since we lack an
 internal characterization of being a scheme.
 
-\begin{lemma}Let~$X$ be a scheme (or ringed space). Let~$\I \subseteq \O_X$ be
+\begin{lemma}\label{lemma:closed-subspace-reduced}
+Let~$X$ be a scheme (or ringed space). Let~$\I \subseteq \O_X$ be
 an ideal sheaf. The ringed space~$V(\I)$ is reduced if and only if, from the
 internal perspective of~$\Sh(X)$, the ideal~$\I$ is a radical ideal.\end{lemma}
 \begin{proof}The following chain of equivalences holds:
@@ -3280,7 +3295,8 @@ In the second-to-last step, we used that~$\Box(s \in \I) \equiv ((s \in \I) \vee
 disjunction.
 \end{proof}
 
-\begin{lemma}Let~$X$ be a scheme (or ringed space).
+\begin{lemma}\label{lemma:reduced-subspace}
+Let~$X$ be a scheme (or ringed space).
 \begin{enumerate}
 \item There exists a reduced closed sub-ringed space~$X_\mathrm{red}
 \hookrightarrow X$ having the same underlying topological space as~$X$ such
@@ -3332,6 +3348,63 @@ radical ideal.\end{proof}
 \end{itemize}
 
 
+\appendix
+
+\section{Dictionary between internal and external notions}
+
+\small
+{\renewcommand{\arraystretch}{1.3}
+\begin{longtable}{@{}p{5cm}@{\qquad}p{5cm}@{\qquad}p{3cm}@{}}
+  \toprule
+  external & internal \\ \midrule
+  \textbf{sheaves of sets} \\
+  sheaf of sets & set \\
+  $\alpha : \F \to \G$ epimorphism & $\alpha$ surjective & example~\ref{ex:injective-surjective} \\
+  $\alpha : \F \to \G$ monomorphism & $\alpha$ injective & example~\ref{ex:injective-surjective} \\
+  $\Int(X \setminus \supp\F)$ & largest open subset on which~$\F$ is a singleton & remark~\ref{rem:support-sheaf-of-sets} \\
+  $f : X \to \NN$ upper semicontinuous & element of~$\widehat\NN$ & lemma~\ref{lemma:upper-semicontinuous-functions} \\
+  $f : X \to \NN$ locally constant & element of~$\NN$ & discussion after lemma~\ref{lemma:upper-semicontinuous-functions} \\\\
+
+  \textbf{sheaves of rings} \\
+  sheaf of rings & ring & proposition~\ref{prop:rings-internally} \\
+  local sheaf of rings & local ring & proposition~\ref{prop:local-ring} \\
+  $\O_X$ is reduced & $\O_X$ is reduced & proposition~\ref{prop:reduced-ring}; a field property holds: $\neg\text{invertible} \Rightarrow \text{zero}$ \\\\
+
+  \textbf{sheaves of modules} \\
+  sheaf of modules & module \\
+  $\F$ is locally finitely free & $\F$ is finitely free & proposition~\ref{prop:locally-free} \\
+  $\F$ is of finite type & $\F$ is finitely generated & proposition~\ref{prop:finite-type-and-co} \\
+  $\F$ is of finite presentation & $\F$ is finitely presented & proposition~\ref{prop:finite-type-and-co} \\
+  $\F$ is coherent & $\F$ is coherent & proposition~\ref{prop:finite-type-and-co} \\
+  $\F$ is quasicoherent & $\F[f^{-1}]$ is a sheaf wrt.~$(\speak{$f$ inv.} \Rightarrow \placeholder)$ for any~$f\?\O_X$ & theorem~\ref{thm:qcoh-sheafchar} \\
+  $\F$ is flat & $\F$ is flat & proposition~\ref{prop:flatness} \\
+  tensor product $\F \otimes \G$ & tensor product $\F \otimes \G$ & proposition~\ref{prop:internal-tensor-product} \\
+  dual~$\F^\vee = \HOM_{\O_X}(\F,\O_X)$ & dual $\F^\vee = \Hom_{\O_X}(\F,\O_X)$ \\
+  $\Int(X \setminus \supp\F)$ & largest open subset on which~$\F = 0$ & proposition~\ref{prop:characterization-support} \\
+  rank function of~$\F$ & minimal number of generators for~$\F$ & proposition~\ref{prop:rank-function-internally} \\\\
+
+  \textbf{subspaces} \\
+  sheaf supported on closed subset~$A$ & $\Box$-sheaf, where~$\Box = (\placeholder \vee A^c)$ & lemma~\ref{lemma:essim-closed-immersion} \\
+  sheaf of the form~$j_*(\F)$ & $\Box$-sheaf, where~$\Box = (U \Rightarrow
+  \placeholder)$ & $j : U \hookrightarrow X$ open inclusion \\
+  extension of~$\F$ by the empty set & $\{ x\?\F \,|\, U \}$ & lemma~\ref{lemma:extension-by-empty-set} \\
+  extension of~$\F$ by zero & $\{ x\?\F \,|\, (x = 0) \vee U \}$ & lemma~\ref{lemma:extension-by-zero} \\
+  sheaf with empty/zero stalks on~$U^c$ & sheaf of the form~$j_!(\F)$ & $j : U
+  \hookrightarrow X$ \\
+  sections of~$\F$ are equal if they agree on dense open & $\F$ is $\neg\neg$-separated & proposition~\ref{prop:negneg-sheaves} \\
+  sheaf of sections of~$\F$ defined on dense open subsets & $\F^{++}$ with respect to~$\Box = \neg\neg$ & proposition~\ref{prop:negneg-sheaves}, assuming~$\F$ is~$\neg\neg$-separated \\
+  $V(\I)$ is a reduced scheme & $\I$ is a radical ideal & lemma~\ref{lemma:closed-subspace-reduced} \\
+  $\O_{X_\mathrm{red}}$ & $\O_X/\sqrt{(0)}$ & lemma~\ref{lemma:reduced-subspace} \\\\
+
+  \multicolumn{3}{@{}l@{}}{\textbf{rational functions and Cartier divisors}} \\
+  $\K_X$ & total quotient ring of~$\O_X$ & proposition~\ref{prop:kx-internally} \\
+  Cartier divisor & element of~$\K_X^*/\O_X^*$ \\
+  effective Cartier divisor & $[s/1]$ with~$s\?\O_X$ regular & definition~\ref{defn:effective-cartier-divisor} \\
+  line bundle~$\O_X(D)$ & $D^{-1} \O_X \subseteq \K_X$ & definition~\ref{defn:line-bundle-of-divisor} \\
+  \bottomrule
+\end{longtable}}
+
+
 \nocite{*}
 \printbibliography
 
@@ -3370,3 +3443,5 @@ the fact that the plus construction can also be defined as
   \speak{$S$ $\neg\neg$-stable} \}. \]
 
 XXX: simplification rule "box(phi) => box(psi) iff phi => box(psi)".
+
+XXX: consistently use "i" for closed embeddings and "j" for open embeddings

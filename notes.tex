@@ -1282,10 +1282,11 @@ element.
 \end{enumerate}
 \end{lemma}
 \begin{proof}
-\begin{enumerate}
-\item By induction on the witness of inhabitation, \ie the given number~$n$ such
-that~$n \in U$. Details omitted, since we will not need this statement.
-\item We give a careful proof since logical subtleties matter. To simplify the
+The first statement can be proven by induction on the witness of inhabitation,
+\ie the given number~$n$ such that~$n \in U$. Details omitted, since we will
+not need this statement.
+
+For the second statement, we give a careful proof since logical subtleties matter. To simplify the
 exposition, we assume that~$U$ is upward-closed, \ie that any number
 larger than some element of~$U$ lies in~$U$ as well. Any subset can be closed
 in this way (by considering~$\{ n \in \NN \,|\, \exists m \in U\_ n \geq m \}$)
@@ -1305,7 +1306,6 @@ any element of~$U$, we have~$m \geq n+1$ or~$m \leq n$. In the first case,
 we're done. In the second case, it follows that~$n \in U$ because~$U$ is
 upward-closed and so we obtain a contradiction. From this contradiction we can
 deduce~$m \geq n+1$. \qedhere
-\end{enumerate}
 \end{proof}
 
 If we want to work with a complete set of natural numbers in intuitionistic
@@ -3387,8 +3387,8 @@ radical ideal.\end{proof}
   sheaf supported on closed subset~$A$ & $\Box$-sheaf, where~$\Box = (\placeholder \vee A^c)$ & lemma~\ref{lemma:essim-closed-immersion} \\
   sheaf of the form~$j_*(\F)$ & $\Box$-sheaf, where~$\Box = (U \Rightarrow
   \placeholder)$ & $j : U \hookrightarrow X$ open inclusion \\
-  extension of~$\F$ by the empty set & $\{ x\?\F \,|\, U \}$ & lemma~\ref{lemma:extension-by-empty-set} \\
-  extension of~$\F$ by zero & $\{ x\?\F \,|\, (x = 0) \vee U \}$ & lemma~\ref{lemma:extension-by-zero} \\
+  extension of~$\F$ by the empty set & $j_!(\F) = \{ x\?\F \,|\, U \}$ & lemma~\ref{lemma:extension-by-empty-set} \\
+  extension of~$\F$ by zero & $j_!(\F) = \{ x\?\F \,|\, (x = 0) \vee U \}$ & lemma~\ref{lemma:extension-by-zero} \\
   sheaf with empty/zero stalks on~$U^c$ & sheaf of the form~$j_!(\F)$ & $j : U
   \hookrightarrow X$ \\
   sections of~$\F$ are equal if they agree on dense open & $\F$ is $\neg\neg$-separated & proposition~\ref{prop:negneg-sheaves} \\

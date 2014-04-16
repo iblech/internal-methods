@@ -1888,7 +1888,9 @@ and~``$\forall$'', around any logical connective and around any atomic
 statement (``$x=y$'', ``$x \in A$'').
 
 We will describe a slight generalization of the double negation translation,
-the~$\Box$-translation for any modal operator~$\Box$.
+the~$\Box$-translation for any modal operator~$\Box$. It will be central to
+understand truth of formulas on subspaces from the internal language of the
+ambient space.  % XXX: sentence is rubbish
 % check http://arxiv.org/pdf/1101.5442.pdf for references to cite
 
 \begin{defn}The~\emph{$\Box$-translation} is recursively defined as follows.
@@ -2057,6 +2059,8 @@ Let~$X$ be a topological space.
 \item Let~$A \subseteq X$ be a closed subset and let~$\Box\varphi :\equiv
 (\varphi \vee A^c)$. Then
 \[ \Sh(X) \models \varphi^\Box \quad\text{iff}\quad \Sh(A) \models \varphi. \]
+\item Let~$\Box\varphi :\equiv \neg\neg\varphi$. Then
+\[ \Sh(X) \models \varphi^\Box \quad\text{iff}\quad \Sh(X_{\neg\neg}) \models \varphi. \]
 \item Let~$x \in X$ be a point and let~$\Box\varphi :\equiv ((\varphi
 \Rightarrow \notat{x}) \Rightarrow \notat{x})$. Then
 \[ \Sh(X) \models \varphi^\Box \quad\text{iff}\quad \text{$\varphi$ holds
@@ -2067,7 +2071,7 @@ at~$x$}. \]
 \begin{proof}Combine theorem~\ref{thm:box-translation-semantically} and
 table~\ref{table:nuclei}.\end{proof}
 
-We want to discuss the third case of the corollary in more detail. Let~$x$ be a
+We want to discuss the last case of the corollary in more detail. Let~$x$ be a
 point of a topological space~$X$ and let~$\varphi$ be a formula. Let~$\Box$ be
 the modal operator given in the corollary. Then~$\varphi$ \emph{holds at~$x$}
 if and only if, from the internal perspective of~$\Sh(X)$, the translated
@@ -2081,6 +2085,43 @@ some open neighbourhood can be formulated in the following way:
 \emph{Does~$\varphi^\Box$ imply~$\Box\varphi$ in the internal language
 of~$\Sh(X)$?}
 \end{quote}
+Phrased this way, technicalities like appropriately shrinking open
+neighbourhoods are blinded out. A purposefully trivial example to illustrate
+this is the following. Let~$X$ be a scheme (or ringed space). Let~$f,g \in
+\Gamma(X,\O_X)$ be global functions. Suppose that the germs of~$f$ and~$g$ are
+zero in some stalk~$\O_{X,x}$; we want to show that they are zero on a common
+open neighbourhood of~$x$.
+
+\begin{proof}[Usual proof]Since the germ of~$f$ vanishes in~$\O_{X,x}$, there
+is an open neighbourhood~$U_1$ of~$x$ such that~$f|_{U_1} = 0$
+in~$\Gamma(U_1,\O_X)$. Since furthermore the germ of~$g$ vanishes in the same stalk,
+there exists an open neighbourhood~$U_2$ of~$x$ such that~$g|_{U_2} = 0$. The
+intersection of both neighbourhoods is still an open neighbourhood of~$x$; on
+this it holds that~$f$ and~$g$ both vanish.
+\end{proof}
+
+\begin{proof}[Proof in the internal language]We may suppose that~$(f = 0 \wedge
+g = 0)^\Box$, \ie $\Box(f=0) \wedge \Box(g=0)$, and have to prove
+that~$\Box(f=0 \wedge g=0)$. (To this end, we could simply invoke the third
+axiom on a modal operator, but we want to stay close to the given external
+proof.) So by assumption, both~$\Box(f=0)$ and~$\Box(g=0)$ hold. Since our goal
+is to prove a boxed statement, we may in fact assume that~$f = 0$ and~$g = 0$.
+Thus~$f = 0 \wedge g = 0$.\end{proof}
+
+By using the internal language with its modal operators, we can thus reduce
+basic facts of scheme theory which deal with stalks and neighbourhoods to facts
+of algebra in a \emph{modal intuitionistic context}. As with using the internal
+language in its basic form without modalities, this brings conceptual clarity
+and reduced technical overhead. There are however two more distinctive
+advantages. Firstly, many internal proofs do not require specific properties of
+the modal operator and thus work with any modal operator. By interpreting such
+a proof using different operators, one obtains a whole family of external
+statements without additional work.
+
+Secondly, the following corollary gives a general metatheorem which is
+applicable to a wide range of cases. It allows to decide whether spreading will
+occur (or is likely not to occur) simply by looking at the \emph{logical form}
+of the statement is question.
 
 \begin{cor}\label{cor:geometric-spreading}
 Let~$X$ be a topological space. Let~$\varphi$ be a formula.
@@ -2097,6 +2138,9 @@ that~$\varphi^\Box \Leftrightarrow \Box\varphi$.
 function~$f\?\O_X$ to be nilpotent is geometric (it is~$\bigvee_{n \geq 0} f^n
 = 0$), nilpotency of~$f$ at a point is equivalent to nilpotency on some open
 neighbourhood.\end{ex}
+
+Combined with lemma~\ref{lemma:stalk-open-with-hypothesis}, this metatheorem is
+quite useful. We will illustrate it with many examples in the next subsection.
 
 \begin{proof}[Proof of theorem~\ref{thm:box-translation-semantically}]
 A fancy proof goes as follows. First, one shows intuitionistically that for a
@@ -2136,7 +2180,7 @@ holds that
 where the internal statements are to be interpreted by the Kripke--Joyal
 semantics of~$X$ and~$X_\Box$ respectively and~$j$ is the nucleus associated
 to~$\Box$. We may assume that any sheaves occuring in~$\varphi$ as domains of
-quantifications are in fact~$\Box$-sheaves; we justify this in a separate lemma
+quantifications are in fact~$\Box$-sheaves; we justify this with a separate lemma
 below.
 
 The cases~$\varphi \equiv \top$,~$\varphi \equiv (\psi \wedge \chi)$,
@@ -2192,6 +2236,27 @@ The case for~``$\forall$'' is similar.
 
 \subsection{Internal proofs of common lemmas}
 
+\begin{lemma}\label{lemma:module-zero-point-neighbourhood}
+Let~$X$ be a scheme (or ringed space). Let~$\F$ be an~$\O_X$-module
+of finite type.
+\begin{itemize}
+\item Let~$x \in X$ be a point. Then the stalk~$\F_x$ is zero if and
+only if~$\F$ is zero on some open neighbourhood of~$x$.
+\item Let~$A \subseteq X$ be a closed subset. Then the restriction~$\F|_A$ (\ie
+the pullback of~$\F$ to~$A$) is zero if and only if~$\F$ is zero on some open
+subset of~$X$ containing~$A$.
+\end{itemize}
+\end{lemma}
+\begin{proof}\emph{Both} statements are simply internalizations of
+example~\ref{ex:module-zero-geometric}, using the modal operators~$\Box =
+(\placeholder \vee A^c)$ and~$\Box = ((\placeholder \Rightarrow
+\notat{x}) \Rightarrow \notat{x})$.
+\end{proof}
+
+\begin{rem}Note that the proposition fails if one drops the hypothesis
+that~$\F$ is of finite type. Indeed, in this case one cannot reformulate the
+condition that~$\F$ is zero in a geometric way.\end{rem}
+
 \begin{lemma}\label{lemma:gen-family-n}
 Let~$X$ be a scheme (or ringed space). Let~$\F$ be an~$\O_X$-module
 of finite type. Let~$x \in X$ be a point. Let~$n$ be a natural number. Then the
@@ -2241,27 +2306,6 @@ y = A \vec x$} \]
 (lemma~\ref{lemma:stalk-open-with-hypothesis}). Thus the claim follows.
 \end{proof}
 % XXX: give backreference
-
-\begin{lemma}\label{lemma:module-zero-point-neighbourhood}
-Let~$X$ be a scheme (or ringed space). Let~$\F$ be an~$\O_X$-module
-of finite type.
-\begin{itemize}
-\item Let~$x \in X$ be a point. Then the stalk~$\F_x$ is zero if and
-only if~$\F$ is zero on some open neighbourhood of~$x$.
-\item Let~$A \subseteq X$ be a closed subset. Then the restriction~$\F|_A$ (\ie
-the pullback of~$\F$ to~$A$) is zero if and only if~$\F$ is zero on some open
-subset of~$X$ containing~$A$.
-\end{itemize}
-\end{lemma}
-\begin{proof}\emph{Both} statements are simply internalizations of
-example~\ref{ex:module-zero-geometric}, using the modal operators~$\Box =
-(\placeholder \vee A^c)$ and~$\Box = ((\placeholder \Rightarrow
-\notat{x}) \Rightarrow \notat{x})$.
-\end{proof}
-
-\begin{rem}Note that the proposition fails if one drops the hypothesis
-that~$\F$ is of finite type. Indeed, in this case one cannot reformulate the
-condition that~$\F$ is zero in a geometric way.\end{rem}
 
 \begin{lemma}Let~$X$ be a scheme (or ringed space). Let~$\alpha : \F \to \G$ be
 a morphism of~$\O_X$-modules. Let~$\G$ be of finite type and assume

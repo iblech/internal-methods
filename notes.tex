@@ -2156,7 +2156,8 @@ the \emph{generic point}~$\xi \in X$ has the property that~$\Clos\{\xi\} = X$.
 Such a point exists and is unique if~$X$ is an irreducible scheme, and need not
 exist otherwise.
 
-\begin{lemma}Let~$X$ be a topological space and~$\xi \in X$ a point such
+\begin{lemma}\label{lemma:negneg-generic-point}
+Let~$X$ be a topological space and~$\xi \in X$ a point such
 that~$\Clos\{\xi\} = X$. Then the modal operator~$\Box :\equiv ((\placeholder
 \Rightarrow \notat{\xi}) \Rightarrow \notat{\xi})$ coincides with the double
 negation modality.\end{lemma}
@@ -2564,9 +2565,13 @@ proposition~\ref{prop:regularity-spreading}.\end{proof}
 
 \subsection{Geometric interpretation of rational functions}
 
-\begin{prop}\label{prop:kx-is-negneg-sheafification}
-Let~$X$ be a reduced scheme. Then~$\K_X$ is
-the~$\neg\neg$-sheafification of~$\O_X$.\end{prop}
+\begin{prop}Let~$X$ be a reduced scheme. Then:
+\begin{enumerate}
+\item $\O_X$ is~$\neg\neg$-separated.
+\item Internally, an element~$s\?\O_X$ is regular
+if and only if it is \notnot invertible.
+\end{enumerate}
+\end{prop}
 \begin{proof}Recall from corollary~\ref{cor:field-reduced} that
 \[ \Sh(X) \models \forall s\?\O_X\_ \neg(\speak{$s$ invertible}) \Leftrightarrow
 s=0. \]
@@ -2575,16 +2580,21 @@ Assume~$\neg\neg(s=0)$ for~$s\?\O_X$. If~$s$ were invertible, we would
 have~$\neg\neg(1=0)$ and thus~$\bot$. Therefore~$s$ is not invertible and thus
 zero.
 
-Furthermore, we can can deduce that internally, an element~$s\?\O_X$ is regular
-if and only if it is \notnot invertible: For the ``only if'' direction,
+For the ``only if'' direction of the second statement,
 note that a regular element is not zero (if it were, then the true statement~$0
 \cdot 0 = 0 \cdot 1$ would imply the false statement~$0 = 1$). For the ``if''
 direction, let~$st = 0$ in~$\O_X$. Since~$s$ is \notnot invertible, it follows
 that~$t$ is \notnot zero. Since~$\O_X$ is~$\neg\neg$-separated, this implies
 that~$t$ really is zero.
+\end{proof}
 
-With these observations, we can proceed to that~$\K_X$ is~$\neg\neg$-separated.
-So assume~$\neg\neg(a/s = 0)$ for~$a/s \? \K_X$. Since~$\K_X$ is obtained
+\begin{prop}
+\label{prop:kx-is-negneg-sheafification}
+Let~$X$ be a reduced scheme. Then~$\K_X$ is
+the~$\neg\neg$-sheafification of~$\O_X$.\end{prop}
+\begin{proof}
+We first show that~$\K_X$ is~$\neg\neg$-separated,
+so assume~$\neg\neg(a/s = 0)$ for~$a/s \? \K_X$. Since~$\K_X$ is obtained
 from~$\O_X$ by localizing at regular elements, it holds that~$a/s = 0$
 in~$\K_X$ if and only if~$a = 0$ in~$\O_X$. Thus it follows that~$\neg\neg(a =
 0)$ in~$\O_X$ and thus~$a = 0$ in~$\O_X$; in particular, $a/s = 0$ in~$\K_X$.
@@ -2643,6 +2653,23 @@ By lemma~\ref{lemma:regular-affine}, the function~$b$ is also regular as an
 element of~$\O_X$ from the internal point of view. It follows that on the dense
 open subset~$D(b) \cap V \subseteq U$, the sections~$s$ and~$b^{-1} a$ agree.
 This observation concludes the proof.
+\end{proof}
+
+\begin{cor}Let~$X$ be a reduced scheme. Then~$\K_X$ is the result of
+pulling back~$\O_X$ to the sublocale~$X_{\neg\neg}$ and then pushing forward
+again. If~$X$ is irreducible with generic point~$\xi$, then~$\K_X$ is the
+constant sheaf associated to the set~$\O_{X,\xi}$.\end{cor}
+\begin{proof}Recall from section~\ref{sect:internal-sheaves} that pulling back
+to~$X_{\neg\neg}$ is equivalent to sheafifying with respect to the double
+negation modality; and that pushing forward is equivalent to forgetting the
+sheaf property. Therefore the first statement holds.
+
+For the second, recall from lemma~\ref{lemma:negneg-generic-point} that the
+sublocale~$X_{\neg\neg}$ is given by the subspace~$\{\xi\}$; that the
+sheafification functor~$\Sh(X) \to \Sh(\{\xi\}) \simeq \Set$ is given by
+calculating the stalk at~$\xi$; and that the inclusion functor~$\Set \simeq
+\Sh(\{\xi\}) \hookrightarrow \Sh(X)$ is given by the constant sheaf
+construction.
 \end{proof}
 % XXX: split this proof into parts, and maybe reorder qcoh before this
 

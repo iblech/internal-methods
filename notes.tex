@@ -2501,6 +2501,19 @@ in~$\O_{X,y}$ for all~$y \in U$.
 Therefore an element~$s/t \? \K_X$ is invertible in~$\K_X$ if and only if the
 numerator~$s$ belongs to~$\S$, \ie is an regular element of~$\O_X$.\end{rem}
 
+\begin{lemma}\label{lemma:regular-affine}
+Let~$X = \Spec A$ be an affine scheme. Let~$f \in A$. Then~$f$ is
+a regular element of~$A$ if and only if~$f$ is a regular element of~$\O_X$ from
+the internal perspective.\end{lemma}
+\begin{proof}The Kripke--Joyal translation of internal regularity is:
+\begin{quote}For any open subset~$U \subseteq X$ and any function~$g \in
+\Gamma(U,\O_X)$, $fg = 0$ in~$\Gamma(U,\O_X)$ implies~$g = 0$
+in~$\Gamma(U,\O_X)$.\end{quote}
+So the ``only if'' direction is clear (use~$U := X$). For the ``if'' direction,
+note that~$\Gamma(U,\O_X)$ is a localization of~$A$ and that regular elements
+remain regular in localizations.
+\end{proof}
+
 
 \subsection{Regularity of local functions}
 It is well known that on a locally Noetherian scheme, regularity spreads from
@@ -2590,11 +2603,48 @@ this~$x$. It is straightforward to check that the composition~$\O_X \to \K_X
 \to G$ equals~$\alpha$ and that~$\bar\alpha$ is unique with this property.
 
 Up to this point, the proof did not need that~$X$ is a scheme -- it was enough
-for~$X$ to be a ringed space such that the display equivalence above holds and
-such that~$\neg(0 = 1)$ in~$\O_X$. Only now, to show that~$\K_X$ is
-a~$\neg\neg$-sheaf, the scheme condition enters.
-% XXX: finish proof
+for~$X$ to be a ringed space such that the displayed equivalence above holds and
+such that~$\neg(0 = 1)$ in~$\O_X$. Only now, in showing that~$\K_X$ is
+a~$\neg\neg$-sheaf, the scheme condition enters. To this end, we first
+reformulate the sheaf condition in a way such that it only refers to~$\O_X$,
+not~$\K_X$: The quotient ring~$\K_X$ is a~$\neg\neg$-sheaf if and only if
+\begin{multline*}
+  \Sh(X) \models \forall T \subseteq \O_X\_
+  \speak{$T$ subsingleton} \wedge \neg\neg(\speak{$T$ inhabited})
+  \Longrightarrow \\
+  \exists a,b\?\O_X\_ \speak{$b$ regular} \wedge \neg\neg(b^{-1} a \in T).
+\end{multline*}
+This is done just as in the proof of theorem~\ref{thm:qcoh-sheafchar}. Note
+that~``$b^{-1}$'' refers to the inverse of~$b$ which indeed exists in a doubly
+negated context, since~$b$ is assumed regular. More explicitly, we should write
+\[ \neg\neg(b^{-1} a \in T) \quad\Longleftrightarrow\quad
+  \neg\neg(\exists c\?\O_X\_ bc = 1 \wedge ca \in T). \]
+To prove the Kripke--Joyal interpretation of the rewritten sheaf condition, let
+an affine open subset~$U = \Spec A \subseteq X$ and a subsheaf~$T
+\hookrightarrow \O_X|_U$ be given, such that~$T$ is internally a subsingleton
+and \notnot inhabited. We may thus glue the unique germs in the inhabited
+stalks of~$T$ to obtain a section~$s \in \Gamma(V,\O_X)$ where~$V \subseteq U$
+is a dense open subset. We may write~$V = \bigcup_i D(f_i)$ for some (possibly
+infinitely many) functions~$f_i \in A$. Since~$V$ is dense in~$U$, these have the
+property that
+\[ \forall g \in A\_
+  (\forall i\_ \text{$f_i g$ nilpotent in $A$}) \Longrightarrow
+  \text{$g$ nilpotent in $A$}. \]
+Since~$\Gamma(V,\O_X) = A[S_V^{-1}]$ with~$S_V = \{ x \in A \,|\, \text{$f_i
+\in \sqrt{(x)}$ for all~$i$} \}$, we can write~$s = a/b$ with~$a,b \in A$
+and~$f_i^{n_i} = c_i b$ for some~$c_i \in A$, $n_i \geq 0$.
+
+The function~$b$ is a regular element of~$A$: Let~$bg = 0$ for~$g \in A$.
+Then~$c_i b g = f_i^{n_i} g = 0 \in A$. Thus~$f_i g$ is
+nilpotent in~$A$. Since this holds for any~$i$,~$g$ is nilpotent in~$A$.
+Since~$A$ is reduced,~$g$ is in fact zero.
+
+By lemma~\ref{lemma:regular-affine}, the function~$b$ is also regular as an
+element of~$\O_X$ from the internal point of view. It follows that on the dense
+open subset~$D(b) \cap V \subseteq U$, the sections~$s$ and~$b^{-1} a$ agree.
+This observation concludes the proof.
 \end{proof}
+% XXX: split this proof into parts, and maybe reorder qcoh before this
 
 
 \subsection{Cartier divisors} Let~$X$ be a scheme (or ringed space). Recall

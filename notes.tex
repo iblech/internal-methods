@@ -267,7 +267,7 @@ logic).
 
 
 \subsection*{Introductory literature and related work} These notes are intended
-to be self-contained, supposing only basic knowledge of scheme theory. In
+to be self-contained, requiring only basic knowledge of scheme theory. In
 particular, we assume no prior familiarity with topos theory or formal logic.
 But if the interested reader is so inclined, she will find a gentle
 introduction to topos theory in an article by Tom
@@ -559,7 +559,7 @@ or isomorphism classes of general monomorphisms into~$\F|_U$).
 \item If~$\F$ is a sheaf and~$\varphi(s)$ is a formula containing a free
 variable~$s\?\F$, the interpretation~$\brak{\{s\?\F\,|\,\varphi(s)\}}$ is given
 by the subpresheaf of~$\F$ defined by
-\[ \text{$U \subseteq X$ open} \longmapsto \{ s \in \Gamma(U,\F) \ |\ 
+\[ \text{$U \subseteq X$ open} \longmapsto \{ s \in \Gamma(U,\F) \ |\
   U \models \varphi(s) \}. \]
 Note that by the locality of the internal language, this presheaf is in fact a
 sheaf.
@@ -1033,7 +1033,7 @@ suggestive vector notation): For any natural number~$p$,
 any $p$-tuple~$m \? M^p$ of elements of~$M$ and
 any~$p$-tuple $a \? A^p$ of elements of~$A$,
 \[
-  a^T m = 0 \ \Longrightarrow\ 
+  a^T m = 0 \ \Longrightarrow\
   \bigvee\limits_{q \geq 0} \exists n\?M^q, B\?A^{p \times q}\_
   Bn = m \wedge a^T B = 0. \]
 The equivalence of this condition with tensoring being exact holds
@@ -1663,24 +1663,27 @@ of proposition~\ref{prop:modops-kripke}.
 
 \begin{table}
   \centering
-  \setlength{\extrarowheight}{0.4em}
+  \renewcommand{\arraystretch}{1.3}
   \begin{tabular}{llll}
+    \toprule
     Modal operator & associated nucleus &
       $j(V) = X$ iff \ldots &
-      subspace \\\hline
+      subspace \\\midrule
     $\Box\varphi :\equiv (U \Rightarrow \varphi)$ &
       $j(V) = \Int(U^c \cup V)$ & $U \subseteq V$ & $U$ \\
     $\Box\varphi :\equiv (\varphi \vee A^c)$ &
       $j(V) = V \cup A^c$ & $A \subseteq V$ & $A$ \\
     $\Box\varphi :\equiv \neg\neg\varphi$ &
-      $j(V) = \Int(\Clos(V))$ & $V$ is dense in $X$ & (see text) \\
+      $j(V) = \Int(\Clos(V))$ & $V$ is dense in $X$ &
+      \multicolumn{1}{p{1cm}}{smallest dense sublocale of~$X$} \\
     $\Box\varphi :\equiv ((\varphi \Rightarrow \notat{x}) \Rightarrow \notat{x})$ &
 %      $\Int(\Clos(V \cap \Clos\{x\}) \cup (X \setminus \Clos\{x\}))$ &
       $j(V) = \begin{cases}
         X \setminus \Clos\{x\}, & \text{if $x \not\in V$} \\
         X, & \text{if $x \in V$}
       \end{cases}$ &
-      $x \in V$ & $\{x\}$
+      $x \in V$ & $\{x\}$ \\
+    \bottomrule
   \end{tabular}
 
   \caption{\label{table:nuclei}List of important modal operators and their
@@ -1783,7 +1786,8 @@ that
 % XXX: introduce "singleton", "subsingleton"
 
 \begin{rem}The topos of \emph{pre}sheaves on a topological space~$X$ admits an
-internal language as well~\cite[???]{moerdijk-maclane:sheaves-logic}. In it, there
+internal language as well~\cite[section~VI.7, discussion after
+theorem~1]{moerdijk-maclane:sheaves-logic}. In it, there
 exists a modal operator~$\Box$ reflecting the topology of~$X$. A presheaf is separated
 in the usual sense if, from the internal perspective of~$\PSh(X)$, it
 is~$\Box$-separated; and it is a sheaf if, from the internal perspective, it
@@ -2202,13 +2206,13 @@ This can be done by an easy and nontechnical induction on the structure of
 formulas~$\varphi$. Then one interprets this result in the sheaf topos~$\Sh(X)$:
 \begin{align*}
   &\ \Sh(X) \models \varphi^\Box \\
-  \Longleftrightarrow&\ 
+  \Longleftrightarrow&\
   \Sh(X) \models \speak{$\Set \models \varphi^\Box$} &&\text{by idempotency}\\
-  \Longleftrightarrow&\ 
+  \Longleftrightarrow&\
   \Sh(X) \models \speak{$\Sh_\Box(\Set) \models \varphi$} &&\text{by the first step} \\
-  \Longleftrightarrow&\ 
+  \Longleftrightarrow&\
   \Sh_\Box(\Sh(X)) \models \varphi &&\text{by idempotency} \\
-  \Longleftrightarrow&\ 
+  \Longleftrightarrow&\
   \Sh(X_\Box) \models \varphi &&\text{since~$\Sh_\Box(\Sh(X)) \simeq
   \Sh(X_\Box)$}
 \end{align*}
@@ -3083,7 +3087,7 @@ If~$X$ is indeed a scheme, quasicoherence can also be characterized in
 terms of inclusions of distinguished open subsets of affines:
 An~$\O_X$-module~$\F$ is quasicoherent if and only if for any open affine
 subscheme~$U = \Spec A$ of~$X$ and any function~$f \in A$, the canonical map
-\[ \Gamma(U,\F)[f^{-1}] \longrightarrow \Gamma(D(f),\F),\ 
+\[ \Gamma(U,\F)[f^{-1}] \longrightarrow \Gamma(D(f),\F),\
   \tfrac{s}{f^n} \longmapsto f^{-n} s|_{D(f)} \]
 is an isomorphism of~$A[f^{-1}]$-modules. Here~$D(f) \subseteq U$ denotes the
 standard open subset~$\{ \ppp \in \Spec A \,|\, f \not\in \ppp \}$. Both
@@ -3489,21 +3493,21 @@ internal perspective of~$\Sh(X)$, the ideal~$\I$ is a radical ideal.\end{lemma}
 \begin{proof}The following chain of equivalences holds:
 \begin{align*}
   &\ \Sh(V(\I)) \models \speak{$\O_{V(\I)}$ is a reduced ring} \\
-  \Longleftrightarrow&\ 
+  \Longleftrightarrow&\
     \Sh(V(\I)) \models \bigwedge_{n \geq 0} \forall s\?\O_{V(\I)}\_
       s^n = 0 \Longrightarrow s = 0 \\
-  \Longleftrightarrow&\ 
+  \Longleftrightarrow&\
     \Sh(X) \models \bigl(\bigwedge_{n \geq 0} \forall s\?\O_X/\I\_ s^n = 0
     \Rightarrow s = 0\bigr)^\Box \\
-  \Longleftrightarrow&\ 
+  \Longleftrightarrow&\
     \Sh(X) \models \bigwedge_{n \geq 0} \forall s\?\O_X/\I\_ s^n = 0 \Rightarrow \Box(s = 0) \\
-  \Longleftrightarrow&\ 
+  \Longleftrightarrow&\
     \Sh(X) \models \bigwedge_{n \geq 0} \forall s\?\O_X\_ s^n \in \I
     \Rightarrow \Box(s \in \I) \\
-  \Longleftrightarrow&\ 
+  \Longleftrightarrow&\
     \Sh(X) \models \bigwedge_{n \geq 0} \forall s\?\O_X\_ s^n \in \I
     \Rightarrow s \in \I \\
-  \Longleftrightarrow&\ 
+  \Longleftrightarrow&\
     \Sh(X) \models \speak{$\I$ is a radical ideal}
 \end{align*}
 In the second-to-last step, we used that~$\Box(s \in \I) \equiv ((s \in \I) \vee
@@ -3552,7 +3556,7 @@ radical ideal.\end{proof}
 \item Kähler differentials
 \item closed and open subschemes
 \item $j_! \O_U$ flat over~$\O_X$, \ldots
-\item Koszul resolution
+\item Koszul resolution; Beilinson resolution?
 \item meta properties: some lemmas about limits of modules
 \item locally small categories
 \item big Zariski topos
@@ -3647,15 +3651,15 @@ internally describing a suitable map using representatives~$D = [f]$,~$D' =
 
 For the third statement, note that it is equivalent to show that
 \[ \Gamma(U,\F^+) = \{ (V,s) \,|\,
-  \text{$V \subseteq U$ dense open},\ 
-  s \in \Gamma(V,\F),\ 
+  \text{$V \subseteq U$ dense open},\
+  s \in \Gamma(V,\F),\
   \text{$(V,s)$ maximal} \}, \]
 where~``$(V,s)$ maximal'' means that for any other such pair~$(W,t)$ such
 that~$V \subseteq W$ and~$t|_V = s$, it holds that~$V = W$. This follows from
 the fact that the plus construction can also be defined as
 \[ \F^+ := \{ S \subseteq F \,|\,
-  \speak{$S$ subsingleton},\ 
-  \neg\neg(\speak{$S$ inhabited}),\ 
+  \speak{$S$ subsingleton},\
+  \neg\neg(\speak{$S$ inhabited}),\
   \speak{$S$ $\neg\neg$-stable} \}. \]
 
 XXX: simplification rule "box(phi) => box(psi) iff phi => box(psi)".

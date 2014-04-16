@@ -84,6 +84,7 @@
 \DeclareMathOperator{\Clos}{cl}
 \DeclareMathOperator{\Kernel}{ker}
 \DeclareMathOperator{\supp}{supp}
+\newcommand{\Ass}{\mathrm{Ass}}
 \newcommand{\Open}{\mathrm{Op}}
 \newcommand{\?}{\,{:}\,}
 \renewcommand{\_}{\mathpunct{.}\,}
@@ -2563,18 +2564,26 @@ local rings~$\O_{X,x}$.\end{cor}
 proposition~\ref{prop:regularity-spreading}.\end{proof}
 
 
-\subsection{Geometric interpretation of rational functions}
+\subsection{Geometric interpretation of rational functions} Recall that on
+integral schemes, rational functions (\ie sections of~$\K_X$) are the same
+thing as regular functions defined on dense open subsets. This amounts to
+saying that~\emph{$\K_X$ is the~$\neg\neg$-sheafification of~$\O_X$}
+(see proposition~\ref{prop:negneg-sheaves}). We want to rederive this result,
+as far as possible in the internal language, and generalize it to arbitrary
+(not necessarily locally Noetherian) schemes.
 
-\begin{prop}Let~$X$ be a reduced scheme. Then:
+\begin{lemma}Let~$X$ be a reduced scheme. Then:
 \begin{enumerate}
 \item $\O_X$ is~$\neg\neg$-separated.
 \item Internally, an element~$s\?\O_X$ is regular
 if and only if it is \notnot invertible.
 \end{enumerate}
-\end{prop}
+\end{lemma}
 \begin{proof}Recall from corollary~\ref{cor:field-reduced} that
-\[ \Sh(X) \models \forall s\?\O_X\_ \neg(\speak{$s$ invertible}) \Leftrightarrow
-s=0. \]
+\begin{equation}\label{eqn:field-condition}
+  \Sh(X) \models \forall s\?\O_X\_ \neg(\speak{$s$ invertible}) \Leftrightarrow
+  s=0.
+\end{equation}
 From this we can deduce that~$\O_X$ is~$\neg\neg$-separated:
 Assume~$\neg\neg(s=0)$ for~$s\?\O_X$. If~$s$ were invertible, we would
 have~$\neg\neg(1=0)$ and thus~$\bot$. Therefore~$s$ is not invertible and thus
@@ -2613,7 +2622,7 @@ this~$x$. It is straightforward to check that the composition~$\O_X \to \K_X
 \to G$ equals~$\alpha$ and that~$\bar\alpha$ is unique with this property.
 
 Up to this point, the proof did not need that~$X$ is a scheme -- it was enough
-for~$X$ to be a ringed space such that the displayed equivalence above holds and
+for~$X$ to be a ringed space such that equivalence~\eqref{eqn:field-condition} holds and
 such that~$\neg(0 = 1)$ in~$\O_X$. Only now, in showing that~$\K_X$ is
 a~$\neg\neg$-sheaf, the scheme condition enters. To this end, we first
 reformulate the sheaf condition in a way such that it only refers to~$\O_X$,
@@ -2650,8 +2659,9 @@ nilpotent in~$A$. Since this holds for any~$i$,~$g$ is nilpotent in~$A$.
 Since~$A$ is reduced,~$g$ is in fact zero.
 
 By lemma~\ref{lemma:regular-affine}, the function~$b$ is also regular as an
-element of~$\O_X$ from the internal point of view. It follows that on the dense
-open subset~$D(b) \cap V \subseteq U$, the sections~$s$ and~$b^{-1} a$ agree.
+element of~$\O_X$ from the internal point of view. Note that~$b$ is invertible
+on~$V$, since~$V \subseteq D(b)$. It follows that on the dense
+open subset~$V \subseteq U$, the sections~$s$ and~$b^{-1} a$ agree.
 This observation concludes the proof.
 \end{proof}
 
@@ -2671,7 +2681,123 @@ calculating the stalk at~$\xi$; and that the inclusion functor~$\Set \simeq
 \Sh(\{\xi\}) \hookrightarrow \Sh(X)$ is given by the constant sheaf
 construction.
 \end{proof}
-% XXX: split this proof into parts, and maybe reorder qcoh before this
+% XXX: maybe reorder qcoh before this
+
+If~$X$ is a general scheme (not necessarily integral, reduced, or locally
+Noetherian), we can describe~$\K_X$ in a similar way as the sheafification
+of~$\O_X$; specifically, it is the sheafification with respect to the model
+operator defined by
+\[ \Box\varphi :\equiv \speak{$\O_X$ is~$(\varphi \Rightarrow
+\placeholder)$-separated} \]
+in the internal language of~$\Sh(X)$.
+
+\begin{prop}Let~$X$ be a ringed space. Then:
+\begin{enumerate}
+\item The operator~$\Box$ fulfills the axioms on a modal operator.
+\item $\O_X$ is~$\Box$-separated.
+\item $\K_X$ is~$\Box$-separated.
+\item Internally, it holds that~$\Box(\speak{$f$ inv.})$ implies that~$f$ is
+regular for any~$f\?\O_X$.
+% update addtocounter below if numbering changes
+\end{enumerate}
+Suppose furthermore that~$X$ is a scheme. Then:
+\begin{enumerate}
+\addtocounter{enumi}{4}
+\item The converse in~(4) holds.
+\item $\K_X$ is the~$\Box$-sheafification of~$\O_X$.
+\end{enumerate}
+\end{prop}
+\begin{proof}The first four properties are entirely formal; we thus skip over
+some details. For the first property, we verify the second axiom on a modal
+operator. So we assume~$\Box\Box\varphi$ and have to show~$\Box\varphi$. To
+this end, let~$s\?\O_X$ be arbitrary such that~$\varphi \Rightarrow (s=0)$; we
+have to prove that~$s = 0$. If~$\O_X$ were separated with respect to the modal
+operator~$(\varphi \Rightarrow \placeholder)$, it would follow that~$s = 0$. So
+unconditionally it holds that~$\Box\varphi \Rightarrow (s=0)$. Since by
+assumption~$\O_X$ is~$\Box\varphi$-separated, the claim follows.
+
+For the second property, let~$s\?\O_X$ be arbitrary such that~$\Box(s = 0)$.
+Obviously it holds that~$(s = 0) \Rightarrow (s = 0)$. Thus, since~$\O_X$ is
+separated with respect to~$((s = 0) \Rightarrow \placeholder)$, it follows
+that~$s = 0$. The proof of the third property is similar.
+
+For the fourth property, assume~$\Box(\speak{$f$ inv.})$ and let~$h\?\O_X$ be
+arbitrary such that~$fh = 0$. Then, trivially, it holds that~$\speak{$f$ inv.}
+\Rightarrow h = 0$. Since~$\O_X$ is separated with respect to~$(\speak{$f$
+inv.} \Rightarrow \placeholder)$, it follows that~$h = 0$.
+
+We may now suppose that~$X$ is a scheme. To verify the fifth property, let a
+regular function~$f\?\O_X$ be given. We have to show that~$\O_X$ is separated
+with respect to the modality~$(\speak{$f$ inv.} \Rightarrow \placeholder)$. So
+assume that~$\speak{$f$ inv.} \Rightarrow (s = 0)$ for some~$s\?\O_X$. By
+proposition~\ref{prop:cond-zero}, it follows that~$f^n s = 0$ for some natural
+number~$n$. Since~$f$ is regular, it follows that~$s = 0$.
+
+The verification of the universal property of~$\K_X$ is done analogously as in
+the case that~$X$ is reduced: For the proof of
+proposition~\ref{prop:kx-is-negneg-sheafification}, it was critical that
+regular elements of~$\O_X$ are \notnot invertible. We now need (and have) that
+regular elements of~$\O_X$ are~$\Box(\speak{invertible})$.
+
+Thus it only remains to verify that~$\K_X$ is a~$\Box$-sheaf. We may again imitate
+the proof of proposition~\ref{prop:kx-is-negneg-sheafification}; using the same
+notation, we may now suppose that~$V$ is an open subset such that~$U \models \Box
+V$ (previously, we supposed that~$U \models \neg\neg V$). The proof that the
+denominator~$b$ is regular (as seen from the internal perspective, as an
+element of~$\O_X$) now goes as follows: We have~$V \subseteq
+D(b)$. Thus~$U \models \Box V$ implies~$U \models \Box(\speak{$f$ inv.})$. By
+the fourth property, it follows that~$U \models \speak{$f$ is regular}$.
+\end{proof}
+
+\begin{cor}Let~$X$ be a scheme. Then~$\K_X$ is the result of
+pulling back~$\O_X$ to the sublocale~$X_\Box$ associated to the modal
+operator~$\Box$ and then pushing forward again. If~$X$ is locally Noetherian,
+this sublocale is the subspace of associated points in~$X$.
+\end{cor}
+
+In formulas, the corollary says that the canonical map
+\[ \K_X \longrightarrow i_* i^{-1} \O_X \]
+is an isomorphism, where~$i : X_\Box \hookrightarrow X$ is the inclusion of
+the sublocale~$X_\Box$. This result holds without any Noetherian hypotheses.
+These are only needed if we want to describe~$X_\Box$ as a certain explicitly
+given subspace.
+
+\begin{proof}The first statement follows trivially by the results of
+section~\ref{sect:internal-sheaves} and the fact that~$\K_X$ is
+the~$\Box$-sheafification of~$\O_X$.
+
+For the second statement, we need to verify that the nucleus~$j_{\Ass(\O_X)}$
+associated to the subspace of associated points coincides with the
+nucleus~$j_\Box$ associated to the modal operator~$\Box$. Recall from
+remark~XXX that the former is defined by
+\begin{align*}
+  j_{\Ass(\O_X)}(U) &= \bigcup \{ V \subseteq X \,|\,
+  \text{$V$ open},\ V \cap \Ass(\O_X) \subseteq U \} \\
+\intertext{and recall from XXX that the latter is given by}
+  j_\Box(U) &= \text{largest open subset of~$X$ on which~$\Box U$ holds} \\
+  &= \bigcup \{ V \subseteq X \,|\,
+  \text{$V$ open},\ V \models \Box U \}.
+\end{align*}
+The equivalence thus follows from standard results on the set of associated
+points on locally Noetherian schemes:
+\begin{align*}
+  &\ V \cap \Ass(\O_X) \subseteq U \\
+  \Longleftrightarrow&\
+    \Ass(\O_V) \subseteq U \\
+  \Longleftrightarrow&\
+    \text{the canonical morphism~$\O_V \to i_* \O_{U \cap V}$
+    (with $i : U \cap V \hookrightarrow V$) is injective} \\
+  &\qquad\qquad\text{(this steps requires the Noetherian assumption)} \\
+  \Longleftrightarrow&\
+    V \models \speak{$\O_X \to \O_X^+$ is injective} \\
+  &\qquad\qquad\text{(where the plus construction is with respect to} \\
+  &\qquad\qquad\text{the modality~$(U \Rightarrow \placeholder)$)} \\
+  \Longleftrightarrow&\
+    V \models \speak{$\O_X$ is~$(U \Rightarrow \placeholder)$-separated} \\
+  \Longleftrightarrow&\
+    V \models \Box U. \qedhere
+\end{align*}
+\end{proof}
 
 
 \subsection{Cartier divisors} Let~$X$ be a scheme (or ringed space). Recall

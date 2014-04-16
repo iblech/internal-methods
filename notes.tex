@@ -2131,9 +2131,6 @@ truth of~$\varphi$ on some open neighbourhood of~$x$, and vice versa.\end{cor}
 that~$\varphi^\Box \Leftrightarrow \Box\varphi$.
 \end{proof}
 
-% discuss the case x = generic point, and discuss that for us, absence of a
-% generic point is no problem
-
 \begin{ex}Let~$X$ be a scheme (or a ringed space). Since the condition for a
 function~$f\?\O_X$ to be nilpotent is geometric (it is~$\bigvee_{n \geq 0} f^n
 = 0$), nilpotency of~$f$ at a point is equivalent to nilpotency on some open
@@ -2141,6 +2138,34 @@ neighbourhood.\end{ex}
 
 Combined with lemma~\ref{lemma:stalk-open-with-hypothesis}, this metatheorem is
 quite useful. We will illustrate it with many examples in the next subsection.
+
+An important special case of spreading from stalks to neighbourhoods is the
+case of spreading from the generic point to a dense open subset. Recall that
+the \emph{generic point}~$\xi \in X$ has the property that~$\Clos\{\xi\} = X$.
+Such a point exists and is unique if~$X$ is an irreducible scheme, and need not
+exist otherwise.
+
+\begin{lemma}Let~$X$ be a topological space and~$\xi \in X$ a point such
+that~$\Clos\{\xi\} = X$. Then the modal operator~$\Box :\equiv ((\placeholder
+\Rightarrow \notat{\xi}) \Rightarrow \notat{\xi})$ coincides with the double
+negation modality.\end{lemma}
+\begin{proof}The semantics of the formula~$\notat{\xi}$ was defined by the
+equivalence
+\[ U \models \notat{\xi} \quad\Longleftrightarrow\quad
+  \xi \not\in U. \]
+By the assumption on~$\xi$, this is equivalent to requiring~$U = \emptyset$.
+Thus for any open subset~$U$ the formulas~$\notat{\xi}$ and~$\bot$ have the
+same meaning; they are therefore logically equivalent from the internal point of
+view. The given modal operator thus simplifies to
+\[ \Box\varphi \equiv ((\varphi \Rightarrow \notat{\xi}) \Rightarrow \notat{\xi})
+  \Leftrightarrow ((\varphi \Rightarrow \bot) \Rightarrow \bot)
+  \Leftrightarrow \neg\neg\varphi. \qedhere \]
+\end{proof}
+
+In particular, if~$X$ contains a generic point~$\xi$ in the sense of the lemma,
+we can describe the sublocale~$X_{\neg\neg}$ in very explicit terms: In this
+case, it coincides with the subspace~$\{\xi\}$.
+% XXX: continue...
 
 \begin{proof}[Proof of theorem~\ref{thm:box-translation-semantically}]
 A fancy proof goes as follows. First, one shows intuitionistically that for a

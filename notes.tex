@@ -2708,7 +2708,8 @@ operator defined by
 \placeholder)$-separated} \]
 in the internal language of~$\Sh(X)$.
 
-\begin{prop}Let~$X$ be a ringed space. Then:
+\begin{prop}\label{prop:kx-is-box-sheafification}
+Let~$X$ be a ringed space. Then:
 \begin{enumerate}
 \item The operator~$\Box$ fulfills the axioms on a modal operator.
 \item $\O_X$ is~$\Box$-separated.
@@ -2764,6 +2765,25 @@ denominator~$b$ is regular (as seen from the internal perspective, as an
 element of~$\O_X$) now goes as follows: We have~$V \subseteq
 D(b)$. Thus~$U \models \Box V$ implies~$U \models \Box(\speak{$f$ inv.})$. By
 the fourth property, it follows that~$U \models \speak{$f$ is regular}$.
+\end{proof}
+
+In the special case that~$X$ is a reduced scheme,
+proposition~\ref{prop:kx-is-box-sheafification} recovers
+the result of proposition~\ref{prop:kx-is-negneg-sheafification}.
+
+\begin{prop}Let~$X$ be a reduced scheme. Then the modal operator~$\Box$
+coincides with the double negation modality.\end{prop}
+\begin{proof}We show that from the internal point of view,~$\Box\varphi$ is
+equivalent to~$\neg\neg\varphi$ for any formula~$\varphi$. For the ``only if''
+direction, note that~$\neg\varphi$ is equivalent to~$\varphi \Rightarrow (1 =
+0)$. Since by assumption~$\O_X$ is separated with respect to the~$(\varphi
+\Rightarrow \placeholder)$-modality, this in turn is equivalent to~$1 = 0 \?
+\O_X$, \ie to~$\bot$. Thus~$\neg\neg\varphi$.
+
+For the ``if'' direction, let~$\varphi \Rightarrow (s = 0)$ for some~$s\?\O_X$;
+we have to show that in fact~$s = 0$. Since by assumption~$\neg\neg\varphi$, it
+follows that~$s$ is \notnot zero. Since~$X$ is reduced,~$\O_X$
+is~$\neg\neg$-separated, so this implies that~$s$ is really zero.
 \end{proof}
 
 \begin{cor}Let~$X$ be a scheme. Then~$\K_X$ is the result of

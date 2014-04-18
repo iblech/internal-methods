@@ -61,6 +61,7 @@
 \newcommand{\RR}{\mathbb{R}}
 \newcommand{\QQ}{\mathbb{Q}}
 \newcommand{\GG}{\mathbb{G}}
+\newcommand{\aaa}{\mathfrak{a}}
 \newcommand{\ppp}{\mathfrak{p}}
 \newcommand{\Hom}{\mathrm{Hom}}
 \newcommand{\HOM}{\mathcal{H}\mathrm{om}}
@@ -76,7 +77,14 @@
 \newcommand{\Zar}{\mathrm{Zar}}
 \newcommand{\Sch}{\mathrm{Sch}}
 \newcommand{\Mod}{\mathrm{Mod}}
+\newcommand{\Alg}{\mathrm{Alg}}
+\newcommand{\Ring}{\mathrm{Ring}}
+\newcommand{\LRL}{\mathrm{LRL}}
+\newcommand{\pt}{\mathrm{pt}}
 \DeclareMathOperator{\Spec}{Spec}
+\newcommand{\QcohSpec}[2]{\mathrm{Spec}^{\mathrm{qcoh}}_{#1}{#2}}
+\newcommand{\RelSpec}[2]{\mathrm{RelSpec}_{#1}{#2}}
+\newcommand{\op}{\mathrm{op}}
 \DeclareMathOperator{\colim}{colim}
 \DeclareMathOperator{\rank}{rank}
 \DeclareMathOperator{\Ann}{Ann}
@@ -3570,6 +3578,174 @@ radical ideal.\end{proof}
 \item Koszul resolution
 \end{itemize}
 
+\section{Relative spectrum}
+
+Recall that if~$\A$ is a quasicoherent~$\O_X$-algebra on a scheme~$X$, one can
+construct the \emph{relative spectrum}~$\RelSpec{X}{\A}$ by appropriately
+gluing the spectra~$\Spec \Gamma(U,\A)$ where~$U$ ranges over the affine opens
+of~$X$. This relative spectrum comes equipped with a canonical
+morphism~$\RelSpec{X}{\A} \to X$. We can give a simple construction of the
+relative spectrum in the internal language of~$\Sh(X)$, imitating the usual
+construction of the spectrum of a ring (as opposed to a sheaf of rings).
+
+\subsection{Internal locales} Let~$X$ be a topological space (or a locale). A
+fundamental fact in the theory of locales is that there is a canonical
+equivalence between the category of \emph{locales over~$X$} -- that is
+locales~$Y$ equipped with a morphism~$Y \to X$ -- and \emph{internal locales
+in~$\Sh(X)$}. An internal locale in a topos~$\E$ is given by an object~$L$ of~$\E$
+(the internal lattice of opens of the locale) together with a binary
+relation~$(\preceq) \hookrightarrow L \times L$ such that the axioms on a
+locale hold from the internal point of view. (In these notes, we do not need a
+precise wording of these axioms.)
+
+The equivalence is described as follows: A locale~$f : Y \to X$ over~$X$
+induces an internal locale~$I(Y)$ with object of opens given by~$\Open(I(Y)) :=
+f_* \Omega_{\Sh(Y)} \in \Sh(X)$, where~$f_*$ is the pushforward functor
+and~$\Omega_{\Sh(Y)}$ is the object of truth values in the topos of sheaves
+on~$Y$. Conversely, an internal locale~$\L \in \Sh(X)$ induces an (external)
+locale~$E(\L)$ with lattice of opens given by~$\Open(E(\L)) := \Gamma(X,\L)$.
+This comes equipped with a canonical morphism~$Y \to X$ of locales which we do
+not need to describe explicitly.
+% XXX: give reference
+
+As a special case, the internalization of the trivial locale~$\id : X \to X$
+over~$X$ has as lattice of opens the object~$\id_* \Omega_{\Sh(X)} =
+\Omega_{\Sh(X)} = \P(1)$. This is precisely the lattice of opens of the
+one-point space. Thus~$I(X) \cong \pt$. This illustrates the intuition
+behind working internally in~$\Sh(X)$ very well: From the perspective
+of~$\Sh(X)$, the space~$X$ looks like the one-point space (even if in fact it
+is not).
+
+One can associate to an internal locale~$L$ in a topos~$\E$ a topos of internal
+sheaves on it:~$\Sh_\E(L)$. The correspondence is made in such a way that the topos of
+sheaves on a locale~$Y$ over~$X$ is equivalent to the topos of sheaves on the
+internal locale~$I(Y)$: $\Sh(Y) \simeq \Sh_{\Sh(X)}(I(Y))$.
+
+There is no similarly nice correspondence between topological spaces
+over~$X$ and internal topological spaces in~$\Sh(X)$. This is one of the
+reasons why locales are better suited for working internally and switching
+between internal and external perspectives.
+
+
+\subsection{The spectrum of a ring as a locale} Recall that the spectrum
+of a ring~$A$ is usually constructed as the set
+\[ \Spec A := \{ \ppp \subseteq A \,|\,
+  \text{$\ppp$ is a prime ideal} \} \]
+endowed with a certain topology and a sheaf of rings~$\O_{\Spec A}$. From an
+intuitionistic (and thus internal) point of view, this construction does not
+work well: Prime ideals are intuitionistically much more elusive than
+classically, where one can appeal to Zorn's lemma to obtain maximal (and thus
+prime) ideals. More to the point, one can not show that this construction of
+the spectrum as a topological space verifies the expected universal property.
+
+On the other hand, the lattice of opens of~$\Spec A$ admits a simple
+description not needing the notion of prime ideals:
+\[ \Open(\Spec A) \cong \{ \aaa \subseteq A \,|\,
+  \text{$\aaa$ is a radical ideal} \}. \]
+An open subset~$U \subseteq \Spec A$ corresponds to the radical ideal~$\{ h \in
+A \,|\, D(h) \subseteq U \}$ (so in particular, the open subset~$D(f)$
+corresponds to the radical ideal~$\sqrt{(f)}$); conversely, a radical ideal~$\aaa$
+corresponds to the open subset~$\bigcup_{h \in \aaa} D(h)$.
+
+Thus, in an intuitionistic context, we will construct the spectrum of a ring~$A$
+only as a locale, not as a topological space; we will use the lattice of
+radical ideals as the lattice opens. This construction fulfills the expected
+universal property, namely that it is adjoint to the global sections functor:
+\[ \Hom_{\LRL}(X, \Spec A) \cong \Hom_{\Ring}(A, \Gamma(X,\O_X)). \]
+Here, ``$\LRL$'' refers to the category of \emph{locally ringed locales}, \ie
+locales~$X$ equipped with a sheaf of rings~$\O_X$ such that from the internal point of
+view of~$\Sh(X)$, the ring~$\O_X$ is a local ring. A morphism~$Y \to X$ of
+locally ringed locales consists of a locale morphism~$f : Y \to X$ and a
+morphism~$f^\sharp : f^{-1} \O_X \to \O_Y$ of sheaves of rings on~$Y$ such that, from the
+internal point of view of~$\Sh(Y)$, the ring homomorphism~$f^\sharp$ is a local
+homomorphism. The notion of a locally ringed locale is thus a straightforward
+generalization of that of a locally ringed space.
+
+
+\subsection{The relative spectrum as an ordinary spectrum from the internal
+point of view} Let~$X$ be a scheme and~$\A$ be a quasicoherent~$\O_X$-algebra.
+Since~$\A$ looks like a plain algebra from the internal perspective
+of~$\Sh(X)$, we can consider its internally defined spectrum. This is a locale
+internal to~$\Sh(X)$; we might hope that its externalization is precisely the
+relative spectrum of~$\A$ (considered as a locale):
+\[ E(\Spec \A) \stackrel{?}{\cong} \RelSpec{X}{\A}. \]
+However, this turns out to be too naive. The externalization of the internally
+defined spectrum fulfills the universal property
+\begin{align*}
+  \Hom_{\LRL/E(\Spec\O_X)}(Y, E(\Spec\A)) & \cong
+  \Hom_{\LRL_{\Sh(X)}/\Spec\O_X}(I(Y), \Spec\A) \\
+  & \cong \Hom_{\O_X}(\A, \mu_* \O_Y)
+\end{align*}
+for all locally ringed locales~$Y$ over~$E(\Spec\O_X)$. Here,~$\mu$ is the
+structure morphism~$Y \to \Spec\O_X$; $E(\Spec\O_X)$ is the locally ringed
+locale associated to the internally defined spectrum of~$\O_X$;
+and~$\LRL_{\Sh(X)}$ is the category of locally ringed locales internal
+to~$\Sh(X)$. However, the relative spectrum fulfills the different universal property
+\begin{align*}
+  \Hom_{\LRL/X}(Y, \RelSpec{X}{\A}) & \cong
+  \Hom_{\LRL_{\Sh(X)}/(\pt,\O_X)}(I(Y), I(\RelSpec{X}{\A})) \\
+  & \cong \Hom_{\O_X}(\A, \mu_* \O_Y)
+\end{align*}
+for all locally ringed locales~$Y$ over~$\RelSpec{X}{\A}$. The crucial
+difference is that in general, the internally defined locally ringed
+locale~$\Spec\O_X$ does \emph{not} coincide with the internal locally ringed
+locale~$(\pt,\O_X)$ (which is simply~$(X,\O_X)$ from the external point of
+view). More succinctly, the functor~$E \circ \Spec$ is an adjoint to the
+global sections functor~$\LRL/E(\Spec\O_X) \to \Alg(\O_X)^\op$, while the
+relative spectrum functor is an adjoint to the global sections functor~$\LRL/X
+\to \Alg(\O_X)^\op$.
+
+The internal construction which correctly reflects the relative spectrum is the
+following.
+\begin{defn}Let~$A$ be an~$R$-algebra which is quasicoherent in the sense that
+the condition given in theorem~\ref{thm:qcoh-sheafchar} is fulfilled. The
+lattice of opens of its \emph{quasicoherent spectrum} is given by
+\[ \Open(\QcohSpec{R}{A}) := \{ \aaa \subseteq A \,|\,
+  \text{$\aaa$ is a quasicoherent radical ideal} \}, \]
+where again ``quasicoherent'' is meant as in theorem~\ref{thm:qcoh-sheafchar}.
+If this lattice fulfills the axioms on a locale, we further define a
+structure sheaf on a base by
+$\Gamma(\sqrt{(f)}, \O_{\QcohSpec{R}{A}}) := A[f^{-1}]$.
+\end{defn}
+
+\begin{prop}Let~$X$ be a scheme and~$\A$ a quasicoherent~$\O_X$-algebra. Then:
+\begin{enumerate}
+\item The internal lattice~$\Open(\QcohSpec{\O_X}{\A})$ fulfills the axioms on an
+internal locale.
+\item The externalization~$E(\QcohSpec{\O_X}{\A})$ coincides with the relative
+spectrum~$\RelSpec{\O_X}{\A}$.
+\end{enumerate}
+\end{prop}
+\begin{proof}We first show that the internalization~$I(\RelSpec{\O_X}{\A})$
+coincides with the internal lattice~$\Open(\QcohSpec{\O_X}{\A})$. Both of these
+objects are sheaves on~$X$; so to show that they are canonically isomorphic, it
+suffices to give compatible canonical isomorphisms on the base of~$X$
+consisting of all affine opens. On such an open~$U = \Spec R$, the
+quasicoherent algebra~$\A$ is given by a tilde construction:~$\A|_U =
+S^{\sim}$ for some~$R$-algebra~$S$. Thus it holds that
+\begin{align*}
+  \Gamma(U, I(\RelSpec{\O_X}{\A})) &\cong
+  \Open(\RelSpec{\O_X}{(\A)} \times_X U) \\
+  & \cong
+  \Open(\RelSpec{\O_X|_U}{\A|_U}) \\
+  & \cong
+  \Open(\Spec S) \\
+  & \cong
+  \{ \aaa \subseteq S \,|\, \text{$\aaa$ is a radical ideal} \}, \\
+  \Gamma(U, \Open(\QcohSpec{\O_X}{\A})) &\cong
+  \{ \I \hookrightarrow \A|_U \ |\ \text{$\I$ is a quasicoherent radical ideal sheaf} \}.
+\end{align*}
+Clearly, these lattices are isomorphic (by~$\aaa \mapsto \aaa^\sim$ and~$\I
+\mapsto \Gamma(U,\I)$).
+
+This is already enough to prove the claims: By a general lemma of locale theory,
+% XXX: give reference
+the internal lattice~$\Open(\QcohSpec{\O_X}{\A})$ defines an internal locale
+(as the pushforward under~$\RelSpec{\O_X}{\A} \to X$ of a locale); and its
+externalization coincides with~$\RelSpec{\O_X}{\A}$.
+\end{proof}
+
+% XXX: cite Hakim and Townsend (?)
 
 \section{Unsorted}
 \begin{itemize}
@@ -3585,7 +3761,6 @@ radical ideal.\end{proof}
 \item morphisms of schemes...
 \item proper maps...
 \item limits and colimits...
-\item relative spectrum...
 \end{itemize}
 
 

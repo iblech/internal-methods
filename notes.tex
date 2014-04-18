@@ -3578,6 +3578,7 @@ radical ideal.\end{proof}
 \item Koszul resolution
 \end{itemize}
 
+
 \section{Relative spectrum}
 
 Recall that if~$\A$ is a quasicoherent~$\O_X$-algebra on a scheme~$X$, one can
@@ -3660,6 +3661,41 @@ morphism~$f^\sharp : f^{-1} \O_X \to \O_Y$ of sheaves of rings on~$Y$ such that,
 internal point of view of~$\Sh(Y)$, the ring homomorphism~$f^\sharp$ is a local
 homomorphism. The notion of a locally ringed locale is thus a straightforward
 generalization of that of a locally ringed space.
+
+For later use, we study the question when the spectrum is the one-point space.
+The answer is well-known classically, but since we want to use this result in
+an internal context, we have to give an intuitionistic proof.
+\begin{lemma}\label{lemma:spectrum-one-point}
+Let~$A$ be a ring with~$0 \neq 1$. Its spectrum is a one-point
+space (given as a locale) if and only if any element of~$A$ is nilpotent or
+invertible.\end{lemma}
+\begin{proof}The locale~$\Spec A$ is a one-point space if and only if the
+canonical map
+\[ \begin{array}{@{}rcl@{}}
+  \Omega = \P(1) &\longrightarrow& \Open(\Spec A) \\[0.1em]
+  \varphi &\longmapsto& \aaa_\varphi := \sup\{\sqrt{(1)} \,|\, \varphi \} =
+  \{ x \? A \,|\, \speak{$x$ nilpotent} \vee \varphi \}
+\end{array} \]
+is bijective. It is always injective: If~$\aaa_\varphi = \aaa_\psi$,
+then~$(1 \in \aaa_\varphi) \Leftrightarrow (1 \in \aaa_\psi)$. Since the unit
+of~$A$ is not nilpotent, this amounts to~$\varphi \Leftrightarrow \psi$.
+
+The map is surjective if and only if for any radical ideal~$\aaa \subseteq A$,
+it holds that~$\aaa = \{ x \? A \,|\, \speak{$x$ nilpotent} \vee \varphi \}$
+for some proposition~$\varphi$. By considering the condition~``$1 \in \aaa$'',
+it follows that this proposition~$\varphi$ must be equivalent to the
+proposition~``$1 \in \aaa$'' (if it is at all possible to write~$\aaa$ in such
+a way).
+
+So the map is surjective if and only if for any radical ideal~$\aaa \subseteq
+A$ and any element~$x$ of~$A$ it holds that
+\[ x \in \aaa \quad\Longleftrightarrow\quad
+  \speak{$x$ nilpotent} \vee (1 \in \aaa). \]
+The ``only if'' direction always holds. If any element of~$A$ is nilpotent or
+invertible, the ``if'' direction holds as well (for any~$\aaa$ and any~$x$).
+Considering the radical ideal~$\sqrt{(f)}$ for an element~$f \? A$, one
+verifies that the converse holds as well.
+\end{proof}
 
 
 \subsection{The relative spectrum as an ordinary spectrum from the internal
@@ -3747,8 +3783,35 @@ externalization coincides with~$\RelSpec{\O_X}{\A}$.
 \end{proof}
 
 % XXX: cite Hakim and Gillam ("Localization of ringed spaces")
-% XXX: state that Spec(A) ~~ pt if and only if forall f:A, f nilpotent or f
-% inv. Find out what this condition externally amounts to.
+
+\begin{prop}Let~$X$ be a scheme. Then~$E(\Spec\O_X) \cong X$ as locales
+over~$X$ if and only if~$X$ is the empty scheme or~$X$ has dimension zero.\end{prop}
+\begin{proof}The externalization of~$\Spec\O_X$ coincides with~$X$ if and only
+if from the internal point of view, the locale~$\Spec\O_X$ coincides with the
+one-point locale. By interpreting lemma~\ref{lemma:spectrum-one-point} in the
+internal language of~$\Sh(X)$, it follows that this is the case if and only if
+\[ \Sh(X) \models \forall f\?\O_X\_ \speak{$f$ nilpotent} \vee \speak{$f$
+invertible}. \]
+(Internally, it always holds that~$\neg(1 = 0)$ in~$\O_X$, even if~$X$ happens
+to be the empty scheme. Therefore the lemma is indeed applicable.) Since this
+condition is a geometric implication, it is fulfilled in the internal language
+if and only if it is fulfilled at every point~$x \in X$. This amounts to
+requiring that in any local ring~$\O_{X,x}$, the unique maximal ideal is the
+only prime ideal, \ie that all local rings~$\O_{X,x}$ have Krull dimension
+zero. This is equivalent to~$X$ being empty or having dimension zero.
+\end{proof}
+
+\begin{cor}Let~$X$ be a scheme. Then the relative spectrum of
+quasicoherent~$\O_X$-algebras can be calculated by
+the internal spectrum (instead of the internal quasicoherent spectrum) if and
+only if~$X$ is empty or zero-dimensional.\end{cor}
+\begin{proof}The externalization of the internal spectrum of arbitrary
+quasicoherent~$\O_X$-algebras~$\A$ coincides with the relative spectrum if and
+only if it coincides in the special case~$\A = \O_X$. This is apparent by the
+universal properties of both constructions. Thus the claim follows by the
+previous proposition.
+\end{proof}
+
 
 \section{Unsorted}
 \begin{itemize}

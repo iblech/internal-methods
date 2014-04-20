@@ -1963,6 +1963,61 @@ of~$\psi^\withgray$; the third by the induction hypothesis; the fourth by
 definition.
 \end{proof}
 
+\begin{lemma}\label{lemma:box-translation-sound}
+The~$\Box$-translation is sound with respect to intuitionistic logic:
+Assume that there is an intuitionistic proof of an
+implication~$\varphi \Rightarrow \psi$. Then there is also an intuitionistic
+proof of the translated implication~$\varphi^\Box \Rightarrow \psi^\Box$.
+\end{lemma}
+\begin{proof}This follows by an induction on the structure of intuitionistic
+proofs. We have to verify that we can mirror any inference rule of
+intuitionistic logic in the translation. For instance, one of the disjunction
+rules justifies the following proof scheme: In order to prove~$\varphi \vee
+\psi \Rightarrow \chi$, it suffices to give proofs of~$\varphi \Rightarrow
+\chi$ and~$\psi \Rightarrow \chi$. We have to justify the translated proof
+scheme: In order to prove~$(\varphi \vee \psi)^\Box \Rightarrow \chi^\Box$, it
+suffices to give proofs of~$\varphi^\Box \Rightarrow \chi^\Box$ and~$\psi^\Box
+\Rightarrow \chi^\Box$.
+
+So assume that proofs of the two implications are given. Further
+assume~$(\varphi \vee \psi)^\Box$, \ie~$\Box(\varphi^\Box \vee \psi^\Box)$.
+We want to show~$\chi^\Box$. Since this is a~$\Box$-stable statement, we may
+assume that in fact~$\varphi^\Box \vee \psi^\Box$ holds. Then the claim is
+obvious by the two given proofs.
+
+The cases for the other rules (see appendix~\ref{appendix:inference-rules} for
+a list) are similar and left to the reader.\end{proof}
+
+\begin{rem}The reader well-versed in formal logic will have noticed that we are
+mixing syntax and semantics here. The proper way to state the lemma would be
+to formally adjoin a box operator to the language of intuitionistic logic,
+governed by three inference rules which are modeled on the three axioms on a
+modal operator. This formal box operator could then be instantiated by any
+concrete modal operator~$\Box : \Omega \to \Omega$.\end{rem}
+
+Soundness of the~$\Box$-translation is important for the following reason
+(among others). If~$\varphi$ and~$\varphi'$ are equivalent formulas, we are
+accustomed to be able to freely substitute~$\varphi$ by~$\varphi'$ anywhere we
+want. Since a modal operator~$\Box$ is semantically defined as a map~$\Omega
+\to \Omega$, it is trivially justified that~$\Box\varphi$ and~$\Box\varphi'$
+are equivalent: The formulas~$\varphi$ and~$\varphi'$ give rise to the
+\emph{same} element~$\{x \in 1 \,|\, \varphi\} = \{x \in 1 \,|\, \varphi'\}$
+of~$\Omega$.
+
+However, it is \emph{not} clear that the translated formulas~$\varphi^\Box$
+and~$\varphi'^\Box$ are equivalent. This follows only by applying the soundness
+lemma (two times, once for each direction). We should stress that to apply this
+lemma, it is not enough to merely \emph{know} that~$\varphi$ and~$\varphi'$ are
+equivalent; instead, there has to be an intuitionistic proof of this
+equivalence. The difference might not be apparent at the top level (how should
+we know that the equivalence holds if not by a proof?\footnote{Of course,
+considering logical incompleteness theorems, this questions is slightly
+naive.}), but it becomes evident when considering hypothetical situations: To
+prove an implication~$\psi \Rightarrow \chi$, we may give a proof of~$\chi$
+under the additional assumption that~$\psi$ holds; however, we may not suppose
+that there is a proof of~$\psi$ -- indeed,~$\psi$ might later turn out to be
+false.
+
 \begin{lemma}\label{lemma:open-stalk}
 Let~$\varphi$ be a formula such that for any subformulas~$\psi$
 appearing as antecedents of implications, it holds that~$\psi^\Box \Rightarrow
@@ -2016,17 +2071,11 @@ Then $\varphi^\Box \Rightarrow \Box\varphi$.
 \end{lemma}
 \begin{proof}
 Assume~$\varphi^\Box$. Since~$\psi^\Box$, $(\varphi \wedge \psi)^\Box$. Because
-the~$\Box$-translation is sound with respect to intuitionistic logic (see~XXX),
+the~$\Box$-translation is sound with respect to intuitionistic logic
+(lemma~\ref{lemma:box-translation-sound})
 it follows that~$(\varphi')^\Box$. As~$\varphi'$ is geometric, it follows
 that~$\Box\varphi'$. Since~$\Box\psi$ holds, it follows that~$\Box\varphi$.
 \end{proof}
-
-\begin{rem}The requirement that there exists an intuitionistic proof is
-stronger than merely \emph{knowing} that the equivalence holds.
-\end{rem}
-% XXX: move this remark to the place where soundness of the Box-translation is
-% discussed
-
 
 \begin{ex}\label{ex:module-zero-geometric}
 Let~$M$ be an~$R$-module. Then the statement that~$M$ is zero is not

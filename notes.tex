@@ -107,6 +107,8 @@
 \newcommand{\eg}{e.\,g.\@\xspace}
 \newcommand{\notnot}{\emph{not not}\xspace}
 
+\newcommand{\XXX}[1]{\textbf{XXX: #1}}
+
 \definecolor{gray}{rgb}{0.7,0.7,0.7}
 
 \title{Using the internal language of toposes in algebraic geometry}
@@ -177,8 +179,8 @@ elimination~($\neg\neg\varphi \Rightarrow \varphi$), nor the axiom of choice.
 For instance, one rendition of the axiom of choice is that any surjection
 splits. But it need not be the case that an epimorphism in a topos
 splits.
-% XXX: the translation of splitting would be that locally (!), there is a right
-% inverse.
+\XXX{the translation of splitting would be that locally (!), there is a right
+inverse.}
 
 
 \subsection*{Algebraic geometry}
@@ -293,7 +295,7 @@ instance, Gavin Wraith used it to construct (and verify the universal property
 of) the big étale topos of a scheme by internally developing the theory of
 strict henselization~\cite{wraith:generic-galois-theory}. However, to the best
 of my knowledge, a systematic creation of a dictionary between external and
-% XXX: word "creation"
+\XXX{word "creation"}
 internal notions has not been attempted before, and the use of modal operators
 to study the spreading of properties from points to neighbourhoods seems to be
 new as well.
@@ -495,11 +497,11 @@ follows because of the locality of the internal language.
 A complete list of which rules are to prove is
 in~\cite[D1.3.1]{johnstone:elephant}.
 \end{proof}
-% XXX: Put rules into an appendix and give some explanation regarding contexts
-% etc. Don't forget the rules for \in, \bigwedge, \bigvee.
+\XXX{Put rules into an appendix and give some explanation regarding contexts
+etc. Don't forget the rules for $\in$, $\bigwedge$, $\bigvee$.}
 
-% XXX: Is it clear that any constructively valid statement yields a valid sheaf
-% statement?
+\XXX{XXX: Is it clear that any constructively valid statement yields a valid sheaf
+statement?}
 
 Because of the multitude of quantifiers, literal translations of internal statements
 can sometimes get slightly unwieldy. There are simplification rules for certain
@@ -547,7 +549,7 @@ The former always implies the latter (unless~$X = \emptyset$, in which case
 \emph{any} internal statement is true), but the converse does not hold: The
 former statement means that~$U = \emptyset$ is the \emph{only} open subset on
 which~$\varphi$ holds.\end{rem}
-% XXX: Find appropriate place for this remark.
+\XXX{Find appropriate place for this remark.}
 
 
 \subsection{Internal constructions} The Kripke--Joyal semantics defines the
@@ -587,21 +589,21 @@ a proper treatment.
 
 To be able to fully express all constructions of ``usual mathematics'' in the
 internal language (\ie not those specifically designed to test the limitations
-of the ambient logical framework), % XXX: weaken this phrase
+of the ambient logical framework), \XXX{weaken this phrase}
 we need \emph{dependent types}.
-% XXX: short explanation, for instance by an example
-% "A common example are coproducts indexed by elements of some sheaf"
+\XXX{short explanation, for instance by an example
+"A common example are coproducts indexed by elements of some sheaf"}
 In these notes, we do not describe how to deal with those. However, everything
 carries over to the more general setting, and we refer to an article by Awodey and
 Bauer~\cite{awodey-bauer:bracket} for a review of dependent types and their
 categorical semantics.
 
-% XXX: Construction of morphisms
+\XXX{Construction of morphisms}
 
 
 \subsection{Geometric formulas and constructions} In categorical logic,
 so-called geometric formulas play a special role, because their meaning is
-preserved under pullback with geometric morphisms. % XXX gibberish!
+preserved under pullback with geometric morphisms. \XXX{gibberish!}
 \begin{defn}A formula is \emph{geometric} if and only if it consists only of
 \[ {=} \quad {\in} \quad {\top} \quad {\bot} \quad {\wedge} \quad {\vee} \quad
 {\bigvee} \quad {\exists}, \]
@@ -677,8 +679,8 @@ constructions are geometric:
 \rangle$ ($\R$ a sheaf of rings, $\F$ a sheaf of sets)
 \item localization of a module: $\F[\S^{-1}]_x \cong \F_x[\S_x^{-1}]$
 \end{itemize}
-% XXX: compatibility with stalks is not sufficient for geometricity.
-% This list makes one think it is.
+\XXX{compatibility with stalks is not sufficient for geometricity.
+This list makes one think it is.}
 
 The following constructions are not in general geometric:
 \begin{itemize}
@@ -794,7 +796,7 @@ that
   X \models \speak{$s$ nilpotent}. \]
 The meaning of the antecedent is that any open subset on which~$s$ is
 invertible is empty. So in particular, the standard open subset~$D(s)$ is
-% XXX: missing: "Let's assume the antecedent to be true"
+\XXX{missing: "Let's assume the antecedent to be true"}
 empty. Therefore~$s$ is an element of any prime ideal of~$A$ and thus
 nilpotent. This implies the a priori weaker statement~$X \models \speak{$s$
 nilpotent}$ (which would allow~$s$ to have different indices of nilpotency on
@@ -855,7 +857,7 @@ proven just as the correspondence between sheaf of rings and internal rings
 
 
 \subsection{Local finite freeness}
-% XXX: grammar?
+\XXX{grammar?}
 
 Recall that an~$\O_X$-module~$\F$ is \emph{locally finitely free} if and only
 if there exists a covering of~$X$ by open subsets~$U$ such that on each
@@ -988,7 +990,7 @@ where~$R$ is the submodule generated by
 with~$x,x'\?\F$, $y,y'\?\G$, $s\?\O_X$.
 This internal construction will give rise to the same sheaf
 of modules as the externally defined tensor product:
-% XXX: grammar
+\XXX{grammar}
 
 \begin{prop}\label{prop:internal-tensor-product}
 Let~$X$ be scheme (or a ringed space). Let~$\F$ and~$\G$
@@ -1087,8 +1089,7 @@ of its complement can be characterized as the largest open subset of~$X$ where
 the internal statement~$\speak{$\F$ is a singleton}$ holds.\end{rem}
 
 
-\subsection{Torsion} Omitted from this first draft.
-% XXX
+\subsection{Torsion} \XXX{Omitted from this first draft.}
 
 
 \subsection{Internal proofs of common lemmas}
@@ -1194,7 +1195,7 @@ By proposition~\ref{prop:characterization-support}, it suffices to prove
 \[ \Sh(X) \models (\G = 0 \Longleftrightarrow \F = 0 \wedge \H = 0); \]
 this is a basic observation in linear algebra, valid intuitionistically.
 \end{proof}
-% XXX: This is kind of a lame example.
+\XXX{This is kind of a lame example.}
 
 \begin{lemma}Let~$X$ be a scheme (or locally ringed space). Let~$\L$ be a line
 bundle on~$X$, \ie an~$\O_X$-module locally free of rank~1.
@@ -1247,7 +1248,8 @@ semantics is local existence, this would only show that~$\L^\vee \otimes_{\O_X}
 
 Instead, we have to actually \emph{write down} (\ie explicitly give) an
 isomorphism in the internal language -- not using the assumption that~$L$ is
-free of rank~1, as this would introduce an existential quantifier again (see XXX).
+free of rank~1, as this would introduce an existential quantifier again (see
+\XXX{ref}).
 So we have to prove the following fact: Let~$L$ be an~$R$-module. Then there
 explicitly exists a linear map~$L^\vee \otimes_R L \to R$ such that this map is
 an isomorphism if~$L$ is free of rank~1.
@@ -1277,7 +1279,7 @@ explicitly pinpoint the (classically existing) minimal element of an arbitrary
 inhabited set. In intuitionistic logic, this principle can be salvaged in two
 essentially different ways: either be strengthening the premise, or by
 weakening the conclusion.
-% XXX: Give sheaf-theoretic interpretation of the failure.
+\XXX{Give sheaf-theoretic interpretation of the failure.}
 
 \begin{lemma}\label{lemma:minimum-subset-naturals}
 Let~$U \subseteq \NN$ be an inhabited subset of the natural
@@ -1286,9 +1288,9 @@ numbers.
 \item Assume~$U$ to be \emph{detachable}, \ie assume that for any natural
 number~$n$, either~$n \in U$ or~$n \not\in U$. Then~$U$ possesses a minimal
 element.
-% XXX: Give sheaf-theoretic interpretation of detachability. With this
-% interpretation, it should be totally clear that $U$ possesses a minimal
-% element.
+\XXX{Give sheaf-theoretic interpretation of detachability. With this
+interpretation, it should be totally clear that $U$ possesses a minimal
+element.}
 \item In any case,~$U$ does \emph{not not} possess a minimal element.
 \end{enumerate}
 \end{lemma}
@@ -1309,7 +1311,7 @@ of~$U$. For the induction step~$n \to n+1$, the weak law of excluded middle
 gives
 \[ \neg\neg(n \in U \vee n \not\in U). \]
 If we can show that~$n \in U \vee n \not\in U$ implies the conclusion, we're
-done by XXX. So assume~$n \in U \vee n \not\in U$.
+done by \XXX{ref}. So assume~$n \in U \vee n \not\in U$.
 If~$n \in U$, then~$U$ does not not possess a minimal element by the induction
 hypothesis. If~$n \not\in U$, then~$n+1$ is a minimal element (and so, in
 particular,~$U$ does not not possess a minimal element): For if~$m$ is
@@ -1513,7 +1515,7 @@ appearing in~$\varphi$. This subset is inhabited if and only
 if~$\varphi$ holds and is empty if and only if~$\neg\varphi$ holds.
 Conversely, we can associate to a subset~$F \subseteq 1$ the
 formula~$\speak{$F$ is inhabited}$.
-% XXX: "formula" is not the correct term here.
+\XXX{"formula" is not the correct term here.}
 
 Under this correspondence of formulas with truth values, logical operations
 like~$\wedge$ and~$\vee$ map to set-theoretic operations like~$\cap$ and~$\cup$
@@ -1708,7 +1710,7 @@ of points is not part of the definition. Instead, a locale is simply given by a
 lattice of general \emph{opens} -- these may, but do not necessarily have to,
 be sets of points. Sheaf theory carries over to locales essentially unchanged,
 since the notions of presheaves and sheaves only need opens and coverings.
-% XXX: give introductory reference
+\XXX{give introductory reference}
 
 \begin{defn}\label{defn:subspace-by-nucleus}Let~$j$ be a nucleus on~$\Open(X)$.
 Then the sublocale~$X_j$ of~$X$ is given by the lattice of opens
@@ -1722,8 +1724,8 @@ modality. It can be also be described as the \emph{smallest dense sublocale}
 of~$X$; this is obviously a true locale-theoretic notion, since a topological
 space does not have (in general) a smallest dense topological subspace
 (consider~$\RR$ and its dense subsets~$\QQ$ and~$\RR \setminus \QQ$).
-% XXX: word "true"
-% XXX: give introductory references, i.e. Johnstone
+\XXX{word "true"}
+\XXX{give introductory references, i.e. Johnstone}
 
 The inclusion~$i : X_j \hookrightarrow X$ can not in general be described on the
 level of points, since~$X_j$ might not be realizable as a topological subspace.
@@ -1793,7 +1795,7 @@ If~$F$ is~$\Box$-separated, then for any subset~$S \subseteq F$ it holds
 that
 \[ \Box(\speak{$S$ is a singleton}) \quad\Longleftrightarrow\quad
   \speak{$S$ is a subsingleton} \wedge \Box(\speak{$S$ is inhabited}). \]
-% XXX: introduce "singleton", "subsingleton"
+\XXX{introduce "singleton", "subsingleton"}
 
 \begin{rem}The topos of \emph{pre}sheaves on a topological space~$X$ admits an
 internal language as well~\cite[section~VI.7, discussion after
@@ -1845,7 +1847,7 @@ surjective.\end{rem}
 
 
 \subsection{Sheaves for the double negation modality}
-% XXX: introductory words
+\XXX{introductory words}
 
 \begin{prop}\label{prop:negneg-sheaves}
 Let~$X$ be a topological space. Let~$\F$ be a sheaf on~$X$. Then:
@@ -1888,7 +1890,7 @@ W \subseteq V \}$.)
 In view of this explicit description and the observation that the existence in
 question~(``$\exists x\?\F\_ \neg\neg(x \in \S)$'') is actually a question of
 unique existence, the second statement follows.
-% this is hard to understand
+\XXX{this is hard to understand}
 
 For the third statement, one can check that the presheaf on~$X$ defined by
 \[ \text{$U \subseteq X$ open} \longmapsto
@@ -1899,7 +1901,7 @@ and that it fulfills the universal property of the~$\neg\neg$-sheafification
 of~$\F$.
 \end{proof}
 
-% XXX: introduce notion of Box-stability
+\XXX{introduce notion of Box-stability}
 
 
 \subsection{\texorpdfstring{The~$\Box$-translation}{The □-translation}}
@@ -1916,8 +1918,8 @@ statement (``$x=y$'', ``$x \in A$'').
 We will describe a slight generalization of the double negation translation,
 the~$\Box$-translation for any modal operator~$\Box$. It will be central to
 understand truth of formulas on subspaces from the internal language of the
-ambient space.  % XXX: sentence is rubbish
-% check http://arxiv.org/pdf/1101.5442.pdf for references to cite
+ambient space.  \XXX{sentence is rubbish}
+\XXX{check http://arxiv.org/pdf/1101.5442.pdf for references to cite}
 
 \begin{defn}The~\emph{$\Box$-translation} is recursively defined as follows.
 \newcommand{\optBox}{\textcolor{gray}{\Box}}
@@ -2251,10 +2253,10 @@ view. The given modal operator thus simplifies to
 In particular, if~$X$ contains a generic point~$\xi$ in the sense of the lemma,
 we can describe the sublocale~$X_{\neg\neg}$ in very explicit terms: In this
 case, it coincides with the subspace~$\{\xi\}$.
-% XXX: discuss that sheafifying is the same as calculating the generic stalk;
-% and that pushing forward is the same as calculating the constant sheaf.
-% maybe do this in the section discussing negneg-sheaves.
-% Then continue with the story here...
+\XXX{discuss that sheafifying is the same as calculating the generic stalk;
+and that pushing forward is the same as calculating the constant sheaf.
+maybe do this in the section discussing negneg-sheaves.
+Then continue with the story here...}
 
 \begin{proof}[Proof of theorem~\ref{thm:box-translation-semantically}]
 A fancy proof goes as follows. First, one shows intuitionistically that for a
@@ -2419,7 +2421,7 @@ formula
 y = A \vec x$} \]
 (lemma~\ref{lemma:stalk-open-with-hypothesis}). Thus the claim follows.
 \end{proof}
-% XXX: give backreference
+\XXX{give backreference}
 
 \begin{lemma}Let~$X$ be a scheme (or ringed space). Let~$\alpha : \F \to \G$ be
 a morphism of~$\O_X$-modules. Let~$\G$ be of finite type and assume
@@ -2729,7 +2731,7 @@ property that
 Since~$\Gamma(V,\O_X) = A[S_V^{-1}]$ with~$S_V = \{ x \in A \,|\, \text{$f_i
 \in \sqrt{(x)}$ for all~$i$} \}$, we can write~$s = a/b$ with~$a,b \in A$
 and~$f_i^{n_i} = c_i b$ for some~$c_i \in A$, $n_i \geq 0$.
-% XXX: \Gamma(V,\O_X) = A[S_V^{-1} is wrong.
+\XXX{$\Gamma(V,\O_X) = A[S_V^{-1}]$ is wrong.}
 
 The function~$b$ is a regular element of~$A$: Let~$bg = 0$ for~$g \in A$.
 Then~$c_i b g = f_i^{n_i} g = 0 \in A$. Thus~$f_i g$ is
@@ -2759,7 +2761,7 @@ calculating the stalk at~$\xi$; and that the inclusion functor~$\Set \simeq
 \Sh(\{\xi\}) \hookrightarrow \Sh(X)$ is given by the constant sheaf
 construction.
 \end{proof}
-% XXX: maybe reorder qcoh before this
+\XXX{maybe reorder qcoh before this}
 
 If~$X$ is a general scheme (not necessarily integral, reduced, or locally
 Noetherian), we can describe~$\K_X$ in a similar way as the sheafification
@@ -2867,11 +2869,11 @@ the~$\Box$-sheafification of~$\O_X$.
 For the second statement, we need to verify that the nucleus~$j_{\Ass(\O_X)}$
 associated to the subspace of associated points coincides with the
 nucleus~$j_\Box$ associated to the modal operator~$\Box$. Recall from
-remark~XXX that the former is defined by
+remark~\XXX{ref} that the former is defined by
 \begin{align*}
   j_{\Ass(\O_X)}(U) &= \bigcup \{ V \subseteq X \,|\,
   \text{$V$ open},\ V \cap \Ass(\O_X) \subseteq U \} \\
-\intertext{and recall from XXX that the latter is given by}
+\intertext{and recall from \XXX{ref} that the latter is given by}
   j_\Box(U) &= \text{largest open subset of~$X$ on which~$\Box U$ holds} \\
   &= \bigcup \{ V \subseteq X \,|\,
   \text{$V$ open},\ V \models \Box U \}.
@@ -2988,18 +2990,18 @@ converse is similar.
 \begin{rem}Locally principal subschemes (closed subschemes which are locally
 the vanishing subscheme of a regular section of~$\O_X$) up to isomorphisms of
 subschemes are in one-to-one correspondence with rank-1 submodules of~$\O_X$
-(see~XXX). Thus locally principal subschemes (up to isomorphisms of abstract
+(see~\XXX{ref}). Thus locally principal subschemes (up to isomorphisms of abstract
 schemes) are in one-to-one correspondence with effective Cartier divisors (up
 to linear equivalence).\end{rem}
-% XXX: check this.
+\XXX{check this.}
 
 \begin{prop}Assume that~$X$ is an integral scheme. Then any line bundle on~$X$
 is (uncanonically) a submodule of~$\K_X$.\end{prop}
-% XXX: weaker hypothesis possible?
+\XXX{weaker hypothesis possible?}
 \begin{proof}Let~$\xi$ be the generic point of~$X$ and let~$\Box := \neg\neg$
 denote the modal operator such that internal sheafification with respect
 to~$\Box$ is the same as pulling back to~$\{\xi\}$ and then pushing forward
-to~$X$ again (see~XXX). Let~$\L$ be a line bundle on~$X$. Since~$\L_\xi \cong
+to~$X$ again (see~\XXX{ref}). Let~$\L$ be a line bundle on~$X$. Since~$\L_\xi \cong
 \O_{X,\xi}$ (uncanonically), there is some injection~$\L_\xi \to \K_{X,\xi}$;
 this corresponds internally to an injection~$\L^{++} \to \K_X^{++}$.
 Since~$\K_X$ is already a~$\Box$-sheaf (see
@@ -3060,7 +3062,7 @@ only if~$X = \bigcup_i U_i$ and such that~$\Sh(X) \models \varphi_i$ if and
 only if~$X = U_i$. With these observations the claim is obvious.
 \end{proof}
 
-% XXX: formulate for locally constant index sheaves I as well.
+\XXX{formulate for locally constant index sheaves I as well.}
 
 \begin{ex}\label{ex:nilpotency-directed}
 Let~$X$ be a quasicompact scheme (or quasicompact ringed space).
@@ -3150,8 +3152,8 @@ subsets, we can define a sheaf on~$X$ by the internal definition
 Recall that~$\Omega$ is the object of truth values, internally defined as the
 power set of~$1 := \{\star\}$ and that~``$M = U_i$'' is abuse of notation
 and means~$M = \{ x \in 1 \,|\, U_i \}$.
-% XXX: the global sections of \F are not those which I expected! Is the claim
-% true?
+\XXX{the global sections of $\F$ are not those which I expected! Is the claim
+true?}
 \end{proof}
 
 
@@ -3223,9 +3225,9 @@ for trivial logical reasons if~$f$ is invertible and because~$\F[f^{-1}]$ is
 the zero module if~$f$ is not invertible (since then, it's nilpotent). This is
 to be expected: \emph{Any} module~$M$ in commutative algebra is quasicoherent in
 the sense that the associated sheaf of modules~$M^\sim$ is quasicoherent.
-% XXX: More to the point, commutative algebra does not deal with
-% quasicoherence, since quasicoherence is an interesting condition only on on
-% arbitrary schemes, not on affine schemes.
+\XXX{More to the point, commutative algebra does not deal with
+quasicoherence, since quasicoherence is an interesting condition only on on
+arbitrary schemes, not on affine schemes.}
 
 We give the proof below, after first discussing some examples and consequences.
 The proof will explain the origin of this condition.
@@ -3405,7 +3407,8 @@ module of finite type is of finite type as well
 
 \subsection{Sheaves on open and closed subspaces}
 
-% XXX: Remind the reader of abuse of notation like "U" for formulas vs. open sets.
+\XXX{Remind the reader of abuse of notation like "U" for formulas vs. open
+sets.}
 
 \begin{lemma}\label{lemma:extension-by-empty-set}
 Let~$X$ be a topological space. Let~$j : U \hookrightarrow X$ be the inclusion
@@ -3435,7 +3438,7 @@ sheafifying with respect to the modal operator~$\Box :\equiv (U \Rightarrow
 \placeholder)$. Thus, to show the second statement, we have to give a
 bijection~$(j_!(\F))^{++} \to \F$ for any~$\Box$-sheaf~$\F$. (This map has to
 be given explicitly, to not only show a weaker statement about a local
-isomorphism, see discussion at XXX). To this end, we can use the composition
+isomorphism, see discussion at \XXX{ref}). To this end, we can use the composition
 \[ (j_!(\F))^{++} \lhra \F^{++} \stackrel{({\cong})^{-1}}{\lra} \F, \]
 where the first map is injective since sheafifying is exact. It is also
 surjective, since the~$\Box$-translation of the statement~$\speak{$j_!(F) \to
@@ -3617,7 +3620,7 @@ previous lemma. The proof of the universal property can also be done in the
 internal language, by using that the well-known fact of locale theory that the
 category of locales over~$X$ is equivalent to internal locales in~$\Sh(X)$; but
 we do not want to discuss this further.
-% XXX: mention result on N(quasicompact)
+\XXX{mention result on N(quasicompact)}
 
 For the second statement, internally define the ideal~$\I := \sqrt{\{ s\?\O_X \,|\, s = 0 \vee
 A^c \}} \subseteq \O_X$. Then~$1 \in \I$ if and only if~$A^c$, thus by
@@ -3659,7 +3662,7 @@ on~$Y$. Conversely, an internal locale~$\L \in \Sh(X)$ induces an (external)
 locale~$E(\L)$ with lattice of opens given by~$\Open(E(\L)) := \Gamma(X,\L)$.
 This comes equipped with a canonical morphism~$Y \to X$ of locales which we do
 not need to describe explicitly.
-% XXX: give reference
+\XXX{give reference}
 
 As a special case, the internalization of the trivial locale~$\id : X \to X$
 over~$X$ has as lattice of opens the object~$\id_* \Omega_{\Sh(X)} =
@@ -3782,7 +3785,7 @@ view). More succinctly, the functor~$E \circ \Spec$ is an adjoint to the
 global sections functor~$\LRL/E(\Spec\O_X) \to \Alg(\O_X)^\op$, while the
 relative spectrum functor is an adjoint to the global sections functor~$\LRL/X
 \to \Alg(\O_X)^\op$.
-% XXX: check details?
+\XXX{check details?}
 
 The internal construction which correctly reflects the relative spectrum is the
 following.
@@ -3828,13 +3831,13 @@ Clearly, these lattices are isomorphic (by~$\aaa \mapsto \aaa^\sim$ and~$\I
 \mapsto \Gamma(U,\I)$).
 
 This is already enough to prove the claims: By a general lemma of locale theory,
-% XXX: give reference
+\XXX{give reference}
 the internal lattice~$\Open(\QcohSpec{\O_X}{\A})$ defines an internal locale
 (as the pushforward under~$\RelSpec{\O_X}{\A} \to X$ of a locale); and its
 externalization coincides with~$\RelSpec{\O_X}{\A}$.
 \end{proof}
 
-% XXX: cite Hakim and Gillam ("Localization of ringed spaces")
+\XXX{cite Hakim and Gillam ("Localization of ringed spaces")}
 
 \begin{prop}Let~$X$ be a scheme. Then~$E(\Spec\O_X) \cong X$ as locales
 over~$X$ if and only if~$X$ is the empty scheme or~$X$ has dimension zero.\end{prop}
@@ -3942,20 +3945,24 @@ previous proposition.
 \nocite{*}
 \printbibliography
 
+\XXX{``completed natural number'' is a misnomer.}
+
+\XXX{standardize level of generality: ringed locales, where possible?}
+
+\XXX{remark that for simplicity, we work in a classical metatheory}
+
+\XXX{replace []'s with ()'s where appropriate}
+
+\XXX{word "intuitionistic"}
+
+\XXX{check whether the negneg translation ``finitely generated ==> free''
+implies the hard but important exercise}
+
+\XXX{simplification rule "box(phi) => box(psi) iff phi => box(psi)".}
+
+\XXX{consistently use "i" for closed embeddings and "j" for open embeddings}
+
 \end{document}
-
-XXX: ``completed natural number'' is a misnomer.
-
-XXX: standardize level of generality: ringed locales, where possible?
-
-XXX: remark that for simplicity, we work in a classical metatheory
-
-XXX: replace []'s with ()'s where appropriate
-
-XXX: word "intuitionistic"
-
-XXX: check whether the negneg translation ``finitely generated ==> free''
-implies the hard but important exercise
 
 Snippet that may be useful later:
 By appealing to the axiom of unique choice (see~XXX), we can
@@ -3975,7 +3982,3 @@ the fact that the plus construction can also be defined as
   \speak{$S$ subsingleton},\
   \neg\neg(\speak{$S$ inhabited}),\
   \speak{$S$ $\neg\neg$-stable} \}. \]
-
-XXX: simplification rule "box(phi) => box(psi) iff phi => box(psi)".
-
-XXX: consistently use "i" for closed embeddings and "j" for open embeddings

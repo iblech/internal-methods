@@ -840,6 +840,109 @@ obvious, since by assumption such a function~$s$ is zero on~$D(f)$, \ie $s$
 is zero as an element of~$A[f^{-1}]$.
 \end{proof}
 
+
+\subsection{Krull dimension} Recall that the \emph{Krull dimension} of a
+ring is usually defined as the supremum of the lengths of all strictly
+ascending prime ideals. Like with the classical definition of a local ring,
+this definition does not lead to a well-behaved notion in an intuitionistic
+context. Furthermore, it is a higher-order condition, so interpreting it
+with the Kripke--Joyal semantics is a bit unwieldy.
+
+Luckily, there is an elementary definition of the Krull dimension which works
+intuitionistically and which is classically equivalent to the usual notion. It
+was found by \XXX{authors} and simplified by Thierry Coquand \XXX{reference}.
+
+\begin{defn}Let~$R$ be a ring. A \emph{complementary sequence} for a
+sequence~$(a_0,\ldots,a_n)$ of elements of~$R$ is a sequence~$(b_0,\ldots,b_n)$
+such that the following inclusions of radical ideals hold:
+\begin{itemize}
+\item $\sqrt{(1)} \subseteq \sqrt{(a_0,b_0)}$
+\item $\sqrt{(a_0 b_0)} \subseteq \sqrt{(a_1,b_1)}$
+\item $\sqrt{(a_1 b_1)} \subseteq \sqrt{(a_2,b_2)}$
+\item $\vdots$
+\item $\sqrt{(a_{n-1} b_{n-1})} \subseteq \sqrt{(a_n,b_n)}$
+\item $\sqrt{(a_n b_n)} = \sqrt{(0)}$
+\end{itemize}
+The ring~$R$ is \emph{constructively of Krull dimension~$\leq n$} if
+and only if for any sequence~$(a_0,\ldots,a_n)$ there exists a
+complementary sequence.
+\end{defn}
+
+For the following, no intuition about this definition is needed; however, we
+feel that some motivation might be of use. Recall that we can picture inclusions of
+radical ideals geometrically by considering standard open subsets~$D(f) = \{
+\ppp \in \Spec R \,|\, f \not\in \ppp \}$: The inclusion~$\sqrt{(f)} \subseteq
+\sqrt{(g,h)}$ holds if and only if~$D(f) \subseteq D(g) \cup D(h)$, and
+intersections are calculated by products, \ie~$D(f) \cap D(g) = D(fg)$.
+
+The condition that~$(b_0,\ldots,b_n)$ is complementary to~$(a_0,\ldots,a_n)$
+thus means that~$D(a_0)$ and~$D(b_0)$ cover the whole of~$\Spec R$; that their
+intersection is covered by~$D(a_1)$ and~$D(b_1)$; that in turn their
+intersection is covered by~$D(a_2)$ and~$D(b_2)$; \ldots; and that finally, the
+intersection of~$D(a_n)$ and~$D(b_n)$ is empty.
+
+For the special case~$n = 0$, the condition that~$R$ is constructively of Krull
+dimension~$\leq 0$ means that for any element~$a_0$ there exists an
+element~$b_0$ such that~$D(a_0)$ and~$D(b_0)$ cover~$\Spec R$ and are disjoint.
+This implies that~$\Spec R$ is zero-dimensional in an intuitive sense.
+
+\begin{prop}Let~$R$ be a ring. Classically, it holds that~$R$ is constructively
+of Krull dimension~$\leq n$ if and only if the usually defined Krull dimension
+of~$R$ is less than or equal to~$n$.\end{prop}
+\begin{proof}\XXX{Give reference.}\end{proof}
+
+We can apply the constructive theory of Krull dimension to the structure
+sheaf~$\O_X$ of a scheme~$X$ as follows. Note that the condition that a
+scheme~$X$ has dimension exactly~$n$ is not local -- the dimension may vary on
+an open cover; therefore it is not possible to characterize this condition in
+the internal language. However, the condition that the dimension of~$X$ is less
+than or equal to~$n$ \emph{is} local, thus there is hope that it can be
+internalized. And indeed, this is the case.
+
+\begin{prop}Let~$X$ be a scheme. Then:
+\[ \dim X \leq n \quad\Longleftrightarrow\quad
+  \Sh(X) \models \speak{$\O_X$ is constructively of Krull dimension~$\leq n$}
+  \]
+\end{prop}
+\begin{proof}A condition of the form~``$\sqrt{(f)} \subseteq \sqrt{(g,h)}$''
+like in the constructive definition of the Krull dimension is not a geometric
+formula when taken on face value. However, it is equivalent to a geometric
+condition, namely to
+\begin{multline*}
+  \exists a,b\?\O_X\_ \bigvee_{m \geq 0} f^m = ag + bh \quad\wedge\quad \\
+  \exists u\?\O_X\_ \bigvee_{p \geq 0} g^p = uf \quad\wedge\quad
+  \exists v\?\O_X\_ \bigvee_{q \geq 0} h^q = vf.\end{multline*}
+Therefore the condition~$\speak{$\O_X$ is constructively of Krull
+dimension~$\leq n$}$ is (equivalent to) a geometric implication and thus holds
+internally if and only if it holds at every point~$x \in X$. This in turn means that the
+Krull dimension of any stalk~$\O_{X,x}$ is less than or equal to~$n$. This is
+equivalent to the dimension of~$X$ being less than or equal to~$n$.
+\end{proof}
+
+\begin{cor}Let~$X$ be a scheme. Then:
+\[ \dim X \leq 0 \quad\Longleftrightarrow\quad
+  \Sh(X) \models \forall s\?\O_X\_ \speak{$s$ inv.} \vee \speak{$s$ nilpotent}.
+  \]
+\end{cor}
+\begin{proof}By the proposition and the fact that~$\O_X$ is a local ring from
+the internal perspective, this is an immediate consequence of
+interpreting the following standard fact of ring theory in the internal
+language of~$\Sh(X)$: A local ring~$R$ is constructively of Krull
+dimension~$\leq 0$ if and only if any element of~$R$ is invertible or
+nilpotent.
+
+It is well-known that this holds classically; to make sure that it
+holds intuitionistically as well (so that it can be used in the internal
+universe), we give a proof of the ``only if'' direction. Let~$a \? R$ be
+arbitrary. By assumption on the Krull dimension, there exists an element~$b \?
+R$ such that~$\sqrt{(1)} \subseteq \sqrt{(a,b)}$ and~$\sqrt{(ab)} =
+\sqrt{(0)}$. The latter means that~$ab$ is nilpotent. Since~$R$ is local, the
+former implies that~$a$ is invertible or that~$b$ is invertible. In the first
+case, we are done. In the second case, it follows that~$a$ is nilpotent, so we
+are done as well.
+\end{proof}
+
+
 \begin{itemize}
 \item Remark that intuitionistically, the notion of a field bifurcates into
 several inequivalent notions

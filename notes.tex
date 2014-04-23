@@ -334,6 +334,7 @@ applications
 \item give pointers to introductory literature
 \item here or somewhere else: Note that the internal language is classical if
 and only if the space is discrete (assuming T1)
+\item note that parts of constructive mathematics get new fields of application
 \end{itemize}
 
 
@@ -826,6 +827,11 @@ and only if it is reduced. This is straightforward.
 This field property is very useful. We will put it to good use when giving a
 simple proof of the fact that~$\O_X$-modules of finite type on a reduced scheme
 are locally free on a dense open subset (lemma~\ref{lemma:locally-free-dense}).
+Note that the field property only holds precisely as stated in the corollary;
+the classically equivalent condition that any element is invertible or zero is
+intuitionistically stronger. This is a common phenomenom in intuitionistic
+mathematics: Classically equivalent notions may bifurcate into related but
+inequivalent notions intuitionistically.
 
 The following proposition says that one can deduce a certain unconditional
 statement from the premise that an element~$s\?\O_X$ is zero under the
@@ -950,12 +956,16 @@ Krull dimension of any stalk~$\O_{X,x}$ is less than or equal to~$n$. This is
 equivalent to the (Krull) dimension of~$X$ being less than or equal to~$n$.
 \end{proof}
 
+For the following corollary, note that if a scheme~$X$ is not empty, $\dim X
+\leq 0$ is equivalent to~$\dim X = 0$.
 \begin{cor}\label{cor:scheme-dimension-zero}
 Let~$X$ be a scheme. Then:
 \[ \dim X \leq 0 \quad\Longleftrightarrow\quad
   \Sh(X) \models \forall s\?\O_X\_ \speak{$s$ inv.} \vee \speak{$s$ nilpotent}.
   \]
-If~$X$ is not the empty scheme, $\dim X \leq 0$ is equivalent to~$\dim X = 0$.
+If furthermore~$X$ is reduced, this is further equivalent to~$\O_X$ being a
+field in the (stronger) sense that any element of~$\O_X$ is invertible or zero.
+\XXX{short explanation}
 \end{cor}
 \begin{proof}By the proposition and the fact that~$\O_X$ is a local ring from
 the internal perspective, this is an immediate consequence of
@@ -977,8 +987,6 @@ are done as well.
 
 
 \begin{itemize}
-\item Remark that intuitionistically, the notion of a field bifurcates into
-several inequivalent notions
 \item normal rings, principal ideal domains, \ldots
 \item discreteness
 \end{itemize}

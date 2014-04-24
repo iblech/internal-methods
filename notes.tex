@@ -637,7 +637,8 @@ significance in section~\ref{sect:spreading}. For now, we just use it to prove a
 simple criterion for the internal truth of a geometric implication; we will
 apply this criterion many times.
 
-\begin{cor}A geometric implication holds on~$X$ if and only if it holds at
+\begin{cor}\label{cor:geometric-implication}
+A geometric implication holds on~$X$ if and only if it holds at
 every point of~$X$.\end{cor}
 \begin{proof}For notational simplicity, we consider a geometric implication of
 the form
@@ -983,6 +984,52 @@ R$ such that~$\sqrt{(1)} \subseteq \sqrt{(a,b)}$ and~$\sqrt{(ab)} =
 former implies that~$a$ is invertible or that~$b$ is invertible. In the first
 case, we are done. In the second case, it follows that~$a$ is nilpotent, so we
 are done as well.
+\end{proof}
+
+
+\subsection{Integrality} In intuitionistic logic, the notion of an integral
+domain bifurcates into several inequivalent notions. The following two are
+important for our purposes:
+\begin{defn}A ring~$R$ is an \emph{integral domain in the weak sense} if and
+only if~$1 \neq 0$ in~$R$ and
+\[ \forall x,y\?R\_ xy = 0 \Longrightarrow x = 0 \vee y = 0. \]
+A ring~$R$ is an \emph{integral domain in the strong sense} if and only if~$1
+\neq 0$ in~$R$ and
+\[ \forall x\?R\_ x = 0 \vee \speak{$x$ is regular}, \]
+where~$\speak{$x$ is regular}$ means that~$xy = 0$ implies~$y = 0$ for any~$y \?
+R$.\end{defn}
+
+For the following result, recall that a scheme~$X$ (or ringed space) is
+\emph{integral at a point~$x \in X$} if and only if~$\O_{X,x}$ is an integral
+domain (in either sense, since we have adopted a classical metatheory).
+
+\begin{prop}Let~$X$ be a ringed space. Then:
+\begin{enumerate}
+\item $X$ is integral at all points if and only if, internally,~$\O_X$ is an
+integral domain in the weak sense.
+\item If~$X$ is even a locally Noetherian scheme, then~$\O_X$ is an integral
+domain in the weak sense iff it is an integral domain in the strong sense from
+the internal point of view.
+\end{enumerate}
+\end{prop}
+\begin{proof}The condition on a ring to be an integral domain in the weak sense
+is a conjunction of two geometric implications,~``$1 = 0 \Rightarrow \bot$''
+and the implication displayed in the definition. Therefore the first statement
+is obvious.
+
+For the second statement, note that the condition on a function~$f \in
+\Gamma(U,\O_X)$ to be regular from the internal perspective is open: It holds
+at a point~$x \in U$ if and only if it holds on some open neighbourhood of~$x$.
+We will give a proof of this specific feature of locally Noetherian schemes
+later on, when we have developed appropriate machinery to do so easily
+(proposition~\ref{prop:regularity-spreading}). In any case, this openness
+property was the essential ingredient for the equivalence between ``holding
+internally'' and ``holding at every point''
+(corollary~\ref{cor:geometric-implication}). Therefore~$\O_X$ is an integral
+domain in the strong sense from the internal point of view if and only if all
+local rings~$\O_{X,x}$ are integral domains. By the first statement, this is
+equivalent to~$\O_X$ being an integral domain in the weak sense from the
+internal point of view.
 \end{proof}
 
 

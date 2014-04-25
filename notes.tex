@@ -81,6 +81,7 @@
 \newcommand{\Ring}{\mathrm{Ring}}
 \newcommand{\LRL}{\mathrm{LRL}}
 \newcommand{\pt}{\mathrm{pt}}
+\newcommand{\tors}{\mathrm{tors}}
 \DeclareMathOperator{\Spec}{Spec}
 \newcommand{\QcohSpec}[2]{\mathrm{Spec}^{\mathrm{qcoh}}_{#1}{#2}}
 \newcommand{\RelSpec}[2]{\mathrm{RelSpec}_{#1}{#2}}
@@ -1003,7 +1004,8 @@ For the following result, recall that a scheme~$X$ (or ringed space) is
 \emph{integral at a point~$x \in X$} if and only if~$\O_{X,x}$ is an integral
 domain (in either sense, since we have adopted a classical metatheory).
 
-\begin{prop}Let~$X$ be a ringed space. Then:
+\begin{prop}\label{prop:internal-integrality}
+Let~$X$ be a ringed space. Then:
 \begin{enumerate}
 \item $X$ is integral at all points if and only if, internally,~$\O_X$ is an
 integral domain in the weak sense.
@@ -1030,6 +1032,20 @@ domain in the strong sense from the internal point of view if and only if all
 local rings~$\O_{X,x}$ are integral domains. By the first statement, this is
 equivalent to~$\O_X$ being an integral domain in the weak sense from the
 internal point of view.
+\end{proof}
+
+For later use, we need the following lemma.
+\begin{lemma}\label{lemma:regular-affine}
+Let~$X = \Spec A$ be an affine scheme. Let~$f \in A$. Then~$f$ is
+a regular element of~$A$ if and only if~$f$ is a regular element of~$\O_X$ from
+the internal perspective.\end{lemma}
+\begin{proof}The Kripke--Joyal translation of internal regularity is:
+\begin{quote}For any open subset~$U \subseteq X$ and any function~$g \in
+\Gamma(U,\O_X)$, $fg = 0$ in~$\Gamma(U,\O_X)$ implies~$g = 0$
+in~$\Gamma(U,\O_X)$.\end{quote}
+So the ``only if'' direction is clear (use~$U := X$). For the ``if'' direction,
+note that~$\Gamma(U,\O_X)$ is a localization of~$A$ and that regular elements
+remain regular in localizations.
 \end{proof}
 
 
@@ -1372,7 +1388,63 @@ of its complement can be characterized as the largest open subset of~$X$ where
 the internal statement~$\speak{$\F$ is a singleton}$ holds.\end{rem}
 
 
-\subsection{Torsion} \XXX{Omitted from this first draft.}
+\subsection{Torsion} Let~$R$ be a ring. Recall that the
+\emph{torsion submodule}~$M_\tors$ of an~$R$-module~$M$ is defined as
+\[ M_\tors := \{ x\?M \,|\, \exists a\?R\_ \speak{$a$ regular} \wedge ax = 0 \}
+\subseteq M. \]
+This definition is meaningful even if~$R$ is not an integral domain (in the
+weak sense). An~$R$-module~$M$ is \emph{torsion-free} if and only if~$M_\tors$ is
+the zero submodule; an~$R$-module~$M$ is a \emph{torsion module} if and only
+if~$M_\tors = M$.
+
+Recall also that if~$\F$ is a sheaf of~$\O_X$-modules on an integral
+scheme~$X$, there is a unique subsheaf~$\F_\tors \subseteq \F$ with the
+property that~$\Gamma(U,\F_\tors) = \Gamma(U,\F)_\tors$ for all affine open
+subsets~$U \subseteq X$. The content of the following proposition is that
+internally constructing the torsion submodule of~$\F$, regarded as a plain
+module from the internal perspective, gives exactly that subsheaf. There is
+therefore no harm in using the same notation~``$\F_\tors$'' for the result of
+the internal construction.
+
+\begin{prop}Let~$X$ be an integral scheme. Let~$\F$ be an~$\O_X$-module. Let~$U
+= \Spec A \subseteq X$ be an affine open subset. Let~$s \in \Gamma(U,\F)$ be a local
+section. Then
+\[ s \in \Gamma(U,\F)_\tors \quad\text{if and only if}\quad
+  U \models s \in \F_\tors. \]
+\end{prop}
+\begin{proof}
+The ``only if'' direction is trivial in light of
+lemma~\ref{lemma:regular-affine}: If~$s$ is a torsion element
+of~$\Gamma(U,\F)$, there exists a regular element~$a \in \Gamma(U,\O_X)$ such
+that~$as = 0$. By the lemma, this element is regular from the internal
+perspective as well, so~$U \models \speak{$a$ regular} \wedge as = 0$.
+
+For the ``if'' direction, we may assume that there exists an open covering~$X =
+\bigcup_i U_i$ be standard open subsets~$U_i = D(f_i)$ such that there are
+sections~$a_i \in \Gamma(U_i,\O_X) = A[f_i^{-1}]$ with~$U_i \models \speak{$a_i$ regular}
+\wedge a_i s = 0$. Without loss of generality, we may assume that the
+denominators of the~$a_i$'s are ones, that the $f_i$ are
+finite in number, and that the~$f_i$ are regular (\ie nonzero, since~$A$ is an
+integral domain). By lemma~\ref{lemma:regular-affine}, the~$a_i$ are
+regular in~$A[f_i^{-1}]$ and by regularity of the~$f_i$ also regular in~$A$.
+Therefore their product~$\prod_i a_i \in A$ is regular in~$A$ as well and
+annihilates~$s$.
+\end{proof}
+
+\begin{prop}\label{prop:torsion-submodule-stalks}
+Let~$X$ be a locally Noetherian scheme. Let~$\F$ be
+an~$\O_X$-module. Let~$x \in X$ be a point. Then~$(\F_\tors)_x =
+(\F_x)_\tors$.\end{prop}
+\begin{proof}This would be obvious if the condition on an element~$s\?\F$ to
+belong to~$\F_\tors$ were a geometric formula. Because of the universal
+quantifier, it is not:
+\[ \exists a\?\O_X\_ (\forall b\?\O_X\_ ab = 0 \Rightarrow b = 0) \wedge
+  as = 0. \]
+But since~$X$ is assumed to be locally Noetherian, regularity is an open
+property nonetheless (see proposition~\ref{prop:regularity-spreading} for an
+internal proof of this fact). Thus the claim still follows, just like in the
+proof of proposition~\ref{prop:internal-integrality}.
+\end{proof}
 
 
 \subsection{Internal proofs of common lemmas}
@@ -1546,6 +1618,34 @@ term: $\lambda \otimes x \mapsto \lambda(x)$. One can check that an inverse is g
 by~$x \mapsto \id_R \otimes x$.
 \end{proof}
 
+\begin{lemma}Let~$X$ be a scheme (or ringed space). Let~$\F$ be
+an~$\O_X$-module. Then:
+\begin{enumerate}
+\item Assume~$X$ to be a locally Noetherian scheme. Then $\F$ is torsion-free
+(meaning~$\F_\tors = 0$) if and only if all stalks~$\F_x$ are torsion-free.
+\item The quotient sheaf~$\F/\F_\tors$ is torsion-free.
+\item The dual sheaf $\F^\vee$ is torsion-free.
+\item If~$\F$ is reflexive (meaning that the canonical morphism~$\F \to
+\F^{\vee\vee}$ is an isomorphism), it is torsion-free.
+\item Assume~$X$ to be a Dedekind scheme. If~$\F$ is torsion-free, then it is
+reflexive.
+\end{enumerate}
+\end{lemma}
+\begin{proof}The first statement follows from the observation that~$(\F_\tors)_x
+= (\F_x)_\tors$ (proposition~\ref{prop:torsion-submodule-stalks}). All the
+others follow simply by interpreting the corresponding facts of linear algebra
+in the internal universe. For concreteness, we give intuitionistic proofs of
+the last two statements.
+
+So let~$M$ be an reflexive~$R$-module. We have to show that~$M$ is
+torsion-free. To this end, let an element~$x \? M$ and a regular element~$a \?
+R$ such that~$ax = 0$ be given. For any~$\vartheta \? M^\vee$, it follows
+that~$\vartheta(x) = 0$, since~$a \vartheta(x) = \vartheta(ax) = \vartheta(0) =
+0$ and~$a$ is regular. Thus the image of~$x$ under the canonical map~$M \to
+M^{\vee\vee}$ is zero. By reflexivity, this implies that~$x$ is zero.
+
+\XXX{last statement}
+\end{proof}
 
 \begin{itemize}
 \item basic lemmas: filtered colimits, flatness, \ldots
@@ -2929,19 +3029,6 @@ in~$\O_{X,y}$ for all~$y \in U$.
 \begin{rem}Speaking internally, the multiplicative set~$\S$ is saturated.
 Therefore an element~$s/t \? \K_X$ is invertible in~$\K_X$ if and only if the
 numerator~$s$ belongs to~$\S$, \ie is an regular element of~$\O_X$.\end{rem}
-
-\begin{lemma}\label{lemma:regular-affine}
-Let~$X = \Spec A$ be an affine scheme. Let~$f \in A$. Then~$f$ is
-a regular element of~$A$ if and only if~$f$ is a regular element of~$\O_X$ from
-the internal perspective.\end{lemma}
-\begin{proof}The Kripke--Joyal translation of internal regularity is:
-\begin{quote}For any open subset~$U \subseteq X$ and any function~$g \in
-\Gamma(U,\O_X)$, $fg = 0$ in~$\Gamma(U,\O_X)$ implies~$g = 0$
-in~$\Gamma(U,\O_X)$.\end{quote}
-So the ``only if'' direction is clear (use~$U := X$). For the ``if'' direction,
-note that~$\Gamma(U,\O_X)$ is a localization of~$A$ and that regular elements
-remain regular in localizations.
-\end{proof}
 
 
 \subsection{Regularity of local functions}

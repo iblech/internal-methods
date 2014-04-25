@@ -1060,8 +1060,69 @@ define extensions of sheaves by zero in the internal language
 (lemma~\ref{lemma:extension-by-zero}).}
 
 \begin{prop}Let~$X$ be a scheme (or ringed space).
-
+\begin{enumerate}
+\item $\O_X$ is a Bézout ring from the internal perspective if and only if all
+rings~$\O_{X,x}$ are Bézout rings.
+\item $\O_X$ is such that, from the internal perspective, of any two elements,
+one divides the other if and only if all rings~$\O_{X,x}$ are such.
+\end{enumerate}
 \end{prop}
+\begin{proof}Both properties can be formulated as geometric implications:
+\begin{multline*}
+  \text{(1)}\quad
+  \forall f,g\?\O_X\_
+  \top \Rightarrow
+  \exists d\?\O_X\_
+  (\exists a,b\?\O_X\_ d = af + bg) \wedge {} \\
+  (\exists u\?\O_X\_ f = ud) \wedge
+  (\exists v\?\O_X\_ g = vd)
+\end{multline*}
+\begin{multline*}
+  \text{(2)}\quad
+  \forall f,g\?\O_X\_
+  \top \Rightarrow
+  (\exists u\?\O_X\_ f = ug) \vee
+  (\exists u\?\O_X\_ g = uf) \qquad\qquad\qquad\qquad
+\end{multline*}
+\end{proof}
+
+\begin{cor}Let~$X$ be a Dedekind scheme, \ie a locally Noetherian normal scheme
+of dimension~$\leq 1$. Then, from the internal perspective, any matrix
+over~$\O_X$ can be put into Smith canonical form, \ie is equivalent to a
+(rectangular) diagonal matrix with diagonal entries~$a_1|a_2|\cdots|a_n$
+successively dividing each other.
+\end{cor}
+\begin{proof}It is well-known that such a scheme has principal ideal domains as
+local rings~$\O_{X,x}$. For local domains, the Bézout condition is equivalent to the
+property that of any two elements, one divides the other. Therefore all local
+rings have this property, and by the previous proposition, the internal
+ring~$\O_X$ has it as well. The statement thus follows from interpreting the
+following fact of linear algebra in the internal universe: Let~$R$ be a ring
+such that of any two elements, one divides the other. Then any matrix over~$R$
+can be put into Smith canonical form.
+
+The usual proof of this fact is indeed intuitionistically acceptable: Let a
+matrix over~$R$ be given. By induction, one can show that for any finite family
+of ring elements, one divides all the others. So some matrix entry is a factor
+of all the others. We can put this entry to the upper left by row and column
+transformations and then kill the other entries of the first row and the first
+column. After these operations, it is still the case that the entry in the
+first row and column is a factor of all other entries. Continuing in this
+fashion, we arrive at a diagonal matrix. Its diagonal entries already fulfill
+the divisibility condition.
+
+Note that phrases such as ``if by chance the entry in the upper left divides
+all the others, we can directly proceed with the next step; otherwise, some
+other entry must be a factor of all entries, so \ldots'' may not be included in
+a proof which is intended to be intuitionistically acceptable:
+Those phrases assume that one may do\XXX{word} the case distinction that for
+any two ring elements~$x,y$, either~$x$ divides~$y$ or not. Fortunately, those
+case distinctions are in fact superfluous.
+\end{proof}
+
+\XXX{consequences of the corollary}
+
+
 
 \begin{itemize}
 \item normal rings, principal ideal domains, \ldots

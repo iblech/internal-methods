@@ -1049,7 +1049,7 @@ and only if zero is the only element of~$\aaa$.
 By assumption,~$\aaa$ is finitely generated. Since~$\ZZ$ is a
 Bézout ring, it is therefore even principal:~$\aaa = (x_0)$ for some~$x_0 \in
 \ZZ$. Even intuitionistically we have~$(x_0 = 0) \vee (x_0 \neq 0)$ (for the
-natural numbers, thin can be proven by induction). In the first case, it
+natural numbers, this can be proven by induction). In the first case, it
 follows that~$\aaa$ contains only zero; in the second case, it follows
 that~$\aaa$ contains an element other than zero. Thus~$\neg\varphi \vee
 \varphi$. This mode of reasoning is called \emph{exhibiting a Brouwerian
@@ -1082,7 +1082,7 @@ one divides the other if and only if all rings~$\O_{X,x}$ are such.
   \forall f,g\?\O_X\_
   \top \Rightarrow
   (\exists u\?\O_X\_ f = ug) \vee
-  (\exists u\?\O_X\_ g = uf) \qquad\qquad\qquad\qquad
+  (\exists u\?\O_X\_ g = uf) \qquad\qquad\qquad\qquad \qedhere
 \end{multline*}
 \end{proof}
 
@@ -1110,6 +1110,7 @@ column. After these operations, it is still the case that the entry in the
 first row and column is a factor of all other entries. Continuing in this
 fashion, we arrive at a diagonal matrix. Its diagonal entries already fulfill
 the divisibility condition.
+\end{proof}
 
 Note that phrases such as ``if by chance the entry in the upper left divides
 all the others, we can directly proceed with the next step; otherwise, some
@@ -1118,16 +1119,16 @@ a proof which is intended to be intuitionistically acceptable:
 Those phrases assume that one may do\XXX{word} the case distinction that for
 any two ring elements~$x,y$, either~$x$ divides~$y$ or not. Fortunately, those
 case distinctions are in fact superfluous.
-\end{proof}
 
-\XXX{consequences of the corollary}
+A consequence of the corollary is that internal to the sheaf topos of a
+Dedekind scheme, the usual structure theorem on finitely
+presented~$\O_X$-modules is available. We will exploit this in \XXX{ref}.
 
 
-
-\begin{itemize}
-\item normal rings, principal ideal domains, \ldots
-\item discreteness
-\end{itemize}
+\subsection{Normality} We will discuss the property of a ring to be
+\emph{normal}, \ie to be integrally closed in its total field of
+fractions, in section~\ref{sect:rational-functions}, after giving an internal
+characterization of the sheaf of rational functions.
 
 
 \section{Sheaves of modules}
@@ -2868,6 +2869,7 @@ of excluded middle is valid; explain consequences
 
 
 \section{Rational functions and Cartier divisors}
+\label{sect:rational-functions}
 
 \subsection{The sheaf of rational functions} Recall that the sheaf~$\K_X$ of rational
 functions on a scheme~$X$ (or ringed space) can be defined as the sheaf

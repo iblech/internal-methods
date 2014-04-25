@@ -1036,8 +1036,28 @@ internal point of view.
 \subsection{Bézout property} Recall that a \emph{Bézout ring} is a ring in
 which any finitely generated ideal is a principal ideal. In intuitionistic
 mathematics, this is a better notion than that of a principal ideal ring: The
-requirement that \emph{any} ideal is a principal ideal is far too strong. One
-can (provably) not even verify this property for~$\ZZ$.\footnote{\XXX{proof}}
+requirement that \emph{any} ideal is a principal ideal is far too strong.
+Intuitively, this is because without any given generators to begin with, one
+cannot hope to explicitly pinpoint a principal generator.
+One can (provably) not even verify this property for the ring~$\ZZ$.\footnote{Assume
+that any ideal of~$\ZZ$ is finitely generated. Let~$\varphi$ be an arbitrary
+proposition; we want to intuitionistically deduce~$\varphi \vee \neg\varphi$.
+Consider the ideal~$\aaa := \{ x \in \ZZ \,|\, (x = 0) \vee \varphi \}
+\subseteq \ZZ$. The definition is such that~$\varphi$ holds if and only
+if~$\aaa$ contains an element other than zero; and that~$\neg\varphi$ holds if
+and only if zero is the only element of~$\aaa$.
+By assumption,~$\aaa$ is finitely generated. Since~$\ZZ$ is a
+Bézout ring, it is therefore even principal:~$\aaa = (x_0)$ for some~$x_0 \in
+\ZZ$. Even intuitionistically we have~$(x_0 = 0) \vee (x_0 \neq 0)$ (for the
+natural numbers, thin can be proven by induction). In the first case, it
+follows that~$\aaa$ contains only zero; in the second case, it follows
+that~$\aaa$ contains an element other than zero. Thus~$\neg\varphi \vee
+\varphi$. This mode of reasoning is called \emph{exhibiting a Brouwerian
+counterexample}. The definition of~$\aaa$ may look slightly dubious,
+considering that~$\varphi$ does not depend on~$x$; but we will see that such
+definitions actually have a clear geometric meaning -- they can be used to
+define extensions of sheaves by zero in the internal language
+(lemma~\ref{lemma:extension-by-zero}).}
 
 \begin{prop}Let~$X$ be a scheme (or ringed space).
 

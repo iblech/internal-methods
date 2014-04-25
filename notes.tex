@@ -1034,7 +1034,6 @@ equivalent to~$\O_X$ being an integral domain in the weak sense from the
 internal point of view.
 \end{proof}
 
-For later use, we need the following lemma.
 \begin{lemma}\label{lemma:regular-affine}
 Let~$X = \Spec A$ be an affine scheme. Let~$f \in A$. Then~$f$ is
 a regular element of~$A$ if and only if~$f$ is a regular element of~$\O_X$ from
@@ -1102,7 +1101,8 @@ one divides the other if and only if all rings~$\O_{X,x}$ are such.
 \end{multline*}
 \end{proof}
 
-\begin{cor}Let~$X$ be a Dedekind scheme, \ie a locally Noetherian normal scheme
+\begin{cor}\label{cor:dedekind-smith}
+Let~$X$ be a Dedekind scheme, \ie a locally Noetherian normal scheme
 of dimension~$\leq 1$. Then, from the internal perspective, any matrix
 over~$\O_X$ can be put into Smith canonical form, \ie is equivalent to a
 (rectangular) diagonal matrix with diagonal entries~$a_1|a_2|\cdots|a_n$
@@ -1627,15 +1627,17 @@ an~$\O_X$-module. Then:
 \item The dual sheaf $\F^\vee$ is torsion-free.
 \item If~$\F$ is reflexive (meaning that the canonical morphism~$\F \to
 \F^{\vee\vee}$ is an isomorphism), it is torsion-free.
-\item Assume~$X$ to be a Dedekind scheme. If~$\F$ is torsion-free, then it is
-reflexive.
+\item If~$\F$ is locally finitely free, it is reflexive.
+\item Assume~$X$ to be a Dedekind scheme and~$\F$ to be of finite presentation.
+If~$\F$ is torsion-free, then it is locally finitely free.
+% change references below if numbering changes
 \end{enumerate}
 \end{lemma}
 \begin{proof}The first statement follows from the observation that~$(\F_\tors)_x
 = (\F_x)_\tors$ (proposition~\ref{prop:torsion-submodule-stalks}). All the
 others follow simply by interpreting the corresponding facts of linear algebra
 in the internal universe. For concreteness, we give intuitionistic proofs of
-the last two statements.
+the last three statements.
 
 So let~$M$ be an reflexive~$R$-module. We have to show that~$M$ is
 torsion-free. To this end, let an element~$x \? M$ and a regular element~$a \?
@@ -1644,7 +1646,26 @@ that~$\vartheta(x) = 0$, since~$a \vartheta(x) = \vartheta(ax) = \vartheta(0) =
 0$ and~$a$ is regular. Thus the image of~$x$ under the canonical map~$M \to
 M^{\vee\vee}$ is zero. By reflexivity, this implies that~$x$ is zero.
 
-\XXX{last statement}
+For statement~(4), we have to prove that~$R$-modules of the form~$R^n$ are
+reflexive. This is obvious, the required inverse map is~$(R^n)^{\vee\vee} \to
+R^n,\ \lambda \mapsto \sum_i \lambda(\vartheta_i)$ where~$\vartheta_i : R^n \to
+R,\ (x_j)_j \mapsto x_i$.
+
+In light of corollary~\ref{cor:dedekind-smith} we can put matrices over~$\O_X$
+into Smith canonical form, if~$X$ is a Dedekind scheme. Therefore it suffices
+to give an intuitionistic proof of the following fact: Let~$R$ be an integral
+domain in the strong sense such that matrices over~$R$ can be put into
+Smith canonical form. Let~$M$ be a finitely presented torsion-free~$R$-module.
+Then~$M$ is finitely free.
+
+This goes as follows: Since~$M$ is finitely presented, it is the cokernel of
+some matrix. Without loss of generality, we may assume that it is a diagonal
+matrix, so~$M$ is isomorphic to some (finite) direct sum~$\bigoplus_i R/(a_i)$.
+Since~$M$ is torsion-free, all the summands~$R/(a_i)$ are torsion-free as well.
+Since~$R$ is an integral domain in the strong sense, this holds if and only if
+the~$a_i$ are either zero or invertible. Thus~$R/(a_i)$ is isomorphic to~$R$ or
+to the zero module. In any case,~$R/(a_i)$ is finitely free and therefore~$M$
+is finitely free as well.
 \end{proof}
 
 \begin{itemize}
@@ -2956,6 +2977,45 @@ This reformulation is geometric, therefore it holds at~$x$ if and only if it
 holds on some open neighbourhood of~$x$. The claim follows since, by the
 previous proposition, taking stalks commutes with
 calculating~$\HOM_{\O_X}(\F,\placeholder)$ resp.~$\HOM_{\O_X}(\O_X^n,\placeholder)$.
+\end{proof}
+
+\XXX{Find proper place for the following lemma.}
+\XXX{Also, generalize to arbitrary schemes.}
+\begin{lemma}\label{lemma:dense-standard-reflection}
+Let~$X$ be an integral scheme. Let~$\varphi$ be any formula
+over~$X$. Then
+\[ \Sh(X) \models \neg\neg\varphi \Longrightarrow \exists f\?\O_X\_
+  \neg\neg(\speak{$f$ inv.}) \wedge (\speak{$f$ inv.} \Rightarrow \varphi). \]
+\end{lemma}
+\begin{proof}We may assume that~$X$ is the spectrum of an integral domain~$A$
+and that there is a dense open subset~$U \subseteq X$ on which~$\varphi$ holds.
+The open set~$U$ may be covered by standard open subsets~$D(f_i)$; by the
+integrality hypothesis, at least one of these is nonempty and thus itself
+dense. We may take this~$f_i$ as the required~$f$.
+\end{proof}
+
+\begin{lemma}Let~$X$ be an integral scheme with generic point~$\xi$. Let~$\F$
+be a quasicoherent~$\O_X$-module. Then~$\F$ is a torsion module if and only if
+its generic stalk~$\F_\xi$ vanishes.
+\end{lemma}
+\begin{proof}The generic stalk vanishes if and only if the internal
+statement~``$(\F = 0)^{\neg\neg}$'' holds. Therefore it suffices to give an
+intuitionistic proof of the following internal statement: The module~$\F$ is
+torsion if and only if any element of~$\F$ is \notnot zero.
+
+For the ``only if'' direction, let~$x\?\F$ be an arbitrary element. Since~$\F$
+is a torsion module, there exists a regular element~$a\?\O_X$ such that~$ax =
+0$. Since~$X$ is reduced, regularity is equivalent to not-not-invertibility.
+Since we want to verify the~$\Box$-stable statement~``$\neg\neg(x = 0)$'', we
+may in fact assume that~$a$ is invertible. Then~$x = 0$ obviously follows.
+
+For the ``if'' direction, let~$x\?\F$ be an arbitrary element; we may assume
+that~$x$ is \notnot zero. Since~$X$ is integral,
+lemma~\ref{lemma:dense-standard-reflection} is applicable. Therefore there
+exists an element~$a\?\O_X$ such that~$a$ is \notnot invertible and such that
+invertibility of~$a$ implies~$x = 0$. This~$\F$ is quasicoherent, for some
+natural number~$n$ it holds that~$a^n x = 0$. Since~$a$ is \notnot invertible,
+it and~$a^n$ are regular. So~$x \in \F_\tors$.
 \end{proof}
 
 \begin{itemize}

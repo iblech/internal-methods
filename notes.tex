@@ -52,6 +52,7 @@
 \renewcommand{\O}{\mathcal{O}}
 \newcommand{\K}{\mathcal{K}}
 \newcommand{\N}{\mathcal{N}}
+\newcommand{\M}{\mathcal{M}}
 \renewcommand{\L}{\mathcal{L}}
 \renewcommand{\P}{\mathcal{P}}
 \newcommand{\R}{\mathcal{R}}
@@ -4466,6 +4467,101 @@ previous proposition.
 
 
 \appendix
+
+\section{Noetherianity}
+
+Recall the usual notion of a Noetherian ring: Any sequence~$\aaa_0 \subseteq
+\aaa_1 \subseteq \cdots$ of ideals should stabilize, \ie there should exist a
+natural number~$n$ such that~$\aaa_n = \aaa_{n+1} = \cdots$.
+
+Intuitionistically, this definition has two problems. Firstly, without the
+axiom of dependent choice, it is often not possible to construct a
+\emph{sequence} of ideals: Often, it is only possible to show that there
+\emph{exists} a suitable ideal~$\aaa_{n+1}$ depending on~$\aaa_n$. But since in
+general, this successor ideal is not unique, the axiom of dependent choice
+would be required to collect those into a sequence, \ie a function from~$\NN$
+to the set of ideals.
+
+Secondly, the conclusion that the sequence stabilizes is too strong:
+Intuitionistically, one cannot even show that a weakly descending sequence of
+natural numbers stabilizes in this sense; the statement that one could is
+equivalent to the \emph{limited principle of omniscience for~$\NN$}.
+Intuitionistically, it is only true that a weakly descending sequence~$a_0 \geq
+a_1 \geq \cdots$ of natural numbers eventually \emph{halts} in the sense that
+there exists an index~$n$ such that~$a_n = a_{n+1}$ (but~$a_{n+1} > a_{n+2}$ is
+allowed).
+
+We therefore adopt the following definitions.
+
+\begin{defn}Let~$M$ be a partially ordered set. An \emph{ascending process}
+with values in~$M$ is a function~$f : \NN \to \P(M)$ such that
+the subset~$f(0)$ is inhabited and such that for any~$x \in f(n)$, $n \in \NN$,
+there exists an element~$y \in f(n+1)$ with~$x \preceq y$. (In particular, all
+subsets~$f(n)$ are inhabited.) Such a process \emph{halts} if and only if there
+exists a step~$n$ such that there is an element~$x \in f(n) \cap f(n+1)$. The
+set~$M$ satisfies the \emph{ascending process condition} if and only if any
+ascending process with values in~$M$ stops.
+\end{defn}
+
+\begin{defn}A ring~$R$ is \emph{constructively Noetherian} if and only if the
+set of finitely generated ideals in~$R$ satisfies the ascending process
+condition.\end{defn}
+
+Any ascending chain of elements~$a_0 \preceq a_1 \preceq \cdots$ in a partially
+ordered set gives rise to an ascending process by setting~$f(n) := \{ a_n
+\}$. Conversely, the axiom of dependent choice would allow to construct an
+ascending chain out of an ascending process. In classical logic, a ring is
+constructively Noetherian if and only if it is Noetherian in the usual sense.
+
+The notion of a constructively Noetherian ring works well in an
+intuitionistic context: Important rings such as~$\ZZ$ and more generally~$\O_K$
+for any algebraic number field~$K$ are constructively Noetherian, and matrices
+over Bézout rings which are integral domains in the weak sense and
+constructively Noetherian can be put into Smith canonical form.
+
+\begin{prop}A scheme~$X$ is locally Noetherian if and only if the ring~$\O_X$
+is constructively Noetherian from the internal point of view.\end{prop}
+\begin{proof}We only prove the ``only if'' direction. We may assume that~$X =
+\Spec A$ is affine with~$A$ a Noetherian ring and that internally, we are given an
+ascending process on the set of finitely generated ideals of~$\O_X$.
+Externally, this is a morphism~$\ul{\NN} \to \P(\M)$ where~$\NN$ is the
+constant sheaf with value~$\NN$ and~$U$-sections of~$\M$ are finite type ideal
+sheaves of~$\O_X|_U$.
+
+Since~$X \models \speak{$f(0)$ is inhabited}$, there exists an open covering~$X
+= \bigcup_i U_i$ and finite type ideal sheaves~$\I_i \hookrightarrow
+\O_X|_{U_i}$ such that~$U_i \models \I_i \in f(0)$. Without loss of generality,
+we may assume that the open sets~$U_i$ are standard open sets~$D(f_i)$ and that
+the covering is finite. Since the sheaves~$\I_i$ are of finite type, they
+correspond to ideals~$J_i \subseteq A[f_i^{-1}]$. (Note for future reference
+that~$\I_i|_{D(g)}$ corresponds to the extension of~$J_i$ in the further
+localized ring~$A[g^{-1}]$, if~$D(g) \subseteq D(f_i)$.)
+
+For each~$i$,~$D(f_i) \models \exists \aaa \in f(1)\_ \I_i \subseteq \aaa$.
+Thus there exists an open covering~$D(f_i) = \bigcup_j D(g_{ij})$ and finite
+type ideal sheaves~$\I_{ij} \hookrightarrow \O_X|_{D(g_{ij})}$; these
+correspond to ideals~$J_{ij} \subseteq A[g_{ij}^{-1}]$ such that~$J_i
+\subseteq J_{ij}$ (where we have suppressed the localization
+morphism~$A[f_i^{-1}] \to A[g_{ij}^{-1}]$ in the notation). Equivalently,
+writing~$J_i' := A \cap J_i$ and~$J_{ij}' := A \cap J_{ij}$ for the
+contractions, we have the inclusions~$J_i' \subseteq J_{ij}'$ of ideals of~$A$.
+
+Continuing in this fashion, we obtain a tree of ideals~$J_{i_1 \cdots i_n}'$.
+Each path in this tree is a chain of ascending ideals and thus stabilizes
+since~$A$ is Noetherian. Since only finitely many subtrees branch off at
+each node, there appear only finitely many distinct ideals in this tree (this
+is an application of the graph-theoretical \emph{König's lemma}).
+
+There thus exists a natural number~$n$ such that~$J_{i_1 \cdots i_n}' = J_{i_1
+\cdots i_n i_{n+1}}'$ for all appropriate indices~$i_1,\ldots,i_n,i_{n+1}$.
+For this number~$n$, the internal statement~$X \models \exists \aaa \in f(n)
+\cap f(n+1)$ holds; we leave further details to the reader.
+\end{proof}
+
+\XXX{Find appropriate place for the material in this appendix}
+
+\XXX{Give examples made possible by the internal Noetherianity}
+
 
 \section{Dictionary between internal and external notions}
 

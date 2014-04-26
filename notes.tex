@@ -3657,6 +3657,55 @@ and means~$M = \{ x \in 1 \,|\, U_i \}$.
 true?}
 \end{proof}
 
+\XXX{lead-in}
+
+\begin{prop}\label{prop:irreducibility-internally}
+A topological space~$X$ is irreducible if and only if the internal
+language of~$\Sh(X)$ fulfills the following metaproperty: For any
+formulas~$\varphi$ and~$\psi$
+\[ \Sh(X) \models \neg(\varphi \wedge \psi)
+  \quad\text{implies}\quad
+  \Sh(X) \models \neg\varphi \text{ or }
+  \Sh(X) \models \neg\psi. \]
+Furthermore, in this case the following internal property holds:
+\[ \Sh(X) \models \forall \alpha,\beta \in \Omega\_
+  \neg(\alpha \wedge \beta) \Rightarrow (\neg\alpha \vee \neg\beta). \]
+\end{prop}
+\begin{proof}The statement ``$\Sh(X) \models \neg(\varphi \wedge \psi)$'' means
+that~$U \cap V = \empty$, where~$U$ and~$V$ are the largest open subsets on
+which~$\varphi$ respectively~$\psi$ hold. The disjunction ``$\Sh(X) \models
+\neg\varphi$ or $\Sh(X) \models \neg\psi$ means that~$U = \empty$ or~$V =
+\empty$.
+
+Therefore, if~$X$ is irreducible, the claimed metaproperty holds. The converse
+can be seen by instantiating~$\varphi$ and~$\psi$ with the formulas associated
+to given open subsets having empty intersection. It then follows that one of
+these formulas is false in the internal language; thus the associated subset is
+empty.
+
+The stated internal property holds since open subsets of irreducible spaces are
+irreducible.
+\end{proof}
+
+
+\subsection{Internal proofs of common lemmas}
+
+\begin{lemma}Let~$X$ be an irreducible reduced scheme. Then all local
+rings~$\O_{X,x}$ are integral domains.\end{lemma}
+\begin{proof}It suffices to give a proof of the following statement: Let~$R$ be
+a local ring such that elements which are not invertible are nilpotent. Further
+assume that~$R$ is reduced. Then~$R$ is an integral domain in the weak sense.
+
+This proof may, additionally to the rules of intuitionistic logic, use the
+classical axiom given by proposition~\ref{prop:irreducibility-internally}.
+
+So let arbitrary elements~$x,y \? R$ with~$xy = 0$ be given. Then it is not the
+case that~$x$ and~$y$ are both invertible: If they were, their product~$xy$
+would be invertible as well, contradicting~$1 \neq 0$. By the classicality
+principle, it follows that~$x$ is not invertible or that~$y$ is not invertible.
+Thus~$x$ or~$y$ is nilpotent and therefore zero.
+\end{proof}
+
 
 \section{Quasicoherent sheaves of modules}
 

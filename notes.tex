@@ -1143,7 +1143,7 @@ presented~$\O_X$-modules is available. We will exploit this in \XXX{ref}.
 
 \subsection{Normality} We will discuss the property of a ring to be
 \emph{normal}, \ie to be integrally closed in its total field of
-fractions, in section~\ref{sect:rational-functions}, after giving an internal
+fractions, in section~\ref{sect:normality}, after giving an internal
 characterization of the sheaf of rational functions.
 
 
@@ -3136,6 +3136,31 @@ of the sheaf of rational functions are given by the total quotient rings of the
 local rings~$\O_{X,x}$.\end{cor}
 \begin{proof}Combine proposition~\ref{prop:stalks-kx} and
 proposition~\ref{prop:regularity-spreading}.\end{proof}
+
+
+\subsection{Normality}\label{sect:normality}
+Recall that a ring~$R$ is \emph{normal} if and only if
+it is integrally closed in its total quotient ring. Recall also that a
+scheme~$X$ (or ringed space) is \emph{normal} if and only if all
+rings~$\O_{X,x}$ are normal.
+
+\begin{prop}A locally Noetherian scheme is normal if and only if the
+ring~$\O_X$ is normal from the internal perspective.\end{prop}
+\begin{proof}The condition of normality can be put into a form which is almost
+a geometric implication:
+\begin{multline*}
+  \forall s,t\?\O_X\_
+  \speak{$t$ regular} \wedge
+  (\exists a_0,\ldots,a_{n-1}\?\O_X\_
+  s^n + a_{n-1} t s^{n-1} + \cdots + a_1 t^{n-1} s + a_0 t^n = 0)
+  \Longrightarrow \\
+  \exists u\?\O_X\_ s = ut.
+\end{multline*}
+The only non-geometric subpart is the condition on~$t$ to be regular. However,
+by proposition~\ref{prop:regularity-spreading}, for the purposes of comparing
+its truth at points vs. on neighbourhoods, it behaves just like a geometric
+formula. Therefore the claim follows.
+\end{proof}
 
 
 \subsection{Geometric interpretation of rational functions} Recall that on

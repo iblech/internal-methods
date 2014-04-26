@@ -3015,7 +3015,7 @@ lemma~\ref{lemma:dense-standard-reflection} is applicable. Therefore there
 exists an element~$a\?\O_X$ such that~$a$ is \notnot invertible and such that
 invertibility of~$a$ implies~$x = 0$. This~$\F$ is quasicoherent, for some
 natural number~$n$ it holds that~$a^n x = 0$. Since~$a$ is \notnot invertible,
-it and~$a^n$ are regular. So~$x \in \F_\tors$.
+it is regular \XXX{give reference} and~$a^n$ are regular. So~$x \in \F_\tors$.
 \end{proof}
 
 \begin{itemize}
@@ -3376,7 +3376,7 @@ remark~\XXX{ref} that the former is defined by
   &= \bigcup \{ V \subseteq X \,|\,
   \text{$V$ open},\ V \models \Box U \}.
 \end{align*}
-The equivalence thus follows from standard results on the set of associated
+The equivalence thus follows from a standard result on the set of associated
 points on locally Noetherian schemes:
 \begin{align*}
   &\ V \cap \Ass(\O_X) \subseteq U \\
@@ -3387,9 +3387,12 @@ points on locally Noetherian schemes:
     (with $i : U \cap V \hookrightarrow V$) is injective} \\
   &\qquad\qquad\text{(this steps requires the Noetherian assumption)} \\
   \Longleftrightarrow&\
-    V \models \speak{$\O_X \to \O_X^+$ is injective} \\
+    V \models \speak{$\O_X \to \O_X^{++}$ is injective} \\
   &\qquad\qquad\text{(where the plus construction is with respect to} \\
   &\qquad\qquad\text{the modality~$(U \Rightarrow \placeholder)$)} \\
+  \Longleftrightarrow&\
+    V \models \speak{$\O_X \to \O_X^{+}$ is injective} \\
+  &\qquad\qquad\text{(by the factorization~$\O_X \to \O_X^{+} \to \O_X^{++}$)} \\
   \Longleftrightarrow&\
     V \models \speak{$\O_X$ is~$(U \Rightarrow \placeholder)$-separated} \\
   \Longleftrightarrow&\

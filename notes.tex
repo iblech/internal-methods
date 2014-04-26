@@ -786,7 +786,9 @@ the displayed one) and holds on each stalk.\end{proof}
 \subsection{Field properties} From the internal point of view, the structure
 sheaf~$\O_X$ of a scheme~$X$ is \emph{almost} a field, in the sense that any
 element which is not invertible is nilpotent. This is a genuine property of
-schemes, not shared with general locally ringed spaces.
+schemes, not shared with general locally ringed spaces. It is also a specific
+feature of the internal universe: Neither the local rings~$\O_{X,x}$ nor the
+rings of local sections~$\Gamma(U,\O_X)$ have this property in general.
 
 \begin{prop}Let~$X$ be a scheme. Then
 \[ \Sh(X) \models \forall s\?\O_X\_ \neg(\speak{$s$ invertible}) \Rightarrow
@@ -1624,7 +1626,8 @@ an~$\O_X$-module. Then:
 \begin{enumerate}
 \item Assume~$X$ to be a locally Noetherian scheme. Then $\F$ is torsion-free
 (meaning~$\F_\tors = 0$) if and only if all stalks~$\F_x$ are torsion-free.
-\item The quotient sheaf~$\F/\F_\tors$ is torsion-free.
+\item The quotient sheaf~$\F/\F_\tors$ is torsion-free and the torsion
+submodule~$\F_\tors$ is a torsion module.
 \item The dual sheaf $\F^\vee$ is torsion-free.
 \item If~$\F$ is reflexive (meaning that the canonical morphism~$\F \to
 \F^{\vee\vee}$ is an isomorphism), it is torsion-free.
@@ -3426,6 +3429,10 @@ points on locally Noetherian schemes:
 \end{align*}
 \end{proof}
 
+\XXX{explain that~$X \models \Box U$ means that~$U$ is scheme-theoretically
+dense in~$X$. Give internal proof that scheme-theoretical denseness implies
+topological denseness, and sometimes vice versa.}
+
 
 \subsection{Cartier divisors} Let~$X$ be a scheme (or ringed space). Recall
 that a \emph{Cartier divisor} on~$x$ is a global section of the sheaf of
@@ -4203,7 +4210,7 @@ For the second statement, internally define the ideal~$\I := \sqrt{\{ s\?\O_X \,
 A^c \}} \subseteq \O_X$. Then~$1 \in \I$ if and only if~$A^c$, thus by
 proposition~\ref{prop:basics-closed-subspace} the closed ringed subspace defined
 by~$\I$ has~$A$ as underlying topological space. It is reduced since~$\I$ is a
-radical ideal.\end{proof}
+radical ideal. \XXX{is~$\I$ quasicoherent, if~$X$ is a scheme?}\end{proof}
 
 \begin{itemize}
 \item open subschemes

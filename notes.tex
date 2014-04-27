@@ -1184,7 +1184,7 @@ pointwise~$\O_X$-module structure. This coincides with the sheaf~$(\O_X)^n$ as
 usually understood.
 
 It is clear that the two stated internal conditions are equivalent, since the
-corresponding proof in linear algebra is intuitionistic. The equivalence with
+corresponding proof in linear algebra is intuitionistically acceptable. The equivalence with
 the external notion of locally finite freeness is obvious, since the
 interpretation of the first condition with the Kripke--Joyal semantics is the
 following: There exists a covering of~$X$ by open subsets~$U$ such that for
@@ -1301,7 +1301,7 @@ be~$\O_X$-modules. Then the internally constructed tensor product~$\F
 \end{prop}
 \begin{proof}
 Since the proof of the corresponding fact of commutative algebra is
-intuitionistic, the internally defined tensor product~$\F \otimes_{\O_X} \G$
+intuitionistically acceptable, the internally defined tensor product~$\F \otimes_{\O_X} \G$
 fulfills the following universal property: For any~$\O_X$-module~$\H$,
 any~$\O_X$-bilinear map~$\F \times \G \to \H$ uniquely factors over the
 canonical map~$\F \times \G \to \F \otimes_{\O_X} \G$.
@@ -1462,7 +1462,7 @@ ist~$\G$.
 of modules with the outer ones being finitely generated (resp. finitely free)
 and we have to show that the middle one is finitely generated (resp. finitely
 free) as well. It is well-known that this follows; and since the usual proof of
-this fact is intuitionistic, we are done.
+this fact is intuitionistically acceptable, we are done.
 \end{proof}
 
 \begin{lemma}\label{lemma:coherent-stuff}
@@ -2100,11 +2100,11 @@ equivalences:
 \begin{align*}
   &\ V \models \neg\neg\varphi \\
   \Longleftrightarrow&\ \forall \text{$Y \subseteq V$ open}\_
-    \left[\forall \text{$Z \subseteq Y$ open}\_ Z \models \varphi \Rightarrow Z
-    = \emptyset\right] \Longrightarrow Y = \emptyset \\
+    \Bigl(\forall \text{$Z \subseteq Y$ open}\_ Z \models \varphi \Rightarrow Z
+    = \emptyset\Bigr) \Longrightarrow Y = \emptyset \\
   \Longleftrightarrow&\ \forall \text{$Y \subseteq V$ open}\_
-    \left[\forall \text{$Z \subseteq Y$ open}\_ Z \subseteq W \Rightarrow Z
-    = \emptyset\right] \Longrightarrow Y = \emptyset \\
+    \Bigl(\forall \text{$Z \subseteq Y$ open}\_ Z \subseteq W \Rightarrow Z
+    = \emptyset\Bigr) \Longrightarrow Y = \emptyset \\
   \Longleftrightarrow&\ \forall \text{$Y \subseteq V$ open}\_
     Y \cap W = \emptyset \Longrightarrow Y = \emptyset \\
   \Longleftrightarrow&\ \text{$W$ is dense in~$V$.}
@@ -2113,8 +2113,8 @@ equivalences:
 \item Straightforward, since the interpretation of the internal statement with
 the Kripke--Joyal semantics is
 \[ \forall \text{$Y \subseteq V$ open}\_
-  \left[\forall \text{$Z \subseteq Y$ open}\_
-    Z \models \varphi \Rightarrow x \not\in Z\right] \Longrightarrow x \not\in
+  \Bigl(\forall \text{$Z \subseteq Y$ open}\_
+    Z \models \varphi \Rightarrow x \not\in Z\Bigr) \Longrightarrow x \not\in
     Y. \qedhere \]
 \end{enumerate}
 \end{proof}
@@ -2224,7 +2224,7 @@ of~$X$.
 
 To describe the notion of~$\Box$-sheaves and related ones, we switch to the internal
 perspective and thus forget~$X$; we are simply given a model operator~$\Box :
-\Omega \to \Omega$ and have to take care that our proofs are intuitionistic. A
+\Omega \to \Omega$ and have to take care that our proofs are intuitionistically acceptable. A
 reference for the material in this subsection is a preprint by Fer-Jan de
 Vries~\cite{vries:sheafification}\footnote{Note that on page~5 of that
 preprint, there is a slight typing error: Fact~2.1(i) gives the
@@ -2533,8 +2533,8 @@ Assume~$(\psi \Rightarrow \chi)^\Box$. Then~$\psi \Rightarrow \psi^\Box
 \begin{lemma}\label{lemma:stalk-open-with-hypothesis}
 Let~$\varphi, \varphi', \psi$ be formulas. Assume that:
 \begin{itemize}
-\item The formula $\varphi'$ is geometric. [It suffices for~$(\varphi')^\Box$
-to imply~$\Box\varphi'$.]
+\item The formula $\varphi'$ is geometric. (More generally, it suffices for~$(\varphi')^\Box$
+to imply~$\Box\varphi'$.)
 \item There is an intuitionistic proof that~$\varphi$
 and~$\varphi'$ are equivalent under the (only) hypothesis~$\psi$.
 \item Both~$\Box\psi$ and~$\psi^\Box$ hold.
@@ -4288,6 +4288,8 @@ over~$X$ and internal topological spaces in~$\Sh(X)$. This is one of the
 reasons why locales are better suited for working internally and switching
 between internal and external perspectives.
 
+\XXX{give references}
+
 
 \subsection{The spectrum of a ring as a locale} Recall that the spectrum
 of a ring~$A$ is usually constructed as the set
@@ -4660,13 +4662,7 @@ remark~\rem{rem:qcoh-in-constructive-mathematics}).
 
 \XXX{``completed natural number'' is a misnomer.}
 
-\XXX{standardize level of generality: ringed locales, where possible?}
-
 \XXX{remark that for simplicity, we work in a classical metatheory}
-
-\XXX{replace []'s with ()'s where appropriate}
-
-\XXX{word "intuitionistic"}
 
 \XXX{check whether the negneg translation ``finitely generated ==> free''
 implies the hard but important exercise}

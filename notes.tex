@@ -2590,6 +2590,7 @@ in~$\Sh(X)$. Let~$\varphi$ be a formula over~$X$. Then
 where on the right hand side, all parameters occuring in~$\varphi$ were pulled
 back to~$X_\Box$ by the inclusion~$X_\Box \hookrightarrow X$.
 \end{thm}
+\XXX{think about powersets appearing as domains of quantification}
 
 We have not explicitly stated the Kripke--Joyal semantics for a sheaf topos
 over a locale, which~$X_\Box$ is in general. The definition is exactly the same
@@ -4507,10 +4508,10 @@ there exists an element~$y \in f(n+1)$ with~$x \preceq y$. (In particular, all
 subsets~$f(n)$ are inhabited.) Such a process \emph{halts} if and only if there
 exists a step~$n$ such that there is an element~$x \in f(n) \cap f(n+1)$. The
 set~$M$ satisfies the \emph{ascending process condition} if and only if any
-ascending process with values in~$M$ stops.
+ascending process with values in~$M$ halts.
 \end{defn}
 
-\begin{defn}A ring~$R$ is \emph{constructively Noetherian} if and only if the
+\begin{defn}A ring~$R$ is \emph{processly Noetherian} if and only if the
 set of finitely generated ideals in~$R$ satisfies the ascending process
 condition.\end{defn}
 
@@ -4518,16 +4519,16 @@ Any ascending chain of elements~$a_0 \preceq a_1 \preceq \cdots$ in a partially
 ordered set gives rise to an ascending process by setting~$f(n) := \{ a_n
 \}$. Conversely, the axiom of dependent choice would allow to construct an
 ascending chain out of an ascending process. In classical logic, a ring is
-constructively Noetherian if and only if it is Noetherian in the usual sense.
+processly Noetherian if and only if it is Noetherian in the usual sense.
 
-The notion of a constructively Noetherian ring works well in an
+The notion of a processly Noetherian ring works well in an
 intuitionistic context: Important rings such as~$\ZZ$ and more generally~$\O_K$
-for any algebraic number field~$K$ are constructively Noetherian, and matrices
+for any algebraic number field~$K$ are processly Noetherian, and matrices
 over Bézout rings which are integral domains in the weak sense and
-constructively Noetherian can be put into Smith canonical form.
+processly Noetherian can be put into Smith canonical form.
 
 \begin{prop}A scheme~$X$ is locally Noetherian if and only if the ring~$\O_X$
-is constructively Noetherian from the internal point of view.\end{prop}
+is processly Noetherian from the internal point of view.\end{prop}
 \begin{proof}We only prove the ``only if'' direction. We may assume that~$X =
 \Spec A$ is affine with~$A$ a Noetherian ring and that internally, we are given an
 ascending process on the set of finitely generated ideals of~$\O_X$.

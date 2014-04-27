@@ -3881,6 +3881,27 @@ number~$n$, it holds that~$\speak{$f$ inv.} \Rightarrow s^n \in \I$. By
 quasicoherence of~$\I$, we may deduce that for some natural number~$m$, it
 holds that~$f^m s^n \in \I$. Thus~$fs \in \sqrt{\I}$.\end{ex}
 
+\begin{prop}Let~$X$ be a scheme of dimension~$\leq 0$. Then any~$\O_X$-module
+is quasicoherent.\end{prop}
+\begin{proof}By corollary~\ref{cor:scheme-dimension-zero}, any
+element~$f\?\O_X$ is invertible or nilpotent. Therefore the quasicoherence
+condition of theorem~\ref{thm:qcoh-sheafchar} is for any~$\O_X$-module
+trivially satisfied.
+\end{proof}
+
+\begin{rem}\label{rem:rem:qcoh-in-constructive-mathematics}
+The notion of quasicoherence as given by the internal condition of
+theorem~\ref{thm:qcoh-sheafchar} is not usually studied in constructive
+mathematics. Indeed, outside of the internal universe of a scheme, the notion
+does not seem to be very interesting: For many important rings, there a few
+quasicoherent modules in this sense. For instance, let~$M$ be a module over a
+ring~$R$ such that every element of~$R$ is invertible or not invertible. (The
+ring~$\ZZ$ is such a ring.) Then~$M$ is quasicoherent if and only if for any~$f
+\? R$ which is not invertible, the localized module~$M[f^{-1}]$ is the zero
+module, \ie any element of~$M$ is annihilated by some power~$f^n$. As a
+concrete example, any~$\ZZ$-submodule of~$\ZZ$ which contains a nonzero element
+fails to be quasicoherent.
+\end{rem}
 
 \begin{proof}[Proof of theorem~\ref{thm:qcoh-sheafchar}]
 By the well-known characterization of quasicoherence in terms of inclusions of
@@ -4565,6 +4586,14 @@ There thus exists a natural number~$n$ such that~$J_{i_1 \cdots i_n}' = J_{i_1
 For this number~$n$, the internal statement~$X \models \exists \aaa \in f(n)
 \cap f(n+1)$ holds; we leave further details to the reader.
 \end{proof}
+
+\begin{rem}Let~$X$ be a locally Noetherian scheme. The proof shows that even
+the set of all quasicoherent ideals (instead of merely the finitely generated
+ones) fulfills the ascending process condition. We have not taken this property
+as the definition of a processly Noetherian ring, since it is a notion not
+usually studied in constructive mathematics (compare
+remark~\rem{rem:qcoh-in-constructive-mathematics}).
+\end{rem}
 
 \XXX{Find appropriate place for the material in this appendix}
 

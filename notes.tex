@@ -192,6 +192,10 @@ is free as seen from the internal perspective: By the technique explained in
 these notes, this would imply the absurd statement that any sheaf of modules on
 a reduced scheme is locally free.
 
+The restriction to intuitionistic reasoning is not as worse as it might first
+appear. We will discuss the practical consequences below (on
+page~\pageref{sect:appreciating-intuitionistic-logic}).
+
 
 \subsection*{Algebraic geometry}
 We apply this internal language to algebraic geometry as follows. If~$X$ is a
@@ -322,7 +326,7 @@ system of classical mechanics from the internal perspective, and therefore
 tools like Gelfand duality can be used to construct an internal
 phase space for the system~\cite{bohr1,bohr2}.
 
-% mention and explain: Mulvey/Burden, Vickers, Awodey, Coquand, ...
+% mention and explain: Mulvey/Burden, Vickers, Awodey, Coquand, Caramello, ...
 % uses of the big Zariski topos, further work
 
 %Of particular importance is the
@@ -337,16 +341,13 @@ phase space for the system~\cite{bohr1,bohr2}.
 %answer to this question.
 
 \begin{itemize}
-\item dictionary; intuitionistic logic; microscope/telescope into another
+\item dictionary; microscope/telescope into another
 universe; types instead of sets; (dependent types to encompass almost all
 mathematics)
 \item explain that with the internal language business, it becomes more
 transparent where scheme condition enters
 \item note that in-depth knowledge of formal logic or topos theory is not necessary for
 applications
-\item give pointers to introductory literature
-\item here or somewhere else: Note that the internal language is classical if
-and only if the space is discrete (assuming T1)
 \item note that parts of constructive mathematics get new fields of application
 \end{itemize}
 
@@ -511,6 +512,16 @@ follows because of the locality of the internal language.
 A complete list of which rules are to prove is
 in~\cite[D1.3.1]{johnstone:elephant}.
 \end{proof}
+
+The restriction to intuitionistic logic is really necessary at this point. We
+will see many examples of classically equivalent internal statements whose
+translation using the Kripke--Joyal semantics are wildly different. In
+particular, our treatment of modal operators to understand spreading of
+properties from points to neighbourhoods depends on having the ability to make
+finer distictions -- distictions which are not visible in classical logic.
+At the end of this section there are some notes on what the restriction to
+intuitionistic logic amounts to in practice.
+
 \XXX{Put rules into an appendix and give some explanation regarding contexts
 etc. Don't forget the rules for $\in$, $\bigwedge$, $\bigvee$.}
 
@@ -595,18 +606,16 @@ sheaf.
 The definition is made in such a way that, from the internal perspective, the
 constructions enjoy their expected properties. For instance, it holds that
 \[ \Sh(X) \models
-  \bigl[\forall x\?\brak{\{s\?\F \,|\, \varphi(s)\}}\_ \psi(x)\bigr]
+  \bigl(\forall x\?\brak{\{s\?\F \,|\, \varphi(s)\}}\_ \psi(x)\bigr)
   \Longleftrightarrow
-  \bigl[\forall x\?\F\_ \varphi(x) \Rightarrow \psi(x)\bigr]. \]
+  \bigl(\forall x\?\F\_ \varphi(x) \Rightarrow \psi(x)\bigr). \]
 We gloss over several details here. See~\cite[chapter~D4.1]{johnstone:elephant} for
 a proper treatment.
 
 To be able to fully express all constructions of ``usual mathematics'' in the
-internal language (\ie not those specifically designed to test the limitations
-of the ambient logical framework), \XXX{weaken this phrase}
-we need \emph{dependent types}.
-\XXX{short explanation, for instance by an example
-"A common example are coproducts indexed by elements of some sheaf"}
+internal language (\ie those not specifically dependent
+of the ambient logical framework), we need \emph{dependent types}.
+\XXX{describe those}
 In these notes, we do not describe how to deal with those. However, everything
 carries over to the more general setting, and we refer to an article by Awodey and
 Bauer~\cite{awodey-bauer:bracket} for a review of dependent types and their
@@ -706,9 +715,95 @@ The following constructions are not in general geometric:
 \item internal Hom: $\HOM(\F,\G)_x \not\cong \Hom(\F_x,\G_x)$
 \end{itemize}
 
-\begin{itemize}
-\item crash course on intuitionistic logic
-\end{itemize}
+
+\subsection{Appreciating intuitionistic logic}
+\label{sect:appreciating-intuitionistic-logic}
+The principal (and only) difference between classical and intuitionistic logic
+is that in classical logic, the axioms schemes of \emph{excluded middle} and
+\emph{double-negation elimination} are added.
+\[ \varphi \vee \neg\varphi \qquad\qquad \neg\neg\varphi \Rightarrow \varphi \]
+A classically trained mathematician might legitimately wonder why one should
+drop these axioms: Are they not obviously true? The pragmatic answer to this
+question is that the translations of these axioms with the Kripke--Joyal
+semantics are, except for uninteresting special cases of the base space~$X$,
+plainly false -- irrespective of one's philosophical convictions. Therefore the
+internal language is in general only sound with respect to intuitionistic logic and
+not with respect to classical logic. Concretely, the internal language of
+a~$\mathrm{T}_1$-space~$X$ is \emph{Boolean} if and only if~$X$ is discrete,
+and the internal language of a scheme~$X$ is Boolean if and only if~$X$ has
+dimension~$\leq 0$.
+
+However, there is also a more satisfactory answer, which furthermore
+illuminates how to intuitively picture intuitionistic mathematics.
+Namely, when doing intuitionistic mathematics, we use the same formal symbols, but with
+\emph{a different intended meaning}. For instance, the classical reading of an
+existential statement like~$\exists x\?A\_ \varphi(x)$ is that there exists
+some element~$x \? A$ with the property~$\varphi(x)$. In contrast, its
+intuitionistic reading is that such an element can actually be
+\emph{constructed}, \ie explicitly given in some form. This is a much stronger
+statement. Classically, a proof that it is \emph{not} the case that such an
+element does \emph{not} exist -- formally $\neg\neg \exists x\?A\_ \varphi(x)$
+(or, equivalently even in intuitionistic mathematics, $\neg\forall x\? A\_
+\neg\varphi(x)$) suffices to demonstrate the existential statement; this is not
+so in intuitionistic mathematics.
+
+Similarly, the intuitionistic meaning of a disjunction~$\varphi \vee \psi$ is
+not only that one of the disjuncts is true, but that one can explicitly state
+which case holds. It is in general not enough to show that it is impossible
+that both~$\varphi$ and~$\psi$ fail.
+
+In this picture, it is obvious that one should not adopt the law of excluded
+middle or the principle of double-negation elimination as axioms. Note that we
+do \emph{not} reject those axioms in the sense of postulating their
+converses either, we simply don't use them. Therefore any intuitionistically
+true result is also true classically. In fact, for some special instances,
+these two classical axioms do hold intuitionistically. For example, any natural
+number is zero or is not zero -- this is not a triviality, but can be proven by
+induction.\footnote{The analogous statement about real numbers cannot be
+shown. Intuitively, for a number given by a decimal expansion starting
+with~$0.0000\ldots$ one cannot decide whether the string of zeros will continue
+indefinitely or whether eventually a non-zero digit will occur. This argument
+can be made rigorous. The analogous statement about algebraic numbers
+\emph{can} be proven; the information contained in a witness of algebraicity (a
+normed polynomial which the given number is a zero of) suffices to make the
+case distiction.}
+
+A consequence of not adopting these axioms is that proofs by contradiction are
+not generally justified; they are intuitionistically acceptable only for those
+statements which can be proven to be true or false. Note that a proof of a
+\emph{negated formula} is not the same as a proof by contradiction. For
+instance, the usual proof that~$\sqrt{2}$ is not rational is
+intuitionistically perfectly fine: From the assumption that~$\sqrt{2}$ is
+rational one deduces a contradiction~($\bot$). This is exactly the definition
+of~$\neg(\speak{$\sqrt{2}$ is rational})$.
+
+A classical mathematician might then ask which classical results are valid
+intuitionistically. The answer is that in linear and commutative algebra, most
+of the basic theorems stay valid, provided one exercises some caution in
+formulating them (for instance, one should not arbitrarily weaken assumptions
+by introducing double negations). This is because the proofs of these
+statements are usually direct; if intuitionistically unacceptable case
+distictions do occur, they can often be eliminated by streamlining the proof.
+
+Consider as a simple example the proposition that the kernel of a linear map is
+a linear subspace. The case distiction ``either the kernel consists just of the
+zero vector, in which case the claim is trivial, or otherwise \ldots'' is not
+intuitionistically acceptable, but it can be entirely dispensed with: The proof
+for the general case works in the special case just as well.
+
+Finally, we should clarify the status of the axiom of choice. This axiom, which
+is strictly speaking not part of classical logic, but of a classical set
+theory, is not accepted in an intuitionistic context: By \emph{Diaconescu's
+theorem}, it implies the law of excluded middle in presence of the other axioms
+of set theory.
+
+The standard reference for intuitionistic algebra is a textbook by Ray Mines,
+Fred Richman and Wim
+Ruitenburg~\cite{mines-richman-ruitenburg:constructive-algebra}, the standard
+reference for intuitionistic analysis is a book by Erret Bishop and Douglas
+Bridges~\cite{bishop-bridges:constructive-analysis}. Further explanations and
+pointers to relevant literature can be found in an expository article and a
+recorded lecture by Andrej Bauer~\cite{bauer:int-mathematics,bauer:video}.
 
 
 \section{Sheaves of rings}

@@ -126,7 +126,6 @@
   petit and gros Zariski topoi. These support an internal mathematical language
   which closely resembles the usual formal language of mathematics, but is ``local
   on the base scheme'':
-
   For example, from the internal perspective, the structure sheaf looks like an
   ordinary local ring (instead of a sheaf of rings with local stalks) and vector
   bundles look like ordinary free modules (instead of sheaves of modules
@@ -135,8 +134,15 @@
 
   These expository notes give an introduction to this topic and show how the internal
   point of view can be exploited to give simpler definitions and more conceptual
-  proofs of the basic notions and observations in algebraic geometry. No prior
-  knowledge about topos theory and formal logic is assumed.
+  proofs of the basic notions and observations in algebraic geometry.
+  % For instance, any theorem about modules yields a corresponding theorem about
+  % sheaves of modules (with a small caveat).
+  We also employ this framework to study the phenomenon that some properties
+  spread from points to open neighbourhoods. We give a general sufficient
+  condition for this spreading to occur, depending only on the logical
+  form of the property in question.
+
+  No prior knowledge about topos theory or formal logic is assumed.
 \end{abstract}
 
 \maketitle
@@ -207,6 +213,9 @@ this fact is intuitionistically acceptable and can thus be interpreted in the
 internal language. It then \emph{automatically} yields the following more advanced
 proposition: If in a short exact sequence of sheaves of~$\O_X$-modules the
 two outer ones are of finite type, then the middle one is too.
+
+This example was not special: \emph{Any (intuitionistically acceptable) theorem
+about modules yields a corresponding theorem about sheaves of modules.}
 
 The internal language machinery thus allows us to understand the basic notions
 and statements of scheme theory as notions and statements of linear and

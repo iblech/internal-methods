@@ -326,8 +326,10 @@ system of classical mechanics from the internal perspective, and therefore
 tools like Gelfand duality can be used to construct an internal
 phase space for the system~\cite{bohr1,bohr2}.
 
-% mention and explain: Mulvey/Burden, Vickers, Awodey, Coquand, Caramello, ...
-% uses of the big Zariski topos, further work
+\XXX{mention and explain: Mulvey/Burden, Vickers, Awodey, Coquand, Caramello,
+...}
+
+\XXX{uses of the big Zariski topos, étale versions, further work, ...}
 
 %Of particular importance is the
 %case~$\Box\varphi :\equiv ((\varphi \Rightarrow \notat{x}) \Rightarrow
@@ -763,10 +765,10 @@ induction.\footnote{The analogous statement about real numbers cannot be
 shown. Intuitively, for a number given by a decimal expansion starting
 with~$0.0000\ldots$ one cannot decide whether the string of zeros will continue
 indefinitely or whether eventually a non-zero digit will occur. This argument
-can be made rigorous. The analogous statement about algebraic numbers
+can be made rigorous \XXX{reference}. The analogous statement about algebraic numbers
 \emph{can} be proven; the information contained in a witness of algebraicity (a
 normed polynomial which the given number is a zero of) suffices to make the
-case distiction.}
+case distiction. \XXX{reference}}
 
 A consequence of not adopting these axioms is that proofs by contradiction are
 not generally justified; they are intuitionistically acceptable only for those
@@ -1022,6 +1024,7 @@ For the special case~$n = 0$, the condition that~$R$ is constructively of Krull
 dimension~$\leq 0$ means that for any element~$a_0$ there exists an
 element~$b_0$ such that~$D(a_0)$ and~$D(b_0)$ cover~$\Spec R$ and are disjoint.
 This implies that~$\Spec R$ is zero-dimensional in an intuitive sense.
+\XXX{continue explanation}
 
 \begin{thm}Let~$R$ be a ring.
 \begin{enumerate}
@@ -4020,7 +4023,7 @@ condition of theorem~\ref{thm:qcoh-sheafchar} is for any~$\O_X$-module
 trivially satisfied.
 \end{proof}
 
-\begin{rem}\label{rem:rem:qcoh-in-constructive-mathematics}
+\begin{rem}\label{rem:qcoh-in-constructive-mathematics}
 The notion of quasicoherence as given by the internal condition of
 theorem~\ref{thm:qcoh-sheafchar} is not usually studied in constructive
 mathematics. Indeed, outside of the internal universe of a scheme, the notion
@@ -4207,8 +4210,7 @@ such a module~$\F$ is
 \[ j_!(\F) := \{ x\?\F \,|\, (x = 0) \vee U \}. \]
 With this description, all necessary verifications are easy. Note that
 an~$\O_X$-module~$\F$ fulfills the stated condition on stalks if and only if
-internally, it holds that~$\forall x\?\F\_ (x = 0) \vee U$.
-\XXX{add parenthesis}
+internally, it holds that~$\forall x\?\F\_ ((x = 0) \vee U)$.
 \end{proof}
 
 \begin{lemma}\label{lemma:essim-closed-immersion}
@@ -4640,7 +4642,7 @@ Intuitionistically, this definition has two problems. Firstly, without the
 axiom of dependent choice, it is often not possible to construct a
 \emph{sequence} of ideals: Often, it is only possible to show that there
 \emph{exists} a suitable ideal~$\aaa_{n+1}$ depending on~$\aaa_n$. But since in
-general, this successor ideal is not unique, the axiom of dependent choice
+general, there is no canonical choice for this successor ideal, the axiom of dependent choice
 would be required to collect those into a sequence, \ie a function from~$\NN$
 to the set of ideals.
 
@@ -4655,8 +4657,8 @@ allowed).
 
 We therefore adopt the following definitions.
 
-\begin{defn}Let~$M$ be a partially ordered set. An \emph{ascending process}
-with values in~$M$ is a function~$f : \NN \to \P(M)$ such that
+\begin{defn}Let~$M$ be a partially ordered set. An \emph{ascending process
+with values in~$M$} is a function~$f : \NN \to \P(M)$ such that
 the subset~$f(0)$ is inhabited and such that for any~$x \in f(n)$, $n \in \NN$,
 there exists an element~$y \in f(n+1)$ with~$x \preceq y$. (In particular, all
 subsets~$f(n)$ are inhabited.) Such a process \emph{halts} if and only if there
@@ -4723,9 +4725,9 @@ For this number~$n$, the internal statement~$X \models \exists \aaa \in f(n)
 \begin{rem}Let~$X$ be a locally Noetherian scheme. The proof shows that even
 the set of all quasicoherent ideals (instead of merely the finitely generated
 ones) fulfills the ascending process condition. We have not taken this property
-as the definition of a processly Noetherian ring, since it is a notion not
+as the definition of a processly Noetherian ring since it is a notion not
 usually studied in constructive mathematics (compare
-remark~\rem{rem:qcoh-in-constructive-mathematics}).
+remark~\ref{rem:qcoh-in-constructive-mathematics}).
 \end{rem}
 
 \XXX{Find appropriate place for the material in this appendix}
@@ -4787,6 +4789,7 @@ remark~\rem{rem:qcoh-in-constructive-mathematics}).
   \bottomrule
 \end{longtable}}
 
+\XXX{update table to contain all concepts discussed in these notes}
 
 \nocite{*}
 \printbibliography
@@ -4797,8 +4800,6 @@ remark~\rem{rem:qcoh-in-constructive-mathematics}).
 
 \XXX{check whether the negneg translation ``finitely generated ==> free''
 implies the hard but important exercise}
-
-\XXX{simplification rule "box(phi) => box(psi) iff phi => box(psi)".}
 
 \XXX{consistently use "i" for closed embeddings and "j" for open embeddings}
 

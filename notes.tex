@@ -579,7 +579,9 @@ which~$\varphi$ holds.\end{rem}
 \XXX{Find appropriate place for this remark.}
 
 
-\subsection{Internal constructions} The Kripke--Joyal semantics defines the
+\subsection{Internal constructions}
+\label{sect:internal-constructions}
+The Kripke--Joyal semantics defines the
 interpretation of internal \emph{statements}. The interpretation of internal
 \emph{constructions} is given by the following definition.
 
@@ -614,6 +616,28 @@ constructions enjoy their expected properties. For instance, it holds that
 We gloss over several details here. See~\cite[chapter~D4.1]{johnstone:elephant} for
 a proper treatment.
 
+Morphisms can internally be constructed by appealing to the \emph{principle of
+unique choice}: Let~$\varphi(s,t)$ be a formula with free variables of
+type~$s\?\F$, $t\?\G$. Assume
+\[ \Sh(X) \models \forall s\?\F\_ \exists!t\?\G\_ \varphi(s,t). \]
+Then there is one and only one morphism~$\alpha : \F \to \G$ of sheaves such
+that for any local section~$s \in \Gamma(U,\F)$, $\Sh(X) \models
+\varphi(s,\alpha(s))$. This follows from the meaning of unique existence with
+the Kripke--Joyal semantics (proposition~\ref{prop:simplification}).
+
+An important application is showing that two sheaves~$\F$ and~$\G$ are
+isomorphic (usually as more structured objects, for instance sheaves of
+modules). To this end, it suffices to give a formula~$\varphi(s,t)$ satisfying,
+in addition to the condition above, the condition
+$\Sh(X) \models \forall t\?\G\_ \exists! s\?\F\_ \varphi(s,t)$,
+expressing that the induced morphism~$\alpha$ is a bijective map from the
+internal perspective. Note that this implies the statement
+\[ \Sh(X) \models \exists \alpha\?\HOM(\F,\G)\_ \speak{$\alpha$ is bijective},
+\]
+but this statement is strictly weaker: Its interpretation with the
+Kripke--Joyal semantics is that the sheaves~$\F$ and~$\G$ are \emph{locally}
+isomorphic.
+
 To be able to fully express all constructions of ``usual mathematics'' in the
 internal language (\ie those not specifically dependent
 of the ambient logical framework), we need \emph{dependent types}.
@@ -622,8 +646,6 @@ In these notes, we do not describe how to deal with those. However, everything
 carries over to the more general setting, and we refer to an article by Awodey and
 Bauer~\cite{awodey-bauer:bracket} for a review of dependent types and their
 categorical semantics.
-
-\XXX{Construction of morphisms}
 
 
 \subsection{Geometric formulas and constructions} In categorical logic,
@@ -1755,7 +1777,7 @@ semantics is local existence, this would only show that~$\L^\vee \otimes_{\O_X}
 Instead, we have to actually \emph{write down} (\ie explicitly give) an
 isomorphism in the internal language -- not using the assumption that~$L$ is
 free of rank~1, as this would introduce an existential quantifier again (see
-\XXX{ref}).
+section~\ref{sect:internal-constructions}).
 So we have to prove the following fact: Let~$L$ be an~$R$-module. Then there
 explicitly exists a linear map~$L^\vee \otimes_R L \to R$ such that this map is
 an isomorphism if~$L$ is free of rank~1.
@@ -4211,7 +4233,7 @@ sheafifying with respect to the modal operator~$\Box :\equiv (U \Rightarrow
 \placeholder)$. Thus, to show the second statement, we have to give a
 bijection~$(j_!(\F))^{++} \to \F$ for any~$\Box$-sheaf~$\F$. (This map has to
 be given explicitly, to not only show a weaker statement about a local
-isomorphism, see discussion at \XXX{ref}). To this end, we can use the composition
+isomorphism -- see section~\ref{sect:internal-constructions}). To this end, we can use the composition
 \[ (j_!(\F))^{++} \lhra \F^{++} \stackrel{({\cong})^{-1}}{\lra} \F, \]
 where the first map is injective since sheafifying is exact. It is also
 surjective, since the~$\Box$-translation of the statement~$\speak{$j_!(F) \to

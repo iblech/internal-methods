@@ -520,7 +520,7 @@ will see many examples of classically equivalent internal statements whose
 translation using the Kripke--Joyal semantics are wildly different. In
 particular, our treatment of modal operators to understand spreading of
 properties from points to neighbourhoods depends on having the ability to make
-finer distictions -- distictions which are not visible in classical logic.
+finer distinctions -- distinctions which are not visible in classical logic.
 At the end of this section there are some notes on what the restriction to
 intuitionistic logic amounts to in practice.
 
@@ -722,7 +722,7 @@ The following constructions are not in general geometric:
 \label{sect:appreciating-intuitionistic-logic}
 The principal (and only) difference between classical and intuitionistic logic
 is that in classical logic, the axioms schemes of \emph{excluded middle} and
-\emph{double-negation elimination} are added.
+\emph{double negation elimination} are added.
 \[ \varphi \vee \neg\varphi \qquad\qquad \neg\neg\varphi \Rightarrow \varphi \]
 A classically trained mathematician might legitimately wonder why one should
 drop these axioms: Are they not obviously true? The pragmatic answer to this
@@ -755,8 +755,8 @@ which case holds. It is in general not enough to show that it is impossible
 that both~$\varphi$ and~$\psi$ fail.
 
 In this picture, it is obvious that one should not adopt the law of excluded
-middle or the principle of double-negation elimination as axioms. Note that we
-do \emph{not} reject those axioms in the sense of postulating their
+middle or the principle of double negation elimination as axioms. Note that we
+do not \emph{reject} those axioms in the sense of postulating their
 converses either, we simply don't use them. Therefore any intuitionistically
 true result is also true classically. In fact, for some special instances,
 these two classical axioms do hold intuitionistically. For example, any natural
@@ -778,6 +778,38 @@ instance, the usual proof that~$\sqrt{2}$ is not rational is
 intuitionistically perfectly fine: From the assumption that~$\sqrt{2}$ is
 rational one deduces a contradiction~($\bot$). This is exactly the definition
 of~$\neg(\speak{$\sqrt{2}$ is rational})$.
+
+A more positive consequence of not adopting the law of excluded middle and the
+principle of double negation elimination is that intuitionistically, we can
+make \emph{finer distinctions}. For instance, for a formula~$\varphi$, the doubly
+negated formula~$\neg\neg\varphi$ is a certain kind of weakening of~$\varphi$:
+If~$\varphi$ holds, then~$\neg\neg\varphi$ does as well, while the converse can
+not be shown in general.\footnote{A detailed proof of the correct implication
+goes as follows: Assume~$\varphi$. We are to show~$\neg\neg\varphi$, \ie
+$(\neg\varphi \Rightarrow \bot)$. So assume~$\neg\varphi$, we are to
+show~$\bot$. Since~$\varphi$ and~$\varphi \Rightarrow \bot$,~$\bot$ indeed
+follows.} An example from everday life runs as follows: If in the morning you
+can't find the key for your appartment, but you know that it must hide
+somewhere since you used it to open the door in the evening before, you
+intuitionistically know~$(\neg\neg\exists x\_ \speak{the key is at position
+$x$})$, but you cannot claim the unnegated proposition. One cannot model this
+distinction with pure classical logic.
+
+Double negation also has a concrete geometric meaning with the
+Kripke--Joyal semantics. Namely,~$X \models \neg\neg\varphi$ holds if and
+only if there is a dense open subset~$U$ of~$X$ such that~$U \models \varphi$.
+In section~\ref{sect:modalities}, we will discuss this fact and other
+\emph{modal operators} in more detail. For instance, there is a modal
+operator~$\Box$ such that~$X \models \Box\varphi$ if and only if there is an
+open neighbourhood~$U$ of a given point~$x$ such that~$U \models \varphi$.
+
+For future reference, note that if~$\varphi \Rightarrow \psi$,
+then also~$\neg\neg\varphi \Rightarrow \neg\neg\psi$; and note that weakening
+twice has no further effect, \ie~$\neg\neg\neg\neg\varphi \Leftrightarrow
+\neg\neg\varphi$.\footnote{In fact, negating thrice is the same as negating
+once: Assume~$\neg\neg\neg\varphi$. We are to show~$\neg\varphi$. So
+assume~$\varphi$, we are to show~$\bot$. Since~$\varphi$,~$\neg\neg\varphi$.
+By~$\neg\neg\neg\varphi$,~$\bot$ follows.}
 
 A classical mathematician might then ask which classical results are valid
 intuitionistically. The answer is that in linear and commutative algebra, most
@@ -1835,7 +1867,8 @@ of~$U$. For the induction step~$n \to n+1$, the weak law of excluded middle
 gives
 \[ \neg\neg(n \in U \vee n \not\in U). \]
 If we can show that~$n \in U \vee n \not\in U$ implies the conclusion, we're
-done by \XXX{ref}. So assume~$n \in U \vee n \not\in U$.
+done by the discussion in section~\ref{sect:appreciating-intuitionistic-logic}.
+So assume~$n \in U \vee n \not\in U$.
 If~$n \in U$, then~$U$ does not not possess a minimal element by the induction
 hypothesis. If~$n \not\in U$, then~$n+1$ is a minimal element (and so, in
 particular,~$U$ does \notnot possess a minimal element): For if~$m$ is
@@ -2066,6 +2099,7 @@ We thus have:
 
 
 \section{Modalities}
+\label{sect:modalities}
 
 \subsection{Basics on truth values and modal operators}
 

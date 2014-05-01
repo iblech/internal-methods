@@ -640,7 +640,7 @@ isomorphic.
 
 To be able to fully express all constructions of ``usual mathematics'' in the
 internal language (\ie those not specifically dependent
-of the ambient logical framework), we need \emph{dependent types}.
+on the ambient logical framework), we need \emph{dependent types}.
 \XXX{describe those}
 In these notes, we do not describe how to deal with those. However, everything
 carries over to the more general setting, and we refer to an article by Awodey and
@@ -1307,13 +1307,15 @@ Note that phrases such as ``if by chance the entry in the upper left divides
 all the others, we can directly proceed with the next step; otherwise, some
 other entry must be a factor of all entries, so \ldots'' may not be included in
 a proof which is intended to be intuitionistically acceptable:
-Those phrases assume that one may do\XXX{word} the case distinction that for
+Those phrases assume that one may make the case distinction that for
 any two ring elements~$x,y$, either~$x$ divides~$y$ or not. Fortunately, those
 case distinctions are in fact superfluous.
 
 A consequence of the corollary is that internal to the sheaf topos of a
 Dedekind scheme, the usual structure theorem on finitely
-presented~$\O_X$-modules is available. We will exploit this in \XXX{ref}.
+presented~$\O_X$-modules is available. We will exploit this in
+lemma~\ref{lemma:torsion-stuff}, where we give an internal proof of the
+fact that on Dedekind schemes, torsionfree~$\O_X$-modules are locally free.
 
 
 \subsection{Normality} We will discuss the property of a ring to be
@@ -1793,7 +1795,8 @@ term: $\lambda \otimes x \mapsto \lambda(x)$. One can check that an inverse is g
 by~$x \mapsto \id_R \otimes x$.
 \end{proof}
 
-\begin{lemma}Let~$X$ be a scheme (or ringed space). Let~$\F$ be
+\begin{lemma}\label{lemma:torsion-stuff}
+Let~$X$ be a scheme (or ringed space). Let~$\F$ be
 an~$\O_X$-module. Then:
 \begin{enumerate}
 \item Assume~$X$ to be a locally Noetherian scheme. Then $\F$ is torsion-free
@@ -2360,10 +2363,9 @@ for~$X_j$. In three of the four cases listed in table~\ref{table:nuclei}, the
 sublocale~$X_\Box$ can indeed be realized as a topological subspace. The only
 exception is the sublocale~$X_{\neg\neg}$ associated to the double negation
 modality. It can be also be described as the \emph{smallest dense sublocale}
-of~$X$; this is obviously a true locale-theoretic notion, since a topological
+of~$X$; this is obviously a genuine locale-theoretic notion, since a topological
 space does not have (in general) a smallest dense topological subspace
 (consider~$\RR$ and its dense subsets~$\QQ$ and~$\RR \setminus \QQ$).
-\XXX{word "true"}
 
 The inclusion~$i : X_j \hookrightarrow X$ can not in general be described on the
 level of points, since~$X_j$ might not be realizable as a topological subspace.
@@ -2398,7 +2400,7 @@ element-based language, but also to talk about sheaves on arbitrary subspaces
 of~$X$.
 
 To describe the notion of~$\Box$-sheaves and related ones, we switch to the internal
-perspective and thus forget~$X$; we are simply given a model operator~$\Box :
+perspective and thus forget~$X$; we are simply given a modal operator~$\Box :
 \Omega \to \Omega$ and have to take care that our proofs are intuitionistically acceptable. A
 reference for the material in this subsection is a preprint by Fer-Jan de
 Vries~\cite{vries:sheafification}\footnote{Note that on page~5 of that

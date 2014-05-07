@@ -516,7 +516,7 @@ Again by assumption, we may conclude that~$U_i \models \chi$ for each~$i$. The s
 follows because of the locality of the internal language.
 
 A complete list of which rules are to prove is
-in~\cite[D1.3.1]{johnstone:elephant}.
+in~\cite[section~D1.3.1]{johnstone:elephant}.
 \end{proof}
 
 The restriction to intuitionistic logic is really necessary at this point. We
@@ -617,7 +617,7 @@ constructions enjoy their expected properties. For instance, it holds that
   \bigl(\forall x\?\brak{\{s\?\F \,|\, \varphi(s)\}}\_ \psi(x)\bigr)
   \Longleftrightarrow
   \bigl(\forall x\?\F\_ \varphi(x) \Rightarrow \psi(x)\bigr). \]
-We gloss over several details here. See~\cite[chapter~D4.1]{johnstone:elephant} for
+We gloss over several details here. See~\cite[section~D4.1]{johnstone:elephant} for
 a proper treatment.
 
 Morphisms can internally be constructed by appealing to the \emph{principle of
@@ -2228,7 +2228,8 @@ can also write this principle in the following way:
   (\varphi \Rightarrow \Box\psi). \]
 
 
-\subsection{Geometric meaning} Let~$X$ be a topological space. As discussed
+\subsection{Geometric meaning}\label{sect:modalities-geometric-meaning}
+Let~$X$ be a topological space. As discussed
 above, an open subset~$U \subseteq X$ defines an internal truth value (a global
 section of the sheaf~$\Omega$). We also denote it by~``$U$'', such that
 \[ V \models U \quad\Longleftrightarrow\quad V \subseteq U \]
@@ -4208,10 +4209,13 @@ module of finite type is of finite type as well
 
 \section{Subschemes}
 
-\subsection{Sheaves on open and closed subspaces}
-
-\XXX{Remind the reader of abuse of notation like "U" for formulas vs. open
-sets.}
+\subsection{Sheaves on open and closed subspaces} It is well-known that sheaves
+defined on open or closed subspaces of a topological space~$X$ can be related
+with certain sheaves on~$X$, by using appropriate extension functors. We can
+define these functors and show their basic properties in the internal
+language. Recall from section~\ref{sect:modalities-geometric-meaning} that we
+have defined a formula~``$U$'' for any open subset~$U \subseteq X$ such that
+$V \models U$ if and only if $V \subseteq U$.
 
 \begin{lemma}\label{lemma:extension-by-empty-set}
 Let~$X$ be a topological space. Let~$j : U \hookrightarrow X$ be the inclusion
@@ -4295,7 +4299,7 @@ Since the interior of the complement of~$\supp\F$ can be characterized as the
 largest open subset of~$X$ on which the internal statement~``$\F$ is a
 singleton'' holds (remark~\ref{rem:support-sheaf-of-sets}), the condition on
 the support is fulfilled if and only if
-\[ Sh(X) \models (A^c \Rightarrow \speak{$\F$ is a singleton}). \]
+\[ \Sh(X) \models (A^c \Rightarrow \speak{$\F$ is a singleton}). \]
 We thus have to show that this internal condition is equivalent to~$\F$ being
 a~$\Box$-sheaf. For the ``if'' direction, assume~$A^c$. Then the empty subset~$S
 \subseteq \F$ trivially verifies the condition that~$\Box(\speak{$S$ is a
@@ -4419,11 +4423,13 @@ property.
 of~$\O_X$. This can internally be simply defined by~$\N := \sqrt{(0)} = \{
 s\?\O_X \,|\, \bigvee_{n \geq 0} s^n = 0 \}$. Define~$X_\mathrm{red}$ as the closed
 subspace associated to this ideal sheaf. This ringed space is reduced by the
-previous lemma. The proof of the universal property can also be done in the
+previous lemma. If~$X$ is a scheme, then quasicoherence of~$\N$ (which is
+necessary and sufficient for~$X_\mathrm{red}$ to be a scheme) can be shown
+internally (example~\ref{ex:radical-qcoh}).
+The proof of the universal property can also be done in the
 internal language, by using that the well-known fact of locale theory that the
 category of locales over~$X$ is equivalent to internal locales in~$\Sh(X)$; but
 we do not want to discuss this further.
-\XXX{mention result on N(quasicompact)}
 
 For the second statement, internally define the ideal~$\I := \sqrt{\{ s\?\O_X \,|\, s = 0 \vee
 A^c \}} \subseteq \O_X$. Then~$1 \in \I$ if and only if~$A^c$, thus by
@@ -4451,7 +4457,7 @@ construction of the spectrum of a ring (as opposed to a sheaf of rings).
 fundamental fact in the theory of locales is that there is a canonical
 equivalence between the category of \emph{locales over~$X$} -- that is
 locales~$Y$ equipped with a morphism~$Y \to X$ -- and \emph{internal locales
-in~$\Sh(X)$}. An internal locale in a topos~$\E$ is given by an object~$L$ of~$\E$
+in~$\Sh(X)$}~\cite[page~49]{johnstone:point}. An internal locale in a topos~$\E$ is given by an object~$L$ of~$\E$
 (the internal lattice of opens of the locale) together with a binary
 relation~$(\preceq) \hookrightarrow L \times L$ such that the axioms on a
 locale hold from the internal point of view. (In these notes, we do not need a
@@ -4464,8 +4470,7 @@ and~$\Omega_{\Sh(Y)}$ is the object of truth values in the topos of sheaves
 on~$Y$. Conversely, an internal locale~$\L \in \Sh(X)$ induces an (external)
 locale~$E(\L)$ with lattice of opens given by~$\Open(E(\L)) := \Gamma(X,\L)$.
 This comes equipped with a canonical morphism~$Y \to X$ of locales which we do
-not need to describe explicitly.
-\XXX{give reference}
+not need to describe explicitly~\cite[section~C1.6]{johnstone:elephant}.
 
 As a special case, the internalization of the trivial locale~$\id : X \to X$
 over~$X$ has as lattice of opens the object~$\id_* \Omega_{\Sh(X)} =
@@ -4481,11 +4486,10 @@ sheaves on a locale~$Y$ over~$X$ is equivalent to the topos of sheaves on the
 internal locale~$I(Y)$: $\Sh(Y) \simeq \Sh_{\Sh(X)}(I(Y))$.
 
 There is no similarly nice correspondence between topological spaces
-over~$X$ and internal topological spaces in~$\Sh(X)$. This is one of the
-reasons why locales are better suited for working internally and switching
+over~$X$ and internal topological spaces
+in~$\Sh(X)$~\cite[corollary~C1.6.7]{johnstone:elephant}. This is one of the
+reasons why locales are better suited for working internally and for switching
 between internal and external perspectives.
-
-\XXX{give references}
 
 
 \subsection{The spectrum of a ring as a locale} Recall that the spectrum
@@ -4635,14 +4639,21 @@ S^{\sim}$ for some~$R$-algebra~$S$. Thus it holds that
 Clearly, these lattices are isomorphic (by~$\aaa \mapsto \aaa^\sim$ and~$\I
 \mapsto \Gamma(U,\I)$).
 
-This is already enough to prove the claims: By a general lemma of locale theory,
-\XXX{give reference}
+This is already enough to prove the claims: By a general lemma of locale
+theory~\cite[discussion before proposition~C1.6.1]{johnstone:elephant},
 the internal lattice~$\Open(\QcohSpec{\O_X}{\A})$ defines an internal locale
-(as the pushforward under~$\RelSpec{\O_X}{\A} \to X$ of a locale); and its
+(as the pushforward under~$\RelSpec{\O_X}{\A} \to X$ of a locale), and its
 externalization coincides with~$\RelSpec{\O_X}{\A}$.
 \end{proof}
 
-\XXX{cite Hakim and Gillam ("Localization of ringed spaces")}
+There is also a general spectrum functor by Gillam~\cite{gillam:localization}
+which works for arbitrary~$\O_X$-algebras (instead of only quasicoherent
+ones). It coincides with the relative spectrum construction (and thus the
+externalization of the internal quasicoherent spectrum) on
+quasicoherent~$\O_X$-algebras. Furthermore, there is a general spectrum
+construction by Hakim~\cite{hakim:relative-schemes}, sending ringed topoi to
+locally ringed topoi. We hope to study its relationship with the internal
+spectrum construction in the future; it may turn out that they coincide.
 
 \begin{prop}Let~$X$ be a scheme. Then~$E(\Spec\O_X) \cong X$ as locales
 over~$X$ if and only if~$X$ is the empty scheme or~$X$ has dimension zero.\end{prop}

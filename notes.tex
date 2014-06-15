@@ -188,16 +188,15 @@ epic.
 There is, however, a slight caveat to this metatheorem. Namely, the internal
 language of a topos is in general only \emph{intuitionistic}, not
 \emph{classical}. This means that internally, one can not use the law of
-excluded middle~($\varphi \vee \neg\varphi$), nor the law of double negation
-elimination~($\neg\neg\varphi \Rightarrow \varphi$), nor the axiom of choice.
-% neither...nor
+excluded middle~($\varphi \vee \neg\varphi$), the law of double negation
+elimination~($\neg\neg\varphi \Rightarrow \varphi$), or the axiom of choice.
 For instance, one rendition of the axiom of choice is that any vector space is
 free. But it need not be the case that a vector space internal to a topos
 is free as seen from the internal perspective: By the technique explained in
 these notes, this would imply the absurd statement that any sheaf of modules on
 a reduced scheme is locally free.
 
-The restriction to intuitionistic reasoning is not as worse as it might first
+The restriction to intuitionistic reasoning is not as confining as it might first
 appear. We will discuss the practical consequences below (on
 page~\pageref{sect:appreciating-intuitionistic-logic}).
 
@@ -294,7 +293,7 @@ Thus for global considerations, the internal language of~$\Sh(X)$ is only
 useful in that local subparts can be simplified. Also, some global features
 reflect themselves in certain meta properties of the internal language (for
 instance, a scheme is quasicompact if and only if the internal language
-fulfills a weak version of the so-called disjunction property of mathematical
+has a weak version of the so-called disjunction property of mathematical
 logic).
 
 
@@ -576,7 +575,7 @@ conclude that~$V \models \varphi(s)$.
 \end{proof}
 
 \begin{rem}Note that~$\Sh(X) \models \neg\varphi$ is in general a much stronger
-statement that merely supposing that~$\Sh(X) \models \varphi$ does not hold:
+statement than merely supposing that~$\Sh(X) \models \varphi$ does not hold:
 The former always implies the latter (unless~$X = \emptyset$, in which case
 \emph{any} internal statement is true), but the converse does not hold: The
 former statement means that~$U = \emptyset$ is the \emph{only} open subset on
@@ -601,7 +600,7 @@ $U \mapsto \Gamma(U,\F) \amalg \Gamma(U,\G)$.
 construction is the sheaf given by
 \[ \text{$U \subseteq X$ open} \longmapsto \{ \G \hookrightarrow \F|_U \}, \]
 \ie sections on an open set~$U$ are subsheaves of~$\F|_U$ (either literally
-or isomorphism classes of general monomorphisms into~$\F|_U$).
+or isomorphism classes of arbitrary monomorphisms into~$\F|_U$).
 \item If~$\F$ is a sheaf and~$\varphi(s)$ is a formula containing a free
 variable~$s\?\F$, the interpretation~$\brak{\{s\?\F\,|\,\varphi(s)\}}$ is given
 by the subpresheaf of~$\F$ defined by
@@ -632,6 +631,7 @@ the Kripke--Joyal semantics (proposition~\ref{prop:simplification}).
 
 An important application is showing that two sheaves~$\F$ and~$\G$ are
 isomorphic (usually as more structured objects, for instance sheaves of
+% XXX: "more structured"
 modules). To this end, it suffices to give a formula~$\varphi(s,t)$ satisfying,
 in addition to the condition above, the condition
 $\Sh(X) \models \forall t\?\G\_ \exists! s\?\F\_ \varphi(s,t)$,
@@ -880,7 +880,7 @@ follows:
 } \]
 
 From the internal perspective, a sheaf of rings looks just like a plain ring.
-This is the content of the following proposition:
+This is the content of the following proposition.
 
 \begin{prop}\label{prop:rings-internally}
 Let~$X$ be a topological space. Let~$\R$ be a sheaf of sets on~$X$.
@@ -930,7 +930,7 @@ ring~$\O_X$ is reduced.\end{prop}
 
 \subsection{Locality} Recall the usual definition of a local ring: a ring
 possessing exactly one maximal ideal. This is a so-called \emph{higher-order
-condition} this it involves quantification over subsets. It is also not of a
+condition} since it involves quantification over subsets. It is also not of a
 geometric form. Therefore, for our purposes, it is better to
 adopt the following elementary definition of a local ring.
 \begin{defn}A \emph{local ring} is a ring~$R$ such that~$1 \neq 0$ in~$R$ and
@@ -959,7 +959,7 @@ the displayed one) and holds on each stalk.\end{proof}
 \subsection{Field properties} From the internal point of view, the structure
 sheaf~$\O_X$ of a scheme~$X$ is \emph{almost} a field, in the sense that any
 element which is not invertible is nilpotent. This is a genuine property of
-schemes, not shared with general locally ringed spaces. It is also a specific
+schemes, not shared with arbitrary locally ringed spaces. It is also a specific
 feature of the internal universe: Neither the local rings~$\O_{X,x}$ nor the
 rings of local sections~$\Gamma(U,\O_X)$ have this property in general.
 
@@ -984,10 +984,10 @@ an open covering).
 \begin{rem}In classical logic, the statement ``not invertible implies
 nilpotent'' is equivalent to ``any element is invertible or nilpotent''.
 However, in intuitionistic logic, the latter is strictly stronger than the
-former: We will see in the next section
+former. We will see in the next section
 (corollary~\ref{cor:scheme-dimension-zero}) that the structure sheaf of a
 scheme fulfills the latter condition if and only if the scheme is
-zero-dimensional.\end{rem}
+zero-dimensional (or empty).\end{rem}
 
 \begin{cor}\label{cor:field-reduced}
 Let~$X$ be a scheme. If~$X$ is reduced, the ring~$\O_X$ is a field
@@ -1036,7 +1036,7 @@ is zero as an element of~$A[f^{-1}]$.
 
 \subsection{Krull dimension} Recall that the \emph{Krull dimension} of a
 ring is usually defined as the supremum of the lengths of strictly
-ascending chains of prime ideals. Like with the classical definition of a local ring,
+ascending chains of prime ideals. As with the classical definition of a local ring,
 this definition does not lead to a well-behaved notion in an intuitionistic
 context. Furthermore, it is a higher-order condition, so interpreting it
 with the Kripke--Joyal semantics is a bit unwieldy.
@@ -1068,7 +1068,7 @@ on elements and not on ideals. It is thus of a simpler logical form.
 (The radical ideals appear only for convenience. We will dispose of them in the
 proof of proposition~\ref{prop:dimension-scheme-ox}.)
 
-For the following, no intuition about this definition is needed; however, we
+For the following, no intuition on the definition is needed; however, we
 feel that some motivation might be of use. Recall that we can picture inclusions of
 radical ideals geometrically by considering standard open subsets~$D(f) = \{
 \ppp \in \Spec R \,|\, f \not\in \ppp \}$: The inclusion~$\sqrt{(f)} \subseteq
@@ -1247,7 +1247,9 @@ Bézout ring, it is therefore even principal:~$\aaa = (x_0)$ for some~$x_0 \in
 natural numbers, this can be proven by induction). In the first case, it
 follows that~$\aaa$ contains only zero; in the second case, it follows
 that~$\aaa$ contains an element other than zero. Thus~$\neg\varphi \vee
-\varphi$. This mode of reasoning is called \emph{exhibiting a Brouwerian
+\varphi$.
+
+This kind of reasoning is called \emph{exhibiting a Brouwerian
 counterexample}. The definition of~$\aaa$ may look slightly dubious,
 considering that~$\varphi$ does not depend on~$x$; but we will see that such
 definitions actually have a clear geometric meaning -- they can be used to
@@ -1259,7 +1261,7 @@ define extensions of sheaves by zero in the internal language
 \item $\O_X$ is a Bézout ring from the internal perspective if and only if all
 rings~$\O_{X,x}$ are Bézout rings.
 \item $\O_X$ is such that, from the internal perspective, of any two elements,
-one divides the other if and only if all rings~$\O_{X,x}$ are such.
+one divides the other, if and only if all rings~$\O_{X,x}$ are such.
 \end{enumerate}
 \end{prop}
 \begin{proof}Both properties can be formulated as geometric implications:
@@ -1272,13 +1274,13 @@ one divides the other if and only if all rings~$\O_{X,x}$ are such.
   (\exists u\?\O_X\_ f = ud) \wedge
   (\exists v\?\O_X\_ g = vd)
 \end{multline*}
-\begin{multline*}
+\[
   \text{(2)}\quad
   \forall f,g\?\O_X\_
   \top \Rightarrow
-  (\exists u\?\O_X\_ f = ug) \vee
-  (\exists u\?\O_X\_ g = uf) \qquad\qquad\qquad\qquad \qedhere
-\end{multline*}
+  (\exists u\?\O_X\_ f = ug) \,\vee\,
+  (\exists u\?\O_X\_ g = uf) \qquad\qquad\qquad\quad \qedhere
+\]
 \end{proof}
 
 \begin{cor}\label{cor:dedekind-smith}
@@ -1304,23 +1306,23 @@ of all the others. We can put this entry to the upper left by row and column
 transformations and then kill the other entries of the first row and the first
 column. After these operations, it is still the case that the entry in the
 first row and column is a factor of all other entries. Continuing in this
-fashion, we arrive at a diagonal matrix. Its diagonal entries already fulfill
+fashion, we obtain a diagonal matrix. Its diagonal entries already fulfill
 the divisibility condition.
 \end{proof}
 
 Note that phrases such as ``if by chance the entry in the upper left divides
 all the others, we can directly proceed with the next step; otherwise, some
 other entry must be a factor of all entries, so \ldots'' may not be included in
-a proof which is intended to be intuitionistically acceptable:
+a proof which is intended to be intuitionistically acceptable.
 Those phrases assume that one may make the case distinction that for
 any two ring elements~$x,y$, either~$x$ divides~$y$ or not. Fortunately, those
 case distinctions are in fact superfluous.
 
-A consequence of the corollary is that internal to the sheaf topos of a
+A consequence of the corollary is that internally to the sheaf topos of a
 Dedekind scheme, the usual structure theorem on finitely
 presented~$\O_X$-modules is available. We will exploit this in
 lemma~\ref{lemma:torsion-stuff}, where we give an internal proof of the
-fact that on Dedekind schemes, torsionfree~$\O_X$-modules are locally free.
+fact that on Dedekind schemes, torsion-free~$\O_X$-modules are locally free.
 
 
 \subsection{Normality} We will discuss the property of a ring to be
@@ -1380,18 +1382,18 @@ sheaves.
 
 \subsection{Finite type, finite presentation, coherence}
 Recall the conditions of an~$\O_X$-module~$\F$ on a scheme~$X$ (or ringed
-space) to be of finite type, of finite presentation and to be coherent:
+space) to be of finite type, of finite presentation, and to be coherent:
 \begin{itemize}
 \item $\F$ is \emph{of finite type} if and only if there exists a covering of~$X$ by
-open subsets~$U$ such that on each such~$U$, there exists an exact sequence
+open subsets~$U$ such that for each such~$U$, there exists an exact sequence
 \[ (\O_X|_U)^n \longrightarrow \F|_U \longrightarrow 0 \]
 of~$\O_X|_U$-modules.
 \item $\F$ is \emph{of finite presentation} if and only if there exists a covering of~$X$ by
-open subsets~$U$ such that on each such~$U$, there exists an exact sequence
+open subsets~$U$ such that for each such~$U$, there exists an exact sequence
 \[ (\O_X|_U)^m \longrightarrow (\O_X|_U)^n \longrightarrow \F|_U \longrightarrow 0. \]
 \item $\F$ is \emph{coherent} if and only if~$\F$ is of finite type and the
-kernel of any~$\O_X|_U$-linear morphism~$(\O_X|_U)^n \to \F|_U$, $U \subseteq
-X$ any open subset, is of finite type.
+kernel of any~$\O_X|_U$-linear morphism~$(\O_X|_U)^n \to \F|_U$, where~$U \subseteq
+X$ is any open subset, is of finite type.
 \end{itemize}
 
 The following proposition gives translations of these definitions into the
@@ -1423,7 +1425,7 @@ internal perspective, \ie if
 \end{multline*}
 \end{itemize}
 \end{prop}
-\begin{proof}Straightforward: The translations of the internal statements using
+\begin{proof}Straightforward -- the translations of the internal statements using
 the Kripke--Joyal semantics are precisely the corresponding external
 statements.
 \end{proof}
@@ -1489,14 +1491,14 @@ Interpreting this property with the Kripke--Joyal semantics, we see that the
 internally constructed tensor product has the following external property:
 For any open subset~$U \subseteq X$ and any~$\O_X|_U$-module~$\H$ on~$U$,
 any~$\O_X|_U$-bilinear morphism~$\F|_U \times \G|_U \to \H$ uniquely factors over the
-canonical morphism~$\F \times \G \to (\F \otimes_{\O_X} \G)|_U$.
+canonical morphism~$\F|_U \times \G|_U \to (\F \otimes_{\O_X} \G)|_U$.
 
 In particular, for~$U = X$, this property is well-known to be the universal
 property of the externally constructed tensor product. Therefore the
 claim follows.
 \end{proof}
 
-By the internal construction, a description of the stalks of the tensor product
+A description of the stalks of the tensor product
 follows purely by considering the logical form of the construction:
 \begin{cor}Let~$X$ be scheme (or a ringed space). Let~$\F$ and~$\G$
 be~$\O_X$-modules. Then the stalks of the tensor product coincide with the
@@ -1534,7 +1536,7 @@ intuitionistically as
 well~\cite[theorem~III.5.3]{mines-richman-ruitenburg:constructive-algebra}.
 This formulation of flatness has the advantage that it is the conjunction of
 geometric implications (one for each~$p \geq 0$); therefore it holds internally
-if and only if it holds at any stalk.
+if and only if it holds at any point.
 \end{proof}
 
 
@@ -1574,8 +1576,8 @@ the internal statement~$\speak{$\F$ is a singleton}$ holds.\end{rem}
 \emph{torsion submodule}~$M_\tors$ of an~$R$-module~$M$ is defined as
 \[ M_\tors := \{ x\?M \,|\, \exists a\?R\_ \speak{$a$ regular} \wedge ax = 0 \}
 \subseteq M. \]
-This definition is meaningful even if~$R$ is not an integral domain (in the
-weak sense). An~$R$-module~$M$ is \emph{torsion-free} if and only if~$M_\tors$ is
+This definition is meaningful even if~$R$ is not an integral domain.
+An~$R$-module~$M$ is \emph{torsion-free} if and only if~$M_\tors$ is
 the zero submodule; an~$R$-module~$M$ is a \emph{torsion module} if and only
 if~$M_\tors = M$.
 

@@ -94,7 +94,7 @@
 \setbeamertemplate{block alerted begin}
 {
   \par\vskip\medskipamount
-  \begin{beamercolorbox}[sep=0ex,rounded=true,center,dp={2.2ex}]{block alerted title}
+  \begin{beamercolorbox}[sep=0ex,rounded=true,center,dp={2.4ex}]{block alerted title}
     \vskip0cm
     \usebeamerfont{block title}\large\insertblocktitle
   \end{beamercolorbox}
@@ -161,7 +161,7 @@
     in a more conceptual way,
     \item mechanically obtain
     corresponding sheaf-theo\-re\-tic theorems for any (intuitionistic) theorem of
-    linear or commutative algebra, and
+    linear and commutative algebra, and
     \item understand which properties spread from
     points to neighbourhoods.
     \end{itemize}
@@ -171,7 +171,7 @@
   \begin{block}{What is a topos?}
     A \emph{topos} is a category which has finite limits, is cartesian closed and
     has a subobject classifier. More simply, a topos is a category which has
-    similar properties as the category of sets.\medskip
+    similar properties to the category of sets.\medskip
 
     Important examples of toposes are
     the category of sets and
@@ -188,6 +188,9 @@
     %{\addtocounter{enumi}{1}\usebeamertemplate{enumerate item}}
     prove such statements
     in a \emph{naive element-based} language.
+    The translation of internal statements and proofs into external ones is
+    facilitated by an easy mechanical procedure, the \emph{Kripke--Joyal
+    semantics}.
     \emph{Special case:} The language of the topos of sets is the usual
     formal mathematical language.
 
@@ -226,12 +229,13 @@
 
     A sheaf is of finite type if and only if, internally, it is a
     finitely generated module. Therefore the proposition follows \emph{at once}
-    from interpreting the analogous statement of intuitionistic linear algebra
+    by interpreting the analogous statement of intuitionistic linear algebra
     in the little Zariski topos:
     Let~$0 \to M' \to M \to M'' \to 0$ be a short exact sequence of modules.
-    Assume that~$M$ and~$M''$ are finitely generated. Then~$M$ is as well.
-    \medskip
+    If~$M'$ and~$M''$ are finitely generated, so is~$M$.\medskip
 
+    We can thus recognize notions and statements of scheme theory as notions and
+    statements of non-sheafy linear algebra.
     \emph{Caveat:} Proofs by contradiction can not be interpreted with the
     internal language.
   \end{block}
@@ -245,9 +249,9 @@
 
     Let~$\F$ be a finite type sheaf of~$\O_X$-modules. 
     Then it is well-known that~$\F$ is locally free on a dense open subset
-    of~$X$.\medskip
+    of~$X$. (Ravi Vakil, important hard exercise.) \medskip
 
-    This follows \emph{at once} from the following statement of intuitionistic
+    This follows \emph{at once} from the following easy proposition of intuitionistic
     linear algebra: Let~$M$ be a finitely generated vector space. Then~$M$ is
     \emph{not not} finite free.
   \end{block}
@@ -260,7 +264,7 @@
   \bigskip
 
   \begin{block}{Spreading of properties}
-    The following meta-theorem covers a wide range of cases:
+    The following metatheorem covers a wide range of cases:
     Let~$\varphi$ be a property which can be formulated without
     using~``$\Rightarrow$'',~``$\neg$'', and~``$\forall$''. Then~$\varphi$
     holds at a point if and only if it holds on some open neighbourhood of the
@@ -273,13 +277,13 @@
 
     But if~$\F$ is of finite type, the condition can be reformulated using
     generators as ``$x_1 = 0 \wedge \cdots \wedge x_n = 0$''. The meta-theorem
-    is applicable to this statement, thus a stalk is zero if and only if~$\F$
+    is applicable to this statement and thus a stalk is zero if and only if~$\F$
     is zero on a neighbourhood.
   \end{block}
 
   \vspace{1cm}
-  \begin{alertblock}{Dictionary external vs. internal notions}
-    Detailed notes are available at \url{http://tiny.cc/topos} (work in
+  \begin{alertblock}{Dictionary of external vs. internal notions}
+    Expository notes are available at \url{http://tiny.cc/topos} (work in
     progress).
   \end{alertblock}
 \end{column}
@@ -287,3 +291,11 @@
 \end{columns}\end{frame}
 
 \end{document}
+
+* term "intuitionistic"
+* more examples, other toposes, ...
+* further work
+* own contributions
+* "at once"
+* orphans
+* blue borders in alertboxes

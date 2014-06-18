@@ -259,7 +259,7 @@
 
     Important examples of toposes are
     the category of sets and
-    the category of set-valued sheaves on a topological space.
+    the category of sheaves on a topological space.
   \end{block}
   \bigskip
 
@@ -285,12 +285,14 @@
         \midrule
         objects of~$\E$ & sets \\
         morphisms of~$\E$ & maps of sets \\
+        monomorphisms in~$\E$ & surjective maps \\
+        epimorphisms in~$\E$ & injective maps \\
         \bottomrule
       \end{tabular}
     \end{center}
   \end{block}
 
-  \vspace{3cm}
+  \vspace{0.7cm}
   \textbf{GAeL XXII, Trieste, 2014}
 \end{column}
 
@@ -302,14 +304,14 @@
     sheaf of rings), and sheaves of~$\O_X$-modules look like \emph{ordinary
     modules} on that ring.\bigskip
 
-    \includegraphics[width=\columnwidth]{bohr-topos}
+    \includegraphics[width=\columnwidth]{external-internal}
   \end{block}
   \bigskip
 
   \begin{block}{Basic example}
     Let~$0 \to \F' \to \F \to \F'' \to 0$ be a short exact sequence of sheaves
-    of~$\O_X$-modules. Assume that~$\F'$ and~$\F''$ are of finite type. Then it is
-    well-known that~$\F$ is of finite type as well.\medskip
+    of~$\O_X$-modules. It is well-known that if~$\F'$ and~$\F''$ are of finite type,
+    then~$\F$ is as well.\medskip
 
     A sheaf is of finite type if and only if, internally, it is a
     finitely generated module. Therefore the proposition follows \emph{at once}
@@ -320,7 +322,7 @@
 
     We can thus recognize notions and statements of scheme theory as notions and
     statements of non-sheafy linear algebra.
-    \emph{Caveat:} Proofs by contradiction can not be interpreted with the
+    \emph{Caveat:} Non-intuitionistic proofs by contradiction can not be interpreted with the
     internal language.
   \end{block}
 \end{column}
@@ -328,12 +330,12 @@
 \begin{column}{0.3\textwidth}
   \begin{block}{Locally free sheaves}
     Let~$X$ be a reduced scheme. The structure sheaf~$\O_X$ looks like a \emph{field} from the
-    internal point of view. This is notable; recall that neither the rings of
-    local sections nor the stalks are in general fields.\medskip
+    internal point of view. Recall that neither the rings of
+    local sections nor the stalks are fields.\medskip
 
     Let~$\F$ be a finite type sheaf of~$\O_X$-modules. 
     Then it is well-known that~$\F$ is locally free on a dense open subset
-    of~$X$. (Ravi Vakil, important hard exercise.) \medskip
+    of~$X$. (Important hard exercise in Ravi Vakil's notes.) \medskip
 
     This follows \emph{at once} from the following easy proposition of intuitionistic
     linear algebra: Let~$M$ be a finitely generated vector space. Then~$M$ is
@@ -350,7 +352,7 @@
   \begin{block}{Spreading of properties}
     The following metatheorem covers a wide range of cases:
     Let~$\varphi$ be a property which can be formulated without
-    using~``$\Rightarrow$'',~``$\neg$'', and~``$\forall$''. Then~$\varphi$
+    using~$\Rightarrow$,~$\neg$,~$\forall$. Then~$\varphi$
     holds at a point if and only if it holds on some open neighbourhood of the
     point.\medskip
 

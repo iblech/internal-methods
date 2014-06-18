@@ -58,6 +58,92 @@
 \setbeamertemplate{blocks}[width=0.0]
 \beamertemplatenavigationsymbolsempty
 
+\makeatletter
+\newenvironment{beamercolorboxA}[2][]{%
+  \begingroup%
+    \def\beamer@colbox@coladd{0pt}%
+    \def\beamer@vmode{\leavevmode}%
+    \setkeys{beamercolbox}{%
+      wd=\textwidth,ht={},dp={},%
+      leftskip=0pt,rightskip=0pt plus1fil,%
+      sep=0pt,colsep=0pt,colsep*=0pt,%
+      shadow=false,rounded=false,ignorebg=false}%
+    \setkeys{beamercolbox}{#1}%
+    \ifbeamercolorempty[bg]{#2}{\@tempswafalse}{\@tempswatrue}%
+    \ifbeamer@colbox@ignorebg\@tempswafalse\fi%
+    \def\beamer@colbox@color{#2}%
+    \hsize=\beamer@colbox@wd%
+    \setbox\beamer@tempbox=\hbox\bgroup\vbox\bgroup%
+      \leftskip=\beamer@colbox@ls%
+      \advance\leftskip by\beamer@colbox@sep%
+      \rightskip=\beamer@colbox@rs%
+      \advance\rightskip by\beamer@colbox@sep%
+      \ifbeamer@colbox@ignorebg%
+        \colorlet{beamer@temp@color}{bg}%
+        \usebeamercolor[fg]{#2}%
+        \colorlet{bg}{beamer@temp@color}%
+      \else%
+        \usebeamercolor[fg]{#2}%
+      \fi%
+      \if@tempswa%
+        \advance\leftskip by\beamer@colbox@colsep%
+        \advance\rightskip by\beamer@colbox@colsep%
+        \ifdim\beamer@colbox@colsep=0pt\else\vskip\beamer@colbox@colsep\fi%
+        \ifdim\beamer@colbox@colseps=0pt\else\vskip\beamer@colbox@colseps\fi%
+      \fi%
+      \ifdim\beamer@colbox@sep=0pt\else\vskip-0.3cm\fi%
+      \beamer@vmode\ignorespaces}{%
+      \ifdim\beamer@colbox@sep=0pt\else\vskip\beamer@colbox@sep\fi%
+      \if@tempswa\ifdim\beamer@colbox@colsep=0pt\else\vskip\beamer@colbox@colsep\fi\fi%
+      \if@tempswa\ifdim\beamer@colbox@colseps=0pt\else\vskip\beamer@colbox@colseps\fi\fi%
+    \egroup\egroup%
+    \wd\beamer@tempbox=\hsize%
+    \@tempdima=\wd\beamer@tempbox%
+    \ifx\beamer@colbox@ht\@empty%
+    \else%
+      \ht\beamer@tempbox=\beamer@colbox@ht%
+    \fi%
+    \ifx\beamer@colbox@dp\@empty%
+    \else%
+      \dp\beamer@tempbox=\beamer@colbox@dp%
+    \fi%
+    \ifbeamer@colbox@rounded%
+      \if@tempswa%
+        \begin{beamerboxesrounded}[%
+          shadow=\beamer@colbox@shadow,%
+          lower=\beamer@colbox@color,%
+          upper=normal text,%
+          width=\beamer@colbox@wd]{}%
+          \box\beamer@tempbox%
+        \end{beamerboxesrounded}%
+      \else%
+        \ifdim\@tempdima>\textwidth%
+          \setbox\beamer@tempbox=\hbox to\textwidth{\hss\box\beamer@tempbox\hss}%
+        \fi%
+        \box\beamer@tempbox%
+      \fi%
+    \else%
+      \if@tempswa\setbox\beamer@tempbox=\hbox{\vbox{%
+        \usebeamercolor{\beamer@colbox@color}%
+        \advance\hsize by \beamer@colbox@colseps\relax%
+        \advance\hsize by \beamer@colbox@colseps\relax%
+        \hskip-\beamer@colbox@colseps%
+        \fboxsep=0pt\colorbox{bg}{%
+          \hskip\beamer@colbox@colseps%
+          \hbox{\box\beamer@tempbox}%
+          \hskip\beamer@colbox@colseps%
+        }%
+        \hskip-\beamer@colbox@colseps%
+      }}\fi%
+      \ifdim\@tempdima>\textwidth%
+        \setbox\beamer@tempbox=\hbox to\textwidth{\hskip0pt minus\beamer@leftmargin\relax\box\beamer@tempbox\hskip0pt minus\beamer@rightmargin\relax}%
+      \fi%
+      \box\beamer@tempbox%
+    \fi%
+  \endgroup%
+}
+\makeatother
+
 \setbeamertemplate{block begin}
 {
   \par\vskip\medskipamount
@@ -90,25 +176,23 @@
 
 \newlength{\inboxwd}
 \newlength{\iinboxwd}
-\newlength{\inboxrule}
 \setbeamertemplate{block alerted begin}
 {
   \par\vskip\medskipamount
-  \begin{beamercolorbox}[sep=0ex,rounded=true,center,dp={2.4ex}]{block alerted title}
-    \vskip0cm
+  \begin{beamercolorbox}[sep=0ex,rounded=true,center,dp={2.0ex}]{block alerted title}
+    \vskip-0.2cm
     \usebeamerfont{block title}\large\insertblocktitle
+    \vskip0.05cm
   \end{beamercolorbox}
   {\parskip0pt\par}
   \usebeamerfont{block body}
-  \vskip-0.8cm
-  \begin{beamercolorbox}[sep=0.5cm, rounded=true,center]{block alerted title}
+  \vskip-0.5cm
+  \begin{beamercolorboxA}[sep=0.5cm, rounded=true,center]{block alerted title}
   \setlength{\inboxwd}{\linewidth}
   \addtolength{\inboxwd}{-1cm}
   \begin{beamercolorbox}[rounded=true,wd={\inboxwd},center]{block alerted body}
   \setlength{\iinboxwd}{\inboxwd}
-  \setlength{\inboxrule}{\inboxwd}
   \addtolength{\iinboxwd}{-0.5cm}
-  \addtolength{\inboxrule}{0.5cm}
   \begin{center}
   \begin{minipage}{\iinboxwd}
   \justifying
@@ -119,7 +203,7 @@
   \end{minipage}
   \end{center}
   \end{beamercolorbox}
-  \end{beamercolorbox}
+  \end{beamercolorboxA}
   \vskip\smallskipamount
 }
 

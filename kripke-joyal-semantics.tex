@@ -1,0 +1,136 @@
+\documentclass[12pt,landscape]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath,amsthm,amssymb,stmaryrd,color,graphicx,multirow}
+\usepackage{setspace}
+\usepackage{bussproofs}
+\usepackage{xspace}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage[protrusion=true,expansion=true]{microtype}
+\usepackage[bookmarksdepth=2,pdfencoding=auto]{hyperref}
+\usepackage[all]{xy}
+
+\usepackage{geometry}
+\geometry{tmargin=1cm,bmargin=1cm,lmargin=1cm,rmargin=1cm}
+
+\usepackage{tikz}
+\usetikzlibrary{calc,shapes.callouts,shapes.arrows}
+\newcommand{\hcancel}[5]{%
+    \tikz[baseline=(tocancel.base)]{
+        \node[inner sep=0pt,outer sep=0pt] (tocancel) {#1};
+        \draw[red, line width=0.3mm] ($(tocancel.south west)+(#2,#3)$) -- ($(tocancel.north east)+(#4,#5)$);
+    }%
+}
+
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\FF}{\mathbb{F}}
+\renewcommand{\AA}{\mathbb{A}}
+\newcommand{\A}{\mathcal{A}}
+\renewcommand{\C}{\mathcal{C}}
+\newcommand{\D}{\mathcal{D}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\F}{\mathcal{F}}
+\renewcommand{\G}{\mathcal{G}}
+\renewcommand{\H}{\mathcal{H}}
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\K}{\mathcal{K}}
+\newcommand{\N}{\mathcal{N}}
+\newcommand{\M}{\mathcal{M}}
+\renewcommand{\L}{\mathcal{L}}
+\renewcommand{\P}{\mathcal{P}}
+\newcommand{\R}{\mathcal{R}}
+\newcommand{\I}{\mathcal{I}}
+\renewcommand{\S}{\mathcal{S}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\GG}{\mathbb{G}}
+\newcommand{\aaa}{\mathfrak{a}}
+\newcommand{\ppp}{\mathfrak{p}}
+\newcommand{\mmm}{\mathfrak{m}}
+\newcommand{\nnn}{\mathfrak{n}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\HOM}{\mathcal{H}\mathrm{om}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\GL}{\mathrm{GL}}
+\newcommand{\placeholder}{\underline{\quad}}
+\newcommand{\ul}[1]{\underline{#1}}
+\newcommand{\Set}{\mathrm{Set}}
+\newcommand{\Grp}{\mathrm{Grp}}
+\newcommand{\Vect}{\mathrm{Vect}}
+\newcommand{\Sh}{\mathrm{Sh}}
+\newcommand{\PSh}{\mathrm{PSh}}
+\newcommand{\Zar}{\mathrm{Zar}}
+\newcommand{\Sch}{\mathrm{Sch}}
+\newcommand{\Mod}{\mathrm{Mod}}
+\newcommand{\Alg}{\mathrm{Alg}}
+\newcommand{\Ring}{\mathrm{Ring}}
+\newcommand{\LRL}{\mathrm{LRL}}
+\newcommand{\pt}{\mathrm{pt}}
+\newcommand{\tors}{\mathrm{tors}}
+\DeclareMathOperator{\Spec}{Spec}
+\newcommand{\QcohSpec}[2]{\mathrm{Spec}^{\mathrm{qcoh}}_{#1}{#2}}
+\newcommand{\RelSpec}[2]{\mathrm{RelSpec}_{#1}{#2}}
+\newcommand{\op}{\mathrm{op}}
+\DeclareMathOperator{\colim}{colim}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\Int}{int}
+\DeclareMathOperator{\Clos}{cl}
+\DeclareMathOperator{\Kernel}{ker}
+\DeclareMathOperator{\supp}{supp}
+\newcommand{\Ass}{\mathrm{Ass}}
+\newcommand{\Open}{\mathrm{Op}}
+\newcommand{\?}{\,{:}\,}
+\renewcommand{\_}{\mathpunct{.}\,}
+\newcommand{\speak}[1]{\ulcorner\text{\textnormal{#1}}\urcorner}
+\newcommand{\Ll}{:\Longleftrightarrow}
+\newcommand{\notat}[1]{{!#1}}
+\newcommand{\lra}{\longrightarrow}
+\newcommand{\lhra}{\ensuremath{\lhook\joinrel\relbar\joinrel\rightarrow}}
+\newcommand{\hra}{\hookrightarrow}
+\newcommand{\brak}[1]{{\llbracket{#1}\rrbracket}}
+\newcommand{\ie}{i.\,e.\@\xspace}
+\newcommand{\eg}{e.\,g.\@\xspace}
+\newcommand{\notnot}{\emph{not not}\xspace}
+
+\definecolor{gray}{rgb}{0.7,0.7,0.7}
+
+\begin{document}
+
+\thispagestyle{empty}
+
+\begin{table}
+  \Large
+  \centering
+  \[ \renewcommand{\arraystretch}{1.7}\begin{array}{@{}lcl@{}}
+    U \models s = t \? \F &\Ll& s|_U = t|_U \in \Gamma(U, \F) \\
+    U \models \top &\Ll& U = U \text{ (always fulfilled)} \\
+    U \models \bot &\Ll& U = \emptyset \\
+    U \models \varphi \wedge \psi &\Ll&
+      \text{$U \models \varphi$ and $U \models \psi$} \\
+    U \models \varphi \vee \psi &\Ll&
+      \hcancel{\text{$U \models \varphi$ or $U \models \psi$}}{0pt}{3pt}{0pt}{-2pt} \\
+    && \text{there exists a covering $U = \bigcup_i U_i$ such that for all~$i$:} \\
+    && \quad\quad \text{$U_i \models \varphi$ or $U_i \models \psi$} \\
+    U \models \varphi \Rightarrow \psi &\Ll&
+      \text{for all open~$V \subseteq U$:
+      $V \models \varphi$ implies $V \models \psi$} \\
+    U \models \forall s \? \F\_ \varphi(s) &\Ll&
+      \text{for all sections~$s \in \Gamma(V, \F)$, open $V \subseteq U$: $V \models
+      \varphi(s)$} \\
+    U \models \exists s \? \F\_ \varphi(s) &\Ll&
+      \hcancel{\text{there exists a section~$s \in \Gamma(U,\F)$ such that $U
+      \models \varphi(s)$}}{0pt}{3pt}{0pt}{-2pt} \\
+    &&
+      \text{there exists an open covering $U = \bigcup_i U_i$ such that for all~$i$:} \\
+    && \quad\quad \text{there exists~$s_i \in \Gamma(U_i, \F)$ such that
+    $U_i \models \varphi(s_i)$}
+  \end{array} \]
+  \caption{\label{table:kripke-joyal}The Kripke--Joyal semantics of a sheaf
+  topos.}
+\end{table}
+
+\end{document}

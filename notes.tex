@@ -3277,7 +3277,7 @@ are given by
 \[ \K_{X,x} = \O_{X,x}[\S_x^{-1}]. \]
 The elements of~$\S_x$ are exactly the germs of those local sections which are
 regular not only in~$\O_{X,x}$, but in all rings~$\O_{X,y}$ where~$y$
-ranges over some neighbourhood of~$x$ (depending on the section).\end{prop}
+ranges over some open neighbourhood of~$x$ (depending on the section).\end{prop}
 \begin{proof}
 Since localization is a geometric construction, the first statement is entirely
 trivial with our framework. The second statement follows since
@@ -3305,7 +3305,7 @@ equivalent:
 \begin{enumerate}
 \item The section~$s$ is regular in~$\O_{X,x}$.
 \item The section~$s$ is regular in all local rings~$\O_{X,y}$ where~$y$ ranges
-over some neighbourhood of~$x$.
+over some open neighbourhood of~$x$.
 \end{enumerate}
 \end{prop}
 \begin{proof}
@@ -3333,6 +3333,8 @@ assumption, each generator~$x_i \? I$ fulfills~$\Box(x_i = 0)$. Since we want
 to prove a boxed statement, we may in fact assume~$x_i = 0$. Thus~$I = (0)$ and
 the assertion that~$s$ is regular follows.
 \end{proof}
+
+% XXX: Note that is was critical for I to be *finitely* generated, because ...
 
 \begin{cor}Let~$X$ be a locally Noetherian scheme. Then the stalks~$\K_{X,x}$
 of the sheaf of rational functions are given by the total quotient rings of the
@@ -3852,8 +3854,10 @@ From this example, it will trivially follow that the nilradical~$\sqrt{(0)}
 sheaf is quasicoherent (lemma~\ref{ex:radical-qcoh}).
 
 \begin{rem}In applications, the open set~$K$ of the proposition is often given
-as the largest open subset on which some formula~$\psi$ holds. Then the
-conclusion of the proposition is that \emph{assuming that~$\psi$ holds commutes
+as the largest open subset on which some formula~$\psi$ holds. (For instance,
+in the previous example,~$K$ was given by the formula~$\speak{$f$
+is invertible in $\O_X$}$.)
+Then the conclusion of the proposition is that \emph{assuming that~$\psi$ holds commutes
 with directed disjunctions}.\end{rem}
 
 A stronger condition on a topological space~$X$ than quasicompactness is

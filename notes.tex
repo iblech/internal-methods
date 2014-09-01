@@ -2917,9 +2917,9 @@ By the assumption on~$\xi$, this is equivalent to requiring~$U = \emptyset$.
 Thus for any open subset~$U$ the formulas~$\notat{\xi}$ and~$\bot$ have the
 same meaning; they are therefore logically equivalent from the internal point of
 view. The given modal operator thus simplifies to
-\[ \Box\varphi \equiv ((\varphi \Rightarrow \notat{\xi}) \Rightarrow \notat{\xi})
-  \Leftrightarrow ((\varphi \Rightarrow \bot) \Rightarrow \bot)
-  \Leftrightarrow \neg\neg\varphi. \qedhere \]
+\[ \Box\varphi \quad\equiv\quad ((\varphi \Rightarrow \notat{\xi}) \Rightarrow \notat{\xi})
+  \quad\Leftrightarrow\quad ((\varphi \Rightarrow \bot) \Rightarrow \bot)
+  \quad\Leftrightarrow\quad \neg\neg\varphi. \qedhere \]
 \end{proof}
 
 In particular, if~$X$ contains a generic point~$\xi$ in the sense of the lemma,
@@ -2982,15 +2982,15 @@ the first two axioms on a nucleus.
 \begin{lemma}Let~$\Box$ be a modal operator. Let~$\varphi$ be a formula.
 Let~$\psi :\equiv \varphi^\Box$ be the~$\Box$-translation of~$\varphi$.
 Let~$\psi'$ be the formula obtained from~$\psi$ by substituting any occuring
-domain of quantification by its~$\Box$-sheafification. Then~$\varphi$
-and~$\varphi'$ are equivalent.
+domain of quantification by its~$\Box$-sheafification. Then~$\psi$
+and~$\psi'$ are equivalent.
 \end{lemma}
 \begin{proof}
 For any formula~$\varphi$, we denote by~``$\varphi^\boxplus$'' the result of
 first applying the~$\Box$-translation to~$\varphi$ and then substituting any
 set~$F$ occuring in~$\varphi$ as a domain of quantification by the plus
 construction~$F^+$. Recall that for any such~$F$ there is a canonical map~$F
-\to F^+, x \mapsto [\{x\}]$. We are going to show by induction that for any
+\to F^+,\ x \mapsto [\{x\}]$. We are going to show by induction that for any
 formula~$\varphi(x_1,\ldots,x_n)$ in which elements~$x_i\?F_i$ may occur as
 terms, it holds that~$\varphi^\Box(x_1,\ldots,x_n)$ is equivalent
 to~$\varphi^\boxplus([\{x_1\}],\ldots,[\{x_n\}])$. This suffices to prove the
@@ -3011,7 +3011,7 @@ that~$\varphi^\Box \equiv \Box(\exists x\?F\_ \psi^\Box(x))$ is equivalent
 to~$\varphi^\boxplus \equiv \Box(\exists \bar x\?F^+\_ \psi^\boxplus(\bar x))$.
 The ``only if'' direction is trivial (set~$\bar x := [\{x\}]$). For the ``if''
 direction, we may assume that there exists~$\bar x\?F^+$ such
-that~$\psi^\boxplus(\bar x)$ since we want to prove a boxed statement. By
+that~$\psi^\boxplus(\bar x)$, since we want to prove a boxed statement. By
 definition of the plus construction, it holds that~$\Box(\speak{$\bar x$ is a
 singleton})$. So, again since we want to prove a boxed statement, we may assume
 that~$\bar x$ is actually a singleton. Therefore there exists~$x\?F$ such
@@ -3211,16 +3211,16 @@ torsion if and only if any element of~$\F$ is \notnot zero.
 For the ``only if'' direction, let~$x\?\F$ be an arbitrary element. Since~$\F$
 is a torsion module, there exists a regular element~$a\?\O_X$ such that~$ax =
 0$. Since~$X$ is reduced, regularity is equivalent to not-not-invertibility.
-Since we want to verify the~$\Box$-stable statement~``$\neg\neg(x = 0)$'', we
+Since we want to verify the~$\neg\neg$-stable statement~``$\neg\neg(x = 0)$'', we
 may in fact assume that~$a$ is invertible. Then~$x = 0$ obviously follows.
 
-For the ``if'' direction, let~$x\?\F$ be an arbitrary element; we may assume
-that~$x$ is \notnot zero. Since~$X$ is integral,
+For the ``if'' direction, let~$x\?\F$ be an arbitrary element; by assumption,~$x$
+is \notnot zero. Since~$X$ is integral,
 lemma~\ref{lemma:dense-standard-reflection} is applicable. Therefore there
 exists an element~$a\?\O_X$ such that~$a$ is \notnot invertible and such that
 invertibility of~$a$ implies~$x = 0$. This~$\F$ is quasicoherent, for some
 natural number~$n$ it holds that~$a^n x = 0$. Since~$a$ is \notnot invertible,
-it is regular \XXX{give reference} and~$a^n$ are regular. So~$x \in \F_\tors$.
+it is regular \XXX{give reference}, and therefore~$a^n$ is regular. So~$x \in \F_\tors$.
 \end{proof}
 
 \begin{itemize}

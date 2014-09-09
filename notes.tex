@@ -222,7 +222,7 @@ internal language. It then \emph{automatically} yields the following more advanc
 proposition: If in a short exact sequence of sheaves of~$\O_X$-modules the
 two outer ones are of finite type, then the middle one is too.
 
-This example was not special: \emph{Any (intuitionistically acceptable) theorem
+This example was not special: \emph{Any (intuitionistically valid) theorem
 about modules yields a corresponding theorem about sheaves of modules.}
 
 The internal language machinery thus allows us to understand the basic notions
@@ -262,8 +262,9 @@ internal language, such that the internal statement~$\Box\varphi$ means
 that~$\varphi$ holds on some open neighbourhood of~$x$. Furthermore, we
 introduce a simple operation on formulas, the~\emph{$\Box$-translation}
 $\varphi \mapsto \varphi^\Box$, such that~$\varphi^\Box$ means that~$\varphi$
-holds at the point~$x$. The question whether truth at~$x$ spreads to truth on a
-neighbourhood can thus be formulated in the following way: Does~$\varphi^\Box$
+holds at the point~$x$. This translation is defined on a purely syntactical
+level. The question whether truth at~$x$ spreads to truth on a
+neighbourhood can then be formulated in the following way: Does~$\varphi^\Box$
 intuitionistically imply~$\Box\varphi$?
 
 This allows to deal with the question in a simpler, more logical way, with the
@@ -336,6 +337,8 @@ phase space for the system~\cite{bohr1,bohr2}.
 
 \XXX{mention Tao, for instance
 \url{http://terrytao.wordpress.com/2014/07/15/real-analysis-relative-to-a-finite-measure-space/}}
+
+\XXX{mention Jackson's thesis}
 
 \XXX{uses of the big Zariski topos, étale versions, further work, ...}
 
@@ -1173,6 +1176,12 @@ former implies that~$a$ is invertible or that~$b$ is invertible. In the first
 case, we are done. In the second case, it follows that~$a$ is nilpotent, so we
 are done as well.
 \end{proof}
+
+As a further corollary note the curious fact that the classicality of the
+internal language of~$\Sh(X)$, where~$X$ is a scheme, is tightly coupled with
+the properties of the ring~$\O_X$: Internally, the law of excluded middle and
+the principle of double negation elimination hold if and only if~$\O_X$ is of
+Krull dimension~$\leq 0$.
 
 
 \subsection{Integrality} In intuitionistic logic, the notion of an integral
@@ -2259,19 +2268,19 @@ implies~$\Box\psi$, then~$\Box\psi$ holds as well.\end{lemma}
 \begin{proof}Assume~$\varphi \Rightarrow \psi$. This is equivalent to
 supposing~$\varphi \wedge \psi \Leftrightarrow \varphi$. We are to show
 that~$\Box\varphi \Rightarrow \Box\psi$, \ie that~$\Box\varphi \wedge
-\Box\psi \Leftrightarrow \Box\varphi$. The statement follows since by the third
+\Box\psi \Leftrightarrow \Box\varphi$. This follows since by the third
 axiom on a modal operator, we have~$\Box\varphi \wedge \Box\psi \Leftrightarrow
-\Box(\varphi \wedge \psi)$.
+\Box(\varphi \wedge \psi)$, and~$\Box$ respects equivalence of propositions.
 
 For the second statement, consider that if~$\varphi \Rightarrow \Box\psi$, by
 monotonicity and the second axiom on a modal operator it follows
 that~$\Box\varphi \Rightarrow \Box\Box\psi \Rightarrow \Box\psi$.
 \end{proof}
 
-The modus ponens rule justifies the following proof scheme: When showing
-that a boxed statement~$\Box\psi$ holds given that a further boxed
-statement~$\Box\varphi$ holds, we may assume that indeed~$\varphi$ holds. We
-can also write this principle in the following way:
+The modus ponens rule justifies the following proof scheme: When trying to
+show, given that some boxed statement~$\Box\varphi$ holds, that some further
+boxed statement~$\Box\psi$ holds, we may give a proof of~$\Box\psi$ under the
+stronger assumption~$\varphi$. Symbolically:
 \[ (\Box\varphi \Rightarrow \Box\psi) \Longleftrightarrow
   (\varphi \Rightarrow \Box\psi). \]
 
@@ -2325,13 +2334,13 @@ attesting~$V \models \varphi \vee A^c$.
 \item For the ``only if'' direction, let~$W \subseteq V$ be the largest
 open subset on which~$\varphi$ holds, \ie the union of all open subsets
 of~$V$ on which~$\varphi$ holds. For the ``if'' direction, we may assume that
-the given~$W$ is also the largest open subset on which~$\varphi$ holds (by
+the given set~$W$ is also the largest open subset on which~$\varphi$ holds (by
 enlarging~$W$ if necessary). The claim then follows by the following chain of
 equivalences:
 \begin{align*}
   &\ V \models \neg\neg\varphi \\
   \Longleftrightarrow&\ \forall \text{$Y \subseteq V$ open}\_
-    \Bigl(\forall \text{$Z \subseteq Y$ open}\_ Z \models \varphi \Rightarrow Z
+    \Bigl(\forall \text{$Z \subseteq Y$ open}\_ (Z \models \varphi) \Rightarrow Z
     = \emptyset\Bigr) \Longrightarrow Y = \emptyset \\
   \Longleftrightarrow&\ \forall \text{$Y \subseteq V$ open}\_
     \Bigl(\forall \text{$Z \subseteq Y$ open}\_ Z \subseteq W \Rightarrow Z
@@ -2384,26 +2393,28 @@ of proposition~\ref{prop:modops-kripke}.
       \multicolumn{1}{p{1cm}}{smallest dense sublocale of~$X$} \\
     $\Box\varphi :\equiv ((\varphi \Rightarrow \notat{x}) \Rightarrow \notat{x})$ &
 %      $\Int(\Clos(V \cap \Clos\{x\}) \cup (X \setminus \Clos\{x\}))$ &
-      $j(V) = \begin{cases}
-        X \setminus \Clos\{x\}, & \text{if $x \not\in V$} \\
-        X, & \text{if $x \in V$}
-      \end{cases}$ &
+      $\begin{array}{@{}ll@{}}
+        j(V) = X \setminus \Clos\{x\}, & \text{if $x \not\in V$} \\
+        j(V) = X, & \text{if $x \in V$}
+      \end{array}$ &
       $x \in V$ & $\{x\}$ \\
     \bottomrule
   \end{tabular}
+  \vspace{0.5em}
 
   \caption{\label{table:nuclei}List of important modal operators and their
   associated nuclei (notation as in proposition~\ref{prop:modops-kripke}).}
 \end{table}
 
-Any nucleus~$j$ defines a subspace~$X_j$ of~$X$, with a small caveat: In
+Any nucleus~$j$ defines a subspace~$X_j$ of~$X$, to be described below, with a small caveat: In
 general, the subspace~$X_j$ can not be realized as a topological subspace, but
 only as a so-called \emph{sublocale}; the notion of a locale is a slight
 generalization of the notion of a topological space, in which an underlying set
 of points is not part of the definition. Instead, a locale is simply given by a
-lattice of general \emph{opens} -- these may, but do not necessarily have to,
+lattice of arbitrary \emph{opens} satisfying some axioms -- these opens may, but do not necessarily have to,
 be sets of points. Sheaf theory carries over to locales essentially unchanged,
-since the notions of presheaves and sheaves only need opens and coverings.
+since the notions of presheaves and sheaves only refer to open sets and coverings,
+but not points.
 Accessible introductions to the theory of locales include two notes by
 Johnstone~\cite{johnstone:art,johnstone:point}.
 
@@ -2416,8 +2427,8 @@ for~$X_j$. In three of the four cases listed in table~\ref{table:nuclei}, the
 sublocale~$X_\Box$ can indeed be realized as a topological subspace. The only
 exception is the sublocale~$X_{\neg\neg}$ associated to the double negation
 modality. It can be also be described as the \emph{smallest dense sublocale}
-of~$X$; this is obviously a genuine locale-theoretic notion, since a topological
-space does not have (in general) a smallest dense topological subspace
+of~$X$; this is obviously a genuine locale-theoretic notion, since there
+is (in general) no smallest dense topological subspace
 (consider~$\RR$ and its dense subsets~$\QQ$ and~$\RR \setminus \QQ$).
 
 The inclusion~$i : X_j \hookrightarrow X$ can not in general be described on the
@@ -2439,7 +2450,7 @@ functor~$i_* : \Sh(X_j) \to \Sh(X)$ is fully faithful and the composition~$i^{-1
 \subsection{Internal sheaves and sheafification}\label{sect:internal-sheaves}
 It turns out that the image of
 the pushforward functor~$i_* : \Sh(X_\Box) \to \Sh(X)$, where~$\Box$ is a modal
-operator in~$\Sh(X)$, can be explicitly described: Namely, it consists exactly
+operator in~$\Sh(X)$, can be explicitly described. Namely, it consists exactly
 of those sheaves which from the internal point of view
 are so-called~\emph{$\Box$-sheaves}, a notion explained below.
 \XXX{state this as a proposition later as well?}
@@ -2448,7 +2459,7 @@ Furthermore, if we identify~$\Sh(X_\Box)$ with its image in~$\Sh(X)$, the
 pullback functor is given by an internal sheafification process with respect to
 the modality~$\Box$. Thus the external situation of pushforward/pullback
 translates to forget/sheafify. This broadens the scope of the internal
-language: It can not only be used to talk about sheaves on~$X$ in a simple,
+language of~$\Sh(X)$: It can not only be used to talk about sheaves on~$X$ in a simple,
 element-based language, but also to talk about sheaves on arbitrary subspaces
 of~$X$.
 
@@ -2456,11 +2467,15 @@ To describe the notion of~$\Box$-sheaves and related ones, we switch to the inte
 perspective and thus forget~$X$; we are simply given a modal operator~$\Box :
 \Omega \to \Omega$ and have to take care that our proofs are intuitionistically acceptable. A
 reference for the material in this subsection is a preprint by Fer-Jan de
-Vries~\cite{vries:sheafification}\footnote{Note that on page~5 of that
+Vries~\cite{vries:sheafification}.\footnote{Note that on page~5 of that
 preprint, there is a slight typing error: Fact~2.1(i) gives the
 characterization of~$j$-closedness, not~$j$-denseness. The correct
 characterization of~$j$-denseness in that context is~$\forall b \in B\_ j(b \in
-A)$.}.
+A)$.}
+
+Recall that a set~$S$ is a \emph{subsingleton} if and only if~$\forall x,y\?S\_
+x = y$, and that a set~$S$ is a \emph{singleton} if and only if it is a subsingleton and
+inhabited (\ie~$\exists x\?S$); this amounts to~$\exists!x\?S$.
 
 \begin{defn}\label{defn:box-sheaves}
 A set~$F$ is \emph{$\Box$-separated} if and only if
@@ -2490,7 +2505,6 @@ If~$F$ is~$\Box$-separated, then for any subset~$S \subseteq F$ it holds
 that
 \[ \Box(\speak{$S$ is a singleton}) \quad\Longleftrightarrow\quad
   \speak{$S$ is a subsingleton} \wedge \Box(\speak{$S$ is inhabited}). \]
-\XXX{introduce "singleton", "subsingleton"}
 
 \begin{rem}The topos of \emph{pre}sheaves on a topological space~$X$ admits an
 internal language as well~\cite[section~VI.7, discussion after
@@ -2502,19 +2516,22 @@ is a~$\Box$-sheaf. Furthermore, the~$\Box$-sheafification of a presheaf
 (considered as a set from the internal perspective) coincides with the usual
 sheafification.\end{rem}
 
-\XXX{reference Jackson's thesis, lemma 36}
-
 \begin{ex}\label{ex:special-sets-sheaves}
 Any singleton set is a~$\Box$-sheaf. The empty set is
 always~$\Box$-separated (trivially) and is a~$\Box$-sheaf if and only
 if~$\Box\bot \Rightarrow \bot$.\end{ex}
 
+We will see geometric examples of~$\Box$-sheaves in further sections.
+For instance, on an integral scheme~$X$, the structure sheaf~$\O_X$
+is~$\neg\neg$-separated and its~$\neg\neg$-sheafification is the sheaf~$\K_X$
+of rational functions (proposition~XXX).
+
 \begin{lemma}For any set~$F$, it holds that: \begin{enumerate}
 \item $F^+$ is~$\Box$-separated.
 \item The canonical map~$F \to F^+$ is injective if and only if~$F$
 is~$\Box$-separated.
-\item If~$F$ is~$\Box$-separated, $F^+$ is a~$\Box$-sheaf.
-\item If~$F$ is a~$\Box$-sheaf, the canonical map~$F \to F^+$ is bijective.
+\item If~$F$ is~$\Box$-separated, then $F^+$ is a~$\Box$-sheaf.
+\item If~$F$ is a~$\Box$-sheaf, then the canonical map~$F \to F^+$ is bijective.
 \end{enumerate}
 Let``$\Sh_\Box(\Set)$'' denote the full subcategory of~$\Set$ consisting of
 the~$\Box$-sheaves. Then it holds that:
@@ -2547,12 +2564,23 @@ suffices for any local section to \emph{locally} have preimages.\end{rem}
 
 
 \subsection{Sheaves for the double negation modality}
-\XXX{introductory words}
+
+Recall that if~$\Box$ is the modal operator associated to a sub\emph{space}~$Y$
+of a topological space~$X$, then the sheaves on~$X$ which are~$\Box$-sheaves
+are easy to describe: There are precisely the sheaves in the essential image of
+the pushforward functor~$\Sh(Y) \to \Sh(X)$. For the double negation modality,
+the same is true, only that~$Y$ is then the perhaps unfamiliar \emph{smallest
+dense sublocale} of~$X$.
+
+The following proposition gives a characterization of~$\neg\neg$-separated
+presheaves and~$\neg\neg$-sheaves in explicit terms.
 
 \begin{prop}\label{prop:negneg-sheaves}
 Let~$X$ be a topological space. Let~$\F$ be a sheaf on~$X$. Then:
 \begin{enumerate}
-\item $\F$ is~$\neg\neg$-separated if and only if it is sufficient for local
+\item $\F$ is~$\neg\neg$-separated if and only if any two local sections
+of~$\F$, which are defined on a common domain and which agree on a dense open
+subset of their domain, are already equal.
 sections to be equal to agree on a dense open subset of their common domain.
 \item $\F$ is a~$\neg\neg$-sheaf if and only if it is~$\neg\neg$-separated and
 for any open subset~$U \subseteq X$ and any open subset~$V \subseteq U$ dense
@@ -2560,7 +2588,7 @@ in~$U$, any~$V$-section of~$\F$ extends to a~$U$-section of~$\F$.
 \item If~$\F$ is~$\neg\neg$-separated, the sections of $\F^+$ on an open
 subset~$U \subseteq X$ can be described by pairs~$(V,s)$, where~$V$ is a dense
 open subset of~$U$ and~$s$ is a section of~$\F$ on~$V$. Two such pairs~$(V,s),
-(V',s')$ give the same element in~$\Gamma(U,\F^+)$ if and only if~$s$ and~$s'$
+(V',s')$ determine the same element in~$\Gamma(U,\F^+)$ if and only if~$s$ and~$s'$
 agree on~$V \cap V'$.
 \end{enumerate}
 \end{prop}
@@ -2569,7 +2597,7 @@ The first statement is obvious from the definition of~$\neg\neg$-separatedness
 (definition~\ref{defn:box-sheaves} for~$\Box = \neg\neg$) and the geometric
 interpretation of double negation (proposition~\ref{prop:modops-kripke}).
 
-For the second statement, it suffices to show that if~$\F$
+For the second statement, we need to show that if~$\F$
 is~$\neg\neg$-separated,~$\F$ has the extension property if and only if
 \begin{multline*}
   \Sh(X) \models \forall \S \? \P(\F)\_
@@ -2579,7 +2607,7 @@ is~$\neg\neg$-separated,~$\F$ has the extension property if and only if
 \end{multline*}
 Note that a section~$\S \in \Gamma(U,\P(\F))$ which internally is a
 subsingleton and \notnot inhabited is precisely a subsheaf~$\S \hookrightarrow
-\F$ such that all stalks~$\S_x$, $x \in U$ are subsingletons and such that for
+\F|_U$ such that all stalks~$\S_x$, $x \in U$ are subsingletons and such that for
 some dense open subset~$V \subseteq U$, the stalks~$\S_x$, $x \in V$ are
 inhabited. This is precisely the datum of a section of~$\F$ defined on some
 dense open subset of~$U$: Consider the gluing of the unique germs in~$\S_x$ for
@@ -2587,10 +2615,9 @@ those points~$x$ such that~$\S_x$ is inhabited. (Conversely, a section~$s \in
 \Gamma(V,\F)$ defines a subsheaf~$\S$ by setting~$\Gamma(W,\S) := \{ s|_W \,|\,
 W \subseteq V \}$.)
 
-In view of this explicit description and the observation that the existence in
-question~(``$\exists x\?\F\_ \neg\neg(x \in \S)$'') is actually a question of
+In view of this explicit description and the observation that the asserted
+existence~(``$\exists x\?\F\_ \neg\neg(x \in \S)$'') is actually a question of
 unique existence, the second statement follows.
-\XXX{this is hard to understand}
 
 For the third statement, one can check that the presheaf on~$X$ defined by
 \[ \text{$U \subseteq X$ open} \quad\longmapsto\quad
@@ -2601,7 +2628,12 @@ and that it has the universal property of the~$\neg\neg$-sheafification
 of~$\F$.
 \end{proof}
 
-\XXX{introduce notion of Box-stability}
+\begin{rem}The conditions~(1) and~(2) of the previous proposition can be
+summarized as follows: A sheaf~$\F$ on a topological space is
+a~$\neg\neg$-sheaf if and only if, for any open subset~$U \subseteq X$, the
+restriction map~$\Gamma(\Int\Clos U, \F) \to \Gamma(U,\F)$ is
+bijective~\cite[lemma~36]{jackson:sheaf-theoretic-measure-theory}.
+\end{rem}
 
 
 \subsection{\texorpdfstring{The~$\Box$-translation}{The □-translation}}
@@ -2616,10 +2648,13 @@ and~``$\forall$'', around any logical connective and around any atomic
 statement (``$x=y$'', ``$x \in A$'').
 
 We will describe a slight generalization of the double negation translation,
-the~$\Box$-translation for any modal operator~$\Box$. It will be central to
-understand truth of formulas on subspaces from the internal language of the
-ambient space.  \XXX{sentence is rubbish}
-\XXX{check http://arxiv.org/pdf/1101.5442.pdf for references to cite}
+the~$\Box$-translation for any modal operator~$\Box$. It will be pivotal
+for using the internal language of a space~$X$ to express internal statements
+about sheaves defined on subspaces of~$X$. The~$\Box$-translation has been studied
+in other contexts
+before~\cite{aczel:russel-prawitz,escardo:oliva:peirce-shift}. To the best of
+my knowledge, this application -- expressing the internal language of
+subtoposes in the internal language of the ambient topos -- is new.
 
 \begin{defn}The~\emph{$\Box$-translation} is recursively defined as follows.
 \newcommand{\optBox}{\textcolor{gray}{\Box}}
@@ -2639,6 +2674,9 @@ ambient space.  \XXX{sentence is rubbish}
   (\exists X\_ \varphi)^\Box &:\equiv \Box(\exists X\_ \varphi^\Box)
 \end{align*}
 \end{defn}
+
+\begin{defn}A formula~$\varphi$ is \emph{$\Box$-stable} if and only
+if~$\Box\varphi$ implies~$\varphi$.\end{defn}
 
 \begin{lemma}\begin{enumerate}
 \item Formulas in the image of the $\Box$-translation are~$\Box$-stable,
@@ -2661,13 +2699,15 @@ formula structure. By way of example, we prove the case for~``$\Rightarrow$'':
   \Longleftrightarrow &\ (\varphi \Rightarrow \psi)^\withoutgray
 \end{align*}
 The first step is by definition; the second by~$\Box$-stability
-of~$\psi^\withgray$; the third by the induction hypothesis; the fourth by
+of~$\psi^\withgray$ and the intuitionistic tautology~$\Box(\alpha \Rightarrow
+\beta) \Leftrightarrow (\alpha \Rightarrow \beta)$ for~$\Box$-stable
+formulas~$\beta$; the third by the induction hypothesis; the fourth by
 definition.
 \end{proof}
 
 \begin{lemma}\label{lemma:box-translation-sound}
 The~$\Box$-translation is sound with respect to intuitionistic logic:
-Assume that there is an intuitionistic proof of an
+Assume that there exists an intuitionistic proof of an
 implication~$\varphi \Rightarrow \psi$. Then there is also an intuitionistic
 proof of the translated implication~$\varphi^\Box \Rightarrow \psi^\Box$.
 \end{lemma}
@@ -2706,20 +2746,17 @@ are equivalent: The formulas~$\varphi$ and~$\varphi'$ give rise to the
 \emph{same} element~$\{x \in 1 \,|\, \varphi\} = \{x \in 1 \,|\, \varphi'\}$
 of~$\Omega$, and therefore their images under~$\Box$ are equal as well.
 
-However, it is \emph{not} clear that the translated formulas~$\varphi^\Box$
+However, it is \emph{not} clear and in fact wrong in general that the translated formulas~$\varphi^\Box$
 and~$(\varphi')^\Box$ are equivalent. This follows only by applying the soundness
 lemma (two times, once for each direction). We should stress that to apply this
 lemma, it is not enough to merely \emph{know} that~$\varphi$ and~$\varphi'$ are
 equivalent; instead, there has to be an intuitionistic proof of this
-equivalence. The difference might not be apparent at the top level (how should
-we know that the equivalence holds if not by a proof?\footnote{Of course,
-considering logical incompleteness theorems, this questions is slightly
-naive.}), but it becomes evident when considering hypothetical situations: To
-prove an implication~$\psi \Rightarrow \chi$, we may give a proof of~$\chi$
-under the additional assumption that~$\psi$ holds; however, we may not suppose
-that there is a proof of~$\psi$ -- indeed,~$\psi$ might later turn out to be
-false. \XXX{is this a good (and correct!) explanation?}
-\XXX{Superman example}
+equivalence. This is really a stronger requirement, since an
+equivalence~$\varphi \Leftrightarrow \varphi'$ might simply
+hold in a particular model, \ie in the internal language of some particular
+topos, without holding in any topos, \ie possessing an intuitionistic proof. We
+give an explicit example of this situation below
+(example~\ref{ex:translation-equivalence}).
 
 \begin{lemma}\label{lemma:open-stalk}
 Let~$\varphi$ be a formula such that for any subformulas~$\psi$
@@ -2741,8 +2778,8 @@ monotonicity of~$\Box$, and the third by the induction hypothesis.
 \begin{lemma}\label{lemma:stalk-open}
 Let~$\varphi$ be a geometric formula.
 Then $\varphi^\Box \Rightarrow \Box\varphi$.\end{lemma}
-\begin{proof}By induction on the formula structure. By way of example, we prove
-the case for~``$\bigvee$''. So assume~$\Box(\bigvee_i \varphi_i^\Box)$; we are
+\begin{proof}By induction on the formula structure. By way of example, we verify
+the case about~``$\bigvee$''. So assume~$\Box(\bigvee_i \varphi_i^\Box)$; we are
 to show that~$\Box(\bigvee_i \varphi_i)$. Since this is a boxed statement, we
 may in fact assume~$\bigvee_i \varphi_i^\Box$, so for some index~$j$, it holds
 that~$\varphi_j^\Box$. By the induction hypothesis, it follows
@@ -2750,10 +2787,15 @@ that~$\Box\varphi_j$. By~$\varphi_j \Rightarrow \bigvee_i \varphi_i$ and the
 monotonicity of~$\Box$, it follows that that~$\Box(\bigvee_i \varphi_i)$.
 \end{proof}
 
-%\begin{ex}The failure of~$(\bigwedge_i \varphi_i)^\Box \equiv \bigwedge_i
-%\varphi_i^\Box \Rightarrow \Box(\bigwedge_i \varphi_i)$ can be nicely
-%illustrated with the internal language of a sheaf topos~$\Sh(X)$.
-%\end{ex}
+Note that an analogous argument for infinite conjuctions is not valid:
+Assume~$(\bigwedge_i \varphi_i)^\Box$. So for all~$j$,~$\varphi_j^\Box$ holds.
+By the induction hypothesis,~$\Box\varphi_j$ holds for any~$j$. But from this
+we may not deduce~$\Box\bigwedge_i \varphi_i$, since the axioms on a modal
+operator only require commutativity with finite conjuctions. This failure also
+has a geometric interpretation, for instance in the special case~$\Box =
+\neg\neg$: Given dense open subsets~$U_i$ on which formulas~$\varphi_i$ hold,
+we may not conclude that there exists a single dense open subset~$U$ on which
+all the formulas~$\varphi_i$ hold.
 
 \begin{rem}In the special case that~$\Box$ is the double negation modality, the
 lemma holds with slightly weaker hypotheses: Namely, implications may occur
@@ -3058,6 +3100,20 @@ hypothesis, it follows that~$\psi^\Box(x)$. From this the claim follows.
 
 The case for~``$\forall$'' is similar.
 \end{proof}
+
+\begin{ex}\label{ex:translation-equivalence}Let~$X$ be a scheme. Let~$f$ be
+global functions on~$X$. Let~$\varphi :\equiv \neg(\speak{$f$ inv.})$
+and~$\varphi' :\equiv \speak{$f$ nilpotent}$. Then, by proposition~\ref{prop:cond-zero}, we
+have~$\Sh(X) \models (\varphi \Leftrightarrow \varphi')$. But in general, this
+does not imply that~$\Sh(X) \models (\varphi^\Box \Leftrightarrow
+(\varphi')^\Box)$. Consider for instance the modal operator given by~$\Box\alpha
+:\equiv ((\alpha \Rightarrow \notat{x}) \Rightarrow \notat{x})$ associated to a
+point~$x \in X$. Then~$\Sh(X) \models (\varphi^\Box \Leftrightarrow
+(\varphi')^\Box)$ means that the equivalence~$\varphi \Leftrightarrow \varphi'$
+holds at the point~$x$. This is false for~$X = \Spec \ZZ$,~$f = 2$, and~$x =
+(2)$, since in the local ring~$\O_{X,x} = \ZZ_{(2)}$, the element $f$ is not invertible
+while not being nilpotent.
+\end{ex}
 
 
 \subsection{Internal proofs of common lemmas}
@@ -3688,7 +3744,7 @@ usual external one (as a family~$(f_i)_i$ of functions~$f_i \in
 U_j} \in \Gamma(U_i \cap U_j, \O_X^*)$ for all~$i,j$).
 
 We can sketch the basic theory of Cartier divisors completely from the internal
-perspective. In accordance with common practice, we will write the group
+perspective. In accordance with common practice, we write the group
 operation of~$\K_X^*/\O_X^*$ (which is induced by multiplication of elements
 in~$\K_X^*$) additively.
 
@@ -4950,6 +5006,8 @@ implies the hard but important exercise}
 \XXX{explain use of ``:'' even outside the internal language}
 
 \XXX{remark on possible pitfalls}
+
+\XXX{$:=$, $:\equiv$}
 
 \end{document}
 

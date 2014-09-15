@@ -109,6 +109,7 @@
 \newcommand{\brak}[1]{{\llbracket{#1}\rrbracket}}
 \newcommand{\ie}{i.\,e.\@\xspace}
 \newcommand{\eg}{e.\,g.\@\xspace}
+\newcommand{\vs}{vs.\@\xspace}
 \newcommand{\notnot}{\emph{not not}\xspace}
 
 \newcommand{\XXX}[1]{\textbf{XXX: #1}}
@@ -2858,7 +2859,7 @@ thus~$\alpha$.
 \end{proof}
 
 
-\subsection{Truth at stalks vs. truth on neighbourhoods}\label{sect:spreading}
+\subsection{Truth at stalks \vs truth on neighbourhoods}\label{sect:spreading}
 We now state the crucial property of the~$\Box$-translation. Recall
 that~``$X_\Box$'' denotes the sublocale of~$X$ induced by~$\Box$
 (definition~\ref{defn:subspace-by-nucleus}).
@@ -3356,7 +3357,7 @@ in the internal language by localizing~$\O_X$ at its set of regular elements is
 \begin{proof}Internally, the ring~$\O_X[\S^{-1}]$ has the following
 universal property: For any ring~$R$ and any homomorphism~$\O_X \to R$ which
 maps the elements of~$\S$ to units, there exists exactly one
-homomorphism~$\O_X[\S^{-1}] \to R$ which makes the evident diagram commute.
+homomorphism~$\O_X[\S^{-1}] \to R$ which renders the evident diagram commutative.
 \[ \xymatrix{
   \O_X \ar[rr] \ar[dr] && R \\
   & \O_X[\S^{-1}] \ar@{-->}[ru]
@@ -3365,7 +3366,7 @@ The translation using the Kripke--Joyal semantics gives the following universal
 property: For any open subset~$U \subseteq X$, any sheaf of rings~$\R$ on~$U$ and any
 homomorphism~$\O_X|_U \to \R$ which maps all elements of~$\Gamma(V,\S)$, $V
 \subseteq U$ to units, there exists exactly one homomorphism~$\O_X[\S^{-1}]|_U \to
-\R$ which makes the evident diagram commute.
+\R$ which renders the evident diagram commutative.
 It is well-known that the sheaf~$\K_X$ as usually defined has
 this universal property as well.
 \end{proof}
@@ -3378,8 +3379,8 @@ The elements of~$\S_x$ are exactly the germs of those local sections which are
 regular not only in~$\O_{X,x}$, but in all rings~$\O_{X,y}$ where~$y$
 ranges over some open neighbourhood of~$x$ (depending on the section).\end{prop}
 \begin{proof}
-Since localization is a geometric construction, the first statement is entirely
-trivial with our framework. The second statement follows since
+Since localization is a geometric construction, the first statement is made entirely
+trivial by our framework. The second statement follows since
 \[ \Gamma(U,\S) = \{ s\in\Gamma(U,\O_X) \,|\, U \models \speak{$s$ is regular}
 \} \]
 and regularity is a geometric implication, so that
@@ -3395,7 +3396,7 @@ numerator~$s$ belongs to~$\S$, \ie is an regular element of~$\O_X$.\end{rem}
 \subsection{Regularity of local functions}
 It is well known that on a locally Noetherian scheme, regularity spreads from
 stalks to neighbourhoods, \ie a section of~$\O_X$ is regular
-in~$\O_{X,x}$ if and only if it is regular on some neighbourhood on~$x$.
+in~$\O_{X,x}$ if and only if it is regular on some open neighbourhood of~$x$.
 This fact has a simple proof in the internal language.
 \begin{prop}\label{prop:regularity-spreading}
 Let~$X$ be a locally Noetherian scheme. Let~$s \in \Gamma(U,\O_X)$
@@ -3421,19 +3422,24 @@ It is clear that the second statement implies the first -- in fact, this is true
 without any assumptions on~$X$: Let~$t\?\O_X$ be such that~$st = 0$. Since we want to
 prove the boxed statement~$\Box(t=0)$, we may assume that~$s$ is regular and
 prove~$t = 0$. This is immediate. (This direction also follows simply by
-examining the logical form and applying lemma~\ref{lemma:open-stalk}).
+examining the logical form and applying lemma~\ref{lemma:open-stalk}.)
 
 For the converse direction, consider the annihilator of~$s$, \ie the ideal
 \[ I := \Ann_{\O_X}(s) = \{ t\?\O_X \,|\, st = 0 \} \subseteq \O_X. \]
 This ideal satisfies the quasicoherence condition (example~\ref{ex:annihilator-qcoh}),
 thus~$I$ is a quasicoherent submodule of a finitely generated module. Since~$X$ is
-locally Noetherian, it follows that~$I$ is finitely generated as well. By
+locally Noetherian, it follows that~$I$ is finitely generated as well, say by~$x_1,\ldots,x_n \? I$. By
 assumption, each generator~$x_i \? I$ fulfills~$\Box(x_i = 0)$. Since we want
 to prove a boxed statement, we may in fact assume~$x_i = 0$. Thus~$I = (0)$ and
 the assertion that~$s$ is regular follows.
 \end{proof}
 
-% XXX: Note that is was critical for I to be *finitely* generated, because ...
+Note that the proof critically depends on the ideal~$I$ being finitely
+generated, since a modal operator need only commute with finite
+conjuctions. Intuitively, each time we use the modus ponens rule~$\Box\varphi \wedge
+(\varphi \Rightarrow \psi) \Rightarrow \Box\psi$, we restrict to a smaller open
+neighbourhood of~$x$. Since infinite intersections of open sets need not be
+open, we cannot expect an infinitary modus ponens rule to hold.
 
 \begin{cor}Let~$X$ be a locally Noetherian scheme. Then the stalks~$\K_{X,x}$
 of the sheaf of rational functions are given by the total quotient rings of the
@@ -3454,15 +3460,15 @@ ring~$\O_X$ is normal from the internal perspective.\end{prop}
 a geometric implication:
 \begin{multline*}
   \forall s,t\?\O_X\_
-  \speak{$t$ regular} \wedge
+  \Bigl(\speak{$t$ regular} \wedge
   (\exists a_0,\ldots,a_{n-1}\?\O_X\_
   s^n + a_{n-1} t s^{n-1} + \cdots + a_1 t^{n-1} s + a_0 t^n = 0)
   \Longrightarrow \\
-  \exists u\?\O_X\_ s = ut.
+  \exists u\?\O_X\_ s = ut\Bigr).
 \end{multline*}
 The only non-geometric subpart is the condition on~$t$ to be regular. However,
 by proposition~\ref{prop:regularity-spreading}, for the purposes of comparing
-its truth at points vs. on neighbourhoods, it behaves just like a geometric
+its truth at points \vs on neighbourhoods, it behaves just like a geometric
 formula. Therefore the claim follows.
 \end{proof}
 
@@ -3494,7 +3500,8 @@ zero.
 
 For the ``only if'' direction of the second statement,
 note that a regular element is not zero (if it were, then the true statement~$0
-\cdot 0 = 0 \cdot 1$ would imply the false statement~$0 = 1$) and thus \notnot invertible. For the ``if''
+\cdot 0 = 0 \cdot 1$ would imply the false statement~$0 = 1$) and thus \notnot
+invertible (by the contrapositive of equivalence~\eqref{eqn:field-condition}). For the ``if''
 direction, let~$st = 0$ in~$\O_X$. Since~$s$ is \notnot invertible, it follows
 that~$t$ is \notnot zero. Since~$\O_X$ is~$\neg\neg$-separated, this implies
 that~$t$ really is zero.
@@ -3509,7 +3516,7 @@ We first show that~$\K_X$ is~$\neg\neg$-separated,
 so assume~$\neg\neg(a/s = 0)$ for~$a/s \? \K_X$. Since~$\K_X$ is obtained
 from~$\O_X$ by localizing at regular elements, it holds that~$a/s = 0$
 in~$\K_X$ if and only if~$a = 0$ in~$\O_X$. Thus it follows that~$\neg\neg(a =
-0)$ in~$\O_X$ and thus~$a = 0$ in~$\O_X$; in particular, $a/s = 0$ in~$\K_X$.
+0)$ in~$\O_X$ and therefore~$a = 0$ in~$\O_X$; in particular, $a/s = 0$ in~$\K_X$.
 
 We defer the proof that~$\K_X$ is a~$\neg\neg$-sheaf to the end and first
 verify the universal property of~$\neg\neg$-sheafification.
@@ -5002,8 +5009,6 @@ remark~\ref{rem:qcoh-in-constructive-mathematics}).
 
 \XXX{check whether the negneg translation ``finitely generated ==> free''
 implies the hard but important exercise}
-
-\XXX{consistently use "i" for closed embeddings and "j" for open embeddings}
 
 \XXX{explain use of ``:'' even outside the internal language}
 

@@ -2570,7 +2570,7 @@ suffices for any local section to \emph{locally} have preimages.\end{rem}
 
 Recall that if~$\Box$ is the modal operator associated to a sub\emph{space}~$Y$
 of a topological space~$X$, then the sheaves on~$X$ which are~$\Box$-sheaves
-are easy to describe: There are precisely the sheaves in the essential image of
+are easy to describe: These are precisely the sheaves in the essential image of
 the pushforward functor~$\Sh(Y) \to \Sh(X)$. For the double negation modality,
 the same is true, only that~$Y$ is then the perhaps unfamiliar \emph{smallest
 dense sublocale} of~$X$.
@@ -2750,14 +2750,14 @@ are equivalent: The formulas~$\varphi$ and~$\varphi'$ give rise to the
 of~$\Omega$, and therefore their images under~$\Box$ are equal as well.
 
 However, it is \emph{not} clear and in fact wrong in general that the translated formulas~$\varphi^\Box$
-and~$(\varphi')^\Box$ are equivalent. This follows only by applying the soundness
-lemma (two times, once for each direction). We should stress that to apply this
+and~$(\varphi')^\Box$ are equivalent. This follows only if the soundness
+lemma can be applied (two times, once for each direction). We should stress that to apply this
 lemma, it is not enough to merely \emph{know} that~$\varphi$ and~$\varphi'$ are
 equivalent; instead, there has to be an intuitionistic proof of this
 equivalence. This is really a stronger requirement, since an
 equivalence~$\varphi \Leftrightarrow \varphi'$ might simply
 hold in a particular model, \ie in the internal language of some particular
-topos, without holding in any topos, \ie possessing an intuitionistic proof. We
+topos, without possessing an intuitionistic proof, \ie holding in any topos. We
 give an explicit example of this situation below
 (example~\ref{ex:translation-equivalence}).
 
@@ -2765,7 +2765,7 @@ give an explicit example of this situation below
 Let~$\varphi$ be a formula such that for any subformulas~$\psi$
 appearing as antecedents of implications, it holds that~$\psi^\Box \Rightarrow
 \Box\psi$. (In particular, this condition is satisfied if there are
-no~``$\Rightarrow$'' signs in~$\varphi$.) Then $\Box\varphi \Rightarrow
+no~``$\Rightarrow$'' signs in~$\varphi$ or if~$\varphi$ is a geometric formula.) Then $\Box\varphi \Rightarrow
 \varphi^\Box$.\end{lemma}
 \begin{proof}We prove this by an induction on the formula structure. All cases
 except for~``$\Rightarrow$'' are obvious. For this case, assume~$\Box(\psi

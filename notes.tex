@@ -333,11 +333,16 @@ system of classical mechanics from the internal perspective, and therefore
 tools like Gelfand duality can be used to construct an internal
 phase space for the system~\cite{bohr1,bohr2}.
 
+In stochastics, the usefulness of an internal language was recently stressed by
+Tao~\cite{tao:analysis-rel-measure-space}. Such a language allows to make the
+common notational practice of dropping the explicit dependence of the
+value~$X(\omega)$ of a random variable on the sample~$\omega$ completely
+rigorous and simplifies the basic theory. Tao also highlighted how a suitable
+language can be used to simplify ``$\varepsilon$/$\delta$ management'' in
+analysis~\cite{tao:cheap-nsa}.
+
 \XXX{mention and explain: Mulvey/Burden, Vickers, Awodey, Coquand, Caramello,
 ...}
-
-\XXX{mention Tao, for instance
-\url{http://terrytao.wordpress.com/2014/07/15/real-analysis-relative-to-a-finite-measure-space/}}
 
 \XXX{cite http://arxiv.org/abs/1404.4549}
 
@@ -529,8 +534,11 @@ A complete list of which rules are to prove is
 in~\cite[section~D1.3.1]{johnstone:elephant}.
 \end{proof}
 
+In particular, if a formula~$\psi$ has an unconditional intuitionistic proof,
+then~$U \models \psi$.
+
 The restriction to intuitionistic logic is really necessary at this point. We
-will see many examples of classically equivalent internal statements whose
+will encounter many examples of classically equivalent internal statements whose
 translation using the Kripke--Joyal semantics are wildly different. In
 particular, our treatment of modal operators to understand spreading of
 properties from points to neighbourhoods depends on having the ability to make
@@ -540,9 +548,6 @@ intuitionistic logic amounts to in practice.
 
 \XXX{Put rules into an appendix and give some explanation regarding contexts
 etc. Don't forget the rules for $\in$, $\bigwedge$, $\bigvee$.}
-
-\XXX{XXX: Is it clear that any constructively valid statement yields a valid sheaf
-statement?}
 
 Because of the multitude of quantifiers, literal translations of internal statements
 can sometimes get slightly unwieldy. There are simplification rules for certain
@@ -640,8 +645,7 @@ that for any local section~$s \in \Gamma(U,\F)$, $\Sh(X) \models
 the Kripke--Joyal semantics (proposition~\ref{prop:simplification}).
 
 An important application is showing that two sheaves~$\F$ and~$\G$ are
-isomorphic (usually as more structured objects, for instance sheaves of
-% XXX: "more structured"
+isomorphic (usually as objects with more structure, for instance sheaves of
 modules). To this end, it suffices to give a formula~$\varphi(s,t)$ satisfying,
 in addition to the condition above, the condition
 $\Sh(X) \models \forall t\?\G\_ \exists! s\?\F\_ \varphi(s,t)$,
@@ -2537,7 +2541,7 @@ if~$\Box\bot \Rightarrow \bot$.\end{ex}
 We will see geometric examples of~$\Box$-sheaves in further sections.
 For instance, on an integral scheme~$X$, the structure sheaf~$\O_X$
 is~$\neg\neg$-separated and its~$\neg\neg$-sheafification is the sheaf~$\K_X$
-of rational functions (proposition~XXX).
+of rational functions (proposition~\ref{prop:kx-is-negneg-sheafification}).
 
 \begin{lemma}For any set~$F$, it holds that: \begin{enumerate}
 \item $F^+$ is~$\Box$-separated.
@@ -2577,6 +2581,7 @@ suffices for any local section to \emph{locally} have preimages.\end{rem}
 
 
 \subsection{Sheaves for the double negation modality}
+\label{sect:negneg-sheaves}
 
 Recall that if~$\Box$ is the modal operator associated to a sub\emph{space}~$Y$
 of a topological space~$X$, then the sheaves on~$X$ which are~$\Box$-sheaves
@@ -3020,7 +3025,7 @@ we can describe the sublocale~$X_{\neg\neg}$ in very explicit terms: In this
 case, it coincides with the subspace~$\{\xi\}$.
 \XXX{discuss that sheafifying is the same as calculating the generic stalk;
 and that pushing forward is the same as calculating the constant sheaf.
-maybe do this in the section discussing negneg-sheaves.
+do this in the section discussing negneg-sheaves.
 Then continue with the story here...}
 
 \begin{proof}[Proof of theorem~\ref{thm:box-translation-semantically}]
@@ -3152,6 +3157,9 @@ example~\ref{ex:module-zero-geometric}, using the modal operators~$\Box =
 that~$\F$ is of finite type. Indeed, in this case one cannot reformulate the
 condition that~$\F$ is zero in a geometric way.\end{rem}
 
+In a remark after the proof of proposition~\ref{prop:rank-function-internally},
+we promised to present a simpler proof once we have developed the theory for
+doing so. We can now follow up on this promise.
 \begin{lemma}\label{lemma:gen-family-n}
 Let~$X$ be a scheme (or ringed space). Let~$\F$ be an~$\O_X$-module
 of finite type. Let~$x \in X$ be a point. Let~$n$ be a natural number. Then the
@@ -3200,7 +3208,6 @@ formula
 y = A \vec x$} \]
 (lemma~\ref{lemma:stalk-open-with-hypothesis}). Thus the claim follows.
 \end{proof}
-\XXX{give backreference}
 
 \begin{lemma}Let~$X$ be a scheme (or ringed space). Let~$\alpha : \F \to \G$ be
 a morphism of~$\O_X$-modules. Let~$\G$ be of finite type and assume
@@ -3613,8 +3620,6 @@ operator defined by
 \placeholder)$-separated} \]
 in the internal language of~$\Sh(X)$.
 
-\XXX{is~$\Box$ the largest operator such that~$\O_X$ is~$\Box$-separated?}
-
 \begin{prop}\label{prop:kx-is-box-sheafification}
 Let~$X$ be a ringed space. Then:
 \begin{enumerate}
@@ -3673,6 +3678,11 @@ element of~$\O_X$) now goes as follows: We have~$V \subseteq
 D(b)$. Thus~$U \models \Box V$ implies~$U \models \Box(\speak{$f$ inv.})$. By
 the fourth property, it follows that~$U \models \speak{$f$ is regular}$.
 \end{proof}
+
+\begin{rem}The modal operator~$\Box$ is the largest (weakest) operator such
+that~$\O_X$ is~$\Box$-separated, \ie if~$\Box'$ is any modal operator
+such that~$\O_X$ is~$\Box'$-separated, then~$\Box'\varphi
+\Rightarrow \Box\varphi$ for any proposition~$\varphi$.\end{rem}
 
 In the special case that~$X$ is a reduced scheme,
 proposition~\ref{prop:kx-is-box-sheafification} recovers
@@ -3852,7 +3862,7 @@ is (uncanonically) a submodule of~$\K_X$.\end{prop}
 \begin{proof}Let~$\xi$ be the generic point of~$X$ and let~$\Box := \neg\neg$
 denote the modal operator such that internal sheafification with respect
 to~$\Box$ is the same as pulling back to~$\{\xi\}$ and then pushing forward
-to~$X$ again (see~\XXX{ref}). Let~$\L$ be a line bundle on~$X$. Since~$\L_\xi \cong
+to~$X$ again (see section~\ref{sect:negneg-sheaves}). Let~$\L$ be a line bundle on~$X$. Since~$\L_\xi \cong
 \O_{X,\xi}$ (uncanonically), there is some injection~$\L_\xi \to \K_{X,\xi}$;
 this corresponds internally to an injection~$\L^{++} \to \K_X^{++}$.
 Since~$\K_X$ is already a~$\Box$-sheaf (see
@@ -4121,16 +4131,15 @@ any module admits a resolution by (not necessarily finite) free modules is
 intuitionistically acceptable and thus also valid in the internal
 universe.\end{rem}
 
-In practice, the internal condition given by the proposition is not very
-useful, since at the moment, we do not know of any internal characterization of
+At the moment, we do not know of any useful internal characterization of
 locally constant sheaves. The internal condition given by the following
-proposition does not have this defect.
+theorem does not need such a characterization.
 
 \begin{thm}\label{thm:qcoh-sheafchar}
 Let~$X$ be scheme. Let~$\F$ be an~$\O_X$-module. Then~$\F$ is
-quasicoherent if and only if, from the internal perspective, the localized
-module~$\F[f^{-1}]$ is a sheaf for the modal operator~$(\speak{$f$ inv.}
-\Rightarrow \placeholder)$ for any~$f\?\O_X$.
+quasicoherent if and only if, from the internal perspective, for any~$f\?\O_X$,
+the localized module~$\F[f^{-1}]$ is a sheaf for the modal operator~$(\speak{$f$ inv.}
+\Rightarrow \placeholder)$.
 \end{thm}
 
 In detail, the internal condition is that for any~$f\?\O_X$, it holds that
@@ -4143,16 +4152,18 @@ and for any subsingleton~$\S \subseteq \F[f^{-1}]$ it holds that
 Unlike with the internalizations of finite type, finite presentation and
 coherence, this condition is \emph{not} a standard condition of commutative
 algebra. In fact, in classical logic, this condition is always satisfied --
-for trivial logical reasons if~$f$ is invertible and because~$\F[f^{-1}]$ is
-the zero module if~$f$ is not invertible (since then, it is nilpotent). This is
-to be expected: \emph{Any} module~$M$ in commutative algebra is quasicoherent in
-the sense that the associated sheaf of modules~$M^\sim$ is quasicoherent.
-\XXX{More to the point, commutative algebra does not deal with
-quasicoherence, since quasicoherence is an interesting condition only on on
-arbitrary schemes, not on affine schemes.}
+for trivial logical reasons if~$f$ is invertible, and because~$\F[f^{-1}]$ is
+the zero module if~$f$ is not invertible (since then, it is nilpotent).
 
-We give the proof below, after first discussing some examples and consequences.
-The proof will explain the origin of this condition.
+That this condition in not known in commutative algebra is to be expected:
+Quasicoherence is a condition on sheaves of modules, ensuring
+that they are locally isomorphic to sheaves of the form~$M^\sim$,
+where~$M$ is a plain module. But in commutative algebra, one \emph{only} studies plain
+modules (and not sheaves of modules). The quasicoherence condition is imported
+into the realm of commutative algebra only by the internal language.
+
+We give the proof of the theorem below, after first discussing some examples
+and consequences. The proof will explain the origin of this condition.
 
 \begin{ex}The zero~$\O_X$-module is quasicoherent, since (it and) all
 localizations of it are singleton sets from the internal perspective and
@@ -4228,9 +4239,9 @@ trivially satisfied.
 \end{proof}
 
 \begin{rem}\label{rem:qcoh-in-constructive-mathematics}
-The notion of quasicoherence as given by the internal condition of
-theorem~\ref{thm:qcoh-sheafchar} is not usually studied in constructive
-mathematics. Indeed, outside of the internal universe of a scheme, the notion
+In general intuitionistic mathematics -- not inside the internal universe of a
+scheme -- the notion of quasicoherence as given by the internal condition of
+theorem~\ref{thm:qcoh-sheafchar}
 does not seem to be very interesting: For many important rings, there a few
 quasicoherent modules in this sense. For instance, let~$M$ be a module over a
 ring~$R$ such that every element of~$R$ is invertible or not invertible. (The
@@ -4244,16 +4255,16 @@ fails to be quasicoherent.
 \begin{proof}[Proof of theorem~\ref{thm:qcoh-sheafchar}]
 By the well-known characterization of quasicoherence in terms of inclusions of
 distinguished open subsets, an~$\O_X$-module~$\F$ is quasicoherent if and only
-if for any affine open subset~$U \subseteq X$ and function~$f \in
+if for any affine open subset~$U \subseteq X$ and any function~$f \in
 \Gamma(U,\O_U)$, the canonical map
 \begin{equation}\label{eqn:restr-map}
   \Gamma(U,\F)[f^{-1}] \lra \Gamma(D(f),\F), \ s/f^n \longmapsto
   f^{-n} s|_{D(f)}
 \end{equation}
 is bijective. We will see that this map is injective for all such~$U$ and~$f$
-if and only if from the internal perspective, the set~$\F[f^{-1}]$ is a
+if and only if from the internal perspective, for any~$f\?\O_X$, the set~$\F[f^{-1}]$ is a
 separated presheaf with respect to the modal operator~$(\speak{$f$ inv.}
-\Rightarrow \placeholder)$ for any~$f\?\O_X$; and we will see that in this
+\Rightarrow \placeholder)$; and we will see that in this
 case, the map is additionally surjective for all such~$U$ and~$f$ if the full
 sheaf condition is fulfilled.
 
@@ -4282,7 +4293,7 @@ s'\?\F\_ s' \in \K \wedge s = s'/1 \} \subseteq \F[f^{-1}]$. The remaining
 details can easily be filled out.
 
 We now interpret the internal statement~\eqref{eqn:separated} using the
-Kripke--Joyal semantics: Using the simplification rules, the external meaning
+Kripke--Joyal semantics. Using the simplification rules, the external meaning
 is that for any affine open subset~$U \subseteq X$ and any function~$f \in
 \Gamma(U,\O_U)$ the following condition is satisfied: For any section~$s \in
 \Gamma(U,\F)$ it should hold that
@@ -5029,7 +5040,7 @@ implies the hard but important exercise}
 \end{document}
 
 Snippet that may be useful later:
-By appealing to the axiom of unique choice (see~XXX), we can
+By appealing to the axiom of unique choice (see~YYY), we can
 define a morphism of sheaves~$\O_X(D) \otimes \O_X(D') \to \O_X(D + D')$ by
 internally describing a suitable map using representatives~$D = [f]$,~$D' =
 [f']$, as long as the resulting map does not depend on the choice of representatives.

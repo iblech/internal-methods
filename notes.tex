@@ -877,6 +877,16 @@ Bridges~\cite{bishop-bridges:constructive-analysis}. Further explanations and
 pointers to relevant literature can be found in an expository article and a
 recorded lecture by Andrej Bauer~\cite{bauer:int-mathematics,bauer:video}.
 
+\begin{rem}For ease of exposition, we work in a classical metatheory. This
+means that we allow ourselves to occasionally use the law of excluded middle
+and the axiom of choice when reasoning \emph{about} the internal language. In
+particular, we have the theory of schemes as commonly presented at our
+disposal. But we should note that this concession is really a cop out, and that
+it would be better to develop an intuitionistic theory of schemes. If this were
+done, one could extend our approach to understand morphisms of schemes from an
+internal point of view -- a morphism~$Y \to X$ would internally look like a
+morphism~$Y \to \pt$. See section~\ref{sect:relative-spectrum} for details.\end{rem}
+
 
 \section{Sheaves of rings}
 
@@ -4573,6 +4583,7 @@ radical ideal. \XXX{is~$\I$ quasicoherent, if~$X$ is a scheme?}\end{proof}
 
 
 \section{Relative spectrum}
+\label{sect:relative-spectrum}
 
 Recall that if~$\A$ is a quasicoherent~$\O_X$-algebra on a scheme~$X$, one can
 construct the \emph{relative spectrum}~$\RelSpec{X}{\A}$ by appropriately
@@ -5004,9 +5015,6 @@ remark~\ref{rem:qcoh-in-constructive-mathematics}).
 \printbibliography
 
 \XXX{``completed natural number'' is a misnomer.}
-
-\XXX{remark that for simplicity, we work in a classical metatheory; and that
-this is really a cop out, bad for various reasons}
 
 \XXX{check whether the negneg translation ``finitely generated ==> free''
 implies the hard but important exercise}

@@ -994,7 +994,7 @@ rings of local sections~$\Gamma(U,\O_X)$ have this property in general.
 \end{prop}
 \begin{proof}By the locality of the internal language and since~$X$ can be
 covered by open affine subsets, it is enough to show that for any affine
-scheme~$X = \Spec A$ and global function~$s \in \Gamma(X,\O_X) = A$ it holds
+scheme~$X = \Spec A$ and any global function~$s \in \Gamma(X,\O_X) = A$ it holds
 that
 \[ X \models \neg(\speak{$s$ invertible}) \quad\text{implies}\quad
   X \models \speak{$s$ nilpotent}. \]
@@ -1050,7 +1050,7 @@ Let~$X$ be a scheme. Then
   \bigvee_{n \geq 0} f^n s = 0. \]
 \end{prop}
 \begin{proof}It is enough to show that for any affine scheme~$X = \Spec A$ and
-global functions~$f, s \in A$ such that
+any global functions~$f, s \in A$ such that
 \[ X \models (\speak{$f$ inv.} \Rightarrow s = 0), \]
 it holds that $X \models \textstyle \bigvee_{n \geq 0} f^n s = 0$. This
 indeed follows, since by assumption such a function~$s$ is zero on~$D(f)$, \ie $s$
@@ -3267,7 +3267,7 @@ of finite presentation around~$x$.\end{lemma}
 \begin{proof}It suffices to give an intuitionistic proof of the following fact:
 The construction~$\Hom_R(M,\placeholder)$ is geometric if~$M$ is a finitely
 presented~$R$-module. So assume that~$M$ is the cokernel of a presentation
-matrix~$(a_{ij}) \in R^{n \times m}$. Then we can calculate the Hom with
+matrix~$(a_{ij}) \? R^{n \times m}$. Then we can calculate the Hom with
 any~$R$-module~$N$ as
 \[ \Hom_R(M,N) \cong \Bigl\{ x \? N^n \ \Big|\ \bigwedge_{j=1}^m \sum_{i=1}^n a_{ij}
 x_i = 0 \? N \Bigr\}, \]
@@ -3332,9 +3332,9 @@ For the ``if'' direction, let~$x\?\F$ be an arbitrary element; by assumption,~$x
 is \notnot zero. Since~$X$ is integral,
 lemma~\ref{lemma:dense-standard-reflection} is applicable. Therefore there
 exists an element~$a\?\O_X$ such that~$a$ is \notnot invertible and such that
-invertibility of~$a$ implies~$x = 0$. This~$\F$ is quasicoherent, for some
-natural number~$n$ it holds that~$a^n x = 0$. Since~$a$ is \notnot invertible,
-it is regular \XXX{give reference}, and therefore~$a^n$ is regular. So~$x \in \F_\tors$.
+invertibility of~$a$ implies~$x = 0$. Since~$\F$ is quasicoherent, for some
+natural number~$n$ it holds that~$a^n x = 0$ (theorem~\ref{thm:qcoh-sheafchar}). Since~$a$ is \notnot invertible,
+it is regular (lemma~\ref{lemma:regular-notnot-invertible}), and therefore~$a^n$ is regular. So~$x \in \F_\tors$.
 \end{proof}
 
 \begin{itemize}
@@ -3343,7 +3343,6 @@ it is regular \XXX{give reference}, and therefore~$a^n$ is regular. So~$x \in \F
 of excluded middle is valid; explain consequences
 \item spreading of properties from stalk to neighbourhood: give many examples
 \item give proof of the expressions for the nuclei listed in the table
-\item baby version of Barr's theorem
 \end{itemize}
 
 
@@ -3498,7 +3497,7 @@ saying that~\emph{$\K_X$ is the~$\neg\neg$-sheafification of~$\O_X$}
 as far as possible in the internal language, and generalize it to arbitrary
 (not necessarily locally Noetherian) schemes.
 
-\begin{lemma}Let~$X$ be a reduced scheme. Then:
+\begin{lemma}\label{lemma:regular-notnot-invertible}Let~$X$ be a reduced scheme. Then:
 \begin{enumerate}
 \item $\O_X$ is~$\neg\neg$-separated.
 \item Internally, an element~$s\?\O_X$ is regular
@@ -3807,8 +3806,9 @@ of~$\O_X^*$.\end{defn}
 
 The submodule~$\O_X(D)$ is indeed locally free of rank~$1$, since
 internally~$f^{-1}$ gives an one-element basis. Note that~$D$ is effective if
-and only if~$\O_X(-D)$ is a subset of~$\O_X$ from the internal perspective. In
-% XXX: As subsets of $\K_X$.
+and only if~$\O_X(-D)$ is a subset of~$\O_X$ from the internal perspective
+(this comparison makes sense, since~$\O_X(-D)$ and~$\O_X$ are both canonically
+embedded in~$\K_X$). In
 this case, we can define the \emph{support} of~$D$ to be the closed subscheme
 of~$X$ associated to the sheaf of ideals~$\O_X(-D) \subseteq \O_X$.
 
@@ -3840,7 +3840,8 @@ are obvious.\end{proof}
 correspondence between Cartier divisors on~$X$ and rank-one submodules
 of~$\K_X$. This correpondence descends to an one-to-one correspondence between
 Cartier divisiors up to linear equivalance and rank-one submodules of~$\K_X$ up
-to isomorphism.\end{prop}
+to isomorphism (as abstract~$\O_X$-modules, ignoring their embedding
+into~$\K_X$).\end{prop}
 \begin{proof}The first statement is obvious from the definitions. For the
 second statement, it suffices to show that~$\O_X(D)$ is isomorphic to~$\O_X$ if
 and only if~$D$ is principal. A given isomorphism~$\O_X \to \O_X(D)$ gives a
@@ -4278,7 +4279,7 @@ condition is equivalent to
   \bigvee_{n \geq 0} f^n s = 0 \? \F.
 \end{equation}
 The equivalence can easily be proven in the internal language. The sheaf
-condition is equivalent to (the conjunction of the separatedness condition and)
+condition is equivalent to the conjunction of the separatedness condition and
 \begin{multline}\label{eqn:sheaf}
   \forall f\?\O_X\_ \forall \K \subseteq \F\_
   (\speak{$f$ inv.} \Rightarrow \speak{$K$ is a singleton})
@@ -4292,7 +4293,7 @@ s\?\F \,|\, s/1 \in \S \} \subseteq \F$. In the other direction, a set~$\K
 s'\?\F\_ s' \in \K \wedge s = s'/1 \} \subseteq \F[f^{-1}]$. The remaining
 details can easily be filled out.
 
-We now interpret the internal statement~\eqref{eqn:separated} using the
+We now interpret the internal statement~\eqref{eqn:separated} with the
 Kripke--Joyal semantics. Using the simplification rules, the external meaning
 is that for any affine open subset~$U \subseteq X$ and any function~$f \in
 \Gamma(U,\O_U)$ the following condition is satisfied: For any section~$s \in
@@ -4346,6 +4347,8 @@ fraction~$s/f^{n+m}$, since~$f^{-(n+m)} s|_{D(f)}$ equals~$u$
 in~$\Gamma(D(f),\F)$ (as this is true on the covering~$D(f) = \bigcup_i (D(f)
 \cap U_i)$).
 \end{proof}
+% XXX: Give simpler proof using Gamma(U, F[f^(-1)]) = Gamma(U, F)[f^(-1)];
+% use that F[f^(-1)] is a filtered colimit.
 
 \begin{itemize}
 \item is the condition good enough to show that modules of finite type are

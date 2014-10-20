@@ -334,19 +334,39 @@ tools like Gelfand duality can be used to construct an internal
 phase space for the system~\cite{bohr1,bohr2}.
 
 In stochastics, the usefulness of an internal language was recently stressed by
-Tao~\cite{tao:analysis-rel-measure-space}. Such a language allows to make the
+Tao~\cite{tao:analysis-rel-measure-space}. Such a language makes the
 common notational practice of dropping the explicit dependence of the
 value~$X(\omega)$ of a random variable on the sample~$\omega$ completely
 rigorous and simplifies the basic theory. Tao also highlighted how a suitable
 language can be used to simplify ``$\varepsilon$/$\delta$ management'' in
-analysis~\cite{tao:cheap-nsa}.
+analysis~\cite{tao:cheap-nsa}. Furthermore, there is a topos-theoretic approach to
+measure theory, in which the sheaf of measurable real functions on
+a~$\sigma$-algebra looks like the ordinary set of real numbers from an internal point
+of view~\cite{jackson:sheaf-theoretic-measure-theory}.
+
+In constructive mathamatics, the internal language of toposes is routinely used
+to obtain models of intuitionistic theories fulfilling certain anti-classical
+axioms. For instance, there are toposes in which the axiom ``any map~$\RR \to
+\RR$ is continuous'' (appropriately formulated) holds~\cite{kock:sdg,moerdijk:reyes:models}
+and toposes in which the Church--Turing thesis holds (realizability toposes).
+The internal language can also be used to extract computational content
+out of classical constructions. To cite just one recent example, Mannaa and
+Coquand used it to implement algorithms which work with the algebraic closure
+of an arbitrary field~\cite{mannaa:coquand:alg-closure}.
+
+More specifically, our contribution is related to the program of constructive
+mathematics in that intuitionistic mathematics gains new areas of application.
+For instance, the constructive account of the theory of Krull dimension was
+originally developed to simplify proofs, extract computational meaning, and
+generalize classical theorems to non-Noetherian
+contexts~\cite{dyn:krull-integral,dyn:char-krull}. It can now also be used to
+reason about the dimension of schemes, since the topological dimension of a
+scheme~$X$ coincides with the Krull dimension of the structure sheaf~$\O_X$
+(regarded as an ordinary ring from the internal perspective of~$\Sh(X)$,
+section~\ref{sect:krull-dimension}).
 
 \XXX{mention and explain: Mulvey/Burden, Vickers, Awodey, Coquand, Caramello,
 ...}
-
-\XXX{cite http://arxiv.org/abs/1404.4549}
-
-\XXX{mention Jackson's thesis}
 
 \XXX{uses of the big Zariski topos, étale versions, further work, ...}
 
@@ -1065,7 +1085,8 @@ is zero as an element of~$A[f^{-1}]$.
 \end{proof}
 
 
-\subsection{Krull dimension} Recall that the \emph{Krull dimension} of a
+\subsection{Krull dimension}\label{sect:krull-dimension}
+Recall that the \emph{Krull dimension} of a
 ring is usually defined as the supremum of the lengths of strictly
 ascending chains of prime ideals. As with the classical definition of a local ring,
 this definition does not lead to a well-behaved notion in an intuitionistic

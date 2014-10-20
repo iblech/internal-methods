@@ -110,6 +110,8 @@
 \newcommand{\ie}{i.\,e.\@\xspace}
 \newcommand{\eg}{e.\,g.\@\xspace}
 \newcommand{\vs}{vs.\@\xspace}
+\newcommand{\resp}{resp.\@\xspace}
+\newcommand{\inv}{inv.\@\xspace}
 \newcommand{\notnot}{\emph{not not}\xspace}
 
 \newcommand{\XXX}[1]{\textbf{XXX: #1}}
@@ -745,8 +747,8 @@ lemma,~$\varphi(s)$ holds at every point of~$U$.
 \begin{ex}Injectivity and surjectivity are geometric implications (surjectivity
 can be spelled~$\forall y\?\G\_ (\top \Rightarrow \exists x\?\F\_ \alpha(x) =
 y)$). Thus the corollary gives a deeper reason for the well-known fact that a
-morphism of sheaves is a monomorphism resp. an epimorphism if and only if it is
-stalkwise injective resp. surjective.\end{ex}
+morphism of sheaves is a monomorphism \resp an epimorphism if and only if it is
+stalkwise injective \resp surjective.\end{ex}
 
 A construction is \emph{geometric} if and only if it commutes with pullback
 under arbitrary geometric morphisms. We do not want to discuss the notion of
@@ -1061,13 +1063,13 @@ Let~$X$ be a scheme. Then
 \[ \Sh(X) \models
   \forall f\?\O_X\_
   \forall s\?\O_X\_
-  (\speak{$f$ inv.} \Rightarrow s = 0) \Longrightarrow
+  (\speak{$f$ \inv} \Rightarrow s = 0) \Longrightarrow
   \textstyle
   \bigvee_{n \geq 0} f^n s = 0. \]
 \end{prop}
 \begin{proof}It is enough to show that for any affine scheme~$X = \Spec A$ and
 any global functions~$f, s \in A$ such that
-\[ X \models (\speak{$f$ inv.} \Rightarrow s = 0), \]
+\[ X \models (\speak{$f$ \inv} \Rightarrow s = 0), \]
 it holds that $X \models \textstyle \bigvee_{n \geq 0} f^n s = 0$. This
 indeed follows, since by assumption such a function~$s$ is zero on~$D(f)$, \ie $s$
 is zero as an element of~$A[f^{-1}]$.
@@ -1188,7 +1190,7 @@ For the following corollary, note that if a scheme~$X$ is not empty, $\dim X
 \begin{cor}\label{cor:scheme-dimension-zero}
 Let~$X$ be a scheme. Then:
 \[ \dim X \leq 0 \quad\Longleftrightarrow\quad
-  \Sh(X) \models \forall s\?\O_X\_ \speak{$s$ inv.} \vee \speak{$s$ nilpotent}.
+  \Sh(X) \models \forall s\?\O_X\_ \speak{$s$ \inv} \vee \speak{$s$ nilpotent}.
   \]
 If furthermore~$X$ is reduced, this is further equivalent to~$\O_X$ being a
 field in the strong sense that any element of~$\O_X$ is invertible or zero.
@@ -1690,8 +1692,8 @@ type, so is~$\G$; similarly, if~$\F$ and~$\H$ are finite locally free, so
 is~$\G$.
 \end{lemma}
 \begin{proof}From the internal perspective, we are given a short exact sequence
-of modules with the outer ones being finitely generated (resp. finite free)
-and we have to show that the middle one is finitely generated (resp. finite
+of modules with the outer ones being finitely generated (\resp finite free)
+and we have to show that the middle one is finitely generated (\resp finite
 free) as well. It is well-known that this follows; and since the usual proof of
 this fact is intuitionistically acceptable, we are done.
 \end{proof}
@@ -2012,7 +2014,7 @@ semicontinuous~$\NN$-valued functions on~$X$.\end{lemma}
 When referring to the natural numbers in the internal language, we actually
 refer to the constant sheaf~$\ul{\NN}$ on~$X$. (This is because the
 sheaf~$\ul{\NN}$ fulfills the axioms of a natural numbers object,
-cf.~\cite[section~VI.1]{moerdijk-maclane:sheaves-logic}.) Recall that its sections on an
+cf.\@~\cite[section~VI.1]{moerdijk-maclane:sheaves-logic}.) Recall that its sections on an
 open subset~$U \subseteq X$ are continuous functions~$U \to \NN$, where~$\NN$
 is equipped with the discrete topology.
 
@@ -3145,7 +3147,7 @@ The case for~``$\forall$'' is similar.
 \end{proof}
 
 \begin{ex}\label{ex:translation-equivalence}Let~$X$ be a scheme. Let~$f$ be
-global functions on~$X$. Let~$\varphi :\equiv \neg(\speak{$f$ inv.})$
+global functions on~$X$. Let~$\varphi :\equiv \neg(\speak{$f$ \inv})$
 and~$\varphi' :\equiv \speak{$f$ nilpotent}$. Then, by proposition~\ref{prop:cond-zero}, we
 have~$\Sh(X) \models (\varphi \Leftrightarrow \varphi')$. But in general, this
 does not imply that~$\Sh(X) \models (\varphi^\Box \Leftrightarrow
@@ -3318,7 +3320,7 @@ But it can equivalently be reformulated as
 This reformulation is geometric, therefore it holds at~$x$ if and only if it
 holds on some open neighbourhood of~$x$. The claim follows since, by the
 previous proposition, taking stalks commutes with
-calculating~$\HOM_{\O_X}(\F,\placeholder)$ resp.~$\HOM_{\O_X}(\O_X^n,\placeholder)$;
+calculating~$\HOM_{\O_X}(\F,\placeholder)$ \resp~$\HOM_{\O_X}(\O_X^n,\placeholder)$;
 thus the pulled back formula indeed expresses that~$\F_x$ is finite free as
 an~$\O_{X,x}$-module.
 \end{proof}
@@ -3329,7 +3331,7 @@ an~$\O_{X,x}$-module.
 Let~$X$ be an integral scheme. Let~$\varphi$ be any formula
 over~$X$. Then
 \[ \Sh(X) \models \neg\neg\varphi \Longrightarrow \exists f\?\O_X\_
-  \neg\neg(\speak{$f$ inv.}) \wedge (\speak{$f$ inv.} \Rightarrow \varphi). \]
+  \neg\neg(\speak{$f$ \inv}) \wedge (\speak{$f$ \inv} \Rightarrow \varphi). \]
 \end{lemma}
 \begin{proof}We may assume that~$X$ is the spectrum of an integral domain~$A$
 and that there is a dense open subset~$U \subseteq X$ on which~$\varphi$ holds.
@@ -3650,7 +3652,7 @@ Let~$X$ be a ringed space. Then:
 \item The operator~$\Box$ fulfills the axioms on a modal operator.
 \item $\O_X$ is~$\Box$-separated.
 \item $\K_X$ is~$\Box$-separated.
-\item Internally, it holds that~$\Box(\speak{$f$ inv.})$ implies that~$f$ is
+\item Internally, it holds that~$\Box(\speak{$f$ \inv})$ implies that~$f$ is
 regular for any~$f\?\O_X$.
 % update addtocounter below if numbering changes
 \end{enumerate}
@@ -3675,15 +3677,15 @@ Obviously it holds that~$(s = 0) \Rightarrow (s = 0)$. Thus, since~$\O_X$ is
 separated with respect to~$((s = 0) \Rightarrow \placeholder)$, it follows
 that~$s = 0$. The proof of the third property is similar.
 
-For the fourth property, assume~$\Box(\speak{$f$ inv.})$ and let~$h\?\O_X$ be
-arbitrary such that~$fh = 0$. Then, trivially, it holds that~$\speak{$f$ inv.}
+For the fourth property, assume~$\Box(\speak{$f$ \inv})$ and let~$h\?\O_X$ be
+arbitrary such that~$fh = 0$. Then, trivially, it holds that~$\speak{$f$ \inv}
 \Rightarrow h = 0$. Since~$\O_X$ is separated with respect to~$(\speak{$f$
-inv.} \Rightarrow \placeholder)$, it follows that~$h = 0$.
+\inv} \Rightarrow \placeholder)$, it follows that~$h = 0$.
 
 We may now suppose that~$X$ is a scheme. To verify the fifth property, let a
 regular function~$f\?\O_X$ be given. We have to show that~$\O_X$ is separated
-with respect to the modality~$(\speak{$f$ inv.} \Rightarrow \placeholder)$. So
-assume that~$\speak{$f$ inv.} \Rightarrow (s = 0)$ for some~$s\?\O_X$. By
+with respect to the modality~$(\speak{$f$ \inv} \Rightarrow \placeholder)$. So
+assume that~$\speak{$f$ \inv} \Rightarrow (s = 0)$ for some~$s\?\O_X$. By
 proposition~\ref{prop:cond-zero}, it follows that~$f^n s = 0$ for some natural
 number~$n$. Since~$f$ is regular, it follows that~$s = 0$.
 
@@ -3699,7 +3701,7 @@ notation, we may now suppose that~$V$ is an open subset such that~$U \models \Bo
 V$ (previously, we supposed that~$U \models \neg\neg V$). The proof that the
 denominator~$b$ is regular (as seen from the internal perspective, as an
 element of~$\O_X$) now goes as follows: We have~$V \subseteq
-D(b)$. Thus~$U \models \Box V$ implies~$U \models \Box(\speak{$f$ inv.})$. By
+D(b)$. Thus~$U \models \Box V$ implies~$U \models \Box(\speak{$f$ \inv})$. By
 the fourth property, it follows that~$U \models \speak{$f$ is regular}$.
 \end{proof}
 
@@ -3825,7 +3827,7 @@ is the~$\O_X$-submodule
 \]
 of~$\K_X$. Here we are abusing language for~``$gD \in \O_X$'' to mean that~$gf
 \in \O_X$ if~$D = [f]$ with~$f\?\K_X$; and for~``$D^{-1} \O_X$'' to
-mean~$f^{-1}\O_X$. This condition resp. submodule does not depend on the
+mean~$f^{-1}\O_X$. This condition \resp submodule does not depend on the
 representative~$f$, since~$f$ is well-defined up to multiplication by an element
 of~$\O_X^*$.\end{defn}
 
@@ -4173,17 +4175,17 @@ theorem does not need such a characterization.
 \begin{thm}\label{thm:qcoh-sheafchar}
 Let~$X$ be scheme. Let~$\F$ be an~$\O_X$-module. Then~$\F$ is
 quasicoherent if and only if, from the internal perspective, for any~$f\?\O_X$,
-the localized module~$\F[f^{-1}]$ is a sheaf for the modal operator~$(\speak{$f$ inv.}
+the localized module~$\F[f^{-1}]$ is a sheaf for the modal operator~$(\speak{$f$ \inv}
 \Rightarrow \placeholder)$.
 \end{thm}
 
 In detail, the internal condition is that for any~$f\?\O_X$, it holds that
 \[ \forall s\?\F[f^{-1}]\_
-  (\speak{$f$ inv.} \Rightarrow s = 0) \Longrightarrow s = 0 \]
+  (\speak{$f$ \inv} \Rightarrow s = 0) \Longrightarrow s = 0 \]
 and for any subsingleton~$\S \subseteq \F[f^{-1}]$ it holds that
-\[ (\speak{$f$ inv.} \Rightarrow \speak{$\S$ inhabited}) \Longrightarrow
+\[ (\speak{$f$ \inv} \Rightarrow \speak{$\S$ inhabited}) \Longrightarrow
   \exists s\?\F[f^{-1}]\_
-  (\speak{$f$ inv.} \Rightarrow s \in \S). \]
+  (\speak{$f$ \inv} \Rightarrow s \in \S). \]
 Unlike with the internalizations of finite type, finite presentation and
 coherence, this condition is \emph{not} a standard condition of commutative
 algebra. In fact, in classical logic, this condition is always satisfied --
@@ -4210,17 +4212,17 @@ Let~$\G \subseteq \F$ be a submodule. Then~$\G$ is quasicoherent if and only
 if
 \[ \Sh(X) \models \forall f\?\O_X\_
   \forall s\?\F\_
-  (\speak{$f$ inv.} \Rightarrow s \in \G) \Longrightarrow
+  (\speak{$f$ \inv} \Rightarrow s \in \G) \Longrightarrow
   \bigvee_{n \geq 0} f^n s \in \G. \]
 \end{cor}
 \begin{proof}We can give a purely internal proof. Let~$f\?\O_X$.
 Since subpresheaves of separated sheaves are separated, the module~$\G[f^{-1}]$
-is in any case separated with respect to the modal operator~$(\speak{$f$ inv.}
+is in any case separated with respect to the modal operator~$(\speak{$f$ \inv}
 \Rightarrow \placeholder)$.
 
 Now suppose that~$\G$ is quasicoherent. Let~$f\?\O_X$. Let $s\?\F$ and assume that
 if~$f$ were invertible,~$s$ would be an element of~$\G$. Define the
-subsingleton~$S := \{ t\?\G[f^{-1}] \,|\, \speak{$f$ inv.} \wedge t=s/1 \}$.
+subsingleton~$S := \{ t\?\G[f^{-1}] \,|\, \speak{$f$ \inv} \wedge t=s/1 \}$.
 Then~$S$ would be inhabited by~$s/1$ if~$f$ were invertible. Since~$\G[f^{-1}]$
 is a sheaf, it follows that there exists an element~$u/f^n$ of~$\G[f^{-1}]$
 such that, if~$f$ were invertible, it would be the case that~$u/f^n = s/1 \in
@@ -4247,7 +4249,7 @@ formula
 \[ I := \Ann_{\O_X}(s) = \{ t\?\O_X \,|\, st = 0 \} \subseteq \O_X \]
 is quasicoherent. To prove this in the internal language, it suffices to
 verify the condition of the proposition.
-So let~$f\?\O_X$ and~$t\?\O_X$ be arbitrary and assume~$\speak{$f$ inv.} \Rightarrow t \in I$,
+So let~$f\?\O_X$ and~$t\?\O_X$ be arbitrary and assume~$\speak{$f$ \inv} \Rightarrow t \in I$,
 \ie assume that if~$f$ were invertible,~$st$ would be zero. By
 proposition~\ref{prop:cond-zero} it follows that~$f^n st = 0$ for
 some~$n\?\NN$, \ie that~$f^n t \in I$.
@@ -4257,11 +4259,11 @@ some~$n\?\NN$, \ie that~$f^n t \in I$.
 be a quasicoherent ideal sheaf.  Then the radical of~$\I$, internally definable
 as \[ \sqrt{\I} := \Bigl\{ s\?\O_X \,\Big|\, \bigvee_{n \geq 0} s^n \in \I \Bigr\}, \] is
 quasicoherent as well: Let~$f\?\O_X$ and~$s\?\O_X$ be arbitrary and
-assume~$\speak{$f$ inv.} \Rightarrow s \in \sqrt{\I}$, \ie assume that if~$f$
+assume~$\speak{$f$ \inv} \Rightarrow s \in \sqrt{\I}$, \ie assume that if~$f$
 were invertible, some power~$s^n$ would be an element of~$\I$. Since
 \emph{assuming that~$f$ is invertible commutes with directed disjunctions}
 (example~\ref{ex:df-locally-compact}), it follows that for some natural
-number~$n$, it holds that~$\speak{$f$ inv.} \Rightarrow s^n \in \I$. By
+number~$n$, it holds that~$\speak{$f$ \inv} \Rightarrow s^n \in \I$. By
 quasicoherence of~$\I$, we may deduce that for some natural number~$m$, it
 holds that~$f^m s^n \in \I$. Thus~$fs \in \sqrt{\I}$.\end{ex}
 
@@ -4298,7 +4300,7 @@ if for any affine open subset~$U \subseteq X$ and any function~$f \in
 \end{equation}
 is bijective. We will see that this map is injective for all such~$U$ and~$f$
 if and only if from the internal perspective, for any~$f\?\O_X$, the set~$\F[f^{-1}]$ is a
-separated presheaf with respect to the modal operator~$(\speak{$f$ inv.}
+separated presheaf with respect to the modal operator~$(\speak{$f$ \inv}
 \Rightarrow \placeholder)$; and we will see that in this
 case, the map is additionally surjective for all such~$U$ and~$f$ if the full
 sheaf condition is fulfilled.
@@ -4309,17 +4311,17 @@ of~$\F$ instead of~$\F[f^{-1}]$. To this end, note that the separatedness
 condition is equivalent to
 \begin{equation}\label{eqn:separated}
   \forall f\?\O_X\_ \forall s\?\F\_
-  (\speak{$f$ inv.} \Rightarrow s = 0 \? \F) \Longrightarrow
+  (\speak{$f$ \inv} \Rightarrow s = 0 \? \F) \Longrightarrow
   \bigvee_{n \geq 0} f^n s = 0 \? \F.
 \end{equation}
 The equivalence can easily be proven in the internal language. The sheaf
 condition is equivalent to the conjunction of the separatedness condition and
 \begin{multline}\label{eqn:sheaf}
   \forall f\?\O_X\_ \forall \K \subseteq \F\_
-  (\speak{$f$ inv.} \Rightarrow \speak{$K$ is a singleton})
+  (\speak{$f$ \inv} \Rightarrow \speak{$K$ is a singleton})
   \Longrightarrow \\
   \bigvee_{n \geq 0} \exists s\?\F\_
-  \speak{$f$ inv.} \Rightarrow f^{-n} s \in \K.
+  \speak{$f$ \inv} \Rightarrow f^{-n} s \in \K.
 \end{multline}
 In one direction, a set~$\S \subseteq \F[f^{-1}]$ is given; construct~$K := \{
 s\?\F \,|\, s/1 \in \S \} \subseteq \F$. In the other direction, a set~$\K
@@ -4332,7 +4334,7 @@ Kripke--Joyal semantics. Using the simplification rules, the external meaning
 is that for any affine open subset~$U \subseteq X$ and any function~$f \in
 \Gamma(U,\O_U)$ the following condition is satisfied: For any section~$s \in
 \Gamma(U,\F)$ it should hold that
-\[ U \models (\speak{$f$ inv.} \Rightarrow s = 0) \quad\text{implies}\quad
+\[ U \models (\speak{$f$ \inv} \Rightarrow s = 0) \quad\text{implies}\quad
   U \models \bigvee_{n \geq 0} f^n s = 0. \]
 The antecedent is equivalent to saying that~$s$ is zero in~$\Gamma(D(f),\F)$.
 The consequent is (by quasicompactness of~$U$, see
@@ -4346,10 +4348,10 @@ subset~$U \subseteq X$ and any function~$f \in \Gamma(U,\O_U)$ the following
 condition is satisfied: For any subsheaf~$\K \subseteq \F|_U$ it should hold
 that
 \begin{multline*}
-  U \models (\speak{$f$ inv.} \Rightarrow \speak{$\K$ is a singleton})
+  U \models (\speak{$f$ \inv} \Rightarrow \speak{$\K$ is a singleton})
   \quad\text{implies} \\
   U \models \bigvee_{n \geq 0} \exists s\?\F\_
-  \speak{$f$ inv.} \Rightarrow f^{-n} s \in \K.
+  \speak{$f$ \inv} \Rightarrow f^{-n} s \in \K.
 \end{multline*}
 Given the injectivity of the canonical map~\eqref{eqn:restr-map} (for any
 affine open subset, not only~$U$), this condition is equivalent to its
@@ -4549,8 +4551,8 @@ By theorem~\ref{thm:box-translation-semantically}, this is equivalent to
 \[ \Sh(X) \models (\speak{$\O_X/\I$ is a local ring})^\Box, \]
 where~$\Box$ is the modal operator given by~$\Box\varphi :\equiv (\varphi \vee
 (1 \in \I))$. We therefore have to give an intuitionistic proof of the fact
-\[ \forall x,y\?\O_X/\I\_ \speak{$x+y$ inv.} \Longrightarrow
-  \Box(\speak{$x$ inv.} \vee \speak{$y$ inv.}). \]
+\[ \forall x,y\?\O_X/\I\_ \speak{$x+y$ \inv} \Longrightarrow
+  \Box(\speak{$x$ \inv} \vee \speak{$y$ \inv}). \]
 So let~$x = [s], y = [t] \? \O_X/\I$ such that~$x + y$ is invertible
 in~$\O_X/\I$. This means that there exists~$u\?\O_X$ and~$v\?\I$ such that~$us
 + ut + v = 1$ in~$\O_X$. Since~$\O_X$ is a local ring, it follows
@@ -5054,7 +5056,7 @@ remark~\ref{rem:qcoh-in-constructive-mathematics}).
   $\F$ is of finite type & $\F$ is finitely generated & proposition~\ref{prop:finite-type-and-co} \\
   $\F$ is of finite presentation & $\F$ is finitely presented & proposition~\ref{prop:finite-type-and-co} \\
   $\F$ is coherent & $\F$ is coherent & proposition~\ref{prop:finite-type-and-co} \\
-  $\F$ is quasicoherent & $\F[f^{-1}]$ is a sheaf wrt.~$(\speak{$f$ inv.} \Rightarrow \placeholder)$ for any~$f\?\O_X$ & theorem~\ref{thm:qcoh-sheafchar} \\
+  $\F$ is quasicoherent & $\F[f^{-1}]$ is a sheaf wrt.\@~$(\speak{$f$ \inv} \Rightarrow \placeholder)$ for any~$f\?\O_X$ & theorem~\ref{thm:qcoh-sheafchar} \\
   $\F$ is flat & $\F$ is flat & proposition~\ref{prop:flatness} \\
   tensor product $\F \otimes \G$ & tensor product $\F \otimes \G$ & proposition~\ref{prop:internal-tensor-product} \\
   dual~$\F^\vee = \HOM_{\O_X}(\F,\O_X)$ & dual $\F^\vee = \Hom_{\O_X}(\F,\O_X)$ \\

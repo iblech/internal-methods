@@ -622,7 +622,6 @@ The former always implies the latter (unless~$X = \emptyset$, in which case
 \emph{any} internal statement is true), but the converse does not hold: The
 former statement means that~$U = \emptyset$ is the \emph{only} open subset on
 which~$\varphi$ holds.\end{rem}
-\XXX{Find appropriate place for this remark.}
 
 
 \subsection{Internal constructions}
@@ -683,15 +682,6 @@ internal perspective. Note that this implies the statement
 but this statement is strictly weaker: Its interpretation with the
 Kripke--Joyal semantics is that the sheaves~$\F$ and~$\G$ are \emph{locally}
 isomorphic.
-
-To be able to fully express all constructions of ``usual mathematics'' in the
-internal language (\ie those not specifically dependent
-on the ambient logical framework), we need \emph{dependent types}.
-\XXX{describe those}
-In these notes, we do not describe how to deal with those. However, everything
-carries over to the more general setting, and we refer to an article by Awodey and
-Bauer~\cite{awodey-bauer:bracket} for a review of dependent types and their
-categorical semantics.
 
 
 \subsection{Geometric formulas and constructions} In formal and categorical logic,
@@ -4016,7 +4006,7 @@ A_i[f^{-1}]$ is quasicompact.\end{ex}
 
 From this example, it will trivially follow that the nilradical~$\sqrt{(0)}
 \subseteq \O_X$ of a scheme and indeed the radical of any quasicoherent ideal
-sheaf is quasicoherent (lemma~\ref{ex:radical-qcoh}).
+sheaf is quasicoherent (example~\ref{ex:radical-qcoh}).
 
 \begin{rem}In applications, the open set~$K$ of the proposition is often given
 as the largest open subset on which some formula~$\psi$ holds. (For instance,
@@ -5042,7 +5032,7 @@ remark~\ref{rem:qcoh-in-constructive-mathematics}).
   sheaf of sets & set \\
   $\alpha : \F \to \G$ epimorphism & $\alpha$ surjective & example~\ref{ex:injective-surjective} \\
   $\alpha : \F \to \G$ monomorphism & $\alpha$ injective & example~\ref{ex:injective-surjective} \\
-  $\Int(X \setminus \supp\F)$ & largest open subset on which~$\F$ is a singleton & remark~\ref{rem:support-sheaf-of-sets} \\
+  $\Int(X \setminus \supp\F)$ & truth value of ``$\F$ is a singleton'' & remark~\ref{rem:support-sheaf-of-sets} \\
   $f : X \to \NN$ upper semicontinuous & element of~$\widehat\NN$ & lemma~\ref{lemma:upper-semicontinuous-functions} \\
   $f : X \to \NN$ locally constant & element of~$\NN$ & discussion after lemma~\ref{lemma:upper-semicontinuous-functions} \\\\
 
@@ -5061,7 +5051,7 @@ remark~\ref{rem:qcoh-in-constructive-mathematics}).
   $\F$ is flat & $\F$ is flat & proposition~\ref{prop:flatness} \\
   tensor product $\F \otimes \G$ & tensor product $\F \otimes \G$ & proposition~\ref{prop:internal-tensor-product} \\
   dual~$\F^\vee = \HOM_{\O_X}(\F,\O_X)$ & dual $\F^\vee = \Hom_{\O_X}(\F,\O_X)$ \\
-  $\Int(X \setminus \supp\F)$ & largest open subset on which~$\F = 0$ & proposition~\ref{prop:characterization-support} \\
+  $\Int(X \setminus \supp\F)$ & truth value of~``$\F = 0$'' & proposition~\ref{prop:characterization-support} \\
   rank function of~$\F$ & minimal number of generators for~$\F$ & proposition~\ref{prop:rank-function-internally} \\\\
 
   \textbf{subspaces} \\

@@ -2242,7 +2242,9 @@ open} \}. \]
 sheaf~$1$, sections of~$\Omega$ on an open subset~$U$ correspond to
 subsheaves~$\F \hookrightarrow 1|_U$, and those are given by the greatest open
 subset~$V \subseteq U$ such that~$\Gamma(V,\F)$ is inhabited.)
-\XXX{remark on the nontriviality/bigness of this sheaf}
+Obviously, in general, this sheaf has many sections, in particular more than
+the binary coproduct~$1 \amalg 1$ (unless any open subset of~$X$ is also
+closed).
 
 The \emph{truth value} of a formula~$\varphi$ is by definition the subset
 $\{ x \in 1 \,|\, \varphi \} \in \Omega$, where~``$x$'' is a fresh variable not
@@ -2250,9 +2252,15 @@ appearing in~$\varphi$. This subset is inhabited if and only
 if~$\varphi$ holds and is empty if and only if~$\neg\varphi$ holds.
 Conversely, we can associate to a subset~$F \subseteq 1$ the
 proposition~$\speak{$F$ is inhabited}$.
-\XXX{give sheaf-theoretic interpretation as the largest open subset...}
 
-Under this correspondence of formulas with truth values, logical operations
+By the above description of~$\Omega$ in
+a sheaf topos~$\Sh(X)$, the interpretation of the truth value
+of a formula~$\varphi$ in the internal language of~$\Sh(X)$ is a certain open
+subset of~$X$. Tracing the definitions, we see that this open subset is
+precisely the largest open subset on which~$\varphi$ holds, \ie the union of
+all open subsets~$U \subseteq X$ such that~$U \models \varphi$.
+
+Under the correspondence of formulas with truth values, logical operations
 like~$\wedge$ and~$\vee$ map to set-theoretic operations like~$\cap$ and~$\cup$
 -- for instance, we have
 \[ \{ x \in 1 \,|\, \varphi \} \cap \{ x \in 1 \,|\, \psi \} =

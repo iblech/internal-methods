@@ -1010,7 +1010,7 @@ schemes, not shared with arbitrary locally ringed spaces. It is also a specific
 feature of the internal universe: Neither the local rings~$\O_{X,x}$ nor the
 rings of local sections~$\Gamma(U,\O_X)$ have this property in general.
 
-\begin{prop}Let~$X$ be a scheme. Then
+\begin{prop}\label{prop:neginvnilpotent}Let~$X$ be a scheme. Then
 \[ \Sh(X) \models \forall s\?\O_X\_ \neg(\speak{$s$ invertible}) \Rightarrow
 \speak{$s$ nilpotent}. \]
 \end{prop}
@@ -1702,7 +1702,11 @@ free) as well. It is well-known that this follows; and since the usual proof of
 this fact is intuitionistically acceptable, we are done.
 \end{proof}
 
-\XXX{discuss alternative proofs}
+Note that the proof works very generally, in the context of arbitrary ringed
+spaces, and is still very simple. This is common to proofs using the internal
+language. Particular features of schemes enter only at clearly recognizable
+points, for instance when an internal property specific to the structure sheaf
+of schemes is used (such as in proposition~\ref{prop:neginvnilpotent}).
 
 \begin{lemma}\label{lemma:coherent-stuff}
 Let~$X$ be a scheme (or ringed space).
@@ -2630,7 +2634,6 @@ Let~$X$ be a topological space. Let~$\F$ be a sheaf on~$X$. Then:
 \item $\F$ is~$\neg\neg$-separated if and only if any two local sections
 of~$\F$, which are defined on a common domain and which agree on a dense open
 subset of their domain, are already equal.
-sections to be equal to agree on a dense open subset of their common domain.
 \item $\F$ is a~$\neg\neg$-sheaf if and only if it is~$\neg\neg$-separated and
 for any open subset~$U \subseteq X$ and any open subset~$V \subseteq U$ dense
 in~$U$, any~$V$-section of~$\F$ extends to a~$U$-section of~$\F$.

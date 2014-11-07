@@ -112,7 +112,7 @@
 \newcommand{\eg}{e.\,g.\@\xspace}
 \newcommand{\vs}{vs.\@\xspace}
 \newcommand{\resp}{resp.\@\xspace}
-\newcommand{\inv}{inv.\@\xspace}
+\newcommand{\inv}{inv.\@}
 \newcommand{\notnot}{\emph{not not}\xspace}
 
 \newcommand{\XXX}[1]{\textbf{XXX: #1}}
@@ -3660,7 +3660,7 @@ negated context, since~$b$ is assumed regular. More explicitly, we should write
 \[ \neg\neg(\exists c\?\O_X\_ bc = 1 \wedge ca \in T)
   \quad\text{instead of}\quad
   \neg\neg(b^{-1} a \in T). \]
-To prove the Kripke--Joyal interpretation of the rewritten sheaf condition, let
+To verify the Kripke--Joyal interpretation of the rewritten sheaf condition, let
 an affine open subset~$U = \Spec A \subseteq X$ and a subsheaf~$T
 \hookrightarrow \O_X|_U$ be given, such that~$T$ is internally a subsingleton
 and \notnot inhabited. We may thus glue the unique germs in the inhabited
@@ -3712,7 +3712,9 @@ of~$\O_X$; specifically, it is the sheafification with respect to the modal
 operator defined by
 \[ \Box\varphi \defequiv \speak{$\O_X$ is~$(\varphi \Rightarrow
 \placeholder)$-separated} \]
-in the internal language of~$\Sh(X)$.
+in the internal language of~$\Sh(X)$, \ie
+\[ \Box\varphi \defequiv \forall s\?\O_X\_ (\varphi \Rightarrow s = 0)
+\Rightarrow s = 0. \]
 
 \begin{prop}\label{prop:kx-is-box-sheafification}
 Let~$X$ be a ringed space. Then:
@@ -3751,7 +3753,7 @@ arbitrary such that~$fh = 0$. Then, trivially, it holds that~$\speak{$f$ \inv}
 \inv} \Rightarrow \placeholder)$, it follows that~$h = 0$.
 
 We may now suppose that~$X$ is a scheme. To verify the fifth property, let a
-regular function~$f\?\O_X$ be given. We have to show that~$\O_X$ is separated
+regular element~$f\?\O_X$ be given. We have to show that~$\O_X$ is separated
 with respect to the modality~$(\speak{$f$ \inv} \Rightarrow \placeholder)$. So
 assume that~$\speak{$f$ \inv} \Rightarrow (s = 0)$ for some~$s\?\O_X$. By
 proposition~\ref{prop:cond-zero}, it follows that~$f^n s = 0$ for some natural
@@ -3780,7 +3782,7 @@ such that~$\O_X$ is~$\Box'$-separated, then~$\Box'\varphi
 
 In the special case that~$X$ is a reduced scheme,
 proposition~\ref{prop:kx-is-box-sheafification} recovers
-the result of proposition~\ref{prop:kx-is-negneg-sheafification}.
+the result of proposition~\ref{prop:kx-is-negneg-sheafification}:
 
 \begin{prop}Let~$X$ be a reduced scheme. Then the modal operator~$\Box$
 coincides with the double negation modality.\end{prop}
@@ -3819,11 +3821,11 @@ associated to the subspace of associated points coincides with the
 nucleus~$j_\Box$ associated to the modal operator~$\Box$. Recall from
 remark~\XXX{ref} that the former is defined by
 \begin{align*}
-  j_{\Ass(\O_X)}(U) &= \bigcup \{ V \subseteq X \,|\,
+  j_{\Ass(\O_X)}(U) &= \bigcup \{ V \subseteq X \ |\
   \text{$V$ open},\ V \cap \Ass(\O_X) \subseteq U \} \\
 \intertext{and recall from \XXX{ref} that the latter is given by}
   j_\Box(U) &= \text{largest open subset of~$X$ on which~$\Box U$ holds} \\
-  &= \bigcup \{ V \subseteq X \,|\,
+  &= \bigcup \{ V \subseteq X \ |\
   \text{$V$ open},\ V \models \Box U \}.
 \end{align*}
 The equivalence thus follows from a standard result on the set of associated
@@ -3833,8 +3835,8 @@ points on locally Noetherian schemes:
   \Longleftrightarrow&\
     \Ass(\O_V) \subseteq U \\
   \Longleftrightarrow&\
-    \text{the canonical morphism~$\O_V \to i_* \O_{U \cap V}$
-    (with $i : U \cap V \hookrightarrow V$) is injective} \\
+    \text{the canonical morphism~$\O_V \to j_* \O_{U \cap V}$
+    (with $j : U \cap V \hookrightarrow V$) is injective} \\
   &\qquad\qquad\text{(this steps requires the Noetherian assumption)} \\
   \Longleftrightarrow&\
     V \models \speak{$\O_X \to \O_X^{++}$ is injective} \\

@@ -2600,7 +2600,8 @@ classical counterparts, since there are no colimit constructions which would hav
 be dealt with.
 \end{proof}
 
-\begin{rem}As is to be expected from the familiar inclusion of sheaves in
+\begin{rem}\label{rem:epi-in-box-sheaves}
+As is to be expected from the familiar inclusion of sheaves in
 presheaves on topological spaces, the forgetful functor~$\Sh_\Box(\Set) \to \Set$
 does not in general preserve colimits. It is instructive to see why
 epimorphisms in~$\Sh_\Box(\Set)$ need not be epimorphisms in~$\Set$: A map~$f:A
@@ -2616,7 +2617,6 @@ surjective. Compare this to the failure of the forgetful functor~$\Sh(X)
 have preimages for any local section in order to be an epimorphism. Instead, it
 suffices for any local section to \emph{locally} have preimages.\end{rem}
 
-\XXX{come back to this after introducing the~$\Box$-translation}
 
 
 \subsection{Sheaves for the double negation modality}
@@ -3065,6 +3065,21 @@ case, it coincides with the subspace~$\{\xi\}$.
 and that pushing forward is the same as calculating the constant sheaf.
 do this in the section discussing negneg-sheaves.
 Then continue with the story here...}
+
+\begin{ex}We have seen in remark~\ref{rem:epi-in-box-sheaves} that a
+morphism~$f : A \to B$ in~$\Sh(X_\Box) \simeq \Sh_\Box(\Sh(X))$ is an
+epimorphism if and only if~$\Sh(X) \models \forall y\?B\_ \Box(\exists x\?X\_
+f(x) = y)$. We can now understand a simple proof of this fact:
+\begin{align*}
+  &\ \text{$f$ is an epimorphism in~$\Sh_\Box(\Sh(X))$} \\
+  \Longleftrightarrow&\
+    \Sh_\Box(\Sh(X)) \models \speak{$f$ is surjective} \\
+  \Longleftrightarrow&\
+    \Sh(X) \models \left(\speak{$f$ is surjective}\right)^\Box \\
+  \Longleftrightarrow&\
+    \Sh(X) \models \forall y\?B\_ \Box(\exists x\?X\_ f(x) = y).
+\end{align*}
+\end{ex}
 
 \begin{proof}[Proof of theorem~\ref{thm:box-translation-semantically}]
 A fancy proof goes as follows. First, one shows intuitionistically that for a

@@ -2507,7 +2507,6 @@ the pushforward functor~$i_* : \Sh(X_\Box) \to \Sh(X)$, where~$\Box$ is a modal
 operator in~$\Sh(X)$, can be explicitly described. Namely, it consists exactly
 of those sheaves which from the internal point of view
 are so-called~\emph{$\Box$-sheaves}, a notion explained below.
-\XXX{state this as a proposition later as well?}
 
 Furthermore, if we identify~$\Sh(X_\Box)$ with its image in~$\Sh(X)$, the
 pullback functor is given by an internal sheafification process with respect to
@@ -2617,6 +2616,22 @@ surjective. Compare this to the failure of the forgetful functor~$\Sh(X)
 have preimages for any local section in order to be an epimorphism. Instead, it
 suffices for any local section to \emph{locally} have preimages.\end{rem}
 
+\begin{prop}Let~$X$ be a topological space. Let~$\Box$ be a modal operator
+in~$\Sh(X)$. Let~$i : X_\Box \hookrightarrow X$ be the inclusion of the
+associated sublocale. (Co-)restricting the pushforward functor~$i_* : \Sh(X_\Box) \to
+\Sh(X)$ to its essential image, it induces an equivalence~$\Sh(X_\Box) \simeq
+\Sh_\Box(\Sh(X))$ between the category of sheaves on~$X_\Box$ and the category
+of~$\Box$-sheaves in~$\Sh(X)$.
+\end{prop}
+\begin{proof}For the further development of the theory, we need the statement
+of this proposition, but not the proof, which really is routine in dealing with
+subtoposes and modal operators. Nevertheless, a proof goes like follows:
+Combine example~A4.6.2(a) and theorem~C1.4.7
+of~\cite{johnstone:elephant} and note that for a topos of sheaves on a
+locale~$Y$, it holds that~$\Open(Y) = \Gamma(Y, \Omega_{\Sh(Y)})$, and that the
+subobject classifier of~$\Sh_\Box(\Sh(X))$ is~$\{ \varphi : \Omega_{\Sh(X)} \,|\,
+\Box \varphi \Leftrightarrow \varphi \}$.
+\end{proof}
 
 
 \subsection{Sheaves for the double negation modality}

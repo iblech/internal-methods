@@ -1127,7 +1127,7 @@ number (this is intuitionistically not possible for general rings). Instead, we
 only define what it means for the Krull dimension to be less than or equal to
 a given natural number.
 
-For the following, no intuition on the definition is needed; however, we
+For the following, no intuition about the definition is needed; however, we
 feel that some motivation might be of use. Recall that we can picture inclusions of
 radical ideals geometrically by considering standard open subsets~$D(f) = \{
 \ppp \in \Spec R \,|\, f \not\in \ppp \}$: The inclusion~$\sqrt{(f)} \subseteq
@@ -1143,8 +1143,10 @@ intersection of~$D(a_n)$ and~$D(b_n)$ is empty.
 For the special case~$n = 0$, the condition that~$R$ is of Krull
 dimension~$\leq 0$ means that for any element~$a_0$ there exists an
 element~$b_0$ such that~$D(a_0)$ and~$D(b_0)$ cover~$\Spec R$ and are disjoint.
-This implies that~$\Spec R$ is zero-dimensional in an intuitive sense.
-\XXX{continue explanation}
+
+The definition of the Krull dimension can be written in such a way as to mimic the
+definition of the inductive Menger--Urysohn dimension of topological
+spaces~\cite[section~1]{dyn:krull-integral}.
 
 \begin{thm}Let~$R$ be a ring.
 \begin{enumerate}
@@ -1162,7 +1164,8 @@ the reduced set of generators from the given ones.
 
 We can apply the constructive theory of Krull dimension to the structure
 sheaf~$\O_X$ of a scheme~$X$ as follows. Note that the condition that a
-scheme~$X$ has dimension exactly~$n$ is not local -- the dimension may vary on
+scheme~$X$ has dimension exactly~$n$ (in the usual sense using ascending chains
+of closed irreducible subsets) is not local -- the dimension may vary on
 an open cover; therefore it is not possible to characterize this condition in
 the internal language. However, the condition that the dimension of~$X$ is less
 than or equal to~$n$ \emph{is} local, thus there is hope that it can be
@@ -1212,7 +1215,7 @@ the internal perspective, this is an immediate consequence of
 interpreting the following standard fact of ring theory in the internal
 language of~$\Sh(X)$: A local ring~$R$ is of Krull
 dimension~$\leq 0$ if and only if any element of~$R$ is invertible or
-nilpotent.
+nilpotent. \XXX{explain}
 
 It is well-known that this holds classically; to make sure that it
 holds intuitionistically as well (so that it can be used in the internal

@@ -2,6 +2,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage{amsmath,amsthm,amssymb,stmaryrd,color,graphicx,multirow}
+\usepackage{mathtools}
 \usepackage{setspace}
 \usepackage{bussproofs}
 \usepackage{xspace}
@@ -101,7 +102,7 @@
 \newcommand{\?}{\,{:}\,}
 \renewcommand{\_}{\mathpunct{.}\,}
 \newcommand{\speak}[1]{\ulcorner\text{\textnormal{#1}}\urcorner}
-\newcommand{\Ll}{:\Longleftrightarrow}
+\newcommand{\Ll}{\vcentcolon\Longleftrightarrow}
 \newcommand{\notat}[1]{{!#1}}
 \newcommand{\lra}{\longrightarrow}
 \newcommand{\lhra}{\ensuremath{\lhook\joinrel\relbar\joinrel\rightarrow}}
@@ -115,6 +116,9 @@
 \newcommand{\notnot}{\emph{not not}\xspace}
 
 \newcommand{\XXX}[1]{\textbf{XXX: #1}}
+
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\defequiv}{\vcentcolon\equiv}
 
 \definecolor{gray}{rgb}{0.7,0.7,0.7}
 
@@ -394,7 +398,7 @@ in an intuitionistic context.
 
 
 %Of particular importance is the
-%case~$\Box\varphi :\equiv ((\varphi \Rightarrow \notat{x}) \Rightarrow
+%case~$\Box\varphi \defequiv ((\varphi \Rightarrow \notat{x}) \Rightarrow
 %\notat{x})$ where~$x \in X$ is a point, since for this modal operator, the
 %proposition specializes to
 %\[ \Sh(X) \models \varphi^\Box \quad\text{iff}\quad
@@ -430,7 +434,7 @@ on~$U$ as function symbols. The symbols~``$\top$'' and~``$\bot$'' denote truth
 and falsehold, respectively. The universal and existential quantifiers come in
 two flavors: for bounded and unbounded quantification.
 The translation of~$U \models \neg\varphi$ does not have to be separately defined, since
-negation can be expressed using other symbols: $\neg\varphi :\equiv (\varphi
+negation can be expressed using other symbols: $\neg\varphi \defequiv (\varphi
 \Rightarrow \bot)$. If we want to emphasize the particular topos, we write
 \[ \Sh(X) \models \varphi \quad\Ll\quad X \models \varphi. \]
 \end{defn}
@@ -1181,7 +1185,7 @@ Let~$X$ be a scheme. Then:
 % Recall that the topological dimension of~$X$ is defined as the
 % supremum of the lengths of strictly ascending chains of irreducible closed
 % subsets. It can be calculated as the supremum of the local dimensions~$\dim_x X
-% := \inf\{\dim U \,|\, \text{$U$ open neighbourhood of~$x$} \}$, where~$x$
+% \defeq \inf\{\dim U \,|\, \text{$U$ open neighbourhood of~$x$} \}$, where~$x$
 % ranges over all points of~$X$. The local dimension can be characterized
 % algebraically: $\dim_x X = \dim \O_{X,x}$.
 
@@ -1289,7 +1293,7 @@ the internal perspective.\end{lemma}
 \begin{quote}For any open subset~$U \subseteq X$ and any function~$g \in
 \Gamma(U,\O_X)$, $fg = 0$ in~$\Gamma(U,\O_X)$ implies~$g = 0$
 in~$\Gamma(U,\O_X)$.\end{quote}
-So the ``only if'' direction is clear (use~$U := X$). For the ``if'' direction,
+So the ``only if'' direction is clear (use~$U \defeq X$). For the ``if'' direction,
 note that~$\Gamma(U,\O_X)$ is a localization of~$A$ and that regular elements
 remain regular in localizations.
 \end{proof}
@@ -1304,7 +1308,7 @@ cannot hope to explicitly pinpoint a principal generator.
 One can (provably) not even verify this property for the ring~$\ZZ$.\footnote{Assume
 that any ideal of~$\ZZ$ is finitely generated. Let~$\varphi$ be an arbitrary
 proposition; we want to intuitionistically deduce~$\varphi \vee \neg\varphi$.
-Consider the ideal~$\aaa := \{ x \in \ZZ \,|\, (x = 0) \vee \varphi \}
+Consider the ideal~$\aaa \defeq \{ x \in \ZZ \,|\, (x = 0) \vee \varphi \}
 \subseteq \ZZ$. The definition is such that~$\varphi$ holds if and only
 if~$\aaa$ contains an element other than zero; and that~$\neg\varphi$ holds if
 and only if zero is the only element of~$\aaa$.
@@ -1608,7 +1612,7 @@ if and only if it holds at any point.
 
 
 \subsection{Support} Recall that the \emph{support} of an~$\O_X$-module~$\F$ is
-the subset~$\supp\F := \{ x \in X \,|\, \F_x \neq 0 \} \subseteq X$. If~$\F$ is
+the subset~$\supp\F \defeq \{ x \in X \,|\, \F_x \neq 0 \} \subseteq X$. If~$\F$ is
 of finite type, this set is closed, since its complement is then open by a
 standard lemma. (We will give an internal proof of this fact in
 lemma~\ref{lemma:module-zero-point-neighbourhood}.)
@@ -1641,7 +1645,7 @@ the internal statement~$\speak{$\F$ is a singleton}$ holds.\end{rem}
 
 \subsection{Torsion} Let~$R$ be a ring. Recall that the
 \emph{torsion submodule}~$M_\tors$ of an~$R$-module~$M$ is defined as
-\[ M_\tors := \{ x\?M \,|\, \exists a\?R\_ \speak{$a$ regular} \wedge ax = 0 \}
+\[ M_\tors \defeq \{ x\?M \,|\, \exists a\?R\_ \speak{$a$ regular} \wedge ax = 0 \}
 \subseteq M. \]
 This definition is meaningful even if~$R$ is not an integral domain.
 An~$R$-module~$M$ is \emph{torsion-free} if and only if~$M_\tors$ is
@@ -1849,7 +1853,7 @@ simultaneously.
 
 \begin{lemma}Let~$X$ be a scheme (or ringed space). Let~$\L$ be a locally
 free~$\O_X$-module of rank~1. Then~$\L^\vee \otimes_{\O_X} \L \cong \O_X$.\end{lemma}
-\begin{proof}Recall that the dual is defined by~$\L^\vee :=
+\begin{proof}Recall that the dual is defined by~$\L^\vee \defeq
 \HOM_{\O_X}(\L,\O_X)$. Since~``$\HOM$'' looks like~``$\Hom$'' from the internal
 point of view, the dual sheaf~$\L^\vee$ looks just like the ordinary dual
 module. However, to prove the claim, it does \emph{not} suffice to give an
@@ -1939,7 +1943,7 @@ can not be proven intuitionistically -- intuitively, this is because one cannot
 explicitly pinpoint the (classically existing) minimal element of an arbitrary
 inhabited set;\footnote{Let~$\varphi$ be an arbitrary formula. Assuming that
 any inhabited subset of the natural numbers possesses a minimal element, we
-want to show that~$\varphi \vee \neg\varphi$. Define the subset $U := \{ n \in
+want to show that~$\varphi \vee \neg\varphi$. Define the subset $U \defeq \{ n \in
 \NN \,|\, (n = 1) \vee \varphi \} \subseteq \NN$, which surely is inhabited by~$1
 \in U$. So by assumption, there exists a number~$z \in \NN$ which is the
 minimum of~$U$. We have $z = 0$ or $z > 0$. If~$z = 0$, we have~$0 \in U$,
@@ -2004,7 +2008,7 @@ ordered set containing~$\NN$ and possessing minima
 of arbitrary inhabited subsets.\end{lemma}
 \begin{proof}
 The embedding $\NN \hookrightarrow \widehat\NN$ is given by
-\[ n \in \NN \quad\longmapsto\quad {\uparrow}(n) := \{ m \in \NN \,|\, m \geq n \}. \]
+\[ n \in \NN \quad\longmapsto\quad {\uparrow}(n) \defeq \{ m \in \NN \,|\, m \geq n \}. \]
 If~$M \subseteq \widehat\NN$ is an inhabited subset, its minimum is
 \[ \min M = \bigcup M \in \widehat\NN. \]
 The proof of the universal property is left to the reader.
@@ -2090,7 +2094,7 @@ Nakayama's lemma).
 
 In the internal language, we can define an element of~$\widehat\NN$ by
 \begin{multline*}
-  \rank\F := \min\{ n \in \NN \,| \\
+  \rank\F \defeq \min\{ n \in \NN \,| \\
   \speak{there is a gen.\@ family for~$\F$ consisting of~$n$ elements} \} \in \widehat\NN.
 \end{multline*}
 If the module~$\F$ is finite locally free, it will be a finite free module from the
@@ -2177,7 +2181,7 @@ exercise'' (exercise~13.7.K).\end{rem}
 \subsection{The upper semicontinuous dimension function} Recall that the
 dimension of a topological space~$X$ at a point~$x \in X$ is defined as the
 infimum
-\[ \dim_x X := \inf\{ \dim U \,|\, \text{$U$ open neighbourhood of~$x$} \}. \]
+\[ \dim_x X \defeq \inf\{ \dim U \,|\, \text{$U$ open neighbourhood of~$x$} \}. \]
 One may restrict to open \emph{connected} neighbourhoods of~$X$, since an
 arbitrary open neighbourhood of~$x$ contains such a one and the dimension
 decreases (weakly) on subsets.
@@ -2248,7 +2252,7 @@ general \emph{sublocales} of~$X$).
 \subsection{Basics on truth values and modal operators}
 
 \begin{defn}The \emph{set of truth values~$\Omega$} is the powerset of the
-singleton set~$1 := \{\star\}$, where~$\star$ is a formal symbol.\end{defn}
+singleton set~$1 \defeq \{\star\}$, where~$\star$ is a formal symbol.\end{defn}
 
 In classical logic, any subset of~$\{\star\}$ is either empty or inhabited, so
 that~$\Omega$ contains exactly two elements, the empty set (``false'')
@@ -2314,13 +2318,13 @@ In intuitionistic logic, there can potentially exist further modal operators.
 For applications to algebraic geometry, the following four operators will have
 a clear geometric meaning and be of particular importance:
 \begin{enumerate}
-\item $\Box\varphi :\equiv (\alpha \Rightarrow \varphi)$, where~$\alpha$ is a
+\item $\Box\varphi \defequiv (\alpha \Rightarrow \varphi)$, where~$\alpha$ is a
 fixed proposition.
-\item $\Box\varphi :\equiv (\varphi \vee \alpha)$, where~$\alpha$ is a
+\item $\Box\varphi \defequiv (\varphi \vee \alpha)$, where~$\alpha$ is a
 fixed proposition.
-\item $\Box\varphi :\equiv \neg\neg\varphi$ (the \emph{double negation
+\item $\Box\varphi \defequiv \neg\neg\varphi$ (the \emph{double negation
 modality}).
-\item $\Box\varphi :\equiv ((\varphi \Rightarrow \alpha) \Rightarrow \alpha)$,
+\item $\Box\varphi \defequiv ((\varphi \Rightarrow \alpha) \Rightarrow \alpha)$,
 where~$\alpha$ is a fixed proposition.
 \end{enumerate}
 
@@ -2447,14 +2451,14 @@ of proposition~\ref{prop:modops-kripke}.
     Modal operator & associated nucleus &
       $j(V) = X$ iff \ldots &
       subspace \\\midrule
-    $\Box\varphi :\equiv (U \Rightarrow \varphi)$ &
+    $\Box\varphi \defequiv (U \Rightarrow \varphi)$ &
       $j(V) = \Int(U^c \cup V)$ & $U \subseteq V$ & $U$ \\
-    $\Box\varphi :\equiv (\varphi \vee A^c)$ &
+    $\Box\varphi \defequiv (\varphi \vee A^c)$ &
       $j(V) = V \cup A^c$ & $A \subseteq V$ & $A$ \\
-    $\Box\varphi :\equiv \neg\neg\varphi$ &
+    $\Box\varphi \defequiv \neg\neg\varphi$ &
       $j(V) = \Int(\Clos(V))$ & $V$ is dense in $X$ &
       \multicolumn{1}{p{1cm}}{smallest dense sublocale of~$X$} \\
-    $\Box\varphi :\equiv ((\varphi \Rightarrow \notat{x}) \Rightarrow \notat{x})$ &
+    $\Box\varphi \defequiv ((\varphi \Rightarrow \notat{x}) \Rightarrow \notat{x})$ &
 %      $\Int(\Clos(V \cap \Clos\{x\}) \cup (X \setminus \Clos\{x\}))$ &
       $\begin{array}{@{}ll@{}}
         j(V) = X \setminus \Clos\{x\}, & \text{if $x \not\in V$} \\
@@ -2483,7 +2487,7 @@ Johnstone~\cite{johnstone:art,johnstone:point}.
 
 \begin{defn}\label{defn:subspace-by-nucleus}Let~$j$ be a nucleus on~$\Open(X)$.
 Then the sublocale~$X_j$ of~$X$ is given by the lattice of opens
-$\Open(X_j) := \{ U \in \Open(X) \,|\, j(U) = U \}$.
+$\Open(X_j) \defeq \{ U \in \Open(X) \,|\, j(U) = U \}$.
 \end{defn}
 If~$j$ is induced by a modal operator~$\Box$, we also write~``$X_\Box$''
 for~$X_j$. In three of the four cases listed in table~\ref{table:nuclei}, the
@@ -2555,9 +2559,9 @@ The two conditions can be combined: A set~$F$ is a~$\Box$-sheaf if and only if
 \XXX{explain how to read these definitions}
 
 \begin{defn}The \emph{plus construction} of a set~$F$ with respect to~$\Box$ is the set
-\[ F^+ := \{ S \subseteq F \,|\, \Box(\speak{$S$ is a singleton}) \}/{\sim},
+\[ F^+ \defeq \{ S \subseteq F \,|\, \Box(\speak{$S$ is a singleton}) \}/{\sim},
 \]
-where the equivalence relation is defined by~$S \sim T :\Leftrightarrow
+where the equivalence relation is defined by~$S \sim T \vcentcolon\Leftrightarrow
 \Box(S = T)$. There is a canonical map~$F \to F^+$ given by~$x \mapsto
 [\{x\}]$. The \emph{$\Box$-sheafi\-fi\-ca\-tion} of a set~$F$ is the
 set~$F^{++}$.
@@ -2692,7 +2696,7 @@ some dense open subset~$V \subseteq U$, the stalks~$\S_x$, $x \in V$ are
 inhabited. This is precisely the datum of a section of~$\F$ defined on some
 dense open subset of~$U$: Consider the gluing of the unique germs in~$\S_x$ for
 those points~$x$ such that~$\S_x$ is inhabited. (Conversely, a section~$s \in
-\Gamma(V,\F)$ defines a subsheaf~$\S$ by setting~$\Gamma(W,\S) := \{ s|_W \,|\,
+\Gamma(V,\F)$ defines a subsheaf~$\S$ by setting~$\Gamma(W,\S) \defeq \{ s|_W \,|\,
 W \subseteq V \}$.)
 
 In view of this explicit description and the observation that the asserted
@@ -2738,19 +2742,19 @@ subtoposes in the internal language of the ambient topos -- is new.
 \begin{defn}The~\emph{$\Box$-translation} is recursively defined as follows.
 \newcommand{\optBox}{\textcolor{gray}{\Box}}
 \begin{align*}
-  (f = g)^\Box &:\equiv \Box(f = g) \\
-  (x \in A)^\Box &:\equiv \Box(x \in A) \\
-  \top^\Box &:\equiv \Box\top \quad \text{($\Leftrightarrow \top$)} \\
-  \bot^\Box &:\equiv \Box\bot \\
-  (\varphi \wedge \psi)^\Box &:\equiv \optBox(\varphi^\Box \wedge \psi^\Box) &
-  \textstyle (\bigwedge_i \varphi_i)^\Box &:\equiv \textstyle \optBox(\bigwedge_i \varphi_i^\Box) \\
-  (\varphi \vee \psi)^\Box &:\equiv \Box(\varphi^\Box \vee \psi^\Box) &
-  \textstyle (\bigvee_i \varphi_i)^\Box &:\equiv \textstyle \Box(\bigvee_i \varphi_i^\Box) \\
-  (\varphi \Rightarrow \psi)^\Box &:\equiv \optBox(\varphi^\Box \Rightarrow \psi^\Box) \\
-  (\forall x\?X\_ \varphi)^\Box &:\equiv \optBox(\forall x\?X\_ \varphi^\Box) &
-  (\forall X\_ \varphi)^\Box &:\equiv \optBox(\forall X\_ \varphi^\Box) \\
-  (\exists x\?X\_ \varphi)^\Box &:\equiv \Box(\exists x\?X\_ \varphi^\Box) &
-  (\exists X\_ \varphi)^\Box &:\equiv \Box(\exists X\_ \varphi^\Box)
+  (f = g)^\Box &\defequiv \Box(f = g) \\
+  (x \in A)^\Box &\defequiv \Box(x \in A) \\
+  \top^\Box &\defequiv \Box\top \quad \text{($\Leftrightarrow \top$)} \\
+  \bot^\Box &\defequiv \Box\bot \\
+  (\varphi \wedge \psi)^\Box &\defequiv \optBox(\varphi^\Box \wedge \psi^\Box) &
+  \textstyle (\bigwedge_i \varphi_i)^\Box &\defequiv \textstyle \optBox(\bigwedge_i \varphi_i^\Box) \\
+  (\varphi \vee \psi)^\Box &\defequiv \Box(\varphi^\Box \vee \psi^\Box) &
+  \textstyle (\bigvee_i \varphi_i)^\Box &\defequiv \textstyle \Box(\bigvee_i \varphi_i^\Box) \\
+  (\varphi \Rightarrow \psi)^\Box &\defequiv \optBox(\varphi^\Box \Rightarrow \psi^\Box) \\
+  (\forall x\?X\_ \varphi)^\Box &\defequiv \optBox(\forall x\?X\_ \varphi^\Box) &
+  (\forall X\_ \varphi)^\Box &\defequiv \optBox(\forall X\_ \varphi^\Box) \\
+  (\exists x\?X\_ \varphi)^\Box &\defequiv \Box(\exists x\?X\_ \varphi^\Box) &
+  (\exists X\_ \varphi)^\Box &\defequiv \Box(\exists X\_ \varphi^\Box)
 \end{align*}
 \end{defn}
 
@@ -2908,18 +2912,18 @@ that~$\Box\varphi'$. Since~$\Box\psi$ holds, it follows that~$\Box\varphi$.
 
 \begin{ex}\label{ex:module-zero-geometric}
 Let~$M$ be an~$R$-module. Then the statement that~$M$ is zero is not
-geometric: $\varphi :\equiv (\forall x\?M\_ x = 0)$. But if~$M$ is generated by some finite
+geometric: $\varphi \defequiv (\forall x\?M\_ x = 0)$. But if~$M$ is generated by some finite
 family~$x_1,\ldots,x_n\?M$, then~$\varphi$ is equivalent to the
-statement~$\varphi' :\equiv (x_1 = 0
+statement~$\varphi' \defequiv (x_1 = 0
 \wedge \cdots \wedge x_n = 0)$ which is geometric; and there is an
 intuitionistic proof of this equivalence. Since no implication signs occur
-in~$\psi :\equiv \speak{$M$ is generated by~$x_1,\ldots,x_n$}$, the lemma is
+in~$\psi \defequiv \speak{$M$ is generated by~$x_1,\ldots,x_n$}$, the lemma is
 applicable and shows that~$\varphi^\Box$ implies~$\Box\varphi$.
 This example will gain geometric meaning in
 lemma~\ref{lemma:module-zero-point-neighbourhood}.
 \end{ex}
 
-\begin{lemma}For the modality~$\Box$ defined by~$\Box\varphi :\equiv ((\varphi
+\begin{lemma}For the modality~$\Box$ defined by~$\Box\varphi \defequiv ((\varphi
 \Rightarrow \alpha) \Rightarrow \alpha)$, where~$\alpha$ is a fixed
 proposition, the~$\Box$-translation of the law of excluded middle holds.
 In particular, this applies to the double negation modality~$\Box = \neg\neg$, where~$\alpha =
@@ -2961,15 +2965,15 @@ to discuss some of its consequences.
 \begin{cor}\label{cor:spreading}
 Let~$X$ be a topological space.
 \begin{enumerate}
-\item Let~$U \subseteq X$ be an open subset and let~$\Box\varphi :\equiv (U
+\item Let~$U \subseteq X$ be an open subset and let~$\Box\varphi \defequiv (U
 \Rightarrow \varphi)$. Then
 \[ \Sh(X) \models \varphi^\Box \quad\text{iff}\quad \Sh(U) \models \varphi. \]
-\item Let~$A \subseteq X$ be a closed subset and let~$\Box\varphi :\equiv
+\item Let~$A \subseteq X$ be a closed subset and let~$\Box\varphi \defequiv
 (\varphi \vee A^c)$. Then
 \[ \Sh(X) \models \varphi^\Box \quad\text{iff}\quad \Sh(A) \models \varphi. \]
-\item Let~$\Box\varphi :\equiv \neg\neg\varphi$. Then
+\item Let~$\Box\varphi \defequiv \neg\neg\varphi$. Then
 \[ \Sh(X) \models \varphi^\Box \quad\text{iff}\quad \Sh(X_{\neg\neg}) \models \varphi. \]
-\item Let~$x \in X$ be a point and let~$\Box\varphi :\equiv ((\varphi
+\item Let~$x \in X$ be a point and let~$\Box\varphi \defequiv ((\varphi
 \Rightarrow \notat{x}) \Rightarrow \notat{x})$. Then
 \[ \Sh(X) \models \varphi^\Box \quad\text{iff}\quad \text{$\varphi$ holds
 at~$x$}. \]
@@ -3065,7 +3069,7 @@ exist otherwise.
 
 \begin{lemma}\label{lemma:negneg-generic-point}
 Let~$X$ be a topological space and~$\xi \in X$ a point such
-that~$\Clos\{\xi\} = X$. Then the modal operator~$\Box :\equiv ((\placeholder
+that~$\Clos\{\xi\} = X$. Then the modal operator~$\Box \defequiv ((\placeholder
 \Rightarrow \notat{\xi}) \Rightarrow \notat{\xi})$ coincides with the double
 negation modality.\end{lemma}
 \begin{proof}The semantics of the formula~$\notat{\xi}$ was defined by the
@@ -3154,7 +3158,7 @@ the first two axioms on a nucleus.
 \end{proof}
 
 \begin{lemma}Let~$\Box$ be a modal operator. Let~$\varphi$ be a formula.
-Let~$\psi :\equiv \varphi^\Box$ be the~$\Box$-translation of~$\varphi$.
+Let~$\psi \defequiv \varphi^\Box$ be the~$\Box$-translation of~$\varphi$.
 Let~$\psi'$ be the formula obtained from~$\psi$ by substituting any occuring
 domain of quantification by its~$\Box$-sheafification. Then~$\psi$
 and~$\psi'$ are equivalent.
@@ -3183,7 +3187,7 @@ Let~$\varphi \equiv (\exists x\?F\_ \psi(x))$, where we have dropped further
 variables occuring in~$\psi$ for simplicity. Then we are to show
 that~$\varphi^\Box \equiv \Box(\exists x\?F\_ \psi^\Box(x))$ is equivalent
 to~$\varphi^\boxplus \equiv \Box(\exists \bar x\?F^+\_ \psi^\boxplus(\bar x))$.
-The ``only if'' direction is trivial (set~$\bar x := [\{x\}]$). For the ``if''
+The ``only if'' direction is trivial (set~$\bar x \defeq [\{x\}]$). For the ``if''
 direction, we may assume that there exists~$\bar x\?F^+$ such
 that~$\psi^\boxplus(\bar x)$, since we want to prove a boxed statement. By
 definition of the plus construction, it holds that~$\Box(\speak{$\bar x$ is a
@@ -3196,12 +3200,12 @@ The case for~``$\forall$'' is similar.
 \end{proof}
 
 \begin{ex}\label{ex:translation-equivalence}Let~$X$ be a scheme. Let~$f$ be
-global functions on~$X$. Let~$\varphi :\equiv \neg(\speak{$f$ \inv})$
-and~$\varphi' :\equiv \speak{$f$ nilpotent}$. Then, by proposition~\ref{prop:cond-zero}, we
+global functions on~$X$. Let~$\varphi \defequiv \neg(\speak{$f$ \inv})$
+and~$\varphi' \defequiv \speak{$f$ nilpotent}$. Then, by proposition~\ref{prop:cond-zero}, we
 have~$\Sh(X) \models (\varphi \Leftrightarrow \varphi')$. But in general, this
 does not imply that~$\Sh(X) \models (\varphi^\Box \Leftrightarrow
 (\varphi')^\Box)$. Consider for instance the modal operator given by~$\Box\alpha
-:\equiv ((\alpha \Rightarrow \notat{x}) \Rightarrow \notat{x})$ associated to a
+\defequiv ((\alpha \Rightarrow \notat{x}) \Rightarrow \notat{x})$ associated to a
 point~$x \in X$. Then~$\Sh(X) \models (\varphi^\Box \Leftrightarrow
 (\varphi')^\Box)$ means that the equivalence~$\varphi \Leftrightarrow \varphi'$
 holds at the point~$x$. This is false for~$X = \Spec \ZZ$,~$f = 2$, and~$x =
@@ -3247,7 +3251,7 @@ following statements are equivalent:
 elements}. \]
 \end{enumerate}
 \end{lemma}
-\begin{proof}Using the modal operator~$\Box$ defined by~$\Box\varphi :\equiv
+\begin{proof}Using the modal operator~$\Box$ defined by~$\Box\varphi \defequiv
 ((\varphi \Rightarrow \notat{x}) \Rightarrow \notat{x})$, we have to show that
 the following statements in the internal language are equivalent:
 \begin{enumerate}
@@ -3309,7 +3313,7 @@ therefore zero on some open neighbourhood of~$x$.
 ringed spaces). Let~$\F$ be an~$\O_A$-module. Then~$i_*\F$ is of finite type if
 and only if~$\F$ is of finite type.\end{lemma}
 \begin{proof}
-Let~$\Box$ be the modal operator defined by~$\Box\varphi :\equiv (\varphi \vee
+Let~$\Box$ be the modal operator defined by~$\Box\varphi \defequiv (\varphi \vee
 A^c)$. From the internal perspective, we have a surjective ring homomorphism~$i^\sharp
 : \O_X \to \O_A$, where we omit the forgetful functor~$i_*$ from~$\Box$-sheaves
 to arbitrary sets in the notation, and an~$\O_A$-module~$\F$. Furthermore, we
@@ -3439,7 +3443,7 @@ its localization at the multiplicative subset of regular elements. Since from
 the internal perspective~$\O_X$ is an ordinary ring, we can associate to it its
 total quotient ring $\O_X[\S^{-1}]$,
 where~$\S$ is internally defined by the formula
-\[ \S := \{ s\?\O_X \,|\, \speak{$s$ is regular} \} \subseteq \O_X. \]
+\[ \S \defeq \{ s\?\O_X \,|\, \speak{$s$ is regular} \} \subseteq \O_X. \]
 Externally, this ring is the sheaf~$\K_X$.
 \begin{prop}\label{prop:kx-internally}
 Let~$X$ be a scheme (or a ringed space). The sheaf of rings defined
@@ -3501,7 +3505,7 @@ over some open neighbourhood of~$x$.
 \end{enumerate}
 \end{prop}
 \begin{proof}
-Let~$\Box$ be the modal operator defined by~$\Box\varphi :\equiv ((\varphi
+Let~$\Box$ be the modal operator defined by~$\Box\varphi \defequiv ((\varphi
 \Rightarrow {!x}) \Rightarrow {!x})$. By corollary~\ref{cor:spreading}, we are
 to show that the following statements of the internal language are equivalent:
 \begin{enumerate}
@@ -3517,7 +3521,7 @@ prove~$t = 0$. This is immediate. (This direction also follows simply by
 examining the logical form and applying lemma~\ref{lemma:open-stalk}.)
 
 For the converse direction, consider the annihilator of~$s$, \ie the ideal
-\[ I := \Ann_{\O_X}(s) = \{ t\?\O_X \,|\, st = 0 \} \subseteq \O_X. \]
+\[ I \defeq \Ann_{\O_X}(s) = \{ t\?\O_X \,|\, st = 0 \} \subseteq \O_X. \]
 This ideal satisfies the quasicoherence condition (example~\ref{ex:annihilator-qcoh}),
 thus~$I$ is a quasicoherent submodule of a finitely generated module. Since~$X$ is
 locally Noetherian, it follows that~$I$ is finitely generated as well, say by~$x_1,\ldots,x_n \? I$. By
@@ -3615,7 +3619,7 @@ verify the universal property of~$\neg\neg$-sheafification.
 % grammar?
 So let~$G$ be a~$\neg\neg$-sheaf and let~$\alpha : \O_X \to G$ be a map. We
 can define an extension~$\bar\alpha : \K_X \to G$ in the following way:
-Let~$f \? \K_X$. Define the subsingleton~$S := \{ x \? G \,|\, \exists
+Let~$f \? \K_X$. Define the subsingleton~$S \defeq \{ x \? G \,|\, \exists
 b\?\O_X\_ f = b/1 \wedge x = \alpha(b) \} \subseteq G$. Since~$f$ can be
 written in the form~$a/s$ with~$s$ \notnot invertible, it follows that~$S$
 is \notnot inhabited. Since~$G$ is a~$\neg\neg$-sheaf, there exists a
@@ -3691,7 +3695,7 @@ If~$X$ is a general scheme (not necessarily integral, reduced, or locally
 Noetherian), we can describe~$\K_X$ in a similar way as the sheafification
 of~$\O_X$; specifically, it is the sheafification with respect to the modal
 operator defined by
-\[ \Box\varphi :\equiv \speak{$\O_X$ is~$(\varphi \Rightarrow
+\[ \Box\varphi \defequiv \speak{$\O_X$ is~$(\varphi \Rightarrow
 \placeholder)$-separated} \]
 in the internal language of~$\Sh(X)$.
 
@@ -3872,7 +3876,7 @@ true that locally there exists sections~$f$ of~$\K_X^*$ such that~$D = [f]$.
 \begin{defn}\label{defn:line-bundle-of-divisor}
 The \emph{line bundle associated to a Cartier divisor}~$D$
 is the~$\O_X$-submodule
-\[ \O_X(D) := \{ g \in \K_X \,|\, g D \in \O_X \} = D^{-1} \O_X \subseteq \K_X
+\[ \O_X(D) \defeq \{ g \in \K_X \,|\, g D \in \O_X \} = D^{-1} \O_X \subseteq \K_X
 \]
 of~$\K_X$. Here we are abusing language for~``$gD \in \O_X$'' to mean that~$gf
 \in \O_X$ if~$D = [f]$ with~$f\?\K_X$; and for~``$D^{-1} \O_X$'' to
@@ -3890,7 +3894,7 @@ of~$X$ associated to the sheaf of ideals~$\O_X(-D) \subseteq \O_X$.
 
 %\begin{prop}Let~$D$ be an effective divisor on~$X$. Then~$\O_X(D)$ is trivial
 %outside of the support of~$D$.\end{prop}
-%\begin{proof}We have to show that~$\O_X(D)|_U$ is trivial on~$U := X \setminus
+%\begin{proof}We have to show that~$\O_X(D)|_U$ is trivial on~$U \defeq X \setminus
 %V(\O_X(-D)) = \{ x \in X \,|\, 1 \in \O_X(-D) \}$. We do this by verifying ...
 %D = [f], f : O_X regular. O_X(-D) = (f).
 %Assume 1 in O_X(-D): Then f is invertible. Obviously O_X(-D) --> O_X
@@ -3898,7 +3902,7 @@ of~$X$ associated to the sheaf of ideals~$\O_X(-D) \subseteq \O_X$.
 %\end{proof}
 
 \begin{defn}The \emph{Cartier divisor associated to a free submodule~$\L \subseteq
-\K_X$ of rank~1} is~$D := [f^{-1}]$, where~$f\?\K_X$ is the unique element of
+\K_X$ of rank~1} is~$D \defeq [f^{-1}]$, where~$f\?\K_X$ is the unique element of
 some one-element-basis of~$\L$.\end{defn}
 
 The basis element~$f\?\K_X$ does indeed lie in~$\K_X^*$: Write~$f
@@ -3945,7 +3949,7 @@ converse is similar.
 
 \begin{prop}Assume that~$X$ is an integral scheme. Then any line bundle on~$X$
 is (uncanonically) a submodule of~$\K_X$.\end{prop}
-\begin{proof}Let~$\xi$ be the generic point of~$X$ and let~$\Box := \neg\neg$
+\begin{proof}Let~$\xi$ be the generic point of~$X$ and let~$\Box \defeq \neg\neg$
 denote the modal operator such that internal sheafification with respect
 to~$\Box$ is the same as pulling back to~$\{\xi\}$ and then pushing forward
 to~$X$ again (see section~\ref{sect:negneg-sheaves}). Let~$\L$ be a line bundle on~$X$. Since~$\L_\xi \cong
@@ -4006,7 +4010,7 @@ quasicompactness of~$X$, some single~$U_i$ covers~$X$ as well, such that the
 corresponding formula~$\varphi_i$ holds on~$X$.
 
 For the ``if'' direction, note that a monotone family~$(U_i)$ of open subsets
-induces a monotone family of formulas by defining~$\varphi_i :\equiv U_i$. This
+induces a monotone family of formulas by defining~$\varphi_i \defequiv U_i$. This
 correspondence is such that~$\Sh(X) \models \bigvee_i \varphi_i$ holds if and
 only if~$X = \bigcup_i U_i$ and such that~$\Sh(X) \models \varphi_i$ if and
 only if~$X = U_i$. With these observations the claim is obvious.
@@ -4103,9 +4107,9 @@ the corresponding section~$s_i$ is actually a global section and verifies~$X
 
 For the converse direction, note that given a family~$(U_i)_{i \in I}$ of open
 subsets, we can define a sheaf on~$X$ by the internal definition
-\[ \F := \{ M \in \Omega \,|\, \bigvee_{i \in I} (M = U_i) \}. \]
+\[ \F \defeq \{ M \in \Omega \,|\, \bigvee_{i \in I} (M = U_i) \}. \]
 Recall that~$\Omega$ is the object of truth values, internally defined as the
-power set of~$1 := \{\star\}$ and that~``$M = U_i$'' is abuse of notation
+power set of~$1 \defeq \{\star\}$ and that~``$M = U_i$'' is abuse of notation
 and means~$M = \{ x \in 1 \,|\, U_i \}$.
 \XXX{the global sections of $\F$ are not those which I expected! Is the claim
 true?}
@@ -4271,7 +4275,7 @@ is in any case separated with respect to the modal operator~$(\speak{$f$ \inv}
 
 Now suppose that~$\G$ is quasicoherent. Let~$f\?\O_X$. Let $s\?\F$ and assume that
 if~$f$ were invertible,~$s$ would be an element of~$\G$. Define the
-subsingleton~$S := \{ t\?\G[f^{-1}] \,|\, \speak{$f$ \inv} \wedge t=s/1 \}$.
+subsingleton~$S \defeq \{ t\?\G[f^{-1}] \,|\, \speak{$f$ \inv} \wedge t=s/1 \}$.
 Then~$S$ would be inhabited by~$s/1$ if~$f$ were invertible. Since~$\G[f^{-1}]$
 is a sheaf, it follows that there exists an element~$u/f^n$ of~$\G[f^{-1}]$
 such that, if~$f$ were invertible, it would be the case that~$u/f^n = s/1 \in
@@ -4295,7 +4299,7 @@ would be an element of~$S$.
 Let~$X$ be a scheme and~$s$ be a global section of~$\O_X$. Then the
 annihilator of~$s$, \ie the sheaf of ideals internally defined by the
 formula
-\[ I := \Ann_{\O_X}(s) = \{ t\?\O_X \,|\, st = 0 \} \subseteq \O_X \]
+\[ I \defeq \Ann_{\O_X}(s) = \{ t\?\O_X \,|\, st = 0 \} \subseteq \O_X \]
 is quasicoherent. To prove this in the internal language, it suffices to
 verify the condition of the proposition.
 So let~$f\?\O_X$ and~$t\?\O_X$ be arbitrary and assume~$\speak{$f$ \inv} \Rightarrow t \in I$,
@@ -4306,7 +4310,7 @@ some~$n\?\NN$, \ie that~$f^n t \in I$.
 
 \begin{ex}\label{ex:radical-qcoh} Let~$X$ be a scheme and~$\I \subseteq \O_X$
 be a quasicoherent ideal sheaf.  Then the radical of~$\I$, internally definable
-as \[ \sqrt{\I} := \Bigl\{ s\?\O_X \,\Big|\, \bigvee_{n \geq 0} s^n \in \I \Bigr\}, \] is
+as \[ \sqrt{\I} \defeq \Bigl\{ s\?\O_X \,\Big|\, \bigvee_{n \geq 0} s^n \in \I \Bigr\}, \] is
 quasicoherent as well: Let~$f\?\O_X$ and~$s\?\O_X$ be arbitrary and
 assume~$\speak{$f$ \inv} \Rightarrow s \in \sqrt{\I}$, \ie assume that if~$f$
 were invertible, some power~$s^n$ would be an element of~$\I$. Since
@@ -4372,9 +4376,9 @@ condition is equivalent to the conjunction of the separatedness condition and
   \bigvee_{n \geq 0} \exists s\?\F\_
   \speak{$f$ \inv} \Rightarrow f^{-n} s \in \K.
 \end{multline}
-In one direction, a set~$\S \subseteq \F[f^{-1}]$ is given; construct~$K := \{
+In one direction, a set~$\S \subseteq \F[f^{-1}]$ is given; construct~$K \defeq \{
 s\?\F \,|\, s/1 \in \S \} \subseteq \F$. In the other direction, a set~$\K
-\subseteq \F$ is given; construct~$S := \{ s\?\F[f^{-1}] \,|\, \exists
+\subseteq \F$ is given; construct~$S \defeq \{ s\?\F[f^{-1}] \,|\, \exists
 s'\?\F\_ s' \in \K \wedge s = s'/1 \} \subseteq \F[f^{-1}]$. The remaining
 details can easily be filled out.
 
@@ -4413,7 +4417,7 @@ in~$\Gamma(D(f),\F)$. Thus~$U \models f^{-n}s \in \K$ holds and the consequent
 is verified.
 
 To see that surjectivity is necessary, let a section~$u \in \Gamma(D(f),\F)$ be
-given. Define a subsheaf~$\K \subseteq \F|_U$ by setting~$\Gamma(V,\K) := \{
+given. Define a subsheaf~$\K \subseteq \F|_U$ by setting~$\Gamma(V,\K) \defeq \{
 u|_V \,|\, V \subseteq D(f) \}$. Then~$\K$ verifies the antecedent. Thus the
 consequent holds: There exists an open covering~$U = \bigcup_i U_i$ such that
 for each~$i$, there exists a natural number~$n_i$ and a section~$s_i \in
@@ -4471,7 +4475,7 @@ that~$j_!j^{-1}\F \cong \F$ (canonically).
 \end{lemma}
 \begin{proof}Internally, for a set~$\F$, we can define~$j_!(\F)$ simply be the
 set comprehension
-\[ j_!(\F) := \{ x\?\F \,|\, U \}. \]
+\[ j_!(\F) \defeq \{ x\?\F \,|\, U \}. \]
 Externally, the sections of the thusly defined sheaf on an open subset~$V
 \subseteq X$ are given by~$\{ x \in \Gamma(V,\F) \,|\, V \subseteq U \}$,
 \ie the whole of~$\Gamma(V,\F)$ if~$V \subseteq U$ and the empty set otherwise.
@@ -4479,7 +4483,7 @@ With this short internal description, all of the stated properties can be
 easily verified in the internal language.
 
 For instance, recall that internally the functor~$j^{-1}$ is given by
-sheafifying with respect to the modal operator~$\Box :\equiv (U \Rightarrow
+sheafifying with respect to the modal operator~$\Box \defequiv (U \Rightarrow
 \placeholder)$. Thus, to show the second statement, we have to give a
 bijection~$(j_!(\F))^{++} \to \F$ for any~$\Box$-sheaf~$\F$. (This map has to
 be given explicitly, to not only show a weaker statement about a local
@@ -4510,10 +4514,10 @@ that~$j_!j^{-1}\F \cong \F$ (canonically).
 \end{enumerate}
 \end{lemma}
 \begin{proof}Internally, a sheaf of modules on~$\O_U$ is simply a module
-on~$\O_X^{++}$ which is a~$\Box$-sheaf, where~$\Box :\equiv (U \Rightarrow
+on~$\O_X^{++}$ which is a~$\Box$-sheaf, where~$\Box \defequiv (U \Rightarrow
 \placeholder)$. The suitable internal definition for the extension by zero of
 such a module~$\F$ is
-\[ j_!(\F) := \{ x\?\F \,|\, (x = 0) \vee U \}. \]
+\[ j_!(\F) \defeq \{ x\?\F \,|\, (x = 0) \vee U \}. \]
 With this description, all necessary verifications are easy. Note that
 an~$\O_X$-module~$\F$ fulfills the stated condition on stalks if and only if
 internally, it holds that~$\forall x\?\F\_ ((x = 0) \vee U)$.
@@ -4526,7 +4530,7 @@ inclusion~$i_* : \Sh(A) \to \Sh(X)$ consists of exactly those sheaves~$\F$ whose
 is a subset of~$A$. In this case, it holds that~$i_* i^{-1} \F \cong \F$
 (canonically).\end{lemma}
 \begin{proof}Recall that the modal operator associated to~$A$ is~$\Box\varphi
-:\equiv (\varphi \vee A^c)$, and that by section~\ref{sect:internal-sheaves} the
+\defequiv (\varphi \vee A^c)$, and that by section~\ref{sect:internal-sheaves} the
 essential image of~$i_*$ consists of exactly those sheaves which
 are~$\Box$-sheaves from the internal perspective. Let~$\F$ be a sheaf on~$X$.
 Then it holds that
@@ -4564,7 +4568,7 @@ Let~$X$ be a ringed space. Let~$\I \subseteq \O_X$ be an ideal
 sheaf. Then:
 \begin{enumerate}
 \item The subspace of~$X$ associated to the modal operator~$\Box$ defined
-by~$\Box\varphi :\equiv (\varphi \vee (1 \in \I))$ is~$V(\I)$.
+by~$\Box\varphi \defequiv (\varphi \vee (1 \in \I))$ is~$V(\I)$.
 \item The support of~$\O_X/\I$ is exactly~$V(\I)$.
 \item The canonical morphism~$i : V(\I) \to X$ is a closed immersion
 of ringed spaces.
@@ -4598,7 +4602,7 @@ ringed.\end{prop}
 \[ \Sh(V(\I)) \models \speak{$\O_{V(\I)}$ is a local ring}. \]
 By theorem~\ref{thm:box-translation-semantically}, this is equivalent to
 \[ \Sh(X) \models (\speak{$\O_X/\I$ is a local ring})^\Box, \]
-where~$\Box$ is the modal operator given by~$\Box\varphi :\equiv (\varphi \vee
+where~$\Box$ is the modal operator given by~$\Box\varphi \defequiv (\varphi \vee
 (1 \in \I))$. We therefore have to give an intuitionistic proof of the fact
 \[ \forall x,y\?\O_X/\I\_ \speak{$x+y$ \inv} \Longrightarrow
   \Box(\speak{$x$ \inv} \vee \speak{$y$ \inv}). \]
@@ -4658,7 +4662,7 @@ property.
 \end{enumerate}
 \end{lemma}
 \begin{proof}For the first statement, let~$\N \subseteq \O_X$ be the nilradical
-of~$\O_X$. This can internally be simply defined by~$\N := \sqrt{(0)} = \{
+of~$\O_X$. This can internally be simply defined by~$\N \defeq \sqrt{(0)} = \{
 s\?\O_X \,|\, \bigvee_{n \geq 0} s^n = 0 \}$. Define~$X_\mathrm{red}$ as the closed
 subspace associated to this ideal sheaf. This ringed space is reduced by the
 previous lemma. If~$X$ is a scheme, then quasicoherence of~$\N$ (which is
@@ -4669,7 +4673,7 @@ internal language, by using that the well-known fact of locale theory that the
 category of locales over~$X$ is equivalent to internal locales in~$\Sh(X)$; but
 we do not want to discuss this further.
 
-For the second statement, internally define the ideal~$\I := \sqrt{\{ s\?\O_X \,|\, s = 0 \vee
+For the second statement, internally define the ideal~$\I \defeq \sqrt{\{ s\?\O_X \,|\, s = 0 \vee
 A^c \}} \subseteq \O_X$. Then~$1 \in \I$ if and only if~$A^c$, thus by
 proposition~\ref{prop:basics-closed-subspace} the closed ringed subspace defined
 by~$\I$ has~$A$ as underlying topological space. It is reduced since~$\I$ is a
@@ -4727,11 +4731,11 @@ locale hold from the internal point of view. (In these notes, we do not need a
 precise wording of these axioms.)
 
 The equivalence is described as follows: A locale~$f : Y \to X$ over~$X$
-induces an internal locale~$I(Y)$ with object of opens given by~$\Open(I(Y)) :=
+induces an internal locale~$I(Y)$ with object of opens given by~$\Open(I(Y)) \defeq
 f_* \Omega_{\Sh(Y)} \in \Sh(X)$, where~$f_*$ is the pushforward functor
 and~$\Omega_{\Sh(Y)}$ is the object of truth values in the topos of sheaves
 on~$Y$. Conversely, an internal locale~$\L \in \Sh(X)$ induces an (external)
-locale~$E(\L)$ with lattice of opens given by~$\Open(E(\L)) := \Gamma(X,\L)$.
+locale~$E(\L)$ with lattice of opens given by~$\Open(E(\L)) \defeq \Gamma(X,\L)$.
 This comes equipped with a canonical morphism~$Y \to X$ of locales which we do
 not need to describe explicitly~\cite[section~C1.6]{johnstone:elephant}.
 
@@ -4757,7 +4761,7 @@ between internal and external perspectives.
 
 \subsection{The spectrum of a ring as a locale} Recall that the spectrum
 of a ring~$A$ is usually constructed as the set
-\[ \Spec A := \{ \ppp \subseteq A \,|\,
+\[ \Spec A \defeq \{ \ppp \subseteq A \,|\,
   \text{$\ppp$ is a prime ideal} \} \]
 endowed with a certain topology and a sheaf of rings~$\O_{\Spec A}$. From an
 intuitionistic (and thus internal) point of view, this construction does not
@@ -4803,7 +4807,7 @@ invertible.\end{lemma}
 canonical map
 \[ \begin{array}{@{}rcl@{}}
   \Omega = \P(1) &\longrightarrow& \Open(\Spec A) \\[0.1em]
-  \varphi &\longmapsto& \aaa_\varphi := \sup\{\sqrt{(1)} \,|\, \varphi \} =
+  \varphi &\longmapsto& \aaa_\varphi \defeq \sup\{\sqrt{(1)} \,|\, \varphi \} =
   \{ x \? A \,|\, \speak{$x$ nilpotent} \vee \varphi \}
 \end{array} \]
 is bijective. It is always injective: If~$\aaa_\varphi = \aaa_\psi$,
@@ -4867,12 +4871,12 @@ following.
 \begin{defn}Let~$A$ be an~$R$-algebra which is quasicoherent in the sense that
 the condition given in theorem~\ref{thm:qcoh-sheafchar} is fulfilled. The
 lattice of opens of its \emph{quasicoherent spectrum} is given by
-\[ \Open(\QcohSpec{R}{A}) := \{ \aaa \subseteq A \,|\,
+\[ \Open(\QcohSpec{R}{A}) \defeq \{ \aaa \subseteq A \,|\,
   \text{$\aaa$ is a quasicoherent radical ideal} \}, \]
 where again ``quasicoherent'' is meant as in theorem~\ref{thm:qcoh-sheafchar}.
 If this lattice fulfills the axioms on a locale, we further define a
 structure sheaf on a base by
-$\Gamma(\sqrt{(f)}, \O_{\QcohSpec{R}{A}}) := A[f^{-1}]$.
+$\Gamma(\sqrt{(f)}, \O_{\QcohSpec{R}{A}}) \defeq A[f^{-1}]$.
 \end{defn}
 % XXX: maybe use Borceux, p. 431, ex. 6.12.10 to find conditions when
 % \QcohSpec{R}{A} is an internal locale
@@ -5018,7 +5022,7 @@ set of finitely generated ideals in~$R$ satisfies the ascending process
 condition.\end{defn}
 
 Any ascending chain of elements~$a_0 \preceq a_1 \preceq \cdots$ in a partially
-ordered set gives rise to an ascending process by setting~$f(n) := \{ a_n
+ordered set gives rise to an ascending process by setting~$f(n) \defeq \{ a_n
 \}$. Conversely, the axiom of dependent choice would allow to construct an
 ascending chain out of an ascending process. In classical logic, a ring is
 processly Noetherian if and only if it is Noetherian in the usual sense.
@@ -5053,7 +5057,7 @@ type ideal sheaves~$\I_{ij} \hookrightarrow \O_X|_{D(g_{ij})}$; these
 correspond to ideals~$J_{ij} \subseteq A[g_{ij}^{-1}]$ such that~$J_i
 \subseteq J_{ij}$ (where we have suppressed the localization
 morphism~$A[f_i^{-1}] \to A[g_{ij}^{-1}]$ in the notation). Equivalently,
-writing~$J_i' := A \cap J_i$ and~$J_{ij}' := A \cap J_{ij}$ for the
+writing~$J_i' \defeq A \cap J_i$ and~$J_{ij}' \defeq A \cap J_{ij}$ for the
 contractions, we have the inclusions~$J_i' \subseteq J_{ij}'$ of ideals of~$A$.
 
 Continuing in this fashion, we obtain a tree of ideals~$J_{i_1 \cdots i_n}'$.
@@ -5144,8 +5148,6 @@ remark~\ref{rem:qcoh-in-constructive-mathematics}).
 
 \XXX{remark on possible pitfalls}
 
-\XXX{$:=$, $:\equiv$}
-
 \end{document}
 
 Snippet that may be useful later:
@@ -5162,7 +5164,7 @@ For the third statement, note that it is equivalent to show that
 where~``$(V,s)$ maximal'' means that for any other such pair~$(W,t)$ such
 that~$V \subseteq W$ and~$t|_V = s$, it holds that~$V = W$. This follows from
 the fact that the plus construction can also be defined as
-\[ \F^+ := \{ S \subseteq F \,|\,
+\[ \F^+ \defeq \{ S \subseteq F \,|\,
   \speak{$S$ subsingleton},\
   \neg\neg(\speak{$S$ inhabited}),\
   \speak{$S$ $\neg\neg$-stable} \}. \]

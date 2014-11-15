@@ -303,7 +303,7 @@ expressed in the internal language.
 
 Thus for global considerations, the internal language of~$\Sh(X)$ is only
 useful in that local subparts can be simplified. Also, some global features
-reflect themselves in certain meta properties of the internal language. For
+reflect themselves in certain metaproperties of the internal language. For
 instance, a scheme is quasicompact if and only if the internal language
 has a weak version of the so-called disjunction property of mathematical
 logic (section~\ref{sect:compactness}).
@@ -3970,8 +3970,10 @@ support of an effective Cartier divisor
 \end{itemize}
 
 
-\section{Compactness principles}
+\section{Compactness and metaproperties}
 \label{sect:compactness}
+
+\subsection{Qausicompactness}
 
 As stated in the introduction, quasicompactness of a space can not be detected
 by the internal language: There cannot exist a formula~$\varphi$ such that a
@@ -4077,6 +4079,9 @@ is invertible in $\O_X$}$.)
 Then the conclusion of the proposition is that \emph{assuming that~$\psi$ holds commutes
 with directed disjunctions}.\end{rem}
 
+
+\subsection{Locality}
+
 A stronger condition on a topological space~$X$ than quasicompactness is
 locality: A topological space is \emph{local} if and only if for any open
 covering~$X = \bigcup_i U_i$ (not necessarily directed) a certain single~$U_i$
@@ -4115,7 +4120,14 @@ and means~$M = \{ x \in 1 \,|\, U_i \}$.
 true?}
 \end{proof}
 
-\XXX{lead-in}
+
+\subsection{Irreducibility}
+
+In intuitionistic logic, De Morgan's law~$\neg(\alpha \wedge \beta)
+\Rightarrow \neg\alpha \vee \neg\beta$ is not generally justified; therefore we
+can't use it when working internally to the topos of sheaves on a general scheme~$X$.
+The following proposition demonstrates that if~$X$ is irreducible, the law
+does hold.
 
 \begin{prop}\label{prop:irreducibility-internally}
 A topological space~$X$ is irreducible if and only if the internal
@@ -4130,10 +4142,10 @@ Furthermore, in this case the following internal logical principle holds:
   \neg(\alpha \wedge \beta) \Rightarrow (\neg\alpha \vee \neg\beta). \]
 \end{prop}
 \begin{proof}The statement ``$\Sh(X) \models \neg(\varphi \wedge \psi)$'' means
-that~$U \cap V = \empty$, where~$U$ and~$V$ are the largest open subsets on
+that~$U \cap V = \emptyset$, where~$U$ and~$V$ are the largest open subsets on
 which~$\varphi$ respectively~$\psi$ hold. The disjunction ``$\Sh(X) \models
-\neg\varphi$ or $\Sh(X) \models \neg\psi$ means that~$U = \empty$ or~$V =
-\empty$.
+\neg\varphi$ or $\Sh(X) \models \neg\psi$'' means that~$U = \emptyset$ or~$V =
+\emptyset$.
 
 Therefore, if~$X$ is irreducible, then the internal language has the claimed metaproperty. The converse
 can be seen by instantiating~$\varphi$ and~$\psi$ with the formulas associated
@@ -4141,7 +4153,7 @@ to given open subsets having empty intersection. It then follows that one of
 these formulas is false in the internal language; thus the associated subset is
 empty.
 
-The stated logical principle holds since open subsets of irreducible spaces are
+The stated internal logical principle holds since nonempty open subsets of irreducible spaces are
 irreducible.
 \end{proof}
 

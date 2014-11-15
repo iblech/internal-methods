@@ -119,6 +119,7 @@
 
 \newcommand{\defeq}{\vcentcolon=}
 \newcommand{\defequiv}{\vcentcolon\equiv}
+\newcommand{\seq}[1]{\mathrel{\vdash\!\!\!_{#1}}}
 
 \definecolor{gray}{rgb}{0.7,0.7,0.7}
 
@@ -575,7 +576,7 @@ Again by assumption, we may conclude that~$U_i \models \chi$ for each~$i$. The s
 follows because of the locality of the internal language.
 
 A complete list of which rules are to prove is
-in~\cite[section~D1.3.1]{johnstone:elephant}.
+in appendix~\ref{appendix:inference-rules}.
 \end{proof}
 
 In particular, if a formula~$\psi$ has an unconditional intuitionistic proof,
@@ -2952,7 +2953,8 @@ thus~$\alpha$.
 \end{proof}
 
 
-\subsection{Truth at stalks \vs truth on neighbourhoods}\label{sect:spreading}
+\subsection{\texorpdfstring{Truth at stalks \vs truth on neighbourhoods}{Truth
+at stalks vs. truth on neighbourhoods}}\label{sect:spreading}
 We now state the crucial property of the~$\Box$-translation. Recall
 that~``$X_\Box$'' denotes the sublocale of~$X$ induced by~$\Box$
 (definition~\ref{defn:subspace-by-nucleus}).
@@ -5112,8 +5114,7 @@ remark~\ref{rem:qcoh-in-constructive-mathematics}).
 
 \section{Dictionary between internal and external notions}
 
-\small
-{\renewcommand{\arraystretch}{1.3}
+{\small\renewcommand{\arraystretch}{1.3}
 \begin{longtable}{@{}p{5cm}@{\qquad}p{5cm}@{\qquad}p{3cm}@{}}
   \toprule
   external & internal \\ \midrule
@@ -5165,6 +5166,116 @@ remark~\ref{rem:qcoh-in-constructive-mathematics}).
 \end{longtable}}
 
 \XXX{update table to contain all concepts discussed in these notes}
+
+
+\section{The inference rules of intuitionistic logic}
+\label{appendix:inference-rules}
+
+\XXX{cite \cite[section~D1.3.1]{johnstone:elephant}, talk about~$\in$, and
+explain contexts}
+
+\begin{center}
+  \textbf{Structural rules} \\
+  \vspace{-0.5em}
+  \phantom{a}\hfill
+  \AxiomC{$\phantom{\seq{\vec x}}$}\UnaryInfC{$\varphi \seq{\vec x} \varphi$}\DisplayProof\hfill
+  \AxiomC{$\varphi \seq{\vec x} \psi$}\UnaryInfC{$\varphi[\vec s/\vec x]
+  \seq{\vec y} \psi[\vec s/\vec x]$}\DisplayProof\hfill
+  \AxiomC{$\varphi \seq{\vec x} \psi$}\AxiomC{$\psi \seq{\vec x}
+  \chi$}\BinaryInfC{$\varphi \seq{\vec x} \chi$}\DisplayProof
+  \phantom{a}\hfill
+  \vspace{2.0em}
+
+  \textbf{Rules for nullary and binary conjunction} \\
+  \vspace{-0.5em}
+  \phantom{a}\hfill
+  \AxiomC{$\phantom{\seq{\vec x}}$}\UnaryInfC{$\varphi \seq{\vec x} \top$}\DisplayProof\hfill
+  \AxiomC{$\phantom{\seq{\vec x}}$}\UnaryInfC{$\varphi \wedge \psi \seq{\vec x} \varphi$}\DisplayProof\hfill
+  \AxiomC{$\phantom{\seq{\vec x}}$}\UnaryInfC{$\varphi \wedge \psi \seq{\vec x} \psi$}\DisplayProof\hfill
+  \AxiomC{$\varphi \seq{\vec x} \psi$}\AxiomC{$\varphi \seq{\vec x} \chi$}\BinaryInfC{$\varphi \seq{\vec x} \psi \wedge \chi$}\DisplayProof
+  \phantom{a}\hfill
+  \vspace{2em}
+
+  \textbf{Rules for nullary and binary disjunction} \\
+  \vspace{-0.5em}
+  \phantom{a}\hfill
+  \AxiomC{$\phantom{\seq{\vec x}}$}\UnaryInfC{$\bot \seq{\vec x} \varphi$}\DisplayProof\hfill
+  \AxiomC{$\phantom{\seq{\vec x}}$}\UnaryInfC{$\varphi \seq{\vec x} \varphi \vee \psi$}\DisplayProof\hfill
+  \AxiomC{$\phantom{\seq{\vec x}}$}\UnaryInfC{$\psi \seq{\vec x} \varphi \vee \psi$}\DisplayProof\hfill
+  \AxiomC{$\varphi \seq{\vec x} \chi$}\AxiomC{$\psi \seq{\vec x} \chi$}\BinaryInfC{$\varphi \vee \psi \seq{\vec x} \chi$}\DisplayProof
+  \phantom{a}\hfill
+  \vspace{2em}
+
+  \textbf{Rules for arbitrary set-indexed conjunction and disjunction} \\
+  \vspace{-0.5em}
+  \phantom{a}\hfill
+  \AxiomC{$\phantom{\seq{\vec x}}$}\UnaryInfC{$\bigwedge_{i \in I} \varphi_i \seq{\vec x} \varphi_j$ for all~$j \in I$}\DisplayProof\hfill
+  \AxiomC{$\varphi \seq{\vec x} \psi_j$ for all~$j \in I$}\UnaryInfC{$\varphi \seq{\vec x} \bigwedge_{i \in I} \psi_i$}\DisplayProof
+  \phantom{a}\hfill
+  \vspace{1em}
+
+  \phantom{a}\hfill
+  \AxiomC{$\phantom{\seq{\vec x}}$}\UnaryInfC{$\varphi_j \seq{\vec x} \bigvee_{i \in I} \varphi_i$ for all~$j \in I$}\DisplayProof\hfill
+  \AxiomC{$\varphi_j \seq{\vec x} \psi$ for all~$j \in I$}\UnaryInfC{$\bigvee_{i \in I} \varphi_i \seq{\vec x} \psi$}\DisplayProof
+  \phantom{a}\hfill
+  \vspace{2em}
+
+  \textbf{Double rule for implication} \\
+  \vspace{-0.5em}
+  \phantom{a}\hfill
+  \Axiom$\varphi \wedge \psi\ \fCenter\seq{\vec x} \chi$
+  \doubleLine
+  \UnaryInf$\varphi\ \fCenter\seq{\vec x} \psi \Rightarrow \chi$
+  \DisplayProof
+  \phantom{a}\hfill
+  \vspace{2em}
+
+  \textbf{Double rules for bounded and unbounded quantification} \\
+  \vspace{-0.5em}
+  \phantom{a}\hfill
+  \Axiom$\varphi\ \fCenter\seq{\vec x, y} \psi$
+  \doubleLine
+  \UnaryInf$\exists y\?Y\_\! \varphi\ \fCenter\seq{\vec x} \psi$
+  \DisplayProof
+  {\tiny ($y$ not occuring in~$\psi$)}
+  \hfill
+  \Axiom$\varphi\ \fCenter\seq{\vec x, y} \psi$
+  \doubleLine
+  \UnaryInf$\varphi\ \fCenter\seq{\vec x\phantom{, y}} \forall y\?Y\_\! \psi$
+  \DisplayProof
+  {\tiny ($y$ not occuring in~$\varphi$)}
+  \hfill\phantom{a}
+  \vspace{1em}
+
+  \phantom{a}\hfill
+  \Axiom$\varphi\ \fCenter\seq{\vec x, Y} \psi$
+  \doubleLine
+  \UnaryInf$\exists Y\_\! \varphi\ \fCenter\seq{\vec x} \psi$
+  \DisplayProof
+  {\tiny ($Y$ not occuring in~$\psi$)}
+  \hfill
+  \Axiom$\varphi\ \fCenter\seq{\vec x, Y} \psi$
+  \doubleLine
+  \UnaryInf$\varphi\ \fCenter\seq{\vec x\phantom{, Y}} \forall Y\_\! \psi$
+  \DisplayProof
+  {\tiny ($Y$ not occuring in~$\varphi$)}
+  \hfill\phantom{a}
+  \vspace{2em}
+
+  \textbf{Rules for equality} \\
+  \vspace{-0.5em}
+  \phantom{a}\hfill
+  \AxiomC{$\phantom{\seq{\vec x}}$}
+  \UnaryInfC{$\top \seq{x} x = x$}
+  \DisplayProof
+  \hfill
+  \AxiomC{$\phantom{\seq{\vec x}}$}
+  \UnaryInfC{$(\vec x = \vec y) \wedge \varphi \seq{\vec z} \varphi[\vec y/\vec x]$}
+  \DisplayProof
+  \hfill\phantom{a} \\[0.5em]
+  (``$\vec x = \vec y\,$'' is short for~``$x_1 = y_1 \wedge \cdots \wedge x_n =
+  y_n$''.)
+\end{center}
 
 \nocite{*}
 \printbibliography

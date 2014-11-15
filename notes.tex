@@ -1996,22 +1996,22 @@ upward-closed and so we obtain a contradiction. From this contradiction we
 can trivially deduce~$m \geq n+1$ as well. \qedhere
 \end{proof}
 
-If we want to work with a complete set of natural numbers in intuitionistic
+If we want to work with a complete partially ordered set (poset) of natural numbers in intuitionistic
 logic, we have to construct a suitable completion. The idea of the following
 definition is to encode numbers as the (not necessarily existing) minimum of
 inhabited upward-closed subsets.
-\begin{defn}The partially ordered set of \emph{completed natural numbers} is
+\begin{defn}The \emph{completed poset of natural numbers}
 the set~$\widehat{\NN}$ of all inhabited upward-closed subsets of~$\NN$, ordered by
-reverse inclusion.\end{defn}
-\begin{lemma}The poset of completed natural numbers is the least partially
-ordered set containing~$\NN$ and possessing minima
+reverse inclusion. The elements of~$\widehat{\NN}$ are called \emph{generalized natural numbers}.\end{defn}
+\begin{lemma}The completed poset of natural numbers is the least poset
+containing~$\NN$ and possessing minima
 of arbitrary inhabited subsets.\end{lemma}
 \begin{proof}
 The embedding $\NN \hookrightarrow \widehat\NN$ is given by
 \[ n \in \NN \quad\longmapsto\quad {\uparrow}(n) \defeq \{ m \in \NN \,|\, m \geq n \}. \]
 If~$M \subseteq \widehat\NN$ is an inhabited subset, its minimum is
 \[ \min M = \bigcup M \in \widehat\NN. \]
-The proof of the universal property is left to the reader.
+We omit the proof of the universal property.
 \end{proof}
 
 \begin{rem}\label{rem:surjectivity-embedding}
@@ -2026,12 +2026,12 @@ does \notnot possess a preimage (by lemma~\ref{lemma:minimum-subset-naturals}).
 
 \subsection{A geometric interpretation}
 We are interested in the completed natural numbers for the following reason: A
-completed natural number in the topos of sheaves on a topological space~$X$ is
+generalized natural number in the topos of sheaves on a topological space~$X$ is
 the same as an upper semicontinuous function~$X \to \NN$.
 
 \begin{lemma}\label{lemma:upper-semicontinuous-functions}
 Let~$X$ be a topological space. The sheaf~$\widehat\NN$ of
-completed natural numbers on~$X$ is canonically isomorphic to the sheaf of upper
+generalized natural numbers on~$X$ is canonically isomorphic to the sheaf of upper
 semicontinuous~$\NN$-valued functions on~$X$.\end{lemma}
 \begin{proof}
 When referring to the natural numbers in the internal language, we actually
@@ -2076,7 +2076,7 @@ Note that the correspondence can be used to understand classical facts about
 upper semicontinuous functions as features of intuitionistic number theory. For
 instance, it is well-known that any upper semicontinuous~$\mathbb{N}$-valued
 function on an arbitrary topological space is locally constant on a dense open subset.
-This can be explained as follows: The completed natural number associated to such a
+This can be explained as follows: The generalized natural number associated to such a
 function is \notnot an ordinary natural number from the internal point of view.
 Since ``not not'' translates to ``holding on a dense open subset''
 (proposition~\ref{prop:modops-kripke}), it follows that there is a dense open
@@ -2187,7 +2187,7 @@ arbitrary open neighbourhood of~$x$ contains such a one and the dimension
 decreases (weakly) on subsets.
 
 The map~$X \to \NN \cup \{+\infty\},\ x \mapsto \dim_x X$ is upper
-semicontinuous and thus corresponds to an internal completed (possibly
+semicontinuous and thus corresponds to an internal generalized (possibly
 unbounded) natural number. The following proposition shows that this number has
 an explicit description.
 
@@ -2199,7 +2199,7 @@ over all natural numbers~$n$ such that~$\O_X$ is of Krull
 dimension~$\leq n$. This infimum need not exist in the natural numbers, of
 course; so we really mean the upward-closed set~$\A$ of all those numbers. (It
 is inhabited if and only if, from the external perspective, the dimension
-of~$X$ is locally finite. In this case, it defines a completed natural number.)
+of~$X$ is locally finite. In this case, it defines a generalized natural number.)
 
 We thus have to show for any point~$x \in X$:
 \[ \inf\{ n \in \NN \cup \{+\infty\} \,|\, n \in \A_x \} =
@@ -5143,8 +5143,6 @@ remark~\ref{rem:qcoh-in-constructive-mathematics}).
 
 \nocite{*}
 \printbibliography
-
-\XXX{``completed natural number'' is a misnomer.}
 
 \XXX{remark on possible pitfalls}
 

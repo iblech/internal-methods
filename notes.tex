@@ -1802,7 +1802,7 @@ kernel of such a matrix is finite free of rank zero.
 
 \begin{lemma}Let~$X$ be a scheme (or ringed space). Let
 $0 \to \F \to \G \to \H \to 0$ be a short exact sequence of~$\O_X$-modules.
-Then for the closures of the supports holds the equation
+Then for the closures of the supports there holds the equation
 $\Clos \supp \G = \Clos \supp \F \cup \Clos \supp \H$.
 \end{lemma}
 \begin{proof}Switching to complements, we have to prove that
@@ -1812,7 +1812,9 @@ By proposition~\ref{prop:characterization-support}, it suffices to prove
 \[ \Sh(X) \models (\G = 0\ \Longleftrightarrow\ \F = 0 \wedge \H = 0); \]
 this is a basic observation in linear algebra, valid intuitionistically.
 \end{proof}
-\XXX{This is kind of a lame example.}
+Of course, a stronger version of this lemma -- about the supports themselves
+instead of their closures -- is easily proven without using the internal
+language. We included this example only for illustrative purposes.
 
 \begin{lemma}Let~$X$ be a scheme (or locally ringed space). Let~$\L$ be a line
 bundle on~$X$, \ie an~$\O_X$-module locally free of rank~1.
@@ -4592,7 +4594,7 @@ According to table~\ref{table:nuclei} on page~\pageref{table:nuclei}, the
 stated modal operator thus defines the subspace~$D(\I)^c$, \ie~$V(\I)$.
 
 For the second statement, note that since~$\O_X/\I$ is a sheaf of rings, its
-support is closed.  Therefore the largest open subset of~$X$ where the internal
+support is closed. Therefore the largest open subset of~$X$ where the internal
 statement~``$\O_X/\I = 0$'' holds is the complement of the support
 (proposition~\ref{prop:characterization-support}). Since~$D(\I)$ is the largest
 open subset where the internal statement~``$\I = (1)$'' holds, it suffices to

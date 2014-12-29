@@ -385,10 +385,6 @@ section~\ref{sect:krull-dimension}).
 \XXX{mention and explain: Mulvey/Burden, Vickers, Awodey, Coquand, Caramello,
 ...}
 
-\XXX{cite and explain relation to
-\url{http://www.andrew.cmu.edu/user/awodey/preprints/FoS4.phil.pdf}, maybe in
-section on modal operators}
-
 \XXX{uses of the big Zariski topos, étale versions, further work, ...}
 
 
@@ -2262,6 +2258,11 @@ The techniques developed in this section also enable us to use the internal
 language of~$\Sh(X)$ to talk about sheaves on \emph{subspaces} of~$X$ (and more
 general \emph{sublocales} of~$X$).
 
+Topological interpretations of modal logic were studied before, for instance by
+Awodey and Kishida~\cite{awodey-kishida:modal}. However, they study a
+different kind of modal operators, not corresponding to the Lawvere--Tierney
+topologies of topos theory, and pursue different goals.
+
 
 \subsection{Basics on truth values and modal operators}
 
@@ -2309,7 +2310,7 @@ connectives. In particular, if~$\varphi$ and~$\psi$ are elements of~$\Omega$,
 we will write~``$\varphi \Rightarrow \psi$'' to mean~$\varphi \subseteq \psi$;
 ``$\bot$'' to mean~$\emptyset$; and~``$\top$'' to mean~$1$.
 
-\begin{defn}A \emph{modal operator} is a map~$\Box : \Omega \to \Omega$ such
+\begin{defn}A \emph{modal operator} (or \emph{Lawvere--Tierney topology}) is a map~$\Box : \Omega \to \Omega$ such
 that for all~$\varphi, \psi \in \Omega$,
 \begin{enumerate}
 \item $\varphi \Longrightarrow \Box\varphi$,

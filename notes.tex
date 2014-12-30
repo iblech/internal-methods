@@ -2443,11 +2443,17 @@ the Kripke--Joyal semantics is
 
 
 \subsection{The subspace associated to a modal operator}
+\label{sect:subspace-to-modal-operator}
 Any modal operator~$\Box : \Omega \to \Omega$ in the sheaf topos of~$X$ induces
 on global sections a map
 \[ j : \Open(X) \to \Open(X), \]
-where~$\Open(X) = \Gamma(X,\Omega)$ is the set of open subsets of~$X$. By the
-axioms on a modal operator, the map~$j$ fulfills similar axioms: For any open
+where~$\Open(X) = \Gamma(X,\Omega)$ is the set of open subsets of~$X$.
+Explicitly, it is given by
+\begin{align*}
+  j(U) &= \text{largest open subset of~$X$ on which~$\Box U$ holds} \\
+  &= \bigcup\ \{ V \subseteq X \ |\ \text{$V$ open},\ V \models \Box U \}.
+\end{align*}
+By the axioms on a modal operator, the map~$j$ fulfills similar such axioms: For any open
 subsets~$U, V \subseteq X$,
 \begin{enumerate}
 \item $U \subseteq j(U)$,
@@ -3819,14 +3825,15 @@ the~$\Box$-sheafification of~$\O_X$.
 
 For the second statement, we need to verify that the nucleus~$j_{\Ass(\O_X)}$
 associated to the subspace of associated points coincides with the
-nucleus~$j_\Box$ associated to the modal operator~$\Box$. Recall from
-remark~\XXX{ref} that the former is defined by
+nucleus~$j_\Box$ associated to the modal operator~$\Box$. The former is given
+by
 \begin{align*}
-  j_{\Ass(\O_X)}(U) &= \bigcup \{ V \subseteq X \ |\
-  \text{$V$ open},\ V \cap \Ass(\O_X) \subseteq U \} \\
-\intertext{and recall from \XXX{ref} that the latter is given by}
+  j_{\Ass(\O_X)}(U) &= \bigcup\ \{ V \subseteq X \ |\
+  \text{$V$ open},\ V \cap \Ass(\O_X) \subseteq U \}, \\
+\intertext{since \XXX{reason}, and recall from
+subsection~\ref{sect:subspace-to-modal-operator} that the latter is given by}
   j_\Box(U) &= \text{largest open subset of~$X$ on which~$\Box U$ holds} \\
-  &= \bigcup \{ V \subseteq X \ |\
+  &= \bigcup\ \{ V \subseteq X \ |\
   \text{$V$ open},\ V \models \Box U \}.
 \end{align*}
 The equivalence thus follows from a standard result on the set of associated
@@ -5284,6 +5291,8 @@ explain contexts}
 \printbibliography
 
 \XXX{remark on possible pitfalls}
+
+\XXX{typography of $\bigcup$}
 
 \end{document}
 

@@ -704,8 +704,8 @@ Kripke--Joyal semantics is that the sheaves~$\F$ and~$\G$ are \emph{locally}
 isomorphic.
 
 
-\subsection{Geometric formulas and constructions} In formal and categorical logic,
-and more specifically for our purposes, so-called geometric formulas play a
+\subsection{Geometric formulas and constructions} In formal and categorical logic
+so-called geometric formulas play a
 special role. They are named that way because, in a sense which can be made
 precise, their meaning is preserved under pullback with geometric morphisms.
 \begin{defn}A formula is \emph{geometric} if and only if it consists only of
@@ -808,11 +808,23 @@ question is that the translations of these axioms with the Kripke--Joyal
 semantics are, except for uninteresting special cases of the base space~$X$,
 plainly false -- irrespective of one's philosophical convictions. Therefore the
 internal language is in general only sound with respect to intuitionistic logic and
-not with respect to classical logic. Concretely, the internal language of
+not with respect to classical logic. Concretely, there is the following
+proposition.
+\begin{prop}The internal language of
 a~$\mathrm{T}_1$-space~$X$ is \emph{Boolean}, \ie it verifies the classical
-axiom schemes displayed above, if and only if~$X$ is discrete;
-and the internal language of a scheme~$X$ is Boolean if and only if~$X$ has
+axiom schemes displayed above, if and only if~$X$ is discrete.
+The internal language of a scheme~$X$ is Boolean if and only if~$X$ has
 dimension~$\leq 0$.
+\end{prop}
+\begin{proof}\label{prop:lang-boolean}
+The internal language of~$\Sh(X)$ is Boolean if and only if, for
+any open subset~$U \subseteq X$ it holds that~$U$ is the only dense open subset
+of~$U$. This can be checked manually, by using the definition of the
+Kripke--Joyal semantics, but we'll be able to give a more conceptual proof
+later (lemma~\ref{lemma:boolean-dense}). The first claim is then an exercise in
+point-set topology, while the second is more difficult
+(corollary~\ref{cor:boolean-dim0}).
+\end{proof}
 
 However, there is also a more satisfying answer, which furthermore
 illuminates how to intuitively picture intuitionistic mathematics.
@@ -1094,6 +1106,20 @@ indeed follows, since by assumption such a function~$s$ is zero on~$D(f)$, \ie $
 is zero as an element of~$A[f^{-1}]$.
 \end{proof}
 
+The following technical lemma will occasionally be handy.
+\begin{lemma}\label{lemma:repr-formula}
+Let~$X$ be a scheme. Let~$\varphi$ be a formula over an open subset~$U$.
+Then
+\[ U \models \exists f\?\O_X\_ (\varphi \Leftrightarrow \speak{$f$ \inv}). \]
+\end{lemma}
+\begin{proof}
+We may assume that~$U = \Spec A$ is an affine scheme. Then~$\brak{\varphi}$,
+the largest open subset of~$U$ on which~$\varphi$ holds, is a union of
+standard open subsets~$D(f_i)$. Since~$V \models \speak{$f_i$ \inv}$ if and
+only if~$V \models D(f_i)$, we can take these~$f_i$ as witnesses of the
+existential statement. \XXX{wrong}
+\end{proof}
+
 
 \subsection{Krull dimension}\label{sect:krull-dimension}
 Recall that the \emph{Krull dimension} of a
@@ -1222,7 +1248,7 @@ the internal perspective, this is an immediate consequence of
 interpreting the following standard fact of ring theory in the internal
 language of~$\Sh(X)$: A local ring~$R$ is of Krull
 dimension~$\leq 0$ if and only if any element of~$R$ is invertible or
-nilpotent. \XXX{explain}
+nilpotent.
 
 It is well-known that this holds classically; to make sure that it
 holds intuitionistically as well (so that it can be used in the internal
@@ -1240,6 +1266,25 @@ internal language of~$\Sh(X)$, where~$X$ is a scheme, is tightly coupled with
 the properties of the ring~$\O_X$: Internally, the law of excluded middle and
 the principle of double negation elimination hold if and only if~$\O_X$ is of
 Krull dimension~$\leq 0$.
+\begin{cor}\label{cor:boolean-dim0}
+Let~$X$ be a scheme. Then $\dim X \leq 0$ if and only if the internal language
+of~$\Sh(X)$ is Boolean.
+\end{cor}
+\begin{proof}
+For the ``if'' direction, note that internally, any element~$s\?\O_X$ is
+invertible or not invertible. In the latter case~$s$ is nilpotent, by
+proposition~\ref{prop:neginvnilpotent}. Thus the claim follows by the previous
+corollary.
+
+For the ``only if'' direction, it suffices to verify that internally, any
+formula~$\varphi$ holds or does not hold. (The other classicality axiom, the
+principle of double negation elimination, is equivalent to this one.) By
+lemma~\ref{lemma:repr-formula}, there exists an element~$s\?\O_X$ such
+that~$\varphi$ holds if and only if~$s$ is invertible. By assumption,~$s$ is
+invertible or nilpotent. In the first case,~$\varphi$ holds. In the second
+case,~$\neg\varphi$ holds, since if~$s$ were invertible, we would have~$1 = 0
+\? \O_X$.
+\end{proof}
 
 
 \subsection{Integrality} In intuitionistic logic, the notion of an integral
@@ -3418,7 +3463,7 @@ over~$X$. Then
 and that there is a dense open subset~$U \subseteq X$ on which~$\varphi$ holds.
 The open set~$U$ may be covered by standard open subsets~$D(f_i)$; by the
 integrality hypothesis, at least one of these is nonempty and thus itself
-dense. We may take this~$f_i$ as the required~$f$.
+dense. We may take this~$f_i$ as the sought~$f$.
 \end{proof}
 
 \begin{lemma}Let~$X$ be an integral scheme with generic point~$\xi$. Let~$\F$

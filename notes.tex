@@ -1,6 +1,7 @@
 \documentclass[10pt]{amsart}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
+\usepackage{etex}
 \usepackage{amsmath,amsthm,amssymb,stmaryrd,color,graphicx,multirow}
 \usepackage{mathtools}
 \usepackage{setspace}
@@ -256,8 +257,8 @@ the statement that any finitely generated vector space is \emph{free} is stronge
 the doubly negated version and can not be shown. It would imply that any sheaf
 of finite type is not only locally free on some dense open subset, but locally
 free on the whole space. We discuss this example in more detail in
-section~\ref{sect:upper-semicontinuous-functions} and in particular in
-lemma~\ref{lemma:locally-free-dense}.)}
+Section~\ref{sect:upper-semicontinuous-functions} and in particular in
+Lemma~\ref{lemma:locally-free-dense}.)}
 
 The second highlight is that we can shed light on the phenomenon that
 sometimes, truth of a property at a point~$x$ spreads to some open
@@ -307,7 +308,7 @@ useful in that local subparts can be simplified. Also, some global features
 reflect themselves in certain metaproperties of the internal language. For
 instance, a scheme is quasicompact if and only if the internal language
 has a weak version of the so-called disjunction property of mathematical
-logic (section~\ref{sect:compactness}).
+logic (Section~\ref{sect:compactness}).
 
 
 \subsection*{Introductory literature} These notes are intended
@@ -381,7 +382,7 @@ contexts~\cite{dyn:krull-integral,dyn:char-krull}. It can now also be used to
 reason about the dimension of schemes, since the topological dimension of a
 scheme~$X$ coincides with the Krull dimension of the structure sheaf~$\O_X$
 (regarded as an ordinary ring from the internal perspective of~$\Sh(X)$,
-section~\ref{sect:krull-dimension}).
+Section~\ref{sect:krull-dimension}).
 
 Caramello uses topos theory to build bridges between different mathematical
 subjects, in a certain precise sense~\cite{caramello:1,caramello:2}. She
@@ -431,7 +432,7 @@ scheme. The meaning of internal statements is given by a set of rules, the
 \begin{defn}The meaning of 
 \[ U \models \varphi \quad\text{(``$\varphi$ holds on $U$'')} \]
 for open subsets~$U \subseteq X$ and formulas~$\varphi$ over~$U$ is given by
-the rules listed in table~\ref{table:kripke-joyal}, recursively in the structure of~$\varphi$.
+the rules listed in Table~\ref{table:kripke-joyal}, recursively in the structure of~$\varphi$.
 In a \emph{formula over~$U$} there may appear sheaves defined on~$U$ as domains
 of quantifications,~$U$-sections of sheaves as terms and morphisms of sheaves
 on~$U$ as function symbols. The symbols~``$\top$'' and~``$\bot$'' denote truth
@@ -489,7 +490,7 @@ negation can be expressed using other symbols: $\neg\varphi \defequiv (\varphi
   topos.}
 \end{table}
 
-\begin{rem}The last two rules in table~\ref{table:kripke-joyal}, concerning
+\begin{rem}The last two rules in Table~\ref{table:kripke-joyal}, concerning
 \emph{unbounded quantification}, and are not part of the classical Kripke--Joyal
 semantics. They are part of Mike Shulman's stack semantics~\cite{shulman:stack},
 a slight extension. They are needed so that we can formulate universal
@@ -550,7 +551,7 @@ rules would make this proposition false.\end{proof}
 
 As a corollary, one may restrict the open coverings and universal
 quantifications in the the definition of the Kripke--Joyal semantics
-(table~\ref{table:kripke-joyal}) to open subsets of some basis of the topology.
+(Table~\ref{table:kripke-joyal}) to open subsets of some basis of the topology.
 For instance, if~$X$ is a scheme, one may restrict to affine open subsets.
 
 Furthermore, the proposition shows that the internal language is monotone in
@@ -579,7 +580,7 @@ Again by assumption, we may conclude that~$U_i \models \chi$ for each~$i$. The s
 follows because of the locality of the internal language.
 
 A complete list of which rules are to prove is
-in appendix~\ref{appendix:inference-rules}.
+in Appendix~\ref{appendix:inference-rules}.
 \end{proof}
 
 In particular, if a formula~$\psi$ has an unconditional intuitionistic proof,
@@ -689,7 +690,7 @@ type~$s\?\F$, $t\?\G$. Assume
 Then there is one and only one morphism~$\alpha : \F \to \G$ of sheaves such
 that for any local section~$s \in \Gamma(U,\F)$, $\Sh(X) \models
 \varphi(s,\alpha(s))$. This follows from the meaning of unique existence with
-the Kripke--Joyal semantics (proposition~\ref{prop:simplification}).
+the Kripke--Joyal semantics (Proposition~\ref{prop:simplification}).
 
 An important application is showing that two sheaves~$\F$ and~$\G$ are
 isomorphic (usually as objects with more structure, for instance sheaves of
@@ -705,8 +706,9 @@ Kripke--Joyal semantics is that the sheaves~$\F$ and~$\G$ are \emph{locally}
 isomorphic.
 
 
-\subsection{Geometric formulas and constructions} In formal and categorical logic
-so-called geometric formulas play a
+\subsection{Geometric formulas and
+constructions}\label{sect:geometric-formulas-and-constructions}
+In formal and categorical logic so-called geometric formulas play a
 special role. They are named that way because, in a sense which can be made
 precise, their meaning is preserved under pullback with geometric morphisms.
 \begin{defn}A formula is \emph{geometric} if and only if it consists only of
@@ -734,11 +736,11 @@ Then~$\varphi$ holds at~$x$ if and only if there exists an open neighbourhood~$U
 \begin{proof}This is a very general instance of the phenomenom that sometimes,
 truth at a point spreads to truth on a neighbourhood. It can be proven by
 induction on the structure of~$\varphi$, but we will give a more conceptual
-proof later (corollary~\ref{cor:geometric-spreading}).
+proof later (Corollary~\ref{cor:geometric-spreading}).
 \end{proof}
 
 This lemma is in fact a very useful metatheorem. We will properly discuss its
-significance in section~\ref{sect:spreading}. For now, we just use it to prove a
+significance in Section~\ref{sect:spreading}. For now, we just use it to prove a
 simple criterion for the internal truth of a geometric implication; we will
 apply this criterion many times.
 
@@ -822,9 +824,9 @@ The internal language of~$\Sh(X)$ is Boolean if and only if, for
 any open subset~$U \subseteq X$ it holds that~$U$ is the only dense open subset
 of~$U$. This can be checked manually, by using the definition of the
 Kripke--Joyal semantics, but we'll be able to give a more conceptual proof
-later (lemma~\ref{lemma:boolean-dense}). The first claim is then an exercise in
+later (Lemma~\ref{lemma:boolean-dense}). The first claim is then an exercise in
 point-set topology, while the second is more difficult
-(corollary~\ref{cor:boolean-dim0}).
+(Corollary~\ref{cor:boolean-dim0}).
 \end{proof}
 
 However, there is also a more satisfying answer, which furthermore
@@ -890,7 +892,7 @@ distinction with pure classical logic.
 Double negation also has a concrete geometric meaning with the
 Kripke--Joyal semantics. Namely,~$X \models \neg\neg\varphi$ holds if and
 only if there is a dense open subset~$U$ of~$X$ such that~$U \models \varphi$.
-In section~\ref{sect:modalities}, we will discuss this fact and other
+In Section~\ref{sect:modalities}, we will discuss this fact and other
 \emph{modal operators} in more detail. For instance, there is a similarly defined modal
 operator~$\Box$ such that~$X \models \Box\varphi$ if and only if there is an
 open neighbourhood~$U$ of a given point~$x$ such that~$U \models \varphi$.
@@ -939,7 +941,7 @@ disposal. But we should note that this concession is really a cop out, and that
 it would be better to develop an intuitionistic theory of schemes. If this were
 done, one could extend our approach to understand morphisms of schemes from an
 internal point of view -- a morphism~$Y \to X$ would internally look like a
-morphism~$Y \to \pt$. See section~\ref{sect:relative-spectrum} for details.\end{rem}
+morphism~$Y \to \pt$. See Section~\ref{sect:relative-spectrum} for details.\end{rem}
 
 
 \section{Sheaves of rings}
@@ -987,7 +989,7 @@ uniqueness of inverses in rings can be proven intuitionistically. Therefore, if~
 from the internal point of view, it actually holds that
 \[ \Sh(X) \models \exists! g\?\R\_ fg = 1. \]
 Since unique internal existence implies global existence
-(proposition~\ref{prop:simplification}), this shows that the first statement
+(Proposition~\ref{prop:simplification}), this shows that the first statement
 implies the third.
 \end{proof}
 
@@ -1060,7 +1062,7 @@ an open covering).
 nilpotent'' is equivalent to ``any element is invertible or nilpotent''.
 However, in intuitionistic logic, the latter is strictly stronger than the
 former. We will see in the next section
-(corollary~\ref{cor:scheme-dimension-zero}) that the structure sheaf of a
+(Corollary~\ref{cor:scheme-dimension-zero}) that the structure sheaf of a
 scheme fulfills the latter condition if and only if the scheme is
 zero-dimensional (or empty).\end{rem}
 
@@ -1078,7 +1080,7 @@ and only if it is reduced. This is straightforward.
 
 This field property is very useful. We will put it to good use when giving a
 simple proof of the fact that~$\O_X$-modules of finite type on a reduced scheme
-are locally free on a dense open subset (lemma~\ref{lemma:locally-free-dense}).
+are locally free on a dense open subset (Lemma~\ref{lemma:locally-free-dense}).
 Note that the field property only holds precisely as stated in the corollary;
 the classically equivalent condition that any element is invertible or zero is
 intuitionistically stronger. This is a common phenomenom in intuitionistic
@@ -1088,7 +1090,7 @@ inequivalent notions intuitionistically.
 The following proposition says that we can deduce a certain unconditional
 statement from the premise that, under the assumption that some element~$f\?\O_X$ is invertible, an element~$s\?\O_X$ is zero. This is
 interesting on its own, but will be of particular importance in understanding
-quasicoherence from the internal point of view (section~\ref{sect:qcoh}).
+quasicoherence from the internal point of view (Section~\ref{sect:qcoh}).
 
 \begin{prop}\label{prop:cond-zero}
 Let~$X$ be a scheme. Then
@@ -1155,7 +1157,7 @@ of Krull dimension~$\leq (-1)$.)
 Note that unlike the usual definition, this definition posits only a condition
 on elements and not on ideals. It is thus of a simpler logical form.
 (The radical ideals appear only for convenience. We will dispose of them in the
-proof of proposition~\ref{prop:dimension-scheme-ox}.)
+proof of Proposition~\ref{prop:dimension-scheme-ox}.)
 Also note that we do not define the Krull dimension of a ring as some natural
 number (this is intuitionistically not possible for general rings). Instead, we
 only define what it means for the Krull dimension to be less than or equal to
@@ -1274,13 +1276,13 @@ of~$\Sh(X)$ is Boolean.
 \begin{proof}
 For the ``if'' direction, note that internally, any element~$s\?\O_X$ is
 invertible or not invertible. In the latter case~$s$ is nilpotent, by
-proposition~\ref{prop:neginvnilpotent}. Thus the claim follows by the previous
+Proposition~\ref{prop:neginvnilpotent}. Thus the claim follows by the previous
 corollary.
 
 For the ``only if'' direction, it suffices to verify that internally, any
 formula~$\varphi$ holds or does not hold. (The other classicality axiom, the
 principle of double negation elimination, is equivalent to this one.) By
-lemma~\ref{lemma:repr-formula}, there exists an element~$s\?\O_X$ such
+Lemma~\ref{lemma:repr-formula}, there exists an element~$s\?\O_X$ such
 that~$\varphi$ holds if and only if~$s$ is invertible. By assumption,~$s$ is
 invertible or nilpotent. In the first case,~$\varphi$ holds. In the second
 case,~$\neg\varphi$ holds, since if~$s$ were invertible, we would have~$1 = 0
@@ -1324,10 +1326,10 @@ For the second statement, note that the condition on a function~$f \in
 at a point~$x \in U$ if and only if it holds on some open neighbourhood of~$x$.
 We will give a proof of this specific feature of locally Noetherian schemes
 later on, when we have developed appropriate machinery to do so easily
-(proposition~\ref{prop:regularity-spreading}). In any case, this openness
+(Proposition~\ref{prop:regularity-spreading}). In any case, this openness
 property was the essential ingredient for the equivalence between ``holding
 internally'' and ``holding at every point''
-(corollary~\ref{cor:geometric-implication}). Therefore~$\O_X$ is an integral
+(Corollary~\ref{cor:geometric-implication}). Therefore~$\O_X$ is an integral
 domain in the strong sense from the internal point of view if and only if all
 local rings~$\O_{X,x}$ are integral domains. By the first statement, this is
 equivalent to~$\O_X$ being an integral domain in the weak sense from the
@@ -1374,7 +1376,7 @@ counterexample}. The definition of~$\aaa$ may look slightly dubious,
 considering that~$\varphi$ does not depend on~$x$; but we will see that such
 definitions actually have a clear geometric meaning -- they can be used to
 define extensions of sheaves by zero in the internal language
-(lemma~\ref{lemma:extension-by-zero}).}
+(Lemma~\ref{lemma:extension-by-zero}).}
 
 \begin{prop}Let~$X$ be a scheme (or ringed space).
 \begin{enumerate}
@@ -1441,13 +1443,13 @@ case distinctions are in fact superfluous.
 A consequence of the corollary is that internally to the sheaf topos of a
 Dedekind scheme, the usual structure theorem on finitely
 presented~$\O_X$-modules is available. We will exploit this in
-lemma~\ref{lemma:torsion-stuff}, where we give an internal proof of the
+Lemma~\ref{lemma:torsion-stuff}, where we give an internal proof of the
 fact that on Dedekind schemes, torsion-free~$\O_X$-modules are locally free.
 
 
 \subsection{Normality} We will discuss the property of a ring to be
 \emph{normal}, \ie to be integrally closed in its total field of
-fractions, in section~\ref{sect:normality}, after giving an internal
+fractions, in Section~\ref{sect:normality}, after giving an internal
 characterization of the sheaf of rational functions.
 
 
@@ -1459,7 +1461,7 @@ then~$\ul{R}$ is so as well, from the internal point of view.
 We will prove this in greater generality: Appropriately formulated, a constant
 sheaf~$\ul{R}$ has some property~$\varphi$ from the internal point of view if
 and only if~$R$ has the property~$\varphi$ externally
-(lemma~\ref{lemma:properties-of-constant-sheaves}).
+(Lemma~\ref{lemma:properties-of-constant-sheaves}).
 
 
 \section{Sheaves of modules}
@@ -1467,7 +1469,7 @@ and only if~$R$ has the property~$\varphi$ externally
 From the internal perspective, a sheaf of~$\R$-modules, where~$\R$ is a sheaf
 of rings, looks just like a plain module over the plain ring~$\R$. This is
 proven just as the correspondence between sheaf of rings and internal rings
-(proposition~\ref{prop:rings-internally}).
+(Proposition~\ref{prop:rings-internally}).
 
 % XXX: talk about modules over constant sheaves of rings as well
 
@@ -1603,7 +1605,7 @@ where~$R$ is the submodule generated by
   x \otimes (sy) - s(x \otimes y)
 \end{gather*}
 with~$x,x'\?\F$, $y,y'\?\G$, $s\?\O_X$.
-This internal construction will give rise to the same sheaf
+This internal construction gives rise to the same sheaf
 of modules as the externally defined tensor product:
 
 \begin{prop}\label{prop:internal-tensor-product}
@@ -1640,7 +1642,7 @@ We constructed the tensor product using the following operations: product of
 two sets, free module on a set, quotient module with respect to a submodule;
 submodule generated by a set of elements given by a geometric formula.
 All of these operations are geometric, so the tensor product construction is
-geometric as well. Hence taking stalks commutes with performing the
+geometric as well (see Section~\ref{sect:geometric-formulas-and-constructions}). Hence taking stalks commutes with performing the
 construction.
 \end{proof}
 
@@ -1675,7 +1677,7 @@ if and only if it holds at any point.
 the subset~$\supp\F \defeq \{ x \in X \,|\, \F_x \neq 0 \} \subseteq X$. If~$\F$ is
 of finite type, this set is closed, since its complement is then open by a
 standard lemma. (We will give an internal proof of this fact in
-lemma~\ref{lemma:module-zero-point-neighbourhood}.)
+Lemma~\ref{lemma:module-zero-point-neighbourhood}.)
 
 \begin{prop}\label{prop:characterization-support}
 Let~$X$ be a scheme (or ringed space). Let~$\F$ be
@@ -1729,7 +1731,7 @@ section. Then
 \end{prop}
 \begin{proof}
 The ``only if'' direction is trivial in light of
-lemma~\ref{lemma:regular-affine}: If~$s$ is a torsion element
+Lemma~\ref{lemma:regular-affine}: If~$s$ is a torsion element
 of~$\Gamma(U,\F)$, there exists a regular element~$a \in \Gamma(U,\O_X)$ such
 that~$as = 0$. By the lemma, this element is regular from the internal
 perspective as well, so~$U \models \speak{$a$ regular} \wedge as = 0$.
@@ -1740,7 +1742,7 @@ sections~$a_i \in \Gamma(U_i,\O_X) = A[f_i^{-1}]$ with~$U_i \models \speak{$a_i$
 \wedge a_i s = 0$. Without loss of generality, we may assume that the
 denominators of the~$a_i$'s are ones, that the $f_i$ are
 finite in number, and that the~$f_i$ are regular (\ie nonzero, since~$A$ is an
-integral domain). By lemma~\ref{lemma:regular-affine}, the~$a_i$ are
+integral domain). By Lemma~\ref{lemma:regular-affine}, the~$a_i$ are
 regular in~$A[f_i^{-1}]$ and by regularity of the~$f_i$ also regular in~$A$.
 Therefore their product~$\prod_i a_i \in A$ is regular in~$A$ as well and
 annihilates~$s$.
@@ -1756,9 +1758,9 @@ quantifier, it is not:
 \[ s \in \F_\tors \quad\Longleftrightarrow\quad
   \exists a\?\O_X\_ (\forall b\?\O_X\_ ab = 0 \Rightarrow b = 0) \wedge as = 0. \]
 But since~$X$ is assumed to be locally Noetherian, regularity is an open
-property nonetheless (see proposition~\ref{prop:regularity-spreading} for an
+property nonetheless (see Proposition~\ref{prop:regularity-spreading} for an
 internal proof of this fact). Thus the claim still follows, just like in the
-proof of proposition~\ref{prop:internal-integrality}.
+proof of Proposition~\ref{prop:internal-integrality}.
 \end{proof}
 
 
@@ -1781,7 +1783,7 @@ Note that the proof works very generally, in the context of arbitrary ringed
 spaces, and is still very simple. This is common to proofs using the internal
 language. Particular features of schemes enter only at clearly recognizable
 points, for instance when an internal property specific to the structure sheaf
-of schemes is used (such as in proposition~\ref{prop:neginvnilpotent}).
+of schemes is used (such as in Proposition~\ref{prop:neginvnilpotent}).
 
 \begin{lemma}\label{lemma:coherent-stuff}
 Let~$X$ be a scheme (or ringed space).
@@ -1868,7 +1870,7 @@ $\Clos \supp \G = \Clos \supp \F \cup \Clos \supp \H$.
 \begin{proof}Switching to complements, we have to prove that
 \[ \Int(X \setminus \supp\G) = \Int(X \setminus \supp\F) \cap \Int(X \setminus
 \supp\H). \]
-By proposition~\ref{prop:characterization-support}, it suffices to prove
+By Proposition~\ref{prop:characterization-support}, it suffices to prove
 \[ \Sh(X) \models (\G = 0\ \Longleftrightarrow\ \F = 0 \wedge \H = 0); \]
 this is a basic observation in linear algebra, valid intuitionistically.
 \end{proof}
@@ -1928,7 +1930,7 @@ semantics is local existence, this would only show that~$\L^\vee \otimes_{\O_X}
 Instead, we have to actually \emph{write down} (\ie explicitly give) a
 linear map in the internal language -- not using the assumption that~$L$ is
 free of rank~1, as this would introduce an existential quantifier again (see
-section~\ref{sect:internal-constructions}).
+Section~\ref{sect:internal-constructions}).
 So we have to prove the following fact: Let~$L$ be an~$R$-module. Then there
 explicitly exists a linear map~$L^\vee \otimes_R L \to R$ such that this map is
 an isomorphism if~$L$ is free of rank~1.
@@ -1960,7 +1962,7 @@ If~$\F$ is torsion-free, then it is locally finitely free.
 \end{enumerate}
 \end{lemma}
 \begin{proof}The first statement follows from the observation that~$(\F_\tors)_x
-= (\F_x)_\tors$ (proposition~\ref{prop:torsion-submodule-stalks}). All the
+= (\F_x)_\tors$ (Proposition~\ref{prop:torsion-submodule-stalks}). All the
 others follow simply by interpreting the corresponding facts of linear algebra
 in the internal universe. For concreteness, we give intuitionistic proofs of
 the last three statements.
@@ -1977,7 +1979,7 @@ reflexive. This is obvious, the required inverse map is~$(R^n)^{\vee\vee} \to
 R^n,\ \lambda \mapsto \sum_i \lambda(\vartheta_i)$ where~$\vartheta_i : R^n \to
 R,\ (x_j)_j \mapsto x_i$.
 
-In light of corollary~\ref{cor:dedekind-smith} we can put matrices over~$\O_X$
+In light of Corollary~\ref{cor:dedekind-smith} we can put matrices over~$\O_X$
 into Smith canonical form if~$X$ is a Dedekind scheme. Therefore it suffices
 to give an intuitionistic proof of the following fact: Let~$R$ be an integral
 domain in the strong sense such that matrices over~$R$ can be put into
@@ -2046,7 +2048,7 @@ gives
 \[ \neg\neg(n \in U \vee n \not\in U). \]
 Because of the tautologies $(\varphi \Rightarrow \psi) \Rightarrow
 (\neg\neg\varphi \Rightarrow \neg\neg\psi)$ and~$\neg\neg\neg\neg\varphi \Rightarrow
-\neg\neg\varphi$ (see section~\ref{sect:appreciating-intuitionistic-logic}), it
+\neg\neg\varphi$ (see Section~\ref{sect:appreciating-intuitionistic-logic}), it
 suffices to show that~$n \in U \vee n \not\in U$ implies the conclusion.
 So assume~$n \in U \vee n \not\in U$.
 If~$n \in U$, then~$U$ does \notnot possess a minimal element by the induction
@@ -2082,7 +2084,7 @@ is a well-defined isomorphism of partially ordered sets. In fact, it is the
 inverse of the canonical embedding~$\NN \hookrightarrow \widehat\NN$. In
 intuitionistic logic, this embedding is still injective, but it can not be
 shown to be surjective: It is only the case that any element of~$\widehat\NN$
-does \notnot possess a preimage (by lemma~\ref{lemma:minimum-subset-naturals}).
+does \notnot possess a preimage (by Lemma~\ref{lemma:minimum-subset-naturals}).
 \end{rem}
 
 
@@ -2141,7 +2143,7 @@ function on an arbitrary topological space is locally constant on a dense open s
 This can be explained as follows: The generalized natural number associated to such a
 function is \notnot an ordinary natural number from the internal point of view.
 Since ``not not'' translates to ``holding on a dense open subset''
-(proposition~\ref{prop:modops-kripke}), it follows that there is a dense open
+(Proposition~\ref{prop:modops-kripke}), it follows that there is a dense open
 subset on which the function corresponds to an ordinary internal natural
 number, \ie is locally constant.
 
@@ -2187,7 +2189,7 @@ any stalk~$\F_y$, $y \in U$, so by geometricity we have
 \end{proof}
 \begin{rem}Once we understand when properties holding at a point spread to
 neighbourhoods, we will be able to give a simpler proof of the proposition (see
-lemma~\ref{lemma:gen-family-n}).\end{rem}
+Lemma~\ref{lemma:gen-family-n}).\end{rem}
 
 \begin{lemma}Let~$X$ be a scheme (or a locally ringed space). Let~$\F$ be an~$\O_X$-module of
 finite type. If~$\F$ is finite locally free, its rank function is locally
@@ -2196,7 +2198,7 @@ constant. The converse holds if~$X$ is a reduced scheme.
 \begin{proof}The rank function is locally constant if and only if internally,
 the rank of~$\F$ is an actual natural number. Also recall that the structure
 sheaf fulfills a certain field condition if~$X$ is a reduced
-scheme (corollary~\ref{cor:field-reduced}). Therefore it suffices to give a
+scheme (Corollary~\ref{cor:field-reduced}). Therefore it suffices to give a
 proof of the following fact of intuitionistic linear algebra: Let~$R$ be a
 local ring. Let~$M$ be a finitely generated~$R$-module. If~$M$ is finite
 free, its rank is an actual natural number. The converse holds if~$R$ fulfills
@@ -2204,7 +2206,7 @@ the field condition that any element which is not invertible is zero.
 
 So assume that such a module~$M$ is finite free. Then it is isomorphic
 to~$R^n$ for some actual natural number~$n$; by the internal proof in
-lemma~\ref{lemma:kernel-of-epi-fingen}, the rank of~$M$ is therefore this
+Lemma~\ref{lemma:kernel-of-epi-fingen}, the rank of~$M$ is therefore this
 number~$n$ (for any surjection~$R^m \twoheadrightarrow R^n$ it holds that~$m
 \geq n$).
 
@@ -2221,12 +2223,12 @@ By the field property of~$R$, each~$a_i$ is zero.
 Let~$X$ be a reduced scheme. Let~$\F$ be an~$\O_X$-module of
 finite type. Then~$\F$ is finite locally free on a dense open subset.\end{lemma}
 \begin{proof}Since ``dense open'' translates to ``not not'' in the internal
-language (proposition~\ref{prop:modops-kripke}), it suffices to give an
+language (Proposition~\ref{prop:modops-kripke}), it suffices to give an
 intuitionistic proof of the following fact: Let~$R$ be a local ring which fulfills an
 appropriate field condition. Let~$M$ be a finitely generated~$R$-module.
 Then~$R$ is \notnot finite free.
 
-By remark~\ref{rem:surjectivity-embedding}, the rank of such a module~$M$ is
+By Remark~\ref{rem:surjectivity-embedding}, the rank of such a module~$M$ is
 \notnot an actual natural number. By the last part of the
 previous proof, it thus follows that~$M$ is \notnot finite free.
 \end{proof}
@@ -2512,9 +2514,9 @@ subsets~$U, V \subseteq X$,
 \item $j(j(U)) \subseteq j(U)$,
 \item $j(U \cap V) = j(U) \cap j(V)$.
 \end{enumerate}
-Such a map is called a \emph{nucleus} on~$\Open(X)$. Table~\ref{table:nuclei}
+Such a map is called a \emph{nucleus} on~$\Open(X)$. table~\ref{table:nuclei}
 lists the nuclei associated to the four modal operators
-of proposition~\ref{prop:modops-kripke}.
+of Proposition~\ref{prop:modops-kripke}.
 
 \begin{table}
   \centering
@@ -2543,7 +2545,7 @@ of proposition~\ref{prop:modops-kripke}.
   \vspace{0.5em}
 
   \caption{\label{table:nuclei}List of important modal operators and their
-  associated nuclei (notation as in proposition~\ref{prop:modops-kripke}).}
+  associated nuclei (notation as in Proposition~\ref{prop:modops-kripke}).}
 \end{table}
 
 Any nucleus~$j$ defines a subspace~$X_j$ of~$X$, to be described below, with a small caveat: In
@@ -2563,7 +2565,7 @@ Then the sublocale~$X_j$ of~$X$ is given by the lattice of opens
 $\Open(X_j) \defeq \{ U \in \Open(X) \,|\, j(U) = U \}$.
 \end{defn}
 If~$j$ is induced by a modal operator~$\Box$, we also write~``$X_\Box$''
-for~$X_j$. In three of the four cases listed in table~\ref{table:nuclei}, the
+for~$X_j$. In three of the four cases listed in Table~\ref{table:nuclei}, the
 sublocale~$X_\Box$ can indeed be realized as a topological subspace. The only
 exception is the sublocale~$X_{\neg\neg}$ associated to the double negation
 modality. It can be also be described as the \emph{smallest dense sublocale}
@@ -2663,7 +2665,7 @@ if~$\Box\bot \Rightarrow \bot$.\end{ex}
 We will see geometric examples of~$\Box$-sheaves in further sections.
 For instance, on an integral scheme~$X$, the structure sheaf~$\O_X$
 is~$\neg\neg$-separated and its~$\neg\neg$-sheafification is the sheaf~$\K_X$
-of rational functions (proposition~\ref{prop:kx-is-negneg-sheafification}).
+of rational functions (Proposition~\ref{prop:kx-is-negneg-sheafification}).
 
 \begin{lemma}For any set~$F$, it holds that: \begin{enumerate}
 \item $F^+$ is~$\Box$-separated.
@@ -2751,8 +2753,8 @@ agree on~$V \cap V'$.
 \end{prop}
 \begin{proof}
 The first statement is obvious from the definition of~$\neg\neg$-separatedness
-(definition~\ref{defn:box-sheaves} for~$\Box = \neg\neg$) and the geometric
-interpretation of double negation (proposition~\ref{prop:modops-kripke}).
+(Definition~\ref{defn:box-sheaves} for~$\Box = \neg\neg$) and the geometric
+interpretation of double negation (Proposition~\ref{prop:modops-kripke}).
 
 For the second statement, we need to show that if~$\F$
 is~$\neg\neg$-separated,~$\F$ has the extension property if and only if
@@ -2883,7 +2885,7 @@ We want to show~$\chi^\Box$. Since this is a~$\Box$-stable statement, we may
 assume that in fact~$\varphi^\Box \vee \psi^\Box$ holds. Then the claim is
 obvious by the two given proofs.
 
-The cases for the other rules (see appendix~\ref{appendix:inference-rules} for
+The cases for the other rules (see Appendix~\ref{appendix:inference-rules} for
 a list) are similar and left to the reader.\end{proof}
 
 \begin{rem}The reader well-versed in formal logic will have noticed that we are
@@ -2912,7 +2914,7 @@ equivalence~$\varphi \Leftrightarrow \varphi'$ might simply
 hold in a particular model, \ie in the internal language of some particular
 topos, without possessing an intuitionistic proof, \ie holding in any topos. We
 give an explicit example of this situation below
-(example~\ref{ex:translation-equivalence}).
+(Example~\ref{ex:translation-equivalence}).
 
 \begin{lemma}\label{lemma:open-stalk}
 Let~$\varphi$ be a formula such that for any subformulas~$\psi$
@@ -2978,7 +2980,7 @@ Then $\varphi^\Box \Rightarrow \Box\varphi$.
 \begin{proof}
 Assume~$\varphi^\Box$. Since~$\psi^\Box$, $(\varphi \wedge \psi)^\Box$. Because
 the~$\Box$-translation is sound with respect to intuitionistic logic
-(lemma~\ref{lemma:box-translation-sound})
+(Lemma~\ref{lemma:box-translation-sound})
 it follows that~$(\varphi')^\Box$. As~$\varphi'$ is geometric, it follows
 that~$\Box\varphi'$. Since~$\Box\psi$ holds, it follows that~$\Box\varphi$.
 \end{proof}
@@ -2993,7 +2995,7 @@ intuitionistic proof of this equivalence. Since no implication signs occur
 in~$\psi \defequiv \speak{$M$ is generated by~$x_1,\ldots,x_n$}$, the lemma is
 applicable and shows that~$\varphi^\Box$ implies~$\Box\varphi$.
 This example will gain geometric meaning in
-lemma~\ref{lemma:module-zero-point-neighbourhood}.
+Lemma~\ref{lemma:module-zero-point-neighbourhood}.
 \end{ex}
 
 \begin{lemma}For the modality~$\Box$ defined by~$\Box\varphi \defequiv ((\varphi
@@ -3016,7 +3018,7 @@ thus~$\alpha$.
 at stalks vs. truth on neighbourhoods}}\label{sect:spreading}
 We now state the crucial property of the~$\Box$-translation. Recall
 that~``$X_\Box$'' denotes the sublocale of~$X$ induced by~$\Box$
-(definition~\ref{defn:subspace-by-nucleus}).
+(Definition~\ref{defn:subspace-by-nucleus}).
 \begin{thm}\label{thm:box-translation-semantically}
 Let~$X$ be a topological space. Let~$\Box$ be a modal operator
 in~$\Sh(X)$. Let~$\varphi$ be a formula over~$X$. Then
@@ -3054,8 +3056,8 @@ at~$x$}. \]
 % change text below ("discuss the third case") if numbering of the items changes
 \end{enumerate}
 \end{cor}
-\begin{proof}Combine theorem~\ref{thm:box-translation-semantically} and
-table~\ref{table:nuclei}.\end{proof}
+\begin{proof}Combine Theorem~\ref{thm:box-translation-semantically} and
+Table~\ref{table:nuclei}.\end{proof}
 
 We want to discuss the last case of the corollary in more detail. Let~$x$ be a
 point of a topological space~$X$ and let~$\varphi$ be a formula. Let~$\Box$ be
@@ -3132,7 +3134,7 @@ function~$f\?\O_X$ to be nilpotent is geometric (it is~$\bigvee_{n \geq 0} f^n
 = 0$), nilpotency of~$f$ at a point is equivalent to nilpotency on some open
 neighbourhood.\end{ex}
 
-Combined with lemma~\ref{lemma:stalk-open-with-hypothesis}, this metatheorem is
+Combined with Lemma~\ref{lemma:stalk-open-with-hypothesis}, this metatheorem is
 quite useful. We will illustrate it with many examples in the next subsection.
 
 An important special case of spreading from stalks to neighbourhoods is the
@@ -3167,7 +3169,7 @@ and that pushing forward is the same as calculating the constant sheaf.
 do this in the section discussing negneg-sheaves.
 Then continue with the story here...}
 
-\begin{ex}We have seen in remark~\ref{rem:epi-in-box-sheaves} that a
+\begin{ex}We have seen in Remark~\ref{rem:epi-in-box-sheaves} that a
 morphism~$f : A \to B$ in~$\Sh(X_\Box) \simeq \Sh_\Box(\Sh(X))$ is an
 epimorphism if and only if~$\Sh(X) \models \forall y\?B\_ \Box(\exists x\?X\_
 f(x) = y)$. We can now understand a simple proof of this fact:
@@ -3182,7 +3184,7 @@ f(x) = y)$. We can now understand a simple proof of this fact:
 \end{align*}
 \end{ex}
 
-\begin{proof}[Proof of theorem~\ref{thm:box-translation-semantically}]
+\begin{proof}[Proof of Theorem~\ref{thm:box-translation-semantically}]
 A fancy proof goes as follows. First, one shows intuitionistically that for a
 modal operator~$\Box$ in~$\Set$, it holds that
 \[ \Set \models \varphi^\Box \quad\Longleftrightarrow\quad
@@ -3275,7 +3277,7 @@ The case for~``$\forall$'' is similar.
 
 \begin{ex}\label{ex:translation-equivalence}Let~$X$ be a scheme. Let~$f$ be
 global functions on~$X$. Let~$\varphi \defequiv \neg(\speak{$f$ \inv})$
-and~$\varphi' \defequiv \speak{$f$ nilpotent}$. Then, by proposition~\ref{prop:cond-zero}, we
+and~$\varphi' \defequiv \speak{$f$ nilpotent}$. Then, by Proposition~\ref{prop:cond-zero}, we
 have~$\Sh(X) \models (\varphi \Leftrightarrow \varphi')$. But in general, this
 does not imply that~$\Sh(X) \models (\varphi^\Box \Leftrightarrow
 (\varphi')^\Box)$. Consider for instance the modal operator given by~$\Box\alpha
@@ -3302,7 +3304,7 @@ subset of~$X$ containing~$A$.
 \end{itemize}
 \end{lemma}
 \begin{proof}\emph{Both} statements are simply internalizations of
-example~\ref{ex:module-zero-geometric}, using the modal operators~$\Box =
+Example~\ref{ex:module-zero-geometric}, using the modal operators~$\Box =
 (\placeholder \vee A^c)$ and~$\Box = ((\placeholder \Rightarrow
 \notat{x}) \Rightarrow \notat{x})$.
 \end{proof}
@@ -3311,7 +3313,7 @@ example~\ref{ex:module-zero-geometric}, using the modal operators~$\Box =
 that~$\F$ is of finite type. Indeed, in this case one cannot reformulate the
 condition that~$\F$ is zero in a geometric way.\end{rem}
 
-In a remark after the proof of proposition~\ref{prop:rank-function-internally},
+In a remark after the proof of Proposition~\ref{prop:rank-function-internally},
 we promised to present a simpler proof once we have developed the theory for
 doing so. We can now follow up on this promise.
 \begin{lemma}\label{lemma:gen-family-n}
@@ -3334,7 +3336,7 @@ for~$\F$ consisting of~$n$ elements}^\Box$.
 \item $\Box(\speak{there exists a generating family
 for~$\F$ consisting of~$n$ elements})$.
 \end{enumerate}
-By lemma~\ref{lemma:open-stalk}, the second statement implies the first -- note
+By Lemma~\ref{lemma:open-stalk}, the second statement implies the first -- note
 that in a formal spelling of the statement in quotes,
 \begin{equation}
   \tag{$\star$}
@@ -3347,7 +3349,7 @@ no implication signs occur. To show the converse direction,
 we may assume that there is a generating family~$y_1,\ldots,y_m\?\F$ for~$\F$
 (since~$\F$ is, externally speaking, of finite type). Then
 the~$\Box$-translation of the statement that the~$y_i$ generate~$\F$ holds as
-well (again by lemma~\ref{lemma:open-stalk}). Since there is an intuitionistic
+well (again by Lemma~\ref{lemma:open-stalk}). Since there is an intuitionistic
 proof of
 \begin{multline*}
   \speak{$y_1,\ldots,y_m$ generate~$\F$} \Longrightarrow \\
@@ -3360,7 +3362,7 @@ we can substitute the non-geometric formula~$(\star)$ by the geometric
 formula
 \[ \exists x_1,\ldots,x_n\?\F\_ \exists A\?\O^{m \times n}\_ \speak{$\vec
 y = A \vec x$} \]
-(lemma~\ref{lemma:stalk-open-with-hypothesis}). Thus the claim follows.
+(Lemma~\ref{lemma:stalk-open-with-hypothesis}). Thus the claim follows.
 \end{proof}
 
 \begin{lemma}Let~$X$ be a scheme (or ringed space). Let~$\alpha : \F \to \G$ be
@@ -3371,7 +3373,7 @@ Then~$\alpha$ is an epimorphism on some open neighbourhood of~$x$.\end{lemma}
 non-geometric surjectivity condition ($\forall y\?\G\_ \exists x\?\F\_
 \alpha(x) = y$) can be reformulated in a geometric way: $\bigwedge_{i=1}^n
 \exists x\?\F\_ \alpha(x) = y_i$. Thus the claim follows by
-lemma~\ref{lemma:stalk-open-with-hypothesis}.\end{proof}
+Lemma~\ref{lemma:stalk-open-with-hypothesis}.\end{proof}
 
 \begin{lemma}Let~$X$ be a scheme (or ringed space). Let~$\alpha : \F \to \G$ be
 a morphism of~$\O_X$-modules. Let~$\F$ be of finite type and~$\G$ be coherent.
@@ -3379,7 +3381,7 @@ Suppose that~$\alpha_x$ is injective at some point~$x \in X$. Then~$\alpha$ is
 a monomorphism on some open neighbourhood of~$x$.
 \end{lemma}
 \begin{proof}The kernel of~$\alpha$ is of finite type (by
-lemma~\ref{lemma:coherent-stuff}) and zero at~$x$. By the previous lemma, it is
+Lemma~\ref{lemma:coherent-stuff}) and zero at~$x$. By the previous lemma, it is
 therefore zero on some open neighbourhood of~$x$.
 \end{proof}
 
@@ -3484,11 +3486,11 @@ may in fact assume that~$a$ is invertible. Then~$x = 0$ obviously follows.
 
 For the ``if'' direction, let~$x\?\F$ be an arbitrary element; by assumption,~$x$
 is \notnot zero. Since~$X$ is integral,
-lemma~\ref{lemma:dense-standard-reflection} is applicable. Therefore there
+Lemma~\ref{lemma:dense-standard-reflection} is applicable. Therefore there
 exists an element~$a\?\O_X$ such that~$a$ is \notnot invertible and such that
 invertibility of~$a$ implies~$x = 0$. Since~$\F$ is quasicoherent, for some
-natural number~$n$ it holds that~$a^n x = 0$ (theorem~\ref{thm:qcoh-sheafchar}). Since~$a$ is \notnot invertible,
-it is regular (lemma~\ref{lemma:regular-notnot-invertible}), and therefore~$a^n$ is regular. So~$x \in \F_\tors$.
+natural number~$n$ it holds that~$a^n x = 0$ (Theorem~\ref{thm:qcoh-sheafchar}). Since~$a$ is \notnot invertible,
+it is regular (Lemma~\ref{lemma:regular-notnot-invertible}), and therefore~$a^n$ is regular. So~$x \in \F_\tors$.
 \end{proof}
 
 \begin{itemize}
@@ -3580,7 +3582,7 @@ over some open neighbourhood of~$x$.
 \end{prop}
 \begin{proof}
 Let~$\Box$ be the modal operator defined by~$\Box\varphi \defequiv ((\varphi
-\Rightarrow {!x}) \Rightarrow {!x})$. By corollary~\ref{cor:spreading}, we are
+\Rightarrow {!x}) \Rightarrow {!x})$. By Corollary~\ref{cor:spreading}, we are
 to show that the following statements of the internal language are equivalent:
 \begin{enumerate}
 \item $(\speak{$s$ is regular})^\Box$, \ie
@@ -3592,11 +3594,11 @@ It is clear that the second statement implies the first -- in fact, this is true
 without any assumptions on~$X$: Let~$t\?\O_X$ be such that~$st = 0$. Since we want to
 prove the boxed statement~$\Box(t=0)$, we may assume that~$s$ is regular and
 prove~$t = 0$. This is immediate. (This direction also follows simply by
-examining the logical form and applying lemma~\ref{lemma:open-stalk}.)
+examining the logical form and applying Lemma~\ref{lemma:open-stalk}.)
 
 For the converse direction, consider the annihilator of~$s$, \ie the ideal
 \[ I \defeq \Ann_{\O_X}(s) = \{ t\?\O_X \,|\, st = 0 \} \subseteq \O_X. \]
-This ideal satisfies the quasicoherence condition (example~\ref{ex:annihilator-qcoh}),
+This ideal satisfies the quasicoherence condition (Example~\ref{ex:annihilator-qcoh}),
 thus~$I$ is a quasicoherent submodule of a finitely generated module. Since~$X$ is
 locally Noetherian, it follows that~$I$ is finitely generated as well, say by~$x_1,\ldots,x_n \? I$. By
 assumption, each generator~$x_i \? I$ fulfills~$\Box(x_i = 0)$. Since we want
@@ -3614,8 +3616,8 @@ open, we cannot expect an infinitary modus ponens rule to hold.
 \begin{cor}Let~$X$ be a locally Noetherian scheme. Then the stalks~$\K_{X,x}$
 of the sheaf of rational functions are given by the total quotient rings of the
 local rings~$\O_{X,x}$.\end{cor}
-\begin{proof}Combine proposition~\ref{prop:stalks-kx} and
-proposition~\ref{prop:regularity-spreading}.\end{proof}
+\begin{proof}Combine Proposition~\ref{prop:stalks-kx} and
+Proposition~\ref{prop:regularity-spreading}.\end{proof}
 
 
 \subsection{Normality}\label{sect:normality}
@@ -3637,7 +3639,7 @@ a geometric implication:
   \exists u\?\O_X\_ s = ut\Bigr).
 \end{multline*}
 The only non-geometric subpart is the condition on~$t$ to be regular. However,
-by proposition~\ref{prop:regularity-spreading}, for the purposes of comparing
+by Proposition~\ref{prop:regularity-spreading}, for the purposes of comparing
 its truth at points \vs on neighbourhoods, it behaves just like a geometric
 formula. Therefore the claim follows.
 \end{proof}
@@ -3647,7 +3649,7 @@ formula. Therefore the claim follows.
 integral schemes, rational functions (\ie sections of~$\K_X$) are the same
 thing as regular functions defined on dense open subsets. This amounts to
 saying that~\emph{$\K_X$ is the~$\neg\neg$-sheafification of~$\O_X$}
-(see proposition~\ref{prop:negneg-sheaves}). We want to rederive this result,
+(see Proposition~\ref{prop:negneg-sheaves}). We want to rederive this result,
 as far as possible in the internal language, and generalize it to arbitrary
 (not necessarily locally Noetherian) schemes.
 
@@ -3658,7 +3660,7 @@ as far as possible in the internal language, and generalize it to arbitrary
 if and only if it is \notnot invertible.
 \end{enumerate}
 \end{lemma}
-\begin{proof}Recall from corollary~\ref{cor:field-reduced} that
+\begin{proof}Recall from Corollary~\ref{cor:field-reduced} that
 \begin{equation}\label{eqn:field-condition}
   \Sh(X) \models \forall s\?\O_X\_ \neg(\speak{$s$ invertible}) \Leftrightarrow
   s=0.
@@ -3713,7 +3715,7 @@ not~$\K_X$: The quotient ring~$\K_X$ is a~$\neg\neg$-sheaf if and only if
   \Longrightarrow \\
   \exists a,b\?\O_X\_ \speak{$b$ regular} \wedge \neg\neg(b^{-1} a \in T).
 \end{multline*}
-This is done just as in the proof of theorem~\ref{thm:qcoh-sheafchar}. Note
+This is done just as in the proof of Theorem~\ref{thm:qcoh-sheafchar}. Note
 that~``$b^{-1}$'' refers to the inverse of~$b$ which indeed exists in a doubly
 negated context, since~$b$ is assumed regular. More explicitly, we should write
 \[ \neg\neg(\exists c\?\O_X\_ bc = 1 \wedge ca \in T)
@@ -3740,7 +3742,7 @@ Then~$c_i b g = f_i^{n_i} g = 0 \in A$. Thus~$f_i g$ is
 nilpotent in~$A$. Since this holds for any~$i$,~$g$ is nilpotent in~$A$.
 Since~$A$ is reduced,~$g$ is in fact zero.
 
-By lemma~\ref{lemma:regular-affine}, the function~$b$ is also regular as an
+By Lemma~\ref{lemma:regular-affine}, the function~$b$ is also regular as an
 element of~$\O_X$ from the internal point of view. Note that~$b$ is invertible
 on~$V$, since~$V \subseteq D(b)$. It follows that on the dense
 open subset~$V \subseteq U$, the sections~$s$ and~$b^{-1} a$ agree.
@@ -3751,12 +3753,12 @@ This observation concludes the proof.
 pulling back~$\O_X$ to the sublocale~$X_{\neg\neg}$ and then pushing forward
 again. If~$X$ is irreducible with generic point~$\xi$, then~$\K_X$ is the
 constant sheaf associated to the set~$\O_{X,\xi}$.\end{cor}
-\begin{proof}Recall from section~\ref{sect:internal-sheaves} that pulling back
+\begin{proof}Recall from Section~\ref{sect:internal-sheaves} that pulling back
 to~$X_{\neg\neg}$ is equivalent to sheafifying with respect to the double
 negation modality; and that pushing forward is equivalent to forgetting the
 sheaf property. Therefore the first statement holds.
 
-For the second statement, recall from lemma~\ref{lemma:negneg-generic-point} that the
+For the second statement, recall from Lemma~\ref{lemma:negneg-generic-point} that the
 sublocale~$X_{\neg\neg}$ is given by the subspace~$\{\xi\}$; that the
 sheafification functor~$\Sh(X) \to \Sh(\{\xi\}) \simeq \Set$ is given by
 calculating the stalk at~$\xi$; and that the inclusion functor~$\Set \simeq
@@ -3815,17 +3817,17 @@ We may now suppose that~$X$ is a scheme. To verify the fifth property, let a
 regular element~$f\?\O_X$ be given. We have to show that~$\O_X$ is separated
 with respect to the modality~$(\speak{$f$ \inv} \Rightarrow \placeholder)$. So
 assume that~$\speak{$f$ \inv} \Rightarrow (s = 0)$ for some~$s\?\O_X$. By
-proposition~\ref{prop:cond-zero}, it follows that~$f^n s = 0$ for some natural
+Proposition~\ref{prop:cond-zero}, it follows that~$f^n s = 0$ for some natural
 number~$n$. Since~$f$ is regular, it follows that~$s = 0$.
 
 The verification of the universal property of~$\K_X$ is done analogously as in
 the case that~$X$ is reduced: For the proof of
-proposition~\ref{prop:kx-is-negneg-sheafification}, it was critical that
+Proposition~\ref{prop:kx-is-negneg-sheafification}, it was critical that
 regular elements of~$\O_X$ are \notnot invertible. We now need (and have) that
 regular elements of~$\O_X$ are~$\Box(\speak{invertible})$.
 
 Thus it only remains to verify that~$\K_X$ is a~$\Box$-sheaf. We may again imitate
-the proof of proposition~\ref{prop:kx-is-negneg-sheafification}; using the same
+the proof of Proposition~\ref{prop:kx-is-negneg-sheafification}; using the same
 notation, we may now suppose that~$V$ is an open subset such that~$U \models \Box
 V$ (previously, we supposed that~$U \models \neg\neg V$). The proof that the
 denominator~$b$ is regular (as seen from the internal perspective, as an
@@ -3840,8 +3842,8 @@ such that~$\O_X$ is~$\Box'$-separated, then~$\Box'\varphi
 \Rightarrow \Box\varphi$ for any proposition~$\varphi$.\end{rem}
 
 In the special case that~$X$ is a reduced scheme,
-proposition~\ref{prop:kx-is-box-sheafification} recovers
-the result of proposition~\ref{prop:kx-is-negneg-sheafification}:
+Proposition~\ref{prop:kx-is-box-sheafification} recovers
+the result of Proposition~\ref{prop:kx-is-negneg-sheafification}:
 
 \begin{prop}Let~$X$ be a reduced scheme. Then the modal operator~$\Box$
 coincides with the double negation modality.\end{prop}
@@ -3872,7 +3874,7 @@ These are only needed if we want to describe~$X_\Box$ as a certain explicitly
 given subspace.
 
 \begin{proof}The first statement follows trivially by the results of
-section~\ref{sect:internal-sheaves} and the fact that~$\K_X$ is
+Section~\ref{sect:internal-sheaves} and the fact that~$\K_X$ is
 the~$\Box$-sheafification of~$\O_X$.
 
 For the second statement, we need to verify that the nucleus~$j_{\Ass(\O_X)}$
@@ -3883,7 +3885,7 @@ by
   j_{\Ass(\O_X)}(U) &= \bigcup\ \{ V \subseteq X \ |\
   \text{$V$ open},\ V \cap \Ass(\O_X) \subseteq U \}, \\
 \intertext{since \XXX{reason}, and recall from
-subsection~\ref{sect:subspace-to-modal-operator} that the latter is given by}
+Subsection~\ref{sect:subspace-to-modal-operator} that the latter is given by}
   j_\Box(U) &= \text{largest open subset of~$X$ on which~$\Box U$ holds} \\
   &= \bigcup\ \{ V \subseteq X \ |\
   \text{$V$ open},\ V \models \Box U \}.
@@ -4029,11 +4031,11 @@ is (uncanonically) a submodule of~$\K_X$.\end{prop}
 \begin{proof}Let~$\xi$ be the generic point of~$X$ and let~$\Box \defeq \neg\neg$
 denote the modal operator such that internal sheafification with respect
 to~$\Box$ is the same as pulling back to~$\{\xi\}$ and then pushing forward
-to~$X$ again (see section~\ref{sect:negneg-sheaves}). Let~$\L$ be a line bundle on~$X$. Since~$\L_\xi \cong
+to~$X$ again (see Section~\ref{sect:negneg-sheaves}). Let~$\L$ be a line bundle on~$X$. Since~$\L_\xi \cong
 \O_{X,\xi}$ (uncanonically), there is some injection~$\L_\xi \to \K_{X,\xi}$;
 this corresponds internally to an injection~$\L^{++} \to \K_X^{++}$.
 Since~$\K_X$ is already a~$\Box$-sheaf (see
-proposition~\ref{prop:kx-is-negneg-sheafification}) and~$\L$ is~$\Box$-separated
+Proposition~\ref{prop:kx-is-negneg-sheafification}) and~$\L$ is~$\Box$-separated
 (being isomorphic to~$\O_X$), we have the global injection
 \[ \L \lhra \L^{++} \lhra \K_X^{++} \stackrel{({\cong})^{-1}}{\longrightarrow} \K_X. \qedhere \]
 \end{proof}
@@ -4147,7 +4149,7 @@ A_i[f^{-1}]$ is quasicompact.\end{ex}
 
 From this example, it will trivially follow that the nilradical~$\sqrt{(0)}
 \subseteq \O_X$ of a scheme and indeed the radical of any quasicoherent ideal
-sheaf is quasicoherent (example~\ref{ex:radical-qcoh}).
+sheaf is quasicoherent (Example~\ref{ex:radical-qcoh}).
 
 \begin{rem}In applications, the open set~$K$ of the proposition is often given
 as the largest open subset on which some formula~$\psi$ holds. (For instance,
@@ -4244,7 +4246,7 @@ a local ring such that elements which are not invertible are nilpotent. Further
 assume that~$R$ is reduced. Then~$R$ is an integral domain in the weak sense.
 
 This proof may, additionally to the rules of intuitionistic logic, use the
-classical axiom given by proposition~\ref{prop:irreducibility-internally}.
+classical axiom given by Proposition~\ref{prop:irreducibility-internally}.
 
 So let arbitrary elements~$x,y \? R$ with~$xy = 0$ be given. Then it is not the
 case that~$x$ and~$y$ are both invertible: If they were, their product~$xy$
@@ -4347,7 +4349,7 @@ and consequences. The proof will explain the origin of this condition.
 \begin{ex}The zero~$\O_X$-module is quasicoherent, since (it and) all
 localizations of it are singleton sets from the internal perspective and
 thus~$\Box$-sheaves for any modal operator~$\Box$
-(example~\ref{ex:special-sets-sheaves}).\end{ex}
+(Example~\ref{ex:special-sets-sheaves}).\end{ex}
 
 \begin{cor}Let~$X$ be a scheme. Let~$\F$ be a quasicoherent~$\O_X$-module.
 Let~$\G \subseteq \F$ be a submodule. Then~$\G$ is quasicoherent if and only
@@ -4393,7 +4395,7 @@ is quasicoherent. To prove this in the internal language, it suffices to
 verify the condition of the proposition.
 So let~$f\?\O_X$ and~$t\?\O_X$ be arbitrary and assume~$\speak{$f$ \inv} \Rightarrow t \in I$,
 \ie assume that if~$f$ were invertible,~$st$ would be zero. By
-proposition~\ref{prop:cond-zero} it follows that~$f^n st = 0$ for
+Proposition~\ref{prop:cond-zero} it follows that~$f^n st = 0$ for
 some~$n\?\NN$, \ie that~$f^n t \in I$.
 \end{ex}
 
@@ -4404,23 +4406,23 @@ quasicoherent as well: Let~$f\?\O_X$ and~$s\?\O_X$ be arbitrary and
 assume~$\speak{$f$ \inv} \Rightarrow s \in \sqrt{\I}$, \ie assume that if~$f$
 were invertible, some power~$s^n$ would be an element of~$\I$. Since
 \emph{assuming that~$f$ is invertible commutes with directed disjunctions}
-(example~\ref{ex:df-locally-compact}), it follows that for some natural
+(Example~\ref{ex:df-locally-compact}), it follows that for some natural
 number~$n$, it holds that~$\speak{$f$ \inv} \Rightarrow s^n \in \I$. By
 quasicoherence of~$\I$, we may deduce that for some natural number~$m$, it
 holds that~$f^m s^n \in \I$. Thus~$fs \in \sqrt{\I}$.\end{ex}
 
 \begin{prop}Let~$X$ be a scheme of dimension~$\leq 0$. Then any~$\O_X$-module
 is quasicoherent.\end{prop}
-\begin{proof}By corollary~\ref{cor:scheme-dimension-zero}, any
+\begin{proof}By Corollary~\ref{cor:scheme-dimension-zero}, any
 element~$f\?\O_X$ is invertible or nilpotent. Therefore the quasicoherence
-condition of theorem~\ref{thm:qcoh-sheafchar} is for any~$\O_X$-module
+condition of Theorem~\ref{thm:qcoh-sheafchar} is for any~$\O_X$-module
 trivially satisfied.
 \end{proof}
 
 \begin{rem}\label{rem:qcoh-in-constructive-mathematics}
 In general intuitionistic mathematics -- not inside the internal universe of a
 scheme -- the notion of quasicoherence as given by the internal condition of
-theorem~\ref{thm:qcoh-sheafchar}
+Theorem~\ref{thm:qcoh-sheafchar}
 does not seem to be very interesting: For many important rings, there are few
 quasicoherent modules in this sense. For instance, let~$M$ be a module over a
 ring~$R$ in which every element is invertible or not invertible. (The
@@ -4431,7 +4433,7 @@ concrete example, any~$\ZZ$-submodule of~$\ZZ$ which contains a nonzero element
 fails to be quasicoherent.
 \end{rem}
 
-\begin{proof}[Proof of theorem~\ref{thm:qcoh-sheafchar}]
+\begin{proof}[Proof of Theorem~\ref{thm:qcoh-sheafchar}]
 By the well-known characterization of quasicoherence in terms of inclusions of
 distinguished open subsets, an~$\O_X$-module~$\F$ is quasicoherent if and only
 if for any affine open subset~$U \subseteq X$ and any function~$f \in
@@ -4480,7 +4482,7 @@ is that for any affine open subset~$U \subseteq X$ and any function~$f \in
   U \models \bigvee_{n \geq 0} f^n s = 0. \]
 The antecedent is equivalent to saying that~$s$ is zero in~$\Gamma(D(f),\F)$.
 The consequent is (by quasicompactness of~$U$, see
-example~\ref{ex:nilpotency-directed}) equivalent to saying that for some~$n \geq 0$, the
+Example~\ref{ex:nilpotency-directed}) equivalent to saying that for some~$n \geq 0$, the
 section~$f^n s$ is zero in~$\Gamma(U,\F)$, \ie that~$s$ is zero
 in~$\Gamma(U,\F)[f^{-1}]$. So this condition is precisely the injectivity of
 the canonical map~\eqref{eqn:restr-map}.
@@ -4544,7 +4546,7 @@ module of finite type is of finite type as well
 defined on open or closed subspaces of a topological space~$X$ can be related
 with certain sheaves on~$X$, by using appropriate extension functors. We can
 define these functors and show their basic properties in the internal
-language. Recall from section~\ref{sect:modalities-geometric-meaning} that we
+language. Recall from Section~\ref{sect:modalities-geometric-meaning} that we
 have defined a formula~``$U$'' for any open subset~$U \subseteq X$ such that
 $V \models U$ if and only if $V \subseteq U$.
 
@@ -4576,7 +4578,7 @@ sheafifying with respect to the modal operator~$\Box \defequiv (U \Rightarrow
 \placeholder)$. Thus, to show the second statement, we have to give a
 bijection~$(j_!(\F))^{++} \to \F$ for any~$\Box$-sheaf~$\F$. (This map has to
 be given explicitly, to not only show a weaker statement about a local
-isomorphism -- see section~\ref{sect:internal-constructions}). To this end, we can use the composition
+isomorphism -- see Section~\ref{sect:internal-constructions}). To this end, we can use the composition
 \[ (j_!(\F))^{++} \lhra \F^{++} \stackrel{({\cong})^{-1}}{\lra} \F, \]
 where the first map is injective since sheafifying is exact. It is also
 surjective, since the~$\Box$-translation of the statement~$\speak{$j_!(F) \to
@@ -4619,7 +4621,7 @@ inclusion~$i_* : \Sh(A) \to \Sh(X)$ consists of exactly those sheaves~$\F$ whose
 is a subset of~$A$. In this case, it holds that~$i_* i^{-1} \F \cong \F$
 (canonically).\end{lemma}
 \begin{proof}Recall that the modal operator associated to~$A$ is~$\Box\varphi
-\defequiv (\varphi \vee A^c)$, and that by section~\ref{sect:internal-sheaves} the
+\defequiv (\varphi \vee A^c)$, and that by Section~\ref{sect:internal-sheaves} the
 essential image of~$i_*$ consists of exactly those sheaves which
 are~$\Box$-sheaves from the internal perspective. Let~$\F$ be a sheaf on~$X$.
 Then it holds that
@@ -4628,7 +4630,7 @@ Then it holds that
   A^c \subseteq \Int(X \setminus \supp\F). \]
 Since the interior of the complement of~$\supp\F$ can be characterized as the
 largest open subset of~$X$ on which the internal statement~``$\F$ is a
-singleton'' holds (remark~\ref{rem:support-sheaf-of-sets}), the condition on
+singleton'' holds (Remark~\ref{rem:support-sheaf-of-sets}), the condition on
 the support is fulfilled if and only if
 \[ \Sh(X) \models (A^c \Rightarrow \speak{$\F$ is a singleton}). \]
 We thus have to show that this internal condition is equivalent to~$\F$ being
@@ -4665,13 +4667,13 @@ of ringed spaces.
 \begin{proof}For any open subset~$U \subseteq X$, it holds that~$U \models 1
 \in \I$ if and only if~$U \subseteq D(\I) = X \setminus V(\I)$. Thus~$D(\I)$
 can be characterized as the largest open subset on which~``$1 \in \I$'' holds.
-According to table~\ref{table:nuclei} on page~\pageref{table:nuclei}, the
+According to Table~\ref{table:nuclei} on page~\pageref{table:nuclei}, the
 stated modal operator thus defines the subspace~$D(\I)^c$, \ie~$V(\I)$.
 
 For the second statement, note that since~$\O_X/\I$ is a sheaf of rings, its
 support is closed. Therefore the largest open subset of~$X$ where the internal
 statement~``$\O_X/\I = 0$'' holds is the complement of the support
-(proposition~\ref{prop:characterization-support}). Since~$D(\I)$ is the largest
+(Proposition~\ref{prop:characterization-support}). Since~$D(\I)$ is the largest
 open subset where the internal statement~``$\I = (1)$'' holds, it suffices to
 show that internally,~$\O_X/\I = 0$ if and only if~$\I = (1)$. This is obvious.
 
@@ -4681,7 +4683,7 @@ part, we have to show that the canonical ring homomorphism~$\O_X \to i_*
 epimorphism of sheaves. This is obvious.
 \end{proof}
 
-By lemma~\ref{lemma:essim-closed-immersion}, the sheaf~$\O_X/\I$ is
+By Lemma~\ref{lemma:essim-closed-immersion}, the sheaf~$\O_X/\I$ is
 thus a~$\Box$-sheaf from the internal perspective.
 
 \begin{prop}Let~$X$ be a locally ringed space. Let~$\I \subseteq \O_X$ be an
@@ -4689,7 +4691,7 @@ ideal sheaf. Then the ringed space~$(V(\I), \O_{V(\I)})$ is too locally
 ringed.\end{prop}
 \begin{proof}We have to show that
 \[ \Sh(V(\I)) \models \speak{$\O_{V(\I)}$ is a local ring}. \]
-By theorem~\ref{thm:box-translation-semantically}, this is equivalent to
+By Theorem~\ref{thm:box-translation-semantically}, this is equivalent to
 \[ \Sh(X) \models (\speak{$\O_X/\I$ is a local ring})^\Box, \]
 where~$\Box$ is the modal operator given by~$\Box\varphi \defequiv (\varphi \vee
 (1 \in \I))$. We therefore have to give an intuitionistic proof of the fact
@@ -4756,7 +4758,7 @@ s\?\O_X \,|\, \bigvee_{n \geq 0} s^n = 0 \}$. Define~$X_\mathrm{red}$ as the clo
 subspace associated to this ideal sheaf. This ringed space is reduced by the
 previous lemma. If~$X$ is a scheme, then quasicoherence of~$\N$ (which is
 necessary and sufficient for~$X_\mathrm{red}$ to be a scheme) can be shown
-internally (example~\ref{ex:radical-qcoh}).
+internally (Example~\ref{ex:radical-qcoh}).
 The proof of the universal property can also be done in the
 internal language, by using that the well-known fact of locale theory that the
 category of locales over~$X$ is equivalent to internal locales in~$\Sh(X)$; but
@@ -4764,20 +4766,20 @@ we do not want to discuss this further.
 
 For the second statement, internally define the ideal~$\I \defeq \sqrt{\{ s\?\O_X \,|\, s = 0 \vee
 A^c \}} \subseteq \O_X$. Then~$1 \in \I$ if and only if~$A^c$, thus by
-proposition~\ref{prop:basics-closed-subspace} the closed ringed subspace defined
+Proposition~\ref{prop:basics-closed-subspace} the closed ringed subspace defined
 by~$\I$ has~$A$ as underlying topological space. It is reduced since~$\I$ is a
 radical ideal. \XXX{is~$\I$ quasicoherent, if~$X$ is a scheme?}\end{proof}
 
 \begin{lemma}Let~$X$ be a scheme of dimension~$\leq n$. Let~$V(\I)
 \hookrightarrow X$ be a closed subscheme which is locally cut out by a regular
 equation. Then~$\dim V(\I) \leq n-1$.\end{lemma}
-\begin{proof}By proposition~\ref{prop:dimension-scheme-ox}, it suffices to give
+\begin{proof}By Proposition~\ref{prop:dimension-scheme-ox}, it suffices to give
 an intuitionistic proof of the following fact of dimension theory: Let~$A$ be
 an arbitrary ring of dimension~$\leq n$. Let~$I = (s) \subseteq A$ be an ideal
 which is generated by a regular element~$s\?A$. Then the~$\Box$-translation
 of~``$A/I$ is of dimension~$\leq n-1$'' holds. In fact, we can show that~$A/I$
 really is of dimension~$\leq n-1$; since ``being of dimension~$\leq n-1$'' is a
-geometric condition, lemma~\ref{lemma:open-stalk} is applicable and implies
+geometric condition, Lemma~\ref{lemma:open-stalk} is applicable and implies
 that this a stronger statement.
 
 For this, let a sequence~$([a_0],\ldots,[a_{n-1}])$ of elements in~$A/I$ be
@@ -4958,11 +4960,11 @@ relative spectrum functor is an adjoint to the global sections functor~$\LRL/X
 The internal construction which correctly reflects the relative spectrum is the
 following.
 \begin{defn}Let~$A$ be an~$R$-algebra which is quasicoherent in the sense that
-the condition given in theorem~\ref{thm:qcoh-sheafchar} is fulfilled. The
+the condition given in Theorem~\ref{thm:qcoh-sheafchar} is fulfilled. The
 lattice of opens of its \emph{quasicoherent spectrum} is given by
 \[ \Open(\QcohSpec{R}{A}) \defeq \{ \aaa \subseteq A \,|\,
   \text{$\aaa$ is a quasicoherent radical ideal} \}, \]
-where again ``quasicoherent'' is meant as in theorem~\ref{thm:qcoh-sheafchar}.
+where again ``quasicoherent'' is meant as in Theorem~\ref{thm:qcoh-sheafchar}.
 If this lattice fulfills the axioms on a locale, we further define a
 structure sheaf on a base by
 $\Gamma(\sqrt{(f)}, \O_{\QcohSpec{R}{A}}) \defeq A[f^{-1}]$.
@@ -5020,13 +5022,13 @@ spectrum construction in the future; it may turn out that they coincide.
 over~$X$ if and only if~$X$ is the empty scheme or~$X$ has dimension zero.\end{prop}
 \begin{proof}The externalization of~$\Spec\O_X$ coincides with~$X$ if and only
 if from the internal point of view, the locale~$\Spec\O_X$ coincides with the
-one-point locale. By interpreting lemma~\ref{lemma:spectrum-one-point} in the
+one-point locale. By interpreting Lemma~\ref{lemma:spectrum-one-point} in the
 internal language of~$\Sh(X)$, it follows that this is the case if and only if
 \[ \Sh(X) \models \forall f\?\O_X\_ \speak{$f$ nilpotent} \vee \speak{$f$
 invertible}. \]
 (Internally, it always holds that~$\neg(1 = 0)$ in~$\O_X$, even if~$X$ happens
 to be the empty scheme. Therefore the lemma is indeed applicable.) By
-corollary~\ref{cor:scheme-dimension-zero}, this condition is equivalent to the
+Corollary~\ref{cor:scheme-dimension-zero}, this condition is equivalent to the
 dimension of~$X$ being less than or equal to zero, \ie to~$X$ being empty or
 having dimension exactly zero.
 % Since this condition is a geometric implication, it is fulfilled in the
@@ -5187,7 +5189,7 @@ the set of all quasicoherent ideals (instead of merely the finitely generated
 ones) fulfills the ascending process condition. We have not taken this property
 as the definition of a processly Noetherian ring since it is a notion not
 usually studied in constructive mathematics (compare
-remark~\ref{rem:qcoh-in-constructive-mathematics}).
+Remark~\ref{rem:qcoh-in-constructive-mathematics}).
 \end{rem}
 
 \XXX{Find appropriate place for the material in this appendix}
@@ -5203,48 +5205,48 @@ remark~\ref{rem:qcoh-in-constructive-mathematics}).
   external & internal \\ \midrule
   \textbf{sheaves of sets} \\
   sheaf of sets & set \\
-  $\alpha : \F \to \G$ epimorphism & $\alpha$ surjective & example~\ref{ex:injective-surjective} \\
-  $\alpha : \F \to \G$ monomorphism & $\alpha$ injective & example~\ref{ex:injective-surjective} \\
-  $\Int(X \setminus \supp\F)$ & truth value of ``$\F$ is a singleton'' & remark~\ref{rem:support-sheaf-of-sets} \\
-  $f : X \to \NN$ upper semicontinuous & element of~$\widehat\NN$ & lemma~\ref{lemma:upper-semicontinuous-functions} \\
-  $f : X \to \NN$ locally constant & element of~$\NN$ & discussion after lemma~\ref{lemma:upper-semicontinuous-functions} \\\\
+  $\alpha : \F \to \G$ epimorphism & $\alpha$ surjective & Example~\ref{ex:injective-surjective} \\
+  $\alpha : \F \to \G$ monomorphism & $\alpha$ injective & Example~\ref{ex:injective-surjective} \\
+  $\Int(X \setminus \supp\F)$ & truth value of ``$\F$ is a singleton'' & Remark~\ref{rem:support-sheaf-of-sets} \\
+  $f : X \to \NN$ upper semicontinuous & element of~$\widehat\NN$ & Lemma~\ref{lemma:upper-semicontinuous-functions} \\
+  $f : X \to \NN$ locally constant & element of~$\NN$ & discussion after Lemma~\ref{lemma:upper-semicontinuous-functions} \\\\
 
   \textbf{sheaves of rings} \\
-  sheaf of rings & ring & proposition~\ref{prop:rings-internally} \\
-  local sheaf of rings & local ring & proposition~\ref{prop:local-ring} \\
-  $\O_X$ is reduced & $\O_X$ is reduced & proposition~\ref{prop:reduced-ring}; a field property holds: $\neg\text{invertible} \Rightarrow \text{zero}$ \\\\
+  sheaf of rings & ring & Proposition~\ref{prop:rings-internally} \\
+  local sheaf of rings & local ring & Proposition~\ref{prop:local-ring} \\
+  $\O_X$ is reduced & $\O_X$ is reduced & Proposition~\ref{prop:reduced-ring}; a field property holds: $\neg\text{invertible} \Rightarrow \text{zero}$ \\\\
 
   \textbf{sheaves of modules} \\
   sheaf of modules & module \\
-  $\F$ is finite locally free & $\F$ is finite free & proposition~\ref{prop:locally-free} \\
-  $\F$ is of finite type & $\F$ is finitely generated & proposition~\ref{prop:finite-type-and-co} \\
-  $\F$ is of finite presentation & $\F$ is finitely presented & proposition~\ref{prop:finite-type-and-co} \\
-  $\F$ is coherent & $\F$ is coherent & proposition~\ref{prop:finite-type-and-co} \\
-  $\F$ is quasicoherent & $\F[f^{-1}]$ is a sheaf wrt.\@~$(\speak{$f$ \inv} \Rightarrow \placeholder)$ for any~$f\?\O_X$ & theorem~\ref{thm:qcoh-sheafchar} \\
-  $\F$ is flat & $\F$ is flat & proposition~\ref{prop:flatness} \\
-  tensor product $\F \otimes \G$ & tensor product $\F \otimes \G$ & proposition~\ref{prop:internal-tensor-product} \\
+  $\F$ is finite locally free & $\F$ is finite free & Proposition~\ref{prop:locally-free} \\
+  $\F$ is of finite type & $\F$ is finitely generated & Proposition~\ref{prop:finite-type-and-co} \\
+  $\F$ is of finite presentation & $\F$ is finitely presented & Proposition~\ref{prop:finite-type-and-co} \\
+  $\F$ is coherent & $\F$ is coherent & Proposition~\ref{prop:finite-type-and-co} \\
+  $\F$ is quasicoherent & $\F[f^{-1}]$ is a sheaf wrt.\@~$(\speak{$f$ \inv} \Rightarrow \placeholder)$ for any~$f\?\O_X$ & Theorem~\ref{thm:qcoh-sheafchar} \\
+  $\F$ is flat & $\F$ is flat & Proposition~\ref{prop:flatness} \\
+  tensor product $\F \otimes \G$ & tensor product $\F \otimes \G$ & Proposition~\ref{prop:internal-tensor-product} \\
   dual~$\F^\vee = \HOM_{\O_X}(\F,\O_X)$ & dual $\F^\vee = \Hom_{\O_X}(\F,\O_X)$ \\
-  $\Int(X \setminus \supp\F)$ & truth value of~``$\F = 0$'' & proposition~\ref{prop:characterization-support} \\
-  rank function of~$\F$ & minimal number of generators for~$\F$ & proposition~\ref{prop:rank-function-internally} \\\\
+  $\Int(X \setminus \supp\F)$ & truth value of~``$\F = 0$'' & Proposition~\ref{prop:characterization-support} \\
+  rank function of~$\F$ & minimal number of generators for~$\F$ & Proposition~\ref{prop:rank-function-internally} \\\\
 
   \textbf{subspaces} \\
-  sheaf supported on closed subset~$A$ & $\Box$-sheaf, where~$\Box = (\placeholder \vee A^c)$ & lemma~\ref{lemma:essim-closed-immersion} \\
+  sheaf supported on closed subset~$A$ & $\Box$-sheaf, where~$\Box = (\placeholder \vee A^c)$ & Lemma~\ref{lemma:essim-closed-immersion} \\
   sheaf of the form~$j_*(\F)$ & $\Box$-sheaf, where~$\Box = (U \Rightarrow
   \placeholder)$ & $j : U \hookrightarrow X$ open inclusion \\
-  extension of~$\F$ by the empty set & $j_!(\F) = \{ x\?\F \,|\, U \}$ & lemma~\ref{lemma:extension-by-empty-set} \\
-  extension of~$\F$ by zero & $j_!(\F) = \{ x\?\F \,|\, (x = 0) \vee U \}$ & lemma~\ref{lemma:extension-by-zero} \\
+  extension of~$\F$ by the empty set & $j_!(\F) = \{ x\?\F \,|\, U \}$ & Lemma~\ref{lemma:extension-by-empty-set} \\
+  extension of~$\F$ by zero & $j_!(\F) = \{ x\?\F \,|\, (x = 0) \vee U \}$ & Lemma~\ref{lemma:extension-by-zero} \\
   sheaf with empty/zero stalks on~$U^c$ & sheaf of the form~$j_!(\F)$ & $j : U
   \hookrightarrow X$ \\
-  sections of~$\F$ are equal if they agree on dense open & $\F$ is $\neg\neg$-separated & proposition~\ref{prop:negneg-sheaves} \\
-  sheaf of sections of~$\F$ defined on dense open subsets & $\F^{++}$ with respect to~$\Box = \neg\neg$ & proposition~\ref{prop:negneg-sheaves}, assuming~$\F$ is~$\neg\neg$-separated \\
-  $V(\I)$ is a reduced scheme & $\I$ is a radical ideal & lemma~\ref{lemma:closed-subspace-reduced} \\
-  $\O_{X_\mathrm{red}}$ & $\O_X/\sqrt{(0)}$ & lemma~\ref{lemma:reduced-subspace} \\\\
+  sections of~$\F$ are equal if they agree on dense open & $\F$ is $\neg\neg$-separated & Proposition~\ref{prop:negneg-sheaves} \\
+  sheaf of sections of~$\F$ defined on dense open subsets & $\F^{++}$ with respect to~$\Box = \neg\neg$ & Proposition~\ref{prop:negneg-sheaves}, assuming~$\F$ is~$\neg\neg$-separated \\
+  $V(\I)$ is a reduced scheme & $\I$ is a radical ideal & Lemma~\ref{lemma:closed-subspace-reduced} \\
+  $\O_{X_\mathrm{red}}$ & $\O_X/\sqrt{(0)}$ & Lemma~\ref{lemma:reduced-subspace} \\\\
 
   \multicolumn{3}{@{}l@{}}{\textbf{rational functions and Cartier divisors}} \\
-  $\K_X$ & total quotient ring of~$\O_X$ & proposition~\ref{prop:kx-internally} \\
+  $\K_X$ & total quotient ring of~$\O_X$ & Proposition~\ref{prop:kx-internally} \\
   Cartier divisor & element of~$\K_X^*/\O_X^*$ \\
-  effective Cartier divisor & $[s/1]$ with~$s\?\O_X$ regular & definition~\ref{defn:effective-cartier-divisor} \\
-  line bundle~$\O_X(D)$ & $D^{-1} \O_X \subseteq \K_X$ & definition~\ref{defn:line-bundle-of-divisor} \\
+  effective Cartier divisor & $[s/1]$ with~$s\?\O_X$ regular & Definition~\ref{defn:effective-cartier-divisor} \\
+  line bundle~$\O_X(D)$ & $D^{-1} \O_X \subseteq \K_X$ & Definition~\ref{defn:line-bundle-of-divisor} \\
   \bottomrule
 \end{longtable}}
 

@@ -1443,7 +1443,7 @@ transformations and then kill the other entries of the first row and the first
 column. After these operations, it is still the case that the entry in the
 first row and column is a factor of all other entries. Continuing in this
 fashion, we obtain a diagonal matrix. Its diagonal entries already fulfill
-the divisibility condition.
+the divisibility condition and thus do not have to be sorted.
 \end{proof}
 
 Note that phrases such as ``if by chance the entry in the upper left divides
@@ -3289,8 +3289,8 @@ hypothesis, it follows that~$\psi^\Box(x)$. From this the claim follows.
 The case for~``$\forall$'' is similar.
 \end{proof}
 
-\begin{ex}\label{ex:translation-equivalence}Let~$X$ be a scheme. Let~$f$ be
-global functions on~$X$. Let~$\varphi \defequiv \neg(\speak{$f$ \inv})$
+\begin{ex}\label{ex:translation-equivalence}Let~$X$ be a scheme. Let~$f$ be a
+global function on~$X$. Let~$\varphi \defequiv \neg(\speak{$f$ \inv})$
 and~$\varphi' \defequiv \speak{$f$ nilpotent}$. Then, by Proposition~\ref{prop:cond-zero}, we
 have~$\Sh(X) \models (\varphi \Leftrightarrow \varphi')$. But in general, this
 does not imply that~$\Sh(X) \models (\varphi^\Box \Leftrightarrow
@@ -3328,7 +3328,7 @@ that~$\F$ is of finite type. Indeed, in this case one cannot reformulate the
 condition that~$\F$ is zero in a geometric way.\end{rem}
 
 In a remark after the proof of Proposition~\ref{prop:rank-function-internally},
-we promised to present a simpler proof once we have developed the theory for
+we promised to present a simpler proof of it once we would have developed the theory for
 doing so. We can now follow up on this promise.
 \begin{lemma}\label{lemma:gen-family-n}
 Let~$X$ be a scheme (or ringed space). Let~$\F$ be an~$\O_X$-module

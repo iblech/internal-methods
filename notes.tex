@@ -438,7 +438,7 @@ scheme. The meaning of internal statements is given by a set of rules, the
 for open subsets~$U \subseteq X$ and formulas~$\varphi$ over~$U$ is given by
 the rules listed in Table~\ref{table:kripke-joyal}, recursively in the structure of~$\varphi$.
 In a \emph{formula over~$U$} there may appear sheaves defined on~$U$ as domains
-of quantifications,~$U$-sections of sheaves as terms and morphisms of sheaves
+of quantifications,~$U$-sections of sheaves as terms, and morphisms of sheaves
 on~$U$ as function symbols. The symbols~``$\top$'' and~``$\bot$'' denote truth
 and falsehold, respectively. The universal and existential quantifiers come in
 two flavors: for bounded and unbounded quantification.
@@ -516,13 +516,10 @@ perspective,~$\alpha$ is simply an injective map:
   &\qquad\qquad
       V \models \alpha(s) = \alpha(t) \Rightarrow s = t \\[0.5em]
   \Longleftrightarrow\ &
-    \text{for all open~$U \subseteq X$, sections $s, t \in \Gamma(U, \F)$:} \\
+    \text{for all open~$U \subseteq X$, sections $s \in \Gamma(U, \F)$:} \\
+  & \text{for all open~$V \subseteq U$, sections $t \in \Gamma(V, \F)$:} \\
   &\qquad\qquad
-      U \models \alpha(s) = \alpha(t) \Rightarrow s = t \\[0.5em]
-  \Longleftrightarrow\ &
-    \text{for all open~$U \subseteq X$, sections $s, t \in \Gamma(U, \F)$:} \\
-  &\qquad\qquad
-      \text{for all open~$W \subseteq U$:} \\
+      \text{for all open~$W \subseteq V$:} \\
   &\qquad\qquad\qquad\qquad
         \text{$\alpha_W(s|_W) = \alpha_W(t|_W)$ implies $s|_W = t|_W$} \\[0.5em]
   \Longleftrightarrow\ &
@@ -536,7 +533,7 @@ The corner quotes ``$\speak{\ldots}$'' indicate that translation into formal
 language is left to the reader. Similarly,~$\alpha$ is an epimorphism of
 sheaves if and only if, from the internal perspective,~$\alpha$ is a
 surjective map. Notice that injectivity and surjectivity are
-notions of a simple element-based language, and the Kripke--Joyal semantics
+notions of a simple element-based language. The Kripke--Joyal semantics
 takes care to properly handle \emph{all} sections, not only global ones.
 \end{ex}
 

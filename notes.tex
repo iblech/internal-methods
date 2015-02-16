@@ -3115,7 +3115,8 @@ and reduced technical overhead. There are however two more distinctive
 advantages. Firstly, many internal proofs do not require specific properties of
 the modal operator and thus work with any modal operator. By interpreting such
 a proof using different operators, one obtains a whole family of external
-statements without any additional work.
+statements without any additional work (see
+Lemma~\ref{lemma:module-zero-point-neighbourhood} for an example).
 
 Secondly, the following corollary gives a general metatheorem which is
 applicable to a wide range of cases. It allows to decide whether spreading will
@@ -3194,6 +3195,17 @@ f(x) = y)$. We can now understand a simple proof of this fact:
     \Sh(X) \models \forall y\?B\_ \Box(\exists x\?X\_ f(x) = y).
 \end{align*}
 \end{ex}
+
+\begin{rem}Theorem~\ref{thm:box-translation-semantically} can also be motivated
+by purely logical considerations. Namely, one can check that interpreting a
+formula~$\varphi$ by $\Sh(X) \models \varphi^\Box$ gives rise to a model of
+intuitionistic logic -- if~$\varphi$ intuitionistically implies~$\psi$,
+then~$\Sh(X) \models \varphi^\Box$ implies~$\Sh(X) \models \psi^\Box$. In
+categorical logic, it is therefore a natural question whether there exists a
+topos~$\E$ such that~$\E \models \varphi$ if and only if~$\Sh(X) \models
+\varphi^\Box$. Theorem~\ref{thm:box-translation-semantically} gives an
+affirmative answer to this question, explicitly stating that~$\E \defeq
+\Sh(X_\Box)$ is such a topos.\end{rem}
 
 \begin{proof}[Proof of Theorem~\ref{thm:box-translation-semantically}]
 A fancy proof goes as follows. First, one shows intuitionistically that for a

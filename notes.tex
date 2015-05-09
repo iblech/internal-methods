@@ -4032,7 +4032,7 @@ is the~$\O_X$-submodule
 \]
 of~$\K_X$. Here we are abusing language for~``$gD \in \O_X$'' to mean that~$gf
 \in \O_X$ if~$D = [f]$ with~$f\?\K_X$; and for~``$D^{-1} \O_X$'' to
-mean~$f^{-1}\O_X$. This condition \resp submodule does not depend on the
+mean~$f^{-1}\O_X$. This condition respectively submodule does not depend on the
 representative~$f$, since~$f$ is well-defined up to multiplication by an element
 of~$\O_X^*$.\end{defn}
 
@@ -4053,9 +4053,9 @@ of~$X$ associated to the sheaf of ideals~$\O_X(-D) \subseteq \O_X$.
 %is an isomorphism. So O_X --> O_X(D) is as well.
 %\end{proof}
 
-\begin{defn}The \emph{Cartier divisor associated to a free submodule~$\L \subseteq
+\begin{defn}The \emph{Cartier divisor associated to a free~$\O_X$-submodule~$\L \subseteq
 \K_X$ of rank~1} is~$D \defeq [f^{-1}]$, where~$f\?\K_X$ is the unique element of
-some one-element-basis of~$\L$.\end{defn}
+some one-element basis of~$\L$.\end{defn}
 
 The basis element~$f\?\K_X$ does indeed lie in~$\K_X^*$: Write~$f
 = s/t$ with~$s,t \? \O_X$. It suffices to show that~$s$ is a regular element
@@ -4099,6 +4099,55 @@ converse is similar.
 %to linear equivalence).\end{rem}
 %\xxx{check this.}
 
+For the following definition, recall that we can localize an~$\O_X$-module~$\L$
+away from the set~$\S \subseteq \O_X$ of regular elements to obtain
+a~$\K_X$-module~$\L[S^{-1}]$.
+
+\begin{defn}Let~$f\?\L[\S^{-1}]$ be a rational section of a line bundle~$\L$
+on~$X$. Assume that~``$f$ is nontrivial'', that is multiplication by~$f$ is an
+injective map~$\O_X \to \L[\S^{-1}]$. Then the \emph{associated divisor} of~$f$
+is~$\operatorname{div}(f) \defeq [\psi(s)/t]$, where~$f = s/t$ with~$s\?\L$ and~$t\?\O_X$
+and~$\psi : \L \to \O_X$ is an isomorphism.\end{defn}
+
+One can check that~$\psi(s)$ is a regular element of~$\O_X$; this statement is
+in fact equivalent to the multiplication map~$\O_X \to \L[\S^{-1}]$ being
+injective. Furthermore one can check that~$[\psi(s)/t]$ does not depend on the
+choice of~$s$,~$t$, and~$\psi$.
+
+\begin{prop}Let~$f\?\L[\S^{-1}]$ be a nontrivial rational section of a line
+bundle~$\L$ on~$X$. Then multiplication by~$f$ induces an
+isomorphism~$\O_X(\operatorname{div}(f)) \to \L$.\end{prop}
+\begin{proof}The isomorphism should map a rational function~$g$ to~$g \cdot f$. This
+is a priori an element of~$\L[\S^{-1}]$; we have to check that it can be
+regarded as an element of~$\L$. Just as in the definition
+of~$\operatorname{div}(f)$, write~$f = s/t$ and fix an isomorphism~$\psi : \L
+\to \O_X$. Write~$g = (t/\psi(s)) \cdot h$ for some function~$h\?\O_X$. Then~$g
+\cdot f = sh/\psi(s) = h\psi^{-1}(1)$, since~$s = \psi^{-1}(\psi(s)) = \psi(s)
+\cdot \psi^{-1}(1)$. The element~$h\psi^{-1}(1)$ can indeed be considered as an
+element of~$\L$.
+
+Injectivity of the map~$\O_X(\operatorname{div}(f)) \to \L$ is by the
+nontriviality of~$f$. For surjectivity, note that~$(t/\psi(s)) \cdot \psi(v)$ is a
+preimage to~$v\?\L$, since~$(t/\psi(s)) \cdot \psi(v) \cdot f = \psi(v) \psi(s)
+\psi^{-1}(1) / \psi(s) = v$.
+\end{proof}
+
+\begin{prop}Let~$\L$ be a line bundle on~$X$. Assume that~$\L$ can be embedded
+into~$\K_X$. Then~$\L$ possesses a nontrivial rational section.
+\end{prop}
+\begin{proof}Let~$i : \L \to \K_X$ denote the given injection. Let~$(v)$ be an
+one-element basis for~$\L$. Write~$i(v) = s/t$. Then~$s$ is regular,
+since~$hs = 0$ implies~$i(hv) = 0$ and thus~$h = 0$, for any~$h\?\O_X$.
+Therefore~$f \defeq tv/s$ is a well-defined element of~$\L[\S^{-1}]$.
+Furthermore it is nontrivial in the desired sense: If~$h \cdot (tv/s) = 0$,
+then~$htv = 0$, thus~$ht = 0$ and~$h = 0$.
+
+It remains to check that~$f$ is independent of the choice of~$v$ and of the
+representation~$i(v) = s/t$; else we defined only local sections which might not
+glue to a single nontrivial rational section (externally speaking). This is
+obvious.
+\end{proof}
+
 \begin{prop}Let~$D$ be an effective divisor on~$X$. Then the complement of its
 support is scheme-theoretically dense.\end{prop}
 \begin{proof}The complement of the support of~$D$, that is~$D(\O_X(-D))$, is
@@ -4131,7 +4180,7 @@ Proposition~\ref{prop:kx-is-negneg-sheafification}) and~$\L$ is~$\Box$-separated
 \begin{itemize}
 \item on reduced schemes, $\K_X$ is the sheaf of meromorphic functions
 \item show~$\K_X = j_*(\O_X)$?
-\item divisor associated to rational sections
+\item ``$\operatorname{div}(g) + D \geq 0$''
 \end{itemize}
 
 

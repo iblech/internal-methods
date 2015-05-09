@@ -2641,7 +2641,7 @@ perspective and thus forget~$X$; we are simply given a modal operator~$\Box :
 \Omega \to \Omega$ and have to take care that our proofs are intuitionistically acceptable. A
 reference for the material in this subsection is a preprint by Fer-Jan de
 Vries~\cite{vries:sheafification}.\footnote{Note that on page~5 of that
-preprint, there is a slight typing error: Fact~2.1(i) gives the
+preprint there is a slight typing error: Fact~2.1(i) gives the
 characterization of~$j$-closedness, not~$j$-denseness. The correct
 characterization of~$j$-denseness in that context is~$\forall b \in B\_ j(b \in
 A)$.}
@@ -2680,7 +2680,7 @@ that
   \speak{$S$ is a subsingleton} \wedge \Box(\speak{$S$ is inhabited}). \]
 
 \begin{rem}The topos of \emph{pre}sheaves on a topological space~$X$ admits an
-internal language as well~\cite[section~VI.7, discussion after
+internal language as well~\cite[Section~VI.7, discussion after
 Theorem~1]{moerdijk-maclane:sheaves-logic}. In it, there
 exists a modal operator~$\Box$ reflecting the topology of~$X$. A presheaf on~$X$ is separated
 in the usual sense if, from the internal perspective of~$\PSh(X)$, it
@@ -2738,7 +2738,7 @@ suffices for any local section to \emph{locally} have preimages.\end{rem}
 
 \begin{prop}Let~$X$ be a topological space. Let~$\Box$ be a modal operator
 in~$\Sh(X)$. Let~$i : X_\Box \hookrightarrow X$ be the inclusion of the
-associated sublocale. (Co-)restricting the pushforward functor~$i_* : \Sh(X_\Box) \to
+associated sublocale. Corestricting the pushforward functor~$i_* : \Sh(X_\Box) \to
 \Sh(X)$ to its essential image, it induces an equivalence~$\Sh(X_\Box) \simeq
 \Sh_\Box(\Sh(X))$ between the category of sheaves on~$X_\Box$ and the category
 of~$\Box$-sheaves in~$\Sh(X)$.
@@ -2746,7 +2746,7 @@ of~$\Box$-sheaves in~$\Sh(X)$.
 \begin{proof}For the further development of the theory, we need the statement
 of this proposition, but not the proof, which really is routine in dealing with
 subtoposes and modal operators. Nevertheless, a proof goes like follows:
-Combine example~A4.6.2(a) and theorem~C1.4.7
+Combine Example~A4.6.2(a) and Theorem~C1.4.7
 of~\cite{johnstone:elephant} and note that for a topos of sheaves on a
 locale~$Y$, it holds that~$\Open(Y) = \Gamma(Y, \Omega_{\Sh(Y)})$, and that the
 subobject classifier of~$\Sh_\Box(\Sh(X))$ is~$\{ \varphi : \Omega_{\Sh(X)} \,|\,
@@ -2884,7 +2884,7 @@ derivable in classical logic if and only if its
 translation~$\varphi^{\neg\neg}$ is derivable in intuitionistic logic. The
 translation~$\varphi^{\neg\neg}$ is obtained from~$\varphi$ by putting
 ``$\neg\neg$'' before any subformula, \ie before any~``$\exists$''
-and~``$\forall$'', around any logical connective and around any atomic
+and~``$\forall$'', around any logical connective, and around any atomic
 statement (``$x=y$'', ``$x \in A$'').
 
 We will describe a slight generalization of the double negation translation,
@@ -2941,7 +2941,7 @@ formula structure. By way of example, we prove the case for~``$\Rightarrow$'':
 The first step is by definition; the second by~$\Box$-stability
 of~$\psi^\withgray$ and the intuitionistic tautology~$\Box(\alpha \Rightarrow
 \beta) \Leftrightarrow (\alpha \Rightarrow \beta)$ for~$\Box$-stable
-formulas~$\beta$; the third by the induction hypothesis; the fourth by
+formulas~$\beta$; the third by induction hypothesis; the fourth by
 definition.
 \end{proof}
 
@@ -2992,7 +2992,7 @@ lemma can be applied (two times, once for each direction). We should stress that
 lemma, it is not enough to merely \emph{know} that~$\varphi$ and~$\varphi'$ are
 equivalent; instead, there has to be an intuitionistic proof of this
 equivalence. This is really a stronger requirement, since an
-equivalence~$\varphi \Leftrightarrow \varphi'$ might simply
+equivalence~$\varphi \Leftrightarrow \varphi'$ might
 hold in a particular model, \ie in the internal language of some particular
 topos, without possessing an intuitionistic proof, \ie holding in any topos. We
 give an explicit example of this situation below
@@ -3819,6 +3819,7 @@ not~$\K_X$: The quotient ring~$\K_X$ is a~$\neg\neg$-sheaf if and only if
   \exists a,b\?\O_X\_ \speak{$b$ regular} \wedge \neg\neg(b^{-1} a \in T).
 \end{multline*}
 This is done just as in the proof of Theorem~\ref{thm:qcoh-sheafchar}. Note
+% XXX: reorder qcoh before this because of the reference?
 that~``$b^{-1}$'' refers to the inverse of~$b$ which indeed exists in a doubly
 negated context, since~$b$ is assumed regular. More explicitly, we should write
 \[ \neg\neg(\exists c\?\O_X\_ bc = 1 \wedge ca \in T)
@@ -3835,10 +3836,10 @@ function~$f$ is a regular element of~$A$.
 Since~$\Gamma(V,\O_X) = A[f^{-1}]$, we can write~$s = a/f^n$ with~$a \in A$
 and~$n \geq 0$.
 
-By Lemma~\ref{lemma:regular-affine}, the function~$f^n$ is also regular as an
-element of~$\O_U$ from the internal point of view. Note that~$f^n$ is invertible
-on~$V$, since~$V = D(f) \subseteq D(f^n)$. It follows that on the dense
-open subset~$V \subseteq U$, the sections~$s$ and~$(f^n)^{-1} a$ agree.
+By Lemma~\ref{lemma:regular-affine}, the function~$b \defeq f^n$ is also regular as an
+element of~$\O_U$ from the internal point of view. Note that~$b$ is invertible
+on~$V$, since~$V = D(f) \subseteq D(b)$. It follows that on the dense
+open subset~$V \subseteq U$, the sections~$s$ and~$b^{-1} a$ agree.
 This observation concludes the proof.
 \end{proof}
 
@@ -3859,7 +3860,6 @@ calculating the stalk at~$\xi$; and that the inclusion functor~$\Set \simeq
 \Sh(\{\xi\}) \hookrightarrow \Sh(X)$ is given by the constant sheaf
 construction.
 \end{proof}
-\XXX{maybe reorder qcoh before this}
 
 If~$X$ is a general scheme (not necessarily reduced),
 we can describe~$\K_X$ in a similar way as a sheafification
@@ -3947,10 +3947,10 @@ Thus it only remains to verify that~$\K_X$ is a~$\Box$-sheaf. We may again imita
 the proof of Proposition~\ref{prop:kx-is-negneg-sheafification}; using the same
 notation, we may now suppose that~$V$ is a standard open subset such that~$U \models \Box
 V$ (previously, we supposed that~$U \models \neg\neg V$). The proof that the
-denominator~$f^n$ is regular (as seen from the internal perspective, as an
+denominator~$b$ is regular (as seen from the internal perspective, as an
 element of~$\O_U$) now goes as follows: We have~$V \subseteq
-D(f^n)$. Therefore~$U \models \Box V$ implies~$U \models \Box(\speak{$f^n$ \inv})$. By
-the fourth property, it follows that~$U \models \speak{$f^n$ is regular}$.
+D(b)$. Therefore~$U \models \Box V$ implies~$U \models \Box(\speak{$b$ \inv})$. By
+the fourth property, it follows that~$U \models \speak{$b$ is regular}$.
 \end{proof}
 
 \begin{rem}The modal operator~$\Box$ is the largest (weakest) operator such
@@ -4224,8 +4224,10 @@ Proposition~\ref{prop:kx-is-negneg-sheafification}) and~$\L$ is~$\Box$-separated
 \end{proof}
 
 \begin{itemize}
-\item on reduced schemes, $\K_X$ is the sheaf of meromorphic functions
 \item show~$\K_X = j_*(\O_X)$?
+% This doesn't seem to be obvious. The statement is that K_X is a sheaf for (U => __).
+% It certainly is separated with respect to this modal operator, but I don't
+% see how to prove that it is a sheaf.
 \item ``$\operatorname{div}(g) + D \geq 0$''
 \end{itemize}
 
@@ -5564,9 +5566,9 @@ explain contexts}
 
 \XXX{remark on possible pitfalls}
 
-\XXX{typography of $\bigcup$}
-
 \end{document}
+
+\YYY{typography of $\bigcup$}
 
 Snippet that may be useful later:
 By appealing to the axiom of unique choice (see~YYY), we can

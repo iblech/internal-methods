@@ -4099,6 +4099,21 @@ converse is similar.
 %to linear equivalence).\end{rem}
 %\xxx{check this.}
 
+\begin{prop}Let~$D$ be an effective divisor on~$X$. Then the complement of its
+support is scheme-theoretically dense.\end{prop}
+\begin{proof}The complement of the support of~$D$, that is~$D(\O_X(-D))$, is
+the truth value associated to the statement~``$1 \in \O_X(-D)$''. By
+Lemma~\ref{lemma:scheme-theoretical-density}, we therefore have to verify
+that~$\O_X$ is separated with respect to the modal operator~$(1 \in \O_X(-D)
+\Rightarrow \placeholder)$.
+
+Let~$s \? \O_X$ be given such that~$1 \in \O_X(-D) \Rightarrow s = 0$; we have
+to show that~$s = 0$. Writing~$D = [f/1]$ where~$f \? \O_X$ is a regular
+element, this condition is equivalent to~$\speak{$f$ \inv} \Rightarrow s = 0$.
+By Proposition~\ref{prop:cond-zero} it follows that~$f^n s = 0$ for some~$n
+\geq 0$. Since~$f$ is regular, we may cancel~$f^n$ in this equation.
+\end{proof}
+
 \begin{prop}Assume that~$X$ is an integral scheme. Then any line bundle on~$X$
 is (uncanonically) a submodule of~$\K_X$.\end{prop}
 \begin{proof}Let~$\xi$ be the generic point of~$X$ and let~$\Box \defeq \neg\neg$
@@ -4117,8 +4132,6 @@ Proposition~\ref{prop:kx-is-negneg-sheafification}) and~$\L$ is~$\Box$-separated
 \item on reduced schemes, $\K_X$ is the sheaf of meromorphic functions
 \item show~$\K_X = j_*(\O_X)$?
 \item divisor associated to rational sections
-\item $X \setminus V$ is scheme-theoretically dense in $X$, if~$V$ is the
-support of an effective Cartier divisor
 \end{itemize}
 
 

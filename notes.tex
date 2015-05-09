@@ -2825,6 +2825,56 @@ a~$\neg\neg$-sheaf if and only if, for any open subset~$U \subseteq X$, the
 restriction map~$\Gamma(\Int\Clos U, \F) \to \Gamma(U,\F)$ is
 bijective~\cite[Lemma~36]{jackson:sheaf-theoretic-measure-theory}.
 
+In the case that~$X$ contains a \emph{generic point}, that is a point~$\xi \in X$
+such that~$\Clos\{\xi\} = X$, we can describe the sublocale~$X_{\neg\neg}$ in
+very explicit terms: In this case, it coincides with the subspace~$\{\xi\}$.
+Such a point exists and is unique if~$X$ is an irreducible scheme, and need not
+exist otherwise.
+
+\begin{lemma}\label{lemma:negneg-generic-point}
+Let~$X$ be a topological space and~$\xi \in X$ a point such
+that~$\Clos\{\xi\} = X$. Then the modal operator~$\Box \defequiv ((\placeholder
+\Rightarrow \notat{\xi}) \Rightarrow \notat{\xi})$ coincides with the double
+negation modality and~$X_{\neg\neg} = \{\xi\}$ as sublocales of~$X$.\end{lemma}
+\begin{proof}The semantics of the formula~$\notat{\xi}$ was defined by the
+equivalence
+\[ U \models \notat{\xi} \quad\Longleftrightarrow\quad
+  \xi \not\in U. \]
+By the assumption on~$\xi$, this is equivalent to requiring~$U = \emptyset$.
+Thus for any open subset~$U$ the formulas~$\notat{\xi}$ and~$\bot$ have the
+same meaning; they are therefore logically equivalent from the internal point of
+view. The given modal operator thus simplifies to
+\[ \Box\varphi \quad\equiv\quad ((\varphi \Rightarrow \notat{\xi}) \Rightarrow \notat{\xi})
+  \quad\Leftrightarrow\quad ((\varphi \Rightarrow \bot) \Rightarrow \bot)
+  \quad\Leftrightarrow\quad \neg\neg\varphi. \]
+The second claim follows Table~\ref{table:nuclei}.
+\end{proof}
+
+\begin{cor}\label{cor:negneg-generic-point-pushpull}
+Let~$X$ be a topological space and~$\xi \in X$ a point such
+that~$\Clos\{\xi\} = X$. Since~$X_{\neg\neg} = \{\xi\}$, the
+category of~$\neg\neg$-sheaves in~$\Sh(X)$ coincides with the category of
+sheaves on~$\{\xi\}$ and can therefore be identified with the category of sets.
+Under this identification,
+\begin{enumerate}
+\item sheafifying an object~$\F \in \Sh(X)$ with respect
+to the double negation modality (\ie pulling back to~$X_{\neg\neg}$) is the
+same as calculating its generic stalk~$\F_\xi$ and
+\item pushing forward a set~$M$ along~$X_{\neg\neg} \hookrightarrow X$ is the
+same as calculating the constant sheaf associated to~$M$.
+\end{enumerate}
+\end{cor}
+\begin{proof}The first statement follows because pulling back to~$X_{\neg\neg}$
+is the same as pulling back to~$\{\xi\}$. The pushforward of a set~$M$,
+considered as a sheaf on~$X_{\neg\neg}$, to~$M$ is explicitly given by
+\[ U \quad\longmapsto\quad \begin{cases}
+  M, & \text{if $U \neq \emptyset$,} \\
+  \{\star\}, & \text{else.}
+\end{cases} \]
+We omit the routine verification that this sheaf coincides with the constant
+sheaf~$\underline{M}$ associated to~$M$.
+\end{proof}
+
 
 \subsection{\texorpdfstring{The~$\Box$-translation}{The □-translation}}
 There is certain well-known transformation~$\varphi
@@ -3171,36 +3221,14 @@ Combined with Lemma~\ref{lemma:stalk-open-with-hypothesis}, this metatheorem is
 quite useful. We will illustrate it with many examples in the next subsection.
 
 An important special case of spreading from stalks to neighbourhoods is the
-case of spreading from the generic point to a dense open subset. Recall that
-the \emph{generic point}~$\xi \in X$ has the property that~$\Clos\{\xi\} = X$.
-Such a point exists and is unique if~$X$ is an irreducible scheme, and need not
-exist otherwise.
-
-\begin{lemma}\label{lemma:negneg-generic-point}
-Let~$X$ be a topological space and~$\xi \in X$ a point such
-that~$\Clos\{\xi\} = X$. Then the modal operator~$\Box \defequiv ((\placeholder
-\Rightarrow \notat{\xi}) \Rightarrow \notat{\xi})$ coincides with the double
-negation modality.\end{lemma}
-\begin{proof}The semantics of the formula~$\notat{\xi}$ was defined by the
-equivalence
-\[ U \models \notat{\xi} \quad\Longleftrightarrow\quad
-  \xi \not\in U. \]
-By the assumption on~$\xi$, this is equivalent to requiring~$U = \emptyset$.
-Thus for any open subset~$U$ the formulas~$\notat{\xi}$ and~$\bot$ have the
-same meaning; they are therefore logically equivalent from the internal point of
-view. The given modal operator thus simplifies to
-\[ \Box\varphi \quad\equiv\quad ((\varphi \Rightarrow \notat{\xi}) \Rightarrow \notat{\xi})
-  \quad\Leftrightarrow\quad ((\varphi \Rightarrow \bot) \Rightarrow \bot)
-  \quad\Leftrightarrow\quad \neg\neg\varphi. \qedhere \]
-\end{proof}
-
-In particular, if~$X$ contains a generic point~$\xi$ in the sense of the lemma,
-we can describe the sublocale~$X_{\neg\neg}$ in very explicit terms: In this
-case, it coincides with the subspace~$\{\xi\}$.
-\XXX{discuss that sheafifying is the same as calculating the generic stalk;
-and that pushing forward is the same as calculating the constant sheaf.
-do this in the section discussing negneg-sheaves.
-Then continue with the story here...}
+case of spreading from the generic point (should it exist) to a dense open
+subset. Whether this occurs can be phrased by
+Lemma~\ref{lemma:negneg-generic-point} as follows:
+\begin{quote}
+\emph{Does~$\varphi^{\neg\neg}$ imply~$\neg\neg\varphi$ in the internal language
+of~$\Sh(X)$?}
+\end{quote}
+This question is a question of ordinary (non-modal) intuitionistic algebra.
 
 \begin{ex}We have seen in Remark~\ref{rem:epi-in-box-sheaves} that a
 morphism~$f : A \to B$ in~$\Sh(X_\Box) \simeq \Sh_\Box(\Sh(X))$ is an

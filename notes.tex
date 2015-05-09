@@ -3752,9 +3752,40 @@ that~$t$ is \notnot zero. Since~$\O_X$ is~$\neg\neg$-separated, this implies
 that~$t$ really is zero.
 \end{proof}
 
+For the following, we need two technical conditions. Say that an affine
+scheme~$\Spec A$ has property~$(\star)$ if and only if:
+\begin{quote}
+Every open dense subset~$U \subseteq \Spec A$ contains a
+\emph{standard open} dense subset.
+\end{quote}
+Say that~$\Spec A$ has property~$(\star\star)$ if and only if:
+\begin{quote}
+Every open scheme-theoretically dense subset~$U \subseteq \Spec A$ contains a
+\emph{standard open} scheme-theoretically dense subset.
+\end{quote}
+Both conditions are satisfied if~$A$ is an integral domain or if~$A$ is
+Noetherian; for the convenience of the reader, we give a proof in the
+latter case.
+
+\begin{prop}Let~$A$ be a Noetherian ring. Then~$\Spec A$ has property~$(\star)$
+and~$(\star\star)$.
+\end{prop}
+\begin{proof}Recall that an open subset of~$\Spec A$ is dense if and only if it
+contains all minimal prime ideals and, under the Noetherian hypothesis, that it
+is scheme-theoretically dense if and only if it contains all associated prime
+ideals. There are only a finite number of these prim ideals. Therefore the
+claim is reduced to the following statement: Let~$\ppp_1,\ldots,\ppp_n$ be a
+finite number of points of an open subset~$U \subseteq \Spec A$. Then there
+exists a standard open subset~$D(f) \subseteq U$ which also contains these
+points. The proof of this statement is an easy application of the prime
+avoidance lemma.
+\end{proof}
+
 \begin{prop}
 \label{prop:kx-is-negneg-sheafification}
-Let~$X$ be a reduced scheme. Then~$\K_X$ is
+Let~$X$ be a reduced scheme. Assume that~$X$ can be covered by open affine
+subsetswhich have property~$(\star)$. For instance, this condition is satisfied
+if~$X$ is integral or locally Noetherian. Then~$\K_X$ is
 the~$\neg\neg$-sheafification of~$\O_X$.\end{prop}
 \begin{proof}
 We first show that~$\K_X$ is~$\neg\neg$-separated,
@@ -3765,7 +3796,6 @@ in~$\K_X$ if and only if~$a = 0$ in~$\O_X$. Thus it follows that~$\neg\neg(a =
 
 We defer the proof that~$\K_X$ is a~$\neg\neg$-sheaf to the end and first
 verify the universal property of~$\neg\neg$-sheafification.
-% grammar?
 So let~$G$ be a~$\neg\neg$-sheaf and let~$\alpha : \O_X \to G$ be a map. We
 can define an extension~$\bar\alpha : \K_X \to G$ in the following way:
 Let~$f \? \K_X$. Define the subsingleton~$S \defeq \{ x \? G \,|\, \exists
@@ -3795,34 +3825,25 @@ negated context, since~$b$ is assumed regular. More explicitly, we should write
   \quad\text{instead of}\quad
   \neg\neg(b^{-1} a \in T). \]
 To verify the Kripke--Joyal interpretation of the rewritten sheaf condition, let
-an affine open subset~$U = \Spec A \subseteq X$ and a subsheaf~$T
-\hookrightarrow \O_X|_U$ be given, such that~$T$ is internally a subsingleton
-and \notnot inhabited. We may thus glue the unique germs in the inhabited
+an affine open subset~$U = \Spec A \subseteq X$ (having property~$(\star)$) and a subsheaf~$T
+\hookrightarrow \O_X|_U$ be given such that~$T$ is internally a subsingleton
+and \notnot inhabited. We may glue the unique germs in the inhabited
 stalks of~$T$ to obtain a section~$s \in \Gamma(V,\O_X)$ where~$V \subseteq U$
-is a dense open subset. We may write~$V = \bigcup_i D(f_i)$ for some (possibly
-infinitely many) functions~$f_i \in A$. Since~$V$ is dense in~$U$, these have the
-property that
-\[ \forall g \in A\_
-  (\forall i\_ \text{$f_i g$ nilpotent in $A$}) \Longrightarrow
-  \text{$g$ nilpotent in $A$}. \]
-Since~$\Gamma(V,\O_X) = A[S_V^{-1}]$ with~$S_V = \{ x \in A \,|\, \text{$f_i
-\in \sqrt{(x)}$ for all~$i$} \}$, we can write~$s = a/b$ with~$a,b \in A$
-and~$f_i^{n_i} = c_i b$ for some~$c_i \in A$, $n_i \geq 0$.
-\XXX{$\Gamma(V,\O_X) = A[S_V^{-1}]$ is wrong.}
+is a dense open subset. Since~$U$ has property~$(\star)$, we may assume that~$V
+= D(f)$ is a standard open subset. Because~$V$ is dense and~$A$ is reduced, the
+function~$f$ is a regular element of~$A$.
+Since~$\Gamma(V,\O_X) = A[f^{-1}]$, we can write~$s = a/f^n$ with~$a \in A$
+and~$n \geq 0$.
 
-The function~$b$ is a regular element of~$A$: Let~$bg = 0$ for~$g \in A$.
-Then~$c_i b g = f_i^{n_i} g = 0 \in A$. Thus~$f_i g$ is
-nilpotent in~$A$. Since this holds for any~$i$,~$g$ is nilpotent in~$A$.
-Since~$A$ is reduced,~$g$ is in fact zero.
-
-By Lemma~\ref{lemma:regular-affine}, the function~$b$ is also regular as an
-element of~$\O_X$ from the internal point of view. Note that~$b$ is invertible
-on~$V$, since~$V \subseteq D(b)$. It follows that on the dense
-open subset~$V \subseteq U$, the sections~$s$ and~$b^{-1} a$ agree.
+By Lemma~\ref{lemma:regular-affine}, the function~$f^n$ is also regular as an
+element of~$\O_U$ from the internal point of view. Note that~$f^n$ is invertible
+on~$V$, since~$V = D(f) \subseteq D(f^n)$. It follows that on the dense
+open subset~$V \subseteq U$, the sections~$s$ and~$(f^n)^{-1} a$ agree.
 This observation concludes the proof.
 \end{proof}
 
-\begin{cor}Let~$X$ be a reduced scheme. Then~$\K_X$ is the result of
+\begin{cor}Let~$X$ be a reduced scheme having a cover by affine open subschemes
+with property~$(\star)$. Then~$\K_X$ is the result of
 pulling back~$\O_X$ to the sublocale~$X_{\neg\neg}$ and then pushing forward
 again. If~$X$ is irreducible with generic point~$\xi$, then~$\K_X$ is the
 constant sheaf associated to the set~$\O_{X,\xi}$.\end{cor}
@@ -3840,8 +3861,8 @@ construction.
 \end{proof}
 \XXX{maybe reorder qcoh before this}
 
-If~$X$ is a general scheme (not necessarily integral, reduced, or locally
-Noetherian), we can describe~$\K_X$ in a similar way as the sheafification
+If~$X$ is a general scheme (not necessarily reduced),
+we can describe~$\K_X$ in a similar way as a sheafification
 of~$\O_X$; specifically, it is the sheafification with respect to the modal
 operator defined by
 \[ \Box\varphi \defequiv \speak{$\O_X$ is~$(\varphi \Rightarrow
@@ -3849,6 +3870,28 @@ operator defined by
 in the internal language of~$\Sh(X)$, \ie
 \[ \Box\varphi \defequiv \forall s\?\O_X\_ (\varphi \Rightarrow s = 0)
 \Rightarrow s = 0. \]
+
+\begin{prop}Let~$U$ be an open subset of a scheme~$X$. Then~$\Sh(X) \models
+\Box U$ if and only if~$U$ is scheme-theoretically dense in~$X$.
+\end{prop}
+\begin{proof}We have the following chain of equivalences.
+\begin{align*}
+  &\ X \models \Box U \\
+  \Longleftrightarrow&\
+    \speak{$\O_X$ is~$(U \Rightarrow \placeholder)$-separated} \\
+  \Longleftrightarrow&\
+    X \models \speak{$\O_X \to \O_X^{+}$ is injective} \\
+  &\qquad\qquad\text{(where the plus construction is wrt.\@ the modality~$(U \Rightarrow \placeholder)$)} \\
+  \Longleftrightarrow&\
+    X \models \speak{$\O_X \to \O_X^{++}$ is injective} \\
+  &\qquad\qquad\text{(by the factorization~$\O_X \to \O_X^{+} \to \O_X^{++}$)} \\
+  \Longleftrightarrow&\
+    \text{the canonical morphism~$\O_X \to j_* \O_U$
+    (with $j : U \hookrightarrow X$) is injective} \\
+  \Longleftrightarrow&\
+    \text{$U$ is scheme-theoretically dense in~$X$.} \qedhere
+\end{align*}
+\end{proof}
 
 \begin{prop}\label{prop:kx-is-box-sheafification}
 Let~$X$ be a ringed space. Then:
@@ -3864,7 +3907,8 @@ Suppose furthermore that~$X$ is a scheme. Then:
 \begin{enumerate}
 \addtocounter{enumi}{4}
 \item The converse in~(4) holds.
-\item $\K_X$ is the~$\Box$-sheafification of~$\O_X$.
+\item If~$X$ can be covered by open affine subschemes with
+property~$(\star\star)$, then $\K_X$ is the~$\Box$-sheafification of~$\O_X$.
 \end{enumerate}
 \end{prop}
 \begin{proof}The first four properties are entirely formal; we thus skip over
@@ -3901,12 +3945,12 @@ regular elements of~$\O_X$ are~$\Box(\speak{invertible})$.
 
 Thus it only remains to verify that~$\K_X$ is a~$\Box$-sheaf. We may again imitate
 the proof of Proposition~\ref{prop:kx-is-negneg-sheafification}; using the same
-notation, we may now suppose that~$V$ is an open subset such that~$U \models \Box
+notation, we may now suppose that~$V$ is a standard open subset such that~$U \models \Box
 V$ (previously, we supposed that~$U \models \neg\neg V$). The proof that the
-denominator~$b$ is regular (as seen from the internal perspective, as an
-element of~$\O_X$) now goes as follows: We have~$V \subseteq
-D(b)$. Thus~$U \models \Box V$ implies~$U \models \Box(\speak{$f$ \inv})$. By
-the fourth property, it follows that~$U \models \speak{$f$ is regular}$.
+denominator~$f^n$ is regular (as seen from the internal perspective, as an
+element of~$\O_U$) now goes as follows: We have~$V \subseteq
+D(f^n)$. Therefore~$U \models \Box V$ implies~$U \models \Box(\speak{$f^n$ \inv})$. By
+the fourth property, it follows that~$U \models \speak{$f^n$ is regular}$.
 \end{proof}
 
 \begin{rem}The modal operator~$\Box$ is the largest (weakest) operator such
@@ -3918,33 +3962,43 @@ In the special case that~$X$ is a reduced scheme,
 Proposition~\ref{prop:kx-is-box-sheafification} recovers
 the result of Proposition~\ref{prop:kx-is-negneg-sheafification}:
 
-\begin{prop}Let~$X$ be a reduced scheme. Then the modal operator~$\Box$
-coincides with the double negation modality.\end{prop}
-\begin{proof}We show that from the internal point of view,~$\Box\varphi$ is
-equivalent to~$\neg\neg\varphi$ for any formula~$\varphi$. For the ``only if''
-direction, note that~$\neg\varphi$ is equivalent to~$\varphi \Rightarrow (1 =
+\begin{prop}Let~$X$ be a scheme. Then~$\Box\varphi \Rightarrow \neg\neg\varphi$
+for any formula~$\varphi$. The converse holds if~$X$ is reduced, such that in
+this case the modal operator~$\Box$ coincides with the double negation modality.\end{prop}
+\begin{proof}Let~$\varphi$ be an arbitrary formula. Note that~$\neg\varphi$ is
+equivalent to~$\varphi \Rightarrow (1 =
 0)$. Since by assumption~$\O_X$ is separated with respect to the~$(\varphi
 \Rightarrow \placeholder)$-modality, this in turn is equivalent to~$1 = 0 \?
 \O_X$, \ie to~$\bot$. Thus~$\neg\neg\varphi$.
 
-For the ``if'' direction, let~$\varphi \Rightarrow (s = 0)$ for some~$s\?\O_X$;
+For the converse direction, let~$\varphi \Rightarrow (s = 0)$ for some~$s\?\O_X$;
 we have to show that in fact~$s = 0$. Since by assumption~$\neg\neg\varphi$, it
 follows that~$s$ is \notnot zero. Since~$X$ is reduced,~$\O_X$
 is~$\neg\neg$-separated, so this implies that~$s$ is really zero.
 \end{proof}
 
-\begin{cor}Let~$X$ be a scheme. Then~$\K_X$ is the result of
+As a corollary, we can reprove the following basic lemma about
+scheme-theoretical density.
+\begin{lemma}Let~$U$ be an open subset of a scheme~$X$. If~$U$ is
+scheme-theoretically dense, then~$U$ is also dense in the plain topological
+sense. The converse holds if~$X$ is reduced.\end{lemma}
+\begin{proof}The set~$U$ is scheme-theoretically dense if and only if~$\Sh(X)
+\models \Box U$ and is dense if and only if~$\Sh(X) \models \neg\neg U$.
+Therefore the claim follows from the previous proposition.
+\end{proof}
+
+\begin{prop}Let~$X$ be a scheme admitting a cover of open affine subsets with
+property~$(\star\star)$. Then~$\K_X$ is the result of
 pulling back~$\O_X$ to the sublocale~$X_\Box$ associated to the modal
 operator~$\Box$ and then pushing forward again. If~$X$ is locally Noetherian,
 this sublocale is the subspace of associated points in~$X$.
-\end{cor}
+\end{prop}
 
-In formulas, the corollary says that the canonical map
+In formulas, the proposition says that the canonical map
 \[ \K_X \longrightarrow i_* i^{-1} \O_X \]
 is an isomorphism, where~$i : X_\Box \hookrightarrow X$ is the inclusion of
-the sublocale~$X_\Box$. This result holds without any Noetherian hypotheses.
-These are only needed if we want to describe~$X_\Box$ as a certain explicitly
-given subspace.
+the sublocale~$X_\Box$. This result holds needs a cover with
+property~$(\star\star)$, but no Noetherian hypothesis.
 
 \begin{proof}The first statement follows trivially by the results of
 Section~\ref{sect:internal-sheaves} and the fact that~$\K_X$ is
@@ -3952,17 +4006,23 @@ the~$\Box$-sheafification of~$\O_X$.
 
 For the second statement, we need to verify that the nucleus~$j_{\Ass(\O_X)}$
 associated to the subspace of associated points coincides with the
-nucleus~$j_\Box$ associated to the modal operator~$\Box$. The former is given
-by
+nucleus~$j_\Box$ associated to the modal operator~$\Box$. Recall from
+Subsection~\ref{sect:subspace-to-modal-operator} that the latter is given by
 \begin{align*}
-  j_{\Ass(\O_X)}(U) &= \bigcup\ \{ V \subseteq X \ |\
-  \text{$V$ open},\ V \cap \Ass(\O_X) \subseteq U \}, \\
-\intertext{since \XXX{reason}, and recall from
-Subsection~\ref{sect:subspace-to-modal-operator} that the latter is given by}
   j_\Box(U) &= \text{largest open subset of~$X$ on which~$\Box U$ holds} \\
   &= \bigcup\ \{ V \subseteq X \ |\
-  \text{$V$ open},\ V \models \Box U \}.
+  \text{$V$ open},\ V \models \Box U \}
+\intertext{and note that the former is given by}
+  j_{\Ass(\O_X)}(U) &= \bigcup\ \{ V \subseteq X \ |\
+  \text{$V$ open},\ V \cap \Ass(\O_X) \subseteq U \}.
 \end{align*}
+This is a general fact of locale theory, not depending on particular properties
+of~$\Ass(\O_X)$. To verify this, check that~$j_{\Ass(\O_X)}$ is indeed a
+nucleus and that~$\{ U \in \Open(X) \,|\,
+j_{\Ass(\O_X)}(U) = U \} \to \Open(\Ass(\O_X)),\, U \mapsto \Ass(\O_X) \cap U$
+is an isomorphism of frames with inverse given by~$\Ass(\O_X) \cap U \mapsto
+j_{\Ass(\O_X)}(U)$.
+
 The equivalence thus follows from a standard result on the set of associated
 points on locally Noetherian schemes:
 \begin{align*}
@@ -3970,26 +4030,12 @@ points on locally Noetherian schemes:
   \Longleftrightarrow&\
     \Ass(\O_V) \subseteq U \\
   \Longleftrightarrow&\
-    \text{the canonical morphism~$\O_V \to j_* \O_{U \cap V}$
-    (with $j : U \cap V \hookrightarrow V$) is injective} \\
+    \text{$U \cap V$ is scheme-theoretically dense in~$U$} \\
   &\qquad\qquad\text{(this steps requires the Noetherian assumption)} \\
-  \Longleftrightarrow&\
-    V \models \speak{$\O_X \to \O_X^{++}$ is injective} \\
-  &\qquad\qquad\text{(where the plus construction is with respect to} \\
-  &\qquad\qquad\text{the modality~$(U \Rightarrow \placeholder)$)} \\
-  \Longleftrightarrow&\
-    V \models \speak{$\O_X \to \O_X^{+}$ is injective} \\
-  &\qquad\qquad\text{(by the factorization~$\O_X \to \O_X^{+} \to \O_X^{++}$)} \\
-  \Longleftrightarrow&\
-    V \models \speak{$\O_X$ is~$(U \Rightarrow \placeholder)$-separated} \\
   \Longleftrightarrow&\
     V \models \Box U. \qedhere
 \end{align*}
 \end{proof}
-
-\XXX{explain that~$X \models \Box U$ means that~$U$ is scheme-theoretically
-dense in~$X$. Give internal proof that scheme-theoretical denseness implies
-topological denseness, and sometimes vice versa.}
 
 
 \subsection{Cartier divisors} Let~$X$ be a scheme (or ringed space). Recall

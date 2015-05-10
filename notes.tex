@@ -821,7 +821,7 @@ The internal language of an irreducible or locally Noetherian scheme~$X$ is Bool
 dimension~$\leq 0$.
 \end{prop}
 \begin{proof}\label{prop:lang-boolean}
-The internal language of~$\Sh(X)$ is Boolean if and only if, for
+The internal language of~$\Sh(X)$ is Boolean if and only if for
 any open subset~$U \subseteq X$ it holds that~$U$ is the only dense open subset
 of~$U$. This can be checked manually, by using the definition of the
 Kripke--Joyal semantics, but we'll be able to give a more conceptual proof
@@ -877,7 +877,7 @@ of~$\neg(\speak{$\sqrt{2}$ is rational})$.
 A more positive consequence of not adopting the law of excluded middle and the
 principle of double negation elimination is that intuitionistically, we can
 make \emph{finer distinctions}. For instance, for a formula~$\varphi$, the doubly
-negated formula~$\neg\neg\varphi$ is a certain kind of weakening of~$\varphi$:
+negated formula~$\neg\neg\varphi$ (``\notnot~$\varphi$'') is a certain kind of weakening of~$\varphi$:
 If~$\varphi$ holds, then~$\neg\neg\varphi$ does as well, while the converse can
 not be shown in general.\footnote{A detailed proof of the correct implication
 goes as follows: Assume~$\varphi$. We are to show~$\neg\neg\varphi$, \ie
@@ -893,10 +893,13 @@ distinction with pure classical logic.
 Double negation also has a concrete geometric meaning with the
 Kripke--Joyal semantics. Namely,~$X \models \neg\neg\varphi$ holds if and
 only if there is a dense open subset~$U$ of~$X$ such that~$U \models \varphi$.
+This is of course a weaker statement that~$X \models \varphi$.
 In Section~\ref{sect:modalities}, we will discuss this fact and other
 \emph{modal operators} in more detail. For instance, there is a similarly defined modal
 operator~$\Box$ such that~$X \models \Box\varphi$ if and only if there is an
-open neighbourhood~$U$ of a given point~$x$ such that~$U \models \varphi$.
+open neighbourhood~$U$ of a given point~$x$ such that~$U \models \varphi$. Also
+there is a operator~$\Box$ such that~$X \models \Box\varphi$ if and only
+if~$\varphi$ holds on a scheme-theoretically dense open subset.
 
 For future reference, note that if~$\varphi \Rightarrow \psi$,
 then also~$\neg\neg\varphi \Rightarrow \neg\neg\psi$; and note that weakening
@@ -2647,7 +2650,8 @@ The two conditions can be combined: A set~$F$ is a~$\Box$-sheaf if and only if
   \exists! x\?F\_ \Box(x \in S). \]
 \XXX{explain how to read these definitions}
 
-\begin{defn}The \emph{plus construction} of a set~$F$ with respect to~$\Box$ is the set
+\begin{defn}\label{defn:plus-construction}
+The \emph{plus construction} of a set~$F$ with respect to~$\Box$ is the set
 \[ F^+ \defeq \{ S \subseteq F \,|\, \Box(\speak{$S$ is a singleton}) \}/{\sim},
 \]
 where the equivalence relation is defined by~$S \sim T \vcentcolon\Leftrightarrow
@@ -2810,7 +2814,7 @@ bijective~\cite[Lemma~36]{jackson:sheaf-theoretic-measure-theory}.
 In the case that~$X$ contains a \emph{generic point}, that is a point~$\xi \in X$
 such that~$\Clos\{\xi\} = X$, we can describe the sublocale~$X_{\neg\neg}$ in
 very explicit terms: In this case, it coincides with the subspace~$\{\xi\}$.
-Such a point exists and is unique if~$X$ is an irreducible scheme, and need not
+Such a point exists and is unique if~$X$ is an irreducible scheme and need not
 exist otherwise.
 
 \begin{lemma}\label{lemma:negneg-generic-point}
@@ -2857,10 +2861,13 @@ We omit the routine verification that this sheaf coincides with the constant
 sheaf~$\underline{M}$ associated to~$M$.
 \end{proof}
 
-The following technical lemma will occasionally be handy. We will generalize it
+The following technical lemma will occasionally be handy. It is an internal
+reflection of the fact that an open subset of an affine scheme can always be
+written as the union of standard open subsets. We will generalize it
 to schemes which are not necessarily irreducible in
 Section~\ref{sect:rational-functions} (see
 Lemma~\ref{lemma:dense-standard-reflection-generalized}).
+
 \begin{lemma}\label{lemma:dense-standard-reflection}
 Let~$X$ be an irreducible scheme. Let~$\varphi$ be any formula
 over~$X$. Then
@@ -3313,17 +3320,19 @@ below.
 
 The cases~$\varphi \equiv \top$,~$\varphi \equiv (\psi \wedge \chi)$,
 and~$\varphi \equiv \bigwedge_i \psi_i$ are trivial. For~$\varphi \equiv \bot$,
-the claim is that~$U \models_X \Box\varphi$ if and only if~$j(U)
+the claim is that~$U \models_X \Box\bot$ if and only if~$j(U)
 \models_{X_\Box} \bot$. The former means~$U \subseteq j(\emptyset)$ and the
-latter means~$j(U) = \sup \emptyset = j(\emptyset)$, so the claim follows from
+latter means~$j(U) \leq \sup \emptyset = j(\emptyset)$, so the claim follows from
 the first two axioms on a nucleus.
 \end{proof}
+% XXX: other cases
 
 \begin{lemma}Let~$\Box$ be a modal operator. Let~$\varphi$ be a formula.
 Let~$\psi \defequiv \varphi^\Box$ be the~$\Box$-translation of~$\varphi$.
 Let~$\psi'$ be the formula obtained from~$\psi$ by substituting any occuring
-domain of quantification by its~$\Box$-sheafification. Then~$\psi$
-and~$\psi'$ are equivalent.
+domain of quantification by its~$\Box$-sheafification, as syntactically defined
+in Definition~\ref{defn:plus-construction}. Then~$\psi$
+and~$\psi'$ are intuitionistically equivalent.
 \end{lemma}
 \begin{proof}
 For any formula~$\varphi$, we denote by~``$\varphi^\boxplus$'' the result of
@@ -3424,8 +3433,7 @@ for~$\F$ consisting of~$n$ elements})$.
 \end{enumerate}
 By Lemma~\ref{lemma:open-stalk}, the second statement implies the first -- note
 that in a formal spelling of the statement in quotes,
-\begin{equation}
-  \tag{$\star$}
+\begin{equation}\label{eqn:finitely-generated}
   \exists x_1,\ldots,x_n\?\F\_
   \forall x\?\F\_
   \exists a_1,\ldots,a_n\?\O_X\_
@@ -3444,7 +3452,7 @@ proof of
     \exists x_1,\ldots,x_n\?\F\_
     \exists A\?\O^{m \times n}\_ \speak{$\vec y = A \vec x$}\bigr),
 \end{multline*}
-we can substitute the non-geometric formula~$(\star)$ by the geometric
+we can substitute the non-geometric formula~\eqref{eqn:finitely-generated} by the geometric
 formula
 \[ \exists x_1,\ldots,x_n\?\F\_ \exists A\?\O^{m \times n}\_ \speak{$\vec
 y = A \vec x$} \]
@@ -3461,15 +3469,16 @@ non-geometric surjectivity condition ($\forall y\?\G\_ \exists x\?\F\_
 \exists x\?\F\_ \alpha(x) = y_i$. Thus the claim follows by
 Lemma~\ref{lemma:stalk-open-with-hypothesis}.\end{proof}
 
-\begin{lemma}Let~$X$ be a scheme (or ringed space). Let~$\alpha : \F \to \G$ be
-a morphism of~$\O_X$-modules. Let~$\F$ be of finite type and~$\G$ be coherent.
-Suppose that~$\alpha_x$ is injective at some point~$x \in X$. Then~$\alpha$ is
-a monomorphism on some open neighbourhood of~$x$.
-\end{lemma}
-\begin{proof}The kernel of~$\alpha$ is of finite type (by
-Lemma~\ref{lemma:coherent-stuff}) and zero at~$x$. By the previous lemma, it is
-therefore zero on some open neighbourhood of~$x$.
-\end{proof}
+%\begin{lemma}Let~$X$ be a scheme (or ringed space). Let~$\alpha : \F \to \G$ be
+%a morphism of~$\O_X$-modules. Let~$\F$ be of finite type and~$\G$ be coherent.
+%Suppose that~$\alpha_x$ is injective at some point~$x \in X$. Then~$\alpha$ is
+%a monomorphism on some open neighbourhood of~$x$.
+%\end{lemma}
+%\begin{proof}The kernel of~$\alpha$ is of finite type (by
+%Lemma~\ref{lemma:coherent-stuff}) and zero at~$x$. By the previous lemma, it is
+%therefore zero on some open neighbourhood of~$x$.
+%\end{proof}
+%This proof is precisely the classical one, so there is no need to include it here.
 
 \begin{lemma}\label{lemma:pushforward-finite-type}
 Let~$i : A \hookrightarrow X$ be a closed immersion of schemes (or
@@ -3514,8 +3523,8 @@ matrix~$(a_{ij}) \? R^{n \times m}$. Then we can calculate the Hom with
 any~$R$-module~$N$ as
 \[ \Hom_R(M,N) \cong \Bigl\{ x \? N^n \ \Big|\ \bigwedge_{j=1}^m \sum_{i=1}^n a_{ij}
 x_i = 0 \? N \Bigr\}, \]
-and this construction is patently geometric (set comprehension with respect to
-a geometric formula).
+and this construction is patently geometric, as a set comprehension with respect to
+a geometric formula.
 \end{proof}
 
 \begin{lemma}Let~$X$ be a scheme (or a ringed space). Let~$\F$ be an~$\O_X$-module of finite
@@ -3568,8 +3577,9 @@ it is regular (see Lemma~\ref{lemma:regular-notnot-invertible} below for a short
 and self-contained proof), and therefore~$a^n$ is regular. So~$x \in \F_\tors$.
 \end{proof}
 
-We will generalize this lemma to non-integral schemes below (see
-Lemma~\ref{lemma:torsion-module-generic-stalk-generalized}).
+By simply using a different modal operator than~``\notnot'', we will -- without
+any additional work -- obtain a more general form of this lemma, applicable to
+non-integral schemes (see Lemma~\ref{lemma:torsion-module-generic-stalk-generalized}).
 
 \begin{itemize}
 \item general explanation of modalities (as for instance in philosophy)
@@ -3779,7 +3789,7 @@ and~$(\star\star)$.
 \begin{proof}Recall that an open subset of~$\Spec A$ is dense if and only if it
 contains all minimal prime ideals and, under the Noetherian hypothesis, that it
 is scheme-theoretically dense if and only if it contains all associated prime
-ideals. There are only a finite number of these prim ideals. Therefore the
+ideals. There are only a finite number of these prime ideals. Therefore the
 claim is reduced to the following statement: Let~$\ppp_1,\ldots,\ppp_n$ be a
 finite number of points of an open subset~$U \subseteq \Spec A$. Then there
 exists a standard open subset~$D(f) \subseteq U$ which also contains these
@@ -3790,13 +3800,13 @@ avoidance lemma.
 \begin{prop}
 \label{prop:kx-is-negneg-sheafification}
 Let~$X$ be a reduced scheme. Assume that~$X$ can be covered by open affine
-subsetswhich have property~$(\star)$. For instance, this condition is satisfied
+subsets which have property~$(\star)$. For instance, this condition is satisfied
 if~$X$ is integral or locally Noetherian. Then~$\K_X$ is
 the~$\neg\neg$-sheafification of~$\O_X$.\end{prop}
 \begin{proof}
 We first show that~$\K_X$ is~$\neg\neg$-separated,
 so assume~$\neg\neg(a/s = 0)$ for~$a/s \? \K_X$. Since~$\K_X$ is obtained
-from~$\O_X$ by localizing at regular elements, it holds that~$a/s = 0$
+from~$\O_X$ by localizing at regular elements, the fraction~$a/s$ vanishes
 in~$\K_X$ if and only if~$a = 0$ in~$\O_X$. Thus it follows that~$\neg\neg(a =
 0)$ in~$\O_X$ and therefore~$a = 0$ in~$\O_X$; in particular, $a/s = 0$ in~$\K_X$.
 
@@ -3849,7 +3859,7 @@ open subset~$V \subseteq U$, the sections~$s$ and~$b^{-1} a$ agree.
 This observation concludes the proof.
 \end{proof}
 
-\begin{cor}Let~$X$ be a reduced scheme having a cover by affine open subschemes
+\begin{cor}Let~$X$ be a reduced scheme admitting a cover by affine open subschemes
 with property~$(\star)$. Then~$\K_X$ is the result of
 pulling back~$\O_X$ to the sublocale~$X_{\neg\neg}$ and then pushing forward
 again. If~$X$ is irreducible with generic point~$\xi$, then~$\K_X$ is the
@@ -3876,8 +3886,10 @@ operator defined by
 in the internal language of~$\Sh(X)$, \ie
 \[ \Box\varphi \defequiv \forall s\?\O_X\_ (\varphi \Rightarrow s = 0)
 \Rightarrow s = 0. \]
+This modal operator has a simple scheme-theoretical description.
 
-\begin{prop}Let~$U$ be an open subset of a scheme~$X$. Then~$\Sh(X) \models
+\begin{prop}\label{lemma:scheme-theoretical-density}
+Let~$U$ be an open subset of a scheme~$X$. Then~$\Sh(X) \models
 \Box U$ if and only if~$U$ is scheme-theoretically dense in~$X$.
 \end{prop}
 \begin{proof}We have the following chain of equivalences.
@@ -3898,6 +3910,11 @@ in the internal language of~$\Sh(X)$, \ie
     \text{$U$ is scheme-theoretically dense in~$X$.} \qedhere
 \end{align*}
 \end{proof}
+
+Using the internal language of a scheme, talking about scheme-theoretically
+dense open subsets is therefore just as easy as talking about ordinary
+topologically dense open subsets; the difference simply amounts to using the
+modal operator~``$\Box$'' instead of~``\notnot''.
 
 \begin{prop}\label{prop:kx-is-box-sheafification}
 Let~$X$ be a ringed space. Then:
@@ -3940,8 +3957,8 @@ We may now suppose that~$X$ is a scheme. To verify the fifth property, let a
 regular element~$f\?\O_X$ be given. We have to show that~$\O_X$ is separated
 with respect to the modality~$(\speak{$f$ \inv} \Rightarrow \placeholder)$. So
 assume that~$\speak{$f$ \inv} \Rightarrow (s = 0)$ for some~$s\?\O_X$. By
-Proposition~\ref{prop:cond-zero}, it follows that~$f^n s = 0$ for some natural
-number~$n$. Since~$f$ is regular, it follows that~$s = 0$.
+Proposition~\ref{prop:cond-zero} it follows that~$f^n s = 0$ for some natural
+number~$n$. Since~$f$ is regular, we may conclude that~$s = 0$.
 
 The verification of the universal property of~$\K_X$ is done analogously as in
 the case that~$X$ is reduced: For the proof of
@@ -4305,7 +4322,7 @@ of finiteness. So recall that quasicompactness of a topological space~$X$ can
 be phrased in the following way: For any directed set~$I$ and any monotone
 family~$(U_i)_{i \in I}$ of open subsets, if~$X = \bigcup_i U_i$ then~$X = U_i$
 for some~$i \in I$. As usual, a \emph{directed set} is an inhabited partially
-ordered set such that for any two elements, there exists a common upper bound.
+ordered set such that for any two elements there exists a common upper bound.
 A family~$(U_i)_{i \in I}$ is \emph{monotone} if and only if~$i \preceq j$
 implies~$U_i \subseteq U_j$.
 
@@ -4382,7 +4399,7 @@ sense of the proposition.\end{ex}
 Let~$X$ be a scheme and~$f \in \Gamma(X,\O_X)$ be a global function.
 Then the open set~$D(f) = \{ x \in X \,|\, \text{$f_x$ is invertible in~$\O_{X,x}$}
 \}$ is locally quasicompact in the sense of the proposition, even in the
-stronger sense: Let~$V \subseteq X$ be any open set and consider a covering~$V = \bigcup_i
+stronger sense: Let~$V \subseteq X$ be any open set. Consider a covering~$V = \bigcup_i
 U_i$ by open affine subsets~$U_i = \Spec A_i$. Then~$D(f) \cap U_i \cong \Spec
 A_i[f^{-1}]$ is quasicompact.\end{ex}
 
@@ -4570,7 +4587,8 @@ Unlike with the internalizations of finite type, finite presentation and
 coherence, this condition is \emph{not} a standard condition of commutative
 algebra. In fact, in classical logic, this condition is always satisfied --
 for trivial logical reasons if~$f$ is invertible, and because~$\F[f^{-1}]$ is
-the zero module if~$f$ is not invertible (since then, it is nilpotent).
+the zero module if~$f$ is not invertible (since~$f$ is nilpotent then, by
+Proposition~\ref{prop:neginvnilpotent}).
 
 That this condition in not known in commutative algebra is to be expected:
 Quasicoherence is a condition on sheaves of modules, ensuring
@@ -4707,7 +4725,7 @@ In one direction, a set~$\S \subseteq \F[f^{-1}]$ is given; construct~$K \defeq 
 s\?\F \,|\, s/1 \in \S \} \subseteq \F$. In the other direction, a set~$\K
 \subseteq \F$ is given; construct~$S \defeq \{ s\?\F[f^{-1}] \,|\, \exists
 s'\?\F\_ s' \in \K \wedge s = s'/1 \} \subseteq \F[f^{-1}]$. The remaining
-details can easily be filled out.
+details can easily be filled in.
 
 We now interpret the internal statement~\eqref{eqn:separated} with the
 Kripke--Joyal semantics. Using the simplification rules, the external meaning

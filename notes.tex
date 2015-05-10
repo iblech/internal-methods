@@ -817,7 +817,7 @@ proposition.
 \begin{prop}The internal language of
 a~$\mathrm{T}_1$-space~$X$ is \emph{Boolean}, \ie it verifies the classical
 axiom schemes displayed above, if and only if~$X$ is discrete.
-The internal language of a scheme~$X$ is Boolean if and only if~$X$ has
+The internal language of an irreducible or locally Noetherian scheme~$X$ is Boolean if and only if~$X$ has
 dimension~$\leq 0$.
 \end{prop}
 \begin{proof}\label{prop:lang-boolean}
@@ -1289,7 +1289,7 @@ the principle of double negation elimination are ``almost equivalent'' to the
 Krull dimension of~$\O_X$ being~$\leq 0$.
 \begin{cor}\label{cor:boolean-dim0}
 Let~$X$ be a scheme. If the internal language of~$\Sh(X)$ is Boolean, then
-$\dim X \leq 0$. The converse holds if~$X$ is integral or locally Noetherian.
+$\dim X \leq 0$. The converse holds if~$X$ is irreducible or locally Noetherian.
 \end{cor}
 \begin{proof}
 We show that any element of~$\O_X$ is invertible or nilpotent, therefore
@@ -2858,11 +2858,11 @@ sheaf~$\underline{M}$ associated to~$M$.
 \end{proof}
 
 The following technical lemma will occasionally be handy. We will generalize it
-to schemes which are not necessarily integral or reduced in
+to schemes which are not necessarily irreducible in
 Section~\ref{sect:rational-functions} (see
 Lemma~\ref{lemma:dense-standard-reflection-generalized}).
 \begin{lemma}\label{lemma:dense-standard-reflection}
-Let~$X$ be an integral scheme. Let~$\varphi$ be any formula
+Let~$X$ be an irreducible scheme. Let~$\varphi$ be any formula
 over~$X$. Then
 \[ \Sh(X) \models \neg\neg\varphi \Longrightarrow \exists f\?\O_X\_
   \neg\neg(\speak{$f$ \inv}) \wedge (\speak{$f$ \inv} \Rightarrow \varphi). \]
@@ -2870,7 +2870,7 @@ over~$X$. Then
 \begin{proof}We may assume that~$X$ is the spectrum of an integral domain~$A$
 and that there is a dense open subset~$U \subseteq X$ on which~$\varphi$ holds.
 The open set~$U$ may be covered by standard open subsets~$D(f_i)$; by the
-integrality hypothesis, at least one of these is nonempty and thus itself
+irreducibility hypothesis, at least one of these is itself
 dense. We may take this~$f_i$ as the sought~$f$.
 \end{proof}
 
@@ -3753,7 +3753,8 @@ Say that~$\Spec A$ has property~$(\star\star)$ if and only if:
 Every open scheme-theoretically dense subset~$U \subseteq \Spec A$ contains a
 \emph{standard open} scheme-theoretically dense subset.
 \end{quote}
-Both conditions are satisfied if~$A$ is an integral domain or if~$A$ is
+Both conditions are satisfied if~$A$ is an irreducible ring (\ie if~$\Spec A$
+is irreducible) or if~$A$ is
 Noetherian; for the convenience of the reader, we give a proof in the
 latter case.
 
@@ -4043,7 +4044,7 @@ over, \emph{mutatis mutandis}.
 \end{proof}
 
 \begin{prop}\label{prop:boolean-dim0-continued}
-Let~$X$ be an integral or locally Noetherian scheme of dimension~$\leq 0$. Then
+Let~$X$ be an irreducible or locally Noetherian scheme of dimension~$\leq 0$. Then
 the internal language of~$\Sh(X)$ is Boolean. (The converse holds as well and
 was already stated as Corollary~\ref{cor:boolean-dim0}.)
 \end{prop}

@@ -2874,6 +2874,21 @@ irreducibility hypothesis, at least one of these is itself
 dense. We may take this~$f_i$ as the sought~$f$.
 \end{proof}
 
+We can now also follow up on a promise made earlier and prove the following
+somewhat tangential lemma.
+\begin{lemma}\label{lemma:boolean-dense}
+Let~$X$ be a topological space. The internal language of~$\Sh(X)$ is Boolean if
+and only if for any open subset~$U \subseteq X$ it holds that~$U$ is the only
+dense open subset of~$U$.
+\end{lemma}
+\begin{proof}That the internal language of~$\Sh(X)$ is Boolean amounts to
+\[ \Sh(X) \models \forall \varphi\?\Omega\_ \neg\neg\varphi \Rightarrow
+\varphi. \]
+This is equivalent to the external statement that for any open subset~$U
+\subseteq X$ and for any open subset~$V \subseteq U$ it holds that: If~$V$ is
+dense in~$U$, then~$V$ is equal to~$U$.
+\end{proof}
+
 
 \subsection{\texorpdfstring{The~$\Box$-translation}{The □-translation}}
 There is certain well-known transformation~$\varphi

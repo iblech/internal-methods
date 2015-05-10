@@ -4402,9 +4402,10 @@ with directed disjunctions}.\end{rem}
 
 A stronger condition on a topological space~$X$ than quasicompactness is
 locality: A topological space is \emph{local} if and only if for any open
-covering~$X = \bigcup_i U_i$ (not necessarily directed) a certain single~$U_i$
-covers~$X$ as well. Locality has a similar characterization as a metaproperty
-of~$\Sh(X)$:
+covering~$X = \bigcup_i U_i$ (not necessarily directed) a certain single subset~$U_i$
+covers~$X$ as well. For instance, the spectrum of a ring~$A$ is local if and only
+if~$A$ is a local ring. Locality has the following characterization as a metaproperty
+of~$\Sh(X)$.
 
 \begin{prop}Let~$X$ be a topological space. Then~$X$ is local if and
 only if the internal language of~$\Sh(X)$ has the following metaproperty:
@@ -4427,16 +4428,12 @@ that the antecedent implies that there exist local section~$s_i \in
 = \bigcup_i U_i$. By locality of~$X$, one such~$U_i$ suffices to cover~$X$; so
 the corresponding section~$s_i$ is actually a global section and verifies~$X
 \models \varphi(s_i)$.
-
-For the converse direction, note that given a family~$(U_i)_{i \in I}$ of open
-subsets, we can define a sheaf on~$X$ by the internal definition
-\[ \F \defeq \{ M \in \Omega \,|\, \bigvee_{i \in I} (M = U_i) \}. \]
-Recall that~$\Omega$ is the object of truth values, internally defined as the
-power set of~$1 \defeq \{\star\}$ and that~``$M = U_i$'' is abuse of notation
-and means~$M = \{ x \in 1 \,|\, U_i \}$.
-\XXX{the global sections of $\F$ are not those which I expected! Is the claim
-true?}
 \end{proof}
+
+\begin{rem}The second metaproperty stated in the proposition is indeed weaker
+than the condition that~$X$ is local. For instance, let~$X$ be a space consisting
+of two discrete points. Then~$\Sh(X)$ has the second metaproperty, but~$X$ is
+not local.\end{rem}
 
 
 \subsection{Irreducibility}

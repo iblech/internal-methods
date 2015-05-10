@@ -3547,9 +3547,14 @@ is \notnot zero. Since~$X$ is integral,
 Lemma~\ref{lemma:dense-standard-reflection} is applicable. Therefore there
 exists an element~$a\?\O_X$ such that~$a$ is \notnot invertible and such that
 invertibility of~$a$ implies~$x = 0$. Since~$\F$ is quasicoherent, for some
-natural number~$n$ it holds that~$a^n x = 0$ (Theorem~\ref{thm:qcoh-sheafchar}). Since~$a$ is \notnot invertible,
-it is regular (Lemma~\ref{lemma:regular-notnot-invertible}), and therefore~$a^n$ is regular. So~$x \in \F_\tors$.
+natural number~$n$ it holds that~$a^n x = 0$ (Theorem~\ref{thm:qcoh-sheafchar}
+below). Since~$a$ is \notnot invertible,
+it is regular (see Lemma~\ref{lemma:regular-notnot-invertible} below for a short
+and self-contained proof), and therefore~$a^n$ is regular. So~$x \in \F_\tors$.
 \end{proof}
+
+We will generalize this lemma to non-integral schemes below (see
+Lemma~\ref{lemma:torsion-module-generic-stalk-generalized}).
 
 \begin{itemize}
 \item general explanation of modalities (as for instance in philosophy)
@@ -3972,7 +3977,8 @@ sense. The converse holds if~$X$ is reduced.\end{lemma}
 Therefore the claim follows from the previous proposition.
 \end{proof}
 
-\begin{prop}Let~$X$ be a scheme admitting a cover of open affine subsets with
+\begin{prop}\label{prop:kx-ass}
+Let~$X$ be a scheme admitting a cover of open affine subsets with
 property~$(\star\star)$. Then~$\K_X$ is the result of
 pulling back~$\O_X$ to the sublocale~$X_\Box$ associated to the modal
 operator~$\Box$ and then pushing forward again. If~$X$ is locally Noetherian,
@@ -4058,6 +4064,17 @@ In the second case, some power~$f^n$ is zero and therefore in particular
 \notnot zero. Since~$f$ is \notnot invertible, this implies that \notnot~$1 =
 0$. On the other hand~$1 \neq 0$, so we obtain a contradiction; from this
 contradiction~$\varphi$ trivially follows.
+\end{proof}
+
+\begin{lemma}\label{lemma:torsion-module-generic-stalk-generalized}
+Let~$X$ be a locally Noetherian scheme. Let~$\F$ be a
+quasicoherent~$\O_X$-module. Then~$\F$ is a torsion module if and only if the
+restriction of~$\F$ to~$\Ass(\O_X)$ vanishes.
+\end{lemma}
+\begin{proof}By Proposition~\ref{prop:kx-ass} and
+Lemma~\ref{lemma:dense-standard-reflection-generalized} it suffices to repeat
+the proof of Lemma~\ref{lemma:torsion-module-generic-stalk} with
+``\notnot'' substituted by~``$\Box$''.
 \end{proof}
 
 

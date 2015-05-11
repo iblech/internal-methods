@@ -3990,7 +3990,7 @@ the result of Proposition~\ref{prop:kx-is-negneg-sheafification}:
 \begin{prop}Let~$X$ be a scheme. Then~$\sdense\varphi \Rightarrow \neg\neg\varphi$
 for any formula~$\varphi$. The converse holds if~$X$ is reduced, such that in
 this case the modal operator~$\sdense$ coincides with the double negation modality.\end{prop}
-\begin{proof}Let~$\varphi$ be an arbitrary formula. Note that~$\neg\varphi$ is
+\begin{proof}Let~$\varphi$ be an arbitrary formula and assume~$\sdense\varphi$. Note that~$\neg\varphi$ is
 equivalent to~$\varphi \Rightarrow (1 =
 0)$. Since by assumption~$\O_X$ is separated with respect to the~$(\varphi
 \Rightarrow \placeholder)$-modality, this in turn is equivalent to~$1 = 0 \?
@@ -4647,10 +4647,10 @@ Let~$X$ be a scheme and~$s$ be a global section of~$\O_X$. Then the
 annihilator of~$s$, \ie the sheaf of ideals internally defined by the
 formula
 \[ I \defeq \Ann_{\O_X}(s) = \{ t\?\O_X \,|\, st = 0 \} \subseteq \O_X \]
-is quasicoherent. To prove this in the internal language, it suffices to
+is quasicoherent. To prove this in the internal language it suffices to
 verify the condition of the proposition.
 So let~$f\?\O_X$ and~$t\?\O_X$ be arbitrary and assume~$\speak{$f$ \inv} \Rightarrow t \in I$,
-\ie assume that if~$f$ were invertible,~$st$ would be zero. By
+\ie assume that if~$f$ were invertible, then~$st$ would be zero. By
 Proposition~\ref{prop:cond-zero} it follows that~$f^n st = 0$ for
 some~$n\?\NN$, \ie that~$f^n t \in I$.
 \end{ex}
@@ -5211,8 +5211,8 @@ defined spectrum has the universal property
   & \cong \Hom_{\O_X}(\A, \mu_* \O_Y)
 \end{align*}
 for all locally ringed locales~$Y$ over~$E(\Spec\O_X)$. Here,~$\mu$ is the
-structure morphism~$Y \to \Spec\O_X$; $E(\Spec\O_X)$ is the locally ringed
-locale associated to the internally defined spectrum of~$\O_X$;
+structure morphism~$Y \to \Spec\O_X$, $E(\Spec\O_X)$ is the locally ringed
+locale associated to the internally defined spectrum of~$\O_X$,
 and~$\LRL_{\Sh(X)}$ is the category of locally ringed locales internal
 to~$\Sh(X)$. However, the relative spectrum has the different universal property
 \begin{align*}
@@ -5257,7 +5257,7 @@ spectrum~$\RelSpec{\O_X}{\A}$.
 coincides with the internal lattice~$\Open(\QcohSpec{\O_X}{\A})$. Both of these
 objects are sheaves on~$X$; so to show that they are canonically isomorphic, it
 suffices to give compatible canonical isomorphisms on the base of~$X$
-consisting of all affine opens. On such an open~$U = \Spec R$, the
+consisting of all affine opens. On such an open~$U = \Spec R$ the
 quasicoherent algebra~$\A$ is given by a tilde construction:~$\A|_U =
 S^{\sim}$ for some~$R$-algebra~$S$. Thus it holds that
 \begin{align*}
@@ -5272,8 +5272,8 @@ S^{\sim}$ for some~$R$-algebra~$S$. Thus it holds that
   \Gamma(U, \Open(\QcohSpec{\O_X}{\A})) &\cong
   \{ \I \hookrightarrow \A|_U \ |\ \text{$\I$ is a quasicoherent radical ideal sheaf} \}.
 \end{align*}
-Clearly, these lattices are isomorphic (by~$\aaa \mapsto \aaa^\sim$ and~$\I
-\mapsto \Gamma(U,\I)$).
+Clearly, these lattices are isomorphic, by~$\aaa \mapsto \aaa^\sim$ and~$\I
+\mapsto \Gamma(U,\I)$.
 
 This is already enough to prove the claims: By a general lemma of locale
 theory~\cite[discussion before proposition~C1.6.1]{johnstone:elephant},
@@ -5376,7 +5376,7 @@ Intuitionistically, this definition has two problems. Firstly, without the
 axiom of dependent choice, it is often not possible to construct a
 \emph{sequence} of ideals: Often, it is only possible to show that there
 \emph{exists} a suitable ideal~$\aaa_{n+1}$ depending on~$\aaa_n$. But since in
-general, there is no canonical choice for this successor ideal, the axiom of dependent choice
+general there is no canonical choice for this successor ideal, the axiom of dependent choice
 would be required to collect those into a sequence, \ie a function from~$\NN$
 to the set of ideals.
 
@@ -5408,7 +5408,7 @@ condition.\end{defn}
 Any ascending chain of elements~$a_0 \preceq a_1 \preceq \cdots$ in a partially
 ordered set gives rise to an ascending process by setting~$f(n) \defeq \{ a_n
 \}$. Conversely, the axiom of dependent choice would allow to construct an
-ascending chain out of an ascending process. In classical logic, a ring is
+ascending chain from an ascending process. In classical logic, a ring is
 processly Noetherian if and only if it is Noetherian in the usual sense.
 
 The notion of a processly Noetherian ring works well in an
@@ -5431,9 +5431,9 @@ Since~$X \models \speak{$f(0)$ is inhabited}$, there exists an open covering~$X
 \O_X|_{U_i}$ such that~$U_i \models \I_i \in f(0)$. Without loss of generality,
 we may assume that the open sets~$U_i$ are standard open sets~$D(f_i)$ and that
 the covering is finite. Since the sheaves~$\I_i$ are quasicoherent (being of finite type), they
-correspond to ideals~$J_i \subseteq A[f_i^{-1}]$. (Note for future reference
+correspond to ideals~$J_i \subseteq A[f_i^{-1}]$. Note for future reference
 that~$\I_i|_{D(g)}$ corresponds to the extension of~$J_i$ in the further
-localized ring~$A[g^{-1}]$, if~$D(g) \subseteq D(f_i)$.)
+localized ring~$A[g^{-1}]$, if~$D(g) \subseteq D(f_i)$.
 
 For each~$i$,~$D(f_i) \models \exists \aaa \in f(1)\_ \I_i \subseteq \aaa$.
 Thus there exists an open covering~$D(f_i) = \bigcup_j D(g_{ij})$ and finite

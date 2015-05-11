@@ -109,6 +109,8 @@
 \newcommand{\lhra}{\ensuremath{\lhook\joinrel\relbar\joinrel\rightarrow}}
 \newcommand{\hra}{\hookrightarrow}
 \newcommand{\brak}[1]{{\llbracket{#1}\rrbracket}}
+\newcommand{\sdense}{{\widehat\Box}}
+\newcommand{\sdenseother}{\Box}
 \newcommand{\ie}{i.\,e.\@\xspace}
 \newcommand{\eg}{e.\,g.\@\xspace}
 \newcommand{\vs}{vs.\@\xspace}
@@ -3881,20 +3883,20 @@ If~$X$ is a general scheme (not necessarily reduced),
 we can describe~$\K_X$ in a similar way as a sheafification
 of~$\O_X$; specifically, it is the sheafification with respect to the modal
 operator defined by
-\[ \Box\varphi \defequiv \speak{$\O_X$ is~$(\varphi \Rightarrow
+\[ \sdense\varphi \defequiv \speak{$\O_X$ is~$(\varphi \Rightarrow
 \placeholder)$-separated} \]
 in the internal language of~$\Sh(X)$, \ie
-\[ \Box\varphi \defequiv \forall s\?\O_X\_ (\varphi \Rightarrow s = 0)
+\[ \sdense\varphi \defequiv \forall s\?\O_X\_ (\varphi \Rightarrow s = 0)
 \Rightarrow s = 0. \]
 This modal operator has a simple scheme-theoretical description.
 
 \begin{prop}\label{lemma:scheme-theoretical-density}
 Let~$U$ be an open subset of a scheme~$X$. Then~$\Sh(X) \models
-\Box U$ if and only if~$U$ is scheme-theoretically dense in~$X$.
+\sdense U$ if and only if~$U$ is scheme-theoretically dense in~$X$.
 \end{prop}
 \begin{proof}We have the following chain of equivalences.
 \begin{align*}
-  &\ X \models \Box U \\
+  &\ X \models \sdense U \\
   \Longleftrightarrow&\
     \speak{$\O_X$ is~$(U \Rightarrow \placeholder)$-separated} \\
   \Longleftrightarrow&\
@@ -3914,15 +3916,15 @@ Let~$U$ be an open subset of a scheme~$X$. Then~$\Sh(X) \models
 Using the internal language of a scheme, talking about scheme-theoretically
 dense open subsets is therefore just as easy as talking about ordinary
 topologically dense open subsets; the difference simply amounts to using the
-modal operator~``$\Box$'' instead of~``\notnot''.
+modal operator~``$\sdense$'' instead of~``\notnot''.
 
 \begin{prop}\label{prop:kx-is-box-sheafification}
 Let~$X$ be a ringed space. Then:
 \begin{enumerate}
-\item The operator~$\Box$ fulfills the axioms on a modal operator.
-\item $\O_X$ is~$\Box$-separated.
-\item $\K_X$ is~$\Box$-separated.
-\item Internally, it holds that~$\Box(\speak{$f$ \inv})$ implies that~$f$ is
+\item The operator~$\sdense$ fulfills the axioms on a modal operator.
+\item $\O_X$ is~$\sdense$-separated.
+\item $\K_X$ is~$\sdense$-separated.
+\item Internally, it holds that~$\sdense(\speak{$f$ \inv})$ implies that~$f$ is
 regular for any~$f\?\O_X$.
 % update addtocounter below if numbering changes
 \end{enumerate}
@@ -3931,24 +3933,24 @@ Suppose furthermore that~$X$ is a scheme. Then:
 \addtocounter{enumi}{4}
 \item The converse in~(4) holds.
 \item If~$X$ can be covered by open affine subschemes with
-property~$(\star\star)$, then $\K_X$ is the~$\Box$-sheafification of~$\O_X$.
+property~$(\star\star)$, then $\K_X$ is the~$\sdense$-sheafification of~$\O_X$.
 \end{enumerate}
 \end{prop}
 \begin{proof}The first four properties are entirely formal; we thus skip over
 some details. For the first property, we verify the second axiom on a modal
-operator. So we assume~$\Box\Box\varphi$ and have to show~$\Box\varphi$. To
+operator. So we assume~$\sdense\sdense\varphi$ and have to show~$\sdense\varphi$. To
 this end, let~$s\?\O_X$ be arbitrary such that~$\varphi \Rightarrow (s=0)$; we
 have to prove that~$s = 0$. If~$\O_X$ were separated with respect to the modal
 operator~$(\varphi \Rightarrow \placeholder)$, it would follow that~$s = 0$. So
-unconditionally it holds that~$\Box\varphi \Rightarrow (s=0)$. Since by
-assumption~$\O_X$ is~$\Box\varphi$-separated, the claim follows.
+unconditionally it holds that~$\sdense\varphi \Rightarrow (s=0)$. Since by
+assumption~$\O_X$ is~$\sdense\varphi$-separated, the claim follows.
 
-For the second property, let~$s\?\O_X$ be arbitrary such that~$\Box(s = 0)$.
+For the second property, let~$s\?\O_X$ be arbitrary such that~$\sdense(s = 0)$.
 Obviously it holds that~$(s = 0) \Rightarrow (s = 0)$. Thus, since~$\O_X$ is
 separated with respect to~$((s = 0) \Rightarrow \placeholder)$, it follows
 that~$s = 0$. The proof of the third property is similar.
 
-For the fourth property, assume~$\Box(\speak{$f$ \inv})$ and let~$h\?\O_X$ be
+For the fourth property, assume~$\sdense(\speak{$f$ \inv})$ and let~$h\?\O_X$ be
 arbitrary such that~$fh = 0$. Then, trivially, it holds that~$\speak{$f$ \inv}
 \Rightarrow h = 0$. Since~$\O_X$ is separated with respect to~$(\speak{$f$
 \inv} \Rightarrow \placeholder)$, it follows that~$h = 0$.
@@ -3964,30 +3966,30 @@ The verification of the universal property of~$\K_X$ is done analogously as in
 the case that~$X$ is reduced: For the proof of
 Proposition~\ref{prop:kx-is-negneg-sheafification}, it was critical that
 regular elements of~$\O_X$ are \notnot invertible. We now need (and have) that
-regular elements of~$\O_X$ are~$\Box(\speak{invertible})$.
+regular elements of~$\O_X$ are~$\sdense(\speak{invertible})$.
 
-Thus it only remains to verify that~$\K_X$ is a~$\Box$-sheaf. We may again imitate
+Thus it only remains to verify that~$\K_X$ is a~$\sdense$-sheaf. We may again imitate
 the proof of Proposition~\ref{prop:kx-is-negneg-sheafification}; using the same
-notation, we may now suppose that~$V$ is a standard open subset such that~$U \models \Box
+notation, we may now suppose that~$V$ is a standard open subset such that~$U \models \sdense
 V$ (previously, we supposed that~$U \models \neg\neg V$). The proof that the
 denominator~$b$ is regular (as seen from the internal perspective, as an
 element of~$\O_U$) now goes as follows: We have~$V \subseteq
-D(b)$. Therefore~$U \models \Box V$ implies~$U \models \Box(\speak{$b$ \inv})$. By
+D(b)$. Therefore~$U \models \sdense V$ implies~$U \models \sdense(\speak{$b$ \inv})$. By
 the fourth property, it follows that~$U \models \speak{$b$ is regular}$.
 \end{proof}
 
-\begin{rem}The modal operator~$\Box$ is the largest (weakest) operator such
-that~$\O_X$ is~$\Box$-separated, \ie if~$\Box'$ is any modal operator
-such that~$\O_X$ is~$\Box'$-separated, then~$\Box'\varphi
-\Rightarrow \Box\varphi$ for any proposition~$\varphi$.\end{rem}
+\begin{rem}The modal operator~$\sdense$ is the largest (weakest) operator such
+that~$\O_X$ is~$\sdense$-separated, \ie if~$\sdenseother$ is any modal operator
+such that~$\O_X$ is~$\sdenseother$-separated, then~$\sdenseother\varphi
+\Rightarrow \sdense\varphi$ for any proposition~$\varphi$.\end{rem}
 
 In the special case that~$X$ is a reduced scheme,
 Proposition~\ref{prop:kx-is-box-sheafification} recovers
 the result of Proposition~\ref{prop:kx-is-negneg-sheafification}:
 
-\begin{prop}Let~$X$ be a scheme. Then~$\Box\varphi \Rightarrow \neg\neg\varphi$
+\begin{prop}Let~$X$ be a scheme. Then~$\sdense\varphi \Rightarrow \neg\neg\varphi$
 for any formula~$\varphi$. The converse holds if~$X$ is reduced, such that in
-this case the modal operator~$\Box$ coincides with the double negation modality.\end{prop}
+this case the modal operator~$\sdense$ coincides with the double negation modality.\end{prop}
 \begin{proof}Let~$\varphi$ be an arbitrary formula. Note that~$\neg\varphi$ is
 equivalent to~$\varphi \Rightarrow (1 =
 0)$. Since by assumption~$\O_X$ is separated with respect to the~$(\varphi
@@ -4006,36 +4008,36 @@ scheme-theoretical density.
 scheme-theoretically dense, then~$U$ is also dense in the plain topological
 sense. The converse holds if~$X$ is reduced.\end{lemma}
 \begin{proof}The set~$U$ is scheme-theoretically dense if and only if~$\Sh(X)
-\models \Box U$ and is dense if and only if~$\Sh(X) \models \neg\neg U$.
+\models \sdense U$ and is dense if and only if~$\Sh(X) \models \neg\neg U$.
 Therefore the claim follows from the previous proposition.
 \end{proof}
 
 \begin{prop}\label{prop:kx-ass}
 Let~$X$ be a scheme admitting a cover of open affine subsets with
 property~$(\star\star)$. Then~$\K_X$ is the result of
-pulling back~$\O_X$ to the sublocale~$X_\Box$ associated to the modal
-operator~$\Box$ and then pushing forward again. If~$X$ is locally Noetherian,
+pulling back~$\O_X$ to the sublocale~$X_\sdense$ associated to the modal
+operator~$\sdense$ and then pushing forward again. If~$X$ is locally Noetherian,
 this sublocale is the subspace of associated points in~$X$.
 \end{prop}
 
 In formulas, the proposition says that the canonical map
 \[ \K_X \longrightarrow i_* i^{-1} \O_X \]
-is an isomorphism, where~$i : X_\Box \hookrightarrow X$ is the inclusion of
-the sublocale~$X_\Box$. This result holds needs a cover with
+is an isomorphism, where~$i : X_\sdense \hookrightarrow X$ is the inclusion of
+the sublocale~$X_\sdense$. This result holds needs a cover with
 property~$(\star\star)$, but no Noetherian hypothesis.
 
 \begin{proof}The first statement follows trivially by the results of
 Section~\ref{sect:internal-sheaves} and the fact that~$\K_X$ is
-the~$\Box$-sheafification of~$\O_X$.
+the~$\sdense$-sheafification of~$\O_X$.
 
 For the second statement, we need to verify that the nucleus~$j_{\Ass(\O_X)}$
 associated to the subspace of associated points coincides with the
-nucleus~$j_\Box$ associated to the modal operator~$\Box$. Recall from
+nucleus~$j_\sdense$ associated to the modal operator~$\sdense$. Recall from
 Subsection~\ref{sect:subspace-to-modal-operator} that the latter is given by
 \begin{align*}
-  j_\Box(U) &= \text{largest open subset of~$X$ on which~$\Box U$ holds} \\
+  j_\sdense(U) &= \text{largest open subset of~$X$ on which~$\sdense U$ holds} \\
   &= \bigcup\ \{ V \subseteq X \ |\
-  \text{$V$ open},\ V \models \Box U \}
+  \text{$V$ open},\ V \models \sdense U \}
 \intertext{and note that the former is given by}
   j_{\Ass(\O_X)}(U) &= \bigcup\ \{ V \subseteq X \ |\
   \text{$V$ open},\ V \cap \Ass(\O_X) \subseteq U \}.
@@ -4057,7 +4059,7 @@ points on locally Noetherian schemes:
     \text{$U \cap V$ is scheme-theoretically dense in~$U$} \\
   &\qquad\qquad\text{(this steps requires the Noetherian assumption)} \\
   \Longleftrightarrow&\
-    V \models \Box U. \qedhere
+    V \models \sdense U. \qedhere
 \end{align*}
 \end{proof}
 
@@ -4068,8 +4070,8 @@ over~$X$. Then
 \[ \Sh(X) \models \neg\neg\varphi \Longrightarrow \exists f\?\O_X\_
   \neg\neg(\speak{$f$ \inv}) \wedge (\speak{$f$ \inv} \Rightarrow \varphi) \]
 respectively
-\[ \Sh(X) \models \Box\varphi \Longrightarrow \exists f\?\O_X\_
-  \Box(\speak{$f$ \inv}) \wedge (\speak{$f$ \inv} \Rightarrow \varphi). \]
+\[ \Sh(X) \models \sdense\varphi \Longrightarrow \exists f\?\O_X\_
+  \sdense(\speak{$f$ \inv}) \wedge (\speak{$f$ \inv} \Rightarrow \varphi). \]
 \end{lemma}
 \begin{proof}The proof of Lemma~\ref{lemma:dense-standard-reflection} carries
 over, \emph{mutatis mutandis}.
@@ -4107,7 +4109,7 @@ restriction of~$\F$ to~$\Ass(\O_X)$ vanishes.
 \begin{proof}By Proposition~\ref{prop:kx-ass} and
 Lemma~\ref{lemma:dense-standard-reflection-generalized} it suffices to repeat
 the proof of Lemma~\ref{lemma:torsion-module-generic-stalk} with
-``\notnot'' substituted by~``$\Box$''.
+``\notnot'' substituted by~``$\sdense$''.
 \end{proof}
 
 

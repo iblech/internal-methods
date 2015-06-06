@@ -5073,6 +5073,138 @@ similar to the proof of Lemma~\ref{lemma:pushforward-finite-type}
 \end{itemize}
 
 
+\section{Transfer principles}
+
+Let~$M$ be an~$A$-module. A natural question is how properties of~$M$
+relate to properties of the induced quasicoherent sheaf~$M^\sim$ of modules
+on~$\Spec A$. For instance it is well-known that
+\begin{itemize}
+\item $M$ is finitely generated iff~$M^\sim$ is of finite type,
+\item $M$ is flat over~$A$ iff~$M^\sim$ is flat over~$\O_{\Spec A}$, and
+\item $M$ is torsion iff~$M^\sim$ is a torsion sheaf.
+\end{itemize}
+Using the internal language of the little Zariski topos of~$\Spec A$, we can
+give a simple, conceptual, and uniform explanation of these equivalences.
+Namely, from the internal point of view, the module~$M^\sim$ is obtained from
+the constant sheaf~$\ul{M}$ by localizing at the \emph{universal filter}, a
+particular multiplicative subset to be introduced below, and the set~$M$ and
+the sheaf~$\ul{M}$ share the same properties (by
+Lemma~\ref{lemma:prop-constant-sheaf} below).
+
+This makes it obvious that, for instance, properties which are stable under
+localization pass from~$M$ to~$M^\sim$.
+
+
+\subsection{Internal properties of constant sheaves}
+
+\begin{lemma}\label{lemma:properties-of-constant-sheaves}Let~$\varphi$ be a
+formula in which arbitrary sets and elements may occur as parameters. Let~$X$
+be a topological space and let~$U \subseteq X$ be an open subset. Then
+\[ U \models \varphi \quad\text{iff}\quad (\text{$U$ inhabited} \Rightarrow
+\varphi). \]
+\end{lemma}
+Note that we are abusing notation on the left hand side: The parameters
+of~$\varphi$, which are sets and elements, must be read as the induced constant
+sheaves and constant functions (sections of that sheaves). Possible
+unbounded quantifiers have to be read as ranging only over locally constant
+sheaves, not all sheaves.
+\begin{proof}By induction on the structure of~$\varphi$. By way of example, we
+give the argument in the case that~$\varphi \equiv (a = b)$, where~$a$ and~$b$ are
+elements of some set~$X$. Then~$U \models \varphi$ means by definition that the
+constant functions~$U \to X$ with value~$a$ respectively~$b$ coincide. This is
+equivalent to saying that~$a$ and~$b$ coincide if~$U$ is inhabited.
+\end{proof}
+
+
+\subsection{The universal filter}
+
+Let~$A$ be a ring.
+
+\begin{defn}A \emph{filter} in~$A$ is a subset~$F \subseteq A$ such that
+\begin{itemize}
+\item $0 \not\in F$,
+\item $1 \in F$,
+\item $x + y \in F \Longrightarrow (x \in F) \vee (y \in F)$, and
+\item $xy \in F \Longleftrightarrow (x \in F) \wedge (y \in F)$
+\end{itemize}
+for all~$x,y \? A$.
+\end{defn}
+
+In classical logic, the complement of a prime ideal defines a filter and
+furthermore any filter is of such a form. In constructive mathematics however,
+it is useful to axiomatize complements of prime ideals directly, avoiding
+negations. A filter is in particular a multiplicative subset. Inverting the
+elements of a filter results in a local ring, while intuitionistically
+the localization of a ring at a prime ideal might not be a local.
+
+\begin{defn}The \emph{universal filter}~$\F$ is the subsheaf of~$\ul{A}$
+on~$\Spec A$ given by
+\[ \Gamma(U, \F) \defeq \{ f : U \to A \,|\,
+  \text{$f(\ppp) \not\in \ppp$ for all $\ppp \in U$} \}. \]
+\end{defn}
+
+\begin{prop}\label{prop:basics-univ-filter}\begin{enumerate}
+\item Let~$f \in A$ and~$x \in A$. Then~$D(f) \models x \in \F$ if and only
+if~$f \in \sqrt{(x)}$.
+\item The stalk~$\F_\ppp$ at a point~$\ppp \in \Spec A$
+is in canonical bijection with~$A \setminus \ppp$.
+\item From the internal point of view of~$\Sh(\Spec A)$, the universal
+filter is indeed a filter in~$\ul{A}$.
+\end{enumerate}
+\end{prop}
+\begin{proof}By definition~$D(f) \models x \in \F$ means that~$x \not\in \ppp$
+for all prime ideals~$\ppp$ with~$f \not\in \ppp$. This is well-known to be
+equivalent to~$f \in \sqrt{(x)}$.
+
+For the claim about stalks, note that the canonical map~$\F_\ppp \to A
+\setminus \ppp$ sending a germ~$[f]$ to~$f(\ppp)$ is invertible with inverse
+being the map which sends an element~$x \not\in \ppp$ to the germ of the
+constant function with value~$x$ (defined on~$D(x)$).
+
+Regarding the third statement we only verify the axiom regarding sums, the
+other axioms being easier. Interpreting this axiom with the Kripke--Joyal
+semantics and restricting without loss of generality to open subsets where
+given locally constant functions are constant, let elements~$x,y \in A$ be
+given such that~$D(f) \models x+y \in \F$. By the first statement~$f \in
+\sqrt{(x+y)}$. Therefore~$D(f) \subseteq D(x) \cup D(y)$, and on~$D(x)$ it
+holds that~$x \in \F$ and on~$D(y)$ it holds that~$y \in \F$.
+\end{proof}
+
+The significance of the universal filter is given by the following proposition.
+\begin{prop}From the internal point of view of~$\Sh(\Spec A)$, the structure
+sheaf~$\O_X$ is the localization of the constant sheaf~$\ul{A}$ away from the
+universal filter.\end{prop}
+\begin{proof}\XXX{fill in proof}\end{proof}
+
+For transferring properties of~$M^\sim$ to~$M$, the following metatheorem is
+crucial.
+\begin{prop}Let~$\I$ be an ideal in~$\ul{A}$ such that, for all inhabited
+open subsets~$U \subseteq \Spec A$ and elements~$x \in A$, the set~$\Gamma(X,\I)$
+contains the constant function with value~$x$ if~$\Gamma(U,\I)$ does. Then
+\[ D(f) \models \speak{$\I \cap \F$ is inhabited}
+  \quad\text{implies}\quad
+  \text{for some~$n \geq 0$, $D(f) \models f^n \in \I$.} \]
+\end{prop}
+A simple syntactical criterion for the hypothesis on~$\I$ is that~$\I$ is
+internally defined by an expression of the form~$\{ a\?\ul{A} \,|\, \varphi(a)
+\}$, where~$\varphi$ is a formula which refers only to constant sheaves.
+\begin{proof}Let~$D(f) \models \speak{$\I \cap \F$ is inhabited}$. Then there
+exists an open cover~$D(f) = \bigcup_i D(f_i)$ and elements~$x_i \in A$ such
+that~$D(f_i) \models x_i \in \F$ and~$D(f_i) \models x_i \in \I$. By
+Proposition~\ref{prop:basics-univ-filter} we have that~$f_i \in \sqrt{(x_i)}$
+and therefore~$D(f_i) \models f_i^{m_i} \in \I$ for some~$m_i \geq 0$. We may
+assume that all the~$D(f_i)$ are inhabited and that the exponents~$m_i$ are all
+equal to some number~$m$. The assumption on~$\I$ implies~$D(f) \models f_i^m
+\in \I$ for all~$i$. By a standard argument we can write~$f^n = \sum_i a_i
+f_i^m$ for some coefficients~$a_i$; thus~$D(f) \models f^n \in \I$.
+\end{proof}
+
+\begin{rem}The stronger statement
+\[ D(f) \models (\speak{$\I \cap \F$ is inhabited} \Rightarrow \bigvee_{n \geq
+0} (f^n \in \I)) \]
+does not hold. Indeed, \XXX{present counterexample}.\end{rem}
+
+
 \section{Relative spectrum}
 \label{sect:relative-spectrum}
 

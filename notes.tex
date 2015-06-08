@@ -5130,12 +5130,12 @@ Let~$A$ be a ring.
 for all~$x,y \? A$.
 \end{defn}
 
-In classical logic, the complement of a prime ideal defines a filter and
-furthermore any filter is of such a form. In constructive mathematics however,
+In classical logic, the complement of a prime ideal is a filter and
+furthermore every filter is of such a form. In constructive mathematics however,
 it is useful to axiomatize complements of prime ideals directly, avoiding
 negations. A filter is in particular a multiplicative subset. Inverting the
 elements of a filter results in a local ring, while intuitionistically
-the localization of a ring at a prime ideal might not be a local.
+the localization of a ring at a prime ideal might not be local.
 
 \begin{defn}The \emph{universal filter}~$\F$ is the subsheaf of~$\ul{A}$
 on~$\Spec A$ given by
@@ -5172,8 +5172,8 @@ holds that~$x \in \F$ and on~$D(y)$ it holds that~$y \in \F$.
 
 The significance of the universal filter is given by the following proposition.
 \begin{prop}From the internal point of view of~$\Sh(\Spec A)$, the structure
-sheaf~$\O_X$ is the localization of the constant sheaf~$\ul{A}$ away from the
-universal filter.\end{prop}
+sheaf~$\O_{\Spec A}$ is the localization of the constant sheaf~$\ul{A}$ away from the
+universal filter:~$\O_{\Spec A} = \ul{A}[\F^{-1}]$.\end{prop}
 \begin{proof}\XXX{fill in proof}\end{proof}
 
 For transferring properties of~$M^\sim$ to~$M$, the following metatheorem is
@@ -5185,7 +5185,8 @@ contains the constant function with value~$x$ if~$\Gamma(U,\I)$ does. Then
   \quad\text{implies}\quad
   \text{for some~$n \geq 0$, $D(f) \models f^n \in \I$.} \]
 \end{prop}
-A simple syntactical criterion for the hypothesis on~$\I$ is that~$\I$ is
+Lemma~\ref{lemma:properties-of-constant-sheaves} gives a simple and purely
+syntactical criterion for the hypothesis on~$\I$: It suffices for~$\I$ to be
 internally defined by an expression of the form~$\{ a\?\ul{A} \,|\, \varphi(a)
 \}$, where~$\varphi$ is a formula which refers only to constant sheaves.
 \begin{proof}Let~$D(f) \models \speak{$\I \cap \F$ is inhabited}$. Then there

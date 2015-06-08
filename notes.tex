@@ -1000,7 +1000,7 @@ implies the third.
 \end{proof}
 
 
-\subsection{Reducedness} Recall that a scheme~$X$ is \emph{reduced} if and only
+\subsection{Reducedness}\label{sect:reducedness} Recall that a scheme~$X$ is \emph{reduced} if and only
 if all stalks~$\O_{X,x}$ are reduced rings. Since the condition on a ring~$R$
 to be reduced is a geometric implication,
 \[ \forall s\?R\_ \Bigl(\bigvee_{n \geq 0} s^n = 0\Bigr) \Longrightarrow s = 0, \]
@@ -4328,7 +4328,8 @@ ordered set such that for any two elements there exists a common upper bound.
 A family~$(U_i)_{i \in I}$ is \emph{monotone} if and only if~$i \preceq j$
 implies~$U_i \subseteq U_j$.
 
-\begin{prop}Let~$X$ be a topological space. Then~$X$ is quasicompact if and
+\begin{prop}\ref{prop:quasicompact-meta}
+Let~$X$ be a topological space. Then~$X$ is quasicompact if and
 only if the internal language of~$\Sh(X)$ has the following metaproperty:
 For any directed set~$I$ and any monotone family~$(\varphi_i)_{i \in I}$ of
 formulas over~$X$,
@@ -5086,10 +5087,10 @@ on~$\Spec A$. For instance it is well-known that
 Using the internal language of the little Zariski topos of~$\Spec A$, we can
 give a simple, conceptual, and uniform explanation of these equivalences.
 Namely, from the internal point of view, the module~$M^\sim$ is obtained from
-the constant sheaf~$\ul{M}$ by localizing at the \emph{universal filter}, a
+the constant sheaf~$\ul{M}$ by localizing at the \emph{generic filter}, a
 particular multiplicative subset to be introduced below, and the set~$M$ and
 the sheaf~$\ul{M}$ share the same properties (by
-Lemma~\ref{lemma:prop-constant-sheaf} below).
+Lemma~\ref{lemma:properties-of-constant-sheaves} below).
 
 This makes it obvious that, for instance, properties which are stable under
 localization pass from~$M$ to~$M^\sim$.
@@ -5116,7 +5117,7 @@ equivalent to saying that~$a$ and~$b$ coincide if~$U$ is inhabited.
 \end{proof}
 
 
-\subsection{The universal filter}
+\subsection{The generic filter}
 
 Let~$A$ be a ring.
 
@@ -5137,7 +5138,7 @@ negations. A filter is in particular a multiplicative subset. Inverting the
 elements of a filter results in a local ring, while intuitionistically
 the localization of a ring at a prime ideal might not be local.
 
-\begin{defn}The \emph{universal filter}~$\F$ is the subsheaf of~$\ul{A}$
+\begin{defn}The \emph{generic filter}~$\F$ is the subsheaf of~$\ul{A}$
 on~$\Spec A$ given by
 \[ \Gamma(U, \F) \defeq \{ f : U \to A \,|\,
   \text{$f(\ppp) \not\in \ppp$ for all $\ppp \in U$} \}. \]
@@ -5146,9 +5147,10 @@ on~$\Spec A$ given by
 \begin{prop}\label{prop:basics-univ-filter}\begin{enumerate}
 \item Let~$f \in A$ and~$x \in A$. Then~$D(f) \models x \in \F$ if and only
 if~$f \in \sqrt{(x)}$.
+% If the numbering is changed, also update reference below.
 \item The stalk~$\F_\ppp$ at a point~$\ppp \in \Spec A$
 is in canonical bijection with~$A \setminus \ppp$.
-\item From the internal point of view of~$\Sh(\Spec A)$, the universal
+\item From the internal point of view of~$\Sh(\Spec A)$, the generic
 filter is indeed a filter in~$\ul{A}$.
 \end{enumerate}
 \end{prop}
@@ -5170,11 +5172,39 @@ given such that~$D(f) \models x+y \in \F$. By the first statement~$f \in
 holds that~$x \in \F$ and on~$D(y)$ it holds that~$y \in \F$.
 \end{proof}
 
-The significance of the universal filter is given by the following proposition.
-\begin{prop}From the internal point of view of~$\Sh(\Spec A)$, the structure
+The significance of the generic filter is given by the following proposition.
+\begin{prop}From the internal point of view of~$\Sh(\Spec A)$, \ldots
+\begin{enumerate}
+\item the structure
 sheaf~$\O_{\Spec A}$ is the localization of the constant sheaf~$\ul{A}$ away from the
-universal filter:~$\O_{\Spec A} = \ul{A}[\F^{-1}]$.\end{prop}
-\begin{proof}\XXX{fill in proof}\end{proof}
+generic filter:~$\O_{\Spec A} = \ul{A}[\F^{-1}]$, and
+\item the quasicoherent sheaf of modules~$M^\sim$ associated to
+an~$A$-module~$M$ is the localization of the constant sheaf~$\ul{M}$ away from
+the generic filter.
+\end{enumerate}\end{prop}
+\begin{proof}Ignoring the ring respectively module structure, the second
+statement is more general; therefore we prove this one. We didn't discuss the
+case of quotients in Section~\ref{sect:internal-constructions}. However it
+should be perspicuous that the interpretation of~$\ul{M}[\F^{-1}]$ is defined
+as the colimit of~$\E \twoheadrightarrow \ul{M} \times \F$, taken in the
+category of sheaves on~$\Spec A$, where~$\E$ is the subsheaf of~$\F \times
+(\ul{M} \times \F) \times (\ul{M} \times \F)$ given by~$\E(U) \defeq \{
+(s,(x,t),(y,u)) \,|\, sux = sty \}$.
+
+This colimit can be obtained as the sheafification of the similarly defined
+presheaf colimit~$\E' \twoheadrightarrow \ul{M}_\mathrm{pre} \times \F$,
+where~$\ul{M}_\mathrm{pre}$ is the constant \emph{presheaf} associated to~$M$.
+On an open subset~$U$ this presheaf colimit is simply the
+localization~$\Gamma(U, \ul{M}_\mathrm{pre})[\Gamma(U, \F)^{-1}] = M[\Gamma(U,
+\F)^{-1}]$. In the special case that~$U = D(f)$ is a standard open subset,
+Proposition~\ref{prop:basics-univ-filter}(a) shows that this module is
+canonically isomorphic to~$M[f^{-1}]$. The quasicoherent sheaf~$M^\sim$ of
+modules admits the same description.
+\end{proof}
+% Here we use the following technical lemma:
+% Let E be a presheaf which, restricted to a basis of the topology,
+% is even a sheaf. Then its sheafification coincides with the extension of
+% the restricted sheaf.
 
 For transferring properties of~$M^\sim$ to~$M$, the following metatheorem is
 crucial.
@@ -5185,11 +5215,22 @@ contains the constant function with value~$x$ if~$\Gamma(U,\I)$ does. Then
   \quad\text{implies}\quad
   \text{for some~$n \geq 0$, $D(f) \models f^n \in \I$.} \]
 \end{prop}
+
 Lemma~\ref{lemma:properties-of-constant-sheaves} gives a simple and purely
 syntactical criterion for the hypothesis on~$\I$: It suffices for~$\I$ to be
 internally defined by an expression of the form~$\{ a\?\ul{A} \,|\, \varphi(a)
 \}$, where~$\varphi$ is a formula which refers only to constant sheaves.
-\begin{proof}Let~$D(f) \models \speak{$\I \cap \F$ is inhabited}$. Then there
+
+The metatheorem reflects the following well-known fact of classical
+ring theory: If an ideal meets every filter (that is, the complement of every
+prime ideal), it is the unit ideal. In this formulation the statement can't be
+proven intuitionistically; the occurence of \emph{every filter} has to be
+replaced by the \emph{generic filter}. Intuitively, the generic filter is a
+reification of the abstract idea of an ``arbitrary filter'', a filter about
+which nothing is known except that it satisfies the filter axioms.
+
+\begin{proof}\label{prop:metaproperty-of-the-generic-filter}
+Let~$D(f) \models \speak{$\I \cap \F$ is inhabited}$. Then there
 exists an open cover~$D(f) = \bigcup_i D(f_i)$ and elements~$x_i \in A$ such
 that~$D(f_i) \models x_i \in \F$ and~$D(f_i) \models x_i \in \I$. By
 Proposition~\ref{prop:basics-univ-filter} we have that~$f_i \in \sqrt{(x_i)}$
@@ -5203,7 +5244,94 @@ f_i^m$ for some coefficients~$a_i$; thus~$D(f) \models f^n \in \I$.
 \begin{rem}The stronger statement
 \[ D(f) \models (\speak{$\I \cap \F$ is inhabited} \Rightarrow \bigvee_{n \geq
 0} (f^n \in \I)) \]
-does not hold. Indeed, \XXX{present counterexample}.\end{rem}
+does not hold in general. Indeed, consider the example~$f \defeq 1$ and~$\I \defeq
+\brak{(g)} \defeq \brak{\{ a\?\ul{A} \,|\, \exists b\?\ul{A}\_ a = bg \}}$,
+where~$g$ is a fixed element of~$A$ which is not nilpotent and not invertible.
+Since~$D(g) \models g \in \I \cap \F$, the stronger statement would imply~$D(g)
+\models 1 \in \I$. By Lemma~\ref{lemma:properties-of-constant-sheaves}, this is
+equivalent to~$g$ being invertible in~$A$.
+\end{rem}
+
+
+\subsection{Internal proofs of common lemmas}
+
+\begin{lemma}Let~$A$ be a ring. Then~$A$ is reduced if and only if all
+stalks~$A_\ppp$, $\ppp \in \Spec A$, are reduced.\end{lemma}
+\begin{proof}As discussed in Section~\ref{sect:reducedness}, all
+stalks~$A_\ppp$ are reduced if and only if~$\O_{\Spec A}$ is a reduced ring
+from the internal point of view of~$\Sh(\Spec A)$.
+
+For the ``only if'' direction assume that~$A$ is reduced. Then~$\ul{A}$ is
+reduced as well, by Lemma~\ref{lemma:properties-of-constant-sheaves}. Since
+localizations of reduced rings are reduced (and this fact has an intuitionistic
+proof), in particular~$\O_{\Spec A} = \ul{A}[\F^{-1}]$ is reduced.
+
+For the ``if'' direction let~$x \in A$ be an element such that~$x^n = 0$.
+Since~$\O_{\Spec A} = \ul{A}[\F^{-1}]$ is reduced from the internal point of
+view, the element~$x$ is zero in that ring, that is
+\[ \Sh(\Spec A) \models \exists s\?\F\_ sx = 0. \]
+Therefore the ideal internally defined by
+\[ \I \defeq \{ a\?\ul{A} \,|\, ax = 0 \} \]
+meets the generic filter. By
+Proposition~\ref{prop:metaproperty-of-the-generic-filter} it follows
+that~$\Sh(\Spec A) \models 1 \in \I$. By
+Lemma~\ref{lemma:properties-of-constant-sheaves} this is equivalent to~$1 \cdot
+x = 0$ as elements of~$A$.
+\end{proof}
+
+\begin{lemma}Let~$M$ be an~$A$-module. Then~$M^\sim$ is of finite type if and
+only if~$M$ is finitely generated.\end{lemma}
+\begin{proof}First assume that~$M$ is finitely generated over~$A$.
+Then~$\ul{M}$ is finitely generated over~$\ul{A}$, by
+Lemma~\ref{lemma:properties-of-constant-sheaves}. Since localizations of
+finitely generated modules are finitely generated (over the localized ring),
+the module~$M^\sim = \ul{M}[\F^{-1}]$ is finitely generated from the internal
+point of view. By Proposition~\ref{prop:finite-type-and-co} this means
+that~$M^\sim$ is of finite type from the external point of view.
+
+For the ``only if`` direction, we assume that~$M^\sim$ is finitely generated
+over~$\O_{\Spec A}$ from the internal point of view and have to verify that~$M$
+is finitely generated over~$A$. So it holds that
+\[ \Sh(\Spec A) \models \bigvee_{n \geq 0}
+  \exists x_1,\ldots,x_n\?\ul{M}[\F^{-1}]\_
+  \speak{the $x_i$ span~$\ul{M}[\F^{-1}]$ over~$\ul{A}[\F^{-1}]$}. \]
+Since multiplying a generating family by an unit results again in a generating
+family, we have in fact that
+\[ \Sh(\Spec A) \models \bigvee_{n \geq 0}
+  \exists x_1,\ldots,x_n\?\ul{M}\_
+  \speak{the $x_i/1$ span~$\ul{M}[\F^{-1}]$ over~$\ul{A}[\F^{-1}]$} \]
+or equivalently
+\[ \Sh(\Spec A) \models \bigvee_{n \geq 0, x_1,\ldots,x_n \in M}
+  \speak{the $x_i/1$ span~$\ul{M}[\F^{-1}]$ over~$\ul{A}[\F^{-1}]$}. \]
+Since this is a directed disjunction and~$\Spec A$ is quasicompact,
+Proposition~\ref{prop:quasicompact-meta} is applicable and shows that there
+exists a natural number~$n \geq 0$ and elements~$x_1,\ldots,x_n \in M$ such
+that
+\[ \Sh(\Spec A) \models \speak{the $x_i/1$ span~$\ul{M}[\F^{-1}]$
+over~$\ul{A}[\F^{-1}]$}. \]
+We claim that these~$x_i$ also span~$M$ as an~$A$-module. So let~$x \in M$ be
+arbitrary. By elementary linear algebra we can deduce that
+\[ \Sh(\Spec A) \models \exists s\?\F\_ \exists a_1,\ldots,a_n\?\ul{A}\_
+  s \cdot \sum_i a_i x_i = x. \]
+Therefore the ideal internally defined by
+\[ \I \defeq \{ s\?\ul{A} \,|\, \exists a_1,\ldots,a_n\?\ul{A}\_
+  s \cdot \textstyle\sum_i a_i x_i = x \} \]
+meets the generic filter.
+Proposition~\ref{prop:metaproperty-of-the-generic-filter} shows that~$\Sh(\Spec A)
+\models 1 \in \I$, that is~$x$ is an element of the~$A$-span of the~$x_i$.
+\end{proof}
+
+\begin{rem}If~$M^\sim$ can be generated by~$\leq n$ elements over~$\O_{\Spec
+A}$ from the internal point of view, it needn't be the case that~$M$ can be
+generated by~$\leq n$ elements over~$A$. It is instructive to see where the
+appropriately modified version of the above proof fails: In this case we still
+have
+\[ \Sh(\Spec A) \models \bigvee_{x_1,\ldots,x_n \in M}
+  \speak{the $x_i/1$ span~$\ul{M}[\F^{-1}]$ over~$\ul{A}[\F^{-1}]$}, \]
+but this disjunction is no longer directed.
+\end{rem}
+
+% XXX: Remark about uses in constructive mathematics
 
 
 \section{Relative spectrum}

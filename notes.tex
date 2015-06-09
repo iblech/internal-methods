@@ -66,6 +66,7 @@
 \newcommand{\GG}{\mathbb{G}}
 \newcommand{\aaa}{\mathfrak{a}}
 \newcommand{\ppp}{\mathfrak{p}}
+\newcommand{\qqq}{\mathfrak{q}}
 \newcommand{\mmm}{\mathfrak{m}}
 \newcommand{\nnn}{\mathfrak{n}}
 \newcommand{\Hom}{\mathrm{Hom}}
@@ -5205,6 +5206,22 @@ modules admits the same description.
 % Let E be a presheaf which, restricted to a basis of the topology,
 % is even a sheaf. Then its sheafification coincides with the extension of
 % the restricted sheaf.
+
+Recognizing~$\O_{\Spec A}$ as a localization of~$\ul{A}$ fits nicely into the
+following abstract algebraic motivation for schemes: Does the ring~$A$ admit a
+\emph{universal localization}, \ie a homomorphism~$A \to A'$ into a local ring
+such that every homomorphism~$A \to B$ into a local ring factors via a local
+map over~$A \to A'$? Intuitively speaking, can we localize a ring at all prime
+ideals at once, or equivalently away from all filters? The answer is \emph{no}
+in general,\footnote{Assume that the universal localization exists. Then any
+two prime ideals~$\ppp$ and~$\qqq$ of~$A$ are equal: Let~$s \not\in \ppp$.
+Since~$s$ is invertible in the local ring~$A_\ppp$ and the map~$A' \to A_\ppp$
+is local, it is also invertible in~$A'$. Therefore the image of~$s$ in~$A_\qqq$ is
+invertible as well. Thus~$s \not\in \qqq$.} but always \emph{yes} if we are
+willing to change the topos in which we look for a solution: The universal
+localization of~$A$ is given by the ring~$\O_{\Spec A}$ in the topos~$\Sh(\Spec
+A)$; this ring is constructed by localizing~$\ul{A}$ away from the generic
+filter, a filter which exists in~$\Sh(\Spec A)$ but not in~$\Set$.
 
 For transferring properties of~$M^\sim$ to~$M$, the following metatheorem is
 crucial.

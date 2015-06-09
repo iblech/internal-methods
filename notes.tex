@@ -5357,13 +5357,130 @@ have
 but this disjunction is no longer directed.
 \end{rem}
 
-% XXX: stalks of O_{Spec A}
-% XXX: classical statements about \ul{A}
 
 \subsection{An application to constructive mathematics}
 
+The generic filter has a practical application in constructive mathematics.
+Recall that intuitionistically prime and maximal ideals don't work very well,
+since one often needs the axiom of choice or related set-theoretical principles
+in dealing with them. This is unfortunate, since prime and maximal ideals are
+very useful in some situations. For example:
+\begin{itemize}
+\item To verify that a ring element is nilpotent, it suffices to verify that it
+is an element of every prime ideal. This might be calculationally simpler.
+\item To verify that there is an relation of the form~$1 = p_1f_1 + \cdots +
+p_mf_m$ among polynomials~$f_1,\ldots,f_m \in K[X_1,\ldots,X_n]$ where~$K$ is
+an algebraically closed field, it suffices to show that the~$f_i$ don't have a
+common zero.
+\end{itemize}
 
-% XXX: Remark about uses in constructive mathematics
+One could of course simply switch to classical logic in this case. However this
+might not be desirable, as a constructive proof would contain more information:
+For instance, if we have classically proven that an element~$x$ is an element
+of every prime ideal, then we know that some power~$x^n$ is zero. But from such
+a proof we can't extract any upper bound on~$n$.
+
+There is a way to combine some of the powerful tools of classical ring theory
+with the advantages that constructive reasoning provides. Namely we can devise
+a language in which we can usefully talk about prime ideals, but which
+substitutes all non-constructive arguments by constructive arguments ``behind
+the scenes''. The key idea is to substitute the phrase ``for all prime ideals''
+(or equivalently ``for all filters'') by ``for the generic filter''.
+
+This was already explored by Coquand, Coste, Lombardi, Roy, and
+others under the theme of \emph{dynamical methods in
+algebra}~\cite{clr:dynamicalmethod,cl:logical}. Here we show how one can use
+the generic filter, as reified by a sheaf in the little Zariski topos, to
+achieve similar effects.
+
+\begin{prop}Let~$M$ and~$N$ be~$A$-modules. Let~$\alpha : M \to N$ be a ring
+homomorphism. The interpretations of the statements in the second column of
+Table~\ref{table:generic-filter-statements} in the internal language
+of~$\Sh(\Spec A)$ are intuitionistically equivalent to the statements given in
+the third column.\end{prop}
+\begin{proof}To demonstrate the technique we verify the second and last claim.
+To make the following proofs constructive we would have to define~$\Spec A$
+and its sheaf topos in a constructive fashion, not using prime ideals. This can
+be done, using the frame of radical ideals in~$A$, but we won't discuss details
+here.
+% XXX: give reference
+
+The interpretation of~$\Sh(\Spec A) \models x \not\in \F$ by the Kripke--Joyal
+semantics is that~$D(f) \models x \in \F$ implies~$D(f) = \emptyset$ for
+all~$f \in A$. By Proposition~\ref{prop:basics-univ-filter}(a) this is
+equivalent to
+\[ \forall f \in A\_ f \in \sqrt{(x)} \Rightarrow f \in \sqrt{(0)}, \]
+that is the statement that~$x$ is nilpotent in~$A$.
+
+Assume that~$\alpha : M \to N$ is surjective. By
+Lemma~\ref{lemma:properties-of-constant-sheaves} the induced map~$\ul{M}
+\to \ul{N}$ is surjective from the internal point of view. Since localization
+preserves surjectivity, also the map~$\ul{M}[\F^{-1}] \to \ul{N}[\F^{-1}]$ is
+surjective.
+
+Conversely, assume that~$\ul{M}[\F^{-1}] \to \ul{N}[\F^{-1}]$ is surjective
+from the internal point of view. To verify that~$\alpha : M \to N$ is
+surjective, let~$y \in N$. The assumption implies that the ideal internally
+defined by
+\[ \I \defeq \{ s\?\ul{A} \,|\, \exists x\?\ul{A}\_ sy = \ul{\alpha}(x) \} \]
+meets the generic filter. By
+Proposition~\ref{prop:metaproperty-of-the-generic-filter} this implies
+that~$\Sh(\Spec A) \models 1 \in \I$, that is there exists an element~$x \in A$
+such that~$\alpha(x) = y$.
+\end{proof}
+
+\begin{table}
+  \centering
+  \renewcommand{\arraystretch}{1.3}
+  \small
+  \begin{tabular}{lll}
+    \toprule
+    Statement & constructive substitution & meaning \\\midrule
+    The stalks~$A_\ppp$ are reduced. &
+    $\A[\F^{-1}]$ is reduced. &
+    $A$ is reduced. \\
+    $x \in \ppp$ for all~$\ppp$. &
+    $x \not\in \F$. &
+    $x$ is nilpotent. \\
+    $x \in \ppp$ for all~$\ppp$ such that~$y \in \ppp$. &
+    $x \in \F \Rightarrow y \in \F$. &
+    $x \in \sqrt{(y)}$. \\
+    The stalks~$M_\ppp$ vanish. &
+    $\ul{M}[\F^{-1}] = 0$. &
+    $M = 0$. \\
+    The stalks~$M_\ppp$ are fin.\@ gen.\@ over~$A_\ppp$. &
+    $\ul{M}[\F^{-1}]$ is fin.\@ gen.\@ over
+    $\ul{A}[\F^{-1}]$. &
+    $M$ is fin.\@ gen.\@ over~$A$. \\
+    The stalks~$M_\ppp$ are flat over~$A_\ppp$. &
+    $\ul{M}[\F^{-1}]$ is flat over~$\ul{A}[\F^{-1}]$. &
+    $M$ is flat over~$A$. \\
+    The maps~$M_\ppp \to N_\ppp$ are injective. &
+    $\ul{M}[\F^{-1}] \to \ul{N}[\F^{-1}]$ is injective. &
+    $M \to N$ is injective. \\
+    The maps~$M_\ppp \to N_\ppp$ are surjective. &
+    $\ul{M}[\F^{-1}] \to \ul{N}[\F^{-1}]$ is surjective. &
+    $M \to N$ is surjective. \\
+    \bottomrule
+  \end{tabular}
+  \vspace{0.5em}
+
+  \caption{\label{table:generic-filter-statements}Substituting the use of prime
+  ideals by the generic filter.}
+\end{table}
+
+The sheaf-theoretical approach using the generic filter is different from the
+dynamical methods in the following aspect. We have to reword classical
+arguments using (the generic) filter instead of (the generic) prime ideal.
+Depending on the situation this might be a nuisance. One might be tempted to
+employ the complement of the generic filter, but this is only an ideal, not a
+prime ideal from the internal point of view.\footnote{One can check that the
+complement of~$\F$ in~$\ul{A}$ is the subsheaf~$\P$ defined by~$\Gamma(U, \P)
+\defeq \{ f : U \to A \,|\, \text{$f(\ppp) \in \ppp$ for all~$\ppp \in U$} \}$
+and that~$D(f) \models x \in \P$ if and only if~$fx$ is nilpotent. This can be
+used to show that the statement~$\Sh(\Spec A) \models \forall x,y\?\ul{A}\_ xy
+\in \P \Rightarrow x \in \P \vee y \in \P$ is false in general.}
+% XXX: Give counterexample.
 
 
 \section{Relative spectrum}

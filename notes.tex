@@ -4329,7 +4329,7 @@ ordered set such that for any two elements there exists a common upper bound.
 A family~$(U_i)_{i \in I}$ is \emph{monotone} if and only if~$i \preceq j$
 implies~$U_i \subseteq U_j$.
 
-\begin{prop}\ref{prop:quasicompact-meta}
+\begin{prop}\label{prop:quasicompact-meta}
 Let~$X$ be a topological space. Then~$X$ is quasicompact if and
 only if the internal language of~$\Sh(X)$ has the following metaproperty:
 For any directed set~$I$ and any monotone family~$(\varphi_i)_{i \in I}$ of
@@ -5112,8 +5112,8 @@ unbounded quantifiers have to be read as ranging only over locally constant
 sheaves, not all sheaves.
 \begin{proof}By induction on the structure of~$\varphi$. By way of example, we
 give the argument in the case that~$\varphi \equiv (a = b)$, where~$a$ and~$b$ are
-elements of some set~$X$. Then~$U \models \varphi$ means by definition that the
-constant functions~$U \to X$ with value~$a$ respectively~$b$ coincide. This is
+elements of some set~$M$. Then~$U \models \varphi$ means by definition that the
+constant functions~$U \to M$ with value~$a$ respectively~$b$ coincide. This is
 equivalent to saying that~$a$ and~$b$ coincide if~$U$ is inhabited.
 \end{proof}
 
@@ -5135,7 +5135,9 @@ for all~$x,y \? A$.
 In classical logic, the complement of a prime ideal is a filter and
 furthermore every filter is of such a form. In constructive mathematics however,
 it is useful to axiomatize complements of prime ideals directly, avoiding
-negations. A filter is in particular a multiplicative subset. Inverting the
+negations.
+
+A filter is in particular a multiplicative subset. Inverting the
 elements of a filter results in a local ring, while intuitionistically
 the localization of a ring at a prime ideal might not be local.
 
@@ -5145,7 +5147,7 @@ on~$\Spec A$ given by
   \text{$f(\ppp) \not\in \ppp$ for all $\ppp \in U$} \}. \]
 \end{defn}
 
-\begin{prop}\label{prop:basics-univ-filter}\begin{enumerate}
+\begin{prop}\label{prop:basics-univ-filter}\ \begin{enumerate}
 \item Let~$f \in A$ and~$x \in A$. Then~$D(f) \models x \in \F$ if and only
 if~$f \in \sqrt{(x)}$.
 % If the numbering is changed, also update reference below.
@@ -5225,7 +5227,8 @@ filter, a filter which exists in~$\Sh(\Spec A)$ but not in~$\Set$.
 
 For transferring properties of~$M^\sim$ to~$M$, the following metatheorem is
 crucial.
-\begin{prop}Let~$\I$ be an ideal in~$\ul{A}$ such that, for all inhabited
+\begin{prop}\label{prop:metaproperty-of-the-generic-filter}
+Let~$\I$ be an ideal in~$\ul{A}$ such that, for all inhabited
 open subsets~$U \subseteq \Spec A$ and elements~$x \in A$, the set~$\Gamma(X,\I)$
 contains the constant function with value~$x$ if~$\Gamma(U,\I)$ does. Then
 \[ D(f) \models \speak{$\I \cap \F$ is inhabited}
@@ -5246,7 +5249,7 @@ replaced by the \emph{generic filter}. Intuitively, the generic filter is a
 reification of the abstract idea of an ``arbitrary filter'', a filter about
 which nothing is known except that it satisfies the filter axioms.
 
-\begin{proof}\label{prop:metaproperty-of-the-generic-filter}
+\begin{proof}
 Let~$D(f) \models \speak{$\I \cap \F$ is inhabited}$. Then there
 exists an open cover~$D(f) = \bigcup_i D(f_i)$ and elements~$x_i \in A$ such
 that~$D(f_i) \models x_i \in \F$ and~$D(f_i) \models x_i \in \I$. By
@@ -5335,10 +5338,10 @@ over~$\ul{A}[\F^{-1}]$}. \]
 We claim that these~$x_i$ also span~$M$ as an~$A$-module. So let~$x \in M$ be
 arbitrary. By elementary linear algebra we can deduce that
 \[ \Sh(\Spec A) \models \exists s\?\F\_ \exists a_1,\ldots,a_n\?\ul{A}\_
-  s \cdot \sum_i a_i x_i = x. \]
+  sx = \sum_i a_i x_i. \]
 Therefore the ideal internally defined by
 \[ \I \defeq \{ s\?\ul{A} \,|\, \exists a_1,\ldots,a_n\?\ul{A}\_
-  s \cdot \textstyle\sum_i a_i x_i = x \} \]
+  sx = \textstyle\sum_i a_i x_i \} \]
 meets the generic filter.
 Proposition~\ref{prop:metaproperty-of-the-generic-filter} shows that~$\Sh(\Spec A)
 \models 1 \in \I$, that is~$x$ is an element of the~$A$-span of the~$x_i$.

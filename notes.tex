@@ -3782,8 +3782,9 @@ Every open scheme-theoretically dense subset~$U \subseteq \Spec A$ contains a
 \emph{standard open} scheme-theoretically dense subset.
 \end{quote}
 The first condition is satisfied if~$A$ is an irreducible ring (\ie if~$\Spec A$
-is irreducible). Both conditions are satisfied if~$A$ is integral or if~$A$ is
-Noetherian; for the convenience of the reader, we give a proof in the
+is irreducible) or more generally if~$A$ contains only finitely many minimal
+prime ideals. Both conditions are satisfied if~$A$ is integral or if~$A$ is
+Noetherian; for convenience, we give a proof in the
 latter case.
 
 \begin{prop}Let~$A$ be a Noetherian ring. Then~$\Spec A$ has property~$(\star)$
@@ -3804,7 +3805,7 @@ avoidance lemma.
 \label{prop:kx-is-negneg-sheafification}
 Let~$X$ be a reduced scheme. Assume that~$X$ can be covered by open affine
 subsets which have property~$(\star)$. For instance, this condition is satisfied
-if~$X$ is integral or locally Noetherian. Then~$\K_X$ is
+if~$X$ is integral, the set of irreducible components is locally finite, or if~$X$ is locally Noetherian. Then~$\K_X$ is
 the~$\neg\neg$-sheafification of~$\O_X$.\end{prop}
 \begin{proof}
 We first show that~$\K_X$ is~$\neg\neg$-separated,
@@ -4079,7 +4080,7 @@ over, \emph{mutatis mutandis}.
 \end{proof}
 
 \begin{prop}\label{prop:boolean-dim0-continued}
-Let~$X$ be an irreducible or locally Noetherian scheme of dimension~$\leq 0$. Then
+Let~$X$ be a scheme of dimension~$\leq 0$ such that the set of irreducible components is locally finite or such that~$X$ is locally Noetherian. Then
 the internal language of~$\Sh(X)$ is Boolean. (The converse holds as well and
 was already stated as Corollary~\ref{cor:boolean-dim0}.)
 \end{prop}

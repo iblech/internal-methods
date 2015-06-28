@@ -4065,6 +4065,21 @@ points on locally Noetherian schemes:
 \end{align*}
 \end{proof}
 
+\begin{lemma}
+Let~$X$ be a scheme admitting a cover of open affine subsets with
+property~$(\star\star)$. Let~$j : U \hookrightarrow X$ be the inclusion of an
+open subset containing the sublocale~$X_\sdense$. (If~$X$ is locally
+Noetherian, this is equivalent to requiring that~$U$ contains~$\Ass(\O_X)$.)
+Then the canonical morphism~$\K_X \to j_* \K_U$ is an isomorphism.
+\end{lemma}
+\begin{proof}Write~$i : X_\sdense \hookrightarrow X$ and~$i' : X_\sdense
+\hookrightarrow U$ for the inclusions. By the previous proposition, the
+sheaf~$\K_X$ is given by~$i_* i^{-1} \O_X$. Similarly, the sheaf~$j_* \K_U$ is
+given by~$j_* i'_* i'^{-1} j^{-1} \O_X$. The claim follows since~$j \circ i' =
+i$.
+\end{proof}
+% XXX: Does U admit a (**)-cover if X does?
+
 \begin{lemma}\label{lemma:dense-standard-reflection-generalized}
 Let~$X$ be scheme admitting a cover by affine open subschemes
 with property~$(\star)$ respectively~$(\star\star)$. Let~$\varphi$ be any formula
@@ -4301,10 +4316,6 @@ Proposition~\ref{prop:kx-is-negneg-sheafification}) and~$\L$ is~$\Box$-separated
 \end{proof}
 
 \begin{itemize}
-\item show~$\K_X = j_*(\O_X)$?
-% This doesn't seem to be obvious. The statement is that K_X is a sheaf for (U => __).
-% It certainly is separated with respect to this modal operator, but I don't
-% see how to prove that it is a sheaf.
 \item ``$\operatorname{div}(g) + D \geq 0$''
 \end{itemize}
 

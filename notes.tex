@@ -3794,7 +3794,9 @@ and~$(\star\star)$.
 contains all minimal prime ideals and, under the Noetherian hypothesis, that it
 is scheme-theoretically dense if and only if it contains all associated prime
 ideals. There are only a finite number of these prime ideals. Therefore the
-claim is reduced to the following statement: Let~$\ppp_1,\ldots,\ppp_n$ be a
+claim is reduced to the following statement:
+
+Let~$\ppp_1,\ldots,\ppp_n$ be a
 finite number of points of an open subset~$U \subseteq \Spec A$. Then there
 exists a standard open subset~$D(f) \subseteq U$ which also contains these
 points. The proof of this statement is an easy application of the prime
@@ -3990,7 +3992,7 @@ Proposition~\ref{prop:kx-is-box-sheafification} recovers
 the result of Proposition~\ref{prop:kx-is-negneg-sheafification}:
 
 \begin{prop}Let~$X$ be a scheme. Then~$\sdense\varphi \Rightarrow \neg\neg\varphi$
-for any formula~$\varphi$. The converse holds if~$X$ is reduced, such that in
+for any formula~$\varphi$. The converse holds if~$X$ is reduced, so that in
 this case the modal operator~$\sdense$ coincides with the double negation modality.\end{prop}
 \begin{proof}Let~$\varphi$ be an arbitrary formula and assume~$\sdense\varphi$. Note that~$\neg\varphi$ is
 equivalent to~$\varphi \Rightarrow (1 =
@@ -4025,7 +4027,7 @@ this sublocale is the subspace of associated points in~$X$.
 In formulas, the proposition says that the canonical map
 \[ \K_X \longrightarrow i_* i^{-1} \O_X \]
 is an isomorphism, where~$i : X_\sdense \hookrightarrow X$ is the inclusion of
-the sublocale~$X_\sdense$. This result holds needs a cover with
+the sublocale~$X_\sdense$. This result requires a cover with
 property~$(\star\star)$, but no Noetherian hypothesis.
 
 \begin{proof}The first statement follows trivially by the results of
@@ -4132,19 +4134,19 @@ the proof of Lemma~\ref{lemma:torsion-module-generic-stalk} with
 
 \subsection{Cartier divisors} Let~$X$ be a scheme (or ringed space). Recall
 that a \emph{Cartier divisor} on~$x$ is a global section of the sheaf of
-groups~$\K_X^* / \O_X^*$. This sheaf can be constructed internally, with the
+groups~$\K_X^\times / \O_X^\times$. This sheaf can be constructed internally, with the
 same notation: It is the quotient of the group of invertible elements of the
 ring~$\K_X$ by the subgroup of invertible elements of the ring~$\O_X$. So an
-arbitrary section of~$\K_X^*/\O_X^*$ is internally of the form~$[s/t]$
+arbitrary section of~$\K_X^\times/\O_X^\times$ is internally of the form~$[s/t]$
 with~$s,t\?\O_X$ being regular elements; this is a simpler description than the
-usual external one (as a family~$(f_i)_i$ of functions~$f_i \in
-\Gamma(U_i,\K_X^*)$ such that~$f_i^{-1}|_{U_i \cap U_j} \cdot f_j|_{U_i \cap
-U_j} \in \Gamma(U_i \cap U_j, \O_X^*)$ for all~$i,j$).
+usual external one as a family~$(f_i)_i$ of functions~$f_i \in
+\Gamma(U_i,\K_X^\times)$ such that~$f_i^{-1}|_{U_i \cap U_j} \cdot f_j|_{U_i \cap
+U_j} \in \Gamma(U_i \cap U_j, \O_X^\times)$ for all~$i,j$.
 
 We can sketch the basic theory of Cartier divisors completely from the internal
 perspective. In accordance with common practice, we write the group
-operation of~$\K_X^*/\O_X^*$ (which is induced by multiplication of elements
-in~$\K_X^*$) additively.
+operation of~$\K_X^\times/\O_X^\times$ (which is induced by multiplication of elements
+in~$\K_X^\times$) additively.
 
 \begin{defn}\label{defn:effective-cartier-divisor}
 A Cartier divisor is \emph{effective} if and only if, from the
@@ -4155,13 +4157,13 @@ Thus a Cartier divisor~$[s/t]$ is effective if and only if~$s$ is
 an~$\O_X$-multiple of~$t$.
 
 \begin{defn}A Cartier divisor~$D$ is \emph{principal} if and only if there
-exists a global section~$f \in \Gamma(X,\K_X^*)$ such that internally,~$D = [f]$.
+exists a global section~$f \in \Gamma(X,\K_X^\times)$ such that internally,~$D = [f]$.
 Two Cartier divisors are \emph{linearly equivalent} if and only if their
 difference is a principal divisor.
 \end{defn}
 
 Note that decidedly, principality is a global notion: For \emph{any} divisor~$D$ it is
-true that locally there exists sections~$f$ of~$\K_X^*$ such that~$D = [f]$.
+true that locally there exists sections~$f$ of~$\K_X^\times$ such that~$D = [f]$.
 
 \begin{defn}\label{defn:line-bundle-of-divisor}
 The \emph{line bundle associated to a Cartier divisor}~$D$
@@ -4172,7 +4174,7 @@ of~$\K_X$. Here we are abusing language for~``$gD \in \O_X$'' to mean that~$gf
 \in \O_X$ if~$D = [f]$ with~$f\?\K_X$; and for~``$D^{-1} \O_X$'' to
 mean~$f^{-1}\O_X$. This condition respectively submodule does not depend on the
 representative~$f$, since~$f$ is well-defined up to multiplication by an element
-of~$\O_X^*$.\end{defn}
+of~$\O_X^\times$.\end{defn}
 
 The submodule~$\O_X(D)$ is indeed locally free of rank~$1$, since
 internally~$f^{-1}$ gives an one-element basis. Note that~$D$ is effective if
@@ -4195,18 +4197,18 @@ of~$X$ associated to the sheaf of ideals~$\O_X(-D) \subseteq \O_X$.
 \K_X$ of rank~1} is~$D \defeq [f^{-1}]$, where~$f\?\K_X$ is the unique element of
 some one-element basis of~$\L$.\end{defn}
 
-The basis element~$f\?\K_X$ does indeed lie in~$\K_X^*$: Write~$f
+The basis element~$f\?\K_X$ does indeed lie in~$\K_X^\times$: Write~$f
 = s/t$ with~$s,t \? \O_X$. It suffices to show that~$s$ is a regular element
 of~$\O_X$. So let~$h\?\O_X$ such that~$sh = 0$ in~$\O_X$. Then in
 particular~$hf = 0$ in~$\K_X$. By linear independence, it follows that~$h = 0$
 in~$\K_X$ and thus~$h = 0$ in~$\O_X$.
 
 Furthermore, the associated divisor does not depend on the choice of~$f$,
-since~$f$ is well-defined up to multiplication by an element of~$\O_X^*$: If~$f
+since~$f$ is well-defined up to multiplication by an element of~$\O_X^\times$: If~$f
 \O_X = g \O_X \subseteq \K_X$, then there exist~$u,v\?\O_X$ such that~$fu = g$
 and~$gv = f$ in~$\K_X$. It follows that~$uv = fuvf^{-1} = gvf^{-1} = ff^{-1} =
 1$ in~$\K_X$ and thus in~$\O_X$, by injectivity of the canonical map~$\O_X \to
-\K_X$. Therefore~$u$ and~$v$ are elements of~$\O_X^*$.
+\K_X$. Therefore~$u$ and~$v$ are elements of~$\O_X^\times$.
 
 \begin{lemma}Let~$D$ and~$D'$ be divisors on~$X$. Then~$\O_X(D) \otimes_{\O_X}
 \O_X(D') \cong \O_X(D + D')$.\end{lemma}
@@ -4224,7 +4226,7 @@ into~$\K_X$).\end{prop}
 \begin{proof}The first statement is obvious from the definitions. For the
 second statement, it suffices to show that~$\O_X(D)$ is isomorphic to~$\O_X$ if
 and only if~$D$ is principal. A given isomorphism~$\O_X \to \O_X(D)$ gives a
-global section~$f \in \K_X^*$ (by considering the image of the unit element)
+global section~$f \in \K_X^\times$ (by considering the image of the unit element)
 such that internally,~$D = [f^{-1}]$; this shows that~$D$ is principal. The
 converse is similar.
 \end{proof}

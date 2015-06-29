@@ -118,6 +118,7 @@
 \newcommand{\resp}{resp.\@\xspace}
 \newcommand{\inv}{inv.\@}
 \newcommand{\notnot}{\emph{not not}\xspace}
+\newcommand{\affl}{\ensuremath{{\ul{\AA}^1_S}}\xspace}
 
 \newcommand{\XXX}[1]{\textbf{XXX: #1}}
 
@@ -5757,7 +5758,106 @@ previous proposition.
 \end{proof}
 
 
-\section{Big Zariski topos, unsorted}
+\section{Outlook: the big Zariski topos}
+
+The preceding sections demonstrated that working in the internal universe of
+the little Zariski topos of a scheme~$S$, the topos of sheaves on~$S$, is
+useful for simplifying local work on~$S$: The basic tenet was that sheaves of
+modules look just like plain modules and that theorems of intuitionistic
+algebra yield theorems about sheaves.
+
+But the little Zariski topos is not particularly suited for dealing with
+schemes \emph{over~$S$}. For this, we need a related topos.
+
+\begin{defn}The \emph{big Zariski topos}~$\Zar(S)$ of a scheme~$S$ is the
+topos of sheaves on the Grothendieck site~$\Sch/S$ of schemes over~$S$.
+\end{defn}
+
+Explicitly, an object of~$\Zar(S)$ is a functor~$(\Sch/S)^\op \to \Set$
+satisfying the gluing condition with respect to ordinary Zariski coverings:
+If~$X = \bigcup_i U_i$ is a cover of an~$S$-scheme~$X$ by open subsets, the
+diagram
+\[ \F(X) \to \prod_i \F(U_i) \rightrightarrows \prod_{i,j} F(U_i \cap U_j)
+\]
+should be an equalizer diagram. Just like the topos of sheaves on a topological
+space admits an internal language, so does the big Zariski topos; the necessary
+modifications of Table~\ref{table:kripke-joyal} are straightforward. For
+instance, the rule for implication,
+\[ U \models \varphi \Rightarrow \psi \quad\Ll\quad
+  \text{for all open~$V \subseteq U$:
+  $V \models \varphi$ implies $V \models \psi$}, \]
+for open subsets~$U$ of~$S$, has to be rewritten as
+\[ X \models \varphi \Rightarrow \psi \quad\Ll\quad
+  \text{for all morphisms~$T \to X$ in~$\Sch/S$:
+  $T \models \varphi$ implies $T \models \psi$}, \]
+for~$S$-schemes~$X$.
+
+The big Zariski topos is the proper context for realizing the ``functor of
+points'' approach to algebraic geometry. This is because the functor of points
+associated to an~$S$-scheme~$X$,
+\[ \ul{X} : \Sch/S \to \Set,\ T \mapsto \Hom_S(T,X), \]
+fulfills the gluing condition and is therefore an object of~$\Zar(S)$. From the
+internal point of view of~$\Zar(S)$, the functor~$\ul{X}$ looks like a single
+set. It can be pictured as the ``set of points of~$X$'', where~``point'' does
+not mean ``point of the underlying topological space of~$X$'', but
+rather~``$T$-point of~$X$'', where~$T$ varies over all~$S$-schemes. The
+internal language of the big Zariski topos hides any explicit mentions of the
+stage~$T$; it is therefore a device for reifying the multitude of points
+of~$X$, defined on varying stages, as a single set.
+
+As a basic example, the functor~$\ul{S}$ looks like a singleton set from the
+internal point of view of~$\Zar(S)$ and~$\ul{S \amalg S}$ looks like a
+two-element set.
+
+A particularly important object of~$\Zar(S)$ is the functor of points
+associated to the affine line over~$S$, the~$S$-scheme~$\AA^1_S \defeq S
+\times_{\Spec\ZZ} \ZZ[t]$. Its value on a~$S$-scheme~$T$ is given by
+\[ \affl(T) = \Hom_S(T, \AA^1_S) \cong \Hom_{\Spec\ZZ}(T, \Spec\ZZ[t]) \cong
+\Gamma(T,\O_T). \]
+This object has an evident structure as a ring object in~$\Zar(S)$. In fact,
+from the internal point of view, it is a local ring and even a field in the
+sense that nonzero elements are invertible. This is without any assumptions on
+the base scheme~$S$; in the case~$S = \Spec\ZZ$, this was first observed by
+Kock~\cite{kock:univ-proj-geometry}.
+
+Using the internal language of the big Zariski topos, we can conduct
+\emph{synthetic scheme theory}, or more precisely synthetic relative scheme
+theory over a base scheme. As with other synthetic approaches to certain
+subjects, such as synthetic differential geometry, synthetic domain theory, or
+synthetic computability theory, the internal language lets us pretend that our
+objects of study, schemes over a base scheme, are plain sets and that
+morphisms between our objects are simply maps between those sets.
+% XXX: give references
+% The additional structure ... is taken care of ...
+
+\begin{itemize}
+% group schemes
+\item Let~$X$ be an~$S$-scheme and~$f \in \O_X(X)$ be a global function. Since
+the internal Hom~$[\ul{X},\affl] \in \Zar(S)$ has~$\O_X(X)$ as its set of global
+sections, we can regard~$f$ as a map~$\ul{X} \to \affl$ from the internal point
+of view. The internal expressions
+\[ \{ x\?\ul{X} \,|\, f(x) \neq 0 \} \quad\text{and}\quad
+  \{ x\?\ul{X} \,|\, f(x) = 0 \} \]
+then describe the functor of points of the subscheme~$D(f)$
+respectively~$V(f)$.\footnote{Note that, from the internal point of view,
+the statement~$f(x)^n \neq 0$ is equivalent to~$f(x)^n$ being
+invertible and therefore to~$f(x) \neq 0$. This reflects that~$D(f^n) = D(f)$.
+However~$f(x)^n = 0$ does not imply~$f(x) = 0$, since~$\affl$ is only a field
+in the sense that nonzero elements are invertible. Therefore there is no
+contradiction with the basic fact that~$V(f^n)$ does not equal~$V(f)$ in
+general.}
+\item In particular, the set~$\Delta \defeq \{ \varepsilon\?\affl \,|\,
+\varepsilon^2 = 0 \}$ describes an infinitesimal thickening of~$S$. It is the
+vanishing scheme of~$\varepsilon^2$ in~$S \times_{\Spec \ZZ} \Spec
+\ZZ[\varepsilon]$, so explicitly it has the same underlying topological space
+as~$S$, but~$\O_S[\varepsilon]/(\varepsilon^2)$ instead of~$\O_S$ as structure
+sheaf. For an~$S$-scheme~$X$ the internal Hom~$[\Delta,\ul{X}]$ describes the
+``tangent bundle'' of~$X$, \ie the
+scheme~$\RelSpec{S}{\operatorname{Sym}(\Omega^1_{X/S})}$. This fits nicely with
+the intuition of tangent vectors as infinitesimal curves, and in fact is
+precisely the definition of the tangent bundle in synthetic differential
+geometry.
+\end{itemize}
 
 \begin{itemize}
 \item synthetic scheme theory

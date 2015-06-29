@@ -61,6 +61,7 @@
 \newcommand{\I}{\mathcal{I}}
 \renewcommand{\S}{\mathcal{S}}
 \newcommand{\NN}{\mathbb{N}}
+\newcommand{\PP}{\mathbb{P}}
 \newcommand{\RR}{\mathbb{R}}
 \newcommand{\QQ}{\mathbb{Q}}
 \newcommand{\GG}{\mathbb{G}}
@@ -5781,7 +5782,7 @@ diagram
 \]
 should be an equalizer diagram. Just like the topos of sheaves on a topological
 space admits an internal language, so does the big Zariski topos; the necessary
-modifications of Table~\ref{table:kripke-joyal} are straightforward. For
+modifications of the Kripke--Joyal semantics (Table~\ref{table:kripke-joyal}) are straightforward. For
 instance, the rule for implication,
 \[ U \models \varphi \Rightarrow \psi \quad\Ll\quad
   \text{for all open~$V \subseteq U$:
@@ -5792,12 +5793,13 @@ for open subsets~$U$ of~$S$, has to be rewritten as
   $T \models \varphi$ implies $T \models \psi$}, \]
 for~$S$-schemes~$X$.
 
-The big Zariski topos is the proper context for realizing the ``functor of
+The big Zariski topos is the proper context for the ``functor of
 points'' approach to algebraic geometry. This is because the functor of points
 associated to an~$S$-scheme~$X$,
 \[ \ul{X} : \Sch/S \to \Set,\ T \mapsto \Hom_S(T,X), \]
-fulfills the gluing condition and is therefore an object of~$\Zar(S)$. From the
-internal point of view of~$\Zar(S)$, the functor~$\ul{X}$ looks like a single
+fulfills the gluing condition and is therefore an object of~$\Zar(S)$.
+
+From the internal point of view of~$\Zar(S)$, such a functor~$\ul{X}$ looks like a single
 set. It can be pictured as the ``set of points of~$X$'', where~``point'' does
 not mean ``point of the underlying topological space of~$X$'', but
 rather~``$T$-point of~$X$'', where~$T$ varies over all~$S$-schemes. The
@@ -5823,15 +5825,48 @@ Kock~\cite{kock:univ-proj-geometry}.
 Using the internal language of the big Zariski topos, we can conduct
 \emph{synthetic scheme theory}, or more precisely synthetic relative scheme
 theory over a base scheme. As with other synthetic approaches to certain
-subjects, such as synthetic differential geometry, synthetic domain theory, or
-synthetic computability theory, the internal language lets us pretend that our
+subjects, such as synthetic differential geometry~\cite{kock:sdg}, synthetic
+domain theory~\cite{hyland:synthetic-domain-theory}, or
+synthetic computability theory~\cite{bauer:synthetic-computability-theory}, the
+internal language lets us pretend that our
 objects of study, schemes over a base scheme, are plain sets and that
-morphisms between our objects are simply maps between those sets.
-% XXX: give references
-% The additional structure ... is taken care of ...
+morphisms between our objects are simply maps between those sets. We can therefore
+employ a simple, element-based language to talk about schemes; the topological
+and ring-theoretical structure is taken care of by the machinery.
+
+As with the internal universe of any topos, we can perform the usual
+set-theoretical constructions internally in the big Zariski topos, like
+building products and coproducts, cutting out subsets and imposing equivalence
+relations, and considering sets of maps between given objects. Additionally,
+the internal universe of the big Zariski topos has a distinctive algebraic
+flavor, in that one can show that from the internal point of view, \emph{any
+map~$\affl \to \affl$ is given by a (unique) polynomial with coefficients
+in~$\affl$}. This is related to the fact that the value of the internal
+Hom~$[\affl,\affl]$ at an~$S$-scheme~$T$ is given
+by~$\Gamma(\AA^1_T,\O_{\AA^1_T})$.\footnote{In synthetic differential geometry,
+there is a similar proposition: From the internal point of view, any map~$\RR
+\to \RR$ is smooth (in an appropriate sense).}
 
 \begin{itemize}
-% group schemes
+\item The functors associated to the standard group schemes~$\GG_\text{a}$, $\GG_\text{m}$,
+$\mathrm{GL}_n$, and~$\mu_n$ are given by the internal expressions
+\begin{align*}
+  \GG_\text{a} &\defeq \affl \text{ (as an additive group)}, \\
+  \GG_\text{m} &\defeq \{ x\?\affl \,|\, \speak{$x$ \inv} \}, \\
+  \mathrm{GL}_n &\defeq \{ M \? (\affl)^{n \times n} \,|\, \speak{$M$ \inv} \}, \\
+  \mu_n &\defeq \{ x \? \affl \,|\, x^n = 1 \}.
+\end{align*}
+\item Affine~$n$-space over~$S$ is given by~$(\affl)^n$, \ie internally the set
+of~$n$-tuples of elements of~$\affl$. The functor of points of
+projective~$n$-space over~$X$, with all its nontrivial topological and
+ring-theoretical structure, is described by the astoundingly naive expression
+\[ \PP^n \defeq \{ (x_0,\ldots,x_n) \? (\affl)^{n+1} \,|\,
+  x_0 \neq 0 \vee \cdots \vee x_n \neq 0 \}/{\sim}, \]
+where the equivalence relation is the usual rescaling relation from the
+internal point of view. This example was suggested to us by Zhen~Lin Low.
+\item More generally, for an~$S$-scheme~$X$, affine and projective~$n$-space
+over~$X$ are given by~$\ul{X} \times (\affl^1)^n$ and~$\ul{X} \times \PP^n$,
+respectively.
 \item Let~$X$ be an~$S$-scheme and~$f \in \O_X(X)$ be a global function. Since
 the internal Hom~$[\ul{X},\affl] \in \Zar(S)$ has~$\O_X(X)$ as its set of global
 sections, we can regard~$f$ as a map~$\ul{X} \to \affl$ from the internal point
@@ -5839,7 +5874,7 @@ of view. The internal expressions
 \[ \{ x\?\ul{X} \,|\, f(x) \neq 0 \} \quad\text{and}\quad
   \{ x\?\ul{X} \,|\, f(x) = 0 \} \]
 then describe the functor of points of the subscheme~$D(f)$
-respectively~$V(f)$.\footnote{Note that, from the internal point of view,
+respectively~$V(f)$.\footnote{From the internal point of view,
 the statement~$f(x)^n \neq 0$ is equivalent to~$f(x)^n$ being
 invertible and therefore to~$f(x) \neq 0$. This reflects that~$D(f^n) = D(f)$.
 However~$f(x)^n = 0$ does not imply~$f(x) = 0$, since~$\affl$ is only a field
@@ -5851,30 +5886,31 @@ general.}
 vanishing scheme of~$\varepsilon^2$ in~$S \times_{\Spec \ZZ} \Spec
 \ZZ[\varepsilon]$, so explicitly it has the same underlying topological space
 as~$S$, but~$\O_S[\varepsilon]/(\varepsilon^2)$ instead of~$\O_S$ as structure
-sheaf. For an~$S$-scheme~$X$ the internal Hom~$[\Delta,\ul{X}]$ describes the
+sheaf.
+\item For an~$S$-scheme~$X$, the internal Hom~$[\Delta,\ul{X}]$ describes the
 ``tangent bundle'' of~$X$, \ie the
-scheme~$\RelSpec{S}{\operatorname{Sym}(\Omega^1_{X/S})}$. This fits nicely with
-the intuition of tangent vectors as infinitesimal curves, and in fact is
-precisely the definition of the tangent bundle in synthetic differential
-geometry.
+scheme~$\RelSpec{X}{\operatorname{Sym}(\Omega^1_{X/S})}$, as can be seen by
+chasing the definitions~\cite[Lemma~5.12.1]{brandenburg:tensor-foundations}.
+Intuitively, a map~$f : \Delta \to \ul{X}$ from the internal point of view is
+given by slightly more data than merely the point~$f(0)$; one also has to
+specify first-order information. This description of the (not necessarily
+locally trivial) tangent bundle fits nicely with the intuition of tangent
+vectors as infinitesimal curves, and in fact is precisely the definition of the
+tangent bundle in synthetic differential geometry~\cite[Def.~7.1]{kock:sdg}.
+\item Let~$\E$ be an~$\affl$-algebra. Then~$[\E,\affl]_\affl$, \ie internally the set
+of~$\affl$-algebra homomorphisms from~$\E$ to~$\affl$, can be pictured as ``the
+relative spectrum of~$\E$'', even though of course this might fail to be
+locally affine without further assumptions. If the functor~$\E$ is given
+by~$\E(T \xrightarrow{\mu} S) \defeq \Gamma(T, \mu^*\A)$, where~$\A$ is a
+quasicoherent~$\O_S$-algebra, the functor~$[\E,\affl]_\affl$ is precisely the
+functor of points of the~$S$-scheme~$\RelSpec{S}{\A}$.
 \end{itemize}
 
 \begin{itemize}
-\item synthetic scheme theory
 \item basics: $\AA^1$ is a local ring and even a field, never reduced
-\item $[\AA^1,\AA^1] \cong \AA^1[T]$
-\item definition of the functor of points of important schemes in the internal
-language: affine space, projective space (acknowledge Zhen Lin Low), open and
-closed subschemes
-\item Let~$X$ be an~$S$-scheme. Define the tangent ``bundle'' $TX \defeq \Spec
-\operatorname{Sym} \Omega^1_{X/S}$. Then~$TX = [\Delta,X]$ internally in the big Zariski
-topos over~$S$, where~$\Delta = \{ a\?\AA^1 \,|\, a^2 = 0 \}$. Perhaps use Martin
-Brandenburg's Lemma~5.12.1.
 \item synthetic topology?
-\item internal spectrum
 \item affine morphisms
-\item Kähler differentials
-\item (co-)tangent space
+\item modal operators for finer topologies
 \end{itemize}
 
 

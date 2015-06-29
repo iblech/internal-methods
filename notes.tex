@@ -1743,7 +1743,7 @@ module from the internal perspective, gives exactly that subsheaf. There is
 therefore no harm in using the same notation~``$\F_\tors$'' for the result of
 the internal construction.
 
-\begin{prop}Let~$X$ be an integral scheme. Let~$\F$ be an~$\O_X$-module. Let~$U
+\begin{prop}\label{prop:torsion-int-ext}Let~$X$ be an integral scheme. Let~$\F$ be an~$\O_X$-module. Let~$U
 = \Spec A \subseteq X$ be an affine open subset. Let~$s \in \Gamma(U,\F)$ be a local
 section. Then
 \[ s \in \Gamma(U,\F)_\tors \quad\text{if and only if}\quad
@@ -3001,8 +3001,8 @@ governed by three inference rules which are modeled on the three axioms on a
 modal operator. This formal box operator could then be instantiated by any
 concrete modal operator~$\Box : \Omega \to \Omega$.\end{rem}
 
-Soundness of the~$\Box$-translation is important for the following reason
-(among others). If~$\varphi$ and~$\varphi'$ are equivalent formulas, we are
+Soundness of the~$\Box$-translation is important for the following reason.
+If~$\varphi$ and~$\varphi'$ are equivalent formulas, we are
 accustomed to be able to freely substitute~$\varphi$ by~$\varphi'$ anywhere we
 want. Since a modal operator~$\Box$ is semantically defined as a map~$\Omega
 \to \Omega$, it is trivially justified that~$\Box\varphi$ and~$\Box\varphi'$
@@ -3717,7 +3717,7 @@ it is integrally closed in its total quotient ring. Recall also that a
 scheme~$X$ (or ringed space) is \emph{normal} if and only if all
 rings~$\O_{X,x}$ are normal.
 
-\begin{prop}A locally Noetherian scheme is normal if and only if the
+\begin{prop}\label{prop:normal-int-ext}A locally Noetherian scheme is normal if and only if the
 ring~$\O_X$ is normal from the internal perspective.\end{prop}
 \begin{proof}The condition of normality can be put into a form which is almost
 a geometric implication:
@@ -3894,10 +3894,10 @@ in the internal language of~$\Sh(X)$, \ie
 \Rightarrow s = 0. \]
 This modal operator has a simple scheme-theoretical description.
 
-\begin{prop}\label{lemma:scheme-theoretical-density}
+\begin{lemma}\label{lemma:scheme-theoretical-density}
 Let~$U$ be an open subset of a scheme~$X$. Then~$\Sh(X) \models
 \sdense U$ if and only if~$U$ is scheme-theoretically dense in~$X$.
-\end{prop}
+\end{lemma}
 \begin{proof}We have the following chain of equivalences.
 \begin{align*}
   &\ X \models \sdense U \\
@@ -4442,7 +4442,7 @@ covers~$X$ as well. For instance, the spectrum of a ring~$A$ is local if and onl
 if~$A$ is a local ring. Locality has the following characterization as a metaproperty
 of~$\Sh(X)$.
 
-\begin{prop}Let~$X$ be a topological space. Then~$X$ is local if and
+\begin{prop}\label{prop:local-meta}Let~$X$ be a topological space. Then~$X$ is local if and
 only if the internal language of~$\Sh(X)$ has the following metaproperty:
 For any set~$I$ and any family~$(\varphi_i)_{i \in I}$ of
 formulas over~$X$, it holds that
@@ -5198,7 +5198,8 @@ holds that~$x \in \F$ and on~$D(y)$ it holds that~$y \in \F$.
 \end{proof}
 
 The significance of the generic filter is given by the following proposition.
-\begin{prop}From the internal point of view of~$\Sh(\Spec A)$, \ldots
+\begin{prop}\label{prop:tilde-construction-internally}
+From the internal point of view of~$\Sh(\Spec A)$, \ldots
 \begin{enumerate}
 \item the structure
 sheaf~$\O_{\Spec A}$ is the localization of the constant sheaf~$\ul{A}$ away from the
@@ -5904,57 +5905,67 @@ Remark~\ref{rem:qcoh-in-constructive-mathematics}).
 \section{Dictionary between internal and external notions}
 
 {\small\renewcommand{\arraystretch}{1.3}
-\begin{longtable}{@{}p{5cm}@{\qquad}p{5cm}@{\qquad}p{3cm}@{}}
+\begin{longtable}{@{}p{4.4cm}@{\qquad}p{6.7cm}@{\qquad}p{1.5cm}@{}}
   \toprule
-  external & internal \\ \midrule
-  \textbf{sheaves of sets} \\
+  External & Internal & Reference \\ \midrule
+  \textbf{Sheaves of sets} \\
   sheaf of sets & set \\
-  $\alpha : \F \to \G$ epimorphism & $\alpha$ surjective & Example~\ref{ex:injective-surjective} \\
-  $\alpha : \F \to \G$ monomorphism & $\alpha$ injective & Example~\ref{ex:injective-surjective} \\
-  $\Int(X \setminus \supp\F)$ & truth value of ``$\F$ is a singleton'' & Remark~\ref{rem:support-sheaf-of-sets} \\
-  $f : X \to \NN$ upper semicontinuous & element of~$\widehat\NN$ & Lemma~\ref{lemma:upper-semicontinuous-functions} \\
-  $f : X \to \NN$ locally constant & element of~$\NN$ & discussion after Lemma~\ref{lemma:upper-semicontinuous-functions} \\\\
+  $\alpha : \F \to \G$ monomorphism & $\alpha$ injective & Ex.\@~\ref{ex:injective-surjective} \\
+  $\alpha : \F \to \G$ epimorphism & $\alpha$ surjective & Ex.\@~\ref{ex:injective-surjective} \\
+  $\Int(X \setminus \supp\F)$ & truth value of ``$\F$ is a singleton'' & Rem.\@~\ref{rem:support-sheaf-of-sets} \\
+  $f : X \to \NN$ upper semicont.\@ & element of~$\widehat\NN$ & Lemma~\ref{lemma:upper-semicontinuous-functions} \\
+  $f : X \to \NN$ locally constant & element of~$\NN$ & Lemma~\ref{lemma:upper-semicontinuous-functions} \\\\
 
-  \textbf{sheaves of rings} \\
-  sheaf of rings & ring & Proposition~\ref{prop:rings-internally} \\
-  local sheaf of rings & local ring & Proposition~\ref{prop:local-ring} \\
-  $\O_X$ is reduced & $\O_X$ is reduced & Proposition~\ref{prop:reduced-ring}; a field property holds: $\neg\text{invertible} \Rightarrow \text{zero}$ \\\\
+  \textbf{Sheaves of rings} \\
+  sheaf of rings & ring & Prop.\@~\ref{prop:rings-internally} \\
+  local sheaf of rings & local ring & Prop.\@~\ref{prop:local-ring} \\
+  $X$ is reduced & $\O_X$ is reduced (and $\neg\text{invertible} \Rightarrow \text{zero}$) & Prop.\@~\ref{prop:reduced-ring} \\
+  $\dim X \leq n$ & Krull dimension of~$\O_X$ is~$\leq n$ & Prop.\@~\ref{prop:dimension-scheme-ox} \\
+  $X$ is integral at all points & $\O_X$ is a integral domain & Prop.\@~\ref{prop:internal-integrality} \\
+  $X$ is normal & $\O_X$ is normal (assuming that~$X$ is locally Noetherian) & Prop.\@~\ref{prop:normal-int-ext} \\\\
 
-  \textbf{sheaves of modules} \\
+  \textbf{Sheaves of modules} \\
   sheaf of modules & module \\
-  $\F$ is finite locally free & $\F$ is finite free & Proposition~\ref{prop:locally-free} \\
-  $\F$ is of finite type & $\F$ is finitely generated & Proposition~\ref{prop:finite-type-and-co} \\
-  $\F$ is of finite presentation & $\F$ is finitely presented & Proposition~\ref{prop:finite-type-and-co} \\
-  $\F$ is coherent & $\F$ is coherent & Proposition~\ref{prop:finite-type-and-co} \\
-  $\F$ is quasicoherent & $\F[f^{-1}]$ is a sheaf wrt.\@~$(\speak{$f$ \inv} \Rightarrow \placeholder)$ for any~$f\?\O_X$ & Theorem~\ref{thm:qcoh-sheafchar} \\
-  $\F$ is flat & $\F$ is flat & Proposition~\ref{prop:flatness} \\
-  tensor product $\F \otimes \G$ & tensor product $\F \otimes \G$ & Proposition~\ref{prop:internal-tensor-product} \\
+  $\F$ is finite locally free & $\F$ is finite free & Prop.\@~\ref{prop:locally-free} \\
+  $\F$ is of finite type & $\F$ is finitely generated & Prop.\@~\ref{prop:finite-type-and-co} \\
+  $\F$ is of finite presentation & $\F$ is finitely presented & Prop.\@~\ref{prop:finite-type-and-co} \\
+  $\F$ is coherent & $\F$ is coherent & Prop.\@~\ref{prop:finite-type-and-co} \\
+  $\F$ is quasicoherent & $\F[f^{-1}]$ is a sheaf wrt.\@~$(\speak{$f$ \inv} \Rightarrow \placeholder)$ for~$f\?\O_X$ & Thm.\@~\ref{thm:qcoh-sheafchar} \\
+  $\F$ is flat & $\F$ is flat & Prop.\@~\ref{prop:flatness} \\
+  $\F$ is torsion & $\F$ is torsion & Prop.\@~\ref{prop:torsion-int-ext} \\
+  $M^\sim$ & $\ul{M}[\F^{-1}]$ (localization at generic filter) & Prop.\@~\ref{prop:tilde-construction-internally} \\
+  tensor product $\F \otimes \G$ & tensor product $\F \otimes \G$ & Prop.\@~\ref{prop:internal-tensor-product} \\
   dual~$\F^\vee = \HOM_{\O_X}(\F,\O_X)$ & dual $\F^\vee = \Hom_{\O_X}(\F,\O_X)$ \\
-  $\Int(X \setminus \supp\F)$ & truth value of~``$\F = 0$'' & Proposition~\ref{prop:characterization-support} \\
-  rank function of~$\F$ & minimal number of generators for~$\F$ & Proposition~\ref{prop:rank-function-internally} \\\\
+  $\Int(X \setminus \supp\F)$ & truth value of~``$\F = 0$'' & Prop.\@~\ref{prop:characterization-support} \\
+  rank function of~$\F$ & minimal number of generators for~$\F$ & Prop.\@~\ref{prop:rank-function-internally} \\\\
 
-  \textbf{subspaces} \\
-  sheaf supported on closed subset~$A$ & $\Box$-sheaf, where~$\Box = (\placeholder \vee A^c)$ & Lemma~\ref{lemma:essim-closed-immersion} \\
+  \multicolumn{3}{@{}l@{}}{\textbf{Subspaces} ($i : A \hookrightarrow X$ closed immersion, $j : U \hookrightarrow X$ open immersion)} \\
+  sheaf supported on~$A$ & $\Box$-sheaf, where~$\Box = (\placeholder \vee A^c)$ & Lemma~\ref{lemma:essim-closed-immersion} \\
   sheaf of the form~$j_*(\F)$ & $\Box$-sheaf, where~$\Box = (U \Rightarrow
-  \placeholder)$ & $j : U \hookrightarrow X$ open inclusion \\
+  \placeholder)$ & \\
   extension of~$\F$ by the empty set & $j_!(\F) = \{ x\?\F \,|\, U \}$ & Lemma~\ref{lemma:extension-by-empty-set} \\
   extension of~$\F$ by zero & $j_!(\F) = \{ x\?\F \,|\, (x = 0) \vee U \}$ & Lemma~\ref{lemma:extension-by-zero} \\
-  sheaf with empty/zero stalks on~$U^c$ & sheaf of the form~$j_!(\F)$ & $j : U
-  \hookrightarrow X$ \\
-  sections of~$\F$ are equal if they agree on dense open & $\F$ is $\neg\neg$-separated & Proposition~\ref{prop:negneg-sheaves} \\
-  sheaf of sections of~$\F$ defined on dense open subsets & $\F^{++}$ with respect to~$\Box = \neg\neg$ & Proposition~\ref{prop:negneg-sheaves}, assuming~$\F$ is~$\neg\neg$-separated \\
-  $V(\I)$ is a reduced scheme & $\I$ is a radical ideal & Lemma~\ref{lemma:closed-subspace-reduced} \\
+  sheaf with empty/zero stalks on~$U^c$ & sheaf of the form~$j_!(\F)$ \\
+  sections of~$\F$ are equal if they agree on dense open & $\F$ is $\neg\neg$-separated & Prop.\@~\ref{prop:negneg-sheaves} \\
+  sheaf of sections of~$\F$ defined on dense open subsets & $\F^{++}$ with respect to~$\Box = \neg\neg$ (assuming that~$\F$ is~$\neg\neg$-separated) & Prop.\@~\ref{prop:negneg-sheaves} \\
+  $U$ is dense & $\neg\neg U$ & Prop.\@~\ref{prop:modops-kripke} \\
+  $U$ is scheme-theoretically dense & $\sdense U$, \ie $\O_X$ is separated wrt.~$(U \Rightarrow \placeholder)$ & Lemma\@~\ref{lemma:scheme-theoretical-density} \\
+  $V(\I)$ is reduced & $\I$ is a radical ideal & Lemma~\ref{lemma:closed-subspace-reduced} \\
   $\O_{X_\mathrm{red}}$ & $\O_X/\sqrt{(0)}$ & Lemma~\ref{lemma:reduced-subspace} \\\\
 
-  \multicolumn{3}{@{}l@{}}{\textbf{rational functions and Cartier divisors}} \\
-  $\K_X$ & total quotient ring of~$\O_X$ & Proposition~\ref{prop:kx-internally} \\
-  Cartier divisor & element of~$\K_X^*/\O_X^*$ \\
-  effective Cartier divisor & $[s/1]$ with~$s\?\O_X$ regular & Definition~\ref{defn:effective-cartier-divisor} \\
-  line bundle~$\O_X(D)$ & $D^{-1} \O_X \subseteq \K_X$ & Definition~\ref{defn:line-bundle-of-divisor} \\
+  \multicolumn{3}{@{}l@{}}{\textbf{Rational functions and Cartier divisors}} \\
+  $\K_X$ & total quotient ring of~$\O_X$ & Prop.\@~\ref{prop:kx-internally} \\
+  Cartier divisor & element of~$\K_X^\times/\O_X^\times$ \\
+  effective Cartier divisor & $[s/1]$ with~$s\?\O_X$ regular & Def.\@~\ref{defn:effective-cartier-divisor} \\
+  line bundle~$\O_X(D)$ & $D^{-1} \O_X \subseteq \K_X$ & Def.\@~\ref{defn:line-bundle-of-divisor} \\\\
+
+  \multicolumn{3}{@{}l@{}}{\textbf{Topological properties}} \\
+  $X$ is quasicompact & ``$\Sh(X) \models$'' commutes with directed disjuctions & Prop.\@~\ref{prop:quasicompact-meta} \\
+  $X$ is local & ``$\Sh(X) \models$'' commutes with arbitrary disjuctions & Prop.\@~\ref{prop:local-meta} \\
+  $X$ is irreducible & if $\neg(\varphi \wedge \psi)$, then $\neg\varphi$ or~$\neg\psi$ & Prop.\@~\ref{prop:irreducibility-internally} \\
   \bottomrule
 \end{longtable}}
-
-\XXX{update table to contain all concepts discussed in these notes}
+% missing: relative spectrum
 
 
 \section{The inference rules of intuitionistic logic}

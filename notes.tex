@@ -5818,7 +5818,18 @@ associated to the affine line over~$S$, the~$S$-scheme~$\AA^1_S \defeq S
 \Gamma(T,\O_T). \]
 This object has an evident structure as a ring object in~$\Zar(S)$. In fact,
 from the internal point of view, it is a local ring and even a field in the
-sense that nonzero elements are invertible. This is without any assumptions on
+sense that nonzero elements are invertible.\footnote{The proof goes as follows.
+We want to verify that~$S \models \forall f\?\affl\_ \neg(f = 0) \Rightarrow
+\speak{$f$ \inv}$. According to the Kripke--Joyal semantics of~$\Zar(S)$, we
+thus have to show that for any~$S$-scheme~$T$ and any function~$f \in
+\Gamma(T,\O_T)$ it holds that~$T \models \neg(f = 0)$ implies~$T \models
+\speak{$f$ \inv}$. The antecedent means that for any~$T$-scheme~$T'$, if the
+pullback of~$f$ to~$T'$ vanishes, then~$T'$ is the empty scheme. Similar to the
+analogous statement of the little Zariski topos, the consequent means that~$f$
+is invertible in~$\Gamma(T,\O_T)$. The claim follows by considering the
+particular~$T$-scheme~$T' \defeq V(f)$. Since~$f$ vanishes on~$V(f)$, this
+subscheme is empty and therefore its complement~$D(f)$ is the whole of~$T$.}
+This is without any assumptions on
 the base scheme~$S$; in the case~$S = \Spec\ZZ$, this was first observed by
 Kock~\cite{kock:univ-proj-geometry}.
 
@@ -5839,7 +5850,7 @@ set-theoretical constructions internally in the big Zariski topos, like
 building products and coproducts, cutting out subsets and imposing equivalence
 relations, and considering sets of maps between given objects. Additionally,
 the internal universe of the big Zariski topos has a distinctive algebraic
-flavor, in that one can show that from the internal point of view, \emph{any
+flavor, in that one can show that from the internal point of view \emph{any
 map~$\affl \to \affl$ is given by a (unique) polynomial with coefficients
 in~$\affl$}. This is related to the fact that the value of the internal
 Hom~$[\affl,\affl]$ at an~$S$-scheme~$T$ is given
@@ -6253,7 +6264,6 @@ Constructible topology?
 
 Big Zariski topos:
 * A^1 local ring, field, but of unbounded Krull dimension
-* D(f)
-* V(f). Note that not equal to V(f^2), even though field.
-* A^1.
 * modal operator corresponding to étale topology, ...
+
+Sch/S or Aff/S

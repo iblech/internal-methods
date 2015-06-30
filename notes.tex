@@ -5921,11 +5921,13 @@ The Zariski topology is of course not the only interesting topology
 on~$\Sch/S$. For any finer topology~$\tau$, such as the étale, smooth, or fppf
 topology, the topos of sheaves on~$\Sch/S$ with respect to~$\tau$ is a subtopos
 of the big Zariski topos. Therefore there is a modal operator~$\Box_\tau$
-in~$\Zar(S)$ such that
+in~$\Zar(S)$ reflecting the topology~$\tau$. Explicitly, for an~$S$-scheme~$T$
+and a formula~$\varphi$ over~$T$, the meaning of
 \[ T \models \Box_\tau \varphi \]
-if and only if there is a~$\tau$-covering~$(T_i \to T)_i$ of the~$S$-scheme~$T$
-such that~$T_i \models \varphi$ for all~$i$. Intuitively, the formula
-``$\Box_\tau \varphi$'' means that~$\varphi$ holds~$\tau$-locally.
+is that there is a~$\tau$-covering~$(T_i \to T)_i$ of~$T$ such that~$T_i
+\models \varphi$ for all~$i$ (where parameters appearing in~$\varphi$ have to
+be pulled back along~$T_i \to T$). Succinctly, the formula ``$\Box_\tau
+\varphi$'' means that~$\varphi$ holds~$\tau$-locally.
 % Kummer sequence
 
 \begin{itemize}

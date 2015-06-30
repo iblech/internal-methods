@@ -5917,6 +5917,17 @@ quasicoherent~$\O_S$-algebra, the functor~$[\E,\affl]_\affl$ is precisely the
 functor of points of the~$S$-scheme~$\RelSpec{S}{\A}$.
 \end{itemize}
 
+The Zariski topology is of course not the only interesting topology
+on~$\Sch/S$. For any finer topology~$\tau$, such as the étale, smooth, or fppf
+topology, the topos of sheaves on~$\Sch/S$ with respect to~$\tau$ is a subtopos
+of the big Zariski topos. Therefore there is a modal operator~$\Box_\tau$
+in~$\Zar(S)$ such that
+\[ T \models \Box_\tau \varphi \]
+if and only if there is a~$\tau$-covering~$(T_i \to T)_i$ of the~$S$-scheme~$T$
+such that~$T_i \models \varphi$ for all~$i$. Intuitively, the formula
+``$\Box_\tau \varphi$'' means that~$\varphi$ holds~$\tau$-locally.
+% Kummer sequence
+
 \begin{itemize}
 \item basics: $\AA^1$ is a local ring and even a field, never reduced
 \item synthetic topology?
@@ -6264,6 +6275,5 @@ Constructible topology?
 
 Big Zariski topos:
 * A^1 local ring, field, but of unbounded Krull dimension
-* modal operator corresponding to étale topology, ...
 
 Sch/S or Aff/S

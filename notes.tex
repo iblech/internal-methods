@@ -5813,7 +5813,7 @@ two-element set.
 
 A particularly important object of~$\Zar(S)$ is the functor of points
 associated to the affine line over~$S$, the~$S$-scheme~$\AA^1_S \defeq S
-\times_{\Spec\ZZ} \ZZ[t]$. Its value on a~$S$-scheme~$T$ is given by
+\times_{\Spec\ZZ} \ZZ[t]$. Its value on an~$S$-scheme~$T$ is given by
 \[ \affl(T) = \Hom_S(T, \AA^1_S) \cong \Hom_{\Spec\ZZ}(T, \Spec\ZZ[t]) \cong
 \Gamma(T,\O_T). \]
 This object has an evident structure as a ring object in~$\Zar(S)$. In fact,
@@ -5848,7 +5848,7 @@ and ring-theoretical structure is taken care of by the machinery.
 As with the internal universe of any topos, we can perform the usual
 set-theoretical constructions internally in the big Zariski topos, like
 building products and coproducts, cutting out subsets and imposing equivalence
-relations, and considering sets of maps between given objects. Additionally,
+relations, and constructing sets of maps between given objects. Additionally,
 the internal universe of the big Zariski topos has a distinctive algebraic
 flavor, in that one can show that from the internal point of view \emph{any
 map~$\affl \to \affl$ is given by a (unique) polynomial with coefficients
@@ -5857,6 +5857,9 @@ Hom~$[\affl,\affl]$ at an~$S$-scheme~$T$ is given
 by~$\Gamma(\AA^1_T,\O_{\AA^1_T})$.\footnote{In synthetic differential geometry,
 there is a similar proposition: From the internal point of view, any map~$\RR
 \to \RR$ is smooth (in an appropriate sense).}
+
+With~$\affl$ at hand, we can perform many of the usual constructions of scheme
+theory internally.
 
 \begin{itemize}
 \item The functors associated to the standard group schemes~$\GG_\text{a}$, $\GG_\text{m}$,
@@ -5874,7 +5877,8 @@ ring-theoretical structure, is described by the astoundingly naive expression
 \[ \PP^n \defeq \{ (x_0,\ldots,x_n) \? (\affl)^{n+1} \,|\,
   x_0 \neq 0 \vee \cdots \vee x_n \neq 0 \}/{\sim}, \]
 where the equivalence relation is the usual rescaling relation from the
-internal point of view. This example was suggested to us by Zhen~Lin Low.
+internal point of view. This example was suggested by Zhen~Lin Low (private
+communication).
 \item More generally, for an~$S$-scheme~$X$, affine and projective~$n$-space
 over~$X$ are given by~$\ul{X} \times (\affl^1)^n$ and~$\ul{X} \times \PP^n$,
 respectively.
@@ -5924,11 +5928,26 @@ of the big Zariski topos. Therefore there is a modal operator~$\Box_\tau$
 in~$\Zar(S)$ reflecting the topology~$\tau$. Explicitly, for an~$S$-scheme~$T$
 and a formula~$\varphi$ over~$T$, the meaning of
 \[ T \models \Box_\tau \varphi \]
-is that there is a~$\tau$-covering~$(T_i \to T)_i$ of~$T$ such that~$T_i
+is that there exists a~$\tau$-covering~$(T_i \to T)_i$ of~$T$ such that~$T_i
 \models \varphi$ for all~$i$ (where parameters appearing in~$\varphi$ have to
 be pulled back along~$T_i \to T$). Succinctly, the formula ``$\Box_\tau
 \varphi$'' means that~$\varphi$ holds~$\tau$-locally.
-% Kummer sequence
+
+A basic example is provided by the Kummer sequence, that is the short sequence
+\[ 1 \lra \mu_n \lra \GG_\text{m} \stackrel{(\underline{\ })^n}{\lra} \GG_\text{m} \lra 1 \]
+of multiplicatively-written commutative group objects in~$\Zar(S)$. With the
+internal description of~$\mu_n$ and~$\GG_\text{m}$, there is a purely internal
+and straightforward proof that this sequence is exact at the first two terms.
+But except for trivial cases, the map~$\GG_\text{m}
+\stackrel{(\underline{\ })^n}{\lra} \GG_\text{m}$ will fail to be an epimorphism;
+internally speaking, the statement
+\[ \forall f\?(\affl)^\times\_ \phantom{\Box_\text{ét}(}\exists
+g\?(\affl)^\times\_ f = g^n\phantom{)} \]
+is false in general. However, if~$n$ is invertible in~$\Gamma(S,\O_S)$, the
+internal statement
+\[ \forall f\?(\affl)^\times\_ \Box_\text{ét}(\exists g\?(\affl)^\times\_ f = g^n) \]
+\emph{is} true.
+% Can we characterize \Box_ét internally? Check Wraith!
 
 \begin{itemize}
 \item basics: $\AA^1$ is a local ring and even a field, never reduced

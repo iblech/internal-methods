@@ -121,6 +121,7 @@
 \newcommand{\inv}{inv.\@}
 \newcommand{\notnot}{\emph{not not}\xspace}
 \newcommand{\affl}{\ensuremath{{\ul{\AA}^1_S}}\xspace}
+\newcommand{\afflx}{\ensuremath{{\ul{\AA}^1_X}}\xspace}
 \newcommand{\xra}{\xrightarrow}
 
 \newcommand{\XXX}[1]{\textbf{XXX: #1}}
@@ -160,6 +161,7 @@
 
   No prior knowledge about topos theory or formal logic is assumed.
 \end{abstract}
+% XXX: update
 
 \maketitle
 
@@ -299,6 +301,41 @@ generators~$x_1,\ldots,x_n\?\F$ from the internal point of view, and the
 condition can be reformulated as~$x_1 = 0 \wedge \cdots \wedge x_n = 0$; the
 metatheorem is applicable to this statement.
 
+All of these applications employ the \emph{little Zariski topos} of the base
+scheme~$X$, the topos of sheaves on the underlying topological space of~$X$.
+For treating \emph{schemes over~$X$} as opposed to ``local objects on~$X$''
+such as sheaves of rings and modules from an internal point of view, this topos
+is not particularly well-adapted. For such applications the \emph{big
+Zariski topos} has to be used. We discuss this topos and related toposes, such
+as the big étale topos, in Section~\ref{sect:big-zariski}. The key point is
+that they can be used to internalize Grothendieck's ``functor of points''
+approach to algebraic geometry. From the internal point of view of the big
+Zariski topos of a scheme~$X$, schemes over~$X$ look just like plain sets and
+morphisms between~$X$-schemes look like plain maps between those sets. Elements
+of those sets correspond to~$T$-points of such an~$X$-scheme, with the internal
+language machinery keeping track of the point's domain~$T$ of definition.
+
+Therefore basic constructions of relative scheme theory, like building the
+affine or projective space over a base scheme or associating to a quasicoherent
+sheaf of algebras its relative spectrum, can be described and reasoned about in
+a simple, element-based language. For instance, projective~$n$-space over~$X$
+is described by the internal expression
+\[ \PP^n \defeq \{ (x_0,\ldots,x_n) \? (\afflx)^{n+1} \,|\,
+  x_0 \neq 0 \vee \cdots \vee x_n \neq 0 \}/(\text{rescaling}) \]
+in the big Zariski topos of~$X$, with the scheme structure automatically taken
+care of. Also, the (not necessarily locally trivial) tangent bundle of
+an~$X$-scheme~$T$ can be thought of as the set of maps from the somewhat
+curious set~$\Delta \defeq \{ \varepsilon\?\afflx \,|\, \varepsilon^2 = 0 \}$
+to~$T$, thus formalizing the intuitive picture of tangent vectors as
+infinitesimal curves.
+
+Modal operators are important in the big topos setting as well. For instance,
+there is a modal operator~$\Box_\text{ét}$ in the big Zariski topos such that
+the internal statement~$\Box_\text{ét} \varphi$ roughly means that~$\varphi$
+holds on an étale covering and such that the translated
+formula~$\varphi^{\Box_\text{ét}}$ means that~$\varphi$ holds in the big étale
+topos.
+
 
 \subsection*{Limitations} The internal language is \emph{local}, in the sense
 that if~$X = \bigcup_i U_i$ is an open covering and an internal statement
@@ -406,7 +443,7 @@ scheme, our contribution is only indirectly related to her's.
 
 \XXX{mention and explain: Mulvey/Burden, Vickers, Awodey, Coquand, ...}
 
-\XXX{uses of the big Zariski topos, étale versions, further work, ...}
+\XXX{further work, ...}
 
 
 \subsection*{Notational convention} Occasionally, when quantifying, we use
@@ -5764,6 +5801,7 @@ previous proposition.
 
 
 \section{Outlook: the big Zariski topos}
+\label{sect:big-zariski}
 
 The preceding sections demonstrated that working in the internal universe of
 the little Zariski topos of a scheme~$S$, the topos of sheaves on~$S$, is

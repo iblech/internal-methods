@@ -5726,7 +5726,7 @@ which works for arbitrary~$\O_X$-algebras (instead of only quasicoherent
 ones). It coincides with the relative spectrum construction (and thus the
 externalization of the internal quasicoherent spectrum) on
 quasicoherent~$\O_X$-algebras. Furthermore, there is a general spectrum
-construction by Hakim~\cite{hakim:relative-schemes}, sending ringed toposes to
+construction by Hakim~\cite{hakim:relative-schemes} sending ringed toposes to
 locally ringed toposes. We hope to study its relationship with the internal
 spectrum construction in the future; it may turn out that they coincide.
 
@@ -5854,13 +5854,17 @@ set-theoretical constructions internally in the big Zariski topos, like
 building products and coproducts, cutting out subsets and imposing equivalence
 relations, and constructing sets of maps between given objects. Additionally,
 the internal universe of the big Zariski topos has a distinctive algebraic
-flavor, in that one can show that from the internal point of view \emph{any
-map~$\affl \to \affl$ is given by a (unique) polynomial with coefficients
-in~$\affl$}. This is related to the fact that the value of the internal
+flavor, in that the curious statement
+\begin{quote}\emph{Any} map~$\affl \to \affl$ is a polynomial function.\end{quote}
+holds from the internal point of view.
+Furthermore, even if the base scheme is the spectrum of a finite field, the
+polynomial coefficients are unique.
+These statements are related to the fact that the value of the internal
 Hom~$[\affl,\affl]$ at an~$S$-scheme~$T$ is given
-by~$\Gamma(\AA^1_T,\O_{\AA^1_T})$.\footnote{In synthetic differential geometry,
-there is a similar proposition: From the internal point of view, any map~$\RR
-\to \RR$ is smooth (in an appropriate sense).}
+by~$\Gamma(\AA^1_T,\O_{\AA^1_T})$ and not by some larger ring consisting of,
+say, all set-theoretical maps~$T \to T$. There is a similar phenomenon in
+synthetic differential geometry, where any map~$\RR \to \RR$ is smooth (in an
+appropriate sense).
 
 With~$\affl$ at hand, we can perform many of the usual constructions of scheme
 theory internally.
@@ -5912,7 +5916,9 @@ scheme~$\RelSpec{X}{\operatorname{Sym}(\Omega^1_{X/S})}$, as can be seen by
 chasing the definitions~\cite[Lemma~5.12.1]{brandenburg:tensor-foundations}.
 Intuitively, a map~$f : \Delta \to \ul{X}$ from the internal point of view is
 given by slightly more data than merely the point~$f(0)$; one also has to
-specify first-order information. This description of the (not necessarily
+specify first-order information.
+
+This description of the (not necessarily
 locally trivial) tangent bundle fits nicely with the intuition of tangent
 vectors as infinitesimal curves, and in fact is precisely the definition of the
 tangent bundle in synthetic differential geometry~\cite[Def.~7.1]{kock:sdg}.

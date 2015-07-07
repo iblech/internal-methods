@@ -40,6 +40,7 @@
 
 \theoremstyle{remark}
 \newtheorem{rem}[defn]{Remark}
+\newtheorem{question}[defn]{Question}
 
 \newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\FF}{\mathbb{F}}
@@ -5940,16 +5941,36 @@ A basic example is provided by the Kummer sequence, that is the short sequence
 of multiplicatively-written commutative group objects in~$\Zar(S)$. With the
 internal description of~$\mu_n$ and~$\GG_\text{m}$, there is a purely internal
 and straightforward proof that this sequence is exact at the first two terms.
-But except for trivial cases, the map~$\GG_\text{m}
-\stackrel{(\underline{\ })^n}{\lra} \GG_\text{m}$ will fail to be an epimorphism;
+But except for trivial cases, the~$n$-th power map~$\GG_\text{m} \to
+\GG_\text{m}$ will fail to be an epimorphism;
 internally speaking, the statement
 \[ \forall f\?(\affl)^\times\_ \phantom{\Box_\text{ét}(}\exists
 g\?(\affl)^\times\_ f = g^n\phantom{)} \]
 is false in general. However, if~$n$ is invertible in~$\Gamma(S,\O_S)$, the
 internal statement
 \[ \forall f\?(\affl)^\times\_ \Box_\text{ét}(\exists g\?(\affl)^\times\_ f = g^n) \]
-\emph{is} true.
-% Can we characterize \Box_ét internally? Check Wraith!
+\emph{is} true. In fact, the more general statement
+\begin{multline*}
+  \forall p\?\affl[x]\_ \speak{$p$ is monic, of positive degree, and separable}
+  \Longrightarrow \\
+  \Box_\text{ét}(\exists x\?\affl\_ p(x) = 0 \wedge \speak{$p'(x)$ \inv})
+\end{multline*}
+is true from the internal point of view, where a polynomial~$p$ is called
+\emph{separable} if and only if there exists a Bézout representation~$ap + bp'
+= 1$. After simplifying, the intepretation of that statement with the
+Kripke--Joyal semantics is that for any~$S$-scheme~$T$ and any monic separable
+polynomial~$p \in \Gamma(T,\O_T)[x]$ of positive degree there exists an étale
+covering~$(T_i \to T)_i$ of~$T$ such that the pullbacks of~$p$ to each of
+the~$T_i$ possess a simple zero. The required covering is given
+by the canonical surjective étale map~$\RelSpec{T}{\O_T[x]/(p)} \to T$.
+
+\begin{question}Is there an internal characterization of the modal
+operator~$\Box_\text{ét}$? For instance, is~$\Box_\text{ét}$ the smallest modal
+operator~$\Box$ such that~$\affl$ is a~$\Box$-sheaf and such that monic
+separable polynomials of positive degree~$\Box$-possess a simple root? An
+article of Wraith~\cite{wraith:generic-galois-theory} is related to this
+question, but falls just short of answering it.
+\end{question}
 
 \begin{itemize}
 \item basics: $\AA^1$ is a local ring and even a field, never reduced

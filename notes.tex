@@ -121,6 +121,7 @@
 \newcommand{\inv}{inv.\@}
 \newcommand{\notnot}{\emph{not not}\xspace}
 \newcommand{\affl}{\ensuremath{{\ul{\AA}^1_S}}\xspace}
+\newcommand{\xra}{\xrightarrow}
 
 \newcommand{\XXX}[1]{\textbf{XXX: #1}}
 
@@ -5918,10 +5919,32 @@ tangent bundle in synthetic differential geometry~\cite[Def.~7.1]{kock:sdg}.
 \item Let~$\E$ be an~$\affl$-algebra. Then~$[\E,\affl]_\affl$, \ie internally the set
 of~$\affl$-algebra homomorphisms from~$\E$ to~$\affl$, can be pictured as ``the
 relative spectrum of~$\E$'', even though of course this might fail to be
-locally affine without further assumptions. If the functor~$\E$ is given
-by~$\E(T \xrightarrow{\mu} S) \defeq \Gamma(T, \mu^*\A)$, where~$\A$ is a
+locally affine without further assumptions. For
+instance, there are isomorphisms~$[\affl[x_1,\ldots,x_n],\affl]_\affl \to
+(\affl)^n$ and~$[\affl \times \affl,\affl]_\affl \to \ul{S \amalg S}$.
+
+If the functor~$\E$ is given
+by~$\E(T \xra{\mu} S) \defeq \Gamma(T, \mu^*\A)$, where~$\A$ is a
 quasicoherent~$\O_S$-algebra, the functor~$[\E,\affl]_\affl$ is precisely the
 functor of points of the~$S$-scheme~$\RelSpec{S}{\A}$.
+
+\item Conversely, if~$X \xra{\mu} S$ is an~$S$-scheme, the internal
+expression~$[\ul{X},\affl]^\flat$ denotes the object of~$\Zar(S)$ induced by the
+sheaf~$\mu_*\O_X$, \ie the functor given by~$(T \xra{\tau} S) \mapsto \Gamma(T,
+\tau^* \mu_*\O_X)$. For an~$\affl$-module~$\E$ in~$\Zar(S)$ we mean by~$\E^\flat$
+the~$\affl$-module obtained by restricting~$\E$ to~$\Sh(S)$ and then pulling back
+to~$\Zar(S)$. Explicitly,~$\E^\flat(T \xra{\tau} S) = \Gamma(T, \tau^*
+(\E|_{\Sh(S)}))$. (The symbol~``$\flat$'' is used because the operation~$\E
+\mapsto \E^\flat$ is related to the \emph{flat modality} associated to the
+local geometric morphism~$\Zar(S) \to \Sh(S)$ of toposes.)
+
+Let~$\mu : X \to S$ be a quasicompact and quasiseparated morphism. It is well-known
+that this morphism is affine if and only if the canonical morphism~$X \to
+\RelSpec{S}(\mu_*\O_X)$ is an isomorphism. We can reformulate this condition in
+the internal language of~$\Zar(S)$ as saying that the canonical map
+\[ \ul{X} \lra [ [\ul{X},\affl]^\flat, \affl ]_\affl,\ x \longmapsto
+\placeholder(x) \]
+into the ``double dual'' is bijective.
 \end{itemize}
 
 The Zariski topology is of course not the only interesting topology

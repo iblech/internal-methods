@@ -433,7 +433,15 @@ reason about the dimension of schemes, since the topological dimension of a
 scheme~$X$ coincides with the Krull dimension of the structure sheaf~$\O_X$
 (regarded as an ordinary ring from the internal perspective of~$\Sh(X)$,
 Section~\ref{sect:krull-dimension}).
-% XXX: Also elimination of prime ideals.
+
+We obtained a second contribution to constructive mathematics as a byproduct of
+deducing transfer principles which relate a module over a ring~$A$ with its
+induced quasicoherent sheaf on~$\Spec A$: Using the internal language of the
+little Zariski topos we can algorithmically turn certain non-constructive
+arguments concerning prime ideals into constructive ones. We discuss this in
+Section~\ref{sect:eliminating-prime-ideals}; it is related to the
+\emph{dynamical methods in algebra} explored by Coquand, Coste, Lombardi, Roy,
+and others~\cite{clr:dynamicalmethod,cl:logical}.
 
 Caramello uses topos theory to build bridges between different mathematical
 subjects, in a certain precise sense~\cite{caramello:1,caramello:2}. She
@@ -5425,6 +5433,7 @@ but this disjunction is no longer directed.
 
 
 \subsection{An application to constructive mathematics}
+\label{sect:eliminating-prime-ideals}
 
 The generic filter has a practical application in constructive mathematics.
 Recall that intuitionistically prime and maximal ideals don't work very well,
@@ -5433,7 +5442,9 @@ in dealing with them. This is unfortunate, since prime and maximal ideals are
 very useful in some situations. For example:
 \begin{itemize}
 \item To verify that a ring element is nilpotent, it suffices to verify that it
-is an element of every prime ideal. This might be calculationally simpler.
+is an element of every prime ideal. For instance, this is calculationally simpler
+when proving that the coefficients of a nilpotent polynomial are
+themselves nilpotent.
 \item To verify that there is an relation of the form~$1 = p_1f_1 + \cdots +
 p_mf_m$ among polynomials~$f_1,\ldots,f_m \in K[X_1,\ldots,X_n]$ where~$K$ is
 an algebraically closed field, it suffices to show that the~$f_i$ don't have a
@@ -5444,7 +5455,7 @@ One could of course simply switch to classical logic in this case. However this
 might not be desirable, as a constructive proof would contain more information:
 For instance, if we have classically proven that an element~$x$ is an element
 of every prime ideal, then we know that some power~$x^n$ is zero. But from such
-a proof we can't extract any upper bound on~$n$.
+a proof we can't directly read off any upper bound on~$n$.
 
 There is a way to combine some of the powerful tools of classical ring theory
 with the advantages that constructive reasoning provides. Namely we can devise

@@ -83,6 +83,7 @@
 \newcommand{\Sh}{\mathrm{Sh}}
 \newcommand{\PSh}{\mathrm{PSh}}
 \newcommand{\Zar}{\mathrm{Zar}}
+\newcommand{\Et}{\mathrm{\acute{E}t}}
 \newcommand{\Sch}{\mathrm{Sch}}
 \newcommand{\Mod}{\mathrm{Mod}}
 \newcommand{\Alg}{\mathrm{Alg}}
@@ -122,6 +123,7 @@
 \newcommand{\notnot}{\emph{not not}\xspace}
 \newcommand{\affl}{\ensuremath{{\ul{\AA}^1_S}}\xspace}
 \newcommand{\afflx}{\ensuremath{{\ul{\AA}^1_X}}\xspace}
+\newcommand{\affla}{\ensuremath{{\ul{\AA}^1_{\Spec A}}}\xspace}
 \newcommand{\xra}{\xrightarrow}
 
 \newcommand{\XXX}[1]{\textbf{XXX: #1}}
@@ -3707,7 +3709,7 @@ numerator~$s$ belongs to~$\S$, \ie is an regular element of~$\O_X$.\end{rem}
 
 
 \subsection{Regularity of local functions}
-It is well known that on a locally Noetherian scheme, regularity spreads from
+It is well-known that on a locally Noetherian scheme, regularity spreads from
 stalks to neighbourhoods, \ie a section of~$\O_X$ is regular
 in~$\O_{X,x}$ if and only if it is regular on some open neighbourhood of~$x$.
 This fact has a simple proof in the internal language.
@@ -5914,8 +5916,11 @@ say, all set-theoretical maps~$T \to T$. There is a similar phenomenon in
 synthetic differential geometry, where any map~$\RR \to \RR$ is smooth (in an
 appropriate sense).
 
-With~$\affl$ at hand, we can perform many of the usual constructions of scheme
-theory internally.
+
+\subsection{Internal descriptions of basic constructions of relative scheme theory}
+
+With~$\affl$ at hand, we can perform many of the usual constructions of
+(relative) scheme theory internally.
 
 \begin{itemize}
 \item The functors associated to the standard group schemes~$\GG_\text{a}$, $\GG_\text{m}$,
@@ -6001,9 +6006,12 @@ the internal language of~$\Zar(S)$ as saying that the canonical map
 into the ``double dual'' is bijective.
 \end{itemize}
 
+
+\subsection{Beyond the Zariski topology}
+
 The Zariski topology is of course not the only interesting topology
 on~$\Sch/S$. For any finer topology~$\tau$, such as the étale, smooth, or fppf
-topology, the topos of sheaves on~$\Sch/S$ with respect to~$\tau$ is a subtopos
+topology, the big~$\tau$-topos of~$S$, that is the topos of sheaves on~$\Sch/S$ with respect to~$\tau$, is a subtopos
 of the big Zariski topos. Therefore there is a modal operator~$\Box_\tau$
 in~$\Zar(S)$ reflecting the topology~$\tau$. Explicitly, for an~$S$-scheme~$T$
 and a formula~$\varphi$ over~$T$, the meaning of
@@ -6011,7 +6019,11 @@ and a formula~$\varphi$ over~$T$, the meaning of
 is that there exists a~$\tau$-covering~$(T_i \to T)_i$ of~$T$ such that~$T_i
 \models \varphi$ for all~$i$ (where parameters appearing in~$\varphi$ have to
 be pulled back along~$T_i \to T$). Succinctly, the formula ``$\Box_\tau
-\varphi$'' means that~$\varphi$ holds~$\tau$-locally.
+\varphi$'' means that~$\varphi$ holds~$\tau$-locally. Generalizing
+Theorem~\ref{thm:box-translation-semantically} from sheaves on locales to
+sheaves on arbitrary Grothendieck sites, we also have
+\[ \Zar(S) \models \varphi^{\Box_\tau} \qquad\text{iff}\qquad
+  \Sh((\Sch/S)_\tau) \models \varphi. \]
 
 A basic example is provided by the Kummer sequence, that is the short sequence
 \[ 1 \lra \mu_n \lra \GG_\text{m} \stackrel{(\underline{\ })^n}{\lra} \GG_\text{m} \lra 1 \]
@@ -6041,19 +6053,83 @@ covering~$(T_i \to T)_i$ of~$T$ such that the pullbacks of~$p$ to each of
 the~$T_i$ possess a simple zero. The required covering is given
 by the canonical surjective étale map~$\RelSpec{T}{\O_T[x]/(p)} \to T$.
 
-\begin{question}Is there an internal characterization of the modal
-operator~$\Box_\text{ét}$? For instance, is~$\Box_\text{ét}$ the smallest modal
-operator~$\Box$ such that~$\affl$ is a~$\Box$-sheaf and such that monic
-separable polynomials of positive degree~$\Box$-possess a simple root? An
-article of Wraith~\cite{wraith:generic-galois-theory} is related to this
-question, but falls just short of answering it.
-\end{question}
+The following theorem shows that the modal operator~$\Box_\text{ét}$
+corresponding to the étale topology admits a purely internal characterization
+in~$\Zar(S)$, which furthermore resonates well with the intuition about the
+étale topology. We are grateful to Felix Geißler for contributing a key step of
+the argument.
+
+\begin{thm}Let~$S$ be a scheme. The modal operator~$\Box_\text{ét}$
+in~$\Zar(S)$ corresponding to the étale topology is the smallest
+operator~$\Box$ such that the~$\Box$-translation of the statement~``$\affl$ is
+separably closed'' holds.\end{thm}
+\begin{proof}For the proof we require some familiarity with the concept of
+classifying toposes. A ring is \emph{separably closed}~$A$ if and only if
+\begin{multline*}
+  \forall p\?A[x]\_ \speak{$p$ is monic, of positive degree, and unramifiable}
+  \Longrightarrow \\
+  \exists x\?A\_ p(x) = 0 \wedge \speak{$p'(x)$ \inv}.
+\end{multline*}
+We call a polynomial~$p$ over a ring~$A$ \emph{unramifiable} if and
+only if it admits at least one simple root in every algebraically closed field
+over~$A$. Since quantifying over algebraically closed fields raises red flags
+from an intuitionistic point of view, just as quantifying over maximal ideals
+does, this condition has to be formulated in a sensible way. One possibility is
+to use the \emph{hyperdiscriminants} of~$p$, \ie the elementary symmetric
+polynomials in the values of~$p'$ at the roots of~$p$, resulting in a simple
+existential statement involving only the coefficients of~$p$; in particular,
+the condition for a polynomial to be unramifiable is a geometric formula.
+See~\cite[p.~751]{wraith:generic-galois-theory} for the precise formulation.
+
+In more detail, the claim is that firstly~$\Box_\text{ét}$ is a modal operator
+such that the displayed formula holds and that secondly, if~$\Box$ is any modal
+operator verifying the formula, internally it holds that~$\Box_\text{ét}\varphi
+\Rightarrow \Box\varphi$ for any truth value~$\varphi\?\Omega$.
+
+To verify the first statement, note that the displayed formula is a geometric
+implication and that the big étale topos~$\Et(S)$ has \emph{enough points}.
+Therefore it suffices to show that for any~$S$-scheme~$T$ and any geometric
+point~$\bar t$ of~$T$, the stalk~$\O_{T,\bar t}$ is separably closed. It is
+well-known that this is true.
+
+For the second statement we may assume without loss of generality that~$S =
+\Spec A$ is affine. It is well-known that, for any cocomplete topos~$\E$,
+geometric morphisms~$\E \to \Zar(\Spec A)$ are in canonical one-to-one correspondence
+with local algebras over~$\ul{A}$ in~$\E$ (where~$\ul{A}$ denotes the pullback
+of~$A$ along the unique geometric morphism~$\E \to \Set$) and that geometric
+morphisms~$\E \to \Et(\Spec A)$ are in canonical one-to-one correspondence
+with algebras over~$\ul{A}$ which are local and separably closed from the
+internal point of view of~$\E$;
+see~\cite[Section~VIII.6]{moerdijk-maclane:sheaves-logic}
+and~\cite{anel:factorization-systems}.
+
+Therefore a geometric morphism~$\E \to \Zar(\Spec A)$ factors over the
+geometric embedding~$\Et(\Spec A) \hookrightarrow \Zar(\Spec A)$ if and only if
+the pullback of~$\affla$ along~$\E \to \Zar(\Spec A)$ is separably closed.
+
+Let~$\Box$ be a modal operator in~$\Zar(\Spec A)$ such that the~$\Box$-translation
+of~``$\affla$ is separably closed'' holds. Then the pullback of~$\affla$
+along~$\Zar(\Spec A)_\Box \hookrightarrow \Zar(\Spec A)$ is separably closed
+and therefore this geometric embedding factors over~$\Et(\Spec A)
+\hookrightarrow \Zar(\Spec A)$. This shows that any~$\Box$-sheaf is also
+a~$\Box_\text{ét}$-sheaf.
+
+The claim that~$\Box_\text{ét}\varphi \Rightarrow \Box\varphi$ for any truth
+value~$\varphi\?\Omega$ then follows by combining the following two basic
+observations of the theory of modal operators, valid for any modal
+operator~$\Box$:
+\begin{enumerate}
+\item $\Box\varphi \Longleftrightarrow
+  \forall \psi\?\Omega\_ ((\Box\psi\Rightarrow\psi) \wedge
+  (\varphi\Rightarrow\psi)) \Rightarrow \psi$.
+\item $(\Box\psi \Rightarrow \psi) \Longleftrightarrow
+  \speak{$\{x \in 1 \,|\, \psi\}$ is a~$\Box$-sheaf}$. \qedhere
+\end{enumerate}
+\end{proof}
 
 \begin{itemize}
 \item basics: $\AA^1$ is a local ring and even a field, never reduced
 \item synthetic topology?
-\item affine morphisms
-\item modal operators for finer topologies
 \end{itemize}
 
 

@@ -142,7 +142,7 @@
 
 \begin{abstract}
   There are several important toposes associated to a scheme, for instance the
-  petit and gros Zariski toposes. These support an internal mathematical language
+  little and big Zariski toposes. These support an internal mathematical language
   which closely resembles the usual formal language of mathematics, but is ``local
   on the base scheme'':
   For example, from the internal perspective, the structure sheaf looks like an
@@ -5144,7 +5144,7 @@ similar to the proof of Lemma~\ref{lemma:pushforward-finite-type}
 \section{Transfer principles}
 
 Let~$M$ be an~$A$-module. A natural question is how properties of~$M$
-relate to properties of the induced quasicoherent sheaf~$M^\sim$ of modules
+relate to properties of the induced quasicoherent sheaf~$M^\sim$
 on~$\Spec A$. For instance it is well-known that
 \begin{itemize}
 \item $M$ is finitely generated iff~$M^\sim$ is of finite type,
@@ -5174,6 +5174,7 @@ be a topological space and let~$U \subseteq X$ be an open subset. Then
 Note that we are abusing notation on the left hand side: The parameters
 of~$\varphi$, which are sets and elements, must be read as the induced constant
 sheaves and constant functions (sections of that sheaves). Possible
+% XXX: "auftretend"
 unbounded quantifiers have to be read as ranging only over locally constant
 sheaves, not all sheaves.
 \begin{proof}By induction on the structure of~$\varphi$. By way of example, we
@@ -5183,7 +5184,7 @@ constant functions~$U \to M$ with value~$a$ respectively~$b$ coincide. This is
 equivalent to saying that~$a$ and~$b$ coincide if~$U$ is inhabited.
 \end{proof}
 
-This lemma in particular implies that constant sheaves enjoy several
+The lemma in particular implies that constant sheaves enjoy several
 classical properties from the internal point of view, even though the internal
 language only supports intuitionistic reasoning in general. For instance, for a
 constant sheaf~$\ul{M}$ it holds that
@@ -5241,7 +5242,7 @@ being the map which sends an element~$x \not\in \ppp$ to the germ of the
 constant function with value~$x$ (defined on~$D(x)$).
 
 Regarding the third statement we only verify the axiom regarding sums, the
-other axioms being easier. Interpreting this axiom with the Kripke--Joyal
+other verifications being easier. Interpreting this axiom with the Kripke--Joyal
 semantics and restricting without loss of generality to open subsets where
 given locally constant functions are constant, let elements~$x,y \in A$ be
 given such that~$D(f) \models x+y \in \F$. By the first statement~$f \in
@@ -5289,11 +5290,11 @@ following abstract algebraic motivation for schemes: Does the ring~$A$ admit a
 \emph{universal localization}, \ie a homomorphism~$A \to A'$ into a local ring
 such that every homomorphism~$A \to B$ into a local ring factors via a local
 map over~$A \to A'$? Intuitively speaking, can we localize a ring at all prime
-ideals at once, or equivalently away from all filters? The answer is \emph{no}
-in general,\footnote{Assume that the universal localization exists. Then any
+ideals at once, or equivalently away from all filters at once? The answer is \emph{no}
+in general,\footnote{Assume that the universal localization of a ring~$A$ exists. Then any
 two prime ideals~$\ppp$ and~$\qqq$ of~$A$ are equal: Let~$s \not\in \ppp$.
 Since~$s$ is invertible in the local ring~$A_\ppp$ and the map~$A' \to A_\ppp$
-is local, it is also invertible in~$A'$. Therefore the image of~$s$ in~$A_\qqq$ is
+induced by~$A \to A_\ppp$ is local, it is also invertible in~$A'$. Therefore the image of~$s$ in~$A_\qqq$ is
 invertible as well. Thus~$s \not\in \qqq$.} but always \emph{yes} if we are
 willing to change the topos in which we look for a solution: The universal
 localization of~$A$ is given by the ring~$\O_{\Spec A}$ in the topos~$\Sh(\Spec
@@ -5412,7 +5413,7 @@ that
 over~$\ul{A}[\F^{-1}]$}. \]
 We claim that these~$x_i$ also span~$M$ as an~$A$-module. So let~$x \in M$ be
 arbitrary. By elementary linear algebra we can deduce that
-\[ \Sh(\Spec A) \models \exists s\?\F\_ \exists a_1,\ldots,a_n\?\ul{A}\_
+\[ \Sh(\Spec A) \models \exists s\in\F\_ \exists a_1,\ldots,a_n\?\ul{A}\_
   sx = \sum_i a_i x_i. \]
 Therefore the ideal internally defined by
 \[ \I \defeq \{ s\?\ul{A} \,|\, \exists a_1,\ldots,a_n\?\ul{A}\_
@@ -5471,12 +5472,12 @@ algebra}~\cite{clr:dynamicalmethod,cl:logical}. Here we show how one can use
 the generic filter, as reified by a sheaf in the little Zariski topos, to
 achieve similar effects.
 
-\begin{prop}Let~$M$ and~$N$ be~$A$-modules. Let~$\alpha : M \to N$ be a ring
-homomorphism. The interpretations of the statements in the second column of
+\begin{prop}Let~$M$ and~$N$ be~$A$-modules. Let~$\alpha : M \to N$ be a linear
+map. The interpretations of the statements in the second column of
 Table~\ref{table:generic-filter-statements} in the internal language
 of~$\Sh(\Spec A)$ are intuitionistically equivalent to the statements given in
 the third column.\end{prop}
-\begin{proof}To demonstrate the technique we verify the second and last claim.
+\begin{proof}To demonstrate the technique we verify the second and the last claim.
 To make the following proofs constructive we would have to define~$\Spec A$
 and its sheaf topos in a constructive fashion, not using prime ideals. This can
 be done, using the frame of radical ideals in~$A$, but we won't discuss details
@@ -5633,7 +5634,7 @@ corresponds to the open subset~$\bigcup_{h \in \aaa} D(h)$.
 
 Thus, in an intuitionistic context, we will construct the spectrum of a ring~$A$
 only as a locale, not as a topological space; we will use the lattice of
-radical ideals as the lattice opens. This construction has the expected
+radical ideals as the lattice of opens. This construction has the expected
 universal property, namely that it is adjoint to the global sections functor:
 \[ \Hom_{\LRL}(X, \Spec A) \cong \Hom_{\Ring}(A, \Gamma(X,\O_X)). \]
 Here, ``$\LRL$'' refers to the category of \emph{locally ringed locales}, \ie
@@ -5964,8 +5965,7 @@ vanishing scheme of~$\varepsilon^2$ in~$S \times_{\Spec \ZZ} \Spec
 as~$S$, but~$\O_S[\varepsilon]/(\varepsilon^2)$ instead of~$\O_S$ as structure
 sheaf.
 \item For an~$S$-scheme~$X$, the internal Hom~$[\Delta,\ul{X}]$ describes the
-``tangent bundle'' of~$X$, \ie the
-scheme~$\RelSpec{X}{\operatorname{Sym}(\Omega^1_{X/S})}$, as can be seen by
+``tangent bundle'' of~$X$, \ie the~$S$-scheme~$\RelSpec{X}{\operatorname{Sym}(\Omega^1_{X/S})} \to X \to S$, as can be seen by
 chasing the definitions~\cite[Lemma~5.12.1]{brandenburg:tensor-foundations}.
 Intuitively, a map~$f : \Delta \to \ul{X}$ from the internal point of view is
 given by slightly more data than merely the point~$f(0)$; one also has to
@@ -6021,11 +6021,11 @@ is that there exists a~$\tau$-covering~$(T_i \to T)_i$ of~$T$ such that~$T_i
 be pulled back along~$T_i \to T$). Succinctly, the formula ``$\Box_\tau
 \varphi$'' means that~$\varphi$ holds~$\tau$-locally. Generalizing
 Theorem~\ref{thm:box-translation-semantically} from sheaves on locales to
-sheaves on arbitrary Grothendieck sites, we also have
+sheaves on arbitrary Grothendieck sites we also have
 \[ \Zar(S) \models \varphi^{\Box_\tau} \qquad\text{iff}\qquad
   \Sh((\Sch/S)_\tau) \models \varphi. \]
 
-A basic example is provided by the Kummer sequence, that is the short sequence
+A basic illustration of these modal operatos is provided by the Kummer sequence, that is the short sequence
 \[ 1 \lra \mu_n \lra \GG_\text{m} \stackrel{(\underline{\ })^n}{\lra} \GG_\text{m} \lra 1 \]
 of multiplicatively-written commutative group objects in~$\Zar(S)$. With the
 internal description of~$\mu_n$ and~$\GG_\text{m}$, there is a purely internal
@@ -6056,15 +6056,14 @@ by the canonical surjective étale map~$\RelSpec{T}{\O_T[x]/(p)} \to T$.
 The following theorem shows that the modal operator~$\Box_\text{ét}$
 corresponding to the étale topology admits a purely internal characterization
 in~$\Zar(S)$, which furthermore resonates well with the intuition about the
-étale topology. We are grateful to Felix Geißler for contributing a key step of
-the argument.
+étale topology.
 
 \begin{thm}Let~$S$ be a scheme. The modal operator~$\Box_\text{ét}$
 in~$\Zar(S)$ corresponding to the étale topology is the smallest
 operator~$\Box$ such that the~$\Box$-translation of the statement~``$\affl$ is
 separably closed'' holds.\end{thm}
-\begin{proof}For the proof we require some familiarity with the concept of
-classifying toposes. A ring is \emph{separably closed}~$A$ if and only if
+
+Here, a ring is \emph{separably closed}~$A$ if and only if
 \begin{multline*}
   \forall p\?A[x]\_ \speak{$p$ is monic, of positive degree, and unramifiable}
   \Longrightarrow \\
@@ -6085,6 +6084,10 @@ In more detail, the claim is that firstly~$\Box_\text{ét}$ is a modal operator
 such that the displayed formula holds and that secondly, if~$\Box$ is any modal
 operator verifying the formula, internally it holds that~$\Box_\text{ét}\varphi
 \Rightarrow \Box\varphi$ for any truth value~$\varphi\?\Omega$.
+
+\begin{proof}For the proof we require some familiarity with the concept of
+classifying toposes. We are grateful to Felix Geißler for contributing a key step of
+the argument.
 
 To verify the first statement, note that the displayed formula is a geometric
 implication and that the big étale topos~$\Et(S)$ has \emph{enough points}.
@@ -6225,8 +6228,8 @@ Since~$X \models \speak{$f(0)$ is inhabited}$, there exists an open covering~$X
 we may assume that the open sets~$U_i$ are standard open sets~$D(f_i)$ and that
 the covering is finite. Since the sheaves~$\I_i$ are quasicoherent (being of finite type), they
 correspond to ideals~$J_i \subseteq A[f_i^{-1}]$. Note for future reference
-that~$\I_i|_{D(g)}$ corresponds to the extension of~$J_i$ in the further
-localized ring~$A[g^{-1}]$, if~$D(g) \subseteq D(f_i)$.
+that for~$D(g) \subseteq D(f_i)$, the restricted ideal~$\I_i|_{D(g)}$ corresponds to the extension of~$J_i$ in the further
+localized ring~$A[g^{-1}]$.
 
 For each~$i$,~$D(f_i) \models \exists \aaa \in f(1)\_ \I_i \subseteq \aaa$.
 Thus there exists an open covering~$D(f_i) = \bigcup_j D(g_{ij})$ and finite
@@ -6249,9 +6252,9 @@ For this number~$n$, the internal statement~$X \models \exists \aaa \in f(n)
 \cap f(n+1)$ holds; we leave further details to the reader.
 \end{proof}
 
-\begin{rem}Let~$X$ be a locally Noetherian scheme. The proof shows that even
+\begin{rem}The proof shows that, internally speaking, even
 the set of all quasicoherent ideals (instead of merely the finitely generated
-ones) fulfills the ascending process condition. We have not taken this property
+ones) fulfills the ascending process condition, if the base scheme is locally Noetherian. We have not taken this property
 as the definition of a processly Noetherian ring since it is a notion not
 usually studied in constructive mathematics (compare
 Remark~\ref{rem:qcoh-in-constructive-mathematics}).

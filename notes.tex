@@ -1820,6 +1820,21 @@ regular in~$A[f_i^{-1}]$ and by regularity of the~$f_i$ also regular in~$A$.
 Therefore their product~$\prod_i a_i \in A$ is regular in~$A$ as well and
 annihilates~$s$.
 \end{proof}
+% FUTURE:
+% For quasicoherent sheaves, there is an alternative (and more conceptual)
+% proof. Since X is integral, we have
+%
+%   Spec(A) |== (forall s:\ul{A}. s regular in A <==> s regular in O_{Spec A}).
+%
+% Therefore the internal statement
+%
+%   exists a:O_{Spec A}. a regular and as = 0 in \ul{M}[F^(-1)]
+%
+% is equivalent to
+%
+%   bigvee_{a in A, a regular} (exists u in F. uas = 0).
+%
+% This disjunction is directed.
 
 \begin{prop}\label{prop:torsion-submodule-stalks}
 Let~$X$ be a locally Noetherian scheme. Let~$\F$ be
@@ -3708,6 +3723,15 @@ in~$\O_{X,y}$ for all~$y \in U$.
 Therefore an element~$s/t \? \K_X$ is invertible in~$\K_X$ if and only if the
 numerator~$s$ belongs to~$\S$, \ie is an regular element of~$\O_X$.\end{rem}
 
+% FUTURE:
+% How can we prove that K_X(U) = K_X^pre(U) = Quot O_X(U) for U affine
+% (and X locally Noetherian or X reduced and locally only finitely many
+% irreducible components)? (cf. Kleiman!)
+%
+% Here is approximately how. Verify that (U |-> K_X^pre(U)) defines a sheaf, if
+% U ranges only of the open affines. To do this, use the description of the
+% subsheaf \T given in the section on "O_X = A[F^(-1)]".
+
 
 \subsection{Regularity of local functions}
 It is well-known that on a locally Noetherian scheme, regularity spreads from
@@ -4851,8 +4875,10 @@ fraction~$s/f^{n+m}$, since~$f^{-(n+m)} s|_{D(f)}$ equals~$u$
 in~$\Gamma(D(f),\F)$ (as this is true on the covering~$D(f) = \bigcup_i (D(f)
 \cap U_i)$).
 \end{proof}
-% XXX: Give simpler proof using Gamma(U, F[f^(-1)]) = Gamma(U, F)[f^(-1)];
-% use that F[f^(-1)] is a filtered colimit.
+% FUTURE: Remark that Gamma(U, F[f^(-1)]) = Gamma(U, F)[f^(-1)],
+% since F[f^(-1)] is a filtered colimit (see
+% stacks-project/sites:lemma-directed-colimits-sections).
+% This argument only works if multiplication by f is injective as a map F --> F.
 
 \begin{itemize}
 \item is the condition good enough to show that modules of finite type are
@@ -6498,13 +6524,8 @@ the fact that the plus construction can also be defined as
   \neg\neg(\speak{$S$ inhabited}),\
   \speak{$S$ $\neg\neg$-stable} \}. \]
 
-How can we prove that Reg(O_X)(U) = Reg O_X(U) for U affine?
-How can we prove that K_X(U) = K_X^pre(U) = Quot O_X(U) for U affine
-(and X locally Noetherian or X reduced and locally only finitely many
-irreducible components)? (cf. Kleiman!)
 What is a conceptual explanation for O_X(D(f)) = A[f^(-1)] and O_X(U) !=
 A[S_U^(-1)] otherwise?
-Relevant: lemma-directed-colimits-sections in stacks-project/sites.
 
 Constructible topology?
 

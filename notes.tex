@@ -1413,6 +1413,9 @@ equivalent to~$\O_X$ being an integral domain in the weak sense from the
 internal point of view.
 \end{proof}
 
+We record the following lemma for later use. The proof presented here is
+already simple, but a more conceptual proof is also possible (see
+Section~\ref{sect:common-lemmas-transfer-principles}).
 \begin{lemma}\label{lemma:regular-affine}
 Let~$X = \Spec A$ be an affine scheme. Let~$f \in A$. Then~$f$ is
 a regular element of~$A$ if and only if~$f$ is a regular element of~$\O_X$ from
@@ -1796,7 +1799,7 @@ scheme~$X$, there is a unique subsheaf~$\F_\tors \subseteq \F$ with the
 property that~$\Gamma(U,\F_\tors) = \Gamma(U,\F)_\tors$ for all affine open
 subsets~$U \subseteq X$. The content of the following proposition is that
 internally constructing the torsion submodule of~$\F$, regarded as a plain
-module from the internal perspective, gives exactly that subsheaf. There is
+module from the internal perspective, gives exactly this subsheaf. There is
 therefore no harm in using the same notation~``$\F_\tors$'' for the result of
 the internal construction.
 
@@ -4715,7 +4718,7 @@ if
 \begin{proof}We can give a purely internal proof. Let~$f\?\O_X$.
 Since subpresheaves of separated sheaves are separated, the module~$\G[f^{-1}]$
 is in any case separated with respect to the modal operator~$\Box$
-with~$\Box\varphi \defeqv (\speak{$f$ \inv} \Rightarrow \varphi)$.
+with~$\Box\varphi \defequiv (\speak{$f$ \inv} \Rightarrow \varphi)$.
 
 Now suppose that~$\G$ is quasicoherent. Let~$f\?\O_X$. Let $s\?\F$ and assume that
 if~$f$ were invertible,~$s$ would be an element of~$\G$. Define the
@@ -5393,6 +5396,7 @@ This subsheaf is characterized by the property that, for all~$f \in A$ and~$x
 
 
 \subsection{Internal proofs of common lemmas}
+\label{sect:common-lemmas-transfer-principles}
 
 \begin{lemma}Let~$A$ be a ring. Then~$A$ is reduced if and only if the
 scheme~$\Spec A$ is reduced.\end{lemma}
@@ -5422,7 +5426,10 @@ Note that the ``if'' direction also admits a shorter proof, by simply
 considering the Kripke--Joyal interpretation of~$\Sh(\Spec A) \models
 \speak{$\O_{\Spec A}$ is reduced}$ and using~$\Gamma(\Spec A, \O_{\Spec A})
 \cong A$. We included the given proof to give a simple example of the mixed
-internal/external reasoning with the generic filter.
+internal/external reasoning with the generic filter. In a similar way we could
+reprove Lemma~\ref{lemma:regular-affine}, that is the statement that a ring
+element~$f \in A$ is regular in~$A$ if and only if, from the internal point of
+view, it is regular in~$\O_{\Spec A}$.
 
 \begin{lemma}Let~$M$ be an~$A$-module. Then~$M^\sim$ is of finite type if and
 only if~$M$ is finitely generated.\end{lemma}
@@ -5520,12 +5527,13 @@ map. The interpretations of the statements in the second column of
 Table~\ref{table:generic-filter-statements} in the internal language
 of~$\Sh(\Spec A)$ are intuitionistically equivalent to the statements given in
 the third column.\end{prop}
-\begin{proof}To demonstrate the technique we verify the second and the last claim.
+\begin{proof}To demonstrate the technique we verify the first and the last claim.
 To make the following proofs constructive we would have to define~$\Spec A$
 and its sheaf topos in a constructive fashion, not using prime ideals. This can
-be done, using the frame of radical ideals in~$A$, but we won't discuss details
-here.
-% XXX: give reference
+be done, by constructing~$\Spec A$ as a locale instead of a topological space
+(see for instance Section~\ref{sect:spectrum-as-a-locale}
+and~\cite[p.~743f.]{wraith:generic-galois-theory}),
+but we won't discuss details here.
 
 The interpretation of~$\Sh(\Spec A) \models x \not\in \F$ by the Kripke--Joyal
 semantics is that~$D(f) \models x \in \F$ implies~$D(f) = \emptyset$ for
@@ -5555,18 +5563,22 @@ such that~$\alpha(x) = y$.
   \centering
   \renewcommand{\arraystretch}{1.3}
   \small
+  % Change wording in proposition above if order changes.
   \begin{tabular}{lll}
     \toprule
     Statement & constructive substitution & meaning \\\midrule
-    The stalks~$A_\ppp$ are reduced. &
-    $\A[\F^{-1}]$ is reduced. &
-    $A$ is reduced. \\
     $x \in \ppp$ for all~$\ppp$. &
     $x \not\in \F$. &
     $x$ is nilpotent. \\
     $x \in \ppp$ for all~$\ppp$ such that~$y \in \ppp$. &
     $x \in \F \Rightarrow y \in \F$. &
     $x \in \sqrt{(y)}$. \\
+    $x$ is regular in all stalks~$A_\ppp$. &
+    $x$ is regular in~$\ul{A}[\F^{-1}]$. &
+    $x$ is regular in~$A$. \\
+    The stalks~$A_\ppp$ are reduced. &
+    $\ul{A}[\F^{-1}]$ is reduced. &
+    $A$ is reduced. \\
     The stalks~$M_\ppp$ vanish. &
     $\ul{M}[\F^{-1}] = 0$. &
     $M = 0$. \\
@@ -5655,7 +5667,9 @@ reasons why locales are better suited for working internally and for switching
 between internal and external perspectives.
 
 
-\subsection{The spectrum of a ring as a locale} Recall that the spectrum
+\subsection{The spectrum of a ring as a locale}
+\label{sect:spectrum-as-a-locale}
+Recall that the spectrum
 of a ring~$A$ is usually constructed as the set
 \[ \Spec A \defeq \{ \ppp \subseteq A \,|\,
   \text{$\ppp$ is a prime ideal} \} \]

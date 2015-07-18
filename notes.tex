@@ -59,6 +59,7 @@
 \renewcommand{\L}{\mathcal{L}}
 \renewcommand{\P}{\mathcal{P}}
 \newcommand{\R}{\mathcal{R}}
+\newcommand{\T}{\mathcal{T}}
 \newcommand{\I}{\mathcal{I}}
 \renewcommand{\S}{\mathcal{S}}
 \newcommand{\NN}{\mathbb{N}}
@@ -5345,6 +5346,19 @@ where~$g$ is a fixed element of~$A$ which is not nilpotent and not invertible.
 Since~$D(g) \models g \in \I \cap \F$, the stronger statement would imply~$D(g)
 \models 1 \in \I$. By Lemma~\ref{lemma:properties-of-constant-sheaves}, this is
 equivalent to~$g$ being invertible in~$A$.
+\end{rem}
+
+\begin{rem}Recall from Proposition~\ref{prop:kx-internally} that the
+sheaf~$\K_{\Spec A}$ of rational functions can internally by obtained by
+localizing~$\O_{\Spec A}$ at the set of regular elements. Since~$\O_{\Spec A}$
+is itself a localization, the sheaf~$\K_{\Spec A}$ is therefore obtained by a
+two-step process. It can also be obtained in a single step by
+localizing~$\ul{A}$ at~$\T$, where~$\T$ is the subsheaf of~$\ul{A}$ defined
+by
+\[ \Gamma(U,\T) = \{ f : U \to A \,|\, \text{$f(\ppp)$ is regular in~$A_\ppp$
+for all~$\ppp \in U$} \}. \]
+This subsheaf is characterized by the property that, for all~$f \in A$ and~$x
+\in A$,~$D(f) \models x \in \T$ if and only if~$x$ is regular in~$A[f^{-1}]$.
 \end{rem}
 
 

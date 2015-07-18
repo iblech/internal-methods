@@ -4635,8 +4635,8 @@ any module admits a resolution by (not necessarily finite) free modules is
 intuitionistically acceptable and thus also valid in the internal
 universe.\end{rem}
 
-At the moment, we do not know of any useful internal characterization of
-locally constant sheaves. The internal condition given by the following
+We don't think that there is a useful internal characterization of
+locally constant sheaves. The alternative internal condition given by the following
 theorem does not need such a characterization.
 
 \begin{thm}\label{thm:qcoh-sheafchar}
@@ -4685,17 +4685,17 @@ if
 \end{cor}
 \begin{proof}We can give a purely internal proof. Let~$f\?\O_X$.
 Since subpresheaves of separated sheaves are separated, the module~$\G[f^{-1}]$
-is in any case separated with respect to the modal operator~$(\speak{$f$ \inv}
-\Rightarrow \placeholder)$.
+is in any case separated with respect to the modal operator~$\Box$
+with~$\Box\varphi \defeqv (\speak{$f$ \inv} \Rightarrow \varphi)$.
 
 Now suppose that~$\G$ is quasicoherent. Let~$f\?\O_X$. Let $s\?\F$ and assume that
 if~$f$ were invertible,~$s$ would be an element of~$\G$. Define the
 subsingleton~$S \defeq \{ t\?\G[f^{-1}] \,|\, \speak{$f$ \inv} \wedge t=s/1 \}$.
 Then~$S$ would be inhabited by~$s/1$ if~$f$ were invertible. Since~$\G[f^{-1}]$
-is a sheaf, it follows that there exists an element~$u/f^n$ of~$\G[f^{-1}]$
+is a~$\Box$-sheaf, it follows that there exists an element~$u/f^n$ of~$\G[f^{-1}]$
 such that, if~$f$ were invertible, it would be the case that~$u/f^n = s/1 \in
 \G[f^{-1}] \subseteq \F[f^{-1}]$.
-Since~$\F[f^{-1}]$ is separated, it follows that it actually holds that~$u/f^n
+Since~$\F[f^{-1}]$ is~$\Box$-separated, it follows that it actually holds that~$u/f^n
 = s/1 \in \F[f^{-1}]$. Therefore there exists~$m\?\NN$ such that $f^m f^n s =
 f^m u \in \F$. Thus~$f^{m+n} s$ is an element of~$\G$.
 
@@ -4739,8 +4739,7 @@ holds that~$f^m s^n \in \I$. Thus~$fs \in \sqrt{\I}$.\end{ex}
 is quasicoherent.\end{prop}
 \begin{proof}By Corollary~\ref{cor:scheme-dimension-zero}, any
 element~$f\?\O_X$ is invertible or nilpotent. Therefore the quasicoherence
-condition of Theorem~\ref{thm:qcoh-sheafchar} is for any~$\O_X$-module
-trivially satisfied.
+condition of Theorem~\ref{thm:qcoh-sheafchar} is trivially satisfied for any~$\O_X$-module.
 \end{proof}
 
 \begin{rem}\label{rem:qcoh-in-constructive-mathematics}
@@ -4843,7 +4842,7 @@ numbers~$n_i$ agree with each other and thus equal some number~$n$. Since~$s_i
 = s_j$ in~$\Gamma(U_i \cap U_j \cap D(f), \F)$, injectivity of the canonical
 map~\eqref{eqn:restr-map} (on the affine set~$U_i \cap U_j = D(g_i g_j)$)
 implies that~$s_i = s_j$ in~$\Gamma(U_i \cap U_j, \F)[f^{-1}]$. Thus for
-any~$i,j$ there exists a natural number~$m_{ij}$ such that~$f^{m_{ij}} s_i =
+any indices~$i,j$ there exists a natural number~$m_{ij}$ such that~$f^{m_{ij}} s_i =
 f^{m_{ij}} s_j$ in~$\Gamma(U_i \cap U_j, \F)$. We may assume that the
 numbers~$m_{ij}$ equal some common number~$m$; thus the local sections~$f^m s_i$
 glue to a section~$s \in \Gamma(U,\F)$. The sought preimage of~$u$ is the
@@ -5818,7 +5817,7 @@ previous proposition.
 
 The preceding sections demonstrated that working in the internal universe of
 the little Zariski topos of a scheme~$S$, the topos of sheaves on~$S$, is
-useful for simplifying local work on~$S$: The basic tenet was that sheaves of
+useful for simplifying local work on~$S$. The basic tenet was that sheaves of
 modules look just like plain modules and that theorems of intuitionistic
 algebra yield theorems about sheaves.
 
@@ -5860,7 +5859,7 @@ not mean ``point of the underlying topological space of~$X$'', but
 rather~``$T$-point of~$X$'', where~$T$ varies over all~$S$-schemes. The
 internal language of the big Zariski topos hides any explicit mentions of the
 stage~$T$; it is therefore a device for reifying the multitude of points
-of~$X$, defined on varying stages, as a single set.
+of~$X$, defined on varying stages, as a single entity.
 
 As a basic example, the functor~$\ul{S}$ looks like a singleton set from the
 internal point of view of~$\Zar(S)$ and~$\ul{S \amalg S}$ looks like a
@@ -5873,7 +5872,10 @@ associated to the affine line over~$S$, the~$S$-scheme~$\AA^1_S \defeq S
 \Gamma(T,\O_T). \]
 This object has an evident structure as a ring object in~$\Zar(S)$. In fact,
 from the internal point of view, it is a local ring and even a field in the
-sense that nonzero elements are invertible.\footnote{The proof goes as follows.
+sense that nonzero elements are invertible.
+This is without any assumptions on
+the base scheme~$S$; in the case~$S = \Spec\ZZ$, this was first observed by
+Kock~\cite{kock:univ-proj-geometry}.\footnote{The proof goes as follows.
 We want to verify that~$S \models \forall f\?\affl\_ \neg(f = 0) \Rightarrow
 \speak{$f$ \inv}$. According to the Kripke--Joyal semantics of~$\Zar(S)$, we
 thus have to show that for any~$S$-scheme~$T$ and any function~$f \in
@@ -5884,9 +5886,6 @@ analogous statement of the little Zariski topos, the consequent means that~$f$
 is invertible in~$\Gamma(T,\O_T)$. The claim follows by considering the
 particular~$T$-scheme~$T' \defeq V(f)$. Since~$f$ vanishes on~$V(f)$, this
 subscheme is empty and therefore its complement~$D(f)$ is the whole of~$T$.}
-This is without any assumptions on
-the base scheme~$S$; in the case~$S = \Spec\ZZ$, this was first observed by
-Kock~\cite{kock:univ-proj-geometry}.
 
 Using the internal language of the big Zariski topos, we can conduct
 \emph{synthetic scheme theory}, or more precisely synthetic relative scheme
@@ -5923,8 +5922,7 @@ appropriate sense).
 With~$\affl$ at hand, we can perform many of the usual constructions of
 (relative) scheme theory internally.
 
-\begin{itemize}
-\item The functors associated to the standard group schemes~$\GG_\text{a}$, $\GG_\text{m}$,
+\subsubsection*{Group schemes} The functors associated to the standard group schemes~$\GG_\text{a}$, $\GG_\text{m}$,
 $\mathrm{GL}_n$, and~$\mu_n$ are given by the internal expressions
 \begin{align*}
   \GG_\text{a} &\defeq \affl \text{ (as an additive group)}, \\
@@ -5932,7 +5930,9 @@ $\mathrm{GL}_n$, and~$\mu_n$ are given by the internal expressions
   \mathrm{GL}_n &\defeq \{ M \? (\affl)^{n \times n} \,|\, \speak{$M$ \inv} \}, \\
   \mu_n &\defeq \{ x \? \affl \,|\, x^n = 1 \}.
 \end{align*}
-\item Affine~$n$-space over~$S$ is given by~$(\affl)^n$, \ie internally the set
+
+\subsubsection*{Affine and projective space}
+Affine~$n$-space over~$S$ is given by~$(\affl)^n$, \ie internally the set
 of~$n$-tuples of elements of~$\affl$. The functor of points of
 projective~$n$-space over~$X$, with all its nontrivial topological and
 ring-theoretical structure, is described by the astoundingly naive expression
@@ -5941,30 +5941,38 @@ ring-theoretical structure, is described by the astoundingly naive expression
 where the equivalence relation is the usual rescaling relation from the
 internal point of view. This example was suggested by Zhen~Lin Low (private
 communication).
-\item More generally, for an~$S$-scheme~$X$, affine and projective~$n$-space
+
+More generally, for an~$S$-scheme~$X$, affine and projective~$n$-space
 over~$X$ are given by~$\ul{X} \times (\affl^1)^n$ and~$\ul{X} \times \PP^n$,
 respectively.
-\item Let~$X$ be an~$S$-scheme and~$f \in \O_X(X)$ be a global function. Since
+
+\subsubsection*{Open and closed subschemes}
+Let~$X$ be an~$S$-scheme and~$f \in \O_X(X)$ be a global function. Since
 the internal Hom~$[\ul{X},\affl] \in \Zar(S)$ has~$\O_X(X)$ as its set of global
 sections, we can regard~$f$ as a map~$\ul{X} \to \affl$ from the internal point
 of view. The internal expressions
 \[ \{ x\?\ul{X} \,|\, f(x) \neq 0 \} \quad\text{and}\quad
   \{ x\?\ul{X} \,|\, f(x) = 0 \} \]
 then describe the functor of points of the subscheme~$D(f)$
-respectively~$V(f)$.\footnote{From the internal point of view,
+respectively~$V(f)$.
+
+From the internal point of view,
 the statement~$f(x)^n \neq 0$ is equivalent to~$f(x)^n$ being
 invertible and therefore to~$f(x) \neq 0$. This reflects that~$D(f^n) = D(f)$.
 However~$f(x)^n = 0$ does not imply~$f(x) = 0$, since~$\affl$ is only a field
 in the sense that nonzero elements are invertible. Therefore there is no
 contradiction with the basic fact that~$V(f^n)$ does not equal~$V(f)$ in
-general.}
-\item In particular, the set~$\Delta \defeq \{ \varepsilon\?\affl \,|\,
+general.
+
+As a special case, the set~$\Delta \defeq \{ \varepsilon\?\affl \,|\,
 \varepsilon^2 = 0 \}$ describes an infinitesimal thickening of~$S$. It is the
 vanishing scheme of~$\varepsilon^2$ in~$S \times_{\Spec \ZZ} \Spec
-\ZZ[\varepsilon]$, so explicitly it has the same underlying topological space
+\ZZ[\varepsilon]$, so it has the same underlying topological space
 as~$S$, but~$\O_S[\varepsilon]/(\varepsilon^2)$ instead of~$\O_S$ as structure
 sheaf.
-\item For an~$S$-scheme~$X$, the internal Hom~$[\Delta,\ul{X}]$ describes the
+
+\subsubsection*{Tangent bundle}
+For an~$S$-scheme~$X$, the internal Hom~$[\Delta,\ul{X}]$ describes the
 ``tangent bundle'' of~$X$, \ie the~$S$-scheme~$\RelSpec{X}{\operatorname{Sym}(\Omega^1_{X/S})} \to X \to S$, as can be seen by
 chasing the definitions~\cite[Lemma~5.12.1]{brandenburg:tensor-foundations}.
 Intuitively, a map~$f : \Delta \to \ul{X}$ from the internal point of view is
@@ -5975,19 +5983,28 @@ This description of the (not necessarily
 locally trivial) tangent bundle fits nicely with the intuition of tangent
 vectors as infinitesimal curves, and in fact is precisely the definition of the
 tangent bundle in synthetic differential geometry~\cite[Def.~7.1]{kock:sdg}.
-\item Let~$\E$ be an~$\affl$-algebra. Then~$[\E,\affl]_\affl$, \ie internally the set
+
+\subsubsection*{Relative spectrum}
+Let~$\E$ be an~$\affl$-algebra. Then~$[\E,\affl]_\affl$, \ie internally the set
 of~$\affl$-algebra homomorphisms from~$\E$ to~$\affl$, can be pictured as ``the
 relative spectrum of~$\E$'', even though of course this might fail to be
 locally affine without further assumptions. For
 instance, there are isomorphisms~$[\affl[x_1,\ldots,x_n],\affl]_\affl \to
 (\affl)^n$ and~$[\affl \times \affl,\affl]_\affl \to \ul{S \amalg S}$.
+In the special case that~$\E$ is induced by a quasicoherent algebra on~$S$, the
+object~$[\E,\affl]_\affl$ is indeed the functor of points of the relative
+spectrum of the quasicoherent algebra.
 
-If the functor~$\E$ is given
-by~$\E(T \xra{\mu} S) \defeq \Gamma(T, \mu^*\A)$, where~$\A$ is a
-quasicoherent~$\O_S$-algebra, the functor~$[\E,\affl]_\affl$ is precisely the
+\begin{prop}Let~$S$ be a scheme. Let~$\A$ be a quasicoherent~$\O_S$-algebra.
+Let~$\E \in \Zar(S)$ be the~$\affl$-algebra given by~$\E(T \xra{\mu} S) \defeq
+\Gamma(T, \mu^*\A)$. The functor~$[\E,\affl]_\affl$ is precisely the
 functor of points of the~$S$-scheme~$\RelSpec{S}{\A}$.
+\end{prop}
+\begin{proof}
 
-\item Conversely, if~$X \xra{\mu} S$ is an~$S$-scheme, the internal
+\end{proof}
+
+Conversely, if~$X \xra{\mu} S$ is an~$S$-scheme, the internal
 expression~$[\ul{X},\affl]^\flat$ denotes the object of~$\Zar(S)$ induced by the
 sheaf~$\mu_*\O_X$, \ie the functor given by~$(T \xra{\tau} S) \mapsto \Gamma(T,
 \tau^* \mu_*\O_X)$. For an~$\affl$-module~$\E$ in~$\Zar(S)$ we mean by~$\E^\flat$
@@ -6004,7 +6021,6 @@ the internal language of~$\Zar(S)$ as saying that the canonical map
 \[ \ul{X} \lra [ [\ul{X},\affl]^\flat, \affl ]_\affl,\ x \longmapsto
 \placeholder(x) \]
 into the ``double dual'' is bijective.
-\end{itemize}
 
 
 \subsection{Beyond the Zariski topology}

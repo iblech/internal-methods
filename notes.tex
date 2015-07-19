@@ -1135,10 +1135,6 @@ former. We will see in the next section
 scheme fulfills the latter condition if and only if the scheme is
 zero-dimensional (or empty).\end{rem}
 
-This observation is attributed by Tierney to Mulvey~\cite[p.~209]{tierney:spectrum}.
-Tierney also states that ``its precise significance is still somewhat
-obscure'' (ibid). % We think that it is significant because of ...
-
 \begin{cor}\label{cor:field-reduced}
 Let~$X$ be a scheme. If~$X$ is reduced, the ring~$\O_X$ is a field
 from the internal point of view, in the sense that
@@ -1160,10 +1156,17 @@ intuitionistically stronger. This is a common phenomenom in intuitionistic
 mathematics: Classically equivalent notions may bifurcate into related but
 inequivalent notions intuitionistically.
 
-The following proposition says that we can deduce a certain unconditional
+The observation that the structure sheaf is (almost) a field is attributed by
+Tierney to Mulvey~\cite[p.~209]{tierney:spectrum}.
+Tierney also states that ``its precise significance is still somewhat
+obscure'' (ibid). We think that it's significant as a special case of the
+following more general proposition,
+which says that we can deduce a certain unconditional
 statement from the premise that, under the assumption that some element~$f\?\O_X$ is invertible, an element~$s\?\O_X$ is zero. This is
 interesting on its own, but will be of particular importance in understanding
-quasicoherence from the internal point of view (Section~\ref{sect:qcoh}).
+quasicoherence from the internal point of view (Section~\ref{sect:qcoh}) and
+interpreting the relative spectrum as an internal spectrum
+(Section~\ref{sect:relative-spectrum}).
 
 \begin{prop}\label{prop:cond-zero}
 Let~$X$ be a scheme. Then
@@ -1181,6 +1184,9 @@ it holds that $X \models \textstyle \bigvee_{n \geq 0} f^n s = 0$. This
 indeed follows, since by assumption such a function~$s$ is zero on~$D(f)$, \ie $s$
 is zero as an element of~$A[f^{-1}]$.
 \end{proof}
+
+Proposition~\ref{prop:neginvnilpotent} follows from this proposition by
+setting~$s \defeq 1$.
 
 
 \subsection{Krull dimension}\label{sect:krull-dimension}

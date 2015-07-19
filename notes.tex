@@ -791,7 +791,7 @@ neighbourhood~V of~$x$).
 Then~$\varphi$ holds at~$x$ if and only if there exists an open neighbourhood~$U
 \subseteq X$ of~$x$ (contained in~V) such that~$\varphi$ holds on~$U$.
 \end{lemma}
-\begin{proof}This is a very general instance of the phenomenom that sometimes,
+\begin{proof}This is a very general instance of the phenomenon that sometimes,
 truth at a point spreads to truth on a neighbourhood. It can be proven by
 induction on the structure of~$\varphi$, but we will give a more conceptual
 proof later (Corollary~\ref{cor:geometric-spreading}).
@@ -1153,7 +1153,7 @@ simple proof of the fact that~$\O_X$-modules of finite type on a reduced scheme
 are locally free on a dense open subset (Lemma~\ref{lemma:locally-free-dense}).
 Note that the field property only holds precisely as stated in the corollary;
 the classically equivalent condition that any element is invertible or zero is
-intuitionistically stronger. This is a common phenomenom in intuitionistic
+intuitionistically stronger. This is a common phenomenon in intuitionistic
 mathematics: Classically equivalent notions may bifurcate into related but
 inequivalent notions intuitionistically.
 
@@ -6386,7 +6386,8 @@ for any algebraic number field~$K$ are processly Noetherian, and matrices
 over Bézout rings which are integral domains in the weak sense and
 processly Noetherian can be put into Smith canonical form.
 
-\begin{prop}A scheme~$X$ is locally Noetherian if and only if the ring~$\O_X$
+\begin{prop}\label{prop:internal-noetherianity}
+A scheme~$X$ is locally Noetherian if and only if the ring~$\O_X$
 is processly Noetherian from the internal point of view.\end{prop}
 \begin{proof}We only prove the ``only if'' direction. We may assume that~$X =
 \Spec A$ is affine with~$A$ a Noetherian ring and that internally, we are given an
@@ -6460,6 +6461,7 @@ Remark~\ref{rem:qcoh-in-constructive-mathematics}).
   $X$ is reduced & $\O_X$ is reduced (and $\neg\text{invertible} \Rightarrow \text{zero}$) & Prop.\@~\ref{prop:reduced-ring} \\
   $\dim X \leq n$ & Krull dimension of~$\O_X$ is~$\leq n$ & Prop.\@~\ref{prop:dimension-scheme-ox} \\
   $X$ is integral at all points & $\O_X$ is a integral domain & Prop.\@~\ref{prop:internal-integrality} \\
+  $X$ is locally Noetherian & $\O_X$ is processly Noetherian & Prop.\@~\ref{prop:internal-noetherianity} \\
   $X$ is normal & $\O_X$ is normal (assuming that~$X$ is locally Noetherian) & Prop.\@~\ref{prop:normal-int-ext} \\\\
 
   \textbf{Sheaves of modules} \\
@@ -6503,7 +6505,7 @@ Remark~\ref{rem:qcoh-in-constructive-mathematics}).
   $X$ is irreducible & if $\neg(\varphi \wedge \psi)$, then $\neg\varphi$ or~$\neg\psi$ & Prop.\@~\ref{prop:irreducibility-internally} \\
   \bottomrule
 \end{longtable}}
-% missing: relative spectrum
+% missing: relative spectrum and big Zariski topos
 
 
 \section{The inference rules of intuitionistic logic}

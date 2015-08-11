@@ -738,7 +738,7 @@ constructions enjoy their expected properties. For instance, it holds that
   \bigl(\forall x\?\brak{\{s\?\F \,|\, \varphi(s)\}}\_ \psi(x)\bigr)
   \Longleftrightarrow
   \bigl(\forall x\?\F\_ \varphi(x) \Rightarrow \psi(x)\bigr). \]
-We gloss over several details here. See~\cite[section~D4.1]{johnstone:elephant} for
+We gloss over several details here. See~\cite[Section~D4.1]{johnstone:elephant} for
 a proper treatment.
 
 Morphisms can internally be constructed by appealing to the \emph{principle of
@@ -920,7 +920,7 @@ indefinitely or whether eventually a non-zero digit will occur. This argument
 can be made rigorous. The analogous statement about algebraic numbers
 \emph{can} be proven; the information contained in a witness of algebraicity (a
 normed polynomial which the given number is a zero of) suffices to make the
-case distiction~\cite[Chapter~VI.1, page~140]{mines-richman-ruitenburg:constructive-algebra}.}
+case distiction~\cite[Chapter~VI.1, p.~140]{mines-richman-ruitenburg:constructive-algebra}.}
 
 A consequence of not adopting these axioms is that proofs by contradiction are
 not generally justified; they are intuitionistically acceptable only for those
@@ -1753,7 +1753,7 @@ any~$p$-tuple $a \? A^p$ of elements of~$A$, it should hold that
   Bn = m \wedge a^T B = 0. \]
 The equivalence of this condition with tensoring being exact holds
 intuitionistically as
-well~\cite[theorem~III.5.3]{mines-richman-ruitenburg:constructive-algebra}.
+well~\cite[Theorem~III.5.3]{mines-richman-ruitenburg:constructive-algebra}.
 This formulation of flatness has the advantage that it is the conjunction of
 geometric implications (one for each~$p \geq 0$); therefore it holds internally
 if and only if it holds at any point.
@@ -2203,7 +2203,7 @@ semicontinuous~$\NN$-valued functions on~$X$.\end{lemma}
 When referring to the natural numbers in the internal language, we actually
 refer to the constant sheaf~$\ul{\NN}$ on~$X$. (This is because the
 sheaf~$\ul{\NN}$ fulfills the axioms of a natural numbers object,
-cf.\@~\cite[section~VI.1]{moerdijk-maclane:sheaves-logic}.) Recall that its sections on an
+cf.\@~\cite[Section~VI.1]{moerdijk-maclane:sheaves-logic}.) Recall that its sections on an
 open subset~$U \subseteq X$ are continuous functions~$U \to \NN$, where~$\NN$
 is equipped with the discrete topology.
 
@@ -5780,7 +5780,7 @@ construction of the spectrum of a ring (as opposed to a sheaf of rings).
 fundamental fact in the theory of locales is that there is a canonical
 equivalence between the category of \emph{locales over~$X$} -- that is
 locales~$Y$ equipped with a morphism~$Y \to X$ -- and \emph{internal locales
-in~$\Sh(X)$}~\cite[page~49]{johnstone:point}. An internal locale in a topos~$\E$ is given by an object~$L$ of~$\E$
+in~$\Sh(X)$}~\cite[p.~49]{johnstone:point}. An internal locale in a topos~$\E$ is given by an object~$L$ of~$\E$
 (the internal lattice of opens of the locale) together with a binary
 relation~$(\preceq) \hookrightarrow L \times L$ such that the axioms on a
 locale hold from the internal point of view. (In these notes, we do not need a
@@ -5793,13 +5793,13 @@ and~$\Omega_{\Sh(Y)}$ is the object of truth values in the topos of sheaves
 on~$Y$. Conversely, an internal locale~$\L \in \Sh(X)$ induces an (external)
 locale~$E(\L)$ with lattice of opens given by~$\Open(E(\L)) \defeq \Gamma(X,\L)$.
 This comes equipped with a canonical morphism~$Y \to X$ of locales which we do
-not need to describe explicitly~\cite[section~C1.6]{johnstone:elephant}.
+not need to describe explicitly~\cite[Section~C1.6]{johnstone:elephant}.
 
 As a special case, the internalization of the trivial locale~$\id : X \to X$
 over~$X$ has as lattice of opens the object~$\id_* \Omega_{\Sh(X)} =
 \Omega_{\Sh(X)} = \P(1)$. This is precisely the lattice of opens of the
 one-point space. Thus~$I(X) \cong \pt$. This illustrates the intuition
-behind working internally in~$\Sh(X)$ very well: From the perspective
+behind working internally in~$\Sh(X)$: From the perspective
 of~$\Sh(X)$, the space~$X$ looks like the one-point space (even if in fact it
 is not).
 
@@ -5810,7 +5810,7 @@ internal locale~$I(Y)$: $\Sh(Y) \simeq \Sh_{\Sh(X)}(I(Y))$.
 
 There is no similarly nice correspondence between topological spaces
 over~$X$ and internal topological spaces
-in~$\Sh(X)$~\cite[corollary~C1.6.7]{johnstone:elephant}. This is one of the
+in~$\Sh(X)$~\cite[Corollary~C1.6.7]{johnstone:elephant}. This is one of the
 reasons why locales are better suited for working internally and for switching
 between internal and external perspectives.
 
@@ -5825,7 +5825,7 @@ endowed with a certain topology and a sheaf of rings~$\O_{\Spec A}$. From an
 intuitionistic (and thus internal) point of view, this construction does not
 work well: Prime ideals are intuitionistically much more elusive than
 classically, where one can appeal to Zorn's lemma to obtain maximal (and thus
-prime) ideals. More to the point, one can not show that this construction of
+prime) ideals. More to the point, one cannot show that this construction of
 the spectrum as a topological space verifies the expected universal property.
 
 On the other hand, the lattice of opens of~$\Spec A$ admits a simple
@@ -5840,7 +5840,7 @@ corresponds to the open subset~$\bigcup_{h \in \aaa} D(h)$.
 Thus, in an intuitionistic context, we will construct the spectrum of a ring~$A$
 only as a locale, not as a topological space; we will use the lattice of
 radical ideals as the lattice of opens. This construction has the expected
-universal property, namely that it is adjoint to the global sections functor:
+universal property, namely that it is adjoint to the global functions functor:
 \[ \Hom_{\LRL}(X, \Spec A) \cong \Hom_{\Ring}(A, \Gamma(X,\O_X)). \]
 Here, ``$\LRL$'' refers to the category of \emph{locally ringed locales}, \ie
 locales~$X$ equipped with a sheaf of rings~$\O_X$ such that from the internal point of
@@ -5852,7 +5852,7 @@ homomorphism. The notion of a locally ringed locale is thus a straightforward
 generalization of that of a locally ringed space.
 
 The importance of a locale-theoretic approach to spectra of rings, especially in
-relative situations, has also been stressed by Lurie~\cite[page~37]{lurie:dag5}.
+relative situations, has also been stressed by Lurie~\cite[p.~37]{lurie:dag5}.
 
 For later use, we study the question when the spectrum is the one-point space.
 The answer is well-known classically, but since we want to use this result in
@@ -5970,7 +5970,7 @@ Clearly, these lattices are isomorphic, by~$\aaa \mapsto \aaa^\sim$ and~$\I
 \mapsto \Gamma(U,\I)$.
 
 This is already enough to prove the claims: By a general lemma of locale
-theory~\cite[discussion before proposition~C1.6.1]{johnstone:elephant},
+theory~\cite[discussion before Proposition~C1.6.1]{johnstone:elephant},
 the internal lattice~$\Open(\QcohSpec{\O_X}{\A})$ defines an internal locale
 (as the pushforward under~$\RelSpec{\O_X}{\A} \to X$ of a locale), and its
 externalization coincides with~$\RelSpec{\O_X}{\A}$.
@@ -6562,7 +6562,7 @@ Remark~\ref{rem:qcoh-in-constructive-mathematics}).
 \section{The inference rules of intuitionistic logic}
 \label{appendix:inference-rules}
 
-\XXX{cite \cite[section~D1.3.1]{johnstone:elephant}, talk about~$\in$, and
+\XXX{cite \cite[Section~D1.3.1]{johnstone:elephant}, talk about~$\in$, and
 explain contexts}
 
 \begin{center}

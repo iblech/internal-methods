@@ -1,0 +1,182 @@
+\documentclass[10pt]{amsart}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{etex}
+\usepackage{amsmath,amsthm,amssymb,stmaryrd,color,graphicx,multirow}
+\usepackage{mathtools}
+\usepackage{setspace}
+\usepackage{bussproofs}
+\usepackage{xspace}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage[protrusion=true,expansion=true]{microtype}
+\usepackage[bookmarksdepth=2,pdfencoding=auto]{hyperref}
+\usepackage[all]{xy}
+
+\usepackage{tikz}
+\usetikzlibrary{calc,shapes.callouts,shapes.arrows}
+\newcommand{\hcancel}[5]{%
+    \tikz[baseline=(tocancel.base)]{
+        \node[inner sep=0pt,outer sep=0pt] (tocancel) {#1};
+        \draw[red, line width=0.3mm] ($(tocancel.south west)+(#2,#3)$) -- ($(tocancel.north east)+(#4,#5)$);
+    }%
+}
+
+\usepackage[natbib=true,style=numeric]{biblatex}
+\usepackage[babel]{csquotes}
+\bibliography{bibliography}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{ex}[defn]{Example}
+
+\theoremstyle{plain}
+
+\newtheorem{prop}[defn]{Proposition}
+\newtheorem{cor}[defn]{Corollary}
+\newtheorem{lemma}[defn]{Lemma}
+\newtheorem{thm}[defn]{Theorem}
+
+\theoremstyle{remark}
+\newtheorem{rem}[defn]{Remark}
+\newtheorem{question}[defn]{Question}
+
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\FF}{\mathbb{F}}
+\renewcommand{\AA}{\mathbb{A}}
+\newcommand{\A}{\mathcal{A}}
+\renewcommand{\C}{\mathcal{C}}
+\newcommand{\D}{\mathcal{D}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\F}{\mathcal{F}}
+\renewcommand{\G}{\mathcal{G}}
+\renewcommand{\H}{\mathcal{H}}
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\K}{\mathcal{K}}
+\newcommand{\N}{\mathcal{N}}
+\newcommand{\M}{\mathcal{M}}
+\renewcommand{\L}{\mathcal{L}}
+\renewcommand{\P}{\mathcal{P}}
+\newcommand{\R}{\mathcal{R}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\I}{\mathcal{I}}
+\newcommand{\J}{\mathcal{J}}
+\renewcommand{\S}{\mathcal{S}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\GG}{\mathbb{G}}
+\newcommand{\aaa}{\mathfrak{a}}
+\newcommand{\ppp}{\mathfrak{p}}
+\newcommand{\qqq}{\mathfrak{q}}
+\newcommand{\mmm}{\mathfrak{m}}
+\newcommand{\nnn}{\mathfrak{n}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\HOM}{\mathcal{H}\mathrm{om}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\GL}{\mathrm{GL}}
+\newcommand{\placeholder}{\underline{\quad}}
+\newcommand{\ul}[1]{\underline{#1}}
+\newcommand{\Set}{\mathrm{Set}}
+\newcommand{\Grp}{\mathrm{Grp}}
+\newcommand{\Vect}{\mathrm{Vect}}
+\newcommand{\Sh}{\mathrm{Sh}}
+\newcommand{\PSh}{\mathrm{PSh}}
+\newcommand{\Zar}{\mathrm{Zar}}
+\newcommand{\Et}{\mathrm{\acute{E}t}}
+\newcommand{\Sch}{\mathrm{Sch}}
+\newcommand{\Mod}{\mathrm{Mod}}
+\newcommand{\Alg}{\mathrm{Alg}}
+\newcommand{\Ring}{\mathrm{Ring}}
+\newcommand{\LRL}{\mathrm{LRL}}
+\newcommand{\pt}{\mathrm{pt}}
+\newcommand{\tors}{\mathrm{tors}}
+\DeclareMathOperator{\Spec}{Spec}
+\newcommand{\QcohSpec}[2]{\mathrm{Spec}^{\mathrm{qcoh}}_{#1}{#2}}
+\newcommand{\RelSpec}[2]{\mathrm{RelSpec}_{#1}{#2}}
+\newcommand{\op}{\mathrm{op}}
+\DeclareMathOperator{\colim}{colim}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\Int}{int}
+\DeclareMathOperator{\Clos}{cl}
+\DeclareMathOperator{\Kernel}{ker}
+\DeclareMathOperator{\supp}{supp}
+\newcommand{\Ass}{\mathrm{Ass}}
+\newcommand{\Open}{\T}
+\newcommand{\?}{\,{:}\,}
+\renewcommand{\_}{\mathpunct{.}\,}
+\newcommand{\speak}[1]{\ulcorner\text{\textnormal{#1}}\urcorner}
+\newcommand{\Ll}{\vcentcolon\Longleftrightarrow}
+\newcommand{\notat}[1]{{!#1}}
+\newcommand{\lra}{\longrightarrow}
+\newcommand{\lhra}{\ensuremath{\lhook\joinrel\relbar\joinrel\rightarrow}}
+\newcommand{\hra}{\hookrightarrow}
+\newcommand{\brak}[1]{{\llbracket{#1}\rrbracket}}
+\newcommand{\sdense}{{\widehat\Box}}
+\newcommand{\sdenseother}{\Box}
+\newcommand{\ie}{i.\,e.\@\xspace}
+\newcommand{\eg}{e.\,g.\@\xspace}
+\newcommand{\vs}{vs.\@\xspace}
+\newcommand{\resp}{resp.\@\xspace}
+\newcommand{\inv}{inv.\@}
+\newcommand{\notnot}{\emph{not not}\xspace}
+\newcommand{\affl}{\ensuremath{{\ul{\AA}^1_S}}\xspace}
+\newcommand{\afflx}{\ensuremath{{\ul{\AA}^1_X}}\xspace}
+\newcommand{\affla}{\ensuremath{{\ul{\AA}^1_{\Spec A}}}\xspace}
+\newcommand{\xra}{\xrightarrow}
+
+\newcommand{\XXX}[1]{\textbf{XXX: #1}}
+
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\defequiv}{\vcentcolon\equiv}
+\newcommand{\seq}[1]{\mathrel{\vdash\!\!\!_{#1}}}
+
+\definecolor{gray}{rgb}{0.7,0.7,0.7}
+
+\title{Using the internal language of toposes in algebraic geometry}
+\author{Ingo Blechschmidt}
+\email{ingo.blechschmidt@math.uni-augsburg.de}
+\pagestyle{empty}
+
+\begin{document}
+
+\begin{abstract}
+  In algebraic geometry, one often studies schemes from a local or relative
+  point of view. We describe how the internal language of certain
+  toposes, the associated petit and gros Zariski toposes of a scheme, can be
+  used to give simpler definitions and more conceptual proofs of the basic
+  notions and observations in algebraic geometry.
+
+  The starting point is that sheaves of rings and sheaves of modules look
+  just like plain rings respectively modules from the internal point of view.
+  In this way, some concepts and statements of scheme theory can be reduced to
+  concepts and statements of intuitionistic linear algebra.
+
+  Furthermore, modal operators can be used to model phrases such as ``on a
+  dense open subset it holds that`` or ``on an open neighbourhood of a given
+  point it holds that``. These operators define certain subtoposes; a
+  generalization of the double-negation translation is useful in order to
+  understand the internal universe of those subtoposes from the internal point
+  of view of the ambient topos.
+
+  A particularly interesting task is to internalize the ``relative spectrum''
+  construction of algebraic geometry, which given a quasicoherent sheaf of algebras
+  on a scheme~$X$ yields a scheme over~$X$. From the internal point of
+  view, this construction should simply reduce to a intuitionistically sensible
+  variant of the ordinary construction of the spectrum of a ring, but it turns
+  out that this expectation is too naive and that a refined approach is
+  necessary.
+\end{abstract}
+
+\maketitle
+
+\end{document}
+
+* Krull dimension
+* Cartier divisors?
+* Box translation
+* internal spectrum
+* big Zariski topos: criterion for affineness; étale topology

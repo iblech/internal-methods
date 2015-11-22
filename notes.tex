@@ -6206,12 +6206,13 @@ spectrum of the quasicoherent algebra.
 
 \begin{prop}Let~$S$ be a scheme. Let~$\A$ be a quasicoherent~$\O_S$-algebra.
 Let~$\E \in \Zar(S)$ be the~$\affl$-algebra given by~$\E(T \xra{\mu} S) \defeq
-\Gamma(T, \mu^*\A)$. The functor~$[\E,\affl]_\affl$ is precisely the
+\Gamma(T, \mu^*\A)$. The functor~$[\E,\affl]_\affl$ is the
 functor of points of the~$S$-scheme~$\RelSpec{S}{\A}$.
 \end{prop}
 \begin{proof}
 
 \end{proof}
+% XXX
 
 Conversely, if~$X \xra{\mu} S$ is an~$S$-scheme, the internal
 expression~$[\ul{X},\affl]^\flat$ denotes the object of~$\Zar(S)$ induced by the
@@ -6225,7 +6226,9 @@ local geometric morphism~$\Zar(S) \to \Sh(S)$ of toposes.)
 
 Let~$\mu : X \to S$ be a quasicompact and quasiseparated morphism. It is well-known
 that this morphism is affine if and only if the canonical morphism~$X \to
-\RelSpec{S}(\mu_*\O_X)$ is an isomorphism. We can reformulate this condition in
+\RelSpec{S}(\mu_*\O_X)$ is an isomorphism. (This also holds if~$\mu$ is not
+quasicompact and quasiseparated, but in this case~$\RelSpec{S}(\mu_*\O_X)$ is
+only a locally ringed space, not a scheme.) We can reformulate this condition in
 the internal language of~$\Zar(S)$ as saying that the canonical map
 \[ \ul{X} \lra [ [\ul{X},\affl]^\flat, \affl ]_\affl,\ x \longmapsto
 \placeholder(x) \]

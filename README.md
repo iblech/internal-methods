@@ -23,4 +23,4 @@ No prior knowledge about topos theory or formal logic is assumed.
 * [Poster (PDF)](https://github.com/iblech/internal-methods/raw/master/poster.pdf)
 * [Old slides (PDF)](http://www.speicherleck.de/iblech/stuff/gael2013-topos.pdf)
 
-![Sheaves of rings look like ordinary rings from the internal point of view.](external-internal-small.png)
+![Sheaves of rings look like ordinary rings from the internal point of view.](images/external-internal-small.png)

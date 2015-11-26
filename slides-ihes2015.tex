@@ -417,6 +417,8 @@
   by \hil{relocalizing} the corresponding limit in ringed locales.
 \end{frame}
 
+\backupstart
+
 \begin{frame}
   \slogan{\hil{Understand notions and statements of algebraic geometry
   as notions and statements of algebra internal to appropriate toposes.}}
@@ -427,7 +429,7 @@
   \par\medskip}
 
   \begin{itemize}
-    \item Simplify routine proofs.
+    \item Simplify proofs.
     \item Gain conceptual clarity.
     \item Develop a synthetic account of scheme theory.
   \end{itemize}
@@ -435,8 +437,6 @@
 % Fun facts:
 % Take O_X, pullback along X_{negneg} --> X, pushforward: result is K_X.
 % Very naive definition of P^n works internal to the big Zariski topos.
-
-\backupstart
 
 \begin{frame}[plain,c]
   \centering
@@ -447,6 +447,25 @@
 
   \hil{The Adventures of Sheafification Man}
   \par
+\end{frame}
+
+\begin{frame}\frametitle{The gros Zariski topos}
+  Let~$X$ be a scheme. The \hil{gros Zariski topos} is the topos of sheaves
+  on~$\Sch/X$ with respect to the Zariski topology. From its point of view,
+  \ldots
+
+  \begin{itemize}
+    \item \ldots{} $X$-schemes look just like sets,
+    \item \ldots{} $\mathbb{P}^n_X$ is given by the naive expression
+    \[ \{ (x_0,\ldots,x_n) \,|\, x_1 \neq 0 \vee \cdots \vee x_n \neq 0
+    \}/\text{(rescaling)}, \]
+    \item \ldots{} affinity is a ``double dual condition'', and
+    \item \ldots{} the étale topology is the coarsest topology~$\Diamond$ such
+    that
+    \[ \forall f : \mathbb{A}^1_X[T]\_
+      \text{$f$ is separable} \Rightarrow
+      \Diamond(\exists t : \mathbb{A}^1\_ f(t) = 0). \]
+  \end{itemize}
 \end{frame}
 
 \begin{frame}\frametitle{Translating internal statements}

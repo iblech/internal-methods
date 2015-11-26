@@ -13,6 +13,7 @@
 \usepackage{mathtools}
 \usepackage{soul}\setul{0.2ex}{}
 \usepackage[all]{xy}
+\xyoption{rotate}
 \usepackage{tikz}
 \usetikzlibrary{calc,shapes.callouts,shapes.arrows}
 
@@ -68,28 +69,31 @@
   \item[]}{\end{list}}
 
 \newcommand{\pointthis}[2]{%
-        \tikz[remember picture,baseline]{\node[anchor=base,inner sep=0,outer sep=0]%
-        (#1) {#1};\node[overlay,rectangle callout,%
-        callout relative pointer={(-0.2cm,0.8cm)},fill=blue!20] at ($(#1.north)+(1.8cm,-1.4cm)$) {#2};}%
-        }%
+  \tikz[remember picture,baseline]{\node[anchor=base,inner sep=0,outer sep=0]%
+    (#1) {#1};\node[overlay,rectangle callout,%
+    callout relative pointer={(-0.2cm,0.8cm)},fill=blue!20] at ($(#1.north)+(1.8cm,-1.4cm)$) {#2};}%
+}%
 
 \newcommand{\hcancel}[5]{%
-    \tikz[baseline=(tocancel.base)]{
-        \node[inner sep=0pt,outer sep=0pt] (tocancel) {#1};
-        \draw[red, line width=0.4mm] ($(tocancel.south west)+(#2,#3)$) -- ($(tocancel.north east)+(#4,#5)$);
-    }%
+  \tikz[baseline=(tocancel.base)]{
+    \node[inner sep=0pt,outer sep=0pt] (tocancel) {#1};
+    \draw[red, line width=0.4mm] ($(tocancel.south west)+(#2,#3)$) -- ($(tocancel.north east)+(#4,#5)$);
+  }%
+}
+
+\newcommand{\slogan}[1]{%
+  \begin{center}%
+    \setlength{\fboxrule}{0pt}%
+    \setlength{\fboxsep}{-14pt}%
+    {\usebeamercolor[fg]{item}\fbox{\usebeamercolor[fg]{normal
+    text}\parbox{0.9\textwidth}{\begin{center}#1\end{center}}}}%
+  \end{center}%
 }
 
 \setbeamertemplate{frametitle}[default][colsep=-2bp,rounded=false,shadow=false,center]
 
 \setbeamertemplate{headline}{}
 \setbeamertemplate{navigation symbols}{}
-
-\newcommand{\floatbox}[3]{%
-  \raisebox{0pt}[0pt][0pt]{%
-    \begin{picture}(0,0)(#1,#2)#3\end{picture}\leavevmode%
-  }%
-}
 
 \newcommand{\backupstart}{
   \newcounter{framenumberpreappendix}
@@ -137,38 +141,6 @@
 
 \frame[t]{\frametitle{Outline}\scriptsize\begin{itemize}\item[]\tableofcontents\end{itemize}}
 
-\note{\justifying\fontsize{8pt}{9.6}\selectfont
-  \begin{center}\large\textbf{Abstract}\end{center}
-
-  \begin{changemargin}{2.5em}{2.5em}
-    We describe how the internal language of certain
-    toposes, the associated petit and gros Zariski toposes of a scheme, can be
-    used to give simpler definitions and more conceptual proofs of the basic
-    notions and observations in algebraic geometry.
-    % This is useful for studying schemes from a local or relative point of view.
-
-    The starting point is that, from the internal point of view, sheaves of rings
-    and sheaves of modules look just like plain rings and plain modules.
-    In this way, some concepts and statements of scheme theory can be reduced to
-    concepts and statements of intuitionistic linear algebra.
-
-    Furthermore, modal operators can be used to model phrases such as ``on a
-    dense open subset it holds that'' or ``on an open neighbourhood of a given
-    point it holds that''. These operators define certain subtoposes; a
-    generalization of the double-negation translation is useful in order to
-    understand the internal universe of those subtoposes from the internal point
-    of view of the ambient topos.
-
-    A particularly interesting task is to internalize the
-    construction of the relative spectrum, which, given a quasicoherent sheaf of algebras
-    on a scheme~$X$, yields a scheme over~$X$. From the internal point of
-    view, this construction should simply reduce to an intuitionistically sensible
-    variant of the ordinary construction of the spectrum of a ring, but it turns
-    out that this expectation is too naive and that a refined approach is
-    necessary.
-  \end{changemargin}
-}
-
 \begin{frame}[plain,c]
   \centering
   \includegraphics[scale=0.37]{images/math-overflow-steven-gubkin}
@@ -178,81 +150,70 @@
 
 \section{The internal language}
 
-\begin{frame}\frametitle{The internal language of a topos}
-  Let~$\E$ be a topos. Then we can define the meaning of
-  \[ \hil{$\E \models \varphi \qquad\textnormal{(``$\varphi$ holds in $\E$'')}$} \]
-  for formulas~$\varphi$ over~$\E$ using the \hil{Kripke--Joyal semantics}.
-
-  \begin{center}
-    \small
-    \begin{tabular}{ll}
-      \toprule
-      externally & internally \\
-      \midrule
-      object & set/type \\
-      morphism & map of sets \\
-      monomorphism & injective map \\
-      epimorphism & surjective map \\
-      \bottomrule
-    \end{tabular}
-  \end{center}
-  \pause
-
-  \mbox{If~$\varphi$ implies~$\psi$ \hil{intuitionistically}, then~$\E \models \varphi$
-  implies~$\E \models \psi$.}
-\end{frame}
-
-\note{
-  Let~$X$ be a topological space (or locale) and let~$\alpha : \F \to \G$ be a
-  morphism of sheaves on~$X$. Then:
-  \allowdisplaybreaks
-  \begin{align*}
-    & \Sh(X) \models \speak{$\alpha$ is injective} \\[0.5em]
-    \Longleftrightarrow\
-    & \Sh(X) \models \forall s\?\F\_ \forall t\?\F\_ \alpha(s) = \alpha(t) \Rightarrow s = t \\[0.5em]
-    \Longleftrightarrow\ &
-      \text{for all open~$U \subseteq X$, sections $s \in \F(U)$:} \\
-    &\qquad
-      \text{for all open~$V \subseteq U$, sections $t \in \F(V)$:} \\
-    &\qquad\qquad
-        \text{for all open~$W \subseteq V$:} \\
-    &\qquad\qquad\qquad
-          \text{$\alpha_W(s|_W) = \alpha_W(t|_W)$ implies $s|_W = t|_W$} \\[0.5em]
-    \Longleftrightarrow\ &
-      \text{for all open~$U \subseteq X$, sections $s, t \in \F(U)$:} \\
-    &\qquad
-          \text{$\alpha_U(s|_U) = \alpha_U(t|_U)$ implies $s|_U = t|_U$} \\[0.5em]
-    \Longleftrightarrow\ &
-      \text{$\alpha$ is a monomorphism of sheaves}
-  \end{align*}
-}
-
-\begin{frame}\frametitle{Building a dictionary}
+\begin{frame}\frametitle{Exploiting the internal language}
   A \hil{scheme} is a locally ringed space~$(X,\O_X)$ which is
   locally isomorphic to the \hil{spectrum of a commutative ring}:
   \[ \Spec A \defeq \{ \ppp \subseteq A \,|\, \text{$\ppp$ is a prime ideal} \} \]
   \pause
+  The topos~$\Sh(X)$ is the \hil{petit Zariski topos} of~$X$.
 
   \begin{center}
     \small
     \begin{tabular}{ll}
       \toprule
-      externally to $\Sh(X)$ & internally \\
+      externally & internally to $\Sh(X)$ \\
+      \midrule
+      sheaf of sets & set/type \\
+      morphism of sheaves & map of sets \\
+      monomorphism & injective map \\
+      epimorphism & surjective map \\
+      sheaf of rings & ring \\
+      sheaf of modules & module \\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+\end{frame}
+
+\begin{frame}\frametitle{Building a dictionary}
+  \slogan{\hil{Understand notions of algebraic geometry
+  as notions of algebra internal to~$\boldsymbol{\Sh(X)}$.}}
+  \begin{center}
+    \small
+    \begin{tabular}{ll}
+      \toprule
+      externally & internally to $\Sh(X)$ \\
+      \midrule
+      sheaf of sets & set/type \\
+      morphism of sheaves & map of sets \\
+      monomorphism & injective map \\
+      epimorphism & surjective map \\
       \midrule
       sheaf of rings & ring \\
       sheaf of modules & module \\
       sheaf of finite type & finitely generated module \\
-      finite locally free sheaf & finite free module \\
+      locally free sheaf & free module \\
+      tensor product of sheaves & tensor product of modules \\
+      rank function & minimal number of generators \\
+      sheaf of rational functions & total quotient ring of~$\O_X$ \\
       \bottomrule
     \end{tabular}
   \end{center}
 
-  \hil{Motto:} \tabto{1.41cm} We can understand notions of algebraic geometry \\
-  \tabto{1.41cm} as notions of linear algebra internal to~$\Sh(X)$.
+  \visible<2>{\begin{tikzpicture}[overlay]
+    \draw[fill=white, draw=white, opacity=0.9] (0,0) rectangle (\paperwidth,7.1);
+    \node[anchor=south west,inner sep=0] (image) at (1.8,1.3) {
+      \includegraphics[width=0.7\textwidth]{images/steven-kleiman-misconceptions-about-kx}
+    };
+  \end{tikzpicture}}
 \end{frame}
 
+\begin{frame}[c]\frametitle{Praise for Mike Shulman}
+  \centering
+  \includegraphics[scale=0.4]{images/mike-shulman-stack-semantics}
+  \par
+\end{frame}
 
-\begin{frame}[c]\frametitle{Using the dictionary}
+\begin{frame}\frametitle{Using the dictionary}
   \begin{center}
     \begin{minipage}{0.75\textwidth}
       \begin{exampleblock}{}
@@ -278,17 +239,15 @@
 
 \begin{frame}[c]\frametitle{Using the dictionary}
   \begin{center}
-    \visible<2->{
-      \begin{minipage}{0.70\textwidth}
-        \begin{exampleblock}{}
-          \justifying
-          Any finitely generated vector space does \emph{not not} possess a basis.
-        \end{exampleblock}
-      \end{minipage}
-      \medskip
+    \begin{minipage}{0.70\textwidth}
+      \begin{exampleblock}{}
+        \justifying
+        Any finitely generated vector space does \emph{not not} possess a basis.
+      \end{exampleblock}
+    \end{minipage}
+    \medskip
 
-      \scalebox{3}{$\Downarrow$}
-    }
+    \scalebox{3}{$\Downarrow$}
 
     \begin{minipage}{0.70\textwidth}
       \begin{exampleblock}{}
@@ -298,20 +257,13 @@
       \end{exampleblock}
     \end{minipage}
   \end{center}
-  \pause
-  \pause
-
-  \hil{Motto:} \tabto{1.41cm} \mbox{We can understand statements of algebraic geometry} \\
-  \tabto{1.41cm} as statements of linear algebra internal to~$\Sh(X)$.
 \end{frame}
 
-\begin{frame}\frametitle{Exploring the internal world}
+\begin{frame}\frametitle{A curious property}
   Let~$X$ be a scheme. Internally to~$\Sh(X)$,
-  \begin{itemize}
-    \item any non-invertible element of~$\O_X$ is nilpotent,
-    \item $\K_X$ is simply the total quotient ring of~$\O_X$,
-    \item $\dim \O_X \leq n$ holds if and only if~$\dim X \leq n$.
-  \end{itemize}
+  \begin{center}
+    \hil{any non-invertible element of~$\boldsymbol{\O_X}$ is nilpotent.}
+  \end{center}
 
   \centering
   \includegraphics[scale=0.3]{images/tierney-on-the-spectrum-of-a-ringed-topos} \\
@@ -325,7 +277,7 @@
 \end{frame}
 
 
-\section{\texorpdfstring{The $\Diamond$-translation}{The ♦-translation}}  % XXX
+\section{\texorpdfstring{The $\Diamond$-translation}{The ♢-translation}}
 
 \newcommand{\idiamond}{{\usebeamercolor[fg]{item}{\boldsymbol{\Diamond}}}}
 \newcommand{\gdiamond}[1]{\textcolor{gray}{\boldsymbol{\Diamond}(}#1\textcolor{gray}{)}}
@@ -451,24 +403,37 @@
 \begin{frame}\frametitle{The relative spectrum, reformulated}
   Let~$B \to A$ be an algebra in topos.
 
-  Is there a \hil{free local and local-over-$B$ ring}~$A \to A'$ over~$A$?
+  Is there a \hil{free local and local-over-$\boldsymbol{B}$ ring}~$A \to A'$ over~$A$?
 
   \[ \xymatrix{
-    B \ar[r]\ar@/^1.5pc/[rrrr]\ar@/_/[rrd] & A \ar[rd] \ar[rrr] &&& R \\
-    && A' \ar@{-->}[rru]
+    B \ar[r]\ar@/^2pc/[rrrr]^{\text{local}}\ar@/_/[rrd]_[@!-33]{\text{local}} &
+      A \ar[rd] \ar[rrr] &&&
+      {\substack{\text{local}\\\text{\normalsize$R$}\\\phantom{\text{local}}}} \\
+    && {\substack{\text{\normalsize$A'$}\\\text{local}}} \ar@{-->}[rru]_[@!35]{\text{local}}
   } \]
-\end{frame}
-% Better decoration (local rings, local morphisms)
 
-\begin{frame}\frametitle{Limits of locally ringed locales}
-  Let~$(X_i)_i$ be a diagram of locally ringed locales.
-
-  Its limit is given by \hil{relocalizing} the corresponding limit
-  in~$\mathrm{RL}$.
+  \medskip
+  Form limits in the category of \hil{locally ringed locales}
+  by \hil{relocalizing} the corresponding limit in ringed locales.
 \end{frame}
-% Mention only orally?
-% Phrase more categorically.
-% Extend to toposes.
+
+\begin{frame}
+  \slogan{\hil{Understand notions and statements of algebraic geometry
+  as notions and statements of algebra internal to appropriate toposes.}}
+
+  {\vspace{-0.5em}\centering
+  \includegraphics[scale=0.3]{images/external-internal-small}
+  \par\medskip}
+
+  \begin{itemize}
+    \item Simplify routine proofs.
+    \item Gain conceptual clarity.
+    \item Develop a synthetic account of scheme theory.
+  \end{itemize}
+\end{frame}
+% Fun facts:
+% Take O_X, pullback along X_{negneg} --> X, pushforward: result is K_X.
+% Very naive definition of P^n works internal to the big Zariski topos.
 
 \backupstart
 
@@ -483,6 +448,31 @@
   \par
 \end{frame}
 
+\begin{frame}\frametitle{Translating internal statements}
+  Let~$X$ be a topological space (or locale) and let~$\alpha : \F \to \G$ be a
+  morphism of sheaves on~$X$. Then:
+  \allowdisplaybreaks
+  \begin{align*}
+    & \Sh(X) \models \speak{$\alpha$ is injective} \\[0.5em]
+    \Longleftrightarrow\
+    & \Sh(X) \models \forall s\?\F\_ \forall t\?\F\_ \alpha(s) = \alpha(t) \Rightarrow s = t \\[0.5em]
+    \Longleftrightarrow\ &
+      \text{for all open~$U \subseteq X$, sections $s \in \F(U)$:} \\
+    &\qquad
+      \text{for all open~$V \subseteq U$, sections $t \in \F(V)$:} \\
+    &\qquad\qquad
+        \text{for all open~$W \subseteq V$:} \\
+    &\qquad\qquad\qquad
+          \text{$\alpha_W(s|_W) = \alpha_W(t|_W)$ implies $s|_W = t|_W$} \\[0.5em]
+    \Longleftrightarrow\ &
+      \text{for all open~$U \subseteq X$, sections $s, t \in \F(U)$:} \\
+    &\qquad
+          \text{$\alpha_U(s|_U) = \alpha_U(t|_U)$ implies $s|_U = t|_U$} \\[0.5em]
+    \Longleftrightarrow\ &
+      \text{$\alpha$ is a monomorphism of sheaves}
+  \end{align*}
+\end{frame}
+
 \backupend
 
 \end{document}
@@ -493,6 +483,38 @@
 4. Relative spectrum (also mention equivalence to Hakim's spectrum in dimension zero)
 5. Outlook: synthetic algebraic geometry, relative geometry, big Zariski topos
 
+\note{\justifying\fontsize{8pt}{9.6}\selectfont
+  \begin{center}\large\textbf{Abstract}\end{center}
+
+  \begin{changemargin}{2.5em}{2.5em}
+    We describe how the internal language of certain
+    toposes, the associated petit and gros Zariski toposes of a scheme, can be
+    used to give simpler definitions and more conceptual proofs of the basic
+    notions and observations in algebraic geometry.
+    % This is useful for studying schemes from a local or relative point of view.
+
+    The starting point is that, from the internal point of view, sheaves of rings
+    and sheaves of modules look just like plain rings and plain modules.
+    In this way, some concepts and statements of scheme theory can be reduced to
+    concepts and statements of intuitionistic linear algebra.
+
+    Furthermore, modal operators can be used to model phrases such as ``on a
+    dense open subset it holds that'' or ``on an open neighbourhood of a given
+    point it holds that''. These operators define certain subtoposes; a
+    generalization of the double-negation translation is useful in order to
+    understand the internal universe of those subtoposes from the internal point
+    of view of the ambient topos.
+
+    A particularly interesting task is to internalize the
+    construction of the relative spectrum, which, given a quasicoherent sheaf of algebras
+    on a scheme~$X$, yields a scheme over~$X$. From the internal point of
+    view, this construction should simply reduce to an intuitionistically sensible
+    variant of the ordinary construction of the spectrum of a ring, but it turns
+    out that this expectation is too naive and that a refined approach is
+    necessary.
+  \end{changemargin}
+}
+
   \scriptsize
   \begin{itemize}
     \item $\Sh(X) \models f = g$ iff~$f = g \in \F(X)$.
@@ -501,3 +523,37 @@
     \item $\Sh(X) \models \neg\neg(f = g)$ iff~$f = g$ on a dense open subset
     of~$X$.
   \end{itemize}
+
+\begin{frame}\frametitle{The internal language of a topos}
+  Let~$\E$ be a topos. Then we can define the meaning of
+  \[ \hil{$\E \models \varphi \qquad\textnormal{(``$\varphi$ holds in $\E$'')}$} \]
+  for formulas~$\varphi$ over~$\E$ using the \hil{Kripke--Joyal semantics}.
+
+  \begin{center}
+    \small
+    \begin{tabular}{ll}
+      \toprule
+      externally & internally \\
+      \midrule
+      object & set/type \\
+      morphism & map of sets \\
+      monomorphism & injective map \\
+      epimorphism & surjective map \\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+  \pause
+
+  \mbox{If~$\varphi$ implies~$\psi$ \hil{intuitionistically}, then~$\E \models \varphi$
+  implies~$\E \models \psi$.}
+\end{frame}
+
+\begin{frame}\frametitle{Limits of locally ringed locales}
+  Let~$(X_i)_i$ be a diagram of locally ringed locales.
+
+  Its limit is given by \hil{relocalizing} the corresponding limit
+  in~$\mathrm{RL}$.
+\end{frame}
+% Mention only orally?
+% Phrase more categorically.
+% Extend to toposes.

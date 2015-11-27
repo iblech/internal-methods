@@ -430,15 +430,16 @@
   \slogan{\hil{Understand notions and statements of algebraic geometry
   as notions and statements of algebra internal to appropriate toposes.}}
 
-  {\vspace{-0.5em}\centering
+  {\vspace{-0.1em}\centering
   \rotatebox{90}{\tiny\scalebox{0.5}{Illustration: Carina Willbold}}\hspace{-0.05cm}%
-  \includegraphics[scale=0.23]{images/external-internal-small}
-  \par\medskip}
+  \includegraphics[scale=0.20]{images/external-internal-small}
+  \par\medskip\vspace{-0.1em}}
 
   \begin{itemize}
-    \item Simplify proofs.
-    \item Gain conceptual understanding.
+    \item Simplify proofs and gain conceptual understanding.
+    \item Understand relative geometry as absolute geometry.
     \item Develop a synthetic account of scheme theory.
+    \item Contribute to constructive algebra.
   \end{itemize}
 
   \centering
@@ -523,6 +524,32 @@
   Examples: finitely generated, free, flat, \ldots
 
   A converse holds as well, suitably formulated.
+\end{frame}
+
+\begin{frame}\frametitle{Applications in algebra}
+  Let~$A$ be a commutative ring.
+  The internal language of~$\Sh(\Spec A)$ allows you to say ``without loss of
+  generality, we may assume that~$A$ is local'', even constructively.
+
+  \begin{center}
+    \begin{minipage}{0.75\textwidth}
+      \begin{exampleblock}{}
+        \justifying
+        The kernel of any matrix over a principial ideal domain is finitely
+        generated.
+      \end{exampleblock}
+    \end{minipage}
+    \medskip
+
+    \scalebox{3}{$\Downarrow$}
+
+    \begin{minipage}{0.75\textwidth}
+      \begin{exampleblock}{}
+        \justifying
+        The kernel of any matrix over a Prüfer domain is finitely generated.
+      \end{exampleblock}
+    \end{minipage}
+  \end{center}
 \end{frame}
 
 \begin{frame}\frametitle{The gros Zariski topos}

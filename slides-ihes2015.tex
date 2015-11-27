@@ -95,8 +95,8 @@
 \setbeamertemplate{headline}{}
 \setbeamertemplate{navigation symbols}{}
 
+\newcounter{framenumberpreappendix}
 \newcommand{\backupstart}{
-  \newcounter{framenumberpreappendix}
   \setcounter{framenumberpreappendix}{\value{framenumber}}
 }
 \newcommand{\backupend}{
@@ -139,6 +139,7 @@
   \par
 \end{frame}
 
+\backupstart
 \frame[t]{\frametitle{Outline}\scriptsize\begin{itemize}\item[]\tableofcontents\end{itemize}}
 
 \begin{frame}[plain,c]
@@ -146,9 +147,10 @@
   \includegraphics[scale=0.37]{images/math-overflow-steven-gubkin}
   \par
 \end{frame}
+\backupend
 
 
-\section{The internal language}
+\section{Basic applications of the internal language}
 
 \begin{frame}\frametitle{Exploiting the internal language}
   A \hil{scheme} is a locally ringed space~$(X,\O_X)$ which is
@@ -179,7 +181,7 @@
   as notions of algebra internal to~$\boldsymbol{\Sh(X)}$.}}
   \begin{center}
     \small
-    \begin{tabular}{ll}
+    \scalebox{0.93}{\begin{tabular}{ll}
       \toprule
       externally & internally to $\Sh(X)$ \\
       \midrule
@@ -191,12 +193,13 @@
       sheaf of rings & ring \\
       sheaf of modules & module \\
       sheaf of finite type & finitely generated module \\
-      locally free sheaf & free module \\
+      finite locally free sheaf & finite free module \\
+      coherent sheaf & coherent module \\
       tensor product of sheaves & tensor product of modules \\
       rank function & minimal number of generators \\
       sheaf of rational functions & total quotient ring of~$\O_X$ \\
       \bottomrule
-    \end{tabular}
+    \end{tabular}}
   \end{center}
 
   \visible<2>{\begin{tikzpicture}[overlay]
@@ -230,7 +233,7 @@
       \begin{exampleblock}{}
         \justifying
         Let $0 \to \F' \to \F \to \F'' \to 0$ be a short exact sequence
-        of~$\O_X$-modules. If~$\F'$ and~$\F''$ are locally of finite type, so
+        of~$\O_X$-modules. If~$\F'$ and~$\F''$ are of finite type, so
         is~$\F$.
       \end{exampleblock}
     \end{minipage}
@@ -255,6 +258,9 @@
         Any sheaf of modules of finite type on a reduced scheme is locally free
         \emph{on a dense open subset}.
       \end{exampleblock}
+      \centering
+      \tiny Ravi Vakil: ``Important hard exercise'' (13.7.K).
+      \par
     \end{minipage}
   \end{center}
 \end{frame}
@@ -302,6 +308,7 @@
     \models \Diamond\varphi$ means that~$\varphi$ holds on \ldots
     \begin{itemize}
       \item \ldots{} a dense open subset.
+      \item \ldots{} a schematically dense open subset.
       \item \ldots{} a given open subset~$U$.
       \item \ldots{} an open subset containing a given closed subset~$A$.
       \item \ldots{} an open neighbourhood of a given point~$x \in X$.
@@ -316,20 +323,20 @@
 \section{Quasicoherence of sheaves of modules}
 
 \begin{frame}\frametitle{Quasicoherence}
-  Let~$X$ be a scheme. Let~$\F$ be an~$\O_X$-module.
+  Let~$X$ be a scheme. Let~$\E$ be an~$\O_X$-module.
 
-  Then~$\F$ is quasicoherent
+  Then~$\E$ is quasicoherent
   if and only if, internally to~$\Sh(X)$,
-  \begin{quote}\textnormal{$\F[f^{-1}]$ is a $\Diamond_f$-sheaf for any~$f : \O_X$, \\[0.3em]
+  \begin{quote}\textnormal{$\E[f^{-1}]$ is a $\Diamond_f$-sheaf for any~$f : \O_X$, \\[0.3em]
   \qquad\qquad where~$\Diamond_f\varphi \defeqv (\text{$f$ invertible} \Rightarrow \varphi)$.}
   \end{quote}
   \pause
 
-  In particular: If~$\F$ is quasicoherent, then internally
+  In particular: If~$\E$ is quasicoherent, then internally
   \[ (\text{$f$ invertible} \Rightarrow s = 0) \Longrightarrow
     \bigvee_{n \geq 0} f^n s = 0 \]
   \vspace*{-1.5em}\par%
-  for any~$f : \O_X$ and~$s : \F$.
+  for any~$f : \O_X$ and~$s : \E$.
 \end{frame}
 
 
@@ -351,8 +358,8 @@
 \end{frame}
 
 \newcommand{\defspeca}{\text{topological space of the prime ideals of $A$}}
-\newcommand{\defspecb}{\text{topological space of the filters of $A$}}
-\newcommand{\defspecc}{\text{locale of the filters of $A$}}
+\newcommand{\defspecb}{\text{topological space of the prime filters of $A$}}
+\newcommand{\defspecc}{\text{locale of the prime filters of $A$}}
 
 \begin{frame}\frametitle{The absolute spectrum, internalized}
   Let~$A$ be a commutative ring in a topos~$\E$.
@@ -382,7 +389,7 @@
 
 \begin{frame}\frametitle{The relative spectrum}
   Let~$X$ be a scheme and~$\O_X \xrightarrow{\varphi} \A$ be a quasicoherent algebra.
-  Can we describe~$\RelSpec_X \A$, a scheme over~$X$, internally?
+  Can we describe~\hil{$\boldsymbol{\RelSpec_X \A}$}, a scheme over~$X$, internally?
 
   Desired universal property:
   \[ \Hom_{\Sch/X}(T, \RelSpec_X \A) \cong \Hom_{\mathrm{Alg}(\O_X)}(\A,
@@ -390,14 +397,14 @@
   for all~$X$-schemes~$T \xrightarrow{\mu} X$.
   \pause
 
-  Solution: Define internally the frame of~$\RelSpec_X \A$ to be the frame of
+  \hil{Solution:} Define internally the frame of~$\RelSpec_X \A$ to be the frame of
   those radical ideals~$I \subseteq \A$ such that
   \[ \forall f\?\O_X\_ \forall s\?\A\_
     (\text{$f$ invertible in~$\O_X$} \Rightarrow s \in I) \Longrightarrow
       fs \in I. \]
   \pause
-  Its points are those filters~$\fff$ of~$\A$ such that
-  \[ \forall f\?\O_X\_ \varphi(f) \in \fff \Rightarrow \text{$f$ invertible in~$\O_X$}. \]
+  Its \hil{points} are those prime filters~$G$ of~$\A$ such that
+  \[ \forall f\?\O_X\_ \varphi(f) \in G \Rightarrow \text{$f$ invertible in~$\O_X$}. \]
 \end{frame}
 
 \begin{frame}\frametitle{The relative spectrum, reformulated}
@@ -425,17 +432,37 @@
 
   {\vspace{-0.5em}\centering
   \rotatebox{90}{\tiny\scalebox{0.5}{Illustration: Carina Willbold}}\hspace{-0.05cm}%
-  \includegraphics[scale=0.3]{images/external-internal-small}
+  \includegraphics[scale=0.23]{images/external-internal-small}
   \par\medskip}
 
   \begin{itemize}
     \item Simplify proofs.
-    \item Gain conceptual clarity.
+    \item Gain conceptual understanding.
     \item Develop a synthetic account of scheme theory.
   \end{itemize}
+
+  \centering
+  \hil{\href{http://tiny.cc/topos-notes}{http://tiny.cc/topos-notes}} \\
+  \begin{minipage}{1.0\textwidth}\justifying
+    \scriptsize
+    spreading of properties,
+    general transfer principles,
+    applications to constructive algebra,
+    quasicoherence,
+    internal Cartier divisors,
+    pullback along immersions $=$ internal sheafification,
+    scheme dimension $=$ internal Krull dimension of~$\O_X$,
+    dense $=$ not not,
+    modal operators,
+    relative spectrum,
+    other toposes,
+    étale topology,
+    group schemes $=$ groups,
+    \ldots
+  \end{minipage}
+  \par
 \end{frame}
-% Fun facts:
-% Take O_X, pullback along X_{negneg} --> X, pushforward: result is K_X.
+% Fun fact:
 % Very naive definition of P^n works internal to the big Zariski topos.
 
 \begin{frame}[plain,c]
@@ -449,6 +476,55 @@
   \par
 \end{frame}
 
+\begin{frame}\frametitle{Spreading from points to neighbourhoods}
+  All of the following lemmas have a short, sometimes trivial proof.
+  Let~$\F$ be a sheaf of finite type on a ringed space~$X$.
+  Let~$x \in X$. Let~$A \subseteq X$ be a closed subset. Then:
+  \small
+  \begin{itemize}
+    \item $\F_x = 0$ iff~$\F|_U = 0$ for some open neighbourhood of~$x$.
+    \item $\F|_A = 0$ iff~$\F|_U = 0$ for some open set containing~$A$.
+    \item $\F_x$ can be generated by~$n$ elements iff this is true on some open
+    neighbourhood of~$x$.
+%   \item $\alpha_x$ is surjective iff~$\alpha$ is an epimorphism on some open
+%   set containing~$x$, where~$\alpha : \G \to \F$ is any morphism.
+    \item $\mathcal{H}\mathrm{om}_{\O_X}(\F,\G)_x \cong
+    \Hom_{\O_{X,x}}(\F_x,\G_x)$ if~$\F$ is of finite presentation around~$x$.
+    \item $\F$ is torsion iff~$\F_\xi$ vanishes (assume~$X$ integral and~$\F$ quasicoherent).
+    \item $\F$ is torsion iff~$\F|_{\mathrm{Ass}(\O_X)}$ vanishes (assume~$X$
+    locally Noetherian and~$\F$ quasicoherent).
+  \end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{The smallest dense sublocale}
+  Let~$X$ be a reduced scheme satisfying a technical condition.
+  Let~$i : X_{\neg\neg} \to X$ be the inclusion of the smallest dense sublocale
+  of~$X$.
+
+  Then~$i_* i^{-1} \O_X \cong \K_X$.
+
+%  \begin{itemize}
+%    \item This is a highbrow way of saying ``rational functions are regular
+%    functions which are defined on a dense open subset''.
+%    \item There is a generalization to nonreduced schemes.
+%  \end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Transfer principles}
+  Let~$M$ be an~$A$-module. How do~$M$ and the sheaf~$M^{\sim}$ on~$\Spec A$
+  relate?
+
+  Observe that $M^{\sim} \cong \underline{M}[F^{-1}]$ is the localization of~$M$ at
+  the \hil{generic filter}. Therefore:
+  \begin{center}
+    $M^{\sim}$ inherits all those properties of~$M$ which are \\
+    \hil{stable under localization}.
+  \end{center}
+  Examples: finitely generated, free, flat, \ldots
+
+  A converse holds as well, suitably formulated.
+\end{frame}
+
 \begin{frame}\frametitle{The gros Zariski topos}
   Let~$X$ be a scheme. The \hil{gros Zariski topos} is the topos of sheaves
   on~$\Sch/X$ with respect to the Zariski topology. From its point of view,
@@ -460,10 +536,9 @@
     \[ \{ (x_0,\ldots,x_n) \,|\, x_1 \neq 0 \vee \cdots \vee x_n \neq 0
     \}/\text{(rescaling)}, \]
     \item \ldots{} affinity is a ``double dual condition'', and
-    \item \ldots{} the étale topology is the coarsest topology~$\Diamond$ such
-    that
-    \[ \forall f : \mathbb{A}^1_X[T]\_
-      \text{$f$ is separable} \Rightarrow
+    \item \ldots{} the étale topology is the coarsest topology~$\Diamond$ s.\,th.
+    \[ \forall f : \mathbb{A}^1_X[T]\_\
+      \text{$f$ is monic separable} \Rightarrow
       \Diamond(\exists t : \mathbb{A}^1\_ f(t) = 0). \]
   \end{itemize}
 \end{frame}

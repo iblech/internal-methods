@@ -25,6 +25,7 @@
 \renewcommand{\G}{\mathcal{G}}
 \renewcommand{\O}{\mathcal{O}}
 \newcommand{\K}{\mathcal{K}}
+\newcommand{\NN}{\mathbb{N}}
 \newcommand{\ppp}{\mathfrak{p}}
 \newcommand{\fff}{\mathfrak{f}}
 \newcommand{\defeq}{\vcentcolon=}
@@ -215,6 +216,25 @@
   \includegraphics[scale=0.4]{images/mike-shulman-stack-semantics}
   \par
 \end{frame}
+
+\note{\justifying
+  The internal language of a topos supports
+  \begin{itemize}
+  \item first-order logic,
+  \item higher-order logic (for instance quantification over subsets),
+  \item dependent types, and
+  \item unbounded quantification.
+  \end{itemize}
+
+  The first three items are standard. The fourth is due to Mike Shulman.
+  Combined, it's possible to interpret ``essentially all of constructive
+  mathematics'' internal to a topos.
+
+  Restrictions persist for operations with a ``set-theoretical flavor'' like
+  building an infinite union of iterated powersets, for example~$\bigcup_{n \in
+  \NN} P^n(\NN)$.
+  \par
+}
 
 \begin{frame}\frametitle{Using the dictionary}
   \begin{center}
@@ -562,6 +582,10 @@
     \item \ldots{} $\mathbb{P}^n_X$ is given by the naive expression
     \[ \{ (x_0,\ldots,x_n) \,|\, x_1 \neq 0 \vee \cdots \vee x_n \neq 0
     \}/\text{(rescaling)}, \]
+    \item \ldots{} the cotangent ``bundle'' of an~$X$-scheme~$T$ is
+    \[ \text{the set of maps $\Delta \to T$,} \]
+    where~$\Delta = \{ \varepsilon \in \mathbb{A}^1_X \,|\, \varepsilon^2 = 0
+    \}$.
     \item \ldots{} affinity is a ``double dual condition'', and
     \item \ldots{} the étale topology is the coarsest topology~$\Diamond$ s.\,th.
     \[ \forall f : \mathbb{A}^1_X[T]\_\
@@ -569,6 +593,22 @@
       \Diamond(\exists t : \mathbb{A}^1\_ f(t) = 0). \]
   \end{itemize}
 \end{frame}
+
+\note{\justifying
+  \begin{itemize}
+    \item The functor of points of~$\mathbb{A}^1_X$, that is
+    \[ (T/X) \longmapsto \O_T(T), \]
+    looks like a local ring and indeed like a field from the internal point of
+    view, in the sense that
+    \[ \forall f\?\mathbb{A}^1_X\_ \neg(f = 0) \Rightarrow \text{$f$
+    invertible}. \]
+    \item Describing the functor of points of the projective space was
+    suggested by Zhen Lin Low.
+    \item The statement on the étale topology follows from Gavin Wraith's
+    article \emph{Generic Galois theory of local rings}.
+  \end{itemize}
+  \par
+}
 
 \begin{frame}\frametitle{Translating internal statements}
   Let~$X$ be a topological space (or locale) and let~$\alpha : \F \to \G$ be a

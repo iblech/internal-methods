@@ -11,7 +11,7 @@
 \usepackage{tabto}
 \usepackage{xstring}
 \usepackage{mathtools}
-\usepackage{soul}\setul{0.2ex}{}
+\usepackage{soul}\setul{0.3ex}{}
 \usepackage[all]{xy}
 \xyoption{rotate}
 \usepackage{tikz}
@@ -20,14 +20,15 @@
 \usepackage[protrusion=true,expansion=true]{microtype}
 
 \newcommand{\A}{\mathcal{A}}
+\renewcommand{\AA}{\mathbb{A}}
 \newcommand{\E}{\mathcal{E}}
 \newcommand{\F}{\mathcal{F}}
 \renewcommand{\G}{\mathcal{G}}
 \renewcommand{\O}{\mathcal{O}}
 \newcommand{\K}{\mathcal{K}}
 \newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\ppp}{\mathfrak{p}}
-\newcommand{\fff}{\mathfrak{f}}
 \newcommand{\defeq}{\vcentcolon=}
 \newcommand{\defeqv}{\vcentcolon\equiv}
 \newcommand{\Sh}{\mathrm{Sh}}
@@ -39,6 +40,7 @@
 \renewcommand{\_}{\mathpunct{.}}
 \newcommand{\?}{\,{:}\,}
 \newcommand{\speak}[1]{\ulcorner\text{\textnormal{#1}}\urcorner}
+\newcommand{\ull}[1]{\underline{#1}}
 
 \setlength\parskip{\medskipamount}
 \setlength\parindent{0pt}
@@ -143,6 +145,38 @@
 \backupstart
 \frame[t]{\frametitle{Outline}\scriptsize\begin{itemize}\item[]\tableofcontents\end{itemize}}
 
+\note{\justifying\fontsize{8pt}{9.6}\selectfont
+  \begin{center}\large\textbf{Abstract}\end{center}
+
+  \begin{changemargin}{2.5em}{2.5em}
+    We describe how the internal language of certain
+    toposes, the associated petit and gros Zariski toposes of a scheme, can be
+    used to give simpler definitions and more conceptual proofs of the basic
+    notions and observations in algebraic geometry.
+    % This is useful for studying schemes from a local or relative point of view.
+
+    The starting point is that, from the internal point of view, sheaves of rings
+    and sheaves of modules look just like plain rings and plain modules.
+    In this way, some concepts and statements of scheme theory can be reduced to
+    concepts and statements of intuitionistic linear algebra.
+
+    Furthermore, modal operators can be used to model phrases such as ``on a
+    dense open subset it holds that'' or ``on an open neighbourhood of a given
+    point it holds that''. These operators define certain subtoposes; a
+    generalization of the double-negation translation is useful in order to
+    understand the internal universe of those subtoposes from the internal point
+    of view of the ambient topos.
+
+    A particularly interesting task is to internalize the
+    construction of the relative spectrum, which, given a quasicoherent sheaf of algebras
+    on a scheme~$X$, yields a scheme over~$X$. From the internal point of
+    view, this construction should simply reduce to an intuitionistically sensible
+    variant of the ordinary construction of the spectrum of a ring, but it turns
+    out that this expectation is too naive and that a refined approach is
+    necessary.
+  \end{changemargin}
+}
+
 \begin{frame}[plain,c]
   \centering
   \includegraphics[scale=0.37]{images/math-overflow-steven-gubkin}
@@ -210,6 +244,15 @@
     };
   \end{tikzpicture}}
 \end{frame}
+
+\note{\justifying
+  See the \href{https://github.com/iblech/internal-methods/raw/master/notes.pdf}{notes} for more dictionary entries.
+
+  The simple definition of~$\K_X$ allows to give an internal account of the
+  basics of the theory of Cartier divisors, for instance giving an easy
+  description of the line bundle associated to a Cartier divisor.
+  \par
+}
 
 \begin{frame}[c]\frametitle{Praise for Mike Shulman}
   \centering
@@ -339,6 +382,59 @@
   }
 \end{frame}
 
+\note{\justifying
+  The~$\Diamond$-translation is a generalization of the \emph{double negation
+  translation}, which is well-known in logic. The double negation translation
+  has the following curious property: A formula~$\varphi$ admits a classical
+  proof if and only if the translated formula~$\varphi^{\neg\neg}$ admits an
+  intuitionistic proof.
+
+  The~$\Diamond$-translation has been studied before (see for instance Aczel:
+  \emph{The Russell--Prawitz modality}, and Escardó, Oliva: \emph{The Peirce
+  translation and the double negation shift}), but to the best of my know\-ledge,
+  this application -- expressing the internal language of
+  subtoposes in the internal language of the ambient topos -- is new.
+  \par
+}
+
+\note{\justifying
+  For ease of exposition, assume that~$X$ is irreducible with generic
+  point~$\xi$. Let~$\Diamond \defeqv \neg\neg$.
+
+  Then~$\Sh(X) \models \Diamond \varphi$ means that~$\varphi$ holds on a dense
+  open subset of~$X$, while~$\Sh(X) \models \varphi^\Diamond$ means
+  that~$\varphi$ holds at the generic point (taking stalks of all involved
+  sheaves).
+
+  The question~``does~$\varphi^\Diamond$ imply~$\Diamond\varphi$?'' therefore
+  means: Does~$\varphi$ spread from the generic point to a dense open subset?
+
+  For the special case of the double negation translation, a general answer to
+  this purely logical question has long been known: This holds if~$\varphi$ is
+  a \emph{geometric formula} (doesn't contain~$\Rightarrow$ and~$\forall$).
+  \par
+}
+
+\note{\justifying
+  Let~$\F$ be a sheaf of modules on a locally ringed space~$X$.
+  Assume that the stalk~$\F_x$ at some point~$x \in X$ vanishes.
+  Then in general it does \emph{not} follow that~$\F$ vanishes on some open
+  neighbourhood of~$x$.
+
+  This can be understood in logical terms: The statement that~$\F$ vanishes,
+  \[ \forall s : \F\_\ s = 0, \]
+  is not a geometric formula.
+
+  However, if~$\F$ is additionally supposed to be of finite type, then it
+  \emph{does} follow that~$\F$ vanishes on an open neighbourhood. This too can
+  be understood in logical terms: If~$\F$ is of finite type, then internally
+  there are generators~$s_1,\ldots,s_n$ of~$\F$. Thus the vanishing of~$\F$ can
+  be reformulated as
+  \[ s_1 = 0 \wedge \cdots \wedge s_n = 0, \]
+  and this condition is manifestly geometric.
+  \par
+}
+
 
 \section{Quasicoherence of sheaves of modules}
 
@@ -359,6 +455,23 @@
   for any~$f : \O_X$ and~$s : \E$.
 \end{frame}
 
+\note{\justifying
+  The sheaf condition and the sheafification functor can be described purely
+  internally. An object~$M$ is \emph{separated} with respect to~$\Diamond$ if
+  and only if, from the internal point of view,
+  \[ \forall x,y : M\_\ \Diamond(x = y) \Rightarrow x = y. \]
+  It is a \emph{sheaf} with respect to~$\Diamond$, if furthermore
+  \[ \forall K \subseteq M\_\
+    \Diamond(\exists x : M\_\ K = \{ x \}) \Longrightarrow
+    \exists x : M\_\ \Diamond(x \in K). \]
+
+  The second condition displayed on the previous slide is equivalent to the
+  separatedness condition. In the special case~$\E = \O_X$, $s = 1$ it reduces
+  to Mulvey's ``somewhat obscure formula''. We now understand this condition in
+  its proper context.
+  \par
+}
+
 
 \section{The relative and internal spectrum}
 
@@ -367,8 +480,8 @@
 
   Is there a \hil{free local ring}~$A \to A'$ over~$A$?
   \[ \xymatrix{
-    A \ar[rd] \ar[rrr] &&& R \\
-    & A' \ar@{-->}[rru]
+    A \ar[rd] \ar[rrr] &&& {\substack{\text{local}\\\text{\normalsize$R$}\\\phantom{\text{local}}}} \\
+    & {\substack{\text{\normalsize$A'$}\\\text{local}}} \ar@{-->}_[@!34]{\text{local}}[rru]
   } \]
 
   \hil{No,} if we restrict to~$\Set$.
@@ -376,6 +489,13 @@
   \hil{Yes,} if we allow a change of topos:
   Then $A \to \O_{\Spec A}$ is the universal localization.
 \end{frame}
+
+\note{\justifying
+  Details on this point of view can be found in one of Peter Arndt's very nice
+  answers on MathOverflow:
+  \begin{center}\url{http://mathoverflow.net/a/14334/31233}\end{center}
+  \par
+}
 
 \newcommand{\defspeca}{\text{topological space of the prime ideals of $A$}}
 \newcommand{\defspecb}{\text{topological space of the prime filters of $A$}}
@@ -407,6 +527,20 @@
   Monique Hakim's spectrum functor~$\mathrm{RT} \to \mathrm{LRT}$.
 \end{frame}
 
+\note{\justifying
+  Monique Hakim constructed in her thesis a very general spectrum functor,
+  taking a ringed topos to a locally ringed one, using explicit calculations
+  with sites.
+
+  Using the internal language allows to reduce these calculations to a minimum.
+  One constructs the spectrum as the sheaf topos over an internal
+  locale and then uses the general theorem that toposes over the base~$\E$ are
+  the same as toposes internal to~$\E$.
+
+  As a byproduct one obtains that Hakim's spectrum is \emph{localic} over the base.
+  \par
+}
+
 \begin{frame}\frametitle{The relative spectrum}
   Let~$X$ be a scheme and~$\O_X \xrightarrow{\varphi} \A$ be a quasicoherent algebra.
   Can we describe~\hil{$\boldsymbol{\RelSpec_X \A}$}, a scheme over~$X$, internally?
@@ -424,8 +558,19 @@
       fs \in I. \]
   \pause
   Its \hil{points} are those prime filters~$G$ of~$\A$ such that
-  \[ \forall f\?\O_X\_ \varphi(f) \in G \Rightarrow \text{$f$ invertible in~$\O_X$}. \]
+  \[ \forall f\?\O_X\_ \varphi(f) \in G \Longrightarrow \text{$f$ invertible in~$\O_X$}. \]
 \end{frame}
+
+\note{\justifying
+  The stated condition on~$I$ is, under the assumption that~$\A$ is
+  quasicoherent, equivalent to the condition that~$I$ is quasicoherent (as
+  an~$\O_X$-module).
+
+  The relative spectrum is thus constructed as a certain sublocale of the
+  absolute one. The two constructions coincide if and only if the dimension of
+  the base scheme is~$\leq 0$.
+  \par
+}
 
 \begin{frame}\frametitle{The relative spectrum, reformulated}
   Let~$B \to A$ be an algebra in topos.
@@ -443,6 +588,17 @@
   Form limits in the category of \hil{locally ringed locales}
   by \hil{relocalizing} the corresponding limit in ringed locales.
 \end{frame}
+
+\note{\justifying
+  One might wonder whether the absolute spectrum or the relative one is ``more
+  fundamental''. The absolute spectrum can be expressed using the relative one,
+  since
+  \[ \Spec A = \RelSpec_{\Spec \ZZ} A^{\sim}, \]
+  but the other way is not in general possible: The absolute spectrum is always
+  (quasi-)compact, while the relative one is not in general.
+  \par
+}
+% XXX: Give details.
 
 \backupstart
 
@@ -497,6 +653,11 @@
   \par
 \end{frame}
 
+
+\appendix
+
+\section{Spreading from points to neighbourhoods}
+
 \begin{frame}\frametitle{Spreading from points to neighbourhoods}
   All of the following lemmas have a short, sometimes trivial proof.
   Let~$\F$ be a sheaf of finite type on a ringed space~$X$.
@@ -517,6 +678,9 @@
   \end{itemize}
 \end{frame}
 
+
+\section{The meromorphic functions revisited}
+
 \begin{frame}\frametitle{The smallest dense sublocale}
   Let~$X$ be a reduced scheme satisfying a technical condition.
   Let~$i : X_{\neg\neg} \to X$ be the inclusion of the smallest dense sublocale
@@ -524,19 +688,25 @@
 
   Then~$i_* i^{-1} \O_X \cong \K_X$.
 
-%  \begin{itemize}
-%    \item This is a highbrow way of saying ``rational functions are regular
-%    functions which are defined on a dense open subset''.
-%    \item There is a generalization to nonreduced schemes.
-%  \end{itemize}
+  \begin{itemize}
+    \item This is a highbrow way of saying ``rational functions are regular
+    functions which are defined on a dense open subset''.
+    \item Another reformulation is that~$\K_X$ is the sheafification of~$\O_X$
+    with respect to the~$\neg\neg$-modality.
+    \item There is a generalization to nonreduced schemes.
+  \end{itemize}
 \end{frame}
+
+
+\section{Transfer principles}
 
 \begin{frame}\frametitle{Transfer principles}
   Let~$M$ be an~$A$-module. How do~$M$ and the sheaf~$M^{\sim}$ on~$\Spec A$
   relate?
 
-  Observe that $M^{\sim} \cong \underline{M}[F^{-1}]$ is the localization of~$M$ at
-  the \hil{generic filter}. Therefore:
+  Observe that $M^{\sim} \cong \underline{M}[\F^{-1}]$ is the localization of~$M$ at
+  the \hil{generic prime filter} and that~$M$ and the constant sheaf of
+  modules~$\underline{M}$ share all first-order properties. Therefore:
   \begin{center}
     $M^{\sim}$ inherits all those properties of~$M$ which are \\
     \hil{stable under localization}.
@@ -545,6 +715,9 @@
 
   A converse holds as well, suitably formulated.
 \end{frame}
+
+
+\section{Applications in algebra}
 
 \begin{frame}\frametitle{Applications in algebra}
   Let~$A$ be a commutative ring.
@@ -572,6 +745,63 @@
   \end{center}
 \end{frame}
 
+\begin{frame}\frametitle{Hilbert's program in algebra}
+  \scriptsize\justifying
+  There is a way to combine some of the powerful tools of classical ring theory
+  with the advantages that constructive reasoning provides, for instance
+  exhibiting explicit witnesses. Namely we can devise
+  a language in which we can usefully talk about prime ideals, but which
+  substitutes non-constructive arguments by constructive arguments ``behind
+  the scenes''. The key idea is to substitute the phrase ``for all prime ideals''
+  (or equivalently ``for all prime filters'') by ``for the generic prime filter''.
+
+  More specifically, simply interpret a given proof using prime filters
+  in~$\Sh(\Spec A)$ and let it refer to~$\F \hookrightarrow \underline{A}$.
+
+  \hspace*{-0.75cm}%
+  \begin{tabular}{lll}
+    \toprule
+    Statement & constructive substitution & meaning \\\midrule
+    $x \in \ppp$ for all~$\ppp$. &
+    $x \not\in \F$. &
+    $x$ is nilpotent. \\
+    $x \in \ppp$ for all~$\ppp$ such that~$y \in \ppp$. &
+    $x \in \F \Rightarrow y \in \F$. &
+    $x \in \sqrt{(y)}$. \\
+    $x$ is regular in all stalks~$A_\ppp$. &
+    $x$ is regular in~$\ull{A}[\F^{-1}]$. &
+    $x$ is regular in~$A$. \\
+    The stalks~$A_\ppp$ are reduced. &
+    $\ull{A}[\F^{-1}]$ is reduced. &
+    $A$ is reduced. \\
+    The stalks~$M_\ppp$ vanish. &
+    $\ull{M}[\F^{-1}] = 0$. &
+    $M = 0$. \\
+%   The stalks~$M_\ppp$ are fin.\@ gen.\@ over~$A_\ppp$. &
+%   $\ull{M}[\F^{-1}]$ is fin.\@ gen.\@ over
+%   $\ull{A}[\F^{-1}]$. &
+%   $M$ is fin.\@ gen.\@ over~$A$. \\
+    The stalks~$M_\ppp$ are flat over~$A_\ppp$. &
+    $\ull{M}[\F^{-1}]$ is flat over~$\ull{A}[\F^{-1}]$. &
+    $M$ is flat over~$A$. \\
+    The maps~$M_\ppp \to N_\ppp$ are injective. &
+    $\ull{M}[\F^{-1}] \to \ull{N}[\F^{-1}]$ is injective. &
+    $M \to N$ is injective. \\
+    The maps~$M_\ppp \to N_\ppp$ are surjective. &
+    $\ull{M}[\F^{-1}] \to \ull{N}[\F^{-1}]$ is surjective. &
+    $M \to N$ is surjective. \\
+    \bottomrule
+  \end{tabular}
+
+  This is related (in a few cases equivalent) to the \emph{dynamical methods in
+  algebra} explored by Coquand, Coste, Lombardi, Roy, and others. Their
+  approach applies more generally.
+  \par
+\end{frame}
+
+
+\section{The gros Zariski topos}
+
 \begin{frame}\frametitle{The gros Zariski topos}
   Let~$X$ be a scheme. The \hil{gros Zariski topos} is the topos of sheaves
   on~$\Sch/X$ with respect to the Zariski topology. From its point of view,
@@ -583,108 +813,49 @@
     \[ \{ (x_0,\ldots,x_n) \,|\, x_1 \neq 0 \vee \cdots \vee x_n \neq 0
     \}/\text{(rescaling)}, \]
     \item \ldots{} the cotangent ``bundle'' of an~$X$-scheme~$T$ is
-    \[ \text{the set of maps $\Delta \to T$,} \]
-    where~$\Delta = \{ \varepsilon \in \mathbb{A}^1_X \,|\, \varepsilon^2 = 0
+    \[ \text{the set of maps $\Delta \to \ull{T}$,} \]
+    where~$\Delta = \{ \varepsilon \in \ull{\AA}^1_X \,|\, \varepsilon^2 = 0
     \}$.
     \item \ldots{} affinity is a ``double dual condition'', and
     \item \ldots{} the étale topology is the coarsest topology~$\Diamond$ s.\,th.
-    \[ \forall f : \mathbb{A}^1_X[T]\_\
+    \[ \forall f : \ull{\AA}^1_X[T]\_\
       \text{$f$ is monic separable} \Rightarrow
-      \Diamond(\exists t : \mathbb{A}^1\_ f(t) = 0). \]
+      \Diamond(\exists t : \ull{\AA}^1\_ f(t) = 0). \]
   \end{itemize}
 \end{frame}
 
-\note{\justifying
-  \begin{itemize}
-    \item The functor of points of~$\mathbb{A}^1_X$, that is
-    \[ (T/X) \longmapsto \O_T(T), \]
+\note{
+  \begin{itemize}\justifying
+    \item The functor of points of~$\AA^1_X$, that is
+    \[ \ull{\AA}^1_X : (T/X) \longmapsto \O_T(T), \]
     looks like a local ring and indeed like a field from the internal point of
     view, in the sense that
-    \[ \forall f\?\mathbb{A}^1_X\_ \neg(f = 0) \Rightarrow \text{$f$
+    \[ \forall f\?\ull{\AA}^1_X\_ \neg(f = 0) \Rightarrow \text{$f$
     invertible}. \]
+    \item Let~$\A$ be a quasicoherent~$\O_X$-algebra. Let~$\E$ be the
+    induced~$\ull{\AA}^1_X$-algebra given by~$\E(T \xrightarrow{\mu} X) \defeq
+    (\mu^* \A)(T)$. Then the internal Hom set~$[\E,
+    \ull{\AA}^1_X]_{\ull{\AA}^1_X}$ of~$\ull{\AA}^1_X$-algebra morphisms is the
+    functor of points of~$\RelSpec_X(\A)$.
+    \item Let~$\mu : T \to X$ be quasicompact and quasiseparated.
+    Then~$\mu$ is affine iff, from the internal point of view, the map
+    \[ \ull{T} \longrightarrow [ [\ull{T},\ull{\AA}^1_X]^\flat, \ull{\AA}^1_X ]_{\ull{\AA}^1_X},\ x \longmapsto
+    \ull{\ \ }(x) \]
+    into the ``double dual'' is bijective.
+  \end{itemize}
+}
+
+\note{
+  \begin{itemize}\justifying
     \item Describing the functor of points of the projective space was
     suggested by Zhen Lin Low.
     \item The statement on the étale topology follows from Gavin Wraith's
     article \emph{Generic Galois theory of local rings}.
   \end{itemize}
-  \par
 }
 
-\begin{frame}\frametitle{Translating internal statements}
-  Let~$X$ be a topological space (or locale) and let~$\alpha : \F \to \G$ be a
-  morphism of sheaves on~$X$. Then:
-  \allowdisplaybreaks
-  \begin{align*}
-    & \Sh(X) \models \speak{$\alpha$ is injective} \\[0.5em]
-    \Longleftrightarrow\
-    & \Sh(X) \models \forall s\?\F\_ \forall t\?\F\_ \alpha(s) = \alpha(t) \Rightarrow s = t \\[0.5em]
-    \Longleftrightarrow\ &
-      \text{for all open~$U \subseteq X$, sections $s \in \F(U)$:} \\
-    &\qquad
-      \text{for all open~$V \subseteq U$, sections $t \in \F(V)$:} \\
-    &\qquad\qquad
-        \text{for all open~$W \subseteq V$:} \\
-    &\qquad\qquad\qquad
-          \text{$\alpha_W(s|_W) = \alpha_W(t|_W)$ implies $s|_W = t|_W$} \\[0.5em]
-    \Longleftrightarrow\ &
-      \text{for all open~$U \subseteq X$, sections $s, t \in \F(U)$:} \\
-    &\qquad
-          \text{$\alpha_U(s|_U) = \alpha_U(t|_U)$ implies $s|_U = t|_U$} \\[0.5em]
-    \Longleftrightarrow\ &
-      \text{$\alpha$ is a monomorphism of sheaves}
-  \end{align*}
-\end{frame}
 
-\backupend
-
-\end{document}
-
-1. Tell story; begin with MO question
-2. Basics (include praise for Mike Shulman)
-3. Curious field property and more advanced examples
-4. Relative spectrum (also mention equivalence to Hakim's spectrum in dimension zero)
-5. Outlook: synthetic algebraic geometry, relative geometry, big Zariski topos
-
-\note{\justifying\fontsize{8pt}{9.6}\selectfont
-  \begin{center}\large\textbf{Abstract}\end{center}
-
-  \begin{changemargin}{2.5em}{2.5em}
-    We describe how the internal language of certain
-    toposes, the associated petit and gros Zariski toposes of a scheme, can be
-    used to give simpler definitions and more conceptual proofs of the basic
-    notions and observations in algebraic geometry.
-    % This is useful for studying schemes from a local or relative point of view.
-
-    The starting point is that, from the internal point of view, sheaves of rings
-    and sheaves of modules look just like plain rings and plain modules.
-    In this way, some concepts and statements of scheme theory can be reduced to
-    concepts and statements of intuitionistic linear algebra.
-
-    Furthermore, modal operators can be used to model phrases such as ``on a
-    dense open subset it holds that'' or ``on an open neighbourhood of a given
-    point it holds that''. These operators define certain subtoposes; a
-    generalization of the double-negation translation is useful in order to
-    understand the internal universe of those subtoposes from the internal point
-    of view of the ambient topos.
-
-    A particularly interesting task is to internalize the
-    construction of the relative spectrum, which, given a quasicoherent sheaf of algebras
-    on a scheme~$X$, yields a scheme over~$X$. From the internal point of
-    view, this construction should simply reduce to an intuitionistically sensible
-    variant of the ordinary construction of the spectrum of a ring, but it turns
-    out that this expectation is too naive and that a refined approach is
-    necessary.
-  \end{changemargin}
-}
-
-  \scriptsize
-  \begin{itemize}
-    \item $\Sh(X) \models f = g$ iff~$f = g \in \F(X)$.
-    \item $\Sh(X) \models f = g \vee f = h$ iff on a cover~$X = \bigcup_i U_i$,
-    $f|_{U_i} = g|_{U_i}$ or~$f|_{U_i} = h|_{U_i}$.
-    \item $\Sh(X) \models \neg\neg(f = g)$ iff~$f = g$ on a dense open subset
-    of~$X$.
-  \end{itemize}
+\section{Basics about the internal language}
 
 \begin{frame}\frametitle{The internal language of a topos}
   Let~$\E$ be a topos. Then we can define the meaning of
@@ -710,12 +881,135 @@
   implies~$\E \models \psi$.}
 \end{frame}
 
-\begin{frame}\frametitle{Limits of locally ringed locales}
-  Let~$(X_i)_i$ be a diagram of locally ringed locales.
+\note{\justifying
+  More generally, for an object~$U$ of a topos~$\E$, we define the meaning of
+  \[ U \models \varphi \qquad\text{($\varphi$ holds on~$U$)}. \]
+  Writing~``$\E \models \varphi$'' is then an abbreviation for~``$1 \models
+  \varphi$'', where~``$1$'' denotes the terminal object of~$\E$.
 
-  Its limit is given by \hil{relocalizing} the corresponding limit
-  in~$\mathrm{RL}$.
+  In addition to soundness with respect to intuitionistic logic, the internal
+  language has the following two important properties:
+  \begin{itemize}
+    \item \hil{Monotonicity:} If~$p : V \to U$ is an arbitrary morphism and~$U
+    \models \varphi$, then also~$V \models \varphi$.
+    \item \hil{Locality:} If~$p : V \to U$ is an epimorphism and~$V \models
+    \varphi$, then also~$U \models \varphi$.
+  \end{itemize}
+}
+
+\note{\justifying
+  In the special case that~$\E = \Sh(X)$ is the topos of sheaves on a
+  topological space (or locale)~$X$, the rules of the Kripke--Joyal semantics
+  look as follows. We tersely write~``$U \models \varphi$'' instead
+  of~``$\Hom(\ull{\ \ }, U) \models \varphi$ for open subsets~$U \subseteq X$.
+  \scriptsize
+  \newcommand{\Ll}{:\Longleftrightarrow}
+  \[ \renewcommand{\arraystretch}{1.3}\begin{array}{@{}lcl@{}}
+    U \models f = g \? \F &\Ll& f|_U = g|_U \in \F(U) \\
+    U \models \varphi \wedge \psi &\Ll&
+      \text{$U \models \varphi$ and $U \models \psi$} \\
+    U \models \varphi \vee \psi &\Ll&
+      \hcancel{\text{$U \models \varphi$ or $U \models \psi$}}{0pt}{3pt}{0pt}{-2pt} \\
+    && \text{there exists a covering $U = \bigcup_i U_i$ s.\,th. for all~$i$:} \\
+    && \quad\quad \text{$U_i \models \varphi$ or $U_i \models \psi$} \\
+    U \models \varphi \Rightarrow \psi &\Ll&
+      \text{for all open~$V \subseteq U$: }
+    \text{$V \models \varphi$ implies $V \models \psi$} \\
+    U \models \forall f \? \F\_ \varphi(f) &\Ll&
+      \text{for all sections~$f \in \F(V), V \subseteq U$: $V \models
+      \varphi(f)$} \\
+    U \models \exists f \? \F\_ \varphi(f) &\Ll&
+      \text{there exists a covering $U = \bigcup_i U_i$ s.\,th. for all~$i$:} \\
+    && \quad\quad \text{there exists~$f_i \in \F(U_i)$ s.\,th.
+    $U_i \models \varphi(f_i)$}
+  \end{array} \]
+}
+
+\begin{frame}\frametitle{Translating internal statements I}
+  Let~$X$ be a topological space (or locale) and let~$\alpha : \F \to \G$ be a
+  morphism of sheaves on~$X$. Then:
+  \allowdisplaybreaks
+  \begin{align*}
+    & \Sh(X) \models \speak{$\alpha$ is injective} \\[0.5em]
+    \Longleftrightarrow\
+    & \Sh(X) \models \forall s\?\F\_ \forall t\?\F\_ \alpha(s) = \alpha(t) \Rightarrow s = t \\[0.5em]
+    \Longleftrightarrow\ &
+      \text{for all open~$U \subseteq X$, sections $s \in \F(U)$:} \\
+    &\qquad
+      \text{for all open~$V \subseteq U$, sections $t \in \F(V)$:} \\
+    &\qquad\qquad
+        \text{for all open~$W \subseteq V$:} \\
+    &\qquad\qquad\qquad
+          \text{$\alpha_W(s|_W) = \alpha_W(t|_W)$ implies $s|_W = t|_W$} \\[0.5em]
+    \Longleftrightarrow\ &
+      \text{for all open~$U \subseteq X$, sections $s, t \in \F(U)$:} \\
+    &\qquad
+          \text{$\alpha_U(s|_U) = \alpha_U(t|_U)$ implies $s|_U = t|_U$} \\[0.5em]
+    \Longleftrightarrow\ &
+      \text{$\alpha$ is a monomorphism of sheaves}
+  \end{align*}
 \end{frame}
-% Mention only orally?
-% Phrase more categorically.
-% Extend to toposes.
+
+\begin{frame}\frametitle{Translating internal statements II}
+  Let~$X$ be a topological space (or locale) and let~$\alpha : \F \to \G$ be a
+  morphism of sheaves on~$X$. Then:
+  \allowdisplaybreaks
+  \begin{align*}
+    & \Sh(X) \models \speak{$\alpha$ is surjective} \\[0.5em]
+    \Longleftrightarrow\
+    & \Sh(X) \models \forall t\?\G\_ \exists s\?\F\_ \alpha(s) = t \\[0.5em]
+    \Longleftrightarrow\ &
+      \text{for all open~$U \subseteq X$, sections $t \in \G(U)$:} \\
+    &\qquad
+      \text{there exists an open covering~$U = \textstyle\bigcup_i U_i$ and} \\
+    &\qquad
+      \text{sections~$s_i \in \F(U_i)$ such that:} \\
+    &\qquad\qquad
+        \alpha|_{U_i}(s_i) = t|_{U_i} \\[0.5em]
+    \Longleftrightarrow\ &
+      \text{$\alpha$ is an epimorphism of sheaves}
+  \end{align*}
+\end{frame}
+
+\begin{frame}\frametitle{Translating internal statements III}
+  Let~$X$ be a topological space (or locale) and let~$s, t \in \F(X)$ be global
+  sections of a sheaf~$\F$ on~$X$. Then:
+  \allowdisplaybreaks
+  \begin{align*}
+    & \Sh(X) \models \neg\neg(s = t) \\[0.5em]
+    \Longleftrightarrow\
+    & \Sh(X) \models ((s = t) \Rightarrow \bot) \Rightarrow \bot \\[0.5em]
+    \Longleftrightarrow\ &
+      \text{for all open~$U \subseteq X$ such that} \\
+    &\qquad
+      \text{for all open~$V \subseteq U$ such that} \\
+    &\qquad\qquad
+      s|_V = t|_V, \\
+    &\qquad
+      \text{it holds that~$V = \emptyset$,} \\
+    &
+      \text{it holds that~$U = \emptyset$} \\[0.5em]
+    \Longleftrightarrow\ &
+      \text{there exists a dense open set~$W \subseteq X$ such that $s|_W = t|_W$} \\
+  \end{align*}
+\end{frame}
+
+\backupend
+
+\end{document}
+
+1. Tell story; begin with MO question
+2. Basics (include praise for Mike Shulman)
+3. Curious field property and more advanced examples
+4. Relative spectrum (also mention equivalence to Hakim's spectrum in dimension zero)
+5. Outlook: synthetic algebraic geometry, relative geometry, big Zariski topos
+
+  \scriptsize
+  \begin{itemize}
+    \item $\Sh(X) \models f = g$ iff~$f = g \in \F(X)$.
+    \item $\Sh(X) \models f = g \vee f = h$ iff on a cover~$X = \bigcup_i U_i$,
+    $f|_{U_i} = g|_{U_i}$ or~$f|_{U_i} = h|_{U_i}$.
+    \item $\Sh(X) \models \neg\neg(f = g)$ iff~$f = g$ on a dense open subset
+    of~$X$.
+  \end{itemize}
+

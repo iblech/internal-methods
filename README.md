@@ -19,12 +19,13 @@ the property in question.
 
 No prior knowledge about topos theory or formal logic is assumed.
 
-* [Notes (PDF)](https://github.com/iblech/internal-methods/raw/master/notes.pdf)
-* [Poster (PDF)](https://github.com/iblech/internal-methods/raw/master/poster.pdf)
-  for GAeL 2014
+* [Expository notes (PDF)](https://github.com/iblech/internal-methods/raw/master/notes.pdf)
 * [Slides (PDF)](http://www.speicherleck.de/iblech/stuff/gael2013-topos.pdf)
   for GAeL 2013
+* [Poster (PDF)](https://github.com/iblech/internal-methods/raw/master/poster.pdf)
+  for GAeL 2014
 * [Slides (PDF)](https://github.com/iblech/internal-methods/raw/master/slides-ihes2015.pdf)
-  for Topos à l'IHES 2015
+  and [video](https://www.youtube.com/watch?v=7S8--bIKaWQ)
+  for Topos à l'IHÉS 2015
 
 ![Sheaves of rings look like ordinary rings from the internal point of view.](images/external-internal-small.png)

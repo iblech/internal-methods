@@ -6425,12 +6425,19 @@ allowed).
 We therefore adopt the following definitions.
 
 \begin{defn}Let~$M$ be a partially ordered set. An \emph{ascending process
-with values in~$M$} is a function~$f : \NN \to \P(M)$ such that
-the subset~$f(0)$ is inhabited and such that for any~$x \in f(n)$, $n \in \NN$,
-there exists an element~$y \in f(n+1)$ with~$x \preceq y$. (In particular, all
-subsets~$f(n)$ are inhabited.) Such a process \emph{halts} if and only if there
-exists a step~$n$ such that there is an element~$x \in f(n) \cap f(n+1)$. The
-set~$M$ satisfies the \emph{ascending process condition} if and only if any
+with values in~$M$} consists of an initial value~$x_0 \in M$ and a function~$f
+: M \to \P(M)$ such that:
+\begin{itemize}
+\item For any~$x \in M$ and any~$y \in f(x)$, $x \preceq y$.
+\item $f(x_0)$ is inhabited.
+\item For any~$x_1 \in f(x_0)$, $f(x_1)$ is inhabited.
+\item For any~$x_1 \in f(x_0)$ and any~$x_2 \in f(x_1)$, $f(x_2)$ is inhabited.
+\item And so on.
+\end{itemize}
+Such a process \emph{halts} if and only if there
+exists a step~$n$ and elements~$x_0 = x, x_1, \ldots, x_n$ such that~$x_{i+1}
+\in f(x_i)$ for~$i = 0,\ldots,n-1$ and such that~$x_n \in f(x_n)$.
+The set~$M$ satisfies the \emph{ascending process condition} if and only if any
 ascending process with values in~$M$ halts.
 \end{defn}
 
@@ -6438,9 +6445,13 @@ ascending process with values in~$M$ halts.
 set of finitely generated ideals in~$R$ satisfies the ascending process
 condition.\end{defn}
 
+\XXX{Rewrite the rest of this section to conform to the new (corrected)
+definition. Mention equivalence with Richman's ascending tree condition.}
+
 Any ascending chain of elements~$a_0 \preceq a_1 \preceq \cdots$ in a partially
-ordered set gives rise to an ascending process by setting~$f(n) \defeq \{ a_n
-\}$. Conversely, the axiom of dependent choice would allow to construct an
+ordered set gives rise to an ascending process by setting~$x_0 \defeq a_0$
+and~$\varphi(x) \defeq \{ y \,|\, \exists n\_ x = a_n \wedge y = a_{n+1} \}$.
+Conversely, the axiom of dependent choice would allow to construct an
 ascending chain from an ascending process. In classical logic, a ring is
 processly Noetherian if and only if it is Noetherian in the usual sense.
 

@@ -193,6 +193,8 @@
 
 \section{Basics}
 
+\subsection{What is a scheme?}
+
 \begin{frame}\frametitle{What is a scheme?}
   \begin{itemize}
   \item A \hil{manifold} is a space which is \hil{locally isomorphic} to some open
@@ -206,6 +208,7 @@
   \end{itemize}
 \end{frame}
 
+\subsection{What is a topos?}
 \begin{frame}\frametitle{What is a topos?}
   \begin{block}{Formal definition}A \hil{topos} is a category which has finite limits,
   is cartesian closed and has a subobject classifier.
@@ -221,6 +224,7 @@
   \end{itemize}\end{block}
 \end{frame}
 
+\subsection{What is the internal language?}
 \begin{frame}\frametitle{What is the internal language?}
   Let~$\E$ be a topos. Then we can define the meaning of
   \[ \hil{$\E \models \varphi \qquad\textnormal{(``$\varphi$ holds in $\E$'')}$} \]
@@ -255,6 +259,7 @@
   implies~$\E \models \psi$.}
 \end{frame}
 
+\section{Building and using a dictionary}
 \begin{frame}\frametitle{Building a dictionary}
   \sloganwithoutborder{\hil{Understand notions of algebraic geometry
   as notions of algebra internal to~$\boldsymbol{\Sh(X)}$.}}
@@ -732,7 +737,7 @@
 
 \section{Details on the internal language}
 
-\begin{frame}\frametitle{More on the internal language}
+\begin{frame}\frametitle{More on the internal language}\justifying
   More generally, for an object~$U$ of a topos~$\E$, we define the meaning of
   \[ U \models \varphi \qquad\text{($\varphi$ holds on~$U$)}. \]
   Writing~``$\E \models \varphi$'' is then an abbreviation for~``$1 \models
@@ -748,7 +753,7 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}\frametitle{The rules of the Kripke--Joyal semantics}
+\begin{frame}\frametitle{The rules of the Kripke--Joyal semantics}\justifying
   In the special case that~$\E = \Sh(X)$ is the topos of sheaves on a
   topological space (or locale)~$X$, the rules of the Kripke--Joyal semantics
   look as follows. We tersely write~``$U \models \varphi$'' instead
@@ -879,14 +884,14 @@
 
 \section{The meromorphic functions revisited}
 
-\begin{frame}\frametitle{The smallest dense sublocale}
+\begin{frame}\frametitle{The smallest dense sublocale}\justifying
   Let~$X$ be a reduced scheme satisfying a technical condition.
   Let~$i : X_{\neg\neg} \to X$ be the inclusion of the smallest dense sublocale
   of~$X$.
 
   Then~$i_* i^{-1} \O_X \cong \K_X$.
 
-  \begin{itemize}
+  \begin{itemize}\justifying
     \item This is a highbrow way of saying ``rational functions are regular
     functions which are defined on a dense open subset''.
     \item Another reformulation is that~$\K_X$ is the sheafification of~$\O_X$
@@ -898,7 +903,7 @@
 
 \section{Transfer principles}
 
-\begin{frame}\frametitle{Transfer principles}
+\begin{frame}\frametitle{Transfer principles}\justifying
   Let~$M$ be an~$A$-module. How do~$M$ and the sheaf~$M^{\sim}$ on~$\Spec A$
   relate?
 

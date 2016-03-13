@@ -27,6 +27,7 @@
 \renewcommand{\O}{\mathcal{O}}
 \newcommand{\K}{\mathcal{K}}
 \newcommand{\NN}{\mathbb{N}}
+\newcommand{\RR}{\mathbb{R}}
 \newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\ppp}{\mathfrak{p}}
 \newcommand{\defeq}{\vcentcolon=}
@@ -86,12 +87,22 @@
 
 \newcommand{\slogan}[1]{%
   \begin{center}%
+    \setlength{\fboxrule}{2pt}%
+    \setlength{\fboxsep}{8pt}%
+    {\usebeamercolor[fg]{item}\fbox{\usebeamercolor[fg]{normal
+    text}\parbox{0.87\textwidth}{#1}}}%
+  \end{center}%
+}
+
+\newcommand{\sloganwithoutborder}[1]{%
+  \begin{center}%
     \setlength{\fboxrule}{0pt}%
     \setlength{\fboxsep}{-14pt}%
     {\usebeamercolor[fg]{item}\fbox{\usebeamercolor[fg]{normal
     text}\parbox{0.9\textwidth}{\begin{center}#1\end{center}}}}%
   \end{center}%
 }
+
 
 \setbeamertemplate{frametitle}[default][colsep=-2bp,rounded=false,shadow=false,center]
 
@@ -121,6 +132,7 @@
   \setbeameroption{show notes}
 }
 \setbeamertemplate{note page}[plain]
+\setbeameroption{hide notes}
 
 \begin{document}
 
@@ -139,11 +151,11 @@
 
   Special PSSL 99 \\
   in honor of Jirka Adámek's retirement \\
+  \ \\
   March 13th, 2016
   \par
 \end{frame}
 
-\backupstart
 \frame[t]{\frametitle{Outline}\scriptsize\begin{itemize}\item[]\tableofcontents\end{itemize}}
 
 \note{\justifying\fontsize{8pt}{9.6}\selectfont
@@ -151,7 +163,7 @@
 
   \begin{changemargin}{2.5em}{2.5em}
     We describe how the internal language of certain
-    toposes, the associated petit and gros Zariski toposes of a scheme, can be
+    toposes, the associated small and big Zariski toposes of a scheme, can be
     used to give simpler definitions and more conceptual proofs of the basic
     notions and observations in algebraic geometry.
     % This is useful for studying schemes from a local or relative point of view.
@@ -178,42 +190,73 @@
   \end{changemargin}
 }
 
-\begin{frame}[plain,c]
-  \centering
-  \includegraphics[scale=0.37]{images/math-overflow-steven-gubkin}
-  \par
-\end{frame}
-\backupend
 
+\section{Basics}
 
-\section{Basic applications of the internal language}
-
-\begin{frame}\frametitle{Exploiting the internal language}
-  A \hil{scheme} is a locally ringed space~$(X,\O_X)$ which is
-  locally isomorphic to the \hil{spectrum of a commutative ring}:
+\begin{frame}\frametitle{What is a scheme?}
+  \begin{itemize}
+  \item A \hil{manifold} is a space which is \hil{locally isomorphic} to some open
+  subset of some~$\RR^n$.
+  \medskip
+  \item A \hil{scheme} is a space which is \hil{locally isomorphic} to the
+  \hil{spectrum of some (commutative) ring}:
   \[ \Spec A \defeq \{ \ppp \subseteq A \,|\, \text{$\ppp$ is a prime ideal} \} \]
-  \pause
-  The topos~$\Sh(X)$ is the \hil{petit Zariski topos} of~$X$.
+  \item By \hil{space} we mean: topological space~$X$ equipped with a local
+  sheaf~$\O_X$ of rings.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{What is a topos?}
+  \begin{block}{Formal definition}A \hil{topos} is a category which has finite limits,
+  is cartesian closed and has a subobject classifier.
+  \end{block}
+
+  \begin{block}{Motto}A topos is a category sufficiently rich to support
+  an \hil{internal language}.
+  \end{block}
+
+  \begin{block}{Examples}\begin{itemize}
+    \item \hil{$\Set$:} \tabto{1.4cm} category of sets
+    \item \hil{$\Sh(X)$:} \tabto{1.4cm} category of set-valued sheaves on a space~$X$
+  \end{itemize}\end{block}
+\end{frame}
+
+\begin{frame}\frametitle{What is the internal language?}
+  Let~$\E$ be a topos. Then we can define the meaning of
+  \[ \hil{$\E \models \varphi \qquad\textnormal{(``$\varphi$ holds in $\E$'')}$} \]
+  for formulas~$\varphi$ over~$\E$ using the \hil{Kripke--Joyal semantics}.
+
+%  The internal language of a topos~$\E$ allows to
+%  \begin{enumerate}
+%    \item construct objects and morphisms of the topos,
+%    \item formulate statements about them and
+%    \item prove such statements
+%  \end{enumerate}
+%  in a \hil{naive element-based} language:
 
   \begin{center}
     \small
     \begin{tabular}{ll}
       \toprule
-      externally & internally to $\Sh(X)$ \\
+      externally & internally to $\E$ \\
       \midrule
-      sheaf of sets & set/type \\
-      morphism of sheaves & map of sets \\
+      object of~$\E$ & set/type \\
+      morphism in~$\E$ & map of sets \\
       monomorphism & injective map \\
       epimorphism & surjective map \\
-      sheaf of rings & ring \\
-      sheaf of modules & module \\
+      ring object & ring \\
+      module object & module \\
       \bottomrule
     \end{tabular}
   \end{center}
+
+  \small
+  \mbox{If~$\varphi$ implies~$\psi$ \hil{intuitionistically}, then~$\E \models \varphi$
+  implies~$\E \models \psi$.}
 \end{frame}
 
 \begin{frame}\frametitle{Building a dictionary}
-  \slogan{\hil{Understand notions of algebraic geometry
+  \sloganwithoutborder{\hil{Understand notions of algebraic geometry
   as notions of algebra internal to~$\boldsymbol{\Sh(X)}$.}}
   \begin{center}
     \small
@@ -255,34 +298,11 @@
   \par
 }
 
-\begin{frame}[c]\frametitle{Praise for Mike Shulman}
-  \centering
-  \includegraphics[scale=0.4]{images/mike-shulman-stack-semantics}
-  \par
-\end{frame}
-
-\note{\justifying
-  The internal language of a topos supports
-  \begin{itemize}
-  \item first-order logic,
-  \item higher-order logic (for instance quantification over subsets),
-  \item dependent types, and
-  \item unbounded quantification.
-  \end{itemize}
-
-  The first three items are standard. The fourth is due to Mike Shulman.
-  Combined, it's possible to interpret ``essentially all of constructive
-  mathematics'' internal to a topos.
-
-  Restrictions persist for operations with a ``set-theoretical flavor'' like
-  building an infinite union of iterated powersets, for example~$\bigcup_{n \in
-  \NN} P^n(\NN)$.
-  \par
-}
-
 \begin{frame}\frametitle{Using the dictionary}
+  Let~$X$ be a scheme. Employ its \hil{small Zariski topos}:~$\Sh(X)$.
+
   \begin{center}
-    \begin{minipage}{0.75\textwidth}
+    \begin{minipage}{0.70\textwidth}
       \begin{exampleblock}{}
         \justifying
         Let~$0 \to M' \to M \to M'' \to 0$ be a short exact sequence of
@@ -293,12 +313,12 @@
 
     \scalebox{3}{$\Downarrow$}
 
-    \begin{minipage}{0.75\textwidth}
+    \begin{minipage}{0.70\textwidth}
       \begin{exampleblock}{}
         \justifying
         Let $0 \to \F' \to \F \to \F'' \to 0$ be a short exact sequence
-        of~$\O_X$-modules. If~$\F'$ and~$\F''$ are of finite type, so
-        is~$\F$.
+        of sheaves of~$\O_X$-modules. If~$\F'$ and~$\F''$ are of finite type,
+        so is~$\F$.
       \end{exampleblock}
     \end{minipage}
   \end{center}
@@ -329,6 +349,55 @@
   \end{center}
 \end{frame}
 
+\begin{frame}\frametitle{The objective}
+  \slogan{\justifying Understand notions and statements of \hil{algebraic geometry} as
+  notions and statements of (intuitionistic) \hil{commutative
+  algebra} internal to suitable \hil{toposes}.}
+
+%  In order to:
+%  \begin{itemize}
+%    \item Gain conceptual understanding.
+%    \item Simplify proofs.
+%    \item Develop a synthetic account of scheme theory.
+%    \item Contribute to constructive algebra.
+%  \end{itemize}
+
+  Further examples:
+  \begin{itemize}
+    \item Characterizing quasicoherence internally
+    \item Understanding spreading of properties in a logical way
+    \item Constructing the relative spectrum internally
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[c]\frametitle{Praise for Mike Shulman}
+  \centering
+  \includegraphics[scale=0.4]{images/mike-shulman-stack-semantics}
+  \par
+\end{frame}
+
+\note{\justifying
+  The internal language of a topos supports
+  \begin{itemize}
+  \item first-order logic,
+  \item higher-order logic (for instance quantification over subsets),
+  \item dependent types, and
+  \item unbounded quantification.
+  \end{itemize}
+
+  The first three items are standard. The fourth is due to Mike Shulman.
+  Combined, it's possible to interpret ``essentially all of constructive
+  mathematics'' internal to a topos.
+
+  Restrictions persist for operations with a ``set-theoretical flavor'' like
+  building an infinite union of iterated powersets, for example~$\bigcup_{n \in
+  \NN} P^n(\NN)$.
+  \par
+}
+
+
+\section{Quasicoherence of sheaves of modules}
+
 \begin{frame}\frametitle{A curious property}
   Let~$X$ be a scheme. Internally to~$\Sh(X)$,
   \begin{center}
@@ -346,8 +415,42 @@
   \par
 \end{frame}
 
+\begin{frame}\frametitle{Quasicoherence}
+  Let~$X$ be a scheme. Let~$\E$ be an~$\O_X$-module.
 
-\section{\texorpdfstring{The $\Diamond$-translation}{The ♢-translation}}
+  Then~$\E$ is quasicoherent
+  if and only if, internally to~$\Sh(X)$,
+  \begin{quote}\textnormal{$\E[f^{-1}]$ is a $\Diamond_f$-sheaf for any~$f : \O_X$, \\[0.3em]
+  \qquad\qquad where~$\Diamond_f\varphi \defeqv (\text{$f$ invertible} \Rightarrow \varphi)$.}
+  \end{quote}
+  \pause
+
+  In particular: If~$\E$ is quasicoherent, then internally
+  \[ (\text{$f$ invertible} \Rightarrow s = 0) \Longrightarrow
+    \bigvee_{n \geq 0} f^n s = 0 \]
+  \vspace*{-1.5em}\par%
+  for any~$f : \O_X$ and~$s : \E$.
+\end{frame}
+
+\note{\justifying
+  The sheaf condition and the sheafification functor can be described purely
+  internally. An object~$M$ is \emph{separated} with respect to~$\Diamond$ if
+  and only if, from the internal point of view,
+  \[ \forall x,y : M\_\ \Diamond(x = y) \Rightarrow x = y. \]
+  It is a \emph{sheaf} with respect to~$\Diamond$, if furthermore
+  \[ \forall K \subseteq M\_\
+    \Diamond(\exists x : M\_\ K = \{ x \}) \Longrightarrow
+    \exists x : M\_\ \Diamond(x \in K). \]
+
+  The second condition displayed on the previous slide is equivalent to the
+  separatedness condition. In the special case~$\E = \O_X$, $s = 1$ it reduces
+  to Mulvey's ``somewhat obscure formula''. We now understand this condition in
+  its proper context.
+  \par
+}
+
+
+\section{Spreading of properties}
 
 \newcommand{\idiamond}{{\usebeamercolor[fg]{item}{\boldsymbol{\Diamond}}}}
 \newcommand{\gdiamond}[1]{\textcolor{gray}{\boldsymbol{\Diamond}(}#1\textcolor{gray}{)}}
@@ -433,43 +536,6 @@
   be reformulated as
   \[ s_1 = 0 \wedge \cdots \wedge s_n = 0, \]
   and this condition is manifestly geometric.
-  \par
-}
-
-
-\section{Quasicoherence of sheaves of modules}
-
-\begin{frame}\frametitle{Quasicoherence}
-  Let~$X$ be a scheme. Let~$\E$ be an~$\O_X$-module.
-
-  Then~$\E$ is quasicoherent
-  if and only if, internally to~$\Sh(X)$,
-  \begin{quote}\textnormal{$\E[f^{-1}]$ is a $\Diamond_f$-sheaf for any~$f : \O_X$, \\[0.3em]
-  \qquad\qquad where~$\Diamond_f\varphi \defeqv (\text{$f$ invertible} \Rightarrow \varphi)$.}
-  \end{quote}
-  \pause
-
-  In particular: If~$\E$ is quasicoherent, then internally
-  \[ (\text{$f$ invertible} \Rightarrow s = 0) \Longrightarrow
-    \bigvee_{n \geq 0} f^n s = 0 \]
-  \vspace*{-1.5em}\par%
-  for any~$f : \O_X$ and~$s : \E$.
-\end{frame}
-
-\note{\justifying
-  The sheaf condition and the sheafification functor can be described purely
-  internally. An object~$M$ is \emph{separated} with respect to~$\Diamond$ if
-  and only if, from the internal point of view,
-  \[ \forall x,y : M\_\ \Diamond(x = y) \Rightarrow x = y. \]
-  It is a \emph{sheaf} with respect to~$\Diamond$, if furthermore
-  \[ \forall K \subseteq M\_\
-    \Diamond(\exists x : M\_\ K = \{ x \}) \Longrightarrow
-    \exists x : M\_\ \Diamond(x \in K). \]
-
-  The second condition displayed on the previous slide is equivalent to the
-  separatedness condition. In the special case~$\E = \O_X$, $s = 1$ it reduces
-  to Mulvey's ``somewhat obscure formula''. We now understand this condition in
-  its proper context.
   \par
 }
 
@@ -609,7 +675,7 @@
 % XXX: Give details.
 
 \begin{frame}
-  \slogan{\hil{Understand notions and statements of algebraic geometry
+  \sloganwithoutborder{\hil{Understand notions and statements of algebraic geometry
   as notions and statements of algebra internal to appropriate toposes.}}
 
   {\vspace{-0.1em}\centering
@@ -650,7 +716,135 @@
 
 \backupstart
 
+\begin{frame}[plain,c]
+  \centering
+  \includegraphics[scale=0.5]{images/sheafification-man}
+  \sffamily
+
+  You should totally look up:
+
+  \hil{The Adventures of Sheafification Man}
+  \par
+\end{frame}
+
+
 \appendix
+
+\section{Details on the internal language}
+
+\begin{frame}\frametitle{More on the internal language}
+  More generally, for an object~$U$ of a topos~$\E$, we define the meaning of
+  \[ U \models \varphi \qquad\text{($\varphi$ holds on~$U$)}. \]
+  Writing~``$\E \models \varphi$'' is then an abbreviation for~``$1 \models
+  \varphi$'', where~``$1$'' denotes the terminal object of~$\E$.
+
+  In addition to soundness with respect to intuitionistic logic, the internal
+  language has the following two important properties:
+  \begin{itemize}
+    \item \hil{Monotonicity:} If~$p : V \to U$ is an arbitrary morphism and~$U
+    \models \varphi$, then also~$V \models \varphi$.
+    \item \hil{Locality:} If~$p : V \to U$ is an epimorphism and~$V \models
+    \varphi$, then also~$U \models \varphi$.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{The rules of the Kripke--Joyal semantics}
+  In the special case that~$\E = \Sh(X)$ is the topos of sheaves on a
+  topological space (or locale)~$X$, the rules of the Kripke--Joyal semantics
+  look as follows. We tersely write~``$U \models \varphi$'' instead
+  of~``$\Hom(\ull{\ \ }, U) \models \varphi$ for open subsets~$U \subseteq X$.
+  \scriptsize
+  \newcommand{\Ll}{:\Longleftrightarrow}
+  \[ \renewcommand{\arraystretch}{1.3}\begin{array}{@{}lcl@{}}
+    U \models f = g \? \F &\Ll& f|_U = g|_U \in \F(U) \\
+    U \models \varphi \wedge \psi &\Ll&
+      \text{$U \models \varphi$ and $U \models \psi$} \\
+    U \models \varphi \vee \psi &\Ll&
+      \hcancel{\text{$U \models \varphi$ or $U \models \psi$}}{0pt}{3pt}{0pt}{-2pt} \\
+    && \text{there exists a covering $U = \bigcup_i U_i$ s.\,th. for all~$i$:} \\
+    && \quad\quad \text{$U_i \models \varphi$ or $U_i \models \psi$} \\
+    U \models \varphi \Rightarrow \psi &\Ll&
+      \text{for all open~$V \subseteq U$: }
+    \text{$V \models \varphi$ implies $V \models \psi$} \\
+    U \models \forall f \? \F\_ \varphi(f) &\Ll&
+      \text{for all sections~$f \in \F(V), V \subseteq U$: $V \models
+      \varphi(f)$} \\
+    U \models \exists f \? \F\_ \varphi(f) &\Ll&
+      \text{there exists a covering $U = \bigcup_i U_i$ s.\,th. for all~$i$:} \\
+    && \quad\quad \text{there exists~$f_i \in \F(U_i)$ s.\,th.
+    $U_i \models \varphi(f_i)$}
+  \end{array} \]
+\end{frame}
+
+\begin{frame}\frametitle{Translating internal statements I}
+  Let~$X$ be a topological space (or locale) and let~$\alpha : \F \to \G$ be a
+  morphism of sheaves on~$X$. Then:
+  \allowdisplaybreaks
+  \begin{align*}
+    & \Sh(X) \models \speak{$\alpha$ is injective} \\[0.5em]
+    \Longleftrightarrow\
+    & \Sh(X) \models \forall s\?\F\_ \forall t\?\F\_ \alpha(s) = \alpha(t) \Rightarrow s = t \\[0.5em]
+    \Longleftrightarrow\ &
+      \text{for all open~$U \subseteq X$, sections $s \in \F(U)$:} \\
+    &\qquad
+      \text{for all open~$V \subseteq U$, sections $t \in \F(V)$:} \\
+    &\qquad\qquad
+        \text{for all open~$W \subseteq V$:} \\
+    &\qquad\qquad\qquad
+          \text{$\alpha_W(s|_W) = \alpha_W(t|_W)$ implies $s|_W = t|_W$} \\[0.5em]
+    \Longleftrightarrow\ &
+      \text{for all open~$U \subseteq X$, sections $s, t \in \F(U)$:} \\
+    &\qquad
+          \text{$\alpha_U(s|_U) = \alpha_U(t|_U)$ implies $s|_U = t|_U$} \\[0.5em]
+    \Longleftrightarrow\ &
+      \text{$\alpha$ is a monomorphism of sheaves}
+  \end{align*}
+\end{frame}
+
+\begin{frame}\frametitle{Translating internal statements II}
+  Let~$X$ be a topological space (or locale) and let~$\alpha : \F \to \G$ be a
+  morphism of sheaves on~$X$. Then:
+  \allowdisplaybreaks
+  \begin{align*}
+    & \Sh(X) \models \speak{$\alpha$ is surjective} \\[0.5em]
+    \Longleftrightarrow\
+    & \Sh(X) \models \forall t\?\G\_ \exists s\?\F\_ \alpha(s) = t \\[0.5em]
+    \Longleftrightarrow\ &
+      \text{for all open~$U \subseteq X$, sections $t \in \G(U)$:} \\
+    &\qquad
+      \text{there exists an open covering~$U = \textstyle\bigcup_i U_i$ and} \\
+    &\qquad
+      \text{sections~$s_i \in \F(U_i)$ such that:} \\
+    &\qquad\qquad
+        \alpha|_{U_i}(s_i) = t|_{U_i} \\[0.5em]
+    \Longleftrightarrow\ &
+      \text{$\alpha$ is an epimorphism of sheaves}
+  \end{align*}
+\end{frame}
+
+\begin{frame}\frametitle{Translating internal statements III}
+  Let~$X$ be a topological space (or locale) and let~$s, t \in \F(X)$ be global
+  sections of a sheaf~$\F$ on~$X$. Then:
+  \allowdisplaybreaks
+  \begin{align*}
+    & \Sh(X) \models \neg\neg(s = t) \\[0.5em]
+    \Longleftrightarrow\
+    & \Sh(X) \models ((s = t) \Rightarrow \bot) \Rightarrow \bot \\[0.5em]
+    \Longleftrightarrow\ &
+      \text{for all open~$U \subseteq X$ such that} \\
+    &\qquad
+      \text{for all open~$V \subseteq U$ such that} \\
+    &\qquad\qquad
+      s|_V = t|_V, \\
+    &\qquad
+      \text{it holds that~$V = \emptyset$,} \\
+    &
+      \text{it holds that~$U = \emptyset$} \\[0.5em]
+    \Longleftrightarrow\ &
+      \text{there exists a dense open set~$W \subseteq X$ such that $s|_W = t|_W$} \\
+  \end{align*}
+\end{frame}
+
 
 \section{Spreading from points to neighbourhoods}
 
@@ -804,10 +998,10 @@
 \end{frame}
 
 
-\section{The gros Zariski topos}
+\section{The big Zariski topos}
 
-\begin{frame}\frametitle{The gros Zariski topos}
-  Let~$X$ be a scheme. The \hil{gros Zariski topos} is the topos of sheaves
+\begin{frame}\frametitle{The big Zariski topos}
+  Let~$X$ be a scheme. The \hil{big Zariski topos} is the topos of sheaves
   on~$\Sch/X$ with respect to the Zariski topology. From its point of view,
   \ldots
 
@@ -857,146 +1051,6 @@
     article \emph{Generic Galois theory of local rings}.
   \end{itemize}
 }
-
-
-\section{Basics about the internal language}
-
-\begin{frame}\frametitle{The internal language of a topos}
-  Let~$\E$ be a topos. Then we can define the meaning of
-  \[ \hil{$\E \models \varphi \qquad\textnormal{(``$\varphi$ holds in $\E$'')}$} \]
-  for formulas~$\varphi$ over~$\E$ using the \hil{Kripke--Joyal semantics}.
-
-  \begin{center}
-    \small
-    \begin{tabular}{ll}
-      \toprule
-      externally & internally \\
-      \midrule
-      object & set/type \\
-      morphism & map of sets \\
-      monomorphism & injective map \\
-      epimorphism & surjective map \\
-      \bottomrule
-    \end{tabular}
-  \end{center}
-  \pause
-
-  \mbox{If~$\varphi$ implies~$\psi$ \hil{intuitionistically}, then~$\E \models \varphi$
-  implies~$\E \models \psi$.}
-\end{frame}
-
-\note{\justifying
-  More generally, for an object~$U$ of a topos~$\E$, we define the meaning of
-  \[ U \models \varphi \qquad\text{($\varphi$ holds on~$U$)}. \]
-  Writing~``$\E \models \varphi$'' is then an abbreviation for~``$1 \models
-  \varphi$'', where~``$1$'' denotes the terminal object of~$\E$.
-
-  In addition to soundness with respect to intuitionistic logic, the internal
-  language has the following two important properties:
-  \begin{itemize}
-    \item \hil{Monotonicity:} If~$p : V \to U$ is an arbitrary morphism and~$U
-    \models \varphi$, then also~$V \models \varphi$.
-    \item \hil{Locality:} If~$p : V \to U$ is an epimorphism and~$V \models
-    \varphi$, then also~$U \models \varphi$.
-  \end{itemize}
-}
-
-\note{\justifying
-  In the special case that~$\E = \Sh(X)$ is the topos of sheaves on a
-  topological space (or locale)~$X$, the rules of the Kripke--Joyal semantics
-  look as follows. We tersely write~``$U \models \varphi$'' instead
-  of~``$\Hom(\ull{\ \ }, U) \models \varphi$ for open subsets~$U \subseteq X$.
-  \scriptsize
-  \newcommand{\Ll}{:\Longleftrightarrow}
-  \[ \renewcommand{\arraystretch}{1.3}\begin{array}{@{}lcl@{}}
-    U \models f = g \? \F &\Ll& f|_U = g|_U \in \F(U) \\
-    U \models \varphi \wedge \psi &\Ll&
-      \text{$U \models \varphi$ and $U \models \psi$} \\
-    U \models \varphi \vee \psi &\Ll&
-      \hcancel{\text{$U \models \varphi$ or $U \models \psi$}}{0pt}{3pt}{0pt}{-2pt} \\
-    && \text{there exists a covering $U = \bigcup_i U_i$ s.\,th. for all~$i$:} \\
-    && \quad\quad \text{$U_i \models \varphi$ or $U_i \models \psi$} \\
-    U \models \varphi \Rightarrow \psi &\Ll&
-      \text{for all open~$V \subseteq U$: }
-    \text{$V \models \varphi$ implies $V \models \psi$} \\
-    U \models \forall f \? \F\_ \varphi(f) &\Ll&
-      \text{for all sections~$f \in \F(V), V \subseteq U$: $V \models
-      \varphi(f)$} \\
-    U \models \exists f \? \F\_ \varphi(f) &\Ll&
-      \text{there exists a covering $U = \bigcup_i U_i$ s.\,th. for all~$i$:} \\
-    && \quad\quad \text{there exists~$f_i \in \F(U_i)$ s.\,th.
-    $U_i \models \varphi(f_i)$}
-  \end{array} \]
-}
-
-\begin{frame}\frametitle{Translating internal statements I}
-  Let~$X$ be a topological space (or locale) and let~$\alpha : \F \to \G$ be a
-  morphism of sheaves on~$X$. Then:
-  \allowdisplaybreaks
-  \begin{align*}
-    & \Sh(X) \models \speak{$\alpha$ is injective} \\[0.5em]
-    \Longleftrightarrow\
-    & \Sh(X) \models \forall s\?\F\_ \forall t\?\F\_ \alpha(s) = \alpha(t) \Rightarrow s = t \\[0.5em]
-    \Longleftrightarrow\ &
-      \text{for all open~$U \subseteq X$, sections $s \in \F(U)$:} \\
-    &\qquad
-      \text{for all open~$V \subseteq U$, sections $t \in \F(V)$:} \\
-    &\qquad\qquad
-        \text{for all open~$W \subseteq V$:} \\
-    &\qquad\qquad\qquad
-          \text{$\alpha_W(s|_W) = \alpha_W(t|_W)$ implies $s|_W = t|_W$} \\[0.5em]
-    \Longleftrightarrow\ &
-      \text{for all open~$U \subseteq X$, sections $s, t \in \F(U)$:} \\
-    &\qquad
-          \text{$\alpha_U(s|_U) = \alpha_U(t|_U)$ implies $s|_U = t|_U$} \\[0.5em]
-    \Longleftrightarrow\ &
-      \text{$\alpha$ is a monomorphism of sheaves}
-  \end{align*}
-\end{frame}
-
-\begin{frame}\frametitle{Translating internal statements II}
-  Let~$X$ be a topological space (or locale) and let~$\alpha : \F \to \G$ be a
-  morphism of sheaves on~$X$. Then:
-  \allowdisplaybreaks
-  \begin{align*}
-    & \Sh(X) \models \speak{$\alpha$ is surjective} \\[0.5em]
-    \Longleftrightarrow\
-    & \Sh(X) \models \forall t\?\G\_ \exists s\?\F\_ \alpha(s) = t \\[0.5em]
-    \Longleftrightarrow\ &
-      \text{for all open~$U \subseteq X$, sections $t \in \G(U)$:} \\
-    &\qquad
-      \text{there exists an open covering~$U = \textstyle\bigcup_i U_i$ and} \\
-    &\qquad
-      \text{sections~$s_i \in \F(U_i)$ such that:} \\
-    &\qquad\qquad
-        \alpha|_{U_i}(s_i) = t|_{U_i} \\[0.5em]
-    \Longleftrightarrow\ &
-      \text{$\alpha$ is an epimorphism of sheaves}
-  \end{align*}
-\end{frame}
-
-\begin{frame}\frametitle{Translating internal statements III}
-  Let~$X$ be a topological space (or locale) and let~$s, t \in \F(X)$ be global
-  sections of a sheaf~$\F$ on~$X$. Then:
-  \allowdisplaybreaks
-  \begin{align*}
-    & \Sh(X) \models \neg\neg(s = t) \\[0.5em]
-    \Longleftrightarrow\
-    & \Sh(X) \models ((s = t) \Rightarrow \bot) \Rightarrow \bot \\[0.5em]
-    \Longleftrightarrow\ &
-      \text{for all open~$U \subseteq X$ such that} \\
-    &\qquad
-      \text{for all open~$V \subseteq U$ such that} \\
-    &\qquad\qquad
-      s|_V = t|_V, \\
-    &\qquad
-      \text{it holds that~$V = \emptyset$,} \\
-    &
-      \text{it holds that~$U = \emptyset$} \\[0.5em]
-    \Longleftrightarrow\ &
-      \text{there exists a dense open set~$W \subseteq X$ such that $s|_W = t|_W$} \\
-  \end{align*}
-\end{frame}
 
 \backupend
 

@@ -16,6 +16,7 @@
 \xyoption{rotate}
 \usepackage{tikz}
 \usetikzlibrary{calc,shapes.callouts,shapes.arrows}
+\hypersetup{colorlinks=true}
 
 \usepackage[protrusion=true,expansion=true]{microtype}
 
@@ -29,6 +30,7 @@
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\RR}{\mathbb{R}}
 \newcommand{\ZZ}{\mathbb{Z}}
+\renewcommand{\P}{\mathcal{P}}
 \newcommand{\ppp}{\mathfrak{p}}
 \newcommand{\defeq}{\vcentcolon=}
 \newcommand{\defeqv}{\vcentcolon\equiv}
@@ -132,7 +134,6 @@
   \setbeameroption{show notes}
 }
 \setbeamertemplate{note page}[plain]
-\setbeameroption{hide notes}
 
 \begin{document}
 
@@ -206,9 +207,44 @@
   \item By \hil{space} we mean: topological space~$X$ equipped with a local
   sheaf~$\O_X$ of rings.
   \end{itemize}
+
+  \centering
+  \begin{columns}
+    \begin{column}{0.45\textwidth}
+      \centering
+      \includegraphics[height=0.25\textheight]{images/manifold} \\
+      \tiny a manifold
+      \par
+    \end{column}
+    \begin{column}{0.45\textwidth}
+      \centering
+      \includegraphics[height=0.25\textheight]{images/mumfords-treasure-map} \\
+      \tiny Mumford's treasure map of~$\Spec \ZZ[X]$
+      \par
+    \end{column}
+  \end{columns}
 \end{frame}
 
+\note{\justifying
+  A \emph{sheaf of rings} on a topological space~$X$ is a ring object
+  in~$\Sh(X)$, the category of set-valued sheaves on~$X$.
+
+  A sheaf~$\O_X$ of rings is \emph{local} if and only if all the
+  stalks~$\O_{X,x}$ are local rings. Why not demand that the sets of
+  sections~$\O_X(U)$ are local rings? This has a geometric meaning, but can
+  also be motivated from a logical point of view: A sheaf of rings is local if
+  and only if, from the point of view of the internal language of~$\Sh(X)$, it
+  is a local ring.
+
+  Think of~$\O_X$ as the sheaf of ``number-valued functions'' on~$X$. In
+  algebraic geometry, this structure sheaf is a crucial part of the data:
+  Wildly different schemes can have the same underlying topological space.
+  \par
+}
+
+
 \subsection{What is a topos?}
+
 \begin{frame}\frametitle{What is a topos?}
   \begin{block}{Formal definition}A \hil{topos} is a category which has finite limits,
   is cartesian closed and has a subobject classifier.
@@ -224,7 +260,24 @@
   \end{itemize}\end{block}
 \end{frame}
 
+\note{\begin{itemize}\justifying
+  \item While technically correct, the formal definition is actually
+  misleading in a sense: A topos has lots of other vital structure, which
+  is crucial for a rounded understanding, but is not listed in the
+  definition (which is trimmed for minimality).
+
+  A more comprehensive definition is: A \emph{topos} is a locally cartesian
+  closed, finitely complete and cocomplete Heyting category which is exact,
+  extensive and has a subobject classifier.
+
+  \item Check out an
+  \href{https://ncatlab.org/publications/published/Leinster2011}{article by
+  Tom Leinster} for a leisurely introduction to topos theory.
+\end{itemize}}
+
+
 \subsection{What is the internal language?}
+
 \begin{frame}\frametitle{What is the internal language?}
   Let~$\E$ be a topos. Then we can define the meaning of
   \[ \hil{$\E \models \varphi \qquad\textnormal{(``$\varphi$ holds in $\E$'')}$} \]
@@ -259,7 +312,42 @@
   implies~$\E \models \psi$.}
 \end{frame}
 
+\note{\begin{itemize}\justifying
+  \item Actually, the objects of~$\E$ feel more like \emph{types} instead of \emph{sets}:
+  For instance, there is no global membership relation~$\in$. Rather,
+  for each object~$A$ of~$\E$, there is a relation~${\in_A} : A \times \P(A) \to
+  \Omega$, where~$\P(A)$ is the power object of~$A$ and~$\Omega$ is the
+  object of truth values of~$\E$ (can be understood as the power object of
+  a terminal object).
+
+  \item Compare with the embedding theorem for abelian categories:
+  There, an explicit embedding into a category of modules is constructed.
+  Here, we only change perspective and talk about the same objects and
+  morphisms.
+
+  \item There exists a weaker variant of the internal language which works
+  in abelian categories. By using it, one can even pretend that the objects
+  are abelian groups (instead of modules), and when constructing morphisms
+  by appealing to the axiom of unique choice (which is a theorem), one
+  doesn't even have to check linearity. The proof that this approach
+  works uses only categorical logic.
+\end{itemize}}
+
+\note{\begin{itemize}\justifying
+  \item The translation of internal statements into external ones is
+  facilitated by an easy mechanical procedure which one quickly grows
+  accustomed to.
+  \item The internal language of a sheaf topos of a $\mathrm{T}_1$-space is
+  \emph{classical} (that is, verifies the principle of excluded middle) if and
+  only if the space is discrete. That's a not particularly interesting special
+  case.
+  \item See Section~2.4 of
+  \href{https://rawgit.com/iblech/internal-methods/master/notes.pdf}{these
+  notes} for remarks on how to appreciate intuitionistic logic.
+\end{itemize}}
+
 \section{Building and using a dictionary}
+
 \begin{frame}\frametitle{Building a dictionary}
   \sloganwithoutborder{\hil{Understand notions of algebraic geometry
   as notions of algebra internal to~$\boldsymbol{\Sh(X)}$.}}
@@ -295,7 +383,7 @@
 \end{frame}
 
 \note{\justifying
-  See the \href{https://github.com/iblech/internal-methods/raw/master/notes.pdf}{notes} for more dictionary entries.
+  See the \href{https://rawgit.com/iblech/internal-methods/master/notes.pdf}{notes} for more dictionary entries.
 
   The simple definition of~$\K_X$ allows to give an internal account of the
   basics of the theory of Cartier divisors, for instance giving an easy
@@ -753,13 +841,13 @@
   \end{itemize}
 \end{frame}
 
+\newcommand{\Ll}{:\Longleftrightarrow}
 \begin{frame}\frametitle{The rules of the Kripke--Joyal semantics}\justifying
   In the special case that~$\E = \Sh(X)$ is the topos of sheaves on a
   topological space (or locale)~$X$, the rules of the Kripke--Joyal semantics
   look as follows. We tersely write~``$U \models \varphi$'' instead
   of~``$\Hom(\ull{\ \ }, U) \models \varphi$ for open subsets~$U \subseteq X$.
   \scriptsize
-  \newcommand{\Ll}{:\Longleftrightarrow}
   \[ \renewcommand{\arraystretch}{1.3}\begin{array}{@{}lcl@{}}
     U \models f = g \? \F &\Ll& f|_U = g|_U \in \F(U) \\
     U \models \varphi \wedge \psi &\Ll&
@@ -780,6 +868,33 @@
     $U_i \models \varphi(f_i)$}
   \end{array} \]
 \end{frame}
+
+\note{\begin{itemize}\justifying
+  \item The rules are not all arbitrary: Rather, they are very finely concerted
+  to make the crucial properties about the internal language (monotonicity,
+  locality, soundness with respect to intuitinistic logic) true.
+
+  \item If~$\F$ is an object of~$\Sh(X)$, we write ``$f:\F$'' instead
+  of~``$f\in\F$'' to remind us that~$\F$ is not really (externally) a set
+  consisting of elements, but that we only pretend this by using the internal
+  language.
+
+  \item There are two further rules concerning the constants~$\top$
+  and~$\bot$ (truth resp. falsehood):
+    \[ \renewcommand{\arraystretch}{1.3}\begin{array}{@{}lcl@{}}
+      U \models \top &\Ll& U = U \text{ (always fulfilled)}\\
+      U \models \bot &\Ll& U = \emptyset
+    \end{array} \]
+
+  \item Negation is defined as
+  \[ \neg\varphi :\equiv (\varphi \Rightarrow \bot). \]
+\end{itemize}}
+
+\note{\justifying
+  The alternate definition ``$U \models \varphi \vee \psi :\Leftrightarrow
+  \text{$U \models \varphi$ or $U \models \psi$}$'' would not be local.
+  \par
+}
 
 \begin{frame}\frametitle{Translating internal statements I}
   Let~$X$ be a topological space (or locale) and let~$\alpha : \F \to \G$ be a

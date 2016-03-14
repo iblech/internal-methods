@@ -250,7 +250,7 @@
   is cartesian closed and has a subobject classifier.
   \end{block}
 
-  \begin{block}{Motto}A topos is a category sufficiently rich to support
+  \begin{block}{Motto}A topos is a category which is sufficiently rich to support
   an \hil{internal language}.
   \end{block}
 
@@ -260,8 +260,8 @@
   \end{itemize}\end{block}
 \end{frame}
 
-\note{\begin{itemize}\justifying
-  \item While technically correct, the formal definition is actually
+\note{\justifying
+  While technically correct, the formal definition is actually
   misleading in a sense: A topos has lots of other vital structure, which
   is crucial for a rounded understanding, but is not listed in the
   definition (which is trimmed for minimality).
@@ -270,10 +270,11 @@
   closed, finitely complete and cocomplete Heyting category which is exact,
   extensive and has a subobject classifier.
 
-  \item Check out an
+  Check out an
   \href{https://ncatlab.org/publications/published/Leinster2011}{article by
   Tom Leinster} for a leisurely introduction to topos theory.
-\end{itemize}}
+  \par
+}
 
 
 \subsection{What is the internal language?}
@@ -336,7 +337,7 @@
 \note{\begin{itemize}\justifying
   \item The translation of internal statements into external ones is
   facilitated by an easy mechanical procedure which one quickly grows
-  accustomed to.
+  accustomed to. \hyperlink{kripke-joyal}{\beamergotobutton{See more details.}}
   \item The internal language of a sheaf topos of a $\mathrm{T}_1$-space is
   \emph{classical} (that is, verifies the principle of excluded middle) if and
   only if the space is discrete. That's a not particularly interesting special
@@ -684,7 +685,8 @@
   \pause
 
   This gives an internal description of
-  Monique Hakim's spectrum functor~$\mathrm{RT} \to \mathrm{LRT}$.
+  Monique Hakim's spectrum functor from ringed toposes to locally ringed
+  toposes.
 \end{frame}
 
 \note{\justifying
@@ -825,7 +827,7 @@
 
 \section{Details on the internal language}
 
-\begin{frame}\frametitle{More on the internal language}\justifying
+\begin{frame}[label=kripke-joyal]\frametitle{More on the internal language}\justifying
   More generally, for an object~$U$ of a topos~$\E$, we define the meaning of
   \[ U \models \varphi \qquad\text{($\varphi$ holds on~$U$)}. \]
   Writing~``$\E \models \varphi$'' is then an abbreviation for~``$1 \models

@@ -4586,7 +4586,8 @@ formulas~$\varphi$ and~$\psi$
 \[ \Sh(X) \models \neg(\varphi \wedge \psi)
   \quad\text{implies}\quad
   \Sh(X) \models \neg\varphi \text{ or }
-  \Sh(X) \models \neg\psi. \]
+  \Sh(X) \models \neg\psi, \]
+and not $\Sh(X) \models \bot$.
 Furthermore, in this case the following internal logical principle holds:
 \[ \Sh(X) \models \forall \alpha,\beta \in \Omega\_
   \neg(\alpha \wedge \beta) \Rightarrow (\neg\alpha \vee \neg\beta). \]
@@ -4595,7 +4596,7 @@ Furthermore, in this case the following internal logical principle holds:
 that~$U \cap V = \emptyset$, where~$U$ and~$V$ are the largest open subsets on
 which~$\varphi$ respectively~$\psi$ hold. The disjunction ``$\Sh(X) \models
 \neg\varphi$ or $\Sh(X) \models \neg\psi$'' means that~$U = \emptyset$ or~$V =
-\emptyset$.
+\emptyset$. And ``$\Sh(X) \models \bot$'' is equivalent to~$X = \emptyset$.
 
 Therefore, if~$X$ is irreducible, then the internal language has the claimed metaproperty. The converse
 can be seen by instantiating~$\varphi$ and~$\psi$ with the formulas associated

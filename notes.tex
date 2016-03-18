@@ -2994,7 +2994,9 @@ translation~$\varphi^{\neg\neg}$ is derivable in intuitionistic logic. The
 translation~$\varphi^{\neg\neg}$ is obtained from~$\varphi$ by putting
 ``$\neg\neg$'' before any subformula, \ie before any~``$\exists$''
 and~``$\forall$'', around any logical connective, and around any atomic
-statement (``$x=y$'', ``$x \in A$'').
+statement (``$x=y$'', ``$x \in A$''). For instance, the double negation
+translation of ``$f$ is surjective'' is
+\[ \neg\neg \forall y\?Y\_ \neg\neg \exists x\?X\_ \neg\neg f(x) = y. \]
 
 We will describe a slight generalization of the double negation translation,
 the~$\Box$-translation for any modal operator~$\Box$. It will be pivotal
@@ -3146,8 +3148,8 @@ has a geometric interpretation, for instance in the special case~$\Box =
 we may not conclude that there exists a single dense open subset~$U$ on which
 all the formulas~$\varphi_i$ hold.
 
-\begin{rem}In the special case that~$\Box$ is the double negation modality, the
-lemma holds with slightly weaker hypotheses: Namely, implications may occur
+\begin{rem}In the special case that~$\Box$ is the double negation modality,
+Lemma~\ref{lemma:stalk-open} holds with slightly weaker hypotheses: Namely, implications may occur
 in~$\varphi$, provided that for their antecedents~$\psi$ it holds that~$\psi
 \Rightarrow \psi^\Box$. This is because for the double negation modality,
 the formula~$\Box(\psi \Rightarrow \chi)$ is equivalent to~$\psi \Rightarrow

@@ -1898,7 +1898,7 @@ of~$\O_X$-modules. If two of the three modules are coherent, so is the third.
 \item Let~$\F \to \G$ be a morphism of~$\O_X$-modules such that~$\F$ is
 of finite type and~$\G$ is coherent. Then its kernel is of finite type as well.
 \item If~$\F$ is a finitely presented~$\O_X$-module and~$\G$ is a
-coherent~$\O_X$-module, the~$\O_X$-modules~$\HOM(\F,\G)$ and~$\F \otimes \G$
+coherent~$\O_X$-module, the~$\O_X$-modules~$\HOM_{\O_X}(\F,\G)$ and~$\F \otimes_{\O_X} \G$
 are coherent as well.
 \end{itemize}
 \end{lemma}
@@ -5074,11 +5074,11 @@ of an open subspace. Then there is a canonical functor~$j_! : \Sh(U) \to
 \item The composition~$j^{-1} \circ j_! : \Sh(U) \to \Sh(U)$ is (canonically
 isomorphic to) the identity.
 \item The essential image of~$j_!$ consists of exactly those sheaves on~$X$
-whose stalks are empty at all points of~$U^c$. For those sheaves~$\F$, it holds
+whose stalks are empty at all points of~$U^c$. For those sheaves~$\F$ it holds
 that~$j_!j^{-1}\F \cong \F$ (canonically).
 \end{enumerate}
 \end{lemma}
-\begin{proof}Internally, for a set~$\F$, we can define~$j_!(\F)$ simply be the
+\begin{proof}Internally, for a set~$\F$, we can define~$j_!(\F)$ simply to be the
 set comprehension
 \[ j_!(\F) \defeq \{ x\?\F \,|\, U \}. \]
 Externally, the sections of the thusly defined sheaf on an open subset~$V
@@ -5114,7 +5114,7 @@ of an open subspace. Then there is a canonical functor~$j_! : \Mod_U(\O_U) \to
 \item The composition~$j^{-1} \circ j_! : \Mod_U(\O_U) \to \Mod_U(\O_U)$ is (canonically
 isomorphic to) the identity.
 \item The essential image of~$j_!$ consists of exactly those~$\O_X$-modules
-whose stalks are zero at all points of~$U^c$. For those sheaves~$\F$, it holds
+whose stalks are zero at all points of~$U^c$. For those sheaves~$\F$ it holds
 that~$j_!j^{-1}\F \cong \F$ (canonically).
 \end{enumerate}
 \end{lemma}
@@ -5132,7 +5132,7 @@ internally, it holds that~$\forall x\?\F\_ ((x = 0) \vee U)$.
 Let~$X$ be a topological space. Let~$i : A \hookrightarrow X$ be the inclusion
 of a closed subspace. The essential image of the
 inclusion~$i_* : \Sh(A) \to \Sh(X)$ consists of exactly those sheaves whose support
-is a subset of~$A$. For those sheaves~$\F$, it holds that~$i_* i^{-1} \F \cong \F$
+is a subset of~$A$. For those sheaves~$\F$ it holds that~$i_* i^{-1} \F \cong \F$
 (canonically).\end{lemma}
 \begin{proof}Recall that the modal operator associated to~$A$ is~$\Box\varphi
 \defequiv (\varphi \vee A^c)$, and that by Section~\ref{sect:internal-sheaves} the

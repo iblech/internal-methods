@@ -21,13 +21,13 @@ No prior knowledge about topos theory or formal logic is assumed.
 
 * [Expository notes (PDF)](https://github.com/iblech/internal-methods/raw/master/notes.pdf)
 * [Slides (PDF)](http://www.speicherleck.de/iblech/stuff/gael2013-topos.pdf)
-  for GAeL 2013
+  for [GAeL 2013](http://www.mimuw.edu.pl/~gael/xxi/)
 * [Poster (PDF)](https://github.com/iblech/internal-methods/raw/master/poster.pdf)
-  for GAeL 2014
+  for [GAeL 2014](http://www.mimuw.edu.pl/~gael/)
 * [Slides (PDF)](https://github.com/iblech/internal-methods/raw/master/slides-ihes2015.pdf)
   and [video](https://www.youtube.com/watch?v=7S8--bIKaWQ)
-  for Topos à l'IHÉS 2015
+  for [Topos à l'IHÉS 2015](https://indico.math.cnrs.fr/event/747/)
 * [Slides (PDF)](https://github.com/iblech/internal-methods/raw/master/slides-pssl99.pdf)
-  for PSSL 99
+  for [PSSL 99](http://www.iti.cs.tu-bs.de/~koslowj/PSSL99)
 
 ![Sheaves of rings look like ordinary rings from the internal point of view.](images/external-internal-small.png)

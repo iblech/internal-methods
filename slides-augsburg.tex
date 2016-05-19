@@ -20,6 +20,23 @@
 
 \usepackage[protrusion=true,expansion=true]{microtype}
 
+\setlength\parskip{\medskipamount}
+\setlength\parindent{0pt}
+
+\title{Using the internal language of toposes in algebraic geometry}
+\author{Ingo Blechschmidt}
+\date{May 19th, 2016}
+
+\usetheme{Warsaw}
+\usecolortheme{seahorse}
+%\usefonttheme{default}?
+%\usepackage{kurier}?
+\usefonttheme{serif}
+\usepackage[T1]{fontenc}
+\usepackage{libertine}
+%\usepackage{mathpazo}
+\useinnertheme{rectangles}
+
 \newcommand{\A}{\mathcal{A}}
 \renewcommand{\AA}{\mathbb{A}}
 \newcommand{\E}{\mathcal{E}}
@@ -42,8 +59,10 @@
 \newcommand{\op}{\mathrm{op}}
 \newcommand{\Set}{\mathrm{Set}}
 \newcommand{\Sch}{\mathrm{Sch}}
+\newcommand{\LRS}{\mathrm{LRS}}
 \newcommand{\Hom}{\mathrm{Hom}}
 \DeclareMathOperator{\Spec}{Spec}
+\newcommand{\lra}{\longrightarrow}
 \newcommand{\RelSpec}{\operatorname{\text{\ul{$\mathrm{Spec}$}}}}
 \renewcommand{\_}{\mathpunct{.}}
 \newcommand{\?}{\,{:}\,}
@@ -51,22 +70,6 @@
 \newcommand{\ull}[1]{\underline{#1}}
 \newcommand{\affl}{\ensuremath{{\ull{\AA}^1_S}}}
 \newcommand{\Ll}{\vcentcolon\!\Longleftrightarrow}
-
-\setlength\parskip{\medskipamount}
-\setlength\parindent{0pt}
-
-\title{Using the internal language of toposes in algebraic geometry}
-\author{Ingo Blechschmidt}
-\date{May 19th, 2016}
-
-\usetheme{Warsaw}
-\usecolortheme{seahorse}
-%\usefonttheme{default}?
-%\usepackage{kurier}?
-\usefonttheme{serif}
-%\usepackage{libertine}?
-\usepackage{mathpazo}
-\useinnertheme{rectangles}
 
 \setbeamertemplate{blocks}[rounded][shadow=false]
 
@@ -84,7 +87,7 @@
 \newcommand{\pointthis}[2]{%
   \tikz[remember picture,baseline]{\node[anchor=base,inner sep=0,outer sep=0]%
     (#1) {#1};\node[overlay,rectangle callout,%
-    callout relative pointer={(0.5cm,1.2cm)},fill=blue!20] at ($(#1.north)+(-1.2cm,-1.8cm)$) {#2};}%
+    callout relative pointer={(-0.5cm,0.8cm)},fill=blue!20] at ($(#1.north)+(1.1cm,-1.4cm)$) {#2};}%
 }%
 
 \newcommand{\hcancel}[5]{%
@@ -429,21 +432,21 @@
 }
 
 \frame[t]{\frametitle{The internal language of~$\Sh(X)$}
-  \begin{block}{Crucial properties}
-  \begin{itemize}
-    \item \hil{Locality:} If~$U = \bigcup_i U_i$, then
+  \begin{block}{Crucial property: Locality}
+    If~$U = \bigcup_i U_i$, then
       $U \models \varphi$ iff $U_i \models
       \varphi$ for all~$i$.
-    \item \hil{Soundness:} If~$U \models \varphi$ and $\varphi$
+  \end{block}
+
+  \begin{block}{Crucial property: Soundness}
+    If~$U \models \varphi$ and $\varphi$
     implies $\psi$ \only<1>{constructively}\only<2->{\pointthis{constructively}{
       no $\varphi \vee \neg\varphi$,\ \
       no $\neg\neg\varphi \Rightarrow \varphi$,\ \
       no AxC
-    }}, \\[0.1cm]
+    }},
     then~$U \models \psi$.
-  \end{itemize}
   \end{block}
-  \vspace{0.5cm}
 
   \vfill
 
@@ -622,10 +625,12 @@
       sheaf of modules & module \\
       sheaf of finite type & finitely generated module \\
       finite locally free sheaf & finite free module \\
-      coherent sheaf & coherent module \\
+      % coherent sheaf & coherent module \\
       tensor product of sheaves & tensor product of modules \\
       rank function & minimal number of generators \\
-      sheaf of rational functions & total quotient ring of~$\O_X$ \\
+      % sheaf of rational functions & total quotient ring of~$\O_X$ \\
+      sheaf of Kähler differentials & module of Kähler differentials \\
+      dimension of $X$ & Krull dimension of $\O_X$ \\
       \bottomrule
     \end{tabular}}
   \end{center}
@@ -766,15 +771,14 @@
 \end{frame}
 
 
-\section{Transfer principles}
+\subsection{Transfer principles}
 
 \begin{frame}\frametitle{Transfer principles}
   \hil{Question:} How do the properties of
   \begin{itemize}
   \item an~$A$-module~$M$ in~$\Set$ and
-  \item the~$\O_X$-module~$M^\sim$ in~$\Sh(X)$, where~$X = \Spec A$,
+  \item the~$\O_X$-module~$M^\sim$ in~$\Sh(X)$, where~$X = \Spec A$, relate?
   \end{itemize}
-  relate?
   \pause
   \vfill
 
@@ -783,12 +787,18 @@
   \item $\underline{M}$ is the constant sheaf with stalks~$M$ on~$X$ and
   \item $\F \hookrightarrow \underline{A}$ is the \hil{generic filter}.
   \end{itemize}
+  Note: $M$ and $\underline{M}$ share all first-order properties.
   \pause
   \vfill
 
-  \hil{Answer:} $M^\sim$ inherits those properties of $M$ which are stable
-  under localization.
+  \centering
+  \hil{Answer:} $M^\sim$ inherits those properties of $M$ which are \\
+  \hil{stable under localization}.
+  \par
 \end{frame}
+
+
+\subsection{The curious role of affine open subsets}
 
 \begin{frame}\frametitle{The curious role of affine open subsets}
   \hil{Question:} Why do the following identities hold, for quasicoherent
@@ -796,8 +806,8 @@
   \begin{align*}
     \Gamma(U, \E/\F) &= \Gamma(U, \E) / \Gamma(U, \F) \\
     \Gamma(U, \E \otimes_{\O_X} \F) &= \Gamma(U, \E) \otimes_{\Gamma(U,\O_X)} \Gamma(U, \F) \\
-    \Gamma(U, \E_\mathrm{tors}) &= \Gamma(U, \E)_\mathrm{tors} \\
-    \Gamma(U, \K_X) &= \operatorname{Quot} \O_X(U) \\
+    \Gamma(U, \E_\mathrm{tors}) &= \Gamma(U, \E)_\mathrm{tors} \quad\text{(sometimes)} \\
+    \Gamma(U, \K_X) &= \operatorname{Quot} \O_X(U) \quad\text{(sometimes)} \\
     &\ \ \vdots
   \end{align*}
   \pause
@@ -806,7 +816,7 @@
 \end{frame}
 
 
-\section{Quasicoherence of sheaves of modules}
+\subsection{Quasicoherence of sheaves of modules}
 
 \begin{frame}\frametitle{A curious property}
   Let~$X$ be a scheme. Internally to~$\Sh(X)$,
@@ -860,7 +870,7 @@
 }
 
 
-\section{Spreading of properties}
+\subsection{Spreading of properties}
 
 \newcommand{\idiamond}{{\usebeamercolor[fg]{item}{\boldsymbol{\Diamond}}}}
 \newcommand{\gdiamond}[1]{\textcolor{gray}{\boldsymbol{\Diamond}(}#1\textcolor{gray}{)}}
@@ -878,9 +888,8 @@
     (\varphi \Rightarrow \psi)^\Diamond &\defeqv \gdiamond{\varphi^\Diamond \Rightarrow \psi^\Diamond} \\
     (\forall x\?X\_ \varphi(x))^\Diamond &\defeqv \gdiamond{\forall x\?X\_ \varphi^\Diamond(x)} \\
     (\exists x\?X\_ \varphi(x))^\Diamond &\defeqv \idiamond(\exists x\?X\_ \varphi^\Diamond(x))
-  \end{align*}}
-
-  \only<2->{
+  \end{align*}}%
+  \only<2->{%
     Let~$X$ be a scheme. Depending on~$\Diamond$,~$\Sh(X)
     \models \Diamond\varphi$ means that~$\varphi$ holds on \ldots
     \begin{itemize}
@@ -950,7 +959,7 @@
 }
 
 
-\section{The relative and internal spectrum}
+\subsection{The relative spectrum}
 
 \begin{frame}\frametitle{The absolute spectrum}
   Let~$A$ be a commutative ring (in~$\Set$).
@@ -997,12 +1006,9 @@
   \pause
   \pause
   Define the frame of opens of~$\Spec A$ to be the frame of radical ideals
-  in~$A$.
-  \pause
-
-  This gives an internal description of
-  Monique Hakim's spectrum functor from ringed toposes to locally ringed
-  toposes.
+  in~$A$. Universal property:
+  \[ \Hom_{\mathrm{LRT}/\E}(T, \Spec A) \cong \Hom_{\mathrm{Ring}(\E)}(A, \mu_*\O_T) \]
+  for all locally ringed toposes~$T$ equipped with a geometric morphism~$T \xrightarrow{\mu} \E$.
 \end{frame}
 
 \note{\justifying
@@ -1020,13 +1026,13 @@
 }
 
 \begin{frame}\frametitle{The relative spectrum}
-  Let~$X$ be a scheme and~$\O_X \xrightarrow{\varphi} \A$ be a quasicoherent algebra.
-  Can we describe~\hil{$\boldsymbol{\RelSpec_X \A}$}, a scheme over~$X$, internally?
+  Let~$X$ be a scheme and~$\O_X \xrightarrow{\varphi} \A$ be an algebra.
+  Can we describe~\hil{$\boldsymbol{\RelSpec_X \A}$} internally?
 
   Desired universal property:
-  \[ \Hom_{\Sch/X}(T, \RelSpec_X \A) \cong \Hom_{\mathrm{Alg}(\O_X)}(\A,
+  \[ \Hom_{\LRS/X}(T, \RelSpec_X \A) \cong \Hom_{\mathrm{Alg}(\O_X)}(\A,
   \mu_*\O_T) \]
-  for all~$X$-schemes~$T \xrightarrow{\mu} X$.
+  for all locally ringed spaces over~$X$.
   \pause
 
   \hil{Solution:} Define internally the frame of~$\RelSpec_X \A$ to be the frame of
@@ -1058,7 +1064,7 @@
 }
 
 \begin{frame}\frametitle{The relative spectrum, reformulated}
-  Let~$B \to A$ be an algebra in topos.
+  Let~$B \to A$ be an algebra in a topos.
 
   Is there a \hil{free local and local-over-$\boldsymbol{B}$ ring}~$A \to A'$ over~$A$?
 
@@ -1098,8 +1104,8 @@
 
   \begin{block}{Basic look and feel}
   \begin{itemize}
-    \item For each~$S$-scheme~$X$, its functor of points $\ull{X} =
-    \Hom_S(\cdot,X)$ is an object of~$\Zar(S)$. It feels like \hil{the set of
+    \item For an~$S$-scheme~$X$, its functor of points \[ \ull{X} =
+    \Hom_S(\cdot,X) \] is an object of~$\Zar(S)$. It feels like \hil{the set of
     points} of~$X$.
     \item Internally, $\affl$ (given by $\affl(X) = \Gamma(X,\O_X)$)
     looks like a field:
@@ -1215,133 +1221,62 @@
 \end{frame}
 
 
-\begin{frame}
-  \sloganwithoutborder{\hil{Understand notions and statements of algebraic geometry
-  as notions and statements of algebra internal to appropriate toposes.}}
+\subsection{The étale subtopos}
+
+\begin{frame}\frametitle{The étale subtopos}
+  Recall that the \hil{Kummer sequence} is not exact in~$\Zar(S)$ at the third
+  term:
+  \[ 1 \lra \mu_n \lra \GG_\text{m} \stackrel{(\cdot)^n}{\lra} \GG_\text{m} \lra 1 \]
+  But we have:
+  \[ \Zar(S) \models \forall f\?(\affl)^\times\_ \Diamond_\text{ét}(\exists
+  g\?(\affl)^\times\_ f = g^n), \]
+  where~$\Diamond_\text{ét}$ is such that $\Zar(S)_{\Diamond_\text{ét}}
+  \hookrightarrow \Zar(S)$ is the \hil{big étale topos}. It's the largest
+  subtopos of~$\Zar(S)$ where
+  \[ \speak{$\affl$ is separably closed} \]
+  holds (Wraith, Felix).
+\end{frame}
+
+\begin{frame}\frametitle{Comparing the little and the big toposes}
+  \begin{itemize}
+  \item From the point of view of~$\Sh(S)$, the big Zariski topos is $\Zar(\O_S | \O_S)$,
+  the classifying topos of local~$\O_S$-algebras which are local
+  over~$\O_S$.
+
+  \item From the point of view of~$\Zar(S)$, the little Zariski topos is the
+  largest subtopos where $\flat \affl \to \affl$ is bijective.
+  \begin{align*}
+    (\flat \affl)(X \xrightarrow{\mu} S) &= \Gamma(X, \mu^{-1} \O_S) \\
+    \affl(X \xrightarrow{\mu} S) &= \Gamma(X, \O_X)
+  \end{align*}
+  \end{itemize}
+\end{frame}
+
+
+\section{Open tasks}
+
+\begin{frame}\frametitle{Semi-open and open tasks}
+  \begin{itemize}
+  \item Characterize quasicoherence in the big Zariski topos.
+  \item Understand how to work with~${\flat} \dashv \sharp$.
+  \item Do cohomology in the little Zariski topos; exploit that higher direct
+  images look like ordinary sheaf cohomology from the internal point of view.
+  \item Do cohomology in the big Zariski topos.
+  \item Understand more subtoposes of the big Zariski topos.
+  \item Derive suitable axioms for synthetic algebraic geometry.
+  \end{itemize}
 
   {\vspace{-0.1em}\centering
   \rotatebox{90}{\tiny\scalebox{0.5}{Illustration: Carina Willbold}}\hspace{-0.05cm}%
   \includegraphics[scale=0.20]{images/external-internal-small}
   \par\medskip\vspace{-0.1em}}
-
-  \begin{itemize}
-    \item Simplify proofs and gain conceptual understanding.
-    \item Understand relative geometry as absolute geometry.
-    \item Develop a synthetic account of scheme theory.
-    \item Contribute to constructive algebra.
-  \end{itemize}
-
-  \centering
-  \hil{\href{http://tiny.cc/topos-notes}{http://tiny.cc/topos-notes}} \\
-  \begin{minipage}{1.0\textwidth}\justifying
-    \scriptsize
-    spreading of properties,
-    general transfer principles,
-    applications to constructive algebra,
-    quasicoherence,
-    internal Cartier divisors,
-    pullback along immersions $=$ internal sheafification,
-    scheme dimension $=$ internal Krull dimension of~$\O_X$,
-    dense $=$ not not,
-    modal operators,
-    relative spectrum,
-    other toposes,
-    étale topology,
-    group schemes $=$ groups,
-    \ldots
-  \end{minipage}
-  \par
 \end{frame}
-% Fun fact:
-% Very naive definition of P^n works internal to the big Zariski topos.
+
 
 \backupstart
-
-\begin{frame}[plain,c]
-  \centering
-  \includegraphics[scale=0.5]{images/sheafification-man}
-  \sffamily
-
-  You should totally look up:
-
-  \hil{The Adventures of Sheafification Man}
-  \par
-\end{frame}
-
-
 \appendix
 
 \section{Details on the internal language}
-
-\begin{frame}[label=kripke-joyal]\frametitle{More on the internal language}\justifying
-  More generally, for an object~$U$ of a topos~$\E$, we define the meaning of
-  \[ U \models \varphi \qquad\text{($\varphi$ holds on~$U$)}. \]
-  Writing~``$\E \models \varphi$'' is then an abbreviation for~``$1 \models
-  \varphi$'', where~``$1$'' denotes the terminal object of~$\E$.
-
-  In addition to soundness with respect to intuitionistic logic, the internal
-  language has the following two important properties:
-  \begin{itemize}
-    \item \hil{Monotonicity:} If~$p : V \to U$ is an arbitrary morphism and~$U
-    \models \varphi$, then also~$V \models \varphi$.
-    \item \hil{Locality:} If~$p : V \to U$ is an epimorphism and~$V \models
-    \varphi$, then also~$U \models \varphi$.
-  \end{itemize}
-\end{frame}
-
-\begin{frame}\frametitle{The rules of the Kripke--Joyal semantics}\justifying
-  In the special case that~$\E = \Sh(X)$ is the topos of sheaves on a
-  topological space (or locale)~$X$, the rules of the Kripke--Joyal semantics
-  look as follows. We tersely write~``$U \models \varphi$'' instead
-  of~``$\Hom(\ull{\ \ }, U) \models \varphi$ for open subsets~$U \subseteq X$.
-  \scriptsize
-  \[ \renewcommand{\arraystretch}{1.3}\begin{array}{@{}lcl@{}}
-    U \models f = g \? \F &\Ll& f|_U = g|_U \in \F(U) \\
-    U \models \varphi \wedge \psi &\Ll&
-      \text{$U \models \varphi$ and $U \models \psi$} \\
-    U \models \varphi \vee \psi &\Ll&
-      \hcancel{\text{$U \models \varphi$ or $U \models \psi$}}{0pt}{3pt}{0pt}{-2pt} \\
-    && \text{there exists a covering $U = \bigcup_i U_i$ s.\,th. for all~$i$:} \\
-    && \quad\quad \text{$U_i \models \varphi$ or $U_i \models \psi$} \\
-    U \models \varphi \Rightarrow \psi &\Ll&
-      \text{for all open~$V \subseteq U$: }
-    \text{$V \models \varphi$ implies $V \models \psi$} \\
-    U \models \forall f \? \F\_ \varphi(f) &\Ll&
-      \text{for all sections~$f \in \F(V), V \subseteq U$: $V \models
-      \varphi(f)$} \\
-    U \models \exists f \? \F\_ \varphi(f) &\Ll&
-      \text{there exists a covering $U = \bigcup_i U_i$ s.\,th. for all~$i$:} \\
-    && \quad\quad \text{there exists~$f_i \in \F(U_i)$ s.\,th.
-    $U_i \models \varphi(f_i)$}
-  \end{array} \]
-\end{frame}
-
-\note{\begin{itemize}\justifying
-  \item The rules are not all arbitrary: Rather, they are very finely concerted
-  to make the crucial properties about the internal language (monotonicity,
-  locality, soundness with respect to intuitinistic logic) true.
-
-  \item If~$\F$ is an object of~$\Sh(X)$, we write ``$f:\F$'' instead
-  of~``$f\in\F$'' to remind us that~$\F$ is not really (externally) a set
-  consisting of elements, but that we only pretend this by using the internal
-  language.
-
-  \item There are two further rules concerning the constants~$\top$
-  and~$\bot$ (truth resp. falsehood):
-    \[ \renewcommand{\arraystretch}{1.3}\begin{array}{@{}lcl@{}}
-      U \models \top &\Ll& U = U \text{ (always fulfilled)}\\
-      U \models \bot &\Ll& U = \emptyset
-    \end{array} \]
-
-  \item Negation is defined as
-  \[ \neg\varphi :\equiv (\varphi \Rightarrow \bot). \]
-\end{itemize}}
-
-\note{\justifying
-  The alternate definition ``$U \models \varphi \vee \psi :\Leftrightarrow
-  \text{$U \models \varphi$ or $U \models \psi$}$'' would not be local.
-  \par
-}
 
 \begin{frame}\frametitle{Translating internal statements I}
   Let~$X$ be a topological space (or locale) and let~$\alpha : \F \to \G$ be a
@@ -1463,25 +1398,6 @@
 \end{frame}
 
 
-\section{Transfer principles}
-
-\begin{frame}\frametitle{Transfer principles}\justifying
-  Let~$M$ be an~$A$-module. How do~$M$ and the sheaf~$M^{\sim}$ on~$\Spec A$
-  relate?
-
-  Observe that $M^{\sim} \cong \underline{M}[\F^{-1}]$ is the localization of~$M$ at
-  the \hil{generic prime filter} and that~$M$ shares all first-order properties
-  with the constant sheaf of modules~$\underline{M}$. Therefore:
-  \begin{center}
-    $M^{\sim}$ inherits all those properties of~$M$ which are \\
-    \hil{stable under localization}.
-  \end{center}
-  Examples: finitely generated, free, flat, \ldots
-
-  A converse holds as well, suitably formulated.
-\end{frame}
-
-
 \section{Applications in algebra}
 
 \begin{frame}\frametitle{Applications in algebra}
@@ -1564,79 +1480,6 @@
   \par
 \end{frame}
 
-
-\section{The big Zariski topos}
-
-\begin{frame}\frametitle{The big Zariski topos}
-  Let~$X$ be a scheme. The \hil{big Zariski topos} is the topos of sheaves
-  on~$\Sch/X$ with respect to the Zariski topology. From its point of view,
-  \ldots
-
-  \begin{itemize}
-    \item \ldots{} $X$-schemes look just like sets,
-    \item \ldots{} $\mathbb{P}^n_X$ is given by the naive expression
-    \[ \{ (x_0,\ldots,x_n) \,|\, x_1 \neq 0 \vee \cdots \vee x_n \neq 0
-    \}/\text{(rescaling)}, \]
-    \item \ldots{} the cotangent ``bundle'' of an~$X$-scheme~$T$ is
-    \[ \text{the set of maps $\Delta \to \ull{T}$,} \]
-    where~$\Delta = \{ \varepsilon \in \ull{\AA}^1_X \,|\, \varepsilon^2 = 0
-    \}$.
-    \item \ldots{} affinity is a ``double dual condition'', and
-    \item \ldots{} the étale topology is the coarsest topology~$\Diamond$ s.\,th.
-    \[ \forall f : \ull{\AA}^1_X[T]\_\
-      \text{$f$ is monic separable} \Rightarrow
-      \Diamond(\exists t : \ull{\AA}^1\_ f(t) = 0). \]
-  \end{itemize}
-\end{frame}
-
-\note{
-  \begin{itemize}\justifying
-    \item The functor of points of~$\AA^1_X$, that is
-    \[ \ull{\AA}^1_X : (T/X) \longmapsto \O_T(T), \]
-    looks like a local ring and indeed like a field from the internal point of
-    view, in the sense that
-    \[ \forall f\?\ull{\AA}^1_X\_ \neg(f = 0) \Rightarrow \text{$f$
-    invertible}. \]
-    \item Let~$\A$ be a quasicoherent~$\O_X$-algebra. Let~$\E$ be the
-    induced~$\ull{\AA}^1_X$-algebra given by~$\E(T \xrightarrow{\mu} X) \defeq
-    (\mu^* \A)(T)$. Then the internal Hom set~$[\E,
-    \ull{\AA}^1_X]_{\ull{\AA}^1_X}$ of~$\ull{\AA}^1_X$-algebra morphisms is the
-    functor of points of~$\RelSpec_X(\A)$.
-    \item Let~$\mu : T \to X$ be quasicompact and quasiseparated.
-    Then~$\mu$ is affine iff, from the internal point of view, the map
-    \[ \ull{T} \longrightarrow [ [\ull{T},\ull{\AA}^1_X]^\flat, \ull{\AA}^1_X ]_{\ull{\AA}^1_X},\ x \longmapsto
-    \ull{\ \ }(x) \]
-    into the ``double dual'' is bijective.
-  \end{itemize}
-}
-
-\note{
-  \begin{itemize}\justifying
-    \item Describing the functor of points of the projective space was
-    suggested by Zhen Lin Low.
-    \item The statement on the étale topology follows from Gavin Wraith's
-    article \emph{Generic Galois theory of local rings}.
-  \end{itemize}
-}
-
 \backupend
 
 \end{document}
-
-1. Begin with toposes and their internal logic.
-   Gauge the audience's familiarity with sheaves!
-
-2. State the MO question by Steven Gubkin.
-
-3. Discuss basics (include praise for Mike Shulman).
-
-4. Explain the Diamond-translation.
-
-5. Finish with outlook: more complex internal statements,
-   synthetic algebraic geometry, relative algebraic geometry.
-
-Do not include:
-* Quasicoherence condition
-* Relative spectrum
-
-Mention in passing that the Knaster--Tarski theorem is useful in this context.

@@ -29,5 +29,8 @@ No prior knowledge about topos theory or formal logic is assumed.
   for [Topos à l'IHÉS 2015](https://indico.math.cnrs.fr/event/747/)
 * [Slides (PDF)](https://github.com/iblech/internal-methods/raw/master/slides-pssl99.pdf)
   for [PSSL 99](http://www.iti.cs.tu-bs.de/~koslowj/PSSL99)
+* [Slides (PDF)](https://github.com/iblech/internal-methods/raw/master/slides-cambridge2016.pdf)
+  for the [Category Theory Seminar](http://talks.cam.ac.uk/talk/index/66318) at
+  the Centre for Mathematical Sciences in Cambridge
 
 ![Sheaves of rings look like ordinary rings from the internal point of view.](images/external-internal-small.png)

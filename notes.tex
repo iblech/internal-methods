@@ -5384,9 +5384,9 @@ The lemma in particular implies that constant sheaves enjoy several
 classical properties from the internal point of view, even though the internal
 language only supports intuitionistic reasoning in general. For instance, for a
 constant sheaf~$\ul{M}$ it holds that
-\[ \Sh(X) \models \forall x,y\?\ul{M}\_ x = y \vee x \neq y
-  \quad\text{and}\quad
-  \Sh(X) \models \forall x,y\?\ul{M}\_ \neg\neg(x = y) \Rightarrow x = y. \]
+\[ \Sh(X) \models \forall x,y\?\ul{M}\_ \neg\neg(x = y) \Rightarrow x = y \]
+and even
+\[ \Sh(X) \models \forall x,y\?\ul{M}\_ x = y \vee x \neq y. \]
 
 
 \subsection{The generic filter}
@@ -5410,7 +5410,7 @@ negations.
 
 A filter is in particular a multiplicative subset. Inverting the
 elements of a filter results in a local ring, while intuitionistically
-the localization of a ring at a prime ideal might not be local.
+the localization of a ring at a prime ideal cannot in general be verified to be local.
 
 \begin{defn}The \emph{generic filter}~$\F$ is the subsheaf of~$\ul{A}$
 on~$\Spec A$ given by

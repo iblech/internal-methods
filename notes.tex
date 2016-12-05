@@ -4939,6 +4939,7 @@ Let~$X$ be a scheme. Let~$\I \subseteq \O_X$ be a radical ideal.
 the sheaf~$\overline{\I}$ given by the internal expression
 \[ \overline{\I} \defeq \{ s\?\O_X \,|\, \speak{$s$ \inv} \Rightarrow s\in\I
 \}. \]
+% XXX: Wrong, \overline{I} as defined is not an ideal.
 \end{enumerate}
 \end{prop}
 \begin{proof}Both claims can be verified by purely internal reasoning. The
@@ -5880,6 +5881,9 @@ an internal context, we have to give an intuitionistic proof.
 Let~$A$ be a ring with~$0 \neq 1$. Its spectrum is a one-point
 space (as a locale) if and only if any element of~$A$ is nilpotent or
 invertible.\end{lemma}
+% XXX: Clean up the statement. Don't put the nontriviality assumption
+% as a global condition. Also check whether we need to check that the map
+% reflects the ordering.
 \begin{proof}The locale~$\Spec A$ is a one-point space if and only if the
 canonical map
 \[ \begin{array}{@{}rcl@{}}

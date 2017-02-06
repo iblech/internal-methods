@@ -3,14 +3,14 @@
 
 \usepackage[english]{babel}
 
-\usepackage{mathtools}
+%\usepackage{mathtools}
+\newcommand{\vcentcolon}{:}
 \usepackage{booktabs}
 \usepackage{array}
 \usepackage{ragged2e}
 \usepackage{multicol}
 \usepackage{tabto}
 \usepackage{xstring}
-\usepackage{mathtools}
 \usepackage{soul}\setul{0.3ex}{}
 \usepackage[all]{xy}
 \xyoption{rotate}
@@ -43,9 +43,8 @@
 \setbeamercolor*{titlelike}{bg=myred,fg=white}
 
 \usefonttheme{serif}
-\usepackage[T1]{fontenc}
-\usepackage{libertine}
-%\usepackage{mathpazo}
+%\usepackage[T1]{fontenc}
+%\usepackage{libertine}
 
 \newcommand{\A}{\mathcal{A}}
 \renewcommand{\AA}{\mathbb{A}}
@@ -79,7 +78,7 @@
 \newcommand{\?}{\,{:}\,}
 \newcommand{\speak}[1]{\ulcorner\text{\textnormal{#1}}\urcorner}
 \newcommand{\ull}[1]{\underline{#1}}
-\newcommand{\affl}{\ensuremath{{\ull{\AA}^1_S}}}
+\newcommand{\affl}{\ensuremath{{\ull{\AA}^1}}}
 \newcommand{\Ll}{\vcentcolon\!\Longleftrightarrow}
 
 \setbeamertemplate{blocks}[rounded][shadow=false]
@@ -816,7 +815,7 @@
 
 \subsection[Quasicoherence]{Quasicoherence of sheaves of modules}
 
-\begin{frame}\frametitle{A curious property of the structure sheaf}
+\begin{frame}\frametitle{\mbox{A curious property of the structure sheaf}}
   Let~$X$ be a scheme. Internally to~$\Sh(X)$,
   \begin{center}
     \hil{any non-invertible element of~$\boldsymbol{\O_X}$ is nilpotent.}
@@ -831,6 +830,29 @@
   %pp.~189--210.
   Miles Tierney. On the spectrum of a ringed topos. 1976.
   \par
+\end{frame}
+
+\begin{frame}\frametitle{Generic freeness}
+  % XXX: enlarge diagram
+  \vspace*{-1em}
+  \[ \xymatrix{
+    & \ar@{-}[d]^{\substack{\text{finitely}\\\text{generated}}} M \\
+    R \ar[r]_{\text{of finite type}} & S
+  } \]
+  If $R$ is reduced ($x^n = 0 \Rightarrow x = 0$), there is a \hil{dense open}~$U \subseteq \Spec R$ such that for any $f \in R$ with~$D(f)
+  \subseteq U$,
+  \begin{itemize}
+    \item $S[f^{-1}]$ and $M[f^{-1}]$ are free modules over $R[f^{-1}]$,
+    \item $R[f^{-1}] \to S[f^{-1}]$ is of finite presentation, and
+    \item $M[f^{-1}]$ is finitely presented as a module over~$S[f^{-1}]$.
+  \end{itemize}
+
+  For a trivial proof, employ~$\Sh(\Spec R)$ and exploit that
+  \begin{itemize}
+    \item $\O_{\Spec R}$ is a \hil{field}: $\neg(\text{$x$ invertible}) \Rightarrow x = 0$,
+    \item $\O_{\Spec R}$ and $\O_{\Spec R}[X_1,\ldots,X_n]$ are \hil{Noetherian}
+    in the sense that any ideal is \hil{not not} finitely generated.
+  \end{itemize}
 \end{frame}
 
 \begin{frame}\frametitle{Quasicoherence}
@@ -1093,16 +1115,16 @@
   \begin{itemize}
     \item locally ringed spaces
     \begin{multline*}
-      \text{set of prime ideals of~$\ZZ[X,Y,Z]/(X^2+Y^2-Z^2)$} + {} \\
+      \text{set of prime ideals of~$\ZZ[X,Y,Z]/(X^3+Y^3-Z^3)$} + {} \\
       \text{Zariski topology} + \text{structure sheaf}
     \end{multline*}
     \item or Grothendieck's functor-of-points approach, where a scheme is a functor~$\mathrm{Ring} \to \mathrm{Set}$.
-    \[ A \longmapsto \{ (x,y,z) \in A^ 3 \,|\, x^2+y^2-z^2=0 \} \]
+    \[ A \longmapsto \{ (x,y,z) \in A^ 3 \,|\, x^3+y^3-z^3=0 \} \]
   \end{itemize}
 
   \hil{Synthetic approach}: model schemes \hil{directly as sets} in a certain
   nonclassical set theory.
-  \[ \{ (x,y,z) \in (\affl)^3 \,|\, x^2+y^2-z^2=0 \} \]
+  \[ \{ (x,y,z) \in (\affl)^3 \,|\, x^3+y^3-z^3=0 \} \]
 \end{frame}
 
 \begin{frame}\frametitle{The big Zariski topos}
@@ -1183,13 +1205,28 @@
 
 \begin{frame}\frametitle{Some internal constructions}
   \begin{itemize}
-  \item $\mathbb{P}^n_S \defeq \{ (x_0,\ldots,x_n) : (\affl)^{n+1} \,|\,
+  \item $\mathbb{P}^n_S = \{ (x_0,\ldots,x_n) : (\affl)^{n+1} \,|\,
     x_0 \neq 0 \vee \cdots \vee x_n \neq 0 \}/(\affl)^\times.$
 
-  \item $\RelSpec_S A \defeq \Hom_{\mathrm{Alg}(\affl)}(A, \affl).$
+  \item $\RelSpec_S A = \Hom_{\mathrm{Alg}(\affl)}(A, \affl) =
+  \text{set of $\affl$-rational points of $A$}.$
 
-  \item $TX = \Hom(\Delta, \ull{X})$,
+  \item $TX = \Hom(\Delta, X)$,
   where~$\Delta = \{ \varepsilon : \affl \,|\, \varepsilon^2 = 0 \}$.
+
+  \item An $\affl$-module~$E$ is quasicoherent if and only if
+  \[ E \otimes_\affl A \longrightarrow \Hom(\Spec A, E) \]
+  is an isomorphism for all finitely presented $\affl$-algebras $A$.
+
+  \item In particular, any map $\affl \to \affl$ is given by a polynomial.
+
+  \item A subset $U \subseteq X$ is open if and only if for any $x : X$
+  there exists an ideal $J \subseteq \affl$ such that $\affl/J$ is quasicoherent and
+  \[ x \in U \quad\Longleftrightarrow\quad J = (1). \]
+
+  \item A subset $U \subseteq X$ is qc-open if and only if for any $x : X$
+  there exist $f_1,\ldots,f_n \subseteq \affl$ such that
+  \[ x \in U \quad\longleftrightarrow\quad \exists i\_ \text{$f_i$ is invertible}. \]
   \end{itemize}
 \end{frame}
 
@@ -1516,6 +1553,3 @@
 \backupend
 
 \end{document}
-
-Mention:
-* generic freeness

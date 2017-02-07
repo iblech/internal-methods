@@ -819,8 +819,9 @@
     & \ar@{-}[d]^{\substack{\text{finitely}\\\text{generated}}} M \\
     R \ar[r]_{\text{of finite type}} & S
   } \]
-  If $R$ is reduced ($x^n = 0 \Rightarrow x = 0$), there is a \hil{dense open subset} $U \subseteq \Spec R$ such that for any $f \in R$ with~$D(f)
-  \subseteq U$,
+  If $R$ is reduced ($x^n = 0 \Rightarrow x = 0$), there
+  %is a \hil{dense open subset} $U \subseteq \Spec R$ such that for any $f \in R$ with~$D(f)
+  is $f \neq 0$ in $R$ such that
   \begin{enumerate}
     \item $S[f^{-1}]$ and $M[f^{-1}]$ are free modules over $R[f^{-1}]$,
     \item $R[f^{-1}] \to S[f^{-1}]$ is of finite presentation, and
@@ -844,17 +845,22 @@
   using either
   \begin{itemize}
     \item locally ringed spaces
+    \small
     \begin{multline*}
-      \text{set of prime ideals of~$\ZZ[X,Y,Z]/(X^3+Y^3-Z^3)$} + {} \\
+      \text{set of prime ideals of~$\ZZ[X,Y,Z]/(X^n+Y^n-Z^n)$} + {} \\
       \text{Zariski topology} + \text{structure sheaf}
     \end{multline*}
-    \item or Grothendieck's functor-of-points approach, where a scheme is a functor~$\mathrm{Ring} \to \mathrm{Set}$.
-    \[ A \longmapsto \{ (x,y,z) \in A^ 3 \,|\, x^3+y^3-z^3=0 \} \]
+    \normalsize
+    \item or Grothendieck's functor-of-points account, where a scheme is a functor~$\mathrm{Ring} \to \mathrm{Set}$.
+    \small\[ A \longmapsto \{ (x,y,z) \in A^3 \,|\, x^n+y^n-z^n=0 \} \]
   \end{itemize}
+  \bigskip
+  \pause
 
   \hil{Synthetic approach}: model schemes \hil{directly as sets} in a certain
   nonclassical set theory.
-  \[ \{ (x,y,z) \in (\affl)^3 \,|\, x^3+y^3-z^3=0 \} \]
+  \small
+  \[ \{ (x,y,z) \in (\affl)^3 \,|\, x^n+y^n-z^n=0 \} \]
 \end{frame}
 
 \begin{frame}\frametitle{The big Zariski topos}
@@ -933,14 +939,25 @@
 
 \begin{frame}\frametitle{Synthetic constructions}
   \begin{itemize}
-  \item $\mathbb{P}^n_S = \{ (x_0,\ldots,x_n) : (\affl)^{n+1} \,|\,
-    x_0 \neq 0 \vee \cdots \vee x_n \neq 0 \}/(\affl)^\times.$ \\[1em]
+  \item $\mathbb{P}^n = \{ (x_0,\ldots,x_n) : (\affl)^{n+1} \,|\,
+    x_0 \neq 0 \vee \cdots \vee x_n \neq 0 \}/(\affl)^\times$ \\
+  $\phantom{\mathbb{P}^n} \cong \text{set of one-dimensional subspaces of~$(\affl)^{n+1}$}$.
+
+  \begin{itemize}
+    \item $\O(1) = (\ell^\vee)_{\ell \in \mathbb{P}^n}$
+    \item $\O(-1) = (\ell)_{\ell \in \mathbb{P}^n}$
+    \item Euler sequence: $0 \to \ell^\perp \to ((\affl)^{n+1})^\vee \to \ell^\vee \to 0$
+  \end{itemize}\bigskip
 
   \item \ \\[-1.2em]\mbox{$\RelSpec R = \Hom_{\mathrm{Alg}(\affl)}(R, \affl) =
-  \text{set of $\affl$-rational points of $R$}.$} \\[1em]
+  \text{set of $\affl$-valued points of $R$}.$}
 
-  \item $TX = \Hom(\Delta, X)$,
-  where~$\Delta = \{ \varepsilon : \affl \,|\, \varepsilon^2 = 0 \}$.
+  \begin{itemize}
+    \item $\RelSpec \affl[X,Y,Z]/(X^n+Y^n-Z^n) \cong {}$ \\ \qquad\qquad $\{ (x,y,z) \in (\affl)^3 \,|\, x^n+y^n-z^n = 0 \}$ \medskip
+    \item $\Delta \defeq \RelSpec \affl[\varepsilon]/(\varepsilon^2) \cong \{ \varepsilon : \affl \,|\, \varepsilon^2 = 0 \}$
+  \end{itemize}\bigskip
+
+  \item $TX = \Hom(\Delta, X)$.
   \end{itemize}
 \end{frame}
 
@@ -950,7 +967,7 @@
 \begin{frame}{Synthetic formulation of properties}
   \begin{itemize}
   \item \ \\[-1.2em]\mbox{$\RelSpec R = \Hom_{\mathrm{Alg}(\affl)}(R, \affl) =
-  \text{set of $\affl$-rational points of $R$}.$}
+  \text{set of $\affl$-valued points of $R$}.$}
 
   \item An $\affl$-module~$E$ is quasicoherent if and only if
   \[ E \otimes_\affl R \longrightarrow \Hom(\Spec R, E) \]

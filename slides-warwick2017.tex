@@ -3,8 +3,8 @@
 
 \usepackage[english]{babel}
 
-%\usepackage{mathtools}
-\newcommand{\vcentcolon}{:}
+\usepackage{mathtools}
+%\newcommand{\vcentcolon}{:}
 \usepackage{booktabs}
 \usepackage{array}
 \usepackage{ragged2e}
@@ -43,8 +43,8 @@
 \setbeamercolor*{titlelike}{bg=myred,fg=white}
 
 \usefonttheme{serif}
-%\usepackage[T1]{fontenc}
-%\usepackage{libertine}
+\usepackage[T1]{fontenc}
+\usepackage{libertine}
 
 \newcommand{\A}{\mathcal{A}}
 \renewcommand{\AA}{\mathbb{A}}
@@ -833,9 +833,8 @@
 \end{frame}
 
 \begin{frame}\frametitle{Generic freeness}
-  % XXX: enlarge diagram
-  \vspace*{-1em}
-  \[ \xymatrix{
+  \vspace*{-1.6em}
+  \[ \xymatrixcolsep{3pc}\xymatrixrowsep{3pc}\xymatrix{
     & \ar@{-}[d]^{\substack{\text{finitely}\\\text{generated}}} M \\
     R \ar[r]_{\text{of finite type}} & S
   } \]
@@ -846,6 +845,7 @@
     \item $R[f^{-1}] \to S[f^{-1}]$ is of finite presentation, and
     \item $M[f^{-1}]$ is finitely presented as a module over~$S[f^{-1}]$.
   \end{itemize}
+  \pause
 
   For a trivial proof, employ~$\Sh(\Spec R)$ and exploit that
   \begin{itemize}
@@ -1138,7 +1138,6 @@
   is a limit diagram for any affine scheme~$U = \bigcup_i U_i$ over~$S$.
   \end{block}
 
-  \begin{block}{Basic look and feel}
   \begin{itemize}
     \item For an~$S$-scheme~$X$, its functor of points $\ull{X} =
     \Hom_S(\cdot,X)$ is an object of~$\Zar(S)$. It feels like \hil{the set of
@@ -1147,7 +1146,6 @@
     looks like a field:
     \[ \Zar(S) \models \forall x\?\affl\_ x \neq 0 \Longrightarrow \speak{$x$ invertible} \]
   \end{itemize}
-  \end{block}
 
   \note{
     \begin{itemize}
@@ -1208,17 +1206,19 @@
   \item $\mathbb{P}^n_S = \{ (x_0,\ldots,x_n) : (\affl)^{n+1} \,|\,
     x_0 \neq 0 \vee \cdots \vee x_n \neq 0 \}/(\affl)^\times.$
 
-  \item $\RelSpec_S A = \Hom_{\mathrm{Alg}(\affl)}(A, \affl) =
-  \text{set of $\affl$-rational points of $A$}.$
+  \item \ \\[-1.2em]\mbox{$\RelSpec_S R = \Hom_{\mathrm{Alg}(\affl)}(R, \affl) =
+  \text{set of $\affl$-rational points of $R$}.$}
 
   \item $TX = \Hom(\Delta, X)$,
   where~$\Delta = \{ \varepsilon : \affl \,|\, \varepsilon^2 = 0 \}$.
+  \pause
 
   \item An $\affl$-module~$E$ is quasicoherent if and only if
-  \[ E \otimes_\affl A \longrightarrow \Hom(\Spec A, E) \]
-  is an isomorphism for all finitely presented $\affl$-algebras $A$.
+  \[ E \otimes_\affl R \longrightarrow \Hom(\Spec R, E) \]
+  is an isomorphism for all finitely presented $\affl$-algebras $R$.
 
   \item In particular, any map $\affl \to \affl$ is given by a polynomial.
+  \pause
 
   \item A subset $U \subseteq X$ is open if and only if for any $x : X$
   there exists an ideal $J \subseteq \affl$ such that $\affl/J$ is quasicoherent and
@@ -1226,9 +1226,18 @@
 
   \item A subset $U \subseteq X$ is qc-open if and only if for any $x : X$
   there exist $f_1,\ldots,f_n \subseteq \affl$ such that
-  \[ x \in U \quad\longleftrightarrow\quad \exists i\_ \text{$f_i$ is invertible}. \]
+  \[ x \in U \quad\Longleftrightarrow\quad \exists i\_ \text{$f_i$ is invertible}. \]
   \end{itemize}
 \end{frame}
+
+% Add two bigger case studies:
+% * Construction of the Grassmannian
+% * f : Delta --> X such that f(0) in U implies that f factors over U
+%
+% And add the following smaller things:
+% * qc, sep, qs
+% * universally closed
+% * surjective
 
 \note{\justifying
   I'm grateful to Zhen Lin Low for suggesting the example about the projective
@@ -1237,23 +1246,6 @@
   Explicitly, the~$\affl$-algebra~$\A^\sim$ is given by
   \[ \A^\sim(X \xrightarrow{\mu} S) = (\mu^* \A)(X). \]
 }
-
-\subsection{A strong Kock--Lawvere axiom}
-
-\begin{frame}\frametitle{A strong Kock--Lawvere axiom}
-  \begin{itemize}
-    \item The affine line fulfils the axiom
-      \[ \Zar(S) \models \speak{every function~$\affl \to \affl$ is a
-      polynomial}. \]
-    More precisely, the canonical morphism
-    \[ \affl[T] \longrightarrow \Hom(\Hom_{\mathrm{Alg}(\affl)}(\affl[T],\affl), \affl) \]
-    is an isomorphism.
-    \item More generally, for any~$\affl$-algebra~$\A$ induced by a
-    quasicoherent~$\O_S$-algebra, the canonical morphism
-    \[ \A \longrightarrow \Hom(\Hom_{\mathrm{Alg}(\affl)}(\A,\affl), \affl) \]
-    is an isomorphism.
-  \end{itemize}
-\end{frame}
 
 
 \subsection{The étale subtopos}
@@ -1273,32 +1265,12 @@
 \end{frame}
 
 
-\subsection{Comparing the little and the big toposes}
-
-\begin{frame}\frametitle{Comparing the little and the big toposes}
-  \begin{itemize}
-  \item There is a local geometric morphism~$\Zar(S) \to \Sh(S)$.
-
-  \item From the point of view of~$\Sh(S)$, the big Zariski topos is $\Zar(\O_S | \O_S)$,
-  the classifying topos of local~$\O_S$-algebras which are local
-  over~$\O_S$.
-
-  \item From the point of view of~$\Zar(S)$, the little Zariski topos is the
-  largest subtopos where $\flat \affl \to \affl$ is bijective.
-  \begin{align*}
-    (\flat \affl)(X \xrightarrow{\mu} S) &= (\mu^{-1} \O_S)(X) \\
-    \affl(X \xrightarrow{\mu} S) &= \O_X(X)
-  \end{align*}
-  \end{itemize}
-\end{frame}
 
 
 \section{Open tasks}
 
 \begin{frame}\frametitle{Semi-open and open tasks}
   \begin{itemize}
-  \item Characterise quasicoherence in the big Zariski topos.
-  \item Understand how to work with~${\flat} \dashv \sharp$.
   \item Do cohomology in the little Zariski topos; exploit that higher direct
   images look like ordinary sheaf cohomology from the internal point of view.
   \item Do cohomology in the big Zariski topos.

@@ -196,34 +196,44 @@
   \par
 \end{frame}
 
-\frame[t]{\frametitle{Outline}\scriptsize\begin{itemize}\item[]\tableofcontents\end{itemize}}
+\frame[t]{\frametitle{Outline}\small
+  \begin{columns}[t]
+    \begin{column}{0.6\textwidth}
+      \vspace*{-1.5em}
+      \begin{itemize}\item[]\tableofcontents\end{itemize}
+      \par
+    \end{column}
+    \begin{column}{0.4\textwidth}
+      \centering
+      \begin{minipage}{0.70\textwidth}
+        \begin{exampleblock}{}
+          \justifying
+          Any finitely generated vector space does \emph{not not} possess a basis.
+        \end{exampleblock}
+      \end{minipage}
+      \medskip
+
+      \scalebox{3}{$\Downarrow$}
+
+      \begin{minipage}{0.70\textwidth}
+        \begin{exampleblock}{}
+          \justifying
+          Any sheaf of modules of finite type on a reduced scheme is locally free
+          \emph{on a dense open subset}.
+        \end{exampleblock}
+        \centering
+        \tiny Ravi Vakil: ``Important hard exercise'' (13.7.K).
+        \par
+      \end{minipage}
+    \end{column}
+  \end{columns}
+}
 
 \note{\justifying\fontsize{8pt}{9.6}\selectfont
   \begin{center}\large\textbf{Abstract}\end{center}
 
   \begin{changemargin}{2.5em}{2.5em}
-    We describe how the internal language of certain toposes, the
-    associated little and big Zariski toposes of a scheme, can be used
-    to give simpler definitions and more conceptual proofs of the basic
-    notions and observations in algebraic geometry.
-
-    The starting point is that, from the "internal point of view" of the
-    little Zariski topos, sheaves of rings and sheaves of modules look
-    just like plain rings and plain modules. In this way, some concepts
-    and statements of scheme theory can be reduced to concepts and
-    statements of intuitionistic linear algebra. This simplifies working
-    with sheaves and brings conceptual clarity.
-
-    The internal language of the big Zariski topos goes even further. It
-    incorporates Grothendieck's functor-of-points philosophy in order to
-    cast modern algebraic geometry, relative to an arbitrary base
-    scheme, in a naive language reminiscient of the classical Italian
-    school. The base scheme looks like the one-element set from this
-    point of view.
-
-    The talk gives an introduction to this topos-theoretic point of view
-    of algebraic geometry in the hope that it's useful to working
-    algebraic geometers. No prior knowledge about toposes is supposed.
+    (new abstract)
   \end{changemargin}
 }
 
@@ -291,7 +301,7 @@
   \end{center}
 }
 
-\frame[t]{\frametitle{The internal language of~$\Sh(X)$}
+\frame[t]{\frametitle{The internal language of~$\boldsymbol{\Sh(X)}$}
   \small
   Let~$X$ be a topological space. Then we recursively define
   \[ U \models \varphi \quad \text{(``$\varphi$ holds on~$U$'')} \]
@@ -476,7 +486,7 @@
   \end{itemize}
 }
 
-\frame[t]{\frametitle{The internal language of~$\Sh(X)$}
+\frame[t]{\frametitle{The internal language of~$\boldsymbol{\Sh(X)}$}
   \begin{block}{Crucial property: Locality}
     If~$U = \bigcup_i U_i$, then
       $U \models \varphi$ iff $U_i \models
@@ -500,12 +510,9 @@
   \begin{block}{A first glance at the constructive nature}
   \begin{itemize}
     \item $U \models f = 0$
-      \tabto{3.5cm} iff $f|_U = 0 \in \Gamma(U, \F)$.
-    \item $U \models f = 0 \vee g = 0$
-      \tabto{3.5cm} iff on a cover~$U = \bigcup_i U_i$,\\
-      \tabto{3.5cm} \qquad\qquad $f|_{U_i} = 0$ or~$g|_{U_i} = 0$.
+      \tabto{2.9cm} iff $f|_U = 0 \in \Gamma(U, \F)$.
     \item $U \models \neg\neg(f = 0)$
-      \tabto{3.5cm} iff~$f = 0$ on a dense open subset of~$U$.
+      \tabto{2.9cm} iff~$f = 0$ on a dense open subset of~$U$.
   \end{itemize}
   \end{block}
 }
@@ -605,20 +612,18 @@
 }
 
 
-\section[Little Zariski Topos]{The little Zariski topos of a scheme}
+\section[Little Zariski]{The little Zariski topos of a scheme}
 
 \frame[t]{\frametitle{The little Zariski topos}
   \begin{block}{Definition}The \hil{little Zariski topos} of a scheme~$X$ is the
   category~$\Sh(X)$ of set-valued sheaves on~$X$.\end{block}
 
-  \begin{block}{Basic look and feel}
   \begin{itemize}
     \item Internally, the structure sheaf~$\O_X$ looks like \[ \text{
     an ordinary ring.} \]
     \item Internally, a sheaf of~$\O_X$-modules looks like \[
     \text{an ordinary module on that ring.} \]
   \end{itemize}
-  \end{block}
 }
 
 
@@ -719,7 +724,7 @@
 
 \begin{frame}\frametitle{The objective}
   \slogan{\justifying Understand notions and statements of \hil{algebraic geometry} as
-  notions and statements of (intuitionistic) \hil{commutative
+  notions and statements of (constructive) \hil{commutative
   algebra} internal to the \hil{little Zariski topos}.}
 
 %  In order to:
@@ -733,6 +738,7 @@
   Further topics regarding the little Zariski topos:
   \begin{itemize}
     \item Transfer principles~$M \leftrightarrow M^\sim$
+    \item Understanding generic freeness
     \item The curious role of affine open subsets
     \item Quasicoherence
     \item Spreading from points to neighbourhoods
@@ -765,7 +771,7 @@
 
   \centering
   \hil{Answer:} $M^\sim$ inherits those properties of $M$ which are \\
-  \hil{stable under localization}.
+  \hil{stable under localisation}.
   \par
 \end{frame}
 
@@ -775,11 +781,11 @@
   complementation gives a bijection between the prime filters and the prime
   ideals of a ring.
 
-  Prime filters are important in constructive mathematics because localizing
-  them gives rise to local rings. In contrast, localizing a ring at the
+  Prime filters are important in constructive mathematics because localising
+  them gives rise to local rings. In contrast, localising a ring at the
   complement of a prime ideal doesn't usually result in a local ring.
 
-  To construct the universal localization of~$A$, one doesn't pick a particular
+  To construct the universal localisation of~$A$, one doesn't pick a particular
   prime filter~$F$ to construct~$A[F^{-1}]$. Instead, one picks the
   \emph{generic prime filter}~$\F$. This filter doesn't live in~$\Set$, but
   in~$\Sh(\Spec A)$.
@@ -787,33 +793,8 @@
 }
 
 
-\subsection[Affine opens]{The curious role of affine open subsets}
 
-\begin{frame}\frametitle{The curious role of affine open subsets}
-  \hil{Question:} Why do the following identities hold, for quasicoherent
-  sheaves~$\E$ and~$\F$ and affine open subsets~$U$?
-  \begin{align*}
-    (\E/\F)(U) &= \E(U) / \F(U) \\
-    (\E \otimes_{\O_X} \F)(U) &= \E(U) \otimes_{\O_X(U)} \F(U) \\
-    \E_\mathrm{tors}(U) &= \E(U)_\mathrm{tors} \quad\text{(sometimes)} \\
-    \K_X(U) &= \operatorname{Quot} \O_X(U) \quad\text{(sometimes)}
-  \end{align*}
-  \pause
-  \hil{A calculation:}
-  \begin{align*}
-    M^\sim \otimes_{\O_U} N^\sim &=
-    \ull{M}[\F^{-1}] \otimes_{\ull{A}[\F^{-1}]} \ull{N}[\F^{-1}] =
-    (\ull{M} \otimes_\ull{A} \ull{N})[\F^{-1}] \\
-    &= (\ull{M \otimes_A N})[\F^{-1}] =
-    (M \otimes_A N)^\sim.
-  \end{align*}
-  \pause
-  \hil{Answer:} Because localization commutes with quotients, tensor products,
-  torsion submodules (sometimes), \ldots
-\end{frame}
-
-
-\subsection[Quasicoherence]{Quasicoherence of sheaves of modules}
+\subsection[Generic freeness]{Generic freeness}
 
 \begin{frame}\frametitle{\mbox{A curious property of the structure sheaf}}
   Let~$X$ be a scheme. Internally to~$\Sh(X)$,
@@ -838,13 +819,13 @@
     & \ar@{-}[d]^{\substack{\text{finitely}\\\text{generated}}} M \\
     R \ar[r]_{\text{of finite type}} & S
   } \]
-  If $R$ is reduced ($x^n = 0 \Rightarrow x = 0$), there is a \hil{dense open}~$U \subseteq \Spec R$ such that for any $f \in R$ with~$D(f)
+  If $R$ is reduced ($x^n = 0 \Rightarrow x = 0$), there is a \hil{dense open subset} $U \subseteq \Spec R$ such that for any $f \in R$ with~$D(f)
   \subseteq U$,
-  \begin{itemize}
+  \begin{enumerate}
     \item $S[f^{-1}]$ and $M[f^{-1}]$ are free modules over $R[f^{-1}]$,
     \item $R[f^{-1}] \to S[f^{-1}]$ is of finite presentation, and
     \item $M[f^{-1}]$ is finitely presented as a module over~$S[f^{-1}]$.
-  \end{itemize}
+  \end{enumerate}
   \pause
 
   For a trivial proof, employ~$\Sh(\Spec R)$ and exploit that
@@ -854,6 +835,448 @@
     in the sense that any ideal is \hil{not not} finitely generated.
   \end{itemize}
 \end{frame}
+
+
+\section[Big Zariski]{The big Zariski topos of a scheme}
+
+\begin{frame}\frametitle{Synthetic algebraic geometry}
+  Usual approach to algebraic geometry: \hil{layer schemes above ordinary set theory}
+  using either
+  \begin{itemize}
+    \item locally ringed spaces
+    \begin{multline*}
+      \text{set of prime ideals of~$\ZZ[X,Y,Z]/(X^3+Y^3-Z^3)$} + {} \\
+      \text{Zariski topology} + \text{structure sheaf}
+    \end{multline*}
+    \item or Grothendieck's functor-of-points approach, where a scheme is a functor~$\mathrm{Ring} \to \mathrm{Set}$.
+    \[ A \longmapsto \{ (x,y,z) \in A^ 3 \,|\, x^3+y^3-z^3=0 \} \]
+  \end{itemize}
+
+  \hil{Synthetic approach}: model schemes \hil{directly as sets} in a certain
+  nonclassical set theory.
+  \[ \{ (x,y,z) \in (\affl)^3 \,|\, x^3+y^3-z^3=0 \} \]
+\end{frame}
+
+\begin{frame}\frametitle{The big Zariski topos}
+  \begin{block}{Definition}The \hil{big Zariski topos} $\Zar(S)$ of a scheme~$S$ is the
+  category $\Sh(\Aff/S)$. It consists of functors
+  $(\Aff/S)^\op \to \Set$ satisfying the gluing condition that
+  \[ F(U) \to
+    \prod_i F(U_i) \rightrightarrows
+    \prod_{j,k} F(U_j \cap U_k) \]
+  \\[-0.6em]
+  is a limit diagram for any affine scheme~$U = \bigcup_i U_i$ over~$S$.
+  \end{block}
+
+  \begin{itemize}
+    \item For an~$S$-scheme~$X$, its functor of points $\ull{X} =
+    \Hom_S(\cdot,X)$ is an object of~$\Zar(S)$. It feels like \hil{the set of
+    points} of~$X$.
+    \item Internally, $\affl$ (given by $\affl(X) = \O_X(X)$)
+    looks like a field:
+    \[ \Zar(S) \models \forall x\?\affl\_ x \neq 0 \Longrightarrow \text{$x$ invertible} \]
+  \end{itemize}
+
+  \note{
+    \begin{itemize}
+      \item \begin{justify}The overcategory~$\Sch/S$ becomes a Grothendieck site by declaring
+      families of jointly surjective open immersions to be covers. See for
+      instance the excellent Stacks project for details.\end{justify}
+
+      \item \begin{justify}Working in~$\Zar(S)$ amounts to incorporating the
+      philosophy of describing schemes by their functors of points into one's
+      mathematical language.\end{justify}
+
+      \item \begin{justify}Explicitly, the functor~$\ull{X}$ is given
+      by~$\ull{X}(T) = \Hom_S(T,X)$ for~$S$-schemes~$T$. Because the Zariski
+      site is \emph{subcanonical}, this functor is always a sheaf.\end{justify}
+
+      \item \begin{justify}The object~$\ull{S}$ looks like an one-element set
+      from the internal universe. This is to be expected.\end{justify}
+    \end{itemize}
+  }
+\end{frame}
+
+\note{\scriptsize
+  \begin{itemize}
+    \item \begin{justify}Hakim worked out a theory of schemes internal to toposes (but
+    without using the internal language) in her PhD thesis.\end{justify}
+
+    \item \begin{justify}The internal language of~$\Zar(\Spec A)$ is related to
+    the programme about dynamical methods in algebra by Coquand, Coste,
+    Lombardi, Roy, and others. See Coquand's \emph{A completeness proof for
+    geometrical logic}, Coquand and Lombardi's \emph{A logical approach to
+    abstract algebra}, and Coste, Lombardi, and Roy's \emph{Dynamical methods
+    in algebra: effective Nullstellensätze}.\end{justify}
+
+    \item \begin{justify}The observation that~$\affl$ is internally a field is due to
+    Kock (in the case~$S = \Spec\ZZ$, see his \emph{Universal projective
+    geometry via topos theory}) and implies a curious meta-theorem:
+
+    Because $\Zar(\Spec\ZZ)$ is the \emph{classifying topos} for the theory
+    of local rings, any statement about local rings which is of a certain
+    logical form holds for the \emph{universal model}~$\ull{\AA}^1_{\Spec\ZZ}$
+    iff it holds for any local ring (in any universe, particularly~$\Set$).
+
+    Therefore, in proving a statement of such a form about arbitrary local
+    rings, one may assume that they even fulfil the field condition.
+
+    There is a similar story for local~$A$-algebras.
+    See Wraith's \emph{Intuitionistic algebra: some recent developments in
+    topos theory} for a short exposition on the usefulness of
+    classifying toposes and universal models.\end{justify}
+  \end{itemize}
+}
+
+
+\subsection{Synthetic constructions}
+
+\begin{frame}\frametitle{Synthetic constructions}
+  \begin{itemize}
+  \item $\mathbb{P}^n_S = \{ (x_0,\ldots,x_n) : (\affl)^{n+1} \,|\,
+    x_0 \neq 0 \vee \cdots \vee x_n \neq 0 \}/(\affl)^\times.$ \\[1em]
+
+  \item \ \\[-1.2em]\mbox{$\RelSpec R = \Hom_{\mathrm{Alg}(\affl)}(R, \affl) =
+  \text{set of $\affl$-rational points of $R$}.$} \\[1em]
+
+  \item $TX = \Hom(\Delta, X)$,
+  where~$\Delta = \{ \varepsilon : \affl \,|\, \varepsilon^2 = 0 \}$.
+  \end{itemize}
+\end{frame}
+
+
+\subsection{Synthetic formulation of properties}
+
+\begin{frame}{Synthetic formulation of properties}
+  \begin{itemize}
+  \item \ \\[-1.2em]\mbox{$\RelSpec R = \Hom_{\mathrm{Alg}(\affl)}(R, \affl) =
+  \text{set of $\affl$-rational points of $R$}.$}
+
+  \item An $\affl$-module~$E$ is quasicoherent if and only if
+  \[ E \otimes_\affl R \longrightarrow \Hom(\Spec R, E) \]
+  is an isomorphism for all finitely presented $\affl$-algebras $R$.
+
+  \item In particular, any map $\affl \to \affl$ is given by a polynomial. \bigskip
+  \pause
+
+  \item A subset $U \subseteq X$ is qc-open if and only if for any $x : X$
+  there exist $f_1,\ldots,f_n \in \affl$ such that
+  $x \in U \Longleftrightarrow \exists i\_ f_i \neq 0$.
+
+  \item Open subsets are $\neg\neg$-stable:
+  $\neg\neg(x \in U) \Longrightarrow x \in U$.
+
+  \item If $\gamma : \Delta \to X$ is tangent vector with $\gamma(0) \in U$,
+  then~$\gamma(\varepsilon) \in U$ for all~$\varepsilon \in \Delta$.
+  \bigskip\pause
+
+  \item $X$ is separated if and only if for any $x,y : X$,
+  there exists a quasicoherent ideal~$J \subseteq \affl$ such that
+  $x = y \Longleftrightarrow J = (0)$.
+  \end{itemize}
+\end{frame}
+
+% Add two bigger case studies:
+% * Construction of the Grassmannian
+%
+% And add the following smaller things:
+% * qc, sep, qs
+% * universally closed
+% * surjective
+
+\note{\justifying
+  I'm grateful to Zhen Lin Low for suggesting the example about the projective
+  space.
+
+  Explicitly, the~$\affl$-algebra~$\A^\sim$ is given by
+  \[ \A^\sim(X \xrightarrow{\mu} S) = (\mu^* \A)(X). \]
+}
+
+
+\section{Open tasks}
+
+\begin{frame}\frametitle{Semi-open and open tasks}
+  \begin{itemize}
+  \item Do cohomology in the little Zariski topos; exploit that higher direct
+  images look like ordinary sheaf cohomology from the internal point of view.
+  \item Do cohomology in the big Zariski topos.
+  \item Understand subtoposes of the big Zariski topos.
+  \end{itemize}
+
+  {\vspace{-0.1em}\centering
+  \rotatebox{90}{\tiny\scalebox{0.5}{Illustration: Carina Willbold}}\hspace{-0.05cm}%
+  \includegraphics[scale=0.28]{images/external-internal-small}
+  \par\medskip\vspace{-0.1em}}
+\end{frame}
+
+\backupstart
+
+\begin{frame}{}
+
+  {\vspace{-0.1em}\centering
+  \rotatebox{90}{\tiny\scalebox{0.5}{Illustration: Carina Willbold}}\hspace{-0.05cm}%
+  \includegraphics[scale=0.17]{images/external-internal-small}
+  \par\medskip\vspace{-0.1em}}
+
+  \slogan{\hil{Understand notions and statements of algebraic geometry
+  as notions and statements of algebra internal to the little Zariski topos.}}
+
+  \slogan{\hil{Develop a synthetic account of algebraic geometry.}}
+
+  \begin{itemize}
+    \item Simplify proofs and gain conceptual understanding.
+    \item Understand relative geometry as absolute geometry.
+    \item Contribute to constructive algebra.
+  \end{itemize}
+
+  \centering
+  \hil{\href{http://tiny.cc/topos-notes}{http://tiny.cc/topos-notes}}
+  \par
+\end{frame}
+
+{\usebackgroundtemplate{\includegraphics[width=\paperwidth]{images/mathcamp-augsburg}}
+\begin{frame}[plain]
+  \vspace{\textheight}\vspace{-1em}\centering
+  \emph{Participants of Augsburg's maths camp}
+  \par
+\end{frame}}
+
+{\usebackgroundtemplate{\includegraphics[width=\paperwidth]{images/mathcamp-space}}
+\begin{frame}[plain]
+  \vspace{\textheight}\vspace{-1em}\centering
+  \emph{The sun as seen from our high-altitude balloon}
+  \par
+\end{frame}}
+
+\appendix
+
+\section{Details on the internal language}
+
+\begin{frame}\frametitle{Translating internal statements I}
+  Let~$X$ be a topological space (or locale) and let~$\alpha : \F \to \G$ be a
+  morphism of sheaves on~$X$. Then:
+  \allowdisplaybreaks
+  \begin{align*}
+    & \Sh(X) \models \speak{$\alpha$ is surjective} \\[0.5em]
+    \Longleftrightarrow\
+    & \Sh(X) \models \forall t\?\G\_ \exists s\?\F\_ \alpha(s) = t \\[0.5em]
+    \Longleftrightarrow\ &
+      \text{for all open~$U \subseteq X$, sections $t \in \G(U)$:} \\
+    &\qquad
+      \text{there exists an open covering~$U = \textstyle\bigcup_i U_i$ and} \\
+    &\qquad
+      \text{sections~$s_i \in \F(U_i)$ such that:} \\
+    &\qquad\qquad
+        \alpha_{U_i}(s_i) = t|_{U_i} \\[0.5em]
+    \Longleftrightarrow\ &
+      \text{$\alpha$ is an epimorphism of sheaves}
+  \end{align*}
+\end{frame}
+
+\begin{frame}\frametitle{Translating internal statements II}
+  Let~$X$ be a topological space (or locale) and let~$s, t \in \F(X)$ be global
+  sections of a sheaf~$\F$ on~$X$. Then:
+  \allowdisplaybreaks
+  \begin{align*}
+    & \Sh(X) \models \neg\neg(s = t) \\[0.5em]
+    \Longleftrightarrow\
+    & \Sh(X) \models ((s = t) \Rightarrow \bot) \Rightarrow \bot \\[0.5em]
+    \Longleftrightarrow\ &
+      \text{for all open~$U \subseteq X$ such that} \\
+    &\qquad
+      \text{for all open~$V \subseteq U$ such that} \\
+    &\qquad\qquad
+      s|_V = t|_V, \\
+    &\qquad
+      \text{it holds that~$V = \emptyset$,} \\
+    &
+      \text{it holds that~$U = \emptyset$} \\[0.5em]
+    \Longleftrightarrow\ &
+      \text{there exists a dense open set~$W \subseteq X$ such that $s|_W = t|_W$} \\
+  \end{align*}
+\end{frame}
+
+
+\section{Spreading from points to neighbourhoods}
+
+\begin{frame}\frametitle{Spreading from points to neighbourhoods}
+  All of the following lemmas have a short, sometimes trivial proof.
+  Let~$\F$ be a sheaf of finite type on a ringed space~$X$.
+  Let~$x \in X$. Let~$A \subseteq X$ be a closed subset. Then:
+  \small
+  \begin{enumerate}
+    \item $\F_x = 0$ iff~$\F|_U = 0$ for some open neighbourhood of~$x$.
+    \item $\F|_A = 0$ iff~$\F|_U = 0$ for some open set containing~$A$.
+    \item $\F_x$ can be generated by~$n$ elements iff this is true on some open
+    neighbourhood of~$x$.
+%   \item $\alpha_x$ is surjective iff~$\alpha$ is an epimorphism on some open
+%   set containing~$x$, where~$\alpha : \G \to \F$ is any morphism.
+    \item $\mathcal{H}\mathrm{om}_{\O_X}(\F,\G)_x \cong
+    \Hom_{\O_{X,x}}(\F_x,\G_x)$ if~$\F$ is of finite presentation around~$x$.
+    \item $\F$ is torsion iff~$\F_\xi$ vanishes (assume~$X$ integral and~$\F$ quasicoherent).
+    \item $\F$ is torsion iff~$\F|_{\mathrm{Ass}(\O_X)}$ vanishes (assume~$X$
+    locally Noetherian and~$\F$ quasicoherent).
+  \end{enumerate}
+\end{frame}
+
+\note{\justifying
+  Statements 1 and 2 follow from \emph{one} proof in the internal language,
+  applied to two different modal operators.
+
+  Similarly with statements~5 and~6.
+  \par
+}
+
+
+\section{The meromorphic functions revisited}
+
+\begin{frame}\frametitle{The smallest dense sublocale}\justifying
+  Let~$X$ be a reduced scheme satisfying a technical condition.
+  Let~$i : X_{\neg\neg} \to X$ be the inclusion of the smallest dense sublocale
+  of~$X$.
+
+  Then~$i_* i^{-1} \O_X \cong \K_X$.
+
+  \begin{itemize}\justifying
+    \item This is a highbrow way of saying ``rational functions are regular
+    functions which are defined on a dense open subset''.
+    \item Another reformulation is that~$\K_X$ is the sheafification of~$\O_X$
+    with respect to the~$\neg\neg$-modality.
+    \item There is a generalization to nonreduced schemes.
+  \end{itemize}
+\end{frame}
+
+
+\subsection{Group schemes}
+
+\begin{frame}\frametitle{Group schemes}
+  \hil{Motto:} Internal to~$\Zar(S)$, group schemes look like ordinary groups.
+  \bigskip
+
+  \small%
+  \begin{tabular}{lll}
+    \toprule
+    group scheme & internal definition & functor of points: $X \mapsto \ldots$ \\\midrule
+    $\GG_\text{a}$ & $\affl$ (as additive group) & $\O_X(X)$ \\[0.5em]
+    $\GG_\text{m}$ & $\{ x \? \affl \,|\, \speak{$x$ inv.} \}$ & $\O_X(X)^\times$ \\[0.5em]
+    $\mu_n$ & $\{ x \? \affl \,|\, x^n = 1 \}$ & $\{ f \in \O_X(X) \,|\, f^n = 1 \}$ \\[0.5em]
+    $\GL_n$ & $\{ M \? \affl^{n \times n} \,|\, \speak{$M$ inv.} \}$ & $\GL_n(\O_X(X))$ \\
+    \bottomrule
+  \end{tabular}
+  \vspace{2em}
+\end{frame}
+
+
+\section{Applications in algebra}
+
+\begin{frame}\frametitle{Applications in algebra}
+  Let~$A$ be a commutative ring.
+  The internal language of~$\Sh(\Spec A)$ allows you to say ``without loss of
+  generality, we may assume that~$A$ is local'', even constructively.
+
+  \begin{center}
+    \begin{minipage}{0.75\textwidth}
+      \begin{exampleblock}{}
+        \justifying
+        The kernel of any matrix over a principial ideal domain is finitely
+        generated.
+      \end{exampleblock}
+    \end{minipage}
+    \medskip
+
+    \scalebox{3}{$\Downarrow$}
+
+    \begin{minipage}{0.75\textwidth}
+      \begin{exampleblock}{}
+        \justifying
+        The kernel of any matrix over a Prüfer domain is finitely generated.
+      \end{exampleblock}
+    \end{minipage}
+  \end{center}
+\end{frame}
+
+\begin{frame}\frametitle{Hilbert's program in algebra}
+  \scriptsize\justifying
+  There is a way to combine some of the powerful tools of classical ring theory
+  with the advantages that constructive reasoning provides, for instance
+  exhibiting explicit witnesses. Namely we can devise
+  a language in which we can usefully talk about prime ideals, but which
+  substitutes non-constructive arguments by constructive arguments ``behind
+  the scenes''. The key idea is to substitute the phrase ``for all prime ideals''
+  (or equivalently ``for all prime filters'') by ``for the generic prime filter''.
+
+  More specifically, simply interpret a given proof using prime filters
+  in~$\Sh(\Spec A)$ and let it refer to~$\F \hookrightarrow \underline{A}$.
+
+  \hspace*{-0.75cm}%
+  \begin{tabular}{lll}
+    \toprule
+    Statement & constructive substitution & meaning \\\midrule
+    $x \in \ppp$ for all~$\ppp$. &
+    $x \not\in \F$. &
+    $x$ is nilpotent. \\
+    $x \in \ppp$ for all~$\ppp$ such that~$y \in \ppp$. &
+    $x \in \F \Rightarrow y \in \F$. &
+    $x \in \sqrt{(y)}$. \\
+    $x$ is regular in all stalks~$A_\ppp$. &
+    $x$ is regular in~$\ull{A}[\F^{-1}]$. &
+    $x$ is regular in~$A$. \\
+    The stalks~$A_\ppp$ are reduced. &
+    $\ull{A}[\F^{-1}]$ is reduced. &
+    $A$ is reduced. \\
+    The stalks~$M_\ppp$ vanish. &
+    $\ull{M}[\F^{-1}] = 0$. &
+    $M = 0$. \\
+%   The stalks~$M_\ppp$ are fin.\@ gen.\@ over~$A_\ppp$. &
+%   $\ull{M}[\F^{-1}]$ is fin.\@ gen.\@ over
+%   $\ull{A}[\F^{-1}]$. &
+%   $M$ is fin.\@ gen.\@ over~$A$. \\
+    The stalks~$M_\ppp$ are flat over~$A_\ppp$. &
+    $\ull{M}[\F^{-1}]$ is flat over~$\ull{A}[\F^{-1}]$. &
+    $M$ is flat over~$A$. \\
+    The maps~$M_\ppp \to N_\ppp$ are injective. &
+    $\ull{M}[\F^{-1}] \to \ull{N}[\F^{-1}]$ is injective. &
+    $M \to N$ is injective. \\
+    The maps~$M_\ppp \to N_\ppp$ are surjective. &
+    $\ull{M}[\F^{-1}] \to \ull{N}[\F^{-1}]$ is surjective. &
+    $M \to N$ is surjective. \\
+    \bottomrule
+  \end{tabular}
+
+  This is related (in a few cases equivalent) to the \emph{dynamical methods in
+  algebra} explored by Coquand, Coste, Lombardi, Roy, and others. Their
+  approach is more versatile.
+  \par
+\end{frame}
+
+
+\subsection[Affine opens]{The curious role of affine open subsets}
+
+\begin{frame}\frametitle{The curious role of affine open subsets}
+  \hil{Question:} Why do the following identities hold, for quasicoherent
+  sheaves~$\E$ and~$\F$ and affine open subsets~$U$?
+  \begin{align*}
+    (\E/\F)(U) &= \E(U) / \F(U) \\
+    (\E \otimes_{\O_X} \F)(U) &= \E(U) \otimes_{\O_X(U)} \F(U) \\
+    \E_\mathrm{tors}(U) &= \E(U)_\mathrm{tors} \quad\text{(sometimes)} \\
+    \K_X(U) &= \operatorname{Quot} \O_X(U) \quad\text{(sometimes)}
+  \end{align*}
+  \pause
+  \hil{A calculation:}
+  \begin{align*}
+    M^\sim \otimes_{\O_U} N^\sim &=
+    \ull{M}[\F^{-1}] \otimes_{\ull{A}[\F^{-1}]} \ull{N}[\F^{-1}] =
+    (\ull{M} \otimes_\ull{A} \ull{N})[\F^{-1}] \\
+    &= (\ull{M \otimes_A N})[\F^{-1}] =
+    (M \otimes_A N)^\sim.
+  \end{align*}
+  \pause
+  \hil{Answer:} Because localisation commutes with quotients, tensor products,
+  torsion submodules (sometimes), \ldots
+\end{frame}
+
+
+\subsection{Quasicoherence}
 
 \begin{frame}\frametitle{Quasicoherence}
   Let~$X$ be a scheme. Let~$\E$ be an~$\O_X$-module.
@@ -1092,7 +1515,7 @@
 
   \medskip
   Form limits in the category of \hil{locally ringed locales}
-  by \hil{relocalizing} the corresponding limit in ringed locales.
+  by \hil{relocalising} the corresponding limit in ringed locales.
 \end{frame}
 
 \note{\justifying
@@ -1105,147 +1528,6 @@
   \par
 }
 % XXX: Give details.
-
-
-\section[Big Zariski topos]{The big Zariski topos of a scheme}
-
-\begin{frame}\frametitle{Synthetic algebraic geometry}
-  Usual approach to algebraic geometry: \hil{layer schemes above ordinary set theory}
-  using either
-  \begin{itemize}
-    \item locally ringed spaces
-    \begin{multline*}
-      \text{set of prime ideals of~$\ZZ[X,Y,Z]/(X^3+Y^3-Z^3)$} + {} \\
-      \text{Zariski topology} + \text{structure sheaf}
-    \end{multline*}
-    \item or Grothendieck's functor-of-points approach, where a scheme is a functor~$\mathrm{Ring} \to \mathrm{Set}$.
-    \[ A \longmapsto \{ (x,y,z) \in A^ 3 \,|\, x^3+y^3-z^3=0 \} \]
-  \end{itemize}
-
-  \hil{Synthetic approach}: model schemes \hil{directly as sets} in a certain
-  nonclassical set theory.
-  \[ \{ (x,y,z) \in (\affl)^3 \,|\, x^3+y^3-z^3=0 \} \]
-\end{frame}
-
-\begin{frame}\frametitle{The big Zariski topos}
-  \begin{block}{Definition}The \hil{big Zariski topos} $\Zar(S)$ of a scheme~$S$ is the
-  category $\Sh(\Aff/S)$. It consists of functors
-  $(\Aff/S)^\op \to \Set$ satisfying the sheaf condition that
-  \[ F(U) \to
-    \prod_i F(U_i) \rightrightarrows
-    \prod_{j,k} F(U_j \cap U_k) \]
-  \\[-1.5em]
-  is a limit diagram for any affine scheme~$U = \bigcup_i U_i$ over~$S$.
-  \end{block}
-
-  \begin{itemize}
-    \item For an~$S$-scheme~$X$, its functor of points $\ull{X} =
-    \Hom_S(\cdot,X)$ is an object of~$\Zar(S)$. It feels like \hil{the set of
-    points} of~$X$.
-    \item Internally, $\affl$ (given by $\affl(X) = \O_X(X)$)
-    looks like a field:
-    \[ \Zar(S) \models \forall x\?\affl\_ x \neq 0 \Longrightarrow \speak{$x$ invertible} \]
-  \end{itemize}
-
-  \note{
-    \begin{itemize}
-      \item \begin{justify}The overcategory~$\Sch/S$ becomes a Grothendieck site by declaring
-      families of jointly surjective open immersions to be covers. See for
-      instance the excellent Stacks project for details.\end{justify}
-
-      \item \begin{justify}Working in~$\Zar(S)$ amounts to incorporating the
-      philosophy of describing schemes by their functors of points into one's
-      mathematical language.\end{justify}
-
-      \item \begin{justify}Explicitly, the functor~$\ull{X}$ is given
-      by~$\ull{X}(T) = \Hom_S(T,X)$ for~$S$-schemes~$T$. Because the Zariski
-      site is \emph{subcanonical}, this functor is always a sheaf.\end{justify}
-
-      \item \begin{justify}The object~$\ull{S}$ looks like an one-element set
-      from the internal universe. This is to be expected.\end{justify}
-    \end{itemize}
-  }
-\end{frame}
-
-\note{\scriptsize
-  \begin{itemize}
-    \item \begin{justify}Hakim worked out a theory of schemes internal to toposes (but
-    without using the internal language) in her PhD thesis.\end{justify}
-
-    \item \begin{justify}The internal language of~$\Zar(\Spec A)$ is related to
-    the programme about dynamical methods in algebra by Coquand, Coste,
-    Lombardi, Roy, and others. See Coquand's \emph{A completeness proof for
-    geometrical logic}, Coquand and Lombardi's \emph{A logical approach to
-    abstract algebra}, and Coste, Lombardi, and Roy's \emph{Dynamical methods
-    in algebra: effective Nullstellensätze}.\end{justify}
-
-    \item \begin{justify}The observation that~$\affl$ is internally a field is due to
-    Kock (in the case~$S = \Spec\ZZ$, see his \emph{Universal projective
-    geometry via topos theory}) and implies a curious meta-theorem:
-
-    Because $\Zar(\Spec\ZZ)$ is the \emph{classifying topos} for the theory
-    of local rings, any statement about local rings which is of a certain
-    logical form holds for the \emph{universal model}~$\ull{\AA}^1_{\Spec\ZZ}$
-    iff it holds for any local ring (in any universe, particularly~$\Set$).
-
-    Therefore, in proving a statement of such a form about arbitrary local
-    rings, one may assume that they even fulfil the field condition.
-
-    There is a similar story for local~$A$-algebras.
-    See Wraith's \emph{Intuitionistic algebra: some recent developments in
-    topos theory} for a short exposition on the usefulness of
-    classifying toposes and universal models.\end{justify}
-  \end{itemize}
-}
-
-
-\subsection{Some internal constructions}
-
-\begin{frame}\frametitle{Some internal constructions}
-  \begin{itemize}
-  \item $\mathbb{P}^n_S = \{ (x_0,\ldots,x_n) : (\affl)^{n+1} \,|\,
-    x_0 \neq 0 \vee \cdots \vee x_n \neq 0 \}/(\affl)^\times.$
-
-  \item \ \\[-1.2em]\mbox{$\RelSpec_S R = \Hom_{\mathrm{Alg}(\affl)}(R, \affl) =
-  \text{set of $\affl$-rational points of $R$}.$}
-
-  \item $TX = \Hom(\Delta, X)$,
-  where~$\Delta = \{ \varepsilon : \affl \,|\, \varepsilon^2 = 0 \}$.
-  \pause
-
-  \item An $\affl$-module~$E$ is quasicoherent if and only if
-  \[ E \otimes_\affl R \longrightarrow \Hom(\Spec R, E) \]
-  is an isomorphism for all finitely presented $\affl$-algebras $R$.
-
-  \item In particular, any map $\affl \to \affl$ is given by a polynomial.
-  \pause
-
-  \item A subset $U \subseteq X$ is open if and only if for any $x : X$
-  there exists an ideal $J \subseteq \affl$ such that $\affl/J$ is quasicoherent and
-  \[ x \in U \quad\Longleftrightarrow\quad J = (1). \]
-
-  \item A subset $U \subseteq X$ is qc-open if and only if for any $x : X$
-  there exist $f_1,\ldots,f_n \subseteq \affl$ such that
-  \[ x \in U \quad\Longleftrightarrow\quad \exists i\_ \text{$f_i$ is invertible}. \]
-  \end{itemize}
-\end{frame}
-
-% Add two bigger case studies:
-% * Construction of the Grassmannian
-% * f : Delta --> X such that f(0) in U implies that f factors over U
-%
-% And add the following smaller things:
-% * qc, sep, qs
-% * universally closed
-% * surjective
-
-\note{\justifying
-  I'm grateful to Zhen Lin Low for suggesting the example about the projective
-  space.
-
-  Explicitly, the~$\affl$-algebra~$\A^\sim$ is given by
-  \[ \A^\sim(X \xrightarrow{\mu} S) = (\mu^* \A)(X). \]
-}
 
 
 \subsection{The étale subtopos}
@@ -1262,264 +1544,6 @@
   subtopos of~$\Zar(S)$ where
   \[ \speak{$\affl$ is separably closed} \]
   holds [reinterpretation of Wraith, PSSL~1].
-\end{frame}
-
-
-
-
-\section{Open tasks}
-
-\begin{frame}\frametitle{Semi-open and open tasks}
-  \begin{itemize}
-  \item Do cohomology in the little Zariski topos; exploit that higher direct
-  images look like ordinary sheaf cohomology from the internal point of view.
-  \item Do cohomology in the big Zariski topos.
-  \item Understand more subtoposes of the big Zariski topos.
-  \item Derive suitable axioms for synthetic algebraic geometry.
-  \end{itemize}
-
-  {\vspace{-0.1em}\centering
-  \rotatebox{90}{\tiny\scalebox{0.5}{Illustration: Carina Willbold}}\hspace{-0.05cm}%
-  \includegraphics[scale=0.20]{images/external-internal-small}
-  \par\medskip\vspace{-0.1em}}
-\end{frame}
-
-\backupstart
-
-\begin{frame}
-  \slogan{\hil{Understand notions and statements of algebraic geometry
-  as notions and statements of algebra internal to appropriate toposes.}}
-
-  {\vspace{-0.1em}\centering
-  \rotatebox{90}{\tiny\scalebox{0.5}{Illustration: Carina Willbold}}\hspace{-0.05cm}%
-  \includegraphics[scale=0.20]{images/external-internal-small}
-  \par\medskip\vspace{-0.1em}}
-
-  \begin{itemize}
-    \item Simplify proofs and gain conceptual understanding.
-    \item Understand relative geometry as absolute geometry.
-    \item Develop a synthetic account of scheme theory.
-    \item Contribute to constructive algebra.
-  \end{itemize}
-
-  \centering
-  \hil{\href{http://tiny.cc/topos-notes}{http://tiny.cc/topos-notes}}
-  \par
-\end{frame}
-
-{\usebackgroundtemplate{\includegraphics[width=\paperwidth]{images/mathcamp-augsburg}}
-\begin{frame}[plain]
-  \vspace{\textheight}\vspace{-1em}\centering
-  \emph{Participants of Augsburg's maths camp}
-  \par
-\end{frame}}
-
-{\usebackgroundtemplate{\includegraphics[width=\paperwidth]{images/mathcamp-space}}
-\begin{frame}[plain]
-  \vspace{\textheight}\vspace{-1em}\centering
-  \emph{The sun as seen from our high-altitude balloon}
-  \par
-\end{frame}}
-
-\appendix
-
-\section{Details on the internal language}
-
-\begin{frame}\frametitle{Translating internal statements I}
-  Let~$X$ be a topological space (or locale) and let~$\alpha : \F \to \G$ be a
-  morphism of sheaves on~$X$. Then:
-  \allowdisplaybreaks
-  \begin{align*}
-    & \Sh(X) \models \speak{$\alpha$ is surjective} \\[0.5em]
-    \Longleftrightarrow\
-    & \Sh(X) \models \forall t\?\G\_ \exists s\?\F\_ \alpha(s) = t \\[0.5em]
-    \Longleftrightarrow\ &
-      \text{for all open~$U \subseteq X$, sections $t \in \G(U)$:} \\
-    &\qquad
-      \text{there exists an open covering~$U = \textstyle\bigcup_i U_i$ and} \\
-    &\qquad
-      \text{sections~$s_i \in \F(U_i)$ such that:} \\
-    &\qquad\qquad
-        \alpha_{U_i}(s_i) = t|_{U_i} \\[0.5em]
-    \Longleftrightarrow\ &
-      \text{$\alpha$ is an epimorphism of sheaves}
-  \end{align*}
-\end{frame}
-
-\begin{frame}\frametitle{Translating internal statements II}
-  Let~$X$ be a topological space (or locale) and let~$s, t \in \F(X)$ be global
-  sections of a sheaf~$\F$ on~$X$. Then:
-  \allowdisplaybreaks
-  \begin{align*}
-    & \Sh(X) \models \neg\neg(s = t) \\[0.5em]
-    \Longleftrightarrow\
-    & \Sh(X) \models ((s = t) \Rightarrow \bot) \Rightarrow \bot \\[0.5em]
-    \Longleftrightarrow\ &
-      \text{for all open~$U \subseteq X$ such that} \\
-    &\qquad
-      \text{for all open~$V \subseteq U$ such that} \\
-    &\qquad\qquad
-      s|_V = t|_V, \\
-    &\qquad
-      \text{it holds that~$V = \emptyset$,} \\
-    &
-      \text{it holds that~$U = \emptyset$} \\[0.5em]
-    \Longleftrightarrow\ &
-      \text{there exists a dense open set~$W \subseteq X$ such that $s|_W = t|_W$} \\
-  \end{align*}
-\end{frame}
-
-
-\section{Spreading from points to neighbourhoods}
-
-\begin{frame}\frametitle{Spreading from points to neighbourhoods}
-  All of the following lemmas have a short, sometimes trivial proof.
-  Let~$\F$ be a sheaf of finite type on a ringed space~$X$.
-  Let~$x \in X$. Let~$A \subseteq X$ be a closed subset. Then:
-  \small
-  \begin{enumerate}
-    \item $\F_x = 0$ iff~$\F|_U = 0$ for some open neighbourhood of~$x$.
-    \item $\F|_A = 0$ iff~$\F|_U = 0$ for some open set containing~$A$.
-    \item $\F_x$ can be generated by~$n$ elements iff this is true on some open
-    neighbourhood of~$x$.
-%   \item $\alpha_x$ is surjective iff~$\alpha$ is an epimorphism on some open
-%   set containing~$x$, where~$\alpha : \G \to \F$ is any morphism.
-    \item $\mathcal{H}\mathrm{om}_{\O_X}(\F,\G)_x \cong
-    \Hom_{\O_{X,x}}(\F_x,\G_x)$ if~$\F$ is of finite presentation around~$x$.
-    \item $\F$ is torsion iff~$\F_\xi$ vanishes (assume~$X$ integral and~$\F$ quasicoherent).
-    \item $\F$ is torsion iff~$\F|_{\mathrm{Ass}(\O_X)}$ vanishes (assume~$X$
-    locally Noetherian and~$\F$ quasicoherent).
-  \end{enumerate}
-\end{frame}
-
-\note{\justifying
-  Statements 1 and 2 follow from \emph{one} proof in the internal language,
-  applied to two different modal operators.
-
-  Similarly with statements~5 and~6.
-  \par
-}
-
-
-\section{The meromorphic functions revisited}
-
-\begin{frame}\frametitle{The smallest dense sublocale}\justifying
-  Let~$X$ be a reduced scheme satisfying a technical condition.
-  Let~$i : X_{\neg\neg} \to X$ be the inclusion of the smallest dense sublocale
-  of~$X$.
-
-  Then~$i_* i^{-1} \O_X \cong \K_X$.
-
-  \begin{itemize}\justifying
-    \item This is a highbrow way of saying ``rational functions are regular
-    functions which are defined on a dense open subset''.
-    \item Another reformulation is that~$\K_X$ is the sheafification of~$\O_X$
-    with respect to the~$\neg\neg$-modality.
-    \item There is a generalization to nonreduced schemes.
-  \end{itemize}
-\end{frame}
-
-
-\subsection{Group schemes}
-
-\begin{frame}\frametitle{Group schemes}
-  \hil{Motto:} Internal to~$\Zar(S)$, group schemes look like ordinary groups.
-  \bigskip
-
-  \small%
-  \begin{tabular}{lll}
-    \toprule
-    group scheme & internal definition & functor of points: $X \mapsto \ldots$ \\\midrule
-    $\GG_\text{a}$ & $\affl$ (as additive group) & $\O_X(X)$ \\[0.5em]
-    $\GG_\text{m}$ & $\{ x \? \affl \,|\, \speak{$x$ inv.} \}$ & $\O_X(X)^\times$ \\[0.5em]
-    $\mu_n$ & $\{ x \? \affl \,|\, x^n = 1 \}$ & $\{ f \in \O_X(X) \,|\, f^n = 1 \}$ \\[0.5em]
-    $\GL_n$ & $\{ M \? \affl^{n \times n} \,|\, \speak{$M$ inv.} \}$ & $\GL_n(\O_X(X))$ \\
-    \bottomrule
-  \end{tabular}
-  \vspace{2em}
-\end{frame}
-
-
-\section{Applications in algebra}
-
-\begin{frame}\frametitle{Applications in algebra}
-  Let~$A$ be a commutative ring.
-  The internal language of~$\Sh(\Spec A)$ allows you to say ``without loss of
-  generality, we may assume that~$A$ is local'', even constructively.
-
-  \begin{center}
-    \begin{minipage}{0.75\textwidth}
-      \begin{exampleblock}{}
-        \justifying
-        The kernel of any matrix over a principial ideal domain is finitely
-        generated.
-      \end{exampleblock}
-    \end{minipage}
-    \medskip
-
-    \scalebox{3}{$\Downarrow$}
-
-    \begin{minipage}{0.75\textwidth}
-      \begin{exampleblock}{}
-        \justifying
-        The kernel of any matrix over a Prüfer domain is finitely generated.
-      \end{exampleblock}
-    \end{minipage}
-  \end{center}
-\end{frame}
-
-\begin{frame}\frametitle{Hilbert's program in algebra}
-  \scriptsize\justifying
-  There is a way to combine some of the powerful tools of classical ring theory
-  with the advantages that constructive reasoning provides, for instance
-  exhibiting explicit witnesses. Namely we can devise
-  a language in which we can usefully talk about prime ideals, but which
-  substitutes non-constructive arguments by constructive arguments ``behind
-  the scenes''. The key idea is to substitute the phrase ``for all prime ideals''
-  (or equivalently ``for all prime filters'') by ``for the generic prime filter''.
-
-  More specifically, simply interpret a given proof using prime filters
-  in~$\Sh(\Spec A)$ and let it refer to~$\F \hookrightarrow \underline{A}$.
-
-  \hspace*{-0.75cm}%
-  \begin{tabular}{lll}
-    \toprule
-    Statement & constructive substitution & meaning \\\midrule
-    $x \in \ppp$ for all~$\ppp$. &
-    $x \not\in \F$. &
-    $x$ is nilpotent. \\
-    $x \in \ppp$ for all~$\ppp$ such that~$y \in \ppp$. &
-    $x \in \F \Rightarrow y \in \F$. &
-    $x \in \sqrt{(y)}$. \\
-    $x$ is regular in all stalks~$A_\ppp$. &
-    $x$ is regular in~$\ull{A}[\F^{-1}]$. &
-    $x$ is regular in~$A$. \\
-    The stalks~$A_\ppp$ are reduced. &
-    $\ull{A}[\F^{-1}]$ is reduced. &
-    $A$ is reduced. \\
-    The stalks~$M_\ppp$ vanish. &
-    $\ull{M}[\F^{-1}] = 0$. &
-    $M = 0$. \\
-%   The stalks~$M_\ppp$ are fin.\@ gen.\@ over~$A_\ppp$. &
-%   $\ull{M}[\F^{-1}]$ is fin.\@ gen.\@ over
-%   $\ull{A}[\F^{-1}]$. &
-%   $M$ is fin.\@ gen.\@ over~$A$. \\
-    The stalks~$M_\ppp$ are flat over~$A_\ppp$. &
-    $\ull{M}[\F^{-1}]$ is flat over~$\ull{A}[\F^{-1}]$. &
-    $M$ is flat over~$A$. \\
-    The maps~$M_\ppp \to N_\ppp$ are injective. &
-    $\ull{M}[\F^{-1}] \to \ull{N}[\F^{-1}]$ is injective. &
-    $M \to N$ is injective. \\
-    The maps~$M_\ppp \to N_\ppp$ are surjective. &
-    $\ull{M}[\F^{-1}] \to \ull{N}[\F^{-1}]$ is surjective. &
-    $M \to N$ is surjective. \\
-    \bottomrule
-  \end{tabular}
-
-  This is related (in a few cases equivalent) to the \emph{dynamical methods in
-  algebra} explored by Coquand, Coste, Lombardi, Roy, and others. Their
-  approach is more versatile.
-  \par
 \end{frame}
 
 \backupend

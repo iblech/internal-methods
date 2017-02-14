@@ -2527,10 +2527,11 @@ monotonicity and the second axiom on a modal operator it follows
 that~$\Box\varphi \Rightarrow \Box\Box\psi \Rightarrow \Box\psi$.
 \end{proof}
 
-The modus ponens rule justifies the following proof scheme: When trying to
-show, given that some boxed statement~$\Box\varphi$ holds, that some further
-boxed statement~$\Box\psi$ holds, we may give a proof of~$\Box\psi$ under the
-stronger assumption~$\varphi$. Symbolically:
+\label{proof-scheme-boxed-statements}The modus ponens rule justifies the
+following proof scheme: When trying to show, given that some boxed
+statement~$\Box\varphi$ holds, that some further boxed statement~$\Box\psi$
+holds, we may give a proof of~$\Box\psi$ under the stronger
+assumption~$\varphi$. Symbolically:
 \[ (\Box\varphi \Rightarrow \Box\psi) \Longleftrightarrow
   (\varphi \Rightarrow \Box\psi). \]
 
@@ -6439,7 +6440,17 @@ a_1 \geq \cdots$ of natural numbers eventually \emph{halts} in the sense that
 there exists an index~$n$ such that~$a_n = a_{n+1}$ (but~$a_{n+1} > a_{n+2}$ is
 allowed).
 
-We therefore adopt the following definitions.
+We give two constructively inequivalent notions of Noetherian rings. The first
+one is of independent constructive interest and such that the structure sheaf
+of a scheme~$X$ satisfies the Noetherian condition from the internal point of
+view of~$\Sh(X)$ if and only if~$X$ is locally Noetherian.
+
+The second one is quite weak, but still useful enough to derive nontrivial
+consequences. It is satisfied by the structure sheaf of any (not necessarily
+locally Noetherian) reduced scheme.
+
+
+\subsection{Processly Noetherian rings}
 
 \begin{defn}Let~$M$ be a partially ordered set. An \emph{ascending process
 with values in~$M$} consists of an initial value~$x_0 \in M$ and a function~$f
@@ -6563,6 +6574,55 @@ Remark~\ref{rem:qcoh-in-constructive-mathematics}).
 \XXX{Give examples made possible by the internal Noetherianity}
 % How about: Any quasicoherent submodule of a module of finite type is of
 % finite type as well.
+
+
+\subsection{Weakly Noetherian rings}
+
+Classically, there is a characterization of Noetherian rings which doesn't
+involve ascending sequences: A ring is Noetherian if and only if any of its
+ideals is finitely generated. We mentioned in the footnote on
+page~\pageref{fn:z-principal-ideal-domain} that this condition is far too
+strong from a constructive point of view; not even the ring~$\ZZ$ verifies it.
+However, it can be weakened to yield a constructively sensible notion:
+
+\begin{defn}A ring~$R$ is \emph{weakly Noetherian} if and only if any ideal
+of~$R$ is \notnot finitely generated.\end{defn}
+
+\begin{ex}There is an intuitionistic proof that the ring~$\ZZ$ is weakly
+Noetherian: Let~$\aaa \subseteq \ZZ$ be any ideal. Under the assumption that
+either there exists a nonzero element in~$\aaa$ or not, the ideal~$\aaa$ is
+\notnot finitely generated, even \notnot principal: For in the first case, a
+minimal element~$d$ of~$\aaa \cap \NN^+$ (which \notnot exists) witnesses~$\aaa
+= (d)$. In the second case the ideal~$\aaa$ is the zero ideal. Since the
+assumption is \notnot satisfied, the ideal~$\aaa$ is \notnot \notnot finitely
+generated, so \notnot finitely generated. (We remark on this proof scheme on
+page~\pageref{proof-scheme-boxed-statements}.) \end{ex}
+
+\begin{thm}Let~$R$ be a weakly Noetherian ring. Then the polynomial
+algebra~$R[X]$ is weakly Noetherian as well, even intuitionistically.
+\end{thm}
+\begin{proof}Classically, this is precisely the statement of Hilbert's basis
+theorem, whose usual accounts do not care about the sensibilities of
+constructive mathematics. However, a careful reading of for instance the proof
+given in~\cite[page XXX]{atiyah:macdonald:commutative-algebra}, shows that
+the theorem holds intuitionistically as stated.
+\end{proof}
+
+\begin{prop}Let~$X$ be an arbitrary reduced scheme (not necessarily locally
+Noetherian). Then~$\O_X$ is weakly Noetherian from the internal point of view
+of~$\Sh(X)$.\end{prop}
+\begin{proof}By Corollary~\ref{cor:field-reduced}, the ring~$\O_X$ fulfills a
+suitable field condition from the internal point of view. Therefore it suffices
+intuitionistic proof of the following statement: Let~$k$ be a ring such that
+any element of~$k$ which is not invertible is zero. Then any ideal of~$k$ is
+\notnot finitely generated.
+
+Let~$\aaa \subseteq k$ be an arbitrary ideal. We have~$\neg\neg(1 \in \aaa \vee
+1 \not\in \aaa)$. Therefore~$\neg\neg(\aaa = (1) \vee \aaa = (0))$. Thus~$\aaa$
+is \notnot finitely generated (even \notnot principal).
+\end{proof}
+
+% XXX: Show Grothendieck's generic freeness
 
 
 \section{Dictionary between internal and external notions}

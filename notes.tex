@@ -1453,7 +1453,7 @@ mathematics, this is a better notion than that of a principal ideal ring: The
 requirement that \emph{any} ideal is a principal ideal is far too strong.
 Intuitively, this is because without any given generators to begin with, one
 cannot hope to explicitly pinpoint a principal generator.
-One can (provably) not even verify this property for the ring~$\ZZ$.\footnote{Assume
+One can (provably) not even verify this property for the ring~$\ZZ$.\footnote{\label{fn:z-principal-ideal-domain}Assume
 that any ideal of~$\ZZ$ is finitely generated. Let~$\varphi$ be an arbitrary
 proposition; we want to intuitionistically deduce~$\varphi \vee \neg\varphi$.
 Consider the ideal~$\aaa \defeq \{ x \in \ZZ \,|\, (x = 0) \vee \varphi \}
@@ -6446,30 +6446,35 @@ with values in~$M$} consists of an initial value~$x_0 \in M$ and a function~$f
 : M \to \P(M)$ such that:
 \begin{itemize}
 \item For any~$x \in M$ and any~$y \in f(x)$, $x \preceq y$.
-\item $f(x_0)$ is inhabited.
-\item For any~$x_1 \in f(x_0)$, $f(x_1)$ is inhabited.
-\item For any~$x_1 \in f(x_0)$ and any~$x_2 \in f(x_1)$, $f(x_2)$ is inhabited.
+\item The set $f(x_0)$ is inhabited.
+\item For any~$x_1 \in f(x_0)$, the set $f(x_1)$ is inhabited.
+\item For any~$x_1 \in f(x_0)$ and any~$x_2 \in f(x_1)$, the set $f(x_2)$ is inhabited.
 \item And so on.
 \end{itemize}
 Such a process \emph{halts} if and only if there
-exists a step~$n$ and elements~$x_0 = x, x_1, \ldots, x_n$ such that~$x_{i+1}
+exists a step~$n$ and elements~$x_1, \ldots, x_n$ such that~$x_{i+1}
 \in f(x_i)$ for~$i = 0,\ldots,n-1$ and such that~$x_n \in f(x_n)$.
 The set~$M$ satisfies the \emph{ascending process condition} if and only if any
 ascending process with values in~$M$ halts.
 \end{defn}
 
+Intuitively, we picture~$f(x)$ as the set of all possible results of running
+the process for a single step, starting with the value~$x$. This set could
+be a singleton, but it may also contain more than one element, for instance if
+the process cannot provide the next value in a canonical way. Instead of
+arbitrarily choosing a definitive value for its result, the process may instead
+collect all the possible values in the set~$f(x)$.
+
 \begin{defn}A ring~$R$ is \emph{processly Noetherian} if and only if the
 set of finitely generated ideals in~$R$ satisfies the ascending process
 condition.\end{defn}
 
-\XXX{Rewrite the rest of this section to conform to the new (corrected)
-definition. Mention equivalence with Richman's ascending tree condition.}
-
-Any ascending chain of elements~$a_0 \preceq a_1 \preceq \cdots$ in a partially
+An ascending chain of elements~$a_0 \preceq a_1 \preceq \cdots$ in a partially
 ordered set gives rise to an ascending process by setting~$x_0 \defeq a_0$
 and~$\varphi(x) \defeq \{ y \,|\, \exists n\_ x = a_n \wedge y = a_{n+1} \}$.
 Conversely, the axiom of dependent choice would allow to construct an
-ascending chain from an ascending process. In classical logic, a ring is
+ascending chain from an ascending process. In the presence of this axiom, for
+instance in a classical context, a ring is therefore
 processly Noetherian if and only if it is Noetherian in the usual sense.
 
 The notion of a processly Noetherian ring works well in an
@@ -6477,6 +6482,33 @@ intuitionistic context: Important rings such as~$\ZZ$ and more generally~$\O_K$
 for any algebraic number field~$K$ are processly Noetherian, and matrices
 over Bézout rings which are integral domains in the weak sense and
 processly Noetherian can be put into Smith canonical form.
+
+Richman also studied Noetherian rings in a constructive context without
+dependent choice~\cite{richman:noetherian}. His notion of \emph{ascending tree
+condition} is equivalent to our ascending process condition. His condition
+emphasizes the branching nature of a non-deterministic computation, while ours
+emphasizes the step-for-step picture of computation.
+
+There are three reasons why we did not define a ring to be processly Noetherian
+if and only if the set of all (not only finitely generated) ideals satisfies
+the ascending process condition. Firstly, this stricter condition excludes
+rings as~$\ZZ$.\footnote{The main ingredient in the proof that~$\ZZ$ is
+Noetherian is that any ideal of~$\ZZ$ is a principal ideal, since (looking at
+the prime factor decomposition) one can give explicit bounds on the length of
+strictly ascending chains of principal ideals. However, as detailed in the
+footnote on page~\pageref{fn:z-principal-ideal-domain}, constructively one
+cannot show that every ideal of~$\ZZ$ is a principal ideal; one can only verify
+that finitely generated ideals are principal. Geometrically, ideals which are
+not finitely generated correspond to sheaves of ideals which may fail to
+be quasicoherent.} Secondly, restricting to finitely generated
+ideals in this context is a well-established procedure in constructive
+mathematics~\cite{mines-richman-ruitenburg:constructive-algebra,richman:noetherian}
+and suffices for the applications of the Noetherian condition one has in mind.
+Thirdly, our definition provides a link to the external condition on a scheme
+to be locally Noetherian, as shown by the following proposition.
+
+\XXX{Rewrite the rest of this section to conform to the new (corrected)
+definition.}
 
 \begin{prop}\label{prop:internal-noetherianity}
 A scheme~$X$ is locally Noetherian if and only if the ring~$\O_X$

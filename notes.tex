@@ -1963,7 +1963,7 @@ $0 \lra \ZZ_{(2)} \stackrel{\cdot 2}{\lra} \ZZ_{(2)} \lra \FF_2 \lra 0$
 of~$\ZZ_{(2)}$-modules).
 \end{rem}
 
-\begin{lemma}Let~$X$ be a scheme (or locally ringed space). Let~$\alpha : \G
+\begin{lemma}\label{lemma:epi-iso}Let~$X$ be a scheme (or locally ringed space). Let~$\alpha : \G
 \to \H$ be an epimorphism of finite locally free~$\O_X$-modules of the same
 rank. Then~$\alpha$ is an isomorphism.\end{lemma}
 \begin{proof}It suffices to give an intuitionistic proof of the following
@@ -1973,6 +1973,14 @@ surjective, is invertible.
 This follows from the proof of the previous lemma, since it shows that the
 kernel of such a matrix is finite free of rank zero.
 \end{proof}
+
+\begin{rem}The conclusion of Lemma~\ref{lemma:epi-iso} also holds if~$X$ is
+only assumed to be a ringed space. To show this, it suffices to give an
+intuitionistic proof of the following statement: A square matrix over a (not
+necessarily local) ring, which as a linear map is surjective, is invertible.
+Such a matrix~$A$ possesses a right inverse. Therefore~$\det A$ is invertible.
+Thus~$A$ is invertible with inverse~$(\det A)^{-1} \cdot \operatorname{ad} A$.
+\end{rem}
 
 \begin{lemma}Let~$X$ be a scheme (or ringed space). Let
 $0 \to \F \to \G \to \H \to 0$ be a short exact sequence of~$\O_X$-modules.

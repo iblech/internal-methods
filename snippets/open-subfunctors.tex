@@ -140,22 +140,39 @@
 
 \begin{prop}\label{prop:characterization-open-subfunctor}
 Let~$X \in \Zar(S)$ be a Zariski sheaf. A subfunctor~$U
-\hookrightarrow X$ is open if and only if
+\hookrightarrow X$ is open if and only if any of the following conditions,
+formulated in the internal language of~$\Zar(S)$, is
+satisfied.
+\begin{enumerate}
+\item For all~$x \? X$ there is an ideal~$J \subseteq \affl$ such
+that~$\affl/J$ is quasicoherent and such that~$x \in U$ if and only if~$1 \in
+J$. In formal language:
 \begin{multline*}
-  \Zar(S) \models
+  \qquad\qquad\Zar(S) \models
   \forall x\?X\_
   \exists J \subseteq \affl\_ \\
   \speak{$J$ is an ideal} \wedge
   \speak{$\affl/J$ is quasicoherent} \wedge
-  (x \in U \Leftrightarrow 1 \in J).
-\end{multline*}
+  (x \in U \Leftrightarrow 1 \in J). \end{multline*}
+\item For all~$x \? X$ the quotient~$\affl/K$ modulo the radical ideal
+\[ K \defeq \{ f\?\affl \,|\, \speak{$f$ \inv} \Rightarrow (x \in U) \}
+\subseteq \affl \]
+is quasicoherent.
+\end{enumerate}
 \end{prop}
 
-The displayed condition is only meaningful in an intuitionistic
-context as provided by the big Zariski topos. In classical logic, the condition
-would be trivially satisfied, for any~$U$: Classically, we have~$(x \in U) \vee
-(x \not\in U)$. If~$x \in U$, we can pick~$J = (1)$,
-and if~$x \not\in U$, we can pick~$J = (0)$.
+The displayed conditions are only meaningful in an intuitionistic context as
+provided by the big Zariski topos. For instance, the first condition would be
+trivially satisfied in classical logic, for any subfunctor~$U \hookrightarrow
+X$: Classically, we have~$(x \in U) \vee (x \not\in U)$. If~$x \in U$, we can
+pick~$J = (1)$, and if~$x \not\in U$, we can pick~$J = (0)$ (such that the
+quotient~$\affl/J$ is isomorphic to~$\affl$, thus finitely presented and
+therefore in particular quasicoherent).\footnote{Strictly speaking,
+incompability with classical logical surfaces even earlier: in our internal
+quasicoherence condition. The map~$E \otimes_\affl A \to [\Spec(A), E]$ which
+the condition demands to be bijective has hardly any chance to be surjective if
+the law of excluded middle is available to define maps~$\Spec(A) \to E$ by case
+distinction.}
 
 \begin{cor}\label{cor:sufficient-criterion-open-subfunctor}
 Let~$X \in \Zar(S)$ be a Zariski sheaf. Let~$U \hookrightarrow X$ be
@@ -180,6 +197,7 @@ the~$f_i$ being invertible by locality of~$\affl$.
 \end{proof}
 
 \begin{proof}[Proof of Proposition~\ref{prop:characterization-open-subfunctor}]
+
 \end{proof}
 
 \end{document}

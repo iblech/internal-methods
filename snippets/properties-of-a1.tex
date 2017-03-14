@@ -140,10 +140,12 @@
 
 \begin{prop}The following properties of~$\affl$, as seen from the internal
 point of view of~$\Zar(S)$, are consequences of~$\affl$ satisfying the
-quasicoherence condition:
+quasicoherence condition (and~$\affl$ not being the trivial ring):
 \begin{enumerate}
 \item $\affl$ is a field in the sense that
 $\forall x\?\affl\_ \neg(x = 0) \Rightarrow \speak{$x$ \inv}$.
+\item $\affl$ is not a reduced ring: $\neg \forall x\?\affl\_ (\bigvee_{n \geq
+0} x^n = 0) \Rightarrow x = 0.$
 \item Any function~$\affl \to \affl$ is given by a unique polynomial
 in~$\affl[T]$.
 \item Any monic polynomial~$p \in \affl[T]$ of degree at least one does \notnot have a
@@ -158,6 +160,14 @@ that the canonical homomorphism
 \[ \affl/(x) \longrightarrow [\emptyset, \affl] \]
 is an isomorphism. Since its codomain is the zero algebra, so is~$\affl/(x)$.
 Therefore~$1 \in (x)$, that is,~$x$ is invertible.
+\item Assume that~$\affl$ is reduced. Then the set~$\Delta \defeq \{
+\varepsilon \in \affl \,|\, \varepsilon^2 = 0 \}$ is equal to~$\{ 0 \}$.
+By the quasicoherence criterion applied to the finitely
+presented~$\affl$-algebra~$A \defeq \affl[T]/(T^2)$, the canonical map
+\[ \affl[T]/(T^2) \longrightarrow [\Spec(\affl[T]/(T^2)), \affl] \cong
+  [\Delta, \affl] \cong \affl \]
+is an isomorphism. It maps~$[T]$ to zero (the value of~$T$ at~$0 \in \Delta$).
+Thus~$T \in (T^2)$ and therefore~$1 = 0$ in~$\affl$. This is a contradiction.
 \item Immediate by considering the quasicoherence condition for the finitely
 presented~$\affl$-algebra~$A \defeq \affl[T]$ and noticing that~$\Spec(A) \cong
 \affl$.

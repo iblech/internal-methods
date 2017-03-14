@@ -156,10 +156,15 @@ approach.
 A subfunctor~$U \hookrightarrow X$ in~$\Zar(S)$ is an \emph{open subfunctor} if
 and only if for any object~$(T \to S)$ of the site used to define~$\Zar(S)$
 and any~$x \in X(T)$ there exists an open subscheme~$T_0 \subseteq T$
-such that for any object~$(T' \xra{f}{\to} T \to S)$ of the site used to
+such that for any object~$(T' \xra{f} T \to S)$ of the site used to
 define~$\Zar(S)$ the map~$T' \to T$ factors over~$T_0$ if and only if~$X(f)(x)
 \in U(T')$.
 \end{defn}
+
+From the point of view of the internal language of~$\Zar(S)$, a subfunctor~$U
+\hookrightarrow X$ looks like the inclusion of a subset. The following
+proposition answers the natural question how one can characterize those
+inclusions which externally correspond to open subfunctors.
 
 \begin{prop}\label{prop:characterization-open-subfunctor}
 Let~$X \in \Zar(S)$ be a Zariski sheaf. A subfunctor~$U
@@ -180,7 +185,7 @@ The displayed condition is only meaningful in an intuitionistic context as
 provided by the big Zariski topos. In classical logic, the condition would be
 trivially satisfied for any subfunctor~$U \hookrightarrow X$: Classically, we
 have~$(x \in U) \vee (x \not\in U)$. If~$x \in U$, we can pick~$J = (1)$, and
-if~$x \not\in U$, we can pick~$J = (0)$ (such that the quotient~$\affl/J$ is
+if~$x \not\in U$, we can pick~$J = (0)$ (whereby the quotient~$\affl/J$ is
 isomorphic to~$\affl$, thus finitely presented and therefore in particular
 quasicoherent).\footnote{Strictly speaking, incompability with classical
 logical surfaces even earlier: in our internal quasicoherence condition. The
@@ -224,19 +229,34 @@ For the converse direction, let~$f \in K$ be given. Since~$\affl/J$ is
 quasicoherent, the canonical map
 \[ (\affl/J)[f^{-1}] \longrightarrow [ \Spec(\affl[f^{-1}]), \affl/J ] \]
 is bijective. Since~$\Spec(\affl[f^{-1}]) \cong \brak{\speak{$f$ \inv}}$, the image
-of~$1$ is zero: If~$\Spec(\affl[f^{-1}])$ is inhabited, $f$ is invertible and
+of~$1$ is zero: If~$\Spec(\affl[f^{-1}])$ is inhabited, the element~$f$ is invertible and
 therefore~$x$ is an element of~$U$. This implies that~$1 \in J$.
 Thereby~$\affl/J = 0$. By injectivity of the canonical map, the
 algebra~$(\affl/J)[f^{-1}]$ is zero. Therefore~$f^n \in J$ for some natural
 number~$n$.\end{rem}
 
-\begin{rem}In view of the previous remark, one cannot hope to simplify the
-condition in Proposition~\ref{prop:characterization-open-subfunctor} to read as
+\begin{rem}In view of the previous remark, one might hope to be able to simplify the
+condition in Proposition~\ref{prop:characterization-open-subfunctor} as
 follows: ``For any~$x\?X$, the quotient~$\affl/K$ modulo the ideal~$K = \{
-f\?\affl \,|\, \speak{$f$ \inv} \Rightarrow (x \in U) \}$ is quasicoherent.
+f\?\affl \,|\, \speak{$f$ \inv} \Rightarrow (x \in U) \}$ is quasicoherent.''
+However, this doesn't work out.
 This statement implies the condition in the proposition, but the converse
 direction does not hold, since~$\affl/K \cong \affl/\sqrt{J}$ might fail to be
 quasicoherent. For instance that's the case if~$U = \emptyset$; then~$K =
 \sqrt{(0)}$ is not quasicoherent by Remark~\ref{rem:radical-not-qcoh}.\end{rem}
+
+\begin{rem}In the internal language of toposes used to carry out synthetic
+differential geometry, there is the concept of an \emph{Penon-open}
+subset~\cite[Chapitre~III]{penon}: A subset~$U \subseteq X$ is Penon-open if
+and only if
+\[ \forall x \in U\_ \forall y\?X\_
+  (x \neq y) \vee (y \in U). \]
+This notion is not useful in synthetic algebraic geometry, since it is much too
+weak: Any subset of the one-element set~$1$ is Penon-open. However, not every
+subfunctor of the terminal functor in~$\Zar(S)$ is an open subfunctor.
+\end{rem}
+
+% negneg-stability
+% definition of open truth values
 
 \end{document}

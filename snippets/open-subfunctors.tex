@@ -138,15 +138,35 @@
 
 \begin{document}
 
+A basic concept in the functor-of-points approach to algebraic geometry is the
+concept of an \emph{open subfunctor}. It is used to delimit schemes from more
+general kinds of spaces: A functor is deemed to be a scheme if and only if it
+admits a covering by open subfunctors which are representable.
+
+The following definition is phrased in such a way as to apply to any of the
+several ways to define the big Zariski topos~$\Zar(S)$. In particular, it
+applies to the definition using the site consisting of affine schemes which are
+locally of finite presentation over~$S$. If~$S$ is affine, the definition only
+refers to affine schemes and open subschemes of affine schemes and is therefore
+suitable if one wants to found the theory of schemes using the functorial
+approach.
+
+\begin{defn}[{\cite[Définition~I.1.3.6 on page~10]{demazure:gabriel},
+\cite[Tag~01JI]{stacks-project}}]
+A subfunctor~$U \hookrightarrow X$ in~$\Zar(S)$ is an \emph{open subfunctor} if
+and only if for any object~$(T \to S)$ of the site used to define~$\Zar(S)$
+and any~$x \in X(T)$ there exists an open subscheme~$T_0 \subseteq T$
+such that for any object~$(T' \xra{f}{\to} T \to S)$ of the site used to
+define~$\Zar(S)$ the map~$T' \to T$ factors over~$T_0$ if and only if~$X(f)(x)
+\in U(T')$.
+\end{defn}
+
 \begin{prop}\label{prop:characterization-open-subfunctor}
 Let~$X \in \Zar(S)$ be a Zariski sheaf. A subfunctor~$U
-\hookrightarrow X$ is open if and only if any of the following conditions,
-formulated in the internal language of~$\Zar(S)$, is
-satisfied.
-\begin{enumerate}
-\item For all~$x \? X$ there is an ideal~$J \subseteq \affl$ such
-that~$\affl/J$ is quasicoherent and such that~$x \in U$ if and only if~$1 \in
-J$. In formal language:
+\hookrightarrow X$ is open if and only if, from the internal point of view
+of~$\Zar(S)$, it holds that for all~$x \? X$ there is an ideal~$J \subseteq
+\affl$ such that~$\affl/J$ is quasicoherent and such that~$x \in U$ if and only
+if~$1 \in J$. In formal language:
 \begin{multline*}
   \qquad\qquad\Zar(S) \models
   \forall x\?X\_
@@ -154,25 +174,19 @@ J$. In formal language:
   \speak{$J$ is an ideal} \wedge
   \speak{$\affl/J$ is quasicoherent} \wedge
   (x \in U \Leftrightarrow 1 \in J). \end{multline*}
-\item For all~$x \? X$ the quotient~$\affl/K$ modulo the radical ideal
-\[ K \defeq \{ f\?\affl \,|\, \speak{$f$ \inv} \Rightarrow (x \in U) \}
-\subseteq \affl \]
-is quasicoherent.
-\end{enumerate}
 \end{prop}
 
-The displayed conditions are only meaningful in an intuitionistic context as
-provided by the big Zariski topos. For instance, the first condition would be
-trivially satisfied in classical logic, for any subfunctor~$U \hookrightarrow
-X$: Classically, we have~$(x \in U) \vee (x \not\in U)$. If~$x \in U$, we can
-pick~$J = (1)$, and if~$x \not\in U$, we can pick~$J = (0)$ (such that the
-quotient~$\affl/J$ is isomorphic to~$\affl$, thus finitely presented and
-therefore in particular quasicoherent).\footnote{Strictly speaking,
-incompability with classical logical surfaces even earlier: in our internal
-quasicoherence condition. The map~$E \otimes_\affl A \to [\Spec(A), E]$ which
-the condition demands to be bijective has hardly any chance to be surjective if
-the law of excluded middle is available to define maps~$\Spec(A) \to E$ by case
-distinction.}
+The displayed condition is only meaningful in an intuitionistic context as
+provided by the big Zariski topos. In classical logic, the condition would be
+trivially satisfied for any subfunctor~$U \hookrightarrow X$: Classically, we
+have~$(x \in U) \vee (x \not\in U)$. If~$x \in U$, we can pick~$J = (1)$, and
+if~$x \not\in U$, we can pick~$J = (0)$ (such that the quotient~$\affl/J$ is
+isomorphic to~$\affl$, thus finitely presented and therefore in particular
+quasicoherent).\footnote{Strictly speaking, incompability with classical
+logical surfaces even earlier: in our internal quasicoherence condition. The
+map~$E \otimes_\affl A \to [\Spec(A), E]$ which the condition demands to be
+bijective has hardly any chance to be surjective if the law of excluded middle
+is available to define maps~$\Spec(A) \to E$ by case distinction.}
 
 \begin{cor}\label{cor:sufficient-criterion-open-subfunctor}
 Let~$X \in \Zar(S)$ be a Zariski sheaf. Let~$U \hookrightarrow X$ be
@@ -197,7 +211,32 @@ the~$f_i$ being invertible by locality of~$\affl$.
 \end{proof}
 
 \begin{proof}[Proof of Proposition~\ref{prop:characterization-open-subfunctor}]
-
+...
 \end{proof}
+
+\begin{rem}The radical~$\sqrt{J}$ of the ideal~$J$ appearing in
+Proposition~\ref{prop:characterization-open-subfunctor} is unique:
+It is equal to the radical ideal
+\[ K \defeq \{ f\?\affl \,|\, \speak{$f$ \inv} \Rightarrow (x \in U) \}
+\subseteq \affl. \]
+It's obvious that~$J \subseteq K$ and therefore~$\sqrt{J} \subseteq K$.
+For the converse direction, let~$f \in K$ be given. Since~$\affl/J$ is
+quasicoherent, the canonical map
+\[ (\affl/J)[f^{-1}] \longrightarrow [ \Spec(\affl[f^{-1}]), \affl/J ] \]
+is bijective. Since~$\Spec(\affl[f^{-1}]) \cong \brak{\speak{$f$ \inv}}$, the image
+of~$1$ is zero: If~$\Spec(\affl[f^{-1}])$ is inhabited, $f$ is invertible and
+therefore~$x$ is an element of~$U$. This implies that~$1 \in J$.
+Thereby~$\affl/J = 0$. By injectivity of the canonical map, the
+algebra~$(\affl/J)[f^{-1}]$ is zero. Therefore~$f^n \in J$ for some natural
+number~$n$.\end{rem}
+
+\begin{rem}In view of the previous remark, one cannot hope to simplify the
+condition in Proposition~\ref{prop:characterization-open-subfunctor} to read as
+follows: ``For any~$x\?X$, the quotient~$\affl/K$ modulo the ideal~$K = \{
+f\?\affl \,|\, \speak{$f$ \inv} \Rightarrow (x \in U) \}$ is quasicoherent.
+This statement implies the condition in the proposition, but the converse
+direction does not hold, since~$\affl/K \cong \affl/\sqrt{J}$ might fail to be
+quasicoherent. For instance that's the case if~$U = \emptyset$; then~$K =
+\sqrt{(0)}$ is not quasicoherent by Remark~\ref{rem:radical-not-qcoh}.\end{rem}
 
 \end{document}

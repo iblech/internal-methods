@@ -141,6 +141,7 @@
 \begin{prop}The following properties of~$\affl$, as seen from the internal
 point of view of~$\Zar(S)$, are consequences of~$\affl$ satisfying the
 quasicoherence condition (and~$\affl$ not being the trivial ring):
+% Adjust paragraph below if numbering changes.
 \begin{enumerate}
 \item $\affl$ is a field in the sense that
 $\forall x\?\affl\_ \neg(x = 0) \Rightarrow \speak{$x$ \inv}$.
@@ -180,5 +181,19 @@ then implies that with the exception of the constant term in~$p$, all
 coefficients are nilpotent. This contradicts the assumption that~$p$ is monic
 of degree at least one.\qedhere
 \end{enumerate}\end{proof}
+
+In classical logic, the first two properties would directly contradict each
+other; only an intuitionistic context allows for fields which are not reduced.
+Also the third statement cannot be satisfied in classical logic: for infinite
+fields the existence part fails and for finite fields the uniqueness part
+fails.
+
+That~$\affl$ is not reduced, irrespective of the reducedness of the base
+scheme~$S$, should not come as a surprise: Reducedness is not stable under base
+change, but all statements of the internal language of~$\Zar(S)$ are.
+If~$\affl$ was reduced, then all~$S$-schemes (at least those contained in the
+site used to construct~$\Zar(S)$) would be reduced as well. In contrast, the
+structure sheaf~$\O_S$ is reduced from the point of view of the little Zariski
+topos if and only if~$S$ is reduced (Proposition~\ref{prop:reduced-ring}).
 
 \end{document}

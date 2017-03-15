@@ -1,0 +1,215 @@
+\documentclass[10pt]{amsart}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{etex}
+\usepackage{amsmath,amsthm,amssymb,stmaryrd,color,graphicx,multirow}
+\usepackage{mathtools}
+\usepackage{setspace}
+\usepackage{bussproofs}
+\usepackage{xspace}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage[protrusion=true,expansion=true]{microtype}
+\usepackage[bookmarksdepth=2,pdfencoding=auto]{hyperref}
+\usepackage[all]{xy}
+
+\usepackage{tikz}
+\usetikzlibrary{calc,shapes.callouts,shapes.arrows}
+\newcommand{\hcancel}[5]{%
+    \tikz[baseline=(tocancel.base)]{
+        \node[inner sep=0pt,outer sep=0pt] (tocancel) {#1};
+        \draw[red, line width=0.3mm] ($(tocancel.south west)+(#2,#3)$) -- ($(tocancel.north east)+(#4,#5)$);
+    }%
+}
+
+\usepackage[natbib=true,style=numeric]{biblatex}
+\usepackage[babel]{csquotes}
+\bibliography{bibliography}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{ex}[defn]{Example}
+
+\theoremstyle{plain}
+
+\newtheorem{prop}[defn]{Proposition}
+\newtheorem{cor}[defn]{Corollary}
+\newtheorem{lemma}[defn]{Lemma}
+\newtheorem{thm}[defn]{Theorem}
+
+\theoremstyle{remark}
+\newtheorem{rem}[defn]{Remark}
+\newtheorem{question}[defn]{Question}
+
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\FF}{\mathbb{F}}
+\renewcommand{\AA}{\mathbb{A}}
+\newcommand{\A}{\mathcal{A}}
+\renewcommand{\C}{\mathcal{C}}
+\newcommand{\D}{\mathcal{D}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\F}{\mathcal{F}}
+\renewcommand{\G}{\mathcal{G}}
+\renewcommand{\H}{\mathcal{H}}
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\K}{\mathcal{K}}
+\newcommand{\N}{\mathcal{N}}
+\newcommand{\M}{\mathcal{M}}
+\renewcommand{\L}{\mathcal{L}}
+\renewcommand{\P}{\mathcal{P}}
+\newcommand{\R}{\mathcal{R}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\I}{\mathcal{I}}
+\newcommand{\J}{\mathcal{J}}
+\renewcommand{\S}{\mathcal{S}}
+\renewcommand{\U}{\mathcal{U}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\GG}{\mathbb{G}}
+\newcommand{\aaa}{\mathfrak{a}}
+\newcommand{\ppp}{\mathfrak{p}}
+\newcommand{\qqq}{\mathfrak{q}}
+\newcommand{\mmm}{\mathfrak{m}}
+\newcommand{\nnn}{\mathfrak{n}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\HOM}{\mathcal{H}\mathrm{om}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\GL}{\mathrm{GL}}
+\newcommand{\placeholder}{\underline{\quad}}
+\newcommand{\ul}[1]{\underline{#1}}
+\newcommand{\Set}{\mathrm{Set}}
+\newcommand{\Grp}{\mathrm{Grp}}
+\newcommand{\Vect}{\mathrm{Vect}}
+\newcommand{\Sh}{\mathrm{Sh}}
+\newcommand{\PSh}{\mathrm{PSh}}
+\newcommand{\Zar}{\mathrm{Zar}}
+\newcommand{\Et}{\mathrm{\acute{E}t}}
+\newcommand{\Sch}{\mathrm{Sch}}
+\newcommand{\Aff}{\mathrm{Aff}}
+\newcommand{\Mod}{\mathrm{Mod}}
+\newcommand{\Alg}{\mathrm{Alg}}
+\newcommand{\Ring}{\mathrm{Ring}}
+\newcommand{\LRL}{\mathrm{LRL}}
+\newcommand{\pt}{\mathrm{pt}}
+\newcommand{\tors}{\mathrm{tors}}
+\newcommand{\lfp}{\mathrm{lfp}}
+\newcommand{\fp}{\mathrm{fp}}
+\DeclareMathOperator{\Spec}{Spec}
+\newcommand{\QcohSpec}[2]{\mathrm{Spec}^{\mathrm{qcoh}}_{#1}{#2}}
+\newcommand{\RelSpec}[2]{\mathrm{RelSpec}_{#1}{#2}}
+\newcommand{\op}{\mathrm{op}}
+\DeclareMathOperator{\colim}{colim}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\Int}{int}
+\DeclareMathOperator{\Clos}{cl}
+\DeclareMathOperator{\Kernel}{ker}
+\DeclareMathOperator{\supp}{supp}
+\newcommand{\Ass}{\mathrm{Ass}}
+\newcommand{\Open}{\T}
+\newcommand{\?}{\,{:}\,}
+\renewcommand{\_}{\mathpunct{.}\,}
+\newcommand{\speak}[1]{\ulcorner\text{\textnormal{#1}}\urcorner}
+\newcommand{\Ll}{\vcentcolon\Longleftrightarrow}
+\newcommand{\notat}[1]{{!#1}}
+\newcommand{\lra}{\longrightarrow}
+\newcommand{\lhra}{\ensuremath{\lhook\joinrel\relbar\joinrel\rightarrow}}
+\newcommand{\hra}{\hookrightarrow}
+\newcommand{\brak}[1]{{\llbracket{#1}\rrbracket}}
+\newcommand{\sdense}{{\widehat\Box}}
+\newcommand{\sdenseother}{\Box}
+\newcommand{\ie}{i.\,e.\@\xspace}
+\newcommand{\eg}{e.\,g.\@\xspace}
+\newcommand{\vs}{vs.\@\xspace}
+\newcommand{\resp}{resp.\@\xspace}
+\newcommand{\inv}{inv.\@}
+\newcommand{\notnot}{\emph{not not}\xspace}
+\newcommand{\affl}{\ensuremath{{\ul{\AA}^1_S}}\xspace}
+\newcommand{\afflx}{\ensuremath{{\ul{\AA}^1_X}}\xspace}
+\newcommand{\affla}{\ensuremath{{\ul{\AA}^1_{\Spec A}}}\xspace}
+\newcommand{\xra}{\xrightarrow}
+
+\newcommand{\XXX}[1]{\textbf{XXX: #1}}
+
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\defequiv}{\vcentcolon\equiv}
+\newcommand{\seq}[1]{\mathrel{\vdash\!\!\!_{#1}}}
+
+\definecolor{gray}{rgb}{0.7,0.7,0.7}
+
+\begin{document}
+
+Unlike with the construction of the little Zariski topos, set-theoretical
+issues of size arise when constructing the big Zariski topos. These can be
+solved in several different manners, yielding toposes which are not equivalent,
+and actually differ in some important aspects, but otherwise enjoy very similar
+properties.
+
+Some authors construct the big Zariski topos of~$S$ as the topos of
+sheaves over the site~$\Sch/S$ of all schemes over~$S$. This option is quite
+attractive since the Yoneda functor~$\Sch/S \to \Sh(\Sch/S)$, which sends
+an~$S$-scheme to its functor of points, is fully faithful. However,
+since~$\Sch/S$ is not essentially small, forming the sheaf topos is not
+possible in plain Zermelo--Fraenkel set theory.
+Since it's still possible to meaningfully speak of individual
+functors~$(\Sch/S)^\op \to S$, we can attach a Kripke--Joyal semantics
+to~$\Sh(\Sch/S)$, as long as one keeps in mind that~$\Sh(\Sch/S)$ might
+not contain a subobject classifier.
+
+We could also assume the existence of a Grothendieck universe~$\U$
+containing~$S$ and construct~$\Zar(S)$ as the topos of sheaves over the
+small site~$\Sch_\U/S$, the category of~$S$-schemes contained in~$U$.
+By the \emph{comparison lemma}~\ref{XXX}, we could also construct~$\Zar(S)$ as
+the topos of sheaves over~$\Aff_\U/S$, the category of~$S$-schemes in~$U$ which
+are affine (as absolute schemes), and obtain an equivalent topos.
+In this case, the Yoneda functor~$\Sch/S \to \Zar(S)$ might not be faithful,
+but the restricted Yoneda functor~$\Sch_\U/S \to \Zar(S)$ is.
+
+The Stacks Project proposes a more nuanced approach, namely expanding a given
+set~$M_0$ of schemes containing~$S$ to a superset~$M$ which is closed (up to
+isomorphism) under several constructions~\cite[Tag~000H]{stacks-project}: fiber
+products, countable coproducts, domains of open and closed immersions and of
+morphisms of finite type, spectra of local rings~$\O_{X,x}$, spectra of residue
+fields, and others. The Stacks Project then defines~$\Zar(S)$
+as~$\Sh(\Sch_M/S)$, where~$\Sch_M/S$ is the small category of~$S$-schemes
+in~$M$, or equivalently as~$\Sh(\Aff_M/S)$. This approach has the advantage
+that one doesn't have to assume the existence of a Grothendieck universe.
+
+From a topos-theoretical point of view, it's natural to settle for an even
+more parsimonious site: the site~$(\Sch/S)_\lfp$ consisting of the~$S$-schemes
+which are locally of finite presentation over~$S$, or equivalently the
+essentially small site~$(\Aff/S)_\lfp$ of the~$S$-schemes which are locally of
+finite presentation over~$S$ and affine (as absolute schemes).\footnote{It's
+not reasonable to restrict to the even smaller site consisting of the finitely
+presented~$S$-schemes, since open immersions can fail to be finitely presented.
+We want the site used to construct~$\Zar(S)$ to be closed under open immersions
+for various reasons, for instance to facilitate a comparison with the little
+Zariski topos~$\Sh(S)$, whose site does contain all open subsets of~$S$.
+Furthermore, since a finitely presented~$S$-scheme might not admit an open
+covering by finitely presented~$S$-schemes which are affine (as absolute
+schemes), the toposes~$\Sh((\Sch/S)_\fp)$ and~$\Sh((\Aff/S)_\fp)$ can differ.}
+
+In the special case that~$S = \Spec(A)$ is affine, this site is the
+dual of the category of finitely presented~$A$-algebras; in this case the
+topos-theoretic points of the resulting topos are precisely the local~$A$-algebras,
+and moreover, the resulting topos is the classifying topos of the theory of
+local~$A$-algebras, such that for any Grothendieck topos~$\E$, geometric
+morphisms~$\E \to \Sh((\Aff/S)_\lfp)$ correspond to local~$A$-algebras internal
+to~$\E$.
+
+In contrast, the toposes arising when using the larger sites have categories of
+points which contain further objects in addition to all local~$A$-algebras; and
+no simple description of the theory they classify is known.
+
+A disadvantage of employing the sites with the presentation condition is that
+the Yoneda functor is only fully faithful when restricted to~$(\Sch/S)_\lfp$.
+For instance, in the case~$S = \Spec(\ZZ)$, the schemes~$\Spec(\QQ)$ and the
+empty scheme have isomorphic functors of points, whereby~$\Spec(\QQ)$ looks
+like the empty set from the internal point of view.\footnote{XXX explicit proof}
+
+In the following, we try to encompass XXX point out XXX
+
+\end{document}

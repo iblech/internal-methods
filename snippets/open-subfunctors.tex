@@ -256,7 +256,35 @@ weak: Any subset of the one-element set~$1$ is Penon-open. However, not every
 subfunctor of the terminal functor in~$\Zar(S)$ is an open subfunctor.
 \end{rem}
 
-% negneg-stability
-% definition of open truth values
+It's worthwhile to introduce the notion of an \emph{open truth value}. This
+files our approach to synthetic algebraic geometry in the established and more
+general framework of synthetic topology~\cite{XXX}:
+
+\begin{defn}In the context of a specified local ring, as for instance~$\affl$
+of the big Zariski topos of a scheme, a truth value~$U \subseteq 1$ is
+\emph{open} if and only if there exists an ideal~$J \subseteq \affl$ such
+that~$\affl/J$ is quasicoherent and such that~$U$ holds if and only if~$1 \in
+J$. (Section~\ref{sect:basics-on-truth-values} contains generalities on truth
+values.)\end{defn}
+
+\begin{prop}Let~$X$ be a Zariski sheaf. A subfunctor~$U \hookrightarrow X$ is
+open if and only if, from the internal point of view of~$\Zar(S)$, for
+any~$x\?X$ the truth value of~``$x \in U$'' is an open truth value.\end{prop}
+\begin{proof}Immediate from the definition and the characterization given in
+Proposition~\ref{prop:characterization-open-subfunctor}.\end{proof}
+
+\begin{prop}In~$\Zar(S)$, open truth values are~$\neg\neg$-stable: If~$U
+\subseteq 1$ is an open truth value, and if~$U$ does \notnot hold, then~$U$
+actually holds.\end{prop}
+
+\begin{proof}Since~$U$ is an open truth value, there exists an ideal~$J
+\subseteq \affl$ such that~$\affl/J$ is quasicoherent and such that~$U$ holds
+if and only if~$1 \in J$. By assumption, the element~1 is \notnot an element
+of~$J$; we want to verify that it's actually an element of~$J$.
+
+Since~$\affl/J$ is quasicoherent, the canonical homomorphism
+\[ \affl/J \longrightarrow XXX \]
+XXX
+\end{proof}
 
 \end{document}

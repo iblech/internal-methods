@@ -141,7 +141,8 @@
 \begin{prop}The following properties of~$\affl$, as seen from the internal
 point of view of~$\Zar(S)$, are consequences of~$\affl$ satisfying the
 quasicoherence condition (and~$\affl$ not being the trivial ring):
-% Adjust paragraph below if numbering changes.
+% Adjust paragraph below the proof if numbering changes.
+% Proof of sixth property references first property by number.
 \begin{enumerate}
 \item $\affl$ is a field in the sense that
 $\forall x\?\affl\_ \neg(x = 0) \Rightarrow \speak{$x$ \inv}$.
@@ -149,8 +150,16 @@ $\forall x\?\affl\_ \neg(x = 0) \Rightarrow \speak{$x$ \inv}$.
 0} x^n = 0) \Rightarrow x = 0.$
 \item Any function~$\affl \to \affl$ is given by a unique polynomial
 in~$\affl[T]$.
-\item Any monic polynomial~$p \in \affl[T]$ of degree at least one does \notnot have a
-zero.
+\item $\affl$ is \emph{weakly algebraically closed}, in the following sense:
+Any monic polynomial~$p \in \affl[T]$ of degree at least one does \notnot have
+a zero.
+\item $\affl$ is infinite in the following sense: For any number~$n \geq 0$
+and any given elements~$x_1,\ldots,x_n \? \affl$, there is \notnot an element~$y$
+which is distinct from all of the~$x_i$.
+\item $\affl$ fulfills the conclusion of the Nullstellensatz:
+Let~$f_1,\ldots,f_m \in \affl[X_1,\ldots,X_n]$ be polynomials without a common
+zero in~$(\affl)^n$. Then there are polynomials~$g_1,\ldots,g_m \in
+\affl[X_1,\ldots,X_n]$ such that~$\sum_i g_i f_i = 1$.
 \end{enumerate}\end{prop}
 
 \begin{proof}\begin{enumerate}
@@ -179,7 +188,15 @@ that~$\affl[T]/(p)$ is zero. This means that~$p$ is invertible in~$\affl[T]$.
 A basic lemma in commutative algebra (whose standard proof is constructive)
 then implies that with the exception of the constant term in~$p$, all
 coefficients are nilpotent. This contradicts the assumption that~$p$ is monic
-of degree at least one.\qedhere
+of degree at least one.
+\item The polynomial~$f(T) \defeq (T - x_1) \cdots (T - x_n) + 1$
+does \notnot have a zero~$y\?\affl$, since~$\affl$ is weakly algebraically
+closed. This element cannot equal any~$x_i$, since~$f(x_i) = 1$ is not zero.
+\item We consider the quasicoherence condition for the finitely
+presented~$\affl$-algebra~$A \defeq \affl[X_1,\ldots,X_n]/(f_1,\ldots,f_m)$.
+Since~$\Spec(A) \cong \{ x \in (\affl)^n \,|\, f_1(x) = \ldots = f_m(x) = 0 \}
+= \emptyset$, the condition implies that~$A$ is the zero algebra just as in the
+verification of the first property.\qedhere
 \end{enumerate}\end{proof}
 
 In classical logic, the first two properties would directly contradict each

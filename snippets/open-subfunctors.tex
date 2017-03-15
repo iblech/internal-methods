@@ -273,18 +273,60 @@ any~$x\?X$ the truth value of~``$x \in U$'' is an open truth value.\end{prop}
 \begin{proof}Immediate from the definition and the characterization given in
 Proposition~\ref{prop:characterization-open-subfunctor}.\end{proof}
 
-\begin{prop}In~$\Zar(S)$, open truth values are~$\neg\neg$-stable: If~$U
-\subseteq 1$ is an open truth value, and if~$U$ does \notnot hold, then~$U$
-actually holds.\end{prop}
+In many flavours of synthetic topology, open truth values~$\varphi$
+are~$\neg\neg$-stable in that~$\neg\neg\varphi$ implies~$\varphi$. With a
+small caveat, this is true for open truth values in the big Zariski topos as
+well.
 
-\begin{proof}Since~$U$ is an open truth value, there exists an ideal~$J
+\begin{prop}\label{prop:open-truth-values-stable}
+Let~$U \hookrightarrow 1$ be a subfunctor in~$\Zar(S)$ such
+that~$\Zar(S) \models \neg\neg U$. Then in any of the following
+situations it follows that~$\Zar(S) \models U$:
+\begin{enumerate}
+\item $U$ is a quasicompact open truth value.
+\item $U$ is an arbitrary open truth value and the site used to
+define~$\Zar(S)$ is closed under domains of closed immersions.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}We give two proofs, an internal one and an external one, since
+they pursue different ideas.
+
+\emph{Internal proof.} Since~$U$ is an open truth value, there exists an ideal~$J
 \subseteq \affl$ such that~$\affl/J$ is quasicoherent and such that~$U$ holds
 if and only if~$1 \in J$. By assumption, the element~1 is \notnot an element
 of~$J$; we want to verify that it's actually an element of~$J$.
 
-Since~$\affl/J$ is quasicoherent, the canonical homomorphism
-\[ \affl/J \longrightarrow XXX \]
-XXX
+By Proposition~\ref{prop:XXX}, the canonical homomorphism
+\[ \affl/J \longrightarrow [\Spec(\affl/J), \affl] \]
+is bijective; the assumptions of that proposition are satisfied in either of
+the two situations. The set~$\Spec(\affl/J)$ is isomorphic to~$\brak{J = (0)}$.
+Since~$\neg\neg(1 \in J)$, we also have~$\neg(J = (0))$.
+Therefore~$\Spec(\affl/J)$ is empty and the codomain of the displayed
+isomorphism is the zero algebra. Thus~$\affl/J$ is trivial as well, showing~$1
+\in J$.
+
+\emph{External proof.} Since~$U \hookrightarrow 1$ is an open subfunctor, there
+is an open subscheme~$S_0 \subseteq S$ such that a morphism~$f : T \to S$
+factors over~$S_0$ if and only if~$U(T)$ is inhabited. In both situations it's
+possible to endow~$X \defeq S \subseteq S_0$ with the structure of a closed
+subscheme such that~$X$ is contained in the site used to define~$\Zar(S)$.
+By the universal property of~$S_0$, we have~$X \models \neg U$. Since~$\Zar(S)
+\models \neg\neg U$, it follows that~$X$ is empty. Therefore~$S_0 = S$ and~$U$
+is globally inhabited.
+\end{proof}
+
+\begin{cor}Let~$\gamma : \Delta \to X$ be a morphism in~$\Zar(S)$.
+Let~$U \hookrightarrow X$ be an open subfunctor such that~$\Zar(S) \models
+\gamma(0) \in U$. Then, in any of the situations in
+Proposition~\ref{prop:open-truth-values-stable}, the morphism~$\gamma$ factors
+over~$U$.
+\end{cor}
+
+\begin{proof}We give an internal proof. Let~$\varepsilon \in \Delta$.
+Then~$\neg\neg(\varepsilon = 0)$. Therefore~$\neg\neg(\gamma(\varepsilon) \in
+U)$. Since being an element of~$U$ is~$\neg\neg$-stable, it follows
+that~$\gamma(\varepsilon) \in U$.
 \end{proof}
 
 \end{document}

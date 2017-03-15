@@ -148,36 +148,48 @@ solved in several different manners, yielding toposes which are not equivalent,
 and actually differ in some important aspects, but otherwise enjoy very similar
 properties.
 
+\subsubsection*{Naive approach}
 Some authors construct the big Zariski topos of~$S$ as the topos of
 sheaves over the site~$\Sch/S$ of all schemes over~$S$. This option is quite
 attractive since the Yoneda functor~$\Sch/S \to \Sh(\Sch/S)$, which sends
-an~$S$-scheme to its functor of points, is fully faithful. However,
-since~$\Sch/S$ is not essentially small, forming the sheaf topos is not
-possible in plain Zermelo--Fraenkel set theory.
+an~$S$-scheme to its functor of points, is fully faithful, therefore the
+internal language of~$\Sh(\Sch/S)$ can distinguish arbitrary schemes.
+
+However, since~$\Sch/S$ is not essentially small, forming the sheaf topos is
+not possible in plain Zermelo--Fraenkel set theory.
+
 Since it's still possible to meaningfully speak of individual
 functors~$(\Sch/S)^\op \to S$, we can attach a Kripke--Joyal semantics
-to~$\Sh(\Sch/S)$, as long as one keeps in mind that~$\Sh(\Sch/S)$ might
-not contain a subobject classifier.
+to~$\Sh(\Sch/S)$, as long as we keep in mind that~$\Sh(\Sch/S)$ might
+not contain a subobject classifier and might not be cartesian closed. From the
+internal point of view, powersets and function sets might therefore not exist.
 
+\subsubsection*{Using Grothendieck universes}
 We could also assume the existence of a Grothendieck universe~$\U$
 containing~$S$ and construct~$\Zar(S)$ as the topos of sheaves over the
 small site~$\Sch_\U/S$, the category of~$S$-schemes contained in~$U$.
+
 By the \emph{comparison lemma}~\ref{XXX}, we could also construct~$\Zar(S)$ as
 the topos of sheaves over~$\Aff_\U/S$, the category of~$S$-schemes in~$U$ which
 are affine (as absolute schemes), and obtain an equivalent topos.
-In this case, the Yoneda functor~$\Sch/S \to \Zar(S)$ might not be faithful,
-but the restricted Yoneda functor~$\Sch_\U/S \to \Zar(S)$ is.
 
+In this case, the Yoneda functor~$\Sch/S \to \Zar(S)$ might not be faithful,
+but the restricted Yoneda functor~$\Sch_\U/S \to \Zar(S)$ will.
+
+\subsubsection*{Approach of the Stacks Project}
 The Stacks Project proposes a more nuanced approach, namely expanding a given
 set~$M_0$ of schemes containing~$S$ to a superset~$M$ which is closed (up to
 isomorphism) under several constructions~\cite[Tag~000H]{stacks-project}: fiber
 products, countable coproducts, domains of open and closed immersions and of
 morphisms of finite type, spectra of local rings~$\O_{X,x}$, spectra of residue
-fields, and others. The Stacks Project then defines~$\Zar(S)$
-as~$\Sh(\Sch_M/S)$, where~$\Sch_M/S$ is the small category of~$S$-schemes
-in~$M$, or equivalently as~$\Sh(\Aff_M/S)$. This approach has the advantage
-that one doesn't have to assume the existence of a Grothendieck universe.
+fields, and others.
 
+The Stacks Project then defines~$\Zar(S)$ as~$\Sh(\Sch_M/S)$, where~$\Sch_M/S$
+is the small category of~$S$-schemes in~$M$, or equivalently
+as~$\Sh(\Aff_M/S)$. This approach has the advantage that one doesn't have to
+assume the existence of a Grothendieck universe.
+
+\subsubsection*{Emplyoing parsimonious sites}
 From a topos-theoretical point of view, it's natural to settle for an even
 more parsimonious site: the site~$(\Sch/S)_\lfp$ consisting of the~$S$-schemes
 which are locally of finite presentation over~$S$, or equivalently the
@@ -204,12 +216,25 @@ In contrast, the toposes arising when using the larger sites have categories of
 points which contain further objects in addition to all local~$A$-algebras; and
 no simple description of the theory they classify is known.
 
-A disadvantage of employing the sites with the presentation condition is that
-the Yoneda functor is only fully faithful when restricted to~$(\Sch/S)_\lfp$.
-For instance, in the case~$S = \Spec(\ZZ)$, the schemes~$\Spec(\QQ)$ and the
-empty scheme have isomorphic functors of points, whereby~$\Spec(\QQ)$ looks
-like the empty set from the internal point of view.\footnote{XXX explicit proof}
+A further advantage of these parsimonious sites is that they don't require arbitrary
+choices of a starting set~$M_0$ or a way of expanding~$M_0$ to a sufficiently
+ample set~$M$ of schemes.
 
-In the following, we try to encompass XXX point out XXX
+However, the parsimonious sites also have a serious disadvantage, namely that
+with them, the Yoneda functor is only fully faithful when restricted
+to~$(\Sch/S)_\lfp$. For instance, in the case~$S = \Spec(\ZZ)$, the
+schemes~$\Spec(\QQ)$ and the empty scheme have isomorphic functors of points,
+whereby~$\Spec(\QQ)$ looks like the empty set from the internal point of
+view.\footnote{XXX explicit proof}
+
+In the following, we do not commit to a single one of these options for
+resolving the set-theoretical size issues, but rather keep any of these options
+in mind. This approach will sometimes necessitate phrases such as ``for
+any~$S$-scheme~$T$ contained in the site used to define~$\Zar(S)$'', which might
+seem awkward for a seasoned topos-theorist when taken out of context, since
+the site used to construct a Grothendieck topos is not at all uniquely
+determined by the resulting topos.
+
+We will indicate the few places where the choice of site makes a difference.
 
 \end{document}

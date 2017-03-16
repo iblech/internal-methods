@@ -1,9 +1,10 @@
-\documentclass[10pt]{amsart}
+\documentclass[10pt,reqno]{amsart}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage{etex}
 \usepackage{amsmath,amsthm,amssymb,stmaryrd,color,graphicx,multirow}
 \usepackage{mathtools}
+\usepackage{soul}\setul{0.3ex}{}
 \usepackage{setspace}
 \usepackage{bussproofs}
 \usepackage{xspace}
@@ -79,7 +80,8 @@
 \newcommand{\id}{\mathrm{id}}
 \newcommand{\GL}{\mathrm{GL}}
 \newcommand{\placeholder}{\underline{\quad}}
-\newcommand{\ul}[1]{\underline{#1}}
+\let\oldul\ul
+\renewcommand{\ul}[1]{\text{\oldul{$#1$}}}
 \newcommand{\Set}{\mathrm{Set}}
 \newcommand{\Grp}{\mathrm{Grp}}
 \newcommand{\Vect}{\mathrm{Vect}}
@@ -99,7 +101,8 @@
 \newcommand{\fp}{\mathrm{fp}}
 \DeclareMathOperator{\Spec}{Spec}
 \newcommand{\QcohSpec}[2]{\mathrm{Spec}^{\mathrm{qcoh}}_{#1}{#2}}
-\newcommand{\RelSpec}[2]{\mathrm{RelSpec}_{#1}{#2}}
+\newcommand{\RelSpec}[2]{\mathrm{RelSpec}_{#1}{#2}}  % XXX: phase out
+\newcommand{\RelSpek}{\operatorname{\ul{\mathrm{Spec}}}}
 \newcommand{\op}{\mathrm{op}}
 \DeclareMathOperator{\colim}{colim}
 \DeclareMathOperator{\rank}{rank}

@@ -1,0 +1,272 @@
+\documentclass[10pt,reqno]{amsart}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{etex}
+\usepackage{amsmath,amsthm,amssymb,stmaryrd,color,graphicx,multirow}
+\usepackage{mathtools}
+\usepackage{setspace}
+\usepackage{bussproofs}
+\usepackage{xspace}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage[protrusion=true,expansion=true]{microtype}
+\usepackage[bookmarksdepth=2,pdfencoding=auto]{hyperref}
+\usepackage[all]{xy}
+\usepackage{soul}\setul{0.3ex}{}
+
+\usepackage{tikz}
+\usetikzlibrary{calc,shapes.callouts,shapes.arrows}
+\newcommand{\hcancel}[5]{%
+    \tikz[baseline=(tocancel.base)]{
+        \node[inner sep=0pt,outer sep=0pt] (tocancel) {#1};
+        \draw[red, line width=0.3mm] ($(tocancel.south west)+(#2,#3)$) -- ($(tocancel.north east)+(#4,#5)$);
+    }%
+}
+
+\usepackage[natbib=true,style=numeric]{biblatex}
+\usepackage[babel]{csquotes}
+\bibliography{bibliography}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{ex}[defn]{Example}
+
+\theoremstyle{plain}
+
+\newtheorem{prop}[defn]{Proposition}
+\newtheorem{cor}[defn]{Corollary}
+\newtheorem{lemma}[defn]{Lemma}
+\newtheorem{thm}[defn]{Theorem}
+
+\theoremstyle{remark}
+\newtheorem{rem}[defn]{Remark}
+\newtheorem{question}[defn]{Question}
+
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\FF}{\mathbb{F}}
+\renewcommand{\AA}{\mathbb{A}}
+\newcommand{\A}{\mathcal{A}}
+\renewcommand{\C}{\mathcal{C}}
+\newcommand{\D}{\mathcal{D}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\F}{\mathcal{F}}
+\renewcommand{\G}{\mathcal{G}}
+\renewcommand{\H}{\mathcal{H}}
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\K}{\mathcal{K}}
+\newcommand{\N}{\mathcal{N}}
+\newcommand{\M}{\mathcal{M}}
+\renewcommand{\L}{\mathcal{L}}
+\renewcommand{\P}{\mathcal{P}}
+\newcommand{\R}{\mathcal{R}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\I}{\mathcal{I}}
+\newcommand{\J}{\mathcal{J}}
+\renewcommand{\S}{\mathcal{S}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\GG}{\mathbb{G}}
+\newcommand{\aaa}{\mathfrak{a}}
+\newcommand{\ppp}{\mathfrak{p}}
+\newcommand{\qqq}{\mathfrak{q}}
+\newcommand{\mmm}{\mathfrak{m}}
+\newcommand{\nnn}{\mathfrak{n}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\HOM}{\mathcal{H}\mathrm{om}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\GL}{\mathrm{GL}}
+\newcommand{\placeholder}{\underline{\quad}}
+\let\oldul\ul
+\renewcommand{\ul}[1]{\text{\oldul{$#1$}}}
+\newcommand{\Set}{\mathrm{Set}}
+\newcommand{\Grp}{\mathrm{Grp}}
+\newcommand{\Vect}{\mathrm{Vect}}
+\newcommand{\Sh}{\mathrm{Sh}}
+\newcommand{\PSh}{\mathrm{PSh}}
+\newcommand{\Zar}{\mathrm{Zar}}
+\newcommand{\Et}{\mathrm{\acute{E}t}}
+\newcommand{\Sch}{\mathrm{Sch}}
+\newcommand{\Mod}{\mathrm{Mod}}
+\newcommand{\Alg}{\mathrm{Alg}}
+\newcommand{\Ring}{\mathrm{Ring}}
+\newcommand{\LRL}{\mathrm{LRL}}
+\newcommand{\pt}{\mathrm{pt}}
+\newcommand{\tors}{\mathrm{tors}}
+\DeclareMathOperator{\Spec}{Spec}
+\newcommand{\RelSpek}{\operatorname{\ul{\mathrm{Spec}}}}
+\newcommand{\QcohSpec}[2]{\mathrm{Spec}^{\mathrm{qcoh}}_{#1}{#2}}
+\newcommand{\op}{\mathrm{op}}
+\DeclareMathOperator{\colim}{colim}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\Int}{int}
+\DeclareMathOperator{\Clos}{cl}
+\DeclareMathOperator{\Kernel}{ker}
+\DeclareMathOperator{\supp}{supp}
+\newcommand{\Ass}{\mathrm{Ass}}
+\newcommand{\Open}{\T}
+\newcommand{\?}{\,{:}\,}
+\renewcommand{\_}{\mathpunct{.}\,}
+\newcommand{\speak}[1]{\ulcorner\text{\textnormal{#1}}\urcorner}
+\newcommand{\Ll}{\vcentcolon\Longleftrightarrow}
+\newcommand{\notat}[1]{{!#1}}
+\newcommand{\lra}{\longrightarrow}
+\newcommand{\lhra}{\ensuremath{\lhook\joinrel\relbar\joinrel\rightarrow}}
+\newcommand{\hra}{\hookrightarrow}
+\newcommand{\brak}[1]{{\llbracket{#1}\rrbracket}}
+\newcommand{\sdense}{{\widehat\Box}}
+\newcommand{\sdenseother}{\Box}
+\newcommand{\ie}{i.\,e.\@\xspace}
+\newcommand{\eg}{e.\,g.\@\xspace}
+\newcommand{\vs}{vs.\@\xspace}
+\newcommand{\resp}{resp.\@\xspace}
+\newcommand{\inv}{inv.\@}
+\newcommand{\notnot}{\emph{not not}\xspace}
+\newcommand{\affl}{\ensuremath{{\ul{\AA}^1_S}}\xspace}
+\newcommand{\afflx}{\ensuremath{{\ul{\AA}^1_X}}\xspace}
+\newcommand{\affla}{\ensuremath{{\ul{\AA}^1_{\Spec A}}}\xspace}
+\newcommand{\xra}{\xrightarrow}
+
+\newcommand{\XXX}[1]{\textbf{XXX: #1}}
+
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\defequiv}{\vcentcolon\equiv}
+\newcommand{\seq}[1]{\mathrel{\vdash\!\!\!_{#1}}}
+
+\newcommand{\stacksproject}[1]{\cite[{\href{http://stacks.math.columbia.edu/tag/#1}{Tag~#1}}]{stacks-project}}
+
+\definecolor{gray}{rgb}{0.7,0.7,0.7}
+
+\begin{document}
+
+\begin{defn}An~$R$-module~$E$ is \emph{synthetically quasicoherent} if and only if,
+for any finitely presented~$R$-algebra~$A$, the canonical~$R$-algebra
+homomorphism
+\[ E \otimes_R A \longrightarrow [\Spec(A), E] = [[A, R]_R, E] \]
+which maps a pure tensor~$x \otimes f$ to~$(\varphi \mapsto \varphi(f) x)$ is
+bijective.\end{defn}
+
+\begin{thm}Let~$E \in \Zar(S)$ be an~$\affl$-algebra.
+If~$E$ is quasicoherent, that is of
+the form~$\E_0^\Zar$ for some quasicoherent~$\O_S$-module~$\E_0$,
+then~$E$ is synthetically quasicoherent from the internal point of view of~$\Zar(S)$.
+The converse holds in any of the following situations:
+\begin{enumerate}
+\item The site used to construct~$\Zar(S)$ is one of the parsimonious sites.
+\item The base scheme~$S$ is concentrated (quasicompact and quasiseparated) and
+the functor~$E$ maps directed limits of inverse systems of~$S$-schemes with
+affine transition morphisms to colimits in~$\Set$.
+\end{enumerate}
+\end{thm}
+
+\begin{proof}To verify that~$E$ is synthetically quasicoherent, we have to
+verify a condition for~$\affl$-algebras~$A$ in any
+slice~$\Zar(S)/\ul{T}$. If such an algebra is finitely presented from
+the internal point of view, then there is a covering~$T = \bigcup_i T_i$ such
+that the each of the restrictions of the algebra to the~$T_i$ is of the
+form~$(\A_0)^\Zar$ for some finitely presented~$\O_{T_i}$-algebra~$\A_0$.
+Without loss of generality, we will just assume that~$A$ itself is of the
+form~$(\A_0)^\Zar$ for a finitely presented~$\O_S$-algebra~$\A_0$.
+
+By Proposition~\ref{XXX}, the internal expression~$\Spec(A)$ is the functor of
+points of~$\RelSpek_S \A_0$. For any~$S$-scheme~$f : T \to S$ contained in the site
+used to define~$\Zar(S)$, we consider the fiber product
+\[ \xymatrix{
+  \RelSpek_T(f^*\A_0) \ar[r]^{f'} \ar[d]_{p'} & \RelSpek_S\A_0 \ar[d]^p \\
+  T \ar[r]_f & S.
+} \]
+Since~$\RelSpek_T(f^*\A_0) \to S$ is contained in the site (for any of our
+admissible sites), we may conclude using the following chain of isomorphisms:
+\begin{align*}
+  [\Spec(A), E](T) &\cong
+  \Hom_{\Zar(S)}(\ul{T}, [\Spec(A), E])
+  \cong \Hom_{\Zar(S)}(\ul{T} \times \Spec(A), E) \\
+  &\cong \Hom_{\Zar(S)}(\underline{T \times_S \RelSpek_S\A_0}, E)
+  \cong E(\RelSpek_T(f^*\A_0)) \\
+  &\cong \Gamma(\RelSpek_T(f^*\A_0), (p')^* f^* \E_0)
+  \cong \Gamma(T, (p')_* (p')^* f_* \E_0) \\
+  &\cong \Gamma(T, f^*\E_0 \otimes_{\O_T} f^*\A_0)
+  \cong \Gamma(T, (\E_0 \otimes_{\O_S} \A_0)^\Zar) \\
+  &\cong \Gamma(T, \E_0^\Zar \otimes_\affl \A_0^\Zar)
+  \cong \Gamma(T, E \otimes_\affl A).
+\end{align*}
+The antepenultimate isomorphism is because pullback of modules in~$\Sh(S)$ to
+modules in~$\Sh(T)$ commutes with tensor product. The penultimate isomorphism
+is because pullback of a sheaf in~$\Sh(S)$ to a sheaf in~$\Zar(S)$ commutes
+with tensor product (Lemma~\ref{lemma:zar-tensor-product-commutes}).
+
+For the converse direction, we first verify that the restrictions~$E|_{\Sh(T)}$
+to the little Zariski topos of each~$S$-scheme~$T$ contained in the site used
+to define~$\Zar(S)$ are quasicoherent~$\O_T$-modules. For this, we employ the
+quasicoherence criterion of Theorem~\ref{thm:qcoh-sheafchar}: For any open
+affine subset~$T' \subseteq T$ and any function~$h \in \Gamma(T', \O_T)$ we
+verify that the canonical morphism
+\begin{equation}\label{eqn:want-iso}\tag{$\dagger$}
+  E|_{\Sh(T)}[h^{-1}] \longrightarrow j_*(E|_{\Sh(D(h))})
+\end{equation}
+is an isomorphism, where~$j : D(h) \hookrightarrow T'$ denotes the inclusion.
+This follows from the assumption of synthetic quasicoherence by considering
+the~$\affl$-module~$A \defeq \affl[h^{-1}]$ (in the slice~$\Zar(S)/\ul{T'}$):
+This expresses that the canonical morphism
+\begin{equation}\label{eqn:have-iso}\tag{$\ddagger$}
+  E \otimes_\affl \affl[h^{-1}] \longrightarrow [\Spec(A), E]
+\end{equation}
+is an isomorphism (of~$\affl$-modules in~$\Zar(S)/\ul{T'}$). Restricting the
+domain to~$\Sh(T')$ yields the sheaf~$E|_{\Sh(T')} \otimes_{\O_{T'}}
+\O_{T'}[h^{-1}]$, since restricting commutes with the geometric constructions
+``forming the tensor product'' and ``localizing away from~$h$''.
+Since~$\Spec(A)$ is the functor of points of~$D(h)$, restricting
+the codomain to~$\Sh(T')$ yields the sheaf~$j_*(E|_{\Sh(D(h))})$.
+The canonical morphism~\eqref{eqn:want-iso} which we want to recognize as an
+isomorphism is therefore the restriction of the canonical
+morphism~\eqref{eqn:have-iso} which we know to be an isomorphism.
+
+A natural candidate for an quasicoherent~$\O_S$-module~$\E_0$ with~$E \cong
+\E_0^\Zar$ is~$\E_0 \defeq E|_{\Sh(S)}$. We'll show that this is indeed true.
+Let~$f : T \to S$ be any~$S$-scheme contained in the site used to
+define~$\Zar(S)$. We assume for the time being that~$f$ is of finite
+presentation and affine, so~$T \cong \RelSpek_S \A_0$ for some finitely
+presented~$\O_S$-algebra~$\A_0$. We want to verify that the canonical morphism
+\begin{equation}\label{eqn:want-iso2}\tag{§}
+  f^*(E|_{\Sh(S)}) \longrightarrow E|_{\Sh(T)}
+\end{equation}
+is an isomorphism. Since the functor~$f_*$ from quasicoherent~$\O_T$-modules to
+quasicoherent~$\O_S$-modules is fully faithful (the morphism~$f$ being affine)
+and domain and codomain of that morphism are quasicoherent, it suffices to
+verify that its image under~$f_*$ is an isomorphism. This image is the
+canonical morphism
+\[ E|_{\Sh(S)} \otimes_{\O_S} \A_0 \longrightarrow f_*(E|_{\Sh(T)}). \]
+The assumption of synthetic quasicoherence, applied to the~$\affl$-algebra~$A
+\defeq \A_0^\Zar$, shows that this morphism is an isomorphism.
+
+In situation~(1), the only step left to do is to generalize the argument is the
+previous paragraph to morphisms~$f : T \to S$ which are locally of finite
+presentation. This works out because there are open covers of~$S$ and~$T$ such
+that the appropriate restrictions of~$f$ are of finite presentation and affine.
+The assumption of synthetic quasicoherence then needs to be applied to
+to~$\affl$-algebras in suitable slices of~$\Zar(S)$, showing that the canonical
+morphism~\eqref{eqn:want-iso2} is locally an isomorphism and therefore globally
+as well.
+
+In situation~(2), we employ the technique of approximating general~$S$-schemes
+by~$S$-schemes of finite presentation. Specifically, let~$f : T \to S$ be an
+arbitrary~$S$-scheme contained in the site used to define~$\Zar(S)$. Without
+loss of generality, we may assume that~$T$ is an affine scheme. Thus~$T$ is
+quasicompact and quasiseparated, and~$S$ is quasiseparated. We may therefore
+apply the lemma of relative approximation~\stacksproject{09MV} to deduce
+that~$T$ is a directed limit of an inverse system of~$S$-schemes~$f_i : T_i \to
+S$ of finite presentation with affine transition maps. These~$S$-schemes
+inherit quasicompactness and quasiseparatedness from~$S$. Therefore we can
+apply a comparison result on the categories of quasicoherent
+modules~\stacksproject{01Z0}:
+\[
+  E(T) = E(\lim_i T_i) \cong \colim_i E(T_i) \cong
+  \colim_i \Gamma(T_i, f_i^* \E_0)
+  \cong \Gamma(T, f^* \E_0). \qedhere
+\]
+\end{proof}
+
+\end{document}

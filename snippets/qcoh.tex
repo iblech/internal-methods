@@ -38,6 +38,7 @@
 \newtheorem{cor}[defn]{Corollary}
 \newtheorem{lemma}[defn]{Lemma}
 \newtheorem{thm}[defn]{Theorem}
+\newtheorem{scholium}[defn]{Scholium}
 
 \theoremstyle{remark}
 \newtheorem{rem}[defn]{Remark}
@@ -264,12 +265,13 @@ In situation~(2), we employ the technique of approximating general~$S$-schemes
 by~$S$-schemes of finite presentation. Specifically, let~$f : T \to S$ be an
 arbitrary~$S$-scheme contained in the site used to define~$\Zar(S)$. Without
 loss of generality, we may assume that~$T$ is an affine scheme. Thus~$T$ is
-quasicompact and quasiseparated, and~$S$ is quasiseparated. We may therefore
+quasicompact and quasiseparated, and~$S$ is quasiseparated by assumption. We may therefore
 apply the lemma of relative approximation~\stacksproject{09MV} to deduce
 that~$T$ is a directed limit of an inverse system of~$S$-schemes~$f_i : T_i \to
 S$ of finite presentation with affine transition maps. These~$S$-schemes
-inherit quasicompactness and quasiseparatedness from~$S$. Therefore we can
-apply a comparison result on the categories of quasicoherent
+are contained in the site used to define~$\Zar(S)$. Furthermore, they inherit
+quasicompactness and quasiseparatedness from~$S$. Therefore we can apply a
+comparison result on the categories of quasicoherent
 modules~\stacksproject{01Z0}:
 \[
   E(T) = E(\lim_i T_i) \cong \colim_i E(T_i) \cong
@@ -277,5 +279,18 @@ modules~\stacksproject{01Z0}:
   \cong \Gamma(T, f^* \E_0). \qedhere
 \]
 \end{proof}
+
+\begin{scholium}Let~$E \in \Zar(S)$ be a quasicoherent~$\affl$-module.
+Let~$A \in \Zar(S)$ be a quasicoherent~$\affl$-algebra such that~$\Spec(A) \in
+\Zar(S)$ is representable by an object of the site used to define~$\Zar(S)$.
+Then the canonical morphism
+\[ E \otimes_\affl A \longrightarrow [\Spec(A), E] \]
+is an isomorphism.
+\end{scholium}
+
+\begin{proof}The second paragraph of the proof of
+Theorem~\ref{thm:qcoh-big-char} applies.\end{proof}
+
+% PSh
 
 \end{document}

@@ -161,7 +161,7 @@ postulated bijectivity expresses.
 \begin{thm}\label{thm:qcoh-big-char}
 Let~$E \in \Zar(S)$ be an~$\affl$-module.
 If~$E$ is quasicoherent, that is of
-the form~$\E_0^\Zar$ for some quasicoherent~$\O_S$-module~$\E_0$,
+the form~$(\E_0)^\Zar$ for some quasicoherent~$\O_S$-module~$\E_0$,
 then~$E$ is synthetically quasicoherent from the internal point of view of~$\Zar(S)$.
 The converse holds in any of the following situations:
 \begin{enumerate}
@@ -200,7 +200,7 @@ admissible sites), we may conclude using the following chain of isomorphisms:
   \cong \Gamma(T, (p')_* (p')^* f_* \E_0) \\
   &\cong \Gamma(T, f^*\E_0 \otimes_{\O_T} f^*\A_0)
   \cong \Gamma(T, (\E_0 \otimes_{\O_S} \A_0)^\Zar) \\
-  &\cong \Gamma(T, \E_0^\Zar \otimes_\affl \A_0^\Zar)
+  &\cong \Gamma(T, (\E_0)^\Zar \otimes_\affl (\A_0)^\Zar)
   \cong \Gamma(T, E \otimes_\affl A).
 \end{align*}
 The antepenultimate isomorphism is because pullback of modules in~$\Sh(S)$ to
@@ -235,7 +235,7 @@ isomorphism is therefore the restriction of the canonical
 morphism~\eqref{eqn:have-iso} which we know to be an isomorphism.
 
 A natural candidate for an quasicoherent~$\O_S$-module~$\E_0$ with~$E \cong
-\E_0^\Zar$ is~$\E_0 \defeq E|_{\Sh(S)}$. We'll show that this is indeed true.
+(\E_0)^\Zar$ is~$\E_0 \defeq E|_{\Sh(S)}$. We'll show that this is indeed true.
 Let~$f : T \to S$ be any~$S$-scheme contained in the site used to
 define~$\Zar(S)$. We assume for the time being that~$f$ is of finite
 presentation and affine, so~$T \cong \RelSpek_S \A_0$ for some finitely
@@ -250,7 +250,7 @@ verify that its image under~$f_*$ is an isomorphism. This image is the
 canonical morphism
 \[ E|_{\Sh(S)} \otimes_{\O_S} \A_0 \longrightarrow f_*(E|_{\Sh(T)}). \]
 The assumption of synthetic quasicoherence, applied to the~$\affl$-algebra~$A
-\defeq \A_0^\Zar$, shows that this morphism is an isomorphism.
+\defeq (\A_0)^\Zar$, shows that this morphism is an isomorphism.
 
 In situation~(1), the only step left to do is to generalize the argument is the
 previous paragraph to morphisms~$f : T \to S$ which are locally of finite
@@ -296,8 +296,12 @@ Theorem~\ref{thm:qcoh-big-char} applies.\end{proof}
 \begin{rem}The condition in Scholium~\ref{scholium} that~$\Spec(A)$ is
 representable by an object of the site used to define~$\Zar(S)$ cannot be
 dropped. For instance, if we employ the parsimonious sites and consider~$S =
-\Spec \ZZ$,~$A = \K_S^\Zar$, and~$E = \affl$, then~$\Spec(A) = \emptyset$.
-Therefore the codomain of the canonical morphism is the zero algebra, but the
+\Spec \ZZ$,~$E = \affl$, and $A = \K_S^\Zar$ (where~$\K_S$ is the sheaf of
+rational functions on~$S$, which in this case is the constant sheaf~$\ul{\QQ}$),
+then~$\Spec(A)$ is the functor of points of the~$\ZZ$-scheme~$\Spec(\QQ)$.
+This functor coincides with the functor of points of the empty~$\ZZ$-scheme on
+the parsimonious sites; therefore~$\Spec(A) = \emptyset$ from the internal point
+of view. Thus the codomain of the canonical morphism is the zero algebra, but the
 domain is not.
 \end{rem}
 

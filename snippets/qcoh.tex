@@ -280,9 +280,11 @@ modules~\stacksproject{01Z0}:
 \]
 \end{proof}
 
-\begin{scholium}Let~$E \in \Zar(S)$ be a quasicoherent~$\affl$-module.
+\begin{scholium}\label{scholium}
+Let~$E \in \Zar(S)$ be a quasicoherent~$\affl$-module.
 Let~$A \in \Zar(S)$ be a quasicoherent~$\affl$-algebra such that~$\Spec(A) \in
 \Zar(S)$ is representable by an object of the site used to define~$\Zar(S)$.
+% XXX: "locally representable"?
 Then the canonical morphism
 \[ E \otimes_\affl A \longrightarrow [\Spec(A), E] \]
 is an isomorphism.
@@ -291,6 +293,12 @@ is an isomorphism.
 \begin{proof}The second paragraph of the proof of
 Theorem~\ref{thm:qcoh-big-char} applies.\end{proof}
 
-% PSh
+\begin{rem}The condition in Scholium~\ref{scholium} that~$\Spec(A)$ is
+representable by an object of the site used to define~$\Zar(S)$ cannot be
+dropped. For instance, if we employ the parsimonious sites and consider~$S =
+\Spec \ZZ$,~$A = \K_S^\Zar$, and~$E = \affl$, then~$\Spec(A) = \emptyset$.
+Therefore the codomain of the canonical morphism is the zero algebra, but the
+domain is not.
+\end{rem}
 
 \end{document}

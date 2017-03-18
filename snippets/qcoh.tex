@@ -284,7 +284,6 @@ modules~\stacksproject{01Z0}:
 Let~$E \in \Zar(S)$ be a quasicoherent~$\affl$-module.
 Let~$A \in \Zar(S)$ be a quasicoherent~$\affl$-algebra such that~$\Spec(A) \in
 \Zar(S)$ is representable by an object of the site used to define~$\Zar(S)$.
-% XXX: "locally representable"?
 Then the canonical morphism
 \[ E \otimes_\affl A \longrightarrow [\Spec(A), E] \]
 is an isomorphism.
@@ -294,15 +293,21 @@ is an isomorphism.
 Theorem~\ref{thm:qcoh-big-char} applies.\end{proof}
 
 \begin{rem}The condition in Scholium~\ref{scholium} that~$\Spec(A)$ is
-representable by an object of the site used to define~$\Zar(S)$ cannot be
-dropped. For instance, if we employ the parsimonious sites and consider~$S =
-\Spec \ZZ$,~$E = \affl$, and $A = \K_S^\Zar$ (where~$\K_S$ is the sheaf of
-rational functions on~$S$, which in this case is the constant sheaf~$\ul{\QQ}$),
-then~$\Spec(A)$ is the functor of points of the~$\ZZ$-scheme~$\Spec(\QQ)$.
-This functor coincides with the functor of points of the empty~$\ZZ$-scheme on
-the parsimonious sites; therefore~$\Spec(A) = \emptyset$ from the internal point
-of view. Thus the codomain of the canonical morphism is the zero algebra, but the
-domain is not.
+representable by an object of the site used to define~$\Zar(S)$ is slightly
+unnatural from a topos-theoretic point of view, since the conclusion of the
+Scholium depends only on the topos over the site and not the site itself.
+In fact, the condition can be weakened and made more natural at the
+same time: It suffices to require that~$\Spec(A)$ is \emph{locally}
+representable by an object of the site.
+
+However, the condition can't be dropped completely. For instance, if we employ the
+parsimonious sites and consider~$S = \Spec \ZZ$,~$E = \affl$, and $A =
+\K_S^\Zar$ (where~$\K_S$ is the sheaf of rational functions on~$S$, which in
+this case is the constant sheaf~$\ul{\QQ}$), then~$\Spec(A)$ is the functor of
+points of the~$\ZZ$-scheme~$\Spec(\QQ)$. This functor coincides with the
+functor of points of the empty~$\ZZ$-scheme on the parsimonious sites;
+therefore~$\Spec(A) = \emptyset$ from the internal point of view. Thus the
+codomain of the canonical morphism is the zero algebra, but the domain is not.
 \end{rem}
 
 \end{document}

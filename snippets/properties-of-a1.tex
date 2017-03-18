@@ -139,15 +139,22 @@
 \begin{document}
 
 \begin{prop}The following properties of~$\affl$, as seen from the internal
-point of view of~$\Zar(S)$, are consequences of~$\affl$ satisfying the
-quasicoherence condition (and~$\affl$ not being the trivial ring):
+point of view of~$\Zar(S)$, are consequences of~$\affl$ being (a local ring and) synthetically
+quasicoherent:
 % Adjust paragraph below the proof if numbering changes.
-% Proof of sixth property references first property by number.
+% Proof of third and seventh property references first property by number.
 \begin{enumerate}
-\item $\affl$ is a field in the sense that
-$\forall x\?\affl\_ \neg(x = 0) \Rightarrow \speak{$x$ \inv}$.
+\item $\affl$ is a field in the sense that any element which is not zero is
+invertible: $\forall x\?\affl\_ \neg(x = 0) \Rightarrow \speak{$x$ \inv}$. More generally,
+for any number~$n \geq 0$,
+\begin{multline*}
+  \qquad\qquad \forall x_1,\ldots,x_n\?\affl\_
+  \neg(x_1 = 0 \wedge \cdots \wedge x_n = 0) \Longrightarrow \\
+  (\speak{$x_1$ \inv} \vee \cdots \vee \speak{$x_n$ \inv}). \qquad\qquad
+\end{multline*}
 \item $\affl$ is not a reduced ring: $\neg \forall x\?\affl\_ (\bigvee_{n \geq
 0} x^n = 0) \Rightarrow x = 0.$
+\item Any element of $\affl$ which is not invertible is nilpotent.
 \item Any function~$\affl \to \affl$ is given by a unique polynomial
 in~$\affl[T]$.
 \item $\affl$ is \emph{weakly algebraically closed}, in the following sense:
@@ -163,13 +170,19 @@ zero in~$(\affl)^n$. Then there are polynomials~$g_1,\ldots,g_m \in
 \end{enumerate}\end{prop}
 
 \begin{proof}\begin{enumerate}
-\item Let $x\?\affl$ such that~$\neg(x=0)$. We consider the quasicoherence
+\item Let $x\?\affl$ be such that~$\neg(x=0)$. We consider the quasicoherence
 condition for the finitely presented~$\affl$-algebra~$A \defeq \affl/(x)$.
 Since~$\Spec(A) \cong \brak{x=0} = \brak{\bot} = \emptyset$, the condition says
 that the canonical homomorphism
 \[ \affl/(x) \longrightarrow [\emptyset, \affl] \]
 is an isomorphism. Since its codomain is the zero algebra, so is~$\affl/(x)$.
 Therefore~$1 \in (x)$, that is,~$x$ is invertible.
+
+The more general statement follows in the same way, by using the quasicoherence
+condition for~$A \defeq \affl/(x_1,\ldots,x_n)$. This yields~$1 \in
+(x_1,\ldots,x_n)$. Since~$\affl$ is a local ring, one of the~$x_i$ is
+invertible.
+
 \item Assume that~$\affl$ is reduced. Then the set~$\Delta \defeq \{
 \varepsilon \in \affl \,|\, \varepsilon^2 = 0 \}$ is equal to~$\{ 0 \}$.
 By the quasicoherence criterion applied to the finitely
@@ -178,9 +191,17 @@ presented~$\affl$-algebra~$A \defeq \affl[T]/(T^2)$, the canonical map
   [\Delta, \affl] \cong \affl \]
 is an isomorphism. It maps~$[T]$ to zero (the value of~$T$ at~$0 \in \Delta$).
 Thus~$T \in (T^2)$ and therefore~$1 = 0$ in~$\affl$. This is a contradiction.
+
+\item Let~$x \? \affl$ be not invertible. We consider the quasicoherence
+condition for the finitely presented~$\affl$-algebra~$A \defeq \affl[x^{-1}]$.
+Since~$\Spec(A) \cong \brak{\speak{$x$ \inv}} = \emptyset$, it follows
+that~$\affl[x^{-1}] = 0$, similarly to the proof of the first claim. Thus~$x$
+is nilpotent.
+
 \item Immediate by considering the quasicoherence condition for the finitely
 presented~$\affl$-algebra~$A \defeq \affl[T]$ and noticing that~$\Spec(A) \cong
 \affl$.
+
 \item Let~$p \in \affl[T]$ be a monic polynomial of degree at least one. Assume
 that~$p$ doesn't have a zero in~$\affl$. Then the spectrum of~$A \defeq
 \affl[T]/(p)$ is empty. The quasicoherence condition for~$A$ therefore implies
@@ -189,9 +210,11 @@ A basic lemma in commutative algebra (whose standard proof is constructive)
 then implies that with the exception of the constant term in~$p$, all
 coefficients are nilpotent. This contradicts the assumption that~$p$ is monic
 of degree at least one.
+
 \item The polynomial~$f(T) \defeq (T - x_1) \cdots (T - x_n) + 1$
 does \notnot have a zero~$y\?\affl$, since~$\affl$ is weakly algebraically
 closed. This element cannot equal any~$x_i$, since~$f(x_i) = 1$ is not zero.
+
 \item We consider the quasicoherence condition for the finitely
 presented~$\affl$-algebra~$A \defeq \affl[X_1,\ldots,X_n]/(f_1,\ldots,f_m)$.
 Since~$\Spec(A) \cong \{ x \in (\affl)^n \,|\, f_1(x) = \ldots = f_m(x) = 0 \}

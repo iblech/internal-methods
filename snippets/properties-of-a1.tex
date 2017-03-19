@@ -138,11 +138,17 @@
 
 \begin{document}
 
+The ring object~$\affl$ in the big Zariski topos enjoys several special
+properties, some of which are unique in that they're only possible in an
+intuitionistic context. The following proposition compiles a short list of such
+properties. At least one of these, the field property, was already noticed in
+the 1970s by Anders Kock~\cite{kock:univ-proj-geometry}.
+
 \begin{prop}The following properties of~$\affl$, as seen from the internal
 point of view of~$\Zar(S)$, are consequences of~$\affl$ being (a local ring and) synthetically
 quasicoherent:
 % Adjust paragraph below the proof if numbering changes.
-% Proof of third and seventh property references first property by number.
+% Proof of third and eigth property references first property by number.
 \begin{enumerate}
 \item $\affl$ is a field in the sense that any element which is not zero is
 invertible: $\forall x\?\affl\_ \neg(x = 0) \Rightarrow \speak{$x$ \inv}$. More generally,
@@ -155,6 +161,7 @@ for any number~$n \geq 0$,
 \item $\affl$ is not a reduced ring: $\neg \forall x\?\affl\_ (\bigvee_{n \geq
 0} x^n = 0) \Rightarrow x = 0.$
 \item Any element of $\affl$ which is not invertible is nilpotent.
+\item An element of~$\affl$ is nilpotent if and only if it is \notnot zero.
 \item Any function~$\affl \to \affl$ is given by a unique polynomial
 in~$\affl[T]$.
 \item $\affl$ is \emph{weakly algebraically closed}, in the following sense:
@@ -197,6 +204,10 @@ condition for the finitely presented~$\affl$-algebra~$A \defeq \affl[x^{-1}]$.
 Since~$\Spec(A) \cong \brak{\speak{$x$ \inv}} = \emptyset$, it follows
 that~$\affl[x^{-1}] = 0$, similarly to the proof of the first claim. Thus~$x$
 is nilpotent.
+
+\item Follows from the first and third property and the observation that
+nilpotent elements are not invertible (else~$1 = 0$ in contradiction to~$\affl$
+being a local ring).
 
 \item Immediate by considering the quasicoherence condition for the finitely
 presented~$\affl$-algebra~$A \defeq \affl[T]$ and noticing that~$\Spec(A) \cong

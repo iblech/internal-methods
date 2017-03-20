@@ -1,20 +1,18 @@
-\documentclass[10pt,reqno]{amsart}
+\documentclass[10pt,reqno]{amsbook}
+\usepackage{etex}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
-\usepackage{etex}
-\usepackage{amsmath,amsthm,amssymb,stmaryrd,color,graphicx,multirow}
-\usepackage{mathtools}
+\usepackage{etoolbox,chngcntr}
+\usepackage{amsmath,amsthm,amssymb,array,stmaryrd,color,graphicx,mathtools,multirow,setspace}
 \usepackage{soul}\setul{0.3ex}{}
-\usepackage{setspace}
 \usepackage{bussproofs}
 \usepackage{xspace}
 \usepackage{longtable}
 \usepackage{booktabs}
-\usepackage{array}
 \usepackage[protrusion=true,expansion=true]{microtype}
 \usepackage[bookmarksdepth=2,pdfencoding=auto]{hyperref}
-\usepackage[all]{xy}
 
+\usepackage[all]{xy}
 \usepackage{tikz}
 \usetikzlibrary{calc,shapes.callouts,shapes.arrows}
 \newcommand{\hcancel}[5]{%
@@ -33,7 +31,6 @@
 \newtheorem{ex}[defn]{Example}
 
 \theoremstyle{plain}
-
 \newtheorem{prop}[defn]{Proposition}
 \newtheorem{cor}[defn]{Corollary}
 \newtheorem{lemma}[defn]{Lemma}
@@ -150,6 +147,33 @@
 \author{Ingo Blechschmidt}
 \email{iblech@web.de}
 
+\makeatletter
+\counterwithout{section}{chapter}
+\patchcmd{\@thm}{\let\thm@indent\indent}{\let\thm@indent\noindent}{}{}
+\patchcmd{\@thm}{\thm@headfont{\scshape}}{\thm@headfont{\bfseries}}{}{}
+\patchcmd{\@makechapterhead}{\chaptername}{Part}{}{}
+\patchcmd{\@chapter}{\chaptername}{Part}{}{}
+\patchcmd{\@schapter}{\chaptername}{Part}{}{}
+\addto\captionsenglish{\renewcommand\chaptername{Part}}
+\def\l@section{\@tocline{1}{12pt}{1pc}{}{\bfseries}}
+\def\l@chapter{\@tocline{-1}{12pt}{0pt}{}{\bfseries}}
+\renewcommand\thechapter{\Roman{chapter}}
+\newcommand{\nocontentsline}[3]{}
+\newcommand{\tocless}[2]{\bgroup\let\addcontentsline=\nocontentsline#1{#2}\egroup}
+\normalparindent=12pt
+\parindent=\normalparindent
+\renewenvironment{proof}[1][\proofname]{\par
+  \pushQED{\qed}%
+  \normalfont \topsep6\p@\@plus6\p@\relax
+  \trivlist
+  \item[\hskip\labelsep
+        \itshape
+    #1\@addpunct{.}]\ignorespaces
+}{%
+  \popQED\endtrivlist\@endpefalse
+}
+\makeatother
+
 \begin{document}
 
 \begin{abstract}
@@ -177,18 +201,49 @@
 \end{abstract}
 % XXX: update
 
-\maketitle
+\newcommand{\HRule}{\rule{\linewidth}{.6pt}}
 
-\begin{center}Rough draft in progress, missing explanations, references,
-proofs, and a proper copyediting. I am happy about comments of any
-kind; please direct them to \texttt{iblech@web.de}.\end{center}
+\begin{center}
+\thispagestyle{empty}
 
-%\setcounter{tocdepth}{1}
+\vspace*{.06\textheight}
+{\scshape\LARGE University of Augsburg\par}\vspace{1.5cm}
+\textsc{\Large Doctoral Thesis}\\[0.5cm]
+
+\HRule \\[0.4cm]
+{\huge \bfseries Using the internal language of toposes \\ in algebraic geometry\par}\vspace{0.4cm} % Thesis title
+\HRule \\[0.5cm]
+ 
+{\large Ingo Blechschmidt}
+
+\vfill
+
+\vspace{4cm}
+%\large \textit{A thesis submitted in fulfillment of the requirements} \\
+%\textit{in the}\\[0.4cm]
+%baz
+ 
+\vfill
+
+{\large April 2017}\\[4cm] % Date
+%\includegraphics{Logo} % University/department logo - uncomment to place it
+ 
+\vfill
+\end{center}
+
+%\begin{center}Rough draft in progress, missing explanations, references,
+%proofs, and a proper copyediting. I am happy about comments of any
+%kind; please direct them to \texttt{iblech@web.de}.\end{center}
+
+\setcounter{tocdepth}{2}
 \tableofcontents
+
+
+\chapter{Basics}
 
 \section{Introduction}
 
-\subsection*{Internal language of toposes}
+\tocless\subsection*{Internal language of toposes}
 A \emph{topos} is a category which shares certain categorical properties with
 the category of sets; the archetypical example is the category of sets, and
 the most important example for the purposes of these notes is the category of
@@ -233,7 +288,7 @@ appear. We will discuss its practical consequences below (on
 page~\pageref{sect:appreciating-intuitionistic-logic}).
 
 
-\subsection*{Algebraic geometry}
+\tocless\subsection*{Algebraic geometry}
 We apply the internal language of toposes to algebraic geometry as follows. If~$X$ is a
 scheme, the structure sheaf~$\O_X$ is a sheaf of rings, \ie the sets of
 local sections carry ring structures and these ring structures are compatible
@@ -351,7 +406,7 @@ formula~$\varphi^{\Box_\text{ét}}$ means that~$\varphi$ holds in the big étale
 topos.
 
 
-\subsection*{Limitations} The internal language is \emph{local}, in the sense
+\tocless\subsection*{Limitations} The internal language is \emph{local}, in the sense
 that if~$X = \bigcup_i U_i$ is an open covering and an internal statement
 holds in the sheaf toposes~$\Sh(U_i)$, it holds in~$\Sh(X)$ as well. On the one
 hand, this property is very useful. But on the other hand, it gives an inherent
@@ -369,7 +424,7 @@ has a weak version of the so-called disjunction property of mathematical
 logic (Section~\ref{sect:compactness}).
 
 
-\subsection*{Introductory literature} These notes are intended
+\tocless\subsection*{Introductory literature} These notes are intended
 to be self-contained, requiring only basic knowledge of scheme theory. In
 particular, we assume no prior familiarity with topos theory or formal logic.
 But if the interested reader is so inclined, she will find a gentle
@@ -385,7 +440,7 @@ introduction to the topic, culminating in an internal proof of the Serre--Swan
 theorem (with just one external ingredient needed).
 
 
-\subsection*{Related work} The internal language of toposes was applied to algebraic geometry before. For
+\tocless\subsection*{Related work} The internal language of toposes was applied to algebraic geometry before. For
 instance, Wraith used it to construct (and verify the universal property
 of) the little étale topos of a scheme by internally developing the theory of
 strict henselization~\cite{wraith:generic-galois-theory}. However, to the best
@@ -475,7 +530,7 @@ schemes, there is as yet no direct technical connection.
 % formulate or think about.
 
 
-\subsection*{Notational convention} Occasionally, when quantifying, we use
+\tocless\subsection*{Notational convention} Occasionally, when quantifying, we use
 colons instead of element signs not only in internal statements, but also in
 external ones; particularly if we want to stress that a discussion takes place
 in an intuitionistic context.
@@ -1025,6 +1080,8 @@ done, one could extend our approach to understand morphisms of schemes from an
 internal point of view -- a morphism~$Y \to X$ would internally look like a
 morphism~$Y \to \pt$. See Section~\ref{sect:relative-spectrum} for details.\end{rem}
 
+
+\chapter{The little Zariski topos}
 
 \section{Sheaves of rings}
 
@@ -6068,7 +6125,8 @@ previous proposition.
 \end{proof}
 
 
-\section{Outlook: the big Zariski topos}
+\chapter{The big Zariski topos}
+
 \label{sect:big-zariski}
 
 The preceding sections demonstrated that working in the internal universe of
@@ -6173,7 +6231,7 @@ synthetic differential geometry, where any map~$\RR \to \RR$ is smooth (in an
 appropriate sense).
 
 
-\subsection{Internal descriptions of basic constructions of relative scheme theory}
+\section{Internal descriptions of basic constructions of relative scheme theory}
 
 With~$\affl$ at hand, we can perform many of the usual constructions of
 (relative) scheme theory internally.
@@ -6282,7 +6340,7 @@ the internal language of~$\Zar(S)$ as saying that the canonical map
 into the ``double dual'' is bijective.
 
 
-\subsection{Beyond the Zariski topology}
+\section{Beyond the Zariski topology}
 
 The Zariski topology is of course not the only interesting topology
 on~$\Sch/S$. For any finer topology~$\tau$, such as the étale, smooth, or fppf

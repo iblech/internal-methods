@@ -474,4 +474,58 @@ Zermelo--Fraenkel set theory that no nontrivial injective abelian groups
 exist~\cite{blass:inj-proj-axc}.
 \end{rem}
 
+\begin{lemma}Let~$X$ be a ringed space (or ringed locale). Let~$0 \to \E'
+\xra{\alpha} \E \xra{\beta} \E'' \to 0$ be a short exact sequence
+of~$\O_X$-modules. If~$\E'$ is flabby, then the induced sequence
+\[ 0 \longrightarrow \Gamma(X,\E')
+  \longrightarrow \Gamma(X,\E)
+  \longrightarrow \Gamma(X,\E'') \longrightarrow 0 \]
+is exact.
+\end{lemma}
+
+\begin{proof}Since taking global sections is left exact (being a right adjoint
+functor), it suffices to verify that the map~$\Gamma(X,\E) \to \Gamma(X,\E'')$
+is surjective. We'll do this by showing, in the internal language of~$\Sh(X)$,
+that the sheaf of preimages of a given global section~$s \in \Gamma(X,\E'')$ is
+flabby and therefore has a global section.
+
+In the internal language, this sheaf has the description~$F \defeq \{ u \? \E
+\,|\, \beta(u) = s \}$. To verify the internal condition of
+Proposition~\ref{prop:internal-char-flabbiness}, let a subsingleton~$K \subseteq
+F$ be given. Since~$\beta$ is surjective, there is a preimage~$u_0 \in F$.
+The translated set~$K - u_0 \subseteq \E$ is still a subsingleton, and its
+preimage under~$\alpha$ is as well. By the assumption on~$\E'$, there is an
+element~$v \? \E$ such that~$v \in \alpha^{-1}[K - u_0]$ if~$K - u_0$ is
+inhabited. We'll now verify that~$u_0 + \alpha(v) \in K$ if~$K$ is inhabited.
+
+So assume that~$K$ is inhabited. Then~$K - u_0$ is as well. Since the image of
+its unique element under~$\beta$ is zero and the given sequence is exact, the
+set~$\alpha^{-1}[K - u_0]$ is inhabited as well. Therefore~$v \in \alpha^{-1}[K
+- u_0]$. Thus~$u_0 + \alpha(v) \in K$.
+\end{proof}
+
+\begin{lemma}Let~$X$ be a ringed space (or ringed locale). Let~$0 \to \E'
+\xra{\alpha} \E \xra{\beta} \E'' \to 0$ be a short exact sequence
+of~$\O_X$-modules. If~$\E'$ and~$\E''$ are flabby, then~$\E$ is flabby as well.
+\end{lemma}
+
+\begin{proof}We verify the condition of
+Proposition~\ref{prop:internal-char-flabbiness} in the internal language
+of~$\Sh(X)$.
+
+Let~$K \subseteq \E$ be a subsingleton. Then its image~$\beta[K] \subseteq \E''$
+is a subsingleton as well. Since partial elements of~$\E''$ can be refined to
+honest elements, there is an element~$s \? \E''$ such that~$\beta[K] \subseteq
+\{ s \}$.
+
+Since~$\beta$ is surjective, there is an element~$t_0 \? \E$ such
+that~$\beta(t_0) = s$.
+
+The preimage~$\alpha^{-1}[K - t_0] \subseteq \E'$ is a subsingleton. This
+partial element can be refined to an honest element, that is there exists an
+element~$u \? \E'$ such that~$\alpha^{-1}[K - t_0] \subseteq \{u\}$.
+
+The partial element~$K$ can thereby refined to the honest element~$t \defeq t_0 + \alpha(u)$.
+\end{proof}
+
 \end{document}

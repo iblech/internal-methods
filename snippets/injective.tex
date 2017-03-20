@@ -208,7 +208,7 @@ The implication~``1~$\Rightarrow$~2'' is trivial. The converse direction uses a
 typical argument with Zorn's lemma, considering a maximal extension. The
 equivalence~``$2~\Leftrightarrow~3$'' is routine, using the Kripke--Joyal
 semantics to interpret the internal statement. Condition~4 is a straightforward
-reformulation of condition~3.
+reformulation of Condition~3.
 \end{proof}
 
 Condition~2 of the proposition is, unlike the standard definition of flabbiness,
@@ -216,12 +216,12 @@ manifestly local. Also its equivalence with Condition~3 and Condition~4 is
 intuitionistically valid; therefore one might consider to adopt Condition~2 as
 the definition of flabbiness.
 
-\begin{rem}The object~$\P_{\leq 1}(\F)$ of subsingletons of $\F$ can be
+The object~$\P_{\leq 1}(\F)$ of subsingletons of $\F$ can be
 interpreted as the object of \emph{partially-defined
 elements} of $\F$. In this view, the empty subset is the maximally undefined
 element and a singleton is a maximally defined element. The proposition shows
 that~$\F$ is flabby if and only if any such partially-defined element can be
-refined to an honest element of~$\F$.\end{rem}
+refined to an honest element of~$\F$.
 
 
 \subsection{Injective sheaves}
@@ -326,7 +326,7 @@ language of~$\Sh(X)$.
 
 Let~$K \subseteq \G$ be a subsingleton. We consider the injectivity diagram
 \[ \xymatrix{
-  m[\E] \cup \F' \ar[r]\ar[d] & \F \ar@{-->}[ld] \\
+  m[\E] \cup \F' \ar@{^{(}->}[r]\ar[d] & \F \ar@{-->}[ld] \\
   \I,
 } \]
 where~$\F' \defeq \{ s \? \F \,|\, \text{$K$ is inhabited} \}$ and the solid
@@ -355,10 +355,13 @@ It suffices to change~``$m[\E] \cup \F'$'' to~``$m[\E] + \F''$'', where~$\F''
 \defeq \{ s \? \F \,|\, \text{$s = 0$ or $K$ is inhabited} \}$.
 \end{proof}
 
+% XXX: Remark that proof requires AxC and that it's a unique feature of sheaf toposes.
+% Counterexample?
+
 
 \subsection{Internal proofs of common lemmas}
 
-\begin{lemma}A sheaf of set or a sheaf of modules is injective if and only if it
+\begin{lemma}A sheaf of sets or a sheaf of modules is injective if and only if it
 is locally injective.\end{lemma}
 
 \begin{proof}By Theorem~\ref{thm:char-injectivity} respectively
@@ -441,8 +444,8 @@ Instead, it is the sheaf with
     \text{$V \subseteq U$ open, $s \in \F(V)$} \}. \]
 It's not possible to describe the Godement construction in the internal language
 of~$\Sh(X)$, since in the Godement construction the underlying set of~$X$
-enters. But the sheaf topos of~$X$ doesn't remember this set. For instance, let~$X$
-be an inhabited indiscrete topological space. Then~$\Sh(X)$ is equivalent
+enters. But the sheaf topos of~$X$ doesn't remember this set. For instance, if~$X$
+is an inhabited indiscrete topological spac, then~$\Sh(X)$ is equivalent
 to~$\Set$.
 \end{rem}
 

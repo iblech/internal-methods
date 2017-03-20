@@ -63,6 +63,7 @@
 \newcommand{\J}{\mathcal{J}}
 \renewcommand{\S}{\mathcal{S}}
 \renewcommand{\U}{\mathcal{U}}
+\newcommand{\V}{\mathcal{V}}
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\PP}{\mathbb{P}}
 \newcommand{\RR}{\mathbb{R}}
@@ -111,6 +112,7 @@
 \DeclareMathOperator{\supp}{supp}
 \newcommand{\Ass}{\mathrm{Ass}}
 \newcommand{\Sym}{\mathrm{Sym}}
+\newcommand{\Gr}{\mathrm{Gr}}
 \newcommand{\Open}{\T}
 \newcommand{\?}{\,{:}\,}
 \renewcommand{\_}{\mathpunct{.}\,}
@@ -7096,6 +7098,142 @@ representability.
 \end{rem}
 
 
+\section{Case study: Grassmannian}
+
+Let~$\V$ be a finite locally free~$\O_S$-module.
+We want to illustrate the synthetic approach by verifying using the internal
+language of~$\Zar(S)$ the basic fact that the Grassmannian~$\Gr(\V,r)$ of
+rank-$r$ locally free quotients of~$\V$, defined as a certain functor of points,
+is representable by an~$S$-scheme of finite presentation.
+
+\begin{defn}The \emph{Grassmannian}~$\Gr(\V,r)$ is the functor which associates
+to an~$S$-scheme~$f : T \to S$ the set
+\[ \Gr(\V,r)(T) \defeq \{
+  \text{$U \subseteq f^*\V$ sub-$\O_T$-module} \,|\,
+  \text{$(f^*\V)/U$ is locally free of rank~$r$} \}. \]
+\end{defn}
+
+\begin{defn}The \emph{synthetic Grassmannian} of rank-$r$ quotients of a
+module~$V$ is the set
+\[ \Gr(V,r) \defeq \{ \text{$U \subseteq V$ submodule} \,|\,
+  \text{$V/U$ is free of rank~$r$} \}. \]
+\end{defn}
+
+\begin{prop}The synthetic Grassmannian of~$\V$, as constructed by the internal
+language of~$\Zar(S)$ where~$\V$ looks like an ordinary free module, coincides
+with the functorially defined Grassmannian.\end{prop}
+
+\begin{proof}Immediate from
+Definition~\ref{defn:interpretation-internal-constructions} and
+Proposition~\ref{prop:locally-free-big-zariski}.
+\end{proof}
+
+Having established that the internally constructed synthetic Grassmannian
+actually describes the external Grassmannian which we're interested in, we can
+switch to a fully internal perspective. We'll reflect this switch notationally
+by referring to the~$\affl$-module~$V \defeq \V^\Zar$ instead of~$\V$.
+
+We define for any free submodule~$W \subseteq V$ of rank~$r$ the subset
+\[ G_W \defeq \{ U \in \Gr(V,r) \,|\, \text{$W \to V \to V/U$ is bijective} \}. \]
+This sets admits a more concrete description, since it is in canonical bijection
+to the set
+\[ G_W' \defeq \{ \pi : V \to W \,|\, \pi \circ \iota = \id \} \]
+of all splittings of the inclusion~$\iota : W \hookrightarrow V$: An element~$U
+\in G_W$ corresponds to the splitting~$V \twoheadrightarrow V/U
+\xrightarrow{({\cong})^{-1}} W$. Conversely, a splitting~$\pi$ corresponds to~$U
+\defeq \ker(\pi) \in G_W$.
+
+\begin{prop}The union of the subsets~$G_W$ is~$\Gr(V,r)$.\end{prop}
+
+\begin{proof}Let~$U \in \Gr(V,r)$. Then there exists a
+basis~$([v_1],\ldots,[v_r])$ of~$V/U$. The family~$(v_1,\ldots,v_r)$ is
+linearly independent in~$V$, therefore the submodule~$W \defeq
+\operatorname{span}(v_1,\ldots,v_r) \subseteq V$ is free of rank~$r$. The
+canonical linear map~$W \hookrightarrow V \twoheadrightarrow V/U$ maps
+the basis~$(v_i)_i$ to the basis~$([v_i])_i$ and is therefore bijective. Thus~$U
+\in G_W$.\end{proof}
+
+\begin{prop}The sets~$G_W$ are (quasicompact-)open subsets of~$\Gr(V,r)$.
+\end{prop}
+
+\begin{proof}Let~$U \in \Gr(V,r)$. Then~$U \in G_W$ if and only if
+the canonical linear map~$W \hookrightarrow V \twoheadrightarrow V/U$
+is bijective. Since~$W$ and~$V/U$ are both free modules of rank~$r$, this map is
+given by an~$(r \times r)$-matrix~$M$ over~$\affl$; therefore it's bijective if
+and only if the determinant of~$M$ is invertible.
+
+Thus we've found a number which is invertible if and only if~$U \in G_W$. By
+Corollary~\ref{cor:sufficient-criterion-open-subfunctor}, the truth value of~``$U
+\in G_W$'' is open.\end{proof}
+
+\begin{prop}The sets $G_W$ are affine. Moreover, the algebras which the~$G_W$ are
+spectra of are finitely presented.\end{prop}
+
+\begin{proof}The set of all linear maps~$V \to W$ is the spectrum of
+the~$\affl$-algebra~$A \defeq \Sym(\Hom_\affl(V,W)^\vee)$, since
+\begin{align*}
+  \Spec(A) &=
+  \Hom_{\mathrm{Alg}(\affl)}(\Sym(\Hom_{\mathrm{Mod}(\affl)}(V,W)^\vee), \affl) \\
+  &\cong \Hom_{\mathrm{Mod}(\affl)}(\Hom_{\mathrm{Mod}(\affl)}(V,W)^\vee, \affl) \\
+  &=\Hom_{\mathrm{Mod}(\affl)}(V,W)^{\vee\vee} \\
+  &\cong \Hom_{\mathrm{Mod}(\affl)}(V,W).
+\end{align*}
+In the last step the assumption that not only~$W$, but also~$V$ is a free module
+of finite rank enters. (This is the first time in this development that we need
+this assumption.)
+
+The set~$G_W'$ is a closed subset of this spectrum, namely the locus where the
+generic linear map~$V \to W$ is a splitting of the inclusion~$\iota : W
+\hookrightarrow V$. If we choose bases of~$V$ and~$W$,
+whereby~$\Sym(\Hom_\affl(V,W)^\vee)$ is isomorphic
+to~$\affl[M_{11},\ldots,M_{rn}]$, we can be more explicit: The set~$G_W'$ is
+isomorphic to
+\[ \Spec(k[M_{11},\ldots,M_{rn}]/(MN-I)), \]
+where~$I$ is the~$(r \times r)$ identity matrix, $M$ is the generic matrix~$M =
+(M_{ij})_{ij}$, and~$N$ is the matrix of~$\iota$ with respect to the chosen
+bases. The notation~``$(MN-I)$'' denotes the ideal generated by the entries
+of~$MN-I$.
+\end{proof}
+
+\begin{cor}The Grassmannian~$\Gr(V,r)$ is a finitely presented scheme.\end{cor}
+
+\begin{proof}We need to verify that~$\Gr(V,r)$ admits a finite covering by
+spectra of finitely presented~$\affl$-algebras. We already know that~$\Gr(V,r)$
+can be covered by the open subsets~$G_W$ and that these sets are spectra of
+finitely presented algebras. Therefore it remains to prove that finitely many of
+these subsets suffice to cover~$\Gr(V,r)$.
+
+In fact, if we choose an isomorphism~$V \cong (\affl)^n$, we see
+that~$\binom{n}{r}$ of these subsets suffice: namely those where~$W$ is one of
+the standard submodules of~$(\affl)^n$ (generated by the standard basis
+vectors). For if~$U \in \Gr((\affl)^n,r)$, the surjection~$V \to V/U$ maps
+the basis of at least one of these standard submodules to a basis and is
+therefore bijective. This is because from any surjective~$(r \times n)$-matrix
+over a local ring one can select~$r$ columns which form an linearly independent
+family.
+\end{proof}
+
+\begin{prop}Let~$U \in \Gr(V,r)$. Then the tangent space at~$U$ is given by
+$T_U \Gr(V,r) \cong \Hom_{\affl}(U, V/U)$.\end{prop}
+
+%\begin{proof}Die Menge der Tangentialvektoren an~$U$ kann kanonisch mit den
+%Abbildungen~$\gamma : \Delta \to \Gr(V,r)$ mit~$\gamma(0) = U$ identifiziert
+%werden. Dabei ist~$\Delta \defeq \{ \varepsilon \in k \,|\, \varepsilon^2 = 0 \}$.
+%Eine solche Abbildung liftet stets zu einer Abbildung von~$\Delta$ in die Menge
+%der linear unabhängigen Familien der Länge~$r$ in~$V$. Der Rest sei als
+%Übungsaufgabe überlassen. Willkommen in der wunderbaren Welt synthetischer
+%Geometrie.
+%\end{proof}
+% XXX
+
+%\begin{rem}Wiederholt man genau dieselben Argumente in einem anderen Topos --
+%einem, der für Differentialgeometrie angepasst ist -- erhält man mehr oder
+%weniger die Darstellbarkeit der Grassmannschen als Mannigfaltigkeit. Das
+%einzige, was fehlt, ist ein Nachweis der Glattheit.
+%\end{rem}
+% XXX
+
+
 \section{Beyond the Zariski topology}
 
 The Zariski topology is of course not the only interesting topology
@@ -7225,7 +7363,6 @@ operator~$\Box$:
 % (http://www.mscand.dk/article/view/11736)
 
 \begin{itemize}
-\item basics: $\AA^1$ is a local ring and even a field, never reduced
 \item synthetic topology?
 \end{itemize}
 

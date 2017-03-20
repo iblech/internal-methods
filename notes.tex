@@ -162,7 +162,7 @@
 \def\l@chapter{\@tocline{-1}{12pt}{0pt}{}{\bfseries}}
 \renewcommand\thechapter{\Roman{chapter}}
 \newcommand{\nocontentsline}[3]{}
-\newcommand{\tocless}[2]{\bgroup\let\addcontentsline=\nocontentsline#1{#2}\egroup}
+\newcommand{\tocless}[1]{\let\addcontentsline=\nocontentsline}
 \normalparindent=12pt
 \parindent=\normalparindent
 \renewenvironment{proof}[1][\proofname]{\par
@@ -246,7 +246,10 @@
 
 \section{Introduction}
 
-\tocless\subsection*{Internal language of toposes}
+{\tocless
+
+\subsection*{Internal language of toposes}
+
 A \emph{topos} is a category which shares certain categorical properties with
 the category of sets; the archetypical example is the category of sets, and
 the most important example for the purposes of these notes is the category of
@@ -291,7 +294,7 @@ appear. We will discuss its practical consequences below (on
 page~\pageref{sect:appreciating-intuitionistic-logic}).
 
 
-\tocless\subsection*{Algebraic geometry}
+\subsection*{Algebraic geometry}
 We apply the internal language of toposes to algebraic geometry as follows. If~$X$ is a
 scheme, the structure sheaf~$\O_X$ is a sheaf of rings, \ie the sets of
 local sections carry ring structures and these ring structures are compatible
@@ -409,7 +412,7 @@ formula~$\varphi^{\Box_\text{ét}}$ means that~$\varphi$ holds in the big étale
 topos.
 
 
-\tocless\subsection*{Limitations} The internal language is \emph{local}, in the sense
+\subsection*{Limitations} The internal language is \emph{local}, in the sense
 that if~$X = \bigcup_i U_i$ is an open covering and an internal statement
 holds in the sheaf toposes~$\Sh(U_i)$, it holds in~$\Sh(X)$ as well. On the one
 hand, this property is very useful. But on the other hand, it gives an inherent
@@ -427,7 +430,7 @@ has a weak version of the so-called disjunction property of mathematical
 logic (Section~\ref{sect:compactness}).
 
 
-\tocless\subsection*{Introductory literature} These notes are intended
+\subsection*{Introductory literature} These notes are intended
 to be self-contained, requiring only basic knowledge of scheme theory. In
 particular, we assume no prior familiarity with topos theory or formal logic.
 But if the interested reader is so inclined, she will find a gentle
@@ -443,7 +446,7 @@ introduction to the topic, culminating in an internal proof of the Serre--Swan
 theorem (with just one external ingredient needed).
 
 
-\tocless\subsection*{Related work} The internal language of toposes was applied to algebraic geometry before. For
+\subsection*{Related work} The internal language of toposes was applied to algebraic geometry before. For
 instance, Wraith used it to construct (and verify the universal property
 of) the little étale topos of a scheme by internally developing the theory of
 strict henselization~\cite{wraith:generic-galois-theory}. However, to the best
@@ -533,10 +536,12 @@ schemes, there is as yet no direct technical connection.
 % formulate or think about.
 
 
-\tocless\subsection*{Notational convention} Occasionally, when quantifying, we use
+\subsection*{Notational convention} Occasionally, when quantifying, we use
 colons instead of element signs not only in internal statements, but also in
 external ones; particularly if we want to stress that a discussion takes place
 in an intuitionistic context.
+
+}
 
 
 %Of particular importance is the
@@ -6519,7 +6524,6 @@ The partial element~$K$ can thereby refined to the honest element~$t \defeq t_0 
 % XXX: Ext, Tor
 
 
-% \begin{document}
 \chapter{The big Zariski topos}
 
 \label{sect:big-zariski}
@@ -6635,7 +6639,9 @@ solved in several different manners, yielding toposes which are not equivalent,
 and actually differ in some important aspects, but otherwise enjoy very similar
 properties.
 
-\tocless\subsection*{Naive approach}
+{\tocless
+
+\subsection*{Naive approach}
 Some authors construct the big Zariski topos of~$S$ as the topos of
 sheaves over the site~$\Sch/S$ of all schemes over~$S$. This option is quite
 attractive since the Yoneda functor~$\Sch/S \to \Sh(\Sch/S)$, which sends
@@ -6651,7 +6657,7 @@ to~$\Sh(\Sch/S)$, as long as we keep in mind that~$\Sh(\Sch/S)$ might
 not contain a subobject classifier and might not be cartesian closed. From the
 internal point of view, powersets and function sets might therefore not exist.
 
-\tocless\subsection*{Using Grothendieck universes}
+\subsection*{Using Grothendieck universes}
 We could also assume the existence of a Grothendieck universe~$\U$
 containing~$S$ and construct~$\Zar(S)$ as the topos of sheaves over the
 small site~$\Sch_\U/S$, the category of~$S$-schemes contained in~$U$.
@@ -6663,7 +6669,7 @@ are affine (as absolute schemes), and obtain an equivalent topos.
 In this case, the Yoneda functor~$\Sch/S \to \Zar(S)$ might not be faithful,
 but the restricted Yoneda functor~$\Sch_\U/S \to \Zar(S)$ will.
 
-\tocless\subsection*{Approach of the Stacks Project}
+\subsection*{Approach of the Stacks Project}
 The Stacks Project proposes a more nuanced approach, namely expanding a given
 set~$M_0$ of schemes containing~$S$ to a superset~$M$ which is closed (up to
 isomorphism) under several constructions~\cite[Tag~000H]{stacks-project}: fiber
@@ -6678,7 +6684,7 @@ assume the existence of a Grothendieck universe; the \emph{partial
 universe}~$M$ can be constructed entirely within ZFC set theory using
 transfinite recursion.
 
-\tocless\subsection*{Employing parsimonious sites}
+\subsection*{Employing parsimonious sites}
 From a topos-theoretical point of view, it's natural to settle for an even
 more parsimonious site: the site~$(\Sch/S)_\lfp$ consisting of the~$S$-schemes
 which are locally of finite presentation over~$S$, or equivalently the
@@ -6725,6 +6731,8 @@ the site used to construct a Grothendieck topos is not at all uniquely
 determined by the resulting topos.
 
 We will indicate the few places where the choice of site makes a difference.
+
+}
 
 
 \section{Sheaves of modules}

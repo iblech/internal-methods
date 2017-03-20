@@ -162,16 +162,17 @@ extension and then verifying that the subset this maximal extension is defined
 on is all of~$X$.
 
 Since flabbiness is a local property, it's not unreasonable to expect that
-flabbiness could be characterized in the internal language. The following
+flabbiness can be characterized in the internal language. The following
 proposition shows that this is indeed the case.
 
 \begin{prop}\label{prop:internal-char-flabbiness}
-Let~$\F$ be a sheaf of sets on a topological space (or locale~$X$).
+Let~$\F$ be a sheaf of sets on a topological space~$X$ (or a locale).
 Then the following statements are equivalent:
 \begin{enumerate}
 \item $\F$ is flabby.
 
-\item For any open subset $U \subseteq X$ and any section $s \in \F(U)$ there is
+\item ``Any section of~$\F$ can be locally extended'':
+For any open subset $U \subseteq X$ and any section $s \in \F(U)$ there is
 an open covering $X = \bigcup_i V_i$ such that, for each $i$, there is an
 extension of $s$ to $U \cup V_i$ (that is, a section $s' \in \F(U \cup V_i)$
 such that $s'|_U = s$).
@@ -204,9 +205,9 @@ where $\P_{\leq 1}(\F)$ is the object of subsingletons of $\F$.
 \end{prop}
 
 \begin{proof}
-The implication~``1~$\Rightarrow$~2'' is trivial. The converse direction uses a
+The implication~``(1)~$\Rightarrow$~(2)'' is trivial. The converse direction uses a
 typical argument with Zorn's lemma, considering a maximal extension. The
-equivalence~``$2~\Leftrightarrow~3$'' is routine, using the Kripke--Joyal
+equivalence~``(2)~$\Leftrightarrow$~(3)'' is routine, using the Kripke--Joyal
 semantics to interpret the internal statement. Condition~4 is a straightforward
 reformulation of Condition~3.
 \end{proof}
@@ -227,7 +228,7 @@ refined to an honest element of~$\F$.
 \subsection{Injective sheaves}
 
 Recall that an object~$I$ of a category~$\C$ is \emph{injective} if and only if,
-for any monomorphism~$X \to Y$ in~$\C$ and any morphism~$I \to X$, there
+for any monomorphism~$X \to Y$ in~$\C$ and any morphism~$X \to I$, there
 is a lifting such that the diagram
 \[ \xymatrix{
   X \ar@{^{(}->}[r]\ar[d] & Y \ar@{-->}[dl] \\
@@ -235,22 +236,22 @@ is a lifting such that the diagram
 } \]
 commutes. Equivalently, an object~$I$ is injective if and only if the Hom
 functor~$\Hom_\C(\placeholder, I) : \C^\op \to \Set$ maps monomorphisms in~$\C$ to
-surjective maps. This general definition is often specialized to one these cases:
+surjective maps. This general definition is often specialized to one of these cases:
 to the category of modules over a ring, to the category of set-valued sheaves
 on a topological space, and to the category of sheaves of~$\O_X$-modules on a
 ringed space~$(X,\O_X)$.
 
 The definition is seldomly applied in the category of sets, since in a classical
 context it's easy to show that a set is injective if and only if it's
-inhabited, thereby completely settling the question of which objects are
+inhabited, thereby completely settling the question which objects are
 injective in a trivial manner.
 
 The question is more interesting in an intuitionistic setting, since
 intuitionistically one cannot prove that inhabited sets are
 injective~\cite{aczel-et-al:injective}; but one can still verify that any set embeds
-into an injective set. (The powerset~$\P(X)$ and even the smaller
+into an injective set: The powerset~$\P(X)$ and even the smaller
 set~$\P_{\leq1}(X)$ of subsingletons of a given set~$X$ are injective. We verify
-this in the proof of Lemma~\ref{lemma:enough-flabby}.)
+this in the proof of Lemma~\ref{lemma:enough-flabby}.
 
 For a cartesian closed category~$\C$, there is also the notion of an
 \emph{internally injective} object. This is an object~$I$ such that the
@@ -274,8 +275,9 @@ as an object of $\E/A$.
 \item For any morphism $p : A \to 1$ in $\E$, the object $p^*I$ has property~(2)
 as an object of $\E/A$.
 \item From the point of view of the internal language of~$\E$, the object~$I$
-is injective.\footnote{We have only introduced the internal language for sheaf
-toposes. The general definition is in~\cite[Section~XXX]{shulman:stack}.}
+is injective.\footnote{In Section~\ref{sect:internal-language}, we have only
+introduced the internal language for sheaf toposes. The general definition is
+in~\cite[Section~7]{shulman:stack}.}
 \end{enumerate}
 \end{prop}
 
@@ -365,7 +367,7 @@ It suffices to change~``$m[\E] \cup \F'$'' to~``$m[\E] + \F''$'', where~$\F''
 is locally injective.\end{lemma}
 
 \begin{proof}By Theorem~\ref{thm:char-injectivity} respectively
-Theorem~\ref{thm:char-injectivity-modules}, Injectivity can be characterized in the
+Theorem~\ref{thm:char-injectivity-modules}, injectivity can be characterized in the
 internal language. Any such property is local.\end{proof}
 
 \begin{lemma}Let~$X$ be a topological space (or a locale).
@@ -389,17 +391,16 @@ Thus let a subsingleton~$K \subseteq [F,I]$ be given. We consider the
 injectivity diagram
 \[ \xymatrix{
   F' \ar[r]\ar[d] & F \ar@{-->}[ld] \\
-  I,
+  I
 } \]
-where~$F' \defeq \{ s \? F \,|\, \text{$K$ is inhabited} \} \subseteq F$ and the
+where~$F'$ is the subset~$\{ s \? F \,|\, \text{$K$ is inhabited} \} \subseteq F$ and the
 solid vertical map sends~$s \in F'$ to~$f(s)$, where~$f$ is an arbitrary element
 of~$K$. This association is well-defined. Since~$I$ is injective, a dotted lift
 as indicated exists. If~$K$ is inhabited, this lift is an element of~$K$.
 
-The same kind of proof works for the case of sheaves of modules, relying on
-Theorem~\ref{thm:char-injectivity-modules} and substituting the definition
-of~$F'$ by~``$F' \defeq \{ s \? F \,|\, \text{$s = 0$ or $K$ is inhabited}
-\}$''.
+The same kind of argument applies to the case of sheaves of modules, relying on
+Theorem~\ref{thm:char-injectivity-modules} and defining~$F'$ as the
+submodule~``$\{ s \? F \,|\, \text{$s = 0$ or $K$ is inhabited} \}$''.
 \end{proof}
 
 \begin{cor}Injective sheaves of sets and injective sheaves of modules are
@@ -410,7 +411,7 @@ flabby.\end{cor}
 
 \begin{lemma}\label{lemma:enough-flabby}
 Let~$X$ be a topological space (or a locale). Any sheaf of sets
-over~$X$ can be embedded into a injective (therefore flabby) sheaf of sets.
+over~$X$ can be embedded into an injective (therefore flabby) sheaf of sets.
 \end{lemma}
 
 \begin{proof}By Proposition~\ref{prop:internal-char-flabbiness}, it suffices to
@@ -438,7 +439,7 @@ the sheaf of not necessarily continuous sections of the étale space of~$\F$:
 \[ U \subseteq X \quad\longmapsto\quad
   \prod_{x \in U} \F_x. \]
 The sheaf~$\P_{\leq1}(\F)$ does not coincide with this construction.
-Instead, it is the sheaf with
+Instead by Definition~\ref{defn:interpretation-internal-constructions}, it is the sheaf with
 \[ U \subseteq X \quad\longmapsto\quad
   \{ \langle V, s \rangle \,|\,
     \text{$V \subseteq U$ open, $s \in \F(V)$} \}. \]

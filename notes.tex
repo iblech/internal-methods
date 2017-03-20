@@ -6622,7 +6622,7 @@ synthetic differential geometry, where any map~$\RR \to \RR$ is smooth (in an
 appropriate sense).
 
 
-\section{Internal descriptions of basic constructions of relative scheme theory}
+\section{Basic constructions of relative scheme theory}
 
 With~$\affl$ at hand, we can perform many of the usual constructions of
 (relative) scheme theory internally.
@@ -6689,46 +6689,118 @@ locally trivial) tangent bundle fits nicely with the intuition of tangent
 vectors as infinitesimal curves, and in fact is precisely the definition of the
 tangent bundle in synthetic differential geometry~\cite[Def.~7.1]{kock:sdg}.
 
-\subsubsection*{Relative spectrum}
-Let~$\E$ be an~$\affl$-algebra. Then~$[\E,\affl]_\affl$, \ie internally the set
-of~$\affl$-algebra homomorphisms from~$\E$ to~$\affl$, can be pictured as ``the
-relative spectrum of~$\E$'', even though of course this might fail to be
-locally affine without further assumptions. For
-instance, there are isomorphisms~$[\affl[x_1,\ldots,x_n],\affl]_\affl \to
-(\affl)^n$ and~$[\affl \times \affl,\affl]_\affl \to \ul{S \amalg S}$.
-In the special case that~$\E$ is induced by a quasicoherent algebra on~$S$, the
-object~$[\E,\affl]_\affl$ is indeed the functor of points of the relative
-spectrum of the quasicoherent algebra.
 
-\begin{prop}Let~$S$ be a scheme. Let~$\A$ be a quasicoherent~$\O_S$-algebra.
-Let~$\E \in \Zar(S)$ be the~$\affl$-algebra given by~$\E(T \xra{\mu} S) \defeq
-\Gamma(T, \mu^*\A)$. The functor~$[\E,\affl]_\affl$ is the
-functor of points of the~$S$-scheme~$\RelSpec{S}{\A}$.
+% \begin{document}
+
+\subsection{Relative spectrum}
+
+\begin{defn}The \emph{synthetic spectrum} of an~$R$-algebra~$A$ is
+\[ \Spec(A) \defeq [A, R]_{\mathrm{Alg}(R)}, \]
+the set of~$R$-algebra homomorphisms from~$A$ to~$R$.\end{defn}
+
+\begin{ex}The synthetic spectrum of~$R$ is the one-element set.
+More generally, the synthetic spectrum of the algebra~$R[X_1,\ldots,X_n]/(f_1,\ldots,f_m)$
+is the solution set~$\{ x \? R^n \,|\, f_1(x) = \cdots = f_n(x) = 0 \}$.
+\end{ex}
+
+\begin{ex}The synthetic spectrum of~$R/(f)$ is~$\brak{f = 0}$, the truth value
+of the formula~``$f = 0$'', the subsingleton set~$\{ \star \,|\, f = 0 \}$.
+If classical logic is available, then this set contains~$\star$ or is empty,
+depending on whether~$f$ is zero or not. Similarly, the synthetic spectrum
+of~$R[f^{-1}]$ is~$\brak{\speak{$f$ \inv}}$.\end{ex}
+
+\begin{prop}\label{prop:relative-spectrum-big-zariski}
+Let~$\A_0$ be an~$\O_S$-algebra (not necessarily quasicoherent).
+Then the synthetic spectrum of the~$\affl$-algebra~$(\A_0)^\Zar$, as constructed
+in the internal language of~$\Zar(S)$, is the functor of points of~$\RelSpek_S \A_0$.
 \end{prop}
-\begin{proof}
 
+\begin{proof}The Hom set occuring in the definition of the synthetic spectrum is
+interpreted by the internal Hom when using the internal language. For
+any~$S$-scheme~$f : T \to S$ contained in the site used to define~$\Zar(S)$, we
+have the following chain of isomorphisms.
+\begin{align*}
+  (\Spec(A))(T) &= [(\A_0)^\Zar, \affl]_{\mathrm{Alg}(\affl)}(T) \\
+  &\cong
+  \Hom_{\Zar(S)}(\ul{T}, [(\A_0)^\Zar, \affl]_{\mathrm{Alg}(\affl)}) \\
+  &\cong
+  \Hom_{\Zar(S)}(\ul{T} \times (\A_0)^\Zar, \affl)_{\ldots} \\
+  &\cong
+  \Hom_{\Zar(S)/\ul{T}}(\ul{T} \times (\A_0)^\Zar, \ul{T} \times \affl)_{\ldots} \\
+  &\cong
+  \Hom_{\mathrm{Alg}_{\Zar(T)}(\afflt)}((f^*\A_0)^\Zar, \afflt) \\
+  &=
+  \Hom_{\mathrm{Alg}_{\Zar(T)}(\afflt)}(\pi^{-1}(f^*\A_0) \otimes_{\pi^{-1}\O_T}
+  \afflt, \afflt) \\
+  &\cong
+  \Hom_{\mathrm{Alg}_{\Zar(T)}(\pi^{-1}\O_T)}(\pi^{-1}(f^*\A_0), \afflt) \\
+  &\cong
+  \Hom_{\mathrm{Alg}_{\Sh(T)}(\O_T)}(f^*\A_0, \O_T) \\
+  &\cong
+  \Hom_{\mathrm{Alg}_{\Sh(S)}(\O_S)}(\A_0, f_*\O_T) \\
+  &\cong
+  \Hom_S(T, \RelSpek_S \A_0).
+\end{align*}
+The omitted subscripts~``$\ldots$'' should denote that we're only taking the
+subset of the Hom set where, for each fixed first argument, the morphisms are
+morphisms of~$\affl$-algebras.
 \end{proof}
-% XXX
 
-Conversely, if~$X \xra{\mu} S$ is an~$S$-scheme, the internal
-expression~$[\ul{X},\affl]^\flat$ denotes the object of~$\Zar(S)$ induced by the
-sheaf~$\mu_*\O_X$, \ie the functor given by~$(T \xra{\tau} S) \mapsto \Gamma(T,
-\tau^* \mu_*\O_X)$. For an~$\affl$-module~$\E$ in~$\Zar(S)$ we mean by~$\E^\flat$
-the~$\affl$-module obtained by restricting~$\E$ to~$\Sh(S)$ and then pulling back
-to~$\Zar(S)$. Explicitly,~$\E^\flat(T \xra{\tau} S) = \Gamma(T, \tau^*
-(\E|_{\Sh(S)}))$. (The symbol~``$\flat$'' is used because the operation~$\E
-\mapsto \E^\flat$ is related to the \emph{flat modality} associated to the
-local geometric morphism~$\Zar(S) \to \Sh(S)$ of toposes.)
+If~$X \in \Zar(S)$ is an arbitrary object, there is a canonical morphism~$X \to
+\Spec([X,\affl])$. In the internal language of~$\Zar(X)$ it looks like the
+``inclusion into the double dual'':
+\[ x \longmapsto \placeholder(x),
+  \quad\text{where $\placeholder(x) : [X,\affl] \to \affl,\ \varphi \mapsto
+  \varphi(x)$.} \]
+The following proposition shows that bijectivity of this map is related to~$X$
+being the functor of points of an affine~$S$-scheme (an~$S$-scheme whose
+structure morphism to~$S$ is affine).
 
-Let~$\mu : X \to S$ be a quasicompact and quasiseparated morphism. It is well-known
-that this morphism is affine if and only if the canonical morphism~$X \to
-\RelSpec{S}(\mu_*\O_X)$ is an isomorphism. (This also holds if~$\mu$ is not
-quasicompact and quasiseparated, but in this case~$\RelSpec{S}(\mu_*\O_X)$ is
-only a locally ringed space, not a scheme.) We can reformulate this condition in
-the internal language of~$\Zar(S)$ as saying that the canonical map
-\[ \ul{X} \lra [ [\ul{X},\affl]^\flat, \affl ]_\affl,\ x \longmapsto
-\placeholder(x) \]
-into the ``double dual'' is bijective.
+\begin{prop}A sheaf~$X \in \Zar(S)$ is isomorphic to the functor of points of
+an affine~$S$-scheme if, in the internal language of~$\Zar(S)$,
+the~$\affl$-algebra~$[X,\affl]$ is quasicoherent and the canonical map~$X \to
+\Spec([X,\affl])$ is bijective. The converse holds in any of the following
+situations:
+\begin{enumerate}
+\item The affine~$S$-scheme which~$X$ represents is of finite presentation
+over~$S$.
+\item The site used to define~$\Zar(S)$ is defined using a partial universe
+and the affine~$S$-scheme which~$X$ represents if of finite type over~$S$.
+\item The affine~$S$-scheme which~$X$ represents is contained in the site used
+to define~$\Zar(S)$. (This situation subsumes the previous ones.)
+\end{enumerate}\end{prop}
+
+\begin{proof}The ``if'' direction is straightforward, since the assumption
+expresses~$X$ as the functor of points of the relative spectrum of a
+quasicoherent~$\O_S$-algebra.
+
+For the ``only if'' direction, we abuse notation and denote the given
+affine~$S$-scheme whose functor of points is~$X$ by~``$f : X \to S$''.
+Then~$f_*\O_X$ is quasicoherent and the canonical morphism~$X \to
+\RelSpec{S}{f_*\O_X}$ is an isomorphism. In any of the listed situations, the
+internal Hom~$[X,\affl]$ is canonically isomorphic to~$(f_*\O_X)^\Zar$, since
+for any object~$T \xra{g} S$ of the site used to define~$\Zar(S)$ we have that
+\begin{align*}
+  [X,\affl](T) &\cong
+  \Hom_{\Zar(S)}(\underline{T}, [X,\affl]) \cong
+  \Hom_{\Zar(S)}(\underline{T} \times X,\affl) \\
+  &\cong \Hom_{\Zar(S)}(\underline{T} \times \underline{X},\affl) \cong
+  \Hom_{\Zar(S)}(\underline{T \times_S X},\affl) \\
+  &\cong \affl(T \times_S X) \cong
+  (g^* f_* \O_X)(T) =
+  (f_* \O_X)^\Zar(T).
+\end{align*}
+Therefore~$[X,\affl]$ is quasicoherent. The map induced by the isomorphism~$X \to
+\RelSpec{S}{f_*\O_X}$ on the level of functors of points is precisely the
+canonical map~$X \to \Spec([X,\affl])$ as defined in the internal language;
+therefore this map is bijective from the internal point of view.
+\end{proof}
+
+\begin{rem}As noted in Remark~\ref{rem:local-representability} in a slightly
+different context, Condition~(3) in the previous proposition is unnatural from a
+topos-theoretic point of view and should be weakened to require only local
+representability.
+\end{rem}
 
 
 \section{Beyond the Zariski topology}

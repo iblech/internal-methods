@@ -453,14 +453,24 @@ to~$\Set$.
 \begin{rem}It's not known to me whether it's possible to intuitionistically
 prove that any module can be embedded into a module which satisfies the internal
 flabbiness criterion of Proposition~\ref{prop:internal-char-flabbiness}. This
-would imply the corollary that any sheaf of modules can be embedded into a
+would give an internal proof that any sheaf of modules can be embedded into a
 flabby sheaf of modules. The naive candidates don't work: The
 set~$\P_{\leq1}(F)$ doesn't admit a canonical module structure, and the free
 module over that set is not flabby in general.
 
-It's certainly not possible to intuitionistically prove that any module can be
-embedded into an injective module, since it's consistent with Zermelo--Fraenkel
-set theory that no nontrivial injective abelian groups
+Since by the Godement construction the statement is true in many models of
+intuitionistic logic, the sheaf toposes over topological spaces, and
+furthermore the proof that the Godement construction yields a flabby sheaf is
+intuitionistically valid,\footnote{In order for the Godement construction to
+work in a intuitionistic metatheory, one has to tweak its definition a little
+bit.  Instead of mapping an open subset~$U$ to~$\prod_{x \in U} \F_x$, one has
+to map~$U$ to~$\prod_{x \in U} \P_{\leq1}(\F_x)$. This has the added advantage
+that it works even if~$\F$ is not inhabited.} it's not unreasonable to believe
+that such an intuitionistic proof is possible.
+
+On the other hand, it's certainly not possible to intuitionistically prove that
+any module can be embedded into an injective module, since it's consistent with
+Zermelo--Fraenkel set theory that no nontrivial injective abelian groups
 exist~\cite{blass:inj-proj-axc}.
 \end{rem}
 

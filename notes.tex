@@ -6125,6 +6125,397 @@ previous proposition.
 \end{proof}
 
 
+\section{Higher direct images and other derived functors}
+
+\subsection{Flabby sheaves}
+
+Recall that a sheaf~$\F$ of sets on a topological space (or locale)~$X$ is
+\emph{flabby} if and only if, for any open subset~$U \subseteq X$ the
+restriction map~$\F(X) \to \F(U)$ is surjective.
+
+Flabbiness of a sheaf is a local property, even though it doesn't seem like that
+at first sight: If the restrictions~$\F|_{U_i}$ of~$\F$ to the members of an
+open covering~$X = \bigcup_i U_i$ are flabby, then the verification that~$\F$ is
+flabby can't proceed as follows. ``Let~$s \in \F(U)$ be an arbitrary section.
+Since each~$\F|_{U_i}$ is flabby, the section~$s|_{U \cap U_i}$ extends to a
+section on~$U_i$.'' The reason is that the individual extensions obtained in
+this way might not glue.
+
+A correct proof employs Zorn's lemma in a typical way, considering a maximal
+extension and then verifying that the subset this maximal extension is defined
+on is all of~$X$.
+
+Since flabbiness is a local property, it's not unreasonable to expect that
+flabbiness can be characterized in the internal language. The following
+proposition shows that this is indeed the case.
+
+\begin{prop}\label{prop:internal-char-flabbiness}
+Let~$\F$ be a sheaf of sets on a topological space~$X$ (or a locale).
+Then the following statements are equivalent:
+\begin{enumerate}
+\item $\F$ is flabby.
+
+\item ``Any section of~$\F$ can be locally extended'':
+For any open subset $U \subseteq X$ and any section $s \in \F(U)$ there is
+an open covering $X = \bigcup_i V_i$ such that, for each $i$, there is an
+extension of $s$ to $U \cup V_i$ (that is, a section $s' \in \F(U \cup V_i)$
+such that $s'|_U = s$).
+
+(If $X$ is a space instead of a locale, this can be equivalently formulated as
+follows: For any open subset $U \subseteq X$, any section $s \in \F(U)$, and any
+point $x \in X$, there is an open neighbourhood $V$ of $x$ and an extension of
+$s$ to $U \cup V$.)
+
+% Proof of "internally injective ==> externally injective" references the
+% following condition by number.
+\item From the point of view of the internal language of~$\Sh(X)$, for any
+subsingleton $K \subseteq \F$ there exists an element $s \? \F$ such that~$s \in
+K$ if~$K$ is inhabited. More precisely,
+\begin{multline*}
+  \qquad\qquad\Sh(X) \models
+  \forall K \subseteq \F\_
+  (\forall s,s'\?K\_ s = s') \Longrightarrow \\
+  \exists s\?\F\_ (\text{$K$ is inhabited} \Rightarrow s \in K).\qquad\qquad
+\end{multline*}
+
+\item The canonical map $\F \to \P_{\leq 1}(\F), s \mapsto \{s\}$ is
+final from the internal point of view, that is
+\[ \Sh(X) \models
+  \forall K \? \P_{\leq 1}(\F)\_
+  \exists s \? \F\_
+  K \subseteq \{s\}, \]
+where $\P_{\leq 1}(\F)$ is the object of subsingletons of $\F$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+The implication~``(1)~$\Rightarrow$~(2)'' is trivial. The converse direction uses a
+typical argument with Zorn's lemma, considering a maximal extension. The
+equivalence~``(2)~$\Leftrightarrow$~(3)'' is routine, using the Kripke--Joyal
+semantics to interpret the internal statement. Condition~4 is a straightforward
+reformulation of Condition~3.
+\end{proof}
+
+Condition~2 of the proposition is, unlike the standard definition of flabbiness,
+manifestly local. Also its equivalence with Condition~3 and Condition~4 is
+intuitionistically valid; therefore one might consider to adopt Condition~2 as
+the definition of flabbiness.
+
+The object~$\P_{\leq 1}(\F)$ of subsingletons of $\F$ can be
+interpreted as the object of \emph{partially-defined
+elements} of $\F$. In this view, the empty subset is the maximally undefined
+element and a singleton is a maximally defined element. The proposition shows
+that~$\F$ is flabby if and only if any such partially-defined element can be
+refined to an honest element of~$\F$.
+
+
+\subsection{Injective sheaves}
+
+Recall that an object~$I$ of a category~$\C$ is \emph{injective} if and only if,
+for any monomorphism~$X \to Y$ in~$\C$ and any morphism~$X \to I$, there
+is a lifting such that the diagram
+\[ \xymatrix{
+  X \ar@{^{(}->}[r]\ar[d] & Y \ar@{-->}[dl] \\
+  I
+} \]
+commutes. Equivalently, an object~$I$ is injective if and only if the Hom
+functor~$\Hom_\C(\placeholder, I) : \C^\op \to \Set$ maps monomorphisms in~$\C$ to
+surjective maps. This general definition is often specialized to one of these cases:
+to the category of modules over a ring, to the category of set-valued sheaves
+on a topological space, and to the category of sheaves of~$\O_X$-modules on a
+ringed space~$(X,\O_X)$.
+
+The definition is seldomly applied in the category of sets, since in a classical
+context it's easy to show that a set is injective if and only if it's
+inhabited, thereby completely settling the question which objects are
+injective in a trivial manner.
+
+The question is more interesting in an intuitionistic setting, since
+intuitionistically one cannot prove that inhabited sets are
+injective~\cite{aczel-et-al:injective}; but one can still verify that any set embeds
+into an injective set: The powerset~$\P(X)$ and even the smaller
+set~$\P_{\leq1}(X)$ of subsingletons of a given set~$X$ are injective. We verify
+this in the proof of Lemma~\ref{lemma:enough-flabby}.
+
+For a cartesian closed category~$\C$, there is also the notion of an
+\emph{internally injective} object. This is an object~$I$ such that the
+internal Hom functor~$[\placeholder, I] : \C^\op \to \C$ maps monomorphisms
+in~$\C$ to epimorphisms. In the specical case that~$\C$ is a elementary topos
+with a natural numbers object, such as the topos of set-valued sheaves on a
+space, this condition can be rephrased in several ways. The following
+proposition lists five of these conditions. The equivalence of the first four is
+due to Harting~\cite{harting}.
+
+\begin{prop}\label{prop:notions-of-internal-injectivity}
+Let~$\E$ be an elementary topos with a natural numbers object. Then
+the following statements about an object~$I \in \E$ are equivalent.
+\begin{enumerate}
+\item $I$ is internally injective.
+\item The functor~$[\placeholder, I] : \E^\op \to \E$ maps monomorphisms in $\E$
+to morphisms for which any global element of the target locally (after change of
+base along an epimorphism) possesses a preimage.
+\item For any morphism $p : A \to 1$ in $\E$, the object $p^*I$ has property~(1)
+as an object of $\E/A$.
+\item For any morphism $p : A \to 1$ in $\E$, the object $p^*I$ has property~(2)
+as an object of $\E/A$.
+\item From the point of view of the internal language of~$\E$, the object~$I$
+is injective.\footnote{In Section~\ref{sect:internal-language}, we have only
+introduced the internal language for sheaf toposes. The general definition is
+in~\cite[Section~7]{shulman:stack}.}
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+The implications ``(1)~$\Rightarrow$~(2)'', ``3 $\Rightarrow$~(4)'', ``(3)
+$\Rightarrow$~(1)'', and ``(4)~$\Rightarrow$~(2)'' are trivial.
+
+The equivalence ``(3)~$\Leftrightarrow$~(5)'' follows directly from the
+interpretation rules of the stack semantics.
+
+The implication ``(2)~$\Rightarrow$~(4)'' employs the
+extra left adjoint $p_! : \E/A \to \E$ of $p^* : \E
+\to \E/A$~(which maps an object~$(X \to A)$ to~$X$), as in the usual proof that
+injective sheaves remain injective when
+restricted to smaller open subsets: We have that $p_* \circ [\placeholder, p^*I]_{\E/A}
+\cong [\placeholder, I]_\E \circ p_!$, the functor $p_!$ preserves monomorphisms, and one
+can check that $p_*$ reflects the property that global elements locally possess
+preimages. Details are in~\cite[Thm.~(1)1]{harting}.
+
+The implication ``(4)~$\Rightarrow$~(3)'' follows by performing an extra change of
+base, since any non-global element becomes a global element after a suitable
+change of base.
+\end{proof}
+
+Somewhat surprisingly, and in stark contrast with the situation for internally
+projective objects (which are defined dually), internal injectivity coincides
+with external injecticity for sheaf toposes over spaces.
+
+\begin{thm}\label{thm:char-injectivity}
+Let~$X$ be a topological space (or a locale). An object~$\I \in \Sh(X)$ is
+injective if and only if it is internally injective.
+\end{thm}
+
+\begin{proof}For the ``only if'' direction, let~$\I$ be an injective sheaf of
+sets. Then~$\I$ satisfies Condition~(2) in
+Proposition~\ref{prop:notions-of-internal-injectivity}, even without having to
+pass to covers.
+
+For the ``if'' direction, let~$\I$ be an internally injective object. Let~$m :
+\E \to \F$ be a monomorphism in~$\Sh(X)$ and let~$k : \E \to \I$ be an arbitrary
+morphism. We want to show that there exists an extension $\F \to \I$ of~$k$
+along~$m$. To this end, we consider the sheaf defined by the internal expression
+\[ \G \defeq \brak{\{ k' \? [\F,\I] | k' \circ m = k \}}. \]
+Global sections of~$\G$ are extensions of the kind we're looking for.
+Therefore it suffices to show that~$\G$ is flabby. We do this by verifying
+Condition~(3) of Proposition~\ref{prop:internal-char-flabbiness} in the internal
+language of~$\Sh(X)$.
+
+Let~$K \subseteq \G$ be a subsingleton. We consider the injectivity diagram
+\[ \xymatrix{
+  m[\E] \cup \F' \ar@{^{(}->}[r]\ar[d] & \F \ar@{-->}[ld] \\
+  \I,
+} \]
+where~$\F' \defeq \{ s \? \F \,|\, \text{$K$ is inhabited} \}$ and the solid
+vertical arrow is defined in the following way: It should map an element~$s \in
+\F'$ to~$k'(s)$, where~$k'$ is any element of~$K$; and it should map an
+element~$m[u] \in m[\E]$ to~$k(u)$. These prescriptions determine a well-defined
+map.
+
+Since~$\I$ is injective from the internal point of view we're taking up here,
+there exists a dotted map rendering the diagram commutative. This map is an
+element of~$\G$. Furthermore, this map is an element of~$K$, if~$K$ is
+inhabited.
+\end{proof}
+
+\begin{thm}\label{thm:char-injectivity-modules}
+Let~$(X,\O_X)$ be a ringed topological space (or a ringed locale).
+An~$\O_X$-module~$\I$ is injective if and only if it is internally injective.
+\end{thm}
+
+\begin{proof}Proposition~\ref{prop:notions-of-internal-injectivity} can be
+adapted from sheaves to sets to sheaves of modules, with the same proof.
+% XXX: check that.
+
+The proof of Theorem~\ref{thm:char-injectivity} can be adopted as well.
+It suffices to change~``$m[\E] \cup \F'$'' to~``$m[\E] + \F''$'', where~$\F''
+\defeq \{ s \? \F \,|\, \text{$s = 0$ or $K$ is inhabited} \}$.
+\end{proof}
+
+% XXX: Remark that proof requires AxC and that it's a unique feature of sheaf toposes.
+% Counterexample?
+
+
+\subsection{Internal proofs of common lemmas}
+
+\begin{lemma}A sheaf of sets or a sheaf of modules is injective if and only if it
+is locally injective.\end{lemma}
+
+\begin{proof}By Theorem~\ref{thm:char-injectivity} respectively
+Theorem~\ref{thm:char-injectivity-modules}, injectivity can be characterized in the
+internal language. Any such property is local.\end{proof}
+
+\begin{lemma}Let~$X$ be a topological space (or a locale).
+\begin{enumerate}
+\item Let~$\I$ be an injective sheaf of sets over~$X$. Let~$\F$ be an arbitrary
+sheaf of sets. Then~$\HOM(\F,\I)$ is flabby.
+\item Let~$\I$ be an injective sheaf of modules over some sheaf~$\O_X$ of rings
+over~$X$. Let~$\F$ be an arbitrary sheaf of modules.
+Then~$\HOM_{\O_X}(\F,\I)$ is flabby.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+We cover the case of sheaf of sets first. By Theorem~\ref{thm:char-injectivity}
+and Proposition~\ref{prop:internal-char-flabbiness}, it suffices to give an
+intuitionistic proof of the following statement: If~$I$ is an injective set
+and~$F$ is an arbitrary set, then partially defined elements of the set~$[F,I]$
+of all maps~$F \to I$ can be refined to honest elements.
+
+Thus let a subsingleton~$K \subseteq [F,I]$ be given. We consider the
+injectivity diagram
+\[ \xymatrix{
+  F' \ar[r]\ar[d] & F \ar@{-->}[ld] \\
+  I
+} \]
+where~$F'$ is the subset~$\{ s \? F \,|\, \text{$K$ is inhabited} \} \subseteq F$ and the
+solid vertical map sends~$s \in F'$ to~$f(s)$, where~$f$ is an arbitrary element
+of~$K$. This association is well-defined. Since~$I$ is injective, a dotted lift
+as indicated exists. If~$K$ is inhabited, this lift is an element of~$K$.
+
+The same kind of argument applies to the case of sheaves of modules, relying on
+Theorem~\ref{thm:char-injectivity-modules} and defining~$F'$ as the
+submodule~``$\{ s \? F \,|\, \text{$s = 0$ or $K$ is inhabited} \}$''.
+\end{proof}
+
+\begin{cor}Injective sheaves of sets and injective sheaves of modules are
+flabby.\end{cor}
+
+\begin{proof}Follows from the previous lemma by considering the special cases~$\F
+\defeq 1$ respectively~$\F \defeq \O_X$.\end{proof}
+
+\begin{lemma}\label{lemma:enough-flabby}
+Let~$X$ be a topological space (or a locale). Any sheaf of sets
+over~$X$ can be embedded into an injective (therefore flabby) sheaf of sets.
+\end{lemma}
+
+\begin{proof}By Proposition~\ref{prop:internal-char-flabbiness}, it suffices to
+give an intuitionistic proof of the following statement: Any set~$F$ can be
+embedded into an injective set.
+
+As already indicated there at least two simple ways that~$F$ can be embedded
+into an injective set: by embedding~$F$ in its powerset~$\P(F)$ or by
+embedding~$F$ in~$\P_{\leq1}(F)$, the set of subsingletons of~$F$. For
+conciseness, we only verify that~$\P_{\leq1}(F)$ is injective.
+
+So let~$m : A \hookrightarrow B$ be an injective map and let~$k : A \to
+\P_{\leq1}(F)$ be an arbitrary map. Then we can extend~$k$ to a map~$k' : B \to
+\P_{\leq1}(F)$ by defining for~$y \? B$
+\begin{align*}
+  k'(y) &\defeq \bigcup k[m^{-1}[\{y\}]] \\
+  &\phantom{\vcentcolon}= \{ s\?F \,|\, \text{$s \in k(x)$ for some~$x \in A$ such that~$m(x) = y$} \}.
+  \qedhere
+\end{align*}
+\end{proof}
+
+\begin{rem}The \emph{Godement construction} is a well-known way of embedding an
+inhabited sheaf of sets~$\F$ into an injective sheaf, namely embedding it into
+the sheaf of not necessarily continuous sections of the étale space of~$\F$:
+\[ U \subseteq X \quad\longmapsto\quad
+  \prod_{x \in U} \F_x. \]
+The sheaf~$\P_{\leq1}(\F)$ does not coincide with this construction.
+Instead by Definition~\ref{defn:interpretation-internal-constructions}, it is the sheaf with
+\[ U \subseteq X \quad\longmapsto\quad
+  \{ \langle V, s \rangle \,|\,
+    \text{$V \subseteq U$ open, $s \in \F(V)$} \}. \]
+It's not possible to describe the Godement construction in the internal language
+of~$\Sh(X)$, since in the Godement construction the underlying set of~$X$
+enters. But the sheaf topos of~$X$ doesn't remember this set. For instance, if~$X$
+is an inhabited indiscrete topological spac, then~$\Sh(X)$ is equivalent
+to~$\Set$.
+\end{rem}
+
+\begin{rem}It's not known to me whether it's possible to intuitionistically
+prove that any module can be embedded into a module which satisfies the internal
+flabbiness criterion of Proposition~\ref{prop:internal-char-flabbiness}. This
+would give an internal proof that any sheaf of modules can be embedded into a
+flabby sheaf of modules. The naive candidates don't work: The
+set~$\P_{\leq1}(F)$ doesn't admit a canonical module structure, and the free
+module over that set is not flabby in general.
+
+Since by the Godement construction the statement is true in many models of
+intuitionistic logic, the sheaf toposes over topological spaces, and
+furthermore the proof that the Godement construction yields a flabby sheaf is
+intuitionistically valid,\footnote{In order for the Godement construction to
+work in a intuitionistic metatheory, one has to tweak its definition a little
+bit.  Instead of mapping an open subset~$U$ to~$\prod_{x \in U} \F_x$, one has
+to map~$U$ to~$\prod_{x \in U} \P_{\leq1}(\F_x)$. This has the added advantage
+that it works even if~$\F$ is not inhabited.} it's not unreasonable to believe
+that such an intuitionistic proof is possible.
+
+On the other hand, it's certainly not possible to intuitionistically prove that
+any module can be embedded into an injective module, since it's consistent with
+Zermelo--Fraenkel set theory that no nontrivial injective abelian groups
+exist~\cite{blass:inj-proj-axc}.
+\end{rem}
+
+\begin{lemma}Let~$X$ be a ringed space (or ringed locale). Let~$0 \to \E'
+\xra{\alpha} \E \xra{\beta} \E'' \to 0$ be a short exact sequence
+of~$\O_X$-modules. If~$\E'$ is flabby, then the induced sequence
+\[ 0 \longrightarrow \Gamma(X,\E')
+  \longrightarrow \Gamma(X,\E)
+  \longrightarrow \Gamma(X,\E'') \longrightarrow 0 \]
+is exact.
+\end{lemma}
+
+\begin{proof}Since taking global sections is left exact (being a right adjoint
+functor), it suffices to verify that the map~$\Gamma(X,\E) \to \Gamma(X,\E'')$
+is surjective. We'll do this by showing, in the internal language of~$\Sh(X)$,
+that the sheaf of preimages of a given global section~$s \in \Gamma(X,\E'')$ is
+flabby and therefore has a global section.
+
+In the internal language, this sheaf has the description~$F \defeq \{ u \? \E
+\,|\, \beta(u) = s \}$. To verify the internal condition of
+Proposition~\ref{prop:internal-char-flabbiness}, let a subsingleton~$K \subseteq
+F$ be given. Since~$\beta$ is surjective, there is a preimage~$u_0 \in F$.
+The translated set~$K - u_0 \subseteq \E$ is still a subsingleton, and its
+preimage under~$\alpha$ is as well. By the assumption on~$\E'$, there is an
+element~$v \? \E$ such that~$v \in \alpha^{-1}[K - u_0]$ if~$K - u_0$ is
+inhabited. We'll now verify that~$u_0 + \alpha(v) \in K$ if~$K$ is inhabited.
+
+So assume that~$K$ is inhabited. Then~$K - u_0$ is as well. Since the image of
+its unique element under~$\beta$ is zero and the given sequence is exact, the
+set~$\alpha^{-1}[K - u_0]$ is inhabited as well. Therefore~$v \in \alpha^{-1}[K
+- u_0]$. Thus~$u_0 + \alpha(v) \in K$.
+\end{proof}
+
+\begin{lemma}Let~$X$ be a ringed space (or ringed locale). Let~$0 \to \E'
+\xra{\alpha} \E \xra{\beta} \E'' \to 0$ be a short exact sequence
+of~$\O_X$-modules. If~$\E'$ and~$\E''$ are flabby, then~$\E$ is flabby as well.
+\end{lemma}
+
+\begin{proof}We verify the condition of
+Proposition~\ref{prop:internal-char-flabbiness} in the internal language
+of~$\Sh(X)$.
+
+Let~$K \subseteq \E$ be a subsingleton. Then its image~$\beta[K] \subseteq \E''$
+is a subsingleton as well. Since partial elements of~$\E''$ can be refined to
+honest elements, there is an element~$s \? \E''$ such that~$\beta[K] \subseteq
+\{ s \}$.
+
+Since~$\beta$ is surjective, there is an element~$t_0 \? \E$ such
+that~$\beta(t_0) = s$.
+
+The preimage~$\alpha^{-1}[K - t_0] \subseteq \E'$ is a subsingleton. This
+partial element can be refined to an honest element, that is there exists an
+element~$u \? \E'$ such that~$\alpha^{-1}[K - t_0] \subseteq \{u\}$.
+
+The partial element~$K$ can thereby refined to the honest element~$t \defeq t_0 + \alpha(u)$.
+\end{proof}
+
+% XXX: Higher direct images
+% XXX: Ext, Tor
+
+
 \chapter{The big Zariski topos}
 
 \label{sect:big-zariski}

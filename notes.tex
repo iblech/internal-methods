@@ -152,6 +152,7 @@
 
 \makeatletter
 \counterwithout{section}{chapter}
+\counterwithout{footnote}{chapter}
 \patchcmd{\@thm}{\let\thm@indent\indent}{\let\thm@indent\noindent}{}{}
 \patchcmd{\@thm}{\thm@headfont{\scshape}}{\thm@headfont{\bfseries}}{}{}
 \patchcmd{\@makechapterhead}{\chaptername}{Part}{}{}

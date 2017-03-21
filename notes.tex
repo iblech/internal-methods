@@ -7856,6 +7856,60 @@ quotient~$\affl/\sqrt{(0)}$ is not synthetically quasicoherent by
 Remark~\ref{rem:radical-not-qcoh}.\end{rem}
 
 
+\subsection{Closed immersions}
+
+\begin{defn}In the context of a specified local ring, as for instance~$\affl$
+of the big Zariski topos of a scheme, a truth value~$Z \subseteq 1$ is
+\emph{closed} if and only if there exists an ideal~$J \subseteq \affl$ such
+that~$\affl/J$ is synthetically quasicoherent
+(Definition~\ref{defn:synth-qcoh}) and such that~$Z$ holds if and only if~$J =
+(0)$.\end{defn}
+
+In other words, a truth value~$Z \subseteq 1$ is closed if and only if~$Z$ is
+isomorphic to the spectrum of a synthetically quasicoherent quotient algebra
+of~$\affl$.
+
+\begin{ex}Let~$f \? \affl$. Then~``$f = 0$'' is a closed truth value with
+witnessing ideal~$J = (f)$. More generally, if~$f_1,\ldots,f_n \? \affl$, the
+truth value~``$f_1 = \cdots = f_n = 0$'' is closed.\end{ex}
+
+\begin{defn}In the context of a specified local ring, a map~$Z \to X$ is a
+\emph{synthetic closed immersion} if and only if it is injective and for
+any~$x\?X$ the truth value of~``the fiber of~$x$ is inhabited'' is
+closed.\end{defn}
+
+\begin{ex}The inclusion~$\{0\} \hookrightarrow \affl$ is a synthetic closed
+immersion. More generally, for any functions~$f_1,\ldots,f_m : (\affl)^n \to
+\affl$, the inclusion of the set of their common zeros in~$(\affl)^n$ is a
+synthetic closed immersion.\end{ex}
+
+\begin{prop}Let~$X$ be an~$S$-scheme.
+\begin{enumerate}
+\item Let~$Z \subseteq X$ be a closed subscheme. Then the subfunctor~$\ul{Z}
+\hookrightarrow \ul{X}$ is a synthetic closed immersion from the internal point
+of view of~$\Zar(S)$.
+\item If~$\ul{X}$ is locally representable by an object of the site used to
+define~$\Zar(S)$, any synthetic closed immersion~$Z \hookrightarrow \ul{X}$ is
+isomorphic to the subfunctor associated to a closed subscheme of~$X$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}To verify the first claim, let a
+quasicoherent~$\O_X$-algebra~$\J_0$ be given such that the closed subscheme~$Z
+\subseteq X$ is the vanishing scheme of~$\J_0$. Following the translation with
+the Kripke--Joyal semantics, let~$f : T \to S$ be an object of the site used to
+define~$\Zar(S)$ and let~$x \in \ul{X}(T)$. We define~$J \defeq (f^*
+\J_0)^\Zar \in \Zar(S)/\ul{T}$. Then $T \models \speak{$\affl/J$ is
+synthetically quasicoherent}$ and $T \models (x \in \ul{Z} \Leftrightarrow J =
+(0))$, therefore~``$x \in \ul{Z}$'' is a closed truth value.
+% XXX For the second claim, ...
+% Idea: First show uniqueness of J.
+% Let J, K be given.
+% Let f in J.
+% Then ...
+\end{proof}
+
+
 \section{Case study: Grassmannian}
 
 Let~$\V$ be a finite locally free~$\O_S$-module.

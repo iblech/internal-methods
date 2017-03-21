@@ -103,8 +103,7 @@
 \newcommand{\fp}{\mathrm{fp}}
 \DeclareMathOperator{\Spec}{Spec}
 \newcommand{\QcohSpec}[2]{\mathrm{Spec}^{\mathrm{qcoh}}_{#1}{#2}}
-\newcommand{\RelSpec}[2]{\mathrm{RelSpec}_{#1}{#2}}  % XXX: phase out
-\newcommand{\RelSpek}{\operatorname{\ul{\mathrm{Spec}}}}
+\newcommand{\RelSpec}{\operatorname{\ul{\mathrm{Spec}}}}
 \newcommand{\op}{\mathrm{op}}
 \DeclareMathOperator{\colim}{colim}
 \DeclareMathOperator{\rank}{rank}
@@ -6214,10 +6213,10 @@ used to show that the statement~$\Sh(\Spec A) \models \forall x,y\?\ul{A}\_ xy
 full story at the moment. See the IHES 2015 slides.}
 
 Recall that if~$\A$ is a quasicoherent~$\O_X$-algebra on a scheme~$X$, one can
-construct the \emph{relative spectrum}~$\RelSpec{X}{\A}$ by appropriately
+construct the \emph{relative spectrum}~$\RelSpec_X{\A}$ by appropriately
 gluing the spectra~$\Spec \Gamma(U,\A)$ where~$U$ ranges over the affine opens
 of~$X$. This relative spectrum comes equipped with a canonical
-morphism~$\RelSpec{X}{\A} \to X$. We can give a simple construction of the
+morphism~$\RelSpec_X{\A} \to X$. We can give a simple construction of the
 relative spectrum in the internal language of~$\Sh(X)$, imitating the usual
 construction of the spectrum of a ring (as opposed to a sheaf of rings).
 
@@ -6338,14 +6337,13 @@ verifies that the converse holds as well.
 \end{proof}
 
 
-\subsection[The relative spectrum as an ordinary spectrum]{The relative
-spectrum as an ordinary spectrum from the internal
-point of view} Let~$X$ be a scheme and~$\A$ be a quasicoherent~$\O_X$-algebra.
+\subsection{The relative spectrum as an ordinary spectrum\except{toc}{ from the internal
+point of view}} Let~$X$ be a scheme and~$\A$ be a quasicoherent~$\O_X$-algebra.
 Since~$\A$ looks like a plain algebra from the internal perspective
 of~$\Sh(X)$, we can consider its internally defined spectrum. This is a locale
 internal to~$\Sh(X)$; we might hope that its externalization is precisely the
 relative spectrum of~$\A$ (considered as a locale):
-\[ E(\Spec \A) \stackrel{?}{\cong} \RelSpec{X}{\A}. \]
+\[ E(\Spec \A) \stackrel{?}{\cong} \RelSpec_X{\A}. \]
 However, this turns out to be too naive. The externalization of the internally
 defined spectrum has the universal property
 \begin{align*}
@@ -6359,8 +6357,8 @@ locale associated to the internally defined spectrum of~$\O_X$,
 and~$\LRL_{\Sh(X)}$ is the category of locally ringed locales internal
 to~$\Sh(X)$. However, the relative spectrum has the different universal property
 \begin{align*}
-  \Hom_{\LRL/X}(Y, \RelSpec{X}{\A}) & \cong
-  \Hom_{\LRL_{\Sh(X)}/(\pt,\O_X)}(I(Y), I(\RelSpec{X}{\A})) \\
+  \Hom_{\LRL/X}(Y, \RelSpec_X{\A}) & \cong
+  \Hom_{\LRL_{\Sh(X)}/(\pt,\O_X)}(I(Y), I(\RelSpec_X{\A})) \\
   & \cong \Hom_{\O_X}(\A, \mu_* \O_Y)
 \end{align*}
 for all locally ringed locales~$Y$ over~$X$. The crucial
@@ -6395,10 +6393,10 @@ locale.}
 \item The internal lattice~$\Open(\QcohSpec{\O_X}{\A})$ fulfills the axioms on an
 internal locale.
 \item The externalization~$E(\QcohSpec{\O_X}{\A})$ coincides with the relative
-spectrum~$\RelSpec{\O_X}{\A}$.
+spectrum~$\RelSpec_{\O_X}{\A}$.
 \end{enumerate}
 \end{prop}
-\begin{proof}We first show that the internalization~$I(\RelSpec{\O_X}{\A})$
+\begin{proof}We first show that the internalization~$I(\RelSpec_{\O_X}{\A})$
 coincides with the internal lattice~$\Open(\QcohSpec{\O_X}{\A})$. Both of these
 objects are sheaves on~$X$; so to show that they are canonically isomorphic, it
 suffices to give compatible canonical isomorphisms on the base of~$X$
@@ -6406,10 +6404,10 @@ consisting of all affine opens. On such an open~$U = \Spec R$ the
 quasicoherent algebra~$\A$ is given by a tilde construction:~$\A|_U =
 S^{\sim}$ for some~$R$-algebra~$S$. Thus it holds that
 \begin{align*}
-  \Gamma(U, I(\RelSpec{\O_X}{\A})) &\cong
-  \Open(\RelSpec{\O_X}{(\A)} \times_X U) \\
+  \Gamma(U, I(\RelSpec_{\O_X}{\A})) &\cong
+  \Open(\RelSpec_{\O_X}{(\A)} \times_X U) \\
   & \cong
-  \Open(\RelSpec{\O_X|_U}{\A|_U}) \\
+  \Open(\RelSpec_{\O_X|_U}{\A|_U}) \\
   & \cong
   \Open(\Spec S) \\
   & \cong
@@ -6423,8 +6421,8 @@ Clearly, these lattices are isomorphic, by~$\aaa \mapsto \aaa^\sim$ and~$\I
 This is already enough to prove the claims: By a general lemma of locale
 theory~\cite[discussion before Proposition~C1.6.1]{johnstone:elephant},
 the internal lattice~$\Open(\QcohSpec{\O_X}{\A})$ defines an internal locale
-(as the pushforward under~$\RelSpec{\O_X}{\A} \to X$ of a locale), and its
-externalization coincides with~$\RelSpec{\O_X}{\A}$.
+(as the pushforward under~$\RelSpec_{\O_X}{\A} \to X$ of a locale), and its
+externalization coincides with~$\RelSpec_{\O_X}{\A}$.
 \end{proof}
 
 There is also a general spectrum functor by Gillam~\cite{gillam:localization}
@@ -7117,21 +7115,21 @@ Without loss of generality, we will just assume that~$A$ itself is of the
 form~$(\A_0)^\Zar$ for a finitely presented~$\O_S$-algebra~$\A_0$.
 
 By Proposition~\ref{prop:relative-spectrum-big-zariski}, the internal expression~$\Spec(A)$ is the functor of
-points of~$\RelSpek_S \A_0$. For any~$S$-scheme~$f : T \to S$ contained in the site
+points of~$\RelSpec_S \A_0$. For any~$S$-scheme~$f : T \to S$ contained in the site
 used to define~$\Zar(S)$, we consider the fiber product
 \[ \xymatrix{
-  \RelSpek_T(f^*\A_0) \ar[r]^{f'} \ar[d]_{p'} & \RelSpek_S\A_0 \ar[d]^p \\
+  \RelSpec_T(f^*\A_0) \ar[r]^{f'} \ar[d]_{p'} & \RelSpec_S\A_0 \ar[d]^p \\
   T \ar[r]_f & S.
 } \]
-Since~$\RelSpek_T(f^*\A_0) \to S$ is contained in the site (for any of our
+Since~$\RelSpec_T(f^*\A_0) \to S$ is contained in the site (for any of our
 admissible sites), we may conclude using the following chain of isomorphisms:
 \begin{align*}
   [\Spec(A), E](T) &\cong
   \Hom_{\Zar(S)}(\ul{T}, [\Spec(A), E])
   \cong \Hom_{\Zar(S)}(\ul{T} \times \Spec(A), E) \\
-  &\cong \Hom_{\Zar(S)}(\underline{T \times_S \RelSpek_S\A_0}, E)
-  \cong E(\RelSpek_T(f^*\A_0)) \\
-  &\cong \Gamma(\RelSpek_T(f^*\A_0), (p')^* f^* \E_0)
+  &\cong \Hom_{\Zar(S)}(\underline{T \times_S \RelSpec_S\A_0}, E)
+  \cong E(\RelSpec_T(f^*\A_0)) \\
+  &\cong \Gamma(\RelSpec_T(f^*\A_0), (p')^* f^* \E_0)
   \cong \Gamma(T, (p')_* (p')^* f_* \E_0) \\
   &\cong \Gamma(T, f^*\E_0 \otimes_{\O_T} f^*\A_0)
   \cong \Gamma(T, (\E_0 \otimes_{\O_S} \A_0)^\Zar) \\
@@ -7173,7 +7171,7 @@ A natural candidate for an quasicoherent~$\O_S$-module~$\E_0$ with~$E \cong
 (\E_0)^\Zar$ is~$\E_0 \defeq E|_{\Sh(S)}$. We'll show that this is indeed true.
 Let~$f : T \to S$ be any~$S$-scheme contained in the site used to
 define~$\Zar(S)$. We assume for the time being that~$f$ is of finite
-presentation and affine, so~$T \cong \RelSpek_S \A_0$ for some finitely
+presentation and affine, so~$T \cong \RelSpec_S \A_0$ for some finitely
 presented~$\O_S$-algebra~$\A_0$. We want to verify that the canonical morphism
 \begin{equation}\label{eqn:want-iso2}\tag{§}
   f^*(E|_{\Sh(S)}) \longrightarrow E|_{\Sh(T)}
@@ -7426,7 +7424,7 @@ sheaf.
 
 \subsubsection*{Tangent bundle}
 For an~$S$-scheme~$X$, the internal Hom~$[\Delta,\ul{X}]$ describes the
-``tangent bundle'' of~$X$, \ie the~$S$-scheme~$\RelSpec{X}{\operatorname{Sym}(\Omega^1_{X/S})} \to X \to S$, as can be seen by
+``tangent bundle'' of~$X$, \ie the~$S$-scheme~$\RelSpec_X{\operatorname{Sym}(\Omega^1_{X/S})} \to X \to S$, as can be seen by
 chasing the definitions~\cite[Lemma~5.12.1]{brandenburg:tensor-foundations}.
 Intuitively, a map~$f : \Delta \to \ul{X}$ from the internal point of view is
 given by slightly more data than merely the point~$f(0)$; one also has to
@@ -7458,7 +7456,7 @@ of~$R[f^{-1}]$ is~$\brak{\speak{$f$ \inv}}$.\end{ex}
 \begin{prop}\label{prop:relative-spectrum-big-zariski}
 Let~$\A_0$ be an~$\O_S$-algebra (not necessarily quasicoherent).
 Then the synthetic spectrum of the~$\affl$-algebra~$(\A_0)^\Zar$, as constructed
-in the internal language of~$\Zar(S)$, is the functor of points of~$\RelSpek_S \A_0$.
+in the internal language of~$\Zar(S)$, is the functor of points of~$\RelSpec_S \A_0$.
 \end{prop}
 
 \begin{proof}The Hom set occuring in the definition of the synthetic spectrum is
@@ -7485,7 +7483,7 @@ have the following chain of isomorphisms.
   &\cong
   \Hom_{\mathrm{Alg}_{\Sh(S)}(\O_S)}(\A_0, f_*\O_T) \\
   &\cong
-  \Hom_S(T, \RelSpek_S \A_0).
+  \Hom_S(T, \RelSpec_S \A_0).
 \end{align*}
 The omitted subscripts~``$\ldots$'' should denote that we're only taking the
 subset of the Hom set where, for each fixed first argument, the morphisms are
@@ -7523,7 +7521,7 @@ quasicoherent~$\O_S$-algebra.
 For the ``only if'' direction, we abuse notation and denote the given
 affine~$S$-scheme whose functor of points is~$X$ by~``$f : X \to S$''.
 Then~$f_*\O_X$ is quasicoherent and the canonical morphism~$X \to
-\RelSpec{S}{f_*\O_X}$ is an isomorphism. In any of the listed situations, the
+\RelSpec_S{f_*\O_X}$ is an isomorphism. In any of the listed situations, the
 internal Hom~$[X,\affl]$ is canonically isomorphic to~$(f_*\O_X)^\Zar$, since
 for any object~$T \xra{g} S$ of the site used to define~$\Zar(S)$ we have that
 \begin{align*}
@@ -7537,7 +7535,7 @@ for any object~$T \xra{g} S$ of the site used to define~$\Zar(S)$ we have that
   (f_* \O_X)^\Zar(T).
 \end{align*}
 Therefore~$[X,\affl]$ is quasicoherent. The map induced by the isomorphism~$X \to
-\RelSpec{S}{f_*\O_X}$ on the level of functors of points is precisely the
+\RelSpec_S{f_*\O_X}$ on the level of functors of points is precisely the
 canonical map~$X \to \Spec([X,\affl])$ as defined in the internal language;
 therefore this map is bijective from the internal point of view.
 \end{proof}
@@ -7792,7 +7790,7 @@ that~$\gamma(\varepsilon) \in U$.
 
 In ordinary scheme theory, an inclusion of a standard open subset~$D(f)
 \hookrightarrow X$ is isomorphic to the structure morphism of the relative
-spectrum~$\RelSpek_X \O_X[f^{-1}]$. Inclusions of more general open subsets
+spectrum~$\RelSpec_X \O_X[f^{-1}]$. Inclusions of more general open subsets
 can typically not be described using the relative spectrum construction, the
 standard example being the inclusion~$\AA^2_k \setminus \{ 0 \} \hookrightarrow
 \AA^2_k$ whose domain is not affine.
@@ -8155,7 +8153,7 @@ Kripke--Joyal semantics is that for any~$S$-scheme~$T$ and any monic separable
 polynomial~$p \in \Gamma(T,\O_T)[x]$ of positive degree there exists an étale
 covering~$(T_i \to T)_i$ of~$T$ such that the pullbacks of~$p$ to each of
 the~$T_i$ possess a simple zero. The required covering is given
-by the canonical surjective étale map~$\RelSpec{T}{\O_T[x]/(p)} \to T$.
+by the canonical surjective étale map~$\RelSpec_T{\O_T[x]/(p)} \to T$.
 
 The following theorem shows that the modal operator~$\Box_\text{ét}$
 corresponding to the étale topology admits a purely internal characterization

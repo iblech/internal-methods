@@ -368,7 +368,7 @@ covers a wide range of cases. Namely, spreading occurs for all those properties
 which can be formulated in the internal language without
 using~``$\Rightarrow$'',~``$\forall$'', and~``$\neg$''.
 
-To illustrate the example above, consider the property of a module~$\F$ being
+To take up the example above, consider the property of a module~$\F$ being
 the zero module. In the internal language, it can be formulated as~$(\forall x\?\F\_ x = 0)$.
 Because of the appearance of~``$\forall$'', the metatheorem is not
 applicable to this statement. But if~$\F$ is of finite type, there are
@@ -382,7 +382,7 @@ For treating \emph{schemes over~$X$} as opposed to ``local objects on~$X$''
 such as sheaves of rings and modules from an internal point of view, this topos
 is not particularly well-adapted. For such applications the \emph{big
 Zariski topos} has to be used. We discuss this topos and related toposes, such
-as the big étale topos, in Section~\ref{sect:big-zariski}. The key point is
+as the big étale topos, in Part~\ref{part:big-zariski}. The key point is
 that they can be used to internalize Grothendieck's ``functor of points''
 approach to algebraic geometry. From the internal point of view of the big
 Zariski topos of a scheme~$X$, schemes over~$X$ look just like plain sets and
@@ -438,7 +438,7 @@ introduction to topos theory in an article by
 Leinster~\cite{leinster:introduction}. Standard references for the internal
 language of a topos include the book of Mac~Lane and
 Moerdijk~\cite[Chapter~VI]{moerdijk-maclane:sheaves-logic}, the book of
-Borceux~\cite[Chapter~6]{borceux:handbook3}, and part~D of
+Borceux~\cite[Chapter~6]{borceux:handbook3}, and Part~D of
 Johnstone's Elephant~\cite{johnstone:elephant}. In the 1970s, there was a
 flurry of activity on applications of the internal language. An article by
 Mulvey~\cite{mulvey:repr} of this time gives a very accessible
@@ -460,7 +460,7 @@ thesis~\cite{brandenburg:tensor-foundations}. However, he internalizes
 constructions of algebraic geometry not in toposes, but in tensor categories.
 There is some overlap in working out precise universal properties, particularly
 when dealing with the big Zariski topos, which we deal with in
-Section~\ref{sect:big-zariski}.
+Part~\ref{part:big-zariski}.
 
 In other branches of mathematics, the internal language of toposes is used as well. For
 instance, there is an ongoing effort in mathematical physics to understand
@@ -499,15 +499,15 @@ out of classical constructions. To cite just one recent example, Mannaa and
 Coquand used it to implement algorithms for working with the algebraic closure
 of an arbitrary field of characteristic zero~\cite{mannaa:coquand:alg-closure}.
 
-More specifically, our contribution is related to the program of constructive
+One way this thesis contributes to the program of constructive
 mathematics in that intuitionistic mathematics gains new areas of application.
 For instance, the constructive account of the theory of Krull dimension was
 originally developed to remove Noetherian hypotheses, extract computational meaning, and
 simplify proofs~\cite{dyn:krull-integral,dyn:char-krull}. It can now also be used to
 reason about the dimension of schemes, since the topological dimension of a
 scheme~$X$ coincides with the Krull dimension of the structure sheaf~$\O_X$
-(regarded as an ordinary ring from the internal perspective of~$\Sh(X)$,
-Section~\ref{sect:krull-dimension}).
+regarded as an ordinary ring from the internal perspective of~$\Sh(X)$
+(Section~\ref{sect:krull-dimension}).
 
 We obtained a second contribution to constructive mathematics as a byproduct of
 deducing transfer principles which relate a module over a ring~$A$ with its
@@ -676,7 +676,7 @@ takes care to properly handle \emph{all} sections, not only global ones.
 \end{ex}
 
 The rules are not all arbitrary. They are finely concerted to make the
-following propositions true, which are crucial for a proper appreciation of the
+following two propositions true, which are crucial for a proper appreciation of the
 internal language.
 
 \begin{prop}[Locality of the internal language]
@@ -1001,7 +1001,7 @@ with~$0.0000\ldots$ one cannot decide whether the string of zeros will continue
 indefinitely or whether eventually a non-zero digit will occur. This argument
 can be made rigorous. The analogous statement about algebraic numbers
 \emph{can} be proven; the information contained in a witness of algebraicity (a
-normed polynomial which the given number is a zero of) suffices to make the
+monic polynomial which the given number is a zero of) suffices to make the
 case distiction~\cite[Chapter~VI.1, p.~140]{mines-richman-ruitenburg:constructive-algebra}.}
 
 A consequence of not adopting these axioms is that proofs by contradiction are
@@ -1032,7 +1032,7 @@ distinction with pure classical logic.
 Double negation also has a concrete geometric meaning with the
 Kripke--Joyal semantics. Namely,~$X \models \neg\neg\varphi$ holds if and
 only if there is a dense open subset~$U$ of~$X$ such that~$U \models \varphi$.
-This is of course a weaker statement that~$X \models \varphi$.
+This is of course a weaker statement than~$X \models \varphi$.
 In Section~\ref{sect:modalities}, we will discuss this fact and other
 \emph{modal operators} in more detail. For instance, there is a similarly defined modal
 operator~$\Box$ such that~$X \models \Box\varphi$ if and only if there is an
@@ -1068,13 +1068,13 @@ theory, is not accepted in an intuitionistic context: By \emph{Diaconescu's
 theorem}, it implies the law of excluded middle in presence of the other axioms
 of set theory.
 
-The standard reference for intuitionistic algebra is a textbook by Ray Mines,
-Fred Richman and Wim
+The standard reference for intuitionistic algebra is a textbook by Mines,
+Richman and
 Ruitenburg~\cite{mines-richman-ruitenburg:constructive-algebra}, the standard
-reference for intuitionistic analysis is a book by Erret Bishop and Douglas
+reference for intuitionistic analysis is a book by Bishop and
 Bridges~\cite{bishop-bridges:constructive-analysis}. Further explanations and
 pointers to relevant literature can be found in an expository article and a
-recorded lecture by Andrej Bauer~\cite{bauer:int-mathematics,bauer:video}. A
+recorded lecture by Bauer~\cite{bauer:int-mathematics,bauer:video}. A
 recent survey of intuitionistic logic from a historical and logical point of
 view is~\cite{melikhov:intuitionistic-logic}.
 
@@ -1286,8 +1286,8 @@ with the Kripke--Joyal semantics is a bit unwieldy.
 
 Luckily, there is an elementary definition of the Krull dimension which works
 intuitionistically and which is classically equivalent to the usual notion. It
-was found by Thierry Coquand and Henri Lombardi, building upon work by André
-Joyal and Luis Español~\cite{dyn:krull-integral,dyn:char-krull}, and can be
+was found by Coquand and Lombardi, building upon work by
+Joyal and Español~\cite{dyn:krull-integral,dyn:char-krull}, and can be
 used to give a short proof that~$\dim k[X_1,\ldots,X_n] = n$, where~$k$ is a
 field~\cite{dyn:krull-dim-polynomial-ring}.
 
@@ -1531,7 +1531,7 @@ Intuitively, this is because without any given generators to begin with, one
 cannot hope to explicitly pinpoint a principal generator.
 One can (provably) not even verify this property for the ring~$\ZZ$.\footnote{\label{fn:z-principal-ideal-domain}Assume
 that any ideal of~$\ZZ$ is finitely generated. Let~$\varphi$ be an arbitrary
-proposition; we want to intuitionistically deduce~$\varphi \vee \neg\varphi$.
+statement; we want to intuitionistically deduce~$\varphi \vee \neg\varphi$.
 Consider the ideal~$\aaa \defeq \{ x \in \ZZ \,|\, (x = 0) \vee \varphi \}
 \subseteq \ZZ$. The definition is such that~$\varphi$ holds if and only
 if~$\aaa$ contains an element other than zero; and that~$\neg\varphi$ holds if
@@ -6738,7 +6738,7 @@ The partial element~$K$ can thereby refined to the honest element~$t \defeq t_0 
 
 \chapter{The big Zariski topos}
 
-\label{sect:big-zariski}
+\label{part:big-zariski}
 
 The preceding sections demonstrated that working in the internal universe of
 the little Zariski topos of a scheme~$S$, the topos of sheaves on~$S$, is
@@ -7906,6 +7906,7 @@ operator~$\Box$:
 
 
 \chapter*{Appendix}
+
 \begin{appendix}
 
 \section{Dictionary between internal and external notions}

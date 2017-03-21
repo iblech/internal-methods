@@ -7069,7 +7069,8 @@ We will indicate the few places where the choice of site makes a difference.
 
 \subsection{Quasicoherent sheaves of modules}
 
-\begin{defn}An~$R$-module~$E$ is \emph{synthetically quasicoherent} if and only if,
+\begin{defn}\label{defn:synth-qcoh}
+An~$R$-module~$E$ is \emph{synthetically quasicoherent} if and only if,
 for any finitely presented~$R$-algebra~$A$, the canonical~$R$-algebra
 homomorphism
 \[ E \otimes_R A \longrightarrow [\Spec(A), E] = [[A, R]_R, E] \]
@@ -7254,13 +7255,14 @@ The ring object~$\affl$ in the big Zariski topos enjoys several special
 properties, some of which are unique in that they're only possible in an
 intuitionistic context. The following proposition compiles a short list of such
 properties. At least one of these, the field property, was already noticed in
-the 1970s by Anders Kock~\cite{kock:univ-proj-geometry}.
+the 1970s by Kock~\cite{kock:univ-proj-geometry}.
 
-\begin{prop}The following properties of~$\affl$, as seen from the internal
+\begin{prop}\label{prop:special-properties-a1}
+The following properties of~$\affl$, as seen from the internal
 point of view of~$\Zar(S)$, are consequences of~$\affl$ being (a local ring and) synthetically
 quasicoherent:
 % Adjust paragraph below the proof if numbering changes.
-% Proof of third and eigth property references first property by number.
+% Proof of third and eighth property references first property by number.
 \begin{enumerate}
 \item $\affl$ is a field in the sense that any element which is not zero is
 invertible: $\forall x\?\affl\_ \neg(x = 0) \Rightarrow \speak{$x$ \inv}$. More generally,
@@ -7347,7 +7349,7 @@ verification of the first property.\qedhere
 
 In classical logic, the first two properties would directly contradict each
 other; only an intuitionistic context allows for fields which are not reduced.
-Also the third statement cannot be satisfied in classical logic: for infinite
+Also the fifth statement cannot be satisfied in classical logic: for infinite
 fields the existence part fails and for finite fields the uniqueness part
 fails.
 
@@ -7538,6 +7540,7 @@ topos-theoretic point of view and should be weakened to require only local
 representability.
 \end{rem}
 
+% \begin{document}
 
 \subsection{Open subfunctors}
 
@@ -7564,37 +7567,52 @@ define~$\Zar(S)$ the map~$T' \to T$ factors over~$T_0$ if and only if~$X(f)(x)
 \in U(T')$.
 \end{defn}
 
+The open subschemes~$T_0 \subseteq T$ appearing in this definition are uniquely
+determined by their universal property.
+
 From the point of view of the internal language of~$\Zar(S)$, a subfunctor~$U
-\hookrightarrow X$ looks like the inclusion of a subset. The following
-proposition answers the natural question how one can characterize those
-inclusions which externally correspond to open subfunctors.
+\hookrightarrow X$ looks like the inclusion of a subset. The natural question
+how one can characterize those inclusions which externally correspond to open
+subfunctors is answered as follows.
+
+\begin{defn}In the context of a specified local ring, as for instance~$\affl$
+of the big Zariski topos of a scheme, a truth value~$U \subseteq 1$ is
+\emph{open} if and only if there exists an ideal~$J \subseteq \affl$ such
+that~$\affl/J$ is synthetically quasicoherent
+(Definition~\ref{defn:synth-qcoh}) and such that~$U$ holds if and only if~$1 \in
+J$. (Section~\ref{sect:basics-on-truth-values} contains generalities on truth
+values.)\end{defn}
 
 \begin{prop}\label{prop:characterization-open-subfunctor}
 Let~$X \in \Zar(S)$ be a Zariski sheaf. A subfunctor~$U
 \hookrightarrow X$ is open if and only if, from the internal point of view
-of~$\Zar(S)$, it holds that for all~$x \? X$ there is an ideal~$J \subseteq
-\affl$ such that~$\affl/J$ is quasicoherent and such that~$x \in U$ if and only
-if~$1 \in J$. In formal language:
+of~$\Zar(S)$, it holds that for all~$x \? X$ the truth value of~``$x \in U$''
+is open. In formal language:
 \begin{multline*}
-  \qquad\qquad\Zar(S) \models
+  \qquad\Zar(S) \models
   \forall x\?X\_
   \exists J \subseteq \affl\_ \\
   \speak{$J$ is an ideal} \wedge
-  \speak{$\affl/J$ is quasicoherent} \wedge
+  \speak{$\affl/J$ is synth.\@ quasicoherent} \wedge
   (x \in U \Leftrightarrow 1 \in J). \end{multline*}
 \end{prop}
 
-The displayed condition is only meaningful in an intuitionistic context as
+We postpone the proof of this proposition in order to give a bit of context
+first.
+
+Firstly, the displayed condition is only meaningful in an intuitionistic context as
 provided by the big Zariski topos. In classical logic, the condition would be
 trivially satisfied for any subfunctor~$U \hookrightarrow X$: Classically, we
 have~$(x \in U) \vee (x \not\in U)$. If~$x \in U$, we can pick~$J = (1)$, and
 if~$x \not\in U$, we can pick~$J = (0)$ (whereby the quotient~$\affl/J$ is
 isomorphic to~$\affl$, thus finitely presented and therefore in particular
-quasicoherent).\footnote{Strictly speaking, incompability with classical
-logical surfaces even earlier: in our internal quasicoherence condition. The
+synthetically quasicoherent).\footnote{Strictly speaking, incompability with classical
+logical surfaces even earlier: in our synthetic quasicoherence condition. The
 map~$E \otimes_\affl A \to [\Spec(A), E]$ which the condition demands to be
 bijective has hardly any chance to be surjective if the law of excluded middle
 is available to define maps~$\Spec(A) \to E$ by case distinction.}
+
+The proposition is often used in the following weakened form.
 
 \begin{cor}\label{cor:sufficient-criterion-open-subfunctor}
 Let~$X \in \Zar(S)$ be a Zariski sheaf. Let~$U \hookrightarrow X$ be
@@ -7608,45 +7626,56 @@ a subfunctor. If
 then the subfunctor is open.
 \end{cor}
 
-\begin{proof}[Proof of Corollary~\ref{cor:sufficient-criterion-open-subfunctor}]
+\begin{proof}
 We show that the assumption implies the displayed condition of
 Proposition~\ref{prop:characterization-open-subfunctor} in the internal
 language. Given elements~$f_1,\ldots,f_n$ as in the assumption, we
 construct the ideal~$J \defeq (f_1,\ldots,f_n) \subseteq \affl$. The
-quotient~$\affl/J$ is indeed quasicoherent, being finitely presented, and
+quotient~$\affl/J$ is indeed synthetically quasicoherent, since it is finitely presented, and
 the statement that~$1 \in J$ is equivalent to one of
 the~$f_i$ being invertible by locality of~$\affl$.
 \end{proof}
 
-\begin{proof}[Proof of Proposition~\ref{prop:characterization-open-subfunctor}]
-XXX
+The internal condition appearing in the corollary reflects basic intuition
+about openness in algebraic geometry: Intuitively, a subset is open if it is
+given by inequalities, % XXX
+so that to decide whether a point belongs to the subset one has to check that
+at least one of some numbers is not zero.
+
+Of course, in classical scheme theory, one would put some condition on these
+numbers in order not to trivialize the notion. For instance, one would require
+that these numbers depend continuously on the point in some sense or, more
+specifically, that these numbers are given by evaluating certain locally
+defined regular functions at the point.
+
+On first sight, such a condition seems to be lacking in
+Corollary~\ref{cor:sufficient-criterion-open-subfunctor}. However, it's
+implicitly built into the language, since by the Kripke--Joyal semantics the
+external meaning of~``$\exists f\?\affl$'' is that there exist, locally on an
+open cover, suitable elements of~$\affl(T)$, that is regular functions on~$T$.
+
+The notion of open truth values is not unique to our account of synthetic
+algebraic geometry. Rather, it's a concept in the established and more general
+framework of synthetic topology~\cite{escardo,lesnik} which aims to do topology in a
+synthetic fashion: Any set should have an intrinsic topology and any map should
+be automatically continuous with respect to this intrinsic topology.
+
+This automatic continuity reflects as stability of open subfunctors under
+pullbacks:
+
+\begin{lemma}Let~$f : X \to Y$ be a morphism in$~\Zar(S)$. Let~$U
+\hookrightarrow Y$ be an open subfunctor. Then its pullback along~$f$,
+denoted~``$f^{-1}U \hookrightarrow X$'', is too an open subfunctor.\end{lemma}
+
+\begin{proof}From the internal point of view of~$\Zar(S)$, the
+subfunctor~$f^{-1}U \hookrightarrow X$ looks like the inclusion of the
+preimage~$f^{-1}[U] \subseteq X$.
+
+So, to verify the claim, let internally an element~$x\?X$ be given. We are to
+show that the truth value of~``$x \in f^{-1}[U]$'' is open. This truth value
+equals the truth value of~``$f(x) \in U$'' which is open by assumption, and is
+therefore open.
 \end{proof}
-
-\begin{rem}The radical~$\sqrt{J}$ of the ideal~$J$ appearing in
-Proposition~\ref{prop:characterization-open-subfunctor} is unique:
-It is equal to the radical ideal
-\[ K \defeq \{ f\?\affl \,|\, \speak{$f$ \inv} \Rightarrow (x \in U) \}
-\subseteq \affl. \]
-It's obvious that~$J \subseteq K$ and therefore~$\sqrt{J} \subseteq K$.
-For the converse direction, let~$f \in K$ be given. Since~$\affl/J$ is
-quasicoherent, the canonical map
-\[ (\affl/J)[f^{-1}] \longrightarrow [ \Spec(\affl[f^{-1}]), \affl/J ] \]
-is bijective. Since~$\Spec(\affl[f^{-1}]) \cong \brak{\speak{$f$ \inv}}$, the image
-of~$1$ is zero: If~$\Spec(\affl[f^{-1}])$ is inhabited, the element~$f$ is invertible and
-therefore~$x$ is an element of~$U$. This implies that~$1 \in J$.
-Thereby~$\affl/J = 0$. By injectivity of the canonical map, the
-algebra~$(\affl/J)[f^{-1}]$ is zero. Therefore~$f^n \in J$ for some natural
-number~$n$.\end{rem}
-
-\begin{rem}In view of the previous remark, one might hope to be able to simplify the
-condition in Proposition~\ref{prop:characterization-open-subfunctor} as
-follows: ``For any~$x\?X$, the quotient~$\affl/K$ modulo the ideal~$K = \{
-f\?\affl \,|\, \speak{$f$ \inv} \Rightarrow (x \in U) \}$ is quasicoherent.''
-However, this doesn't work out.
-This statement implies the condition in the proposition, but the converse
-direction does not hold, since~$\affl/K \cong \affl/\sqrt{J}$ might fail to be
-quasicoherent. For instance that's the case if~$U = \emptyset$; then~$K =
-\sqrt{(0)}$ is not quasicoherent by Remark~\ref{rem:radical-not-qcoh}.\end{rem}
 
 \begin{rem}In the internal language of toposes used to carry out synthetic
 differential geometry, there is the concept of an \emph{Penon-open}
@@ -7658,23 +7687,6 @@ This notion is not useful in synthetic algebraic geometry, since it is much too
 weak: Any subset of the one-element set~$1$ is Penon-open. However, not every
 subfunctor of the terminal functor in~$\Zar(S)$ is an open subfunctor.
 \end{rem}
-
-It's worthwhile to introduce the notion of an \emph{open truth value}. This
-files our approach to synthetic algebraic geometry in the established and more
-general framework of synthetic topology~\cite{XXX}:
-
-\begin{defn}In the context of a specified local ring, as for instance~$\affl$
-of the big Zariski topos of a scheme, a truth value~$U \subseteq 1$ is
-\emph{open} if and only if there exists an ideal~$J \subseteq \affl$ such
-that~$\affl/J$ is quasicoherent and such that~$U$ holds if and only if~$1 \in
-J$. (Section~\ref{sect:basics-on-truth-values} contains generalities on truth
-values.)\end{defn}
-
-\begin{prop}Let~$X$ be a Zariski sheaf. A subfunctor~$U \hookrightarrow X$ is
-open if and only if, from the internal point of view of~$\Zar(S)$, for
-any~$x\?X$ the truth value of~``$x \in U$'' is an open truth value.\end{prop}
-\begin{proof}Immediate from the definition and the characterization given in
-Proposition~\ref{prop:characterization-open-subfunctor}.\end{proof}
 
 In many flavours of synthetic topology, open truth values~$\varphi$
 are~$\neg\neg$-stable in that~$\neg\neg\varphi$ implies~$\varphi$. With a
@@ -7696,11 +7708,11 @@ define~$\Zar(S)$ is closed under domains of closed immersions.
 they employ different ideas.
 
 \emph{Internal proof.} Since~$U$ is an open truth value, there exists an ideal~$J
-\subseteq \affl$ such that~$\affl/J$ is quasicoherent and such that~$U$ holds
+\subseteq \affl$ such that~$\affl/J$ is synthetically quasicoherent and such that~$U$ holds
 if and only if~$1 \in J$. By assumption, the element~1 is \notnot an element
 of~$J$; we want to verify that it's actually an element of~$J$.
 
-By Proposition~\ref{prop:XXX}, the canonical homomorphism
+By Scholium~\ref{scholium}, the canonical homomorphism
 \[ \affl/J \longrightarrow [\Spec(\affl/J), \affl] \]
 is bijective; the assumptions of that proposition are satisfied in either of
 the two situations. The set~$\Spec(\affl/J)$ is isomorphic to~$\brak{J = (0)}$.
@@ -7732,6 +7744,38 @@ U)$. Since being an element of~$U$ is~$\neg\neg$-stable, it follows
 that~$\gamma(\varepsilon) \in U$.
 \end{proof}
 
+\begin{proof}[Proof of Proposition~\ref{prop:characterization-open-subfunctor}]
+XXX
+\end{proof}
+
+\begin{rem}The radical~$\sqrt{J}$ of the ideal~$J$ appearing in
+Proposition~\ref{prop:characterization-open-subfunctor} is unique:
+It is equal to the radical ideal
+\[ K \defeq \{ f\?\affl \,|\, \speak{$f$ \inv} \Rightarrow (x \in U) \}
+\subseteq \affl. \]
+It's obvious that~$J \subseteq K$ and therefore~$\sqrt{J} \subseteq K$.
+For the converse direction, let~$f \in K$ be given. Since~$\affl/J$ is
+synthetically quasicoherent, the canonical map
+\[ (\affl/J)[f^{-1}] \longrightarrow [ \Spec(\affl[f^{-1}]), \affl/J ] \]
+is bijective. Since~$\Spec(\affl[f^{-1}]) \cong \brak{\speak{$f$ \inv}}$, the image
+of~$1$ is zero: If~$\Spec(\affl[f^{-1}])$ is inhabited, the element~$f$ is invertible and
+therefore~$x$ is an element of~$U$. This implies that~$1 \in J$.
+Thereby~$\affl/J = 0$. By injectivity of the canonical map, the
+algebra~$(\affl/J)[f^{-1}]$ is zero. Therefore~$f^n \in J$ for some natural
+number~$n$.\end{rem}
+
+\begin{rem}In view of the previous remark, one might hope to be able to simplify the
+condition in Proposition~\ref{prop:characterization-open-subfunctor} as
+follows: ``For any~$x\?X$, the quotient~$\affl/K$ modulo the ideal~$K = \{
+f\?\affl \,|\, \speak{$f$ \inv} \Rightarrow (x \in U) \}$ is synthetically quasicoherent.''
+However, this doesn't work out.
+This statement implies the condition in the proposition, but the converse
+direction does not hold, since~$\affl/K \cong \affl/\sqrt{J}$ might fail to be
+synthetically quasicoherent. For instance that's the case if~$U = \emptyset$; then~$K =
+\sqrt{(0)}$ by Proposition~\ref{prop:special-properties-a1}. The
+quotient~$\affl/\sqrt{(0)}$ is not synthetically quasicoherent by
+Remark~\ref{rem:radical-not-qcoh}.\end{rem}
+
 
 \section{Case study: Grassmannian}
 
@@ -7753,6 +7797,11 @@ module~$V$ is the set
 \[ \Gr(V,r) \defeq \{ \text{$U \subseteq V$ submodule} \,|\,
   \text{$V/U$ is free of rank~$r$} \}. \]
 \end{defn}
+
+We could just as well define the synthetic Grassmannian somewhat more directly
+as the set of free rank~$r$-quotients (up to isomorphism). This set is canonically
+isomorphic to the Grassmannian as we chose to define it, by mapping a
+quotient~$\pi : V \twoheadrightarrow Q$ to the kernel of~$\pi$.
 
 \begin{prop}The synthetic Grassmannian of~$\V$, as constructed by the internal
 language of~$\Zar(S)$ where~$\V$ looks like an ordinary free module, coincides

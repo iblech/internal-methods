@@ -7910,7 +7910,64 @@ synthetically quasicoherent}$ and $T \models (x \in \ul{Z} \Leftrightarrow J =
 \end{proof}
 
 
-\section{Case study: Grassmannian}
+\section{Case studies}
+
+\subsection{Punctured plane}
+
+\begin{defn}The \emph{synthetic punctured plane} is the set~$P \defeq (\affl)^2
+\setminus \{ 0 \}$.\end{defn}
+
+\begin{prop}The synthetic punctured plane, as constructed by the internal
+language of~$\Zar(S)$, is the functor of points of the punctured plane
+over~$S$, that is the open subscheme~$D(X) \cup D(Y) \hookrightarrow
+\AA^1_S$.\end{prop}
+
+\begin{prop}The evaluation morphism~$\affl[X,Y] \to [P, \affl]$ is bijective.\end{prop}
+
+%\begin{proof}To verify injectivity, let functions~$f, g : (\affl)^2 \to \affl$
+%which agree on~$P$ be given. Since~$\affl$ is synthetically quasicoherent, the
+%canonical maps~$\affl[X,Y] \to [(\affl)^2, \affl]$ and~$\affl[X,Y][X^{-1}] \to
+%[D(X), \affl]$ are bijective. Therefore~$f$ and~$g$ are given by unique
+%polynomials in~$\affl[X,Y]$. Since~$f$ and~$g$ agree on~$D(X)$, these
+%polynomials are the same when viewed as elements of~$\affl[X,Y][X^{-1}]$.
+%Since~$X \in \affl[X,Y]$ is a regular element, the localization morphism is
+%injective. Thus these polynomials agree as elements of~$\affl[X,Y]$, whereby~$f
+%= g$ as claimed.
+%\end{proof}
+
+\begin{proof}The synthetic punctured plane can be expressed as the pushout
+\[ P \cong D(X) \amalg_{D(X) \cap D(Y)} D(Y). \]
+Therefore we have the chain of isomorphisms
+\begin{align*}
+  [P,\affl] &\cong
+  [D(X) \amalg_{D(X) \cap D(Y)} D(Y), \affl] \\
+  &\cong [D(X), \affl] \times_{[D(X) \cap D(Y), \affl]} [D(Y), \affl] \\
+  &\cong \affl[X,X^{-1}] \times_{\affl[XY, (XY)^{-1}]} \affl[Y,Y^{-1}] \\
+  &\cong \affl[X,Y].
+\end{align*}
+The penultimate isomorphism exploits the synthetic quasicoherence of~$\affl$,
+which guarantees that the canonical map
+\[ \affl[X,X^{-1}] \longrightarrow [\Spec(\affl[X,X^{-1}]), \affl] \cong
+  [D(X), \affl] \]
+is bijective. The ultimate isomorphism rests on the purely algebraic argument
+that elements of~$\affl[X,X^{-1}]$ and~$\affl[Y,Y^{-1}]$ which agree as
+elements of~$\affl[(XY),(XY)^{-1}]$ are both given by an element
+of~$\affl[X,Y]$ and in fact by the same element.
+\end{proof}
+
+\begin{cor}The punctured plane is not affine.
+\end{cor}
+
+\begin{proof}The canonical map~$P \to \Spec([P, \affl])$ is isomorphic to the
+inclusion~$P \hookrightarrow (\affl)^2$ and therefore not bijective.
+\end{proof}
+
+
+\subsection{Cohomology of projective space}
+
+\subsection{Categorical group quotients}
+
+\subsection{Grassmannian}
 
 Let~$\V$ be a finite locally free~$\O_S$-module.
 We want to illustrate the synthetic approach by verifying using the internal

@@ -7714,7 +7714,7 @@ of~$J$; we want to verify that it's actually an element of~$J$.
 
 By Scholium~\ref{scholium}, the canonical homomorphism
 \[ \affl/J \longrightarrow [\Spec(\affl/J), \affl] \]
-is bijective; the assumptions of that proposition are satisfied in either of
+is bijective; the assumptions of that scholium are satisfied in either of
 the two situations. The set~$\Spec(\affl/J)$ is isomorphic to~$\brak{J = (0)}$.
 Since~$\neg\neg(1 \in J)$, we also have~$\neg(J = (0))$.
 Therefore~$\Spec(\affl/J)$ is empty and the codomain of the displayed
@@ -7742,6 +7742,42 @@ over~$U$.
 Then~$\neg\neg(\varepsilon = 0)$. Therefore~$\neg\neg(\gamma(\varepsilon) \in
 U)$. Since being an element of~$U$ is~$\neg\neg$-stable, it follows
 that~$\gamma(\varepsilon) \in U$.
+\end{proof}
+
+In ordinary scheme theory, an inclusion of a standard open subset~$D(f)
+\hookrightarrow X$ is isomorphic to the structure morphism of the relative
+spectrum~$\RelSpek_X \O_X[f^{-1}]$. Inclusions of more general open subsets
+can typically not be described using the relative spectrum construction, the
+standard example being the inclusion~$\AA^2_k \setminus \{ 0 \} \hookrightarrow
+\AA^2_k$ whose domain is not affine.
+
+An interesting feature of the internal universe of the big Zariski topos is
+that it's flexible enough to express \emph{any} open subset as a spectrum.
+The contradiction is only apparent since the algebra used for constructing
+such a spectrum is not in general quasicoherent.
+
+\begin{prop}Let~$U \hookrightarrow 1$ be an open truth value. In any of the
+situations of Proposition~\ref{prop:open-truth-values-stable}, there is a
+(not necessarily quasicoherent)~$\affl$-algebra~$A$ such that the inclusion is
+isomorphic to the morphism~$\Spec(A) \to 1$.\end{prop}
+
+\begin{proof}The open truth value~$U$ is given by an ideal~$J \subseteq \affl$
+such that~$\affl/J$ is synthetically quasicoherent and such that~$U$ holds if
+and only if~$1 \in J$. We set~$A \defeq \affl[M^{-1}]$, where~$M$ is the
+multiplicatively closed subset
+\[ M \defeq \{ f \? \affl \,|\, 1 \in J \Rightarrow \speak{$f$ \inv} \} \subseteq \affl. \]
+The spectrum of~$A$ is inhabited if and only if~$M \subseteq (\affl)^\times$,
+in which case the unique element of~$\Spec(A)$ is the inverse of the
+localization morphism~$\affl \to \affl[M^{-1}]$. Thus~$\Spec(A)$ is isomorphic
+to~$\brak{M \subseteq (\affl)^\times}$. Therefore we have to verify that~$U$
+holds if and only if~$M \subseteq (\affl)^\times$.
+
+The ``only if'' direction is trivial.
+
+For the ``if'' direction, we exploit the~$\neg\neg$-stability of~$U$. If~$\neg
+U$, then~$\neg(1 \in J)$, so~$M = \affl$, and since~$M \subseteq (\affl)^\times$ by
+assumption, it follows that zero is invertible. This is a contradiction.
+Thus~$\neg\neg U$.
 \end{proof}
 
 \begin{proof}[Proof of Proposition~\ref{prop:characterization-open-subfunctor}]

@@ -1,4 +1,4 @@
-\documentclass[10pt,reqno]{amsbook}
+\documentclass[10pt,reqno,a4paper]{amsbook}
 \usepackage{etex}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
@@ -11,6 +11,9 @@
 \usepackage{booktabs}
 \usepackage[protrusion=true,expansion=true]{microtype}
 \usepackage[bookmarksdepth=2,pdfencoding=auto]{hyperref}
+
+%\addtolength{\oddsidemargin}{7mm}
+%\addtolength{\evensidemargin}{-7mm}
 
 \usepackage[all]{xy}
 \usepackage{tikz}
@@ -176,6 +179,10 @@
 }{%
   \popQED\endtrivlist\@endpefalse
 }
+\let\@afterindenttrue\@afterindentfalse
+\def\subsection{\@startsection{subsection}{2}%
+  {0pt}{.5\linespacing\@plus.7\linespacing}{-.5em}%
+  {\normalfont\bfseries}}
 \makeatother
 
 \begin{document}
@@ -1856,8 +1863,6 @@ is \notnot finitely generated (even \notnot principal).
 \end{proof}
 
 }
-
-% \begin{document}
 
 % XXX: move to after modules have been discussed
 \subsection{An internal proof of Grothendieck's generic freeness lemma}
@@ -7540,7 +7545,6 @@ topos-theoretic point of view and should be weakened to require only local
 representability.
 \end{rem}
 
-% \begin{document}
 
 \subsection{Open subfunctors}
 

@@ -7546,7 +7546,7 @@ representability.
 \end{rem}
 
 
-\subsection{Open subfunctors}
+\subsection{Open immersions}
 
 A basic concept in the functor-of-points approach to algebraic geometry is the
 concept of an \emph{open subfunctor}. It is used to delimit schemes from more
@@ -7572,7 +7572,30 @@ define~$\Zar(S)$ the map~$T' \to T$ factors over~$T_0$ if and only if~$X(f)(x)
 \end{defn}
 
 The open subschemes~$T_0 \subseteq T$ appearing in this definition are uniquely
-determined by their universal property.
+determined by their universal property. The relation of open subfunctors to
+open immersions is as follows.
+
+\begin{prop}Let~$X$ be an~$S$-scheme.
+\begin{enumerate}
+\item Let~$U \subseteq X$ be an open subscheme. Then the subfunctor~$\ul{U}
+\hookrightarrow \ul{X}$ is open.
+\item If~$\ul{X}$ is locally representable by an object of the site used to
+define~$\Zar(S)$, any open subfunctor~$U \hookrightarrow \ul{X}$ is isomorphic
+to the open subfunctor associated to an open subscheme of~$X$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}For the first claim, let~$(T \to S)$ be an object of the site used
+to define~$\Zar(S)$ and let~$x \in \ul{X}(T)$. The open
+subscheme~$T_0 \subseteq T$ required by the definition of an open subfunctor can
+then be chosen as~$x^{-1}[U]$.
+
+For the second claim, assuming for notational simplicity that~$\ul{X}$ is
+directly representable without having to pass to a cover, the desired open
+subscheme of~$X$ can be obtained as the witnessing subscheme~``$T_0$'' as it
+appears in the definition of an open subfunctor in the special case~$(T \to S)
+\defeq (X \to S)$.
+\end{proof}
 
 From the point of view of the internal language of~$\Zar(S)$, a subfunctor~$U
 \hookrightarrow X$ looks like the inclusion of a subset. The natural question
@@ -7587,11 +7610,27 @@ that~$\affl/J$ is synthetically quasicoherent
 J$. (Section~\ref{sect:basics-on-truth-values} contains generalities on truth
 values.)\end{defn}
 
+\begin{ex}Let~$f \? \affl$. Then~``$f \neq 0$'' is an open truth value with
+witnessing ideal~$J = (f)$. The quotient~$\affl/J$ is indeed synthetically
+quasicoherent, since it is finitely presented. More generally,
+let~$f_1,\ldots,f_n \? \affl$. Then~``$f_1 \neq 0 \vee \cdots \vee f_n \neq
+0$'' is an open truth value with witnessing ideal~$J =
+(f_1,\ldots,f_n)$.\end{ex}
+
+\begin{defn}In the context of a specified local ring, a map~$U \to X$ is a
+\emph{synthetic open immersion} if and only if it is injective and for any~$x\?X$
+the truth value of~``the fiber of~$x$ is inhabited'' is open.\end{defn}
+
+\begin{ex}The inclusion~$(\affl)^\times \hookrightarrow \affl$ of the
+invertible elements is a synthetic open immersion, since for~$x\?\affl$ the
+truth value of~``the fiber of~$x$ is inhabited'' equals the truth value of~``$x
+\neq 0$''.\end{ex}
+
 \begin{prop}\label{prop:characterization-open-subfunctor}
 Let~$X \in \Zar(S)$ be a Zariski sheaf. A subfunctor~$U
 \hookrightarrow X$ is open if and only if, from the internal point of view
-of~$\Zar(S)$, it holds that for all~$x \? X$ the truth value of~``$x \in U$''
-is open. In formal language:
+of~$\Zar(S)$, the map~$U \hookrightarrow X$ is a synthetic closed immersion.
+In formal language:
 \begin{multline*}
   \qquad\Zar(S) \models
   \forall x\?X\_

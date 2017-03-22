@@ -1,0 +1,98 @@
+The goal of this subsection is to give a simple and constructive proof of
+Grothendieck's generic freeness lemma. A basic rendition of it is as follows:
+
+\begin{quote}\emph{Generic freeness, first formulation.}
+Let~$A$ be an integral domain. Let~$M$ be a finitely
+generated~$A$-module. Then there exists a nonzero element~$f \in A$ such
+that~$M[f^{-1}]$ is a finite free~$A[f^{-1}]$-module.
+\end{quote}
+
+The following more general version can be found, for instance, in the Stacks
+Project~\stacksproject{051Z}.
+
+\begin{quote}\emph{Generic freeness, second formulation.}
+Let~$A$ be a reduced ring. Let~$M$ be a finitely
+generated~$A$-module. Then there exists a dense open subset~$U \subseteq
+\Spec(A)$ such that for any point~$x \in U$ there is an element~$f \in A$ such
+that~$x \in D(f) \subseteq U$ and that the module~$M[f^{-1}]$ is a
+finite free~$A[f^{-1}]$-module.
+\end{quote}
+
+There is no hope that there is an intuitionistic proof of the lemma in one of
+those two formulations, since the second formulation refers to prime ideals (an
+issue we'll discuss more thoroughly in
+Sections~\ref{sect:eliminating-prime-ideals} and~\ref{sect:relative-spectrum})
+and there is a Brouwerian counterexample to the first
+one.\footnote{Let~$\varphi$ be an arbitrary statement. Then the~$\ZZ$-module~$M
+\defeq \ZZ/\aaa$, where~$\aaa \defeq \{ x \in \ZZ \,|\, (x = 0) \vee \varphi \}$
+is as in Footnote~\ref{fn:z-principal-ideal-domain} on
+page~\pageref{fn:z-principal-ideal-domain}, is finitely generated. By
+assumption, there exists a nonzero element~$f \in \ZZ$ such that~$M[f^{-1}]$ is
+a finite free module over~$A[f^{-1}]$ of some rank~$n$. If~$n = 0$, then~$f^m
+\in \aaa$ for some~$m \geq 0$, therefore~$\varphi$ holds. If~$n \geq 1$,
+then~$\neg\varphi$ holds, since~$\varphi$ would imply~$\aaa = \ZZ$ and
+therefore~$M[f^{-1}] = 0$. Since~$n = 0 \vee n \geq 1$, it follows that~$\varphi
+\vee \neg\varphi$.}
+
+However, the following form of the lemma \emph{can} be proven
+intuitionistically:
+
+\begin{quote}\emph{Generic freeness, third formulation.}
+Let~$A$ be a reduced ring. Let~$M$ be a finitely generated~$A$-module.
+Assume that~$f = 0$ is the only element of~$A$ such that~$M[f^{-1}]$ is a finite
+free~$A[f^{-1}]$-module. Then~$A = 0$.
+\end{quote}
+
+In classical logic, this form is equivalent to the second formulation by a
+routine argument: With the definition of~$U$ as the union over all standard open
+subsets~$D(f)$ such that~$M[f^{-1}]$ is a free~$A[f^{-1}]$-module, the only
+claim which remains to be shown is that~$U$ is dense. So let a nonempty open
+subset~$V$ of~$\Spec(A)$ be given. This contains a standard open subset~$D(g)
+\subseteq V$ such that~$g$ is not nilpotent. Therefore the localized
+ring~$A[g^{-1}]$ is not zero. Thus the premise of the third formulation is not
+satisfied. Since we assume classical logic, there is a nonzero element~$f \in
+A[g^{-1}]$ such that~$M[g^{-1}][f^{-1}]$ is a finite
+free~$A[g^{-1}][f^{-1}]$-module. Writing~$f = h/g^n$, we see that~$U \cap V$
+contains the nonzero open subset~$D(gh)$.
+
+The usual proofs of Grothendieck's generic freeness lemma proceed using a series
+of reduction steps which are arguably not very memorable or
+straightforward, see for instance~\stacksproject{051Q}
+or~\cite{staats:generic-freeness}. In particular, there doesn't seem to be a
+published proof which tackles the Noetherian and non-Noetherian case in one go.
+Employing the internal language, Grothendieck's generic freeness lemma can be
+proven in a simple, conceptual, and constructive way without any reduction steps.
+
+\begin{thm}Let~$A$ be a reduced ring. Let~$B$ be an~$A$-algebra of finite type.
+Let~$M$ be a finitely generated~$B$-module. Assume that the only element~$f \in
+A$ with the following three properties is~$f = 0$. Then~$A = 0$.
+\begin{enumerate}
+\item $M[f^{-1}]$ is free over~$A[f^{-1}]$.
+\item $B[f^{-1}]$ is of finite presentation over~$A[f^{-1}]$.
+\item $M[f^{-1}]$ is finitely presented as a~$B[f^{-1}]$-module.
+\end{enumerate}
+\end{thm}
+
+\begin{proof}It suffices to prove that, from the internal point of view
+of~$\Sh(\Spec(A))$, it's \notnot the case that
+\begin{enumerate}
+\item $M^\sim$ is free over~$\O_{\Spec(A)}$,
+\item $B^\sim$ is of finite presentation over~$\O_{\Spec(A)}$, and
+\item $M^\sim$ is finitely presented as a~$B^\sim$-module.
+\end{enumerate}
+
+% XXX verify freeness
+
+Since~$B^\sim$ is finitely generated as an~$\O_{\Spec(A)}$-algebra, it is
+isomorphic to an algebra of the form~$\O_{\Spec(A)}[X_1,\ldots,X_n]/\aaa$ for
+some number~$n \geq 0$ and some ideal~$\aaa$. By
+Proposition~\ref{prop:ox-weakly-noetherian} and Theorem~\ref{thm:hilbert}, the
+ring~$\O_{\Spec(A)}[X_1,\ldots,X_n]$ is weakly Noetherian. Therefore~$\aaa$ is
+\notnot finitely generated, showing that~$B^\sim$ is \notnot of finite
+presentation over~$\O_{\Spec(A)}$.
+
+Similarly, the module~$M^\sim$ is of the form~$(B^\sim)^m/U$ for some number~$m
+\geq 0$ and some submodule~$U$. Since~$(B^\sim)^m$ is weakly Noetherian as a
+direct sum of weakly Noetherian modules, the submodule~$U$ is \notnot finitely
+generated. Thus~$M^\sim$ is \notnot a finitely presented~$B^\sim$-module.
+\end{proof}

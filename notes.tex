@@ -721,7 +721,7 @@ Let~$X$ be a topological space. Later, $X$ will be the underlying space of a
 scheme. The meaning of internal statements is given by a set of rules, the
 \emph{Kripke--Joyal semantics} of the topos of sheaves on~$X$.
 
-\begin{defn}The meaning of 
+\begin{defn}\label{defn:kripke-joyal}The meaning of
 \[ U \models \varphi \quad\text{(``$\varphi$ holds on $U$'')} \]
 for open subsets~$U \subseteq X$ and formulas~$\varphi$ over~$U$ is given by
 the rules listed in Table~\ref{table:kripke-joyal}, recursively in the structure of~$\varphi$.
@@ -759,10 +759,11 @@ negation can be expressed using other symbols: $\neg\varphi \defequiv (\varphi
     && \text{there exists a covering $U = \bigcup_i U_i$ such that for all~$i$:} \\
     && \quad\quad \text{$U_i \models \varphi_j$ for some~$j \in J$} \\
     U \models \varphi \Rightarrow \psi &\Ll&
-      \text{for all open~$V \subseteq U$:
+      \hcancel{\text{$U \models \varphi$ implies $U \models \varphi$}}{0pt}{3pt}{0pt}{-2pt} \\
+    && \text{for all open~$V \subseteq U$:
       $V \models \varphi$ implies $V \models \psi$} \\
     U \models \forall s \? \F\_ \varphi(s) &\Ll&
-      \text{for all sections~$s \in \Gamma(V, \F)$, open $V \subseteq U$: $V \models
+      \text{for all sections~$s \in \Gamma(V, \F)$ on open $V \subseteq U$: $V \models
       \varphi(s)$} \\
     U \models \exists s \? \F\_ \varphi(s) &\Ll&
       \hcancel{\text{there exists a section~$s \in \Gamma(U,\F)$ such that $U
@@ -772,7 +773,7 @@ negation can be expressed using other symbols: $\neg\varphi \defequiv (\varphi
     && \quad\quad \text{there exists~$s_i \in \Gamma(U_i, \F)$ such that
     $U_i \models \varphi(s_i)$} \\
     U \models \forall \F\_ \varphi(\F) &\Ll&
-      \text{for all sheaves $\F$ on $V$, open $V \subseteq U$: $V \models \varphi(\F)$} \\
+      \text{for all sheaves $\F$ on open $V \subseteq U$: $V \models \varphi(\F)$} \\
     U \models \exists \F\_ \varphi(\F) &\Ll&
       \text{there exists an open covering $U = \bigcup_i U_i$ such that for all~$i$:} \\
     && \quad\quad \text{there exists a sheaf~$\F_i$ on~$U_i$ such that
@@ -2824,8 +2825,8 @@ Recall that the rank of an~$\O_X$-module~$\F$ on a scheme~$X$ (or
 locally ringed space) at a point~$x \in X$ is defined as the~$k(x)$-dimension
 of the vector space~$\F_x \otimes_{\O_{X,x}} k(x)$. If we assume that~$\F$ is
 of finite type around~$x$, this dimension is finite and equals the minimal
-number of elements needed to generate~$\F_x$ as an~$\O_{X,x}$-module (by
-Nakayama's lemma).
+number of elements needed to generate~$\F_x$ as an~$\O_{X,x}$-module by
+Nakayama's lemma.
 
 In the internal language, we can define an element of~$\widehat\NN$ by
 \begin{multline*}
@@ -2839,7 +2840,7 @@ completion.
 
 \begin{prop}\label{prop:rank-function-internally}
 Let~$\F$ be an~$\O_X$-module of finite type on a scheme~$X$ (or locally ringed
-space). Under the correspondence given by the previous lemma, the internally
+space). Under the correspondence given by the Lemma~\ref{lemma:upper-semicontinuous-functions}, the internally
 defined rank maps to the rank function of~$\F$.
 \end{prop}
 \begin{proof}
@@ -7003,16 +7004,18 @@ The partial element~$K$ can thereby refined to the honest element~$t \defeq t_0 
 
 \label{part:big-zariski}
 
-The preceding sections demonstrated that working in the internal universe of
+The preceding part demonstrated that working in the internal universe of
 the little Zariski topos of a scheme~$S$, the topos of sheaves on~$S$, is
 useful for simplifying local work on~$S$. The basic tenet was that sheaves of
 modules look just like plain modules and that theorems of intuitionistic
 algebra yield theorems about sheaves.
 
 But the little Zariski topos is not particularly suited for dealing with
-schemes \emph{over~$S$}. For this, we need a related topos.
+\emph{schemes} over~$S$. For this, we need a related topos. For the scope of
+this introduction only, we employ the following slightly problematic
+definition which we'll fix in Section~\ref{sect:proper-choice-of-site}.
 
-\begin{defn}The \emph{big Zariski topos}~$\Zar(S)$ of a scheme~$S$ is the
+\begin{defn}[provisional]The \emph{big Zariski topos}~$\Zar(S)$ of a scheme~$S$ is the
 topos of sheaves on the Grothendieck site~$\Sch/S$ of schemes over~$S$.
 \end{defn}
 
@@ -7020,20 +7023,59 @@ Explicitly, an object of~$\Zar(S)$ is a functor~$(\Sch/S)^\op \to \Set$
 satisfying the gluing condition with respect to ordinary Zariski coverings:
 If~$X = \bigcup_i U_i$ is a cover of an~$S$-scheme~$X$ by open subsets, the
 diagram
-\[ \F(X) \to \prod_i \F(U_i) \rightrightarrows \prod_{i,j} F(U_i \cap U_j)
+\[ \F(X) \longrightarrow \prod_i \F(U_i) \xbigtoto{} \prod_{i,j} F(U_i \cap U_j)
 \]
-should be an equalizer diagram. Just like the topos of sheaves on a topological
-space admits an internal language, so does the big Zariski topos; the necessary
-modifications of the Kripke--Joyal semantics (Table~\ref{table:kripke-joyal}) are straightforward. For
-instance, the rule for implication,
-\[ U \models \varphi \Rightarrow \psi \quad\Ll\quad
-  \text{for all open~$V \subseteq U$:
-  $V \models \varphi$ implies $V \models \psi$}, \]
-for open subsets~$U$ of~$S$, has to be rewritten as
-\[ X \models \varphi \Rightarrow \psi \quad\Ll\quad
-  \text{for all morphisms~$T \to X$ in~$\Sch/S$:
-  $T \models \varphi$ implies $T \models \psi$}, \]
-for~$S$-schemes~$X$.
+should be an equalizer diagram.
+
+
+{\tocless
+
+\subsection*{Internal language} Just like the topos of sheaves on a topological
+space or a locale admits an internal language, so does the big Zariski topos.
+The necessary modifications of the Kripke--Joyal semantics
+(Definition~\ref{defn:kripke-joyal}) on are straightforward. Instead of
+defining recursively the meaning of~``$U \models \varphi$'' for open subsets~$U
+\subseteq S$, we have to define the meaning of~``$T \models \varphi$''
+for~$S$-schemes~$T$, and the rules for implication and universal quantification
+have to be rewritten. Instead of
+\begin{align*}
+  U \models \varphi \Rightarrow \psi \quad&\Ll\quad
+  \text{for all open~$V \subseteq U$:} \\
+  &\qquad\qquad\qquad\qquad\text{$V \models \varphi$ implies $V \models \psi$} \\
+  U \models \forall s\?\F\_ \varphi(s) \quad&\Ll\quad
+  \text{for all sections~$s \in \Gamma(V, \F)$ on open $V \subseteq U$:} \\
+  &\qquad\qquad\qquad\qquad V \models \varphi(s) \\
+\intertext{they have to read as follows.}
+  X \models \varphi \Rightarrow \psi \quad&\Ll\quad
+  \text{for all morphisms~$T \to X$ in~$\Sch/S$:} \\
+  &\qquad\qquad\qquad\qquad\text{$T \models \varphi$ implies $T \models \psi$} \\
+  X \models \forall s\?\F\_ \varphi(s) \quad&\Ll\quad
+  \text{for all morphisms~$T \to X$ in~$\Sch/S$ and} \\
+  &\phantom{{}\Ll\quad\text{for }} \text{all sections~$s \in \Gamma(T, \F)$:} \\
+  &\qquad\qquad\qquad\qquad V \models \varphi(s)
+\end{align*}
+
+\subsection*{Important objects in the big Zariski topos} It's convenient to
+introduce notation for XXX objects which often appear when studying the big
+Zariski topos.
+
+\begin{itemize}
+\item Let~$X$ be an~$S$-scheme. Its functor of points $(\Sch/S)^\op
+\to \Set$, which maps an~$S$-scheme~$T$ to~$\Hom_S(T,X)$, is an object
+of~$\Zar(S)$. We denote it by~``$\ul{X}$''.
+
+Particularly important is~$\affl$, the functor of points of the affine line
+over~$S$.
+
+\item Let~$\E$ be a sheaf of sets on~$S$. For reasons explained in
+Section~\ref{sect:big-small-relation}, we denote by~``$\pi^{-1}(\E)$''
+the induced sheaf on~$\Sch/S$ given by
+\[ (T \xra{f} S) \longmapsto \Gamma(T, f^{-1}(\E)). \]
+
+\item Let~$\E$ be a sheaf of~$\O_S$-modules. We denote by~``$\E^\Zar$''
+the induced sheaf on~$\Sch/S$ given by
+\[ (T \xra{f} S) \longmapsto \Gamma(T, f^*(\E)). \]
+\end{itemize}
 
 The big Zariski topos is the proper context for the ``functor of
 points'' approach to algebraic geometry. This is because the functor of points
@@ -7104,6 +7146,7 @@ say, all set-theoretical maps~$T \to T$. There is a similar phenomenon in
 synthetic differential geometry, where any map~$\RR \to \RR$ is smooth (in an
 appropriate sense).
 
+}
 
 
 \section{On the proper choice of a big Zariski site}
@@ -7134,7 +7177,7 @@ not contain a subobject classifier and might not be cartesian closed. From the
 internal point of view, powersets and function sets might therefore not exist.
 
 \subsection*{Using Grothendieck universes}
-We could also assume the existence of a Grothendieck universe~$\U$
+We could also assume the existence of a Gro\-then\-dieck universe~$\U$
 containing~$S$ and construct~$\Zar(S)$ as the topos of sheaves over the
 small site~$\Sch_\U/S$, the category of~$S$-schemes contained in~$U$.
 

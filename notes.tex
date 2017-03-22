@@ -15,6 +15,13 @@
 %\addtolength{\oddsidemargin}{7mm}
 %\addtolength{\evensidemargin}{-7mm}
 
+% Hack to load extpfeil from http://tex.stackexchange.com/a/297109/32372
+\expandafter\def\csname opt@stmaryrd.sty\endcsname
+{only,shortleftarrow,shortrightarrow}
+\usepackage{extpfeil}
+\newextarrow{\xbigtoto}{{20}{20}{20}{20}}
+   {\bigRelbar\bigRelbar{\bigtwoarrowsleft\rightarrow\rightarrow}}
+
 \usepackage[all]{xy}
 \usepackage{tikz}
 \usetikzlibrary{calc,shapes.callouts,shapes.arrows}
@@ -411,13 +418,13 @@ Its internal language simplifies the treatment of sheaves of rings and modules
 over~$X$, but the treatment of~\emph{schemes over~$X$} is simplified only a
 little bit: From the internal point of view of~$\Sh(X)$, a morphism~$T \to X$
 of schemes looks like a morphism~$T \to \pt$. Therefore relative scheme theory
-is turned into absolute scheme theory, but it still requires the machinery of
-locally ringed spaces.
+is turned into absolute scheme theory (over the ring~$\O_X$), but it still
+requires the machinery of locally ringed spaces.
 
-The internal language of the \emph{big} Zariski topos allows for a more far-reaching
+The internal language of the \emph{big} Zariski topos of~$X$ allows for a more far-reaching
 change of perspective. It incorporates Grothendieck's functor-of-points
-philosophy in order to cast modern algebraic geometry, relative to an arbitrary
-base scheme, in a naive \emph{synthetic} language reminiscient of the classical
+philosophy in order to cast modern algebraic geometry, relative to the arbitrary
+base scheme~$X$, in a naive \emph{synthetic} language reminiscient of the classical
 Italian school.
 
 The synthetic approach is best explained by contrasting it with the usual
@@ -435,20 +442,22 @@ from the category of commutative rings to the category of sets. For instance,
 the Fermat scheme is given by the functor
 \[ A \longmapsto \{ (x,y,z) \in A^3 \,|\, x^n + y^n - z^n = 0 \}, \]
 that is by a \emph{scheme} in the colloquial sense for prescribing a set of
-solutions for any ring. This approach requires fewer preparations and involves
+solutions for any ring.
+
+This approach requires fewer preparations and involves
 only objects of intrinsic interest to algebraic geometry: $A$-valued points,
 where~$A$ ranges over all rings. These tend to be better behaved, for instance in
 that the set of~$A$-valued points of a product of schemes is isomorphic to the
 product of the sets of~$A$-valued points, and are more fundamental from a
 geometric point of view. In contrast, the set-theoretical points of a scheme in
-the approach using locally ringed spaces actually parameterize the irreducible
+the approach using locally ringed spaces actually parameterize irreducible
 closed subsets, not points in an intuitive sense.
 
 However, the description of basic objects can still be somewhat involved in the
-functorial approach. For instance, while the functor for giving
+functorial approach. For instance, while the functor associated to
 projective~$n$-space is given on fields by the simple expression
 \[ \begin{array}{r@{}c@{}l}
-  k &{}\longmapsto{}& \text{the set of lines in~$k^{n+1}$} \\
+  K &{}\longmapsto{}& \text{the set of lines trough the origin in~$K^{n+1}$} \\
   && \qquad \cong \{ [x_0:\cdots:x_n] \,|\, \text{$x_i \neq 0$ for some~$i$} \},
 \end{array} \]
 on general rings it is given by
@@ -458,16 +467,19 @@ on general rings it is given by
   && \qquad \text{modulo isomorphism}.
 \end{array} \]
 
-On the one hand, typically only~$k$-valued points admit a simple description.
+On the one hand, typically only field-valued points admit a simple description.
 On the other hand, the $A$-valued points for more general rings~$A$ are crucial
-in order to impart a meaningful sense of cohesion on the~$k$-valued
+in order to impart a meaningful sense of cohesion on the field-valued
 points and therefore can't simply be dropped.\footnote{For instance,
 let~$\ul{\AA}^1 : A \mapsto A$ be the functor associated to the affine line.
 Yoneda's lemma guarantees that the set of morphisms~$\ul{\AA}^1 \to \ul{\AA}^1$
 in the functor category~$[\Ring,\Set]$ is in canonical bijection with the
-set~$\ZZ[T]$, as one would expect: Algebraic functions~$\AA^1 \to \AA^1$ should
-be given by polynomials. However, if we calculate the set of morphisms
-in~$[\mathrm{Field},\Set]$ we obtain XXX.}
+set~$\ZZ[t]$, as one would expect: Algebraic functions~$\AA^1 \to \AA^1$ should
+be given by polynomials. (The discussion could also be relativized so that the
+answer is~$k[t]$, where~$k$ is some base field.) However, if we calculate the
+set of morphisms in~$[\mathrm{Field},\Set]$ we obtain~$\int_{K \in
+\mathrm{Field}} \Hom(K,K)$, a set which contains pathological functions such as
+some which permute the elements of the prime fields in arbitrary ways.}
 
 We can resolve the tension by incorporating an automatic management of the
 \emph{stage of definition}, the rings~$A$ such that we're
@@ -476,42 +488,86 @@ by the internal language of the big Zariski topos. It allows for the Fermat
 scheme to be given by the naive expression
 \[ \{ (x,y,z) \in (\ul{\AA}^1)^3 \,|\, x^n + y^n - z^n = 0 \} \]
 and for projective~$n$-space to be given by either of the expressions
-\[ \text{the set of lines in~$(\ul{\AA}^1)^{n+1}$}
-  \quad\text{or}\quad
-  \{ [x_0:\cdots:x_n] \,|\, \text{$x_i \neq 0$ for some~$i$} \}. \]
+\begin{multline*}
+  \qquad\text{the set of lines through the origin in~$(\ul{\AA}^1)^{n+1}$}
+  \quad\text{or} \\
+  \{ [x_0:\cdots:x_n] \,|\, \text{$x_i \neq 0$ for some~$i$} \}.\qquad
+\end{multline*}
+This is not a specialized trick to give short descriptions of some schemes:
+Like with the internal universe of any topos, the full power of intuitionistic
+logic is available to reason about the objects constructed in this way.
 
-For treating \emph{schemes over~$X$} as opposed to ``local objects on~$X$''
-such as sheaves of rings and modules from an internal point of view, this topos
-is not particularly well-adapted. For such applications the \emph{big
-Zariski topos} has to be used. We discuss this topos and related toposes, such
-as the big étale topos, in Part~\ref{part:big-zariski}. The key point is
-that they can be used to internalize Grothendieck's ``functor of points''
-approach to algebraic geometry. From the internal point of view of the big
-Zariski topos of a scheme~$X$, schemes over~$X$ look just like plain sets and
-morphisms between~$X$-schemes look like plain maps between those sets. Elements
-of those sets correspond to~$T$-points of such an~$X$-scheme, with the internal
-language machinery keeping track of the point's domain~$T$ of definition.
+We can thus add an approach to the list of ways of giving a rigorous foundation
+to algebraic geometry, the synthetic approach which layers scheme theory not
+upon a classical set theory, but rather directly encodes schemes as sets and
+morphisms of schemes as maps of sets in the nonclassical universe provided by
+the big Zariski topos of a base scheme. We can therefore use a simple,
+element-based language to talk about schemes.
 
-Therefore basic constructions of relative scheme theory, like building the
-affine or projective space over a base scheme or associating to a quasicoherent
-sheaf of algebras its relative spectrum, can be described and reasoned about in
-a simple, element-based language. For instance, projective~$n$-space over~$X$
-is described by the internal expression
-\[ \PP^n \defeq \{ (x_0,\ldots,x_n) \? (\afflx)^{n+1} \,|\,
-  x_0 \neq 0 \vee \cdots \vee x_n \neq 0 \}/(\text{rescaling}) \]
-in the big Zariski topos of~$X$, with the scheme structure automatically taken
-care of. Also, the (not necessarily locally trivial) tangent bundle of
-an~$X$-scheme~$T$ can be thought of as the set of maps from the somewhat
-curious set~$\Delta \defeq \{ \varepsilon\?\afflx \,|\, \varepsilon^2 = 0 \}$
-to~$T$, thus formalizing the intuitive picture of tangent vectors as
-infinitesimal curves.
+This is similar to synthetic approaches to other fields of mathematics, such as
+differential geometry~\cite{kock:sdg}, domain
+theory~\cite{hyland:synthetic-domain-theory}, computability
+theory~\cite{bauer:synthetic-computability-theory}, and more recently homotopy
+theory~\cite{hott}. The synthetic approaches allow in each case to encode the
+objects of study directly as (nonclassical) sets, with geometric,
+domain-theoretic, computability-theoretic, or homotopic structure being
+automatically provided for.
 
-Modal operators are important in the big topos setting as well. For instance,
+The implicit algebro-geometric structure has visible consequences on the
+internal universe of the big Zariski topos and endows it with a distinctive
+algebraic flavor. For instance, the statement
+``\emph{any} map~$\ul{\AA}^1 \to \ul{\AA}^1$ is a polynomial function''
+holds from the internal point of view. This is also a property which sets the
+internal universe of the big Zariski topos apart from the toposes studied in
+synthetic differential geometry.
+
+If one is content with building upon classical scheme theory, the big Zariski
+topos~$\Zar(X)$ of a base scheme~$X$ can be constructed as the topos of
+sheaves on the Grothendieck site~$\Sch/X$ of~$X$-schemes.\footnote{Some care is
+needed in order to avoid set-theoretical issues of size. We discuss this fine
+point in Section~\ref{sect:proper-choice-of-site}. If one is interested in
+foundational questions and doesn't simply want to use the big Zariski topos in
+order to employ its convenient internal language, one can rest assured that
+there's a way to construct it without resorting to classical scheme theory.} % XXX section
+Explicitly, an object of~$\Zar(X)$ is a functor~$(\Sch/X)^\op \to \Set$
+satisfying the gluing condition with respect to Zariski coverings:
+If~$T = \bigcup_i U_i$ is a cover of an~$X$-scheme~$T$ by open subsets, the
+diagram
+\[ \F(T) \longrightarrow \prod_i \F(U_i) \xbigtoto{} \prod_{i,j} F(U_i \cap U_j) \]
+should be an equalizer diagram. A premier example of an object of~$\Zar(X)$ is
+the functor~$\ul{Y}$ of points associated to an~$X$-scheme~$Y$, mapping
+an~$X$-scheme~$T$ to~$\Hom_X(T, Y)$. It satisfies the gluing condition since
+one can glue morphisms of schemes in the Zariski topology.
+
+The object~$\ul{\AA}^1$ which already appeared is the functor of points
+of the affine line over~$X$, the~$X$-scheme~$\AA^1_X \defeq X \times_{\Spec\ZZ}
+\ZZ[t]$. Its value on an~$X$-scheme~$T$ is
+\[ \afflx(T) = \Hom_X(T, \AA^1_X) \cong \Hom_{\Spec\ZZ}(T, \Spec\ZZ[t]) \cong
+\Gamma(T,\O_T). \]
+This object has a canonical structure as a ring object in~$\Zar(X)$. In fact,
+from the internal point of view of~$\Zar(X)$, it is a local ring and even a
+field in the sense that nonzero elements are invertible. In the case~$S =
+\Spec\ZZ$, this was first observed by Kock~\cite{kock:univ-proj-geometry}. At
+the same time, it is not a reduced ring -- a feat only possible in an
+intuitionistic context. This curious interplay is quite important, since the
+sets
+\[ \{ x\?\afflx \,|\, x = 0 \} \quad\text{and}\quad
+  \{ x\?\afflx \,|\, x^2 = 0 \} \]
+should and do describe two different~$X$-schemes: the first is isomorphic
+to~$X$ while the second is an infinitesimal thickening of~$X$, the vanishing scheme
+of~$t^2$ in~$\AA^1_X$.
+% XXX forward reference to tangent bundle
+
+Modal operators are useful in the big topos setting as well. For instance,
 there is a modal operator~$\Box_\text{ét}$ in the big Zariski topos such that
 the internal statement~$\Box_\text{ét} \varphi$ roughly means that~$\varphi$
 holds on an étale covering and such that the translated
-formula~$\varphi^{\Box_\text{ét}}$ means that~$\varphi$ holds in the big étale
-topos.
+formula~$\varphi^{\Box_\text{ét}}$ means that~$\varphi$ holds in the \emph{big étale
+topos} familiar from étale cohomology. In this way, we can access the internal
+universe of the big étale topos from within the big Zariski topos. The
+ring~$\affl$ enjoys additional properties when studied in the étale topos, for
+instance it is separably closed.
+% XXX wording
 
 
 \subsection*{Limitations} The internal language is \emph{local}, in the sense
@@ -530,6 +586,18 @@ reflect themselves in certain metaproperties of the internal language. For
 instance, a scheme is quasicompact if and only if the internal language
 has a weak version of the so-called disjunction property of mathematical
 logic (Section~\ref{sect:compactness}).
+
+The locality limitation only refers to locality with respect to the base
+scheme. For instance, the little and big Zariski toposes of~$X$ \emph{can}
+distinguish between affine and projective~$n$-space over~$X$, even though these
+are locally isomorphic.
+
+The internal languages of both toposes can be used on a case-by-case
+basis, employing them as part of longer arguments in the context of ordinary scheme
+theory where it's useful to do so. However, if one wants to stay solely in one
+of the provided internal universes and not use ordinary scheme theory at all,
+then one will of course run into the further limitation that internal scheme
+theory, as put forward in this thesis, is only developed to a small amount.
 
 
 \subsection*{Introductory literature} These notes are intended
@@ -640,30 +708,10 @@ schemes, there is as yet no direct technical connection.
 
 \subsection*{Notational convention} Occasionally, when quantifying, we use
 colons instead of element signs not only in internal statements, but also in
-external ones; particularly if we want to stress that a discussion takes place
+external ones; particularly when we want to stress that a discussion takes place
 in an intuitionistic context.
 
 }
-
-
-%Of particular importance is the
-%case~$\Box\varphi \defequiv ((\varphi \Rightarrow \notat{x}) \Rightarrow
-%\notat{x})$ where~$x \in X$ is a point, since for this modal operator, the
-%proposition specializes to
-%\[ \Sh(X) \models \varphi^\Box \quad\text{iff}\quad
-%  \text{$\varphi$ holds at~$x$}. \]
-%Thus the question whether truth of a proposition~$\varphi$ at a point~$x$ spreads
-%to a neighbourhood of~$x$ can be formulated in the following way:
-%\emph{Does~$\varphi^\Box$ imply~$\Box\varphi$?} We can give a general
-%answer to this question.
-
-\begin{itemize}
-\item dictionary; microscope/telescope into another
-universe; types instead of sets; (dependent types to encompass almost all
-mathematics)
-\item explain that with the internal language business, it becomes more
-transparent where scheme condition enters
-\end{itemize}
 
 
 \section{The internal language of a sheaf topos}\label{sect:internal-language}
@@ -7059,6 +7107,7 @@ appropriate sense).
 
 
 \section{On the proper choice of a big Zariski site}
+\label{sect:proper-choice-of-site}
 
 Unlike with the construction of the little Zariski topos, set-theoretical
 issues of size arise when constructing the big Zariski topos. These can be

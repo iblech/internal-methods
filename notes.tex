@@ -304,11 +304,17 @@ page~\pageref{sect:appreciating-intuitionistic-logic}).
 
 
 \subsection*{Algebraic geometry}
-We apply the internal language of toposes to algebraic geometry as follows. If~$X$ is a
-scheme, the structure sheaf~$\O_X$ is a sheaf of rings, \ie the sets of
+We apply the internal language of toposes to algebraic geometry in two
+different ways, corresponding to the two different toposes associated to a
+scheme~$X$: the \emph{little Zariski topos} which is just the topos~$\Sh(X)$ of
+set-valued sheaves on~$X$, and the \emph{big Zariski topos} which we introduce
+below.
+
+The internal language of the little Zariski topos can be applied as follows.
+The structure sheaf~$\O_X$ of a scheme~$X$ is a sheaf of rings, that is the sets of
 local sections carry ring structures and these ring structures are compatible
-with restriction. From the internal point of view of the topos of set-valued
-sheaves on~$X$, denoted~``$\Sh(X)$'' in the following, the structure
+with restriction. From the internal point of view of~$\Sh(X)$,
+the structure
 sheaf~$\O_X$ looks much simpler: It looks just like a plain ring (and
 not a sheaf of rings). Similarly, a sheaf of~$\O_X$-modules looks just like a
 plain module over that ring.
@@ -332,18 +338,28 @@ and statements of scheme theory as notions and statements of linear and
 commutative algebra, interpreted in a suitable sheaf topos. This brings
 conceptual clarity and reduces technical overhead.
 
-In these notes, we explain how the internal language machinery works and then develop a
+In Section~\ref{sect:internal-language}, we explain how the internal language
+machinery works, and then develop in Part~\ref{part:little-zariski} a
 \emph{dictionary} between common notions of scheme theory and corresponding
 notions of algebra. Once built, this dictionary can be used arbitrarily often.
 We stress that no in-depth knowledge of topos theory or categorical logic is
 necessary to apply this apparatus.
 
-Two highlights of our approach are the following. Let~$X$ be a reduced scheme
-and~$\F$ be a sheaf of~$\O_X$-modules of finite type. Then it is well-known
-that~$\F$ is locally free on some dense open subset of~$X$; for instance, this
+Two highlights of our approach are the following. If~$X$ is a reduced scheme,
+the internal universe of~$\Sh(X)$ has the peculiar feature that~$\O_X$ is
+Noetherian and a field, even if~$X$ is not locally Noetherian and (as will
+almost always be the case) the local rings~$\O_{X,x}$ are not fields. Linear
+and commutative algebra over~$\O_X$ are therefore particularly simple from the
+internal point of view. For instance, Grothendieck's generic freeness lemma,
+which is usually proved using a somewhat involved series of reduction steps,
+admits a short, easy, and conceptual proof with this technique.
+
+To briefly indicate a part of this, let~$\F$ be a sheaf of~$\O_X$-modules of finite
+type. A basic version of Grothendieck's generic freeness lemma then states
+that~$\F$ is locally free on some dense open subset of~$X$; this fact
 is stated in Vakil's lecture notes as an ``important hard
 exercise''~\cite[Exercise~13.7.K]{vakil:foag}. In fact, this proposition is just the
-interpretation of the following statement of intuitionistic linear algebra in
+interpretation of the following basic statement of intuitionistic linear algebra in
 the sheaf topos: Any finitely generated vector space is \emph{not not} free.
 The proof of this statement is entirely straightforward.\footnote{Intuitionistically,
 the statement that any finitely generated vector space is \emph{free} is stronger than
@@ -351,7 +367,9 @@ the doubly negated version and can not be shown. It would imply that any sheaf
 of finite type is not only locally free on some dense open subset, but locally
 free on the whole space. We discuss this example in more detail in
 Section~\ref{sect:upper-semicontinuous-functions} and in particular in
-Lemma~\ref{lemma:locally-free-dense}.}
+Lemma~\ref{lemma:locally-free-dense}. A proof of Grothendieck's generic
+freeness lemma in its full form is given in
+Section~\ref{sect:generic-freeness}.}
 
 The second highlight is that we can shed light on the phenomenon that
 sometimes, truth of a property at a point~$x$ spreads to some open
@@ -385,8 +403,82 @@ generators~$x_1,\ldots,x_n\?\F$ from the internal point of view, and the
 condition can be reformulated as~$x_1 = 0 \wedge \cdots \wedge x_n = 0$; the
 metatheorem is applicable to this statement.
 
-All of these applications employ the \emph{little Zariski topos} of the base
+
+\subsection*{Synthetic algebraic geometry}
+All of the applications mentioned above employ the little Zariski topos of the base
 scheme~$X$, the topos of sheaves on the underlying topological space of~$X$.
+Its internal language simplifies the treatment of sheaves of rings and modules
+over~$X$, but the treatment of~\emph{schemes over~$X$} is simplified only a
+little bit: From the internal point of view of~$\Sh(X)$, a morphism~$T \to X$
+of schemes looks like a morphism~$T \to \pt$. Therefore relative scheme theory
+is turned into absolute scheme theory, but it still requires the machinery of
+locally ringed spaces.
+
+The internal language of the \emph{big} Zariski topos allows for a more far-reaching
+change of perspective. It incorporates Grothendieck's functor-of-points
+philosophy in order to cast modern algebraic geometry, relative to an arbitrary
+base scheme, in a naive \emph{synthetic} language reminiscient of the classical
+Italian school.
+
+The synthetic approach is best explained by contrasting it with the usual
+approach to scheme theory, which is to layer it upon some standard form of set theory:
+to give a scheme means to firstly give a set of points; then
+to describe a topology on this set; and finally to equip the resulting space
+with a local sheaf of rings. Basic objects of study in algebraic geometry, such
+as closed subschemes of projective spaces, are in this way encoded using a huge
+amount of machinery.
+
+There is also a somewhat lesser used, but philosophically rewarding and more
+``economical'' approach within set theory: Grothendieck's functorial approach.
+In this account of scheme theory, to give a scheme means to give a functor
+from the category of commutative rings to the category of sets. For instance,
+the Fermat scheme is given by the functor
+\[ A \longmapsto \{ (x,y,z) \in A^3 \,|\, x^n + y^n - z^n = 0 \}, \]
+that is by a \emph{scheme} in the colloquial sense for prescribing a set of
+solutions for any ring. This approach requires fewer preparations and involves
+only objects of intrinsic interest in algebraic geometry: $A$-valued points,
+where~$A$ ranges over all rings. These tend to be better behaved, for instance in
+that the set of~$A$-valued points of a product of schemes is isomorphic to the
+product of the sets of~$A$-valued points, and are more fundamental from a
+geometric point of view. In contrast, the set-theoretical points of a scheme in
+the approach using locally ringed spaces actually parameterize the irreducible
+closed subsets.
+
+However, the description of basic objects can still be somewhat involved. For
+instance, while the functor for giving projective~$n$-space is given on fields
+by the simple expression
+\[ \begin{array}{r@{}c@{}l}
+  k &{}\longmapsto{}& \text{the set of lines in~$k^{n+1}$} \\
+  && \qquad \cong \{ [x_0:\ldots:x_n] \,|\, \text{$x_i \neq 0$ for some~$i$} \},
+\end{array} \]
+on general rings it is given by
+\[
+  A \longmapsto \text{the set of quotients~$A^n \twoheadrightarrow P$ modulo
+  isomorphism}.
+\]
+
+On the one hand, typically only~$k$-valued points admit a simple description.
+On the other hand, the $A$-valued points for more general rings~$A$ are crucial
+in order to impart a meaningful sense of cohesion on the~$k$-valued
+points and therefore can't simply be dropped.\footnote{For instance,
+let~$\ul{\AA}^1 : A \mapsto A$ be the functor associated to the affine line.
+Yoneda's lemma guarantees that the set of morphisms~$\ul{\AA}^1 \to \ul{\AA}^1$
+in the functor category~$[\Ring,\Set]$ is in canonical bijection with the
+set~$\ZZ[T]$, as one would expect: Algebraic functions~$\AA^1 \to \AA^1$ should
+be given by polynomials. However, if we calculate the set of morphisms
+in~$[\mathrm{Field},\Set]$ we obtain XXX.}
+
+We can resolve the tension by incorporating an automatic management of the
+\emph{stage of definition}, the rings~$A$ such that we're
+considering~$A$-valued points, into our language. Such a language is provided
+by the internal language of the big Zariski topos. It allows for the Fermat
+scheme to be given by the naive expression
+\[ \{ (x,y,z) \in (\ul{\AA}^1)^3 \,|\, x^n + y^n - z^n = 0 \} \]
+and for projective~$n$-space to be given by either of the expressions
+\[ \text{the set of lines in~$(\ul{\AA}^1)^{n+1}$}
+  \quad\text{or}\quad
+  \{ [x_0:\ldots:x_n] \,|\, \text{$x_i \neq 0$ for some~$i$} \}. \]
+
 For treating \emph{schemes over~$X$} as opposed to ``local objects on~$X$''
 such as sheaves of rings and modules from an internal point of view, this topos
 is not particularly well-adapted. For such applications the \emph{big
@@ -509,7 +601,7 @@ Coquand used it to implement algorithms for working with the algebraic closure
 of an arbitrary field of characteristic zero~\cite{mannaa:coquand:alg-closure}.
 
 One way this thesis contributes to the program of constructive
-mathematics in that intuitionistic mathematics gains new areas of application.
+mathematics is that intuitionistic mathematics gains new areas of application.
 For instance, the constructive account of the theory of Krull dimension was
 originally developed to remove Noetherian hypotheses, extract computational meaning, and
 simplify proofs~\cite{dyn:krull-integral,dyn:char-krull}. It can now also be used to
@@ -1098,7 +1190,7 @@ internal point of view -- a morphism~$Y \to X$ would internally look like a
 morphism~$Y \to \pt$. See Section~\ref{sect:relative-spectrum} for details.\end{rem}
 
 
-\chapter{The little Zariski topos}
+\chapter{The little Zariski topos}\label{part:little-zariski}
 
 \section{Sheaves of rings}
 
@@ -1866,7 +1958,7 @@ is \notnot finitely generated (even \notnot principal).
 }
 
 % XXX: move to after modules have been discussed
-\subsection{An internal proof of Grothendieck's generic freeness lemma}
+\subsection{An internal proof of Grothendieck's generic freeness lemma}\label{sect:generic-freeness}
 The goal of this subsection is to give a simple and constructive proof of
 Grothendieck's generic freeness lemma. A basic rendition of it is as follows:
 

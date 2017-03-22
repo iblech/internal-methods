@@ -425,7 +425,7 @@ approach to scheme theory, which is to layer it upon some standard form of set t
 to give a scheme means to firstly give a set of points; then
 to describe a topology on this set; and finally to equip the resulting space
 with a local sheaf of rings. Basic objects of study in algebraic geometry, such
-as closed subschemes of projective spaces, are in this way encoded using a huge
+as closed subschemes of projective spaces, are in this way encoded using a large
 amount of machinery.
 
 There is also a somewhat lesser used, but philosophically rewarding and more
@@ -436,26 +436,27 @@ the Fermat scheme is given by the functor
 \[ A \longmapsto \{ (x,y,z) \in A^3 \,|\, x^n + y^n - z^n = 0 \}, \]
 that is by a \emph{scheme} in the colloquial sense for prescribing a set of
 solutions for any ring. This approach requires fewer preparations and involves
-only objects of intrinsic interest in algebraic geometry: $A$-valued points,
+only objects of intrinsic interest to algebraic geometry: $A$-valued points,
 where~$A$ ranges over all rings. These tend to be better behaved, for instance in
 that the set of~$A$-valued points of a product of schemes is isomorphic to the
 product of the sets of~$A$-valued points, and are more fundamental from a
 geometric point of view. In contrast, the set-theoretical points of a scheme in
 the approach using locally ringed spaces actually parameterize the irreducible
-closed subsets.
+closed subsets, not points in an intuitive sense.
 
-However, the description of basic objects can still be somewhat involved. For
-instance, while the functor for giving projective~$n$-space is given on fields
-by the simple expression
+However, the description of basic objects can still be somewhat involved in the
+functorial approach. For instance, while the functor for giving
+projective~$n$-space is given on fields by the simple expression
 \[ \begin{array}{r@{}c@{}l}
   k &{}\longmapsto{}& \text{the set of lines in~$k^{n+1}$} \\
-  && \qquad \cong \{ [x_0:\ldots:x_n] \,|\, \text{$x_i \neq 0$ for some~$i$} \},
+  && \qquad \cong \{ [x_0:\cdots:x_n] \,|\, \text{$x_i \neq 0$ for some~$i$} \},
 \end{array} \]
 on general rings it is given by
-\[
-  A \longmapsto \text{the set of quotients~$A^n \twoheadrightarrow P$ modulo
-  isomorphism}.
-\]
+\[ \begin{array}{r@{}c@{}l}
+  A &{}\longmapsto{}& \text{the set of quotients~$A^n \twoheadrightarrow P$,
+  where~$P$ is projective,} \\
+  && \qquad \text{modulo isomorphism}.
+\end{array} \]
 
 On the one hand, typically only~$k$-valued points admit a simple description.
 On the other hand, the $A$-valued points for more general rings~$A$ are crucial
@@ -477,7 +478,7 @@ scheme to be given by the naive expression
 and for projective~$n$-space to be given by either of the expressions
 \[ \text{the set of lines in~$(\ul{\AA}^1)^{n+1}$}
   \quad\text{or}\quad
-  \{ [x_0:\ldots:x_n] \,|\, \text{$x_i \neq 0$ for some~$i$} \}. \]
+  \{ [x_0:\cdots:x_n] \,|\, \text{$x_i \neq 0$ for some~$i$} \}. \]
 
 For treating \emph{schemes over~$X$} as opposed to ``local objects on~$X$''
 such as sheaves of rings and modules from an internal point of view, this topos

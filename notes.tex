@@ -320,7 +320,7 @@ set-valued sheaves on~$X$, and the \emph{big Zariski topos} which we introduce
 below.
 
 The internal language of the little Zariski topos can be applied as follows.
-The structure sheaf~$\O_X$ of a scheme~$X$ is a sheaf of rings, that is the sets of
+The structure sheaf~$\O_X$ of a scheme~$X$ is a sheaf of rings in that the sets of
 local sections carry ring structures and these ring structures are compatible
 with restriction. From the internal point of view of~$\Sh(X)$,
 the structure
@@ -476,9 +476,9 @@ points and therefore can't simply be dropped.\footnote{For instance,
 let~$\ul{\AA}^1 : A \mapsto A$ be the functor associated to the affine line.
 Yoneda's lemma guarantees that the set of morphisms~$\ul{\AA}^1 \to \ul{\AA}^1$
 in the functor category~$[\Ring,\Set]$ is in canonical bijection with the
-set~$\ZZ[t]$, as one would expect: Algebraic functions~$\AA^1 \to \AA^1$ should
+set~$\ZZ[U]$, as one would expect: Algebraic functions~$\AA^1 \to \AA^1$ should
 be given by polynomials. (The discussion could also be relativized so that the
-answer is~$k[t]$, where~$k$ is some base field.) However, if we calculate the
+answer is~$k[U]$, where~$k$ is some base field.) However, if we calculate the
 set of morphisms in~$[\mathrm{Field},\Set]$ we obtain~$\int_{K \in
 \mathrm{Field}} \Hom(K,K)$, a set which contains pathological functions such as
 some which permute the elements of the prime fields in arbitrary ways.}
@@ -543,8 +543,8 @@ one can glue morphisms of schemes in the Zariski topology.
 
 The object~$\ul{\AA}^1$ which already appeared is the functor of points
 of the affine line over~$X$, the~$X$-scheme~$\AA^1_X \defeq X \times_{\Spec\ZZ}
-\ZZ[t]$. Its value on an~$X$-scheme~$T$ is
-\[ \afflx(T) = \Hom_X(T, \AA^1_X) \cong \Hom_{\Spec\ZZ}(T, \Spec\ZZ[t]) \cong
+\ZZ[U]$. Its value on an~$X$-scheme~$T$ is
+\[ \afflx(T) = \Hom_X(T, \AA^1_X) \cong \Hom_{\Spec\ZZ}(T, \Spec\ZZ[U]) \cong
 \Gamma(T,\O_T). \]
 This object has a canonical structure as a ring object in~$\Zar(X)$. In fact,
 from the internal point of view of~$\Zar(X)$, it is a local ring and even a
@@ -557,7 +557,7 @@ sets
   \{ x\?\afflx \,|\, x^2 = 0 \} \]
 should and do describe two different~$X$-schemes: the first is isomorphic
 to~$X$ while the second is an infinitesimal thickening of~$X$, the vanishing scheme
-of~$t^2$ in~$\AA^1_X$. In contrast, the sets~$\{ x\?\affl \,|\, x \neq 0 \}$
+of~$U^2$ in~$\AA^1_X$. In contrast, the sets~$\{ x\?\affl \,|\, x \neq 0 \}$
 and~$\{ x\?\affl \,|\, x^2 \neq 0 \}$ should and do coincide. By the field
 property, both conditions are equivalent to~$x$ being invertible.
 % XXX forward reference to tangent bundle
@@ -805,15 +805,15 @@ perspective,~$\alpha$ is simply an injective map:
   & X \models \forall s\?\F\_ \forall t\?\F\_ \alpha(s) = \alpha(t) \Rightarrow s = t \\[0.5em]
   \Longleftrightarrow\ &
     \text{for all open~$U \subseteq X$, sections $s \in \Gamma(U, \F)$:} \\
-  & \text{for all open~$V \subseteq U$, sections $t \in \Gamma(V, \F)$:} \\
-  &\qquad\qquad
+  &\qquad\qquad \text{for all open~$V \subseteq U$, sections $t \in \Gamma(V, \F)$:} \\
+  &\qquad\qquad\qquad\qquad
       V \models \alpha(s) = \alpha(t) \Rightarrow s = t \\[0.5em]
   \Longleftrightarrow\ &
     \text{for all open~$U \subseteq X$, sections $s \in \Gamma(U, \F)$:} \\
-  & \text{for all open~$V \subseteq U$, sections $t \in \Gamma(V, \F)$:} \\
-  &\qquad\qquad
-      \text{for all open~$W \subseteq V$:} \\
+  &\qquad\qquad \text{for all open~$V \subseteq U$, sections $t \in \Gamma(V, \F)$:} \\
   &\qquad\qquad\qquad\qquad
+      \text{for all open~$W \subseteq V$:} \\
+  &\qquad\qquad\qquad\qquad\qquad\qquad
         \text{$\alpha_W(s|_W) = \alpha_W(t|_W)$ implies $s|_W = t|_W$} \\[0.5em]
   \Longleftrightarrow\ &
     \text{for all open~$U \subseteq X$, sections $s, t \in \Gamma(U, \F)$:} \\
@@ -1628,7 +1628,7 @@ A ring~$R$ is an \emph{integral domain in the strong sense} if and only if~$1
 where~$\speak{$x$ is regular}$ means that~$xy = 0$ implies~$y = 0$ for any~$y \?
 R$.\end{defn}
 
-For the following result, recall that a scheme~$X$ (or ringed space) is
+For the following result, recall that a scheme~$X$ (or a ringed space) is
 \emph{integral at a point~$x \in X$} if and only if~$\O_{X,x}$ is an integral
 domain (in either sense, since we have adopted a classical metatheory).
 
@@ -1707,7 +1707,7 @@ definitions actually have a clear geometric meaning -- they can be used to
 define extensions of sheaves by zero in the internal language
 (Lemma~\ref{lemma:extension-by-zero}).}
 
-\begin{prop}Let~$X$ be a scheme (or ringed space).
+\begin{prop}Let~$X$ be a scheme (or a ringed space).
 \begin{enumerate}
 \item $\O_X$ is a Bézout ring from the internal perspective if and only if all
 rings~$\O_{X,x}$ are Bézout rings.
@@ -2035,7 +2035,7 @@ such~$U$, the restricted module~$\F|_U$ is isomorphic as an~$\O_X|_U$-module
 to~$(\O_X|_U)^n$ for some natural number~$n$ (which may depend on~$U$).
 
 \begin{prop}\label{prop:locally-free}
-Let~$X$ be a scheme (or ringed space). Let~$\F$ be
+Let~$X$ be a scheme (or a ringed space). Let~$\F$ be
 an~$\O_X$-module. Then~$\F$ is finite locally free if and only if, from the
 internal perspective,~$\F$ is a finite free module, \ie
 \[ \Sh(X) \models \bigvee_{n \geq 0} \speak{$\F \cong (\O_X)^n$}, \]
@@ -2069,7 +2069,7 @@ sheaves.
 \XXX{algebras of finite type, ...}
 
 \subsection{Finite type, finite presentation, coherence}
-Recall the conditions of an~$\O_X$-module~$\F$ on a scheme~$X$ (or ringed
+Recall the conditions of an~$\O_X$-module~$\F$ on a scheme~$X$ (or a ringed
 space) to be of finite type, of finite presentation, and to be coherent:
 \begin{itemize}
 \item $\F$ is \emph{of finite type} if and only if there exists a covering of~$X$ by
@@ -2087,7 +2087,7 @@ X$ is any open subset, is of finite type.
 The following proposition gives translations of these definitions into the
 internal language.
 \begin{prop}\label{prop:finite-type-and-co}
-Let~$X$ be a scheme (or ringed space). Let~$\F$ be
+Let~$X$ be a scheme (or a ringed space). Let~$\F$ be
 an~$\O_X$-module. Then:
 \begin{itemize}
 \item $\F$ is of finite type if and only if~$\F$, considered as an ordinary
@@ -2127,7 +2127,7 @@ any~$\O_X$-module~$\F$ it holds that~$\F$ is generated by global sections if
 and only if~$\Sh(X) \models \varphi(\F)$. But still, global generation can be
 characterized by a mixed internal/external statement:
 
-\begin{prop}Let~$X$ be a scheme (or ringed space). Let~$\F$ be
+\begin{prop}Let~$X$ be a scheme (or a ringed space). Let~$\F$ be
 an~$\O_X$-module. Then~$\F$ is generated by global sections if and only if
 there exist global sections~$s_i \in \Gamma(X,\F)$, $i \in I$ such that
 \[ \Sh(X) \models \forall x\?\F\_ \bigvee\nolimits_{\textnormal{$J=\{i_1,\ldots,i_n\} \subseteq I$ finite}}
@@ -2143,7 +2143,7 @@ validity can thus be checked stalkwise.\end{proof}
 
 
 \subsection{Tensor product and flatness} Recall that the tensor product
-of~$\O_X$-modules~$\F$ and~$\G$ on a scheme~$X$ (or ringed space) is usually
+of~$\O_X$-modules~$\F$ and~$\G$ on a scheme~$X$ (or a ringed space) is usually
 constructed as the sheafification of the presheaf
 \[ \text{$U \subseteq X$ open} \quad\longmapsto\quad \Gamma(U,\F) \otimes_{\Gamma(U,\O_X)}
 \Gamma(U,\G). \]
@@ -2205,7 +2205,7 @@ Recall that an~$\O_X$-module~$\F$ is \emph{flat} if and only if all
 stalks~$\F_x$ are flat~$\O_{X,x}$-modules. We can characterize flatness in the
 internal language.
 \begin{prop}\label{prop:flatness}
-Let~$X$ be a scheme (or ringed space). Let~$\F$ be
+Let~$X$ be a scheme (or a ringed space). Let~$\F$ be
 an~$\O_X$-module. Then~$\F$ is flat if and only if, from the internal
 perspective,~$\F$ is a flat~$\O_X$-module.
 \end{prop}
@@ -2235,7 +2235,7 @@ standard lemma. (We will give an internal proof of this fact in
 Lemma~\ref{lemma:module-zero-point-neighbourhood}.)
 
 \begin{prop}\label{prop:characterization-support}
-Let~$X$ be a scheme (or ringed space). Let~$\F$ be
+Let~$X$ be a scheme (or a ringed space). Let~$\F$ be
 an~$\O_X$-module. Then the interior of the complement of the support of~$\F$
 can be characterized as the largest open subset of~$X$ on which the internal
 statement~$\F = 0$ holds.
@@ -2336,7 +2336,7 @@ proof of Proposition~\ref{prop:internal-integrality}.
 
 \subsection{Internal proofs of common lemmas}
 
-\begin{lemma}Let~$X$ be a scheme (or ringed space). Let
+\begin{lemma}Let~$X$ be a scheme (or a ringed space). Let
 \[ 0 \lra \F \lra \G \lra \H \lra 0 \]
 be a short exact sequence of~$\O_X$-modules. If~$\F$ and~$\H$ are of finite
 type, so is~$\G$; similarly, if~$\F$ and~$\H$ are finite locally free, so
@@ -2356,7 +2356,7 @@ points, for instance when an internal property specific to the structure sheaf
 of schemes is used (such as in Proposition~\ref{prop:neginvnilpotent}).
 
 \begin{lemma}\label{lemma:coherent-stuff}
-Let~$X$ be a scheme (or ringed space).
+Let~$X$ be a scheme (or a ringed space).
 \begin{itemize}
 \item Let~$0 \to \F \to \G \to \H \to 0$ be an exact sequence
 of~$\O_X$-modules. If two of the three modules are coherent, so is the third.
@@ -2440,7 +2440,7 @@ Such a matrix~$A$ possesses a right inverse. Therefore~$\det A$ is invertible.
 Thus~$A$ is invertible with inverse~$(\det A)^{-1} \cdot \operatorname{ad} A$.
 \end{rem}
 
-\begin{lemma}Let~$X$ be a scheme (or ringed space). Let
+\begin{lemma}Let~$X$ be a scheme (or a ringed space). Let
 $0 \to \F \to \G \to \H \to 0$ be a short exact sequence of~$\O_X$-modules.
 Then for the closures of the supports there holds the equation
 $\Clos \supp \G = \Clos \supp \F \cup \Clos \supp \H$.
@@ -2493,7 +2493,7 @@ for any point~$x \in X$, the images~$s_i \in \F|_x$ in the fibers do not vanish
 simultaneously.
 \end{rem}
 
-\begin{lemma}Let~$X$ be a scheme (or ringed space). Let~$\L$ be a locally
+\begin{lemma}Let~$X$ be a scheme (or a ringed space). Let~$\L$ be a locally
 free~$\O_X$-module of rank~1. Then~$\L^\vee \otimes_{\O_X} \L \cong \O_X$.\end{lemma}
 \begin{proof}Recall that the dual is defined by~$\L^\vee \defeq
 \HOM_{\O_X}(\L,\O_X)$. Since~``$\HOM$'' looks like~``$\Hom$'' from the internal
@@ -2523,7 +2523,7 @@ by~$x \mapsto \id_R \otimes x$.
 \end{proof}
 
 \begin{lemma}\label{lemma:torsion-stuff}
-Let~$X$ be a scheme (or ringed space). Let~$\F$ be
+Let~$X$ be a scheme (or a ringed space). Let~$\F$ be
 an~$\O_X$-module.
 \begin{enumerate}
 \item Assume~$X$ to be a locally Noetherian scheme. Then $\F$ is torsion-free
@@ -3613,14 +3613,14 @@ to show that~$\Box(\bigvee_i \varphi_i)$. Since this is a boxed statement, we
 may in fact assume~$\bigvee_i \varphi_i^\Box$, so for some index~$j$, it holds
 that~$\varphi_j^\Box$. By the induction hypothesis, it follows
 that~$\Box\varphi_j$. By~$\varphi_j \Rightarrow \bigvee_i \varphi_i$ and the
-monotonicity of~$\Box$, it follows that that~$\Box(\bigvee_i \varphi_i)$.
+monotonicity of~$\Box$, it follows that~$\Box(\bigvee_i \varphi_i)$.
 \end{proof}
 
-Note that an analogous argument for infinite conjuctions is not valid:
+Note that an analogous argument for infinite conjunctions is not valid:
 Assume~$(\bigwedge_i \varphi_i)^\Box$. So for all~$j$,~$\varphi_j^\Box$ holds.
 By the induction hypothesis,~$\Box\varphi_j$ holds for any~$j$. But from this
 we may not deduce~$\Box\bigwedge_i \varphi_i$, since the axioms on a modal
-operator only require commutativity with finite conjuctions. This failure also
+operator only require commutativity with finite conjunctions. This failure also
 has a geometric interpretation, for instance in the special case~$\Box =
 \neg\neg$: Given dense open subsets~$U_i$ on which formulas~$\varphi_i$ hold,
 we may not conclude that there exists a single dense open subset~$U$ on which
@@ -3657,29 +3657,29 @@ that~$\Box\varphi'$. Since~$\Box\psi$ holds, it follows that~$\Box\varphi$.
 \end{proof}
 
 \begin{ex}\label{ex:module-zero-geometric}
-Let~$M$ be an~$R$-module. Then the statement that~$M$ is zero is not
+Let~$M$ be an~$R$-module. The statement that~$M$ is zero is not
 geometric: $\varphi \defequiv (\forall x\?M\_ x = 0)$. But if~$M$ is generated by some finite
 family~$x_1,\ldots,x_n\?M$, then~$\varphi$ is equivalent to the
 statement~$\varphi' \defequiv (x_1 = 0
 \wedge \cdots \wedge x_n = 0)$ which is geometric; and there is an
 intuitionistic proof of this equivalence. Since no implication signs occur
-in~$\psi \defequiv \speak{$M$ is generated by~$x_1,\ldots,x_n$}$, the lemma is
+in~$\psi \defequiv \speak{$M$ is generated by~$x_1,\ldots,x_n$}$, Lemma~\ref{lemma:stalk-open-with-hypothesis} is
 applicable and shows that~$\varphi^\Box$ implies~$\Box\varphi$.
 This example will gain geometric meaning in
 Lemma~\ref{lemma:module-zero-point-neighbourhood}.
 \end{ex}
 
 \begin{lemma}For the modality~$\Box$ defined by~$\Box\varphi \defequiv ((\varphi
-\Rightarrow \alpha) \Rightarrow \alpha)$, where~$\alpha$ is a fixed
+      \Rightarrow \alpha) \Rightarrow \alpha)$, where~$\alpha$ is a fixed
 proposition, the~$\Box$-translation of the law of excluded middle holds.
 In particular, this applies to the double negation modality~$\Box = \neg\neg$, where~$\alpha =
 \bot$.\end{lemma}
 \begin{proof}We are to show that~$(\varphi \vee \neg\varphi)^\Box$, \ie that
-\[ (((\varphi^\Box \vee (\varphi^\Box \Rightarrow \alpha)) \Longrightarrow
-\alpha) \Longrightarrow \alpha. \]
-So assume that the antecedent holds. If~$\varphi^\Box$ would hold, then in
+\[ ((\varphi^\Box \vee (\varphi^\Box \Rightarrow \alpha)) \Longrightarrow
+    \alpha) \Longrightarrow \alpha. \]
+So assume that the antecedent holds. If~$\varphi^\Box$ holds, then in
 particular~$\varphi^\Box \vee (\varphi^\Box \Rightarrow \alpha)$ and thus~$\alpha$
-would hold. Therefore it follows that~$(\varphi^\Box \Rightarrow \alpha)$. This
+hold. Therefore it follows that~$(\varphi^\Box \Rightarrow \alpha)$. This
 implies~$\varphi^\Box \vee (\varphi^\Box \Rightarrow \alpha)$ and
 thus~$\alpha$.
 \end{proof}
@@ -3746,7 +3746,7 @@ of~$\Sh(X)$?}
 \end{quote}
 Phrased this way, technicalities like appropriately shrinking open
 neighbourhoods are blinded out. A purposefully trivial example to illustrate
-this is the following. Let~$X$ be a scheme (or ringed space). Let~$f,g \in
+this is the following. Let~$X$ be a scheme (or a ringed space). Let~$f,g \in
 \Gamma(X,\O_X)$ be global functions. Suppose that the germs of~$f$ and~$g$ are
 zero in some stalk~$\O_{X,x}$; we want to show that they are zero on a common
 open neighbourhood of~$x$.
@@ -3760,7 +3760,7 @@ this it holds that~$f$ and~$g$ both vanish.
 \end{proof}
 
 \begin{proof}[Proof in the internal language]We may suppose that~$(f = 0 \wedge
-g = 0)^\Box$, \ie $\Box(f=0) \wedge \Box(g=0)$, and have to prove
+g = 0)^\Box$, that is $\Box(f=0) \wedge \Box(g=0)$, and have to prove
 that~$\Box(f=0 \wedge g=0)$. (To this end, we could simply invoke the third
 axiom on a modal operator, but we want to stay close to the given external
 proof.) So by assumption, both~$\Box(f=0)$ and~$\Box(g=0)$ hold. Since our goal
@@ -3771,7 +3771,7 @@ By using the internal language with its modal operators, we can thus reduce
 basic facts of scheme theory which deal with stalks and neighbourhoods to facts
 of algebra in a \emph{modal intuitionistic context}. As with using the internal
 language in its basic form without modalities, this brings conceptual clarity
-and reduced technical overhead. There are however two more distinctive
+and reduced technical overhead. There are, however, two more distinctive
 advantages. Firstly, many internal proofs do not require specific properties of
 the modal operator and thus work with any modal operator. By interpreting such
 a proof using different operators, one obtains a whole family of external
@@ -3781,7 +3781,7 @@ Lemma~\ref{lemma:module-zero-point-neighbourhood} for an example).
 Secondly, the following corollary gives a general metatheorem which is
 applicable to a wide range of cases. It allows to decide whether spreading will
 occur (or is likely not to occur) simply by looking at the \emph{logical form}
-of the statement is question.
+of the statement in question.
 
 \begin{cor}\label{cor:geometric-spreading}
 Let~$X$ be a topological space. Let~$\varphi$ be a formula.
@@ -3956,7 +3956,7 @@ while also not being nilpotent.
 \subsection{Internal proofs of common lemmas}
 
 \begin{lemma}\label{lemma:module-zero-point-neighbourhood}
-Let~$X$ be a scheme (or ringed space). Let~$\F$ be an~$\O_X$-module
+Let~$X$ be a scheme (or a ringed space). Let~$\F$ be an~$\O_X$-module
 of finite type.
 \begin{itemize}
 \item Let~$x \in X$ be a point. Then the stalk~$\F_x$ is zero if and
@@ -3980,7 +3980,7 @@ In a remark after the proof of Proposition~\ref{prop:rank-function-internally},
 we promised to present a simpler proof of it once we would have developed the theory for
 doing so. We can now follow up on this promise.
 \begin{lemma}\label{lemma:gen-family-n}
-Let~$X$ be a scheme (or ringed space). Let~$\F$ be an~$\O_X$-module
+Let~$X$ be a scheme (or a ringed space). Let~$\F$ be an~$\O_X$-module
 of finite type. Let~$x \in X$ be a point. Let~$n$ be a natural number. Then the
 following statements are equivalent:
 \begin{enumerate}
@@ -4027,7 +4027,7 @@ y = A \vec x$} \]
 (Lemma~\ref{lemma:stalk-open-with-hypothesis}). Thus the claim follows.
 \end{proof}
 
-\begin{lemma}Let~$X$ be a scheme (or ringed space). Let~$\alpha : \F \to \G$ be
+\begin{lemma}Let~$X$ be a scheme (or a ringed space). Let~$\alpha : \F \to \G$ be
 a morphism of~$\O_X$-modules. Let~$\G$ be of finite type and assume
 that~$\alpha_x : \F_x \to \G_x$ is surjective for some point~$x \in X$.
 Then~$\alpha$ is an epimorphism on some open neighbourhood of~$x$.\end{lemma}
@@ -4037,7 +4037,7 @@ non-geometric surjectivity condition ($\forall y\?\G\_ \exists x\?\F\_
 \exists x\?\F\_ \alpha(x) = y_i$. Thus the claim follows by
 Lemma~\ref{lemma:stalk-open-with-hypothesis}.\end{proof}
 
-%\begin{lemma}Let~$X$ be a scheme (or ringed space). Let~$\alpha : \F \to \G$ be
+%\begin{lemma}Let~$X$ be a scheme (or a ringed space). Let~$\alpha : \F \to \G$ be
 %a morphism of~$\O_X$-modules. Let~$\F$ be of finite type and~$\G$ be coherent.
 %Suppose that~$\alpha_x$ is injective at some point~$x \in X$. Then~$\alpha$ is
 %a monomorphism on some open neighbourhood of~$x$.
@@ -4162,7 +4162,7 @@ of excluded middle is valid; explain consequences
 \label{sect:rational-functions}
 
 \subsection{The sheaf of rational functions} Recall that the sheaf~$\K_X$ of rational
-functions on a scheme~$X$ (or ringed space) can be defined as the sheaf
+functions on a scheme~$X$ (or a ringed space) can be defined as the sheaf
 associated to the presheaf
 \[ \text{$U \subseteq X$ open} \quad\longmapsto\quad \Gamma(U,\O_X)[\Gamma(U,\S)^{-1}], \]
 where~$\Gamma(U,\S)$ is the multiplicative set of those sections of~$\O_X$ on~$U$,
@@ -4200,7 +4200,7 @@ this universal property as well.
 \end{proof}
 
 \begin{prop}\label{prop:stalks-kx}
-Let~$X$ be a scheme (or ringed space). Then the stalks of~$\K_X$
+Let~$X$ be a scheme (or a ringed space). Then the stalks of~$\K_X$
 are given by
 \[ \K_{X,x} = \O_{X,x}[\S_x^{-1}]. \]
 The elements of~$\S_x$ are exactly the germs of those local sections which are
@@ -4288,7 +4288,7 @@ Proposition~\ref{prop:regularity-spreading}.\end{proof}
 \subsection{Normality}\label{sect:normality}
 Recall that a ring~$R$ is \emph{normal} if and only if
 it is integrally closed in its total quotient ring. Recall also that a
-scheme~$X$ (or ringed space) is \emph{normal} if and only if all
+scheme~$X$ (or a ringed space) is \emph{normal} if and only if all
 rings~$\O_{X,x}$ are normal.
 
 \begin{prop}\label{prop:normal-int-ext}A locally Noetherian scheme is normal if and only if the
@@ -4297,7 +4297,7 @@ ring~$\O_X$ is normal from the internal perspective.\end{prop}
 a geometric implication:
 \begin{multline*}
   \forall s,t\?\O_X\_
-  \Bigl(\speak{$t$ regular} \wedge
+  \Bigl(\speak{$t$ regular} \wedge {} \\
   (\exists a_0,\ldots,a_{n-1}\?\O_X\_
   s^n + a_{n-1} t s^{n-1} + \cdots + a_1 t^{n-1} s + a_0 t^n = 0)
   \Longrightarrow \\
@@ -4624,9 +4624,9 @@ Subsection~\ref{sect:subspace-to-modal-operator} that the latter is given by
   \text{$V$ open},\ V \cap \Ass(\O_X) \subseteq U \}.
 \end{align*}
 This is a general fact of locale theory, not depending on particular properties
-of~$\Ass(\O_X)$. To verify this, check that~$j_{\Ass(\O_X)}$ is indeed a
-nucleus and that~$\{ U \in \Open(X) \,|\,
-j_{\Ass(\O_X)}(U) = U \} \to \Open(\Ass(\O_X)),\, U \mapsto \Ass(\O_X) \cap U$
+of~$\Ass(\O_X)$. To verify this, one needs to check that~$j_{\Ass(\O_X)}$ is indeed a
+nucleus and that the canonical map
+\[ \{ U \in \Open(X) \,|\, j_{\Ass(\O_X)}(U) = U \} \longrightarrow \Open(\Ass(\O_X)),\ U \longmapsto \Ass(\O_X) \cap U \]
 is an isomorphism of frames with inverse given by~$\Ass(\O_X) \cap U \mapsto
 j_{\Ass(\O_X)}(U)$.
 
@@ -4709,7 +4709,7 @@ the proof of Lemma~\ref{lemma:torsion-module-generic-stalk} with
 \end{proof}
 
 
-\subsection{Cartier divisors} Let~$X$ be a scheme (or ringed space). Recall
+\subsection{Cartier divisors} Let~$X$ be a scheme (or a ringed space). Recall
 that a \emph{Cartier divisor} on~$X$ is a global section of the sheaf of
 groups~$\K_X^\times / \O_X^\times$. This sheaf can be constructed internally, with the
 same notation: It is the quotient of the group of invertible elements of the
@@ -5706,7 +5706,7 @@ quasicoherent. We cannot give an internal proof of this fact since we lack an
 internal characterization of being a scheme.
 
 \begin{lemma}\label{lemma:closed-subspace-reduced}
-Let~$X$ be a scheme (or ringed space). Let~$\I \subseteq \O_X$ be
+Let~$X$ be a scheme (or a ringed space). Let~$\I \subseteq \O_X$ be
 an ideal sheaf. The ringed space~$V(\I)$ is reduced if and only if, from the
 internal perspective of~$\Sh(X)$, the ideal~$\I$ is a radical ideal.\end{lemma}
 \begin{proof}The following chain of equivalences holds:
@@ -5735,7 +5735,7 @@ disjunction.
 \end{proof}
 
 \begin{lemma}\label{lemma:reduced-subspace}
-Let~$X$ be a scheme (or ringed space).
+Let~$X$ be a scheme (or a ringed space).
 \begin{enumerate}
 \item There exists a reduced closed sub-ringed space~$X_\mathrm{red}
 \hookrightarrow X$ having the same underlying topological space as~$X$ with
@@ -6295,12 +6295,12 @@ freeness lemma in the following general form.
     \end{scope}
   \end{tikzpicture}
   \caption{\label{fig:iteration}An illustration of the iterative process used
-  in the proof of Theorem~\ref{thm:generic-freeness}. The hatched cells
+  in the proof of Theorem~\ref{thm:generic-freeness} in the special case~$n = 2, m = 1$. The hatched cells
   indicate vectors which have already been removed from the generating family.
   The vector in the red cell was found to be expressible as a linear
   combination of the vectors with smaller index (blue cells). It is therefore
   about to be removed, along with the vectors in all cells to the top and to
-  the right.}
+  the right of the red cell.}
 \end{figure}
 
 \begin{thm}\label{thm:generic-freeness}
@@ -6436,7 +6436,7 @@ subset~$D(gh)$.
 We refrain from giving the resulting explicit proof of
 Theorem~\ref{thm:generic-freeness-constructively} here, but will report on it
 in the future~\ref{blechschmidt:generic-freeness}. A part of the proof was
-included by Brandenburg in a paper of his~\ref{brandenburg:schur}
+included by Brandenburg in a paper of his~\ref{brandenburg:schur}.
 
 \begin{rem}There is no hope that there is an intuitionistic proof of
 Gro\-then\-dieck's generic freeness lemma in the form of
@@ -7049,7 +7049,7 @@ Zermelo--Fraenkel set theory that no nontrivial injective abelian groups
 exist~\cite{blass:inj-proj-axc}.
 \end{rem}
 
-\begin{lemma}Let~$X$ be a ringed space (or ringed locale). Let~$0 \to \E'
+\begin{lemma}Let~$X$ be a ringed space (or a ringed locale). Let~$0 \to \E'
 \xra{\alpha} \E \xra{\beta} \E'' \to 0$ be a short exact sequence
 of~$\O_X$-modules. If~$\E'$ is flabby, then the induced sequence
 \[ 0 \longrightarrow \Gamma(X,\E')
@@ -7079,7 +7079,7 @@ set~$\alpha^{-1}[K - u_0]$ is inhabited as well. Therefore~$v \in \alpha^{-1}[K
 - u_0]$. Thus~$u_0 + \alpha(v) \in K$.
 \end{proof}
 
-\begin{lemma}Let~$X$ be a ringed space (or ringed locale). Let~$0 \to \E'
+\begin{lemma}Let~$X$ be a ringed space (or a ringed locale). Let~$0 \to \E'
 \xra{\alpha} \E \xra{\beta} \E'' \to 0$ be a short exact sequence
 of~$\O_X$-modules. If~$\E'$ and~$\E''$ are flabby, then~$\E$ is flabby as well.
 \end{lemma}
@@ -7332,7 +7332,7 @@ In the following, we do not commit to a single one of these options for
 resolving the set-theoretical size issues, but rather keep any of them
 in mind. This approach will sometimes necessitate phrases such as ``for
 any~$S$-scheme~$T$ contained in the site used to define~$\Zar(S)$'', which might
-seem awkward for a seasoned topos-theorist when taken out of context, since
+seem awkward for a topos-theorist when taken out of context, since
 the site used to construct a Grothendieck topos is not at all uniquely
 determined by the resulting topos.
 
@@ -7390,23 +7390,23 @@ By Proposition~\ref{prop:relative-spectrum-big-zariski}, the internal expression
 points of~$\RelSpec_S \A_0$. For any~$S$-scheme~$f : T \to S$ contained in the site
 used to define~$\Zar(S)$, we consider the fiber product
 \[ \xymatrix{
-  \RelSpec_T(f^*\A_0) \ar[r]^{f'} \ar[d]_{p'} & \RelSpec_S\A_0 \ar[d]^p \\
-  T \ar[r]_f & S.
+\RelSpec_T(f^*\A_0) \ar[r]^{f'} \ar[d]_{p'} & \RelSpec_S\A_0 \ar[d]^p \\
+T \ar[r]_f & S.
 } \]
 Since~$\RelSpec_T(f^*\A_0) \to S$ is contained in the site (for any of our
 admissible sites), we may conclude using the following chain of isomorphisms:
 \begin{align*}
-  [\Spec(A), E](T) &\cong
-  \Hom_{\Zar(S)}(\ul{T}, [\Spec(A), E])
-  \cong \Hom_{\Zar(S)}(\ul{T} \times \Spec(A), E) \\
-  &\cong \Hom_{\Zar(S)}(\underline{T \times_S \RelSpec_S\A_0}, E)
-  \cong E(\RelSpec_T(f^*\A_0)) \\
-  &\cong \Gamma(\RelSpec_T(f^*\A_0), (p')^* f^* \E_0)
-  \cong \Gamma(T, (p')_* (p')^* f_* \E_0) \\
-  &\cong \Gamma(T, f^*\E_0 \otimes_{\O_T} f^*\A_0)
-  \cong \Gamma(T, (\E_0 \otimes_{\O_S} \A_0)^\Zar) \\
-  &\cong \Gamma(T, (\E_0)^\Zar \otimes_\affl (\A_0)^\Zar)
-  \cong \Gamma(T, E \otimes_\affl A).
+[\Spec(A), E](T) &\cong
+\Hom_{\Zar(S)}(\ul{T}, [\Spec(A), E])
+\cong \Hom_{\Zar(S)}(\ul{T} \times \Spec(A), E) \\
+&\cong \Hom_{\Zar(S)}(\underline{T \times_S \RelSpec_S\A_0}, E)
+\cong E(\RelSpec_T(f^*\A_0)) \\
+&\cong \Gamma(\RelSpec_T(f^*\A_0), (p')^* f^* \E_0)
+\cong \Gamma(T, (p')_* (p')^* f_* \E_0) \\
+&\cong \Gamma(T, f^*\E_0 \otimes_{\O_T} f^*\A_0)
+\cong \Gamma(T, (\E_0 \otimes_{\O_S} \A_0)^\Zar) \\
+&\cong \Gamma(T, (\E_0)^\Zar \otimes_\affl (\A_0)^\Zar)
+\cong \Gamma(T, E \otimes_\affl A).
 \end{align*}
 The antepenultimate isomorphism is because pullback of modules in~$\Sh(S)$ to
 modules in~$\Sh(T)$ commutes with tensor product. The penultimate isomorphism
@@ -7420,14 +7420,14 @@ quasicoherence criterion of Theorem~\ref{thm:qcoh-sheafchar}: For any open
 affine subset~$T' \subseteq T$ and any function~$h \in \Gamma(T', \O_T)$ we
 verify that the canonical morphism
 \begin{equation}\label{eqn:want-iso}\tag{$\dagger$}
-  E|_{\Sh(T)}[h^{-1}] \longrightarrow j_*(E|_{\Sh(D(h))})
+E|_{\Sh(T)}[h^{-1}] \longrightarrow j_*(E|_{\Sh(D(h))})
 \end{equation}
 is an isomorphism, where~$j : D(h) \hookrightarrow T'$ denotes the inclusion.
 This follows from the assumption of synthetic quasicoherence by considering
 the~$\affl$-module~$A \defeq \affl[h^{-1}]$ (in the slice~$\Zar(S)/\ul{T'}$):
 This expresses that the canonical morphism
 \begin{equation}\label{eqn:have-iso}\tag{$\ddagger$}
-  E \otimes_\affl \affl[h^{-1}] \longrightarrow [\Spec(A), E]
+E \otimes_\affl \affl[h^{-1}] \longrightarrow [\Spec(A), E]
 \end{equation}
 is an isomorphism (of~$\affl$-modules in~$\Zar(S)/\ul{T'}$). Restricting the
 domain to~$\Sh(T')$ yields the sheaf~$E|_{\Sh(T')} \otimes_{\O_{T'}}
@@ -7446,7 +7446,7 @@ define~$\Zar(S)$. We assume for the time being that~$f$ is of finite
 presentation and affine, so~$T \cong \RelSpec_S \A_0$ for some finitely
 presented~$\O_S$-algebra~$\A_0$. We want to verify that the canonical morphism
 \begin{equation}\label{eqn:want-iso2}\tag{§}
-  f^*(E|_{\Sh(S)}) \longrightarrow E|_{\Sh(T)}
+f^*(E|_{\Sh(S)}) \longrightarrow E|_{\Sh(T)}
 \end{equation}
 is an isomorphism. Since the functor~$f_*$ from quasicoherent~$\O_T$-modules to
 quasicoherent~$\O_S$-modules is fully faithful (the morphism~$f$ being affine)
@@ -7479,9 +7479,9 @@ quasicompactness and quasiseparatedness from~$S$. Therefore we can apply a
 comparison result on the categories of quasicoherent
 modules~\stacksproject{01Z0}:
 \[
-  E(T) = E(\lim_i T_i) \cong \colim_i E(T_i) \cong
-  \colim_i \Gamma(T_i, f_i^* \E_0)
-  \cong \Gamma(T, f^* \E_0). \qedhere
+E(T) = E(\lim_i T_i) \cong \colim_i E(T_i) \cong
+\colim_i \Gamma(T_i, f_i^* \E_0)
+\cong \Gamma(T, f^* \E_0). \qedhere
 \]
 \end{proof}
 
@@ -7696,7 +7696,7 @@ internal point of view. This example was suggested by Zhen~Lin Low (private
 communication).
 
 More generally, for an~$S$-scheme~$X$, affine and projective~$n$-space
-over~$X$ are given by~$\ul{X} \times (\affl^1)^n$ and~$\ul{X} \times \PP^n$,
+over~$X$ are given by~$\ul{X} \times (\affl)^n$ and~$\ul{X} \times \PP^n$,
 respectively.
 
 
@@ -8453,7 +8453,7 @@ internal statement
 \[ \forall f\?(\affl)^\times\_ \Box_\text{ét}(\exists g\?(\affl)^\times\_ f = g^n) \]
 \emph{is} true. In fact, the more general statement
 \begin{multline*}
-  \forall p\?\affl[x]\_ \speak{$p$ is monic, of positive degree, and separable}
+  \forall p\?\affl[X]\_ \speak{$p$ is monic, of positive degree, and separable}
   \Longrightarrow \\
   \Box_\text{ét}(\exists x\?\affl\_ p(x) = 0 \wedge \speak{$p'(x)$ \inv})
 \end{multline*}
@@ -8461,10 +8461,10 @@ is true from the internal point of view, where a polynomial~$p$ is called
 \emph{separable} if and only if there exists a Bézout representation~$ap + bp'
 = 1$. After simplifying, the intepretation of that statement with the
 Kripke--Joyal semantics is that for any~$S$-scheme~$T$ and any monic separable
-polynomial~$p \in \Gamma(T,\O_T)[x]$ of positive degree there exists an étale
+polynomial~$p \in \Gamma(T,\O_T)[X]$ of positive degree there exists an étale
 covering~$(T_i \to T)_i$ of~$T$ such that the pullbacks of~$p$ to each of
 the~$T_i$ possess a simple zero. The required covering is given
-by the canonical surjective étale map~$\RelSpec_T{\O_T[x]/(p)} \to T$.
+by the canonical surjective étale map~$\RelSpec_T{\O_T[X]/(p)} \to T$.
 
 The following theorem shows that the modal operator~$\Box_\text{ét}$
 corresponding to the étale topology admits a purely internal characterization
@@ -8478,7 +8478,7 @@ separably closed'' holds.\end{thm}
 
 Here, a ring~$A$ is \emph{separably closed} if and only if
 \begin{multline*}
-  \forall p\?A[x]\_ \speak{$p$ is monic, of positive degree, and unramifiable}
+  \forall p\?A[X]\_ \speak{$p$ is monic, of positive degree, and unramifiable}
   \Longrightarrow \\
   \exists x\?A\_ p(x) = 0 \wedge \speak{$p'(x)$ \inv}.
 \end{multline*}

@@ -24,7 +24,7 @@
 
 \usepackage[all]{xy}
 \usepackage{tikz}
-\usetikzlibrary{calc,shapes.callouts,shapes.arrows}
+\usetikzlibrary{calc,shapes.callouts,shapes.arrows,matrix,patterns}
 \newcommand{\hcancel}[5]{%
     \tikz[baseline=(tocancel.base)]{
         \node[inner sep=0pt,outer sep=0pt] (tocancel) {#1};
@@ -2764,7 +2764,8 @@ any stalk~$\F_y$, $y \in U$, so by geometricity we have
 neighbourhoods, we will be able to give a simpler proof of the proposition (see
 Lemma~\ref{lemma:gen-family-n}).\end{rem}
 
-\begin{lemma}Let~$X$ be a scheme (or a locally ringed space). Let~$\F$ be an~$\O_X$-module of
+\begin{lemma}\label{lemma:rank-functor-locally-constant}
+Let~$X$ be a scheme (or a locally ringed space). Let~$\F$ be an~$\O_X$-module of
 finite type. If~$\F$ is finite locally free, its rank function is locally
 constant. The converse holds if~$X$ is a reduced scheme.
 \end{lemma}
@@ -6250,29 +6251,81 @@ used to show that the statement~$\Sh(\Spec A) \models \forall x,y\?\ul{A}\_ xy
 
 
 \subsection{An internal proof of Grothendieck's generic freeness lemma}\label{sect:generic-freeness}
-The goal of this subsection is to give a simple and constructive proof of
-Grothendieck's generic freeness lemma in the following general form without any
-Noetherian assumptions.
+The goal of this subsection is to give a simple proof of Grothendieck's generic
+freeness lemma in the following general form.
 
-\begin{thm}Let~$A$ be a reduced ring. Let~$B$ be an~$A$-algebra of finite type.
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}[scale=1.4]
+    \draw[step=1cm,gray,very thin] (0,0) grid (8,8);
+
+    \draw
+      (2,8) -- (2,5) -- (5,5) -- (5,3) -- (6,3) -- (6,2) -- (8,2);
+
+    \draw
+      (0,8) -- (0,0) -- (8,0);
+
+    \fill[pattern=north east lines,pattern color=gray,opacity=0.5]
+      (2,8) -- (2,5) -- (5,5) -- (5,3) -- (6,3) -- (6,2) -- (8,2) -- (8,8);
+
+    \fill[fill=blue!40!white,opacity=0.5]
+      (0,8) -- (0,0) -- (4,0) -- (4,3) -- (3,3) -- (3,5) -- (2,5) -- (2,8);
+
+    \fill[fill=red!40!white,opacity=0.5]
+      (3,3) -- (4,3) -- (4,4) -- (3,4);
+
+    % !perl -we 'for my $y (reverse 0..7) { for my $x (0..7) { print % "\$x^$x\Ey^$y\$ & " } print "\\\\ \n" }'
+    \begin{scope}[yshift=4cm, xshift=4cm]
+      \matrix[matrix of nodes,nodes={inner sep=0pt,text width=1.4cm,align=center,minimum height=1.4cm}]{
+        $x^0y^7v_1$ & $x^1y^7v_1$ & $x^2y^7v_1$ & $x^3y^7v_1$ & $x^4y^7v_1$ & $x^5y^7v_1$ & $x^6y^7v_1$ & $x^7y^7v_1$ & \\
+        $x^0y^6v_1$ & $x^1y^6v_1$ & $x^2y^6v_1$ & $x^3y^6v_1$ & $x^4y^6v_1$ & $x^5y^6v_1$ & $x^6y^6v_1$ & $x^7y^6v_1$ & \\
+        $x^0y^5v_1$ & $x^1y^5v_1$ & $x^2y^5v_1$ & $x^3y^5v_1$ & $x^4y^5v_1$ & $x^5y^5v_1$ & $x^6y^5v_1$ & $x^7y^5v_1$ & \\
+        $x^0y^4v_1$ & $x^1y^4v_1$ & $x^2y^4v_1$ & $x^3y^4v_1$ & $x^4y^4v_1$ & $x^5y^4v_1$ & $x^6y^4v_1$ & $x^7y^4v_1$ & \\
+        $x^0y^3v_1$ & $x^1y^3v_1$ & $x^2y^3v_1$ & $x^3y^3v_1$ & $x^4y^3v_1$ & $x^5y^3v_1$ & $x^6y^3v_1$ & $x^7y^3v_1$ & \\
+        $x^0y^2v_1$ & $x^1y^2v_1$ & $x^2y^2v_1$ & $x^3y^2v_1$ & $x^4y^2v_1$ & $x^5y^2v_1$ & $x^6y^2v_1$ & $x^7y^2v_1$ & \\
+        $x^0y^1v_1$ & $x^1y^1v_1$ & $x^2y^1v_1$ & $x^3y^1v_1$ & $x^4y^1v_1$ & $x^5y^1v_1$ & $x^6y^1v_1$ & $x^7y^1v_1$ & \\
+        $x^0y^0v_1$ & $x^1y^0v_1$ & $x^2y^0v_1$ & $x^3y^0v_1$ & $x^4y^0v_1$ & $x^5y^0v_1$ & $x^6y^0v_1$ & $x^7y^0v_1$ & \\
+      };
+    \end{scope}
+  \end{tikzpicture}
+  \caption{\label{fig:iteration}An illustration of the iterative process used
+  in the proof of Theorem~\ref{thm:generic-freeness}. The hatched cells
+  indicate vectors which have already been removed from the generating family.
+  The vector in the red cell was found to be expressible as a linear
+  combination of the vectors with smaller index (blue cells). It is therefore
+  about to be removed, along with the vectors in all cells to the top and to
+  the right.}
+\end{figure}
+
+\begin{thm}\label{thm:generic-freeness}
+Let~$A$ be a reduced ring. Let~$B$ be an~$A$-algebra of finite type.
 Let~$M$ be a finitely generated~$B$-module. Then there is a dense open
 subset~$U \subseteq \Spec(A)$ such that over~$U$,
 \begin{enumerate}
-\item $M^\sim$ is locally free as an~$\O_{\Spec(A)}$-module,
-\item $B^\sim$ is finitely presented as an~$\O_{\Spec(A)}$-algebra, and
-\item $M^\sim$ is of finite presentation over~$B^\sim$.
+\item $B^\sim$ is finitely presented as an~$\O_{\Spec(A)}$-algebra,
+\item $M^\sim$ is of finite presentation over~$B^\sim$, and
+\item $M^\sim$ is (not necessarily finite) locally free as an~$\O_{\Spec(A)}$-module.
 \end{enumerate}
 \end{thm}
 
-\begin{proof}It suffices to prove that, from the internal point of view
-of~$\Sh(\Spec(A))$, it's \notnot the case that
-\begin{enumerate}
-\item $M^\sim$ is free over~$\O_{\Spec(A)}$,
-\item $B^\sim$ is of finite presentation over~$\O_{\Spec(A)}$, and
-\item $M^\sim$ is finitely presented as a~$B^\sim$-module.
-\end{enumerate}
+The usual proofs of Grothendieck's generic freeness lemma proceed using a series
+of reduction steps which are arguably not very memorable or
+straightforward, see for instance~\stacksproject{051Q}
+or~\cite{staats:generic-freeness}. In particular, there doesn't seem to be a
+published proof which tackles the Noetherian and non-Noetherian case in one go.
+Employing the internal language, Grothendieck's generic freeness lemma can be
+proved in a simple, conceptual, and constructive way without any reduction steps.
 
-% XXX verify freeness
+This section was prompted by a MathOverflow thread~\cite{mo:kernel} and
+greatly benefited from discussions with Brandenburg.
+
+\begin{proof}[Proof of Theorem~\ref{thm:generic-freeness}]It suffices to prove
+that, from the internal point of view of~$\Sh(\Spec(A))$, it's \notnot the case that
+\begin{enumerate}
+\item $B^\sim$ is of finite presentation over~$\O_{\Spec(A)}$,
+\item $M^\sim$ is finitely presented as a~$B^\sim$-module, and
+\item $M^\sim$ is (not necessarily finite) free over~$\O_{\Spec(A)}$,
+\end{enumerate}
 
 Since~$B^\sim$ is finitely generated as an~$\O_{\Spec(A)}$-algebra, it is
 isomorphic to an algebra of the form~$\O_{\Spec(A)}[X_1,\ldots,X_n]/\aaa$ for
@@ -6286,7 +6339,114 @@ Similarly, the module~$M^\sim$ is of the form~$(B^\sim)^m/U$ for some number~$m
 \geq 0$ and some submodule~$U$. Since~$(B^\sim)^m$ is weakly Noetherian as a
 direct sum of weakly Noetherian modules, the submodule~$U$ is \notnot finitely
 generated. Thus~$M^\sim$ is \notnot a finitely presented~$B^\sim$-module.
+
+The basic idea to show that~$M^\sim$ is \notnot free over~$\O_{\Spec(A)}$ is as
+follows. Since~$\O_{\Spec(A)}$ is a field in the sense that noninvertible
+elements are zero, minimal generating families are already linear independent;
+we observed this in the proof of Lemma~\ref{lemma:rank-functor-locally-constant}.
+By the finiteness hypotheses, the module~$M^\sim$ admits a countable
+generating family. It's \notnot the case that either one of these vectors can be
+expressed as a linear combination of the others, or not. In the second case
+we're done; in the first case, we remove the redundant vector and continue in
+the same fashion.
+
+However, if we shrink the given generating family in this naive fashion, the
+process may not terminate in finitely many steps. In a classical context,
+Zorn's lemma could be used to iterate the process transfinitely and eventually
+obtain a minimal generating family, but Zorn's lemma is not available in the
+internal universe of the little Zariski topos. We therefore have to pick the
+vectors we'll remove in a more systematic fashion.
+
+Let~$(x_1,\ldots,x_n)$ be a generating family for~$B^\sim$ as
+an~$\O_{\Spec(A)}$-algebra and let $(v_1,\ldots,v_m)$ be a generating
+family for~$B^\sim$ as a~$B^\sim$-module. We endow the set
+\[ I \defeq \{ (j, i_1,\ldots,i_n) \,|\,
+  j \in \{ 1,\ldots,m \},
+  i_1,\ldots,i_n \in \{ 0,1,\ldots \} \} \]
+with the lexicographic order. We choose the family~$(x_1^{i_1} \cdots x_n^{i_n}
+v_j)_{j,i_1,\ldots,i_n}$ as the starting point of the shrinking process. In
+each step, we use that it's \notnot the case that
+\begin{itemize}
+\item either one of the vectors of the generating family can be expressed as a
+linear combination of vectors in the family with a smaller index,
+\item or not.
+\end{itemize}
+
+In the second case, the generating family is linearly independent: For any
+linear combination summing to zero, we can show that all coefficients are zero,
+beginning with the coefficient which is paired with the vector of greatest
+index.
+
+In the first case, we remove the redundant vector~$x_1^{i_1} \cdots x_n^{i_n}
+v_j$ \emph{and also any vector with greater powers of the~$x_1,\ldots,x_n$}
+from the generating family. The resulting family will still be a generating
+family, since the linear combination witnessing the redundancy of~$x_1^{i_1}
+\cdots x_n^{i_n} v_j$ successively gives rise to linear combinations witnessing
+the redundancy of the vectors~$x_1^{\geq i_1} \cdots x_n^{\geq i_n} v_j$;
+we maintain the invariant that any member of the starting generating family can
+be expressed as a linear combination of vectors of the current generating
+family with smaller or equal index.
+
+Figure~\ref{fig:iteration} illustrates this process. It's obvious that it
+terminates after finitely many steps; this is related to the fact that
+the ordinal~$\omega^n$ is well-founded.
 \end{proof}
+
+Since the given internal proof was (necessarily) intuitionistically valid, the
+internal language machinery is intuitionistically valid, and the construction
+of the spectrum can be set up in an intuitionistically sensible way
+(Section~\ref{sect:relative-spectrum}), an intuitionistic external proof not
+employing the topos machinery can be extracted from the given argument.
+The resulting proof will verify Grothendieck's generic freeness lemma in the
+following form.
+
+\begin{thm}\label{thm:generic-freeness-constructively}
+Let~$A$ be a reduced ring. Let~$B$ be an~$A$-algebra of finite type.
+Let~$M$ be a finitely generated~$B$-module. Assume that the only element~$f \in
+A$ with the following three properties is~$f = 0$. Then~$A = 0$.
+\begin{enumerate}
+\item $B[f^{-1}]$ is of finite presentation over~$A[f^{-1}]$.
+\item $M[f^{-1}]$ is finitely presented as a~$B[f^{-1}]$-module.
+\item $M[f^{-1}]$ is free over~$A[f^{-1}]$.
+\end{enumerate}
+\end{thm}
+
+In classical logic, this form implies the lemma in its more abstract
+formulation by a routine argument: Let~$U \subseteq \Spec(A)$ be the union over
+all standard open subsets~$D(f)$ such that the statements~(1),~(2), and~(3) in
+Theorem~\ref{thm:generic-freeness-constructively} hold. The
+statements~(1),~(2), and~(3) of Theorem~\ref{thm:generic-freeness} hold on this
+open subset, therefore it remains to show that~$U$ is dense.
+
+So let a nonempty open subset~$V$ of~$\Spec(A)$ be given. This
+contains a standard open subset~$D(g) \subseteq V$ such that~$g$ is not
+nilpotent. Therefore the localized ring~$A[g^{-1}]$ is not zero. Thus the
+premise of Theorem~\ref{thm:generic-freeness-constructively} is not satisfied.
+Since we assume classical logic, there is a nonzero element~$f \in A[g^{-1}]$
+such that~$M[g^{-1}][f^{-1}]$ is a finite free~$A[g^{-1}][f^{-1}]$-module.
+Writing~$f = h/g^n$, we see that~$U \cap V$ contains the nonzero open
+subset~$D(gh)$.
+
+We refrain from giving the resulting explicit proof of
+Theorem~\ref{thm:generic-freeness-constructively} here, but will report on it
+in the future~\ref{blechschmidt:generic-freeness}. A part of the proof was
+included by Brandenburg in a paper of his~\ref{brandenburg:schur}
+
+\begin{rem}There is no hope that there is an intuitionistic proof of
+Gro\-then\-dieck's generic freeness lemma in the form of
+Theorem~\ref{thm:generic-freeness} even if the spectrum is constructed in an
+intuitionistically sensible way, since there is the following Brouwerian
+counterexample. Let~$\varphi$ be an arbitrary statement. Then
+the~$\ZZ$-module~$M \defeq \ZZ/\aaa$, where~$\aaa \defeq \{ x \in \ZZ \,|\, (x
+= 0) \vee \varphi \}$ as in Footnote~\ref{fn:z-principal-ideal-domain} on
+page~\pageref{fn:z-principal-ideal-domain}, is finitely generated. By
+assumption, there exists a nonzero element~$f \in \ZZ$ such that~$M[f^{-1}]$ is
+a finite free module over~$A[f^{-1}]$ of some rank~$n$. If~$n = 0$, then~$f^m
+\in \aaa$ for some~$m \geq 0$, therefore~$\varphi$ holds. If~$n \geq 1$,
+then~$\neg\varphi$ holds, since~$\varphi$ would imply~$\aaa = \ZZ$ and
+therefore~$M[f^{-1}] = 0$. Since~$n = 0 \vee n \geq 1$, it follows
+that~$\varphi \vee \neg\varphi$.
+\end{rem}
 
 
 \section{Relative spectrum}

@@ -1270,7 +1270,8 @@ means that for any open subset~$U \subseteq X$ and any local sections~$x,y \in
 precisely the external commutativity condition.
 \end{proof}
 
-\begin{lemma}Let~$X$ be a topological space. Let~$\R$ be a sheaf of rings
+\begin{lemma}\label{lemma:internal-invertibility}
+Let~$X$ be a topological space. Let~$\R$ be a sheaf of rings
 on~$X$. Let~$f$ be a global section of~$\R$. Then the following statements are
 equivalent:
 \begin{enumerate}
@@ -7101,9 +7102,7 @@ The partial element~$K$ can thereby refined to the honest element~$t \defeq t_0 
 % XXX: Ext, Tor
 
 
-\chapter{The big Zariski topos}
-
-\label{part:big-zariski}
+\chapter{The big Zariski topos}\label{part:big-zariski}
 
 The preceding part demonstrated that working in the internal universe of
 the little Zariski topos of a scheme~$S$, the topos of sheaves on~$S$, is
@@ -7115,6 +7114,10 @@ But the little Zariski topos is not particularly suited for dealing with
 \emph{schemes} over~$S$. For this, we need a related topos. For the scope of
 this introduction only, we employ the following slightly problematic
 definition which we'll fix in Section~\ref{sect:proper-choice-of-site}.
+We'll keep the base scheme~$S$ fixed throughout this part.
+
+
+\section{Basics}
 
 \begin{defn}[provisional]The \emph{big Zariski topos}~$\Zar(S)$ of a scheme~$S$ is the
 topos of sheaves on the Grothendieck site~$\Sch/S$ of schemes over~$S$.
@@ -7134,10 +7137,10 @@ should be an equalizer diagram.
 \subsection*{Internal language} Just like the topos of sheaves on a topological
 space or a locale admits an internal language, so does the big Zariski topos.
 The necessary modifications of the Kripke--Joyal semantics
-(Definition~\ref{defn:kripke-joyal}) on are straightforward. Instead of
+(Definition~\ref{defn:kripke-joyal}) are straightforward. Instead of
 defining recursively the meaning of~``$U \models \varphi$'' for open subsets~$U
 \subseteq S$, we have to define the meaning of~``$T \models \varphi$''
-for~$S$-schemes~$T$, and the rules for implication and universal quantification
+for~$S$-schemes~$T$ and the rules for implication and universal quantification
 have to be rewritten. Instead of
 \begin{align*}
   U \models \varphi \Rightarrow \psi \quad&\Ll\quad
@@ -7147,105 +7150,82 @@ have to be rewritten. Instead of
   \text{for all sections~$s \in \Gamma(V, \F)$ on open $V \subseteq U$:} \\
   &\qquad\qquad\qquad\qquad V \models \varphi(s) \\
 \intertext{they have to read as follows.}
-  X \models \varphi \Rightarrow \psi \quad&\Ll\quad
-  \text{for all morphisms~$T \to X$ in~$\Sch/S$:} \\
-  &\qquad\qquad\qquad\qquad\text{$T \models \varphi$ implies $T \models \psi$} \\
-  X \models \forall s\?\F\_ \varphi(s) \quad&\Ll\quad
-  \text{for all morphisms~$T \to X$ in~$\Sch/S$ and} \\
-  &\phantom{{}\Ll\quad\text{for }} \text{all sections~$s \in \Gamma(T, \F)$:} \\
-  &\qquad\qquad\qquad\qquad V \models \varphi(s)
+  T \models \varphi \Rightarrow \psi \quad&\Ll\quad
+  \text{for all morphisms~$T' \to T$ in~$\Sch/S$:} \\
+  &\qquad\qquad\qquad\qquad\text{$T' \models \varphi$ implies $T' \models \psi$} \\
+  T \models \forall s\?\F\_ \varphi(s) \quad&\Ll\quad
+  \text{for all morphisms~$T' \to T$ in~$\Sch/S$ and} \\
+  &\phantom{{}\Ll\quad\text{for }} \text{all sections~$s \in \Gamma(T', \F)$:} \\
+  &\qquad\qquad\qquad\qquad T' \models \varphi(s)
 \end{align*}
 
 \subsection*{Important objects in the big Zariski topos} It's convenient to
-introduce notation for XXX objects which often appear when studying the big
+introduce notation for objects which often appear when working with the big
 Zariski topos.
 
-\begin{itemize}
-\item Let~$X$ be an~$S$-scheme. Its functor of points $(\Sch/S)^\op
-\to \Set$, which maps an~$S$-scheme~$T$ to~$\Hom_S(T,X)$, is an object
-of~$\Zar(S)$. We denote it by~``$\ul{X}$''.
+Let~$X$ be an~$S$-scheme. Its functor of points, which maps
+an~$S$-scheme~$T$ to~$\Hom_S(T,X)$, is an object of~$\Zar(S)$. We denote it
+by~``$\ul{X}$''.
+
+From the internal point of view of~$\Zar(S)$, such a functor~$\ul{X}$ looks
+like a single set. It can be pictured as the ``set of points of~$X$'',
+where~``point'' doesn't mean ``point of the underlying topological space
+of~$X$'', but rather~``$T$-point of~$X$'', where~$T$ varies over
+all~$S$-schemes. The internal language of the big Zariski topos hides any
+explicit mentions of the stage~$T$; it is therefore a device for reifying the
+multitude of points of~$X$, defined on varying stages, as a single entity.
 
 Particularly important is~$\affl$, the functor of points of the affine line
-over~$S$.
+over~$S$. The object~$\ul{S}$ is the terminal object in~$\Zar(S)$. This fits
+into the philosophy: From the point of view of the big Zariski topos, the base
+scheme should simply look like a point. The functor of points of~$S \amalg S$
+looks like a two-element set from the internal point of view.
 
-\item Let~$\E$ be a sheaf of sets on~$S$. For reasons explained in
+Let~$\E$ be a sheaf of sets on~$S$. For reasons explained in
 Section~\ref{sect:big-small-relation}, we denote by~``$\pi^{-1}(\E)$''
-the induced sheaf on~$\Sch/S$ given by
-\[ (T \xra{f} S) \longmapsto \Gamma(T, f^{-1}(\E)). \]
+the induced sheaf on~$\Sch/S$ mapping an~$S$-scheme
+$(f : T \to S)$ to~$\Gamma(T, f^{-1}(\E))$.
 
-\item Let~$\E$ be a sheaf of~$\O_S$-modules. We denote by~``$\E^\Zar$''
-the induced sheaf on~$\Sch/S$ given by
-\[ (T \xra{f} S) \longmapsto \Gamma(T, f^*(\E)). \]
-\end{itemize}
+Let~$\E$ be a sheaf of~$\O_S$-modules. We denote by~``$\E^\Zar$''
+the induced sheaf on~$\Sch/S$ mapping an~$S$-scheme
+$(f : T \to S)$ to~$\Gamma(T, f^*(\E))$.
 
-The big Zariski topos is the proper context for the ``functor of
-points'' approach to algebraic geometry. This is because the functor of points
-associated to an~$S$-scheme~$X$,
-\[ \ul{X} : \Sch/S \to \Set,\ T \mapsto \Hom_S(T,X), \]
-fulfills the gluing condition and is therefore an object of~$\Zar(S)$.
 
-From the internal point of view of~$\Zar(S)$, such a functor~$\ul{X}$ looks like a single
-set. It can be pictured as the ``set of points of~$X$'', where~``point'' does
-not mean ``point of the underlying topological space of~$X$'', but
-rather~``$T$-point of~$X$'', where~$T$ varies over all~$S$-schemes. The
-internal language of the big Zariski topos hides any explicit mentions of the
-stage~$T$; it is therefore a device for reifying the multitude of points
-of~$X$, defined on varying stages, as a single entity.
+\subsection*{A first example illustrating the Kripke--Joyal translation rules}
+Since all the sets~$\affl(T) \cong \Gamma(T,\O_T)$ carry ring structures, the
+object~$\affl$ can be endowed with a canonical structure as a ring object
+in~$\Zar(S)$. For a particular~$S$-scheme~$T$, the ring~$\affl(T)$ isn't
+necessarily a field, but the system of these rings, conceptualized as a single
+entity from the internal point of view, does satisfy a field axiom. In the
+case~$S = \Spec\ZZ$, this was first observed by
+Kock~\cite{kock:univ-proj-geometry}.
 
-As a basic example, the functor~$\ul{S}$ looks like a singleton set from the
-internal point of view of~$\Zar(S)$ and~$\ul{S \amalg S}$ looks like a
-two-element set.
+\begin{prop}The ring~$\affl$ is a field from the internal point of view
+of~$\Zar(S)$, in the sense that
+\[ \Zar(S) \models
+  \forall f\?\affl\_
+    \neg(f = 0) \Rightarrow \speak{$f$ \inv}. \]
+\end{prop}
 
-A particularly important object of~$\Zar(S)$ is the functor of points
-associated to the affine line over~$S$, the~$S$-scheme~$\AA^1_S \defeq S
-\times_{\Spec\ZZ} \ZZ[t]$. Its value on an~$S$-scheme~$T$ is given by
-\[ \affl(T) = \Hom_S(T, \AA^1_S) \cong \Hom_{\Spec\ZZ}(T, \Spec\ZZ[t]) \cong
-\Gamma(T,\O_T). \]
-This object has an evident structure as a ring object in~$\Zar(S)$. In fact,
-from the internal point of view, it is a local ring and even a field in the
-sense that nonzero elements are invertible.
-This is without any assumptions on
-the base scheme~$S$; in the case~$S = \Spec\ZZ$, this was first observed by
-Kock~\cite{kock:univ-proj-geometry}.\footnote{The proof goes as follows.
-We want to verify that~$S \models \forall f\?\affl\_ \neg(f = 0) \Rightarrow
-\speak{$f$ \inv}$. According to the Kripke--Joyal semantics of~$\Zar(S)$, we
-thus have to show that for any~$S$-scheme~$T$ and any function~$f \in
-\Gamma(T,\O_T)$ it holds that~$T \models \neg(f = 0)$ implies~$T \models
-\speak{$f$ \inv}$. The antecedent means that for any~$T$-scheme~$T'$, if the
-pullback of~$f$ to~$T'$ vanishes, then~$T'$ is the empty scheme. Similar to the
-analogous statement of the little Zariski topos, the consequent means that~$f$
-is invertible in~$\Gamma(T,\O_T)$. The claim follows by considering the
-particular~$T$-scheme~$T' \defeq V(f)$. Since~$f$ vanishes on~$V(f)$, this
-subscheme is empty and therefore its complement~$D(f)$ is the whole of~$T$.}
+\begin{proof}According to the Kripke--Joyal semantics of~$\Zar(S)$, we
+have to show that for any~$S$-scheme~$T$ and any function~$f \in
+\Gamma(T,\O_T)$ the statement~$T \models \neg(f = 0)$ implies~$T \models
+\speak{$f$ \inv}$. The antecedent states, for any~$T$-scheme~$T'$, that if the
+pullback of~$f$ to~$T'$ vanishes,~$T'$ is then the empty scheme.
 
-Using the internal language of the big Zariski topos, we can conduct
-\emph{synthetic scheme theory}, or more precisely synthetic relative scheme
-theory over a base scheme. As with other synthetic approaches to certain
-subjects, such as synthetic differential geometry~\cite{kock:sdg}, synthetic
-domain theory~\cite{hyland:synthetic-domain-theory}, or
-synthetic computability theory~\cite{bauer:synthetic-computability-theory}, the
-internal language lets us pretend that our
-objects of study, schemes over a base scheme, are plain sets and that
-morphisms between our objects are simply maps between those sets. We can therefore
-employ a simple, element-based language to talk about schemes; the topological
-and ring-theoretical structure is taken care of by the machinery.
+Similar to the analogous statement of the little Zariski topos
+(Lemma~\ref{lemma:internal-invertibility}), the consequent means that~$f$ is
+invertible in~$\Gamma(T,\O_T)$.
 
-As with the internal universe of any topos, we can perform the usual
-set-theoretical constructions internally in the big Zariski topos, like
-building products and coproducts, cutting out subsets and imposing equivalence
-relations, and constructing sets of maps between given objects. Additionally,
-the internal universe of the big Zariski topos has a distinctive algebraic
-flavor, in that the curious statement
-\begin{quote}\emph{Any} map~$\affl \to \affl$ is a polynomial function.\end{quote}
-holds from the internal point of view.
-Furthermore, even if the base scheme is the spectrum of a finite field, the
-polynomial coefficients are unique.
-These statements are related to the fact that the value of the internal
-Hom~$[\affl,\affl]$ at an~$S$-scheme~$T$ is given
-by~$\Gamma(\AA^1_T,\O_{\AA^1_T})$ and not by some larger ring consisting of,
-say, all set-theoretical maps~$T \to T$. There is a similar phenomenon in
-synthetic differential geometry, where any map~$\RR \to \RR$ is smooth (in an
-appropriate sense).
+The claim follows by considering the particular~$T$-scheme~$T' \defeq V(f)$.
+Since~$f$ vanishes on~$V(f)$, this subscheme is empty and therefore its
+complement~$D(f)$ is the whole of~$T$.
+\end{proof}
+
+The field property can be interpreted as follows. A function~$f$ not being the
+zero function does not imply that it's invertible. But if~$f$ is
+\emph{universally nonzero} in that the only scheme such that pullback of~$f$ to
+that scheme vanishes is the empty scheme, then~$f$ is indeed invertible.
 
 }
 
@@ -7355,11 +7335,11 @@ We will indicate the few places where the choice of site makes a difference.
 }
 
 
-\section{Sheaves of modules}
+\section{Sheaves of rings, algebras, and modules}
 
 % XXX locally free, ...
 
-\subsection{Quasicoherent sheaves of modules}
+\subsection{Quasicoherence}
 
 \begin{defn}\label{defn:synth-qcoh}
 An~$R$-module~$E$ is \emph{synthetically quasicoherent} if and only if,

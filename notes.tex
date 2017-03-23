@@ -109,8 +109,10 @@
 \newcommand{\lfp}{\mathrm{lfp}}
 \newcommand{\fp}{\mathrm{fp}}
 \DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Proj}{Proj}
 \newcommand{\QcohSpec}[2]{\mathrm{Spec}^{\mathrm{qcoh}}_{#1}{#2}}
 \newcommand{\RelSpec}{\operatorname{\ul{\mathrm{Spec}}}}
+\newcommand{\RelProj}{\operatorname{\ul{\mathrm{Proj}}}}
 \newcommand{\op}{\mathrm{op}}
 \DeclareMathOperator{\colim}{colim}
 \DeclareMathOperator{\rank}{rank}
@@ -555,7 +557,9 @@ sets
   \{ x\?\afflx \,|\, x^2 = 0 \} \]
 should and do describe two different~$X$-schemes: the first is isomorphic
 to~$X$ while the second is an infinitesimal thickening of~$X$, the vanishing scheme
-of~$t^2$ in~$\AA^1_X$.
+of~$t^2$ in~$\AA^1_X$. In contrast, the sets~$\{ x\?\affl \,|\, x \neq 0 \}$
+and~$\{ x\?\affl \,|\, x^2 \neq 0 \}$ should and do coincide. By the field
+property, both conditions are equivalent to~$x$ being invertible.
 % XXX forward reference to tangent bundle
 
 Modal operators are useful in the big topos setting as well. For instance,
@@ -7585,7 +7589,8 @@ site used to construct~$\Zar(S)$) would be reduced as well. In contrast, the
 structure sheaf~$\O_S$ is reduced from the point of view of the little Zariski
 topos if and only if~$S$ is reduced (Proposition~\ref{prop:reduced-ring}).
 
-\begin{prop}The following statements about an element~$x\?\affl$ are
+\begin{prop}\label{prop:a1-nilp}
+The following statements about an element~$x\?\affl$ are
 equivalent:
 \begin{enumerate}
 \item $x$ is not invertible.
@@ -7692,34 +7697,11 @@ More generally, for an~$S$-scheme~$X$, affine and projective~$n$-space
 over~$X$ are given by~$\ul{X} \times (\affl^1)^n$ and~$\ul{X} \times \PP^n$,
 respectively.
 
-\subsubsection*{Open and closed subschemes}
-Let~$X$ be an~$S$-scheme and~$f \in \O_X(X)$ be a global function. Since
-the internal Hom~$[\ul{X},\affl] \in \Zar(S)$ has~$\O_X(X)$ as its set of global
-sections, we can regard~$f$ as a map~$\ul{X} \to \affl$ from the internal point
-of view. The internal expressions
-\[ \{ x\?\ul{X} \,|\, f(x) \neq 0 \} \quad\text{and}\quad
-  \{ x\?\ul{X} \,|\, f(x) = 0 \} \]
-then describe the functor of points of the subscheme~$D(f)$
-respectively~$V(f)$.
 
-From the internal point of view,
-the statement~$f(x)^n \neq 0$ is equivalent to~$f(x)^n$ being
-invertible and therefore to~$f(x) \neq 0$. This reflects that~$D(f^n) = D(f)$.
-However~$f(x)^n = 0$ does not imply~$f(x) = 0$, since~$\affl$ is only a field
-in the sense that nonzero elements are invertible. Therefore there is no
-contradiction with the basic fact that~$V(f^n)$ does not equal~$V(f)$ in
-general.
+\subsection{Tangent bundle}
 
-As a special case, the set~$\Delta \defeq \{ \varepsilon\?\affl \,|\,
-\varepsilon^2 = 0 \}$ describes an infinitesimal thickening of~$S$. It is the
-vanishing scheme of~$\varepsilon^2$ in~$S \times_{\Spec \ZZ} \Spec
-\ZZ[\varepsilon]$, so it has the same underlying topological space
-as~$S$, but~$\O_S[\varepsilon]/(\varepsilon^2)$ instead of~$\O_S$ as structure
-sheaf.
-
-\subsubsection*{Tangent bundle}
-For an~$S$-scheme~$X$, the internal Hom~$[\Delta,\ul{X}]$ describes the
-``tangent bundle'' of~$X$, \ie the~$S$-scheme~$\RelSpec_X{\operatorname{Sym}(\Omega^1_{X/S})} \to X \to S$, as can be seen by
+For an~$S$-scheme~$X$, the internal Hom~$[\Delta,\ul{X}] \in \Zar(S)$ describes the
+tangent bundle of~$X$, \ie the~$S$-scheme~$\RelSpec_X{\operatorname{Sym}(\Omega^1_{X/S})} \to X \to S$, as can be seen by
 chasing the definitions~\cite[Lemma~5.12.1]{brandenburg:tensor-foundations}.
 Intuitively, a map~$f : \Delta \to \ul{X}$ from the internal point of view is
 given by slightly more data than merely the point~$f(0)$; one also has to
@@ -7842,6 +7824,28 @@ representability.
 \end{rem}
 
 
+\subsection{Relative Proj construction}
+
+\begin{defn}The \emph{synthetic Proj} of a graded~$R$-algebra~$A$ is the set
+\[ \Proj(A) \defeq
+  (\text{set of all surj.\@ graded $R$-algebra homomorphisms~$A \to R[T]$})/R^\times. \]
+\end{defn}
+% XXX: which kind of grading?
+
+\begin{ex}The synthetic Proj of~$R[X_0,\ldots,X_n]$ is canonically isomorphic
+to the set of~$n$-tuples of homogeneous coordinates~$[x_0:\cdots:x_n]$ with at
+least one coordinate being invertible.
+\end{ex}
+
+\begin{prop}\label{prop:relative-proj-big-zariski}
+Let~$\A_0$ be a graded~$\O_S$-algebra (not necessarily quasicoherent).
+Then the synthetic Proj of the~$\affl$-algebra~$(\A_0)^\Zar$, as constructed
+in the internal language of~$\Zar(S)$, is the functor of points of~$\RelProj_S \A_0$.
+\end{prop}
+
+% XXX: proof (and check that it's true without the usual hypothesis)
+
+
 \subsection{Open immersions}
 
 A basic concept in the functor-of-points approach to algebraic geometry is the
@@ -7922,10 +7926,14 @@ invertible elements is a synthetic open immersion, since for~$x\?\affl$ the
 truth value of~``the fiber of~$x$ is inhabited'' equals the truth value of~``$x
 \neq 0$''.\end{ex}
 
+\begin{ex}Let~$X \in \Zar(S)$. Let~$f \? [X,\affl]$ from the internal point of
+view. The inclusion~$\{ x\?X \,|\, f(x) \neq 0 \} \hookrightarrow X$ is a
+synthetic open immersion.\end{ex}
+
 \begin{prop}\label{prop:characterization-open-subfunctor}
 Let~$X \in \Zar(S)$ be a Zariski sheaf. A subfunctor~$U
 \hookrightarrow X$ is open if and only if, from the internal point of view
-of~$\Zar(S)$, the map~$U \hookrightarrow X$ is a synthetic closed immersion.
+of~$\Zar(S)$, the map~$U \hookrightarrow X$ is a synthetic open immersion.
 In formal language:
 \begin{multline*}
   \qquad\Zar(S) \models
@@ -8147,7 +8155,7 @@ However, this doesn't work out.
 This statement implies the condition in the proposition, but the converse
 direction does not hold, since~$\affl/K \cong \affl/\sqrt{J}$ might fail to be
 synthetically quasicoherent. For instance that's the case if~$U = \emptyset$; then~$K =
-\sqrt{(0)}$ by Proposition~\ref{prop:special-properties-a1}. The
+\sqrt{(0)}$ by Proposition~\ref{prop:a1-nilp}. The
 quotient~$\affl/\sqrt{(0)}$ is not synthetically quasicoherent by
 Remark~\ref{rem:radical-not-qcoh}.\end{rem}
 
@@ -8177,6 +8185,10 @@ closed.\end{defn}
 \begin{ex}The inclusion~$\{0\} \hookrightarrow \affl$ is a synthetic closed
 immersion. More generally, for any functions~$f_1,\ldots,f_m : (\affl)^n \to
 \affl$, the inclusion of the set of their common zeros in~$(\affl)^n$ is a
+synthetic closed immersion.\end{ex}
+
+\begin{ex}Let~$X \in \Zar(S)$. Let~$f \? [X,\affl]$ from the internal point of
+view. The inclusion~$\{ x\?X \,|\, f(x) = 0 \} \hookrightarrow X$ is a
 synthetic closed immersion.\end{ex}
 
 \begin{prop}Let~$X$ be an~$S$-scheme.

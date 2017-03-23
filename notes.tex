@@ -7523,20 +7523,21 @@ A concrete counterexample is~$S = \Spec(k)$ and~$X = \Spec(k[T]/(T^2))$.
 In this case~$f^*(\O_S/\sqrt{(0)}) \cong f^*(\O_S) \cong \O_X$.
 \end{rem}
 
+
+\subsection{Special properties of the affine line}
 The ring object~$\affl$ in the big Zariski topos enjoys several special
 properties, some of which are unique in that they're only possible in an
-intuitionistic context. The following proposition compiles a short list of such
-properties. At least one of these, the field property, was already noticed in
-the 1970s by Kock~\cite{kock:univ-proj-geometry}.
+intuitionistic context. We compile here a short list of such
+properties. As was already mentioned, at least one of them, the field
+property, was already noticed in the 1970s by Kock~\cite{kock:univ-proj-geometry}.
 
-\begin{prop}\label{prop:special-properties-a1}
-The following properties of~$\affl$, as seen from the internal
-point of view of~$\Zar(S)$, are consequences of~$\affl$ being (a local ring and) synthetically
-quasicoherent:
-% Adjust paragraph below the proof if numbering changes.
-% Proof of third and eighth property references first property by number.
-\begin{enumerate}
-\item $\affl$ is a field in the sense that any element which is not zero is
+The statements and proofs in this subsection are formulated in the internal
+language. The proofs only use the fact that~$\affl$ is a synthetically
+quasicoherent local ring. This illustrates the meta-claim that synthetic
+quasicoherence is a strong and meaningful condition.
+
+\begin{prop}\label{prop:a1-field}
+$\affl$ is a field in the sense that any element which is not zero is
 invertible: $\forall x\?\affl\_ \neg(x = 0) \Rightarrow \speak{$x$ \inv}$. More generally,
 for any number~$n \geq 0$,
 \begin{multline*}
@@ -7544,26 +7545,9 @@ for any number~$n \geq 0$,
   \neg(x_1 = 0 \wedge \cdots \wedge x_n = 0) \Longrightarrow \\
   (\speak{$x_1$ \inv} \vee \cdots \vee \speak{$x_n$ \inv}). \qquad\qquad
 \end{multline*}
-\item $\affl$ is not a reduced ring: $\neg \forall x\?\affl\_ (\bigvee_{n \geq
-0} x^n = 0) \Rightarrow x = 0.$
-\item Any element of $\affl$ which is not invertible is nilpotent.
-\item An element of~$\affl$ is nilpotent if and only if it is \notnot zero.
-\item Any function~$\affl \to \affl$ is given by a unique polynomial
-in~$\affl[T]$.
-\item $\affl$ is \emph{weakly algebraically closed}, in the following sense:
-Any monic polynomial~$p \in \affl[T]$ of degree at least one does \notnot have
-a zero.
-\item $\affl$ is infinite in the following sense: For any number~$n \geq 0$
-and any given elements~$x_1,\ldots,x_n \? \affl$, there is \notnot an element~$y$
-which is distinct from all of the~$x_i$.
-\item $\affl$ fulfills the following version of the Nullstellensatz:
-Let~$f_1,\ldots,f_m \in \affl[X_1,\ldots,X_n]$ be polynomials without a common
-zero in~$(\affl)^n$. Then there are polynomials~$g_1,\ldots,g_m \in
-\affl[X_1,\ldots,X_n]$ such that~$\sum_i g_i f_i = 1$.
-\end{enumerate}\end{prop}
+\end{prop}
 
-\begin{proof}\begin{enumerate}
-\item Let $x\?\affl$ be such that~$\neg(x=0)$. We consider the quasicoherence
+\begin{proof}Let $x\?\affl$ be such that~$\neg(x=0)$. We consider the quasicoherence
 condition for the finitely presented~$\affl$-algebra~$A \defeq \affl/(x)$.
 Since~$\Spec(A) \cong \brak{x=0} = \brak{\bot} = \emptyset$, the condition says
 that the canonical homomorphism
@@ -7574,9 +7558,13 @@ Therefore~$1 \in (x)$, that is,~$x$ is invertible.
 The more general statement follows in the same way, by using the quasicoherence
 condition for~$A \defeq \affl/(x_1,\ldots,x_n)$. This yields~$1 \in
 (x_1,\ldots,x_n)$. Since~$\affl$ is a local ring, one of the~$x_i$ is
-invertible.
+invertible.\end{proof}
 
-\item Assume that~$\affl$ is reduced. Then the set~$\Delta \defeq \{
+\begin{prop}$\affl$ is not a reduced ring: $\neg \forall x\?\affl\_ (\bigvee_{n \geq
+0} x^n = 0) \Rightarrow x = 0.$
+\end{prop}
+
+\begin{proof}Assume that~$\affl$ is reduced. Then the set~$\Delta \defeq \{
 \varepsilon \in \affl \,|\, \varepsilon^2 = 0 \}$ is equal to~$\{ 0 \}$.
 By the quasicoherence criterion applied to the finitely
 presented~$\affl$-algebra~$A \defeq \affl[T]/(T^2)$, the canonical map
@@ -7584,46 +7572,10 @@ presented~$\affl$-algebra~$A \defeq \affl[T]/(T^2)$, the canonical map
   [\Delta, \affl] \cong \affl \]
 is an isomorphism. It maps~$[T]$ to zero (the value of~$T$ at~$0 \in \Delta$).
 Thus~$T \in (T^2)$ and therefore~$1 = 0$ in~$\affl$. This is a contradiction.
+\end{proof}
 
-\item Let~$x \? \affl$ be not invertible. We consider the quasicoherence
-condition for the finitely presented~$\affl$-algebra~$A \defeq \affl[x^{-1}]$.
-Since~$\Spec(A) \cong \brak{\speak{$x$ \inv}} = \emptyset$, it follows
-that~$\affl[x^{-1}] = 0$, similarly to the proof of the first claim. Thus~$x$
-is nilpotent.
-
-\item Follows from the first and third property and the observation that
-nilpotent elements are not invertible (else~$1 = 0$ in contradiction to~$\affl$
-being a local ring).
-
-\item Immediate by considering the quasicoherence condition for the finitely
-presented~$\affl$-algebra~$A \defeq \affl[T]$ and noticing that~$\Spec(A) \cong
-\affl$.
-
-\item Let~$p \in \affl[T]$ be a monic polynomial of degree at least one. Assume
-that~$p$ doesn't have a zero in~$\affl$. Then the spectrum of~$A \defeq
-\affl[T]/(p)$ is empty. The quasicoherence condition for~$A$ therefore implies
-that~$\affl[T]/(p)$ is zero. This means that~$p$ is invertible in~$\affl[T]$.
-A basic lemma in commutative algebra (whose standard proof is constructive)
-then implies that with the exception of the constant term in~$p$, all
-coefficients are nilpotent. This contradicts the assumption that~$p$ is monic
-of degree at least one.
-
-\item The polynomial~$f(T) \defeq (T - x_1) \cdots (T - x_n) + 1$
-does \notnot have a zero~$y\?\affl$, since~$\affl$ is weakly algebraically
-closed. This element cannot equal any~$x_i$, since~$f(x_i) = 1$ is not zero.
-
-\item We consider the quasicoherence condition for the finitely
-presented~$\affl$-algebra~$A \defeq \affl[X_1,\ldots,X_n]/(f_1,\ldots,f_m)$.
-Since~$\Spec(A) \cong \{ x \in (\affl)^n \,|\, f_1(x) = \ldots = f_m(x) = 0 \}
-= \emptyset$, the condition implies that~$A$ is the zero algebra just as in the
-verification of the first property.\qedhere
-\end{enumerate}\end{proof}
-
-In classical logic, the first two properties would directly contradict each
+In classical logic, the previous two properties would directly contradict each
 other; only an intuitionistic context allows for fields which are not reduced.
-Also the fifth statement cannot be satisfied in classical logic: for infinite
-fields the existence part fails and for finite fields the uniqueness part
-fails.
 
 That~$\affl$ is not reduced, irrespective of the reducedness of the base
 scheme~$S$, should not come as a surprise: Reducedness is not stable under base
@@ -7632,6 +7584,83 @@ If~$\affl$ was reduced, then all~$S$-schemes (at least those contained in the
 site used to construct~$\Zar(S)$) would be reduced as well. In contrast, the
 structure sheaf~$\O_S$ is reduced from the point of view of the little Zariski
 topos if and only if~$S$ is reduced (Proposition~\ref{prop:reduced-ring}).
+
+\begin{prop}The following statements about an element~$x\?\affl$ are
+equivalent:
+\begin{enumerate}
+\item $x$ is not invertible.
+\item $x$ is nilpotent.
+\item $x$ is \notnot zero.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}Let~$x \? \affl$ be not invertible. We consider the quasicoherence
+condition for the finitely presented~$\affl$-algebra~$A \defeq \affl[x^{-1}]$.
+Since~$\Spec(A) \cong \brak{\speak{$x$ \inv}} = \emptyset$, it follows
+that~$\affl[x^{-1}] = 0$, similarly to the proof of
+Proposition~\ref{prop:a1-field}. Thus~$x$
+is nilpotent.
+
+Let~$x \? \affl$ be a nilpotent element. Thus~$x^n = 0$ for some number~$n \geq
+0$. If~$x$ was nonzero, then~$x$ and therefore~$x^n$ would be invertible, in
+contradiction to~$0 \neq 1$ since~$\affl$ is a local ring.
+
+Let~$x \? \affl$ be \notnot zero. Then~$x$ is not invertible, since if~$x$ was
+invertible, then~$x$ would be nonzero.
+\end{proof}
+
+Summarizing, the following facts about nilpotents hold in the internal
+universe of the big Zariski topos. Firstly, it's not true that~$\affl$ is
+reduced.  But this doesn't mean that there actually exists a nilpotent element
+which is not zero. In fact, any nilpotent is \notnot zero.
+
+\begin{prop}Any function~$\affl \to \affl$ is given by a unique polynomial
+in~$\affl[T]$.
+\end{prop}
+
+\begin{proof}Immediate by considering the quasicoherence condition for the finitely
+presented~$\affl$-algebra~$A \defeq \affl[T]$ and noticing that~$\Spec(A) \cong
+\affl$.\end{proof}
+
+This statement too cannot be satisfied in classical logic: for infinite
+fields the existence part fails and for finite fields the uniqueness part
+fails.
+
+\begin{prop}$\affl$ is \emph{weakly algebraically closed}, in the following sense:
+Any monic polynomial~$p \? \affl[T]$ of degree at least one does \notnot have
+a zero.\end{prop}
+
+\begin{proof}Let~$p \? \affl[T]$ be a monic polynomial of degree at least one. Assume
+that~$p$ doesn't have a zero in~$\affl$. Then the spectrum of~$A \defeq
+\affl[T]/(p)$ is empty. The quasicoherence condition for~$A$ therefore implies
+that~$\affl[T]/(p)$ is zero. This means that~$p$ is invertible in~$\affl[T]$.
+A basic lemma in commutative algebra (whose standard proof is constructive)
+then implies that with the exception of the constant term in~$p$, all
+coefficients are nilpotent. This contradicts the assumption that~$p$ is monic
+of degree at least one.\end{proof}
+
+\begin{prop}$\affl$ is infinite in the following sense: For any number~$n \geq 0$
+and any given elements~$x_1,\ldots,x_n \? \affl$, there is \notnot an element~$y$
+which is distinct from all of the~$x_i$.
+\end{prop}
+
+\begin{proof}The polynomial~$f(T) \defeq (T - x_1) \cdots (T - x_n) + 1$
+does \notnot have a zero~$y\?\affl$, since~$\affl$ is weakly algebraically
+closed. This element cannot equal any~$x_i$, since~$f(x_i) = 1$ is not zero.
+\end{proof}
+
+\begin{prop}$\affl$ fulfills a version of the Nullstellensatz:
+Let $f_1,\ldots,f_m \in \affl[X_1,\ldots,X_n]$ be polynomials without a common
+zero in~$(\affl)^n$. Then there are polynomials~$g_1,\ldots,g_m \in
+\affl[X_1,\ldots,X_n]$ such that~$\sum_i g_i f_i = 1$.
+\end{prop}
+
+\begin{proof}We consider the quasicoherence condition for the finitely
+presented~$\affl$-algebra~$A \defeq \affl[X_1,\ldots,X_n]/(f_1,\ldots,f_m)$.
+Since~$\Spec(A) \cong \{ x \in (\affl)^n \,|\, f_1(x) = \ldots = f_m(x) = 0 \}
+= \emptyset$, the condition implies that~$A$ is the zero algebra just as in the
+verification of Proposition~\ref{prop:a1-field}.
+\end{proof}
 
 
 \section{Basic constructions of relative scheme theory}

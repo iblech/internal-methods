@@ -150,6 +150,7 @@
 \newcommand{\stacksproject}[1]{\cite[{\href{http://stacks.math.columbia.edu/tag/#1}{Tag~#1}}]{stacks-project}}
 
 \newcommand{\XXX}[1]{\textbf{XXX: #1}}
+\newcommand{\XXXh}[1]{}
 
 \newcommand{\defeq}{\vcentcolon=}
 \newcommand{\defequiv}{\vcentcolon\equiv}
@@ -571,7 +572,7 @@ topos} familiar from étale cohomology. In this way, we can access the internal
 universe of the big étale topos from within the big Zariski topos. The
 ring~$\affl$ enjoys additional properties when studied in the étale topos, for
 instance it is separably closed.
-\XXX{wording}
+\XXXh{wording}
 
 
 \subsection*{Limitations} The internal language is \emph{local}, in the sense
@@ -889,7 +890,7 @@ finer distinctions -- distinctions which are not visible in classical logic.
 At the end of this section there are some notes on what the restriction to
 intuitionistic logic amounts to in practice.
 
-\XXX{Put rules into an appendix and give some explanation regarding contexts
+\XXXh{Put rules into an appendix and give some explanation regarding contexts
 etc. Don't forget the rules for $\in$, $\bigwedge$, $\bigvee$.}
 
 Because of the multitude of quantifiers, literal translations of internal statements
@@ -1897,7 +1898,7 @@ and suffices for the applications of the Noetherian condition one typically expe
 Thirdly, our definition provides a link to the external condition on a scheme
 to be locally Noetherian, as shown by the following proposition.
 
-\XXX{Rewrite the rest of this section to conform to the new (corrected)
+\XXX{Adapt the proof of the proposition to conform to the new (corrected)
 definition.}
 
 \begin{prop}\label{prop:internal-noetherianity}
@@ -2829,7 +2830,7 @@ One may restrict to open \emph{connected} neighbourhoods of~$X$, since an
 arbitrary open neighbourhood of~$x$ contains such a one and the dimension
 decreases (weakly) on subsets.
 
-\XXX{Why restrict to connected open subsets?}
+\XXX{Remove all mentions to connected open subsets, that's unnecessary.}
 
 The map~$X \to \NN \cup \{+\infty\},\ x \mapsto \dim_x X$ is upper
 semicontinuous and thus corresponds to an internal generalized (possibly
@@ -3698,7 +3699,7 @@ in~$\Sh(X)$. Let~$\varphi$ be a formula over~$X$. Then
 where on the right hand side, all parameters occuring in~$\varphi$ were pulled
 back to~$X_\Box$ along the inclusion~$X_\Box \hookrightarrow X$.
 \end{thm}
-\XXX{think about powersets appearing as domains of quantification}
+\XXXh{think about powersets appearing as domains of quantification}
 
 We have not yet explicitly stated the Kripke--Joyal semantics for a sheaf topos
 over a locale, which~$X_\Box$ is in general. The definition is exactly the same
@@ -3893,7 +3894,7 @@ the claim is that~$U \models_X \Box\bot$ if and only if~$j(U)
 latter means~$j(U) \leq \sup \emptyset = j(\emptyset)$, so the claim follows from
 the first two axioms on a nucleus.
 \end{proof}
-\XXX{other cases}
+\XXX{include proof for other cases}
 
 \begin{lemma}Let~$\Box$ be a modal operator. Let~$\varphi$ be a formula.
 Let~$\psi \defequiv \varphi^\Box$ be the~$\Box$-translation of~$\varphi$.
@@ -4657,7 +4658,7 @@ sheaf~$\K_X$ is given by~$i_* i^{-1} \O_X$. Similarly, the sheaf~$j_* \K_U$ is
 given by~$j_* i'_* i'^{-1} j^{-1} \O_X$. The claim follows since~$j \circ i' =
 i$.
 \end{proof}
-\XXX{Does U admit a (**)-cover if X does?}
+\XXXh{Does U admit a (**)-cover if X does?}
 
 \begin{lemma}\label{lemma:dense-standard-reflection-generalized}
 Let~$X$ be scheme admitting a cover by affine open subschemes
@@ -4808,13 +4809,13 @@ such that internally,~$D = [f^{-1}]$; this shows that~$D$ is principal. The
 converse is similar.
 \end{proof}
 
-\begin{rem}Locally principal subschemes (closed subschemes which are locally
-the vanishing subscheme of a regular section of~$\O_X$) up to isomorphisms of
-subschemes are in one-to-one correspondence with rank-1 submodules of~$\O_X$
-(see~\XXX{ref}). Thus locally principal subschemes (up to isomorphisms of abstract
-schemes) are in one-to-one correspondence with effective Cartier divisors (up
-to linear equivalence).\end{rem}
-\XXX{check this.}
+%\begin{rem}Locally principal subschemes (closed subschemes which are locally
+%the vanishing subscheme of a regular section of~$\O_X$) up to isomorphisms of
+%subschemes are in one-to-one correspondence with rank-1 submodules of~$\O_X$
+%(see~\XXX{ref}). Thus locally principal subschemes (up to isomorphisms of abstract
+%schemes) are in one-to-one correspondence with effective Cartier divisors (up
+%to linear equivalence).\end{rem}
+%\XXX{check this.}
 
 For the following definition, recall that we can localize an~$\O_X$-module~$\L$
 away from the set~$\S \subseteq \O_X$ of regular elements to obtain
@@ -5413,7 +5414,6 @@ Let~$X$ be a scheme. Let~$\I \subseteq \O_X$ be a radical ideal.
 the sheaf~$\overline{\I}$ given by the internal expression
 \[ \overline{\I} \defeq \{ s\?\O_X \,|\, \speak{$s$ \inv} \Rightarrow s\in\I
 \}. \]
-\XXX{Wrong, $\overline{\I}$ as defined is not an ideal.}
 \end{enumerate}
 \end{prop}
 \begin{proof}Both claims can be verified by purely internal reasoning. The
@@ -5763,7 +5763,7 @@ For the second statement, internally define the ideal~$\I \defeq \sqrt{\{ s\?\O_
 A^c \}} \subseteq \O_X$. Then~$1 \in \I$ if and only if~$A^c$, thus by
 Proposition~\ref{prop:basics-closed-subspace} the closed ringed subspace defined
 by~$\I$ has~$A$ as underlying topological space. It is reduced since~$\I$ is a
-radical ideal. \XXX{is~$\I$ quasicoherent, if~$X$ is a scheme?}\end{proof}
+radical ideal. \XXXh{is~$\I$ quasicoherent, if~$X$ is a scheme?}\end{proof}
 
 \begin{lemma}Let~$X$ be a scheme of dimension~$\leq n$. Let~$V(\I)
 \hookrightarrow X$ be a closed subscheme which is locally cut out by a regular
@@ -5845,7 +5845,7 @@ be a topological space and let~$U \subseteq X$ be an open subset. Then
 Note that we are abusing notation on the left hand side: The parameters
 of~$\varphi$, which are sets and elements, must be read as the induced constant
 sheaves and constant functions (sections of that sheaves). Possible
-\XXX{auftretend}
+\XXXh{auftretend}
 unbounded quantifiers have to be read as ranging only over locally constant
 sheaves, not all sheaves.
 \begin{proof}By induction on the structure of~$\varphi$. By way of example, we
@@ -6459,7 +6459,7 @@ that~$\varphi \vee \neg\varphi$.
 \label{sect:relative-spectrum}
 
 \XXX{This section will be revised in the near future, it doesn't contain the
-full story at the moment. See the IHES 2015 slides.}
+full story at the moment. See the IHÉS 2015 slides.}
 
 Recall that if~$\A$ is a quasicoherent~$\O_X$-algebra on a scheme~$X$, one can
 construct the \emph{relative spectrum}~$\RelSpec_X{\A}$ by appropriately
@@ -6618,7 +6618,7 @@ view). More succinctly, the functor~$E \circ \Spec$ is an adjoint to the
 global sections functor~$\LRL/E(\Spec\O_X) \to \Alg(\O_X)^\op$, while the
 relative spectrum functor is an adjoint to the global sections functor~$\LRL/X
 \to \Alg(\O_X)^\op$.
-\XXX{check details?}
+\XXXh{check details?}
 
 The internal construction which correctly reflects the relative spectrum is the
 following.
@@ -6634,7 +6634,7 @@ $\Gamma(\sqrt{(f)}, \O_{\QcohSpec{R}{A}}) \defeq A[f^{-1}]$.
 \end{defn}
 % XXX: maybe use Borceux, p. 431, ex. 6.12.10 to find conditions when
 % \QcohSpec{R}{A} is an internal locale
-\XXX{This lattice is always a frame, \ie this definition always gives rise to a
+\XXX{This lattice is indeed always a frame, \ie this definition always gives rise to a
 locale.}
 
 \begin{prop}Let~$X$ be a scheme and~$\A$ a quasicoherent~$\O_X$-algebra. Then:
@@ -6925,7 +6925,7 @@ An~$\O_X$-module~$\I$ is injective if and only if it is internally injective.
 
 \begin{proof}Proposition~\ref{prop:notions-of-internal-injectivity} can be
 adapted from sheaves to sets to sheaves of modules, with the same proof.
-\XXX{check that.}
+\XXXh{check that.}
 
 The proof of Theorem~\ref{thm:char-injectivity} can be adopted as well.
 It suffices to change~``$m[\E] \cup \F'$'' to~``$m[\E] + \F''$'', where~$\F''
@@ -7832,7 +7832,7 @@ representability.
 \[ \Proj(A) \defeq
   (\text{set of all surj.\@ graded $R$-algebra homomorphisms~$A \to R[T]$})/R^\times. \]
 \end{defn}
-\XXX{which kind of grading?}
+\XXXh{which kind of grading?}
 
 \begin{ex}The synthetic Proj of~$R[X_0,\ldots,X_n]$ is canonically isomorphic
 to the set of~$n$-tuples of homogeneous coordinates~$[x_0:\cdots:x_n]$ with at
@@ -7845,7 +7845,7 @@ Then the synthetic Proj of the~$\affl$-algebra~$(\A_0)^\Zar$, as constructed
 in the internal language of~$\Zar(S)$, is the functor of points of~$\RelProj_S \A_0$.
 \end{prop}
 
-\XXX{proof (and check that it's true without the usual hypothesis)}
+\XXX{proof}  % (and check that it's true without the usual hypothesis)}
 
 
 \subsection{Open immersions}

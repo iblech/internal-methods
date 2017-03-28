@@ -479,7 +479,7 @@ Yoneda's lemma guarantees that the set of morphisms~$\ul{\AA}^1 \to \ul{\AA}^1$
 in the functor category~$[\Ring,\Set]$ is in canonical bijection with the
 set~$\ZZ[U]$, as one would expect: Algebraic functions~$\AA^1 \to \AA^1$ should
 be given by polynomials. (The discussion could also be relativized so that the
-answer is~$k[U]$, where~$k$ is some base field.) However, if we calculate the
+answer is the polynomial ring~$k[U]$, where~$k$ is some base field.) However, if we calculate the
 set of morphisms in~$[\mathrm{Field},\Set]$ we obtain~$\int_{K \in
 \mathrm{Field}} \Hom(K,K)$, a set which contains pathological functions such as
 some which permute the elements of the prime fields in arbitrary ways.}
@@ -549,7 +549,7 @@ of the affine line over~$X$, the~$X$-scheme~$\AA^1_X \defeq X \times_{\Spec\ZZ}
 \Gamma(T,\O_T). \]
 This object has a canonical structure as a ring object in~$\Zar(X)$. In fact,
 from the internal point of view of~$\Zar(X)$, it is a local ring and even a
-field in the sense that nonzero elements are invertible. In the case~$S =
+field in the sense that nonzero elements are invertible. In the case~$X =
 \Spec\ZZ$, this was first observed by Kock~\cite{kock:univ-proj-geometry}. At
 the same time, it is not a reduced ring -- a feat possible only in an
 intuitionistic context. This curious interplay is quite important, since the
@@ -558,8 +558,8 @@ sets
   \{ x\?\afflx \,|\, x^2 = 0 \} \]
 should and do describe two different~$X$-schemes: the first is isomorphic
 to~$X$ while the second is an infinitesimal thickening of~$X$, the vanishing scheme
-of~$U^2$ in~$\AA^1_X$. In contrast, the sets~$\{ x\?\affl \,|\, x \neq 0 \}$
-and~$\{ x\?\affl \,|\, x^2 \neq 0 \}$ should and do coincide. By the field
+of~$U^2$ in~$\AA^1_X$. In contrast, the sets~$\{ x\?\afflx \,|\, x \neq 0 \}$
+and~$\{ x\?\afflx \,|\, x^2 \neq 0 \}$ should and do coincide. By the field
 property, both conditions are equivalent to~$x$ being invertible.
 % XXX forward reference to tangent bundle
 
@@ -570,7 +570,7 @@ holds on an étale covering and such that the translated
 formula~$\varphi^{\Box_\text{ét}}$ means that~$\varphi$ holds in the \emph{big étale
 topos} familiar from étale cohomology. In this way, we can access the internal
 universe of the big étale topos from within the big Zariski topos. The
-ring~$\affl$ enjoys additional properties when studied in the étale topos, for
+ring~$\afflx$ enjoys additional properties when studied in the étale topos, for
 instance it is separably closed.
 \XXXh{wording}
 
@@ -1562,10 +1562,16 @@ If~$X$ is a reduced scheme, we have seen in Corollary~\ref{cor:field-reduced}
 that~$\O_X$ is a field from the internal perspective, in the sense that
 non-invertible elements are zero. But fields are well-known to be of Krull
 dimension zero. Why is this not a contradiction to the proposition just proven?
-Intuitionistically, one can only show that fields in the stronger sense that
-any element is zero or invertible have Krull dimension zero. Fields in the
-weaker sense can have higher Krull dimension, as exhibited by the structure
-sheaf of reduced schemes with positive dimension.
+Intuitionistically, the notion of a field bifurcates into several
+non-equivalent notions:
+\begin{enumerate}
+\item ``Any element which is not invertible is zero.''
+\item ``Any element which is not zero is invertible.''
+\item ``Any element is either zero or invertible.''
+\end{enumerate}
+Only fields in the sense~(3) are automatically of Krull dimension zero.
+Fields in the weaker senses can have higher Krull dimension, as exhibited by
+the structure sheaf of reduced schemes with positive dimension.
 
 For the following corollary, note that if a scheme~$X$ is not empty, $\dim X
 \leq 0$ is equivalent to~$\dim X = 0$.
@@ -1845,8 +1851,8 @@ with values in~$M$} consists of an initial value~$x_0 \in M$ and a function~$f
 Such a process \emph{halts} if and only if there
 exists a step~$n$ and elements~$x_1, \ldots, x_n$ such that~$x_{i+1}
 \in f(x_i)$ for~$i = 0,\ldots,n-1$ and such that~$x_n \in f(x_n)$.
-The set~$M$ satisfies the \emph{ascending process condition} if and only if any
-ascending process with values in~$M$ halts.
+The set~$M$ satisfies the \emph{ascending process condition} if and only if all
+ascending processes with values in~$M$ halt.
 \end{defn}
 
 Intuitively, we picture~$f(x)$ as the set of all possible results of running
@@ -1862,7 +1868,7 @@ condition.\end{defn}
 
 An ascending chain of elements~$a_0 \preceq a_1 \preceq \cdots$ in a partially
 ordered set gives rise to an ascending process by setting~$x_0 \defeq a_0$
-and~$\varphi(x) \defeq \{ y \,|\, \exists n\_ x = a_n \wedge y = a_{n+1} \}$.
+and~$f(x) \defeq \{ y \,|\, \exists n\_ x = a_n \wedge y = a_{n+1} \}$.
 Conversely, the axiom of dependent choice would allow to construct an
 ascending chain from an ascending process. In the presence of this axiom, for
 instance in a classical context, a ring is therefore
@@ -8232,6 +8238,24 @@ synthetically quasicoherent}$ and $T \models (x \in \ul{Z} \Leftrightarrow J =
 % Let f in J.
 % Then ...
 \end{proof}
+
+
+\subsection{Surjective morphisms}
+
+\begin{prop}Let~$f : X \to Y$ be a morphism of~$S$-schemes. Then~$f$ is set-theoretically
+surjective if and only if
+\[ \Zar(S) \models
+  \forall y\?\ul{Y}\_
+  \neg\neg \exists x\?\ul{X}\_
+  \ul{f}(x) = y. \]
+\end{prop}
+
+
+\subsection{Quasicompact morphisms}
+
+\subsection{Quasiseparated morphisms}
+
+\subsection{Proper morphisms}
 
 
 \section{Case studies}

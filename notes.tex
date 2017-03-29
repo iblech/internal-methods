@@ -165,6 +165,8 @@
 \makeatletter
 \counterwithout{section}{chapter}
 \counterwithout{footnote}{chapter}
+\counterwithout{table}{chapter}
+\counterwithout{figure}{chapter}
 \patchcmd{\@thm}{\let\thm@indent\indent}{\let\thm@indent\noindent}{}{}
 \patchcmd{\@thm}{\thm@headfont{\scshape}}{\thm@headfont{\bfseries}}{}{}
 \patchcmd{\@makechapterhead}{\chaptername}{Part}{}{}
@@ -8612,7 +8614,12 @@ operator~$\Box$:
 
 \chapter*{Appendix}
 
+\newcounter{saved-section-number}
+\setcounter{saved-section-number}{\value{section}}
+
 \begin{appendix}
+
+\setcounter{section}{\value{saved-section-number}}
 
 \section{Dictionary between internal and external notions}
 

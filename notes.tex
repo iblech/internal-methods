@@ -6305,7 +6305,7 @@ freeness lemma in the following general form.
   in the proof of Theorem~\ref{thm:generic-freeness}, in the special case~$n = 2, m = 1$. The hatched cells
   indicate vectors which have already been removed from the generating family.
   The vector in the red cell was found to be expressible as a linear
-  combination of the vectors with smaller index (blue cells). It is therefore
+  combination of vectors with smaller index (blue cells). It is therefore
   about to be removed, along with the vectors in all cells to the top and to
   the right of the red cell.}
 \end{figure}
@@ -6425,8 +6425,8 @@ freeness lemma in the following general form.
   \end{tikzpicture}
   \caption{\label{fig:iteration}The iterative process used
   in the proof of Theorem~\ref{thm:generic-freeness}, in the special case~$n = 2, m = 1$.
-  The iterative process terminates after the generating family was reduced a
-  finite number of times.}
+  The process terminates after reducing the generating family
+  a finite number of times.}
 \end{figure}
 
 \begin{thm}\label{thm:generic-freeness}
@@ -7472,7 +7472,86 @@ We will indicate the few places where the choice of site makes a difference.
 
 \section{Relation between the big and little Zariski toposes}
 
+The big Zariski topos~$\Zar(S)$ is a topos over the little Zariski
+topos~$\Sh(S)$ in that there is a canonical geometric morphism
+\[ \pi : \Zar(S) \longrightarrow \Sh(S) \]
+with direct and inverse image parts given by
+\[ \pi_*E = E|_{\Sh(S)} \qquad\text{and}\qquad
+  \pi^{-1}\F = ((T \xra{f} S) \mapsto \Gamma(T, f^{-1}\F)). \]
+Since~$\pi^{-1}$ is fully faithful, this geometric morphism is connected; and
+furthermore, it is a local geometric morphism (a further right adjoint~$\pi^!$
+which is fully faithful exists).
 
+By general results on local geometric morphisms, the adjoint pair~$(\pi_*
+\dashv \pi^!)$ is a geometric morphism which is right inverse to~$\pi$ and
+which exhibits~$\Sh(S)$ as a subtopos of~$\Zar(S)$, similarly to how~$\Set$ is
+a subtopos of a sheaf topos over a local topological space. In this context,
+it's customary to introduce notation for the idempotent monad~$\sharp$ and the
+idempotent comonad~$\flat$ arising from the adjoint triple~$\pi^{-1} \dashv
+\pi_* \dashv \pi^!$:
+\[ \sharp E = \pi^!(E|_{\Sh(S)}) \qquad\text{and}\qquad
+  \flat E = \pi^{-1}(E|_{\Sh(S)}). \]
+
+In the case that~$S = \Spec(A)$ is an affine scheme and we employ
+one of the parsimonious sites to construct~$\Zar(S)$, it's well-known
+that~$\Sh(S)$ classifies local localizations of~$A$ and~$\Zar(S)$ classifies
+arbitrary local~$A$-algebras. On points, the morphism~$\pi$ sends a
+local~$A$-algebra~$\varphi : A \to R$ to the local localization~$A \to
+A[(\varphi^{-1}[R^\times])^{-1}]$ and its right inverse sends a local
+localization~$A \to A[F^{-1}]$ to itself.
+
+What does~$\Zar(S)$ classify in the case that~$S$ is an arbitrary scheme?
+We don't know a nontautologous answer to this question, but we can answer a
+related one: What does~$\Zar(S)$ classify as seen from the internal point of
+view of~$\Sh(S)$?
+
+To make sense of this question, we employ a slight extension of Shulman's
+stacks semantics which allows to refer to locally internal
+categories~\cite{penon:locally-internal-categories} over a base topos~$\E$ from
+the internal language. Using this extension, a locally internal category
+over~$\E$ looks like a locally small category from the internal point of view
+of~$\E$.
+
+For instance, the trivial~$\E$-topos~$\E \to \E$ will look like~$\Set$ and the
+slice topos~$\E/A \to \E$ will look like~$\Set/A$ from the internal point of
+view of~$\E$.
+
+\begin{thm}\label{thm:zar-classifies}
+From the internal point of view of~$\Sh(S)$, the big Zariski
+topos~$\Zar(S)$ is the classifying topos of the theory of local~$\O_S$-algebras
+which are local over~$\O_S$.\end{thm}
+
+For an arbitrary topos~$\F$ over~$\Set$, the concept of an~``$\O_S$-algebra
+in~$\F$'' doesn't make any sense -- in contrast to the concept of
+an~$A$-algebra in~$\F$, which can either be defined as a ring
+homomorphism~$\ul{A} \to R$ in~$\F$ (where~$\ul{A}$ is the pullback of~$A \in
+\Set$ to~$\F$) or as a ring object which is equipped with an~$A$-indexed family of
+endomorphisms satisfying some axioms. However, for a~$\Sh(S)$-topos~$f : \F \to
+\Sh(S)$, the concept of an~$\O_S$-algebra in~$\F$ is meaningful: It's a ring
+homomorphism~$f^{-1}\O_S \to R$ in~$\F$.
+
+Similarly, there is no absolute ``geometric theory of~$\O_S$-algebras''.
+However, there is an internal geometric theory of~$\O_S$-algebras -- internal
+to~$\Sh(S)$. Theorem~\ref{thm:zar-classifies} should be viewed in this light.
+
+The proviso ``local over~$\O_S$'' is as in the discussion of the relative
+spectrum from the internal point of view
+(Section~\ref{sect:relative-spectrum}).
+
+\begin{proof}[Proof of Theorem~\ref{thm:zar-classifies}]
+We have to verify that, from the point of view of~$\Sh(S)$, the topos~$\Zar(S)$
+contains a canonical local and local-over-$\O_S$ $\O_S$-algebra and that for
+any Grothendieck topos~$\F$, pulling back this canonical algebra yields an
+equivalence between the category of geometric morphisms~$\F \to \Zar(S)$ and
+the category of local and local-over-$\O_S$ $\O_S$-algebras in~$\F$.
+
+\XXX{write down rest of the proof}
+\end{proof}
+
+% A corollary of the existence of~$\pi^!$ is that~$\pi_*$ is (not only
+% continuous, but also) cocontinuous.
+
+\XXX{Explain how to reconstruct~$\Sh(S)$ from~$\Zar(S)$}
 
 % * local
 % * X --> S; scheibe

@@ -5876,7 +5876,8 @@ and even
 
 Let~$A$ be a ring.
 
-\begin{defn}A \emph{filter} in~$A$ is a subset~$F \subseteq A$ such that
+\begin{defn}\label{defn:filter}
+A \emph{filter} in~$A$ is a subset~$F \subseteq A$ such that
 \begin{itemize}
 \item $0 \not\in F$,
 \item $1 \in F$,
@@ -6509,7 +6510,7 @@ linear combination summing to zero, we can show that all coefficients are zero,
 beginning with the coefficient which is paired with the vector of greatest
 index.
 
-Figure~\ref{fig:single-step} illustrates our action in the first case: We remove the redundant vector~$x_1^{i_1} \cdots x_n^{i_n}
+Figure~\ref{fig:single-step} illustrates our action in the first case. We remove the redundant vector~$x_1^{i_1} \cdots x_n^{i_n}
 v_j$ \emph{and also any vector with greater powers of the~$x_1,\ldots,x_n$}
 from the generating family. The resulting family will still be a generating
 family, since the linear combination witnessing the redundancy of~$x_1^{i_1}
@@ -6584,11 +6585,6 @@ that~$\varphi \vee \neg\varphi$.
 \section{Relative spectrum}
 \label{sect:relative-spectrum}
 
-% XXX: Also mention limits in LRL
-
-\XXX{This section will be revised in the near future, it doesn't contain the
-full story at the moment. See the IHÉS 2015 slides.}
-
 Recall that if~$\A$ is a quasicoherent~$\O_X$-algebra on a scheme~$X$, one can
 construct the \emph{relative spectrum}~$\RelSpec_X{\A}$ by appropriately
 gluing the spectra~$\Spec \Gamma(U,\A)$ where~$U$ ranges over the affine opens
@@ -6659,8 +6655,13 @@ corresponds to the radical ideal~$\sqrt{(f)}$); conversely, a radical ideal~$\aa
 corresponds to the open subset~$\bigcup_{h \in \aaa} D(h)$.
 
 Thus, in an intuitionistic context, we will construct the spectrum of a ring~$A$
-only as a locale, not as a topological space; we will use the lattice of
-radical ideals as the lattice of opens. This construction has the expected
+as a locale, not as a topological space, and adopt the following definition.
+
+\begin{defn}\label{defn:spectrum-as-a-locale}
+The \emph{spectrum}~$\Spec(A)$ of a ring~$A$ is the locale whose lattice of
+opens is the lattice of radical ideals of~$A$.\end{defn}
+
+This construction has the expected
 universal property, namely that it is adjoint to the global functions functor:
 \[ \Hom_{\LRL}(X, \Spec A) \cong \Hom_{\Ring}(A, \Gamma(X,\O_X)). \]
 Here, ``$\LRL$'' refers to the category of \emph{locally ringed locales}, \ie
@@ -6672,9 +6673,72 @@ internal point of view of~$\Sh(Y)$, the ring homomorphism~$f^\sharp$ is a local
 homomorphism. The notion of a locally ringed locale is thus a straightforward
 generalization of that of a locally ringed space.
 
+Schemes are usually regarded as locally ringed spaces, not
+as locally ringed locales. However, in a classical
+context where the axiom of choice is available, schemes are \emph{sober}
+topological spaces. For sober topological spaces, the passage from the space to
+its induced locale (forgetting the set of points and only keeping the frame of
+open subsets) doesn't lose information: The category of sober topological
+spaces with arbitrary continuous maps embeds into the category of locales as a
+full subcategory. Therefore the category of schemes can just as well be viewed
+as a full subcategory of the category of locally ringed locales.
+
 The importance of a locale-theoretic approach to spectra of rings, especially in
 relative situations, has also been stressed by Lurie~\cite[p.~37]{lurie:dag5}.
 
+
+{\tocless
+
+\subsection*{Points of the locale-theoretic spectrum}
+Constructing the spectrum as a locale instead of as a topological space
+sidesteps any issues with prime ideals, since points are not a defining
+ingredient of a locale. However, points are still meaningful as a \emph{derived
+concept}: A point of locale~$X$ is a morphism~$1 \to X$, where~$1$ is the
+terminal locale, the locale corresponding to the one-point topological space.
+Therefore it's still an interesting question what the points of the
+locale~$\Spec(A)$ look like.
+
+\begin{prop}Let~$A$ be a ring. Then the points of the locale~$\Spec(A)$ are in
+canonical one-to-one correspondence with the filters in~$A$
+(as in Definition~\ref{defn:filter}), even intuitionistically.\end{prop}
+
+\begin{proof}The points of a locale~$X$ are in canonical one-to-one
+correspondence with the \emph{completely prime filters} of~$\Open(X)$,
+subsets~$K \subseteq \Open(X)$ which are upward-closed, downward-directed, and
+have the property that, whenever a supremum of a set~$M \subseteq \Open(X)$ is
+contained in~$K$, then so is some element of~$M$.
+
+Such a completely prime filter~$K \subseteq \Open(\Spec(A))$ corresponds to the
+ring-theoretic filter
+\[ F \defeq \{ x \? A \,|\, \sqrt{(x)} \in K \} \subseteq A, \]
+and a ring-theoretic filter~$F \subseteq A$ corresponds to the completely prime
+filter
+\[ K \defeq \{ \aaa \? \Open(\Spec(A)) \,|\,
+  \text{$\aaa \cap F$ is inhabited} \}. \]
+We omit the required routine verifications.
+\end{proof}
+
+In classical logic, where complementation yields an one-to-one correspondence
+between filters and prime ideals, the points of~$\Spec(A)$ are therefore in
+canonical bijection with the prime ideals of~$A$, just as one would expect.
+
+Observing that intuitionistically the points of the locale~$\Spec(A)$ are
+filters, not prime ideals, one might wonder: Is the locale-theoretic approach
+really necessary? Wouldn't it suffice to define~$\Spec(A)$ as the topological
+space of filters in~$A$? Indeed, for some time this was
+believed~\cite[Section~3]{lawvere:icm-address}; however, this hope turned out
+to be too naive: Joyal gave an explicit example of a nontrivial ring in a
+certain topos without any filters~\cite[pp.~200f.]{tierney:spectrum}, thus
+showing that the construction doesn't have the expected universal property and
+that therefore a true pointless approach (as provided by locale theory, topos
+theory, or formal topology) is necessary to construct the spectrum in an
+intuitionistic context.\footnote{When following
+reference~\cite{tierney:spectrum}, note that Tierney calls ``primes'' what we
+call ``filters''. Joyal's example was none other than~$\affl$
+in~$\Zar(S)$ in the special case~$S = \Spec(\ZZ)$.}
+
+
+\subsection*{A trivial case}
 For later use, we study the question when the spectrum is the one-point space.
 The answer is well-known classically, but since we want to use this result in
 an internal context, we have to give an intuitionistic proof.
@@ -6712,6 +6776,8 @@ invertible, the ``only if'' direction holds as well (for any~$\aaa$ and any~$x$)
 Considering the radical ideal~$\sqrt{(f)}$ for an element~$f \? A$, one
 verifies that the converse holds as well.
 \end{proof}
+
+}
 
 
 \subsection{The relative spectrum as an ordinary spectrum\except{toc}{ from the internal

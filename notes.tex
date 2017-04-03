@@ -7023,8 +7023,8 @@ following reason. Let~$\varphi(r) \in F$. We want to verify that~$r$ is
 invertible in~$R$. Under the assumption that~$r$ is invertible in~$R$,
 it's trivial that~$1$ is an element of
 \begin{align*}
-  \aaa &\defeq \sup \{ \sqrt{(1)} \,|\, \text{$r$ is invertible} \} \\
-  &\phantom{\vcentcolon}= \{ s\?A \,|\, \text{$s$ is nilpotent or $r$ is invertible} \}
+  \aaa &\defeq \sup \{ \sqrt{(1)} \,|\, \text{$r$ is invertible in $R$} \} \\
+  &\phantom{\vcentcolon}= \{ s\?A \,|\, \text{$s$ is nilpotent or $r$ is invertible in $R$} \}
   \in \Open(\Spec(A)).
 \end{align*}
 Therefore, without any assumption on~$r$, we have that~$r \cdot 1 = \varphi(r)$ is an
@@ -7080,20 +7080,56 @@ This homomorphism of rings which happen to be local is indeed a local
 homomorphism, that is, it reflects invertibility. More precisely,
 \[ \Spec(A|R) \models
   \forall f\?\ul{R}\_
-  \speak{$\varphi(f)$ is \inv\@ in~$\O_{\Spec(A|R)}$} \Rightarrow
+  \speak{$\ul{\varphi}(f)$ is \inv\@ in~$\O_{\Spec(A|R)}$} \Rightarrow
   \speak{$f$ is \inv\@ in~$\ul{R}$}. \]
 Denoting the modal operator associated to the sublocale inclusion~$\Spec(A|R)
 \hookrightarrow \Spec(A)$ by~``$\Box$'', this statement is equivalent to
 \[ \Spec(A) \models (\forall f\?\ul{R}\_
-  \varphi(f) \in \F \Rightarrow \speak{$f$ is \inv\@ in~$\ul{R}$})^\Box \]
+  \ul{\varphi}(f) \in \F \Rightarrow \speak{$f$ is \inv\@ in~$\ul{R}$})^\Box \]
 by Theorem~\ref{thm:box-translation-semantically} and
 Lemma~\ref{lemma:box-translation-sound}. To verify this, let~$s\?A$ and~$f\?R$
-be given such that~$\sqrt{(s)} \models \varphi(f) \in \F$, \ie~$s \in
+be given such that~$\sqrt{(s)} \models \varphi(f) \in \F$, that is,~$s \in
 \sqrt{(\varphi(f))}$. We are to show that~$\sqrt{(s)} \models \Box(\speak{$f$
 is invertible in~$\ul{R}$})$.
 
-\XXX{rest of the proof}
+The largest open in~$\Spec(A)$ on which~$\speak{$f$ is invertible in~$\ul{R}$}$
+holds is
+\begin{align*}
+  \aaa &\defeq \sup \{ \sqrt{(1)} \,|\, \text{$f$ is invertible in~$R$} \} \\
+  &\phantom{\vcentcolon}=
+  \{ t\?A \,|\, \text{$t$ is nilpotent or $f$ is invertible in $R$} \} \in
+  \Open(\Spec(A)),
+\end{align*}
+by Lemma~\ref{lemma:properties-of-constant-sheaves}. Under the assumption
+that~$f$ is invertible in~$R$, trivially~$1 \in \aaa$. Therefore, without any
+assumptions on~$f$, we have that~$\varphi(f) \in \overline{\aaa}$.
+Thus~$\sqrt{(\varphi(f))} \subseteq \overline{\aaa}$ and
+therefore~$\sqrt{(\varphi(f))} \models \Box(\speak{$f$ is invertible
+in~$\ul{R}$})$. Since~$\sqrt{(s)} \subseteq \sqrt{(\varphi(f))}$, the
+monotonicity of the internal language implies~$\sqrt{(s)} \models
+\Box(\speak{$f$ is invertible
+in~$\ul{R}$})$.
+
+Finally, we verify the universal property. Let~$Y$ be a locally ringed locale
+over~$(\pt,R)$ and let a morphism~$A \to \Gamma(Y,\O_Y)$ of~$R$-algebras be
+given. We like this data to uniquely induce a morphism~$Y \to \Spec(A|R)$ of
+locally ringed locales over~$(\pt,R)$.
+
+To obtain a locale-theoretic map~$Y \to \Spec(A|R)$, we need to specify a
+filter of~$\ul{A}$ in~$\Sh(Y)$. \XXX{fill in rest of proof}
 \end{proof}
+
+\begin{rem}The modal operator~$\Box$ associated to the inclusion~$\Spec(A|R)
+\hookrightarrow \Spec(A)$ can be defined in the internal language
+of~$\Sh(\Spec(A))$. Namely, it's the smallest operator such that
+the~$\Box$-translated statement
+\[ (\speak{the morphism $\ul{R} \to \O_{\Spec(A)}$ is local})^\Box \]
+holds. It is thus the smallest operator such that for
+any~$f\?\ul{R}$ with~$\ul{\varphi}(f) \in \F$, $\Box(\speak{$f$ is invertible
+in $\ul{R}$})$. The sublocale~$\Spec(A|R)$ is therefore the largest
+sublocale of~$\Spec(A)$ on which the morphism~$\ul{R} \to \O_{\Spec(A)}$ is
+local.
+\end{rem}
 
 There is also a general spectrum functor by Gillam~\cite{gillam:localization}
 which works for arbitrary~$\O_X$-algebras (instead of only quasicoherent

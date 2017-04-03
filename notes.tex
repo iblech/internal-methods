@@ -5543,11 +5543,20 @@ intuitionistically valid in the version we need~\cite{bauer:lumsdaine:bourbaki-w
 %for all radical ideals~$\J$ containing~$\I$, then~$\varphi(\overline{\I}) \Rightarrow \psi$.
 The following proof scheme is useful for verifying properties of the least
 fixed point. Let~$\varphi(\J)$ be a statement on radical ideals~$\J$ such that
-$\varphi(\sup_i \J_i) \Leftrightarrow \bigvee_i \varphi(\J_i)$ for arbitrary
-families~$(\J_i)_i$ of radical ideals. If
+$\varphi(\sup_i \J_i) \Leftrightarrow \bigvee_i \varphi(\J_i)$ for every
+family~$(\J_i)_i$ of radical ideals. If
 \[ \varphi(P(\J)) \Longrightarrow \varphi(\J) \]
 for all radical ideals~$\J$ containing~$\I$, then~$\varphi(\overline{\I})
-\Rightarrow \varphi(\I)$.
+\Rightarrow \varphi(\I)$. This proof scheme is a special case of the following
+more general scheme, which is also sometimes needed for reasoning about the
+least fixed point.
+
+Let~$L$ be a complete partial order. Let~$\alpha$ be a map from the set of
+radical ideals to~$L$ such that $\alpha(\sup_i \J_i) = \sup_i \alpha(\J_i)$ for
+every family~$(\J_i)_i$ of radical ideals. If
+\[ \alpha(P(\J)) \preceq \alpha(\J) \]
+for all radical ideals~$\J$ containing~$\I$, then~$\alpha(\overline{\I})
+\preceq \alpha(\I)$.
 \end{rem}
 % The modified proof of the corollary goes as follows.
 % First note that P(I cap J) = P(I) cap P(J).
@@ -6940,7 +6949,7 @@ Let~$X$ be a scheme (or a locally ringed locale). Let~$\A$ be
 an~$\O_X$-algebra. Then the externalization~$E(\Spec(\A|\O_X))$ coincides
 with~$\RelSpec_X(\A)$ as locally ringed locales over~$X$.\end{thm}
 
-Before giving the proof, we want to give clarify some details of the
+Before giving the proof, we want to clarify some details of the
 construction.
 
 Firstly, the base ring~$R$ directly enters the construction. This is in
@@ -6982,7 +6991,7 @@ is affine as well and
   &\cong \Gamma(U, \brak{\Open(\Spec(\A|\O_X))}).
 \end{align*}
 Therefore~$I(\RelSpec_X(\A))$ is canonically isomorphic to~$\Spec(\A|\O_X)$ as
-locales internal to~$\Sh(X)$, or expressed externally: The relative
+locales internal to~$\Sh(X)$. Expressed externally: The relative
 spectrum~$\RelSpec_X(\A)$ coincides with the externalization
 of~$\Spec(\A|\O_X)$ as locales over~$X$, as claimed.
 \end{proof}
@@ -7003,11 +7012,20 @@ in~$\Open(\Spec(A))$. We denote the inclusion~$\Spec(A|R) \hookrightarrow
 Lastly, it's interesting to know the points of~$\Spec(A|R)$, even though these
 don't determine~$\Spec(A)$.
 
+\begin{defn}Let~$R$ be a ring. Let~$\varphi : R \to A$ be an algebra. A
+filter~$F \subseteq A$ \emph{lies over the filter of units} if and only if
+$\varphi^{-1}F \subseteq R^\times$, that is if
+\[ \varphi(r) \in F \Longrightarrow \text{$r$ is invertible in $R$} \]
+for all~$r \? R$. (The reverse inclusion~``$\varphi^{-1}F \supseteq R^\times$''
+holds automatically.)\end{defn}
+
+This definition will mostly be used in situations where the ring~$R$ is local,
+in which case the subset~$R^\times$ is actually a filter and the phrase
+``filter of units'' is therefore justified.
+
 \begin{prop}Let~$R$ be a ring. Let~$\varphi : R \to A$ be an~$R$-algebra. Then
 the points of~$\Spec(A|R)$ are intuitionistically in canonical one-to-one
-correspondence with those filters~$F \subseteq A$ with
-\[ \varphi(r) \in F \Longrightarrow \speak{$r$ \inv\@ in $R$} \]
-for all~$r \? R$.
+correspondence with those filters of~$A$ which lie over the filter of units.
 \end{prop}
 
 \begin{proof}The correspondence outlined in
@@ -7017,6 +7035,10 @@ ring-theoretic filter
 \[ F \defeq \{ s\?A \,|\, \overline{\sqrt{(s)}} \in K \} \]
 and a ring-theoretic filter~$F$ corresponds to the completely prime filter
 \[ K \defeq \{ \aaa\?\Open(\Spec(A|R)) \,|\, \text{$\aaa \cap F$ is inhabited} \}. \]
+It's instructive to perform some of the necessary verifications, to see how
+the quasicoherator is used, even though
+Proposition~\ref{prop:local-spectrum-classify} will subsume this
+correspondence.
 
 The filter~$F$ corresponding to~$K$ has the displayed property for the
 following reason. Let~$\varphi(r) \in F$. We want to verify that~$r$ is
@@ -7047,6 +7069,68 @@ remark, if~$P(\bbb) \cap F$ is inhabited, then~$\bbb \cap F$ is as well.
 
 A short calculation using the filter axioms then shows that there
 exists an index~$i$ such that~$\aaa_i \cap F$ is inhabited.
+\end{proof}
+
+\begin{prop}\label{prop:local-spectrum-classify}
+Let~$R$ be a ring. Let~$\varphi : R \to A$ be an algebra. Then~$\Spec(A|R)$ is
+the classifying locale of the theory of filters in~$A$ which lie over the
+filter of units, that is of the geometric theory with atomic propositions~``$s
+\in F$'' for~$s\?A$ and axioms given by the following axiom schemes:
+\begin{enumerate}
+% Adapt proof if numbering changes
+\item $\top \vdash 1 \in F$
+\item $st \in F \dashv\vdash s \in F \wedge t \in F$ (one axiom for each $s,t\?A$)
+\item $0 \in F \vdash \bot$
+\item $s+t \in F \vdash s \in F \vee t \in F$ (one axiom for each $s,t\?A$)
+\item $\varphi(r) \in F \vdash \bigvee \{ \top \,|\, \text{$r$ is invertible in
+$R$} \}$ (one axiom for each $r\?R$)
+\end{enumerate}
+\end{prop}
+
+\begin{proof}The frame of the classifying locale of the given theory~$T$ is the
+free frame on generators~``$s \in F$'' for~$s\?A$ subject to the relations
+given by the axioms of the theory. More explicitly, it's the Lindenbaum
+algebra~$L(T)$ of the theory, so its elements are the formulas of the theory up
+to provable equivalence and the ordering is defined by~$[\varphi] \preceq
+[\psi] \defequiv (\varphi \vdash \psi)$. We want to verify that this frame is
+isomorphic to~$\Open(\Spec(A|R))$.
+
+We define a frame homomorphism~$L(T) \to \Open(\Spec(A|R))$ by sending the
+generators~$[s \in F]$ to the radical ideal~$\overline{\sqrt{(s)}}$. This
+respects the relations and therefore gives a well-defined map. The map is
+surjective, since a preimage to~$\aaa \? \Open(\Spec(A|R))$
+is~$[\bigvee_{s\in\aaa} (s \in F)]$. To verify that it is an isomorphism of
+frames, we therefore only have to verify that it reflects the ordering.
+
+By the axiom schemes~(1) and~(2), any formula of~$T$ is provably equivalent to
+a formula of the form~$\bigvee_i (s_i \in F)$. It therefore suffices to verify
+that, for any families~$(s_i)_i$ and~$(t_j)_j$ such that
+$\overline{\sqrt{(s_i)_i}} \subseteq \overline{\sqrt{(t_j)_j}}$, the sequent
+$\bigvee_i (s_i \in F) \vdash \bigvee_j (t_j \in F)$ is derivable. We'll show
+more generally: If~$\aaa$ and~$\bbb$ are radical ideals such
+that~$\overline{\aaa} \subseteq \overline{\bbb}$,
+then~$\bigvee_{s\in\aaa}(s\in F) \vdash \bigvee_{t\in\bbb}(t\in F)$. This
+follows from the following chain of deductions:
+\[ \bigvee_{s\in\aaa}(s\in F) \vdash
+  \bigvee_{s\in\overline{\aaa}}(s\in F) \vdash
+  \bigvee_{s\in\overline{\bbb}}(s\in F) \vdash
+  \bigvee_{s\in\bbb}(s\in F). \]
+All but the final step are trivial. The final step is an application of the
+general proof scheme outlined in
+Remark~\ref{rem:quasicoherator-knaster-tarski}. In the notation of that remark,
+we set~$\alpha(\J) \defeq [\bigvee_{s\in\J}(s\in F)]$ and exploit that, if~$s
+\in P(\J)$, then~$s \in F \vdash \bigvee_{t\in\J} (t \in F)$. This is
+because~$s$ can be written as~$s^n = \sum_j a_j f_j u_j$ such that, for each~$j$,
+if~$f_j$ is invertible in~$R$ then~$u_j \in \J$, and we have the
+following chain of deductions.
+\begin{align*}
+  s \in F &\vdash s^n \in F \\
+  &\vdash \bigvee_j (t_j f_j u_j \in F) \\
+  &\vdash \bigvee_j (\varphi(f_j) \in F \wedge u_j \in F) \\
+  &\vdash \bigvee_j \bigl(\bigvee\{\top\,|\,\text{$f_j$ invertible in $R$}\} \wedge u_j \in F\bigr) \\
+  &\vdash \bigvee_j \bigvee\{(u_j\in F) \,|\, \text{$f_j$ invertible in $R$}\} \\
+  &\vdash \bigvee_{t \in \J} (t \in F). \qedhere
+\end{align*}
 \end{proof}
 
 \begin{lemma}Let~$R$ be a local ring. Let~$\varphi : R \to A$ be an~$R$-algebra.
@@ -7115,8 +7199,25 @@ over~$(\pt,R)$ and let a morphism~$A \to \Gamma(Y,\O_Y)$ of~$R$-algebras be
 given. We like this data to uniquely induce a morphism~$Y \to \Spec(A|R)$ of
 locally ringed locales over~$(\pt,R)$.
 
-To obtain a locale-theoretic map~$Y \to \Spec(A|R)$, we need to specify a
-filter of~$\ul{A}$ in~$\Sh(Y)$. \XXX{fill in rest of proof}
+To obtain a locale-theoretic map~$f : Y \to \Spec(A|R)$, by
+Proposition~\ref{prop:local-spectrum-classify} we need to specify a
+filter of~$\ul{A}$ in~$\Sh(Y)$ which lies over the filter of units.
+The given morphism~$A \to \Gamma(Y,\O_Y)$ induces a morphism~$\alpha : \ul{A}
+\to \O_Y$ in~$\Sh(Y)$. Since~$\O_Y$ is a local ring, the subsheaf~$\O_Y^\times$
+is a filter. Its preimage~$F \defeq \alpha^{-1}\O_Y^\times$ is the sought filter of~$\ul{A}$.
+It lies over the filter of units because the composition~$\ul{R} \to \ul{A} \to
+\O_Y$ is local. By the general theory, the pullback of the generic filter
+in~$\Sh(\Spec(A|R))$ to~$\Sh(Y)$ along~$f$ is~$F$.
+
+The ring-theoretic part of the sought morphism~$Y \to \Spec(A|R)$ of locally ringed
+locales over~$(\pt,R)$ is the canonical homomorphism
+\[ f^{-1}\O_{\Spec(A|R)} =
+  f^{-1}(\ul{A}[(i^{-1}\F)^{-1}]) =
+  \ul{A}[F^{-1}] \longrightarrow \O_Y \]
+of local rings.
+
+This finishes the description of the construction. We omit further
+verifications that the construction works as claimed.
 \end{proof}
 
 \begin{rem}The modal operator~$\Box$ associated to the inclusion~$\Spec(A|R)

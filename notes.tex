@@ -77,6 +77,7 @@
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\PP}{\mathbb{P}}
 \newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
 \newcommand{\QQ}{\mathbb{Q}}
 \newcommand{\GG}{\mathbb{G}}
 \newcommand{\aaa}{\mathfrak{a}}
@@ -104,6 +105,7 @@
 \newcommand{\Mod}{\mathrm{Mod}}
 \newcommand{\Alg}{\mathrm{Alg}}
 \newcommand{\Ring}{\mathrm{Ring}}
+\newcommand{\RL}{\mathrm{RL}}
 \newcommand{\LRL}{\mathrm{LRL}}
 \newcommand{\LRS}{\mathrm{LRS}}
 \newcommand{\pt}{\mathrm{pt}}
@@ -7350,6 +7352,72 @@ Proposition~\ref{prop:local-spectrum-full-spectrum}.
 \end{proof}
 
 
+\subsection{Limits in the category of locally ringed locales}
+
+The category of ringed locales has small limits, by the naive construction. For
+instance, the fiber product~$X \times_Z Y$ of ringed locales is given by the
+fiber product of the underlying locales and the
+structure sheaf~$\pi_X^{-1}\O_X \otimes_{\pi_Z^{-1}\O_Z} \pi_Y^{-1}\O_Y$. More
+generally, the limit of a small diagram of ringed locales is given by the limit~$L$
+of the underlying locales and the colimit of the pulled-back structure sheaves
+(calculated in the category of sheaves of rings on~$L$).
+
+However, when applied to a diagram of locally ringed locales, the ringed locale
+which this simple construction yields is in general not locally ringed. This
+can be nicely understood from the internal point of view: Let~$R$ be a local
+ring. Let~$R \to A$ and~$R \to B$ be local~$R$-algebras, which are furthermore
+local over~$R$. Then the tensor product~$A \otimes_R B$ is in general not a
+local ring. Indeed, this fails even in the easiest case, where all rings
+involved are fields: The rings~$\RR$ and~$\CC$ are local, and the
+inclusion~$\RR \to \CC$ is local, but~$\CC \otimes_\RR \CC \cong \CC \times
+\CC$ is not.
+
+The following proposition explains that the true limit in the category of
+locally ringed locales is obtained by \emph{relocalizing} the limit in the
+category of ringed locales.
+
+\begin{prop}\label{prop:lrl-complete}
+The category of locally ringed locales has all small limits.
+\end{prop}
+
+\begin{proof}For notational simplicity, we describe how products in the
+category of locally ringed locales can be constructed. The general case is
+entirely analogous.
+
+Let~$X$ and~$Y$ be locally ringed locales. Their product~$P$ as ringed locales has
+two defects: Firstly, it's not locally ringed. Secondly, the ring-theoretic
+parts of the projection morphisms~$\pi_X : P \to X$ and~$\pi_Y : P \to Y$
+aren't local, that is, don't reflect invertibility.
+
+The first issue could be solved by constructing, internal to~$\Sh(P)$, the
+ordinary spectrum of~$\O_P$. From the external point of view, this would yield
+a locally ringed locale equipped with morphisms of ringed, but not of locally
+ringed, locales to~$X$ and~$Y$.
+
+To solve both issues, we need to employ a refined spectrum construction,
+similar to the modification required by the internal account of the relative
+spectrum: Internally to~$\Sh(P)$, we construct the classifying locale of the
+theory of those filters of~$\O_P$ which simultaneously lie over the filter of
+units of~$\pi_X^{-1}\O_X$ and which lie over the filter of units
+of~$\pi_Y^{-1}\O_Y$. This locale is a sublocale of~$\Spec(\O_P)$, the largest
+such that the morphisms to~$(\pt,\pi_X^{-1}\O_X)$ and to~$(\pt,\pi_Y^{-1}\O_Y)$ are
+morphisms of locally ringed locales.
+
+The externalization of the internal locally ringed locale obtained in this way
+is the sought product of~$X$ and~$Y$ in the category of locally ringed locales.
+\end{proof}
+
+\begin{rem}The category of locally ringed locales embeds as a (non-full)
+coreflective subcategory into the category of ringed locales; the coreflector
+maps a ringed locale~$(X,\O_X)$ to the externalization of~$\Spec(\O_X)$
+(constructed internal to~$\Sh(X)$). However, since the embedding
+is not full, it's in general not the case that limits in~$\LRL$ are calculated by
+applying the coreflector to the limit calculated in~$\RL$. Employing the language
+of the proof of Proposition~\ref{prop:lrl-complete}, this construction only
+solves the first issue, but not the second.
+\end{rem}
+
+
 \section{Higher direct images and other derived functors}
 
 \subsection{Flabby sheaves}
@@ -7491,7 +7559,7 @@ in~\cite[Section~7]{shulman:stack}.}
 \end{prop}
 
 \begin{proof}
-The implications ``(1)~$\Rightarrow$~(2)'', ``3 $\Rightarrow$~(4)'', ``(3)
+The implications ``(1)~$\Rightarrow$~(2)'', ``(3) $\Rightarrow$~(4)'', ``(3)
 $\Rightarrow$~(1)'', and ``(4)~$\Rightarrow$~(2)'' are trivial.
 
 The equivalence ``(3)~$\Leftrightarrow$~(5)'' follows directly from the

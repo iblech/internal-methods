@@ -105,6 +105,7 @@
 \newcommand{\Alg}{\mathrm{Alg}}
 \newcommand{\Ring}{\mathrm{Ring}}
 \newcommand{\LRL}{\mathrm{LRL}}
+\newcommand{\LRS}{\mathrm{LRS}}
 \newcommand{\pt}{\mathrm{pt}}
 \newcommand{\tors}{\mathrm{tors}}
 \newcommand{\lfp}{\mathrm{lfp}}
@@ -6838,7 +6839,9 @@ considering the radical ideal~$\sqrt{(f)}$ for an element~$f \? A$.
 
 
 \subsection{The relative spectrum as an ordinary spectrum\except{toc}{ from the internal
-point of view}} Let~$X$ be a scheme and~$\A$ be a quasicoherent~$\O_X$-algebra.
+point of view}}\label{sect:rel-spec-as-ordinary-spec}
+
+Let~$X$ be a scheme and~$\A$ be a quasicoherent~$\O_X$-algebra.
 Since~$\A$ looks like a plain algebra from the internal perspective
 of~$\Sh(X)$, we can consider its internally defined spectrum. This is a locale
 internal to~$\Sh(X)$; we might hope that its externalization is precisely the
@@ -6897,8 +6900,8 @@ difference is that in general, the internally defined locally ringed
 locale~$\Spec\O_X$ does \emph{not} coincide with the internal locally ringed
 locale~$(\pt,\O_X)$ (which is simply~$(X,\O_X)$ from the external point of
 view). More succinctly, the functor~$E \circ \Spec$ is an adjoint to the
-global sections functor~$\LRL/E(\Spec\O_X) \to \Alg(\O_X)^\op$, while the
-relative spectrum functor is an adjoint to the global sections functor~$\LRL/X
+pushforward-of-sheaf-of-functions functor~$\LRL/E(\Spec\O_X) \to \Alg(\O_X)^\op$, while the
+relative spectrum functor is an adjoint to the analogous functor~$\LRL/X
 \to \Alg(\O_X)^\op$.
 
 The universal property of~$E(\Spec(\A))$ can be determined as follows.
@@ -7133,7 +7136,8 @@ following chain of deductions.
 \end{align*}
 \end{proof}
 
-\begin{lemma}Let~$R$ be a local ring. Let~$\varphi : R \to A$ be an~$R$-algebra.
+\begin{lemma}\label{lemma:universal-property-local-spectrum}
+Let~$R$ be a local ring. Let~$\varphi : R \to A$ be an~$R$-algebra.
 Then, intuitionistically, the locale~$\Spec(A|R)$ carries a canonical structure
 as a locally ringed locale over~$(\pt,R)$ and has the following universal
 property: For any locally ringed locale~$(Y,\O_Y)$ over~$(\pt,R)$,
@@ -7232,17 +7236,90 @@ sublocale of~$\Spec(A)$ on which the morphism~$\ul{R} \to \O_{\Spec(A)}$ is
 local.
 \end{rem}
 
-There is also a general spectrum functor by Gillam~\cite{gillam:localization}
-which works for arbitrary~$\O_X$-algebras (instead of only quasicoherent
-ones). It coincides with the relative spectrum construction (and thus the
-externalization of the internal quasicoherent spectrum) on
-quasicoherent~$\O_X$-algebras. Furthermore, there is a general spectrum
-construction by Hakim~\cite{hakim:relative-schemes} sending ringed toposes to
-locally ringed toposes. We hope to study its relationship with the internal
-spectrum construction in the future; it may turn out that they coincide.
+\begin{proof}[Proof of Theorem~\ref{thm:local-spectrum-yields-relative-spectrum}]
+Follows immediately by interpreting the intuitionistic proof of
+Lemma~\ref{lemma:universal-property-local-spectrum} in the internal language
+of~$\Sh(X)$, applied to~$R \defeq \O_X$ and~$A \defeq \A$.
+Then~``$(\pt,\O_X)$'' actually refers to the locally ringed locale~$(X,\O_X)$
+and ``$\Gamma(Y,\O_Y)$'' refers to~$\mu_*\O_Y$, where~$\mu : (Y,\O_Y) \to
+(X,\O_X)$ is a locally ringed locale over~$(X,\O_X)$.
+\end{proof}
 
-\begin{prop}Let~$X$ be a scheme. Then~$E(\Spec\O_X) \cong X$ as locales
-over~$X$ if and only if~$X$ is the empty scheme or~$X$ has dimension zero.\end{prop}
+
+\subsection{Comparing the different spectrum constructions}
+
+For rings and algebras, there are at least the following spectrum
+constructions.
+
+\begin{itemize}
+\item The ordinary spectrum of a ring, possibly realized as a locale instead of
+a topological space in order to work in an intuitionistic setting: $\Ring^\op \to
+\LRS$ or $\Ring^\op \to \LRL$
+\item The local spectrum of an algebra: $\Alg(R)^\op \to \LRL/(\pt,R)$
+\item Gillam's spectrum of a sheaf of algebras~\cite{gillam:localization}:
+$\Alg(\O_X)^\op \to \LRS/(X,\O_X)$
+\item Hakim's spectrum of a ringed topos~\cite{hakim:relative-schemes},
+yielding a locally ringed topos: $\mathrm{RT} \to \mathrm{LRT}$.
+\end{itemize}
+
+These are related as follows.
+
+As described in Section~\ref{sect:rel-spec-as-ordinary-spec}, the ordinary
+spectrum construction can not only be applied to rings, but also to sheaves of
+rings and indeed ring objects internal to arbitrary elementary toposes equipped
+with a natural numbers object, by employing the internal language. Applied to a
+ring~$\O$ internal to such a topos~$\E$, it yields a locally ringed locale
+internal to~$\E$, or equivalently a locally ringed localic topos internal
+to~$\E$.  Externally, this corresponds to a locally ringed topos which is
+equipped with a localic geometric morphism to~$\E$.
+
+The ordinary spectrum construction can therefore be used to turn a ringed
+topos~$(\E,\O)$ (with a natural numbers object) into a locally ringed topos
+(which will be equipped with a morphism of ringed toposes to~$(\E,\O)$, but
+which will, even if~$\O$ happens to be a local ring, not be equipped with a
+morphism of locally ringed toposes to~$(\E,\O)$).
+
+By comparing the universal properties one sees that this kind of internal
+application of the ordinary spectrum construction coincides with the result of
+Hakim's spectrum construction. In fact, it can be interpreted as a simultaneous
+simplification and generalization of Hakim's construction: It's simpler, since
+it's just the familiar spectrum construction and no explicit site calculations
+are required; and it's more general, since Hakim's construction only applies to
+ringed Grothendieck toposes whereas the internally-performed construction of
+the ordinary spectrum applies to ringed elementary toposes with natural numbers
+object.
+
+Gillam's spectrum coincides with internally performing the construction of the
+local spectrum, with the caveat that Gillam's construction starts with and
+yields a locally ringed space, whereas ours starts with and yields a locally
+ringed locale.\footnote{More generally, the local spectrum construction can be
+applied to any algebra over a local ring~$\O$ internal to an elementary
+topos~$\E$ with a natural numbers objects and yields a locally ringed topos
+equipped with a morphism of locally ringed toposes to~$(\E,\O)$.} More
+precisely:
+
+For a locale~$Y$, let~$Y_P$ be the topological space of points of~$Y$, and for
+a topological space~$T$, let~$T_L$ be the induced locale.  Let~$(X,\O_X)$ be a
+sober locally ringed topological space. Let~$\A$ be an~$\O_X$-algebra. Then we
+have a morphism~$E(\Spec(\A|\O_X)) \to X_L$ of locally ringed locales.
+Since~$X \cong (X_L)_P$, there is an induced morphism~$E(\Spec(\A|\O_X))_P \to X$ of
+locally ringed spaces. The adjunction~$(\placeholder)_L \dashv
+(\placeholder)_P$ relating locales and topological spaces then yields, for any
+locally ringed space~$\mu : Y \to X$ over~$X$,
+\begin{align*}
+  \Hom_{\LRS/X}(Y, E(\Spec(\A|\O_X))_P) &\cong
+  \Hom_{\LRL/X_L}(Y_L, E(\Spec(\A|\O_X))) \\
+  &\cong \Hom_{\Alg(\O_X)}(\A, \mu_*\O_Y).
+\end{align*}
+This is precisely the universal property which Gillam's spectrum enjoys.
+
+In general, the local spectrum doesn't coincide with the usual spectrum and
+Gillam's spectrum doesn't coincide with Hakim's spectrum. However, if the base
+space is a scheme of dimension~$\leq 0$, they do coincide.
+
+\begin{prop}\label{prop:local-spectrum-full-spectrum}
+Let~$X$ be a scheme. Then~$E(\Spec(\O_X)) \cong X$ as locales
+over~$X$ if and only if~$\dim X \leq 0$.\end{prop}
 \begin{proof}The externalization of~$\Spec\O_X$ coincides with~$X$ if and only
 if from the internal point of view, the locale~$\Spec\O_X$ coincides with the
 one-point locale. By interpreting Lemma~\ref{lemma:spectrum-one-point} in the
@@ -7252,8 +7329,8 @@ invertible}. \]
 (Internally, it always holds that~$\neg(1 = 0)$ in~$\O_X$, even if~$X$ happens
 to be the empty scheme. Therefore the lemma is indeed applicable.) By
 Corollary~\ref{cor:scheme-dimension-zero}, this condition is equivalent to the
-dimension of~$X$ being less than or equal to zero, \ie to~$X$ being empty or
-having dimension exactly zero.
+dimension of~$X$ being less than or equal to zero (\ie to~$X$ being empty or
+having dimension exactly zero).
 % Since this condition is a geometric implication, it is fulfilled in the
 % internal language if and only if it is fulfilled at every point~$x \in X$.
 % This amounts to requiring that in any local ring~$\O_{X,x}$, the unique
@@ -7262,15 +7339,14 @@ having dimension exactly zero.
 % dimension zero.
 \end{proof}
 
-\begin{cor}Let~$X$ be a scheme. Then the relative spectrum of
-quasicoherent~$\O_X$-algebras can be calculated by
-the internal spectrum (instead of the internal local spectrum) if and
-only if~$X$ is empty or zero-dimensional.\end{cor}
-\begin{proof}The externalization of the internal spectrum of arbitrary
-quasicoherent~$\O_X$-algebras~$\A$ coincides with the relative spectrum if and
+\begin{cor}Let~$X$ be a scheme. Then the relative spectrum of~$\O_X$-algebras
+can be calculated by the internal spectrum (instead of the internal local
+spectrum) if and only if~$\dim X \leq 0$.\end{cor}
+\begin{proof}The externalization of the internal spectrum of
+arbitrary~$\O_X$-algebras~$\A$ coincides with the relative spectrum if and
 only if it coincides in the special case~$\A = \O_X$. This is apparent by the
-universal properties of both constructions. Thus the claim follows by the
-previous proposition.
+universal properties of both constructions. Thus the claim follows from
+Proposition~\ref{prop:local-spectrum-full-spectrum}.
 \end{proof}
 
 

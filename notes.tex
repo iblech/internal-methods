@@ -8113,10 +8113,10 @@ idempotent comonad~$\flat$ arising from the adjoint triple~$\pi^{-1} \dashv
 
 In the case that~$S = \Spec(A)$ is an affine scheme and we employ
 one of the parsimonious sites to construct~$\Zar(S)$, it's well-known
-that~$\Sh(S)$ classifies local localizations of~$A$ and~$\Zar(S)$ classifies
+that~$\Sh(S)$ classifies local localizations of~$A$ and that~$\Zar(S)$ classifies
 arbitrary local~$A$-algebras. On points, the morphism~$\pi$ sends a
 local~$A$-algebra~$\varphi : A \to R$ to the local localization~$A \to
-A[(\varphi^{-1}[R^\times])^{-1}]$ and its right inverse sends a local
+A[(\varphi^{-1}[R^\times])^{-1}]$, and its right inverse sends a local
 localization~$A \to A[F^{-1}]$ to itself.
 
 What does~$\Zar(S)$ classify in the case that~$S$ is an arbitrary scheme?
@@ -8129,10 +8129,13 @@ stacks semantics which allows to refer to locally internal
 categories~\cite{penon:locally-internal-categories} over a base topos~$\E$ from
 the internal language. Using this extension, a locally internal category
 over~$\E$ looks like a locally small category from the internal point of view
-of~$\E$.
+of~$\E$. In particular, a geometric morphism~$f : \F \to \E$ gives rise to a
+locally internal category (which over an object~$A \in \E$ is given by
+the~$\E/A$-enriched category~$\F/f^{-1}A$) which will look like an ordinary
+topos from the internal point of view of~$\E$.
 
 For instance, the trivial~$\E$-topos~$\E \to \E$ will look like~$\Set$ and the
-slice topos~$\E/A \to \E$ will look like~$\Set/A$ from the internal point of
+slice topos~$\E/X \to \E$ will look like~$\Set/X$ from the internal point of
 view of~$\E$.
 
 \begin{thm}\label{thm:zar-classifies}
@@ -8145,13 +8148,13 @@ in~$\F$'' doesn't make any sense -- in contrast to the concept of
 an~$A$-algebra in~$\F$, which can either be defined as a ring
 homomorphism~$\ul{A} \to R$ in~$\F$ (where~$\ul{A}$ is the pullback of~$A \in
 \Set$ to~$\F$) or as a ring object which is equipped with an~$A$-indexed family of
-endomorphisms satisfying some axioms. However, for a~$\Sh(S)$-topos~$f : \F \to
+endomorphisms satisfying suitable axioms. However, for a~$\Sh(S)$-topos~$f : \F \to
 \Sh(S)$, the concept of an~$\O_S$-algebra in~$\F$ is meaningful: It's a ring
 homomorphism~$f^{-1}\O_S \to R$ in~$\F$.
 
 Similarly, there is no absolute ``geometric theory of~$\O_S$-algebras''.
-However, there is an internal geometric theory of~$\O_S$-algebras -- internal
-to~$\Sh(S)$. Theorem~\ref{thm:zar-classifies} should be viewed in this light.
+However, there is a geometric theory of~$\O_S$-algebras \emph{internal
+to~$\Sh(S)$}. Theorem~\ref{thm:zar-classifies} should be viewed in this light.
 
 The proviso ``local over~$\O_S$'' is as in the discussion of the relative
 spectrum from the internal point of view
@@ -8163,6 +8166,13 @@ contains a canonical local and local-over-$\O_S$ $\O_S$-algebra and that for
 any Grothendieck topos~$\F$, pulling back this canonical algebra yields an
 equivalence between the category of geometric morphisms~$\F \to \Zar(S)$ and
 the category of local and local-over-$\O_S$ $\O_S$-algebras in~$\F$.
+
+The canonical local and local-over-$\O_S$ $\O_S$-algebra in~$\Zar(S)$ is
+the algebra~$\pi^{-1}\O_S \to \affl$. Indeed, the ring~$\affl$ is local and
+the homomorphism~$\pi^{-1}\O_S \to \affl$ is local, since its restriction to
+any sheaf topos~$\Sh(X)$, where~$f : X \to S$ is an~$S$-scheme contained in the site used
+to define~$\Zar(S)$, is local: It's the canonical morphism $f^{-1}\O_S \to \O_X$.
+
 
 \XXX{write down rest of the proof}
 \end{proof}
@@ -9084,7 +9094,7 @@ surjective if and only if
 \setminus \{ 0 \}$.\end{defn}
 
 \begin{prop}The synthetic punctured plane, as constructed by the internal
-language of~$\Zar(S)$, is the functor of points of the punctured plane
+language of~$\Zar(S)$, is the functor of points of the ordinary punctured plane
 over~$S$, that is the open subscheme~$D(X) \cup D(Y) \hookrightarrow
 \AA^1_S$.\end{prop}
 

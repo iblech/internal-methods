@@ -6680,18 +6680,29 @@ behind working internally in~$\Sh(X)$: From the perspective
 of~$\Sh(X)$, the space~$X$ looks like the one-point space (even if in fact it
 is not).
 
-One can associate to an internal locale~$L$ in a topos~$\E$ a topos of internal
-sheaves on it:~$\Sh_\E(L)$. The correspondence is made in such a way that the topos of
+One can associate to an internal locale~$T$ in a topos~$\E$ a topos of internal
+sheaves on it:~$\Sh_\E(T)$. The correspondence is made in such a way that the topos of
 sheaves on a locale~$Y$ over~$X$ is equivalent to the topos of sheaves on the
 internal locale~$I(Y)$: $\Sh(Y) \simeq \Sh_{\Sh(X)}(I(Y))$.
-
-% XXX mention idempotency here
 
 There is no similarly nice correspondence between topological spaces
 over~$X$ and internal topological spaces
 in~$\Sh(X)$~\cite[Corollary~C1.6.7]{johnstone:elephant}. This is one of the
 reasons why locales are better suited for working internally and for switching
 between internal and external perspectives.
+
+For verification of properties of such sheaves, the \emph{idempotency} of the
+internal language is useful: If~$\varphi$ is a formula over~$Y$, then
+\[ \Sh(Y) \models \varphi \qquad\text{if and only if}\qquad
+  \Sh(X) \models \speak{$\Sh(I(Y)) \models \varphi$}. \]
+Here we're abusing notation in two ways. Firstly, the formula~$\varphi$ has to
+be appropriately interpreted in the expression~``$\Sh(I(Y)) \models \varphi$''.
+Secondly, the expression~``$\Sh(I(Y))$'' doesn't actually refer to the
+category~$\Sh_{\Sh(X)}(I(Y))$, but to the \emph{locally internal} category induced by
+the canonical geometric morphism~$\Sh_{\Sh(X)}(I(Y)) \to \Sh(X)$. We give some
+details on this point in Section~\ref{sect:relation-big-little}. However, in
+the situations encountered in this section, the meaning will always be
+reasonably clear.
 
 
 \subsection{The spectrum of a ring as a locale}
@@ -8104,6 +8115,7 @@ We will indicate the few places where the choice of site makes a difference.
 
 
 \section{Relation between the big and little Zariski toposes}
+\label{sect:relation-big-little}
 
 The big Zariski topos~$\Zar(S)$ is a topos over the little Zariski
 topos~$\Sh(S)$ in that there is a canonical geometric morphism

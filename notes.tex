@@ -727,6 +727,13 @@ in an intuitionistic context.
 
 \section{The internal language of a sheaf topos}\label{sect:internal-language}
 
+% XXX: Give low-key introduction. Generalized arguments.
+% ..."In essence, the internal language provides a coherent mechanism to
+% translate any mentions of elements to generalized elements... Unlike a manual
+% such translation, however, it is fully formal, can be analyzed rigorously,
+% works painlessly with arbitrarily convoluted statements, and
+% most importantly can be trusted to support \emph{reasoning}...
+
 \subsection{Internal statements}
 Let~$X$ be a topological space. Later, $X$ will be the underlying space of a
 scheme. The meaning of internal statements is given by a set of rules, the
@@ -923,7 +930,7 @@ often-occuring special cases:
     \end{array} \]
 \end{prop}
 \begin{proof}Straightforward. By way of example, we prove the existence claim
-in the ``only if'' direction of the last rule. (Note that this rule formalizes
+in the ``only if'' direction of the last rule. (This rule formalizes
 the saying ``unique existence implies global existence''.) By definition of~$\exists!$, it
 holds that
 \[ U \models \exists s\?\F\_ \varphi(s) \]
@@ -940,11 +947,13 @@ conclude that~$V \models \varphi(s)$.
 \end{proof}
 
 \begin{rem}Note that~$\Sh(X) \models \neg\varphi$ is in general a much stronger
-statement than merely supposing that~$\Sh(X) \models \varphi$ does not hold:
+statement than merely saying that~$\Sh(X) \models \varphi$ does not hold:
 The former always implies the latter (unless~$X = \emptyset$, in which case
 \emph{any} internal statement is true), but the converse does not hold: The
 former statement means that~$U = \emptyset$ is the \emph{only} open subset on
-which~$\varphi$ holds.\end{rem}
+which~$\varphi$ holds, that is that~$\varphi$ holds \emph{nowhere}. In
+contrast, the statement~$\Sh(X) \not\models \varphi$ only means that~$\varphi$
+does not hold \emph{everywhere}.\end{rem}
 
 
 \subsection{Internal constructions}
@@ -6658,7 +6667,7 @@ The equivalence is described as follows: A locale~$f : Y \to X$ over~$X$
 induces an internal locale~$I(Y)$ with object of opens given by~$\Open(I(Y)) \defeq
 f_* \Omega_{\Sh(Y)} \in \Sh(X)$, where~$f_*$ is the pushforward functor
 and~$\Omega_{\Sh(Y)}$ is the object of truth values in the topos of sheaves
-on~$Y$. Conversely, an internal locale~$\L \in \Sh(X)$ induces an (external)
+on~$Y$. Conversely, an internal locale given by an internal frame~$\L \in \Sh(X)$ induces an (external)
 locale~$E(\L)$ with lattice of opens given by~$\Open(E(\L)) \defeq \Gamma(X,\L)$.
 This comes equipped with a canonical morphism~$Y \to X$ of locales which we do
 not need to describe explicitly~\cite[Section~C1.6]{johnstone:elephant}.
@@ -6696,7 +6705,11 @@ intuitionistic (and thus internal) point of view, this construction does not
 work well: Prime ideals are intuitionistically much more elusive than
 classically, where one can appeal to Zorn's lemma to obtain maximal (and thus
 prime) ideals. More to the point, one cannot show that this construction of
-the spectrum as a topological space verifies the expected universal property.
+the spectrum as a topological space verifies the expected universal property,
+namely
+\[ \Hom_\LRS(X, \Spec A) \cong \Hom_\Ring(A, \Gamma(X, \O_X)) \]
+for all locally ringed spaces~$X$ (or some variant of this property involving
+more general kinds of spaces).
 
 On the other hand, the lattice of opens of~$\Spec A$ admits a simple
 description not needing the notion of prime ideals:
@@ -6745,7 +6758,7 @@ relative situations, has also been stressed by Lurie~\cite[p.~37]{lurie:dag5}.
 {\tocless
 
 \subsection*{Points of the locale-theoretic spectrum}
-Constructing the spectrum as a locale instead of as a topological space
+Constructing the spectrum as a locale instead of a topological space
 sidesteps any issues with prime ideals, since points are not a defining
 ingredient of a locale. However, points are still meaningful as a \emph{derived
 concept}: A point of locale~$X$ is a morphism~$1 \to X$, where~$1$ is the
@@ -7358,7 +7371,7 @@ as the local spectrum~$\Spec(A^\sim|\O_{\Spec(\ZZ)})$, where~$A^\sim$ is the
 induced quasicoherent algebra on~$\Sh(\Spec(\ZZ))$. This fact is well-known
 in the alternate form~``$\RelSpec_{\Spec(\ZZ)}(A^\sim) \cong \Spec(A)$''.
 
-Reasoning fast and loose as follows could lead one to believe that it's
+Fast and loose reasoning as follows could lead one to believe that it's
 similarly possible to express the local spectrum as an ordinary spectrum.
 Let~$R$ be a local ring. Let~$\varphi : R \to A$ be an algebra. The points
 of~$\Spec(A|R)$ are those filters~$F \subseteq A$ such that~$\varphi^{-1}F =
@@ -7374,7 +7387,7 @@ However, we have the following negative result.
 \begin{prop}In general, the local spectrum of an algebra can't be expressed as
 an ordinary spectrum.\end{prop}
 
-\begin{proof}The ordinary spectrum is always quasicompact. The local spectrum,
+\begin{proof}It is well-known that the ordinary spectrum is always quasicompact. The local spectrum,
 however, can fail to be quasicompact. A quick way to see this is to notice
 that, if that was the case, the locale-theoretic part of the projection
 morphism~$\RelSpec_X(\A) \to X$ would always be a proper map of
@@ -7412,7 +7425,8 @@ ring. Let~$R \to A$ and~$R \to B$ be local~$R$-algebras, which are furthermore
 local over~$R$. Then the tensor product~$A \otimes_R B$ is in general not a
 local ring. Indeed, this fails even in the easiest case, where all rings
 involved are fields: The rings~$\RR$ and~$\CC$ are local, and the
-inclusion~$\RR \to \CC$ is local, but~$\CC \otimes_\RR \CC \cong \CC \times
+inclusion~$\RR \to \CC$ is local, but~$\CC \otimes_\RR \CC \cong \CC
+\otimes_\RR \RR[X]/(X^2+1) \cong \CC[X]/(X^2+1) \cong \CC \times
 \CC$ is not.
 
 The following proposition explains that the true limit in the category of

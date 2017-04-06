@@ -1639,7 +1639,8 @@ the exposition here with a certain necessary technical condition.
 \end{proof}
 
 
-\subsection{Integrality} In intuitionistic logic, the notion of an integral
+\subsection{Integrality}\label{sect:integrality}
+In intuitionistic logic, the notion of an integral
 domain bifurcates into several inequivalent notions. The following two are
 important for our purposes:
 \begin{defn}A ring~$R$ is an \emph{integral domain in the weak sense} if and
@@ -6819,6 +6820,43 @@ call ``filters''. Joyal's example was none other than the ring~$\affl$
 in~$\Zar(S)$ in the special case~$S = \Spec(\ZZ)$.}
 
 
+\subsection*{The spectrum as a classifying locale}
+
+The fact that the points of~$\Spec(A)$ are in canonical one-to-one
+correspondence with the filters in~$A$ is a shadow of a more general fact.
+Namely, for any locale~$X$ (and in fact any topos), maps~$X \to \Spec(A)$ are
+in canonical one-to-one correspondence with the internal filters in~$A$
+in~$\Sh(X)$, that is subsheaves of the constant sheaf~$\ul{A}$ satisfying the
+filter axioms from the point of view of the internal language of~$\Sh(X)$:
+The locale~$\Spec(A)$ is the \emph{classifying locale of the theory of filters
+in~$A$}.
+
+The fact about the points of~$\Spec(A)$ can be recovered from this
+observation as follows. A point of~$\Spec(A)$ is a map~$1 \to \Spec(A)$ and
+therefore corresponds to a subsheaf of the constant sheaf~$\ul{A}$
+satisfying the filter axioms from the point of view of~$\Sh(1)$. Since~$\Sh(1)
+\simeq \Set$, such a subsheaf amounts to a subset of~$A$ satisfying the filter
+axioms.
+
+The notion of classifying locales provides a pleasant way of approaching the
+problem of constructing a space of models of a \emph{propositional geometric
+theory} (in the case of the spectrum the theory of filters), simultaneously
+streamlining the usual topological approach and generalizing it to work in an
+intuitionistic context: Instead of first constructing the \emph{set} of models
+(filters in~$A$) and then manually endowing this set with a suitable topology
+(the Zariski topology), one can simply consider the \emph{locale} of models,
+that is the classifying locale of the theory. Its sets of points coincides with
+the set of models of the topological approach, but the locale is not determined
+by its sets of points, facilitating a better behavior in contexts where the
+points might be elusive.
+
+Put more concisely, the topological space of filters doesn't work well in an
+intuitionistic context, but the locale of filters does.
+
+A lucid expository account of the theory of classifying locales can be found in
+a survey article by Vickers~\cite{vickers:locales-toposes}.
+
+
 \subsection*{A trivial case}
 For later use, we study the question when the spectrum is the one-point space.
 The answer is well-known classically, but since we want to use this result in
@@ -6863,6 +6901,60 @@ considering the radical ideal~$\sqrt{(f)}$ for an element~$f \? A$.
 \end{proof}
 
 }
+
+
+\subsection{Digression: Further topologies on the set of prime ideals}
+
+The Zariski topology is not the only interesting topology on the set of prime
+ideals. For instance, the constructible topology and the flat topology studied
+by Tarizadeh~\cite{tarizadeh:flat} too have their uses. While the contents of
+Section~\ref{sect:spectrum-as-a-locale} are well-known, the locale-theoretic
+approach to these variants of the spectrum and their universal properties
+appear to not have been studied much.
+
+The universal properties given in the following two propositions should be
+compared with the following way of phrasing the universal property of the
+ordinary locale-theoretic spectrum. The usual phrasing employs the
+categories~$\RL$ and~$\LRL$ of (locally) ringed locales, therefore emphasizing
+the spatial character. But the dual categories~$\RL^\op$ and~$\LRL^\op$ can be
+used just as well; since the morphisms in~$\RL^\op$ and~$\LRL^\op$ go in the
+direction of the ring-theoretic parts, they can be thought of as the category
+of \emph{all} rings respectively \emph{all} local rings, where~``all'' refers
+to the fact that these categories don't only include the (local) rings
+in~$\Set$, but the (local) rings in arbitrary localic sheaf toposes.
+
+Formulated using~$\RL^\op$ and~$\LRL^\op$, and adopting the notation to
+suppress mention of the involved spaces (instead of the involved sheaves
+of rings), the universal property of~$\Spec(A)$ reads as follows: For any
+local ring~$\O_Y$ over any locale~$Y$,
+\[ \Hom_{\LRL^\op}(\O_{\Spec(A)}, \O_Y) \cong
+  \Hom_{\RL^\op}(A, \O_Y). \]
+The morphism~$A \to \O_{\Spec(A)}$ in~$\RL^\op$ is therefore the
+\emph{universal localization} of~$A$.
+
+\begin{prop}Let~$A$ be a ring. The locale given by the space of prime ideals
+of~$A$ with the flat topology is the classifying locale of prime ideals of~$A$.
+Equipped with~$\ul{A}/\P$ as structure sheaf, where~$\P$ is the generic prime
+ideal, it is the universal way of mapping~$A$ to an integral domain in the weak
+sense (as defined in Section~\ref{sect:integrality}).
+\end{prop}
+
+\begin{prop}Let~$A$ be a ring. The locale given by the space of prime ideals
+of~$A$ with the constructible topology is the classifying locale of detachable
+prime ideals (or equivalently detachable filters) of~$A$. Equipped
+with~$\ul{A}/\P$ as structure sheaf, where~$\P$ is the generic prime ideal, it
+is the universal way of mapping~$A$ to an integral domain in the strong sense.
+Equipped with~$\ul{A}[\F^{-1}]$, where~$\F$ is the generic filter, is is the
+universal way of mapping~$A$ to a local ring in which invertibility is
+decidable.\end{prop}
+
+In constructive mathematics, a subset~$U \subseteq A$ is \emph{detachable} if
+and only if for every element~$a\?A$, either $a \in U$ or~$a \not\in U$. While
+intuitionistically the complement of a filter might fail to be a prime ideal
+and the complement of a prime ideal might fail to be a filter, the complement
+of a detachable filter is a detachable prime ideal, and vice versa.
+
+\XXX{write down proof}
 
 
 \subsection{The relative spectrum as an ordinary spectrum\except{toc}{ from the internal

@@ -55,6 +55,7 @@
 \newcommand{\FF}{\mathbb{F}}
 \renewcommand{\AA}{\mathbb{A}}
 \newcommand{\A}{\mathcal{A}}
+\newcommand{\B}{\mathcal{B}}
 \renewcommand{\C}{\mathcal{C}}
 \newcommand{\D}{\mathcal{D}}
 \newcommand{\E}{\mathcal{E}}
@@ -6904,6 +6905,7 @@ considering the radical ideal~$\sqrt{(f)}$ for an element~$f \? A$.
 
 
 \subsection{Digression: Further topologies on the set of prime ideals}
+\label{sect:flat-constructible-topologies}
 
 The Zariski topology is not the only interesting topology on the set of prime
 ideals. For instance, the constructible topology and the flat topology studied
@@ -7509,6 +7511,37 @@ The ordinary spectrum always has the Frobenius reciprocity property, being
 quasicompact. In contrast, the locale~$\Spec(\O_X[f^{-1}]|\O_X)$ has this
 property if and only if~$f$ is nilpotent or invertible.
 \end{proof}
+
+Finally, we want to restate the universal properties of the ordinary spectrum
+and the local spectrum in ring-theoretic language, employing the dual
+categories~$\RL^\op$ and~$\LRL^\op$, as in
+Section~\ref{sect:flat-constructible-topologies}.
+
+Let~$A$ be a ring. The morphism~$A \to \O_{\Spec(A)}$ in~$\RL^\op$ (the
+ring-theoretic part of the canonical morphism~$(\Spec(A), \O_{\Spec(A)}) \to
+(\Set, A)$) is the \emph{universal localization} of~$A$: The
+ring~$\O_{\Spec(A)}$ is local and for any morphism~$A \to \B$ into a local
+ring~$\B$ (over any locale), there is a unique local morphism~$\O_{\Spec(A)}
+\to \B$ rendering the diagram
+\[ \xymatrix{
+  A \ar[rd] \ar[rrr] &&& {\substack{\text{local}\\\text{\normalsize$\B$}\\\phantom{\text{local}}}} \\
+  & {\substack{\text{\normalsize$\O_{\Spec(A)}$}\\\text{local}}} \ar@{-->}_[@!29]{\text{local}}[rru]
+} \]
+commutative. In contrast, the universal property of the local spectrum is as
+follows. Let~$R$ be a ring. Let~$A$ be an~$R$-algebra. The morphism~$A \to
+\O_{\Spec(A|R)}$ is the universal way of turning~$A$ into a local ring
+\emph{which is local over~$R$}: The ring~$\O_{\Spec(A|R)}$ is local, the
+composition~$R \to A \to \O_{\Spec(A|R)}$ is local, and for any morphism~$A
+\to \B$ into a local ring (over any locale) such that the composition~$R \to A
+\to \B$ is local, there is a unique local morphism~$\O_{\Spec(A|R)} \to \B$
+such that the diagram
+\[ \xymatrix{
+  R \ar[r]\ar@/^2pc/[rrrr]^{\text{local}}\ar@/_/[rrd]_[@!-26]{\text{local}} &
+    A \ar[rd] \ar[rrr] &&&
+    {\substack{\text{local}\\\text{\normalsize$\B$}\\\phantom{\text{local}}}} \\
+  && {\substack{\text{\normalsize$\O_{\Spec(A|R)}$}\\\text{local}}} \ar@{-->}[rru]_[@!28]{\text{local}}
+} \]
+commutes.
 
 
 \subsection{Limits in the category of locally ringed locales}

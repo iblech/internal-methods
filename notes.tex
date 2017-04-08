@@ -8227,7 +8227,7 @@ In the following, we do not commit to a single one of these options for
 resolving the set-theoretical size issues, but rather keep any of them
 in mind. This approach will sometimes necessitate phrases such as ``for
 any~$S$-scheme~$T$ contained in the site used to define~$\Zar(S)$'', which might
-seem awkward for a topos-theorist when taken out of context, since
+seem awkward to a topos-theorist when taken out of context, since
 the site used to construct a Grothendieck topos is not at all uniquely
 determined by the resulting topos.
 
@@ -8237,7 +8237,6 @@ We will indicate the few places where the choice of site makes a difference.
 
 % XXX: Defining the big Zariski topos without recoursing to ordinary scheme
 % theory
-
 
 \section{Relation between the big and little Zariski toposes}
 \label{sect:relation-big-little}
@@ -8285,8 +8284,8 @@ locally internal category (which over an object~$A \in \E$ is given by
 the~$\E/A$-enriched category~$\F/f^{-1}A$) which will look like an ordinary
 topos from the internal point of view of~$\E$.
 
-For instance, the trivial~$\E$-topos~$\E \to \E$ will look like~$\Set$ and the
-slice topos~$\E/X \to \E$ will look like~$\Set/X$ from the internal point of
+For instance, the trivial~$\E$-topos~$\E$ will look like~$\Set$ and the
+slice topos~$\E/X$ will look like~$\Set/X$ from the internal point of
 view of~$\E$.
 
 \begin{thm}\label{thm:zar-classifies}
@@ -8319,13 +8318,73 @@ equivalence between the category of geometric morphisms~$\F \to \Zar(S)$ and
 the category of local and local-over-$\O_S$ $\O_S$-algebras in~$\F$.
 
 The canonical local and local-over-$\O_S$ $\O_S$-algebra in~$\Zar(S)$ is
-the algebra~$\pi^{-1}\O_S \to \affl$. Indeed, the ring~$\affl$ is local and
-the homomorphism~$\pi^{-1}\O_S \to \affl$ is local, since its restriction to
+the algebra~$\flat\affl \to \affl$. Indeed, the ring~$\affl$ is local and
+the homomorphism~$\flat\affl \to \affl$ is local, since its restriction to
 any sheaf topos~$\Sh(X)$, where~$f : X \to S$ is an~$S$-scheme contained in the site used
-to define~$\Zar(S)$, is local: It's the canonical morphism $f^{-1}\O_S \to \O_X$.
+to define~$\Zar(S)$, is local: It's the morphism $f^\sharp : f^{-1}\O_S \to \O_X$.
 
+We now want to verify the universal property, which expressed internally
+to~$\Sh(S)$ reads as
+\[ \Hom(\E, \Zar(S)) \simeq
+  \text{category of local and local-over-$\O_S$ $\O_S$-algebras in~$\E$}. \]
+Externally, this means that for any open subset~$U \subseteq S$ and any
+topos~$\E$ over~$\Sh(S)/\ul{U}$,
+\begin{multline*}
+  \qquad\Hom_{\Sh(S)/\ul{U}}(\E, \Zar(S)/\pi^{-1}\ul{U}) \simeq \\
+  \text{category of local and local-over-$\pi^{-1}\O_S$ $\pi^{-1}\O_S$-algebras
+  in~$\E$}.\qquad
+\end{multline*}
+We will verify this equivalence in the case that~$S = \Spec(A)$ is affine and
+that~$S = U$. This suffices to establish the theorem, since~$\Sh(S)/\ul{U} \simeq
+\Sh(U)$, ~$\Zar(S)/\pi^{-1}\ul{U} \simeq \Zar(U)$, and since the internal
+language is local.
 
-\XXX{write down rest of the proof}
+So let~$f : \E \to \Sh(\Spec(A))$ be a~$\Sh(\Spec(A))$-topos. By the universal
+property of~$\Zar(\Spec(A))$ as the classifying topos of local~$A$-algebras, a geometric
+morphism~$g : \E \to \Zar(\Spec(A))$ is uniquely determined by a
+local~$A$-algebra~$\varphi : \ul{A} \to \B$ in~$\E$. By the universal property
+of~$\Sh(\Spec(A))$ as the classifying topos of local localizations of~$A$, the
+composition~$\pi \circ g : \E \to \Sh(\Spec(A))$ is uniquely determined by
+the local localization~$\ul{A} \to g^{-1} \pi^{-1} \O_{\Spec(A)} = g^{-1}(\flat
+\affl)$ in~$\E$.
+
+In the composition
+\[ \ul{A} \lra \flat \affl \lra \affl, \]
+the first morphism is a local localization and the second morphism is local.
+Since these properties can be formulated as geometric
+implications,\footnote{A ring homomorphism~$\alpha : R \to T$ is a localization
+(that is, isomorphic to the canonical localization morphism~$R \to R[S^{-1}]$
+for some multiplicative subset~$S$) if and only if the canonical comparison
+morphism~$R[(\alpha^{-1}T^\times)^{-1}] \to T$ is bijective. This is the case
+if and only if
+\begin{multline*}
+  \quad\qquad\forall y\?T\_
+  \exists x\?R\_ \exists s\?R\_
+  \speak{$\alpha(s)$ \inv} \wedge y = \alpha(s)^{-1} x
+  \qquad\text{and} \\
+  \forall x\?R\_ \alpha(x) = 0 \Rightarrow
+  \exists s\?R\_ \speak{$\alpha(s)$ \inv} \wedge sx = 0.\qquad\quad
+\end{multline*}}
+they are preserved by the functor~$g^{-1}$. Since
+furthermore such a factorization is unique, the localization~$\ul{A} \to
+g^{-1}(\flat \affl)$ which determines~$\pi \circ g$ coincides with the
+localization~$\ul{A}[(\varphi^{-1}((\affl)^\times))^{-1}]$. Referring directly
+to the involved filters, the filter~$g^{-1}\F$ which determines~$\pi \circ g$
+(where~$\F$ is the generic filter of~$\ul{A}$ in~$\Sh(\Spec(A))$) coincides
+with the filter~$\varphi^{-1}((\affl)^\times)$. This explains the first
+equivalence in the chain
+\begin{align*}
+  &\mathrel{\phantom{\simeq}} \Hom_{\Sh(\Spec(A))}(\E, \Zar(\Spec(A))) \\
+  &\simeq
+    \text{category of local algebras~$\varphi : \ul{A} \to \B$ in~$\E$
+  such that $\varphi^{-1}\B^\times = g^{-1}\F$} \\
+  &\simeq
+    \text{category of local algebras~$\psi : g^{-1}\O_{\Spec(A)} \to \B$
+    in~$\E$ such that~$\psi$ is local}.
+\end{align*}
+The second equivalence maps an algebra~$\varphi$
+to~$\ul{A}[(\varphi^{-1}\B^\times)^{-1}] \to \B$; conversely, an algebra~$\psi$
+is mapped to the composition~$\ul{A} \to g^{-1}\O_{\Spec(A)} \xra{\psi} \B$.
 \end{proof}
 
 % A corollary of the existence of~$\pi^!$ is that~$\pi_*$ is (not only

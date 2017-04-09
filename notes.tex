@@ -8093,7 +8093,7 @@ scheme should simply look like a point. The functor of points of~$S \amalg S$
 looks like a two-element set from the internal point of view.
 
 Let~$\E$ be a sheaf of sets on~$S$. For reasons explained in
-Section~\ref{sect:big-small-relation}, we denote by~``$\pi^{-1}(\E)$''
+Section~\ref{sect:relation-big-little}, we denote by~``$\pi^{-1}(\E)$''
 the induced sheaf on~$\Sch/S$ mapping an~$S$-scheme
 $(f : T \to S)$ to~$\Gamma(T, f^{-1}(\E))$.
 
@@ -8299,9 +8299,11 @@ slice topos~$\E/X$ will look like~$\Set/X$ from the internal point of
 view of~$\E$.
 
 \begin{thm}\label{thm:zar-classifies}
-From the internal point of view of~$\Sh(S)$, the big Zariski
-topos~$\Zar(S)$ is the classifying topos of the theory of local~$\O_S$-algebras
-which are local over~$\O_S$.\end{thm}
+In the situation that the site used to construct~$\Zar(S)$ is one of the
+parsimonious sites, the big Zariski topos~$\Zar(S)$ is the classifying topos of
+the theory of local~$\O_S$-algebras which are local over~$\O_S$ from the
+internal point of view of~$\Sh(S)$.
+\end{thm}
 
 For an arbitrary topos~$\F$ over~$\Set$, the concept of an~``$\O_S$-algebra
 in~$\F$'' doesn't make any sense -- in contrast to the concept of
@@ -8397,16 +8399,62 @@ to~$\ul{A}[(\varphi^{-1}\B^\times)^{-1}] \to \B$; conversely, an algebra~$\psi$
 is mapped to the composition~$\ul{A} \to g^{-1}\O_{\Spec(A)} \xra{\psi} \B$.
 \end{proof}
 
+Theorem~\ref{thm:zar-classifies} shows that~$\Zar(S)$ can be reconstructed
+from~$\Sh(S)$ (and its structure sheaf~$\O_S$). Similarly, it's possible to
+reconstruct~$\Sh(S)$ from~$\Zar(S)$ (and the canonical morphism~$\flat \affl
+\to \affl$).
+
+\begin{thm}\label{thm:reconstruct-little-topos}
+In the situation that the site used to construct~$\Zar(S)$ is one of the
+parsimonious sites, the little Zariski topos~$\Sh(S)$ is the largest subtopos
+of~$\Zar(S)$ where the canonical morphism~$\flat \affl \to \affl$ is an
+isomorphism.
+\end{thm}
+
+In other words, the little Zariski topos is the largest subtopos~$\E
+\hookrightarrow \Zar(S)$ such that $\Zar(S) \models (\speak{$\flat\affl \to
+\affl$ is bijective})^\Box$ (where~$\Box$ is the modal operator corresponding
+to the subtopos), that is that the pullback of the canonical
+morphism~$\flat\affl \to \affl$ to~$\E$ is an isomorphism. In the case that~$S
+= \Spec(A)$ is affine, we also have the ring~$\ul{A}$ in~$\Zar(S)$ available.
+In this case the condition is equivalent to
+\[ \E \models \speak{$\ul{A} \to \affl$ is a localization}, \]
+since in the composition~$\ul{A} \to \flat\affl \to \affl$ the first morphism
+is a localization.
+
+\begin{proof}[Proof of Theorem~\ref{thm:reconstruct-little-topos}]
+The little Zariski topos is a subtopos of the big Zariski topos via the right
+inverse~$s$ of~$\pi : \Zar(S) \to \Sh(S)$, the geometric morphism~$(\pi_* \dashv
+\pi^!)$. The pullback of~$\flat\affl \to \affl$ to~$\Sh(S)$ is therefore the
+morphism~$(\flat\affl)|_{\Sh(S)} \to \affl|_{\Sh(S)}$, that is~$\O_S \to \O_S$,
+which is an isomorphism.
+
+Let~$f : \E \hookrightarrow \Zar(S)$ be any subtopos such that the pullback
+of~$\flat\affl \to \affl$ to~$\E$ is an isomorphism. We want to verify that~$f$
+factors over the inclusion~$s : \Sh(S) \hookrightarrow \Zar(S)$.
+\[ \xymatrix{
+  \E \ar@{^{(}->}[rr]^f \ar@{-->}[rd] && \Zar(S) \\
+  & \Sh(S) \ar@{^{(}->}[ru]_s
+} \]
+A candidate for a morphism~$\E \to \Sh(S)$ witnessing this factorization is the
+composition~$\pi \circ f$. It remains to show that~$s \circ (\pi \circ f) = f$.
+Both~$s \circ (\pi \circ f)$ and~$f$ are morphisms of~$\Sh(S)$-toposes,
+where~$\E$ is regarded as a~$\Sh(S)$-topos by the composition~$\pi \circ f$.
+By the universal property of the big Zariski topos given in
+Theorem~\ref{thm:zar-classifies}, they are therefore uniquely determined by
+the~$\O_S$-algebra they classify.
+
+The morphism~$s \circ (\pi \circ f)$ classifies
+the~$\O_S$-algebra~$f^{-1}\pi^{-1}s^{-1}\affl = f^{-1}(\flat\affl)$. The
+morphism~$f$ classifies the~$\O_S$-algebra~$f^{-1}\affl$.
+Since~$f^{-1}(\flat\affl) \to f^{-1}\affl$ is an isomorphism, these algebras
+coincide.
+\end{proof}
+
 % A corollary of the existence of~$\pi^!$ is that~$\pi_*$ is (not only
 % continuous, but also) cocontinuous.
 
-\XXX{Explain how to reconstruct~$\Sh(S)$ from~$\Zar(S)$}
-
-% * local
 % * X --> S; scheibe
-
-
-
 
 
 \section{Sheaves of rings, algebras, and modules}

@@ -8421,10 +8421,12 @@ In other words, the little Zariski topos is the largest subtopos~$\E
 \hookrightarrow \Zar(S)$ such that $\Zar(S) \models (\speak{$\flat\affl \to
 \affl$ is bijective})^\Box$ (where~$\Box$ is the modal operator corresponding
 to the subtopos), that is that the pullback of the canonical
-morphism~$\flat\affl \to \affl$ to~$\E$ is an isomorphism. In the case that~$S
+morphism~$\flat\affl \to \affl$ to~$\E$ is an isomorphism.
+
+In the case that~$S
 = \Spec(A)$ is affine, we also have the ring~$\ul{A}$ in~$\Zar(S)$ available.
 In this case the condition is equivalent to
-\[ \E \models \speak{$\ul{A} \to \affl$ is a localization}, \]
+\[ \Zar(S) \models \speak{$\ul{A} \to \affl$ is a localization}^\Box, \]
 since in the composition~$\ul{A} \to \flat\affl \to \affl$ the first morphism
 is a localization.
 
@@ -8480,7 +8482,7 @@ situation~(1), the lemma that an~$S$-morphism~$h : T \to X$ is locally of
 finite presentation if~$T$ and~$X$ are locally of finite presentation over~$S$
 enters~\stacksproject{02FV}.
 
-The objects of~$\Zar(S)$ listed on page~\ref{page:important-objects} pull back
+The objects of~$\Zar(S)$ listed on page~\pageref{page:important-objects} pull back
 as expected:
 \begin{itemize}
 \item Let~$Y$ be an~$S$-scheme. Then~$f^{-1} \ul{Y} = \ul{Y \times_S X}$, by
@@ -8506,15 +8508,20 @@ From the internal point of view of~$\Zar(S)$, the big Zariski topos of~$X$ is
 therefore simply~$\Set/\ul{X}$, the category of~$\ul{X}$-indexed families of
 sets or equivalently the category of sheaves on~$\ul{X}$ considered as a
 \emph{discrete} locale. This fits nicely with the philosophy~``$S$-schemes are
-just sets from the internal point of view of~$\Zar(S)$''.
+plain unstructured sets from the internal point of view of~$\Zar(S)$''.
 
-A consequence for the internal language is that if~$\varphi$ is a formula
-over~$\Zar(X)$,
+A consequence for the internal language is that if~$\varphi(x)$ is a formula
+over~$\Zar(S)$ with a free variable~$x\?X$, then
 \[
-  \Zar(X) \models \varphi
+  \Zar(S) \models \forall x\?X\_ \varphi(x)
     \qquad\text{iff}\qquad
-      \Zar(S) \models \forall x\?X\_ \varphi(x).
+      \Zar(X) \models \varphi(\Delta),
 \]
+where~$\Delta : \ul{X} \to \ul{X \times_S X}$ is the diagonal
+morphism.\footnote{For an arbitrary object~$X$ in a topos~$\E$, one can show that~$\E \models
+\forall x\?X\_ \varphi(x)$ if and only if~$\varphi$ holds for the \emph{generic
+element} of~$X$, which is the generalized element~$\id_X : X \to X$ defined on
+stage~$X$. This is equivalent to XXX}
 
 In contrast, for the little Zariski toposes, there is no similarly simple
 description. From the internal point of view of~$\Sh(S)$, the topos~$\Sh(X)$

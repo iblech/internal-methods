@@ -8070,7 +8070,7 @@ have to be rewritten. Instead of
   &\qquad\qquad\qquad\qquad T' \models \varphi(s)
 \end{align*}
 
-\subsection*{Important objects in the big Zariski topos} It's convenient to
+\subsection*{Important objects in the big Zariski topos}\label{page:important-objects} It's convenient to
 introduce notation for objects which often appear when working with the big
 Zariski topos.
 
@@ -8092,14 +8092,14 @@ into the philosophy: From the point of view of the big Zariski topos, the base
 scheme should simply look like a point. The functor of points of~$S \amalg S$
 looks like a two-element set from the internal point of view.
 
-Let~$\E$ be a sheaf of sets on~$S$. For reasons explained in
-Section~\ref{sect:relation-big-little}, we denote by~``$\pi^{-1}(\E)$''
+Let~$\F$ be a sheaf of sets on~$S$. For reasons explained in
+Section~\ref{sect:relation-big-little}, we denote by~``$\pi^{-1}(\F)$''
 the induced sheaf on~$\Sch/S$ mapping an~$S$-scheme
-$(f : T \to S)$ to~$\Gamma(T, f^{-1}(\E))$.
+$(f : T \to S)$ to~$\Gamma(T, f^{-1}(\F))$.
 
-Let~$\E$ be a sheaf of~$\O_S$-modules. We denote by~``$\E^\Zar$''
+Let~$\F$ be a sheaf of~$\O_S$-modules. We denote by~``$\F^\Zar$''
 the induced sheaf on~$\Sch/S$ mapping an~$S$-scheme
-$(f : T \to S)$ to~$\Gamma(T, f^*(\E))$.
+$(f : T \to S)$ to~$\Gamma(T, f^*(\F))$.
 
 
 \subsection*{A first example illustrating the Kripke--Joyal translation rules}
@@ -8459,6 +8459,68 @@ coincide.
 
 
 \subsection{Change of base}
+
+Let~$f : X \to S$ be a morphism of schemes. In any of the situations that
+\begin{enumerate}
+\item the parsimonious sites are used to construct the big Zariski
+toposes and~$f$ is locally of finite presentation, or
+\item the same (Grothendieck or partial) universe is used for constructing both
+Zariski toposes and both~$X$ and~$S$ are contained in the universe,
+\end{enumerate}
+the morphism~$f$ induces an essential geometric morphism~$\Zar(X) \to \Zar(S)$
+which we again denote by~``$f$''. Explicitly, the big Zariski toposes are
+related by the adjoint triple~$f_! \dashv f^{-1} \dashv f_*$ with
+\begin{align*}
+  f_* F &= ((T \xra{g} S) \mapsto F(T \times_S X)), \\
+  f^{-1} E &= ((T \xra{g} X) \mapsto F(T \xra{g} X \xra{f} S)), \\
+  f_! F &= ((T \xra{g} S) \mapsto \coprod_{h : T \to X} F(T \xra{h} X)).
+\end{align*}
+In situation~(2), the well-definedness of these functors is trivial. In
+situation~(1), the lemma that an~$S$-morphism~$h : T \to X$ is locally of
+finite presentation if~$T$ and~$X$ are locally of finite presentation over~$S$
+enters~\stacksproject{02FV}.
+
+The objects of~$\Zar(S)$ listed on page~\ref{page:important-objects} pull back
+as expected:
+\begin{itemize}
+\item Let~$Y$ be an~$S$-scheme. Then~$f^{-1} \ul{Y} = \ul{Y \times_S X}$, by
+the universal property of the fiber product.
+\item In particular, $f^{-1} \affl = \afflx$, since~$\AA^1_S \times_S X =
+\AA^1_X$.
+\item Let~$\F$ be a sheaf of sets on~$S$. Then~$f^{-1} \pi_S^{-1} \F =
+\pi_X^{-1} f^{-1} \F$.
+\item Let~$\F$ be a sheaf of~$\O_S$-modules. Then~$f^{-1} \F^\Zar =
+(f^* \F)^\Zar$.
+\end{itemize}
+
+The functors~$f_! \dashv f^{-1}$ induce the equivalence
+\[ \Zar(X) \simeq \Zar(S)/\ul{X}, \]
+which is very useful for the purposes of synthetic algebraic geometry.
+Explicitly, this equivalence is described by
+\[ \begin{array}{r@{}c@{}l}
+  F &{}\longmapsto{}& (f_!F \to f_!1), \\
+  ((T \xra{g} X) \mapsto \{ s \in (f^{-1}E)(T) \,|\, \alpha(s) = g \} &{}\longmapsfrom{}& (E
+  \xra{\alpha} \ul{X}).
+\end{array} \]
+From the internal point of view of~$\Zar(S)$, the big Zariski topos of~$X$ is
+therefore simply~$\Set/\ul{X}$, the category of~$\ul{X}$-indexed families of
+sets or equivalently the category of sheaves on~$\ul{X}$ considered as a
+\emph{discrete} locale. This fits nicely with the philosophy~``$S$-schemes are
+just sets from the internal point of view of~$\Zar(S)$''.
+
+A consequence for the internal language is that if~$\varphi$ is a formula
+over~$\Zar(X)$,
+\[
+  \Zar(X) \models \varphi
+    \qquad\text{iff}\qquad
+      \Zar(S) \models \forall x\?X\_ \varphi(x).
+\]
+
+In contrast, for the little Zariski toposes, there is no similarly simple
+description. From the internal point of view of~$\Sh(S)$, the topos~$\Sh(X)$
+looks like the topos of sheaves over a locale which is not discrete, and
+topos~$\Zar(X)$ doesn't even look like a topos of sheaves over an arbitrary
+locale (discrete or not).
 
 % In the situation X --> S,
 % * give morphisms Zar(X) --> Zar(S),

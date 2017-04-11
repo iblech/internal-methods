@@ -7376,6 +7376,12 @@ and ``$\Gamma(Y,\O_Y)$'' refers to~$\mu_*\O_Y$, where~$\mu : (Y,\O_Y) \to
 (X,\O_X)$ is a locally ringed locale over~$(X,\O_X)$.
 \end{proof}
 
+Theorem~\ref{thm:local-spectrum-yields-relative-spectrum} settles the question
+how the the little Zariski topos of~$\RelSpec_X(\A)$ looks like from the
+internal point of view of~$\Sh(X)$. A related question is how the big Zariski
+topos looks like. We give the answer in
+Theorem~\ref{thm:big-zariski-topos-of-relative-spectrum}.
+
 
 \subsection{Comparing the different spectrum constructions}
 
@@ -8392,15 +8398,21 @@ equivalence in the chain
   &\mathrel{\phantom{\simeq}} \Hom_{\Sh(\Spec(A))}(\E, \Zar(\Spec(A))) \\
   &\simeq
     \text{category of local algebras~$\varphi : \ul{A} \to \B$ in~$\E$
-  such that $\varphi^{-1}\B^\times = g^{-1}\F$} \\
+  such that $\varphi^{-1}\B^\times = f^{-1}\F$} \\
   &\simeq
-    \text{category of local algebras~$\psi : g^{-1}\O_{\Spec(A)} \to \B$
+    \text{category of local algebras~$\psi : f^{-1}\O_{\Spec(A)} \to \B$
     in~$\E$ such that~$\psi$ is local}.
 \end{align*}
 The second equivalence maps an algebra~$\varphi$
 to~$\ul{A}[(\varphi^{-1}\B^\times)^{-1}] \to \B$; conversely, an algebra~$\psi$
-is mapped to the composition~$\ul{A} \to g^{-1}\O_{\Spec(A)} \xra{\psi} \B$.
+is mapped to the composition~$\ul{A} \to f^{-1}\O_{\Spec(A)} \xra{\psi} \B$.
 \end{proof}
+
+Similarly to how Theorem~\ref{thm:zar-classifies} shows how the big Zariski
+topos of~$S$ looks like from the point of view of~$\Sh(S)$, it's possible to
+give an internal description of what the big Zariski topos of an arbitrary
+relative spectrum over~$S$ looks like. We state and verify such a description
+in Theorem~\ref{thm:big-zariski-topos-of-relative-spectrum}.
 
 
 \subsection{Recovering the little Zariski topos from the big Zariski topos}
@@ -8555,6 +8567,42 @@ If~$f : X \to S$ is a morphism of schemes, then in general~$f^{-1}(\flat E)
 
 % A corollary of the existence of~$\pi^!$ is that~$\pi_*$ is (not only
 % continuous, but also) cocontinuous. Geometric.
+
+
+\subsection{The big Zariski topos of a relative spectrum}
+
+\begin{thm}\label{thm:big-zariski-topos-of-relative-spectrum}
+Let~$\A$ be a quasicoherent~$\O_S$-algebra. In the situation that the
+parsimonious sites are used for constructing big Zariski toposes, the big
+Zariski topos of~$\RelSpec_S(\A)$ is the classifying topos of the theory of
+local~$\A$-algebras which are local over~$\O_S$ from the internal point of view
+of~$\Sh(S)$.
+\end{thm}
+
+\begin{proof}The proof is similar to the proof of
+Theorem~\ref{thm:zar-classifies}. Let~$X = \RelSpec_S(\A)$ and~$f : X \to S$ be the
+canonical morphism. The big Zariski topos of~$\RelSpec_S(\A)$ is
+a~$\Sh(S)$-topos by the composition~$\Zar(\RelSpec_S(\A)) \to \Zar(S) \to
+\Sh(S)$. The pullback of~$\O_S$ along this geometric morphism
+is~$f^{-1}(\flat\affl)$. A canonical~$\O_S$-algebra in~$\Zar(\RelSpec_S(\A))$
+is therefore
+\[ f^{-1}(\flat\affl) \lra \flat\afflx \lra \afflx. \]
+This algebra is indeed local and local over~$f^{-1}(\flat\affl)$.
+
+For verifying the universal property, it suffices to restrict to the case
+that~$S = \Spec(R)$ is affine, as in the proof of
+Theorem~\ref{thm:zar-classifies}, and consider a geometric morphism~$f : \E \to
+\Sh(S)$. In this case~$\A = A^\sim$
+and~$X = \RelSpec_S(\A) = \Spec(A)$. Let~$\alpha : R \to A$ be the structure
+morphism of~$A$. We then have the chain of equivalences
+\begin{align*}
+  &\mathrel{\phantom{\simeq}} \Hom_{\Sh(S)}(\E, \Zar(X)) \\
+  &\simeq \text{cat.\@ of local algebras~$\varphi : \ul{A} \to \B$
+  in~$\Zar(X)$ such that~$\ul{\alpha}^{-1} \varphi^{-1} \B^\times = f^{-1}\F$} \\
+  &\simeq \text{cat.\@ of local algebras~$\psi : f^{-1}\A \to \B$ such that
+  $f^{-1}\O_S \to f^{-1}\A \to \B$ is local}
+\end{align*}
+\end{proof}
 
 
 \section{Sheaves of rings, algebras, and modules}
@@ -10081,3 +10129,5 @@ for background on sites, and also more specifically
 XXX: s/lattice/frame/
 XXX: Define morphisms of locales
 XXX: axioms on? axioms of?
+
+Cite Zhen Lin's thesis (http://zll22.user.srcf.net/dpmms/thesis.pdf).

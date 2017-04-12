@@ -438,7 +438,7 @@ with a local sheaf of rings. Basic objects of study in algebraic geometry, such
 as closed subschemes of projective spaces, are in this way encoded using a large
 amount of machinery.
 
-There is also a somewhat lesser used, but philosophically rewarding and more
+There is also a somewhat less used, but philosophically rewarding and more
 ``economical'' approach within set theory: Grothendieck's functorial approach.
 In this account of scheme theory, to give a scheme means to give a functor
 from the category of commutative rings to the category of sets. For instance,
@@ -635,7 +635,7 @@ thesis~\cite{brandenburg:tensor-foundations}. However, he internalizes
 constructions of algebraic geometry not in toposes, but in tensor categories.
 There is some overlap in working out precise universal properties, particularly
 when dealing with the big Zariski topos, which we deal with in
-Part~\ref{part:big-zariski}.
+Part~\ref{part:big-zariski}. % repetition: "deal"
 
 In other branches of mathematics, the internal language of toposes is used as well. For
 instance, there is an ongoing effort in mathematical physics to understand
@@ -1399,6 +1399,8 @@ the classically equivalent condition that any element is invertible or zero is
 intuitionistically stronger. This is a common phenomenon in intuitionistic
 mathematics: Classically equivalent notions may bifurcate into related but
 inequivalent notions intuitionistically.
+% This has been mentioned before: in the remark above; in the paragraph after
+% the definition of local ring.
 
 The observation that the structure sheaf is (almost) a field is attributed by
 Tierney to Mulvey~\cite[p.~209]{tierney:spectrum}.
@@ -1548,6 +1550,8 @@ condition, namely to
   \exists a,b\?\O_X\_ \bigvee_{m \geq 0} f^m = ag + bh \quad\wedge\quad \\
   \exists u\?\O_X\_ \bigvee_{p \geq 0} g^p = uf \quad\wedge\quad
   \exists v\?\O_X\_ \bigvee_{q \geq 0} h^q = vf.\end{multline*}
+  % Only the first of the three is needed!
+  % All three together mean equality of the radical ideals, not inclusion.
 Therefore the condition~$\speak{$\O_X$ is of Krull
 dimension~$\leq n$}$ is (equivalent to) a geometric implication and thus holds
 internally if and only if it holds at every point~$x \in X$. This in turn means that the
@@ -1674,7 +1678,7 @@ the internal perspective.\end{lemma}
 \begin{quote}For any (without loss of generality: standard) open subset~$U \subseteq X$ and any function~$g \in
 \Gamma(U,\O_X)$, $fg = 0$ in~$\Gamma(U,\O_X)$ implies~$g = 0$
 in~$\Gamma(U,\O_X)$.\end{quote}
-So the ``only if'' direction is clear (use~$U \defeq X$). For the ``if'' direction,
+So the ``if'' direction is clear (use~$U \defeq X$). For the ``only if'' direction,
 note that~$\Gamma(U,\O_X)$ is a localization of~$A$ and that regular elements
 remain regular in localizations.
 \end{proof}
@@ -1863,10 +1867,13 @@ condition.\end{defn}
 An ascending chain of elements~$a_0 \preceq a_1 \preceq \cdots$ in a partially
 ordered set gives rise to an ascending process by setting~$x_0 \defeq a_0$
 and~$\varphi(x) \defeq \{ y \,|\, \exists n\_ x = a_n \wedge y = a_{n+1} \}$.
+% (This process halts iff the chain is not strictly ascending.)
 Conversely, the axiom of dependent choice would allow to construct an
 ascending chain from an ascending process. In the presence of this axiom, for
 instance in a classical context, a ring is therefore
 processly Noetherian if and only if it is Noetherian in the usual sense.
+% This uses that (every ascending chain stabilizes) iff
+% (there is no strictly ascending chain).
 
 The notion of a processly Noetherian ring works well in an
 intuitionistic context: Important rings such as~$\ZZ$ and more generally~$\O_K$
@@ -2293,7 +2300,7 @@ that~$as = 0$. By the lemma, this element is regular from the internal
 perspective as well, so~$U \models \speak{$a$ regular} \wedge as = 0$.
 
 For the ``if'' direction, we may assume that there exists an open covering~$X =
-\bigcup_i U_i$ be standard open subsets~$U_i = D(f_i)$ such that there are
+\bigcup_i U_i$ by standard open subsets~$U_i = D(f_i)$ such that there are
 sections~$a_i \in \Gamma(U_i,\O_X) = A[f_i^{-1}]$ with~$U_i \models \speak{$a_i$ regular}
 \wedge a_i s = 0$. Without loss of generality, we may assume that the
 denominators of the~$a_i$'s are ones, that the $f_i$ are
@@ -2488,7 +2495,7 @@ the~$\alpha(s_i)$ is invertible.
 
 \begin{rem}Note that the canonical ring homomorphism~$\O_{X,x}
 \twoheadrightarrow k(x)$ is local. Therefore a germ in~$\O_{X,x}$ is invertible
-if and only if its image in~$k(x)$ is not zero. From this one can follow that
+if and only if its image in~$k(x)$ is not zero. From this one can conclude that
 global sections~$s_1,\ldots,s_n \in \Gamma(X,\F)$ generate~$\F$ if and only if,
 for any point~$x \in X$, the images~$s_i \in \F|_x$ in the fibers do not vanish
 simultaneously.
@@ -2534,9 +2541,9 @@ submodule~$\F_\tors$ is a torsion module.
 \item The dual sheaf $\F^\vee$ is torsion-free.
 \item If~$\F$ is reflexive (meaning that the canonical morphism~$\F \to
 \F^{\vee\vee}$ is an isomorphism), it is torsion-free.
-\item If~$\F$ is locally finitely free, it is reflexive.
+\item If~$\F$ is finite locally free, it is reflexive.
 \item Assume~$X$ to be a Dedekind scheme and~$\F$ to be of finite presentation.
-If~$\F$ is torsion-free, then it is locally finitely free.
+If~$\F$ is torsion-free, then it is finite locally free.
 % change references below if numbering changes
 \end{enumerate}
 \end{lemma}
@@ -2643,7 +2650,7 @@ If we want to work with a complete partially ordered set (poset) of natural numb
 logic, we have to construct a suitable completion. The idea of the following
 definition is to encode numbers as the (not necessarily existing) minimum of
 inhabited upward-closed subsets.
-\begin{defn}The \emph{completed poset of natural numbers}
+\begin{defn}The \emph{completed poset of natural numbers} is
 the set~$\widehat{\NN}$ of all inhabited upward-closed subsets of~$\NN$, ordered by
 reverse inclusion. The elements of~$\widehat{\NN}$ are called \emph{generalized natural numbers}.\end{defn}
 \begin{lemma}The completed poset of natural numbers is the least poset
@@ -2806,7 +2813,7 @@ finite type. Then~$\F$ is finite locally free on a dense open subset.\end{lemma}
 language (Proposition~\ref{prop:modops-kripke}), it suffices to give an
 intuitionistic proof of the following fact: Let~$R$ be a local ring which fulfills an
 appropriate field condition. Let~$M$ be a finitely generated~$R$-module.
-Then~$R$ is \notnot finite free.
+Then~$M$ is \notnot finite free.
 
 By Remark~\ref{rem:surjectivity-embedding}, the rank of such a module~$M$ is
 \notnot an actual natural number. By the last part of the
@@ -2827,7 +2834,10 @@ dimension of a topological space~$X$ at a point~$x \in X$ is defined as the
 infimum
 \[ \dim_x X \defeq \inf\{ \dim U \,|\, \text{$U$ open neighbourhood of~$x$} \}. \]
 One may restrict to open \emph{connected} neighbourhoods of~$X$, since an
-arbitrary open neighbourhood of~$x$ contains such a one and the dimension
+arbitrary open neighbourhood of~$x$ contains such a one
+% That does not hold in general:
+% There is no inhabited connected open subset of Q.
+and the dimension
 decreases (weakly) on subsets.
 
 \XXX{Remove all mentions to connected open subsets, that's unnecessary.}
@@ -2892,7 +2902,7 @@ questions of modal intuitionistic (non-sheafy) mathematics.
 
 The techniques developed in this section also enable us to use the internal
 language of~$\Sh(X)$ to talk about sheaves on \emph{subspaces} of~$X$ (and more
-general \emph{sublocales} of~$X$).
+generally \emph{sublocales} of~$X$).
 
 Topological interpretations of modal logic were studied before, for instance by
 Awodey and Kishida~\cite{awodey-kishida:modal}. However, they study a
@@ -3152,7 +3162,7 @@ If~$j$ is induced by a modal operator~$\Box$, we also write~``$X_\Box$''
 for~$X_j$. In three of the four cases listed in Table~\ref{table:nuclei}, the
 sublocale~$X_\Box$ can indeed be realized as a topological subspace. The only
 exception is the sublocale~$X_{\neg\neg}$ associated to the double negation
-modality. It can be also be described as the \emph{smallest dense sublocale}
+modality. It can also be described as the \emph{smallest dense sublocale}
 of~$X$; this is obviously a genuine locale-theoretic notion, since there
 is (in general) no smallest dense topological subspace
 (consider~$\RR$ and its dense subsets~$\QQ$ and~$\RR \setminus \QQ$).
@@ -3267,7 +3277,7 @@ the~$\Box$-sheaves. Then it holds that:
 \item The functor~$(\placeholder)^{++} : \Set \to \Sh_\Box(\Set)$ is left exact and left
 adjoint to the forgetful functor~$\Sh_\Box(\Set) \to \Set,\ F \mapsto F$.
 \end{enumerate}\end{lemma}
-\begin{proof}These are all straightforward, and it fact simpler than their
+\begin{proof}These are all straightforward, and in fact simpler than their
 classical counterparts, since there are no colimit constructions which would have to
 be dealt with.
 \end{proof}
@@ -3419,7 +3429,7 @@ same as calculating the constant sheaf associated to~$M$.
 \end{cor}
 \begin{proof}The first statement follows because pulling back to~$X_{\neg\neg}$
 is the same as pulling back to~$\{\xi\}$. The pushforward of a set~$M$,
-considered as a sheaf on~$X_{\neg\neg}$, to~$M$ is explicitly given by
+considered as a sheaf on~$X_{\neg\neg}$, to~$X$ is explicitly given by
 \[ U \quad\longmapsto\quad \begin{cases}
   M, & \text{if $U \neq \emptyset$,} \\
   \{\star\}, & \text{else.}
@@ -3832,6 +3842,7 @@ f(x) = y)$. We can now understand a simple proof of this fact:
     \Sh(X) \models \left(\speak{$f$ is surjective}\right)^\Box \\
   \Longleftrightarrow&\
     \Sh(X) \models \forall y\?B\_ \Box(\exists x\?X\_ f(x) = y).
+% Why is there no \Box in front of the equality?
 \end{align*}
 \end{ex}
 

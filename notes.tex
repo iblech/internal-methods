@@ -3223,7 +3223,7 @@ A)$.}
 
 Recall that a set~$S$ is a \emph{subsingleton} if and only if~$\forall x,y\?S\_
 x = y$, and that a set~$S$ is a \emph{singleton} if and only if it is a subsingleton and
-inhabited (\ie~$\exists x\?S$); this amounts to~$\exists!x\?S$.
+inhabited (\ie~$\exists x\?S\_ \top$); this amounts to~$\exists!x\?S\_ \top$.
 
 \begin{defn}\label{defn:box-sheaves}
 A set~$F$ is \emph{$\Box$-separated} if and only if
@@ -3282,7 +3282,7 @@ is~$\Box$-separated.
 \item If~$F$ is~$\Box$-separated, then $F^+$ is a~$\Box$-sheaf.
 \item If~$F$ is a~$\Box$-sheaf, then the canonical map~$F \to F^+$ is bijective.
 \end{enumerate}
-Let``$\Sh_\Box(\Set)$'' denote the full subcategory of~$\Set$ consisting of
+Let $\Sh_\Box(\Set)$ be the full subcategory of~$\Set$ consisting of
 the~$\Box$-sheaves. Then it holds that:
 \begin{enumerate}
 \addtocounter{enumi}{4}
@@ -4841,7 +4841,7 @@ to isomorphism (as abstract~$\O_X$-modules, ignoring their embedding
 into~$\K_X$).\end{prop}
 \begin{proof}The first statement is obvious from the definitions. For the
 second statement, it suffices to show that~$\O_X(D)$ is isomorphic to~$\O_X$ if
-and only if~$D$ is principal. A given isomorphism~$\O_X \to \O_X(D)$ gives a
+and only if~$D$ is principal. An isomorphism~$\O_X \to \O_X(D)$ gives a
 global section~$f \in \K_X^\times$ (by considering the image of the unit element)
 such that internally,~$D = [f^{-1}]$; this shows that~$D$ is principal. The
 converse is similar.
@@ -5627,7 +5627,7 @@ that~$j_!j^{-1}\F \cong \F$ (canonically).
 \begin{proof}Internally, for a set~$\F$, we can define~$j_!(\F)$ simply to be the
 set comprehension
 \[ j_!(\F) \defeq \{ x\?\F \,|\, U \}. \]
-Externally, the sections of the thusly defined sheaf on an open subset~$V
+Externally, the sections of the thus defined sheaf on an open subset~$V
 \subseteq X$ are given by~$\{ x \in \Gamma(V,\F) \,|\, V \subseteq U \}$,
 \ie the whole of~$\Gamma(V,\F)$ if~$V \subseteq U$ and the empty set otherwise.
 With this short internal description, all of the stated properties can be
@@ -5747,8 +5747,8 @@ By Lemma~\ref{lemma:essim-closed-immersion}, the sheaf~$\O_X/\I$ is
 thus a~$\Box$-sheaf from the internal perspective.
 
 \begin{prop}Let~$X$ be a locally ringed space. Let~$\I \subseteq \O_X$ be an
-ideal sheaf. Then the ringed space~$(V(\I), \O_{V(\I)})$ is too locally
-ringed.\end{prop}
+ideal sheaf. Then the ringed space~$(V(\I), \O_{V(\I)})$ is locally
+ringed as well.\end{prop}
 \begin{proof}We have to show that
 \[ \Sh(V(\I)) \models \speak{$\O_{V(\I)}$ is a local ring}. \]
 By Theorem~\ref{thm:box-translation-semantically}, this is equivalent to
@@ -5948,7 +5948,10 @@ for all~$x,y \? A$.
 In classical logic, the complement of a prime ideal is a filter and
 furthermore every filter is of such a form. In constructive mathematics however,
 it is useful to axiomatize complements of prime ideals directly, avoiding
-negations.
+negations. Intuitionistically, since De Morgan's law~$\neg(\alpha \wedge \beta)
+\Rightarrow \neg\alpha \vee \neg\beta$ is not available, one can neither show
+that the complement of a prime ideal is a filter nor that the complement of a
+filter is a prime ideal.
 
 A filter is in particular a multiplicative subset. Inverting the
 elements of a filter results in a local ring, while intuitionistically
@@ -5990,7 +5993,7 @@ holds that~$x \in \F$ and on~$D(y)$ it holds that~$y \in \F$.
 
 The significance of the generic filter is given by the following proposition.
 \begin{prop}\label{prop:tilde-construction-internally}
-From the internal point of view of~$\Sh(\Spec A)$, \ldots
+From the internal point of view of~$\Sh(\Spec A)$,
 \begin{enumerate}
 \item the structure
 sheaf~$\O_{\Spec A}$ is the localization of the constant sheaf~$\ul{A}$ away from the
@@ -6594,15 +6597,16 @@ following form.
 \begin{thm}\label{thm:generic-freeness-constructively}
 Let~$A$ be a reduced ring. Let~$B$ be an~$A$-algebra of finite type.
 Let~$M$ be a finitely generated~$B$-module. Assume that the only element~$f \in
-A$ with the following three properties is~$f = 0$. Then~$A = 0$.
+A$ such that
 \begin{enumerate}
-\item $B[f^{-1}]$ is of finite presentation over~$A[f^{-1}]$.
-\item $M[f^{-1}]$ is finitely presented as a~$B[f^{-1}]$-module.
-\item $M[f^{-1}]$ is free over~$A[f^{-1}]$.
+\item $B[f^{-1}]$ is of finite presentation over~$A[f^{-1}]$,
+\item $M[f^{-1}]$ is finitely presented as a~$B[f^{-1}]$-module, and
+\item $M[f^{-1}]$ is free over~$A[f^{-1}]$
 \end{enumerate}
+is~$f = 0$. Then~$A = 0$.
 \end{thm}
 
-In classical logic, this form implies the lemma in its more abstract
+In classical logic, this form implies Grothendieck's generic freeness lemma in its more abstract
 formulation by a routine argument: Let~$U \subseteq \Spec(A)$ be the union over
 all standard open subsets~$D(f)$ such that the statements~(1),~(2), and~(3) in
 Theorem~\ref{thm:generic-freeness-constructively} hold. The
@@ -8619,9 +8623,11 @@ morphism of~$A$. We then have the chain of equivalences
 An~$R$-module~$E$ is \emph{synthetically quasicoherent} if and only if,
 for any finitely presented~$R$-algebra~$A$, the canonical~$R$-algebra
 homomorphism
-\[ E \otimes_R A \longrightarrow [\Spec(A), E] = [[A, R]_R, E] \]
+\[ E \otimes_R A \longrightarrow [\Spec(A), E] = [[A, R]_{\Alg(R)}, E] \]
 which maps a pure tensor~$x \otimes f$ to~$(\varphi \mapsto \varphi(f) x)$ is
-bijective.\end{defn}
+bijective. Here and in the following, the set~$[\Spec(A), E]$ is the set of all
+maps~$\Spec(A) \to E$, and~$[A,R]_{\Alg(R)}$ is the set of all~$R$-algebra
+homomorphisms~$A \to R$.\end{defn}
 
 This definition has the following interpretation. The codomain of the displayed
 canonical map is the set of all~$E$-valued functions on~$\Spec(A)$. Elements
@@ -9566,10 +9572,10 @@ inclusion~$P \hookrightarrow (\affl)^2$ and therefore not bijective.
 \subsection{Grassmannian}
 
 Let~$\V$ be a finite locally free~$\O_S$-module.
-We want to illustrate the synthetic approach by verifying using the internal
-language of~$\Zar(S)$ the basic fact that the Grassmannian~$\Gr(\V,r)$ of
+We want to illustrate the synthetic approach by verifying the basic fact that the Grassmannian~$\Gr(\V,r)$ of
 rank-$r$ locally free quotients of~$\V$, defined as a certain functor of points,
-is representable by an~$S$-scheme of finite presentation.
+is representable by an~$S$-scheme of finite presentation using the internal
+language of~$\Zar(S)$.
 
 \begin{defn}The \emph{Grassmannian}~$\Gr(\V,r)$ is the functor which associates
 to an~$S$-scheme~$f : T \to S$ the set

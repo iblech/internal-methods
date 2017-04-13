@@ -896,11 +896,19 @@ then~$U \models \psi$.
 
 The restriction to intuitionistic logic is really necessary at this point. We
 will encounter many examples of classically equivalent internal statements whose
-translation using the Kripke--Joyal semantics are wildly different. In
+translations using the Kripke--Joyal semantics are wildly different. To
+anticipate just one example, the statement
+\[ X \models \speak{$\F$ is finite free}, \]
+referring to a sheaf~$\F$ of~$\O_X$-modules, means that~$\F$ is finite locally
+free. The statement
+\[ X \models \neg\neg(\speak{$\F$ is finite free}) \]
+instead means that~$\F$ is finite locally free on a dense open subset of~$X$.
+
+In
 particular, our treatment of modal operators to understand spreading of
 properties from points to neighbourhoods depends on having the ability to make
 finer distinctions -- distinctions which are not visible in classical logic.
-At the end of this section there are some notes on what the restriction to
+In Section~\ref{sect:appreciating-intuitionistic-logic} there is a discussion of what the restriction to
 intuitionistic logic amounts to in practice.
 
 \XXXh{Put rules into an appendix and give some explanation regarding contexts
@@ -953,7 +961,7 @@ The former always implies the latter (unless~$X = \emptyset$, in which case
 former statement means that~$U = \emptyset$ is the \emph{only} open subset on
 which~$\varphi$ holds, that is that~$\varphi$ holds \emph{nowhere}. In
 contrast, the statement~$\Sh(X) \not\models \varphi$ only means that~$\varphi$
-does not hold \emph{everywhere}.\end{rem}
+does \emph{not hold everywhere}.\end{rem}
 
 
 \subsection{Internal constructions}
@@ -5909,9 +5917,8 @@ be a topological space and let~$U \subseteq X$ be an open subset. Then
 \end{lemma}
 Note that we are abusing notation on the left hand side: The parameters
 of~$\varphi$, which are sets and elements, must be read as the induced constant
-sheaves and constant functions (sections of that sheaves). Possible
-\XXXh{auftretend}
-unbounded quantifiers have to be read as ranging only over locally constant
+sheaves and constant functions (sections of that sheaves).
+Unbounded quantifiers have to be read as ranging only over locally constant
 sheaves, not all sheaves.
 \begin{proof}By induction on the structure of~$\varphi$. By way of example, we
 give the argument in the case that~$\varphi \equiv (a = b)$, where~$a$ and~$b$ are

@@ -641,8 +641,7 @@ Brandenburg put forward a related program of internalization in his PhD
 thesis~\cite{brandenburg:tensor-foundations}. However, he internalizes
 constructions of algebraic geometry not in toposes, but in tensor categories.
 There is some overlap in working out precise universal properties, particularly
-when dealing with the big Zariski topos, which we deal with in
-Part~\ref{part:big-zariski}.
+when dealing with the big Zariski topos.
 
 In other branches of mathematics, the internal language of toposes is used as well. For
 instance, there is an ongoing effort in mathematical physics to understand
@@ -1345,6 +1344,11 @@ such that if~$\nnn$ is any ideal with~$\mmm \subseteq \nnn \subsetneq (1)$,
 then~$\mmm = \nnn$? Or should the condition be that if~$\nnn$ is any ideal
 with~$\mmm \subseteq \nnn$, then~$\mmm = \nnn$ or~$\nnn = (1)$?
 Intuitionistically, the latter condition is stronger than the former.}
+This is a common phenomenon in intuitionistic
+mathematics: Classically equivalent notions may bifurcate into related but
+inequivalent notions intuitionistically, each having a unique character and
+yielding slightly different theories.
+
 
 \begin{prop}\label{prop:local-ring}
 In the internal language of a scheme~$X$ (or a locally ringed
@@ -1411,11 +1415,10 @@ and only if it is reduced. This is straightforward.
 This field property is very useful. We will put it to good use when giving a
 simple proof of the fact that~$\O_X$-modules of finite type on a reduced scheme
 are locally free on a dense open subset (Lemma~\ref{lemma:locally-free-dense}).
-Note that the field property only holds precisely as stated in the corollary;
+Note that the field property only holds in the precise form as stated;
 the classically equivalent condition that any element is invertible or zero is
-intuitionistically stronger. This is a common phenomenon in intuitionistic
-mathematics: Classically equivalent notions may bifurcate into related but
-inequivalent notions intuitionistically.
+intuitionistically stronger. This is an instance of the already remarked upon
+phenomenon of intuitionistic bifurcation of notions.
 
 The observation that the structure sheaf is (almost) a field is attributed by
 Tierney to Mulvey~\cite[p.~209]{tierney:spectrum}.
@@ -1561,10 +1564,7 @@ A condition of the form~``$\sqrt{(f)} \subseteq \sqrt{(g,h)}$''
 like in the constructive definition of the Krull dimension is not a geometric
 formula when taken on face value. However, it is equivalent to a geometric
 condition, namely to
-\begin{multline*}
-  \exists a,b\?\O_X\_ \bigvee_{m \geq 0} f^m = ag + bh \quad\wedge\quad \\
-  \exists u\?\O_X\_ \bigvee_{p \geq 0} g^p = uf \quad\wedge\quad
-  \exists v\?\O_X\_ \bigvee_{q \geq 0} h^q = vf.\end{multline*}
+\[ \exists a,b\?\O_X\_ \bigvee_{m \geq 0} f^m = ag + bh. \]
 Therefore the condition~$\speak{$\O_X$ is of Krull
 dimension~$\leq n$}$ is (equivalent to) a geometric implication and thus holds
 internally if and only if it holds at every point~$x \in X$. This in turn means that the
@@ -1698,7 +1698,7 @@ the internal perspective.\end{lemma}
 \begin{quote}For any (without loss of generality: standard) open subset~$U \subseteq X$ and any function~$g \in
 \Gamma(U,\O_X)$, $fg = 0$ in~$\Gamma(U,\O_X)$ implies~$g = 0$
 in~$\Gamma(U,\O_X)$.\end{quote}
-So the ``only if'' direction is clear (use~$U \defeq X$). For the ``if'' direction,
+So the ``if'' direction is clear (use~$U \defeq X$). For the ``only if'' direction,
 note that~$\Gamma(U,\O_X)$ is a localization of~$A$ and that regular elements
 remain regular in localizations.
 \end{proof}
@@ -1839,7 +1839,10 @@ equivalent to the \emph{limited principle of omniscience for~$\NN$}.
 Intuitionistically, it is only true that a weakly descending sequence~$a_0 \geq
 a_1 \geq \cdots$ of natural numbers eventually \emph{halts} in the sense that
 there exists an index~$n$ such that~$a_n = a_{n+1}$ (but~$a_{n+1} > a_{n+2}$ is
-allowed).
+allowed).\footnote{Classically, the following three statements on a ring are
+equivalent: (1)~Every ascending chain of ideals stabilizes. (2)~Every ascending
+chain of finitely generated ideals stabilizes. (3)~Every ascending chain of
+finitely generated ideals halts.}
 
 We give two constructively inequivalent notions of Noetherian rings. The first
 one is of independent constructive interest and enjoys the property that the structure sheaf
@@ -1887,6 +1890,7 @@ condition.\end{defn}
 An ascending chain of elements~$a_0 \preceq a_1 \preceq \cdots$ in a partially
 ordered set gives rise to an ascending process by setting~$x_0 \defeq a_0$
 and~$f(x) \defeq \{ y \,|\, \exists n\_ x = a_n \wedge y = a_{n+1} \}$.
+(This process halts iff there is an index~$n$ such that~$a_n = a_{n+1}$.)
 Conversely, the axiom of dependent choice would allow to construct an
 ascending chain from an ascending process. In the presence of this axiom, for
 instance in a classical context, a ring is therefore
@@ -2317,7 +2321,7 @@ that~$as = 0$. By the lemma, this element is regular from the internal
 perspective as well, so~$U \models \speak{$a$ regular} \wedge as = 0$.
 
 For the ``if'' direction, we may assume that there exists an open covering~$X =
-\bigcup_i U_i$ be standard open subsets~$U_i = D(f_i)$ such that there are
+\bigcup_i U_i$ by standard open subsets~$U_i = D(f_i)$ such that there are
 sections~$a_i \in \Gamma(U_i,\O_X) = A[f_i^{-1}]$ with~$U_i \models \speak{$a_i$ regular}
 \wedge a_i s = 0$. Without loss of generality, we may assume that the
 denominators of the~$a_i$'s are ones, that the $f_i$ are
@@ -2512,7 +2516,7 @@ the~$\alpha(s_i)$ is invertible.
 
 \begin{rem}Note that the canonical ring homomorphism~$\O_{X,x}
 \twoheadrightarrow k(x)$ is local. Therefore a germ in~$\O_{X,x}$ is invertible
-if and only if its image in~$k(x)$ is not zero. From this one can follow that
+if and only if its image in~$k(x)$ is not zero. From this one can conclude that
 global sections~$s_1,\ldots,s_n \in \Gamma(X,\F)$ generate~$\F$ if and only if,
 for any point~$x \in X$, the images~$s_i \in \F|_x$ in the fibers do not vanish
 simultaneously.
@@ -2558,9 +2562,9 @@ submodule~$\F_\tors$ is a torsion module.
 \item The dual sheaf $\F^\vee$ is torsion-free.
 \item If~$\F$ is reflexive (meaning that the canonical morphism~$\F \to
 \F^{\vee\vee}$ is an isomorphism), it is torsion-free.
-\item If~$\F$ is locally finitely free, it is reflexive.
+\item If~$\F$ is finite locally free, it is reflexive.
 \item Assume~$X$ to be a Dedekind scheme and~$\F$ to be of finite presentation.
-If~$\F$ is torsion-free, then it is locally finitely free.
+If~$\F$ is torsion-free, then it is finite locally free.
 % change references below if numbering changes
 \end{enumerate}
 \end{lemma}
@@ -2667,7 +2671,7 @@ If we want to work with a complete partially ordered set (poset) of natural numb
 logic, we have to construct a suitable completion. The idea of the following
 definition is to encode numbers as the (not necessarily existing) minimum of
 inhabited upward-closed subsets.
-\begin{defn}The \emph{completed poset of natural numbers}
+\begin{defn}The \emph{completed poset of natural numbers} is
 the set~$\widehat{\NN}$ of all inhabited upward-closed subsets of~$\NN$, ordered by
 reverse inclusion. The elements of~$\widehat{\NN}$ are called \emph{generalized natural numbers}.\end{defn}
 \begin{lemma}The completed poset of natural numbers is the least poset
@@ -2830,7 +2834,7 @@ finite type. Then~$\F$ is finite locally free on a dense open subset.\end{lemma}
 language (Proposition~\ref{prop:modops-kripke}), it suffices to give an
 intuitionistic proof of the following fact: Let~$R$ be a local ring which fulfills an
 appropriate field condition. Let~$M$ be a finitely generated~$R$-module.
-Then~$R$ is \notnot finite free.
+Then~$M$ is \notnot finite free.
 
 By Remark~\ref{rem:surjectivity-embedding}, the rank of such a module~$M$ is
 \notnot an actual natural number. By the last part of the
@@ -2851,7 +2855,10 @@ dimension of a topological space~$X$ at a point~$x \in X$ is defined as the
 infimum
 \[ \dim_x X \defeq \inf\{ \dim U \,|\, \text{$U$ open neighbourhood of~$x$} \}. \]
 One may restrict to open \emph{connected} neighbourhoods of~$X$, since an
-arbitrary open neighbourhood of~$x$ contains such a one and the dimension
+arbitrary open neighbourhood of~$x$ contains such a one
+% That does not hold in general:
+% There is no inhabited connected open subset of Q.
+and the dimension
 decreases (weakly) on subsets.
 
 \XXX{Remove all mentions to connected open subsets, that's unnecessary.}
@@ -3176,7 +3183,7 @@ If~$j$ is induced by a modal operator~$\Box$, we also write~``$X_\Box$''
 for~$X_j$. In three of the four cases listed in Table~\ref{table:nuclei}, the
 sublocale~$X_\Box$ can indeed be realized as a topological subspace. The only
 exception is the sublocale~$X_{\neg\neg}$ associated to the double negation
-modality. It can be also be described as the \emph{smallest dense sublocale}
+modality. It can also be described as the \emph{smallest dense sublocale}
 of~$X$; this is obviously a genuine locale-theoretic notion, since there
 is (in general) no smallest dense topological subspace
 (consider~$\RR$ and its dense subsets~$\QQ$ and~$\RR \setminus \QQ$).
@@ -3453,7 +3460,7 @@ same as calculating the constant sheaf associated to~$M$.
 \end{cor}
 \begin{proof}The first statement follows because pulling back to~$X_{\neg\neg}$
 is the same as pulling back to~$\{\xi\}$. The pushforward of a set~$M$,
-considered as a sheaf on~$X_{\neg\neg}$, to~$M$ is explicitly given by
+considered as a sheaf on~$X_{\neg\neg}$, to~$X$ is explicitly given by
 \[ U \quad\longmapsto\quad \begin{cases}
   M, & \text{if $U \neq \emptyset$,} \\
   \{\star\}, & \text{else.}
@@ -3641,8 +3648,9 @@ monotonicity of~$\Box$, and the third by the induction hypothesis.
 
 \begin{lemma}\label{lemma:stalk-open}
 Let~$\varphi$ be a geometric formula.
-Then $\varphi^\Box \Rightarrow \Box\varphi$.\end{lemma}
-\begin{proof}By induction on the formula structure. By way of example, we verify
+Then $\varphi^\Box \Leftrightarrow \Box\varphi$.\end{lemma}
+\begin{proof}The~``$\Leftarrow$'' direction is by Lemma~\ref{lemma:open-stalk}.
+The~``$\Rightarrow$'' direction is an induction on the formula structure. By way of example, we verify
 the case about~``$\bigvee$''. So assume~$\Box(\bigvee_i \varphi_i^\Box)$; we are
 to show that~$\Box(\bigvee_i \varphi_i)$. Since this is a boxed statement, we
 may in fact assume~$\bigvee_i \varphi_i^\Box$, so for some index~$j$, it holds
@@ -3865,8 +3873,12 @@ f(x) = y)$. We can now understand a simple proof of this fact:
   \Longleftrightarrow&\
     \Sh(X) \models \left(\speak{$f$ is surjective}\right)^\Box \\
   \Longleftrightarrow&\
+    \Sh(X) \models \forall y\?B\_ \Box(\exists x\?X\_ \Box(f(x) = y)) \\
+  \Longleftrightarrow&\
     \Sh(X) \models \forall y\?B\_ \Box(\exists x\?X\_ f(x) = y).
 \end{align*}
+The ultimate equivalence is by Lemma~\ref{lemma:stalk-open}, applied to the
+geometric subformula~``$\exists x\?X\_ f(x) = y$''.
 \end{ex}
 
 \begin{rem}Theorem~\ref{thm:box-translation-semantically} can also be motivated

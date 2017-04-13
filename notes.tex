@@ -2854,14 +2854,6 @@ exercise'' (Exercise~13.7.K).\end{rem}
 dimension of a topological space~$X$ at a point~$x \in X$ is defined as the
 infimum
 \[ \dim_x X \defeq \inf\{ \dim U \,|\, \text{$U$ open neighbourhood of~$x$} \}. \]
-One may restrict to open \emph{connected} neighbourhoods of~$X$, since an
-arbitrary open neighbourhood of~$x$ contains such a one
-% That does not hold in general:
-% There is no inhabited connected open subset of Q.
-and the dimension
-decreases (weakly) on subsets.
-
-\XXX{Remove all mentions to connected open subsets, that's unnecessary.}
 
 The map~$X \to \NN \cup \{+\infty\},\ x \mapsto \dim_x X$ is upper
 semicontinuous and thus corresponds to an internal generalized (possibly
@@ -2888,20 +2880,20 @@ to denote the constant function with value~$n$:
   \Longleftrightarrow &\
   \text{for some open neighbourhood~$U$ of~$x$, $\ul{n} \in \Gamma(U,\A)$} \\
   \Longleftrightarrow &\
-  \text{for some open connected neighbourhood~$U$ of~$x$, $\ul{n} \in \Gamma(U,\A)$} \\
-  \Longleftrightarrow &\
-  \text{for some open connected neighbourhood~$U$ of~$x$,} \\
+  \text{for some open neighbourhood~$U$ of~$x$,} \\
   & \qquad\qquad U \models \speak{$\O_X$ is of Krull dimension~$\leq n$} \\
   \Longleftrightarrow &\
-  \text{for some open connected neighbourhood~$U$ of~$x$,} \\
+  \text{for some open neighbourhood~$U$ of~$x$,} \\
   & \qquad\qquad \dim U \leq n
 \end{align*}
+The second equivalence follows from the external description of internally-defined
+subsheaves given in Section~\ref{sect:internal-constructions}.
 We thus have:
-\begin{align*}
-  \inf\{ n \,|\, n \in \A_x \} &=
-    \inf\{ \dim U \,|\, \text{$U$ open connected neighbourhood of~$x$} \} \\
-  &= \dim_x X. \qedhere
-\end{align*}
+\[
+  \inf\{ n \,|\, n \in \A_x \} =
+    \inf\{ \dim U \,|\, \text{$U$ open neighbourhood of~$x$} \}
+  = \dim_x X. \qedhere
+\]
 \end{proof}
 
 

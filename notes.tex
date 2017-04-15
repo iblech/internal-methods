@@ -426,7 +426,7 @@ metatheorem is applicable to this statement.
 All of the applications mentioned above employ the little Zariski topos of the base
 scheme~$X$, the topos of sheaves on the underlying topological space of~$X$.
 Its internal language simplifies the treatment of sheaves of rings and modules
-over~$X$, but the treatment of~\emph{schemes over~$X$} is simplified only a
+over~$X$, but the treatment of~\emph{schemes} over~$X$ is simplified only a
 little bit: From the internal point of view of~$\Sh(X)$, a morphism~$T \to X$
 of schemes looks like a morphism~$T \to \pt$. Therefore relative scheme theory
 is turned into absolute scheme theory (over the ring~$\O_X$), but it still
@@ -497,7 +497,7 @@ We can resolve the tension by incorporating an automatic management of the
 considering~$A$-valued points, into our language. Such a language is provided
 by the internal language of the big Zariski topos. It allows for the Fermat
 scheme to be given by the naive expression
-\[ \{ (x,y,z) \in (\ul{\AA}^1)^3 \,|\, x^n + y^n - z^n = 0 \} \]
+\[ \{ (x,y,z) \? (\ul{\AA}^1)^3 \,|\, x^n + y^n - z^n = 0 \} \]
 and for projective~$n$-space to be given by either of the expressions
 \begin{multline*}
   \qquad\text{the set of lines through the origin in~$(\ul{\AA}^1)^{n+1}$}
@@ -544,7 +544,7 @@ Explicitly, an object of~$\Zar(X)$ is a functor~$(\Sch/X)^\op \to \Set$
 satisfying the gluing condition with respect to Zariski coverings:
 If~$T = \bigcup_i U_i$ is a cover of an~$X$-scheme~$T$ by open subsets, the
 diagram
-\[ \F(T) \longrightarrow \prod_i \F(U_i) \xbigtoto{} \prod_{i,j} F(U_i \cap U_j) \]
+\[ \F(T) \longrightarrow \prod_i \F(U_i) \xbigtoto{} \prod_{j,k} F(U_j \cap U_k) \]
 should be an equalizer diagram. A premier example of an object of~$\Zar(X)$ is
 the functor~$\ul{Y}$ of points associated to an~$X$-scheme~$Y$, mapping
 an~$X$-scheme~$T$ to~$\Hom_X(T, Y)$. It satisfies the gluing condition since
@@ -942,9 +942,9 @@ often-occuring special cases:
 in the ``only if'' direction of the last rule. (This rule formalizes
 the saying ``unique existence implies global existence''.) By definition of~$\exists!$, it
 holds that
-\[ U \models \exists s\?\F\_ \varphi(s) \]
-and
-\[ U \models \forall s,t\?\F\_ \varphi(s) \wedge \varphi(t) \Rightarrow s = t.  \]
+\[ U \models \exists s\?\F\_ \varphi(s)
+  \qquad\text{and}\qquad
+  U \models \forall s,t\?\F\_ \varphi(s) \wedge \varphi(t) \Rightarrow s = t. \]
 Let~$V \subseteq U$ be an arbitrary open subset. Then there exist local
 sections~$s_i \in \Gamma(V_i,\F)$ such that~$V_i \models \varphi(s_i)$, where~$V
 = \bigcup_i V_i$ is an open covering. By the locality of the internal language,
@@ -1035,7 +1035,7 @@ precise, their meaning is preserved under pullback with geometric morphisms.
 \[ {=} \quad {\in} \quad {\top} \quad {\bot} \quad {\wedge} \quad {\vee} \quad
 {\bigvee} \quad {\exists}, \]
 but not~``$\bigwedge$'' nor ``$\Rightarrow$'' nor~``$\forall$'' (and thus
-not~``$\neg$'' either, since this is defined using~``$\Rightarrow$'').
+not~``$\neg$'' either, since negation is defined using~``$\Rightarrow$'').
 A \emph{geometric implication} is a formula of the form
 \[ \forall \cdots \forall\_ (\cdots) \Rightarrow (\cdots) \]
 with the bracketed subformulas being geometric.
@@ -5964,7 +5964,7 @@ and even
 Let~$A$ be a ring.
 
 \begin{defn}\label{defn:filter}
-A \emph{filter} in~$A$ is a subset~$F \subseteq A$ such that
+A \emph{filter} of~$A$ is a subset~$F \subseteq A$ such that
 \begin{itemize}
 \item $0 \not\in F$,
 \item $1 \in F$,
@@ -5999,7 +5999,7 @@ if~$f \in \sqrt{(x)}$.
 \item The stalk~$\F_\ppp$ at a point~$\ppp \in \Spec A$
 is in canonical bijection with~$A \setminus \ppp$.
 \item From the internal point of view of~$\Sh(\Spec A)$, the generic
-filter is indeed a filter in~$\ul{A}$.
+filter is indeed a filter of~$\ul{A}$.
 \end{enumerate}
 \end{prop}
 \begin{proof}By definition~$D(f) \models x \in \F$ means that~$x \not\in \ppp$
@@ -6025,11 +6025,11 @@ The significance of the generic filter is given by the following proposition.
 From the internal point of view of~$\Sh(\Spec A)$,
 \begin{enumerate}
 \item the structure
-sheaf~$\O_{\Spec A}$ is the localization of the constant sheaf~$\ul{A}$ at from the
+sheaf~$\O_{\Spec A}$ is the localization of the constant sheaf~$\ul{A}$ at the
 generic filter:~$\O_{\Spec A} = \ul{A}[\F^{-1}]$, and
 \item the quasicoherent sheaf of modules~$M^\sim$ associated to
-an~$A$-module~$M$ is the localization of the constant sheaf~$\ul{M}$ at from
-the generic filter.
+an~$A$-module~$M$ is the localization of the constant sheaf~$\ul{M}$ at the
+generic filter.
 \end{enumerate}\end{prop}
 \begin{proof}Ignoring the ring respectively module structure, the second
 statement is more general; therefore we prove this one. We didn't discuss the
@@ -6060,7 +6060,7 @@ following abstract algebraic motivation for schemes: Does the ring~$A$ admit a
 \emph{universal localization}, \ie a homomorphism~$A \to A'$ into a local ring
 such that every homomorphism~$A \to B$ into a local ring factors via a local
 map over~$A \to A'$? Intuitively speaking, can we localize a ring at all prime
-ideals at once, or equivalently away from all filters at once? The answer is \emph{no}
+ideals at once, or equivalently at all filters at once? The answer is \emph{no}
 in general,\footnote{Assume that the universal localization~$A'$ of a ring~$A$ exists as an ordinary ring in~$\Set$. Then any
 two prime ideals~$\ppp$ and~$\qqq$ of~$A$ are equal: Let~$s \not\in \ppp$.
 Since~$s$ is invertible in the local ring~$A_\ppp$ and the map~$A' \to A_\ppp$
@@ -6068,7 +6068,7 @@ induced by~$A \to A_\ppp$ is local, it is also invertible in~$A'$. Therefore the
 invertible as well. Thus~$s \not\in \qqq$.} but always \emph{yes} if we are
 willing to change the topos in which we look for a solution: The universal
 localization of~$A$ is given by the ring~$\O_{\Spec A}$ in the topos~$\Sh(\Spec
-A)$; this ring is constructed by localizing~$\ul{A}$ away from the generic
+A)$; this ring is constructed by localizing~$\ul{A}$ at the generic
 filter, a filter which exists in~$\Sh(\Spec A)$ but not in~$\Set$.
 
 We expand on this point of view in Section~\ref{sect:relative-spectrum} on the
@@ -6552,7 +6552,7 @@ The usual proofs of Grothendieck's generic freeness lemma proceed using a series
 of reduction steps which are arguably not very memorable or
 straightforward, see for instance~\stacksproject{051Q}
 or~\cite{staats:generic-freeness}. In particular, there doesn't seem to be a
-published proof which tackles the Noetherian and non-Noetherian case in one go.
+published proof which tackles the Noetherian and non-Noetherian cases in one go.
 Employing the internal language, Grothendieck's generic freeness lemma can be
 proved in a simple, conceptual, and constructive way without any reduction steps.
 
@@ -6662,9 +6662,11 @@ open subset, therefore it remains to show that~$U$ is dense.
 So let a nonempty open subset~$V$ of~$\Spec(A)$ be given. This
 contains a standard open subset~$D(g) \subseteq V$ such that~$g$ is not
 nilpotent. Therefore the localized ring~$A[g^{-1}]$ is not zero. Thus the
-premise of Theorem~\ref{thm:generic-freeness-constructively} is not satisfied.
+conclusion of Theorem~\ref{thm:generic-freeness-constructively} is not satisfied.
 Since we assume classical logic, there is a nonzero element~$f \in A[g^{-1}]$
-such that~$M[g^{-1}][f^{-1}]$ is a finite free~$A[g^{-1}][f^{-1}]$-module.
+such that statements~(1),~(2), and~(3) in
+Theorem~\ref{thm:generic-freeness-constructively} hold for~$A[g^{-1}][f^{-1}]$,
+$B[g^{-1}][f^{-1}]$, and~$M[g^{-1}][f^{-1}]$.
 Writing~$f = h/g^n$, we see that~$U \cap V$ contains the nonzero open
 subset~$D(gh)$.
 
@@ -6846,7 +6848,7 @@ locale~$\Spec(A)$ look like.
 
 \begin{prop}\label{prop:points-spectrum}
 Let~$A$ be a ring. Then the points of the locale~$\Spec(A)$ are in
-canonical one-to-one correspondence with the filters in~$A$
+canonical one-to-one correspondence with the filters of~$A$
 (as in Definition~\ref{defn:filter}), even intuitionistically.\end{prop}
 
 \begin{proof}The points of a locale~$X$ are in canonical one-to-one
@@ -6872,7 +6874,7 @@ canonical bijection with the prime ideals of~$A$, just as one would expect.
 Observing that intuitionistically the points of the locale~$\Spec(A)$ are
 filters, not prime ideals, one might wonder: Is the locale-theoretic approach
 really necessary? Wouldn't it suffice to define~$\Spec(A)$ as the topological
-space of filters in~$A$? Indeed, for some time this was
+space of filters of~$A$? Indeed, for some time this was
 believed~\cite[Section~3]{lawvere:icm-address}; however, this hope turned out
 to be too naive: Joyal gave an explicit example of a nontrivial ring in a
 certain topos without any filters~\cite[pp.~200f.]{tierney:spectrum}, thus
@@ -6888,13 +6890,13 @@ in~$\Zar(S)$ in the special case~$S = \Spec(\ZZ)$.}
 \subsection*{The spectrum as a classifying locale}
 
 The fact that the points of~$\Spec(A)$ are in canonical one-to-one
-correspondence with the filters in~$A$ is a shadow of a more general fact.
+correspondence with the filters of~$A$ is a shadow of a more general fact.
 Namely, for any locale~$X$ (and in fact any topos), maps~$X \to \Spec(A)$ are
-in canonical one-to-one correspondence with the internal filters in~$A$
+in canonical one-to-one correspondence with the internal filters of~$A$
 in~$\Sh(X)$, that is subsheaves of the constant sheaf~$\ul{A}$ satisfying the
 filter axioms from the point of view of the internal language of~$\Sh(X)$:
 The locale~$\Spec(A)$ is the \emph{classifying locale of the theory of filters
-in~$A$}.
+of~$A$}.
 
 The fact about the points of~$\Spec(A)$ can be recovered from this
 observation as follows. A point of~$\Spec(A)$ is a map~$1 \to \Spec(A)$ and
@@ -6908,7 +6910,7 @@ problem of constructing a space of models of a \emph{propositional geometric
 theory} (in the case of the spectrum the theory of filters), simultaneously
 streamlining the usual topological approach and generalizing it to work in an
 intuitionistic context: Instead of first constructing the \emph{set} of models
-(filters in~$A$) and then manually endowing this set with a suitable topology
+(filters of~$A$) and then manually endowing this set with a suitable topology
 (the Zariski topology), one can simply consider the \emph{locale} of models,
 that is the classifying locale of the theory. Its sets of points coincides with
 the set of models of the topological approach, but the locale is not determined
@@ -6923,7 +6925,7 @@ a survey article by Vickers~\cite{vickers:locales-toposes}.
 
 \begin{rem}\label{rem:theory-of-filters}
 For comparison with a refined geometric theory discussed below, we describe the
-geometric theory of filters in~$A$ here explicitly. It has one atomic
+geometric theory of filters of~$A$ here explicitly. It has one atomic
 proposition~``$s \in F$'' for each element~$s \? A$, and its axioms are given by the
 following axiom schemes:
 \begin{enumerate}
@@ -7274,7 +7276,7 @@ exists an index~$i$ such that~$\aaa_i \cap F$ is inhabited.
 
 \begin{prop}\label{prop:local-spectrum-classify}
 Let~$R$ be a ring. Let~$\varphi : R \to A$ be an algebra. Then~$\Spec(A|R)$ is
-the classifying locale of the theory of filters in~$A$ which lie over the
+the classifying locale of the theory of filters of~$A$ which lie over the
 filter of units, that is of the geometric theory with atomic propositions~``$s
 \in F$'' for~$s\?A$ and axioms given by the following axiom schemes:
 \begin{enumerate}
@@ -7739,7 +7741,7 @@ inhabited.\end{defn}
 \begin{prop}Let~$S$ be an~$\NN$-graded ring. Then~$\Proj(S)$ is the classifying
 locale of any of the following geometric theories.
 \begin{enumerate}
-\item The theory of homogeneous filters in~$S$ meeting the irrelevant ideal,
+\item The theory of homogeneous filters of~$S$ meeting the irrelevant ideal,
 that is the theory of Remark~\ref{rem:theory-of-filters} supplemented by the
 following two axiom schemes:
 \begin{itemize}
@@ -7800,10 +7802,10 @@ S_i} (ha \in F_i)$''.
 
 \begin{cor}Let~$S$ be an~$\NN$-graded ring. The points of~$\Proj(S)$ are in
 canonical one-to-one correspondence with the homogeneous filters
-in~$S$ meeting the irrelevant ideal.\end{cor}
+of~$S$ meeting the irrelevant ideal.\end{cor}
 
 \begin{proof}Points of~$\Proj(S)$ are given by models of the theory of
-homogeneous filters in~$S$ meeting the irrelevant ideal in~$\Set$.
+homogeneous filters of~$S$ meeting the irrelevant ideal in~$\Set$.
 \end{proof}
 
 \begin{defn}Let~$S$ be an~$\NN$-graded ring. The \emph{generic homogeneous
@@ -7836,7 +7838,7 @@ and with the pullback of~$\O_{\Proj(S)}$ as the structure sheaf.
 
 \begin{prop}Let~$R$ be a ring. Let~$S$ be an~$\NN$-graded~$R$-algebra.
 Then~$\Proj(S|R)$ is the classifying locale of the theory of homogeneous
-filters in~$S$ meeting the irrelevant ideal and lying over the filter of
+filters of~$S$ meeting the irrelevant ideal and lying over the filter of
 units.\end{prop}
 
 \begin{thm}Let~$X$ be a scheme (or a locally ringed locale). Let~$\S$ be
@@ -8262,8 +8264,8 @@ topos of sheaves on the Grothendieck site~$\Sch/S$ of schemes over~$S$.
 Explicitly, an object of~$\Zar(S)$ is a functor~$(\Sch/S)^\op \to \Set$
 satisfying the gluing condition with respect to ordinary Zariski coverings:
 If~$X = \bigcup_i U_i$ is a cover of an~$S$-scheme~$X$ by open subsets, the
-diagram
-\[ \F(X) \longrightarrow \prod_i \F(U_i) \xbigtoto{} \prod_{i,j} F(U_i \cap U_j)
+canonical diagram
+\[ \F(X) \longrightarrow \prod_i \F(U_i) \xbigtoto{} \prod_{j,k} F(U_j \cap U_k)
 \]
 should be an equalizer diagram.
 

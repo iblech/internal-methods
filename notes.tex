@@ -7642,7 +7642,7 @@ of the underlying locales and the colimit of the pulled-back structure sheaves
 However, when applied to a diagram of locally ringed locales, the ringed locale
 which this simple construction yields is in general not locally ringed. This
 can be nicely understood from the internal point of view: Let~$R$ be a local
-ring. Let~$R \to A$ and~$R \to B$ be local~$R$-algebras, which are furthermore
+ring. Let~$R \to A$ and~$R \to B$ be local~$R$-algebras which are furthermore
 local over~$R$. Then the tensor product~$A \otimes_R B$ is in general not a
 local ring. Indeed, this fails even in the easiest case, where all rings
 involved are fields: The rings~$\RR$ and~$\CC$ are local, and the
@@ -7688,7 +7688,7 @@ is the sought product of~$X$ and~$Y$ in the category of locally ringed locales.
 \begin{rem}The category of locally ringed locales embeds as a (non-full)
 coreflective subcategory into the category of ringed locales; the coreflector
 maps a ringed locale~$(X,\O_X)$ to the externalization of~$\Spec(\O_X)$
-(constructed internal to~$\Sh(X)$). However, as is familiar in situations where the embedding
+(constructed internally to~$\Sh(X)$). However, as is familiar in situations where the embedding
 is not full~\cite{adamek:rosicky:reflective}, it's in general not the case that limits in~$\LRL$ are calculated by
 applying the coreflector to the limit calculated in~$\RL$. Employing the language
 of the proof of Proposition~\ref{prop:lrl-complete}, applying the coreflector only
@@ -8906,7 +8906,8 @@ If~$f : X \to S$ is a morphism of schemes, then in general~$f^{-1}(\flat E)
   g^{-1}f^{-1}(E|_{\Sh(S)}))), \quad\text{but}\\
   \flat(f^{-1} E) &= ((T \xra{g} X) \mapsto \Gamma(T, g^{-1}(E|_{\Sh(X)}))).
 \end{align*}
-% Mention that it does work if f is an open immersion
+A special case in which the canonical morphism~$f^{-1}(\flat E) \to
+\flat(f^{-1}E)$ is an isomorphism is when~$f$ is an open immersion.
 \end{rem}
 
 % A corollary of the existence of~$\pi^!$ is that~$\pi_*$ is (not only
@@ -8944,8 +8945,17 @@ morphism of~$A$. We then have the chain of equivalences
   &\simeq \text{cat.\@ of local algebras~$\varphi : \ul{A} \to \B$
   in~$\Zar(X)$ such that~$\ul{\alpha}^{-1} \varphi^{-1} \B^\times = f^{-1}\F$} \\
   &\simeq \text{cat.\@ of local algebras~$\psi : f^{-1}\A \to \B$ such that
-  $f^{-1}\O_S \to f^{-1}\A \to \B$ is local}
+  $f^{-1}\O_S \to f^{-1}\A \to \B$ is local}.
 \end{align*}
+The first equivalence maps a geometric morphism~$g : \E \to \Zar(X)$ to~$\ul{A}
+\to g^{-1}\afflx$. The second equivalence acts as follows. Given an
+algebra~$\varphi : \ul{A} \to \B$ such that~$\ul{\alpha}^{-1} \varphi^{-1}
+\B^\times = f^{-1}\F$, we can factor~$\ul{R} \to \ul{A} \to \B$ uniquely as a
+localization~$\ul{R} \to C$ followed by a local homomorphism~$C \to \B$. By the
+condition on filters, the localization~$C$ is isomorphic to~$f^{-1}\O_S$. From
+the description~$\A = \ul{A}[\F^{-1}]$ it is apparent that~$\ul{A} \to \B$
+factors over~$\ul{A} \to f^{-1}\A$. In this way, we obtain
+morphisms~$f^{-1}\O_S \to f^{-1}\A \to \B$.
 \end{proof}
 
 

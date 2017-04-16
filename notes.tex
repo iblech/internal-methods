@@ -7839,6 +7839,8 @@ way enjoy their familiar properties. For instance, we have the following lemma.
 \item Assume that~$S$ is generated as an~$S_0$-algebra by~$S_1$. Let~$M$
 and~$N$ be graded~$S$-modules. Then~$M^\sim \otimes_{\O_{\Proj(S)}} N^\sim
 \cong (M \otimes_S N)^\sim$.
+\item Under the same assumption as in~(2), the twisting sheaves~$\O(m) \defeq
+(S(m))^\sim$ are finite locally free of rank~$1$.
 \end{enumerate}
 \end{lemma}
 
@@ -7865,11 +7867,19 @@ The second statement follows from the calculation
 \end{align*}
 The first isomorphism maps~$x/s \otimes y/t$ to~$(x \otimes y)/(st)$. By the
 assumption that~$S$ is generated as an~$S_0$-algebra by~$S_1$, the generic
-filter contains a homogeneous element~$h$ of degree~$1$. Therefore the
+filter contains a homogeneous element~$h$ of degree~$1$ from the internal point
+of view of~$\Sh(\Proj(S))$. Therefore the
 map has an inverse sending~$(a \otimes b) / u$, where~$a$ and~$b$ are
 homogeneous of degrees~$i$ and~$j$, to~$(h^j a)/u \otimes b/h^j$. The second
 isomorphism is because the tensor product is a geometric construction and
 therefore commutes with constructing the constant sheaf.
+
+For the proof of the third statement, we show that~$(S(m))^\sim$ is a finite
+free module of rank~$1$ from the internal point of view. We again use that the
+generic filter contains a homogeneous element~$h \? \ul{S}$ of degree~$1$ from
+the internal point of view. Such an element allows to define an
+isomorphism~$\O_{\Proj(S)} = \ul{S}[\F^{-1}]_0 \to \ul{S(m)}[\F^{-1}]_0 = \O(m)$ by
+mapping~$x/s$ to~$(h^m x)/s$ if~$m \geq 0$ and to~$x/(h^{-m} s)$ otherwise.
 \end{proof}
 
 \begin{defn}Let~$R$ be a ring. Let~$S$ be an~$\NN$-graded~$R$-algebra. The
@@ -7884,13 +7894,22 @@ of~$\Proj(S)$ with frame of opens given by
 and with the pullback of~$\O_{\Proj(S)}$ as the structure sheaf.
 \end{defn}
 
-\begin{prop}Let~$R$ be a ring. Let~$S$ be an~$\NN$-graded~$R$-algebra.
-Then~$\Proj(S|R)$ is the classifying locale of the theory of homogeneous
+\begin{prop}\label{prop:local-proj-classifying-locale}
+Let~$R$ be a ring. Let~$S$ be an~$\NN$-graded~$R$-algebra.
+Then the local Proj construction~$\Proj(S|R)$ is the classifying locale of the theory of homogeneous
 filters of~$S$ meeting the irrelevant ideal and lying over the filter of
 units.\end{prop}
 
 \begin{proof}Direct calculation similar to the proof of
 Proposition~\ref{prop:proj-classifying-locale}.\end{proof}
+
+Since pullback and localization commute, the structure sheaf of~$\Proj(S|R)$
+can also be described as~$\ul{S}[\F^{-1}]_0$, where by abuse of notation we
+mean by~``$\F$'' the pullback of the generic filter on~$\Proj(S)$
+to~$\Proj(S|R)$. This filter has the special property
+\[ \Sh(\Proj(S|R)) \models
+  \forall r\?\ul{R}\_
+    r \in \F \Rightarrow \speak{$r$ \inv\@ in $\ul{R}$}. \]
 
 \begin{thm}Let~$X$ be a scheme (or a locally ringed locale). Let~$\S$ be
 an~$\NN$-graded $\O_X$-algebra. Then the externalization~$E(\Proj(\S|\O_X))$ coincides
@@ -7918,13 +7937,37 @@ We verify that~$E(\Proj(\S|\O_X))$ enjoys the same property, even if~$X$ is not
 a scheme or~$\S$ is not quasicoherent. For the rest of the proof, we switch to
 the internal universe of~$\Sh(X)$.
 
-Firstly, by the assumption that~$\S$ is generated as an~$\S_0$-algebra
-by~$\S_1$, the module~$\O(1) \defeq (S(1))^\sim$ is a line bundle. There is a
-canonical isomorphism~$\oplus_{n \geq 0} \O(1)^{\otimes n} \cong
-\ul{S}[\F^{-1}]$.
+The local Proj construction is a locally ringed locale over~$(\pt, \O_X)$ by
+the unique morphism~$! : \Proj(\S|\O_X) \to \pt$ of locales and by the canonical
+morphism~$!^\sharp : \ul{\O_X} \to \ul{\S}_0 \to \ul{S}[\F^{-1}]_0 = \O_{\Proj(\S|\O_X)}$
+of local rings.
 
-% the standard datum on~$\Proj(\S|\O_X)$ is~$\O(1) \defeq (S(1))^\sim$ ...
-% continue
+As the standard datum on~$\Proj(\S|\O_X)$, we choose the line bundle~$\O(1)$
+(pulled back to~$\Proj(\S|\O_X)$) together with the canonical morphism~$!^* \S
+\to \oplus_{n \geq 0} \O(1)^{\otimes n}$.
+
+Let~$Y$ be a locally ringed locale over~$(\pt, \O_X)$. Let a pair~$(\L,\psi)$
+be given. In the internal language of~$\Sh(Y)$, we define a filter by the formula
+\[ \F' \defeq \{ s \? \ul{S} \,|\,
+  \speak{there exists~$i$ such that~$(\psi(s_i \otimes 1))$ is a basis
+  of~$\L^{\otimes i}$} \} \subseteq \ul{S}, \]
+where~$s_i$ refers to the homogeneous component of~$s$ of degree~$i$.
+Since~$\L^{\otimes i}$ is finite free of rank~$1$, a one-element family
+in~$\L^{\otimes i}$ is a basis if and only if it's a generating family. This
+observation can be repeatedly used to verify that~$\F'$ is
+homogeneous, meets the irrelevant ideal, and lies over the filter of
+units. Since~$\Proj(\S|\O_X)$ is the classifying locale of such filters
+(Proposition~\ref{prop:local-proj-classifying-locale}), we obtain a
+morphism~$f : Y \to \Proj(\S|\O_X)$ of locales which is unique with the property
+that~$f^{-1}\F = \F'$.
+
+To obtain a morphism~$Y \to \Proj(\S|\O_X)$ of locally ringed locales, it
+remains to define a morphism~$f^\sharp : f^{-1}\O_{\Proj(\S|\O_X)} =
+\ul{S}[\F'^{-1}]_0 \to \O_Y$. A canonical choice is
+\[ x/s \mapsto \speak{
+  the coefficient of~$\psi(x \otimes 1)$
+  with respect to the basis~$(\psi(s \otimes 1))$}. \]
+We omit further verifications.
 \end{proof}
 
 

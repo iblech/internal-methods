@@ -154,6 +154,7 @@
 \newcommand{\affla}{\ensuremath{{\ul{\AA}^1_{\Spec A}}}\xspace}
 \newcommand{\xra}{\xrightarrow}
 \newcommand{\stacksproject}[1]{\cite[{\href{http://stacks.math.columbia.edu/tag/#1}{Tag~#1}}]{stacks-project}}
+\newcommand{\apart}{\mathrel{\#}}
 
 \newcommand{\XXX}[1]{\textbf{XXX: #1}}
 \newcommand{\XXXh}[1]{}
@@ -6823,7 +6824,7 @@ generalization of that of a locally ringed space.
 Schemes are usually regarded as locally ringed spaces, not
 as locally ringed locales. However, in a classical
 context where the axiom of choice is available, schemes are \emph{sober}
-topological spaces. For sober topological spaces, the passage from the space to
+topological spaces~\stacksproject{01IS}. For sober topological spaces, the passage from the space to
 its induced locale (forgetting the set of points and only keeping the frame of
 open subsets) doesn't lose information: The category of sober topological
 spaces with arbitrary continuous maps embeds into the category of locales as a
@@ -6979,6 +6980,18 @@ Conversely, if the ``only if'' direction holds, then any element of~$A$ is
 nilpotent or invertible. This follows by
 considering the radical ideal~$\sqrt{(f)}$ for an element~$f \? A$.
 \end{proof}
+
+\begin{rem}The structure sheaf~$\O_X$ of a scheme fulfills almost, but not
+quite, the condition given in Lemma~\ref{lemma:spectrum-one-point}: By
+Proposition~\ref{prop:neginvnilpotent}, it has the property that
+any element which is not invertible is nilpotent. In classical logic, this
+statement is equivalent to the statement that every element is nilpotent or invertible.
+However, intuitionistically the former is a weaker statement than the latter.
+This observation entails that the internally constructed spectrum does
+\emph{not} coincide with the relative spectrum, and that instead a refined
+approach is necessary. Section~\ref{sect:rel-spec-as-ordinary-spec} is devoted
+to studying this difference.
+\end{rem}
 
 }
 
@@ -7215,7 +7228,8 @@ in~$\Open(\Spec(A))$. We denote the inclusion~$\Spec(A|R) \hookrightarrow
 Lastly, it's interesting to know the points of~$\Spec(A|R)$, even though these
 don't determine~$\Spec(A)$.
 
-\begin{defn}Let~$R$ be a ring. Let~$\varphi : R \to A$ be an algebra. A
+\begin{defn}\label{defn:over-the-filter-of-units}
+Let~$R$ be a ring. Let~$\varphi : R \to A$ be an algebra. A
 filter~$F \subseteq A$ \emph{lies over the filter of units} if and only if
 $\varphi^{-1}F \subseteq R^\times$, that is if
 \[ \varphi(r) \in F \Longrightarrow \text{$r$ is invertible in $R$} \]
@@ -7225,6 +7239,16 @@ holds automatically.)\end{defn}
 This definition will mostly be used in situations where the ring~$R$ is local,
 in which case the subset~$R^\times$ is actually a filter and the phrase
 ``filter of units'' is therefore justified.
+
+It's illuminating to consider Definition~\ref{defn:over-the-filter-of-units} in
+a classical context, even though the use case we have in mind is to apply it in
+the internal language of the little Zariski topos of a base scheme.
+Classically, a filter~$F$ lies over the filter of units if and only
+if~$\varphi^{-1}\ppp \supseteq R \setminus R^\times$, where~$\ppp \defeq
+F^c = A \setminus F$ is the prime ideal associated to~$F$. If~$R$ is local, the
+set~$R \setminus R^\times$ is the unique maximal ideal~$\mmm$ of~$R$. Thus~$F$
+lies over the filter of units if and only if~$\ppp$ lies over the maximal
+ideal.
 
 \begin{prop}Let~$R$ be a ring. Let~$\varphi : R \to A$ be an~$R$-algebra. Then
 the points of~$\Spec(A|R)$ are intuitionistically in canonical one-to-one
@@ -7572,7 +7596,30 @@ in canonical one-to-one correspondence with the points of~$\Spec(A \otimes_R
 k)$, where~$k = R/\mmm_R$ is the residue field of~$R$. Therefore~$\Spec(A|R)$
 and~$\Spec(A \otimes_R k)$ might coincide.
 
-However, we have the following negative result.
+However, we have the following negative result.\footnote{Intuitionistically,
+it's still true that the prime ideals of a quotient ring~$A/\ppp$ are in
+one-to-one correspondence with those prime ideals of~$A$ which contain~$\ppp$.
+However, the analogous statement ``filters of~$A/F$ correspond to those filters
+of~$A$ which are contained in~$F$'' can't be shown intuitionistically, if~$A/F$
+is defined as~$A/F^c$. However, informally speaking, this failure is not the
+fault of the statement, but of the definition of~$A/F$. The definition
+raises red flags from an intuitionistic point of view, since not~$F$, but only
+its complement~$F^c$ enters the construction.
+
+The statement can be salvaged by defining~``$A/F$'' to mean the set~$A$
+equipped with a new \emph{apartness relation} defined by $a \apart b
+\vcentcolon\Leftrightarrow a-b \in F$. (A basic example for a
+ring-with-apartness-relation is the field of real numbers equipped with~$x
+\apart y \vcentcolon\Leftrightarrow \exists q \in \QQ\_ |x-y| \geq q > 0$.) A filter~$G$ of this
+ring-with-apartness-relation~$A$ is by definition a subset~$G \subseteq A$ which
+verifies the filter axioms and which is \emph{open with respect to the
+apartness relation} in that for any elements~$a,b \? A$, the implication~$a \in
+G \Rightarrow (b \in G) \vee (a \apart b)$ holds.
+
+This construction provides one of several motivations for developing the theory
+of rings using apartness relations and anti-ideals; one can even define the
+spectrum of a ring-with-apartness-relation. However, we'll not pursue this
+further here.}
 
 \begin{prop}In general, the local spectrum of an algebra can't be expressed as
 an ordinary spectrum.\end{prop}
@@ -7605,7 +7652,7 @@ Section~\ref{sect:flat-constructible-topologies}.
 Let~$A$ be a ring. The morphism~$A \to \O_{\Spec(A)}$ in~$\RL^\op$ (the
 ring-theoretic part of the canonical morphism~$(\Spec(A), \O_{\Spec(A)}) \to
 (\Set, A)$) is the \emph{universal localization} of~$A$: The
-ring~$\O_{\Spec(A)}$ is local and for any morphism~$A \to \B$ into a local
+ring~$\O_{\Spec(A)}$ is local, and for any morphism~$A \to \B$ into a local
 ring~$\B$ (over any locale), there is a unique local morphism~$\O_{\Spec(A)}
 \to \B$ rendering the diagram
 \[ \xymatrix{

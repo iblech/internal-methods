@@ -732,12 +732,98 @@ in an intuitionistic context.
 
 \section{The internal language of a sheaf topos}\label{sect:internal-language}
 
+A map~$f : X \to Y$ of sets is injective if and only if
+\begin{equation}\label{inj}
+  \forall x,x' \in X\_ f(x) = f(x') \Longrightarrow x = x'.
+\end{equation}
+This condition can not only be interpreted in~$\Set$, but in any category~$\C$ whose
+objects are structured sets and whose morphisms are maps between the underlying
+sets. If we want to go beyond such kind of categories, we have to restate the
+condition in a purely category-theoretic language:
+\begin{equation}\label{injcat}
+  \forall (1 \xra{x} X), (1 \xra{x'} X)\_ f \circ x = f \circ x'
+  \Longrightarrow x = x'.
+\end{equation}
+This condition makes sense in all categories which contain a terminal
+object~$1$, and is equivalent to condition~\eqref{inj} in the case~$\C = \Set$.
+This has a deeper reason: The one-element set~$1 = \{ \star \}$ is a
+\emph{generator} of~$\Set$, that is objects of~$\Set$ are uniquely determined
+by their \emph{global elements}, morphisms from the terminal object . % XXX: correct terminology?
+
+In Kategorien, in denen das terminale Objekt aber kein Erzeuger ist, ist
+Bedingung~\eqref{injcat} dagegen nicht sehr aussagekräftig. Konkret der Fall
+ist das beispielsweise beim Topos~$\Sh(A)$ der Garben auf einem topologischen
+Raum~$A$. Globale Elemente einer Garbe~$\F$ stehen in natürlicher Bijektion mit
+globalen Schnitten~$x \in \F(A)$ (daher der Name), sodass
+Bedingung~\eqref{injcat} nur aussagt, dass die Garbenabbildung~$f$
+\emph{injektiv auf globalen Schnitten} ist. Da viele interessante Garben
+überhaupt keine oder nur wenige globale Schnitte besitzen, ist das in der Regel
+eine gehaltlose Aussage.
+
+Man löst das Problem dadurch, indem man nicht nur globale Elemente~$1 \to X$,
+sondern auch \emph{verallgemeinerte} Elemente~$I \to X$ betrachtet. Dabei
+muss~$I$ alle Objekte der untersuchten Kategorie~$\C$ durchlaufen; mit diesem
+Prinzip ist eine bessere Übersetzung der Injektivitätsbedingung die Aussage
+\begin{equation}\label{injallg}
+  \forall \text{Objekte $I$ in~$\C$}\_ \forall (I \xra{x} X), (I \xra{x'\!} X) \text{ in~$\C$}\_\ 
+  f \circ x = f \circ x' \ \Longrightarrow\ x = x',
+\end{equation}
+und diese fängt die Intuition hinter dem Injektivitätsbegriff auch in
+beliebigen Kategorien~$\C$ richtig ein: Ein Morphismus~$f$, der
+Bedingung~\eqref{injallg} erfüllt, heißt bekanntlich \emph{Monomorphismus}. Den
+tieferen Grund, wieso diese Idee funktioniert, drückt das
+\emph{Yonedalemma}~\cite{yoneda} aus, demnach ein Objekt (bis auf Isomorphie) schon
+eindeutig durch die Morphismen in das Objekt hinein bestimmt ist.
+% XXX: Letzten Satz verstehe ich nicht?
+
+
+\subsubsection*{Die interne Sprache}
+
+In der Praxis ist es allerdings umständlich, immer an verallgemeinerte
+Elemente denken und diese in der Notation berücksichtigen zu müssen. Als
+Abhilfe dazu gibt es die \emph{interne Sprache} einer Kategorie
+(nach J.~Bénabou, A.~Joyal und W.~Mitchell, siehe~\cite[Kap.~1]{catlogprime}):
+In dieser
+kann man die Injektivitätsbedingung als
+\begin{equation}\label{injtype}
+  \forall x,x'\?X\_\ f(x) = f(x') \ \Longrightarrow\ x = x'
+\end{equation}
+formulieren, die Ähnlichkeit zur ursprünglichen Definition~\eqref{inj} ist
+offensichtlich. Der Doppelpunkt beim Allquantor soll andeuten, dass~$X$ nicht
+notwendigerweise eine Menge und~$x,x'$ nicht notwendigerweise Elemente einer
+Menge im wörtlichen (materiellen) Sinn sein müssen. Stattdessen sagt man,
+dass~$X$ ein \emph{Typ} und~$x,x'$ \emph{Werte} dieses Typs sind, und
+bezeichnet den Ausdruck~\eqref{injtype} als \emph{Formel im leeren Kontext}.
+(Freie, nicht durch Quantoren gebundene Variablen sammelt der sog. Kontext
+der Formel auf.)
+
+Wenn die untersuchte Kategorie genügend gute Eigenschaften hat -- ein
+\emph{Topos} ist --, gibt es ein konkretes, algorithmisch gegebenes und auch in der Praxis einfach
+durch\-führ\-ba\-res Verfahren, um solche intern formulierten Aussagen in die externe
+mathematische Sprache zu übersetzen, die sog.
+\emph{Kripke-Joyal-Semantik}~\cite[Kap~VI.6]{moerdijkmaclane}.
+Wendet man dieses auf die Formel~\eqref{injtype} an, erhält man (nach einem
+Vereinfachungsschritt) genau die zuvor hergeleitete Bedingung~\eqref{injallg}
+mit verallgemeinerten Elementen.
+
+Die interne Sprache erlaubt nicht nur, Bedingungen einfach formulieren zu
+können, sondern auch logische Schlussfolgerungen anzustellen. Beispielsweise
+kann man, indem man den üblichen Beweis mit
+minimalen syntaktischen Änderungen abschreibt, intern zeigen, dass
+\[ \speak{$f$ ist injektiv} \wedge \speak{$f$ ist surjektiv}
+  \Longrightarrow \speak{$f$ besitzt eine Umkehrfunktion}. \]
+Die Häkchen sollen andeuten, dass die Teilaussagen nur umgangssprachlich vorliegen und
+daher vom Leser formalisiert werden müssen.
+Extern besagt diese Implikation, dass jeder Morphismus~$f$ eines Topos, der zugleich ein
+Mono- und Epimorphismus ist, schon einen Umkehrmorphismus besitzt, also ein
+Isomorphismus ist.
 % XXX: Give low-key introduction. Generalized arguments.
 % ..."In essence, the internal language provides a coherent mechanism to
 % translate any mentions of elements to generalized elements... Unlike a manual
 % such translation, however, it is fully formal, can be analyzed rigorously,
 % works painlessly with arbitrarily convoluted statements, and
 % most importantly can be trusted to support \emph{reasoning}...
+
 
 \subsection{Internal statements}
 Let~$X$ be a topological space. Later, $X$ will be the underlying space of a

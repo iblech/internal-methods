@@ -107,9 +107,12 @@
 \newcommand{\Mod}{\mathrm{Mod}}
 \newcommand{\Alg}{\mathrm{Alg}}
 \newcommand{\Ring}{\mathrm{Ring}}
+\newcommand{\LocRing}{\mathrm{LocRing}}
 \newcommand{\RL}{\mathrm{RL}}
 \newcommand{\LRL}{\mathrm{LRL}}
 \newcommand{\LRS}{\mathrm{LRS}}
+\newcommand{\LRT}{\mathrm{LRT}}
+\newcommand{\RT}{\mathrm{RT}}
 \newcommand{\pt}{\mathrm{pt}}
 \newcommand{\tors}{\mathrm{tors}}
 \newcommand{\lfp}{\mathrm{lfp}}
@@ -6710,9 +6713,10 @@ spectrum.
 In this section, we discuss generalities on how to make sense of this internal
 construction; we show that this proposed construction is too naive and doesn't
 yield the relative spectrum; we give a refined internal construction which does
-yield the relative spectrum and discuss its relation to the naive construction;
-and we deduce, as an application, a description of limits in the category of
-locally ringed spaces.
+yield the relative spectrum, discuss its relation to the naive construction,
+and phrase it in topos-theoretic terms; and we deduce, as an application, a
+description of limits in the category of locally ringed spaces. We also cover
+the relative Proj construction.
 
 In much of the following, it's not actually necessary that~$X$ is a scheme
 and~$\A$ is a quasicoherent algebra. If~$X$ is not a scheme or~$\A$ is not
@@ -7319,7 +7323,7 @@ free frame on generators~``$s \in F$'' for~$s\?A$ subject to the relations
 given by the axioms of the theory. More explicitly, it's the Lindenbaum
 algebra~$L(T)$ of the theory, so its elements are the formulas of the theory up
 to provable equivalence and the ordering is defined by~$[\varphi] \preceq
-[\psi] \defequiv (\varphi \vdash \psi)$. We want to verify that this frame is
+[\psi] \vcentcolon\Leftrightarrow (\varphi \vdash \psi)$. We want to verify that this frame is
 isomorphic to~$\Open(\Spec(A|R))$.
 
 We define a frame homomorphism~$L(T) \to \Open(\Spec(A|R))$ by sending the
@@ -7674,6 +7678,167 @@ such that the diagram
   && {\substack{\text{\normalsize$\O_{\Spec(A|R)}$}\\\text{local}}} \ar@{-->}[rru]_[@!28]{\text{local}}
 } \]
 commutes.
+
+\begin{rem}It's possible to state the universal property of the structure sheaf
+of the big Zariski topos of a ring~$A$, more precisely of the canonical
+morphism~$(\Zar(A),\affla) \to (\Set,A)$ of ringed toposes, in a similar manner,
+employing the dual categories~$\RT^\op$ and~$\LRT^\op$ of the categories of
+(locally) ringed toposes. However, unlike the universal property of the
+spectrum, this universal property looks slightly odd from an algebraic point of
+view: For any morphism~$A \to \B$ into a local ring (over any topos~$\E$), there is
+a unique bijective homomorphism~$\affla \to \B$ rendering the diagram
+\[ \xymatrix{
+  A \ar[rd] \ar[rrr] &&& {\substack{\text{local}\\\text{\normalsize$\B$}\\\phantom{\text{local}}}} \\
+  & {\substack{\text{\normalsize$\affla$}\\\text{local}}} \ar@{-->}_[@!31]{\text{bijective}}[rru]
+} \]
+commutative. By ``bijective'' we mean that the ring-theoretic part~$f^\sharp :
+f^{-1}\affla \to \B$ of the morphism~$f:(\E,\B) \to (\Zar(A),\affla)$ is
+bijective as seen from the internal point of view of~$\E$.
+\end{rem}
+
+
+\subsection{The spectrum of the generic ring}
+
+Let~$\Set[\Ring]$ be the classifying topos of the theory of
+rings; explicitly, it's the topos of preshaves on~$\Ring_\fp^\op$, the dual of
+the category of finitely presented rings. This topos contains the \emph{generic
+ring}~$U$ (explicitly the presheaf~$R \mapsto R$): any ring in any topos is the
+pullback of~$U$ along a suitable geometric morphism.
+
+Let~$\Set[\LocRing]$ be the classifying topos of the theory of local rings.
+Explicitly, it's the big Zariski topos~$\Zar(\Spec(\ZZ))$ (built using one of
+the \emph{parsimonious sites}, as described in
+Section~\ref{sect:proper-choice-of-site}). This topos contains the
+\emph{generic local ring}~$U'$: any local ring in any topos is the pullback
+of~$U'$ along a suitable geometric morphism.
+
+Let~$A$ be a ring. By the universal property of~$\Set[\Ring]$, there is a
+geometric morphism~$g : \Set \to \Set[\Ring]$ such that~$g^{-1}U \cong A$.
+Since~$U'$ is in particular a ring, again by the universal property
+of~$\Set[\Ring]$, there is a geometric morphism~$f : \Set[\LocRing] \to
+\Set[\Ring]$ such that~$f^{-1}U \cong U'$.
+By the universal property of~$\Set[\LocRing]$, the topos of
+sheaves over the spectrum of~$A$ admits a geometric morphism~$g'$
+to~$\Set[\LocRing]$ such that~$(g')^{-1}U' \cong \O_{\Spec(A)}$.
+
+The resulting solid diagram
+\[ \xymatrix{
+  \E \ar@/^1pc/@{.>}[rrd]^{\tilde g} \ar@/_1pc/@{.>}[ddr]_{\tilde f} \ar@{.>}[rd]^h \\
+  & \Sh(\Spec(A)) \ar[r]^{g'} \ar[d]_{f'} & \Set[\LocRing] \ar[d]^f \\
+  & \Set \ar[r]_g \ar@{}[ur]^(.3){}="a"^(.7){}="b" \ar@{=>}_\eta "a";"b" & \Set[\Ring]
+} \]
+commutes up to a non-invertible natural transformation~$\eta$; under the
+equivalence
+\begin{multline*}
+  \qquad\text{category of geometric morphisms~$\Sh(\Spec(A)) \to \Set[\Ring]$} \simeq \\
+  \text{category of ring objects in~$\Sh(\Spec(A))$}\qquad
+\end{multline*}
+this transformation corresponds to the non-invertible localization homomorphism~$\ul{A} \to
+\ul{A}[\F^{-1}] = \O_{\Spec(A)}$. It is folklore that this square is a lax
+pullback square in the 2-category of Grothendieck toposes (for instance, this
+is reported on at~\cite{arndt:lax-pullback}); however, this is not true.
+
+Given a topos~$\E$ together with geometric morphisms~$\tilde f : \E \to \Set$
+and~$\tilde g : \E \to \Set[\LocRing]$ and a natural transformation~$\tilde
+\eta : \tilde f^{-1} \circ g^{-1} \Rightarrow \tilde g^{-1} \circ f^{-1}$
+(these data correspond to a local ring~$\O_\E$ in~$\E$ together with a ring
+homomorphism~$\varphi : \ul{A} \to \O_\E$), there is a canonical geometric morphism~$h :
+\E \to \Sh(\Spec(A))$ (determined by requiring that~$h^{-1}\F \cong \F_0 \defeq
+\varphi^{-1}[\O_\E^\times]$), and this morphism renders the lower left triangle
+commutative up to a natural isomorphism, but it renders the upper right
+triangle commutative only up to a non-invertible natural transformation
+(corresponding to the non-invertible ring homomorphism~$\ul{A}[\F_0^{-1}] \to
+\O_E$).
+
+The observation that the square is not a lax pullback is joint with Peter Arndt
+and Matthias Hutzler. The observation raises two questions: What is the lax
+pullback (which exists by general theory), if it's not~$\Sh(\Spec(A))$?
+And how can~$\Sh(\Spec(A))$ be described as a pullback? The following two
+propositions answer these questions. The geometric morphism~$\Set \to
+\Set[\Ring]$ which they implicitly refer to is the morphism~$g$ mentioned
+above.
+
+\begin{prop}Let~$A$ be a ring. The lax pullback~$(\Set \Rightarrow_{\Set[\Ring]}
+\Set[\LocRing])$ is the big Zariski topos of~$\Spec(A)$ (built using one of the
+parsimonious sites, as described in Section~\ref{sect:proper-choice-of-site}).
+\end{prop}
+
+\begin{proof}The claim can be checked by hand, but it's more instructive to
+employ the general theory of classifying toposes. In the situation
+\[ \xymatrix{
+  (\Set[T] \Rightarrow_{\Set[T_0]} \Set[T']) \ar[r] \ar[d] & \Set[T'] \ar[d]^f \\
+  \Set[T] \ar[r]_g \ar@{}[ur]^(.3){}="a"^(.7){}="b" \ar@{=>}_\eta "a";"b" & \Set[T_0],
+} \]
+where~$T_0$, $T$, and~$T'$ are arbitrary geometric theories, the lax pullback
+classifies the geometric theory whose models consist of a model~$M$ of~$T$, a
+model~$N$ of~$T'$, and a homomorphism~$G(M) \to F(N)$ of~$T_0$-models. The
+constructions~$G$ and~$F$ are given by the geometric morphisms~$g$ and~$f$,
+which display a way to turn the generic model of~$T$ respectively~$T'$ (and
+therefore any model of~$T$ respectively~$T'$) into a model of~$T_0$ using only
+geometric operations.
+
+The lax pullback~$(\Set \Rightarrow_{\Set[\Ring]} \Set[\LocRing])$ therefore
+classifies ring homomorphisms~$A \to R$ where~$R$ is a local ring, that is,
+local~$A$-algebras. It's well-known that~$\Zar(\Spec(A))$ classifies these as
+well.
+\end{proof}
+
+\begin{prop}\label{prop:spectrum-as-pullback}
+Let~$A$ be a ring. The pullback of the spectrum of the generic ring
+along~$\Set \to \Set[\Ring]$ is the spectrum of~$A$.
+\end{prop}
+
+\begin{proof}There are two related ways of making the statement precise.
+Firstly, the spectrum of the generic ring~$U$ can be interpreted as a (locally
+ringed) locale internal to~$\Set[\Ring]$. Locales can be pulled back along
+geometric morphisms (even though the pullback of a frame along a geometric
+morphism typically fails to be a frame)~\cite{vickers:case-study}. In this
+way~$\Spec(U)$ pulls back to a locale internal to~$\Set$, that is an ordinary
+external locale. The claim is that this locale is canonically isomorphic
+to~$\Spec(A)$.
+
+A second way to interpret the statement of the proposition is to regard the
+spectrum of the generic ring as a localic geometric morphism with
+codomain~$\Set[\Ring]$. The claim is then that the diagram
+\[ \xymatrix{
+  \Sh(\Spec(A)) \ar[r] \ar[d] & \Sh_{\Set[\Ring]}(\Spec(U)) \ar[d] \\
+  \Set \ar[r]_g & \Set[\Ring]
+} \]
+is a pullback diagram in the 2-category of toposes.
+
+Using the language of classifying locales and classifying toposes, both claims
+are easy to establish. The pulled-back locale (or topos) classifies the
+pulled-back geometric theory~\cite[Corollary~5.4]{vickers:case-study}. Since
+the description of the theory which~$\Spec(U)$ classifies -- the theory of
+filters of~$U$ -- is itself geometric, the pulled-back theory is the theory of
+filters of~$g^{-1}U \cong A$.\footnote{In the notation
+of~\cite[Section~5]{vickers:case-study}, the theory of filters of~$U$ is
+represented by a GRD-system with~$G = U$ and $R = 1 \amalg U^2 \amalg U^2 \amalg 1
+\amalg U^2$ (one summand for each axiom scheme).}
+\end{proof}
+
+\begin{prop}\begin{enumerate}
+\item Let~$A$ be an~$R$-algebra. The local spectrum~$\Spec(A|R)$ is the
+pullback of~$\Spec(U''|R)$, where~$U''$ is the \emph{generic~$R$-algebra}
+contained in the classifying topos~$\E$ of~$R$-algebras, along the geometric
+morphism~$\Set \to \E$ given by~$A$.
+\item Let~$X$ be a scheme (or a locally ringed locale). Let~$\A$ be
+an~$\O_X$-algebra. The relative spectrum~$\RelSpec_X(\A)$ is the pullback
+of~$\Spec(U''|\O_X)$, where~$U''$ is the generic~$\O_X$-algebra contained in
+the classifying $\Sh(X)$-topos~$\E$ of~$\O_X$-algebras, along the geometric
+morphism~$\Sh(X) \to \E$ given by~$\A$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}Straightforward modification of the proof of
+Proposition~\ref{prop:spectrum-as-pullback}.
+\end{proof}
+
+\begin{rem}The big Zariski topos~$\Zar(\Spec(A))$ can be obtained as the
+pullback of the big Zariski topos of the generic ring~$U$, if both toposes
+are understood to be defined using the parsimonious sites as described in
+Section~\ref{sect:proper-choice-of-site}.
+\end{rem}
 
 
 \subsection{Limits in the category of locally ringed locales}

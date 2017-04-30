@@ -387,7 +387,7 @@ The proof of this statement is entirely straightforward.\footnote{Intuitionistic
 the statement that any finitely generated vector space is \emph{free} is stronger than
 the doubly negated version and can not be shown. It would imply that any sheaf
 of finite type is not only locally free on some dense open subset, but locally
-free on the whole space. We discuss this example in more detail in
+free on the entire space. We discuss this example in more detail in
 Section~\ref{sect:upper-semicontinuous-functions} and in particular in
 Lemma~\ref{lemma:locally-free-dense}. A proof of Grothendieck's generic
 freeness lemma in its full form is given in
@@ -544,11 +544,11 @@ point in Section~\ref{sect:proper-choice-of-site}. If one is interested in
 foundational questions and doesn't simply want to use the big Zariski topos in
 order to employ its convenient internal language, one can rest assured that
 there's a way to construct it without resorting to classical scheme theory.} % XXX section
-Explicitly, an object of~$\Zar(X)$ is a functor~$(\Sch/X)^\op \to \Set$
+Explicitly, an object of~$\Zar(X)$ is a functor~$F : (\Sch/X)^\op \to \Set$
 satisfying the gluing condition with respect to Zariski coverings:
 If~$T = \bigcup_i U_i$ is a cover of an~$X$-scheme~$T$ by open subsets, the
 diagram
-\[ \F(T) \longrightarrow \prod_i \F(U_i) \xbigtoto{} \prod_{j,k} F(U_j \cap U_k) \]
+\[ F(T) \longrightarrow \prod_i F(U_i) \xbigtoto{} \prod_{j,k} F(U_j \cap U_k) \]
 should be an equalizer diagram. A premier example of an object of~$\Zar(X)$ is
 the functor~$\ul{Y}$ of points associated to an~$X$-scheme~$Y$, mapping
 an~$X$-scheme~$T$ to~$\Hom_X(T, Y)$. It satisfies the gluing condition since
@@ -854,6 +854,7 @@ following two propositions true, which are crucial for a proper appreciation of 
 internal language.
 
 \begin{prop}[Locality of the internal language]
+\label{prop:locality-of-the-internal-language}
 Let~$U = \bigcup_i U_i$ be covered by open subsets. Let~$\varphi$
 be a formula over~$U$. Then
 \[ U \models \varphi \qquad\text{iff}\qquad
@@ -873,6 +874,7 @@ then~$V \models \varphi$. (This follows by applying the proposition to the
 trivial covering~$U = V \cup U$.)
 
 \begin{prop}[Soundness of the internal language]
+\label{prop:soundness-of-the-internal-language}
 If a formula~$\varphi$ implies a further formula~$\psi$ in intuitionistic logic, then
 $U \models \varphi$ implies $U \models \psi$.
 \end{prop}
@@ -1515,7 +1517,7 @@ radical ideals geometrically by considering standard open subsets~$D(f) = \{
 intersections are calculated by products, \ie~$D(f) \cap D(g) = D(fg)$.
 
 The condition that~$(b_0,\ldots,b_n)$ is complementary to~$(a_0,\ldots,a_n)$
-thus means that~$D(a_0)$ and~$D(b_0)$ cover the whole of~$\Spec R$; that their
+thus means that~$D(a_0)$ and~$D(b_0)$ cover all of~$\Spec R$; that their
 intersection is covered by~$D(a_1)$ and~$D(b_1)$; that in turn their
 intersection is covered by~$D(a_2)$ and~$D(b_2)$; \ldots; and that finally, the
 intersection of~$D(a_n)$ and~$D(b_n)$ is empty.
@@ -3822,7 +3824,7 @@ language in its basic form without modalities, this brings conceptual clarity
 and reduced technical overhead. There are, however, two more distinctive
 advantages. Firstly, many internal proofs do not require specific properties of
 the modal operator and thus work with any modal operator. By interpreting such
-a proof using different operators, one obtains a whole family of external
+a proof using different operators, one obtains an entire family of external
 statements without any additional work (see
 Lemma~\ref{lemma:module-zero-point-neighbourhood} for an example).
 
@@ -5663,7 +5665,7 @@ set comprehension
 \[ j_!(\F) \defeq \{ x\?\F \,|\, U \}. \]
 Externally, the sections of the thus defined sheaf on an open subset~$V
 \subseteq X$ are given by~$\{ x \in \Gamma(V,\F) \,|\, V \subseteq U \}$,
-\ie the whole of~$\Gamma(V,\F)$ if~$V \subseteq U$ and the empty set otherwise.
+\ie all of~$\Gamma(V,\F)$ if~$V \subseteq U$ and the empty set otherwise.
 With this short internal description, all of the stated properties can be
 easily verified in the internal language.
 
@@ -8614,11 +8616,11 @@ We'll keep the base scheme~$S$ fixed throughout this part.
 topos of sheaves on the Grothendieck site~$\Sch/S$ of schemes over~$S$.
 \end{defn}
 
-Explicitly, an object of~$\Zar(S)$ is a functor~$(\Sch/S)^\op \to \Set$
+Explicitly, an object of~$\Zar(S)$ is a functor~$F : (\Sch/S)^\op \to \Set$
 satisfying the gluing condition with respect to ordinary Zariski coverings:
 If~$X = \bigcup_i U_i$ is a cover of an~$S$-scheme~$X$ by open subsets, the
 canonical diagram
-\[ \F(X) \longrightarrow \prod_i \F(U_i) \xbigtoto{} \prod_{j,k} F(U_j \cap U_k)
+\[ F(X) \longrightarrow \prod_i F(U_i) \xbigtoto{} \prod_{j,k} F(U_j \cap U_k)
 \]
 should be an equalizer diagram.
 
@@ -8626,13 +8628,13 @@ should be an equalizer diagram.
 {\tocless
 
 \subsection*{Internal language} Just like the topos of sheaves on a topological
-space or a locale admits an internal language, so does the big Zariski topos.
+space or on a locale admits an internal language, so does the big Zariski topos.
 The necessary modifications of the Kripke--Joyal semantics
 (Definition~\ref{defn:kripke-joyal}) are straightforward. Instead of
 defining recursively the meaning of~``$U \models \varphi$'' for open subsets~$U
-\subseteq S$, we have to define the meaning of~``$T \models \varphi$''
-for~$S$-schemes~$T$ and the rules for implication and universal quantification
-have to be rewritten. Instead of
+\subseteq S$, we define the meaning of~``$T \models \varphi$''
+for~$S$-schemes~$T$ and slightly rewrite the rules for implication and universal quantification.
+Instead of
 \begin{align*}
   U \models \varphi \Rightarrow \psi \quad&\Ll\quad
   \text{for all open~$V \subseteq U$:} \\
@@ -8649,6 +8651,35 @@ have to be rewritten. Instead of
   &\phantom{{}\Ll\quad\text{for }} \text{all sections~$s \in \Gamma(T', \F)$:} \\
   &\qquad\qquad\qquad\qquad T' \models \varphi(s)
 \end{align*}
+
+The analogs of Proposition~\ref{prop:locality-of-the-internal-language} and
+Proposition~\ref{prop:soundness-of-the-internal-language} are true for the internal
+language of the big Zariski topos:
+
+\begin{prop}\label{prop:basic-properties-language-big}
+Let~$T$ be an~$S$-scheme and~$\varphi$ be a formula over~$T$.
+\begin{enumerate}
+\item If~$T \models \varphi$ and if there is an intuitionistic proof
+that~$\varphi$ implies a further formula~$\psi$, then~$T \models \psi$.
+% Adapt text below if numbering changes
+\item Let~$T' \to T$ be a morphism of~$S$-schemes. If~$T \models \varphi$,
+then~$T' \models \varphi$.
+\item If~$T = \bigcup_i T_i$ is an open covering and if~$T_i \models \varphi$
+for all~$i$, then~$T \models \varphi$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}The proofs of
+Proposition~\ref{prop:locality-of-the-internal-language} and
+Proposition~\ref{prop:soundness-of-the-internal-language} carry over.
+\end{proof}
+
+When working with the internal language of the little Zariski topos, we often
+used the fact that if a formula holds on some open subset~$U$, then it also
+holds on all open subsets contained in~$U$.
+Proposition~\ref{prop:basic-properties-language-big}(2) states a stronger version
+of this: All properties which can be expressed using the internal language of
+the big Zariski topos are automatically \emph{stable under base change}.
 
 \subsection*{Important objects in the big Zariski topos}\label{page:important-objects} It's convenient to
 introduce notation for objects which often appear when working with the big
@@ -8704,13 +8735,13 @@ have to show that for any~$S$-scheme~$T$ and any function~$f \in
 \speak{$f$ \inv}$. The antecedent states, for any~$T$-scheme~$T'$, that if the
 pullback of~$f$ to~$T'$ vanishes,~$T'$ is then the empty scheme.
 
-Similar to the analogous statement of the little Zariski topos
+As with the analogous statement of the little Zariski topos
 (Lemma~\ref{lemma:internal-invertibility}), the consequent means that~$f$ is
 invertible in~$\Gamma(T,\O_T)$.
 
 The claim follows by considering the particular~$T$-scheme~$T' \defeq V(f)$.
 Since~$f$ vanishes on~$V(f)$, this subscheme is empty and therefore its
-complement~$D(f)$ is the whole of~$T$.
+complement~$D(f)$ is all of~$T$.
 \end{proof}
 
 The field property can be interpreted as follows. A function~$f$ not being the
@@ -8735,7 +8766,7 @@ properties.
 \subsection*{Naive approach}
 Some authors construct the big Zariski topos of~$S$ as the topos of
 sheaves over the site~$\Sch/S$ of all schemes over~$S$. This option is quite
-attractive since the Yoneda functor~$\Sch/S \to \Sh(\Sch/S)$, which sends
+attractive since the Yoneda embedding~$\Sch/S \to \Sh(\Sch/S)$, which sends
 an~$S$-scheme to its functor of points, is fully faithful, therefore the
 internal language of~$\Sh(\Sch/S)$ can distinguish arbitrary schemes.
 
@@ -8883,9 +8914,9 @@ view of~$\E$.
 
 \begin{thm}\label{thm:zar-classifies}
 In the situation that the site used to construct~$\Zar(S)$ is one of the
-parsimonious sites, the big Zariski topos~$\Zar(S)$ is the classifying topos of
-the theory of local~$\O_S$-algebras which are local over~$\O_S$ from the
-internal point of view of~$\Sh(S)$.
+parsimonious sites, the big Zariski topos~$\Zar(S)$ is, from the internal point
+of view of~$\Sh(S)$, the classifying topos of
+the theory of local~$\O_S$-algebras which are local over~$\O_S$.
 \end{thm}
 
 For an arbitrary topos~$\F$ over~$\Set$, the concept of an~``$\O_S$-algebra
@@ -9064,9 +9095,8 @@ related by the adjoint triple~$f_! \dashv f^{-1} \dashv f_*$ with
   f_! F &= ((T \xra{g} S) \mapsto \coprod_{h : T \to X} F(T \xra{h} X)).
 \end{align*}
 In situation~(2), the well-definedness of these functors is trivial. In
-situation~(1), the lemma that an~$S$-morphism~$h : T \to X$ is locally of
-finite presentation if~$T$ and~$X$ are locally of finite presentation over~$S$
-enters~\stacksproject{02FV}.
+situation~(1), the well-definedness rests on the lemma that an~$S$-morphism~$h : T \to X$ is locally of
+finite presentation if~$T$ and~$X$ are locally of finite presentation over~$S$~\stacksproject{02FV}.
 
 The objects of~$\Zar(S)$ listed on page~\pageref{page:important-objects} pull back
 as expected:
@@ -9111,7 +9141,7 @@ stage~$X$. This is equivalent to XXX}
 
 In contrast, for the little Zariski toposes, there is no similarly simple
 description. From the internal point of view of~$\Sh(S)$, the topos~$\Sh(X)$
-looks like the topos of sheaves over a locale which is not discrete, and
+looks like the topos of sheaves over a locale which is not discrete, and the
 topos~$\Zar(X)$ doesn't even look like a topos of sheaves over an arbitrary
 locale (discrete or not).
 

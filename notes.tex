@@ -7622,8 +7622,8 @@ G \Rightarrow (b \in G) \vee (a \apart b)$ holds.
 
 This construction provides one of several motivations for developing the theory
 of rings using apartness relations and anti-ideals; one can even define the
-spectrum of a ring-with-apartness-relation. However, we'll not pursue this
-further here.}
+spectrum of a ring-with-apartness-relation. However, we'll not pursue these
+ideas further here.}
 
 \begin{prop}In general, the local spectrum of an algebra can't be expressed as
 an ordinary spectrum.\end{prop}
@@ -7918,6 +7918,8 @@ of the proof of Proposition~\ref{prop:lrl-complete}, applying the coreflector on
 solves the first issue, but not the second.
 \end{rem}
 
+
+% \begin{document}
 
 \subsection{Relative Proj construction} Similar issues as with the relative
 spectrum arise with the Proj construction: The standard definition of the Proj
@@ -9180,6 +9182,17 @@ the description~$\A = \ul{A}[\F^{-1}]$ it is apparent that~$\ul{A} \to \B$
 factors over~$\ul{A} \to f^{-1}\A$. In this way, we obtain
 morphisms~$f^{-1}\O_S \to f^{-1}\A \to \B$.
 \end{proof}
+
+The only reason why we have supposed that~$\A$ is quasicoherent in the
+statement of Theorem~\ref{thm:big-zariski-topos-of-relative-spectrum} is
+because else~$\RelSpec_S(\A)$ might fail to be a scheme, whereby the notion
+``big Zariski topos of~$\RelSpec_S(\A)$'' is not defined.
+
+In fact, we propose the following definition: If~$(X,\O_X)$ is an arbitrary
+locally ringed locale (or even a locally ringed topos), then the big Zariski
+topos of~$X$ should be the classifying~$\Sh(X)$-topos of the theory (internal
+to~$\Sh(X)$) of local~$\O_X$-algebras which are local over~$\O_X$.
+
 
 
 \section{Sheaves of rings, algebras, and modules}
@@ -10712,3 +10725,5 @@ XXX: axioms on? axioms of?
 Cite Zhen Lin's thesis (http://zll22.user.srcf.net/dpmms/thesis.pdf).
 
 No "et al" in the bibliography!
+
+Cite Johnstone's "rings, fields, and spectra".

@@ -7831,7 +7831,7 @@ represented by a GRD-system with~$G = U$ and $R = 1 \amalg U^2 \amalg U^2 \amalg
 \amalg U^2$ (one summand for each axiom scheme).}
 \end{proof}
 
-\begin{prop}\begin{enumerate}
+\begin{prop}\label{prop:local-spectrum-generic}\begin{enumerate}
 \item Let~$A$ be an~$R$-algebra. The local spectrum~$\Spec(A|R)$ is the
 pullback of~$\Spec(U''|R)$, where~$U''$ is the \emph{generic~$R$-algebra}
 contained in the classifying topos~$\E$ of~$R$-algebras, along the geometric
@@ -8647,9 +8647,9 @@ Instead of
   T \models \varphi \Rightarrow \psi \quad&\Ll\quad
   \text{for all morphisms~$T' \to T$ in~$\Sch/S$:} \\
   &\qquad\qquad\qquad\qquad\text{$T' \models \varphi$ implies $T' \models \psi$} \\
-  T \models \forall s\?\F\_ \varphi(s) \quad&\Ll\quad
+  T \models \forall s\?F\_ \varphi(s) \quad&\Ll\quad
   \text{for all morphisms~$T' \to T$ in~$\Sch/S$ and} \\
-  &\phantom{{}\Ll\quad\text{for }} \text{all sections~$s \in \Gamma(T', \F)$:} \\
+  &\phantom{{}\Ll\quad\text{for }} \text{all sections~$s \in \Gamma(T', F)$:} \\
   &\qquad\qquad\qquad\qquad T' \models \varphi(s)
 \end{align*}
 
@@ -9229,6 +9229,9 @@ In fact, we propose the following definition: If~$(X,\O_X)$ is an arbitrary
 locally ringed locale (or even a locally ringed topos), then the big Zariski
 topos of~$X$ should be the classifying~$\Sh(X)$-topos of the theory (internal
 to~$\Sh(X)$) of local~$\O_X$-algebras which are local over~$\O_X$.
+The following proposition shows that this definition is consistent with
+Theorem~\ref{thm:zar-classifies} and
+with~Theorem~\ref{thm:big-zariski-topos-of-relative-spectrum}.
 
 \begin{prop}Let~$\A$ be an~$\O_S$-algebra. The following constructions,
 performed internally to~$\Sh(S)$, yield canonically equivalent toposes:
@@ -9516,8 +9519,9 @@ condition for~$A \defeq \affl/(x_1,\ldots,x_n)$. This yields~$1 \in
 (x_1,\ldots,x_n)$. Since~$\affl$ is a local ring, one of the~$x_i$ is
 invertible.\end{proof}
 
-\begin{prop}$\affl$ is not a reduced ring: $\neg \forall x\?\affl\_ (\bigvee_{n \geq
-0} x^n = 0) \Rightarrow x = 0.$
+\begin{prop}\label{prop:a1-not-reduced}
+$\affl$ is not a reduced ring: $\neg \Bigl(\forall x\?\affl\_ (\bigvee_{n \geq
+0} x^n = 0) \Rightarrow x = 0\Bigr).$
 \end{prop}
 
 \begin{proof}Assume that~$\affl$ is reduced. Then the set~$\Delta \defeq \{
@@ -9530,7 +9534,8 @@ is an isomorphism. It maps~$[T]$ to zero (the value of~$T$ at~$0 \in \Delta$).
 Thus~$T \in (T^2)$ and therefore~$1 = 0$ in~$\affl$. This is a contradiction.
 \end{proof}
 
-In classical logic, the previous two properties would directly contradict each
+In classical logic, Proposition~\ref{prop:a1-field} and
+Proposition~\ref{prop:a1-not-reduced} would directly contradict each
 other; only an intuitionistic context allows for fields which are not reduced.
 
 That~$\affl$ is not reduced, irrespective of the reducedness of the base
@@ -9773,6 +9778,30 @@ therefore this map is bijective from the internal point of view.
 different context, Condition~(3) in the previous proposition is unnatural from a
 topos-theoretic point of view and should be weakened to require only local
 representability.
+\end{rem}
+
+\begin{rem}Let~$\A_0$ be an~$\O_S$-algebra. Then one can form, internally
+to~$\Zar(S)$, two locales related to~$\A_0$: the discrete locale on the synthetic
+spectrum of~$(\A_0)^\Zar$, and the local spectrum of~$(\A_0)^\Zar$ over~$\affl$ as described
+in~Definition~\ref{defn:local-spectrum}. These locales don't coincide. In fact,
+the pullback of a discrete locale is discrete, whereas the pullback of
+the local spectrum to any of the little Zariski toposes~$\Sh(X)$, where~$f : X
+\to S$ is an~$S$-scheme contained in the site used to define~$\Zar(S)$, is the
+relative spectrum~$\RelSpec_X(f^*\A_0)$, which is typically not discrete as
+an~$X$-locale. (This is because the locale spectrum construction is geometric,
+by Proposition~\ref{prop:local-spectrum-generic}.)
+
+There is, however, a comparison morphism from the discrete locale on the
+synthetic spectrum to the local spectrum. On points, it sends
+an~$\affl$-algebra homomorphism~$\varphi : (\A_0)^\Zar \to \affl$ to the
+filter~$\varphi^{-1}[(\affl)^\times]$.
+
+One can also form, internally to~$\Zar(S)$, the classifying topos
+of~$(\A_0)^\Zar$-algebras which are local over~$\affl$. This topos doesn't
+coincide with the (toposes of sheaves over) the mentioned two locales, either.
+The pullback of that classifying topos to any of the~$\Sh(X)$ is the big
+Zariski topos of~$\RelSpec_X(f^*\A_0)$ (built using one of the parsimonious
+sites).
 \end{rem}
 
 

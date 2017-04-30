@@ -7493,7 +7493,7 @@ a topological space in order to work in an intuitionistic setting: $\Ring^\op \t
 \item Gillam's spectrum of a sheaf of algebras~\cite{gillam:localization}:
 $\Alg(\O_X)^\op \to \LRS/(X,\O_X)$
 \item Hakim's spectrum of a ringed topos~\cite{hakim:relative-schemes},
-yielding a locally ringed topos: $\mathrm{RT} \to \mathrm{LRT}$.
+yielding a locally ringed topos: $\RT \to \LRT$.
 \end{itemize}
 
 These are related as follows.
@@ -7772,12 +7772,23 @@ employ the general theory of classifying toposes. In the situation
 where~$T_0$, $T$, and~$T'$ are arbitrary geometric theories, the lax pullback
 classifies the geometric theory whose models consist of a model~$M$ of~$T$, a
 model~$N$ of~$T'$, and a homomorphism~$G(M) \to F(N)$ of~$T_0$-models. The
-constructions~$G$ and~$F$ are given by the geometric morphisms~$g$ and~$f$,
-which display a way to turn the generic model of~$T$ respectively~$T'$ (and
-therefore any model of~$T$ respectively~$T'$) into a model of~$T_0$ using only
-geometric operations.
+constructions~$G$ and~$F$ are given by the geometric morphisms~$g$ and~$f$:
 
-The lax pullback~$(\Set \Rightarrow_{\Set[\Ring]} \Set[\LocRing])$ therefore
+Any object of~$\Set[T]$ can be obtained by geometric constructions from~$U_T$,
+the universal model of~$T$ in~$\Set[T]$. In particular, the pullback~$g^{-1}
+U_{T_0}$, which is a model of~$T_0$, can be obtained by geometric constructions
+from~$U_T$. Therefore the geometric morphism~$g$ displays a way to turn the
+generic model of~$T$ into a model of~$T_0$ using only geometric constructions.
+The same constructions can be applied to any model~$M$ of~$T$, yielding a
+model~$G(M)$ of~$T_0$.
+
+In the concrete situation at hand, the theory~$T$ is the empty theory
+(admitting in any topos a unique model~$M$), the theory~$T'$ is the theory of local
+rings, and~$T_0$ is the theory of rings. The~$T_0$-model~$G(M)$ is the
+ring~$A$. The~$T_0$-model~$F(N)$ of a local ring~$N$ is the underlying ring
+of~$N$.
+
+Therefore the lax pullback~$(\Set \Rightarrow_{\Set[\Ring]} \Set[\LocRing])$
 classifies ring homomorphisms~$A \to R$ where~$R$ is a local ring, that is,
 local~$A$-algebras. It's well-known that~$\Zar(\Spec(A))$ classifies these as
 well.

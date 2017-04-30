@@ -4135,7 +4135,8 @@ surjectivity of~$i^\sharp$, we may write any~$b\?\O_A$ as~$b =
 i^\sharp(a)$ for some~$a\?\O_X$.
 \end{proof}
 
-\begin{lemma}Let~$X$ be a scheme (or a ringed space). Let~$\F$ and~$\G$ be~$\O_X$-modules. Let~$x
+\begin{lemma}\label{lemma:fp-hom-geometric}
+Let~$X$ be a scheme (or a ringed space). Let~$\F$ and~$\G$ be~$\O_X$-modules. Let~$x
 \in X$. Then $\HOM_{\O_X}(\F,\G)_x \cong \Hom_{\O_{X,x}}(\F_x,\G_x)$ if~$\F$ is
 of finite presentation around~$x$.\end{lemma}
 \begin{proof}It suffices to give an intuitionistic proof of the following fact:
@@ -9078,6 +9079,7 @@ coincide.
 
 
 \subsection{Change of base}
+\label{sect:change-of-base}
 
 Let~$f : X \to S$ be a morphism of schemes. In any of the situations that
 \begin{enumerate}
@@ -9179,9 +9181,9 @@ A special case in which the canonical morphism~$f^{-1}(\flat E) \to
 \begin{thm}\label{thm:big-zariski-topos-of-relative-spectrum}
 Let~$\A$ be a quasicoherent~$\O_S$-algebra. In the situation that the
 parsimonious sites are used for constructing big Zariski toposes, the big
-Zariski topos of~$\RelSpec_S(\A)$ is the classifying topos of the theory of
-local~$\A$-algebras which are local over~$\O_S$ from the internal point of view
-of~$\Sh(S)$.
+Zariski topos of~$\RelSpec_S(\A)$ is, from the internal point of view
+of~$\Sh(S)$, the classifying topos of the theory of
+local~$\A$-algebras which are local over~$\O_S$.
 \end{thm}
 
 \begin{proof}The proof is similar to the proof of
@@ -9228,6 +9230,63 @@ locally ringed locale (or even a locally ringed topos), then the big Zariski
 topos of~$X$ should be the classifying~$\Sh(X)$-topos of the theory (internal
 to~$\Sh(X)$) of local~$\O_X$-algebras which are local over~$\O_X$.
 
+\begin{prop}Let~$\A$ be an~$\O_S$-algebra. The following constructions,
+performed internally to~$\Sh(S)$, yield canonically equivalent toposes:
+\begin{enumerate}
+\item Constructing first the local spectrum~$X \defeq \Spec(\A|\O_S)$ and then,
+internally to~$\Sh_{\Sh(S)}(X)$, the classifying topos of the theory
+of~$\O_X$-algebras which are local over~$\O_X$.
+\item Constructing the classifying topos of the theory of~$\A$-algebras which
+are local over~$\O_S$.
+\end{enumerate}
+If furthermore~$\A$ is finitely presented as an~$\O_S$-algebra from the
+internal point of view of~$\Sh(S)$, then the following construction yields the
+same result as well:
+\begin{enumerate}
+\addtocounter{enumi}{2}
+\item Constructing first the big Zariski topos of~$S$ as the classifying topos
+of local~$\O_S$-algebras which are local over~$\O_S$ and then constructing,
+internally to that topos, the slice topos over~$[\A^\Zar,
+\affl]_{\Alg(\affl)}$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+If~$S$ is indeed a scheme, as is supposed throughout this part, and~$\A$ is
+quasicoherent, then all three constructions yield the big
+Zariski topos of~$\RelSpec_S(\A)$ (defined using one of the parsimonious
+sites). For the first construction, this is by
+Theorem~\ref{thm:local-spectrum-yields-relative-spectrum} and
+Theorem~\ref{thm:zar-classifies}; for the second construction, this is by
+Theorem~\ref{thm:big-zariski-topos-of-relative-spectrum}; and for the third
+construction, this is by Theorem~\ref{thm:zar-classifies},
+Proposition~\ref{prop:relative-spectrum-big-zariski}, and the description of
+the slice topos in Section~\ref{sect:change-of-base}. However, the claim also
+holds if~$\A$ is not quasicoherent or if~$S$ is an arbitrary locally ringed
+locale, and it's instructive to see the proof in this more general situation.
+
+We work in the internal universe of~$\Sh(S)$. Let~$\E$ be an arbitrary
+(Gro\-then\-dieck) topos. Then~$\E$-valued points of the three toposes are given
+by:
+\begin{enumerate}
+\item a filter~$F \subseteq \A$ lying over the filter of units of~$\O_S$
+together with a local~$\A_F$-algebra~$R$ which is local over~$\A_F$
+\item a local~$\A$-algebra which is local over~$\O_S$
+\item a local~$\O_S$-algebra~$R$ which is local over~$\O_S$ together with an
+element of the stalk of~$[\A^\Zar, \affl]_{\Alg(\affl)}$ at the point
+corresponding to~$R$
+\end{enumerate}
+In the case that~$\A$ is finitely presented, the stalk appearing in
+description~(3) is canonically isomorphic to the set of~$R$-algebra
+homomorphisms~$\A \otimes_{\O_S} R \to R$, as discussed in
+Lemma~\ref{lemma:fp-hom-geometric}.
+
+With these descriptions, the equivalence is immediate. For instance, a
+datum~$(F \subseteq \A, \A_F \to R)$ as in description~(1) gives rise to the
+datum~$(\O_S \to \A_F \to R)$ as in description~(2). Conversely, the structure
+morphism of a datum as in description~(2) can be factored as a localization
+followed by a local homomorphism to yield a datum as in~(1).
+\end{proof}
 
 
 \section{Sheaves of rings, algebras, and modules}

@@ -7497,6 +7497,8 @@ a topological space in order to work in an intuitionistic setting: $\Ring^\op \t
 $\Alg(\O_X)^\op \to \LRS/(X,\O_X)$
 \item Hakim's spectrum of a ringed topos~\cite{hakim:relative-schemes},
 yielding a locally ringed topos: $\RT \to \LRT$.
+\item Cole's general framework for spectrum constructions~\cite{cole:spectra}
+(also reported on at~\cite[Theorem~6.58]{johnstone:topos-theory})
 \end{itemize}
 
 These are related as follows.
@@ -7549,6 +7551,20 @@ locally ringed space~$\mu : Y \to X$ over~$X$,
   &\cong \Hom_{\Alg(\O_X)}(\A, \mu_*\O_Y).
 \end{align*}
 This is precisely the universal property which Gillam's spectrum enjoys.
+
+Cole's framework for spectrum constructions is sufficiently general to
+encompass both the ordinary spectrum and the local spectrum, and by extension
+Hakim's spectrum and Gillam's spectrum. As is well-known, the ordinary spectrum
+can be obtained from Cole's framework by applying it to the geometric
+theory~$\mathbb{S}$ of rings, its quotient theory~$\mathbb{T}$ of local rings,
+and the admissible class~$\mathbb{A}$ of local homomorphisms (notation as
+in~\cite[Theorem~6.58]{johnstone:topos-theory}). The local spectrum can be
+obtained by applying it to the geometric theory~$\mathbb{S}$
+of~$\O_X$-algebras, its quotient theory~$\mathbb{T}$ of local~$\O_X$-algebras
+which are local over~$\O_X$, and the admissible class of local homomorphisms.
+For this to make sense, one has to interpret Cole's framework in the internal
+language of~$\Sh(X)$, since there are no external geometric theories of
+(local)~$\O_X$-algebras.
 
 In general, the local spectrum doesn't coincide with the usual spectrum and
 Gillam's spectrum doesn't coincide with Hakim's spectrum. However, if the base

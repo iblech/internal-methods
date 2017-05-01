@@ -8030,8 +8030,36 @@ of the proof of Proposition~\ref{prop:lrl-complete}, applying the coreflector on
 solves the first issue, but not the second.
 \end{rem}
 
+It's instructive to determine the points of limits in~$\LRL$, even though a
+locale is of course not determined by its points. For instance, the construction in
+Proposition~\ref{prop:lrl-complete} shows that the points of the product~$X
+\times Y$ of locally ringed locales in~$\LRL$ are in canonical one-to-one
+correspondence with tuples~$(x,y,F)$, where~$x$ is a point of~$X$,~$y$ is a
+point of~$y$, and~$F$ is a filter of~$\O_{X,x} \otimes_\ZZ \O_{Y,y}$ which lies
+over the filter of units of~$\O_{X,x}$ and of~$\O_{Y,y}$. In classical logic,
+those tuples are in canonical one-to-one correspondence with
+tuples~$(x,y,\ppp)$, where~$x$ and~$y$ are as before and~$\ppp$ is a prime
+ideal of~$k(x) \otimes_\ZZ k(y)$.
 
-% \begin{document}
+Similarly, points of the fiber product~$X \times_Z Y$ are in canonical
+one-to-one correspondence with tuples~$(x,y,F)$, where~$x$ is a point of~$X$
+and $y$ is a point of~$y$ such that both map to the same point~$z$ of~$Z$,
+and~$F$ is a filter of~$\O_{X,x} \otimes_{\O_{Z,z}} \O_{Y,y}$ lying over the
+filter of units of~$\O_{X,x}$ and of~$\O_{Y,y}$ (and therefore automatically
+of~$\O_{Z,z}$). In classical logic, those tuples are in canonical one-to-one
+correspondence with tuples~$(x,y,\ppp)$, where~$x$ and~$y$ are as before
+and~$\ppp$ is a prime ideal of~$k(x) \otimes_{k(z)} k(y)$.
+
+\begin{rem}By the adjunction~$(\placeholder)_L \dashv (\placeholder)_P$
+relating locales and topological spaces, limits of locally ringed spaces which
+happen to be sober can be calculated by regarding them as locally ringed
+locales by~$(\placeholder)_L$, calculating their limit in~$\LRL$, and taking
+the associated topological space of the limit by~$(\placeholder)_P$.
+
+Small diagrams of arbitrary locally ringed spaces admit limits as well.
+Indeed, the proof of Proposition~\ref{prop:lrl-complete} was adapted from
+Gillam's proof of this fact~\cite[Corollary~5]{gillam:localization}.\end{rem}
+
 
 \subsection{Relative Proj construction} Similar issues as with the relative
 spectrum arise with the Proj construction: The standard definition of the Proj

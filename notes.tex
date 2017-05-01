@@ -159,6 +159,13 @@
 \newcommand{\stacksproject}[1]{\cite[{\href{http://stacks.math.columbia.edu/tag/#1}{Tag~#1}}]{stacks-project}}
 \newcommand{\apart}{\mathrel{\#}}
 
+\newenvironment{indentblock}{%
+  \list{}{\leftmargin\leftmargin}%
+  \item\relax
+}{%
+  \endlist
+}
+
 \newcommand{\XXX}[1]{\textbf{XXX: #1}}
 \newcommand{\XXXh}[1]{}
 
@@ -472,7 +479,7 @@ However, the description of basic objects can still be somewhat involved in the
 functorial approach. For instance, while the functor associated to
 projective~$n$-space is given on fields by the simple expression
 \[ \begin{array}{r@{}c@{}l}
-  K &{}\longmapsto{}& \text{the set of lines trough the origin in~$K^{n+1}$} \\
+  K &{}\longmapsto{}& \text{the set of lines through the origin in~$K^{n+1}$} \\
   && \qquad \cong \{ [x_0:\cdots:x_n] \,|\, \text{$x_i \neq 0$ for some~$i$} \},
 \end{array} \]
 on general rings it is given by
@@ -732,6 +739,12 @@ in an intuitionistic context.
 
 \section{The internal language of a sheaf topos}\label{sect:internal-language}
 
+At its heart, the internal language of a topos provides a coherent way of
+translating any mentions of set-theoretical elements to
+\emph{generalized elements}, carefully keeping track of and changing
+the stage of definition. We want to illustrate this with a simple example
+before giving the formal definition.
+
 A map~$f : X \to Y$ of sets is injective if and only if
 \begin{equation}\label{inj}
   \forall x,x' \in X\_ f(x) = f(x') \Longrightarrow x = x'.
@@ -747,82 +760,72 @@ condition in a purely category-theoretic language:
 This condition makes sense in all categories which contain a terminal
 object~$1$, and is equivalent to condition~\eqref{inj} in the case~$\C = \Set$.
 This has a deeper reason: The one-element set~$1 = \{ \star \}$ is a
-\emph{generator} of~$\Set$, that is objects of~$\Set$ are uniquely determined
-by their \emph{global elements}, morphisms from the terminal object . % XXX: correct terminology?
+\emph{separator} of~$\Set$, that is objects of~$\Set$ are uniquely determined
+by their \emph{global elements}, morphisms from the terminal object.
 
-In Kategorien, in denen das terminale Objekt aber kein Erzeuger ist, ist
-Bedingung~\eqref{injcat} dagegen nicht sehr aussagekräftig. Konkret der Fall
-ist das beispielsweise beim Topos~$\Sh(A)$ der Garben auf einem topologischen
-Raum~$A$. Globale Elemente einer Garbe~$\F$ stehen in natürlicher Bijektion mit
-globalen Schnitten~$x \in \F(A)$ (daher der Name), sodass
-Bedingung~\eqref{injcat} nur aussagt, dass die Garbenabbildung~$f$
-\emph{injektiv auf globalen Schnitten} ist. Da viele interessante Garben
-überhaupt keine oder nur wenige globale Schnitte besitzen, ist das in der Regel
-eine gehaltlose Aussage.
+However, in categories in which the terminal object is not a separator,
+condition~\eqref{injcat} is not very meaningful. This is for instance the case
+if~$\C$ is the category~$\Sh(X)$ of set-valued sheaves on a topological
+space~$X$. Global elements of a sheaf~$\F$ are in natural one-to-one
+correspondence with global sections~$s \in \F(X)$ (hence the name), whereby
+condition~\eqref{injcat} only states that~$f$ is \emph{injective on global
+sections}. Since many interesting sheaves admit no or only few global sections,
+this statement is typically not very substantial.
 
-Man löst das Problem dadurch, indem man nicht nur globale Elemente~$1 \to X$,
-sondern auch \emph{verallgemeinerte} Elemente~$I \to X$ betrachtet. Dabei
-muss~$I$ alle Objekte der untersuchten Kategorie~$\C$ durchlaufen; mit diesem
-Prinzip ist eine bessere Übersetzung der Injektivitätsbedingung die Aussage
-\begin{equation}\label{injallg}
-  \forall \text{Objekte $I$ in~$\C$}\_ \forall (I \xra{x} X), (I \xra{x'\!} X) \text{ in~$\C$}\_\ 
-  f \circ x = f \circ x' \ \Longrightarrow\ x = x',
+A basic tenet of category theory is therefore to not only refer to global
+elements~$1 \to X$, but also to \emph{generalized elements}~$A \to X$,
+where~$A$ ranges over all objects. The domain~$A$ is called the \emph{stage of
+definition} in this context. Bearing this principle in mind, a better
+translation of the injectivity condition is the statement
+\begin{equation}\label{injgen}
+  \forall \text{objects $A$ in~$\C$}\_ \forall (A \xra{x} X), (A \xra{x'\!} X) \text{ in~$\C$}\_\
+  f \circ x = f \circ x' \ \Longrightarrow\ x = x'.
 \end{equation}
-und diese fängt die Intuition hinter dem Injektivitätsbegriff auch in
-beliebigen Kategorien~$\C$ richtig ein: Ein Morphismus~$f$, der
-Bedingung~\eqref{injallg} erfüllt, heißt bekanntlich \emph{Monomorphismus}. Den
-tieferen Grund, wieso diese Idee funktioniert, drückt das
-\emph{Yonedalemma}~\cite{yoneda} aus, demnach ein Objekt (bis auf Isomorphie) schon
-eindeutig durch die Morphismen in das Objekt hinein bestimmt ist.
-% XXX: Letzten Satz verstehe ich nicht?
+This statement expresses that~$f$ is a monomorphism and therefore
+correctly captures the structural essence of injectivity.
 
+Unlike this manual translation guided by trial and error and categorical
+philosophy, the internal language provides a purely mechanical translation
+scheme.  It is fully formal, can be analyzed rigorously, works smoothly with
+arbitrarily convoluted statements, and most importantly can be trusted to
+support \emph{reasoning}: If a statement formulated in a naive element-based
+language intuitionistically implies a further such statement, then the
+translation of the former implies the translation of the latter.
 
-\subsubsection*{Die interne Sprache}
+The power of the internal language doesn't unfold in basic situations like with
+the example above, where one can easily translate statements and even proofs by
+hand. It unfolds when considering more complex statements. For instance, the
+short proof of Grothendieck's generic freeness lemma promised in the
+introduction rests on the observation that the translation of the statement~``any ideal
+of~$\O_{\Spec(R)}[U_1,\ldots,U_n]$ is \notnot finitely generated'' is valid,
+where~$R$ is a reduced ring. This translation is the following slightly intricate
+statement:
+\begin{indentblock}\label{page:convoluted-statement}
+For any element~$f \in R$ and any sheaf of ideals~$\J \hookrightarrow
+\O_{\Spec(R)}[U_1,\ldots,U_n]|_{D(f)}$: If
+\begin{indentblock}
+for any element~$g \in R$ the condition that
+\begin{indentblock}
+the sheaf~$\J$ is of finite type on~$D(g)$
+\end{indentblock}
+implies that~$g = 0$,
+\end{indentblock}
+then~$f = 0$.
+\end{indentblock}
+This statement can be proven by hand, but it's much simpler to only verify the
+case~$n = 0$ (and even reduce this case to simple other properties
+which~$\O_{\Spec(R)}$ enjoys from the internal point of view) and then to apply
+Hilbert's basis theorem.\footnote{Hilbert's basis theorem is famous for
+admitting only a nonconstructive proof, and nonconstructive proofs can't be
+translated by the internal language machinery. But this is only true for the
+conclusion ``any ideal is finitely generated''. The intuitionistically weaker
+conclusion ``any ideal is \notnot finitely generated'' does admit a
+constructive proof, and is all what's needed here.}
 
-In der Praxis ist es allerdings umständlich, immer an verallgemeinerte
-Elemente denken und diese in der Notation berücksichtigen zu müssen. Als
-Abhilfe dazu gibt es die \emph{interne Sprache} einer Kategorie
-(nach J.~Bénabou, A.~Joyal und W.~Mitchell, siehe~\cite[Kap.~1]{catlogprime}):
-In dieser
-kann man die Injektivitätsbedingung als
-\begin{equation}\label{injtype}
-  \forall x,x'\?X\_\ f(x) = f(x') \ \Longrightarrow\ x = x'
-\end{equation}
-formulieren, die Ähnlichkeit zur ursprünglichen Definition~\eqref{inj} ist
-offensichtlich. Der Doppelpunkt beim Allquantor soll andeuten, dass~$X$ nicht
-notwendigerweise eine Menge und~$x,x'$ nicht notwendigerweise Elemente einer
-Menge im wörtlichen (materiellen) Sinn sein müssen. Stattdessen sagt man,
-dass~$X$ ein \emph{Typ} und~$x,x'$ \emph{Werte} dieses Typs sind, und
-bezeichnet den Ausdruck~\eqref{injtype} als \emph{Formel im leeren Kontext}.
-(Freie, nicht durch Quantoren gebundene Variablen sammelt der sog. Kontext
-der Formel auf.)
-
-Wenn die untersuchte Kategorie genügend gute Eigenschaften hat -- ein
-\emph{Topos} ist --, gibt es ein konkretes, algorithmisch gegebenes und auch in der Praxis einfach
-durch\-führ\-ba\-res Verfahren, um solche intern formulierten Aussagen in die externe
-mathematische Sprache zu übersetzen, die sog.
-\emph{Kripke-Joyal-Semantik}~\cite[Kap~VI.6]{moerdijkmaclane}.
-Wendet man dieses auf die Formel~\eqref{injtype} an, erhält man (nach einem
-Vereinfachungsschritt) genau die zuvor hergeleitete Bedingung~\eqref{injallg}
-mit verallgemeinerten Elementen.
-
-Die interne Sprache erlaubt nicht nur, Bedingungen einfach formulieren zu
-können, sondern auch logische Schlussfolgerungen anzustellen. Beispielsweise
-kann man, indem man den üblichen Beweis mit
-minimalen syntaktischen Änderungen abschreibt, intern zeigen, dass
-\[ \speak{$f$ ist injektiv} \wedge \speak{$f$ ist surjektiv}
-  \Longrightarrow \speak{$f$ besitzt eine Umkehrfunktion}. \]
-Die Häkchen sollen andeuten, dass die Teilaussagen nur umgangssprachlich vorliegen und
-daher vom Leser formalisiert werden müssen.
-Extern besagt diese Implikation, dass jeder Morphismus~$f$ eines Topos, der zugleich ein
-Mono- und Epimorphismus ist, schon einen Umkehrmorphismus besitzt, also ein
-Isomorphismus ist.
-% XXX: Give low-key introduction. Generalized arguments.
-% ..."In essence, the internal language provides a coherent mechanism to
-% translate any mentions of elements to generalized elements... Unlike a manual
-% such translation, however, it is fully formal, can be analyzed rigorously,
-% works painlessly with arbitrarily convoluted statements, and
-% most importantly can be trusted to support \emph{reasoning}...
+Because of the multiple nestings, it probably wouldn't occur to one to base a
+proof of Grothendieck's generic freeness lemma on this statement. The internal
+language is therefore of real use here. We'll expand on this example in
+Section~\ref{sect:noetherian} and in Section~\ref{sect:generic-freeness}.
 
 
 \subsection{Internal statements}
@@ -1920,6 +1923,7 @@ and only if~$R$ has the property~$\varphi$ externally
 
 
 \subsection{Noetherian properties}
+\label{sect:noetherian}
 
 Recall the usual notion of a Noetherian ring: Any sequence~$\aaa_0 \subseteq
 \aaa_1 \subseteq \cdots$ of ideals should stabilize, \ie there should exist a
@@ -2142,7 +2146,9 @@ is \notnot finitely generated (even \notnot principal).
 
 The fact that~$\O_X$ is weakly Noetherian from the internal point of view will
 allow for a quick proof of Grothendieck's generic freeness lemma in
-Section~\ref{sect:generic-freeness}.
+Section~\ref{sect:generic-freeness}. The translation of the statement
+that~$\O_X[U_1,\ldots,U_n]$ is weakly Noetherian was displayed on
+page~\ref{page:convoluted-statement}.
 
 }
 

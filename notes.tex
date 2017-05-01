@@ -741,7 +741,7 @@ in an intuitionistic context.
 
 At its heart, the internal language of a topos provides a coherent way of
 translating any mentions of set-theoretical elements to
-\emph{generalized elements}, carefully keeping track of and changing
+\emph{generalized elements}, carefully keeping track of and adapting
 the stage of definition. We want to illustrate this with a simple example
 before giving the formal definition.
 
@@ -752,7 +752,7 @@ A map~$f : X \to Y$ of sets is injective if and only if
 This condition can not only be interpreted in~$\Set$, but in any category~$\C$ whose
 objects are structured sets and whose morphisms are maps between the underlying
 sets. If we want to go beyond such kind of categories, we have to restate the
-condition in a purely category-theoretic language:
+condition in purely category-theoretic language:
 \begin{equation}\label{injcat}
   \forall (1 \xra{x} X), (1 \xra{x'} X)\_ f \circ x = f \circ x'
   \Longrightarrow x = x'.
@@ -796,13 +796,14 @@ The power of the internal language doesn't unfold in basic situations like with
 the example above, where one can easily translate statements and even proofs by
 hand. It unfolds when considering more complex statements. For instance, the
 short proof of Grothendieck's generic freeness lemma promised in the
-introduction rests on the observation that the translation of the statement~``any ideal
-of~$\O_{\Spec(R)}[U_1,\ldots,U_n]$ is \notnot finitely generated'' is valid,
-where~$R$ is a reduced ring. This translation is the following slightly intricate
-statement:
+introduction rests on the internal statement~``any ideal
+of~$\O_{\Spec(R)}[U_1,\ldots,U_n]$ is \notnot finitely generated'',
+where~$R$ is a reduced ring. For the proof of Grothendieck's generic freeness
+lemma it's not necessary to actually perform the translation of this statement into external
+language, but for definiteness we display the translation here nevertheless:
 \begin{indentblock}\label{page:convoluted-statement}
-For any element~$f \in R$ and any sheaf of ideals~$\J \hookrightarrow
-\O_{\Spec(R)}[U_1,\ldots,U_n]|_{D(f)}$: If
+For any element~$f \in R$ and any (not necessarily quasicoherent) sheaf of
+ideals~$\J \hookrightarrow \O_{\Spec(R)}[U_1,\ldots,U_n]|_{D(f)}$: If
 \begin{indentblock}
 for any element~$g \in R$ the condition that
 \begin{indentblock}
@@ -812,20 +813,19 @@ implies that~$g = 0$,
 \end{indentblock}
 then~$f = 0$.
 \end{indentblock}
-This statement can be proven by hand, but it's much simpler to only verify the
-case~$n = 0$ (and even reduce this case to simple other properties
-which~$\O_{\Spec(R)}$ enjoys from the internal point of view) and then to apply
-Hilbert's basis theorem.\footnote{Hilbert's basis theorem is famous for
-admitting only a nonconstructive proof, and nonconstructive proofs can't be
-translated by the internal language machinery. But this is only true for the
-conclusion ``any ideal is finitely generated''. The intuitionistically weaker
-conclusion ``any ideal is \notnot finitely generated'' does admit a
-constructive proof, and is all what's needed here.}
-
-Because of the multiple nestings, it probably wouldn't occur to one to base a
-proof of Grothendieck's generic freeness lemma on this statement. The internal
-language is therefore of real use here. We'll expand on this example in
-Section~\ref{sect:noetherian} and in Section~\ref{sect:generic-freeness}.
+This statement is obviously quite convoluted, and its proof is even more so;
+therefore it probably wouldn't occur to one to base a proof of Grothendieck's
+generic freeness lemma on this statement. The internal language is thus of real
+use here. We'll expand on this example in Section~\ref{sect:noetherian} and in
+Section~\ref{sect:generic-freeness}.\footnote{The statement can be proven by
+hand, but it's much simpler to only verify the case~$n = 0$ (and even reduce
+this case to simple other properties which~$\O_{\Spec(R)}$ enjoys from the
+internal point of view) and then to apply Hilbert's basis theorem. Hilbert's
+basis theorem is famous for admitting only a nonconstructive proof, and
+nonconstructive proofs can't be translated by the internal language machinery;
+but this is only true for the conclusion ``any ideal is finitely generated''.
+The intuitionistically weaker conclusion ``any ideal is \notnot finitely
+generated'' does admit a constructive proof, and is all what's needed here.}
 
 
 \subsection{Internal statements}
@@ -839,7 +839,8 @@ for open subsets~$U \subseteq X$ and formulas~$\varphi$ over~$U$ is given by
 the rules listed in Table~\ref{table:kripke-joyal}, recursively in the structure of~$\varphi$.
 In a \emph{formula over~$U$} there may appear sheaves defined on~$U$ as domains
 of quantifications,~$U$-sections of sheaves as terms, and morphisms of sheaves
-on~$U$ as function symbols. The symbols~``$\top$'' and~``$\bot$'' denote truth
+on~$U$ as function symbols. If~$V \subseteq U$ is an open subset, then formulas
+over~$U$ can be pulled back to formulas over~$V$. The symbols~``$\top$'' and~``$\bot$'' denote truth
 and falsehold, respectively. The universal and existential quantifiers come in
 two flavors: for bounded and unbounded quantification.
 The translation of~$U \models \neg\varphi$ does not have to be separately defined, since
@@ -2148,7 +2149,7 @@ The fact that~$\O_X$ is weakly Noetherian from the internal point of view will
 allow for a quick proof of Grothendieck's generic freeness lemma in
 Section~\ref{sect:generic-freeness}. The translation of the statement
 that~$\O_X[U_1,\ldots,U_n]$ is weakly Noetherian was displayed on
-page~\ref{page:convoluted-statement}.
+page~\pageref{page:convoluted-statement}.
 
 }
 

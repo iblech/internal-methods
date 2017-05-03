@@ -158,6 +158,7 @@
 \newcommand{\xra}{\xrightarrow}
 \newcommand{\stacksproject}[1]{\cite[{\href{http://stacks.math.columbia.edu/tag/#1}{Tag~#1}}]{stacks-project}}
 \newcommand{\apart}{\mathrel{\#}}
+\newcommand{\fieldext}{\mathrel{|}}
 
 \newenvironment{indentblock}{%
   \list{}{\leftmargin\leftmargin}%
@@ -9426,6 +9427,92 @@ datum~$(F \subseteq \A, \A_F \to R)$ as in description~(1) gives rise to the
 datum~$(\O_S \to \A_F \to R)$ as in description~(2). Conversely, the structure
 morphism of a datum as in description~(2) can be factored as a localization
 followed by a local homomorphism to yield a datum as in~(1).
+\end{proof}
+
+
+\section{The double negation modality}
+
+\begin{prop}Let~$\varphi$ be a formula over~$S$. Consider the following
+statements:
+\begin{enumerate}
+\item $\Zar(S) \models \neg\neg\varphi$.
+\item For all points~$s \in S$, there is a field extension~$K \fieldext k(s)$ such
+that~$\Spec(K) \to \Spec(k(s)) \to S$ is contained in the site used to
+define~$\Zar(S)$ and such that~$\Spec(K) \models \varphi$.
+\item For all closed points~$s \in S$, there is a finite field extension~$K \fieldext
+k(s)$ such that~$\Spec(K) \models \varphi$.
+\end{enumerate}
+Then:
+\begin{itemize}
+\item Condition~(2) implies condition~(1). The converse holds if the site used
+to define~$\Zar(S)$ is closed under taking spectra of residue fields (this
+is satisfied for all sites listed in Section~\ref{sect:proper-choice-of-site}
+except for the parsimonious sites).
+\item If one of the parsimonious sites is used to define~$\Zar(S)$ and~$S$ is
+locally Noetherian, condition~(1) implies condition~(3). The converse holds if
+additionally~$S$ is locally of finite type over a field.
+\end{itemize}
+\end{prop}
+
+\begin{proof}We begin with showing that condition~(2) implies condition~(1). By
+the Kriple--Joyal translation, we need to verify that
+\[ \forall (X \to S)\_
+  \Bigl(\forall (T \to X)\_ (T \models \varphi) \Rightarrow T = \emptyset\Bigr)
+  \Longrightarrow X = \emptyset, \]
+where the universal quantifiers range over all schemes contained in the site
+used to define~$\Zar(S)$. So let such an~$S$-scheme~$f : X \to S$ be given. We
+show that the fiber over any point~$s \in S$ is empty. By assumption, there is
+a field extension~$K \fieldext k(s)$ such that~$\Spec(K) \to \Spec(k(s)) \to S$
+is contained in the site used to define~$\Zar(S)$ and such that~$\Spec(K)
+\models \varphi$. The base change~$T$ of the fiber~$X_s$ to~$\Spec(K)$ as
+indicated in the diagram
+\[ \xymatrix{
+  T \ar[r]\ar[d] & X_s \ar[r]\ar[d] & X \ar[d] \\
+  \Spec(K) \ar[r] & \Spec(k(s)) \ar[r] & S
+} \]
+is contained in the site used to define~$\Zar(S)$ as well, therefore
+saying~``$T \models \varphi$'' is meaningful. And indeed~$T \models \varphi$,
+since~$\Spec(K) \models \varphi$. Therefore~$T = \emptyset$. Thus~$X_s =
+\emptyset$ as claimed.
+
+For the direction~``(1)~$\Rightarrow$~(2)'', let a point~$s \in S$ be given.
+Since we assume that the site used to define~$\Zar(S)$ contains
+the~$S$-scheme~$X \defeq \Spec(k(s))$ and since~$X \neq \emptyset$, the
+assumption implies that there exists an nonempty~$X$-scheme~$T$ such that~$T
+\models \varphi$.  Since~$T$ is nonempty, there exists a point~$t \in T$. By
+the morphism~$\Spec(k(t)) \to T \to X$, the field~$K \defeq k(t)$ is an
+extension of~$k(s)$, and since~$\Spec(K) \to T \to X \to S$ is contained in the
+site, we have~$\Spec(K) \models \varphi$.
+
+The proof that condition~(1) implies condition~(3) in the case that one of the
+parsimonious sites is used to define~$\Zar(S)$ and that~$S$ is locally
+Noetherian is similar. For a closed point~$s \in S$, the residue field~$k(s)$
+can be calculated as~$A/\mmm$, where~$A$ is the ring of functions of an open
+affine neighbourhood of~$s$ and~$\mmm$ is a maximal ideal in~$A$. Since~$A$ is
+Noetherian, the ideal~$\mmm$ is finitely generated and therefore~$A/\mmm$ is
+finitely presented as an~$A$-algebra. Thus the canonical morphism~$\Spec(k(s))
+\to \Spec(A) \to S$ is locally of finite presentation and thereby contained in
+the parsimonious site. The hypothesis is therefore applicable to~$X \defeq
+\Spec(k(s))$ and yields a nonempty~$X$-scheme~$T$ such that~$T \models \varphi$.
+
+Since the composite~$T \to X \to S$ is locally of finite presentation, the
+scheme~$T$ inherits the property to be locally Noetherian from~$S$. Let~$U
+\subseteq T$ be a nonempty open affine subset and let~$t \in U$ be a point
+which is closed in~$U$. With the same reasoning as above, the canonical
+morphism~$\Spec(k(t)) \to U \to T$ is therefore contained in the parsimonious
+site. Thus~$\Spec(k(t)) \models \varphi$. The field~$K \defeq k(t)$ is finitely
+presented as an~$k(s)$-algebra. By Noether normalization, it is also of finite
+dimension as an~$k(s)$-vector space.
+
+Finally, we verify that condition~(3) implies condition~(1) if one of the
+parsimonious sites is used to define~$\Zar(S)$ and if~$S$ is locally
+of finite type over a field (and therefore in particular Noetherian). We adopt
+the notation of the proof of~``(2)~$\Rightarrow$~(1)''. The argument there
+shows that all fibers of~$f$ over closed points are empty. If~$X$ is not empty,
+it contains a closed point~$x$ (since~$X$ is locally of finite type over a field,
+any point which is closed in an open affine neighbourhood will do). Since~$X$
+is locally of finite type over a field, the point~$f(x)$ is closed in~$S$.
+Therefore~$x$ is contained in the fiber over a closed point; a contradiction.
 \end{proof}
 
 

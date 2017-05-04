@@ -9448,7 +9448,8 @@ followed by a local homomorphism to yield a datum as in~(1).
 
 \section{The double negation modality}
 
-\begin{prop}Let~$\varphi$ be a formula over~$S$. Consider the following
+\begin{prop}\label{prop:notnot-in-big-zariski-topos}
+Let~$\varphi$ be a formula over~$S$. Consider the following
 statements:
 \begin{enumerate}
 \item $\Zar(S) \models \neg\neg\varphi$.
@@ -9530,6 +9531,16 @@ any point which is closed in an open affine neighbourhood will do). Since~$X$
 is locally of finite type over a field, the point~$f(x)$ is closed in~$S$.
 Therefore~$x$ is contained in the fiber over a closed point; a contradiction.
 \end{proof}
+
+\begin{rem}The proof of Proposition~\ref{prop:notnot-in-big-zariski-topos} uses
+classical logic in a substantial way, since repeatedly the lemma that a scheme
+is trivial if it doesn't have any points was used. Even if scheme theory is
+set up in an intuitionistic sensible way (for instance defining a scheme to be
+a locally ringed locale which is locally isomorphic to the locale-theoretic
+spectra of rings as discussed in Section~\ref{sect:spectrum-as-a-locale}), one
+should therefore not expect the proposition to admit an intuitionistic proof
+without additional hypotheses.
+\end{rem}
 
 
 \section{Sheaves of rings, algebras, and modules}

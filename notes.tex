@@ -9585,6 +9585,51 @@ should therefore not expect the proposition to admit an intuitionistic proof
 without additional hypotheses.
 \end{rem}
 
+\begin{lemma}\label{lemma:image-coincides}
+Let~$f : X \to S$ and~$g : Y \to S$ be~$S$-schemes which are locally contained
+in the site used to define~$\Zar(S)$.
+\begin{enumerate}
+\item The image of~$f$ coincides with the image of~$g$ topologically.
+\item $\Zar(S) \models \neg\neg(\speak{$\ul{X}$ inhabited}) \Leftrightarrow
+  \neg\neg(\speak{$\ul{Y}$ inhabited})$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}By Proposition~\ref{prop:char-surjective-morphisms}, statement~(2)
+is equivalent to:
+\begin{indentblock}
+For any~$S$-scheme~$h : T \to S$ contained in the site used to
+define~$\Zar(S)$, the morphism~$X \times_S T \to T$ is surjective if and only
+if~$Y \times_T T \to T$ is.
+\end{indentblock}
+We verify that this statement implies statement~(1). Let~$s \in \im(f)$. Then the canonical
+morphism~$X_s \to \Spec(k(s))$ is surjective. Therefore there exists
+an~$S$-scheme~$h : T \to S$ which is contained in the site used to
+define~$\Zar(S)$ such that~$X \times_S T \to T$ is surjective and such that~$s
+\in \im(h)$: If~$\Zar(S)$ is defined using a Grothendieck or partial universe,
+this claim is trivial, since we can take~$T \defeq \Spec(k(s))$. If~$\Zar(S)$
+is defined using one of the parsimonious sites, we employ the technique of
+relative approximation.\footnote{More specifically, we may assume that~$S$ is
+affine. Then the lemma on relative approximation~\stacksproject{09MV} can be
+applied to write~$\Spec(k(s))$ as a directed limit of an inverse system of
+finitely presented~$S$-schemes~$T_i$ with affine transition maps. Let~$U
+\subseteq X$ be an open affine subset containing a preimage of~$s$. The
+property that~$U \hookrightarrow X \to \Spec(k(s))$ is surjective descends to
+one of the morphisms~$U \times_S T_i \to T_i$~\stacksproject{07RR}. In
+particular, the morphism~$X \times_S T_i \to T_i$ is surjective. We can
+therefore take~$T \defeq T_i$. The image of~$T_i \to S$ contains~$s$
+since~$\Spec(k(s)) \to S$ factors over~$T_i \to S$.}
+
+The assumption yields that the induced morphism~$Y \times_T T \to T$ is
+surjective. Since~$s \in \im(h)$, also~$s \in \im(g)$.
+
+The proof of the converse containment relation is analogous.
+
+The direction~``(1)~$\Rightarrow$~(2)'' is immediate, since
+\[ \im(X \times_S T \to T) = h^{-1} \im(f) = h^{-1} \im(g) = \im(Y \times_S T \to T).
+  \qedhere \]
+\end{proof}
+
 
 \section{Sheaves of rings, algebras, and modules}
 
@@ -10558,50 +10603,8 @@ finite type over a field, is surjective if it is surjective on closed points.
 
 \subsection{Universally closed morphisms}
 
-\begin{lemma}\label{lemma:image-coincides}
-Let~$f : X \to S$ be an~$S$-scheme. Let~$Z \hookrightarrow S$ be a
-closed subscheme. Assume that~$X$ and~$Z$ are locally contained in the site
-used to define~$\Zar(S)$. Then the following statements are equivalent:
-\begin{enumerate}
-\item The image of~$f$ coincides with the underlying topological space of~$Z$.
-\item $\Zar(S) \models \neg\neg(\speak{$\ul{X}$ inhabited}) \Leftrightarrow
-  \neg\neg(\speak{$\ul{Z}$ inhabited})$.
-\end{enumerate}
-\end{lemma}
 
-\begin{proof}By Proposition~\ref{prop:char-surjective-morphisms}, statement~(2)
-is equivalent to:
-\begin{indentblock}
-For any~$S$-scheme~$g : T \to S$ contained in the site used to
-define~$\Zar(S)$, the morphism~$X \times_S T \to T$ is surjective if and only
-if~$Z \times_T T \to T$ is (that is, if~$\im(g) \subseteq Z$ topologically).
-\end{indentblock}
 
-Applying the assumption to the special case~$T \defeq Z$, we see that~$f^{-1}Z
-\to Z$ is surjective. Therefore~$Z \subseteq \im(f)$ topologically.
-
-For the converse containment relation, let~$s \in \im(f)$. Then the canonical
-morphism~$X_s \to \Spec(k(s))$ is surjective. Therefore there exists
-an~$S$-scheme~$g : T \to S$ which is contained in the site used to
-define~$\Zar(S)$ such that~$X \times_S T \to T$ is surjective and such that~$s
-\in \im(g)$: If~$\Zar(S)$ was defined using a Grothendieck or partial universe,
-this claim is trivial, since we can take~$T \defeq \Spec(k(s))$. If~$\Zar(S)$
-was defined using one of the parsimonious sites, we employ the technique of
-relative approximation.\footnote{More specifically, we may assume that~$S$ is
-affine. Then the lemma on relative approximation~\stacksproject{09MV} can be
-applied to write~$\Spec(k(s))$ as a directed limit of an inverse system of
-finitely presented~$S$-schemes~$T_i$ with affine transition maps. Let~$U
-\subseteq X$ be an open affine subset containing a preimage of~$s$. The
-property that~$U \hookrightarrow X \to \Spec(k(s))$ is surjective descends to
-one of the morphisms~$U \times_S T_i \to T_i$~\stacksproject{07RR}. In
-particular, the morphism~$X \times_S T_i \to T_i$ is surjective. We can
-therefore take~$T \defeq T_i$. The image of~$T_i \to S$ contains~$s$
-since~$\Spec(k(s)) \to S$ factors over~$T_i \to S$.} The assumption yields
-that~$\im(g) \subseteq Z$ topologically, so~$s \in Z$.
-
-The proof of~``(1)~$\Rightarrow$~(2)'' is immediate, since~$\im(X \times_S T
-\to T) = g^{-1} \im(f)$.
-\end{proof}
 
 
 \subsection{Quasicompact morphisms}

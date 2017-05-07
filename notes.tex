@@ -129,6 +129,7 @@
 \DeclareMathOperator{\Int}{int}
 \DeclareMathOperator{\Clos}{cl}
 \DeclareMathOperator{\Kernel}{ker}
+\DeclareMathOperator{\im}{im}
 \DeclareMathOperator{\supp}{supp}
 \newcommand{\Ass}{\mathrm{Ass}}
 \newcommand{\Sym}{\mathrm{Sym}}
@@ -10548,36 +10549,64 @@ site used to define~$\Zar(Y)$.
 as explained in Section~\ref{sect:change-of-base}.
 \end{proof}
 
-\begin{prop}\label{prop:char-surjective-morphisms}
-Let~$\varphi$ be a formula over~$S$.
-\begin{enumerate}
-\item Assume that for all points~$s \in S$
-there is a field extension~$K$ of the residue field~$k(s)$ such that
-the~$S$-scheme~$\Spec(K)$
-is contained in the site used to define~$\Zar(S)$ and
-such that~$\Spec(K) \models \varphi$. Then~$\Zar(S) \models \neg\neg\varphi$.
-\item The converse holds if the site used to define~$\Zar(S)$ contains the
-spectra of residue fields. (This is not the case for the parsimonious sites.)
-% XXX
-\end{enumerate}
-\end{prop}
+\begin{rem}Combining Proposition~\ref{prop:notnot-in-big-zariski-topos} and
+Proposition~\ref{prop:char-surjective-morphisms} yields a proof of the fact
+that a locally finitely presented morphism~$X \to S$, where~$S$ is locally of
+finite type over a field, is surjective if it is surjective on closed points.
+\end{rem}
 
-\begin{prop}Let~$f : X \to Y$ be a morphism of~$S$-schemes. Then~$f$ is set-theoretically
-surjective if and only if
-\[ \Zar(S) \models
-  \forall y\?\ul{Y}\_
-  \neg\neg \exists x\?\ul{X}\_
-  \ul{f}(x) = y. \]
-\end{prop}
+
+\subsection{Universally closed morphisms}
 
 \begin{lemma}Let~$f : X \to S$ be an~$S$-scheme. Let~$Z \hookrightarrow S$ be a
-closed subscheme. If the image of~$f$ coincides with the underlying topological
-space of~$Z$ universally, that is if for any~$S$-scheme~$g : T \to S$ contained in the
-site used to define~$\Zar(S)$ the topological image of~$X \times_S T \to T$
-coincides with~$g^{-1} Z$, then
-\[ \Zar(S) \models \neg\neg(\speak{$\ul{X}$ inhabited}) \Leftrightarrow
-  \neg\neg(\speak{$\ul{Z}$ inhabited}). \]
+closed subscheme. Assume that~$X$ and~$Z$ are locally contained in the site
+used to define~$\Zar(S)$. Then the following statements are equivalent:
+\begin{enumerate}
+\item The image of~$f$ coincides with the underlying topological space of~$Z$
+universally, that is if for any~$S$-scheme~$g : T \to S$ contained in the site
+used to define~$\Zar(S)$ the topological image of~$X \times_S T \to T$
+coincides with~$g^{-1} Z$.
+\item $\Zar(S) \models \neg\neg(\speak{$\ul{X}$ inhabited}) \Leftrightarrow
+  \neg\neg(\speak{$\ul{Z}$ inhabited})$.
+\end{enumerate}
 \end{lemma}
+
+\begin{proof}By Proposition~\ref{prop:char-surjective-morphisms}, statement~(2)
+is equivalent to:
+\begin{indentblock}
+For any~$S$-scheme~$g : T \to S$ contained in the site used to
+define~$\Zar(S)$, the morphism~$X \times_S T \to T$ is surjective if and only
+if~$Z \times_T T \to T$ is (that is, if~$\im(g) \subseteq Z$ topologically).
+\end{indentblock}
+We verify that this condition implies that~$\im(f) = Z$ topologically. Since
+statement~(2) is, like any statement in the internal language of the big
+Zariski topos, stable under base change, this suffices to verify
+statement~(1).
+
+Applying the assumption to the special case~$T \defeq Z$, we see that~$f^{-1}Z
+\to Z$ is surjective. Therefore~$Z \subseteq \im(f)$ topologically.
+
+For the converse containment relation, let~$s \in \im(f)$. Then the canonical
+morphism~$X_s \to \Spec(k(s))$ is surjective. Therefore there exists
+an~$S$-scheme~$g : T \to S$ which is contained in the site used to
+define~$\Zar(S)$ such that~$X \times_S T \to T$ is surjective and such that~$s
+\in \im(g)$: If~$\Zar(S)$ was defined using a Grothendieck or partial universe,
+this claim is trivial, since we can take~$T \defeq \Spec(k(s))$. If~$\Zar(S)$
+was defined using one of the parsimonious sites, we employ the technique of
+relative approximation.\footnote{More specifically, we may assume that~$S$ is
+affine. Then the lemma on relative approximation~\stacksproject{09MV} can be
+applied to write~$\Spec(k(s))$ as a directed limit of an inverse system of
+finitely presented~$S$-schemes~$T_i$ with affine transition maps. Let~$U
+\subseteq X$ be an open affine subset containing a preimage of~$s$. The
+property that~$U \hookrightarrow X \to \Spec(k(s))$ is surjective descends to
+one of the morphisms~$U \times_S T_i \to T_i$~\stacksproject{07RR}. In
+particular, the morphism~$X \times_S T_i \to T_i$ is surjective. We can
+therefore take~$T \defeq T_i$. The image of~$T_i \to S$ contains~$s$
+since~$\Spec(k(s)) \to S$ factors over~$T_i \to S$.} The assumption yields
+that~$\im(g) \subseteq Z$ topologically, so~$s \in Z$.
+
+The proof that statement~(1) implies statement~(2) is immediate.
+\end{proof}
 
 
 \subsection{Quasicompact morphisms}

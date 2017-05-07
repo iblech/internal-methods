@@ -9595,8 +9595,8 @@ in the site used to define~$\Zar(S)$.
 \end{enumerate}
 \end{lemma}
 
-\begin{proof}By Proposition~\ref{prop:char-surjective-morphisms}, statement~(2)
-is equivalent to:
+\begin{proof}By Proposition~\ref{prop:char-surjective-morphisms}, which we'll
+prove below, statement~(2) is equivalent to:
 \begin{indentblock}
 For any~$S$-scheme~$h : T \to S$ contained in the site used to
 define~$\Zar(S)$, the morphism~$X \times_S T \to T$ is surjective if and only
@@ -9629,6 +9629,30 @@ The direction~``(1)~$\Rightarrow$~(2)'' is immediate, since
 \[ \im(X \times_S T \to T) = h^{-1} \im(f) = h^{-1} \im(g) = \im(Y \times_S T \to T).
   \qedhere \]
 \end{proof}
+
+\begin{rem}Let~$f : X \to S$ be contained in the site used to define~$\Zar(S)$.
+The expression~``$\neg\neg(\speak{$\ul{X}$ is inhabited})$'' of the internal
+language of~$\Zar(S)$ denotes the subfunctor of the terminal
+functor~$\ul{S} = 1 \in \Zar(S)$ given by
+\[ (h : T \to S) \longmapsto \{ \star \,|\, \im(h) \subseteq \im(f) \}. \]
+If~$f$ is an open immersion, then this functor coincides with the functor of
+points of~$X$, since the set-theoretic image of a morphism of schemes is
+contained in an open subset~$U \subseteq S$ if and only if it factors over the
+open immersion~$U \hookrightarrow S$.
+
+If~$f$ is a closed immersion, this functor is the functor of points of the
+formal completion of~$S$ along~$X$. More generally, for an
+arbitrary~$S$-scheme~$X$ and a closed subscheme~$Z \hookrightarrow X$ (such
+that both~$X$ and~$S$ are locally contained in the site used to
+define~$\Zar(S)$), the internal expression~``$\{ x \? \ul{X} \,|\, \neg\neg(x \in
+\ul{Z}) \}$'' denotes the functor of points of the formal completion of~$X$
+along~$Z$. For instance, the expression
+\[ \{ f \? \affl \,|\, \neg\neg(f = 0) \} =
+  \{ f \? \affl \,|\, \speak{$f$ is nilpotent} \} \]
+denotes the formal neighbourhood of the origin in the affine line~$\AA^1_S$.
+(The equivalence~$\neg\neg(f = 0) \Leftrightarrow \speak{$f$ is nilpotent}$ is
+by Proposition~\ref{prop:a1-nilp}.)
+\end{rem}
 
 
 \section{Sheaves of rings, algebras, and modules}

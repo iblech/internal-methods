@@ -9246,9 +9246,9 @@ the morphism~$f$ induces an essential geometric morphism~$\Zar(X) \to \Zar(S)$
 which we again denote by~``$f$''. Explicitly, the big Zariski toposes are
 related by the adjoint triple~$f_! \dashv f^{-1} \dashv f_*$ with
 \begin{align*}
-  f_* F &= ((T \xra{g} S) \mapsto F(T \times_S X)), \\
-  f^{-1} E &= ((T \xra{g} X) \mapsto F(T \xra{g} X \xra{f} S)), \\
-  f_! F &= ((T \xra{g} S) \mapsto \coprod_{h : T \to X} F(T \xra{h} X)).
+  f_* : \Zar(X) \lra \Zar(S),\ F &\longmapsto ((T \xra{g} S) \mapsto F(T \times_S X)), \\
+  f^{-1} : \Zar(S) \lra \Zar(X),\ E &\longmapsto ((T \xra{g} X) \mapsto F(T \xra{g} X \xra{f} S)), \\
+  f_! : \Zar(X) \lra \Zar(S),\ F &\longmapsto ((T \xra{g} S) \mapsto \coprod_{h : T \to X} F(T \xra{h} X)).
 \end{align*}
 In situation~(2), the well-definedness of these functors is trivial. In
 situation~(1), the well-definedness rests on the lemma that an~$S$-morphism~$h : T \to X$ is locally of

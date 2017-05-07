@@ -10558,14 +10558,12 @@ finite type over a field, is surjective if it is surjective on closed points.
 
 \subsection{Universally closed morphisms}
 
-\begin{lemma}Let~$f : X \to S$ be an~$S$-scheme. Let~$Z \hookrightarrow S$ be a
+\begin{lemma}\label{lemma:image-coincides}
+Let~$f : X \to S$ be an~$S$-scheme. Let~$Z \hookrightarrow S$ be a
 closed subscheme. Assume that~$X$ and~$Z$ are locally contained in the site
 used to define~$\Zar(S)$. Then the following statements are equivalent:
 \begin{enumerate}
-\item The image of~$f$ coincides with the underlying topological space of~$Z$
-universally, that is if for any~$S$-scheme~$g : T \to S$ contained in the site
-used to define~$\Zar(S)$ the topological image of~$X \times_S T \to T$
-coincides with~$g^{-1} Z$.
+\item The image of~$f$ coincides with the underlying topological space of~$Z$.
 \item $\Zar(S) \models \neg\neg(\speak{$\ul{X}$ inhabited}) \Leftrightarrow
   \neg\neg(\speak{$\ul{Z}$ inhabited})$.
 \end{enumerate}
@@ -10578,10 +10576,6 @@ For any~$S$-scheme~$g : T \to S$ contained in the site used to
 define~$\Zar(S)$, the morphism~$X \times_S T \to T$ is surjective if and only
 if~$Z \times_T T \to T$ is (that is, if~$\im(g) \subseteq Z$ topologically).
 \end{indentblock}
-We verify that this condition implies that~$\im(f) = Z$ topologically. Since
-statement~(2) is, like any statement in the internal language of the big
-Zariski topos, stable under base change, this suffices to verify
-statement~(1).
 
 Applying the assumption to the special case~$T \defeq Z$, we see that~$f^{-1}Z
 \to Z$ is surjective. Therefore~$Z \subseteq \im(f)$ topologically.
@@ -10605,7 +10599,8 @@ therefore take~$T \defeq T_i$. The image of~$T_i \to S$ contains~$s$
 since~$\Spec(k(s)) \to S$ factors over~$T_i \to S$.} The assumption yields
 that~$\im(g) \subseteq Z$ topologically, so~$s \in Z$.
 
-The proof that statement~(1) implies statement~(2) is immediate.
+The proof of~``(1)~$\Rightarrow$~(2)'' is immediate, since~$\im(X \times_S T
+\to T) = g^{-1} \im(f)$.
 \end{proof}
 
 

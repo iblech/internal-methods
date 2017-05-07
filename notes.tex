@@ -10494,7 +10494,62 @@ synthetically quasicoherent}$ and $T \models (x \in \ul{Z} \Leftrightarrow J =
 
 \subsection{Surjective morphisms}
 
-\begin{prop}Let~$\varphi$ be a formula over~$S$.
+\begin{prop}\label{prop:char-surjective-morphisms}
+Let~$f : X \to S$ be an arbitrary~$S$-scheme. If~$\ul{X}$ is not empty from the
+internal point of view of~$\Zar(S)$, that is
+\[ Zar(S) \models \neg\neg(\speak{$\ul{X}$ is inhabited}), \]
+then~$f$ is surjective. The converse holds if~$X$ is locally contained in the
+site used to define~$\Zar(S)$ (for instance, if~$X$ is contained in the
+universe used to define~$\Zar(S)$ or if one of the parsimonious sites is used
+and~$X$ is locally of finite presentation over~$S$).
+\end{prop}
+
+\begin{proof}The translation of the internal statement using the Kripke--Joyal
+semantics is:
+\begin{indentblock}For any~$S$-scheme~$T$ of the site used to define~$\Zar(S)$,
+if~\mbox{$\ul{X \times_S T} = \ul{\emptyset}$} (as functors of points
+of~$T$-schemes), then~$T = \emptyset$.
+\end{indentblock}
+In the case that the site used to define~$\Zar(S)$ is closed under taking
+spectra of residue fields, this implies that~$f$ is surjective as follows.
+Let~$s \in S$ be an arbitrary point. The~$S$-scheme~$T \defeq \Spec(k(s))$ is
+not empty. Therefore the fiber~$X_s = X \times_S T$ of~$f$ over~$s$ is not empty.
+
+If one of the parsimonious sites is used to define~$\Zar(S)$, we can't apply
+the assumption to the~$S$-scheme~$T = \Spec(k(s))$ since it might not be
+locally of finite presentation over~$S$. We therefore argue as follows. Without
+loss of generality, we may assume that~$S$ is affine. In this case the lemma of
+relative approximation~\stacksproject{09MV} can be applied, so
+that~$\Spec(k(s))$ is the directed limit of an inverse system of finitely
+presented~$S$-schemes~$T_i$ with affine transition maps. If~$X_s = X \times_S T
+= \lim_i (X \times_S T_i)$ is empty, then so is~$X \times_S T_i$ for
+some~$i$~\stacksproject{01ZC}. Thus~$T_i = \emptyset$ and
+therefore~$\Spec(k(s)) = \emptyset$; this is a contradiction.
+
+For the converse direction, let an~$S$-scheme~$T$ contained in the site used to
+define~$\Zar(S)$ be given such that~$\ul{X \times_S T} = \ul{\emptyset}$ as
+functors of points of~$T$-schemes. The assumption that~$X$ is locally contained
+in the site used to define~$\Zar(S)$ implies that~$X \times_S T = \emptyset$ as
+schemes. Since the base change~$X \times_S T \to T$ of~$f$ is surjective, this
+implies that~$T$ is empty.
+\end{proof}
+
+\begin{cor}\label{prop:char-surjective-morphisms-relative}
+Let~$p : X \to Y$ be a morphism of~$S$-schemes. Assume that~$Y$ is is locally
+contained in the site used to define~$\Zar(S)$. If from the internal point of
+view of~$\Zar(S)$ all fibers of~$\ul{p}$ are nonempty, that is
+\[ \Zar(S) \models \forall y\?\ul{Y}\_
+  \neg\neg \exists x\?\ul{X}\_ \ul{p}(x) = y, \]
+then~$p$ is surjective. The converse holds if~$X$ is locally contained in the
+site used to define~$\Zar(Y)$.
+\end{cor}
+
+\begin{proof}Immediate using the equivalence~$\Zar(Y) \simeq \Zar(S)/\ul{Y}$,
+as explained in Section~\ref{sect:change-of-base}.
+\end{proof}
+
+\begin{prop}\label{prop:char-surjective-morphisms}
+Let~$\varphi$ be a formula over~$S$.
 \begin{enumerate}
 \item Assume that for all points~$s \in S$
 there is a field extension~$K$ of the residue field~$k(s)$ such that
@@ -10514,6 +10569,15 @@ surjective if and only if
   \neg\neg \exists x\?\ul{X}\_
   \ul{f}(x) = y. \]
 \end{prop}
+
+\begin{lemma}Let~$f : X \to S$ be an~$S$-scheme. Let~$Z \hookrightarrow S$ be a
+closed subscheme. If the image of~$f$ coincides with the underlying topological
+space of~$Z$ universally, that is if for any~$S$-scheme~$g : T \to S$ contained in the
+site used to define~$\Zar(S)$ the topological image of~$X \times_S T \to T$
+coincides with~$g^{-1} Z$, then
+\[ \Zar(S) \models \neg\neg(\speak{$\ul{X}$ inhabited}) \Leftrightarrow
+  \neg\neg(\speak{$\ul{Z}$ inhabited}). \]
+\end{lemma}
 
 
 \subsection{Quasicompact morphisms}

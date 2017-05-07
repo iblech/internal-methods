@@ -151,7 +151,7 @@
 \newcommand{\vs}{vs.\@\xspace}
 \newcommand{\resp}{resp.\@\xspace}
 \newcommand{\inv}{inv.\@}
-\newcommand{\notnot}{\emph{not not}\xspace}
+\newcommand{\notnot}{\emph{not~not}\xspace}
 \newcommand{\affl}{\ensuremath{{\ul{\AA}^1_S}}\xspace}
 \newcommand{\afflx}{\ensuremath{{\ul{\AA}^1_X}}\xspace}
 \newcommand{\afflt}{\ensuremath{{\ul{\AA}^1_T}}\xspace}
@@ -9322,7 +9322,7 @@ morphisms of~$S$-schemes. For instance, we will see in
 Proposition~\ref{prop:char-surjective-morphisms} that the structure morphism of
 an~$S$-scheme~$f : Y \to S$ is surjective if and only if
 $\Zar(S) \models \neg\neg(\speak{$\ul{Y}$ is inhabited})$.
-This automatically implies (Corollary~\ref{prop:char-surjective-morphisms-relative})
+This automatically implies (Corollary~\ref{cor:char-surjective-morphisms-relative})
 that a morphism~$p : Y \to X$ of~$S$-schemes is surjective if and only if
 \[ \Zar(S) \models \forall x\?\ul{X}\_ \neg\neg(\speak{the fiber of~$\ul{p}$
 over~$x$ is inhabited}). \]
@@ -10608,7 +10608,7 @@ schemes. Since the base change~$X \times_S T \to T$ of~$f$ is surjective, this
 implies that~$T$ is empty.
 \end{proof}
 
-\begin{cor}\label{prop:char-surjective-morphisms-relative}
+\begin{cor}\label{cor:char-surjective-morphisms-relative}
 Let~$p : X \to Y$ be a morphism of~$S$-schemes. Assume that~$Y$ is is locally
 contained in the site used to define~$\Zar(S)$. If from the internal point of
 view of~$\Zar(S)$ all fibers of~$\ul{p}$ are nonempty, that is
@@ -10627,6 +10627,42 @@ Proposition~\ref{prop:char-surjective-morphisms} yields a proof of the fact
 that a locally finitely presented morphism~$X \to S$, where~$S$ is locally of
 finite type over a field, is surjective if it is surjective on closed points.
 \end{rem}
+
+
+\subsection{Universally injective morphisms}
+
+\begin{prop}Let~$f : X \to S$ be an~$S$-scheme which is locally contained in the site
+used to define~$\Zar(S)$. Then the following statements are equivalent:
+\begin{enumerate}
+\item The morphism~$f$ is universally injective.
+\item The diagonal morphism~$X \to X \times_S X$ is surjective.
+\item From the internal point of view of~$\Zar(S)$, any given elements of~$\ul{X}$
+are \notnot equal, that is
+\[ \Zar(S) \models \forall x\?\ul{X}\_ \forall x'\?\ul{X}\_ \neg\neg(x = x'). \]
+\end{enumerate}
+\end{prop}
+
+\begin{proof}The equivalence~``(1)~$\Leftrightarrow$~(2)'' is
+well-known~\stacksproject{01S4}. The equivalence~``(2)~$\Leftrightarrow$~(3)''
+is by Corollary~\ref{cor:char-surjective-morphisms-relative} and the fact that,
+internally, there is \notnot a preimage for any element of~$\ul{X} \times
+\ul{X}$ under the diagonal map~$\ul{X} \to \ul{X} \times \ul{X}$ if and only if
+any given elements of~$X$ are \notnot equal.
+\end{proof}
+
+\begin{cor}Let~$p : X \to Y$ be a morphisms of~$S$-schemes which are locally
+contained in the site used to define~$\Zar(S)$. Then the following statements
+are equivalent:
+\begin{enumerate}
+\item The morphism~$p$ is universally injective.
+\item From the internal point of view of~$\Zar(S)$, any given elements of any
+fiber of~$p$ are \notnot equal.
+\end{enumerate}
+\end{cor}
+
+\begin{proof}Immediate using the equivalence~$\Zar(Y) \simeq \Zar(S)/\ul{Y}$,
+as explained in Section~\ref{sect:change-of-base}.
+\end{proof}
 
 
 \subsection{Universally closed morphisms}

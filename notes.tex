@@ -9267,39 +9267,80 @@ the universal property of the fiber product.
 (f^* \F)^\Zar$.
 \end{itemize}
 
-The functors~$f_! \dashv f^{-1}$ induce the equivalence
+The functors~$f_! \dashv f^{-1}$ induce an equivalence
 \[ \Zar(X) \simeq \Zar(S)/\ul{X}, \]
-which is very useful for the purposes of synthetic algebraic geometry.
-Explicitly, this equivalence is described by
+explicitly described by
 \[ \begin{array}{r@{}c@{}l}
   F &{}\longmapsto{}& (f_!F \to f_!1), \\
-  ((T \xra{g} X) \mapsto \{ s \in (f^{-1}E)(T) \,|\, \alpha(s) = g \} &{}\longmapsfrom{}& (E
+  ((T \xra{g} X) \mapsto \{ s \in (f^{-1}E)(T) \,|\, \alpha(s) = g \}) &{}\longmapsfrom{}& (E
   \xra{\alpha} \ul{X}).
 \end{array} \]
 From the internal point of view of~$\Zar(S)$, the big Zariski topos of~$X$ is
 therefore simply~$\Set/\ul{X}$, the category of~$\ul{X}$-indexed families of
 sets or equivalently the category of sheaves on~$\ul{X}$ considered as a
-\emph{discrete} locale. This fits nicely with the philosophy~``$S$-schemes are
+\emph{discrete} locale. This fits nicely with the philosophy that~``$S$-schemes are
 plain unstructured sets from the internal point of view of~$\Zar(S)$''.
 
-A consequence for the internal language is that if~$\varphi(x)$ is a formula
-over~$\Zar(S)$ with a free variable~$x\?X$, then
-\[
-  \Zar(S) \models \forall x\?X\_ \varphi(x)
-    \qquad\text{iff}\qquad
-      \Zar(X) \models \varphi(\Delta),
-\]
-where~$\Delta : \ul{X} \to \ul{X \times_S X}$ is the diagonal
-morphism.\footnote{For an arbitrary object~$X$ in a topos~$\E$, one can show that~$\E \models
-\forall x\?X\_ \varphi(x)$ if and only if~$\varphi$ holds for the \emph{generic
-element} of~$X$, which is the generalized element~$\id_X : X \to X$ defined on
-stage~$X$. This is equivalent to XXX}
-
 In contrast, for the little Zariski toposes, there is no similarly simple
-description. From the internal point of view of~$\Sh(S)$, the topos~$\Sh(X)$
+description of the little Zariski topos of~$X$ as a slice of the little Zariski
+topos of~$S$. From the internal point of view of~$\Sh(S)$, the topos~$\Sh(X)$
 looks like the topos of sheaves over a locale which is not discrete, and the
 topos~$\Zar(X)$ doesn't even look like a topos of sheaves over an arbitrary
 locale (discrete or not).
+
+The internal language of a slice topos~$\E/I$ admits a
+simple description from the point of view of~$\E$. Namely, for
+any formula~$\varphi$ over~$\E/I$,
+\[ \E/I \models \varphi \qquad\text{iff}\qquad
+  \E \models \forall i\?I\_ \varphi(i). \]
+For the right hand side to make sense, it has to be interpreted in the
+following way. Any object~$(p : M \to I)$ of~$\E/I$ which appears in~$\varphi$,
+for instance as a domain of quantification, has to be substituted by the
+internal expression~``$p^{-1}[\{i\}]$'' denoting the fiber of~$p$
+over~$i\?I$.\footnote{This substitution is less ad~hoc as it might at first
+appear. The internal language of a topos~$\E$ is \emph{dependently typed}, meaning
+that the types one can quantify over may depend on previously introduced
+values. Types in the empty context, depending on no values, correspond to
+objects of~$\E$. Types in the context of a variable~$i\?I$ correspond to
+objects~$(p : M \to I)$ of~$\E/I$. For instance, in this case one can form
+formulas of the form~``$\forall i\?I\_ \forall m\?M(i)\_ \psi(i,m)$''. If in
+the translation process using the Kripke--Joyal semantics a formal variable~$i$
+was substituted by a generalized element~$i_0 : A \to I$, the
+expression~``$M(i_0)$'' has to be interpreted as the pullback~$i_0^* M$.}
+For example, if~$(p : M \to I)$ is such an object of~$\E/I$,
+\begin{align*}
+  &\phantom{\text{iff }} \E/I \models \speak{$M$ is inhabited} \\
+  &\text{iff } \phantom{/I}\E \models \forall i\?I\_ \speak{the fiber of $p$ over $i$ is inhabited} \\
+  &\text{iff } \phantom{/I}\E \models \forall i\?I\_ \exists m\?M\_ p(m) = i.
+\end{align*}
+
+Thanks to this description of the internal language of a slice topos, the
+equivalence~$\Zar(X) \simeq \Zar(S)/\ul{X}$ is useful for lifting internal
+characterizations concerning properties of~$S$-schemes to properties of
+morphisms of~$S$-schemes. For instance, we will see in
+Proposition~\ref{prop:char-surjective-morphisms} that the structure morphism of
+an~$S$-scheme~$f : Y \to S$ is surjective if and only if
+$\Zar(S) \models \neg\neg(\speak{$\ul{Y}$ is inhabited})$.
+This automatically implies (Corollary~\ref{prop:char-surjective-morphisms-relative})
+that a morphism~$p : Y \to X$ of~$S$-schemes is surjective if and only if
+\[ \Zar(S) \models \forall x\?\ul{X}\_ \neg\neg(\speak{the fiber of~$\ul{p}$
+over~$x$ is inhabited}). \]
+
+Many properties of morphisms in algebraic geometry, and any properties which
+can be characterized using the internal language of the big Zariski topos, are
+stable under base change. For those kinds of properties~$P$, if a morphism~$Y
+\to X$ is~$P$, then for any point~$x \in X$ the base change~$Y_x \to
+\Spec(k(x))$ along~$\Spec(k(x)) \to X$ is~$P$ as well. The converse is usually
+false, but the motto~``a morphism is~$P$ if all its fibers are~$P$ in a
+continuous fashion'' is still useful for intuition. The equivalence~$\Zar(X)
+\simeq \Zar(S)/\ul{X}$ makes this motto precise: For any morphism~$p : Y \to X$
+of~$S$-schemes and any formula~$\varphi(M)$ of~$\Zar(S)$ containing a free
+variable~$M$,
+\[ \Zar(X) \models \varphi(\ul{Y}) \qquad\text{iff}\qquad
+  \Zar(S) \models \forall x\?\ul{X}\_ \varphi(\ul{p}^{-1}[\{x\}]), \]
+that is $Y$ has property~$\varphi$ when regarded as an~$X$-scheme if and only
+if all the fibers of~$Y \to X$ have property~$\varphi$ when regarded
+as~$S$-schemes.
 
 % In the situation X --> S,
 % * give morphisms Zar(X) --> Zar(S),

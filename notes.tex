@@ -10535,7 +10535,8 @@ synthetic closed immersion.\end{ex}
 view. The inclusion~$\{ x\?X \,|\, f(x) = 0 \} \hookrightarrow X$ is a
 synthetic closed immersion.\end{ex}
 
-\begin{prop}Let~$X$ be an~$S$-scheme.
+\begin{prop}\label{prop:char-closed-immersion}
+Let~$X$ be an~$S$-scheme.
 \begin{enumerate}
 \item Let~$Z \subseteq X$ be a closed subscheme. Then the subfunctor~$\ul{Z}
 \hookrightarrow \ul{X}$ is a synthetic closed immersion from the internal point
@@ -10627,8 +10628,62 @@ finite type over a field, is surjective if it is surjective on closed points.
 
 \subsection{Universally closed morphisms}
 
+\begin{defn}In the context of a specified local ring, a set~$X$ is
+\emph{synthetically closed} if and only if, for any synthetic closed
+immersion~$Z \hookrightarrow X$, there is a closed truth value~$\varphi$ such
+that~$Z$ is \notnot inhabited if and only if~$\neg\neg\varphi$.
+\end{defn}
 
+\begin{ex}Any singleton set is synthetically closed.\end{ex}
 
+\begin{ex}The specified local ring~$R$ is typically not synthetically closed.
+For let~$f \? R$ be an element. Then the inclusion~$Z \defeq \{ g \? R \,|\,
+fg - 1 = 0 \}$ is a synthetic closed immersion. The set~$Z$ is inhabited if and
+only if~$f$ is invertible; \XXX{continue}\end{ex}
+
+\begin{prop}Assume that~$S$ is locally Noetherian. Let~$f : X \to S$ be a
+locally finitely presented morphism. In the situation that one the parsimonious
+sites is used to define~$\Zar(S)$, the following statements are equivalent:
+\begin{enumerate}
+\item The morphism~$f$ has closed image.
+\item The morphism~$f$ has universally closed image, that is for
+any~$S$-scheme~$T$ the image of the induced morphism~$X \times_S T \to T$ is
+closed.
+\item $\Zar(S) \models \exists \varphi\?\Omega\_
+  \speak{$\varphi$ is a closed truth value} \wedge
+  (\neg\neg(\speak{$\ul{X}$ inhabited}) \Leftrightarrow \neg\neg\varphi)$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}The direction~``(2)~$\Rightarrow$~(1)'' is trivial, and the
+direction~``(1)~$\Rightarrow$~(2)'' is immediate, since the image of~$X
+\times_T T \to T$ is the preimage of the image of~$f$.
+
+For the~``(1)~$\Rightarrow$~(3)'' direction, we may pick the subfunctor
+of~$\ul{S}$ induced by the closed immersion~$\im(f) \hookrightarrow S$ as the
+sought truth value. This truth value is closed by
+Proposition~\ref{prop:char-closed-immersion} and its double negation is
+equivalent to~$\speak{$\ul{X}$ is inhabited}$ by
+Lemma~\ref{lemma:image-coincides}.
+
+For the converse direction, we see that, after passing to an open covering
+of~$S$ which we won't reflect in the notation, there is a closed subfunctor~$Z
+\hookrightarrow 1$ such that~$\Zar(S) \models \neg\neg(\speak{$\ul{X}$
+inhabited}) \Leftrightarrow \neg\neg(\speak{$Z$ is inhabited})$. By
+Proposition~\ref{prop:char-closed-immersion}, this subfunctor is the functor of
+points of a closed subscheme of~$S$. Since~$S$ is locally Noetherian, this
+subscheme is locally of finite presentation over~$S$. Therefore
+Lemma~\ref{lemma:image-coincides} is applicable. This concludes the proof.
+\end{proof}
+
+\begin{cor}Assume that~$S$ is locally Noetherian. Let~$f : X \to S$ be a
+locally finitely presented morphism. In the situation that one the parsimonious
+is used to define~$\Zar(S)$, the following statements are equivalent:
+\begin{enumerate}
+\item The morphism~$f$ is universally closed.
+\item $\Zar(S) \models \speak{$\ul{X}$ is synthetically closed}$.
+\end{enumerate}
+\end{cor}
 
 
 \subsection{Quasicompact morphisms}

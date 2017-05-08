@@ -9176,6 +9176,47 @@ give an internal description of what the big Zariski topos of an arbitrary
 relative spectrum over~$S$ looks like. We state and verify such a description
 in Theorem~\ref{thm:big-zariski-topos-of-relative-spectrum}.
 
+It is well-known that the points of~$\Zar(\Spec(R))$, when constructed using
+one of the parsimonious sites, are in canonical bijection with the
+local~$R$-algebras; for instance, this follows from the description
+of~$\Zar(\Spec(R))$ as the classifying topos of the theory of
+local~$R$-algebras. For the case of a general base scheme, we introduce the
+following definition.
+
+\begin{defn}A \emph{ring over~$S$} is a ring~$A$ together with a
+morphism~$\Spec(A) \to S$ of locally ringed locales. A \emph{morphism of rings
+over~$S$} is a ring homomorphism which is compatible with the structure
+morphisms to~$S$.\end{defn}
+
+\begin{prop}In the situation that one of the parsimonious sites was used to
+define~$\Zar(S)$, the category of points of~$\Zar(S)$ is canonically equivalent
+to the full subcategory of the rings over~$S$ whose underlying ring is
+local.\end{prop}
+
+\begin{proof}By Theorem~\ref{thm:zar-classifies}, a point of~$\Zar(S)$ is given
+by a point of~$\Sh(S)$, that is by a point~$s$ of~$S$,\footnote{The
+topos-theoretic points of the topos of sheaves over a topological space~$T$ are
+in canonical bijection with the locale-theoretic points of~$T$, that is with
+locale morphisms~$1 \to T$. If~$T$ is sober, such points are in canonical
+bijection with the elements of the underlying set of~$T$. In a classical
+metatheory, schemes are sober~\stacksproject{01IS}. If one wants the proof to
+work intuitionistically, the base scheme~$S$ has to be defined in a
+intuitionistically sensible way, for instance as a locally ringed locale.
+Correspondingly, the point~$s$ of~$S$ has to be interpreted in the
+locale-theoretic sense.} together with a local~$\O_{S,s}$-algebra~$A$ which is
+local over~$\O_{S,s}$. These data define a ring over~$S$, namely the ring~$A$
+together with the composite~$\Spec(A) \to \Spec(\O_{S,s}) \to S$.
+
+Conversely, let a local ring~$A$ together with a morphism~$f : \Spec(A) \to S$ of
+locally ringed locales be given. Let~$x \in \Spec(A)$ be the focal point
+of~$\Spec(A)$. We set~$s \defeq f(x)$; then~$A$ is an~$\O_{S,s}$-algebra
+by~$(f^\sharp)_x$. It is local over~$\O_{S,s}$ since~$f^\sharp$ is a local
+homomorphism.
+
+These constructions are mutually inverse since the morphisms $\Spec(\O_{S,s})
+\to S$ are monomorphisms in the category of locally ringed locales.
+\end{proof}
+
 
 \subsection{Recovering the little Zariski topos from the big Zariski topos}
 

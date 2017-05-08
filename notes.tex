@@ -4111,6 +4111,7 @@ holds at the point~$x$. This is false for~$X = \Spec \ZZ$,~$f = 2$, and~$x =
 (2)$, since in the local ring~$\O_{X,x} = \ZZ_{(2)}$, the element $f$ is not invertible
 while also not being nilpotent.
 \end{ex}
+% Adapt rem:closed-geometric-morphism in case the example changes.
 
 
 \subsection{Internal proofs of common lemmas}
@@ -10506,6 +10507,15 @@ synthetically quasicoherent. For instance that's the case if~$U = \emptyset$; th
 quotient~$\affl/\sqrt{(0)}$ is not synthetically quasicoherent by
 Remark~\ref{rem:radical-not-qcoh}.\end{rem}
 
+\begin{rem}\label{rem:open-geometric-morphism}
+There is the notion of an open geometric morphism of toposes. For the big
+Zariski toposes, this notion is not related to open morphisms or open
+immersions between schemes: If~$X \to S$ is any morphism of schemes, the
+induced geometric morphism~$\Zar(X) \to \Zar(S)$ is isomorphic to the canonical
+morphism~$\Zar(S)/\ul{X} \to \Zar(S)$, as detailed in
+Section~\ref{sect:change-of-base}). Geometric morphisms of the form~$\E/A \to
+\E$ are always open.\end{rem}
+
 
 \subsection{Closed immersions}
 
@@ -10564,6 +10574,30 @@ synthetically quasicoherent}$ and $T \models (x \in \ul{Z} \Leftrightarrow J =
 % Let f in J.
 % Then ...
 \end{proof}
+
+\begin{rem}\label{rem:closed-geometric-morphism}
+There is the notion of a closed geometric morphism of toposes. For
+an arbitrary topos~$\E$ and an object~$A \in \E$, the canonical geometric
+morphism~$\E/A \to E$ is closed if and only if
+\[ \forall U \subseteq A\_
+  \forall \varphi \? \Omega\_ \quad
+  A \subseteq (U \cup \{ x \in A \,|\, \varphi \}) \quad\Longrightarrow\quad
+  (A \subseteq U) \vee \varphi \]
+from the internal point of view of~$\E$. If~$X \to S$ is a closed morphism of
+schemes, then the induced geometric morphism~$\Sh(X) \to \Sh(S)$ between the
+little Zariski toposes is closed in this sense.
+% Use criterion given in Wedhorn, then employ classical logic.
+
+However, the induced geometric morphism~$\Zar(X) \to \Zar(S)$ is typically not
+closed. For instance, if~$X \to S$ is the embedding of a closed subset~$V(f)$
+with~$f \in \Gamma(S,\O_S)$, then the morphism~$\Zar(X) \to \Zar(S)$ is
+isomorphic to~$\Zar(S)/\ul{V(f)} \to \Zar(S)$, as discussed in
+Section~\ref{sect:change-of-base}. In the special case~$U \defeq \emptyset$ and
+$\varphi \defeq \brak{f = 0}$, the displayed closedness condition simplifies
+to~$\speak{$f$ \inv} \vee (f = 0)$. This is typically not true in the internal
+language of~$\Zar(S)$. A specific counterexample is given in
+Example~\ref{ex:translation-equivalence}.
+\end{rem}
 
 
 \subsection{Surjective morphisms}

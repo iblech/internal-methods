@@ -10395,7 +10395,10 @@ situations it follows that~$\Zar(S) \models U$:
 \begin{enumerate}
 \item $U$ is a quasicompact open truth value.
 \item $U$ is an arbitrary open truth value and the site used to
-define~$\Zar(S)$ is closed under domains of closed immersions.
+define~$\Zar(S)$ is closed under domains of closed immersions. (This is for
+instance satisfied for the sites built using a Grothendieck or a partial
+universe. It is satisfied for the parsimonious sites if~$S$ is locally
+Noetherian.)
 \end{enumerate}
 \end{prop}
 
@@ -10652,7 +10655,8 @@ then~$p$ is surjective. The converse holds if~$X$ is locally contained in the
 site used to define~$\Zar(Y)$.
 \end{cor}
 
-\begin{proof}Immediate using the equivalence~$\Zar(Y) \simeq \Zar(S)/\ul{Y}$,
+\begin{proof}Immediate using Proposition~\ref{prop:char-surjective-morphisms}
+and the equivalence~$\Zar(Y) \simeq \Zar(S)/\ul{Y}$,
 as explained in Section~\ref{sect:change-of-base}.
 \end{proof}
 
@@ -10665,7 +10669,8 @@ finite type over a field, is surjective if it is surjective on closed points.
 
 \subsection{Universally injective morphisms}
 
-\begin{prop}Let~$f : X \to S$ be an~$S$-scheme which is locally contained in the site
+\begin{prop}\label{prop:char-univ-injective-morphisms}
+Let~$f : X \to S$ be an~$S$-scheme which is locally contained in the site
 used to define~$\Zar(S)$. Then the following statements are equivalent:
 \begin{enumerate}
 \item The morphism~$f$ is universally injective.
@@ -10694,7 +10699,8 @@ fiber of~$p$ are \notnot equal.
 \end{enumerate}
 \end{cor}
 
-\begin{proof}Immediate using the equivalence~$\Zar(Y) \simeq \Zar(S)/\ul{Y}$,
+\begin{proof}Immediate using Proposition~\ref{prop:char-univ-injective-morphisms}
+and the equivalence~$\Zar(Y) \simeq \Zar(S)/\ul{Y}$,
 as explained in Section~\ref{sect:change-of-base}.
 \end{proof}
 
@@ -10711,10 +10717,12 @@ that~$Z$ is \notnot inhabited if and only if~$\neg\neg\varphi$.
 
 \begin{ex}The specified local ring~$R$ is typically not synthetically closed.
 For let~$f \? R$ be an element. Then the inclusion~$Z \defeq \{ g \? R \,|\,
-fg - 1 = 0 \}$ is a synthetic closed immersion. The set~$Z$ is inhabited if and
-only if~$f$ is invertible; \XXX{continue}\end{ex}
+fg - 1 = 0 \}$ is a synthetic closed immersion. The set~$Z$ is \notnot inhabited if and
+only if~$f$ is \notnot invertible if and only if~$f$ is invertible (by
+Proposition~\ref{prop:a1-field}); \XXX{continue}\end{ex}
 
-\begin{prop}Assume that~$S$ is locally Noetherian. Let~$f : X \to S$ be a
+\begin{prop}\label{prop:char-closed-image}
+Assume that~$S$ is locally Noetherian. Let~$f : X \to S$ be a
 locally finitely presented morphism. In the situation that one the parsimonious
 sites is used to define~$\Zar(S)$, the following statements are equivalent:
 \begin{enumerate}
@@ -10751,12 +10759,16 @@ Lemma~\ref{lemma:image-coincides} is applicable. This concludes the proof.
 
 \begin{cor}Assume that~$S$ is locally Noetherian. Let~$f : X \to S$ be a
 locally finitely presented morphism. In the situation that one the parsimonious
-is used to define~$\Zar(S)$, the following statements are equivalent:
+sites is used to define~$\Zar(S)$, the following statements are equivalent:
 \begin{enumerate}
 \item The morphism~$f$ is universally closed.
 \item $\Zar(S) \models \speak{$\ul{X}$ is synthetically closed}$.
 \end{enumerate}
 \end{cor}
+
+\begin{proof}Immediate using Proposition~\ref{prop:char-closed-immersion} and
+Proposition~\ref{prop:char-closed-image}.
+\end{proof}
 
 
 \subsection{Quasicompact morphisms}

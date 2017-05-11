@@ -10266,7 +10266,8 @@ The open subschemes~$T_0 \subseteq T$ appearing in this definition are uniquely
 determined by their universal property. The relation of open subfunctors to
 open immersions is as follows.
 
-\begin{prop}Let~$X$ be an~$S$-scheme.
+\begin{prop}\label{prop:char-open-immersion}
+Let~$X$ be an~$S$-scheme.
 \begin{enumerate}
 \item Let~$U \subseteq X$ be an open subscheme. Then the subfunctor~$\ul{U}
 \hookrightarrow \ul{X}$ is open.
@@ -10814,23 +10815,78 @@ Proposition~\ref{prop:char-closed-image}.
 \end{proof}
 
 
-\subsection{Quasicompact morphisms}
+\subsection{Quasicompact and quasiseparated morphisms}
 
-\begin{defn}In the context of a specified local ring~$R$, a \emph{synthetic affine
-scheme} is a set which is isomorphic (as a set) to the synthetic spectrum of a
-synthetically quasicoherent~$R$-algebra.\end{defn}
+\begin{defn}\label{defn:synthetic-scheme}
+In the context of a specified local ring~$R$:
+\begin{enumerate}
+\item A \emph{synthetic affine scheme} is a set which is isomorphic (as a set)
+to the synthetic spectrum of a synthetically
+quasicoherent~$R$-algebra.
+\item A \emph{quasicompact synthetic scheme} is a set~$X$ which admits a finite
+open covering~$X = \bigcup_{i=1}^n U_i$ by synthetic affine schemes~$U_i$.
+\item A \emph{locally finitely presented quasicompact synthetic scheme} is a
+set~$X$ which admits a finite open covering~$X = \bigcup_{i=1}^n U_i$ such that
+the sets~$U_i$ are isomorphic to spectra of finitely presented~$R$-algebras.
+\item A \emph{finitely presented synthetic scheme} is a set~$X$ which admits a
+finite open covering~$X = \bigcup_{i=1}^n U_i$ such that the sets~$U_i$ are
+isomorphic to spectra of finitely presented~$R$-algebras and such that the
+intersections~$U_i \cap U_j$ can be covered by finitely many open subsets which
+are isomorphic to spectra of finitely presented~$R$-algebras.
+\end{enumerate}
+\end{defn}
 
-\begin{defn}In the context of a specified local ring, a \emph{quasicompact
-synthetic scheme} is a set~$X$ which admits a finite open covering~$X =
-\bigcup_i U_i$ by synthetic affine schemes~$U_i$.\end{defn}
-
-\begin{prop}Let~$X \in \Zar(S)$ be a functor. The following statements are
-equivalent:
+\begin{prop}Let~$X \in \Zar(S)$ be a Zariski sheaf. Consider the following
+statements:
 \begin{enumerate}
 \item $X$ is the functor of points of a quasicompact~$S$-scheme.
-\item $\Zar(S) \models \speak{$X$ is a quasicompact synthetic scheme}$.
+\item $X$ is the functor of points of a locally finitely presented quasicompact~$S$-scheme.
+\item $X$ is the functor of points of a finitely presented~$S$-scheme (locally
+finitely presented, quasicompact, and quasiseparated).
+\item[(1')] $\Zar(S) \models \speak{$X$ is a quasicompact synthetic scheme}$.
+\item[(2')] $\Zar(S) \models \speak{$X$ is a locally finitely presented quasicompact synthetic scheme}$.
+\item[(3')] $\Zar(S) \models \speak{$X$ is a finitely presented synthetic scheme}$.
 \end{enumerate}
+Then~(1)~$\Rightarrow$~(1'), (2)~$\Leftrightarrow$~(2'),
+and~(3)~$\Leftrightarrow$~(3').
 \end{prop}
+
+\begin{proof}For proving~(1)~$\Rightarrow$~(1'), (2)~$\Rightarrow$~(2'),
+and~(3)~$\Rightarrow$~(3'), we may assume that~$S$ is affine, since the
+internal language is local. Let~$X_0$ be an~$S$-scheme representing~$X$. Since
+the structure morphism~$X_0 \to S$ is quasicompact and~$S$ is quasicompact,
+there exist finitely many open affine subschemes~$U_i \subseteq X_0$ which
+cover~$X_0$. By Proposition~\ref{prop:char-open-immersion}, the
+subfunctors~$\ul{U_i} \hookrightarrow X$ are synthetic open immersions from the
+internal point of view of~$\Zar(S)$. The internal union~$\bigcup_i \ul{U_i}
+\hookrightarrow X$ is the functor
+\[ T/S \longmapsto \{ f : T \to X_0 \,|\,
+  \text{locally, the morphism $f$ factors over one of the opens~$U_i$} \} \]
+and therefore coincides with~$X$.
+
+Since each scheme~$U_i$ can be realized as a relative spectrum of a
+quasicoherent~$\O_S$-algebra, both~$U_i$ and~$S$ being affine, the sets~$U_i$
+are synthetic affine schemes from the internal point of view. This
+proves~(1)~$\Rightarrow$~(1').
+
+For the directions (2)~$\Rightarrow$~(2') and~(3)~$\Rightarrow$~(3'), the
+covering~$X_0 = \bigcup_i U_i$ can be chosen appropriately: such that the~$U_i$
+are spectra of finitely presented~$\O_S$-algebras or that the intersections are
+\XXX{continue proof}
+\end{proof}
+
+\begin{rem}One can reasonably wonder why we didn't include the following notion
+in Definition~\ref{defn:synthetic-scheme}: A \emph{synthetic scheme} is a
+set~$X$ which admits an arbitrary open covering by synthetic affine schemes.
+The reason is that, with this definition, any subset~$X$ of the singleton
+set~$1 = \{\star\}$ is a synthetic scheme, since it admits the open affine
+covering~$X = \bigcup \{ 1 \,|\, \star \in X \}$. But not any subfunctor of the
+terminal functor is representable by a scheme.
+
+This phenomenon is well-known in synthetic topology; one has to put some
+restrictions on the kind of allowed open coverings. Being finite is the
+simplest such condition.
+\end{rem}
 
 
 \subsection{Quasiseparated morphisms}

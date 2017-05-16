@@ -9634,7 +9634,8 @@ without additional hypotheses.
 
 \begin{lemma}\label{lemma:image-coincides}
 Let~$f : X \to S$ and~$g : Y \to S$ be~$S$-schemes which are locally contained
-in the site used to define~$\Zar(S)$.
+in the site used to define~$\Zar(S)$. In the case that the site is one of the
+parsimonious sites, further assume that~$f$ and~$g$ are quasicompact and quasiseparated.
 \begin{enumerate}
 \item The image of~$f$ coincides with the image of~$g$ topologically.
 \item $\Zar(S) \models \neg\neg(\speak{$\ul{X}$ inhabited}) \Leftrightarrow
@@ -9678,6 +9679,8 @@ The direction~``(1)~$\Rightarrow$~(2)'' is immediate, since
 \end{proof}
 
 \begin{rem}Let~$f : X \to S$ be contained in the site used to define~$\Zar(S)$.
+In the case that the site is one of the parsimonious sites, further assume
+that~$f$ is quasicompact and quasiseparated.
 The expression~``$\neg\neg(\speak{$\ul{X}$ is inhabited})$'' of the internal
 language of~$\Zar(S)$ denotes the subfunctor of the terminal
 functor~$\ul{S} = 1 \in \Zar(S)$ given by
@@ -10650,13 +10653,20 @@ Example~\ref{ex:translation-equivalence}.
 \subsection{Surjective morphisms}
 
 \begin{prop}\label{prop:char-surjective-morphisms}
-Let~$f : X \to S$ be an arbitrary~$S$-scheme. If~$\ul{X}$ is not empty from the
-internal point of view of~$\Zar(S)$, that is
-\[ Zar(S) \models \neg\neg(\speak{$\ul{X}$ is inhabited}), \]
-then~$f$ is surjective. The converse holds if~$X$ is locally contained in the
-site used to define~$\Zar(S)$ (for instance, if~$X$ is contained in the
-universe used to define~$\Zar(S)$ or if one of the parsimonious sites is used
-and~$X$ is locally of finite presentation over~$S$).
+Let~$f : X \to S$ be an arbitrary~$S$-scheme. Consider the following
+statements:
+\begin{enumerate}
+\item The morphism~$f$ is surjective.
+\item From the internal point of view of~$\Zar(S)$, it's not the case that~$\ul{X}$ is
+empty, that is
+\[ Zar(S) \models \neg\neg(\speak{$\ul{X}$ is inhabited}). \]
+\end{enumerate}
+If~$X$ is locally contained in the site used to define~$\Zar(S)$ (for instance,
+if~$X$ is contained in the universe used to define~$\Zar(S)$ or if one of the
+parsimonious sites is used and~$X$ is locally of finite presentation over~$S$),
+then~(2) implies~(1). The converse holds if the site is closed under
+taking spectra of residue fields or if one of the parsimonious sites is used
+and~$f$ is quasicompact and quasiseparated.
 \end{prop}
 
 \begin{proof}The translation of the internal statement using the Kripke--Joyal
@@ -10673,10 +10683,16 @@ not empty. Therefore the fiber~$X_s = X \times_S T$ of~$f$ over~$s$ is not empty
 If one of the parsimonious sites is used to define~$\Zar(S)$, we can't apply
 the assumption to the~$S$-scheme~$T = \Spec(k(s))$ since it might not be
 locally of finite presentation over~$S$. We therefore argue as follows. Without
-loss of generality, we may assume that~$S$ is affine. In this case the lemma of
-relative approximation~\stacksproject{09MV} can be applied, so
+loss of generality, we may assume that~$S$ is affine. Writing~$k(s)$ as the
+canonical filtered colimit of all finitely presented~$\Gamma(S,\O_S)$-algebras
+mapping to~$k(s)$ (and then rewriting this filtered colimit as a directed
+colimit~\cite[Theorem~1.5]{adamek:rosicky:presentable}), we see
 that~$\Spec(k(s))$ is the directed limit of an inverse system of finitely
-presented~$S$-schemes~$T_i$ with affine transition maps. If~$X_s = X \times_S T
+presented affine~$S$-schemes~$T_i$ with affine transition maps.
+In particular, the structure morphisms~$T_i \to S$ are quasicompact and
+quasiseparated. By the assumption that the morphism~$X \to S$ is quasicompact and
+quasiseparated as well, the schemes~$X \times_S T_i$ are quasicompact and
+quasiseparated (as absolute schemes). Therefore, if~$X_s = X \times_S T
 = \lim_i (X \times_S T_i)$ is empty, then so is~$X \times_S T_i$ for
 some~$i$~\stacksproject{01ZC}. Thus~$T_i = \emptyset$ and
 therefore~$\Spec(k(s)) = \emptyset$; this is a contradiction.
@@ -10691,12 +10707,23 @@ implies that~$T$ is empty.
 
 \begin{cor}\label{cor:char-surjective-morphisms-relative}
 Let~$p : X \to Y$ be a morphism of~$S$-schemes. Assume that~$Y$ is is locally
-contained in the site used to define~$\Zar(S)$. If from the internal point of
-view of~$\Zar(S)$ all fibers of~$\ul{p}$ are nonempty, that is
+contained in the site used to define~$\Zar(S)$.
+Further assume that the site used to define the big Zariski toposes are closed
+under taking spectra of residue fields or that the parsimonious sites are used
+and that~$p$ is quasicompact and quasiseparated.
+Consider the following statements:
+\begin{enumerate}
+\item The morphism~$p$ is surjective.
+\item From the internal point of view of~$\Zar(S)$ all fibers of~$\ul{p}$ are
+nonempty, that is
 \[ \Zar(S) \models \forall y\?\ul{Y}\_
-  \neg\neg \exists x\?\ul{X}\_ \ul{p}(x) = y, \]
-then~$p$ is surjective. The converse holds if~$X$ is locally contained in the
-site used to define~$\Zar(Y)$.
+  \neg\neg \exists x\?\ul{X}\_ \ul{p}(x) = y. \]
+\end{enumerate}
+If~$X$ is locally contained in the
+site used to define~$\Zar(Y)$, then~(1) implies~(2). The converse holds if the
+sites used to define the big Zariski toposes are closed under taking spectra of
+residue fields or that the parsimonious sites are used and that~$p$ is
+quasicompact and quasiseparated.
 \end{cor}
 
 \begin{proof}Immediate using Proposition~\ref{prop:char-surjective-morphisms}
@@ -10706,8 +10733,18 @@ as explained in Section~\ref{sect:change-of-base}.
 
 \begin{rem}Combining Proposition~\ref{prop:notnot-in-big-zariski-topos} and
 Proposition~\ref{prop:char-surjective-morphisms} yields a proof of the fact
-that a locally finitely presented morphism~$X \to S$, where~$S$ is locally of
+that a quasicompact, quasiseparated, and locally finitely presented morphism~$X \to S$, where~$S$ is locally of
 finite type over a field, is surjective if it is surjective on closed points.
+\end{rem}
+
+\begin{rem}In the case that the parsimonious sites are used, the assumption in
+Proposition~\ref{prop:char-surjective-morphisms} that the morphism~$f$ is
+quasicompact can't be dropped. For instance, let~$k$ be an
+algebraically closed field. Then the canonical morphism
+\[ X \defeq \coprod_{a \in k} \Spec(k[X]/(X-a)) \lra \Spec(k[X]) =\vcentcolon S \]
+is surjective on closed points. By Proposition~\ref{prop:notnot-in-big-zariski-topos},
+it's not the case that~$\ul{X}$ is empty from the internal point of view
+of~$\Zar(S)$. However, the morphism is not surjective.
 \end{rem}
 
 
@@ -10715,7 +10752,9 @@ finite type over a field, is surjective if it is surjective on closed points.
 
 \begin{prop}\label{prop:char-univ-injective-morphisms}
 Let~$f : X \to S$ be an~$S$-scheme which is locally contained in the site
-used to define~$\Zar(S)$. Then the following statements are equivalent:
+used to define~$\Zar(S)$. In the case that the parsimonious sites are used to
+define~$\Zar(S)$, further assume that~$f$ is quasicompact and quasiseparated.
+Then the following statements are equivalent:
 \begin{enumerate}
 \item The morphism~$f$ is universally injective.
 \item The diagonal morphism~$X \to X \times_S X$ is surjective.
@@ -10734,7 +10773,9 @@ any given elements of~$X$ are \notnot equal.
 \end{proof}
 
 \begin{cor}Let~$p : X \to Y$ be a morphisms of~$S$-schemes which are locally
-contained in the site used to define~$\Zar(S)$. Then the following statements
+contained in the site used to define~$\Zar(S)$. In the case that the
+parsimonious sites are used to define~$\Zar(S)$, further assume that~$f$ is
+quasicompact and quasiseparated. Then the following statements
 are equivalent:
 \begin{enumerate}
 \item The morphism~$p$ is universally injective.
@@ -10767,7 +10808,7 @@ Proposition~\ref{prop:a1-field}); \XXX{continue}\end{ex}
 
 \begin{prop}\label{prop:char-closed-image}
 Assume that~$S$ is locally Noetherian. Let~$f : X \to S$ be a
-locally finitely presented morphism. In the situation that one the parsimonious
+finitely presented morphism. In the situation that one the parsimonious
 sites is used to define~$\Zar(S)$, the following statements are equivalent:
 \begin{enumerate}
 \item The morphism~$f$ has closed image.
@@ -10802,7 +10843,7 @@ Lemma~\ref{lemma:image-coincides} is applicable. This concludes the proof.
 \end{proof}
 
 \begin{cor}Assume that~$S$ is locally Noetherian. Let~$f : X \to S$ be a
-locally finitely presented morphism. In the situation that one the parsimonious
+finitely presented morphism. In the situation that one the parsimonious
 sites is used to define~$\Zar(S)$, the following statements are equivalent:
 \begin{enumerate}
 \item The morphism~$f$ is universally closed.

@@ -156,6 +156,7 @@
 \newcommand{\afflx}{\ensuremath{{\ul{\AA}^1_X}}\xspace}
 \newcommand{\afflt}{\ensuremath{{\ul{\AA}^1_T}}\xspace}
 \newcommand{\affla}{\ensuremath{{\ul{\AA}^1_{\Spec A}}}\xspace}
+\newcommand{\afflz}{\ensuremath{{\ul{\AA}^1_{\Spec Z}}}\xspace}
 \newcommand{\xra}{\xrightarrow}
 \newcommand{\stacksproject}[1]{\cite[{\href{http://stacks.math.columbia.edu/tag/#1}{Tag~#1}}]{stacks-project}}
 \newcommand{\apart}{\mathrel{\#}}
@@ -9189,8 +9190,10 @@ following definition.
 morphism~$\Spec(A) \to S$ of locally ringed locales. A \emph{morphism of rings
 over~$S$} is a ring homomorphism which is compatible with the structure
 morphisms to~$S$.\end{defn}
+% Let A be a local ring. Then LRL morphisms Spec(A) --> S are the same
+% as LRL morphisms (pt,A) --> S.
 
-\begin{prop}In the situation that one of the parsimonious sites was used to
+\begin{prop}In the situation that one of the parsimonious sites is used to
 define~$\Zar(S)$, the category of points of~$\Zar(S)$ is canonically equivalent
 to the full subcategory of the rings over~$S$ whose underlying ring is
 local.\end{prop}
@@ -9218,6 +9221,36 @@ homomorphism.
 These constructions are mutually inverse since the morphisms $\Spec(\O_{S,s})
 \to S$ are monomorphisms in the category of locally ringed locales.
 \end{proof}
+
+\begin{rem}\label{rem:zar-classifies-absolute}
+In the situation that one of the parsimonious sites is used to
+define the big Zariski topos of~$S$, it classifies the theory of local rings
+over~$S$. This is a restatement of Theorem~\ref{thm:zar-classifies}.
+Explicitly, this theory is given by:
+\begin{enumerate}
+\item A theory which~$\Sh(S)$ classifies.
+\item Structure and axioms for a ring~$R$.
+\item Structure and axioms which guarantee that the interpretation of~$R$ in
+any cocomplete topos coincides with the pullback of~$\O_S$.
+\item Structure and axioms for a local ring~$A$ and a local homomorphism~$R \to A$.
+\end{enumerate}
+The fourth item can be substituted by:
+\begin{enumerate}
+\item[(4')] Structure and axioms for a local ring~$A$ and a morphism~$\Spec(A)
+\to (\pt,R)$ of locally ringed locales.
+\end{enumerate}
+This is because such a morphism is given by a local homomorphism~$\ul{R}
+\to \O_{\Spec(A)}$ of sheaves of rings which in turn is given by a local ring
+homomorphism~$R \to \Gamma(\Spec(A), \O_{\Spec(A)}) = A$. (Taking global
+sections of a local homomorphism of sheaves of rings yields a homomorphism of
+rings which will typically fail to be local. However, here taking global
+sections coincides with calculating the stalk at the focal point of~$\Spec(A)$,
+and pullback preserves locality of ring homomorphisms.)
+\end{rem}
+
+Corollary~\ref{cor:pp1-classifies} gives a description of the theory which the
+big Zariski topos of~$\PP^1_\ZZ$ classifies, building upon
+Remark~\ref{rem:zar-classifies-absolute}.
 
 
 \subsection{Recovering the little Zariski topos from the big Zariski topos}
@@ -10220,14 +10253,14 @@ sites).
 
 \subsection{Relative Proj construction}
 
-\begin{defn}The \emph{synthetic Proj} of a graded~$R$-algebra~$A$ is the set
+\begin{defn}The \emph{synthetic Proj} of an~$\NN$-graded~$R$-algebra~$A$ is the set
 \[ \Proj(A) \defeq
   (\text{set of all surj.\@ graded $R$-algebra homomorphisms~$A \to R[T]$})/R^\times. \]
 \end{defn}
-\XXXh{which kind of grading?}
 
-\begin{ex}The synthetic Proj of~$R[X_0,\ldots,X_n]$ is canonically isomorphic
-to the set of~$n$-tuples of homogeneous coordinates~$[x_0:\cdots:x_n]$ with at
+\begin{ex}\label{ex:proj-polynomial-ring}
+The synthetic Proj of~$R[X_0,\ldots,X_n]$ is canonically isomorphic
+to the set points~$[x_0:\cdots:x_n]$ with at
 least one coordinate being invertible.
 \end{ex}
 
@@ -10238,6 +10271,57 @@ in the internal language of~$\Zar(S)$, is the functor of points of~$\RelProj_S \
 \end{prop}
 
 \XXX{proof}  % (and check that it's true without the usual hypothesis)}
+
+\begin{cor}\label{cor:pp1-classifies}
+The big Zariski topos of~$\PP^1_\ZZ$ classifies the theory of ``a local
+ring together with a point~$[a:b]$'' (that is a pair~$(a,b)$ of ring elements,
+where at least one coordinate is invertible, up to multiplication by units).
+Explicitly, this theory is given by:
+\begin{enumerate}
+\item A sort~$A$ together with function symbols, constants, and axioms expressing
+that~$A$ is a local ring.
+\item A sort~$P$ (to be thought of as the set of $[a:b]$ with $a,b\?A$ where at
+least one coordinate is invertible) together with a
+relation~$\langle\cdot,\cdot,\cdot\rangle$ on $A \times A \times P$ and the
+following axioms:
+\begin{itemize}
+\item $\speak{$a$ \inv} \vee \speak{$b$ \inv}
+\dashv\vdash_{a,b{:}A} \exists p\?P\_ \langle a,b,p \rangle$
+\item $\langle a,b,p \rangle \wedge \langle a,b,p' \rangle
+\vdash_{a,b{:}A,\,p,p'{:}P} p = p'$
+\item $\top \vdash_{p{:}P} \exists a,b\?A\_ \langle a,b,p \rangle$
+\item $\langle a,b,p \rangle \wedge \langle a',b',p \rangle
+\dashv\vdash_{a,a',b,b'{:}A,\, p{:}P} \exists s\?A\_ \speak{$s$ \inv} \wedge a' = s a \wedge b' = s b$
+\end{itemize}
+\item A constant of sort~$P$.
+\end{enumerate}
+\end{cor}
+
+\begin{proof}The big Zariski topos of~$\PP^1_\ZZ$ is a topos over the big
+Zariski topos of~$\Spec(\ZZ)$; from the point of view of~$\Zar(\Spec(\ZZ))$, it
+is the classifying topos of a point~$[a:b]$ where~$a,b\?\afflz$,
+since~$\Zar(\PP^1_\ZZ) \simeq \Zar(\Spec(\ZZ))/\ul{\PP^1_\ZZ}$
+as discussed in Section~\ref{sect:change-of-base} and~$\ul{\PP^1_\ZZ} \cong \{ [a:b] \,|\,
+a,b\?\afflz \}$ by Proposition~\ref{prop:relative-proj-big-zariski} and
+Example~\ref{ex:proj-polynomial-ring}. The big Zariski topos of~$\Spec(\ZZ)$
+classifies local rings. Therefore the claim follows by considering the
+combined geometric theory.
+
+An alternative proof builds upon Remark~\ref{rem:zar-classifies-absolute} and
+the description of the theory which the little Zariski topos of~$\PP^1_\ZZ$
+classifies (Proposition~\ref{prop:proj-classifying-locale}). Combining these,
+we see that~$\Zar(\PP^1_\ZZ)$ classifies the theory of a homogeneous filter~$F$
+of~$\ZZ[X,Y]$ meeting the irrelevant ideal together with a local
+homomorphism~$\alpha : \ZZ[X,Y][F^{-1}]_0 \to A$ into a local ring~$A$. Such data
+gives rise to a point~$[\alpha(X/u) : \alpha(Y/u)]$, where~$u$ is a
+homogeneous element of degree~1 contained in~$F$; and conversely any
+point~$[a:b]$ gives rise to a filter
+\[ F \defeq \{ f \in \ZZ[X,Y] \,|\, \text{$f_n(a,b)$ is invertible in~$A$
+for some~$n \geq 0$} \}, \]
+where~$f_n$ is the homogeneous component of degree~$n$ of~$f$, and a local
+homomorphism~$\alpha : \ZZ[X,Y][F^{-1}]_0 \to A$ mapping~$f/g$
+to~$f(a,b)/g(a,b)$.
+\end{proof}
 
 
 \subsection{Open immersions}

@@ -11369,19 +11369,19 @@ operator~$\Box$:
 \subsection{The fppf topology}
 
 The goal of this section is to show that the big fppf topos of a scheme~$S$
-classifies absolutely integrally closed local rings over~$S$, thereby
+classifies algebraically closed local rings over~$S$, thereby
 verifying a conjecture by Wraith~\cite{wraith:generic-galois-theory}. As
 discussed in Section~\ref{sect:proper-choice-of-site}, one can only expect such
 a result if one employs parsimonious sites.
 
-\begin{defn}A ring~$A$ is \emph{absolutely integrally closed} if and only if
+\begin{defn}A ring~$A$ is \emph{algebraically closed} if and only if
 any monic polynomial of positive degree over~$A$ has a root in~$A$.
 \end{defn}
 
-Absolutely integrally closed rings are sometimes also called ``algebraically
-closed''. But if one requires an algebraically closed ring to contain a zero for
+Algebraically closed rings are also called ``absolutely integrally closed''.
+If one would require an algebraically closed ring to contain a zero for
 any (not necessarily monic) polynomial of positive degree, then the notion
-degenerates to the notion of an algebraically closed field.
+would degenerate to the notion of an algebraically closed field.
 
 \begin{defn}The \emph{big fppf topos} of a scheme~$S$ is the topos of sheaves
 over the category~$(\Sch/S)_\lfp$ of locally finitely presented~$S$-schemes (or
@@ -11392,14 +11392,14 @@ the morphisms~$f_i$ are flat and jointly surjective.\end{defn}
 
 Usually, one posits the additional requirement that the morphisms~$f_i$ are
 locally of finite presentation~\stacksproject{021M}. This condition is
-automatically satisfied since we require that source and target are locally of
+automatically satisfied in our setup, since we require that source and target are locally of
 finite presentation~\stacksproject{02FV}.
 
 Even though not strictly necessary for the the development, we introduce the
 intermediate concept of \emph{fppf-local rings}, which were studied by Schröer
 and independently by Gabber and Kelly~\cite{schroer:points-fppf,gabber:kelly:points}.
-We'll show that fppf-local rings coincide with absolutely integrally closed
-local rings, but a~priori these are difference concepts.
+We'll show that fppf-local rings coincide with algebraically closed
+local rings, but a~priori they are a different concept.
 
 \begin{defn}Let~$A$ be a ring.
 \begin{enumerate}
@@ -11421,26 +11421,28 @@ equivalence even holds intuitionistically.
 
 \begin{defn}\label{defn:fppf-local-ring}
 An \emph{fppf-local ring} is a local ring~$A$ such that any finite system of
-polynomial equations over~$A$ which has a solution in a basic fppf-algebra
+polynomial equations over~$A$ which has a solution in some basic fppf-algebra
 over~$A$ admits a solution in~$A$.
 \end{defn}
 
-An fppf-local ring is absolutely integrally closed, since
-the~$A$-algebra~$A[X]/(f)$ is a basic fppf-algebra if~$f$ is monic polynomial
+An fppf-local ring is algebraically closed, since
+the~$A$-algebra~$A[X]/(f)$ is a basic fppf-algebra if~$f$ is a monic polynomial
 of positive degree.
 
 We refer to basic fppf-algebras instead of arbitrary integral fppf-algebras in
 Definition~\ref{defn:fppf-local-ring} in order to ensure that the condition for
 a ring to be fppf-local is a geometric implication; we'll expand on this below.
-The following proposition establishes the equivalence of our definition with
-the standard one~\cite[Definition~4.1]{schroer:points-fppf}.
+The standard definition of fppf-locality refers to arbitrary (not necessarily
+integral) fppf-algebras~\cite[Definition~4.1]{schroer:points-fppf}. The
+following proposition establishes the equivalence of our definition with the
+standard one.
 
 \begin{prop}\label{prop:char-fppf-local-ring}
 Let~$A$ be a local ring. The following statements are equivalent.
 \begin{enumerate}
 \item[(1)] The ring~$A$ is fppf-local.
 \item[(1')] Any finite system of polynomial equations over~$A$ which has a
-solution in an fppf-algebra over~$A$ admits a solution in~$A$.
+solution in some fppf-algebra over~$A$ admits a solution in~$A$.
 \item[(2)] The structure morphism~$A \to B$ of any basic fppf-algebra
 has a retraction.
 \item[(2')] The structure morphism~$A \to B$ of any
@@ -11487,7 +11489,7 @@ finite locally free, but finite free. The left morphism in the pullback diagram
   \Spec(A) \times_W T \ar[r]\ar[d] & T \ar[d] \\
   \Spec(A) \ar[r] & W
 } \]
-admits a section since it is induced morphism on spectra of a basic
+admits a section since it is the induced morphism on spectra of a basic
 fppf-algebra. The sought lift is then the composite~$\Spec(A) \to \Spec(A)
 \times_W T \to T$.
 
@@ -11515,14 +11517,18 @@ is the spectrum of an fppf-local ring.\end{rem}
 %\end{rem}
 
 \begin{lemma}\label{lemma:basic-fppf-algebra-geometric}
-The condition for a finitely presented algebra to be a basic fppf-algebra can
+\begin{enumerate}
+\item The condition for a finitely presented algebra to be a basic fppf-algebra can
 be expressed as a geometric formula.
+\item The condition for a ring to be fppf-local can be expressed as a geometric
+implication.
+\end{enumerate}
 \end{lemma}
 
 \begin{proof}A finitely presented~$A$-algebra~$B \defeq
 A[X_1,\ldots,X_n]/(f_1,\ldots,f_m)$ is a basic fppf-algebra if and only if
 there exists a number~$r \geq 1$, polynomials~$g_1,\ldots,g_r \?
-A[X_1,\ldots,X_n]$, vectors~$v_1,\ldots,v_n \?  A^r$, a vector~$u \? A^r$, and
+A[X_1,\ldots,X_n]$, vectors~$v_1,\ldots,v_n \? A^r$, a vector~$u \? A^r$, and
 vectors~$w_{ij} \? A^r$ for~$i,j = 1,\ldots,r$ such that
 \begin{itemize}
 \item the multiplication defined on~$A^r$ by~$(e_i, e_j) \mapsto w_{ij}$ is
@@ -11534,6 +11540,16 @@ inverse to each other.
 \end{itemize}
 Each of these conditions can be expressed by geometric formulas involving the
 components of the data~$g_i, v_k, u, w_{ij}$.
+
+A ring~$A$ is fppf-local if and only if it is local, and for any numbers~$n \geq 0,
+m \geq 0$ and polynomials~$f_1,\ldots,f_m \in A[X_1,\ldots,X_n]$ the
+implication
+\begin{multline*}
+  \quad \speak{$A[X_1,\ldots,X_n]/(f_1,\ldots,f_m)$ is a basic fppf-algebra} \Longrightarrow \\
+    \exists x_1,\ldots,x_n \? A\_ \bigwedge_{l=1}^m f_l(v_1,\ldots,v_n) = 0 \quad
+\end{multline*}
+holds. Since the antecedent can be expressed as a geometric formula, this
+formula is a geometric implication.
 \end{proof}
 
 \begin{thm}\label{thm:big-fppf-largest-subtopos}
@@ -11545,29 +11561,29 @@ of~$\Zar(S)$ where~$\affl$ is fppf-local.
 topology; the big fppf topos of~$S$ is the subtopos~$\Zar(S)_{\Box_\fppf}
 \hookrightarrow \Zar(S)$. We verify that
 \begin{multline*}
-  \quad\Zar(S) \models \bigwedge_{n \geq 0} \bigvee_{m \geq 0}
+  \quad\Zar(S) \models \bigwedge_{n \geq 0} \bigwedge_{m \geq 0}
   \forall f_1,\ldots,f_m \? \affl[X_1,\ldots,X_n]\_ \\
     \speak{$\affl[X_1,\ldots,X_n]/(f_1,\ldots,f_m)$ is a basic fppf-algebra}
     \Longrightarrow \\
       \Box_\fppf(\exists x_1,\ldots,x_n \? \affl\_
-      \bigwedge_j f_j(x_1,\ldots,x_n) = 0)\quad
+      \bigwedge_{j=1}^m f_j(x_1,\ldots,x_n) = 0)\quad
 \end{multline*}
 and we show that if~$\Box$ is any modal operator with this property, then
 \[ \Zar(S) \models
   \forall \varphi \? \Omega\_
     \Box_\fppf\varphi \Rightarrow \Box\varphi. \]
-For the first part, by Lemma~\ref{lemma:basic-fppf-algebra-geometric}, we may
-assume that~$S = \Spec(A)$ is affine and that we're given
+For the first part we may
+assume, by Lemma~\ref{lemma:basic-fppf-algebra-geometric}, that~$S = \Spec(A)$ is affine and that we're given
 polynomials~$f_1,\ldots,f_m \in A[X_1,\ldots,X_n]$ such that~$B \defeq
 A[X_1,\ldots,X_n]/(f_1,\ldots,f_m)$ is a basic fppf-algebra. Then, trivially,
-\[ \Spec(B) \models \exists x_1,\ldots,x_n\?\affl\_ \bigwedge_m f_j(x_1,\ldots,x_n) = 0. \]
+\[ \Spec(B) \models \exists x_1,\ldots,x_n\?\affl\_ \bigwedge_{j=1}^m f_j(x_1,\ldots,x_n) = 0. \]
 Since~$(\Spec(B) \to \Spec(A))$ is an fppf covering, we have
 \[ \Zar(S) \models \Box_\fppf(\exists x_1,\ldots,x_n \? \affl\_
-  \bigwedge_j f_j(x_1,\ldots,x_n) = 0) \]
+  \bigwedge_{j=1}^m f_j(x_1,\ldots,x_n) = 0) \]
 as claimed.
 
 For the second part, let an fppf covering~$(X_i \to X)_i$ be given such
-that~$X_i \models \varphi$ for all~$i$. We have to show that~$X \models
+that~$X_i \models \varphi$ for all~$i$. We want to show that~$X \models
 \Box\varphi$. Since the fppf topology is generated by Zariski coverings and
 singleton coverings~$(T \to W)$ where~$T \to W$ is a surjective finite locally
 free morphism~\stacksproject{05WN} and the internal language of~$\Zar(S)$
@@ -11578,28 +11594,26 @@ form~$\Gamma(W,\O_W)[X_1,\ldots,X_n]/(f_1,\ldots,f_m)$. Then
   \quad W \models \speak{$\affl[X_1,\ldots,X_n]/(f_1,\ldots,f_m)$ is a basic
   fppf-algebra}\ \text{and} \\
   W \models \forall x_1,\ldots,x_n \? \affl\_
-    \Bigl(\bigwedge_j f_j(x_1,\ldots,x_n) = 0\Bigr) \Rightarrow
+    \Bigl(\bigwedge_{j=1}^m f_j(x_1,\ldots,x_n) = 0\Bigr) \Rightarrow
       \varphi.\quad
 \end{multline*}
 The latter is because for any~$\Gamma(W,\O_W)$-algebra~$R$ such that there
 are elements $x_1,\ldots,x_n \in R$ with~$f_j(x_1,\ldots,x_n) = 0$ for~$j =
-1,\ldots,x_m$, the structure morphism~$\Spec(R) \to W$ factors over~$T \to W$.
+1,\ldots,m$, the structure morphism~$\Spec(R) \to W$ factors over~$T \to W$.
 The assumption on the modal operator~$\Box$ implies~$W \models \Box\varphi$.
 \end{proof}
 
-\begin{thm}A local ring is fppf-local if and only if it is absolutely
-integrally closed. With our definition of fppf-locality, this holds even
+\begin{thm}A local ring is fppf-local if and only if it is algebraically closed. With our definition of fppf-locality, this holds even
 intuitionistically.
 \end{thm}
 
-\begin{proof}We have already seen that fppf-local rings are absolutely
-integrally closed. For the converse direction, let polynomials~$f_1,\ldots,f_m
+\begin{proof}We have already seen that fppf-local rings are algebraically closed. For the converse direction, let polynomials~$f_1,\ldots,f_m
 \in A[X_1,\ldots,X_n]$ be given such that~$B \defeq
 A[X_1,\ldots,X_n]/(f_1,\ldots,f_m)$ is a basic fppf-algebra. We want to show
 that the polynomial system~``$f_1 = 0, \ldots, f_m = 0$'' admits a solution in~$A$.
 
-Since~$B$ is finitely generated as an~$A$-module, the elements~$[X_i]$ are
-integral over~$A$, that is there are monic polynomials~$h_1,\ldots,h_n \in
+Since~$B$ is finitely generated as an~$A$-module, the elements~$[X_i] \in B$ are
+integral over~$A$, that is there exist monic polynomials~$h_1,\ldots,h_n \in
 A[T]$ of positive degree such that~$h_i([X_i]) = 0$ in~$B$. The structure
 morphism~$A \to B$ therefore factors as
 \[ A \lra B' \defeq A[X_1,\ldots,X_n]/(h_1(X_1),\ldots,h_n(X_n)) \lra B. \]
@@ -11613,29 +11627,28 @@ where~$(\placeholder)_A$ denotes restriction of scalars, and therefore
 preserves and reflects exactness of short exact sequences.
 
 Since~$B' \to B \cong B'/(f_1,\ldots,f_m)$ is flat, Nakayama's lemma implies
-that the ideal~$(f_1,\ldots,f_m) \subseteq B$ is generated by a single
+that the ideal~$(f_1,\ldots,f_m) \subseteq B'$ is generated by a single
 idempotent element~$e \in B'$. Since~$B' \to B/(e)$ is faithfully flat, it
 follows that~$e = 0$. Thus~$(f_1,\ldots,f_m) = (0)$ as ideals of~$B'$
 and~$(f_1,\ldots,f_m) = (h_1,\ldots,h_n)$ as ideals of~$A[X_1,\ldots,X_n]$.
 
 Solving the system~``$f_1 = 0, \ldots, f_m = 0$'' therefore amounts to solving
 the system~``$h_1 = 0, \ldots, h_n = 0$''. The latter has a solution by virtue
-of~$A$ being absolutely integrally closed.
+of~$A$ being algebraically closed.
 \end{proof}
 
 \begin{cor}\label{cor:big-fpps-topos-classifies}
 The big fppf topos of a scheme~$S$ is the classifying topos of the
-theory of absolutely integrally closed local rings over~$S$.\end{cor}
+theory of algebraically closed local rings over~$S$.\end{cor}
 
 \begin{proof}The ring object~$\affl$ of the big fppf topos of~$S$ is an
 fppf-local ring by Theorem~\ref{thm:big-fppf-largest-subtopos} and therefore in
-particular absolutely integrally closed. Equipped with the morphism~$\flat\affl
-\to \affl$, it is thus an absolutely integrally closed local ring over~$S$.
+particular algebraically closed. Equipped with the morphism~$\flat\affl
+\to \affl$, it is thus an algebraically closed local ring over~$S$.
 
-Let~$\E$ be an arbitrary cocomplete topos containing an absolutely integrally
+Let~$\E$ be an arbitrary cocomplete topos containing an algebraically
 closed local ring~$A$ over~$S$. As detailed in
-Remark~\ref{rem:zar-classifies-absolute}, this comprises an absolutely
-integrally closed local ring~$A$, a model of the theory which~$\Sh(S)$
+Remark~\ref{rem:zar-classifies-absolute}, this comprises an algebraically closed local ring~$A$, a model of the theory which~$\Sh(S)$
 classifies (yielding a geometric morphism~$f : \E \to \Sh(S)$), and a local
 homomorphism~$\alpha : f^{-1}\O_S \to A$. By Theorem~\ref{thm:zar-classifies},
 this homomorphism gives rise to a unique geometric morphism~$g : \E \to \Zar(S)$
@@ -11652,16 +11665,15 @@ from the universal property of the big Zariski topos.
 \end{proof}
 
 \begin{cor}The points of the big fppf topos of a scheme~$S$ are in canonical
-one-to-one correspondence with absolutely integrally
-closed local rings over~$S$, that is absolutely integrally
+one-to-one correspondence with algebraically
+closed local rings over~$S$, that is algebraically
 closed local rings~$A$ equipped with a morphism~$\Spec(A) \to S$.\end{cor}
 
 \begin{proof}By Proposition~\ref{prop:points-of-big-zariski}, the points
 of~$\Zar(S)$ are in canonical one-to-one correspondence with the local rings
 over~$S$. Such a point is contained in the big fppf topos (that is, the
 associated geometric morphism~$\Set \to \Zar(S)$ factors over the inclusion of
-the big fppf topos) if and only if the underlying local ring is absolutely
-integrally closed.
+the big fppf topos) if and only if the underlying local ring is algebraically closed.
 \end{proof}
 
 \begin{itemize}

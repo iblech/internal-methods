@@ -90,6 +90,7 @@
 \newcommand{\nnn}{\mathfrak{n}}
 \newcommand{\Hom}{\mathrm{Hom}}
 \newcommand{\HOM}{\mathcal{H}\mathrm{om}}
+\newcommand{\Ind}{\mathrm{Ind}}
 \newcommand{\id}{\mathrm{id}}
 \newcommand{\GL}{\mathrm{GL}}
 \newcommand{\placeholder}{\underline{\quad}}
@@ -496,7 +497,7 @@ on general rings it is given by
 On the one hand, typically only field-valued points admit a simple description.
 On the other hand, the $A$-valued points for more general rings~$A$ are crucial
 in order to impart a meaningful sense of cohesion on the field-valued
-points and therefore can't simply be dropped.\footnote{For instance,
+points. They therefore can't simply be dropped.\footnote{For instance,
 let~$\ul{\AA}^1 : A \mapsto A$ be the functor associated to the affine line.
 Yoneda's lemma guarantees that the set of morphisms~$\ul{\AA}^1 \to \ul{\AA}^1$
 in the functor category~$[\Ring,\Set]$ is in canonical bijection with the
@@ -573,7 +574,7 @@ of the affine line over~$X$, the~$X$-scheme~$\AA^1_X \defeq X \times_{\Spec\ZZ}
 This object has a canonical structure as a ring object in~$\Zar(X)$. In fact,
 from the internal point of view of~$\Zar(X)$, it is a local ring and even a
 field in the sense that nonzero elements are invertible. In the case~$X =
-\Spec\ZZ$, this was first observed by Kock~\cite{kock:univ-proj-geometry}. At
+\Spec\ZZ$, this fact was first observed by Kock~\cite{kock:univ-proj-geometry}. At
 the same time, it is not a reduced ring -- a feat possible only in an
 intuitionistic context. This curious interplay is quite important, since the
 sets
@@ -598,7 +599,11 @@ topos} familiar from étale cohomology. In this way, we can access the internal
 universe of the big étale topos from within the big Zariski topos. The
 ring~$\afflx$ enjoys additional properties when studied in the étale topos, for
 instance it is separably closed.
-\XXXh{wording}
+
+
+% \subsection*{Topos-theoretic considerations} In
+% Sections~\ref{sect:relation-big-little},~\ref{sect:double-negation-modality-big-zariski},
+% and~\ref{sect:beyond-zariski} we study ... XXX
 
 
 \subsection*{Limitations} The internal language is \emph{local}, in the sense
@@ -8993,7 +8998,15 @@ to~$\E$.
 
 In contrast, the toposes arising when using the larger sites have categories of
 points which contain further objects in addition to all local~$A$-algebras; and
-no simple description of the theory they classify is known.
+no simple description of the theory they classify is known.\footnote{The
+category of points of a presheaf topos~$[\C^\op,\Set]$ coincides
+with~$\Ind(\C^\op)$, the ind-completion of~$\C^\op$. This general fact explains that
+in the case that~$\C$ is the category of finitely presented~$A$-algebras,
+the category of points coincides with the category of~$A$-algebras,
+since~$\Ind(\Alg(A)_\fp) \simeq \Alg(A)$. For the larger sites, understanding
+the structure of their points is therefore tantamount to understanding the
+structure of the ind-completion of their dual category (and understanding which
+points of the presheaf topos are also points of the sheaf topos).}
 
 A further advantage of these parsimonious sites is that they don't require arbitrary
 choices of a starting set~$M_0$ or a way of expanding~$M_0$ to a sufficiently
@@ -9574,6 +9587,7 @@ followed by a local homomorphism to yield a datum as in~(1).
 
 
 \section{The double negation modality}
+\label{sect:double-negation-modality-big-zariski}
 
 \begin{prop}\label{prop:notnot-in-big-zariski-topos}
 Let~$\varphi$ be a formula over~$S$. Consider the following
@@ -11237,6 +11251,7 @@ $T_U \Gr(V,r) \cong \Hom_{\affl}(U, V/U)$.\end{prop}
 
 
 \section{Beyond the Zariski topology}
+\label{sect:beyond-zariski}
 
 The Zariski topology is of course not the only interesting topology
 on~$\Sch/S$. For any finer topology~$\tau$, such as the étale, smooth, or fppf
@@ -11368,20 +11383,36 @@ operator~$\Box$:
 
 \subsection{The fppf topology}
 
-The goal of this section is to show that the big fppf topos of a scheme~$S$
-classifies algebraically closed local rings over~$S$, thereby
-verifying a conjecture by Wraith~\cite{wraith:generic-galois-theory}. As
-discussed in Section~\ref{sect:proper-choice-of-site}, one can only expect such
-a result if one employs parsimonious sites.
+The big Zariski topos of a scheme~$S$ is the classifying topos of local rings
+over~$S$, when employing one of the parsimonious sites. The big fppf topos
+of~$S$ is a particular subtopos of the big Zariski topos; it therefore
+classifies a particular quotient theory of the theory of local rings of~$S$,
+obtained by adding certain further axioms~\cite{caramello:lattices}. What are
+these axioms?
 
-\begin{defn}A ring~$A$ is \emph{algebraically closed} if and only if
-any monic polynomial of positive degree over~$A$ has a root in~$A$.
-\end{defn}
+The analogous question for the big étale topos has been answered by Wraith,
+building upon work by Hakim~\cite{hakim:relative-schemes}: The big étale topos
+classifies separably closed local rings~\cite{wraith:generic-galois-theory}.
+Since the big fppf topos is a subtopos of the big étale topos (any étale
+covering being in particular an fppf covering), the sought axioms need to at
+least imply the axioms for separably closed rings.
 
-Algebraically closed rings are also called ``absolutely integrally closed''.
-If one would require an algebraically closed ring to contain a zero for
-any (not necessarily monic) polynomial of positive degree, then the notion
-would degenerate to the notion of an algebraically closed field.
+Wraith conjectured that the big fppf topos classifies algebraically closed
+local rings (local rings for which any monic polynomial of positive degree has
+a zero, also called absolutely integrally closed rings). We neither confirm nor
+refute his conjecture, but we are able to give an alternative explicit
+description: The big fppf topos of a scheme classifies fppf-local rings
+over~$S$.
+
+These kinds of rings where studied by Schröer and independently by Gabber and
+Kelly~\cite{schroer:points-fppf,gabber:kelly:points}; we'll review the notion
+below. Every fppf-local ring is algebraically closed, therefore the theory of
+fppf-local rings encompasses the theory of algebraically closed local rings. It
+is an open question whether these two theories coincide.
+
+As discussed in Section~\ref{sect:proper-choice-of-site}, one can only expect
+the big fppf topos to classify a simple theory if one employs parsimonious
+sites.
 
 \begin{defn}The \emph{big fppf topos} of a scheme~$S$ is the topos of sheaves
 over the category~$(\Sch/S)_\lfp$ of locally finitely presented~$S$-schemes, where a
@@ -11394,12 +11425,6 @@ are locally of finite presentation~\stacksproject{02FV}. One can equivalently
 define the big fppf topos as the topos of sheaves over the
 category~$(\Aff/S)_\lfp$ of locally finitely presented~$S$-schemes which are
 affine as absolute schemes.
-
-Even though not strictly necessary for the the development, we introduce the
-intermediate concept of \emph{fppf-local rings}, which were studied by Schröer
-and independently by Gabber and Kelly~\cite{schroer:points-fppf,gabber:kelly:points}.
-We'll show that fppf-local rings coincide with algebraically closed
-local rings, but a~priori they are a different concept.
 
 \begin{defn}Let~$A$ be a ring.
 \begin{enumerate}
@@ -11515,22 +11540,20 @@ Proposition~\ref{prop:char-fppf-local-ring} implies that a scheme~$T$ such
 that~$\Hom(T, \placeholder)$ maps fppf coverings to jointly surjective families
 is the spectrum of an fppf-local ring.\end{rem}
 
-%\begin{rem}The proof of Proposition~\ref{prop:char-fppf-local-ring} is
-%intuitionistically valid, with the exception of the
-%verification~(2)~$\Rightarrow$~(3). This part of the proof crucially rests upon
-%the description of the fppf topology given in the Stacks
-%Project~\stacksproject{05WN}, which is formulated in the usual language
-%involving prime ideals and is therefore not obviously intuitionistically valid.
-%Since the direction~(2)~$\Rightarrow$~(3) is needed for ...
-%However, there is
-%\end{rem}
+\begin{rem}The proof of Proposition~\ref{prop:char-fppf-local-ring} is
+intuitionistically valid, with the possible exception of the
+part~(2)~$\Rightarrow$~(3). This part of the proof crucially rests upon
+the description of the fppf topology given in the Stacks
+Project~\stacksproject{05WN}, which is proved in the usual language
+involving prime ideals and is therefore not obviously intuitionistically valid.
+\end{rem}
 
 \begin{lemma}\label{lemma:basic-fppf-algebra-geometric}
 \begin{enumerate}
 \item The condition for a finitely presented algebra to be a basic fppf-algebra can
 be expressed as a geometric formula.
-\item The condition for a ring to be fppf-local can be expressed as a geometric
-implication.
+\item The condition for a ring to be fppf-local can be expressed as a
+countable conjunction of geometric implications.
 \end{enumerate}
 \end{lemma}
 
@@ -11612,52 +11635,52 @@ are elements $x_1,\ldots,x_n \in R$ with~$f_j(x_1,\ldots,x_n) = 0$ for~$j =
 The assumption on the modal operator~$\Box$ implies~$W \models \Box\varphi$.
 \end{proof}
 
-\begin{thm}A local ring is fppf-local if and only if it is algebraically closed. With our definition of fppf-locality, this holds even
-intuitionistically.
-\end{thm}
-
-\begin{proof}We have already seen that fppf-local rings are algebraically closed. For the converse direction, let polynomials~$f_1,\ldots,f_m
-\in A[X_1,\ldots,X_n]$ be given such that~$B \defeq
-A[X_1,\ldots,X_n]/(f_1,\ldots,f_m)$ is a basic fppf-algebra. We want to show
-that the polynomial system~``$f_1 = 0, \ldots, f_m = 0$'' admits a solution in~$A$.
-
-Since~$B$ is finitely generated as an~$A$-module, the elements~$[X_i] \in B$ are
-integral over~$A$, that is there exist monic polynomials~$h_1,\ldots,h_n \in
-A[T]$ of positive degree such that~$h_i([X_i]) = 0$ in~$B$. The structure
-morphism~$A \to B$ therefore factors as
-\[ A \lra B' \defeq A[X_1,\ldots,X_n]/(h_1(X_1),\ldots,h_n(X_n)) \lra B. \]
-
-The intermediate algebra~$B'$ is finite free of positive rank~$r$ over~$A$,
-since the family~$([X_1^{k_1} \cdots X_n^{k_n}])_{k_1,\ldots,k_n}$ where~$0
-\leq k_i < \deg(h_i)$ is a basis. This implies that the ring morphism~$B' \to
-B$ is faithfully flat, since the functor~$(\placeholder) \otimes_{B'} B$
-from~$B'$-modules to~$B$-modules is isomorphic to~$((\placeholder)_A \otimes_A B)^r$,
-where~$(\placeholder)_A$ denotes restriction of scalars, and therefore
-preserves and reflects exactness of short exact sequences.
-
-Since~$B' \to B \cong B'/(f_1,\ldots,f_m)$ is flat, Nakayama's lemma implies
-that the ideal~$(f_1,\ldots,f_m) \subseteq B'$ is generated by a single
-idempotent element~$e \in B'$. Since~$B' \to B/(e)$ is faithfully flat, it
-follows that~$e = 0$. Thus~$(f_1,\ldots,f_m) = (0)$ as ideals of~$B'$
-and~$(f_1,\ldots,f_m) = (h_1,\ldots,h_n)$ as ideals of~$A[X_1,\ldots,X_n]$.
-
-Solving the system~``$f_1 = 0, \ldots, f_m = 0$'' therefore amounts to solving
-the system~``$h_1 = 0, \ldots, h_n = 0$''. The latter has a solution by virtue
-of~$A$ being algebraically closed.
-\end{proof}
+%\begin{thm}A local ring is fppf-local if and only if it is algebraically closed. With our definition of fppf-locality, this holds even
+%intuitionistically.
+%\end{thm}
+%
+%\begin{proof}We have already seen that fppf-local rings are algebraically closed. For the converse direction, let polynomials~$f_1,\ldots,f_m
+%\in A[X_1,\ldots,X_n]$ be given such that~$B \defeq
+%A[X_1,\ldots,X_n]/(f_1,\ldots,f_m)$ is a basic fppf-algebra. We want to show
+%that the polynomial system~``$f_1 = 0, \ldots, f_m = 0$'' admits a solution in~$A$.
+%
+%Since~$B$ is finitely generated as an~$A$-module, the elements~$[X_i] \in B$ are
+%integral over~$A$, that is there exist monic polynomials~$h_1,\ldots,h_n \in
+%A[T]$ of positive degree such that~$h_i([X_i]) = 0$ in~$B$. The structure
+%morphism~$A \to B$ therefore factors as
+%\[ A \lra B' \defeq A[X_1,\ldots,X_n]/(h_1(X_1),\ldots,h_n(X_n)) \lra B. \]
+%
+%The intermediate algebra~$B'$ is finite free of positive rank~$r$ over~$A$,
+%since the family~$([X_1^{k_1} \cdots X_n^{k_n}])_{k_1,\ldots,k_n}$ where~$0
+%\leq k_i < \deg(h_i)$ is a basis. This implies that the ring morphism~$B' \to
+%B$ is faithfully flat, since the functor~$(\placeholder) \otimes_{B'} B$
+%from~$B'$-modules to~$B$-modules is isomorphic to~$((\placeholder)_A \otimes_A B)^r$,
+%where~$(\placeholder)_A$ denotes restriction of scalars, and therefore
+%preserves and reflects exactness of short exact sequences.
+%[[This last step is wrong.]]
+%
+%Since~$B' \to B \cong B'/(f_1,\ldots,f_m)$ is flat, Nakayama's lemma implies
+%that the ideal~$(f_1,\ldots,f_m) \subseteq B'$ is generated by a single
+%idempotent element~$e \in B'$. Since~$B' \to B/(e)$ is faithfully flat, it
+%follows that~$e = 0$. Thus~$(f_1,\ldots,f_m) = (0)$ as ideals of~$B'$
+%and~$(f_1,\ldots,f_m) = (h_1,\ldots,h_n)$ as ideals of~$A[X_1,\ldots,X_n]$.
+%
+%Solving the system~``$f_1 = 0, \ldots, f_m = 0$'' therefore amounts to solving
+%the system~``$h_1 = 0, \ldots, h_n = 0$''. The latter has a solution by virtue
+%of~$A$ being algebraically closed.
+%\end{proof}
 
 \begin{cor}\label{cor:big-fpps-topos-classifies}
 The big fppf topos of a scheme~$S$ is the classifying topos of the
-theory of algebraically closed local rings over~$S$.\end{cor}
+theory of fppf-local rings over~$S$.\end{cor}
 
 \begin{proof}The ring object~$\affl$ of the big fppf topos of~$S$ is an
-fppf-local ring by Theorem~\ref{thm:big-fppf-largest-subtopos} and therefore in
-particular algebraically closed. Equipped with the morphism~$\flat\affl
-\to \affl$, it is thus an algebraically closed local ring over~$S$.
+fppf-local ring by Theorem~\ref{thm:big-fppf-largest-subtopos}. Equipped with the morphism~$\flat\affl
+\to \affl$, it is thus an fppf-local ring over~$S$.
 
-Let~$\E$ be an arbitrary cocomplete topos containing an algebraically
-closed local ring~$A$ over~$S$. As detailed in
-Remark~\ref{rem:zar-classifies-absolute}, this comprises an algebraically closed local ring~$A$, a model of the theory which~$\Sh(S)$
+Let~$\E$ be an arbitrary cocomplete topos containing an fppf-local
+ring~$A$ over~$S$. As detailed in
+Remark~\ref{rem:zar-classifies-absolute}, this comprises an fppf-local ring~$A$, a model of the theory which~$\Sh(S)$
 classifies (yielding a geometric morphism~$f : \E \to \Sh(S)$), and a local
 homomorphism~$\alpha : f^{-1}\O_S \to A$. By Theorem~\ref{thm:zar-classifies},
 this homomorphism gives rise to a unique geometric morphism~$g : \E \to \Zar(S)$
@@ -11674,19 +11697,67 @@ from the universal property of the big Zariski topos.
 \end{proof}
 
 \begin{cor}The points of the big fppf topos of a scheme~$S$ are in canonical
-one-to-one correspondence with algebraically
-closed local rings over~$S$, that is algebraically
-closed local rings~$A$ equipped with a morphism~$\Spec(A) \to S$.\end{cor}
+one-to-one correspondence with the fppf-local rings over~$S$, that is
+fppf-local rings~$A$ equipped with a morphism~$\Spec(A) \to S$.\end{cor}
 
 \begin{proof}By Proposition~\ref{prop:points-of-big-zariski}, the points
 of~$\Zar(S)$ are in canonical one-to-one correspondence with the local rings
 over~$S$. Such a point is contained in the big fppf topos (that is, the
 associated geometric morphism~$\Set \to \Zar(S)$ factors over the inclusion of
-the big fppf topos) if and only if the underlying local ring is algebraically closed.
+the big fppf topos) if and only if the underlying local ring is fppf-local.
 \end{proof}
 
+We wish to record some algebraic and logical facts about fppf-local rings,
+hoping that they entice the reader to tackle the question whether any
+algebraically closed ring is already fppf-local.
+
 \begin{itemize}
-\item synthetic topology?
+\item For any prime ideal~$\ppp$ of an algebraically closed ring, it holds
+that~$\ppp^2 = \ppp$, since any element of~$\ppp$ possesses a square root.
+\item If an algebraically closed ring~$A$ is Noetherian, it is already a field,
+since by Krull's intersection theorem~$(0) = \bigcap_{n \geq 0} \mmm_A^n =
+\mmm_A$.
+\item Algebraically closed fields~$K$ are fppf-local: Let~$K \to B$ be a basic
+fppf-algebra. Since~$B \neq 0$, there exists a maximal ideal~$\nnn \subseteq
+B$. The quotient ring~$B/\nnn$ is an algebraic extension of~$K$. Since~$K$ is
+algebraically closed, the identity morphism~$K \to K$ can be extended to a
+morphism~$B/\nnn \to K$ of~$K$-algebras, yielding the desired retraction.
+\item Since the condition that a ring is fppf-local is a conjunction of
+geometric implications, a proof that any algebraically closed ring is
+fppf-local using classical logic and the axiom of choice implies that
+(nonconstructively) there also exists an intuitionistic proof of this statement.
+\item The proof of Lemma~\ref{lemma:basic-fppf-algebra-geometric} yields a way
+to phrase fppf-locality of a local ring in the language of linear algebra:
+A local ring~$A$ is fppf-local if and only if for any number~$n \geq 1$
+and any pairwise commuting~$(n \times n)$-matrices~$W_1,\ldots,W_n$ over~$A$ such that
+the first matrix is the identity matrix and such that the~$i$-th row of~$W_j$
+coincides with the~$j$-th row of~$W_i$, there is a common eigenvector of
+the matrices~$W_1,\ldots,W_n$ whose first component is the unit of~$A$.
+
+An equivalent condition is the following: A local ring~$A$ is fppf-local if and
+only if for any matrices~$W_1,\ldots,W_n$ as above there are
+elements~$\lambda_1,\ldots,\lambda_n \in A$ such that~$\lambda_1 = 1$ and such
+that~$W_i \cdot (\lambda_1,\ldots,\lambda_n)^T = \lambda_i \cdot
+(\lambda_1,\ldots,\lambda_n)^T$.
+
+The condition is nontrivial only for~$n \geq 3$.
+
+\item In order to show that any algebraically closed local ring is fppf-local,
+it would suffice to show that commuting matrices over algebraically closed
+rings admit a common nontrivial eigenvector. However, we suspect that this
+stronger statement is false, since it would imply that any matrix over an
+algebraically closed local ring admits a nontrivial eigenvector.
+
+If there is a classical proof of this statement, then there is also a
+constructive proof; however, there is probably no such constructive proof,
+since it would imply that, internally to any topos, matrices over admit
+nontrivial eigenvectors over algebraically closed local rings admit a
+nontrivial eigenvector. Since the complex numbers (constructed using Cauchy
+reals) form an algebraically closed local
+ring~\cite[Theorem~3.13]{ruitenburg:roots}, this would imply that complex
+matrices admit nontrivial eigenvectors. Since eigenvectors are in general
+uncomputable~\cite[Proposition~12]{ziegler:brattka:spectrum}, there is probably
+a suitable realizability topos in which this statement fails.
 \end{itemize}
 
 

@@ -104,6 +104,7 @@
 \newcommand{\Zar}{\mathrm{Zar}}
 \newcommand{\Et}{\mathrm{\acute{E}t}}
 \newcommand{\fppf}{\mathrm{fppf}}
+\newcommand{\surj}{\mathrm{surj}}
 \newcommand{\Sch}{\mathrm{Sch}}
 \newcommand{\Aff}{\mathrm{Aff}}
 \newcommand{\Mod}{\mathrm{Mod}}
@@ -10053,7 +10054,8 @@ This statement too cannot be satisfied in classical logic: for infinite
 fields the existence part fails and for finite fields the uniqueness part
 fails.
 
-\begin{prop}$\affl$ is \emph{weakly algebraically closed}, in the following sense:
+\begin{prop}\label{prop:affl-weakly-algebraically-closed}
+$\affl$ is \emph{weakly algebraically closed}, in the following sense:
 Any monic polynomial~$p \? \affl[T]$ of degree at least one does \notnot have
 a zero.\end{prop}
 
@@ -11696,7 +11698,8 @@ Uniqueness of the geometric morphism constructed in this way follows already
 from the universal property of the big Zariski topos.
 \end{proof}
 
-\begin{cor}The points of the big fppf topos of a scheme~$S$ are in canonical
+\begin{cor}\label{cor:points-fppf-topos}
+The points of the big fppf topos of a scheme~$S$ are in canonical
 one-to-one correspondence with the fppf-local rings over~$S$, that is
 fppf-local rings~$A$ equipped with a morphism~$\Spec(A) \to S$.\end{cor}
 
@@ -11732,7 +11735,8 @@ A local ring~$A$ is fppf-local if and only if for any number~$n \geq 1$
 and any pairwise commuting~$(n \times n)$-matrices~$W_1,\ldots,W_n$ over~$A$ such that
 the first matrix is the identity matrix and such that the~$i$-th row of~$W_j$
 coincides with the~$j$-th row of~$W_i$, there is a common eigenvector of
-the matrices~$W_1,\ldots,W_n$ whose first component is the unit of~$A$.
+the matrices~$W_1,\ldots,W_n$ whose first component is the unit
+of~$A$.\label{page:fppf-linear-algebra}
 
 An equivalent condition is the following: A local ring~$A$ is fppf-local if and
 only if for any matrices~$W_1,\ldots,W_n$ as above there are
@@ -11759,6 +11763,154 @@ matrices admit nontrivial eigenvectors. Since eigenvectors are in general
 uncomputable~\cite[Proposition~12]{ziegler:brattka:spectrum}, there is probably
 a suitable realizability topos in which this statement fails.
 \end{itemize}
+
+
+\subsection{The fpqc topology}
+
+\begin{defn}The \emph{big fpqc topos} of a scheme~$S$ is the topos of sheaves
+over the category~$(\Sch/S)_\lfp$ of locally finitely presented~$S$-schemes, where a
+family~$(f_i : X_i \to X)_i$ of morphisms is deemed a covering if and only if
+the morphisms~$f_i$ are flat, jointly surjective, and each affine open subset
+of~$X$ is the union of the images of finitely many affine open subsets of some of
+the~$X_i$.
+\end{defn}
+
+Every fppf covering is an fpqc covering. Conversely, since we employ the
+parsimonious sites, every fpqc covering is an fppf covering. Therefore in our
+setup there is no difference between the big fppf topos and the big fpqc topos.
+
+
+\subsection{The surjective topology}
+
+\begin{defn}A family~$(f_i : X_i \to X)_i$ of morphisms between locally finitely
+presented~$S$-schemes if a \emph{covering for the surjective topology} if and
+only if the morphisms~$f_i$ are jointly surjective and each affine open subset 
+of~$X$ is the union of the images of finitely many affine open subsets of some of
+the~$X_i$.
+\end{defn}
+
+Equivalently, a family~$(X_i \to X)_i$ is a covering for the surjective
+topology if and only if any affine open subset of~$X$ is the image of a
+quasicompact open subset under the induced morphism~$\coprod_i X_i \to X$.
+% "==>": Take the union of the given finitely many affine opens.
+% "<==": Write U = bigcup_i (U cap X_i) = bigcup_i bigcup_j D(f_ij).
+
+\begin{defn}An \emph{algebraically closed geometric field} is a ring such
+that~$1 \neq 0$, any element is zero or invertible, and that any monic
+polynomial of positive degree has a zero.
+\end{defn}
+
+In contrast with other field conditions in intuitionistic mathematics, the
+condition for a ring to be an algebraically closed geometric field is the
+(countable conjunction of) geometric implications.
+
+\begin{prop}\label{prop:alg-closed-field-is-fppf-local}
+Intuitionistically, any algebraically closed geometric field is an
+fppf-local ring.
+\end{prop}
+
+\begin{proof}Over geometric fields, the kernel of any matrix admits a finite
+basis. Moreover, the kernel of any matrix of determinant zero contains a vector
+which has at least one invertible component. Therefore the usual proof that
+commuting matrices admit a common eigenvector (with at least one invertible
+component) applies. This fact can be used to show that the linear algebra
+problem stated on page~\pageref{page:fppf-linear-algebra} characterizing
+fppf-locality is solvable.
+\end{proof}
+
+\begin{thm}\label{thm:surjective-topology-classifies}
+The topos of sheaves over~$(\Sch/S)_\lfp$ for the surjective topology is the
+largest subtopos of~$\Zar(S)$ where~$\affl$ is an algebraically closed
+geometric field.
+\end{thm}
+
+\begin{proof}Let~$\Box_\surj$ be the modal operator associated to the surjective
+topology. We verify that
+\begin{multline*}
+  \quad\Zar(S) \models
+    \bigl(\forall s\?\affl\_
+      \Box_\surj(s = 0 \vee \speak{$s$ \inv})\bigr) \wedge \\
+    \bigwedge_{n \geq 0} \forall a_0,\ldots,a_{n-1}\?\affl\_
+      \Box_\surj(\exists x\?\affl\_ x^n + a_{n-1}x^{n-1} + \cdots + a_1x + a_0 = 0)
+\end{multline*}
+and we show that if~$\Box$ is any modal operator with this property, then
+\[ \Zar(S) \models
+  \forall \varphi \? \Omega\_
+    \Box_\surj\varphi \Rightarrow \Box\varphi. \]
+For the first part it suffices to prove the following two statements:
+If~$s \in A$ is an element of a ring, then there is a covering~$(X_i \to
+\Spec(A))_i$ for the surjective topology such that, for each~$i$,~$X_i \models
+s = 0$ or~$X_i \models \speak{$s$ inv}$. If~$p \in A[X]$ is a monic polynomial
+of positive degree over a ring, then there is a covering~$(X_i \to
+\Spec(A))_i$ for the surjective topology such that, for each~$i$,~$X_i \models
+\exists x\?\affl\_ p(x) = 0$.
+
+For the first claim, we may use the covering~$(D(s) \to \Spec(A), V(s) \to
+\Spec(A))$. For the second claim, we may use the singleton
+covering~$(\Spec(A[X]/(p)) \to \Spec(A))$.
+
+For the second part, let a covering~$(X_i \to X)_i$ of the surjective topology
+be given such that~$X_i \models \varphi$ for each~$i$. We want to show that~$X
+\models \Box\varphi$. Without loss of generality, we may assume that~$X$ is
+affine and that the given covering is a singleton covering~$(Y \to X)$
+where~$Y$ is affine and therefore~$Y \to X$ is of finite presentation.
+
+By the lemma on the existence of a flattening
+stratification~\stacksproject{0ASY}, there exist finitely many locally closed
+subschemes~$E_j = D(f_j) \cap V(g_{j1},\ldots,g_{j,m_j}) \subseteq X$ such that
+the pullback~$Y_j \defeq Y \times_X E_j \to E_j$ is flat (and, being surjective, therefore
+faithfully flat). Since~$Y_j \models \varphi$ and since~$(Y_j \to E_j)$ is an
+fppf covering, we have~$E_j \models \Box_\fppf\varphi$. By
+Proposition~\ref{prop:alg-closed-field-is-fppf-local} and
+Theorem~\ref{thm:big-fppf-largest-subtopos}, we also have~$E_j \models
+\Box\varphi$.
+
+It's easily checked that~$E \models (\speak{$f_j$ \inv} \wedge g_{j1} = 0
+\wedge \cdots \wedge g_{j,m_j} = 0) \Rightarrow \varphi$, for each~$j$. To
+conclude that~$X \models \Box\varphi$, it therefore suffices to verify that
+\[ X \models \Box\Bigl(\bigvee_{j=1}^n (\speak{$f_j$ \inv} \wedge
+  g_{j1} = 0 \wedge \cdots \wedge g_{j,m_j} = 0)\Bigr). \]
+This claim follows from a basic combinatorial lemma\footnote{Let
+statements~$\psi_{jk}$ where~$j = 1,\ldots,n$, $k = 1,\ldots,r_j$ be given.
+We picture this situation as a ragged matrix of statements with~$\psi_{jk}$ located
+at column~$k$ of row~$j$. Assume that, for any selection of one statement from
+each row, at least one of the selected statements holds. Then there is a row
+all of whose statements hold.
+
+The usual proof of this lemma proceeds by contradiction: If no row contains
+only true statements, then on each row there is some statement which is false.
+Since we want to use this lemma in the topos~$\Zar(S)_\Box$, it's important
+that there is also an intuitionistic proof. Such a proof can, for
+instance, proceed by induction. The base case~$n = 1$ is trivial. In the
+induction step~$n \to n+1$, we apply the induction hypothesis to the
+statements~$\psi_{jk}' \defeq (\psi_{jk} \vee \bigwedge_{l=1}^{r_{n+1}}
+\psi_{n+1,l})$ where~$j=1\ldots,n$, $k=1,\ldots,r_j$.}
+and the elementary reformulation of the statement that~$X = \bigcup_{j=1}^n
+E_j$: For any finite subset~$J \subseteq \{1,\ldots,n\}$ and any indices~$k_j
+\in \{ 1, \ldots, m_j \}$ for~$j \in J$,
+\[ \prod_{j \in J} g_{j, k_j} \in \sqrt{(f_j)_{j \in \{1,\ldots,n\} \setminus J}}. \qedhere \]
+\end{proof}
+
+\begin{cor}The topos of sheaves over~$(\Sch/S)_\lfp$ for the surjective
+topology is the classifying topos of algebraically closed geometric fields
+over~$S$. The points of that topos are the algebraically closed geometric
+fields over~$S$.\end{cor}
+
+\begin{proof}Follows from Theorem~\ref{thm:surjective-topology-classifies} in
+the same way as Corollary~\ref{cor:big-fpps-topos-classifies} and
+Corollary~\ref{cor:points-fppf-topos} follow from
+Theorem~\ref{thm:big-fppf-largest-subtopos}.
+\end{proof}
+
+\begin{rem}As in Section~\ref{sect:subspace-to-modal-operator},
+let~$\Zar(S)_{\neg\neg}$ be the smallest dense subtopos of~$\Zar(S)$, the
+subtopos given by the double negation topology. By Proposition~\ref{prop:a1-field} and
+Proposition~\ref{prop:affl-weakly-algebraically-closed} it holds
+that~$\Zar(S)_{\neg\neg} \models \speak{$\affl$ is an algebraically closed
+geometric field}$. Theorem~\ref{thm:surjective-topology-classifies} implies
+that~$\Zar(S)_{\neg\neg}$ is a subtopos of the subtopos given by the surjective
+topology. These toposes don't coincide, however. \XXX{why}
+\end{rem}
 
 
 \section{Unsorted}

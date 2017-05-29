@@ -3106,13 +3106,18 @@ connectives. In particular, if~$\varphi$ and~$\psi$ are elements of~$\Omega$,
 we will write~``$\varphi \Rightarrow \psi$'' to mean~$\varphi \subseteq \psi$;
 ``$\bot$'' to mean~$\emptyset$; and~``$\top$'' to mean~$1$.
 
-\begin{defn}A \emph{modal operator} (or \emph{Lawvere--Tierney topology}) is a map~$\Box : \Omega \to \Omega$ such
+\begin{defn}\label{defn:modal-operator}
+A \emph{modal operator} (or \emph{Lawvere--Tierney topology}) is a map~$\Box : \Omega \to \Omega$ such
 that for all~$\varphi, \psi \in \Omega$,
 \begin{enumerate}
 \item $\varphi \Longrightarrow \Box\varphi$,
 \item $\Box\Box\varphi \Longrightarrow \Box\varphi$,
 \item $\Box(\varphi \wedge \psi) \Longleftrightarrow \Box\varphi \wedge \Box\psi$.
 \end{enumerate}
+Syntactically, the symbol~``$\Box$'' binds stronger than any other logical
+connective. For instance, axiom~(2) is shorthand for~``$(\Box(\Box(\varphi)))
+\Rightarrow (\Box(\varphi))$'' and axiom~(3) is shorthand for~``$(\Box(\varphi
+\wedge \psi)) \Leftrightarrow ((\Box(\varphi)) \wedge (\Box(\psi)))$''.
 \end{defn}
 
 The intuition is that~$\Box\varphi$ is a certain weakening of~$\varphi$, where
@@ -3162,6 +3167,31 @@ holds, we may give a proof of~$\Box\psi$ under the stronger
 assumption~$\varphi$. Symbolically:
 \[ (\Box\varphi \Rightarrow \Box\psi) \Longleftrightarrow
   (\varphi \Rightarrow \Box\psi). \]
+
+\begin{rem}There is some contention on what symbol one should use for modal
+operators in the sense of Definition~\ref{defn:modal-operator}. This is
+because, in the modal logic community, the symbol~``$\Box$'' usually refers to
+the modal operator~``it is necessary that''. For this modal operator, one often
+imposes the \emph{reflexivity axiom}~$\Box\varphi \Rightarrow \varphi$ which we
+don't impose (and which would trivialize the theory). Conversely, our
+axiom~$\varphi \Rightarrow \Box\varphi$ isn't meaningful in the necessity
+interpretation. This axiom is meaningful for the modal operator~``it is
+possible that'', commonly denoted~``$\Diamond$''; but for possibility, the
+axiom~$\Diamond(\varphi \wedge \psi) \Leftrightarrow \Diamond\varphi \wedge
+\Diamond\psi$ isn't meaningful.
+
+A classical modal operator which matches our axioms is ``I believe that''
+under the proviso of unbounded rationality (``I believe every true
+statement'').
+
+Goldblatt chooses the symbol~``$\nabla$'' for the modal operators in our
+sense~\cite[Section~14.5]{goldblatt:topoi},~\cite{goldblatt:modality}. The
+symbol~``$\varbigcirc$'' is also common, particularly in the hardware
+verification community. A discussion of the relationship between these three
+kinds of operators is contained in~\cite{pfenning:davies:reconstruction}. We
+are grateful to Tadeusz Litak for valuable comments and references pertaining
+to this topic.
+\end{rem}
 
 
 \subsection{Geometric meaning}\label{sect:modalities-geometric-meaning}

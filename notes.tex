@@ -6022,15 +6022,21 @@ previous lemma. If~$X$ is a scheme, then quasicoherence of~$\N$ (which is
 necessary and sufficient for~$X_\mathrm{red}$ to be a scheme) can be shown
 internally (Example~\ref{ex:radical-qcoh}).
 The proof of the universal property can also be done in the
-internal language, by using that the well-known fact of locale theory that the
+internal language, by using the basic fact of locale theory that the
 category of locales over~$X$ is equivalent to internal locales in~$\Sh(X)$; but
 we do not want to discuss this further.
 
-For the second statement, internally define the ideal~$\I \defeq \sqrt{\{ s\?\O_X \,|\, s = 0 \vee
-A^c \}} \subseteq \O_X$. Then~$1 \in \I$ if and only if~$A^c$, thus by
+For the second statement, internally define the ideal~$\I \defeq \{ s\?\O_X
+\,|\, \speak{$s$ \inv} \Rightarrow A^c \} \subseteq \O_X$.
+Then~$1 \in \I$ if and only if~$A^c$, thus by
 Proposition~\ref{prop:basics-closed-subspace} the closed ringed subspace defined
 by~$\I$ has~$A$ as underlying topological space. It is reduced since~$\I$ is a
-radical ideal. \XXXh{is~$\I$ quasicoherent, if~$X$ is a scheme?}\end{proof}
+radical ideal.\end{proof}
+
+\begin{rem}By Proposition~\ref{prop:quasicoherator-structure-sheaf}, the
+ideal~$\I$ defined in the proof of Lemma~\ref{lemma:reduced-subspace} is
+internally quasicoherent. Therefore the closed ringed subspace defined by~$\I$
+is a scheme if~$X$ is.\end{rem}
 
 \begin{lemma}Let~$X$ be a scheme of dimension~$\leq n$. Let~$V(\I)
 \hookrightarrow X$ be a closed subscheme which is locally cut out by a regular

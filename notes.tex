@@ -1965,7 +1965,7 @@ equivalent to the \emph{limited principle of omniscience for~$\NN$}.
 Intuitionistically, it is only true that a weakly descending sequence~$a_0 \geq
 a_1 \geq \cdots$ of natural numbers eventually \emph{halts} in the sense that
 there exists an index~$n$ such that~$a_n = a_{n+1}$ (but~$a_{n+1} > a_{n+2}$ is
-allowed).\footnote{Classically, the following three statements on a ring are
+allowed).\footnote{Classically, the following three statements about a ring are
 equivalent: (1)~Every ascending chain of ideals stabilizes. (2)~Every ascending
 chain of finitely generated ideals stabilizes. (3)~Every ascending chain of
 finitely generated ideals halts.}
@@ -2066,7 +2066,7 @@ constant sheaf with value~$\NN$ and~$U$-sections of~$\M$ are finite type ideal
 sheaves of~$\O_X|_U$.
 
 Since~$X \models \speak{$f(0)$ is inhabited}$, there exists an open covering~$X
-= \bigcup_i U_i$ and finite type ideal sheaves~$\I_i \hookrightarrow
+= \bigcup_i U_i$ and finite type sheaves of ideals~$\I_i \hookrightarrow
 \O_X|_{U_i}$ such that~$U_i \models \I_i \in f(0)$. Without loss of generality,
 we may assume that the open sets~$U_i$ are standard open sets~$D(f_i)$ and that
 the covering is finite. Since the sheaves~$\I_i$ are quasicoherent (being of
@@ -2077,7 +2077,7 @@ localized ring~$A[g^{-1}]$.
 
 For each~$i$,~$D(f_i) \models \exists \aaa \in f(1)\_ \I_i \subseteq \aaa$.
 Thus there exists an open covering~$D(f_i) = \bigcup_j D(g_{ij})$ and finite
-type ideal sheaves~$\I_{ij} \hookrightarrow \O_X|_{D(g_{ij})}$; these
+type sheaves of ideals~$\I_{ij} \hookrightarrow \O_X|_{D(g_{ij})}$; these
 correspond to ideals~$J_{ij} \subseteq A[g_{ij}^{-1}]$ such that~$J_i
 \subseteq J_{ij}$ (where we have suppressed the localization
 morphism~$A[f_i^{-1}] \to A[g_{ij}^{-1}]$ in the notation). Equivalently,
@@ -5217,8 +5217,8 @@ U_i$ by open affine subsets~$U_i = \Spec A_i$. Then~$D(f) \cap U_i \cong \Spec
 A_i[f^{-1}]$ is quasicompact.\end{ex}
 
 From this example it will trivially follow that the nilradical~$\sqrt{(0)}
-\subseteq \O_X$ of a scheme and indeed the radical of any quasicoherent ideal
-sheaf is quasicoherent (Example~\ref{ex:radical-qcoh}). This example is also
+\subseteq \O_X$ of a scheme and indeed the radical of any quasicoherent
+sheaf of ideals is quasicoherent (Example~\ref{ex:radical-qcoh}). This example is also
 pivotal for giving a simple description of the quasicoherator
 (Proposition~\ref{prop:quasicoherator-arbitrary-algebra}), which in turn is
 needed for an internal understanding of the relative
@@ -5473,7 +5473,7 @@ some~$n\?\NN$, \ie that~$f^n t \in I$.
 \end{ex}
 
 \begin{ex}\label{ex:radical-qcoh} Let~$X$ be a scheme and~$\I \subseteq \O_X$
-be a quasicoherent ideal sheaf.  Then the radical of~$\I$, internally definable
+be a quasicoherent sheaf of ideals.  Then the radical of~$\I$, internally definable
 as \[ \sqrt{\I} \defeq \Bigl\{ s\?\O_X \,\Big|\, \bigvee_{n \geq 0} s^n \in \I \Bigr\}, \] is
 quasicoherent as well: Let~$f\?\O_X$ and~$s\?\O_X$ be arbitrary and
 assume~$\speak{$f$ \inv} \Rightarrow s \in \sqrt{\I}$, \ie assume that if~$f$
@@ -5617,7 +5617,7 @@ in~$\Gamma(D(f),\F)$ (as this is true on the covering~$D(f) = \bigcup_i (D(f)
 
 For applications in Section~\ref{sect:relative-spectrum} about interpreting the
 relative spectrum as an internal spectrum, we want to specialize to radical
-ideal sheaves. In particular, we want to describe the \emph{quasicoherator} --
+sheaves of ideals. In particular, we want to describe the \emph{quasicoherator} --
 the left adjoint to the inclusion of the quasicoherent radical ideals in the
 poset of all radical ideals -- in simple terms.
 
@@ -5732,9 +5732,9 @@ s_i x \in \overline{\I \cap \J}$. This implies~$f_i s_i x \in \overline{\I \cap
 If in the situation of
 Proposition~\ref{prop:quasicoherator-arbitrary-algebra} the algebra~$\A$ is not
 quasicoherent, the construction~$\I \mapsto \overline{\I}$ is still left
-adjoint to the inclusion of the radical ideal sheaves which satisfy the (then
+adjoint to the inclusion of the radical sheaves of ideals which satisfy the (then
 somewhat unmotivated) internal condition given in
-Corollary~\ref{cor:submodule-qcoh} in the poset of all radical ideal sheaves.
+Corollary~\ref{cor:submodule-qcoh} in the poset of all radical sheaves of ideals.
 Also Corollary~\ref{cor:quasicoherator-meet} remains valid.
 This is even the case if~$X$ is an arbitrary ringed space; in this case,
 the proofs of Proposition~\ref{prop:quasicoherator-arbitrary-algebra} and
@@ -5909,7 +5909,7 @@ a~$\Box$-sheaf amounts to doing nothing. This is obvious.
 \end{proof}
 
 \subsection{Closed subschemes} Let~$X$ be a ringed space. Recall
-that an ideal sheaf~$\I \subseteq \O_X$ defines a closed subset~$V(\I) = \{ x
+that a sheaf of ideals~$\I \subseteq \O_X$ defines a closed subset~$V(\I) = \{ x
 \in X \,|\, \I_x \neq (1) \subseteq \O_{X,x} \}$, a sheaf of
 rings~$\O_X/\I$, and a ringed space~$(V(\I), \O_{V(\I)})$ where~$\O_{V(\I)}$ is
 the pullback of~$\O_X/\I$ to~$V(\I)$. In the internal universe, we can
@@ -5917,8 +5917,8 @@ reify~$V(\I)$ by giving a modal operator~$\Box$ such that externally, the
 subspace~$X_\Box$ coincides with~$V(\I)$.
 
 \begin{prop}\label{prop:basics-closed-subspace}
-Let~$X$ be a ringed space. Let~$\I \subseteq \O_X$ be an ideal
-sheaf. Then:
+Let~$X$ be a ringed space. Let~$\I \subseteq \O_X$ be a sheaf of ideals.
+Then:
 \begin{enumerate}
 \item The subspace of~$X$ associated to the modal operator~$\Box$ defined
 by~$\Box\varphi \defequiv (\varphi \vee (1 \in \I))$ is~$V(\I)$.
@@ -5948,8 +5948,8 @@ epimorphism of sheaves. This is obvious.
 By Lemma~\ref{lemma:essim-closed-immersion}, the sheaf~$\O_X/\I$ is
 thus a~$\Box$-sheaf from the internal perspective.
 
-\begin{prop}Let~$X$ be a locally ringed space. Let~$\I \subseteq \O_X$ be an
-ideal sheaf. Then the ringed space~$(V(\I), \O_{V(\I)})$ is locally
+\begin{prop}Let~$X$ be a locally ringed space. Let~$\I \subseteq \O_X$ be a
+sheaf of ideals. Then the ringed space~$(V(\I), \O_{V(\I)})$ is locally
 ringed as well.\end{prop}
 \begin{proof}We have to show that
 \[ \Sh(V(\I)) \models \speak{$\O_{V(\I)}$ is a local ring}. \]
@@ -5967,14 +5967,14 @@ that~$x$ respectively~$y$ are invertible in~$\O_X/\I$. In the third case, it
 follows that~$1 \in \I$ and thus any boxed statement is trivially true.
 \end{proof}
 
-If~$X$ is a scheme and~$\I \subseteq \O_X$ is an ideal sheaf, it is well-known
+If~$X$ is a scheme and~$\I \subseteq \O_X$ is a sheaf of ideals, it is well-known
 that the locally ringed space~$V(\I)$ is a scheme if and only if~$\I$ is
 quasicoherent. We cannot give an internal proof of this fact since we lack an
 internal characterization of being a scheme.
 
 \begin{lemma}\label{lemma:closed-subspace-reduced}
 Let~$X$ be a scheme (or a ringed space). Let~$\I \subseteq \O_X$ be
-an ideal sheaf. The ringed space~$V(\I)$ is reduced if and only if, from the
+a sheaf of ideals. The ringed space~$V(\I)$ is reduced if and only if, from the
 internal perspective of~$\Sh(X)$, the ideal~$\I$ is a radical ideal.\end{lemma}
 \begin{proof}The following chain of equivalences holds:
 \begin{align*}
@@ -6017,7 +6017,7 @@ property.
 \begin{proof}For the first statement, let~$\N \subseteq \O_X$ be the nilradical
 of~$\O_X$. This can internally be simply defined by~$\N \defeq \sqrt{(0)} = \{
 s\?\O_X \,|\, \bigvee_{n \geq 0} s^n = 0 \}$. Define~$X_\mathrm{red}$ as the closed
-subspace associated to this ideal sheaf. This ringed space is reduced by the
+subspace associated to this sheaf of ideals. This ringed space is reduced by the
 previous lemma. If~$X$ is a scheme, then quasicoherence of~$\N$ (which is
 necessary and sufficient for~$X_\mathrm{red}$ to be a scheme) can be shown
 internally (Example~\ref{ex:radical-qcoh}).

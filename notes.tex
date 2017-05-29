@@ -9086,10 +9086,13 @@ determined by the resulting topos.
 
 We will indicate the few places where the choice of site makes a difference.
 
+It's possible to define the big Zariski topos of a scheme without recourse to
+classical scheme theory; we discuss this in
+Section~\ref{sect:big-zariski-without-classical-scheme-theory}.
+
+
 }
 
-% XXX: Defining the big Zariski topos without recoursing to ordinary scheme
-% theory
 
 \section{Relation between the big and little Zariski toposes}
 \label{sect:relation-big-little}
@@ -9641,6 +9644,38 @@ datum~$(\O_S \to \A_F \to R)$ as in description~(2). Conversely, the structure
 morphism of a datum as in description~(2) can be factored as a localization
 followed by a local homomorphism to yield a datum as in~(1).
 \end{proof}
+
+
+\subsection{Constructing the big Zariski topos without recourse to classical
+scheme theory}\label{sect:big-zariski-without-classical-scheme-theory}
+
+Given a scheme~$S$, is it possible to construct the big Zariski topos of~$S$
+without recourse to classical scheme theory? Without employing a site which
+refers to schemes as classically conceived?
+
+Taken literally, this question is ill-posed, since the datum~$S$ is given as a
+classical scheme. A better question is: Is it possible to setup the basics of
+the theory of schemes using only big Zariski toposes, preferably even in an
+intuitionistic fashion?
+
+This is indeed possible, and we wish to sketch how this can be done. Given a
+base ring~$A$, the big Zariski topos of~$\Spec(A)$ can be defined as the topos
+of sheaves over the parsimonious site~$\Alg(A)_\fp^\op$ consisting of (formal
+duals) of finitely presented~$A$-algebras. We can then declare an~$A$-scheme to
+be an object of~$\Zar(\Spec(A))$ having certain properties, for instance being
+a \emph{finitely presented synthetic scheme}
+(Definition~\ref{defn:synthetic-scheme}).
+
+The big Zariski topos of such an~$A$-scheme~$X$ can then simply be defined as
+the slice topos~$\Zar(\Spec(A))/X$, in accordance with the equivalence noted in
+Section~\ref{sect:change-of-base}. This slice topos can serve as the base over
+which further schemes and their big Zariski toposes can be constructed.
+
+Inaccessible to this approach to scheme theory are schemes which are not
+locally of finite presentation over the base ring. If one wants to account for
+such schemes, one has to substitute the parsimonious site for a larger one;
+however, some problems remain, as indicated in
+Section~\ref{sect:qc-qs-morphisms}.
 
 
 \section{The double negation modality}
@@ -11048,6 +11083,7 @@ Proposition~\ref{prop:char-closed-image}.
 
 
 \subsection{Quasicompact and quasiseparated morphisms}
+\label{sect:qc-qs-morphisms}
 
 \begin{defn}\label{defn:synthetic-scheme}
 In the context of a specified local ring~$R$:
@@ -11085,7 +11121,7 @@ and~(3)~$\Leftrightarrow$~(3').
 
 \begin{proof}For proving~(1)~$\Rightarrow$~(1'), (2)~$\Rightarrow$~(2'),
 and~(3)~$\Rightarrow$~(3'), we may assume that~$S$ is affine, since the
-internal language is local. Let~$X_0$ be an~$S$-scheme representing~$X$. Since
+internal language is local. Let~$X_0$ be an~$S$-scheme representing the functor~$X$. Since
 the structure morphism~$X_0 \to S$ is quasicompact and~$S$ is quasicompact,
 there exist finitely many open affine subschemes~$U_i \subseteq X_0$ which
 cover~$X_0$. By Proposition~\ref{prop:char-open-immersion}, the

@@ -3404,7 +3404,19 @@ The two conditions can be combined: A set~$F$ is a~$\Box$-sheaf if and only if
 \[ \forall S \subseteq F\_
   \Box(\speak{$S$ is a singleton}) \Longrightarrow
   \exists! x\?F\_ \Box(x \in S). \]
-\XXX{explain how to read these definitions}
+
+Intuitively, reading~``$\Box\varphi$'' as ``locally~$\varphi$'', a set
+is~$\Box$-separated if elements which are locally equal are in fact equal. A
+set is a~$\Box$-sheaf if furthermore for any set~$S$ of elements which locally
+contains just a single element there is an element which is locally contained
+in~$S$.
+
+This phrasing is reminiscent of the usual gluing condition, which demands that
+any family of sections which locally is just a single section (in that the
+sections of the family agree on their common domain of definition) gives rise
+to a global section which coincides with the given sections on their respective
+domain. Remark~\ref{rem:modal-operator-in-presheaf-topos} below sketches how to
+make this relation precise.
 
 \begin{defn}\label{defn:plus-construction}
 The \emph{plus construction} of a set~$F$ with respect to~$\Box$ is the set
@@ -3421,7 +3433,8 @@ that
 \[ \Box(\speak{$S$ is a singleton}) \quad\Longleftrightarrow\quad
   \speak{$S$ is a subsingleton} \wedge \Box(\speak{$S$ is inhabited}). \]
 
-\begin{rem}The topos of \emph{pre}sheaves on a topological space~$X$ admits an
+\begin{rem}\label{rem:modal-operator-in-presheaf-topos}
+The topos of \emph{pre}sheaves on a topological space~$X$ admits an
 internal language as well~\cite[Section~VI.7, discussion after
 Theorem~1]{moerdijk-maclane:sheaves-logic}. In it, there
 exists a modal operator~$\Box$ reflecting the topology of~$X$. A presheaf on~$X$ is separated

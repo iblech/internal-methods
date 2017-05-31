@@ -9865,7 +9865,39 @@ by Proposition~\ref{prop:a1-nilp}.)
 
 \section{Sheaves of rings, algebras, and modules}
 
-\XXX{locally free, ...}
+\begin{prop}Let~$\E$ be an~$\O_S$-module. Properties of~$\E$ and of the
+induced~$\affl$-module~$\E^\Zar$ are related as follows:
+\begin{itemize}
+\item $\E$ is finite locally free if and only if~$\E^\Zar$ is finite free as
+an~$\affl$-module from the internal point of view of~$\Zar(S)$.
+\item $\E$ is of finite type if and only if~$\E^\Zar$ is finitely generated as
+an~$\affl$-module from the internal point of view of~$\Zar(S)$.
+\item $\E$ is of finite presentation if and only if~$\E^\Zar$ is finitely
+presented as an~$\affl$-module from the internal point of view of~$\Zar(S)$.
+\item $\E$ is coherent if and only if~$\E^\Zar$ is coherent
+as an~$\affl$-module from the internal point of view of~$\Zar(S)$.
+\end{itemize}
+\end{prop}
+
+\begin{proof}The ``if'' directions follow just as in
+Proposition~\ref{prop:finite-type-and-co}. The proofs of the ``only if''
+directions further exploit that generators and relations are stable under base
+change.
+%XXX:Does this more conceptual proof work?
+%The proofs of the ``only if'' directions can too proceed by hand, further
+%exploiting only that generators and relations are stable under base change. But
+%there's also a more conceptual proof: From the point of view of~$\Sh(S)$,
+%the~$\affl$-module~$\E^\Zar$ admits the description~$\E^\Zar = \ul{\E}
+%\otimes_{\ul{\O_S}} \affl$, where the underline denotes the constant sheaf
+%construction (which externally is interpreted by the functor~$\pi^{-1}$
+%described in Section~\ref{sect:relation-big-little}). By
+%Lemma~\ref{lemma:properties-of-constant-sheaves},
+%the~$\ul{\O_S}$-module~$\ul{E}$ inherits any property from~$\E$, and the
+%properties under discussion are stable under tensoring.
+\end{proof}
+
+An analogous results for sheaves of algebras.
+
 
 \subsection{Quasicoherence}
 

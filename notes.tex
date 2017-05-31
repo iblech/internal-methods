@@ -6564,7 +6564,23 @@ such that~$\alpha(x) = y$.
   \caption{\label{table:generic-filter-statements}Substituting the use of prime
   ideals by the generic filter.}
 \end{table}
-\XXX{Discuss "finitely generated" example in more detail.}
+
+\begin{rem}As is apparent from Table~\ref{table:generic-filter-statements},
+there is a slight mismatch between the external ``for any prime ideal'' and
+the internal ``for the generic filter''. It's not true that a module is
+finitely generated if and only if all its stalks are finitely generated (a
+counterexample is the~$\ZZ$-module~$\bigoplus_p \ZZ/(p)$). But it is true that
+an~$A$-module~$M$ is finitely generated if and only if, internally
+to~$\Sh(\Spec(A))$, the generic stalk~$\ul{M}[\F^{-1}]$ is finitely generated.
+
+Intuitively, verifying a statement about the generic stalk doesn't only mean
+that it holds for all (ordinary) stalks; it means that it holds for the
+ordinary stalks in a \emph{uniform manner}. This extra bit of rigidity is what
+allows to draw slightly stronger conclusions.
+
+The other entries in Table~\ref{table:generic-filter-statements} don't show
+this slight difference in semantics.
+\end{rem}
 
 The sheaf-theoretical approach using the generic filter is different from the
 dynamical methods in the following aspect. We have to reword classical

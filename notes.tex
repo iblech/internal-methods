@@ -1408,6 +1408,7 @@ do that, in Section~\ref{sect:constructive-scheme-theory}.\end{rem}
 \chapter{The little Zariski topos}\label{part:little-zariski}
 
 \section{Sheaves of rings}
+\label{sect:sheaves-of-rings}
 
 Recall that a \emph{sheaf of rings} can be categorically described as a
 sheaf of sets~$\R$ together with maps of sheaves $+, \cdot : \R \times \R \to
@@ -2194,13 +2195,12 @@ page~\pageref{page:convoluted-statement}.
 
 
 \section{Sheaves of modules}
+\label{sect:sheaves-of-modules}
 
 From the internal perspective, a sheaf of~$\R$-modules, where~$\R$ is a sheaf
 of rings, looks just like a plain module over the plain ring~$\R$. This is
 proven just as the correspondence between sheaf of rings and internal rings
 (Proposition~\ref{prop:rings-internally}).
-
-\XXX{talk about modules over constant sheaves of rings as well}
 
 
 \subsection{Finite local freeness}
@@ -6105,6 +6105,7 @@ similar to the proof of Lemma~\ref{lemma:pushforward-finite-type}
 
 
 \section{Transfer principles}
+\label{sect:transfer-principles}
 
 Let~$M$ be an~$A$-module. A natural question is how properties of~$M$
 relate to properties of the induced quasicoherent sheaf~$M^\sim$
@@ -6147,12 +6148,21 @@ equivalent to saying that~$a$ and~$b$ coincide if~$U$ is inhabited.
 \end{proof}
 
 The lemma in particular implies that constant sheaves enjoy several
-classical properties from the internal point of view, even though the internal
+classical properties from the internal point of view (if they are present in the metatheory), even though the internal
 language only supports intuitionistic reasoning in general. For instance, for a
 constant sheaf~$\ul{M}$ it holds that
 \[ \Sh(X) \models \forall x,y\?\ul{M}\_ \neg\neg(x = y) \Rightarrow x = y \]
 and even
 \[ \Sh(X) \models \forall x,y\?\ul{M}\_ x = y \vee x \neq y. \]
+
+\begin{rem}Lemma~\ref{lemma:properties-of-constant-sheaves} is also valid for
+locales instead of topological spaces. If one works in an intuitionistic
+metatheory, one has to add the additional requirement that the locale is
+\emph{overt}; classically, every locale is overt, and intuitionistically,
+at least locales arising from topological spaces are overt. We'll revisit this
+subtle point in Section~\ref{sect:constructive-scheme-theory}, where we sketch
+how scheme theory can be developed in an intuitionistic context.
+\end{rem}
 
 
 \subsection{The generic filter}
@@ -6289,9 +6299,9 @@ internally defined by an expression of the form~$\{ a\?\ul{A} \,|\, \varphi(a)
 
 The metatheorem reflects the following well-known fact of classical
 ring theory: If an ideal meets every filter (that is, the complement of every
-prime ideal), it is the unit ideal. In this formulation the statement can't be
-proven intuitionistically; the occurence of \emph{every filter} has to be
-replaced by \emph{generic filter}. Intuitively, the generic filter is a
+prime ideal), it is the unit ideal. In this particular formulation the statement can't be
+proven intuitionistically; the occurence of ``every filter'' has to be
+replaced by ``generic filter''. Intuitively, the generic filter is a
 reification of the abstract idea of an ``arbitrary filter'', a filter about
 which nothing is known except that it satisfies the filter axioms.
 
@@ -6368,7 +6378,8 @@ reprove Lemma~\ref{lemma:regular-affine}, that is the statement that a ring
 element~$f \in A$ is regular in~$A$ if and only if, from the internal point of
 view, it is regular in~$\O_{\Spec A}$.
 
-\begin{lemma}Let~$M$ be an~$A$-module. Then~$M^\sim$ is of finite type if and
+\begin{lemma}\label{lemma:finite-type-using-universal-filter}
+Let~$M$ be an~$A$-module. Then~$M^\sim$ is of finite type if and
 only if~$M$ is finitely generated.\end{lemma}
 \begin{proof}First assume that~$M$ is finitely generated over~$A$.
 Then~$\ul{M}$ is finitely generated over~$\ul{A}$, by
@@ -6441,8 +6452,8 @@ and similarly for the cokernel.
 The generic filter has a practical application in constructive mathematics.
 Recall that intuitionistically prime and maximal ideals don't work very well,
 since one often needs the axiom of choice or related set-theoretical principles
-in dealing with them. This is unfortunate, since prime and maximal ideals are
-very useful in some situations. For example:
+in dealing with them. This is unfortunate, since calculations with prime and maximal ideals are
+often quite useful. For example:
 \begin{itemize}
 \item To verify that a ring element is nilpotent, it suffices to verify that it
 is an element of every prime ideal. For instance, this is calculationally simpler
@@ -6458,7 +6469,8 @@ One could of course simply switch to classical logic in this case. However this
 might not be desirable, as a constructive proof would contain more information:
 For instance, if we have classically proven that an element~$x$ is an element
 of every prime ideal, then we know that some power~$x^n$ is zero. But from such
-a proof we can't directly read off any upper bound on~$n$.
+a proof we can't directly read off any upper bound on~$n$. From a constructive
+proof of nilpotency, we could.
 
 There is a way to combine some of the powerful tools of classical ring theory
 with the advantages that constructive reasoning provides. Namely we can devise
@@ -6479,12 +6491,11 @@ Table~\ref{table:generic-filter-statements} in the internal language
 of~$\Sh(\Spec A)$ are intuitionistically equivalent to the statements given in
 the third column.\end{prop}
 \begin{proof}To demonstrate the technique we verify the first and the last claim.
-To make the following proofs constructive we would have to define~$\Spec A$
-and its sheaf topos in a constructive fashion, not using prime ideals. This can
-be done, by constructing~$\Spec A$ as a locale instead of a topological space
-(see for instance Section~\ref{sect:spectrum-as-a-locale}
-and~\cite[p.~743f.]{wraith:generic-galois-theory}),
-but we won't discuss details here.
+To make the following proofs constructive we have to define~$\Spec A$,
+its sheaf topos, and the generic filter in a constructive fashion, not using prime ideals. This can
+be done, by constructing~$\Spec A$ as a locale instead of a topological space.
+We expand on this in Section~\ref{sect:spectrum-as-a-locale} and in
+Section~\ref{sect:constructive-scheme-theory}.
 
 The interpretation of~$\Sh(\Spec A) \models x \not\in \F$ by the Kripke--Joyal
 semantics is that~$D(f) \models x \in \F$ implies~$D(f) = \emptyset$ for
@@ -6921,7 +6932,8 @@ a more general kind of space and still verifies a meaningful universal
 property. We give details on this generalization below.
 
 
-\subsection{Internal locales} Let~$X$ be a topological space (or a locale). A
+\subsection{Internal locales}\label{sect:internal-locales}
+Let~$X$ be a topological space (or a locale). A
 fundamental fact in the theory of locales is that there is a canonical
 equivalence between the category of \emph{locales over~$X$} -- that is
 locales~$Y$ equipped with a morphism~$Y \to X$ -- and \emph{internal locales
@@ -8443,6 +8455,302 @@ remains to define a morphism~$f^\sharp : f^{-1}\O_{\Proj(\S|\O_X)} =
   with respect to the basis~$(\psi(s \otimes 1))$}. \]
 We omit further verifications.
 \end{proof}
+
+
+\subsection{A constructive account of scheme theory}
+\label{sect:constructive-scheme-theory}
+
+Scheme theory as classically set up heavily relies on prime ideals and
+therefore only works well in a classical context, where the law of excluded
+middle and (at least some forms of) the axiom of choice are available. However,
+the actual mathematical ideas do not fundamentally require classical logic; we
+don't begin the proof that the kernel of a morphism between quasicoherent
+sheaves of modules is quasicoherent by supposing that it's not. Instead,
+classical logic is only needed because the usual foundations of scheme theory
+involving locally ringed spaces require it.
+
+In this section, we sketch how scheme theory can be developed in an
+intuitionistic metatheory; there are several reasons why it's desirable to have
+such an account. Firstly, as is familiar from constructive treatments of other
+subjects, the constraint to set up all definitions in an intuitionistically
+sensible way is a useful guiding principle which can increase the perceived
+elegance of the theory and result in more direct proofs.
+
+It would be interesting to know which advanced results in algebraic geometry
+\emph{actually} require classical logic (or at least classicality hypotheses on
+the ground ring); for this, one has to use a foundation
+which doesn't itself require classical logic just for organizational
+purposes.\footnote{For instance, some results in linear algebra can
+intuitionistically only be shown for \emph{discrete} fields -- fields such that
+any element is zero or not zero. Such hypotheses are computationally meaningful
+and will entail similar hypotheses for some results in algebraic geometry.}
+
+Secondly, one might be interested in concrete computations and might therefore
+leverage the fact that one can mechanically extract algorithms from
+constructive proofs. For instance, an intuitionistic proof that some cohomology
+is finite dimensional yields an algorithm for computing the dimension and even
+a basis.
+
+Finally, one might want to apply scheme theory in the intuitionistic internal
+universe of the little Zariski topos of a base scheme, in order to generalize
+results of absolute scheme theory to relative scheme theory with little effort
+and no duplication of proofs. The starting point for such a transfer is that
+locally ringed locales over a locally ringed locale~$X$ look like locally
+ringed locales over the point from the internal point of view of~$\Sh(X)$, as
+discussed in Section~\ref{sect:internal-locales}.
+
+The internal language of the big Zariski topos, presented in
+Part~\ref{part:big-zariski}, is too a vehicle for relative scheme theory;
+however, its language looks quite different from what one is accustomed to.
+
+In this section, we only sketch how the basics of constructive scheme theory
+could look like. Some parts are certainly folklore among constructive
+mathematicians, but to the best of our knowledge no coherent summary appeared
+in print before.
+
+There is a vast literature on algorithmic computations in algebraic geometry
+(to exemplarily cite just two references, Eisenbud's textbook on
+syzygies~\cite{eisenbud:syzygies} and the GAP project~\cite{gap} are
+well-known). However, these results are often still set in a classical context,
+relying on classical logic for termination or correctness proofs. They
+therefore don't contain an intuitionistic development of scheme theory.
+
+{\tocless
+
+\subsection*{Constructive algebra} Any constructive development of scheme
+theory needs to rest on a constructive development of commutative algebra.
+Such an account is readily
+available~\cite{mines-richman-ruitenburg:constructive-algebra,lombardi:quitte:constructive-algebra}.
+
+\subsection*{Local models} As discussed in
+Section~\ref{sect:spectrum-as-a-locale}, defining the spectrum of a ring as a
+topological space isn't sensible from a constructive point of view. A working
+alternative is defining the spectrum as a locally ringed locale, employing the
+frame of radical ideals. By considering sheaves over it, this yields a locally
+ringed topos; this topos can also be presented by a more parsimonious site,
+namely the site whose objects are the elements of the ring and whose coverings
+are those finite families~$(g_i \to f)_i$ such that~$\sqrt{(f)} =
+\sqrt{(g_i)_i}$.
+
+This construction is due to
+Joyal~\cite{joyal:spectrum,espanol:spectrum,tierney:spectrum} and was further explored
+by several researchers~\cite{cls:spectral-schemes,cls:projective-spectrum}.
+It's also possible to employ the framework of formal
+topology~\cite{schuster:formal-zariski}.
+
+The universal property of the localic spectrum ensures that morphisms~$\Spec(B)
+\to \Spec(A)$ of locally ringed locales (or locally ringed toposes) are in
+canonical one-to-one correspondence with ring homomorphisms~$A \to B$, as it
+should be. There are two ways for explicitly constructing a morphism between
+spectra. One is to specify a morphisms of frames going in the other direction.
+For instance, given a ring homomorphism~$\varphi : A \to B$, one can map a
+radical ideal~$\aaa \subseteq A$ to~$\sqrt{\aaa B} \subseteq B$; this yields a
+morphism~$\Open(\Spec(A)) \to \Open(\Spec(B))$.
+
+Using the device of classifying locales, there is also another way which more
+closely mimicks the classical approach of taking preimages of prime ideals. To
+give a morphism~$\Spec(B) \to \Spec(A)$ of locales amounts to give a model of
+the theory of filters of~$A$ in~$\Sh(\Spec(B))$. The sheaf topos
+over~$\Spec(B)$ contains the generic filter~$\F$ of~$B$; given a ring
+homomorphism~$\varphi : A \to B$, this filter can be turned into a filter
+of~$A$ by taking the preimage~$\varphi^{-1}[\F]$.
+
+As we have seen in Section~\ref{sect:transfer-principles}, for deriving
+transfer principles it's useful to be able to quickly gauge properties of
+constant sheaves over~$\Spec(A)$. For topological spaces,
+Lemma~\ref{lemma:properties-of-constant-sheaves} could be used to this effect.
+For locales in an intuitionistic metatheory, this lemma has to be modified
+slightly.
+
+\begin{defn}\begin{enumerate}
+\item A locale~$X$ is \emph{overt} if and only if the unique morphism~$X
+\to \pt$ of locales is open.
+\item A \emph{positivity predicate} on a frame~$P$ is a predicate on the set of
+elements of~$P$, written~``$U > 0$'' for~$U \? P$, such that for any element~$U
+\? P$ and any subset~$M \subseteq P$,
+\begin{itemize}
+\item if~$U > 0$ and~$U
+\preceq \bigvee M$, then there exists an element~$V \in
+M$ such that~$V > 0$, and
+\item if~$U > 0 \Longrightarrow U \preceq \bigvee M$, then~$U \preceq \bigvee M$.
+\end{itemize}
+\end{enumerate}
+\end{defn}
+
+\begin{ex}The frame of open subsets of a topological space~$X$ has a positivity
+predicate, defined by~$U > 0$ if and only if~$U$ is inhabited.\end{ex}
+
+\begin{ex}Assuming classical logic, any frame admits the positivity predicate
+defined by~$U > 0$ if and only if~$U \neq \bot$.\end{ex}
+
+\begin{prop}A locale~$X$ is overt if and only if its frame of opens admits a
+\emph{positivity predicate}.\end{prop}
+
+\begin{proof}Instructive unraveling of the definitions.
+\end{proof}
+
+\begin{lemma}\label{lemma:properties-of-constant-sheaves-over-locales}
+Let~$\varphi$ be a formula in which arbitrary sets and elements
+may occur as parameters. Let~$X$ be a locale. If~$\varphi$ is a geometric
+formula, then
+\[ U \models \varphi \quad\text{if and only if}\quad U \preceq \bigvee \{ \top \,|\,
+\varphi \}. \]
+If~$X$ is overt, then this equivalence even holds for arbitrary first-order
+formulas, and furthermore in this case~$U \models \varphi$ is equivalent to~$(U
+> 0 \Longrightarrow \varphi)$.
+\end{lemma}
+
+\begin{proof}The first statement can be checked by induction on the structure
+on~$\varphi$. The second statement is by definition of overtness.
+\end{proof}
+
+\begin{prop}\label{prop:spectrum-overt}
+The localic spectrum of a ring~$A$ is overt if and only if any
+element of~$A$ is nilpotent or not nilpotent.\end{prop}
+
+\begin{proof}For the ``if'' direction, we can define a positivity predicate
+by~$\aaa > 0$ if and only if~$\aaa$ contains an element which is not nilpotent.
+
+For the ``only if'' direction, let~$f \? A$ be an arbitrary element. Then
+\begin{align*}
+  \sqrt{(f)} &\subseteq \bigvee \{ \sqrt{(1)} \,|\, \sqrt{(f)} > 0 \} \\
+  &\subseteq \bigvee \{ \sqrt{(1)} \,|\, \text{$f$ is not nilpotent} \} \\
+  &= \{ s \? A \,|\, \text{$s$ is nilpotent or $f$ is not nilpotent} \}.
+\end{align*}
+Considering that~$f \in \sqrt{(f)}$, it follows that~$f$ is nilpotent or~$f$ is
+not nilpotent.
+\end{proof}
+
+\begin{rem}We don't know when the local spectrum~$\Spec(A|R)$ is overt. This
+question is related to openness of morphisms between schemes as follows.
+Let~$X$ be a scheme (in a classical context). Let~$\A$ be a
+quasicoherent~$\O_X$-algebra. Then the relative spectrum~$\RelSpec_X(\A)$
+exists as a topological space, and is given by the externalization of the local
+spectrum~$\Spec(\A|\O_X)$. If the canonical morphism~$\RelSpec_X(\A) \to X$ is
+open, then the induced morphism of locales is open as well (the converse
+doesn't hold in
+general~\cite[Proposition~IX.8.5]{moerdijk-maclane:sheaves-logic}). This is the
+case if and only if~$\Spec(\A|\O_X)$ is an overt locale from the internal point
+of view of~$\Sh(X)$.
+\end{rem}
+
+Since Proposition~\ref{prop:spectrum-overt} shows that the spectrum of a ring
+is in general not overt,
+Lemma~\ref{lemma:properties-of-constant-sheaves-over-locales} is not applicable
+to the spectrum in its full power. However, there is a substitute which is often
+sufficient: For a ring element~$f \? A$, it holds that
+\[ \sqrt{(f)} \subseteq \bigvee \{ \top \,|\, \varphi \}
+  \qquad\text{if and only if}\qquad
+  \speak{$f$ is nilpotent} \vee \varphi, \]
+The case that~$f$ is nilpotent often trivializes the situation, allowing to
+extend Lemma~\ref{lemma:properties-of-constant-sheaves-over-locales}, at least
+morally. For instance, it still holds that an~$A$-module~$M$ is finitely
+generated if and only if~$\ul{M}$ is finitely
+generated as an~$\ul{A}$-module from the internal point of view
+of~$\Spec(A)$. (This then implies that~$M$ is finitely generated if and only
+if~$M^\sim$ is of finite type, as in the proof of
+Lemma~\ref{lemma:finite-type-using-universal-filter}.) The ``only if''
+direction is straightforward. For the ``if'' direction, we may assume that
+we're given a covering~$\sqrt{(1)} = \bigvee_i \sqrt{(f_i)}$ such that, for
+each~$i$, there are elements~$x_{i1},\ldots,x_{i,n_i} \? M$ satisfying
+\[ \sqrt{(f_i)} \models \forall x\?\ul{M}\_
+  \exists a_1,\ldots,a_{n_i}\?\ul{A}\_
+  x = \textstyle\sum_j a_j x_{ij}. \]
+Without loss of generality, we may assume that the covering is finite. We can
+then verify that the joint system~$(x_{ij})_{ij}$ generates~$M$. Let~$x \? M$. For
+each index~$i$, there exists a finite covering~$\sqrt{(f_i)} = \bigvee_k
+\sqrt{(g_{ik})}$ such that, for each index~$k$, there exist
+elements~$a_1,\ldots,a_{n_i} \? A$ such that
+\[ \text{$g_{ik}$ is nilpotent} \qquad\text{or}\qquad
+  x = \textstyle\sum_j a_j x_{ij}. \]
+If the second case occurs for at least one pair~$(i,k)$ of indices, we are
+done. Else all the~$g_{ik}$ are nilpotent. This implies that all the~$f_i$ are
+nilpotent, which in turn implies that the unit of~$A$ is nilpotent. Thus~$A$ is
+the zero ring. In this case~$x = 0$; thus we are done as well.
+
+\subsection*{Gluing} The following definition is intuitionistically sensible:
+
+\begin{defn}\label{defn:scheme}
+An \emph{affine scheme} is a locally ringed locale which is isomorphic to the
+spectrum of a ring. A \emph{scheme} is a locally ringed locale which is locally
+(on an open cover) isomorphic to the spectrum of a ring.
+\end{defn}
+
+It's crucial that we're able to verify the affine communication
+lemma~\cite[Lemma~5.3.2]{vakil:foag} in this setting; this is the lemma which
+ensures that for many properties, there is no difference between mandating that
+they hold for the members of some open affine cover or that they hold on any
+affine open. Its validity rests solely on the following technical statement.
+
+\begin{prop}Let~$(X,\O_X)$ be a locally ringed locale. Let~$U$ and~$V$ be opens of~$X$
+such that~$(U,\O_X|_U)$ and~$(V,\O_X|_V)$ are affine. Then the meet~$U \wedge
+V$ admits a covering by opens which are simultaneously standard opens
+of~$(U,\O_X|_U)$ and of~$(V,\O_X|_V)$.
+\end{prop}
+
+\begin{proof}Since~$U$ is affine,
+\begin{align*}
+  U \wedge V &= \bigvee \{ W \preceq U \wedge V \,|\,
+  \text{$W \hookrightarrow U$ is a standard open} \}. \\
+\intertext{For any such open~$W$,}
+  W &= \bigvee \{ W' \preceq W \,|\,
+  \text{$W' \hookrightarrow W \hookrightarrow V$ is a standard open} \}
+\end{align*}
+since~$V$ is affine. We show that any such open~$W'$ is also standard open
+in~$U$; this suffices to establish the claim.
+
+Since~$W$ is standard open in~$U$, there is a function~$f \? \Gamma(U,\O_X)$
+such that~$W = D(f)$, where
+\[ D(f) = \bigvee \{ A \preceq X \,|\, A \models \speak{$f$ \inv} \}. \]
+Since~$W'$ is standard open in~$V$, there is a function~$g \? \Gamma(V,\O_X)$
+such that~$W' = D(g)$. The restriction~$g|_W$ can be regarded
+as an element of~$\Gamma(U,\O_X)[f^{-1}]$; as such, it is of the form~$h/f^n$.
+Then~$W' = D(f) \wedge D(h) = D(fh)$. The
+open~$W'$ therefore coincides, as an open of~$U$, with~$\sqrt{(fh)}$ and is thus
+standard open in~$U$.
+\end{proof}
+
+
+\subsection*{Properties of sheaves} Schemes in the sense of
+Definition~\ref{defn:scheme} can't intuitionistically be shown to have enough
+points~\cite{tierney:spectrum}. Classically, they can; this ensures that
+classically there is no difference between the category of schemes as usually
+defined and the category of schemes in the sense of
+Definition~\ref{defn:scheme}.
+
+As a consequence, properties of morphisms of sheaves can't be checked on
+stalks. For instance, for a morphism~$\alpha : \G \to \H$ of sheaves on a
+locale~$X$ to be an epimorphism it's not enough that~$\alpha_x : \G_x \to \H_x$
+is surjective for all locale-theoretic points of~$X$. Instead, for every local
+section~$s \? \H(U)$ there has to be a covering~$U = \bigvee_i U_i$ such that,
+for each~$i$, there is a preimage of~$s|_{U_i}$.
+
+Many of the results in Section~\ref{sect:sheaves-of-rings} and
+Section~\ref{sect:sheaves-of-modules} thus have to be made into definitions.
+For instance, a sheaf of modules should be declared \emph{flat} if and only if
+it is flat as an ordinary module from the internal point of view.
+
+The results in Section~\ref{sect:eliminating-prime-ideals} can be used to keep
+up the appearance that testing on stalks suffices. For instance, let~$\alpha :
+M^\sim \to N^\sim$ be a morphism of quasicoherent sheaves on~$\Spec(A)$. The
+points of~$\Spec(A)$ are the filters of~$A$; but as remarked it doesn't suffice
+to test the stalks~$\alpha_F : M[F^{-1}] \to N[F^{-1}]$. However, it does
+suffice to test, internally to~$\Sh(\Spec(A))$, the map~$\ul{M}[\F^{-1}] \to
+\ul{N}[\F^{-1}]$ (which is just~$\alpha$), where~$\F$ is the generic filter.
+
+
+\subsection*{Cohomology} We don't know how a general constructive framework for
+cohomology might look like (besides Čech cohomology, which has its well-known
+shortcomings) and can only remark that Grothendieck's approach using injective
+resolutions can't work, since it's consistent with Zermelo--Fraenkel set theory
+that no nontrivial injective abelian groups exist~\cite{blass:inj-proj-axc}.
+
+However, Barakat and Lange-Hegermann pioneered constructive approaches to
+cohomology of certain base schemes, which are not only mathematically elegant
+but also work very well in practice (much more efficiently than Čech methods).
+We refer to their articles for details~\cite{barakat-lh:homalg,barakat-lh:ext}.
+
+}
 
 
 \section{Higher direct images and other derived functors}

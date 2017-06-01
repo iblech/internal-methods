@@ -9011,8 +9011,19 @@ It suffices to change~``$m[\E] \cup \F'$'' to~``$m[\E] + \F''$'', where~$\F''
 \defeq \{ s \? \F \,|\, \text{$s = 0$ or $K$ is inhabited} \}$.
 \end{proof}
 
-\XXX{Remark that proof requires AxC and that it's a unique feature of sheaf toposes.
-Counterexample?}
+\begin{rem}The proof of Theorem~\ref{thm:char-injectivity} crucially rests on
+Proposition~\ref{prop:internal-char-flabbiness} and therefore on Zorn's lemma,
+in ensure that the sheaf~$\G$ defined in the proof which has the property that
+any of its sections can be localled extended admits a global section. The proof
+is therefore not intuitionistically valid.
+
+Relatedly, we don't think that the statement of
+Theorem~\ref{thm:char-injectivity} can be generalized to arbitrary
+(Grothendieck) toposes. The proof gradually refines the trivial
+generalized element of~$\G$ (defined on the empty stage) to a global element.
+Such a procedure is not really meaningful for sheaf toposes over sites for
+which not any object is a subobject of the terminal object.
+\end{rem}
 
 
 \subsection{Internal proofs of common lemmas}

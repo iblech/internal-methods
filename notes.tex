@@ -9033,7 +9033,7 @@ Then~$\HOM_{\O_X}(\F,\I)$ is flabby.
 \end{lemma}
 
 \begin{proof}
-We cover the case of sheaf of sets first. By Theorem~\ref{thm:char-injectivity}
+We first cover the case of sheaves of sets. By Theorem~\ref{thm:char-injectivity}
 and Proposition~\ref{prop:internal-char-flabbiness}, it suffices to give an
 intuitionistic proof of the following statement: If~$I$ is an injective set
 and~$F$ is an arbitrary set, then partially defined elements of the set~$[F,I]$
@@ -9096,13 +9096,13 @@ Instead by Definition~\ref{defn:interpretation-internal-constructions}, it is th
   \{ \langle V, s \rangle \,|\,
     \text{$V \subseteq U$ open, $s \in \F(V)$} \}. \]
 It's not possible to describe the Godement construction in the internal language
-of~$\Sh(X)$, since in the Godement construction the underlying set of~$X$
-enters. But the sheaf topos of~$X$ doesn't remember this set. For instance, if~$X$
+of~$\Sh(X)$, since the Godement construction depends on the underlying set of~$X$.
+But the sheaf topos of~$X$ doesn't remember this set. For instance, if~$X$
 is an inhabited indiscrete topological spac, then~$\Sh(X)$ is equivalent
 to~$\Set$.
 \end{rem}
 
-\begin{rem}It's not known to me whether it's possible to intuitionistically
+\begin{rem}It's not known to us whether it's possible to intuitionistically
 prove that any module can be embedded into a module which satisfies the internal
 flabbiness criterion of Proposition~\ref{prop:internal-char-flabbiness}. This
 would give an internal proof that any sheaf of modules can be embedded into a
@@ -9110,15 +9110,23 @@ flabby sheaf of modules. The naive candidates don't work: The
 set~$\P_{\leq1}(F)$ doesn't admit a canonical module structure, and the free
 module over that set is not flabby in general.
 
-Since by the Godement construction the statement is true in many models of
+Since by the Godement construction the statement that any sheaf of modules can
+be embedded into a flabby sheaf of modules is true in many models of
 intuitionistic logic, the sheaf toposes over topological spaces, and
 furthermore the proof that the Godement construction yields a flabby sheaf is
 intuitionistically valid,\footnote{In order for the Godement construction to
 work in a intuitionistic metatheory, one has to tweak its definition a little
-bit.  Instead of mapping an open subset~$U$ to~$\prod_{x \in U} \F_x$, one has
+bit. Instead of mapping an open subset~$U$ to~$\prod_{x \in U} \F_x$, one has
 to map~$U$ to~$\prod_{x \in U} \P_{\leq1}(\F_x)$. This has the added advantage
 that it works even if~$\F$ is not inhabited.} it's not unreasonable to believe
-that such an intuitionistic proof is possible.
+that such an intuitionistic proof is possible.\footnote{There is a metatheorem
+guaranteeing that a statement is intuitionistically provable if and only if it
+holds in the sheaf topos over any topological
+space~\cite[Theorem~B]{awodey-butz:completeness}. However, this metatheorem
+requires the considered statements to be of a certain form, which in particular
+forbids them from mentioning the object of truth values. The internal
+statements given in Proposition~\ref{prop:internal-char-flabbiness} depend on
+this object in a crucial way.}
 
 On the other hand, it's certainly not possible to intuitionistically prove that
 any module can be embedded into an injective module, since it's consistent with

@@ -8881,7 +8881,7 @@ refined to an honest element of~$\F$.
 
 Recall that an object~$I$ of a category~$\C$ is \emph{injective} if and only if,
 for any monomorphism~$X \to Y$ in~$\C$ and any morphism~$X \to I$, there
-is a lifting such that the diagram
+is an extension such that the diagram
 \[ \xymatrix{
   X \ar@{^{(}->}[r]\ar[d] & Y \ar@{-->}[dl] \\
   I
@@ -8905,7 +8905,7 @@ into an injective set: The powerset~$\P(X)$ and even the smaller
 set~$\P_{\leq1}(X)$ of subsingletons of a given set~$X$ are injective. We verify
 this in the proof of Lemma~\ref{lemma:enough-flabby}.
 
-For a cartesian closed category~$\C$, there is also the notion of an
+For a cartesian or monoidal closed category~$\C$, there is also the notion of an
 \emph{internally injective} object. This is an object~$I$ such that the
 internal Hom functor~$[\placeholder, I] : \C^\op \to \C$ maps monomorphisms
 in~$\C$ to epimorphisms. In the specical case that~$\C$ is a elementary topos
@@ -9002,7 +9002,9 @@ An~$\O_X$-module~$\I$ is injective if and only if it is internally injective.
 
 \begin{proof}Proposition~\ref{prop:notions-of-internal-injectivity} can be
 adapted from sheaves to sets to sheaves of modules, with the same proof.
-\XXXh{check that.}
+The extra left adjoint~$p_! : \Mod_{\Sh(X)/A}(\O_X \times A) \to
+\Mod_{\Sh(X)}(\O_X)$ required by the proof maps a module~$M \to A$ to the
+internal direct sum~$\bigoplus_{a \? A} M(a)$.
 
 The proof of Theorem~\ref{thm:char-injectivity} can be adopted as well.
 It suffices to change~``$m[\E] \cup \F'$'' to~``$m[\E] + \F''$'', where~$\F''

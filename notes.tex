@@ -6592,8 +6592,14 @@ complement of~$\F$ in~$\ul{A}$ is the subsheaf~$\P$ defined by~$\Gamma(U, \P)
 \defeq \{ f : U \to A \,|\, \text{$f(\ppp) \in \ppp$ for all~$\ppp \in U$} \}$
 and that~$D(f) \models x \in \P$ if and only if~$fx$ is nilpotent. This can be
 used to show that the statement~$\Sh(\Spec A) \models \forall x,y\?\ul{A}\_ xy
-\in \P \Rightarrow x \in \P \vee y \in \P$ is false in general.}
-\XXX{Give counterexample.}
+\in \P \Rightarrow x \in \P \vee y \in \P$ is false in general. A concrete
+counterexample is given by~$A = \ZZ[U,V]/(UV)$. Then~$\Sh(\Spec A) \models [U]
+\cdot [V] \in \P$, but $\Sh(\Spec A) \not\models [U] \in \P \vee [V] \in \P$.}
+% Assume that 1 = sum_i f_i + sum_j g_j such that (f_i U)^{n_i} = 0 and
+% (g_j V)^{m_j} = 0. Without loss of generality, we may assume that: all the
+% n_i and m_j are equal; that f_i U^n = 0 and g_j V^n = 0; that |I| = |J| = 1.
+% Then V|f and U|g. Thus 1 = V (...) + U (...) + UV (...). This is a
+% contradiction.
 
 
 \subsection{An internal proof of Grothendieck's generic freeness lemma}\label{sect:generic-freeness}

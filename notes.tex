@@ -90,6 +90,7 @@
 \newcommand{\nnn}{\mathfrak{n}}
 \newcommand{\Hom}{\mathrm{Hom}}
 \newcommand{\HOM}{\mathcal{H}\mathrm{om}}
+\newcommand{\EXT}{\mathcal{E}\mathrm{xt}}
 \newcommand{\Ind}{\mathrm{Ind}}
 \newcommand{\id}{\mathrm{id}}
 \newcommand{\GL}{\mathrm{GL}}
@@ -9201,9 +9202,82 @@ element~$u \? \E'$ such that~$\alpha^{-1}[K - t_0] \subseteq \{u\}$.
 The partial element~$K$ can thereby refined to the honest element~$t \defeq t_0 + \alpha(u)$.
 \end{proof}
 
-\XXX{Higher direct images}
 
-\XXX{Ext, Tor}
+\subsection{Tor and sheaf Ext}
+
+\begin{lemma}\label{lemma:descent-for-modules}
+Let~$X$ be a ringed topological space (or a ringed locale).
+Let~$\varphi(\E)$ be a property of~$\O_X$-modules, formulated in the internal
+language of~$\Sh(X)$. Let~$\psi(f)$ be a property of morphisms
+of~$\O_X$-modules, formulated in the internal
+language of~$\Sh(X)$ and stable under composition. Assume that
+\begin{enumerate}
+\item $\Sh(X) \models \exists \textnormal{$\E$ $\O_X$-module}\_ \varphi(\E)$
+and
+\item $\Sh(X) \models \forall \textnormal{$\E,\E'$ $\O_X$-modules}\_ \varphi(\E) \wedge \varphi(\E')
+  \Longrightarrow
+  \exists! \textnormal{$f : \E \to \E'$ linear}\_ \psi(f)$.
+\end{enumerate}
+Then there exists an~$\O_X$-module~$\E$ such that~$\Sh(X) \models \varphi(\E)$,
+and any two such~$\O_X$-modules are isomorphic via a unique isomorphism which
+satisfies~$\psi$ from the internal point of view.
+\end{lemma}
+
+\begin{proof}This is a reformulation of the well-known fact that we have
+descent for sheaves of~$\O_X$-modules. By the first assumption, there is an
+open covering~$X = \bigcup_i U_i$ such that for each~$i$, there is
+an~$\O_X|_{U_i}$-module~$\E_i$ with~$U_i \models \varphi(\E_i)$. By the second
+assumption and by Proposition~\ref{prop:simplification}, for each pair~$(i,j)$
+of indices there is a unique morphism~$f_{ij} : \E_i|_{U_i \cap U_j} \to
+\E_j|_{U_i \cap U_j}$ such that~$U_i \cap U_j \models \psi(f_{ij})$. Since the
+property~$\psi$ is stable under composition, these morphisms are isomorphisms
+which satisfy the cocycle condition. Thus the~$\O_X$-modules~$\E_i$ glue to a
+global~$\O_X$-module~$\E$, which satisfies property~$\varphi$ because it does
+so locally.
+
+The uniqueness claim is immediate by Proposition~\ref{prop:simplification} and
+by the assumption that property~$\psi$ is stable under composition.
+\end{proof}
+
+\begin{rem}Lemma~\ref{lemma:descent-for-modules} can be generalized in two
+ways: from sheaves of modules to other kinds of algebraic structures, for
+instance complexes of sheaves of modules; and from sheaf toposes over locales
+to more general Grothendieck toposes, by the descent theorem for Grothendieck
+toposes. We will use the former, but not the latter generalization.
+\end{rem}
+
+\begin{lemma}\label{lemma:internal-resolutions}
+Let~$X$ be a ringed space (or a ringed locale). From the internal point of view
+of~$\Sh(X)$, any~$\O_X$-module admits a resolution by injective~$\O_X$-modules,
+and any two such are related by a morphism of complexes which is unique up to
+homotopy with the property that it induces the identity on the resolved module.
+\end{lemma}
+
+\begin{proof}There can't be an intuitionistic proof of this fact, since it's
+consistent with Zermelo--Fraenkel set theory
+that no nontrivial injective abelian groups exist~\cite{blass:inj-proj-axc}.
+But working in a classical metatheory, it's well-known that, for any open
+subset~$U \subseteq X$, the category of sheaves of~$\O_X|_U$-modules has enough
+injectives. Since externally injective sheaves of modules look like injective
+modules from the internal point of view, by (the easy part of)
+Theorem~\ref{thm:char-injectivity-modules}, the internal
+statement~``any~$\O_X$-module can be embedded into an injective~$\O_X$-module''
+holds.
+
+Under the assumption of the existence of enough injectives, the usual proof
+that any object admits a resolution by injective objects is intuitionistically
+valid. We can therefore interpret this proof in the internal language
+of~$\Sh(X)$ and conclude.
+\end{proof}
+
+We use Lemma~\ref{lemma:descent-for-modules} and
+Lemma~\ref{lemma:internal-resolutions} as follows to construct the sheaf Ext in
+the internal language. Let~$\E$ and~$\F$ be~$\O_X$-modules over a ringed space
+(or a ringed locale). Internally, there is an injective resolution~$\I^\bullet$
+of~$\F$. Therefore we can internally define~$\EXT^n(\E,\F) \defeq
+H^n([\E,\I^\bullet]_{\Mod(\O_X)})$. \XXX{continue}
+
+\XXX{Higher direct images}
 
 
 \chapter{The big Zariski topos}\label{part:big-zariski}

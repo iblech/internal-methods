@@ -91,6 +91,7 @@
 \newcommand{\Hom}{\mathrm{Hom}}
 \newcommand{\HOM}{\mathcal{H}\mathrm{om}}
 \newcommand{\EXT}{\mathcal{E}\mathrm{xt}}
+\newcommand{\TOR}{\mathcal{T}\mathrm{or}}
 \newcommand{\Ind}{\mathrm{Ind}}
 \newcommand{\id}{\mathrm{id}}
 \newcommand{\GL}{\mathrm{GL}}
@@ -9205,11 +9206,14 @@ The partial element~$K$ can thereby refined to the honest element~$t \defeq t_0 
 
 \subsection{Tor and sheaf Ext}
 
+The following lemma expresses a prototype result for constructing sheaves in
+the internal language. We'll use it to internally define derived functors.
+
 \begin{lemma}\label{lemma:descent-for-modules}
 Let~$X$ be a ringed topological space (or a ringed locale).
-Let~$\varphi(\E)$ be a property of~$\O_X$-modules, formulated in the internal
+Let~$\varphi(\E)$ be a property of sheaves of~$\O_X$-modules, formulated in the internal
 language of~$\Sh(X)$. Let~$\psi(f)$ be a property of morphisms
-of~$\O_X$-modules, formulated in the internal
+of sheaves of~$\O_X$-modules, formulated in the internal
 language of~$\Sh(X)$ and stable under composition. Assume that
 \begin{enumerate}
 \item $\Sh(X) \models \exists \textnormal{$\E$ $\O_X$-module}\_ \varphi(\E)$
@@ -9218,8 +9222,8 @@ and
   \Longrightarrow
   \exists! \textnormal{$f : \E \to \E'$ linear}\_ \psi(f)$.
 \end{enumerate}
-Then there exists an~$\O_X$-module~$\E$ such that~$\Sh(X) \models \varphi(\E)$,
-and any two such~$\O_X$-modules are isomorphic via a unique isomorphism which
+Then there exists a sheaf~$\E$ of~$\O_X$-modules such that~$\Sh(X) \models \varphi(\E)$,
+and any two such sheaves are isomorphic via a unique isomorphism which
 satisfies~$\psi$ from the internal point of view.
 \end{lemma}
 
@@ -9239,12 +9243,11 @@ The uniqueness claim is immediate by Proposition~\ref{prop:simplification} and
 by the assumption that property~$\psi$ is stable under composition.
 \end{proof}
 
-\begin{rem}Lemma~\ref{lemma:descent-for-modules} can be generalized in two
+Lemma~\ref{lemma:descent-for-modules} can be generalized in two
 ways: from sheaves of modules to other kinds of algebraic structures, for
 instance complexes of sheaves of modules; and from sheaf toposes over locales
 to more general Grothendieck toposes, by the descent theorem for Grothendieck
 toposes. We will use the former, but not the latter generalization.
-\end{rem}
 
 \begin{lemma}\label{lemma:internal-resolutions}
 Let~$X$ be a ringed space (or a ringed locale). From the internal point of view
@@ -9267,15 +9270,64 @@ holds.
 Under the assumption of the existence of enough injectives, the usual proof
 that any object admits a resolution by injective objects is intuitionistically
 valid. We can therefore interpret this proof in the internal language
-of~$\Sh(X)$ and conclude.
+of~$\Sh(X)$ and conclude -- were it not for a subtle fine point regarding the
+failure of the axiom of countable choice in~$\Sh(X)$.
+
+A resolution is an infinite complex of modules. The assumption of the existence
+of enough injectives allows us to extend any finite partially-constructed
+injective resolution to a longer one; but collecting all of the resulting
+injective objects into a complete resolution requires some form of choice.
+
+There are two ways to counter this problem. If one wants to prove the lemma
+exactly as stated, one has to construct the injective resolution externally
+(and appeal to the axiom of choice in the metatheory) instead of internally
+constructing it step by step. But for many purposes, there's also an
+alternative: Often, a full injective resolution isn't actually needed. For
+instance, for evaluating an~$n$-th derived functor on an object, it suffices
+to have a finite partial injective resolution. If one adopts this stance, then
+it's enough to adopt the statement ``any~$\O_X$-module can be embedded into an
+injective~$\O_X$-module'' as an axiom in the internal language.
 \end{proof}
 
-We use Lemma~\ref{lemma:descent-for-modules} and
-Lemma~\ref{lemma:internal-resolutions} as follows to construct the sheaf Ext in
-the internal language. Let~$\E$ and~$\F$ be~$\O_X$-modules over a ringed space
-(or a ringed locale). Internally, there is an injective resolution~$\I^\bullet$
-of~$\F$. Therefore we can internally define~$\EXT^n(\E,\F) \defeq
-H^n([\E,\I^\bullet]_{\Mod(\O_X)})$. \XXX{continue}
+\begin{rem}It's known that the axiom of choice suffices to construct injective
+resolutions of abelian groups,\footnote{More precisely, it is intuitionistically
+provable that any abelian group admits a resolution by divisible groups, even a
+canonical such. Some form of choice is needed to verify that such a resolution
+is actually a resolution by injective abelian groups.}
+and also that the axiom of choice implies the law of excluded middle in the
+presence of the other axioms of set theory (Diaconescu's theorem).
+Lemma~\ref{lemma:internal-resolutions} shows that the axiom ``any abelian group
+can be embedded into an injective abelian group'' does not imply the law of
+excluded middle, since (assuming the axiom of choice in the metatheory) this
+statement is true in the internal language of the sheaf topos over any
+topological space and such toposes typically do not satisfy the law of excluded
+middle.
+\end{rem}
+
+We use Lemma~\ref{lemma:internal-resolutions} as follows to construct the sheaf
+Ext in the internal language. Let~$\E$ and~$\F$ be~$\O_X$-modules over a ringed
+space (or a ringed locale). Internally, we define~$\EXT^n(\E,\F) \defeq
+H^n([\E,\I^\bullet]_{\Mod(\O_X)})$ where~$0 \to \F \to \I^\bullet$ is an
+injective resolution and~$[\E,\I^k]_{\Mod(\O_X)}$ is the set of~$\O_X$-linear
+maps~$\E \to \I^k$. The module constructed in this way depends on the chosen
+injective resolution, but for any two such resolutions, there is a unique
+isomorphism in cohomology which is induced by a morphism of resolutions.
+
+Externally, this definition gives rise to a well-defined sheaf on~$X$, by
+arguing similarly as in the proof of Lemma~\ref{lemma:descent-for-modules}: We
+obtain~$\O_X$-modules on an open cover; on intersections, we find coherent
+isomorphisms by the uniqueness statement; therefore we can glue.
+The~$\O_X$-module constructed in this way coincides with the sheaf Ext as
+usually conceived.
+
+Along the same lines, we can construct Tor sheaves internally. Let~$\E$
+and~$\F$ be~$\O_X$-modules. Assume that~$\F$ is of finite type. Internally, we
+define~$\TOR_n(\E,\F) \defeq H_n(\E \otimes_{\O_X} \P_\bullet)$,
+where~$\P_\bullet \to \F \to 0$ is a projective resolution. Since~$\F$ is
+finitely generated, such a resolution exists; in fact, we can resolve~$\F$ by
+finite free modules (which are projective even without the axiom of choice). As
+with~$\EXT^n$, the module constructed in this way is unique up to a unique
+isomorphism induced by a morphism of resolutions.
 
 \XXX{Higher direct images}
 

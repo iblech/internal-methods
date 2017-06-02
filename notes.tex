@@ -9205,6 +9205,7 @@ The partial element~$K$ can thereby refined to the honest element~$t \defeq t_0 
 
 
 \subsection{Tor and sheaf Ext}
+\label{sect:sheaf-ext-and-tor}
 
 The following lemma expresses a prototype result for constructing sheaves in
 the internal language. We'll use it to internally define derived functors.
@@ -9329,7 +9330,57 @@ finite free modules (which are projective even without the axiom of choice). As
 with~$\EXT^n$, the module constructed in this way is unique up to a unique
 isomorphism induced by a morphism of resolutions.
 
-\XXX{Higher direct images}
+
+\subsection{Higher direct images}
+
+Higher direct images are thought of as a relative ``fiberwise'' version of
+cohomology. One way to make this precise is to show that higher direct images
+can be made sense of internally to the topos of sheaves over the base, where
+they then look like ordinary cohomology.
+
+Let~$f : Y \to X$ be a morphism of ringed locales. As dicussed in
+Section~\ref{sect:internal-locales}, there is a locale~$I(Y)$ internal
+to~$\Sh(X)$ mirroring~$Y$; from the point of view of~$\Sh(X)$, the given
+morphism~$f$ looks like the unique morphism~$I(Y) \to \pt$.
+
+Let~$\E$ be a sheaf of~$\O_Y$-modules on~$Y$. This sheaf corresponds to a sheaf
+on~$I(Y)$. Internally to~$\Sh(X)$, we can take an injective
+resolution~$\J^\bullet$ of this sheaf and define~$H^n(I(Y), \E) \defeq
+H^n(\Gamma(I(Y), \J^\bullet))$. Just like with sheaf Ext and Tor presented in
+Section~\ref{sect:sheaf-ext-and-tor}, this internal description gives rise to
+a sheaf of~$\O_X$-modules on~$X$; the sheaf constructed in this way coincides
+with the higher direct image~$R^n f_*(\E)$ as usually defined.
+
+The conception of higher direct images as internal cohomology entails that
+basic statements about cohomology yield corresponding statements about higher
+direct images. For instance:
+
+\begin{itemize}
+\item That~$R^{\geq1} \id_*(\E)$ vanishes is a reflection of the fact
+that~$H^{\geq1}(\pt, \E)$ vanishes.
+\item Čech methods to compute cohomology entail Čech methods to compute higher
+direct images.
+\item The computation of the cohomology of projective~$n$-space over a ring
+immediately yields the higher direct images of the canonical morphism~$\PP^n_S
+\to S$ for any base scheme~$S$.
+\end{itemize}
+
+Also the failure of higher direct images to commute with arbitrary base change
+gains a logical interpretation. Let
+\[ \xymatrix{
+  Y' \ar[r]^{g'}\ar[d]_{f'} & Y \ar[d]^f \\
+  X' \ar[r]_g & X
+} \]
+be a pullback diagram of ringed locales. Let~$\E$ be a sheaf of modules on~$Y$.
+If taking cohomology was a geometric construction, then it would be preserved
+by pullback along arbitrary geometric morphisms. Since higher direct images are
+just cohomology from the internal point of view, we would therefore have a
+canonical isomorphism
+\[ g^*(R^nf_*(\E)) \cong R^nf'_*((g')^*\E). \]
+However, taking cohomology is not a geometric construction, and indeed in
+general there is no such isomorphism. It's an open question whether the
+well-known cases where there is such an isomorphism can be treated by a purely
+or mostly logical framework.
 
 
 \chapter{The big Zariski topos}\label{part:big-zariski}

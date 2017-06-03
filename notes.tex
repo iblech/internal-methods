@@ -6928,6 +6928,64 @@ that~$\varphi \vee \neg\varphi$.
 \end{rem}
 
 
+\subsection{A note on~$\QQ$-algebras which are finitely generated over~$\ZZ$}
+
+In this section, we want to show how the internal language of~$\Sh(\Spec(\ZZ))$
+can be used to give a proof of the following fact.
+
+\begin{prop}\label{prop:fingen-algebra-q}
+Let~$A$ be a finitely presented~$\ZZ$-algebra such that any positive natural
+number is invertible in~$A$. Then~$1 = 0$ in~$A$.
+\end{prop}
+
+A slick classical proof runs as follows: Assume that~$1 \neq 0$ in~$A$. Then
+there exists a maximal ideal~$\mmm \subseteq A$. The preimage of~$\mmm$
+in~$\ZZ$ is maximal since~$\ZZ$ is a Jacobson ring~\stacksproject{00GB} and
+therefore of the form~$(p)$ for a prime number~$p$. Thus~$p = 0$ in~$A$.
+Since~$p$ is also invertible in~$A$, it follows that~$1 = 0$ in~$A$.
+
+We intend the following proof as an example of how one can extend, in some
+cases, the applicability of theorems about fields to rings using the internal
+language. If one sets up the spectrum in an intuitionistically sensible way, as
+described in Section~\ref{sect:relative-spectrum}, the proof avoids the axiom
+of choice.
+
+\begin{proof}[Proof of Proposition~\ref{prop:fingen-algebra-q}]
+Noether's normalization lemma is intuitionistically valid in the following
+form: ``Let~$K$ be a ring such that~$1 \neq 0$ and such that~$\neg(\speak{$s$
+\inv}) \Rightarrow s = 0$ for all~$s \? K$. Let~$\aaa \subseteq
+K[X_1,\ldots,X_n]$ be an ideal. Then it's \notnot the case that either~$\aaa =
+(1)$ or that there exists a number~$r \geq 0$ and a finite injective
+homomorphism~$K[Y_1,\ldots,Y_r] \to K[X_1,\ldots,X_n]/\aaa$ of~$K$-algebras.''
+
+In the internal universe of~$\Sh(\Spec(\ZZ))$, the structure
+sheaf~$\O_{\Spec(\ZZ)}$ satisfies the assumption on~$K$ by
+Corollary~\ref{cor:field-reduced}. We can therefore apply the Noether
+normalization lemma to the~$\O_{\Spec(\ZZ)}$-algebra~$A^\sim$.
+
+Writing~$A =
+\ZZ[X_1,\ldots,X_n]/(f_1,\ldots,f_m)$, we thus obtain that, internally,
+it's \notnot the case that~$1 \in (f_1,\ldots,f_m)$ or that there
+is a finite injective 
+morphism~$\O_{\Spec(\ZZ)}[Y_1,\ldots,Y_r] \to
+\O_{\Spec(\ZZ)}[X_1,\ldots,X_n]/(f_1,\ldots,f_m) = A^\sim$ for some number~$r
+\geq 0$. Since any positive natural number is invertible in~$A^\sim$ and finite
+injective homomorphisms of rings reflect invertibility, any positive natural
+number is also invertible in~$\O_{\Spec(\ZZ)}[Y_1,\ldots,Y_r]$ and therefore
+in~$\O_{\Spec(\ZZ)}$. This, however, is false.
+
+We therefore have~$\Sh(\Spec(\ZZ)) \models \neg\neg(1 \in (f_1,\ldots,f_m))$.
+Thus~$D(h) \models 1 \in (f_1,\ldots,f_m)$ for some dense open subset~$D(h)
+\subseteq \Spec(\ZZ)$. This implies that~$h^l \in (f_1,\ldots,f_m)$ for some~$l
+\geq 0$. Therefore~$h^l = 0$ in~$A$; on the other hand,~$h^l$ is invertible
+in~$A$. Thus~$1 = 0$ in~$A$.
+%Translating this internal statement using the Kripke--Joyal semantics, we see
+%that also externally it's \notnot the case that~$1 \in (f_1,\ldots,f_m)$. Since
+%membership is decidable for ideals of~$\ZZ[X_1,\ldots,X_n]$, this suffices to
+%verify the claim.
+\end{proof}
+
+
 \section{Relative spectrum}
 \label{sect:relative-spectrum}
 
@@ -9638,9 +9696,9 @@ ample set~$M$ of schemes.
 However, the parsimonious sites also have a serious disadvantage, namely that
 with them, the Yoneda functor is only fully faithful when restricted
 to~$(\Sch/S)_\lfp$. For instance, in the case~$S = \Spec(\ZZ)$, the
-schemes~$\Spec(\QQ)$ and the empty scheme have isomorphic functors of points,
-whereby~$\Spec(\QQ)$ looks like the empty set from the internal point of
-view.\footnote{\XXX{explicit proof}}
+schemes~$\Spec(\QQ)$ and the empty scheme have isomorphic functors of points by Proposition~\ref{prop:fingen-algebra-q}.
+Therefore~$\Spec(\QQ)$ looks like the empty set from the internal point of
+view.
 
 In the following, we do not commit to a single one of these options for
 resolving the set-theoretical size issues, but rather keep any of them

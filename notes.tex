@@ -2252,8 +2252,6 @@ only if is finite locally free.
 \end{rem}
 
 
-\XXX{algebras of finite type, ...}
-
 \subsection{Finite type, finite presentation, coherence}
 Recall the conditions of an~$\O_X$-module~$\F$ on a scheme~$X$ (or a ringed
 space) to be of finite type, of finite presentation, and to be coherent:
@@ -2326,6 +2324,29 @@ x_j. \]
 \end{prop}
 \begin{proof}The given internal statements are geometric implications, their
 validity can thus be checked stalkwise.\end{proof}
+
+\begin{rem}The analog of Proposition~\ref{prop:finite-type-and-co} for
+sheaves of algebras instead of sheaves of modules holds. More precisely,
+let~$\A$ be a sheaf of~$\O_X$-algebras on a scheme~$X$ (or a ringed space).
+Then:
+\begin{itemize}
+\item $\A$ is of finite type if and only if~$\A$, considered as an ordinary
+algebra from the internal perspective, is finitely generated, \ie if
+\[ {\qquad\qquad} \Sh(X) \models
+  \bigvee_{n \geq 0}
+  \exists x_1,\ldots,x_n\?\A\_
+  \forall x\?\F\_
+  \exists p\?\O_X[X_1,\ldots,X_n]\_
+  x = p(x_1,\ldots,x_n). \]
+\item $\A$ is of finite presentation if and only if~$\A$ is a finitely
+presented algebra from the internal perspective, \ie if
+\begin{multline*}
+  {\qquad\qquad} \Sh(X) \models \bigvee_{n,m \geq 0}
+  \exists f_1,\ldots,f_m \? \O_X[X_1,\ldots,X_n]\_ \\
+  \speak{$\A \cong \O_X[X_1,\ldots,X_n]/(f_1,\ldots,f_m)$}. \qquad
+\end{multline*}
+\end{itemize}
+\end{rem}
 
 
 \subsection{Tensor product and flatness} Recall that the tensor product

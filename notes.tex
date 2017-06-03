@@ -50,6 +50,7 @@
 \theoremstyle{remark}
 \newtheorem{rem}[defn]{Remark}
 \newtheorem{question}[defn]{Question}
+\newtheorem{speculation}[defn]{Speculation}
 
 \newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\FF}{\mathbb{F}}
@@ -348,7 +349,7 @@ set-valued sheaves on~$X$, and the \emph{big Zariski topos} which we introduce
 below.
 
 The internal language of the little Zariski topos can be applied as follows.
-The structure sheaf~$\O_X$ of a scheme~$X$ is a sheaf of rings in that the sets of
+The structure sheaf~$\O_X$ of a scheme~$X$ is a sheaf of rings in that its sets of
 local sections carry ring structures and these ring structures are compatible
 with restriction. From the internal point of view of~$\Sh(X)$,
 the structure
@@ -377,7 +378,7 @@ conceptual clarity and reduces technical overhead.
 
 In Section~\ref{sect:internal-language}, we explain how the internal language
 machinery works, and then develop in Part~\ref{part:little-zariski} a
-\emph{dictionary} between common notions of scheme theory and corresponding
+\emph{dictionary} relating common notions of scheme theory and corresponding
 notions of algebra. Once built, this dictionary can be used arbitrarily often.
 We stress that no in-depth knowledge of topos theory or categorical logic is
 necessary to apply this apparatus.
@@ -676,7 +677,7 @@ theorem (with just one external ingredient needed).
 instance, Wraith used it to construct (and verify the universal property
 of) the little étale topos of a scheme by internally developing the theory of
 strict henselization~\cite{wraith:generic-galois-theory}. However, to the best
-of my knowledge, systematically building a dictionary between external and
+of my knowledge, systematically building a dictionary relating external and
 internal notions has not been attempted before, and the use of modal operators
 to study the spreading of properties from points to neighbourhoods seems to be
 new as well.
@@ -1791,7 +1792,8 @@ the exposition here with a certain necessary technical condition.
 In intuitionistic logic, the notion of an integral
 domain bifurcates into several inequivalent notions. The following two are
 important for our purposes:
-\begin{defn}A ring~$R$ is an \emph{integral domain in the weak sense} if and
+\begin{defn}\label{defn:integral-domain}
+A ring~$R$ is an \emph{integral domain in the weak sense} if and
 only if~$1 \neq 0$ in~$R$ and
 \[ \forall x,y\?R\_ xy = 0 \Longrightarrow (x = 0) \vee (y = 0). \]
 A ring~$R$ is an \emph{integral domain in the strong sense} if and only if~$1
@@ -2020,8 +2022,8 @@ with values in~$M$} consists of an initial value~$x_0 \in M$ and a function~$f
 Such a process \emph{halts} if and only if there
 exists a step~$n$ and elements~$x_1, \ldots, x_n$ such that~$x_{i+1}
 \in f(x_i)$ for~$i = 0,\ldots,n-1$ and such that~$x_n \in f(x_n)$.
-The set~$M$ satisfies the \emph{ascending process condition} if and only if all
-ascending processes with values in~$M$ halt.
+The set~$M$ satisfies the \emph{ascending process condition} if and only if every
+ascending processes with values in~$M$ halts.
 \end{defn}
 
 Intuitively, we picture~$f(x)$ as the set of all possible results of running
@@ -5355,11 +5357,12 @@ irreducible.
 \begin{lemma}Let~$X$ be an irreducible reduced scheme. Then all local
 rings~$\O_{X,x}$ are integral domains.\end{lemma}
 \begin{proof}It suffices to give a proof of the following statement: Let~$R$ be
-a local ring such that elements which are not invertible are nilpotent. Further
-assume that~$R$ is reduced. Then~$R$ is an integral domain in the weak sense.
+a local ring such that elements which are not invertible are nilpotent. Furthermore
+assume that~$R$ is reduced. Then~$R$ is an integral domain in the weak sense of
+Definition~\ref{defn:integral-domain}.
 
 This proof may, additionally to the rules of intuitionistic logic, use the
-classical axiom given by Proposition~\ref{prop:irreducibility-internally}.
+classical axiom stated in Proposition~\ref{prop:irreducibility-internally}.
 
 So let arbitrary elements~$x,y \? R$ with~$xy = 0$ be given. Then it is not the
 case that~$x$ and~$y$ are both invertible: If they were, their product~$xy$
@@ -5379,12 +5382,12 @@ Thus~$x$ or~$y$ is nilpotent and therefore zero.
 
 Recall that an~$\O_X$-module~$\F$ on a ringed space~$X$ is \emph{quasicoherent}
 if and only if there exists a covering of~$X$ by open subsets~$U$ such that on
-each such~$U$, there exists an exact sequence
+each such set~$U$, there exists an exact sequence
 \[ (\O_X|_U)^J \longrightarrow (\O_X|_U)^I \longrightarrow \F|_U \longrightarrow 0 \]
 of~$\O_X|_U$-modules, where~$I$ and~$J$ are arbitrary sets (which may depend
 on~$U$).
 
-If~$X$ is indeed a scheme, quasicoherence can also be characterized in
+If~$X$ is a scheme, quasicoherence can also be characterized in
 terms of inclusions of distinguished open subsets of affines:
 An~$\O_X$-module~$\F$ is quasicoherent if and only if for any open affine
 subscheme~$U = \Spec A$ of~$X$ and any function~$f \in A$, the canonical map
@@ -5425,8 +5428,9 @@ any module admits a resolution by (not necessarily finite) free modules is
 intuitionistically acceptable and thus also valid in the internal
 universe.\end{rem}
 
-We don't think that there is a useful internal characterization of
-locally constant sheaves. The alternative internal condition given by the following
+We don't know a useful internal characterization of
+locally constant sheaves (but see Section~\ref{sect:lc-sheaves}). The
+alternative internal condition given by the following
 theorem does not need such a characterization.
 
 \begin{thm}\label{thm:qcoh-sheafchar}
@@ -5463,7 +5467,7 @@ and consequences. The proof will explain the origin of this condition.
 \begin{ex}The zero~$\O_X$-module is quasicoherent, since (it and) all
 localizations of it are singleton sets from the internal perspective and
 thus~$\Box$-sheaves for any modal operator~$\Box$
-(Example~\ref{ex:special-sets-sheaves}).\end{ex}
+by Example~\ref{ex:special-sets-sheaves}.\end{ex}
 
 \begin{cor}\label{cor:submodule-qcoh}
 Let~$X$ be a scheme. Let~$\F$ be a quasicoherent~$\O_X$-module.
@@ -5657,6 +5661,9 @@ in~$\Gamma(D(f),\F)$ (as this is true on the covering~$D(f) = \bigcup_i (D(f)
 % stacks-project/sites:lemma-directed-colimits-sections).
 % This argument only works if multiplication by f is injective as a map F --> F.
 
+
+\subsection{The quasicoherator for radical ideals}
+
 For applications in Section~\ref{sect:relative-spectrum} about interpreting the
 relative spectrum as an internal spectrum, we want to specialize to radical
 sheaves of ideals. In particular, we want to describe the \emph{quasicoherator} --
@@ -5838,6 +5845,66 @@ associated to the intersection of the sublocales given by the nuclei~$\J
 relative spectrum as a classifying locale given in
 Proposition~\ref{prop:local-spectrum-classify}.
 \end{rem}
+
+
+\subsection{Characterizing locally constant sheaves}
+\label{sect:lc-sheaves}
+
+We don't think that there is a characterization of locally constant
+sheaves in the internal language of an arbitrary topos of sheaves, other than
+the following trivial one: A sheaf~$\E$ on a topological space~$X$ (or locale,
+or site) is locally constant if and only if
+\[ \Sh(X) \models \bigvee_M \speak{$\E \cong \ul{M}$}, \]
+where the disjunction is over \emph{all sets} and~$\ul{M}$ is the constant
+sheaf associated to the set~$M$. Strictly speaking, because of the class-sized
+disjunction, this statement is not even well-formed; however one can still make
+sense of its Kripke--Joyal translation.
+
+In the special case that~$X$ is a scheme, however, there might be an internal
+characterization. We failed to disprove the following speculation:
+
+\begin{speculation}\label{speculation:lc-quasicoherent}
+Let~$X$ be a scheme. Let~$\E$ be a sheaf of sets on~$X$.
+Then~$\E$ is locally constant if and only if~$\O_X\langle\E\rangle$, the
+free~$\O_X$-module on~$\E$ (constructed internally), is quasicoherent.
+\end{speculation}
+
+The free module occuring in this speculation is the sheafification of the
+presheaf
+\[ U \longmapsto \Gamma(U, \O_X)\langle\Gamma(U, \E)\rangle \]
+and can also be described as~$f_! f^{-1} \O_X$, where~$f : \operatorname{\acute
+Et}(X)
+\to X$ is the projection of the étalé space associated to~$\E$
+(and~$\operatorname{\acute Et}(X)$ is equipped with a scheme structure by exploiting
+that~$\operatorname{\acute Et}(X)$ is locally homeomorphic to~$X$).
+
+The ``only if'' direction of Speculation~\ref{speculation:lc-quasicoherent}
+certainly holds; in fact, if~$\E$ is locally constant,
+then~$\O_X\langle\E\rangle$ is even locally free. There are the following
+indications that the converse might hold.
+
+If~$X$ happens to be local as a topological space, then the converse
+holds: Exploiting that in this case~$\Gamma(X, \O_X\langle\E\rangle) \cong
+\Gamma(X,\O_X)\langle\Gamma(X,\E)\rangle$ one can show that the canonical
+morphism~$\ul{\Gamma(X,\E)} \to \mathcal{E}$ is an isomorphism. Returning to
+the general situation, we see that the pullback of~$\E$ to any of the
+$\Spec(\O_{X,x})$ is constant if~$\O_X\langle\E\rangle$ is quasicoherent.
+Thus~$\E$ is ``constant on all infinitesimal neighbourhoods''.
+
+If~$\O_X\langle\E\rangle$ is not only quasicoherent, but
+even locally free (locally isomorphic to a module of the form~$\O_X^{\oplus
+M}$), then locally we have~$\O_{X,x}\langle\E_x\rangle \cong \O_{X,x}\langle
+M\rangle$, so~$\E_x \cong M$, so at least the stalks are locally constant.
+Similarly, if~$\O_X\langle\E\rangle$ is of finite presentation, then~$\E$ is
+locally constant (with finite stalks).
+
+Finally, let~$j : V \hookrightarrow X$ be the inclusion of an open subset.
+Let~$\E$ be~$j_!(1)$, the extension of the terminal sheaf on~$V$ by the
+empty set. This sheaf is locally constant iff~$V$ is a clopen subset. Now
+furthermore assume that~$X$ is integral. In this case one can check
+that~$\O_X\langle\E\rangle = j_!(\O_V)$ (extension by zero) is quasicoherent
+iff~$V$ is a clopen subset. Thus the converse holds in this case.
+% https://math.stackexchange.com/questions/1682362/extension-by-zero-not-quasi-coherent
 
 % FUTURE:
 % Think how to prove that modules of finite type are
@@ -8884,7 +8951,7 @@ Recall that a sheaf~$\F$ of sets on a topological space (or a locale)~$X$ is
 \emph{flabby} if and only if, for any open subset~$U \subseteq X$ the
 restriction map~$\F(X) \to \F(U)$ is surjective.
 
-Flabbiness of a sheaf is a local property, even though it doesn't seem like that
+Flabbiness is a local property, even though it doesn't seem like that
 at first sight: If the restrictions~$\F|_{U_i}$ of~$\F$ to the members of an
 open covering~$X = \bigcup_i U_i$ are flabby, then the verification that~$\F$ is
 flabby can't proceed as follows. ``Let~$s \in \F(U)$ be an arbitrary section.
@@ -8907,20 +8974,20 @@ Then the following statements are equivalent:
 \item $\F$ is flabby.
 
 \item ``Any section of~$\F$ can be locally extended'':
-For any open subset $U \subseteq X$ and any section $s \in \F(U)$ there is
-an open covering $X = \bigcup_i V_i$ such that, for each $i$, there is an
-extension of $s$ to $U \cup V_i$ (that is, a section $s' \in \F(U \cup V_i)$
-such that $s'|_U = s$).
+For any open~$U \subseteq X$ and any section~$s \in \F(U)$ there is
+an open covering~$X = \bigcup_i V_i$ such that, for each~$i$, there is an
+extension of~$s$ to~$U \cup V_i$ (that is, a section~$s' \in \F(U \cup V_i)$
+such that~$s'|_U = s$).
 
-(If $X$ is a space instead of a locale, this can be equivalently formulated as
-follows: For any open subset $U \subseteq X$, any section $s \in \F(U)$, and any
-point $x \in X$, there is an open neighbourhood $V$ of $x$ and an extension of
-$s$ to $U \cup V$.)
+(If~$X$ is a space instead of a locale, this can be equivalently formulated as
+follows: For any open subset~$U \subseteq X$, any section~$s \in \F(U)$, and any
+point~$x \in X$, there is an open neighbourhood~$V$ of~$x$ and an extension
+of~$s$~to~$U \cup V$.)
 
 % Proof of "internally injective ==> externally injective" references the
 % following condition by number.
 \item From the point of view of the internal language of~$\Sh(X)$, for any
-subsingleton $K \subseteq \F$ there exists an element $s \? \F$ such that~$s \in
+subsingleton~$K \subseteq \F$ there exists an element~$s \? \F$ such that~$s \in
 K$ if~$K$ is inhabited. More precisely,
 \begin{multline*}
   \qquad\qquad\Sh(X) \models
@@ -8929,13 +8996,13 @@ K$ if~$K$ is inhabited. More precisely,
   \exists s\?\F\_ (\text{$K$ is inhabited} \Rightarrow s \in K).\qquad\qquad
 \end{multline*}
 
-\item The canonical map $\F \to \P_{\leq 1}(\F), s \mapsto \{s\}$ is
+\item The canonical map~$\F \to \P_{\leq 1}(\F), s \mapsto \{s\}$ is
 final from the internal point of view, that is
 \[ \Sh(X) \models
   \forall K \? \P_{\leq 1}(\F)\_
   \exists s \? \F\_
   K \subseteq \{s\}, \]
-where $\P_{\leq 1}(\F)$ is the object of subsingletons of $\F$.
+where~$\P_{\leq 1}(\F)$ is the object of subsingletons of~$\F$.
 \end{enumerate}
 \end{prop}
 
@@ -8943,27 +9010,32 @@ where $\P_{\leq 1}(\F)$ is the object of subsingletons of $\F$.
 The implication~``(1)~$\Rightarrow$~(2)'' is trivial. The converse direction uses a
 typical argument with Zorn's lemma, considering a maximal extension. The
 equivalence~``(2)~$\Leftrightarrow$~(3)'' is routine, using the Kripke--Joyal
-semantics to interpret the internal statement. Condition~4 is a straightforward
-reformulation of Condition~3.
+semantics to interpret the internal statement. Condition~(4) is a straightforward
+reformulation of Condition~(3).
 \end{proof}
 
-Condition~2 of the proposition is, unlike the standard definition of flabbiness,
-manifestly local. Also its equivalence with Condition~3 and Condition~4 is
-intuitionistically valid; therefore one might consider to adopt Condition~2 as
+Condition~(2) of the proposition is, unlike the standard definition of flabbiness,
+manifestly local. Also its equivalence with Condition~(3) and Condition~(4) is
+intuitionistically valid; therefore one might consider to adopt Condition~(2) as
 the definition of flabbiness.
 
 The object~$\P_{\leq 1}(\F)$ of subsingletons of $\F$ can be
 interpreted as the object of \emph{partially-defined
 elements} of $\F$. In this view, the empty subset is the maximally undefined
-element and a singleton is a maximally defined element. The proposition shows
-that~$\F$ is flabby if and only if any such partially-defined element can be
-refined to an honest element of~$\F$.
+element and a singleton is a maximally defined element. In classical logic,
+there are no further examples of partially-defined elements, but
+intuitionistically, there might; and indeed, in the model of intuitionistic
+logic provided by~$\Sh(X)$, there are many more. An explicit description of the
+sheaf~$\P_{\leq 1}(\F)$ is given in Remark~\ref{rem:godement-construction}.
+
+The proposition shows that a sheaf~$\F$ is flabby if and only if any
+partially-defined element of~$\F$ can be refined to an honest element of~$\F$.
 
 
 \subsection{Injective sheaves}
 
 Recall that an object~$I$ of a category~$\C$ is \emph{injective} if and only if,
-for any monomorphism~$X \to Y$ in~$\C$ and any morphism~$X \to I$, there
+for any monomorphism~$X \hookrightarrow Y$ in~$\C$ and any morphism~$X \to I$, there
 is an extension such that the diagram
 \[ \xymatrix{
   X \ar@{^{(}->}[r]\ar[d] & Y \ar@{-->}[dl] \\
@@ -8985,8 +9057,9 @@ The question is more interesting in an intuitionistic setting, since
 intuitionistically one cannot prove that inhabited sets are
 injective~\cite{aczel-et-al:injective}; but one can still verify that any set embeds
 into an injective set: The powerset~$\P(X)$ and even the smaller
-set~$\P_{\leq1}(X)$ of subsingletons of a given set~$X$ are injective. We verify
-this in the proof of Lemma~\ref{lemma:enough-flabby}.
+set~$\P_{\leq1}(X)$ of subsingletons of a given set~$X$ are injective. This
+fact is well-known in the constructive mathematics community, but for
+convenience we spell out the proof as Lemma~\ref{lemma:enough-flabby}.
 
 For a cartesian or monoidal closed category~$\C$, there is also the notion of an
 \emph{internally injective} object. This is an object~$I$ such that the
@@ -8998,7 +9071,7 @@ proposition lists five of these conditions. The equivalence of the first four is
 due to Harting~\cite{harting}.
 
 \begin{prop}\label{prop:notions-of-internal-injectivity}
-Let~$\E$ be an elementary topos with a natural numbers object. Then
+Let~$\E$ be an elementary topos. Then
 the following statements about an object~$I \in \E$ are equivalent.
 \begin{enumerate}
 \item $I$ is internally injective.
@@ -9017,8 +9090,8 @@ in~\cite[Section~7]{shulman:stack}.}
 \end{prop}
 
 \begin{proof}
-The implications ``(1)~$\Rightarrow$~(2)'', ``(3) $\Rightarrow$~(4)'', ``(3)
-$\Rightarrow$~(1)'', and ``(4)~$\Rightarrow$~(2)'' are trivial.
+The implications ``(1)~$\Rightarrow$~(2)'', ``(3)~$\Rightarrow$~(4)'',
+``(3)~$\Rightarrow$~(1)'', and ``(4)~$\Rightarrow$~(2)'' are trivial.
 
 The equivalence ``(3)~$\Leftrightarrow$~(5)'' follows directly from the
 interpretation rules of the stack semantics.
@@ -9030,7 +9103,9 @@ injective sheaves remain injective when
 restricted to smaller open subsets: We have that $p_* \circ [\placeholder, p^*I]_{\E/A}
 \cong [\placeholder, I]_\E \circ p_!$, the functor $p_!$ preserves monomorphisms, and one
 can check that $p_*$ reflects the property that global elements locally possess
-preimages. Details are in~\cite[Thm.~1.1]{harting}.
+preimages. Details are in~\cite[Thm.~1.1]{harting}.\footnote{Harting formulates
+the statement for abelian group objects, and has to assume that~$\E$ contains a
+natural numbers object to ensure the existence of an abelian version of~$p_!$.}
 
 The implication ``(4)~$\Rightarrow$~(3)'' follows by performing an extra change of
 base, since any non-global element becomes a global element after a suitable
@@ -9052,10 +9127,10 @@ Proposition~\ref{prop:notions-of-internal-injectivity}, even without having to
 pass to covers.
 
 For the ``if'' direction, let~$\I$ be an internally injective object. Let~$m :
-\E \to \F$ be a monomorphism in~$\Sh(X)$ and let~$k : \E \to \I$ be an arbitrary
+\E \hookrightarrow \F$ be a monomorphism in~$\Sh(X)$ and let~$k : \E \to \I$ be an arbitrary
 morphism. We want to show that there exists an extension $\F \to \I$ of~$k$
 along~$m$. To this end, we consider the sheaf defined by the internal expression
-\[ \G \defeq \brak{\{ k' \? [\F,\I] | k' \circ m = k \}}. \]
+\[ \G \defeq \brak{\{ k' \? [\F,\I] \,|\, k' \circ m = k \}}. \]
 Global sections of~$\G$ are extensions of the kind we're looking for.
 Therefore it suffices to show that~$\G$ is flabby. We do this by verifying
 Condition~(3) of Proposition~\ref{prop:internal-char-flabbiness} in the internal
@@ -9064,12 +9139,12 @@ language of~$\Sh(X)$.
 Let~$K \subseteq \G$ be a subsingleton. We consider the injectivity diagram
 \[ \xymatrix{
   m[\E] \cup \F' \ar@{^{(}->}[r]\ar[d] & \F \ar@{-->}[ld] \\
-  \I,
+  \I
 } \]
-where~$\F' \defeq \{ s \? \F \,|\, \text{$K$ is inhabited} \}$ and the solid
+where~$\F'$ is the set~$\{ s \? \F \,|\, \text{$K$ is inhabited} \}$ and the solid
 vertical arrow is defined in the following way: It should map an element~$s \in
 \F'$ to~$k'(s)$, where~$k'$ is any element of~$K$; and it should map an
-element~$m[u] \in m[\E]$ to~$k(u)$. These prescriptions determine a well-defined
+element~$m(u) \in m[\E]$ to~$k(u)$. These prescriptions determine a well-defined
 map.
 
 Since~$\I$ is injective from the internal point of view we're taking up here,
@@ -9166,7 +9241,7 @@ over~$X$ can be embedded into an injective (therefore flabby) sheaf of sets.
 give an intuitionistic proof of the following statement: Any set~$F$ can be
 embedded into an injective set.
 
-As already indicated there at least two simple ways that~$F$ can be embedded
+As already indicated, there at least two simple ways how~$F$ can be embedded
 into an injective set: by embedding~$F$ in its powerset~$\P(F)$ or by
 embedding~$F$ in~$\P_{\leq1}(F)$, the set of subsingletons of~$F$. For
 conciseness, we only verify that~$\P_{\leq1}(F)$ is injective.
@@ -9181,8 +9256,9 @@ So let~$m : A \hookrightarrow B$ be an injective map and let~$k : A \to
 \end{align*}
 \end{proof}
 
-\begin{rem}The \emph{Godement construction} is a well-known way of embedding an
-inhabited sheaf of sets~$\F$ into an injective sheaf, namely embedding it into
+\begin{rem}\label{rem:godement-construction}
+The \emph{Godement construction} provides a well-known way of embedding an
+inhabited sheaf of sets~$\F$ into an injective sheaf, namely
 the sheaf of not necessarily continuous sections of the étale space of~$\F$:
 \[ U \subseteq X \quad\longmapsto\quad
   \prod_{x \in U} \F_x. \]
@@ -9194,16 +9270,16 @@ Instead by Definition~\ref{defn:interpretation-internal-constructions}, it is th
 It's not possible to describe the Godement construction in the internal language
 of~$\Sh(X)$, since the Godement construction depends on the underlying set of~$X$.
 But the sheaf topos of~$X$ doesn't remember this set. For instance, if~$X$
-is an inhabited indiscrete topological spac, then~$\Sh(X)$ is equivalent
+is an inhabited indiscrete topological space, then~$\Sh(X)$ is equivalent
 to~$\Set$.
 \end{rem}
 
 \begin{rem}It's not known to us whether it's possible to intuitionistically
 prove that any module can be embedded into a module which satisfies the internal
 flabbiness criterion of Proposition~\ref{prop:internal-char-flabbiness}. This
-would give an internal proof that any sheaf of modules can be embedded into a
+would give an internal proof of the well-known fact that any sheaf of modules can be embedded into a
 flabby sheaf of modules. The naive candidates don't work: The
-set~$\P_{\leq1}(F)$ doesn't admit a canonical module structure, and the free
+set~$\P_{\leq1}(F)$ doesn't admit a canonical module structure (though it does admit the structure of a commutative monoid), and the free
 module over that set is not flabby in general.
 
 Since by the Godement construction the statement that any sheaf of modules can
@@ -9214,7 +9290,7 @@ intuitionistically valid,\footnote{In order for the Godement construction to
 work in a intuitionistic metatheory, one has to tweak its definition a little
 bit. Instead of mapping an open subset~$U$ to~$\prod_{x \in U} \F_x$, one has
 to map~$U$ to~$\prod_{x \in U} \P_{\leq1}(\F_x)$. This has the added advantage
-that it works even if~$\F$ is not inhabited.} it's not unreasonable to believe
+that it works even if~$\F$ is not inhabited.} it's not entirely unreasonable to believe
 that such an intuitionistic proof is possible.\footnote{There is a metatheorem
 guaranteeing that a statement is intuitionistically provable if and only if it
 holds in the sheaf topos over any topological
@@ -9251,7 +9327,7 @@ Proposition~\ref{prop:internal-char-flabbiness}, let a subsingleton~$K \subseteq
 F$ be given. Since~$\beta$ is surjective, there is a preimage~$u_0 \in F$.
 The translated set~$K - u_0 \subseteq \E$ is still a subsingleton, and its
 preimage under~$\alpha$ is as well. By the assumption on~$\E'$, there is an
-element~$v \? \E$ such that~$v \in \alpha^{-1}[K - u_0]$ if~$K - u_0$ is
+element~$v \? \E'$ such that~$v \in \alpha^{-1}[K - u_0]$ if~$\alpha^{-1}[K - u_0]$ is
 inhabited. We'll now verify that~$u_0 + \alpha(v) \in K$ if~$K$ is inhabited.
 
 So assume that~$K$ is inhabited. Then~$K - u_0$ is as well. Since the image of
@@ -9278,7 +9354,7 @@ Since~$\beta$ is surjective, there is an element~$t_0 \? \E$ such
 that~$\beta(t_0) = s$.
 
 The preimage~$\alpha^{-1}[K - t_0] \subseteq \E'$ is a subsingleton. This
-partial element can be refined to an honest element, that is there exists an
+partial element can be refined to an honest element, so there exists an
 element~$u \? \E'$ such that~$\alpha^{-1}[K - t_0] \subseteq \{u\}$.
 
 The partial element~$K$ can thereby refined to the honest element~$t \defeq t_0 + \alpha(u)$.
@@ -9475,7 +9551,7 @@ algebra yield theorems about sheaves.
 But the little Zariski topos is not particularly suited for dealing with
 \emph{schemes} over~$S$. For this, we need a related topos. For the scope of
 this introduction only, we employ the following slightly problematic
-definition which we'll fix in Section~\ref{sect:proper-choice-of-site}.
+definition which we'll correct in Section~\ref{sect:proper-choice-of-site}.
 We'll keep the base scheme~$S$ fixed throughout this part.
 
 
@@ -9583,15 +9659,16 @@ $(f : T \to S)$ to~$\Gamma(T, f^*\F)$.
 
 
 \subsection*{A first example illustrating the Kripke--Joyal translation rules}
-Since all the sets~$\affl(T) \cong \Gamma(T,\O_T)$ carry ring structures, the
+Since all the sets~$\affl(T) \cong \Gamma(T,\O_T)$ carry ring structures and do so in a compatible way, the
 object~$\affl$ can be endowed with a canonical structure as a ring object
-in~$\Zar(S)$. For a particular~$S$-scheme~$T$, the ring~$\affl(T)$ isn't
-necessarily a field, but the system of these rings, conceptualized as a single
+in~$\Zar(S)$. For a particular~$S$-scheme~$T$, the ring~$\affl(T)$ will almost
+never be a field, but the system of these rings, conceptualized as a single
 entity from the internal point of view, does satisfy a field axiom. In the
 case~$S = \Spec\ZZ$, this was first observed by
 Kock~\cite{kock:univ-proj-geometry}.
 
-\begin{prop}The ring~$\affl$ is a field from the internal point of view
+\begin{prop}\label{prop:affl-field-informal}
+The ring~$\affl$ is a field from the internal point of view
 of~$\Zar(S)$, in the sense that
 \[ \Zar(S) \models
   \forall f\?\affl\_
@@ -9601,10 +9678,10 @@ of~$\Zar(S)$, in the sense that
 \begin{proof}According to the Kripke--Joyal semantics of~$\Zar(S)$, we
 have to show that for any~$S$-scheme~$T$ and any function~$f \in
 \Gamma(T,\O_T)$ the statement~$T \models \neg(f = 0)$ implies~$T \models
-\speak{$f$ \inv}$. The antecedent states, for any~$T$-scheme~$T'$, that if the
-pullback of~$f$ to~$T'$ vanishes,~$T'$ is then the empty scheme.
+\speak{$f$ \inv}$. The antecedent states that, for any~$T$-scheme~$T'$, if the
+pullback of~$f$ to~$T'$ vanishes, then~$T'$ is the empty scheme.
 
-As with the analogous statement of the little Zariski topos
+As with the analogous statement about the little Zariski topos
 (Lemma~\ref{lemma:internal-invertibility}), the consequent means that~$f$ is
 invertible in~$\Gamma(T,\O_T)$.
 
@@ -9617,6 +9694,9 @@ The field property can be interpreted as follows. A function~$f$ not being the
 zero function does not imply that it's invertible. But if~$f$ is
 \emph{universally nonzero} in that the only scheme such that pullback of~$f$ to
 that scheme vanishes is the empty scheme, then~$f$ is indeed invertible.
+
+We'll revisit the field property in Section~\ref{sect:special-properties-affl};
+it turns out that it has a deeper reason than the manual proof given here showed.
 
 }
 
@@ -9639,7 +9719,7 @@ attractive since the Yoneda embedding~$\Sch/S \to \Sh(\Sch/S)$, which sends
 an~$S$-scheme to its functor of points, is fully faithful, therefore the
 internal language of~$\Sh(\Sch/S)$ can distinguish arbitrary schemes.
 
-However, since~$\Sch/S$ is not essentially small, forming the sheaf topos is
+However, because~$\Sch/S$ is not essentially small, forming the sheaf topos is
 not possible in plain Zermelo--Fraenkel set theory.
 
 Since it's still possible to meaningfully speak of individual
@@ -9696,7 +9776,8 @@ topos-theoretic points of the resulting topos are precisely the local~$A$-algebr
 and moreover, the resulting topos is the classifying topos of the theory of
 local~$A$-algebras, such that for any Grothendieck topos~$\E$, geometric
 morphisms~$\E \to \Sh((\Aff/S)_\lfp)$ correspond to local~$A$-algebras internal
-to~$\E$.
+to~$\E$. A textbook reference for these facts
+is~\cite[Section~VIII.6]{moerdijk-maclane:sheaves-logic}.
 
 In contrast, the toposes arising when using the larger sites have categories of
 points which contain further objects in addition to all local~$A$-algebras; and
@@ -9711,7 +9792,7 @@ structure of the ind-completion of their dual category (and understanding which
 points of the presheaf topos are also points of the sheaf topos).}
 
 A further advantage of these parsimonious sites is that they don't require arbitrary
-choices of a starting set~$M_0$ or a way of expanding~$M_0$ to a sufficiently
+choices of a starting set~$M_0$ or of a way of expanding~$M_0$ to a sufficiently
 ample set~$M$ of schemes.
 
 However, the parsimonious sites also have a serious disadvantage, namely that
@@ -9730,6 +9811,11 @@ the site used to construct a Grothendieck topos is not at all uniquely
 determined by the resulting topos.
 
 We will indicate the few places where the choice of site makes a difference.
+When the definition of the Kripke--Joyal semantics for~$\Zar(S)$ refers
+to~$S$-schemes, it actually refers only to the~$S$-schemes contained in the
+site. Similarly, one has to restrict oneself to such schemes in the statement
+of Proposition~\ref{prop:basic-properties-language-big}.
+Proposition~\ref{prop:affl-field-informal} holds for any choice of site.
 
 It's possible to define the big Zariski topos of a scheme without recourse to
 classical scheme theory; we discuss this in
@@ -10541,7 +10627,7 @@ An~$R$-module~$E$ is \emph{synthetically quasicoherent} if and only if,
 for any finitely presented~$R$-algebra~$A$, the canonical~$R$-algebra
 homomorphism
 \[ E \otimes_R A \longrightarrow [\Spec(A), E] = [[A, R]_{\Alg(R)}, E] \]
-which maps a pure tensor~$x \otimes f$ to~$(\varphi \mapsto \varphi(f) x)$ is
+which maps a pure tensor~$x \otimes f$ to the function~$(\varphi \mapsto \varphi(f) x)$ is
 bijective. Here and in the following, the set~$[\Spec(A), E]$ is the set of all
 maps~$\Spec(A) \to E$, and~$[A,R]_{\Alg(R)}$ is the set of all~$R$-algebra
 homomorphisms~$A \to R$.\end{defn}
@@ -10553,6 +10639,16 @@ reasonably be called ``algebraic''. In a synthetic context, there should be no
 other~$E$-valued functions as these algebraic ones, and different algebraic
 expressions should yield different functions. This is precisely what the
 postulated bijectivity expresses.
+
+The notion of synthetic quasicoherence is only meaningful in an intuitionistic
+context. For instance, even~$R$ itself can't be synthetically quasicoherent in
+the presence of the law of excluded middle, since it forces the canonical evaluation
+morphism $R[T] \to [R, R]$ (obtained by setting~$A \defeq R[T]$ in the
+definition of synthetic quasi\-co\-he\-rence) to never be bijective: If~$R$ is
+finite, then the evaluation morphism isn't injective, since~$\prod_{x \in R} (T - x)$
+is mapped to the same function as the zero polynomial is. If~$R$ is
+infinite, then~$R[T]$ has cardinality~$|R|$ while the set of functions~$R \to
+R$ has strictly greater cardinality.
 
 \begin{thm}\label{thm:qcoh-big-char}
 Let~$E \in \Zar(S)$ be an~$\affl$-module.
@@ -10568,15 +10664,17 @@ affine transition morphisms to colimits in~$\Set$.
 \end{enumerate}
 \end{thm}
 
-\begin{proof}To verify that~$E$ is synthetically quasicoherent, we have to
+\begin{proof}Let~$E = (\E_0)^\Zar$ for a quasicoherent~$\O_S$-module~$\E_0$.
+To verify that~$E$ is synthetically quasicoherent, we have to
 verify a condition for~$\affl$-algebras~$A$ in any
 slice~$\Zar(S)/\ul{T}$. If such an algebra is finitely presented from
 the internal point of view, then there is a covering~$T = \bigcup_i T_i$ such
-that the each of the restrictions of the algebra to the~$T_i$ is of the
+that each of the restrictions of the algebra to the schemes~$T_i$ is of the
 form~$(\A_0)^\Zar$ for some finitely presented~$\O_{T_i}$-algebra~$\A_0$.
 Without loss of generality, we will just assume that~$A$ itself is of the
 form~$(\A_0)^\Zar$ for a finitely presented~$\O_S$-algebra~$\A_0$.
 
+% The scholium coming next up references this paragraph by number.
 By Proposition~\ref{prop:relative-spectrum-big-zariski}, the internal expression~$\Spec(A)$ is the functor of
 points of~$\RelSpec_S \A_0$. For any~$S$-scheme~$f : T \to S$ contained in the site
 used to define~$\Zar(S)$, we consider the fiber product
@@ -10593,20 +10691,20 @@ admissible sites), we may conclude using the following chain of isomorphisms:
 &\cong \Hom_{\Zar(S)}(\underline{T \times_S \RelSpec_S\A_0}, E)
 \cong E(\RelSpec_T(f^*\A_0)) \\
 &\cong \Gamma(\RelSpec_T(f^*\A_0), (p')^* f^* \E_0)
-\cong \Gamma(T, (p')_* (p')^* f_* \E_0) \\
+\cong \Gamma(T, (p')_* (p')^* f^* \E_0) \\
 &\cong \Gamma(T, f^*\E_0 \otimes_{\O_T} f^*\A_0)
-\cong \Gamma(T, (\E_0 \otimes_{\O_S} \A_0)^\Zar) \\
-&\cong \Gamma(T, (\E_0)^\Zar \otimes_\affl (\A_0)^\Zar)
-\cong \Gamma(T, E \otimes_\affl A).
+\cong (\E_0 \otimes_{\O_S} \A_0)^\Zar)(T) \\
+&\cong ((\E_0)^\Zar \otimes_\affl (\A_0)^\Zar)(T)
+\cong (E \otimes_\affl A)(T).
 \end{align*}
 The antepenultimate isomorphism is because pullback of modules in~$\Sh(S)$ to
 modules in~$\Sh(T)$ commutes with tensor product. The penultimate isomorphism
 is because pullback of a sheaf in~$\Sh(S)$ to a sheaf in~$\Zar(S)$ commutes
 with tensor product (Lemma~\ref{lemma:zar-tensor-product-commutes}).
 
-For the converse direction, we first verify that the restrictions~$E|_{\Sh(T)}$
-to the little Zariski topos of each~$S$-scheme~$T$ contained in the site used
-to define~$\Zar(S)$ are quasicoherent~$\O_T$-modules. For this, we employ the
+For the converse direction, we first verify that the restriction~$E|_{\Sh(T)}$
+to the little Zariski topos of any~$S$-scheme~$T$ contained in the site used
+to define~$\Zar(S)$ is a quasicoherent~$\O_T$-module. For this, we employ the
 quasicoherence criterion of Theorem~\ref{thm:qcoh-sheafchar}: For any open
 affine subset~$T' \subseteq T$ and any function~$h \in \Gamma(T', \O_T)$ we
 verify that the canonical morphism
@@ -10615,7 +10713,7 @@ E|_{\Sh(T)}[h^{-1}] \longrightarrow j_*(E|_{\Sh(D(h))})
 \end{equation}
 is an isomorphism, where~$j : D(h) \hookrightarrow T'$ denotes the inclusion.
 This follows from the assumption of synthetic quasicoherence by considering
-the~$\affl$-module~$A \defeq \affl[h^{-1}]$ (in the slice~$\Zar(S)/\ul{T'}$):
+the~$\affl$-algebra~$A \defeq \affl[h^{-1}]$ (in the slice~$\Zar(S)/\ul{T'}$):
 This expresses that the canonical morphism
 \begin{equation}\label{eqn:have-iso}\tag{$\ddagger$}
 E \otimes_\affl \affl[h^{-1}] \longrightarrow [\Spec(A), E]
@@ -10630,7 +10728,7 @@ The canonical morphism~\eqref{eqn:want-iso} which we want to recognize as an
 isomorphism is therefore the restriction of the canonical
 morphism~\eqref{eqn:have-iso} which we know to be an isomorphism.
 
-A natural candidate for an quasicoherent~$\O_S$-module~$\E_0$ with~$E \cong
+A natural candidate for a quasicoherent~$\O_S$-module~$\E_0$ with~$E \cong
 (\E_0)^\Zar$ is~$\E_0 \defeq E|_{\Sh(S)}$. We'll show that this is indeed true.
 Let~$f : T \to S$ be any~$S$-scheme contained in the site used to
 define~$\Zar(S)$. We assume for the time being that~$f$ is of finite
@@ -10645,7 +10743,7 @@ and the domain and codomain of morphism~\eqref{eqn:want-iso2} are quasicoherent,
 verify that its image under~$f_*$ is an isomorphism. This image is the
 canonical morphism
 \[ E|_{\Sh(S)} \otimes_{\O_S} \A_0 \longrightarrow f_*(E|_{\Sh(T)}). \]
-The assumption of synthetic quasicoherence, applied to the~$\affl$-algebra~$A
+The assumption of synthetic quasicoherence, applied to the finitely presented~$\affl$-algebra~$A
 \defeq (\A_0)^\Zar$, shows that this morphism is an isomorphism.
 
 In situation~(1), the only step left to do is to generalize the argument in the
@@ -10670,15 +10768,15 @@ quasicompactness and quasiseparatedness from~$S$. Therefore we can apply a
 comparison result on the categories of quasicoherent
 modules~\stacksproject{01Z0}:
 \[
-E(T) = E(\lim_i T_i) \cong \colim_i E(T_i) \cong
-\colim_i \Gamma(T_i, f_i^* \E_0)
+E(T) = E(\lim_i T_i) \cong \colim\limits_i E(T_i) \cong
+\colim\limits_i \Gamma(T_i, f_i^* \E_0)
 \cong \Gamma(T, f^* \E_0). \qedhere
 \]
 \end{proof}
 
 \begin{scholium}\label{scholium}
 Let~$E \in \Zar(S)$ be a quasicoherent~$\affl$-module.
-Let~$A \in \Zar(S)$ be a quasicoherent~$\affl$-algebra such that~$\Spec(A) \in
+Let~$A \in \Zar(S)$ be a quasicoherent~$\affl$-algebra such that~$\brak{\Spec(A)} \in
 \Zar(S)$ is representable by an object of the site used to define~$\Zar(S)$.
 Then the canonical morphism
 \[ E \otimes_\affl A \longrightarrow [\Spec(A), E] \]
@@ -10699,9 +10797,9 @@ representable by an object of the site.
 
 However, the condition can't be dropped completely. For instance, if we employ the
 parsimonious sites and consider~$S = \Spec \ZZ$,~$E = \affl$, and $A =
-\K_S^\Zar$ (where~$\K_S$ is the sheaf of rational functions on~$S$, which in
-this case is the constant sheaf~$\ul{\QQ}$), then~$\Spec(A)$ is the functor of
-points of the~$\ZZ$-scheme~$\Spec(\QQ)$. This functor coincides with the
+(\K_S)^\Zar$ (where~$\K_S$ is the sheaf of rational functions on~$S$, which in
+this case is the constant sheaf~$\ul{\QQ}$), then~$\brak{\Spec(A)}$ is the functor of
+points of the~$\ZZ$-scheme~$\Spec(\QQ)$. By Proposition~\ref{prop:fingen-algebra-q}, this functor coincides with the
 functor of points of the empty~$\ZZ$-scheme on the parsimonious sites;
 therefore~$\Spec(A) = \emptyset$ from the internal point of view. Thus the
 codomain of the canonical morphism is the zero algebra, but the domain is not.
@@ -10717,11 +10815,14 @@ constructions, we have~$(\affl/\sqrt{(0)})|_{\Sh(X)} \cong \O_X/\sqrt{(0)}$.
 These sheaves of modules are quasicoherent (Example~\ref{ex:radical-qcoh}).
 However, in general,~$f^*(\O_S/\sqrt{(0)}) \not\cong \O_X/\sqrt{(0)}$.
 A concrete counterexample is~$S = \Spec(k)$ and~$X = \Spec(k[T]/(T^2))$.
-In this case~$f^*(\O_S/\sqrt{(0)}) \cong f^*(\O_S) \cong \O_X$.
+In this case~$f^*(\O_S/\sqrt{(0)}) \cong f^*(\O_S) \cong \O_X \not\cong
+\O_X/\sqrt{(0)}$.
 \end{rem}
 
 
 \subsection{Special properties of the affine line}
+\label{sect:special-properties-affl}
+
 The ring object~$\affl$ in the big Zariski topos enjoys several special
 properties, some of which are unique in that they're only possible in an
 intuitionistic context. We compile here a short list of such
@@ -10730,7 +10831,7 @@ property, was already noticed in the 1970s by Kock~\cite{kock:univ-proj-geometry
 
 The statements and proofs in this subsection are formulated in the internal
 language. The proofs only use the fact that~$\affl$ is a synthetically
-quasicoherent local ring. This illustrates the meta-claim that synthetic
+quasicoherent local ring. This supports the meta-claim that synthetic
 quasicoherence is a strong and meaningful condition.
 
 \begin{prop}\label{prop:a1-field}
@@ -10767,7 +10868,7 @@ $\affl$ is not a reduced ring: $\neg \Bigl(\forall x\?\affl\_ (\bigvee_{n \geq
 By the quasicoherence criterion applied to the finitely
 presented~$\affl$-algebra~$A \defeq \affl[T]/(T^2)$, the canonical map
 \[ \affl[T]/(T^2) \longrightarrow [\Spec(\affl[T]/(T^2)), \affl] \cong
-  [\Delta, \affl] \cong \affl \]
+  [\Delta, \affl] \]
 is an isomorphism. It maps~$[T]$ to zero (the value of~$T$ at~$0 \in \Delta$).
 Thus~$T \in (T^2)$ and therefore~$1 = 0$ in~$\affl$. This is a contradiction.
 \end{proof}
@@ -10811,8 +10912,8 @@ invertible, then~$x$ would be nonzero.
 
 Summarizing, the following facts about nilpotents hold in the internal
 universe of the big Zariski topos. Firstly, it's not true that~$\affl$ is
-reduced.  But this doesn't mean that there actually exists a nilpotent element
-which is not zero. In fact, any nilpotent is \notnot zero.
+reduced. But this doesn't mean that there actually exist nilpotent elements
+which are not zero. In fact, any nilpotent is \notnot zero.
 
 \begin{prop}Any function~$\affl \to \affl$ is given by a unique polynomial
 in~$\affl[T]$.
@@ -10825,6 +10926,22 @@ presented~$\affl$-algebra~$A \defeq \affl[T]$ and noticing that~$\Spec(A) \cong
 This statement too cannot be satisfied in classical logic: for infinite
 fields the existence part fails and for finite fields the uniqueness part
 fails.
+
+In synthetic differential geometry, the \emph{axiom of microaffinity} is
+central to the theory. It is fulfilled by the image of~$\RR^1$ in any
+well-adapted model of synthetic differental geometry, and also by~$\affl \in
+\Zar(S)$. (This fact is well-known.)
+
+\begin{prop}\label{prop:affl-microaffine}
+$\affl$ fulfills the axiom of microaffinity: Let~$\Delta = \{ \varepsilon \?
+\affl \,|\, \varepsilon^2 = 0 \}$. Let~$f : \Delta \to \affl$ be an arbitrary
+function. Then there are unique elements~$a, b \? \affl$ such
+that~$f(\varepsilon) = a + b \varepsilon$ for all~$\varepsilon \? \Delta$.
+\end{prop}
+
+\begin{proof}Immediate from the definition of synthetic quasicoherence,
+considering the finitely presented~$\affl$-algebra~$\affl[T]/(T^2)$.
+\end{proof}
 
 \begin{prop}\label{prop:affl-weakly-algebraically-closed}
 $\affl$ is \emph{weakly algebraically closed}, in the following sense:
@@ -10847,10 +10964,10 @@ which is distinct from all of the~$x_i$.
 
 \begin{proof}The polynomial~$f(T) \defeq (T - x_1) \cdots (T - x_n) + 1$
 does \notnot have a zero~$y\?\affl$, since~$\affl$ is weakly algebraically
-closed. This element cannot equal any~$x_i$, since~$f(x_i) = 1$ is not zero.
+closed. This element cannot equal any of the elements~$x_i$, since~$f(x_i) = 1$ is not zero.
 \end{proof}
 
-\begin{prop}$\affl$ fulfills a version of the Nullstellensatz:
+\begin{prop}$\affl$ fulfills the following version of the Nullstellensatz:
 Let $f_1,\ldots,f_m \in \affl[X_1,\ldots,X_n]$ be polynomials without a common
 zero in~$(\affl)^n$. Then there are polynomials~$g_1,\ldots,g_m \in
 \affl[X_1,\ldots,X_n]$ such that~$\sum_i g_i f_i = 1$.
@@ -11391,7 +11508,7 @@ that~$\gamma(\varepsilon) \in U$.
 \begin{rem}Subobjects~$U \hookrightarrow X$ for which any morphism~$\gamma :
 \Delta \to X$ with~$\gamma(0) \in U$ factors over~$U$ are called~``$D_1$-open''
 in the literature on synthetic differential
-geometry~\cite[page~60]{reyes:wraith:note-tangent-bundles}.
+geometry~\cite[p.~60]{reyes:wraith:note-tangent-bundles}.
 Corollary~\ref{cor:open-subfunctors-d1} shows that open subfunctors
 are~$D_1$-open.
 \end{rem}
@@ -12731,7 +12848,7 @@ topology. These toposes don't coincide, however. \XXX{why}
 
 \setcounter{section}{\value{saved-section-number}}
 
-\section{Dictionary between internal and external notions}
+\section{Dictionary relating internal and external notions}
 
 {\small\renewcommand{\arraystretch}{1.3}
 \begin{longtable}{@{}p{4.4cm}@{\qquad}p{6.7cm}@{\qquad}p{1.5cm}@{}}
@@ -12987,3 +13104,8 @@ Definitely cite:
 Shawn J. Henry.
 Classifying Topoi and Preservation of Higher Order Logic by Geometric Morphisms.
 https://arxiv.org/abs/1305.3254
+
+XXX:
+Notation:
+* [__, __]
+* <..., ...>

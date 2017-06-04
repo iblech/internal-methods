@@ -3376,7 +3376,7 @@ general, the subspace~$X_j$ can not be realized as a topological subspace, but
 only as a so-called \emph{sublocale}; the notion of a locale is a slight
 generalization of the notion of a topological space, in which an underlying set
 of points is not part of the definition. Instead, a locale is simply given by a
-lattice of arbitrary \emph{opens} satisfying some axioms -- these opens may, but do not necessarily have to,
+frame (a partially ordered set with certain properties) of arbitrary \emph{opens} satisfying some axioms -- these opens may, but do not necessarily have to,
 be sets of points. Sheaf theory carries over to locales essentially unchanged,
 since the notions of presheaves and sheaves only refer to open sets and coverings,
 but not points.
@@ -3384,7 +3384,7 @@ Accessible introductions to the theory of locales include two notes by
 Johnstone~\cite{johnstone:art,johnstone:point}.
 
 \begin{defn}\label{defn:subspace-by-nucleus}Let~$j$ be a nucleus on~$\Open(X)$.
-Then the sublocale~$X_j$ of~$X$ is given by the lattice of opens
+Then the sublocale~$X_j$ of~$X$ is given by the frame of opens
 $\Open(X_j) \defeq \{ U \in \Open(X) \,|\, j(U) = U \}$.
 \end{defn}
 If~$j$ is induced by a modal operator~$\Box$, we also write~``$X_\Box$''
@@ -3970,7 +3970,7 @@ over a locale, which~$X_\Box$ is in general. The definition is exactly the same
 as in the case for sheaf toposes over a topological space, only that any
 mention of ``open sets'' has to be substituted by the more general ``opens''
 and any mention of the union operator~``$\bigcup$'' has to be interpreted by
-the supremum operator in the lattice of opens of the locale. For~$X_\Box$, this
+the supremum operator in the frame of opens of the locale. For~$X_\Box$, this
 is~$\sup U_i = j(\bigcup_i U_i)$. Before giving a proof of Theorem~\ref{thm:box-translation-semantically}, we want
 to discuss some of its consequences.
 
@@ -7161,7 +7161,7 @@ fundamental fact in the theory of locales is that there is a canonical
 equivalence between the category of \emph{locales over~$X$} -- that is
 locales~$Y$ equipped with a morphism~$Y \to X$ -- and \emph{internal locales
 in~$\Sh(X)$}~\cite[p.~49]{johnstone:point}. An internal locale in a topos~$\E$ is given by an object~$L$ of~$\E$
-(the internal lattice of opens of the locale) together with a binary
+(the internal frame of opens of the locale) together with a binary
 relation~$(\preceq) \hookrightarrow L \times L$ such that the axioms on a
 locale hold from the internal point of view. (For our purposes, we do not need a
 precise wording of these axioms.)
@@ -7171,13 +7171,13 @@ induces an internal locale~$I(Y)$ with object of opens given by~$\Open(I(Y)) \de
 f_* \Omega_{\Sh(Y)} \in \Sh(X)$, where~$f_*$ is the pushforward functor
 and~$\Omega_{\Sh(Y)}$ is the object of truth values in the topos of sheaves
 on~$Y$. Conversely, an internal locale given by an internal frame~$\L \in \Sh(X)$ induces an (external)
-locale~$E(\L)$ with lattice of opens given by~$\Open(E(\L)) \defeq \Gamma(X,\L)$.
+locale~$E(\L)$ with frame of opens given by~$\Open(E(\L)) \defeq \Gamma(X,\L)$.
 This comes equipped with a canonical morphism~$Y \to X$ of locales which we do
 not need to describe explicitly~\cite[Section~C1.6]{johnstone:elephant}.
 
 As a special case, the internalization of the trivial locale~$\id : X \to X$
-over~$X$ has as lattice of opens the object~$\id_* \Omega_{\Sh(X)} =
-\Omega_{\Sh(X)} = \P(1)$. This is precisely the lattice of opens of the
+over~$X$ has as frame of opens the object~$\id_* \Omega_{\Sh(X)} =
+\Omega_{\Sh(X)} = \P(1)$. This is precisely the frame of opens of the
 one-point space. Thus~$I(X) \cong \pt$. This illustrates the intuition
 behind working internally in~$\Sh(X)$: From the perspective
 of~$\Sh(X)$, the space~$X$ looks like the one-point space (even if in fact it
@@ -7225,7 +7225,7 @@ namely
 for all locally ringed spaces~$X$ (or some variant of this property involving
 more general kinds of spaces).
 
-On the other hand, the lattice of opens of~$\Spec A$ admits a simple
+On the other hand, the frame of opens of~$\Spec A$ admits a simple
 description not requiring the notion of prime ideals:
 \[ \Open(\Spec A) \cong \{ \aaa \subseteq A \,|\,
   \text{$\aaa$ is a radical ideal} \}. \]
@@ -7238,8 +7238,8 @@ Thus, in an intuitionistic context, we will construct the spectrum of a ring~$A$
 as a locale, not as a topological space, and adopt the following definition.
 
 \begin{defn}\label{defn:spectrum-as-a-locale}
-The \emph{spectrum}~$\Spec(A)$ of a ring~$A$ is the locale whose lattice of
-opens is the lattice of radical ideals of~$A$. We endow it with the structure
+The \emph{spectrum}~$\Spec(A)$ of a ring~$A$ is the locale whose frame of
+opens is the frame of radical ideals of~$A$. We endow it with the structure
 sheaf~$\O_{\Spec(A)} \defeq \ul{A}[\F^{-1}]$, where~$\F$ is the generic filter
 as described in Section~\ref{sect:generic-filter}.\end{defn}
 
@@ -7277,7 +7277,7 @@ sidesteps any issues with prime ideals, since points are not a defining
 ingredient of a locale. However, points are still meaningful as a \emph{derived
 concept}: A point of locale~$X$ is a morphism~$1 \to X$, where~$1$ is the
 terminal locale, the locale corresponding to the one-point topological space
-with lattice of opens~$\P(1) = \Omega$.
+with frame of opens~$\P(1) = \Omega$.
 Therefore it's still an interesting question what the points of the
 locale~$\Spec(A)$ look like.
 
@@ -7584,7 +7584,7 @@ as claimed above.
 
 \begin{defn}\label{defn:local-spectrum}
 Let~$R$ be a ring. Let~$A$ be an~$R$-algebra. The \emph{local
-spectrum} of~$A$ over~$R$ is the locale~$\Spec(A|R)$ with lattice of opens
+spectrum} of~$A$ over~$R$ is the locale~$\Spec(A|R)$ with frame of opens
 given by
 \begin{multline*}
   \quad\qquad\Open(\Spec(A|R)) \defeq
@@ -13293,7 +13293,6 @@ https://projecteuclid.org/download/pdf_1/euclid.rmjm/1250128841 (page 643) to
 demonstrate that the quasicoherence condition was already known (but not
 recognized as an internal statement).
 
-XXX: s/lattice/frame/
 XXX: Define morphisms of locales
 XXX: axioms on? axioms of?
 

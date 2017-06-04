@@ -7269,6 +7269,11 @@ spaces with arbitrary continuous maps embeds into the category of locales as a
 full subcategory. Therefore the category of schemes can just as well be viewed
 as a full subcategory of the category of locally ringed locales.
 
+Describing morphisms between locally ringed locales is just as simple as
+describing morphisms between locally ringed spaces; using the viewpoint of
+classifying locales, one may even pretend that it suffices to give a map of
+points. We expand on this in Section~\ref{sect:constructive-scheme-theory}.
+
 The importance of a locale-theoretic approach to spectra of rings, especially in
 relative situations, has also been stressed by Lurie~\cite[p.~37]{lurie:dag5}.
 
@@ -8890,6 +8895,14 @@ the theory of filters of~$A$ in~$\Sh(\Spec(B))$. The sheaf topos
 over~$\Spec(B)$ contains the generic filter~$\F$ of~$B$; given a ring
 homomorphism~$\varphi : A \to B$, this filter can be turned into a filter
 of~$A$ by taking the preimage~$\varphi^{-1}[\F]$.
+
+Classically, the induced map~$\Spec(B) \to \Spec(A)$ would be described
+by~$\ppp \mapsto \varphi^{-1}[\ppp]$, where~$\ppp$ ranges over all prime ideals
+of~$B$; constructively, we can describe it as~$\F \mapsto \varphi^{-1}[\F]$,
+where~$\F$ is just a single special filter. For more on this way of pretending
+that morphisms between locales are just maps between points, we highly
+recommend an expository survey by Vickers on this
+topic~\cite{vickers:continuity}.
 
 As we have seen in Section~\ref{sect:transfer-principles}, for deriving
 transfer principles it's useful to be able to quickly gauge properties of
@@ -13250,21 +13263,14 @@ explain contexts}
 
 \end{document}
 
-XXX:
+FUTURE:
 What is a conceptual explanation for O_X(D(f)) = A[f^(-1)] and O_X(U) !=
 A[S_U^(-1)] otherwise?
-
-XXX:
-Reassure that constructing morphisms between spectra is *easy* in the localic
-setting.
 
 XXX:
 "Further work":
 Mention applications to generalized scheme theories, as surveyed by
 http://arxiv.org/abs/0909.0069.
-
-XXX:
-Ponder http://hlombardi.free.fr/publis/schemas.pdf.
 
 XXX:
 Normalization from an internal point of view?

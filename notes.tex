@@ -328,7 +328,7 @@ epic.
 
 There is, however, a slight caveat to this metatheorem. Namely, the internal
 language of a topos is in general only \emph{intuitionistic}, not
-\emph{classical}. This means that internally, one can not use the law of
+\emph{classical}. This means that internally, one cannot use the law of
 excluded middle~($\varphi \vee \neg\varphi$), the law of double negation
 elimination~($\neg\neg\varphi \Rightarrow \varphi$), or the axiom of choice.
 For instance, one rendition of the axiom of choice is that any vector space is
@@ -404,10 +404,10 @@ that~$\F$ is locally free on some dense open subset of~$X$; this fact
 is stated in Vakil's lecture notes as an ``important hard
 exercise''~\cite[Exercise~13.7.K]{vakil:foag}. In fact, this proposition is just the
 interpretation of the following basic statement of intuitionistic linear algebra in
-the sheaf topos: Any finitely generated vector space is \emph{not not} free.
+the sheaf topos: Any finitely generated vector space is \notnot free.
 The proof of this statement is entirely straightforward.\footnote{Intuitionistically,
 the statement that any finitely generated vector space is \emph{free} is stronger than
-the doubly negated version and can not be shown. It would imply that any sheaf
+the doubly negated version and cannot be shown. It would imply that any sheaf
 of finite type is not only locally free on some dense open subset, but locally
 free on the entire space. We discuss this example in more detail in
 Section~\ref{sect:upper-semicontinuous-functions} and in particular in
@@ -2811,7 +2811,7 @@ is finite free as well.
 \subsection{Interlude on natural numbers}
 In classical logic, the natural numbers are complete in the sense that any
 inhabited set of natural numbers possesses a minimal element. This statement
-can not be proven intuitionistically -- intuitively, this is because one cannot
+cannot be proven intuitionistically -- intuitively, this is because one cannot
 explicitly pinpoint the (classically existing) minimal element of an arbitrary
 inhabited set;\footnote{Let~$\varphi$ be an arbitrary formula. Assuming that
 any inhabited subset of the natural numbers possesses a minimal element, we
@@ -2834,7 +2834,7 @@ numbers.
 \item Assume~$U$ to be \emph{detachable}, \ie assume that for any natural
 number~$n$, either~$n \in U$ or~$n \not\in U$. Then~$U$ possesses a minimal
 element.
-\item In any case,~$U$ does \emph{not not} possess a minimal element.
+\item In any case,~$U$ does \notnot possess a minimal element.
 \end{enumerate}
 \end{lemma}
 \begin{proof}
@@ -2890,7 +2890,7 @@ We omit the proof of the universal property.
 In classical logic, the map~$\widehat\NN \to \NN,\ U \mapsto \min U$
 is a well-defined isomorphism of partially ordered sets. In fact, it is the
 inverse of the canonical embedding~$\NN \hookrightarrow \widehat\NN$. In
-intuitionistic logic, this embedding is still injective, but it can not be
+intuitionistic logic, this embedding is still injective, but it cannot be
 shown to be surjective: It is only the case that any element of~$\widehat\NN$
 does \notnot possess a preimage (by Lemma~\ref{lemma:minimum-subset-naturals}).
 \end{rem}
@@ -3133,7 +3133,7 @@ singleton set~$1 \defeq \{\star\}$, where~$\star$ is a formal symbol.\end{defn}
 In classical logic, any subset of~$\{\star\}$ is either empty or inhabited, so
 that~$\Omega$ contains exactly two elements, the empty set (``false'')
 and~$\{\star\}$ (``true''). But
-in intuitionistic logic, this can not be shown; indeed, if we interpret the
+in intuitionistic logic, this cannot be shown; indeed, if we interpret the
 definition in the topos of sheaves on a space~$X$, we obtain a (rather large) sheaf~$\Omega$
 with
 \[ \text{$U \subseteq X$ open} \quad\longmapsto\quad \Gamma(U,\Omega) = \{ V \subseteq U \,|\, \text{$V$
@@ -3387,7 +3387,7 @@ of Proposition~\ref{prop:modops-kripke}.
 \end{table}
 
 Any nucleus~$j$ defines a subspace~$X_j$ of~$X$, to be described below, with a small caveat: In
-general, the subspace~$X_j$ can not be realized as a topological subspace, but
+general, the subspace~$X_j$ cannot be realized as a topological subspace, but
 only as a so-called \emph{sublocale}; the notion of a locale is a slight
 generalization of the notion of a topological space, in which an underlying set
 of points is not part of the definition. Instead, a locale is simply given by a
@@ -3411,7 +3411,7 @@ of~$X$; this is obviously a genuine locale-theoretic notion, since there
 is (in general) no smallest dense topological subspace
 (consider~$\RR$ and its dense subsets~$\QQ$ and~$\RR \setminus \QQ$).
 
-The inclusion~$i : X_j \hookrightarrow X$ can not in general be described on the
+The inclusion~$i : X_j \hookrightarrow X$ cannot in general be described on the
 level of points, since~$X_j$ might not be realizable as a topological subspace.
 But for sheaf-theoretic purposes, it suffices to describe~$i$ on the level of
 opens. This is done as follows:
@@ -3438,7 +3438,7 @@ Furthermore, if we identify~$\Sh(X_\Box)$ with its image in~$\Sh(X)$, the
 pullback functor is given by an internal sheafification process with respect to
 the modality~$\Box$. Thus the external situation of pushforward/pullback
 translates to forget/sheafify. This broadens the scope of the internal
-language of~$\Sh(X)$: It can not only be used to talk about sheaves on~$X$ in a simple,
+language of~$\Sh(X)$: It cannot only be used to talk about sheaves on~$X$ in a simple,
 element-based language, but also to talk about sheaves on arbitrary subspaces
 of~$X$.
 
@@ -5205,7 +5205,7 @@ Since~$\K_X$ is already a~$\Box$-sheaf
 
 \subsection{Quasicompactness}
 
-As stated in the introduction, quasicompactness of a space can not be detected
+As stated in the introduction, quasicompactness of a space cannot be detected
 by the internal language: There cannot exist a formula~$\varphi$ such that a
 topological space is quasicompact if and only if~$\Sh(X) \models \varphi$,
 since the latter is always a local property on~$X$ while quasicompactness is not.
@@ -8055,7 +8055,7 @@ yielding a locally ringed topos: $\RT \to \LRT$.
 These are related as follows.
 
 As described in Section~\ref{sect:rel-spec-as-ordinary-spec}, the ordinary
-spectrum construction can not only be applied to rings, but also to sheaves of
+spectrum construction cannot only be applied to rings, but also to sheaves of
 rings and indeed ring objects internal to arbitrary elementary toposes equipped
 with a natural numbers object, by employing the internal language. Applied to a
 ring~$\O$ internal to such a topos~$\E$, it yields a locally ringed locale

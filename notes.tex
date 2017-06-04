@@ -51,6 +51,7 @@
 \newtheorem{rem}[defn]{Remark}
 \newtheorem{question}[defn]{Question}
 \newtheorem{speculation}[defn]{Speculation}
+\newtheorem{warning}[defn]{Warning}
 
 \newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\FF}{\mathbb{F}}
@@ -5694,12 +5695,21 @@ sheaves of ideals. In particular, we want to describe the \emph{quasicoherator} 
 the left adjoint to the inclusion of the quasicoherent radical ideals in the
 poset of all radical ideals -- in simple terms.
 
+\begin{warning}The quasicoherator we refer to does \emph{not} coincide with the
+quasicoherator
+of~$\O_X$-modules~\stacksproject{077P},~\cite{thomason-trobaugh}, which is the
+\emph{right} adjoint to the inclusion of category of
+quasicoherent~$\O_X$-modules in the category of all~$\O_X$-modules. We discuss
+this in more detail in Example~\ref{ex:quasicoherator-of-ideals} below.
+\end{warning}
+
 \begin{prop}\label{prop:quasicoherator-structure-sheaf}
 Let~$X$ be a scheme. Let~$\I \subseteq \O_X$ be a radical ideal.
 \begin{enumerate}
 \item The ideal~$\I$ is quasicoherent if and only if
 \[ \Sh(X) \models \forall s\?\O_X\_ (\speak{$s$ \inv} \Rightarrow s\in\I)
 \Rightarrow s\in\I. \]
+% Adjunst numbering below if numbering changes
 \item The reflection of~$\I$ in the poset of quasicoherent radical ideals is
 the sheaf~$\overline{\I}$ given by the internal expression
 \[ \overline{\I} \defeq \{ s\?\O_X \,|\, \speak{$s$ \inv} \Rightarrow s\in\I
@@ -5725,9 +5735,26 @@ that~$\I \subseteq \J$. We have to show that~$\overline{\I} \subseteq \J$. This
 is straightforward.
 \end{proof}
 
+\begin{ex}\label{ex:quasicoherator-of-ideals}
+Let~$X \defeq \AA^1_k = \Spec k[T]$ be the affine line over a field~$k$.
+Let~$j : U \defeq \AA^1_k \setminus \{ 0 \} \hookrightarrow X$ be the open inclusion
+of the punctured line. Then~$\I \defeq j_! \O_U \hookrightarrow
+\O_X$ is the standard example of a radical sheaf of ideals which is not
+quasicoherent. The quasicoherator of modules maps~$\I$
+to~$(\Gamma(X,\I))^\sim$, so to the zero module. In contrast, the reflection
+of~$\I$ in the poset of quasicoherent radical ideals is~$(T)$.
+\end{ex}
+
+Generally, the reflection~$\overline{\I}$ of a radical ideal~$\I$ is the unique
+radical ideal such that~$\overline{\I}$ is quasicoherent and such that~$D(\I) =
+D(\overline{\I})$. Explicitly, it is the subsheaf of~$\O_X$ given by
+\[ U \longmapsto \{ f \in \O_X(U) \,|\, 1 \in \I(D(f)) \}. \]
+
 For arbitrary~$\O_X$-algebras~$\A$, the description of the quasicoherator for
-radical ideals of~$\A$ is more involved, but still sufficiently explicit for the
-applications in Section~\ref{sect:relative-spectrum}.
+radical ideals of~$\A$ is more involved than the description given in
+Proposition~\ref{prop:quasicoherator-structure-sheaf}(b), but still
+sufficiently explicit for the applications in
+Section~\ref{sect:relative-spectrum}.
 
 \begin{prop}\label{prop:quasicoherator-arbitrary-algebra}
 Let~$X$ be a scheme. Let~$\A$ be a quasicoherent~$\O_X$-algebra.

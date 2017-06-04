@@ -7867,6 +7867,24 @@ sublocale of~$\Spec(A)$ on which the morphism~$\ul{R} \to \O_{\Spec(A)}$ is
 local.
 \end{rem}
 
+\begin{rem}In classical logic, the sublocale~$\Spec(A|R)$ is closed
+in~$\Spec(A)$, coinciding with~$V(\mmm_R A)$ (see
+Remark~\ref{rem:local-spectrum-in-classical-logic}). But we don't think that
+this property can be verified intuitionistically.\footnote{The nucleus
+corresponding to the sublocale~$\Spec(A|R)$ is the quasicoherator~$\aaa \mapsto
+\overline{\aaa}$. Assume that the sublocale is closed. Then there is a radial
+ideal~$\bbb$ such that~$\overline{\aaa} = \sqrt{\aaa + \bbb}$ for all radical
+ideals~$\aaa \subseteq A$. This radical ideal~$\bbb$ is uniquely determined
+by~$\bbb = \overline{\sqrt{(0)}}$. Thus we obtain the simple
+description~$\overline{\aaa} = \sqrt{\aaa + \overline{\sqrt{(0)}}}$ for the
+quasicoherator. We don't believe that this is right in general.} For technical
+reasons, it would be nice to know that~$\Spec(A|R)$ is an essential sublocale,
+since the pullback functor admits a simpler description for essential
+sublocales. It is an intersection of open, hence essential, sublocales, but the
+intersection of essential sublocales needn't be
+essential~\cite{kelly-lawvere:essential-localizations}.
+\end{rem}
+
 \begin{proof}[Proof of Theorem~\ref{thm:local-spectrum-yields-relative-spectrum}]
 Follows immediately by interpreting the intuitionistic proof of
 Lemma~\ref{lemma:universal-property-local-spectrum} in the internal language
@@ -7882,20 +7900,24 @@ internal point of view of~$\Sh(X)$. A related question is how the big Zariski
 topos looks like. We give the answer in
 Theorem~\ref{thm:big-zariski-topos-of-relative-spectrum}.
 
-
 A basic fact about the ordinary spectrum is that the ring of global sections
-of~$\O_{\Spec(A)}$ is canonically isomorphic to~$A$. We don't think that this
-is true for the local spectrum in full generality, although we don't know an
-example where it fails.\footnote{Coste's general result on sheaf
+of~$\O_{\Spec(A)}$ is canonically isomorphic to~$A$. This is not true for the
+local spectrum: A trivial example is given by any nonzero algebra over a
+ring~$R$ which is not local in the sense that there are some nonunits which sum
+to a unit. In this case the theory which~$\Spec(A|R)$ classifies is
+inconsistent. Thus~$\Spec(A|R)$ is the empty locale and the ring of global
+sections of~$\O_{\Spec(A|R)}$ is the zero ring.\footnote{This failure is not
+entirely unexpected, since Coste's general result on sheaf
 representations~\cite[Theorem~5.1.1]{coste:sheaf-representation}, which would
 immediately guarantee that the global sections of~$\O_{\Spec(A|R)}$ are in
 canonical one-to-one correspondence with the elements of~$A$, is not
-applicable, since the theory which~$\Spec(A|R)$ classifies is not a coherent
+applicable: The theory which~$\Spec(A|R)$ classifies is not a coherent
 theory. The set-indexed disjunction appearing in axiom scheme~(5) of the
 description given in Proposition~\ref{prop:local-spectrum-classify} can't be
 rewritten as a finite disjunction.}
 
-\begin{prop}Let~$R$ be a local ring. Let~$A$ be an~$R$-algebra. The canonical
+\begin{prop}\label{prop:local-spectrum-global-functions}
+Let~$R$ be a local ring. Let~$A$ be an~$R$-algebra. The canonical
 homomorphism~$A \to \Gamma(\Spec(A|R), \O_{\Spec(A|R)})$ is an isomorphism in
 the following situations:
 \begin{enumerate}
@@ -7927,6 +7949,33 @@ isomorphisms.
   A[(A^\times)^{-1}] \cong
   A. \qedhere \]
 \end{proof}
+
+\begin{cor}\label{cor:pushforward-relative-spectrum}
+Let~$X$ be a scheme. Let~$\A$ be an~$\O_X$-algebra.
+Let~$f : \RelSpec_X(\A) \to X$ be the canonical projection morphism.
+The canonical morphism~$\A \to f_*\O_{\RelSpec_X(\A)}$ of~$\O_X$-algebras is an
+isomorphism in the following situations:
+\begin{enumerate}
+\item The algebra~$\A$ is quasicoherent.
+\item From the point of view of~$\Sh(X)$, the algebra~$\A$ is local and the
+homomorphism~$\O_X \to \A$ is local. (This means that, for every point~$x \in
+X$, the stalk~$\A_x$ is local and the homomorphism~$\O_{X,x} \to \A_x$ is
+local.)
+\end{enumerate}
+\end{cor}
+
+\begin{proof}This is just the interpretation of
+Proposition~\ref{prop:local-spectrum-global-functions} internal to~$\Sh(X)$.
+\end{proof}
+
+\begin{rem}Naively one might think that the canonical morphism~$\A \to
+f_*\O_{\RelSpec_X(\A)}$ of Corollary~\ref{cor:pushforward-relative-spectrum} is
+the canonical morphism from~$\A$ to the quasicoherization of~$\A$. This is not
+the case. Firstly, the canonical morphism obtained by quasicoherization goes in
+the other direction. Secondly, as stated in
+Corollary~\ref{cor:pushforward-relative-spectrum}, the canonical morphism can
+be an isomorphism even if~$\A$ is not quasicoherent.
+\end{rem}
 
 
 \subsection{Comparing the different spectrum constructions}
@@ -8113,6 +8162,17 @@ quasicompact. In contrast, the locale~$\Spec(\O_X[f^{-1}]|\O_X)$ has this
 property if and only if~$f$ is nilpotent or invertible.
 \end{proof}
 
+\begin{rem}\label{rem:local-spectrum-in-classical-logic}
+Even in classical logic, where the local spectrum~$\Spec(A|R)$
+and the ordinary spectrum~$\Spec(A \otimes_R R/\mmm_R)$ coincide as locales,
+they do not coincide as locally ringed locales. The structure sheaf
+of~$\Spec(A|R)$, regarded as a sheaf on~$\Spec(A \otimes_R R/\mmm_R)$,
+is~$i^{-1}\O_{\Spec(A)}$, where~$i : \Spec(A \otimes_R R/\mmm_R)
+\hookrightarrow \Spec(A)$ is the closed immersion corresponding to the
+inclusion~$\Spec(A|R) \hookrightarrow \Spec(A)$. It's in general
+not~$\O_{\Spec(A \otimes_R R/\mmm_R)}$.
+\end{rem}
+
 Finally, we want to restate the universal properties of the ordinary spectrum
 and the local spectrum in ring-theoretic language, employing the dual
 categories~$\RL^\op$ and~$\LRL^\op$, as in
@@ -8237,7 +8297,8 @@ employ the general theory of classifying toposes. In the situation
 where~$T_0$, $T$, and~$T'$ are arbitrary geometric theories, the lax pullback
 classifies the geometric theory whose models consist of a model~$M$ of~$T$, a
 model~$N$ of~$T'$, and a homomorphism~$G(M) \to F(N)$ of~$T_0$-models. The
-constructions~$G$ and~$F$ are given by the geometric morphisms~$g$ and~$f$:
+constructions~$G$ and~$F$ are given by the geometric morphisms~$g$ and~$f$ as
+follows:
 
 Any object of~$\Set[T]$ can be obtained by geometric constructions from~$U_T$,
 the universal model of~$T$ in~$\Set[T]$. In particular, the pullback~$g^{-1}
@@ -8295,14 +8356,16 @@ represented by a GRD-system with~$G = U$ and $R = 1 \amalg U^2 \amalg U^2 \amalg
 
 \begin{prop}\label{prop:local-spectrum-generic}\begin{enumerate}
 \item Let~$A$ be an~$R$-algebra. The local spectrum~$\Spec(A|R)$ is the
-pullback of~$\Spec(U''|R)$, where~$U''$ is the \emph{generic~$R$-algebra}
-contained in the classifying topos~$\E$ of~$R$-algebras, along the geometric
-morphism~$\Set \to \E$ given by~$A$.
+pullback of~$\Spec(U''|R)$ along the geometric
+morphism~$\Set \to \E$ given by~$A$,
+where~$U''$ is the \emph{generic~$R$-algebra}
+contained in the classifying topos~$\E$ of~$R$-algebras.
 \item Let~$X$ be a scheme (or a locally ringed locale). Let~$\A$ be
 an~$\O_X$-algebra. The relative spectrum~$\RelSpec_X(\A)$ is the pullback
-of~$\Spec(U''|\O_X)$, where~$U''$ is the generic~$\O_X$-algebra contained in
-the classifying $\Sh(X)$-topos~$\E$ of~$\O_X$-algebras, along the geometric
-morphism~$\Sh(X) \to \E$ given by~$\A$.
+of~$\Spec(U''|\O_X)$ along the geometric
+morphism~$\Sh(X) \to \E$ given by~$\A$,
+where~$U''$ is the generic~$\O_X$-algebra contained in
+the classifying $\Sh(X)$-topos~$\E$ of~$\O_X$-algebras.
 \end{enumerate}
 \end{prop}
 
@@ -10651,7 +10714,8 @@ by Proposition~\ref{prop:a1-nilp}.)
 
 \section{Sheaves of rings, algebras, and modules}
 
-\begin{prop}Let~$\E$ be an~$\O_S$-module. Properties of~$\E$ and of the
+\begin{prop}\label{prop:locally-free-big-zariski}
+Let~$\E$ be an~$\O_S$-module. Properties of~$\E$ and of the
 induced~$\affl$-module~$\E^\Zar$ are related as follows:
 \begin{itemize}
 \item $\E$ is finite locally free if and only if~$\E^\Zar$ is finite free as

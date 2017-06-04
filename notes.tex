@@ -11902,12 +11902,16 @@ Proposition~\ref{prop:char-closed-image}.
 \subsection{Quasicompact and quasiseparated morphisms}
 \label{sect:qc-qs-morphisms}
 
+\begin{defn}\label{defn:synthetic-affine-scheme}
+In the context of a specified local ring~$R$,
+a \emph{synthetic affine scheme} is a set which is isomorphic (as a set)
+to the synthetic spectrum of a synthetically
+quasicoherent~$R$-algebra.
+\end{defn}
+
 \begin{defn}\label{defn:synthetic-scheme}
 In the context of a specified local ring~$R$:
 \begin{enumerate}
-\item A \emph{synthetic affine scheme} is a set which is isomorphic (as a set)
-to the synthetic spectrum of a synthetically
-quasicoherent~$R$-algebra.
 \item A \emph{quasicompact synthetic scheme} is a set~$X$ which admits a finite
 open covering~$X = \bigcup_{i=1}^n U_i$ by synthetic affine schemes~$U_i$.
 \item A \emph{locally finitely presented quasicompact synthetic scheme} is a
@@ -11927,7 +11931,7 @@ statements:
 \item $X$ is the functor of points of a quasicompact~$S$-scheme.
 \item $X$ is the functor of points of a locally finitely presented quasicompact~$S$-scheme.
 \item $X$ is the functor of points of a finitely presented~$S$-scheme (locally
-finitely presented, quasicompact, and quasiseparated).
+finitely presented, quasicompact, and quasiseparated over~$S$).
 \item[(1')] $\Zar(S) \models \speak{$X$ is a quasicompact synthetic scheme}$.
 \item[(2')] $\Zar(S) \models \speak{$X$ is a locally finitely presented quasicompact synthetic scheme}$.
 \item[(3')] $\Zar(S) \models \speak{$X$ is a finitely presented synthetic scheme}$.
@@ -11952,11 +11956,11 @@ and therefore coincides with~$X$.
 Since each scheme~$U_i$ can be realized as a relative spectrum of a
 quasicoherent~$\O_S$-algebra, both~$U_i$ and~$S$ being affine, the sets~$U_i$
 are synthetic affine schemes from the internal point of view. This
-proves~(1)~$\Rightarrow$~(1').
+proves~(1)~$\Rightarrow$~(1'). If~(2) holds, then the~$U_i$ are spectra of
+finitely presented~$\O_S$-algebras, so~(2') holds. If~(3) holds, then the
+intersections~$U_i \cap U_j$ can be covered by finitely many open subschemes
+which are spectra of finitely presented~$\O_S$-algebras, so~(3') holds.
 
-For the directions (2)~$\Rightarrow$~(2') and~(3)~$\Rightarrow$~(3'), the
-covering~$X_0 = \bigcup_i U_i$ can be chosen appropriately: such that the~$U_i$
-are spectra of finitely presented~$\O_S$-algebras or that the intersections are
 \XXX{continue proof}
 \end{proof}
 

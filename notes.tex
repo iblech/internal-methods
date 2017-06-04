@@ -5486,8 +5486,12 @@ where~$M$ is a plain module. But in commutative algebra, one \emph{only} studies
 modules (and not sheaves of modules). The quasicoherence condition is imported
 into the realm of commutative algebra only by the internal language.
 
-We give the proof of the theorem below, after first discussing some examples
+We give the proof of Theorem~\ref{thm:qcoh-sheafchar} below, after first discussing some examples
 and consequences. The proof will explain the origin of this condition.
+The localized module~$\F[f^{-1}]$ appearing in the theorem
+is externally a certain sheaf. If~$f \in \Gamma(U,\O_X)$, then it is the
+sheafification of the presheaf on~$U$ given by~$V \mapsto
+\Gamma(V,\F)[f^{-1}]$.
 
 \begin{ex}The zero~$\O_X$-module is quasicoherent, since (it and) all
 localizations of it are singleton sets from the internal perspective and
@@ -9093,7 +9097,9 @@ topos can be defined as the classifying topos of fppf-local rings over~$S$
 cohomology might look like (besides Čech cohomology, which has its well-known
 shortcomings) and can only remark that Grothendieck's approach using injective
 resolutions can't work, since it's consistent with Zermelo--Fraenkel set theory
-that no nontrivial injective abelian groups exist~\cite{blass:inj-proj-axc}.
+that no nontrivial injective abelian groups exist~\cite{blass:inj-proj-axc},
+and that the account of Kempf~\cite{kempf:cohomology} looks promising, since he
+employs flabby resolutions instead of injective ones.
 
 However, Barakat and Lange-Hegermann pioneered constructive approaches to
 cohomology of certain base schemes, which are not only mathematically elegant
@@ -13288,12 +13294,6 @@ XXX:
 Cite: Compactification of Siegel Moduli Schemes by Ching-Li Chai (contains
 appendix on Hakim's relative scheme theory specialized to ringed spaces)
 Also mention page 151, Remark A.1.2?
-
-XXX:
-In the discussion of quasicoherence in the little Zariski topos, cite
-https://projecteuclid.org/download/pdf_1/euclid.rmjm/1250128841 (page 643) to
-demonstrate that the quasicoherence condition was already known (but not
-recognized as an internal statement).
 
 XXX: Define morphisms of locales
 XXX: axioms on? axioms of?

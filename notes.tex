@@ -4639,16 +4639,17 @@ finite number of points of an open subset~$U \subseteq \Spec A$. Then there
 exists a standard open subset~$D(f) \subseteq U$ which also contains these
 points.
 
-The proof of this statement is an easy application of the prime
+The proof of this statement is a direct application of the prime
 avoidance lemma.
 \end{proof}
 
 \begin{prop}
 \label{prop:kx-is-negneg-sheafification}
-Let~$X$ be a reduced scheme. Assume that~$X$ can be covered by open affine
-subsets which have property~$(\star)$. For instance, this condition is satisfied
-if~$X$ is integral, the set of irreducible components is locally finite, or if~$X$ is locally Noetherian. Then~$\K_X$ is
-the~$\neg\neg$-sheafification of~$\O_X$.\end{prop}
+Let~$X$ be a reduced scheme. Assume that every open affine subscheme has
+property~$(\star)$. (For instance, this condition is satisfied if~$X$ is
+integral, the set of irreducible components is locally finite, or if~$X$ is
+locally Noetherian.) Then~$\K_X$ is the~$\neg\neg$-sheafification
+of~$\O_X$.\end{prop}
 \begin{proof}
 We first show that~$\K_X$ is~$\neg\neg$-separated,
 so assume~$\neg\neg(a/s = 0)$ for~$a/s \? \K_X$. Since~$\K_X$ is obtained
@@ -4689,7 +4690,7 @@ negated context, since~$b$ is assumed regular. More explicitly, we should write
   \quad\text{instead of}\quad
   \neg\neg(b^{-1} a \in T). \]
 To verify the Kripke--Joyal interpretation of the rewritten sheaf condition, let
-an affine open subset~$U = \Spec A \subseteq X$ (having property~$(\star)$) and a subsheaf~$T
+an affine open subset~$U = \Spec A \subseteq X$ having property~$(\star)$ and a subsheaf~$T
 \hookrightarrow \O_X|_U$ be given such that~$T$ is internally a subsingleton
 and \notnot inhabited. We may glue the unique germs in the inhabited
 stalks of~$T$ to obtain a section~$s \in \Gamma(V,\O_X)$ where~$V \subseteq U$
@@ -4701,13 +4702,13 @@ and~$n \geq 0$.
 
 By Lemma~\ref{lemma:regular-affine}, the function~$b \defeq f^n$ is also regular as an
 element of~$\O_U$ from the internal point of view. Note that~$b$ is invertible
-on~$V$, since~$V = D(f) \subseteq D(b)$. It follows that on the dense
+on~$V$, since~$V = D(f) = D(b)$. It follows that on the dense
 open subset~$V \subseteq U$, the sections~$s$ and~$b^{-1} a$ agree.
 This observation concludes the proof.
 \end{proof}
 
-\begin{cor}Let~$X$ be a reduced scheme admitting a cover by affine open subschemes
-with property~$(\star)$. Then~$\K_X$ is the result of
+\begin{cor}Let~$X$ be a reduced scheme such that any open affine subscheme has
+property~$(\star)$. Then~$\K_X$ is the result of
 pulling back~$\O_X$ to the sublocale~$X_{\neg\neg}$ and then pushing forward
 again. If~$X$ is irreducible with generic point~$\xi$, then~$\K_X$ is the
 constant sheaf associated to the set~$\O_{X,\xi}$.\end{cor}
@@ -4777,8 +4778,8 @@ Suppose furthermore that~$X$ is a scheme. Then:
 \begin{enumerate}
 \addtocounter{enumi}{4}
 \item The converse in~(4) holds.
-\item If~$X$ can be covered by open affine subschemes with
-property~$(\star\star)$, then $\K_X$ is the~$\sdense$-sheafification of~$\O_X$.
+\item If every open affine subscheme of~$X$ has
+property~$(\star\star)$, then~$\K_X$ is the~$\sdense$-sheafification of~$\O_X$.
 \end{enumerate}
 \end{prop}
 \begin{proof}The first four properties are entirely formal; we thus skip over
@@ -4858,7 +4859,7 @@ Therefore the claim follows from the previous proposition.
 \end{proof}
 
 \begin{prop}\label{prop:kx-ass}
-Let~$X$ be a scheme admitting a cover of open affine subsets with
+Let~$X$ be a scheme such that any open affine subscheme has
 property~$(\star\star)$. Then~$\K_X$ is the result of
 pulling back~$\O_X$ to the sublocale~$X_\sdense$ associated to the modal
 operator~$\sdense$ and then pushing forward again. If~$X$ is locally Noetherian,
@@ -4909,7 +4910,7 @@ points on locally Noetherian schemes:
 \end{proof}
 
 \begin{lemma}
-Let~$X$ be a scheme admitting a cover of open affine subsets with
+Let~$X$ be a scheme such that any open affine subscheme has
 property~$(\star\star)$. Let~$j : U \hookrightarrow X$ be the inclusion of an
 open subset containing the sublocale~$X_\sdense$. (If~$X$ is locally
 Noetherian, this is equivalent to requiring that~$U$ contains~$\Ass(\O_X)$.)
@@ -4921,16 +4922,14 @@ sheaf~$\K_X$ is given by~$i_* i^{-1} \O_X$. Similarly, the sheaf~$j_* \K_U$ is
 given by~$j_* i'_* i'^{-1} j^{-1} \O_X$. The claim follows since~$j \circ i' =
 i$.
 \end{proof}
-\XXXh{Does U admit a (**)-cover if X does?}
 
 \begin{lemma}\label{lemma:dense-standard-reflection-generalized}
-Let~$X$ be a scheme admitting a cover by affine open subschemes
-with property~$(\star)$ respectively~$(\star\star)$. Let~$\varphi$ be any formula
-over~$X$. Then
-\[ \Sh(X) \models \neg\neg\varphi \Longrightarrow \exists f\?\O_X\_
+Let~$X$ be a scheme such that any open affine subscheme has
+property~$(\star)$ respectively~$(\star\star)$. Then
+\[ \Sh(X) \models \forall\varphi\?\Omega\_ \neg\neg\varphi \Longrightarrow \exists f\?\O_X\_
   \neg\neg(\speak{$f$ \inv}) \wedge (\speak{$f$ \inv} \Rightarrow \varphi) \]
 respectively
-\[ \Sh(X) \models \sdense\varphi \Longrightarrow \exists f\?\O_X\_
+\[ \Sh(X) \models \forall\varphi\?\Omega\_ \sdense\varphi \Longrightarrow \exists f\?\O_X\_
   \sdense(\speak{$f$ \inv}) \wedge (\speak{$f$ \inv} \Rightarrow \varphi). \]
 \end{lemma}
 \begin{proof}The proof of Lemma~\ref{lemma:dense-standard-reflection} carries

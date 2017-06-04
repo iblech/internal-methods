@@ -7632,7 +7632,7 @@ in~$\Open(\Spec(A|R))$ by applying the quasicoherator to the suprema calculated
 in~$\Open(\Spec(A))$. We denote the inclusion~$\Spec(A|R) \hookrightarrow
 \Spec(A)$ by~``$i$''.
 
-Lastly, it's interesting to know the points of~$\Spec(A|R)$, even though these
+Lastly, it's interesting to know what the points of~$\Spec(A|R)$ are, even though these
 don't determine~$\Spec(A)$.
 
 \begin{defn}\label{defn:over-the-filter-of-units}
@@ -7711,12 +7711,12 @@ the classifying locale of the theory of filters of~$A$ which lie over the
 filter of units, that is of the geometric theory with atomic propositions~``$s
 \in F$'' for~$s\?A$ and axioms given by the following axiom schemes:
 \begin{enumerate}
-% Adapt proof if numbering changes
+% Adapt proof and footnote on Coste's result if numbering changes
 \item $\top \vdash 1 \in F$
 \item $st \in F \dashv\vdash s \in F \wedge t \in F$ (two axioms for each $s,t\?A$)
 \item $0 \in F \vdash \bot$
 \item $s+t \in F \vdash s \in F \vee t \in F$ (one axiom for each $s,t\?A$)
-\item $\varphi(r) \in F \vdash \bigvee \{ \top \,|\, \text{$r$ is invertible in
+\item $\varphi(r) \in F \vdash \bigvee \{ \top \,|\, \textnormal{$r$ is invertible in
 $R$} \}$ (one axiom for each $r\?R$)
 \end{enumerate}
 \end{prop}
@@ -7881,6 +7881,52 @@ how the the little Zariski topos of~$\RelSpec_X(\A)$ looks like from the
 internal point of view of~$\Sh(X)$. A related question is how the big Zariski
 topos looks like. We give the answer in
 Theorem~\ref{thm:big-zariski-topos-of-relative-spectrum}.
+
+
+A basic fact about the ordinary spectrum is that the ring of global sections
+of~$\O_{\Spec(A)}$ is canonically isomorphic to~$A$. We don't think that this
+is true for the local spectrum in full generality, although we don't know an
+example where it fails.\footnote{Coste's general result on sheaf
+representations~\cite[Theorem~5.1.1]{coste:sheaf-representation}, which would
+immediately guarantee that the global sections of~$\O_{\Spec(A|R)}$ are in
+canonical one-to-one correspondence with the elements of~$A$, is not
+applicable, since the theory which~$\Spec(A|R)$ classifies is not a coherent
+theory. The set-indexed disjunction appearing in axiom scheme~(5) of the
+description given in Proposition~\ref{prop:local-spectrum-classify} can't be
+rewritten as a finite disjunction.}
+
+\begin{prop}Let~$R$ be a local ring. Let~$A$ be an~$R$-algebra. The canonical
+homomorphism~$A \to \Gamma(\Spec(A|R), \O_{\Spec(A|R)})$ is an isomorphism in
+the following situations:
+\begin{enumerate}
+\item The algebra~$A$ satisfies the quasicoherence condition given in
+Theorem~\ref{thm:qcoh-sheafchar}.
+\item The algebra~$A$ is local and the structure morphism~$R \to A$ is local.
+\end{enumerate}
+Furthermore, the sheaf~$\O_{\Spec(A)}$ is a sheaf
+for the modal operator associated to the sublocale~$\Spec(A|R) \hookrightarrow
+\Spec(A)$ if and only if~$A$ satisfies the quasicoherence condition.
+\end{prop}
+
+\begin{proof}We only verify the claim in the second situation. In this
+case~$1 \in \overline{\aaa}$ implies~$1 \in \aaa$ for any radical ideal of~$A$,
+as can be checked using the proof scheme given in
+Remark~\ref{rem:quasicoherator-knaster-tarski}.
+Hence~$\Spec(A|R)$ is a local locale, meaning that for any covering~$\sqrt{(1)}
+= \bigvee_i \aaa_i = \overline{\sqrt{\sum_i \aaa_i}}$ of the top element
+of~$\Open(\Spec(A|R))$, there is an index~$i$ such that~$\aaa_i = \sqrt{(1)}$.
+
+The locale~$\Spec(A|R)$ thus has an initial (locale-theoretic) point. This
+focal point can be explicitly described: it is the filter~$A^\times$ (which
+lies over the filter of units because~$R \to A$ is local). As generally the
+case for local locales, taking global sections is the same as taking the stalk
+at the focal point. Therefore we can conclude by the following string of
+isomorphisms.
+\[ \Gamma(\Spec(A|R), \O_{\Spec(A|R)}) \cong
+  \O_{\Spec(A|R), A^\times} \cong
+  A[(A^\times)^{-1}] \cong
+  A. \qedhere \]
+\end{proof}
 
 
 \subsection{Comparing the different spectrum constructions}

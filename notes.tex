@@ -1312,7 +1312,7 @@ indefinitely or whether eventually a non-zero digit will occur. This argument
 can be made rigorous. The analogous statement about algebraic numbers
 \emph{can} be proven; the information contained in a witness of algebraicity (a
 monic polynomial which the given number is a zero of) suffices to make the
-case distiction~\cite[Chapter~VI.1, p.~140]{mines-richman-ruitenburg:constructive-algebra}.}
+case distinction~\cite[Chapter~VI.1, p.~140]{mines-richman-ruitenburg:constructive-algebra}.}
 
 A consequence of not adopting these axioms is that proofs by contradiction are
 not generally justified; they are intuitionistically acceptable only for those
@@ -1364,10 +1364,10 @@ of the basic theorems stay valid, provided one exercises some caution in
 formulating them (for instance, one should not arbitrarily weaken assumptions
 by introducing double negations). This is because the proofs of these
 statements are usually direct; if intuitionistically unacceptable case
-distictions do occur, they can often be eliminated by streamlining the proof.
+distinctions do occur, they can often be eliminated by streamlining the proof.
 
 Consider as a simple example the proposition that the kernel of a linear map is
-a linear subspace. The case distiction ``either the kernel consists just of the
+a linear subspace. The case distinction ``either the kernel consists just of the
 zero vector, in which case the claim is trivial, or otherwise \ldots'' is not
 intuitionistically acceptable, but it can be entirely dispensed with: The proof
 for the general case works in the special case just as well.
@@ -3113,7 +3113,7 @@ In classical logic, any subset of~$\{\star\}$ is either empty or inhabited, so
 that~$\Omega$ contains exactly two elements, the empty set (``false'')
 and~$\{\star\}$ (``true''). But
 in intuitionistic logic, this can not be shown; indeed, if we interpret the
-definition in the topos of sheaves on a space~$X$, we obtain a (large) sheaf~$\Omega$
+definition in the topos of sheaves on a space~$X$, we obtain a (rather large) sheaf~$\Omega$
 with
 \[ \text{$U \subseteq X$ open} \quad\longmapsto\quad \Gamma(U,\Omega) = \{ V \subseteq U \,|\, \text{$V$
 open} \}. \]
@@ -3126,7 +3126,7 @@ the binary coproduct~$1 \amalg 1$ (unless any open subset of~$X$ is also
 closed).
 
 The \emph{truth value} of a formula~$\varphi$ is by definition the subset
-$\{ x \in 1 \,|\, \varphi \} \in \Omega$, where~``$x$'' is a fresh variable not
+$\{ x \? 1 \,|\, \varphi \} \in \Omega$, where~``$x$'' is a fresh variable not
 appearing in~$\varphi$. This subset is inhabited if and only
 if~$\varphi$ holds and is empty if and only if~$\neg\varphi$ holds.
 Conversely, we can associate to a subset~$F \subseteq 1$ the
@@ -3142,8 +3142,8 @@ all open subsets~$U \subseteq X$ such that~$U \models \varphi$.
 Under the correspondence of formulas with truth values, logical operations
 like~$\wedge$ and~$\vee$ map to set-theoretic operations like~$\cap$ and~$\cup$
 -- for instance, we have
-\[ \{ x \in 1 \,|\, \varphi \} \cap \{ x \in 1 \,|\, \psi \} =
-  \{ x \in 1 \,|\, \varphi \wedge \psi \}. \]
+\[ \{ x \? 1 \,|\, \varphi \} \cap \{ x \? 1 \,|\, \psi \} =
+  \{ x \? 1 \,|\, \varphi \wedge \psi \}. \]
 This justifies a certain abuse of notation: We will sometimes treat elements
 of~$\Omega$ as propositions and use logical instead of set-theoretic
 connectives. In particular, if~$\varphi$ and~$\psi$ are elements of~$\Omega$,
@@ -3189,8 +3189,8 @@ where~$\alpha$ is a fixed proposition.
 \end{enumerate}
 
 \begin{lemma}Any modal operator~$\Box$ is monotonic, \ie if~$\varphi
-\Rightarrow \psi$, then~$\Box\varphi \Rightarrow \Box\psi$. Furthermore, there
-holds a modus ponens rule: If~$\Box\varphi$ holds, and~$\varphi$
+\Rightarrow \psi$, then~$\Box\varphi \Rightarrow \Box\psi$. Furthermore,
+a modus ponens rule holds: If~$\Box\varphi$ holds, and if~$\varphi$
 implies~$\Box\psi$, then~$\Box\psi$ holds as well.\end{lemma}
 \begin{proof}Assume~$\varphi \Rightarrow \psi$. This is equivalent to
 supposing~$\varphi \wedge \psi \Leftrightarrow \varphi$. We are to show
@@ -3343,14 +3343,14 @@ of Proposition~\ref{prop:modops-kripke}.
     Modal operator & associated nucleus &
       $j(V) = X$ iff \ldots &
       subspace \\\midrule
-    $\Box\varphi \defequiv (U \Rightarrow \varphi)$ &
+    $\Box\varphi \equiv (U \Rightarrow \varphi)$ &
       $j(V) = \Int(U^c \cup V)$ & $U \subseteq V$ & $U$ \\
-    $\Box\varphi \defequiv (\varphi \vee A^c)$ &
+    $\Box\varphi \equiv (\varphi \vee A^c)$ &
       $j(V) = V \cup A^c$ & $A \subseteq V$ & $A$ \\
-    $\Box\varphi \defequiv \neg\neg\varphi$ &
+    $\Box\varphi \equiv \neg\neg\varphi$ &
       $j(V) = \Int(\Clos(V))$ & $V$ is dense in $X$ &
       \multicolumn{1}{p{1cm}}{smallest dense sublocale of~$X$} \\
-    $\Box\varphi \defequiv ((\varphi \Rightarrow \notat{x}) \Rightarrow \notat{x})$ &
+    $\Box\varphi \equiv ((\varphi \Rightarrow \notat{x}) \Rightarrow \notat{x})$ &
 %      $\Int(\Clos(V \cap \Clos\{x\}) \cup (X \setminus \Clos\{x\}))$ &
       $\begin{array}{@{}ll@{}}
         j(V) = X \setminus \Clos\{x\}, & \text{if $x \not\in V$} \\
@@ -3424,7 +3424,7 @@ of~$X$.
 To describe the notion of~$\Box$-sheaves and related ones, we switch to the internal
 perspective and thus forget that we're working over a base space~$X$; we are simply given a modal operator~$\Box :
 \Omega \to \Omega$ and have to take care that our proofs are intuitionistically acceptable. A
-reference for the material in this subsection is a preprint by Fer-Jan de
+reference for the material in this subsection is a preprint by de
 Vries~\cite{vries:sheafification}.\footnote{Note that on page~5 of that
 preprint there is a slight typing error: Fact~2.1(i) gives the
 characterization of~$j$-closedness, not~$j$-denseness. The correct
@@ -3433,7 +3433,7 @@ A)$.}
 
 Recall that a set~$S$ is a \emph{subsingleton} if and only if~$\forall x,y\?S\_
 x = y$, and that a set~$S$ is a \emph{singleton} if and only if it is a subsingleton and
-inhabited (\ie~$\exists x\?S\_ \top$); this amounts to~$\exists!x\?S\_ \top$.
+it is inhabited (\ie~$\exists x\?S\_ \top$); this amounts to~$\exists!x\?S\_ \top$.
 
 \begin{defn}\label{defn:box-sheaves}
 A set~$F$ is \emph{$\Box$-separated} if and only if
@@ -3514,7 +3514,7 @@ the~$\Box$-sheaves. Then it holds that:
 adjoint to the forgetful functor~$\Sh_\Box(\Set) \to \Set,\ F \mapsto F$.
 \end{enumerate}\end{lemma}
 \begin{proof}These are all straightforward, and in fact simpler than their
-classical counterparts, since there are no colimit constructions which would have to
+classical counterparts, since there are no colimit formulas which would have to
 be dealt with.
 \end{proof}
 
@@ -3526,11 +3526,11 @@ epimorphisms in~$\Sh_\Box(\Set)$ need not be epimorphisms in~$\Set$: A map~$f:A
 \to B$ between~$\Box$-sheaves is an epimorphism in~$\Sh_\Box(\Set)$ if and only
 if
 \[ \forall y\?B\_ \Box(\exists x\?X\_ f(x) = y), \]
-\ie preimages do not need to exist, it suffices for them to~``$\Box$-exist''.
+that is preimages do not need to exist, it suffices for them to~``$\Box$-exist''.
 (Using results about the~$\Box$-translation, to be introduced below, this
 characterization will be obvious.) This condition is intuitionistically weaker
 than the condition that~$f$ is an epimorphism in~$\Set$, \ie that~$f$ is
-surjective. Compare this to the failure of the forgetful functor~$\Sh(X)
+surjective. This should be compared to the failure of the forgetful functor~$\Sh(X)
 \to \PSh(X)$ to preserve epimorphisms: A morphism of sheaves does not need to
 have preimages for any local section in order to be an epimorphism. Instead, it
 suffices for any local section to \emph{locally} have preimages.\end{rem}
@@ -3583,12 +3583,12 @@ Let~$X$ be a topological space. Let~$\F$ be a sheaf on~$X$. Then:
 of~$\F$, which are defined on a common domain and which agree on a dense open
 subset of their domain, are already equal.
 \item $\F$ is a~$\neg\neg$-sheaf if and only if it is~$\neg\neg$-separated and
-for any open subset~$U \subseteq X$ and any open subset~$V \subseteq U$ dense
-in~$U$, any~$V$-section of~$\F$ extends to a~$U$-section of~$\F$.
+for any open~$U \subseteq X$ and any open~$V \subseteq U$ dense
+in~$U$, any~$V$-section of~$\F$ extends to an~$U$-section of~$\F$.
 \item If~$\F$ is~$\neg\neg$-separated, the sections of $\F^+$ on an open
-subset~$U \subseteq X$ can be described by pairs~$(V,s)$, where~$V$ is a dense
-open subset of~$U$ and~$s$ is a section of~$\F$ on~$V$. Two such pairs~$(V,s),
-(V',s')$ determine the same element in~$\Gamma(U,\F^+)$ if and only if~$s$ and~$s'$
+subset~$U \subseteq X$ can be described by pairs~$\langle V,s \rangle$, where~$V$ is a dense
+open subset of~$U$ and~$s$ is a section of~$\F$ on~$V$. Two such pairs~$\langle V,s \rangle,
+\langle V',s' \rangle$ determine the same element in~$\Gamma(U,\F^+)$ if and only if~$s$ and~$s'$
 agree on~$V \cap V'$.
 \end{enumerate}
 \end{prop}
@@ -3597,20 +3597,20 @@ The first statement is obvious from the definition of~$\neg\neg$-separatedness
 (Definition~\ref{defn:box-sheaves} for~$\Box = \neg\neg$) and the geometric
 interpretation of double negation (Proposition~\ref{prop:modops-kripke}).
 
-For the second statement, we need to show that if~$\F$
-is~$\neg\neg$-separated,~$\F$ has the extension property if and only if
+For the second statement, we need to show that, assuming that~$\F$
+is~$\neg\neg$-separated, the sheaf~$\F$ has the extension property if and only if
 \begin{multline*}
   \Sh(X) \models \forall \S \? \P(\F)\_
   \speak{$\S$ is a subsingleton} \wedge
   \neg\neg(\speak{$\S$ is inhabited}) \Longrightarrow \\
   \exists x\?\F\_ \neg\neg(x \in \S).
 \end{multline*}
-Note that a section~$\S \in \Gamma(U,\P(\F))$ which internally is a
+A section~$\S \in \Gamma(U,\P(\F))$ which internally is a
 subsingleton and \notnot inhabited is precisely a subsheaf~$\S \hookrightarrow
 \F|_U$ such that all stalks~$\S_x$, $x \in U$ are subsingletons and such that for
 some dense open subset~$V \subseteq U$, the stalks~$\S_x$, $x \in V$ are
 inhabited. This is precisely the datum of a section of~$\F$ defined on some
-dense open subset of~$U$: Consider the gluing of the unique germs in~$\S_x$ for
+dense open subset of~$U$, considering the gluing of the unique germs in~$\S_x$ for
 those points~$x$ such that~$\S_x$ is inhabited. (Conversely, a section~$s \in
 \Gamma(V,\F)$ defines a subsheaf~$\S$ by setting~$\Gamma(W,\S) \defeq \{ s|_W \,|\,
 W \subseteq V \}$.)
@@ -3621,14 +3621,14 @@ unique existence, the second statement follows.
 
 For the third statement, one can check that the presheaf on~$X$ defined by
 \[ \text{$U \subseteq X$ open} \quad\longmapsto\quad
-  \{ (V,s) \,|\, \text{$V \subseteq U$ dense open},\ s \in \Gamma(V,\F)
+  \{ \langle V,s \rangle \,|\, \text{$V \subseteq U$ dense open},\ s \in \Gamma(V,\F)
   \}/{\sim} \]
 is in fact a sheaf (with respect to the topology of~$X$), internally a $\neg\neg$-sheaf,
 and that it has the universal property of the~$\neg\neg$-sheafification
 of~$\F$.
 \end{proof}
 
-The conditions~(1) and~(2) of the previous proposition can be
+The conditions~(1) and~(2) of the Proposition~\ref{prop:negneg-sheaves} can be
 summarized as follows: A sheaf~$\F$ on a topological space is
 a~$\neg\neg$-sheaf if and only if, for any open subset~$U \subseteq X$, the
 restriction map~$\Gamma(\Int\Clos U, \F) \to \Gamma(U,\F)$ is
@@ -3636,12 +3636,11 @@ bijective~\cite[Lemma~36]{jackson:sheaf-theoretic-measure-theory}.
 
 In the case that~$X$ contains a \emph{generic point}, that is a point~$\xi \in X$
 such that~$\Clos\{\xi\} = X$, we can describe the sublocale~$X_{\neg\neg}$ in
-very explicit terms: In this case, it coincides with the subspace~$\{\xi\}$.
-Such a point exists and is unique if~$X$ is an irreducible scheme and need not
-exist otherwise.
+simple terms: In this case, it coincides with the subspace~$\{\xi\}$.
+For instance, such a generic point exists and is unique if~$X$ is an irreducible scheme.
 
 \begin{lemma}\label{lemma:negneg-generic-point}
-Let~$X$ be a topological space and~$\xi \in X$ a point such
+Let~$X$ be a topological space and~$\xi \in X$ be a point such
 that~$\Clos\{\xi\} = X$. Then the modal operator~$\Box \defequiv ((\placeholder
 \Rightarrow \notat{\xi}) \Rightarrow \notat{\xi})$ coincides with the double
 negation modality and~$X_{\neg\neg} = \{\xi\}$ as sublocales of~$X$.\end{lemma}
@@ -3652,15 +3651,15 @@ equivalence
 By the assumption on~$\xi$, this is equivalent to requiring~$U = \emptyset$.
 Thus for any open subset~$U$ the formulas~$\notat{\xi}$ and~$\bot$ have the
 same meaning; they are therefore logically equivalent from the internal point of
-view. The given modal operator thus simplifies to
+view. The given modal operator thus simplifies:
 \[ \Box\varphi \quad\equiv\quad ((\varphi \Rightarrow \notat{\xi}) \Rightarrow \notat{\xi})
   \quad\Leftrightarrow\quad ((\varphi \Rightarrow \bot) \Rightarrow \bot)
   \quad\Leftrightarrow\quad \neg\neg\varphi. \]
-The second claim follows Table~\ref{table:nuclei}.
+The second claim follows from Table~\ref{table:nuclei}.
 \end{proof}
 
 \begin{cor}\label{cor:negneg-generic-point-pushpull}
-Let~$X$ be a topological space and~$\xi \in X$ a point such
+Let~$X$ be a topological space and let~$\xi \in X$ be a point such
 that~$\Clos\{\xi\} = X$. Since~$X_{\neg\neg} = \{\xi\}$, the
 category of~$\neg\neg$-sheaves in~$\Sh(X)$ coincides with the category of
 sheaves on~$\{\xi\}$ and can therefore be identified with the category of sets.
@@ -3704,7 +3703,7 @@ irreducible, at least one of these is itself
 dense. We may take this~$f_i$ as the sought~$f$.
 \end{proof}
 
-We can now also follow up on a promise made earlier and prove the following
+We can now also follow up on a promise made in Section~\ref{sect:appreciating-intuitionistic-logic} and prove the following
 somewhat tangential lemma.
 \begin{lemma}\label{lemma:boolean-dense}
 Let~$X$ be a topological space. The internal language of~$\Sh(X)$ is Boolean if
@@ -3721,7 +3720,9 @@ dense in~$U$, then~$V$ is equal to~$U$.
 
 
 \subsection{\texorpdfstring{The~$\Box$-translation}{The □-translation}}
-There is certain well-known transformation~$\varphi
+\label{sect:box-translation}
+
+In logic, there is certain well-known transformation~$\varphi
 \mapsto \varphi^{\neg\neg}$ on formulas, the \emph{double negation
 translation}, with the following curious property: A formula~$\varphi$ is
 derivable in classical logic if and only if its
@@ -3787,7 +3788,7 @@ formula structure. By way of example, we prove the case for~``$\Rightarrow$'':
 The first step is by definition; the second by~$\Box$-stability
 of~$\psi^\withgray$ and the intuitionistic tautology~$\Box(\alpha \Rightarrow
 \beta) \Leftrightarrow (\alpha \Rightarrow \beta)$ for~$\Box$-stable
-formulas~$\beta$; the third by induction hypothesis; the fourth by
+formulas~$\beta$; the third by the induction hypothesis; and the fourth by
 definition.
 \end{proof}
 
@@ -3829,7 +3830,7 @@ accustomed to be able to freely substitute~$\varphi$ by~$\varphi'$ anywhere we
 want. Since a modal operator~$\Box$ is semantically defined as a map~$\Omega
 \to \Omega$, it is trivially justified that~$\Box\varphi$ and~$\Box\varphi'$
 are equivalent: The formulas~$\varphi$ and~$\varphi'$ give rise to the
-\emph{same} element~$\{x \in 1 \,|\, \varphi\} = \{x \in 1 \,|\, \varphi'\}$
+\emph{same} element~$\{x \? 1 \,|\, \varphi\} = \{x \? 1 \,|\, \varphi'\}$
 of~$\Omega$, and therefore their images under~$\Box$ are equal as well.
 
 However, it is \emph{not} clear and in fact wrong in general that the translated formulas~$\varphi^\Box$
@@ -3866,7 +3867,7 @@ Let~$\varphi$ be a geometric formula.
 Then $\varphi^\Box \Leftrightarrow \Box\varphi$.\end{lemma}
 \begin{proof}The~``$\Leftarrow$'' direction is by Lemma~\ref{lemma:open-stalk}.
 The~``$\Rightarrow$'' direction is an induction on the formula structure. By way of example, we verify
-the case about~``$\bigvee$''. So assume~$\Box(\bigvee_i \varphi_i^\Box)$; we are
+the case of~``$\bigvee$''. So assume~$\Box(\bigvee_i \varphi_i^\Box)$; we are
 to show that~$\Box(\bigvee_i \varphi_i)$. Since this is a boxed statement, we
 may in fact assume~$\bigvee_i \varphi_i^\Box$, so for some index~$j$, it holds
 that~$\varphi_j^\Box$. By the induction hypothesis, it follows
@@ -3964,7 +3965,7 @@ as in the case for sheaf toposes over a topological space, only that any
 mention of ``open sets'' has to be substituted by the more general ``opens''
 and any mention of the union operator~``$\bigcup$'' has to be interpreted by
 the supremum operator in the lattice of opens of the locale. For~$X_\Box$, this
-is~$\sup U_i = j(\bigcup_i U_i)$. Before giving a proof of the theorem, we want
+is~$\sup U_i = j(\bigcup_i U_i)$. Before giving a proof of Theorem~\ref{thm:box-translation-semantically}, we want
 to discuss some of its consequences.
 
 \begin{cor}\label{cor:spreading}
@@ -3988,7 +3989,7 @@ at~$x$}. \]
 \begin{proof}Combine Theorem~\ref{thm:box-translation-semantically} and
 Table~\ref{table:nuclei}.\end{proof}
 
-We want to discuss the last case of the corollary in more detail. Let~$x$ be a
+We want to discuss the last case of Corollary~\ref{cor:spreading} in more detail. Let~$x$ be a
 point of a topological space~$X$ and let~$\varphi$ be a formula. Let~$\Box$ be
 the modal operator given in the corollary. Then~$\varphi$ \emph{holds at~$x$}
 if and only if, from the internal perspective of~$\Sh(X)$, the translated
@@ -4014,7 +4015,7 @@ is an open neighbourhood~$U_1$ of~$x$ such that~$f|_{U_1} = 0$
 in~$\Gamma(U_1,\O_X)$. Since furthermore the germ of~$g$ vanishes in the same stalk,
 there exists an open neighbourhood~$U_2$ of~$x$ such that~$g|_{U_2} = 0$. The
 intersection of both neighbourhoods is still an open neighbourhood of~$x$; on
-this it holds that~$f$ and~$g$ both vanish.
+this neighbourhood both~$f$ and~$g$ vanish.
 \end{proof}
 
 \begin{proof}[Proof in the internal language]We may suppose that~$(f = 0 \wedge
@@ -4045,7 +4046,7 @@ of the statement in question.
 Let~$X$ be a topological space. Let~$\varphi$ be a formula.
 If~$\varphi$ is geometric, truth of~$\varphi$ at a point~$x \in X$ implies
 truth of~$\varphi$ on some open neighbourhood of~$x$, and vice versa.\end{cor}
-\begin{proof}By the purely logical lemmas of the previous section, it holds
+\begin{proof}By the purely logical lemmas of Section~\ref{sect:box-translation}, it holds
 that~$\varphi^\Box \Leftrightarrow \Box\varphi$.
 \end{proof}
 
@@ -4065,7 +4066,7 @@ function~$f\?\O_X$ to be nilpotent is geometric (it is~$\bigvee_{n \geq 0} f^n
 neighbourhood.\end{ex}
 
 Combined with Lemma~\ref{lemma:stalk-open-with-hypothesis}, this metatheorem is
-quite useful. We will illustrate it with many examples in the next subsection.
+quite useful. We will illustrate it with several examples in the next subsection.
 
 An important special case of spreading from stalks to neighbourhoods is the
 case of spreading from the generic point (should it exist) to a dense open
@@ -4079,8 +4080,8 @@ This question is a question of ordinary (non-modal) intuitionistic algebra.
 
 \begin{ex}We have seen in Remark~\ref{rem:epi-in-box-sheaves} that a
 morphism~$f : A \to B$ in~$\Sh(X_\Box) \simeq \Sh_\Box(\Sh(X))$ is an
-epimorphism if and only if~$\Sh(X) \models \forall y\?B\_ \Box(\exists x\?X\_
-f(x) = y)$. We can now understand a simple proof of this fact:
+epimorphism if and only if \[ \Sh(X) \models \forall y\?B\_ \Box(\exists x\?X\_
+f(x) = y). \] We can now understand a simple proof of this fact:
 \begin{align*}
   &\ \text{$f$ is an epimorphism in~$\Sh_\Box(\Sh(X))$} \\
   \Longleftrightarrow&\
@@ -4100,8 +4101,8 @@ geometric subformula~``$\exists x\?X\_ f(x) = y$''.
 by purely logical considerations. Namely, one can check that interpreting a
 formula~$\varphi$ by $\Sh(X) \models \varphi^\Box$ gives rise to a model of
 intuitionistic logic -- if~$\varphi$ intuitionistically implies~$\psi$,
-then~$\Sh(X) \models \varphi^\Box$ implies~$\Sh(X) \models \psi^\Box$. In
-categorical logic, it is therefore a natural question whether there exists a
+then~$\Sh(X) \models \varphi^\Box$ implies~$\Sh(X) \models \psi^\Box$.
+It is therefore a natural question whether there exists a
 topos~$\E$ such that~$\E \models \varphi$ if and only if~$\Sh(X) \models
 \varphi^\Box$. Theorem~\ref{thm:box-translation-semantically} gives an
 affirmative answer to this question, explicitly stating that~$\E \defeq
@@ -4130,7 +4131,7 @@ By \emph{idempotency}, we mean that internally employing the Kripke--Joyal
 semantics to interpret doubly-internal statements is the same as using the
 Kripke--Joyal semantics once. However, we do not want to discuss this here any further;
 some details can be found in the original article on the stack
-semantics~\cite[Lemma~7.20]{shulman:stack}, but the lemma given there is not
+semantics~\cite[Lemma~7.20]{shulman:stack}, but the statement given there is not
 general enough to justify the second use of idempotency above. For this, one
 would have to extend the stack semantics to support internal statements about
 locally internal categories like~$\Sh(X_\Box) \hookrightarrow \Sh(X)$ (which
@@ -4154,8 +4155,9 @@ the claim is that~$U \models_X \Box\bot$ if and only if~$j(U)
 \models_{X_\Box} \bot$. The former means~$U \subseteq j(\emptyset)$ and the
 latter means~$j(U) \leq \sup \emptyset = j(\emptyset)$, so the claim follows from
 the first two axioms on a nucleus.
+
+We omit the verification of the remaining cases.
 \end{proof}
-\XXX{include proof for other cases}
 
 \begin{lemma}Let~$\Box$ be a modal operator. Let~$\varphi$ be a formula.
 Let~$\psi \defequiv \varphi^\Box$ be the~$\Box$-translation of~$\varphi$.
@@ -4194,7 +4196,7 @@ that~$\psi^\boxplus(\bar x)$, since we want to prove a boxed statement. By
 definition of the plus construction, it holds that~$\Box(\speak{$\bar x$ is a
 singleton})$. So, again since we want to prove a boxed statement, we may assume
 that~$\bar x$ is actually a singleton. Therefore there exists~$x\?F$ such
-that~$\bar x = [\{x\}]$ and that~$\psi^\boxplus([\{x\})$ holds. By the induction
+that~$\bar x = [\{x\}]$ and that~$\psi^\boxplus([\{x\}])$ holds. By the induction
 hypothesis, it follows that~$\psi^\Box(x)$. From this the claim follows.
 
 The case for~``$\forall$'' is similar.
@@ -4235,7 +4237,7 @@ Example~\ref{ex:module-zero-geometric}, using the modal operators~$\Box =
 \notat{x}) \Rightarrow \notat{x})$.
 \end{proof}
 
-\begin{rem}Note that the proposition fails if one drops the hypothesis
+\begin{rem}The proposition fails if one drops the hypothesis
 that~$\F$ is of finite type. Indeed, in this case one cannot reformulate the
 condition that~$\F$ is zero in a geometric way.\end{rem}
 
@@ -4262,9 +4264,9 @@ for~$\F$ consisting of~$n$ elements}^\Box$.
 \item $\Box(\speak{there exists a generating family
 for~$\F$ consisting of~$n$ elements})$.
 \end{enumerate}
-By Lemma~\ref{lemma:open-stalk}, the second statement implies the first -- note
-that in a formal spelling of the statement in quotes,
-\begin{equation}\label{eqn:finitely-generated}
+By Lemma~\ref{lemma:open-stalk}, the second statement implies the first, since
+in a formal spelling of the statement in quotes,
+\begin{equation}\label{eqn:finitely-generated}\tag{$\star$}
   \exists x_1,\ldots,x_n\?\F\_
   \forall x\?\F\_
   \exists a_1,\ldots,a_n\?\O_X\_
@@ -4283,7 +4285,7 @@ proof of
     \exists x_1,\ldots,x_n\?\F\_
     \exists A\?\O^{m \times n}\_ \speak{$\vec y = A \vec x$}\bigr),
 \end{multline*}
-we can substitute the non-geometric formula~\eqref{eqn:finitely-generated} by the geometric
+Lemma~\ref{lemma:stalk-open-with-hypothesis} can substitute the non-geometric formula~\eqref{eqn:finitely-generated} by the geometric
 formula
 \[ \exists x_1,\ldots,x_n\?\F\_ \exists A\?\O^{m \times n}\_ \speak{$\vec
 y = A \vec x$} \]
@@ -4426,10 +4428,10 @@ of excluded middle is valid; explain consequences
 \label{sect:rational-functions}
 
 \subsection{The sheaf of rational functions} Recall that the sheaf~$\K_X$ of rational
-functions on a scheme~$X$ (or a ringed space) can be defined as the sheaf
-associated to the presheaf
+functions on a scheme~$X$ (or a ringed space) can be defined as the sheafification
+of the presheaf
 \[ \text{$U \subseteq X$ open} \quad\longmapsto\quad \Gamma(U,\O_X)[\Gamma(U,\S)^{-1}], \]
-where~$\Gamma(U,\S)$ is the multiplicative set of those sections of~$\O_X$ on~$U$,
+where~$\Gamma(U,\S)$ is the multiplicative set of those sections of~$\O_X$ on~$U$
 which are regular in each stalk~$\O_{X,x}$, $x \in U$. Recall also that there are
 some wrong definitions in the literature~\cite{kleiman:misconceptions}.
 
@@ -4456,7 +4458,7 @@ homomorphism~$\O_X[\S^{-1}] \to R$ which renders the evident diagram commutative
 } \]
 The translation using the Kripke--Joyal semantics gives the following universal
 property: For any open subset~$U \subseteq X$, any sheaf of rings~$\R$ on~$U$ and any
-homomorphism~$\O_X|_U \to \R$ which maps all elements of~$\Gamma(V,\S)$, $V
+homomorphism~$\O_X|_U \to \R$ which maps all elements of~$\Gamma(V,\S)$ for open subsets $V
 \subseteq U$ to units, there exists exactly one homomorphism~$\O_X[\S^{-1}]|_U \to
 \R$ which renders the evident diagram commutative.
 It is well-known that the sheaf~$\K_X$ as usually defined has
@@ -4475,14 +4477,14 @@ Since localization is a geometric construction, the first statement is made enti
 trivial by our framework. The second statement follows since
 \[ \Gamma(U,\S) = \{ s\in\Gamma(U,\O_X) \,|\, U \models \speak{$s$ is regular}
 \} \]
-and regularity is a geometric implication, so that
+and since regularity is a geometric implication, so that
 $U \models \speak{$s$ is regular}$ if and only if the germ~$s_y$ is regular
 in~$\O_{X,y}$ for all~$y \in U$.
 \end{proof}
 
 \begin{rem}Speaking internally, the multiplicative set~$\S$ is saturated.
 Therefore an element~$s/t \? \K_X$ is invertible in~$\K_X$ if and only if the
-numerator~$s$ belongs to~$\S$, \ie is an regular element of~$\O_X$.\end{rem}
+numerator~$s$ belongs to~$\S$, that is if~$s$ is an regular element of~$\O_X$.\end{rem}
 
 % FUTURE:
 % How can we prove that K_X(U) = K_X^pre(U) = Quot O_X(U) for U affine
@@ -4496,7 +4498,7 @@ numerator~$s$ belongs to~$\S$, \ie is an regular element of~$\O_X$.\end{rem}
 
 \subsection{Regularity of local functions}
 It is well-known that on a locally Noetherian scheme, regularity spreads from
-stalks to neighbourhoods, \ie a section of~$\O_X$ is regular
+stalks to neighbourhoods, that is that a section of~$\O_X$ is regular
 in~$\O_{X,x}$ if and only if it is regular on some open neighbourhood of~$x$.
 This fact has a simple proof in the internal language.
 \begin{prop}\label{prop:regularity-spreading}
@@ -4527,7 +4529,7 @@ examining the logical form and applying Lemma~\ref{lemma:open-stalk}.)
 
 For the converse direction, consider the annihilator of~$s$, \ie the ideal
 \[ I \defeq \Ann_{\O_X}(s) = \{ t\?\O_X \,|\, st = 0 \} \subseteq \O_X. \]
-This ideal satisfies the quasicoherence condition (Example~\ref{ex:annihilator-qcoh}),
+This ideal satisfies the quasicoherence condition (we will explain how to prove this internally in~\ref{ex:annihilator-qcoh}),
 thus~$I$ is a quasicoherent submodule of a finitely generated module. Since~$X$ is
 locally Noetherian, it follows that~$I$ is finitely generated as well, say by~$x_1,\ldots,x_n \? I$. By
 assumption, each generator~$x_i \? I$ fulfills~$\Box(x_i = 0)$. Since we want
@@ -4537,15 +4539,15 @@ the assertion that~$s$ is regular follows.
 
 Note that the proof critically depends on the ideal~$I$ being finitely
 generated, since a modal operator need only commute with finite
-conjuctions. Intuitively, each time we use the modus ponens rule~$\Box\varphi \wedge
-(\varphi \Rightarrow \psi) \Rightarrow \Box\psi$, we restrict to a smaller open
+conjunctions. Intuitively, each time we use the modus ponens rule~$(\Box\varphi \wedge
+(\varphi \Rightarrow \psi)) \Rightarrow \Box\psi$, we restrict to a smaller open
 neighbourhood of~$x$. Since infinite intersections of open sets need not be
 open, we cannot expect an infinitary modus ponens rule to hold.
 
 \begin{cor}Let~$X$ be a locally Noetherian scheme. Then the stalks~$\K_{X,x}$
 of the sheaf of rational functions are given by the total quotient rings of the
 local rings~$\O_{X,x}$.\end{cor}
-\begin{proof}Combine Proposition~\ref{prop:stalks-kx} and
+\begin{proof}Follows by combining Proposition~\ref{prop:stalks-kx} and
 Proposition~\ref{prop:regularity-spreading}.\end{proof}
 
 
@@ -4561,11 +4563,11 @@ ring~$\O_X$ is normal from the internal perspective.\end{prop}
 a geometric implication:
 \begin{multline*}
   \forall s,t\?\O_X\_
-  \Bigl(\speak{$t$ regular} \wedge {} \\
-  (\exists a_0,\ldots,a_{n-1}\?\O_X\_
-  s^n + a_{n-1} t s^{n-1} + \cdots + a_1 t^{n-1} s + a_0 t^n = 0)
+  \bigl(\speak{$t$ regular} \wedge {} \\
+  \exists a_0,\ldots,a_{n-1}\?\O_X\_
+  s^n + a_{n-1} t s^{n-1} + \cdots + a_1 t^{n-1} s + a_0 t^n = 0\bigr)
   \Longrightarrow \\
-  \exists u\?\O_X\_ s = ut\Bigr).
+  \exists u\?\O_X\_ s = ut.
 \end{multline*}
 The only non-geometric subpart is the condition on~$t$ to be regular. However,
 by Proposition~\ref{prop:regularity-spreading}, for the purposes of comparing
@@ -4590,7 +4592,7 @@ if and only if it is \notnot invertible.
 \end{enumerate}
 \end{lemma}
 \begin{proof}Recall from Corollary~\ref{cor:field-reduced} that
-\begin{equation}\label{eqn:field-condition}
+\begin{equation}\label{eqn:field-condition}\tag{${\!\Join\!}$}
   \Sh(X) \models \forall s\?\O_X\_ \neg(\speak{$s$ invertible}) \Leftrightarrow
   s=0.
 \end{equation}
@@ -4629,7 +4631,7 @@ latter case.
 and~$(\star\star)$.
 \end{prop}
 \begin{proof}Recall that, under the Noetherian hypothesis, an open subset of~$\Spec A$ is dense if and only if it
-contains all minimal prime ideals and that it
+contains all minimal prime ideals (this fact holds more generally if there are only finitely many minimal prime ideals) and that it
 is scheme-theoretically dense if and only if it contains all associated prime
 ideals. There are only a finite number of these prime ideals. Therefore the
 claim is reduced to the following statement:
@@ -4660,7 +4662,7 @@ in~$\K_X$ if and only if~$a = 0$ in~$\O_X$. Thus it follows that~$\neg\neg(a =
 We defer the proof that~$\K_X$ is a~$\neg\neg$-sheaf to the end and first
 verify the universal property of~$\neg\neg$-sheafification.
 So let~$G$ be a~$\neg\neg$-sheaf and let~$\alpha : \O_X \to G$ be a map. We
-can define an extension~$\bar\alpha : \K_X \to G$ in the following way:
+define an extension~$\bar\alpha : \K_X \to G$ in the following way:
 Let~$f \? \K_X$. Define the subsingleton~$S \defeq \{ x \? G \,|\, \exists
 b\?\O_X\_ f = b/1 \wedge x = \alpha(b) \} \subseteq G$. Since~$f$ can be
 written in the form~$a/s$ with~$s$ \notnot invertible, it follows that~$S$
@@ -4677,9 +4679,9 @@ reformulate the sheaf condition in a way such that it only refers to~$\O_X$,
 not~$\K_X$: The quotient ring~$\K_X$ is a~$\neg\neg$-sheaf if and only if
 \begin{multline*}
   \Sh(X) \models \forall T \subseteq \O_X\_
-  \speak{$T$ subsingleton} \wedge \neg\neg(\speak{$T$ inhabited})
+  \speak{$T$ is a subsingleton} \wedge \neg\neg(\speak{$T$ is inhabited})
   \Longrightarrow \\
-  \exists a,b\?\O_X\_ \speak{$b$ regular} \wedge \neg\neg(b^{-1} a \in T).
+  \exists a,b\?\O_X\_ \speak{$b$ is regular} \wedge \neg\neg(b^{-1} a \in T).
 \end{multline*}
 This is done just as in the proof of Theorem~\ref{thm:qcoh-sheafchar}.
 \XXX{reorder qcoh before this because of the reference?}
@@ -4732,11 +4734,11 @@ operator defined by
 \[ \sdense\varphi \defequiv \speak{$\O_X$ is~$(\varphi \Rightarrow
 \placeholder)$-separated} \]
 in the internal language of~$\Sh(X)$, \ie
-\[ \sdense\varphi \defequiv \forall s\?\O_X\_ (\varphi \Rightarrow s = 0)
-\Rightarrow s = 0. \]
+\[ \sdense\varphi \defequiv (\forall s\?\O_X\_ (\varphi \Rightarrow s = 0)
+\Rightarrow s = 0). \]
 This modal operator has an explicit scheme-theoretic description.
 
-\begin{lemma}\label{lemma:scheme-theoretical-density}
+\begin{lemma}\label{lemma:scheme-theoretical-denseness}
 Let~$U$ be an open subset of a scheme~$X$. Then~$\Sh(X) \models
 \sdense U$ if and only if~$U$ is scheme-theoretically dense in~$X$.
 \end{lemma}
@@ -4762,7 +4764,7 @@ Let~$U$ be an open subset of a scheme~$X$. Then~$\Sh(X) \models
 Using the internal language of a scheme, talking about scheme-theoretically
 dense open subsets is therefore just as easy as talking about ordinary
 topologically dense open subsets; the difference simply amounts to using the
-modal operator~``$\sdense$'' instead of~``\notnot''.
+modal operator~$\sdense$ instead of~``\notnot''.
 
 \begin{prop}\label{prop:kx-is-box-sheafification}
 Let~$X$ be a ringed space. Then:
@@ -4801,7 +4803,7 @@ arbitrary such that~$fh = 0$. Then, trivially, it holds that~$\speak{$f$ \inv}
 \Rightarrow h = 0$. Since~$\O_X$ is separated with respect to~$(\speak{$f$
 \inv} \Rightarrow \placeholder)$, it follows that~$h = 0$.
 
-We may now suppose that~$X$ is a scheme. To verify the fifth property, let a
+We now suppose that~$X$ is a scheme. To verify the fifth property, let a
 regular element~$f\?\O_X$ be given. We have to show that~$\O_X$ is separated
 with respect to the modality~$(\speak{$f$ \inv} \Rightarrow \placeholder)$. So
 assume that~$\speak{$f$ \inv} \Rightarrow (s = 0)$ for some~$s\?\O_X$. By
@@ -4833,10 +4835,13 @@ In the special case that~$X$ is a reduced scheme,
 Proposition~\ref{prop:kx-is-box-sheafification} recovers
 the result of Proposition~\ref{prop:kx-is-negneg-sheafification}:
 
-\begin{prop}Let~$X$ be a scheme. Then~$\sdense\varphi \Rightarrow \neg\neg\varphi$
-for any formula~$\varphi$. The converse holds if~$X$ is reduced, so that in
+\begin{prop}\label{prop:relation-sdense-notnot}
+Let~$X$ be a scheme. Then~$\Sh(X) \models \forall\varphi\?\Omega\_
+\sdense\varphi \Rightarrow \neg\neg\varphi$.
+The converse holds if~$X$ is reduced, so that in
 this case the modal operator~$\sdense$ coincides with the double negation modality.\end{prop}
-\begin{proof}Let~$\varphi$ be an arbitrary formula and assume~$\sdense\varphi$. Note that~$\neg\varphi$ is
+\begin{proof}We argue internally. Let~$\varphi$ be an arbitrary truth value and
+assume that~$\sdense\varphi$. Note that~$\neg\varphi$ is
 equivalent to~$\varphi \Rightarrow (1 =
 0)$. Since by assumption~$\O_X$ is separated with respect to the~$(\varphi
 \Rightarrow \placeholder)$-modality, this in turn is equivalent to~$1 = 0 \?
@@ -4849,13 +4854,13 @@ is~$\neg\neg$-separated, so this implies that~$s$ is really zero.
 \end{proof}
 
 As a corollary, we can reprove the following basic lemma about
-scheme-theoretical density.
+scheme-theoretical denseness.
 \begin{lemma}Let~$U$ be an open subset of a scheme~$X$. If~$U$ is
 scheme-theoretically dense, then~$U$ is also dense in the plain topological
 sense. The converse holds if~$X$ is reduced.\end{lemma}
 \begin{proof}The set~$U$ is scheme-theoretically dense if and only if~$\Sh(X)
 \models \sdense U$ and is dense if and only if~$\Sh(X) \models \neg\neg U$.
-Therefore the claim follows from the previous proposition.
+Therefore the claim follows from Proposition~\ref{prop:relation-sdense-notnot}.
 \end{proof}
 
 \begin{prop}\label{prop:kx-ass}
@@ -4917,7 +4922,7 @@ Noetherian, this is equivalent to requiring that~$U$ contains~$\Ass(\O_X)$.)
 Then the canonical morphism~$\K_X \to j_* \K_U$ is an isomorphism.
 \end{lemma}
 \begin{proof}Write~$i : X_\sdense \hookrightarrow X$ and~$i' : X_\sdense
-\hookrightarrow U$ for the inclusions. By the previous proposition, the
+\hookrightarrow U$ for the inclusions. By Proposition~\ref{prop:kx-ass}, the
 sheaf~$\K_X$ is given by~$i_* i^{-1} \O_X$. Similarly, the sheaf~$j_* \K_U$ is
 given by~$j_* i'_* i'^{-1} j^{-1} \O_X$. The claim follows since~$j \circ i' =
 i$.
@@ -5008,7 +5013,7 @@ true that locally there exists sections~$f$ of~$\K_X^\times$ such that~$D = [f]$
 \begin{defn}\label{defn:line-bundle-of-divisor}
 The \emph{line bundle associated to a Cartier divisor}~$D$
 is the~$\O_X$-submodule
-\[ \O_X(D) \defeq \{ g \in \K_X \,|\, g D \in \O_X \} = D^{-1} \O_X \subseteq \K_X
+\[ \O_X(D) \defeq \{ g \? \K_X \,|\, g D \in \O_X \} = D^{-1} \O_X \subseteq \K_X
 \]
 of~$\K_X$. Here we are abusing language for~``$gD \in \O_X$'' to mean that~$gf
 \in \O_X$ if~$D = [f]$ with~$f\?\K_X$; and for~``$D^{-1} \O_X$'' to
@@ -5023,6 +5028,19 @@ and only if~$\O_X(-D)$ is a subset of~$\O_X$ from the internal perspective
 embedded in~$\K_X$). In
 this case, we can define the \emph{support} of~$D$ to be the closed subscheme
 of~$X$ associated to the sheaf of ideals~$\O_X(-D) \subseteq \O_X$.
+
+The line bundle~$\O_X(D)$ can also be written in the familiar form
+\[ \O_X(D) = \{ g \? \K_X \,|\, \operatorname{div}(g) + D \geq 0 \}, \]
+if we define~``$\operatorname{div}(g)$'' as the equivalence class~$[g] :
+\K_X/\O_X^\times$, interpret the left-hand side of the inequality as an element
+of~$\K_X/\O_X^\times$, and declare that~$[s/t] \geq 0$ if and only if~$s$ is
+an~$\O_X$-multiple of~$t$.
+
+On the other hand, a description like
+\[ \text{``$\O_X(D) = \{ 0 \} \cup \{ g \? \K_X^\times \,|\,
+  \operatorname{div}(g) + D \geq 0 \}$''} \]
+is not possible, since the case distinction necessary for a verification of the
+inclusion~``$\subseteq$'' is not possible intuitionistically.
 
 %\begin{prop}Let~$D$ be an effective divisor on~$X$. Then~$\O_X(D)$ is trivial
 %outside of the support of~$D$.\end{prop}
@@ -5045,9 +5063,9 @@ in~$\K_X$ and thus~$h = 0$ in~$\O_X$.
 
 Furthermore, the associated divisor does not depend on the choice of~$f$,
 since~$f$ is well-defined up to multiplication by an element of~$\O_X^\times$: If~$f
-\O_X = g \O_X \subseteq \K_X$, then there exist~$u,v\?\O_X$ such that~$fu = g$
+\O_X = g \O_X \subseteq \K_X$, then there exist elements~$u,v\?\O_X$ such that~$fu = g$
 and~$gv = f$ in~$\K_X$. It follows that~$uv = fuvf^{-1} = gvf^{-1} = ff^{-1} =
-1$ in~$\K_X$ and thus in~$\O_X$, by injectivity of the canonical map~$\O_X \to
+1$ in~$\K_X$ and thus in~$\O_X$, by injectivity of the localization morphism~$\O_X \to
 \K_X$. Therefore~$u$ and~$v$ are elements of~$\O_X^\times$.
 
 \begin{lemma}Let~$D$ and~$D'$ be divisors on~$X$. Then~$\O_X(D) \otimes_{\O_X}
@@ -5060,13 +5078,13 @@ are obvious.\end{proof}
 \begin{prop}The association~$D \mapsto \O_X(D)$ defines a one-to-one
 correspondence between Cartier divisors on~$X$ and rank-one submodules
 of~$\K_X$. This correpondence descends to a one-to-one correspondence between
-Cartier divisiors up to linear equivalance and rank-one submodules of~$\K_X$ up
+Cartier divisors up to linear equivalance and rank-one submodules of~$\K_X$ up
 to isomorphism (as abstract~$\O_X$-modules, ignoring their embedding
 into~$\K_X$).\end{prop}
 \begin{proof}The first statement is obvious from the definitions. For the
 second statement, it suffices to show that~$\O_X(D)$ is isomorphic to~$\O_X$ if
 and only if~$D$ is principal. An isomorphism~$\O_X \to \O_X(D)$ gives a
-global section~$f \in \K_X^\times$ (by considering the image of the unit element)
+global section~$f \in \Gamma(X,\K_X^\times)$ (by considering the image of the unit element)
 such that internally,~$D = [f^{-1}]$; this shows that~$D$ is principal. The
 converse is similar.
 \end{proof}
@@ -5078,9 +5096,11 @@ converse is similar.
 %schemes) are in one-to-one correspondence with effective Cartier divisors (up
 %to linear equivalence).\end{rem}
 %\YYY{check this.}
+%Is wrong. On A^2 there are locally principal subschemes, but every Cartier
+%divisor is zero up to linear equivalence.
 
 For the following definition, recall that we can localize an~$\O_X$-module~$\L$
-away from the set~$\S \subseteq \O_X$ of regular elements to obtain
+at the set~$\S \subseteq \O_X$ of regular elements to obtain
 a~$\K_X$-module~$\L[S^{-1}]$.
 
 \begin{defn}Let~$f\?\L[\S^{-1}]$ be a rational section of a line bundle~$\L$
@@ -5090,23 +5110,23 @@ is~$\operatorname{div}(f) \defeq [\psi(s)/t]$, where~$f = s/t$ with~$s\?\L$ and~
 and~$\psi : \L \to \O_X$ is an isomorphism.\end{defn}
 
 One can check that~$\psi(s)$ is a regular element of~$\O_X$; this statement is
-in fact equivalent to the multiplication map~$\O_X \to \L[\S^{-1}]$ being
+equivalent to the multiplication map~$\O_X \to \L[\S^{-1}]$ being
 injective. Furthermore one can check that~$[\psi(s)/t]$ does not depend on the
 choice of~$s$,~$t$, and~$\psi$.
 
 \begin{prop}Let~$f\?\L[\S^{-1}]$ be a nontrivial rational section of a line
 bundle~$\L$ on~$X$. Then multiplication by~$f$ induces an
 isomorphism~$\O_X(\operatorname{div}(f)) \to \L$.\end{prop}
-\begin{proof}The isomorphism should map a rational function~$g$ to~$g \cdot f$. This
+\begin{proof}The isomorphism should map a rational function~$g$ to~$g f$. This
 is a priori an element of~$\L[\S^{-1}]$; we have to check that it can be
 regarded as an element of~$\L$. Just as in the definition
 of~$\operatorname{div}(f)$, write~$f = s/t$ and fix an isomorphism~$\psi : \L
 \to \O_X$. Write~$g = (t/\psi(s)) \cdot h$ for some function~$h\?\O_X$. Then~$g
-\cdot f = sh/\psi(s) = h\psi^{-1}(1)$, since~$s = \psi^{-1}(\psi(s)) = \psi(s)
+f = sh/\psi(s) = h\psi^{-1}(1)$, since~$s = \psi^{-1}(\psi(s)) = \psi(s)
 \cdot \psi^{-1}(1)$. The element~$h\psi^{-1}(1)$ can indeed be considered as an
 element of~$\L$.
 
-Injectivity of the map~$\O_X(\operatorname{div}(f)) \to \L$ is by the
+Injectivity of the map~$\O_X(\operatorname{div}(f)) \to \L$ is by
 nontriviality of~$f$. For surjectivity, note that~$(t/\psi(s)) \cdot \psi(v)$ is a
 preimage to~$v\?\L$, since~$(t/\psi(s)) \cdot \psi(v) \cdot f = \psi(v) \psi(s)
 \psi^{-1}(1) / \psi(s) = v$.
@@ -5115,7 +5135,7 @@ preimage to~$v\?\L$, since~$(t/\psi(s)) \cdot \psi(v) \cdot f = \psi(v) \psi(s)
 \begin{prop}Let~$\L$ be a line bundle on~$X$. Assume that~$\L$ can be embedded
 into~$\K_X$. Then~$\L$ possesses a nontrivial rational section.
 \end{prop}
-\begin{proof}Let~$i : \L \to \K_X$ denote the given injection. Let~$(v)$ be an
+\begin{proof}Let~$i : \L \to \K_X$ be the given injection. Let~$(v)$ be an
 one-element basis for~$\L$. Write~$i(v) = s/t$. Then~$s$ is regular,
 since~$hs = 0$ implies~$i(hv) = 0$ and thus~$h = 0$, for any~$h\?\O_X$.
 Therefore~$f \defeq tv/s$ is a well-defined element of~$\L[\S^{-1}]$.
@@ -5124,15 +5144,16 @@ then~$htv = 0$, thus~$ht = 0$ and~$h = 0$.
 
 It remains to check that~$f$ is independent of the choice of~$v$ and of the
 representation~$i(v) = s/t$; else we defined only local sections which might not
-glue to a single nontrivial rational section (externally speaking). This is
-obvious.
+glue to a single nontrivial rational section (externally speaking). This verification is
+trivial.
 \end{proof}
 
 \begin{prop}Let~$D$ be an effective divisor on~$X$. Then the complement of its
 support is scheme-theoretically dense.\end{prop}
-\begin{proof}The complement of the support of~$D$, that is~$D(\O_X(-D))$, is
-the truth value associated to the statement~``$1 \in \O_X(-D)$''. By
-Lemma~\ref{lemma:scheme-theoretical-density}, we therefore have to verify
+\begin{proof}The complement of the support of~$D$, that is the open
+subset~$D(\O_X(-D))$ (where we consider~$\O_X(-D)$ as an ideal of~$\O_X$), is
+the truth value of the statement~``$1 \in \O_X(-D)$''. By
+Lemma~\ref{lemma:scheme-theoretical-denseness}, we therefore have to verify
 that~$\O_X$ is separated with respect to the modal operator~$(1 \in \O_X(-D)
 \Rightarrow \placeholder)$.
 
@@ -5151,15 +5172,11 @@ to~$\Box$ is the same as pulling back to~$\{\xi\}$ and then pushing forward
 to~$X$ again (see Section~\ref{sect:negneg-sheaves}). Let~$\L$ be a line bundle on~$X$. Since~$\L_\xi \cong
 \O_{X,\xi}$ (uncanonically), there is some injection~$\L_\xi \to \K_{X,\xi}$;
 this corresponds internally to an injection~$\L^{++} \to \K_X^{++}$.
-Since~$\K_X$ is already a~$\Box$-sheaf (see
-Proposition~\ref{prop:kx-is-negneg-sheafification}) and~$\L$ is~$\Box$-separated
+Since~$\K_X$ is already a~$\Box$-sheaf
+(Proposition~\ref{prop:kx-is-negneg-sheafification}) and~$\L$ is~$\Box$-separated
 (being isomorphic to~$\O_X$), we have the global injection
 \[ \L \lhra \L^{++} \lhra \K_X^{++} \stackrel{({\cong})^{-1}}{\longrightarrow} \K_X. \qedhere \]
 \end{proof}
-
-\begin{itemize}
-\item ``$\operatorname{div}(g) + D \geq 0$''
-\end{itemize}
 
 
 \section{Compactness and metaproperties}
@@ -5200,12 +5217,14 @@ if~``$\Sh(X) \models$'' commutes with directed~``$\bigvee_{i \in I}$'''s.
 
 \begin{proof}For the ``only if'' direction, let such a family of formulas be
 given. Declare~$U_i$ to be the largest open subset of~$X$ where~$\varphi_i$
-holds. Then by assumption, the~$U_i$ form a monotone family and cover~$X$. By
-quasicompactness of~$X$, some single~$U_i$ covers~$X$ as well, such that the
+holds. Then by assumption, the sets~$U_i$ form a monotone family and cover~$X$. By
+quasicompactness of~$X$, some single member~$U_i$ covers~$X$ as well, whereby the
 corresponding formula~$\varphi_i$ holds on~$X$.
 
 For the ``if'' direction, note that a monotone family~$(U_i)$ of open subsets
-induces a monotone family of formulas by defining~$\varphi_i \defequiv U_i$. This
+induces a monotone family of formulas by defining~$\varphi_i \defequiv U_i$,
+employing the notational convention set out in
+Section~\ref{sect:modalities-geometric-meaning}. This
 correspondence is such that~$\Sh(X) \models \bigvee_i \varphi_i$ holds if and
 only if~$X = \bigcup_i U_i$ and such that~$\Sh(X) \models \varphi_i$ if and
 only if~$X = U_i$. With these observations the claim is obvious.
@@ -5213,23 +5232,24 @@ only if~$X = U_i$. With these observations the claim is obvious.
 
 \begin{ex}\label{ex:nilpotency-directed}
 Let~$X$ be a quasicompact scheme (or quasicompact ringed space).
-Let~$f \in \Gamma(X,\O_X)$ be a global function. Endow the set of natural
-numbers with the usual ordering. Then the family of formulas given by~$(f^n =
+Let~$f \in \Gamma(X,\O_X)$ be a global function. Let the set of natural
+numbers be endowed with the usual ordering. Then the family of formulas given by~$(f^n =
 0)_{n \in \NN}$ is monotone. Thus, if it internally holds that~$f$ is
 nilpotent, then~$f$ is nilpotent as an element of~$\Gamma(X,\O_X)$ as
 well.\end{ex}
 
-\begin{prop}Let~$X$ be a topological space. Let~$K \subseteq X$ be an open
+\begin{prop}\label{prop:locally-qc}
+Let~$X$ be a topological space. Let~$K \subseteq X$ be an open
 subset which is \emph{locally quasicompact} in the sense that there exists an open
 covering~$X = \bigcup_j U_j$ such that each~$K \cap U_j$ is quasicompact. Then the
 internal language of~$\Sh(X)$ has the following metaproperty: For any
-directed set~$I$ and monotone family~$(\varphi_i)_{i \in I}$ of formulas
+directed set~$I$ and any monotone family~$(\varphi_i)_{i \in I}$ of formulas
 over~$X$ it holds that
 \[ \Sh(X) \models \bigl(K \Rightarrow \bigvee_i \varphi_i\bigr)
   \quad\text{implies}\quad
   \Sh(X) \models \bigvee_i (K \Rightarrow \varphi_i). \]
 If additionally for any open subset~$V \subseteq X$ the set~$K \cap V$ is
-locally quasicompact in~$V$, the following stronger and purely internal
+locally quasicompact in~$V\!$, the following stronger and purely internal
 statement holds:
 \[ \Sh(X) \models \bigl(K \Rightarrow \bigvee_i \varphi_i\bigr)
   \Longrightarrow
@@ -5238,7 +5258,7 @@ statement holds:
 \begin{proof}Assume that~$\Sh(X) \models (K \Rightarrow \bigvee_i \varphi_i)$.
 This is equivalent to~$K \models \bigvee_i \varphi_i$. By the locality of the
 internal language, it follows that~$K \cap U_j \models \bigvee_i \varphi_i$ for each~$j$.
-Since~$K \cap U_j$ is quasicompact, it follows by the previous proposition that
+Since~$K \cap U_j$ is quasicompact, it follows by the Proposition~\ref{prop:quasicompact-meta} that
 there exists an index~$i_j \in I$ such that~$K \cap U_j \models \varphi_{i_j}$.
 This is equivalent to~$U_j \models (K \Rightarrow \varphi_{i_j})$. In
 particular, it holds that~$U_j \models \bigvee_i (K \Rightarrow \varphi_i)$.
@@ -5269,7 +5289,7 @@ spectrum (Section~\ref{sect:relative-spectrum}).
 
 \begin{rem}In applications, the open set~$K$ of the proposition is often given
 as the largest open subset on which some formula~$\psi$ holds. (For instance,
-in the previous example,~$K$ was given by the formula~$\speak{$f$
+in Example~\ref{ex:df-locally-compact},~$K$ was given by the formula~$\speak{$f$
 is invertible in $\O_X$}$.)
 Then the conclusion of the proposition is that \emph{assuming that~$\psi$ holds commutes
 with directed disjunctions}.\end{rem}
@@ -5298,9 +5318,9 @@ it holds that
   \quad\text{implies}\quad
   \text{for some~$s \in \Gamma(X,\F)$, $\Sh(X) \models \varphi(s)$}. \]
 \end{prop}
-\begin{proof}The proof of the first part is very similar to the proof of the
-previous proposition. For the ``only if'' direction of the second part, note
-that the antecedent implies that there exist local section~$s_i \in
+\begin{proof}The proof of the first part is very similar to the proof of
+Proposition~\ref{prop:locally-qc}. For the ``only if'' direction of the second part, note
+that the antecedent implies that there exist local sections~$s_i \in
 \Gamma(U_i,\F)$ such that~$U_i \models \varphi(s_i)$ for some open covering~$X
 = \bigcup_i U_i$. By locality of~$X$, one such~$U_i$ suffices to cover~$X$; so
 the corresponding section~$s_i$ is actually a global section and verifies~$X
@@ -5331,7 +5351,7 @@ formulas~$\varphi$ and~$\psi$
   \Sh(X) \models \neg\psi, \]
 and not $\Sh(X) \models \bot$.
 Furthermore, in this case the following internal logical principle holds:
-\[ \Sh(X) \models \forall \alpha,\beta \in \Omega\_
+\[ \Sh(X) \models \forall \alpha,\beta \? \Omega\_
   \neg(\alpha \wedge \beta) \Rightarrow (\neg\alpha \vee \neg\beta). \]
 \end{prop}
 \begin{proof}The statement ``$\Sh(X) \models \neg(\varphi \wedge \psi)$'' means
@@ -12897,7 +12917,8 @@ topology. These toposes don't coincide, however. \XXX{why}
   sections of~$\F$ are equal if they agree on dense open & $\F$ is $\neg\neg$-separated & Prop.\@~\ref{prop:negneg-sheaves} \\
   sheaf of sections of~$\F$ defined on dense open subsets & $\F^{++}$ with respect to~$\Box = \neg\neg$ (assuming that~$\F$ is~$\neg\neg$-separated) & Prop.\@~\ref{prop:negneg-sheaves} \\
   $U$ is dense & $\neg\neg U$ & Prop.\@~\ref{prop:modops-kripke} \\
-  $U$ is scheme-theoretically dense & $\sdense U$, \ie $\O_X$ is separated wrt.~$(U \Rightarrow \placeholder)$ & Lemma\@~\ref{lemma:scheme-theoretical-density} \\
+  $U$ is scheme-theoretically dense & $\sdense U$, \ie $\O_X$ is separated
+  wrt.~$(U \Rightarrow \placeholder)$ & Lemma\@~\ref{lemma:scheme-theoretical-denseness} \\
   $V(\I)$ is reduced & $\I$ is a radical ideal & Lemma~\ref{lemma:closed-subspace-reduced} \\
   $\O_{X_\mathrm{red}}$ & $\O_X/\sqrt{(0)}$ & Lemma~\ref{lemma:reduced-subspace} \\\\
 

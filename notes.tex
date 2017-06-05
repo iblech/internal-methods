@@ -792,6 +792,8 @@ meaning will then be the Hom sheaf. We write pairs~$\langle a, b \rangle$ using
 angle brackets. The preimage of a set~$M$ under a map~$f$ is
 written~``$f^{-1}[M]$''. Similarly, the image is written~``$f[N]$''.
 
+The constant sheaf with stalks~$M$ is writen~``$\ul{M}$''.
+
 }
 
 
@@ -1116,7 +1118,16 @@ The former always implies the latter (unless~$X = \emptyset$, in which case
 former statement means that~$U = \emptyset$ is the \emph{only} open subset on
 which~$\varphi$ holds, that is that~$\varphi$ holds \emph{nowhere}. In
 contrast, the statement~$\Sh(X) \not\models \varphi$ only means that~$\varphi$
-does \emph{not hold everywhere}.\end{rem}
+does \emph{not hold everywhere}.
+
+For instance, let~$X$ be a quasicompact scheme and let~$f \in
+\Gamma(X,\O_X)$ be a global function on~$X$. We will see in
+Section~\ref{sect:sheaves-of-rings} that ``$\Sh(X) \not\models \speak{$f$ is
+invertible}$'' means that~$f$ is not an invertible function in the
+ring~$\Gamma(X,\O_X)$. In contrast,~``$\Sh(X) \models \neg(\speak{$f$ is
+invertible})$'' means that~$f$ is \emph{nowhere invertible}, not even on
+smaller non\-empty open subsets. This implies that~$f$ is nilpotent.
+\end{rem}
 
 
 \subsection{Internal constructions}
@@ -1432,6 +1443,48 @@ Secondly, as of yet, there is no full constructive account of the theory of
 schemes with which we could establish a link with the internal language. We
 sketch how such an account could be developed, and also why one might want to
 do that, in Section~\ref{sect:constructive-scheme-theory}.\end{rem}
+
+
+\subsection{A fine point on internal natural numbers}
+
+The internal world of~$\Sh(X)$ contains an object which behaves like the set of
+natural numbers. For instance, it's possible to prove statements about internal
+natural numbers by induction and to construct functions on the internal natural
+numbers by recursion. Externally, this object is the constant sheaf~$\ul{\NN}$
+of locally constant~$\NN$-valued functions on~$X$.
+
+On the other hand, we can utilize that the internal language supports infinite
+conjunctions and disjunctions; therefore we may include expressions
+like~``$\bigvee_{n \in \NN}$'', where~$n$ ranges over all external natural
+numbers, in internal formulas.
+
+The two approaches are related as follows. Any external natural number~$n \in
+\NN$ gives rise to a global section~$\ul{n}$ of the sheaf~$\ul{\NN}$, thus to
+an internal natural number. If~$\varphi(n)$ is a formula of the
+internal language depending on a parameter~$n \? \ul{\NN}$, then
+\[ \Sh(X) \models \exists n\?\ul{\NN}\_ \varphi(n)
+  \quad\text{if and only if}\quad
+  \Sh(X) \models \bigvee_{n \in \NN} \varphi(\ul{n}), \]
+and similarly for~``$\forall$'' and~``$\bigwedge$''. In practice we can
+therefore often ignore the subtle difference. A proof of the equivalence rests
+on the observation
+\[ \Sh(X) \models \forall n\?\ul{\NN}\_
+  \bigvee_{m \in \NN} n = \ul{m}, \]
+which can be checked by translating this statement using the Kripke--Joyal
+semantics.
+
+A similar relation holds for internal polynomials. If~$\R$ is a sheaf of rings
+over~$X$, then we can construct, internally in~$\Sh(X)$, the ring of
+polynomials over~$\R$. This will yield a certain sheaf~$\brak{\R[T]}$.
+If~$\varphi(f)$ is a formula of the internal language containing a free
+variable~$f \? \R[T]$, then
+\begin{multline*}
+  \quad \Sh(X) \models \exists f\?\R[T]\_ \varphi(f)
+  \quad\text{if and only if} \\
+  \Sh(X) \models \bigvee_{n \in \NN}
+    \exists a_0\?\R\_ \ldots \exists a_n\?\R\_
+    \varphi(a_nT^n + \cdots + a_1T + a_0). \quad
+\end{multline*}
 
 
 \chapter{The little Zariski topos}\label{part:little-zariski}

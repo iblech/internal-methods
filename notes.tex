@@ -10894,6 +10894,222 @@ colimits, but is not left exact.
 \end{warning}
 
 
+\subsection{Relative spectrum}
+
+\begin{defn}The \emph{synthetic spectrum} of an~$R$-algebra~$A$ is
+\[ \Spec(A) \defeq [A, R]_{\mathrm{Alg}(R)}, \]
+the set of~$R$-algebra homomorphisms from~$A$ to~$R$.\end{defn}
+
+\begin{ex}The synthetic spectrum of~$R$ is the one-element set.
+More generally, the synthetic spectrum of the algebra~$R[X_1,\ldots,X_n]/(f_1,\ldots,f_m)$
+is the solution set~$\{ x \? R^n \,|\, f_1(x) = \cdots = f_n(x) = 0 \}$.
+\end{ex}
+
+\begin{ex}The synthetic spectrum of~$R/(f)$ is~$\brak{f = 0}$, the truth value
+of the formula~``$f = 0$'', the subsingleton set~$\{ \star \,|\, f = 0 \}$.
+If classical logic is available, then this set contains~$\star$ or is empty,
+depending on whether~$f$ is zero or not. Similarly, the synthetic spectrum
+of~$R[f^{-1}]$ is~$\brak{\speak{$f$ \inv}}$.\end{ex}
+
+\begin{prop}\label{prop:relative-spectrum-big-zariski}
+Let~$\A_0$ be an~$\O_S$-algebra (not necessarily quasicoherent).
+Then the synthetic spectrum of the~$\affl$-algebra~$(\A_0)^\Zar$, as constructed
+in the internal language of~$\Zar(S)$, is the functor of points of~$\RelSpec_S \A_0$.
+\end{prop}
+
+\begin{proof}The Hom set occuring in the definition of the synthetic spectrum is
+interpreted by the internal Hom when using the internal language. For
+any~$S$-scheme~$f : T \to S$ contained in the site used to define~$\Zar(S)$, we
+have the following chain of isomorphisms.
+\begin{align*}
+  (\Spec(A))(T) &= [(\A_0)^\Zar, \affl]_{\mathrm{Alg}(\affl)}(T) \\
+  &\cong
+  \Hom_{\Zar(S)}(\ul{T}, [(\A_0)^\Zar, \affl]_{\mathrm{Alg}(\affl)}) \\
+  &\cong
+  \Hom_{\Zar(S)}(\ul{T} \times (\A_0)^\Zar, \affl)_{\ldots} \\
+  &\cong
+  \Hom_{\Zar(S)/\ul{T}}(\ul{T} \times (\A_0)^\Zar, \ul{T} \times \affl)_{\ldots} \\
+  &\cong
+  \Hom_{\mathrm{Alg}_{\Zar(T)}(\afflt)}((f^*\A_0)^\Zar, \afflt) \\
+  &=
+  \Hom_{\mathrm{Alg}_{\Zar(T)}(\afflt)}(\pi^{-1}(f^*\A_0) \otimes_{\pi^{-1}\O_T}
+  \afflt, \afflt) \\
+  &\cong
+  \Hom_{\mathrm{Alg}_{\Zar(T)}(\pi^{-1}\O_T)}(\pi^{-1}(f^*\A_0), \afflt) \\
+  &\cong
+  \Hom_{\mathrm{Alg}_{\Sh(T)}(\O_T)}(f^*\A_0, \O_T) \\
+  &\cong
+  \Hom_{\mathrm{Alg}_{\Sh(S)}(\O_S)}(\A_0, f_*\O_T) \\
+  &\cong
+  \Hom_S(T, \RelSpec_S \A_0).
+\end{align*}
+The omitted subscripts~``$\ldots$'' should denote that we're only taking the
+subset of the Hom set where, for each fixed first argument, the morphisms are
+morphisms of~$\affl$-algebras.
+\end{proof}
+
+If~$X \in \Zar(S)$ is an arbitrary object, there is a canonical morphism~$X \to
+\Spec([X,\affl])$. In the internal language of~$\Zar(X)$ it looks like the
+``inclusion into the double dual'':
+\[ x \longmapsto \placeholder(x),
+  \quad\text{where $\placeholder(x) : [X,\affl] \to \affl,\ \varphi \mapsto
+  \varphi(x)$.} \]
+The following proposition shows that bijectivity of this map is related to~$X$
+being the functor of points of an affine~$S$-scheme (an~$S$-scheme whose
+structure morphism to~$S$ is affine).
+
+\begin{prop}\label{prop:char-affine-zar}
+A sheaf~$X \in \Zar(S)$ is isomorphic to the functor of points of
+an affine~$S$-scheme if, in the internal language of~$\Zar(S)$,
+the~$\affl$-algebra~$[X,\affl]$ is quasicoherent and the canonical map~$X \to
+\Spec([X,\affl])$ is bijective. The converse holds in any of the following
+situations:
+\begin{enumerate}
+\item The affine~$S$-scheme which~$X$ represents is of finite presentation
+over~$S$.
+\item The site used to define~$\Zar(S)$ is defined using a partial universe
+and the affine~$S$-scheme which~$X$ represents if of finite type over~$S$.
+\item The affine~$S$-scheme which~$X$ represents is contained in the site used
+to define~$\Zar(S)$. (This situation subsumes the previous ones.)
+\end{enumerate}\end{prop}
+
+\begin{proof}The ``if'' direction is straightforward, since the assumption
+expresses~$X$ as the functor of points of the relative spectrum of a
+quasicoherent~$\O_S$-algebra.
+
+For the ``only if'' direction, we abuse notation and denote the given
+affine~$S$-scheme whose functor of points is~$X$ by~``$f : X \to S$''.
+Then~$f_*\O_X$ is quasicoherent and the canonical morphism~$X \to
+\RelSpec_S{f_*\O_X}$ is an isomorphism. In any of the listed situations, the
+internal Hom~$[X,\affl]$ is canonically isomorphic to~$(f_*\O_X)^\Zar$, since
+for any object~$T \xra{g} S$ of the site used to define~$\Zar(S)$ we have that
+\begin{align*}
+  [X,\affl](T) &\cong
+  \Hom_{\Zar(S)}(\underline{T}, [X,\affl]) \cong
+  \Hom_{\Zar(S)}(\underline{T} \times X,\affl) \\
+  &\cong \Hom_{\Zar(S)}(\underline{T} \times \underline{X},\affl) \cong
+  \Hom_{\Zar(S)}(\underline{T \times_S X},\affl) \\
+  &\cong \affl(T \times_S X) \cong
+  (g^* f_* \O_X)(T) =
+  (f_* \O_X)^\Zar(T).
+\end{align*}
+Therefore~$[X,\affl]$ is quasicoherent. The map induced by the isomorphism~$X \to
+\RelSpec_S{f_*\O_X}$ on the level of functors of points is precisely the
+canonical map~$X \to \Spec([X,\affl])$ as defined in the internal language;
+therefore this map is bijective from the internal point of view.
+\end{proof}
+
+\begin{rem}\label{rem:local-representability}
+The condition in Proposition~\ref{prop:char-affine-zar} that~$\Spec(A)$ is
+representable by an object of the site used to define~$\Zar(S)$ is slightly
+unnatural from a topos-theoretic point of view, since the conclusion of the
+Scholium depends only on the topos over the site and not the site itself.
+In fact, the condition can be weakened and made more natural at the
+same time: It suffices to require that~$\Spec(A)$ is \emph{locally}
+representable by an object of the site.
+\end{rem}
+
+\begin{rem}Let~$\A_0$ be an~$\O_S$-algebra. Then one can form, internally
+to~$\Zar(S)$, two locales related to~$\A_0$: the discrete locale on the synthetic
+spectrum of~$(\A_0)^\Zar$, and the local spectrum of~$(\A_0)^\Zar$ over~$\affl$ as described
+in~Definition~\ref{defn:local-spectrum}. These locales don't coincide. In fact,
+the pullback of a discrete locale is discrete, whereas the pullback of
+the local spectrum to any of the little Zariski toposes~$\Sh(X)$, where~$f : X
+\to S$ is an~$S$-scheme contained in the site used to define~$\Zar(S)$, is the
+relative spectrum~$\RelSpec_X(f^*\A_0)$, which is typically not discrete as
+an~$X$-locale. (This is because the locale spectrum construction is geometric,
+by Proposition~\ref{prop:local-spectrum-generic}.)
+
+There is, however, a comparison morphism from the discrete locale on the
+synthetic spectrum to the local spectrum. On points, it sends
+an~$\affl$-algebra homomorphism~$\varphi : (\A_0)^\Zar \to \affl$ to the
+filter~$\varphi^{-1}[(\affl)^\times]$.
+
+One can also form, internally to~$\Zar(S)$, the classifying topos
+of~$(\A_0)^\Zar$-algebras which are local over~$\affl$. This topos doesn't
+coincide with the (toposes of sheaves over) the mentioned two locales, either.
+The pullback of that classifying topos to any of the~$\Sh(X)$ is the big
+Zariski topos of~$\RelSpec_X(f^*\A_0)$ (built using one of the parsimonious
+sites).
+\end{rem}
+
+
+\subsection{Relative Proj construction}
+
+\begin{defn}The \emph{synthetic Proj} of an~$\NN$-graded~$R$-algebra~$A$ is the set
+\[ \Proj(A) \defeq
+  (\text{set of all surj.\@ graded $R$-algebra homomorphisms~$A \to R[T]$})/R^\times. \]
+\end{defn}
+
+\begin{ex}\label{ex:proj-polynomial-ring}
+The synthetic Proj of~$R[X_0,\ldots,X_n]$ is canonically isomorphic
+to the set points~$[x_0:\cdots:x_n]$ with at
+least one coordinate being invertible.
+\end{ex}
+
+\begin{prop}\label{prop:relative-proj-big-zariski}
+Let~$\A_0$ be a graded~$\O_S$-algebra (not necessarily quasicoherent).
+Then the synthetic Proj of the~$\affl$-algebra~$(\A_0)^\Zar$, as constructed
+in the internal language of~$\Zar(S)$, is the functor of points of~$\RelProj_S \A_0$.
+\end{prop}
+
+\XXX{proof}  % (and check that it's true without the usual hypothesis)}
+
+The following corollary was prompted by a question on
+MathOverflow~\cite{mo:pp1}. We are grateful to Yuhao Huang for the impulse.
+
+\begin{cor}\label{cor:pp1-classifies}
+The big Zariski topos of the projective line~$\PP^1_\ZZ$ classifies the theory of ``a local
+ring together with a point~$[a:b]$'' (that is a pair~$(a,b)$ of ring elements,
+where at least one coordinate is invertible, up to multiplication by units).
+Explicitly, this theory is given by:
+\begin{enumerate}
+\item A sort~$A$ together with function symbols, constants, and axioms expressing
+that~$A$ is a local ring.
+\item A sort~$P$ (to be thought of as the set of $[a:b]$ with $a,b\?A$ where at
+least one coordinate is invertible) together with a
+relation~$\langle\cdot,\cdot,\cdot\rangle$ on $A \times A \times P$ and the
+following axioms:
+\begin{itemize}
+\item $\speak{$a$ \inv} \vee \speak{$b$ \inv}
+\dashv\vdash_{a,b{:}A} \exists p\?P\_ \langle a,b,p \rangle$
+\item $\langle a,b,p \rangle \wedge \langle a,b,p' \rangle
+\vdash_{a,b{:}A,\,p,p'{:}P} p = p'$
+\item $\top \vdash_{p{:}P} \exists a,b\?A\_ \langle a,b,p \rangle$
+\item $\langle a,b,p \rangle \wedge \langle a',b',p \rangle
+\dashv\vdash_{a,a',b,b'{:}A,\, p{:}P} \exists s\?A\_ \speak{$s$ \inv} \wedge a' = s a \wedge b' = s b$
+\end{itemize}
+\item A constant of sort~$P$.
+\end{enumerate}
+\end{cor}
+
+\begin{proof}The big Zariski topos of~$\PP^1_\ZZ$ is a topos over the big
+Zariski topos of~$\Spec(\ZZ)$; from the point of view of~$\Zar(\Spec(\ZZ))$, it
+is the classifying topos of a point~$[a:b]$ where~$a,b\?\afflz$,
+since~$\Zar(\PP^1_\ZZ) \simeq \Zar(\Spec(\ZZ))/\ul{\PP^1_\ZZ}$
+as discussed in Section~\ref{sect:change-of-base} and~$\ul{\PP^1_\ZZ} \cong \{ [a:b] \,|\,
+a,b\?\afflz \}$ by Proposition~\ref{prop:relative-proj-big-zariski} and
+Example~\ref{ex:proj-polynomial-ring}. The big Zariski topos of~$\Spec(\ZZ)$
+classifies local rings. Therefore the claim follows by considering the
+combined geometric theory.
+
+An alternative proof builds upon Remark~\ref{rem:zar-classifies-absolute} and
+the description of the theory which the little Zariski topos of~$\PP^1_\ZZ$
+classifies (Proposition~\ref{prop:proj-classifying-locale}). Combining these,
+we see that~$\Zar(\PP^1_\ZZ)$ classifies the theory of a homogeneous filter~$F$
+of~$\ZZ[X,Y]$ meeting the irrelevant ideal together with a local
+homomorphism~$\alpha : \ZZ[X,Y][F^{-1}]_0 \to A$ into a local ring~$A$. Such data
+gives rise to a point~$[\alpha(X/u) : \alpha(Y/u)]$, where~$u$ is a
+homogeneous element of degree~1 contained in~$F$; and conversely any
+point~$[a:b]$ gives rise to a filter
+\[ F \defeq \{ f \in \ZZ[X,Y] \,|\, \text{$f_n(a,b)$ is invertible in~$A$
+for some~$n \geq 0$} \}, \]
+where~$f_n$ is the homogeneous component of degree~$n$ of~$f$, and a local
+homomorphism~$\alpha : \ZZ[X,Y][F^{-1}]_0 \to A$ mapping~$f/g$
+to~$f(a,b)/g(a,b)$.
+\end{proof}
+
+
 \subsection{Quasicoherence}
 
 \begin{defn}\label{defn:synth-qcoh}
@@ -11060,14 +11276,10 @@ is an isomorphism.
 \begin{proof}The second paragraph of the proof of
 Theorem~\ref{thm:qcoh-big-char} applies.\end{proof}
 
-\begin{rem}\label{rem:local-representability}
-The condition in Scholium~\ref{scholium} that~$\Spec(A)$ is
-representable by an object of the site used to define~$\Zar(S)$ is slightly
-unnatural from a topos-theoretic point of view, since the conclusion of the
-Scholium depends only on the topos over the site and not the site itself.
-In fact, the condition can be weakened and made more natural at the
-same time: It suffices to require that~$\Spec(A)$ is \emph{locally}
-representable by an object of the site.
+\begin{rem}As noted in Remark~\ref{rem:local-representability} in a slightly
+different context, the condition in Scholium~\ref{scholium} that~$\Spec(A)$ is
+representable by an object of the site is unnatural from a topos-theoretic
+point of view and should be weakened to require only local representability.
 
 However, the condition can't be dropped completely. For instance, if we employ the
 parsimonious sites and consider~$S = \Spec \ZZ$,~$E = \affl$, and $A =
@@ -11316,217 +11528,6 @@ This description of the (not necessarily
 locally trivial) tangent bundle fits nicely with the intuition of tangent
 vectors as infinitesimal curves, and in fact is precisely the definition of the
 tangent bundle in synthetic differential geometry~\cite[Def.~7.1]{kock:sdg}.
-
-
-\subsection{Relative spectrum}
-
-\begin{defn}The \emph{synthetic spectrum} of an~$R$-algebra~$A$ is
-\[ \Spec(A) \defeq [A, R]_{\mathrm{Alg}(R)}, \]
-the set of~$R$-algebra homomorphisms from~$A$ to~$R$.\end{defn}
-
-\begin{ex}The synthetic spectrum of~$R$ is the one-element set.
-More generally, the synthetic spectrum of the algebra~$R[X_1,\ldots,X_n]/(f_1,\ldots,f_m)$
-is the solution set~$\{ x \? R^n \,|\, f_1(x) = \cdots = f_n(x) = 0 \}$.
-\end{ex}
-
-\begin{ex}The synthetic spectrum of~$R/(f)$ is~$\brak{f = 0}$, the truth value
-of the formula~``$f = 0$'', the subsingleton set~$\{ \star \,|\, f = 0 \}$.
-If classical logic is available, then this set contains~$\star$ or is empty,
-depending on whether~$f$ is zero or not. Similarly, the synthetic spectrum
-of~$R[f^{-1}]$ is~$\brak{\speak{$f$ \inv}}$.\end{ex}
-
-\begin{prop}\label{prop:relative-spectrum-big-zariski}
-Let~$\A_0$ be an~$\O_S$-algebra (not necessarily quasicoherent).
-Then the synthetic spectrum of the~$\affl$-algebra~$(\A_0)^\Zar$, as constructed
-in the internal language of~$\Zar(S)$, is the functor of points of~$\RelSpec_S \A_0$.
-\end{prop}
-
-\begin{proof}The Hom set occuring in the definition of the synthetic spectrum is
-interpreted by the internal Hom when using the internal language. For
-any~$S$-scheme~$f : T \to S$ contained in the site used to define~$\Zar(S)$, we
-have the following chain of isomorphisms.
-\begin{align*}
-  (\Spec(A))(T) &= [(\A_0)^\Zar, \affl]_{\mathrm{Alg}(\affl)}(T) \\
-  &\cong
-  \Hom_{\Zar(S)}(\ul{T}, [(\A_0)^\Zar, \affl]_{\mathrm{Alg}(\affl)}) \\
-  &\cong
-  \Hom_{\Zar(S)}(\ul{T} \times (\A_0)^\Zar, \affl)_{\ldots} \\
-  &\cong
-  \Hom_{\Zar(S)/\ul{T}}(\ul{T} \times (\A_0)^\Zar, \ul{T} \times \affl)_{\ldots} \\
-  &\cong
-  \Hom_{\mathrm{Alg}_{\Zar(T)}(\afflt)}((f^*\A_0)^\Zar, \afflt) \\
-  &=
-  \Hom_{\mathrm{Alg}_{\Zar(T)}(\afflt)}(\pi^{-1}(f^*\A_0) \otimes_{\pi^{-1}\O_T}
-  \afflt, \afflt) \\
-  &\cong
-  \Hom_{\mathrm{Alg}_{\Zar(T)}(\pi^{-1}\O_T)}(\pi^{-1}(f^*\A_0), \afflt) \\
-  &\cong
-  \Hom_{\mathrm{Alg}_{\Sh(T)}(\O_T)}(f^*\A_0, \O_T) \\
-  &\cong
-  \Hom_{\mathrm{Alg}_{\Sh(S)}(\O_S)}(\A_0, f_*\O_T) \\
-  &\cong
-  \Hom_S(T, \RelSpec_S \A_0).
-\end{align*}
-The omitted subscripts~``$\ldots$'' should denote that we're only taking the
-subset of the Hom set where, for each fixed first argument, the morphisms are
-morphisms of~$\affl$-algebras.
-\end{proof}
-
-If~$X \in \Zar(S)$ is an arbitrary object, there is a canonical morphism~$X \to
-\Spec([X,\affl])$. In the internal language of~$\Zar(X)$ it looks like the
-``inclusion into the double dual'':
-\[ x \longmapsto \placeholder(x),
-  \quad\text{where $\placeholder(x) : [X,\affl] \to \affl,\ \varphi \mapsto
-  \varphi(x)$.} \]
-The following proposition shows that bijectivity of this map is related to~$X$
-being the functor of points of an affine~$S$-scheme (an~$S$-scheme whose
-structure morphism to~$S$ is affine).
-
-\begin{prop}A sheaf~$X \in \Zar(S)$ is isomorphic to the functor of points of
-an affine~$S$-scheme if, in the internal language of~$\Zar(S)$,
-the~$\affl$-algebra~$[X,\affl]$ is quasicoherent and the canonical map~$X \to
-\Spec([X,\affl])$ is bijective. The converse holds in any of the following
-situations:
-\begin{enumerate}
-\item The affine~$S$-scheme which~$X$ represents is of finite presentation
-over~$S$.
-\item The site used to define~$\Zar(S)$ is defined using a partial universe
-and the affine~$S$-scheme which~$X$ represents if of finite type over~$S$.
-\item The affine~$S$-scheme which~$X$ represents is contained in the site used
-to define~$\Zar(S)$. (This situation subsumes the previous ones.)
-\end{enumerate}\end{prop}
-
-\begin{proof}The ``if'' direction is straightforward, since the assumption
-expresses~$X$ as the functor of points of the relative spectrum of a
-quasicoherent~$\O_S$-algebra.
-
-For the ``only if'' direction, we abuse notation and denote the given
-affine~$S$-scheme whose functor of points is~$X$ by~``$f : X \to S$''.
-Then~$f_*\O_X$ is quasicoherent and the canonical morphism~$X \to
-\RelSpec_S{f_*\O_X}$ is an isomorphism. In any of the listed situations, the
-internal Hom~$[X,\affl]$ is canonically isomorphic to~$(f_*\O_X)^\Zar$, since
-for any object~$T \xra{g} S$ of the site used to define~$\Zar(S)$ we have that
-\begin{align*}
-  [X,\affl](T) &\cong
-  \Hom_{\Zar(S)}(\underline{T}, [X,\affl]) \cong
-  \Hom_{\Zar(S)}(\underline{T} \times X,\affl) \\
-  &\cong \Hom_{\Zar(S)}(\underline{T} \times \underline{X},\affl) \cong
-  \Hom_{\Zar(S)}(\underline{T \times_S X},\affl) \\
-  &\cong \affl(T \times_S X) \cong
-  (g^* f_* \O_X)(T) =
-  (f_* \O_X)^\Zar(T).
-\end{align*}
-Therefore~$[X,\affl]$ is quasicoherent. The map induced by the isomorphism~$X \to
-\RelSpec_S{f_*\O_X}$ on the level of functors of points is precisely the
-canonical map~$X \to \Spec([X,\affl])$ as defined in the internal language;
-therefore this map is bijective from the internal point of view.
-\end{proof}
-
-\begin{rem}As noted in Remark~\ref{rem:local-representability} in a slightly
-different context, Condition~(3) in the previous proposition is unnatural from a
-topos-theoretic point of view and should be weakened to require only local
-representability.
-\end{rem}
-
-\begin{rem}Let~$\A_0$ be an~$\O_S$-algebra. Then one can form, internally
-to~$\Zar(S)$, two locales related to~$\A_0$: the discrete locale on the synthetic
-spectrum of~$(\A_0)^\Zar$, and the local spectrum of~$(\A_0)^\Zar$ over~$\affl$ as described
-in~Definition~\ref{defn:local-spectrum}. These locales don't coincide. In fact,
-the pullback of a discrete locale is discrete, whereas the pullback of
-the local spectrum to any of the little Zariski toposes~$\Sh(X)$, where~$f : X
-\to S$ is an~$S$-scheme contained in the site used to define~$\Zar(S)$, is the
-relative spectrum~$\RelSpec_X(f^*\A_0)$, which is typically not discrete as
-an~$X$-locale. (This is because the locale spectrum construction is geometric,
-by Proposition~\ref{prop:local-spectrum-generic}.)
-
-There is, however, a comparison morphism from the discrete locale on the
-synthetic spectrum to the local spectrum. On points, it sends
-an~$\affl$-algebra homomorphism~$\varphi : (\A_0)^\Zar \to \affl$ to the
-filter~$\varphi^{-1}[(\affl)^\times]$.
-
-One can also form, internally to~$\Zar(S)$, the classifying topos
-of~$(\A_0)^\Zar$-algebras which are local over~$\affl$. This topos doesn't
-coincide with the (toposes of sheaves over) the mentioned two locales, either.
-The pullback of that classifying topos to any of the~$\Sh(X)$ is the big
-Zariski topos of~$\RelSpec_X(f^*\A_0)$ (built using one of the parsimonious
-sites).
-\end{rem}
-
-
-\subsection{Relative Proj construction}
-
-\begin{defn}The \emph{synthetic Proj} of an~$\NN$-graded~$R$-algebra~$A$ is the set
-\[ \Proj(A) \defeq
-  (\text{set of all surj.\@ graded $R$-algebra homomorphisms~$A \to R[T]$})/R^\times. \]
-\end{defn}
-
-\begin{ex}\label{ex:proj-polynomial-ring}
-The synthetic Proj of~$R[X_0,\ldots,X_n]$ is canonically isomorphic
-to the set points~$[x_0:\cdots:x_n]$ with at
-least one coordinate being invertible.
-\end{ex}
-
-\begin{prop}\label{prop:relative-proj-big-zariski}
-Let~$\A_0$ be a graded~$\O_S$-algebra (not necessarily quasicoherent).
-Then the synthetic Proj of the~$\affl$-algebra~$(\A_0)^\Zar$, as constructed
-in the internal language of~$\Zar(S)$, is the functor of points of~$\RelProj_S \A_0$.
-\end{prop}
-
-\XXX{proof}  % (and check that it's true without the usual hypothesis)}
-
-The following corollary was prompted by a question on
-MathOverflow~\cite{mo:pp1}. We are grateful to Yuhao Huang for the impulse.
-
-\begin{cor}\label{cor:pp1-classifies}
-The big Zariski topos of the projective line~$\PP^1_\ZZ$ classifies the theory of ``a local
-ring together with a point~$[a:b]$'' (that is a pair~$(a,b)$ of ring elements,
-where at least one coordinate is invertible, up to multiplication by units).
-Explicitly, this theory is given by:
-\begin{enumerate}
-\item A sort~$A$ together with function symbols, constants, and axioms expressing
-that~$A$ is a local ring.
-\item A sort~$P$ (to be thought of as the set of $[a:b]$ with $a,b\?A$ where at
-least one coordinate is invertible) together with a
-relation~$\langle\cdot,\cdot,\cdot\rangle$ on $A \times A \times P$ and the
-following axioms:
-\begin{itemize}
-\item $\speak{$a$ \inv} \vee \speak{$b$ \inv}
-\dashv\vdash_{a,b{:}A} \exists p\?P\_ \langle a,b,p \rangle$
-\item $\langle a,b,p \rangle \wedge \langle a,b,p' \rangle
-\vdash_{a,b{:}A,\,p,p'{:}P} p = p'$
-\item $\top \vdash_{p{:}P} \exists a,b\?A\_ \langle a,b,p \rangle$
-\item $\langle a,b,p \rangle \wedge \langle a',b',p \rangle
-\dashv\vdash_{a,a',b,b'{:}A,\, p{:}P} \exists s\?A\_ \speak{$s$ \inv} \wedge a' = s a \wedge b' = s b$
-\end{itemize}
-\item A constant of sort~$P$.
-\end{enumerate}
-\end{cor}
-
-\begin{proof}The big Zariski topos of~$\PP^1_\ZZ$ is a topos over the big
-Zariski topos of~$\Spec(\ZZ)$; from the point of view of~$\Zar(\Spec(\ZZ))$, it
-is the classifying topos of a point~$[a:b]$ where~$a,b\?\afflz$,
-since~$\Zar(\PP^1_\ZZ) \simeq \Zar(\Spec(\ZZ))/\ul{\PP^1_\ZZ}$
-as discussed in Section~\ref{sect:change-of-base} and~$\ul{\PP^1_\ZZ} \cong \{ [a:b] \,|\,
-a,b\?\afflz \}$ by Proposition~\ref{prop:relative-proj-big-zariski} and
-Example~\ref{ex:proj-polynomial-ring}. The big Zariski topos of~$\Spec(\ZZ)$
-classifies local rings. Therefore the claim follows by considering the
-combined geometric theory.
-
-An alternative proof builds upon Remark~\ref{rem:zar-classifies-absolute} and
-the description of the theory which the little Zariski topos of~$\PP^1_\ZZ$
-classifies (Proposition~\ref{prop:proj-classifying-locale}). Combining these,
-we see that~$\Zar(\PP^1_\ZZ)$ classifies the theory of a homogeneous filter~$F$
-of~$\ZZ[X,Y]$ meeting the irrelevant ideal together with a local
-homomorphism~$\alpha : \ZZ[X,Y][F^{-1}]_0 \to A$ into a local ring~$A$. Such data
-gives rise to a point~$[\alpha(X/u) : \alpha(Y/u)]$, where~$u$ is a
-homogeneous element of degree~1 contained in~$F$; and conversely any
-point~$[a:b]$ gives rise to a filter
-\[ F \defeq \{ f \in \ZZ[X,Y] \,|\, \text{$f_n(a,b)$ is invertible in~$A$
-for some~$n \geq 0$} \}, \]
-where~$f_n$ is the homogeneous component of degree~$n$ of~$f$, and a local
-homomorphism~$\alpha : \ZZ[X,Y][F^{-1}]_0 \to A$ mapping~$f/g$
-to~$f(a,b)/g(a,b)$.
-\end{proof}
 
 
 \subsection{Open immersions}

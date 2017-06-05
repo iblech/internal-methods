@@ -242,7 +242,7 @@
   % For instance, any theorem about modules yields a corresponding theorem about
   % sheaves of modules (with a small caveat).
   We also employ this framework to study the phenomenon that some properties
-  spread from points to open neighbourhoods. We give a general sufficient
+  spread from points to open neighborhoods. We give a general sufficient
   condition for this spreading to occur, depending only on the logical
   form of the property in question.
 
@@ -435,20 +435,20 @@ on constructive algebra.
 
 The second highlight is that we can shed light on the phenomenon that
 sometimes, truth of a property at a point~$x$ spreads to some open
-neighbourhood of~$x$; and in particular that sometimes, truth of a property at
+neighborhood of~$x$; and in particular that sometimes, truth of a property at
 the generic point spreads to some dense open subset. For instance, if the stalk
 of a sheaf of finite type is zero at some point, the sheaf is even zero on some
-open neighbourhood; but this spreading does not occur for general sheaves which
+open neighborhood; but this spreading does not occur for general sheaves which
 may fail to be of finite type.
 
 We formalize this by introducing a \emph{modal operator}~$\Box$ into the
 internal language, such that the internal statement~$\Box\varphi$ means
-that~$\varphi$ holds on some open neighbourhood of~$x$. Furthermore, we
+that~$\varphi$ holds on some open neighborhood of~$x$. Furthermore, we
 introduce a simple operation on formulas, the~\emph{$\Box$-translation}
 $\varphi \mapsto \varphi^\Box$, such that~$\varphi^\Box$ means that~$\varphi$
 holds at the point~$x$. This translation is defined on a purely syntactical
 level. The question whether truth at~$x$ spreads to truth on a
-neighbourhood can then be formulated in the following way: Does~$\varphi^\Box$
+neighborhood can then be formulated in the following way: Does~$\varphi^\Box$
 intuitionistically imply~$\Box\varphi$?
 
 This allows to deal with the question in a simpler, more logical way, with the
@@ -479,7 +479,7 @@ requires the machinery of locally ringed spaces.
 The internal language of the \emph{big} Zariski topos of~$X$ allows for a more far-reaching
 change of perspective. It incorporates Grothendieck's functor-of-points
 philosophy in order to cast modern algebraic geometry, relative to the arbitrary
-base scheme~$X$, in a naive \emph{synthetic} language reminiscient of the classical
+base scheme~$X$, in a naive \emph{synthetic} language reminiscent of the classical
 Italian school.
 
 The synthetic approach is best explained by contrasting it with the usual
@@ -703,7 +703,7 @@ of) the little étale topos of a scheme by internally developing the theory of
 strict henselization~\cite{wraith:generic-galois-theory}. However, to the best
 of my knowledge, systematically building a dictionary relating external and
 internal notions has not been attempted before, and the use of modal operators
-to study the spreading of properties from points to neighbourhoods seems to be
+to study the spreading of properties from points to neighborhoods seems to be
 new as well.
 
 Brandenburg put forward a related program of internalization in his PhD
@@ -792,7 +792,7 @@ meaning will then be the Hom sheaf. We write pairs~$\langle a, b \rangle$ using
 angle brackets. The preimage of a set~$M$ under a map~$f$ is
 written~``$f^{-1}[M]$''. Similarly, the image is written~``$f[N]$''.
 
-The constant sheaf with stalks~$M$ is writen~``$\ul{M}$''.
+The constant sheaf with stalks~$M$ is written~``$\ul{M}$''.
 
 }
 
@@ -901,7 +901,7 @@ In a \emph{formula over~$U$} there may appear sheaves defined on~$U$ as domains
 of quantifications,~$U$-sections of sheaves as terms, and morphisms of sheaves
 on~$U$ as function symbols. If~$V \subseteq U$ is an open subset, then formulas
 over~$U$ can be pulled back to formulas over~$V$. The symbols~``$\top$'' and~``$\bot$'' denote truth
-and falsehold, respectively. The universal and existential quantifiers come in
+and falsehood, respectively. The universal and existential quantifiers come in
 two flavors: for bounded and unbounded quantification.
 The translation of~$U \models \neg\varphi$ does not have to be separately defined, since
 negation can be expressed using other symbols: $\neg\varphi \defequiv (\varphi
@@ -1063,7 +1063,7 @@ instead means that~$\F$ is finite locally free on a dense open subset of~$X$.
 
 In
 particular, our treatment of modal operators to understand spreading of
-properties from points to neighbourhoods depends on having the ability to make
+properties from points to neighborhoods depends on having the ability to make
 finer distinctions -- distinctions which are not visible in classical logic.
 In Section~\ref{sect:appreciating-intuitionistic-logic} there is a discussion of what the restriction to
 intuitionistic logic amounts to in practice.
@@ -1073,7 +1073,7 @@ etc. Don't forget the rules for $\in$, $\bigwedge$, $\bigvee$.}
 
 Because of the multitude of quantifiers, literal translations of internal statements
 can sometimes get slightly unwieldy. There are simplification rules for certain
-often-occuring special cases:
+often-occurring special cases:
 \begin{prop}\label{prop:simplification}
     \[ \renewcommand{\arraystretch}{1.3}\begin{array}{@{}lcl@{}}
       U \models \forall s\?\F\_ \forall t\?\G\_ \varphi(s,t)
@@ -1215,12 +1215,12 @@ stalks at~$x$ holds in the usual mathematical sense.
 
 \begin{lemma}\label{lemma:geometric-stalk-neighbourhood}
 Let~$x \in X$ be a point. Let~$\varphi$ be a geometric formula (over some open
-neighbourhood~V of~$x$).
-Then~$\varphi$ holds at~$x$ if and only if there exists an open neighbourhood~$U
+neighborhood~V of~$x$).
+Then~$\varphi$ holds at~$x$ if and only if there exists an open neighborhood~$U
 \subseteq X$ of~$x$ (contained in~V) such that~$\varphi$ holds on~$U$.
 \end{lemma}
 \begin{proof}This is a very general instance of the phenomenon that sometimes,
-truth at a point spreads to truth on a neighbourhood. It can be proven by
+truth at a point spreads to truth on a neighborhood. It can be proven by
 induction on the structure of~$\varphi$, but we will give a more conceptual
 proof later (Corollary~\ref{cor:geometric-spreading}).
 \end{proof}
@@ -1239,8 +1239,8 @@ the form
 For the ``only if'' direction, assume that this formula holds on~$X$ and let~$x
 \in X$ be an arbitrary point. Let~$s_x \in \F_x$ be the germ of an arbitrary
 local section~$s$ of~$\F$ and assume that~$\varphi(s)$ holds at~$x$. Then by
-the lemma, it follows that~$\varphi(s)$ holds on some open neighbourhood of~$x$. By
-assumption,~$\psi(s)$ holds on this neighbourhood as well. Again by the
+the lemma, it follows that~$\varphi(s)$ holds on some open neighborhood of~$x$. By
+assumption,~$\psi(s)$ holds on this neighborhood as well. Again by the
 lemma,~$\psi(s)$ holds at~$x$.
 
 For the ``if'' direction, assume that the geometric implication holds at every
@@ -1368,8 +1368,8 @@ not be shown in general.\footnote{A detailed proof of the correct implication
 goes as follows: Assume~$\varphi$. We are to show~$\neg\neg\varphi$, \ie
 $(\neg\varphi \Rightarrow \bot)$. So assume~$\neg\varphi$, we are to
 show~$\bot$. Since~$\varphi$ and~$\varphi \Rightarrow \bot$,~$\bot$ indeed
-follows.} An example from everday life runs as follows: If in the morning you
-can't find the key for your appartment, but you know that it must hide
+follows.} An example from everyday life runs as follows: If in the morning you
+can't find the key for your apartment, but you know that it must hide
 somewhere since you used it to open the door in the evening before, you
 intuitionistically know~$(\neg\neg\exists x\_ \speak{the key is at position
 $x$})$, but you cannot claim the unnegated proposition. One cannot model this
@@ -1382,7 +1382,7 @@ This is of course a weaker statement than~$X \models \varphi$.
 In Section~\ref{sect:modalities}, we will discuss this fact and other
 \emph{modal operators} in more detail. For instance, there is a similarly defined modal
 operator~$\Box$ such that~$X \models \Box\varphi$ if and only if there is an
-open neighbourhood~$U$ of a given point~$x$ such that~$U \models \varphi$. Also
+open neighborhood~$U$ of a given point~$x$ such that~$U \models \varphi$. Also
 there is a different operator~$\Box$ such that~$X \models \Box\varphi$ if and only
 if~$\varphi$ holds on a scheme-theoretically dense open subset.
 
@@ -1905,7 +1905,7 @@ is obvious.
 
 For the second statement, we observe the condition on a function~$f \in
 \Gamma(U,\O_X)$ to be regular from the internal perspective is open: It holds
-at a point~$x \in U$ if and only if it holds on some open neighbourhood of~$x$.
+at a point~$x \in U$ if and only if it holds on some open neighborhood of~$x$.
 We will give a proof of this specific feature of locally Noetherian schemes
 later on, when we have developed appropriate machinery to do so easily
 (Proposition~\ref{prop:regularity-spreading}). In any case, this openness
@@ -2995,11 +2995,11 @@ stalk~$\A_x$ is an inhabited upward-closed subset of~$\ul{\NN}_x \cong \NN$.
 The association
 \[ x \in X \quad\longmapsto\quad \min\{ n \in \NN \,|\, n \in \A_x \} \]
 thus defines a map~$X \to \NN$. This map is indeed upper semicontinuous, since
-if~$n \in \A_x$, there exists an open neighbourhood~$V$ of~$x$ such that the constant
+if~$n \in \A_x$, there exists an open neighborhood~$V$ of~$x$ such that the constant
 function with value~$n$ is an element of~$\Gamma(V,\A)$ and therefore~$n \in
 \A_y$ for all~$y \in V$.
 
-Conversely, let~$\alpha : U \to \NN$ be a upper semi-continous function. Then
+Conversely, let~$\alpha : U \to \NN$ be a upper semicontinuous function. Then
 \[ \text{$V \subseteq U$ open} \quad\longmapsto\quad \{ f : V \to \NN \,|\, \text{$f$
 continuous,\ $f \geq \alpha$ on~$V$} \} \]
 is a subobject of~$\ul{\NN}|_U$ which internally is inhabited and upward-closed.
@@ -3053,21 +3053,21 @@ defined rank maps to the rank function of~$\F$.
 \begin{proof}
 We have to show that for any point~$x \in X$ and natural number~$n$, there
 exists a generating family for~$\F_x$ consisting of~$n$
-elements if and only if there exists an open neighbourhood~$U$ of~$x$ such that
+elements if and only if there exists an open neighborhood~$U$ of~$x$ such that
 \[ U \models \speak{there exists a generating family
 for~$\F$ consisting of~$n$ elements}. \]
 The ``if'' direction is obvious. For the ``only if'' direction, consider
 (liftings to local sections of a)
 generating family~$s_1,\ldots,s_n$ of~$\F_x$. Since~$\F$ is of finite type,
-there also exist sections~$t_1,\ldots,t_m$ on some neighbourhood~$V$ of~$x$ which
+there also exist sections~$t_1,\ldots,t_m$ on some neighborhood~$V$ of~$x$ which
 generate any stalk~$\F_y$, $y \in V$. Since the~$t_i$ can be expressed as a
 linear combination of the~$s_j$ in~$\F_x$, the same is true on some open
-neighbourhood~$U \subseteq V$ of~$x$. On this neighbourhood, the~$s_j$ generate
+neighborhood~$U \subseteq V$ of~$x$. On this neighborhood, the~$s_j$ generate
 any stalk~$\F_y$, $y \in U$, so by geometricity we have
 \[ U \models \speak{$s_1,\ldots,s_n$ generate~$\F$}. \qedhere \]
 \end{proof}
 \begin{rem}Once we understand when properties holding at a point spread to
-neighbourhoods, we will be able to give a simpler proof of the proposition (see
+neighborhoods, we will be able to give a simpler proof of the proposition (see
 Lemma~\ref{lemma:gen-family-n}).\end{rem}
 
 \begin{lemma}\label{lemma:rank-functor-locally-constant}
@@ -3125,7 +3125,7 @@ exercise'' (Exercise~13.7.K).\end{rem}
 \subsection{The upper semicontinuous dimension function} Recall that the
 dimension of a topological space~$X$ at a point~$x \in X$ is defined as the
 infimum
-\[ \dim_x X \defeq \inf\{ \dim U \,|\, \text{$U$ open neighbourhood of~$x$} \}. \]
+\[ \dim_x X \defeq \inf\{ \dim U \,|\, \text{$U$ open neighborhood of~$x$} \}. \]
 
 The map~$X \to \NN \cup \{+\infty\},\ x \mapsto \dim_x X$ is upper
 semicontinuous and thus corresponds to an internal generalized (possibly
@@ -3150,12 +3150,12 @@ to denote the constant function with value~$n$:
 \begin{align*}
   &\ n \in \A_x \\
   \Longleftrightarrow &\
-  \text{for some open neighbourhood~$U$ of~$x$, $\ul{n} \in \Gamma(U,\A)$} \\
+  \text{for some open neighborhood~$U$ of~$x$, $\ul{n} \in \Gamma(U,\A)$} \\
   \Longleftrightarrow &\
-  \text{for some open neighbourhood~$U$ of~$x$,} \\
+  \text{for some open neighborhood~$U$ of~$x$,} \\
   & \qquad\qquad U \models \speak{$\O_X$ is of Krull dimension~$\leq n$} \\
   \Longleftrightarrow &\
-  \text{for some open neighbourhood~$U$ of~$x$,} \\
+  \text{for some open neighborhood~$U$ of~$x$,} \\
   & \qquad\qquad \dim U \leq n
 \end{align*}
 The second equivalence follows from the external description of internally-defined
@@ -3163,7 +3163,7 @@ subsheaves given in Section~\ref{sect:internal-constructions}.
 We thus have:
 \[
   \inf\{ n \,|\, n \in \A_x \} =
-    \inf\{ \dim U \,|\, \text{$U$ open neighbourhood of~$x$} \}
+    \inf\{ \dim U \,|\, \text{$U$ open neighborhood of~$x$} \}
   = \dim_x X. \qedhere
 \]
 \end{proof}
@@ -3176,12 +3176,12 @@ Philosophers and logicians do not only study what is \emph{true}, but also what
 is \emph{known}, what is \emph{believed}, what is \emph{possible}, and so on.
 Such \emph{modalities} are absent from the usual mathematical practice.
 However, it turns out that a specific kind of such modalities plays a role in
-understanding when properties spread from points to neighbourhoods.
+understanding when properties spread from points to neighborhoods.
 
 Briefly, this is because for any point~$x$ of a topological space~$X$, there
 exists a modal operator~$\Box$ such that for any formula~$\varphi$ of the
 internal language of the sheaf topos~$\Sh(X)$, the internal
-statement~$\Box\varphi$ means that~$\varphi$ holds on some open neighbourhood
+statement~$\Box\varphi$ means that~$\varphi$ holds on some open neighborhood
 of the given point~$x$. In this way, we can reduce sheaf-theoretic questions to
 questions of modal intuitionistic (non-sheafy) mathematics.
 
@@ -3358,7 +3358,7 @@ holds that:
     \textnormal{there is a dense open subset~$W \subseteq V$ s.\,th.\@ $W \models
     \varphi$.} \\[0.3em]
   V \models ((\varphi \Rightarrow \notat{x}) \Rightarrow \notat{x}) &\Longleftrightarrow&
-    \textnormal{$x \not\in V$ or there is an open neighbourhood~$W \subseteq V$} \\
+    \textnormal{$x \not\in V$ or there is an open neighborhood~$W \subseteq V$} \\
   && \quad\quad \textnormal{of~$x$ such that $W \models \varphi$.}
 \end{array} \]
 \end{prop}
@@ -4036,8 +4036,8 @@ thus~$\alpha$.
 \end{proof}
 
 
-\subsection{\texorpdfstring{Truth at stalks \vs truth on neighbourhoods}{Truth
-at stalks vs. truth on neighbourhoods}}\label{sect:spreading}
+\subsection{\texorpdfstring{Truth at stalks \vs truth on neighborhoods}{Truth
+at stalks vs. truth on neighborhoods}}\label{sect:spreading}
 We now state the crucial property of the~$\Box$-translation. Recall
 that~``$X_\Box$'' denotes the sublocale of~$X$ induced by~$\Box$
 (Definition~\ref{defn:subspace-by-nucleus}).
@@ -4046,7 +4046,7 @@ Let~$X$ be a topological space. Let~$\Box$ be a modal operator
 in~$\Sh(X)$. Let~$\varphi$ be a formula over~$X$. Then
 \[ \Sh(X) \models \varphi^\Box \quad\text{iff}\quad
   \Sh(X_\Box) \models \varphi, \]
-where on the right hand side, all parameters occuring in~$\varphi$ were pulled
+where on the right hand side, all parameters occurring in~$\varphi$ were pulled
 back to~$X_\Box$ along the inclusion~$X_\Box \hookrightarrow X$.
 \end{thm}
 \XXXh{think about powersets appearing as domains of quantification}
@@ -4086,28 +4086,28 @@ point of a topological space~$X$ and let~$\varphi$ be a formula. Let~$\Box$ be
 the modal operator given in the corollary. Then~$\varphi$ \emph{holds at~$x$}
 if and only if, from the internal perspective of~$\Sh(X)$, the translated
 formula~$\varphi^\Box$ holds; and~$\varphi$ \emph{holds on some open
-neighbourhood of~$x$} if and only if, from the internal perspective, the
+neighborhood of~$x$} if and only if, from the internal perspective, the
 formula~$\Box\varphi$ holds.
 
 Thus the question whether the truth of~$\varphi$ at the point~$x$ spreads to
-some open neighbourhood can be formulated in the following way:
+some open neighborhood can be formulated in the following way:
 \begin{quote}
 \emph{Does~$\varphi^\Box$ imply~$\Box\varphi$ in the internal language
 of~$\Sh(X)$?}
 \end{quote}
 Phrased this way, technicalities like appropriately shrinking open
-neighbourhoods are blinded out. A purposefully trivial example to illustrate
+neighborhoods are blinded out. A purposefully trivial example to illustrate
 this is the following. Let~$X$ be a scheme (or a ringed space). Let~$f,g \in
 \Gamma(X,\O_X)$ be global functions. Suppose that the germs of~$f$ and~$g$ are
 zero in some stalk~$\O_{X,x}$; we want to show that they are zero on a common
-open neighbourhood of~$x$.
+open neighborhood of~$x$.
 
 \begin{proof}[Usual proof]Since the germ of~$f$ vanishes in~$\O_{X,x}$, there
-is an open neighbourhood~$U_1$ of~$x$ such that~$f|_{U_1} = 0$
+is an open neighborhood~$U_1$ of~$x$ such that~$f|_{U_1} = 0$
 in~$\Gamma(U_1,\O_X)$. Since furthermore the germ of~$g$ vanishes in the same stalk,
-there exists an open neighbourhood~$U_2$ of~$x$ such that~$g|_{U_2} = 0$. The
-intersection of both neighbourhoods is still an open neighbourhood of~$x$; on
-this neighbourhood both~$f$ and~$g$ vanish.
+there exists an open neighborhood~$U_2$ of~$x$ such that~$g|_{U_2} = 0$. The
+intersection of both neighborhoods is still an open neighborhood of~$x$; on
+this neighborhood both~$f$ and~$g$ vanish.
 \end{proof}
 
 \begin{proof}[Proof in the internal language]We may suppose that~$(f = 0 \wedge
@@ -4119,7 +4119,7 @@ is to prove a boxed statement, we may in fact assume that~$f = 0$ and~$g = 0$.
 Thus~$f = 0 \wedge g = 0$.\end{proof}
 
 By using the internal language with its modal operators, we can thus reduce
-basic facts of scheme theory which deal with stalks and neighbourhoods to facts
+basic facts of scheme theory which deal with stalks and neighborhoods to facts
 of algebra in a \emph{modal intuitionistic context}. As with using the internal
 language in its basic form without modalities, this brings conceptual clarity
 and reduced technical overhead. There are, however, two more distinctive
@@ -4137,7 +4137,7 @@ of the statement in question.
 \begin{cor}\label{cor:geometric-spreading}
 Let~$X$ be a topological space. Let~$\varphi$ be a formula.
 If~$\varphi$ is geometric, truth of~$\varphi$ at a point~$x \in X$ implies
-truth of~$\varphi$ on some open neighbourhood of~$x$, and vice versa.\end{cor}
+truth of~$\varphi$ on some open neighborhood of~$x$, and vice versa.\end{cor}
 \begin{proof}By the purely logical lemmas of Section~\ref{sect:box-translation}, it holds
 that~$\varphi^\Box \Leftrightarrow \Box\varphi$.
 \end{proof}
@@ -4149,18 +4149,18 @@ X$'' is open.
 \end{cor}
 \begin{proof}This is just a reformulation of the previous corollary:
 If~$\varphi$ holds at a point~$x \in X$, it holds on some open
-neighbourhood~$U$ of~$x$ as well. Going back to stalks, it follows
+neighborhood~$U$ of~$x$ as well. Going back to stalks, it follows
 that~$\varphi$ holds at every point of~$U$.\end{proof}
 
 \begin{ex}Let~$X$ be a scheme (or a ringed space). Since the condition for a
 function~$f\?\O_X$ to be nilpotent is geometric (it is~$\bigvee_{n \geq 0} f^n
 = 0$), nilpotency of~$f$ at a point is equivalent to nilpotency on some open
-neighbourhood.\end{ex}
+neighborhood.\end{ex}
 
 Combined with Lemma~\ref{lemma:stalk-open-with-hypothesis}, this metatheorem is
 quite useful. We will illustrate it with several examples in the next subsection.
 
-An important special case of spreading from stalks to neighbourhoods is the
+An important special case of spreading from stalks to neighborhoods is the
 case of spreading from the generic point (should it exist) to a dense open
 subset. Whether this occurs can be phrased by
 Lemma~\ref{lemma:negneg-generic-point} as follows:
@@ -4237,7 +4237,7 @@ holds that
 \varphi, \]
 where the internal statements are to be interpreted by the Kripke--Joyal
 semantics of~$X$ and~$X_\Box$ respectively and~$j$ is the nucleus associated
-to~$\Box$. We may assume that any sheaves occuring in~$\varphi$ as domains of
+to~$\Box$. We may assume that any sheaves occurring in~$\varphi$ as domains of
 quantifications are in fact~$\Box$-sheaves; we justify this with a separate lemma
 below.
 
@@ -4253,7 +4253,7 @@ We omit the verification of the remaining cases.
 
 \begin{lemma}Let~$\Box$ be a modal operator. Let~$\varphi$ be a formula.
 Let~$\psi \defequiv \varphi^\Box$ be the~$\Box$-translation of~$\varphi$.
-Let~$\psi'$ be the formula obtained from~$\psi$ by substituting any occuring
+Let~$\psi'$ be the formula obtained from~$\psi$ by substituting any occurring
 domain of quantification by its~$\Box$-sheafification, as syntactically defined
 in Definition~\ref{defn:plus-construction}. Then~$\psi$
 and~$\psi'$ are intuitionistically equivalent.
@@ -4261,7 +4261,7 @@ and~$\psi'$ are intuitionistically equivalent.
 \begin{proof}
 For any formula~$\varphi$, we denote by~``$\varphi^\boxplus$'' the result of
 first applying the~$\Box$-translation to~$\varphi$ and then substituting any
-set~$F$ occuring in~$\varphi$ as a domain of quantification by the plus
+set~$F$ occurring in~$\varphi$ as a domain of quantification by the plus
 construction~$F^+$. Recall that for any such~$F$ there is a canonical map~$F
 \to F^+,\ x \mapsto [\{x\}]$. We are going to show by induction that for any
 formula~$\varphi(x_1,\ldots,x_n)$ in which elements~$x_i\?F_i$ may occur as
@@ -4279,7 +4279,7 @@ trivial as well. The case for~``$=$'' is slightly more interesting; let~$\varphi
 definition of the plus construction. The case for~``$\in$'' is similar.
 
 Let~$\varphi \equiv (\exists x\?F\_ \psi(x))$, where we have dropped further
-variables occuring in~$\psi$ for simplicity. Then we are to show
+variables occurring in~$\psi$ for simplicity. Then we are to show
 that~$\varphi^\Box \equiv \Box(\exists x\?F\_ \psi^\Box(x))$ is equivalent
 to~$\varphi^\boxplus \equiv \Box(\exists \bar x\?F^+\_ \psi^\boxplus(\bar x))$.
 The ``only if'' direction is trivial (set~$\bar x \defeq [\{x\}]$). For the ``if''
@@ -4317,7 +4317,7 @@ Let~$X$ be a scheme (or a ringed space). Let~$\F$ be an~$\O_X$-module
 of finite type.
 \begin{itemize}
 \item Let~$x \in X$ be a point. Then the stalk~$\F_x$ is zero if and
-only if~$\F$ is zero on some open neighbourhood of~$x$.
+only if~$\F$ is zero on some open neighborhood of~$x$.
 \item Let~$A \subseteq X$ be a closed subset. Then the restriction~$\F|_A$ (\ie
 the pullback of~$\F$ to~$A$) is zero if and only if~$\F$ is zero on some open
 subset of~$X$ containing~$A$.
@@ -4342,7 +4342,7 @@ of finite type. Let~$x \in X$ be a point. Let~$n$ be a natural number. Then the
 following statements are equivalent:
 \begin{enumerate}
 \item There exists a generating family for~$\F_x$ consisting of~$n$ elements.
-\item There exists an open neighbourhood~$U$ of~$x$ such that
+\item There exists an open neighborhood~$U$ of~$x$ such that
 \[ U \models \speak{there exists a generating family for~$\F$ consisting of~$n$
 elements}. \]
 \end{enumerate}
@@ -4387,7 +4387,7 @@ y = A \vec x$} \]
 \begin{lemma}Let~$X$ be a scheme (or a ringed space). Let~$\alpha : \F \to \G$ be
 a morphism of~$\O_X$-modules. Let~$\G$ be of finite type and assume
 that~$\alpha_x : \F_x \to \G_x$ is surjective for some point~$x \in X$.
-Then~$\alpha$ is an epimorphism on some open neighbourhood of~$x$.\end{lemma}
+Then~$\alpha$ is an epimorphism on some open neighborhood of~$x$.\end{lemma}
 \begin{proof}In the presence of generators~$y_1,\ldots,y_n\?\G$, the
 non-geometric surjectivity condition ($\forall y\?\G\_ \exists x\?\F\_
 \alpha(x) = y$) can be reformulated in a geometric way: $\bigwedge_{i=1}^n
@@ -4431,7 +4431,7 @@ In explicit terms, we have to show the equivalence of the following statements:
 \end{enumerate}
 It is clear that the first statement implies the second. For the converse
 direction, we just have to repeatedly use the observation that~$\Box\varphi$
-implies~$\varphi \vee (\F = 0)$ (once for each occurence of~$\Box$). So in each
+implies~$\varphi \vee (\F = 0)$ (once for each occurrence of~$\Box$). So in each
 step, we either obtain the statement we want or may assume
 that~$\F$ is the trivial module, in which case any subclaim trivially follows. By
 surjectivity of~$i^\sharp$, we may write any~$b\?\O_A$ as~$b =
@@ -4456,7 +4456,7 @@ a geometric formula.
 \begin{lemma}Let~$X$ be a scheme (or a ringed space). Let~$\F$ be an~$\O_X$-module of finite
 presentation. Let~$x \in X$. Then the stalk~$\F_x$ is a finite
 free~$\O_{X,x}$-module if and only if~$\F$ is finite locally free on some open
-neighbourhood of~$x$.\end{lemma}
+neighborhood of~$x$.\end{lemma}
 \begin{proof}The internal statement that~$\F$ is a finite free module is not geometric:
 \[ \bigvee_{n \geq 0}
   \exists x_1,\ldots,x_n\?\F\_
@@ -4469,7 +4469,7 @@ But it can equivalently be reformulated as
   \exists \beta\?\HOM_{\O_X}(\O_X^n,\F)\_
   \alpha \circ \beta = \id \wedge \beta \circ \alpha = \id. \]
 This reformulation is geometric, therefore it holds at~$x$ if and only if it
-holds on some open neighbourhood of~$x$. The claim follows since, by the
+holds on some open neighborhood of~$x$. The claim follows since, by the
 previous proposition, taking stalks commutes with
 calculating~$\HOM_{\O_X}(\F,\placeholder)$ \resp~$\HOM_{\O_X}(\O_X^n,\placeholder)$;
 thus the pulled back formula indeed expresses that~$\F_x$ is finite free as
@@ -4511,7 +4511,7 @@ non-integral schemes (see Lemma~\ref{lemma:torsion-module-generic-stalk-generali
 \item general explanation of modalities (as for instance in philosophy)
 \item explain that for some modal operators, the~$\Box$-translation of the law
 of excluded middle is valid; explain consequences
-\item spreading of properties from stalk to neighbourhood: give many examples
+\item spreading of properties from stalk to neighborhood: give many examples
 \item give proof of the expressions for the nuclei listed in the table
 \end{itemize}
 
@@ -4563,7 +4563,7 @@ are given by
 \[ \K_{X,x} = \O_{X,x}[\S_x^{-1}]. \]
 The elements of~$\S_x$ are exactly the germs of those local sections which are
 regular not only in~$\O_{X,x}$, but in all rings~$\O_{X,y}$ where~$y$
-ranges over some open neighbourhood of~$x$ (depending on the section).\end{prop}
+ranges over some open neighborhood of~$x$ (depending on the section).\end{prop}
 \begin{proof}
 Since localization is a geometric construction, the first statement is made entirely
 trivial by our framework. The second statement follows since
@@ -4590,8 +4590,8 @@ numerator~$s$ belongs to~$\S$, that is if~$s$ is an regular element of~$\O_X$.\e
 
 \subsection{Regularity of local functions}
 It is well-known that on a locally Noetherian scheme, regularity spreads from
-stalks to neighbourhoods, that is that a section of~$\O_X$ is regular
-in~$\O_{X,x}$ if and only if it is regular on some open neighbourhood of~$x$.
+stalks to neighborhoods, that is that a section of~$\O_X$ is regular
+in~$\O_{X,x}$ if and only if it is regular on some open neighborhood of~$x$.
 This fact has a simple proof in the internal language.
 \begin{prop}\label{prop:regularity-spreading}
 Let~$X$ be a locally Noetherian scheme. Let~$s \in \Gamma(U,\O_X)$
@@ -4600,7 +4600,7 @@ equivalent:
 \begin{enumerate}
 \item The section~$s$ is regular in~$\O_{X,x}$.
 \item The section~$s$ is regular in all local rings~$\O_{X,y}$ where~$y$ ranges
-over some open neighbourhood of~$x$.
+over some open neighborhood of~$x$.
 \end{enumerate}
 \end{prop}
 \begin{proof}
@@ -4633,7 +4633,7 @@ The proof critically depends on the ideal~$I$ being finitely
 generated, since a modal operator need only commute with finite
 conjunctions. Intuitively, each time we use the modus ponens rule~$(\Box\varphi \wedge
 (\varphi \Rightarrow \psi)) \Rightarrow \Box\psi$, we restrict to a smaller open
-neighbourhood of~$x$. Since infinite intersections of open sets need not be
+neighborhood of~$x$. Since infinite intersections of open sets need not be
 open, we cannot expect an infinitary modus ponens rule to hold.
 
 \begin{cor}Let~$X$ be a locally Noetherian scheme. Then the stalks~$\K_{X,x}$
@@ -4663,7 +4663,7 @@ a geometric implication:
 \end{multline*}
 The only non-geometric subpart is the condition on~$t$ to be regular. However,
 by Proposition~\ref{prop:regularity-spreading}, for the purposes of comparing
-its truth at points \vs on neighbourhoods, it behaves just like a geometric
+its truth at points \vs on neighborhoods, it behaves just like a geometric
 formula. Therefore the claim follows.
 \end{proof}
 
@@ -5168,8 +5168,8 @@ are obvious.\end{proof}
 
 \begin{prop}The association~$D \mapsto \O_X(D)$ defines a one-to-one
 correspondence between Cartier divisors on~$X$ and rank-one submodules
-of~$\K_X$. This correpondence descends to a one-to-one correspondence between
-Cartier divisors up to linear equivalance and rank-one submodules of~$\K_X$ up
+of~$\K_X$. This correspondence descends to a one-to-one correspondence between
+Cartier divisors up to linear equivalence and rank-one submodules of~$\K_X$ up
 to isomorphism (as abstract~$\O_X$-modules, ignoring their embedding
 into~$\K_X$).\end{prop}
 \begin{proof}The first statement is obvious from the definitions. For the
@@ -5303,7 +5303,7 @@ The monotonicity condition means that~$\Sh(X) \models (\varphi_i \Rightarrow
 \varphi_j)$ for any~$i \preceq j$ in~$I$.
 \end{prop}
 
-Stated more succintly, a topological space~$X$ is quasicompact if and only
+Stated more succinctly, a topological space~$X$ is quasicompact if and only
 if~``$\Sh(X) \models$'' commutes with directed~``$\bigvee_{i \in I}$'''s.
 
 \begin{proof}For the ``only if'' direction, let such a family of formulas be
@@ -6009,7 +6009,7 @@ Then~$\E$ is locally constant if and only if~$\O_X\langle\E\rangle$, the
 free~$\O_X$-module on~$\E$ (constructed internally), is quasicoherent.
 \end{speculation}
 
-The free module occuring in this speculation is the sheafification of the
+The free module occurring in this speculation is the sheafification of the
 presheaf
 \[ U \longmapsto \Gamma(U, \O_X)\langle\Gamma(U, \E)\rangle \]
 and can also be described as~$f_! f^{-1} \O_X$, where~$f : \operatorname{\acute
@@ -6029,7 +6029,7 @@ holds: Exploiting that in this case~$\Gamma(X, \O_X\langle\E\rangle) \cong
 morphism~$\ul{\Gamma(X,\E)} \to \mathcal{E}$ is an isomorphism. Returning to
 the general situation, we see that the pullback of~$\E$ to any of the
 $\Spec(\O_{X,x})$ is constant if~$\O_X\langle\E\rangle$ is quasicoherent.
-Thus~$\E$ is ``constant on all infinitesimal neighbourhoods''.
+Thus~$\E$ is ``constant on all infinitesimal neighborhoods''.
 
 If~$\O_X\langle\E\rangle$ is not only quasicoherent, but
 even locally free (locally isomorphic to a module of the form~$\O_X^{\oplus
@@ -6531,7 +6531,7 @@ internally defined by an expression of the form~$\{ a\?\ul{A} \,|\, \varphi(a)
 The metatheorem reflects the following well-known fact of classical
 ring theory: If an ideal meets every filter (that is, the complement of every
 prime ideal), it is the unit ideal. In this particular formulation the statement can't be
-proven intuitionistically; the occurence of ``every filter'' has to be
+proven intuitionistically; the occurrence of ``every filter'' has to be
 replaced by ``generic filter''. Intuitively, the generic filter is a
 reification of the abstract idea of an ``arbitrary filter'', a filter about
 which nothing is known except that it satisfies the filter axioms.
@@ -8354,7 +8354,7 @@ bijective as seen from the internal point of view of~$\E$.
 \subsection{The spectrum of the generic ring}
 
 Let~$\Set[\Ring]$ be the classifying topos of the theory of
-rings; explicitly, it's the topos of preshaves on~$\Ring_\fp^\op$, the dual of
+rings; explicitly, it's the topos of presheaves on~$\Ring_\fp^\op$, the dual of
 the category of finitely presented rings. This topos contains the \emph{generic
 ring}~$U$ (explicitly the presheaf~$R \mapsto R$): any ring in any topos is the
 pullback of~$U$ along a suitable geometric morphism.
@@ -8977,7 +8977,7 @@ radical ideal~$\aaa \subseteq A$ to~$\sqrt{\aaa B} \subseteq B$; this yields a
 morphism~$\Open(\Spec(A)) \to \Open(\Spec(B))$.
 
 Using the device of classifying locales, there is also another way which more
-closely mimicks the classical approach of taking preimages of prime ideals. To
+closely mimics the classical approach of taking preimages of prime ideals. To
 give a morphism~$\Spec(B) \to \Spec(A)$ of locales amounts to give a model of
 the theory of filters of~$A$ in~$\Sh(\Spec(B))$. The sheaf topos
 over~$\Spec(B)$ contains the generic filter~$\F$ of~$B$; given a ring
@@ -9261,7 +9261,7 @@ such that~$s'|_U = s$).
 
 (If~$X$ is a space instead of a locale, this can be equivalently formulated as
 follows: For any open subset~$U \subseteq X$, any section~$s \in \F(U)$, and any
-point~$x \in X$, there is an open neighbourhood~$V$ of~$x$ and an extension
+point~$x \in X$, there is an open neighborhood~$V$ of~$x$ and an extension
 of~$s$~to~$U \cup V$.)
 
 % Proof of "internally injective ==> externally injective" references the
@@ -9328,7 +9328,7 @@ to the category of modules over a ring, to the category of set-valued sheaves
 on a topological space, and to the category of sheaves of~$\O_X$-modules on a
 ringed space~$(X,\O_X)$.
 
-The definition is seldomly applied in the category of sets, since in a classical
+The definition is seldom applied in the category of sets, since in a classical
 context it's easy to show that a set is injective if and only if it's
 inhabited, thereby completely settling the question which objects are
 injective in a trivial manner.
@@ -9344,7 +9344,7 @@ convenience we spell out the proof as Lemma~\ref{lemma:enough-flabby}.
 For a cartesian or monoidal closed category~$\C$, there is also the notion of an
 \emph{internally injective} object. This is an object~$I$ such that the
 internal Hom functor~$[\placeholder, I] : \C^\op \to \C$ maps monomorphisms
-in~$\C$ to epimorphisms. In the specical case that~$\C$ is a elementary topos
+in~$\C$ to epimorphisms. In the special case that~$\C$ is a elementary topos
 with a natural numbers object, such as the topos of set-valued sheaves on a
 space, this condition can be rephrased in several ways. The following
 proposition lists five of these conditions. The equivalence of the first four is
@@ -9394,7 +9394,7 @@ change of base.
 
 Somewhat surprisingly, and in stark contrast with the situation for internally
 projective objects (which are defined dually), internal injectivity coincides
-with external injecticity for sheaf toposes over spaces.
+with external injectivity for sheaf toposes over spaces.
 
 \begin{thm}\label{thm:char-injectivity}
 Let~$X$ be a topological space (or a locale). An object~$\I \in \Sh(X)$ is
@@ -9452,10 +9452,10 @@ It suffices to change~``$m[\E] \cup \F'$'' to~``$m[\E] + \F''$'', where~$\F''
 \begin{rem}The proof of Theorem~\ref{thm:char-injectivity} crucially rests on
 Proposition~\ref{prop:internal-char-flabbiness} and therefore on Zorn's lemma,
 in ensure that the sheaf~$\G$ defined in the proof which has the property that
-any of its sections can be localled extended admits a global section. The proof
+any of its sections can be locally extended admits a global section. The proof
 is therefore not intuitionistically valid.
 
-Relatedly, we don't think that the statement of
+On a related note, we don't think that the statement of
 Theorem~\ref{thm:char-injectivity} can be generalized to arbitrary
 (Grothendieck) toposes. The proof gradually refines the trivial
 generalized element of~$\G$ (defined on the empty stage) to a global element.
@@ -9775,7 +9775,7 @@ cohomology. One way to make this precise is to show that higher direct images
 can be made sense of internally to the topos of sheaves over the base, where
 they then look like ordinary cohomology.
 
-Let~$f : Y \to X$ be a morphism of ringed locales. As dicussed in
+Let~$f : Y \to X$ be a morphism of ringed locales. As discussed in
 Section~\ref{sect:internal-locales}, there is a locale~$I(Y)$ internal
 to~$\Sh(X)$ mirroring~$Y$; from the point of view of~$\Sh(X)$, the given
 morphism~$f$ looks like the unique morphism~$I(Y) \to \pt$.
@@ -10779,7 +10779,7 @@ additionally~$S$ is locally of finite type over a field.
 \end{prop}
 
 \begin{proof}We begin with showing that condition~(2) implies condition~(1). By
-the Kriple--Joyal translation, we need to verify that
+the Kripke--Joyal translation, we need to verify that
 \[ \forall (X \to S)\_
   \Bigl(\forall (T \to X)\_ (T \models \varphi) \Rightarrow T = \emptyset\Bigr)
   \Longrightarrow X = \emptyset, \]
@@ -10812,7 +10812,7 @@ The proof that condition~(1) implies condition~(3) in the case that one of the
 parsimonious sites is used to define~$\Zar(S)$ and that~$S$ is locally
 Noetherian is similar. For a closed point~$s \in S$, the residue field~$k(s)$
 can be calculated as~$A/\mmm$, where~$A$ is the ring of functions of an open
-affine neighbourhood of~$s$ and~$\mmm$ is a maximal ideal in~$A$. Since~$A$ is
+affine neighborhood of~$s$ and~$\mmm$ is a maximal ideal in~$A$. Since~$A$ is
 Noetherian, the ideal~$\mmm$ is finitely generated and therefore~$A/\mmm$ is
 finitely presented as an~$A$-algebra. Thus the canonical morphism~$\Spec(k(s))
 \to \Spec(A) \to S$ is locally of finite presentation and thereby contained in
@@ -10835,7 +10835,7 @@ of finite type over a field (and therefore in particular Noetherian). We adopt
 the notation of the proof of~``(2)~$\Rightarrow$~(1)''. The argument there
 shows that all fibers of~$f$ over closed points are empty. If~$X$ is not empty,
 it contains a closed point~$x$ (since~$X$ is locally of finite type over a field,
-any point which is closed in an open affine neighbourhood will do). Since~$X$
+any point which is closed in an open affine neighborhood will do). Since~$X$
 is locally of finite type over a field, the point~$f(x)$ is closed in~$S$.
 Therefore~$x$ is contained in the fiber over a closed point; a contradiction.
 \end{proof}
@@ -10917,7 +10917,7 @@ define~$\Zar(S)$), the internal expression~``$\{ x \? \ul{X} \,|\, \neg\neg(x \i
 along~$Z$. For instance, the expression
 \[ \{ f \? \affl \,|\, \neg\neg(f = 0) \} =
   \{ f \? \affl \,|\, \speak{$f$ is nilpotent} \} \]
-denotes the formal neighbourhood of the origin in the affine line~$\AA^1_S$.
+denotes the formal neighborhood of the origin in the affine line~$\AA^1_S$.
 (The equivalence~$\neg\neg(f = 0) \Leftrightarrow \speak{$f$ is nilpotent}$ is
 by Proposition~\ref{prop:a1-nilp}.)
 \end{rem}
@@ -11026,7 +11026,7 @@ Then the synthetic spectrum of the~$\affl$-algebra~$(\A_0)^\Zar$, as constructed
 in the internal language of~$\Zar(S)$, is the functor of points of~$\RelSpec_S \A_0$.
 \end{prop}
 
-\begin{proof}The Hom set occuring in the definition of the synthetic spectrum is
+\begin{proof}The Hom set occurring in the definition of the synthetic spectrum is
 interpreted by the internal Hom when using the internal language. For
 any~$S$-scheme~$f : T \to S$ contained in the site used to define~$\Zar(S)$, we
 have the following chain of isomorphisms.
@@ -11167,7 +11167,7 @@ sites).
 
 \begin{ex}\label{ex:proj-polynomial-ring}
 The synthetic Proj of~$R[X_0,\ldots,X_n]$ is canonically isomorphic
-to the set points~$[x_0:\cdots:x_n]$ with at
+to the set of points~$[x_0:\cdots:x_n]$ with at
 least one coordinate being invertible.
 \end{ex}
 
@@ -11539,7 +11539,7 @@ fails.
 
 In synthetic differential geometry, the \emph{axiom of microaffinity} is
 central to the theory. It is fulfilled by the image of~$\RR^1$ in any
-well-adapted model of synthetic differental geometry, and also by~$\affl \in
+well-adapted model of synthetic differential geometry, and also by~$\affl \in
 \Zar(S)$. (This fact is well-known.)
 
 \begin{prop}\label{prop:affl-microaffine}
@@ -11762,7 +11762,7 @@ trivially satisfied for any subfunctor~$U \hookrightarrow X$: Classically, we
 have~$(x \in U) \vee (x \not\in U)$. If~$x \in U$, we can pick~$J = (1)$, and
 if~$x \not\in U$, we can pick~$J = (0)$ (whereby the quotient~$\affl/J$ is
 isomorphic to~$\affl$, thus finitely presented and therefore in particular
-synthetically quasicoherent).\footnote{Strictly speaking, incompability with classical
+synthetically quasicoherent).\footnote{Strictly speaking, incompatibility with classical
 logical surfaces even earlier: in our synthetic quasicoherence condition. The
 map~$E \otimes_\affl A \to [\Spec(A), E]$ which the condition demands to be
 bijective has hardly any chance to be surjective if the law of excluded middle
@@ -11844,7 +11844,7 @@ weak: Any subset of the one-element set~$1$ is Penon-open. However, not every
 subfunctor of the terminal functor in~$\Zar(S)$ is an open subfunctor.
 \end{rem}
 
-In many flavours of synthetic topology, open truth values~$\varphi$
+In many flavors of synthetic topology, open truth values~$\varphi$
 are~$\neg\neg$-stable in that~$\neg\neg\varphi$ implies~$\varphi$. With a
 small caveat, this is true for open truth values in the big Zariski topos as
 well.
@@ -12640,7 +12640,7 @@ internal statement
 \end{multline*}
 is true from the internal point of view, where a polynomial~$p$ is called
 \emph{separable} if and only if there exists a Bézout representation~$ap + bp'
-= 1$. After simplifying, the intepretation of that statement with the
+= 1$. After simplifying, the interpretation of that statement with the
 Kripke--Joyal semantics is that for any~$S$-scheme~$T$ and any monic separable
 polynomial~$p \in \Gamma(T,\O_T)[X]$ of positive degree there exists an étale
 covering~$(T_i \to T)_i$ of~$T$ such that the pullbacks of~$p$ to each of
@@ -12873,7 +12873,7 @@ fppf-algebra. The sought lift is then the composite~$\Spec(A) \to \Spec(A)
 
 Finally, we verify~(3)~$\Rightarrow$~(2'). Let an fppf-algebra~$B$ over~$A$ be
 given. The singleton family~$(\Spec(B) \to \Spec(A))$ is an fppf covering.
-Therefore the identity morphism on~$\Spec(A)$ lifs to~$\Spec(B)$. This lift
+Therefore the identity morphism on~$\Spec(A)$ lifts to~$\Spec(B)$. This lift
 yields the desired retraction.
 \end{proof}
 
@@ -13182,7 +13182,7 @@ and we show that if~$\Box$ is any modal operator with this property, then
 For the first part it suffices to prove the following two statements:
 If~$s \in A$ is an element of a ring, then there is a covering~$(X_i \to
 \Spec(A))_i$ for the surjective topology such that, for each~$i$,~$X_i \models
-s = 0$ or~$X_i \models \speak{$s$ inv}$. If~$p \in A[X]$ is a monic polynomial
+s = 0$ or~$X_i \models \speak{$s$ \inv}$. If~$p \in A[X]$ is a monic polynomial
 of positive degree over a ring, then there is a covering~$(X_i \to
 \Spec(A))_i$ for the surjective topology such that, for each~$i$,~$X_i \models
 \exists x\?\affl\_ p(x) = 0$.
@@ -13435,13 +13435,13 @@ explain contexts}
   \doubleLine
   \UnaryInf$\exists y\?Y\_\! \varphi\ \fCenter\seq{\vec x} \psi$
   \DisplayProof
-  {\tiny ($y$ not occuring in~$\psi$)}
+  {\tiny ($y$ not occurring in~$\psi$)}
   \hfill
   \Axiom$\varphi\ \fCenter\seq{\vec x, y} \psi$
   \doubleLine
   \UnaryInf$\varphi\ \fCenter\seq{\vec x\phantom{, y}} \forall y\?Y\_\! \psi$
   \DisplayProof
-  {\tiny ($y$ not occuring in~$\varphi$)}
+  {\tiny ($y$ not occurring in~$\varphi$)}
   \hfill\phantom{a}
   \vspace{1em}
 
@@ -13450,13 +13450,13 @@ explain contexts}
   \doubleLine
   \UnaryInf$\exists Y\_\! \varphi\ \fCenter\seq{\vec x} \psi$
   \DisplayProof
-  {\tiny ($Y$ not occuring in~$\psi$)}
+  {\tiny ($Y$ not occurring in~$\psi$)}
   \hfill
   \Axiom$\varphi\ \fCenter\seq{\vec x, Y} \psi$
   \doubleLine
   \UnaryInf$\varphi\ \fCenter\seq{\vec x\phantom{, Y}} \forall Y\_\! \psi$
   \DisplayProof
-  {\tiny ($Y$ not occuring in~$\varphi$)}
+  {\tiny ($Y$ not occurring in~$\varphi$)}
   \hfill\phantom{a}
   \vspace{2em}
 

@@ -9883,7 +9883,7 @@ $(f : T \to S)$ to~$\Gamma(T, f^{-1}\F)$.
 
 Let~$\F$ be a sheaf of~$\O_S$-modules. We denote by~``$\F^\Zar$''
 the induced sheaf on~$\Sch/S$ mapping an~$S$-scheme
-$(f : T \to S)$ to~$\Gamma(T, f^*\F)$.
+$(f : T \to S)$ to~$\Gamma(T, f^*\F)$.\label{page:induced-sheaf-on-zar}
 
 
 \subsection*{A first example illustrating the Kripke--Joyal translation rules}
@@ -10083,6 +10083,28 @@ arbitrary local~$A$-algebras. On points, the morphism~$\pi$ sends a
 local~$A$-algebra~$\varphi : A \to R$ to the local localization~$A \to
 A[(\varphi^{-1}[R^\times])^{-1}]$, and its right inverse sends a local
 localization~$A \to A[F^{-1}]$ to itself.
+
+\begin{lemma}\label{lemma:zar-tensor-product-commutes}
+\begin{enumerate}
+\item The functor~$\pi^{-1}$ from~$\O_S$-modules to~$\pi^{-1}$-modules commutes
+with tensor product.
+\item The functor~$\pi_*$ from~$\affl$-modules to~$\O_S$-modules commutes with
+tensor product.
+\item The~$\affl$-module~$\E^\Zar$ associated to an~$\O_S$-module~$\E$ (defined
+on page~\pageref{page:induced-sheaf-on-zar}) is canonically isomorphic
+to~$\pi^{-1}\E \otimes_{\pi^{-1}\O_S} \affl$.
+\item The functor~$\E \mapsto \E^\Zar$ from~$\O_S$-modules to~$\affl$-modules
+commutes with tensor product.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}Forming the tensor product is a geometric construction. It is
+therefore preserved by~$\pi^{-1}$ and by~$\pi_*$, since both functors are
+inverse-image-parts of geometric morphisms.
+\end{proof}
+
+% A corollary of the existence of~$\pi^!$ is that~$\pi_*$ is (not only
+% continuous, but also) cocontinuous. Geometric.
 
 
 \subsection{Recovering the big Zariski topos from the little Zariski topos}
@@ -10490,9 +10512,6 @@ internal language is automatically compatible with change of base. However, the
 modalities can still be used and their general properties can even be
 elementarily axiomatized~\cite{awodey:birkedal:local-maps}.
 \end{rem}
-
-% A corollary of the existence of~$\pi^!$ is that~$\pi_*$ is (not only
-% continuous, but also) cocontinuous. Geometric.
 
 
 \subsection{The big Zariski topos of a relative spectrum}

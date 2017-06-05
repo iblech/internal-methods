@@ -11005,7 +11005,7 @@ colimits, but is not left exact.
 
 \subsection{Relative spectrum}
 
-\begin{defn}The \emph{synthetic spectrum} of an~$R$-algebra~$A$ is
+\begin{defn}In the context of a specified local ring~$R$, the \emph{synthetic spectrum} of an~$R$-algebra~$A$ is
 \[ \Spec(A) \defeq [A, R]_{\mathrm{Alg}(R)}, \]
 the set of~$R$-algebra homomorphisms from~$A$ to~$R$.\end{defn}
 
@@ -11031,7 +11031,7 @@ interpreted by the internal Hom when using the internal language. For
 any~$S$-scheme~$f : T \to S$ contained in the site used to define~$\Zar(S)$, we
 have the following chain of isomorphisms.
 \begin{align*}
-  (\Spec(A))(T) &= [(\A_0)^\Zar, \affl]_{\mathrm{Alg}(\affl)}(T) \\
+  \brak{\Spec(A)}(T) &= [(\A_0)^\Zar, \affl]_{\mathrm{Alg}(\affl)}(T) \\
   &\cong
   \Hom_{\Zar(S)}(\ul{T}, [(\A_0)^\Zar, \affl]_{\mathrm{Alg}(\affl)}) \\
   &\cong
@@ -11160,7 +11160,9 @@ sites).
 
 \subsection{Relative Proj construction}
 
-\begin{defn}The \emph{synthetic Proj} of an~$\NN$-graded~$R$-algebra~$A$ is the set
+\begin{defn}In the context of a specified local ring~$R$, the \emph{synthetic
+Proj} of an~$\NN$-graded~$R$-algebra~$A$ which is generated as an~$A_0$-algebra
+by~$A_1$ is the set
 \[ \Proj(A) \defeq
   (\text{set of all surj.\@ graded $R$-algebra homomorphisms~$A \to R[T]$})/R^\times. \]
 \end{defn}
@@ -11172,12 +11174,15 @@ least one coordinate being invertible.
 \end{ex}
 
 \begin{prop}\label{prop:relative-proj-big-zariski}
-Let~$\A_0$ be a graded~$\O_S$-algebra (not necessarily quasicoherent).
-Then the synthetic Proj of the~$\affl$-algebra~$(\A_0)^\Zar$, as constructed
-in the internal language of~$\Zar(S)$, is the functor of points of~$\RelProj_S \A_0$.
+Let~$\A$ be an~$\NN$-graded~$\O_S$-algebra (not necessarily quasicoherent).
+Assume that~$\A$ is generated as an~$\A_0$-algebra by~$\A_1$.
+Then the synthetic Proj of the~$\affl$-algebra~$\A^\Zar$, as constructed
+in the internal language of~$\Zar(S)$, is the functor of points of~$\RelProj_S \A$.
 \end{prop}
 
-\XXX{proof}  % (and check that it's true without the usual hypothesis)}
+\begin{proof}We omit the somewhat tedious verification.
+\end{proof}
+% FUTURE: Don't omit the calculation.
 
 The following corollary was prompted by a question on
 MathOverflow~\cite{mo:pp1}. We are grateful to Yuhao Huang for the impulse.

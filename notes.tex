@@ -1565,7 +1565,10 @@ However, in intuitionistic logic, the latter is strictly stronger than the
 former. We will see in the next section
 (Corollary~\ref{cor:scheme-dimension-zero}) that the structure sheaf of a
 scheme fulfills the latter condition if and only if the scheme is
-zero-dimensional (or empty).\end{rem}
+zero-dimensional (or empty). An overview of the basic properties of the
+intuitionistically different field conditions is contained
+in~\cite{johnstone:rings-fields-and-spectra}.
+\end{rem}
 
 \begin{cor}\label{cor:field-reduced}
 Let~$X$ be a scheme. If~$X$ is reduced, the ring~$\O_X$ is a field
@@ -7462,10 +7465,8 @@ to studying this difference.
 
 The Zariski topology is not the only interesting topology on the set of prime
 ideals. For instance, the constructible topology and the flat topology studied
-by Tarizadeh~\cite{tarizadeh:flat} too have their uses. While the contents of
-Section~\ref{sect:spectrum-as-a-locale} are well-known, the locale-theoretic
-approach to these variants of the spectrum and their universal properties
-appear to not have been studied much.
+by Tarizadeh~\cite{tarizadeh:flat} (also called ``co-Zariski topology'') too
+have their uses.
 
 The universal properties given in the following two propositions should be
 compared with the following way of phrasing the universal property of the
@@ -7494,22 +7495,25 @@ ideal, it is the universal way of mapping~$A$ to an integral domain in the weak
 sense (as defined in Section~\ref{sect:integrality}).
 \end{prop}
 
+\begin{proof}See~\cite[Proposition~4.5]{johnstone:rings-fields-and-spectra}.\end{proof}
+
 \begin{prop}Let~$A$ be a ring. The locale given by the space of prime ideals
 of~$A$ with the constructible topology is the classifying locale of detachable
 prime ideals (or equivalently detachable filters) of~$A$. Equipped
 with~$\ul{A}/\P$ as structure sheaf, where~$\P$ is the generic prime ideal, it
 is the universal way of mapping~$A$ to an integral domain in the strong sense.
-Equipped with~$\ul{A}[\F^{-1}]$, where~$\F$ is the generic filter, is is the
+Equipped with~$\ul{A}[\F^{-1}]$, where~$\F$ is the generic filter, it is the
 universal way of mapping~$A$ to a local ring in which invertibility is
 decidable.\end{prop}
+
+\begin{proof}This is mostly covered
+in~\cite[p.~253]{johnstone:rings-fields-and-spectra}.\end{proof}
 
 In constructive mathematics, a subset~$U \subseteq A$ is \emph{detachable} if
 and only if for every element~$a\?A$, either $a \in U$ or~$a \not\in U$. While
 intuitionistically the complement of a filter might fail to be a prime ideal
 and the complement of a prime ideal might fail to be a filter, the complement
 of a detachable filter is a detachable prime ideal, and vice versa.
-
-\XXX{write down proof}
 
 
 \subsection{The relative spectrum as an ordinary spectrum\except{toc}{ from the internal
@@ -13314,9 +13318,6 @@ appendix on Hakim's relative scheme theory specialized to ringed spaces)
 Also mention page 151, Remark A.1.2?
 
 XXX: Define morphisms of locales
-
-XXX:
-Cite Johnstone's "rings, fields, and spectra".
 
 XXX:
 Mention Steven Gubkin and the nCafé post. Also the Secret Blogging Seminar.

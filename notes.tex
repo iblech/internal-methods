@@ -10863,6 +10863,36 @@ coherent from the internal point of view of~$\Zar(S)$, then~$\E$ is coherent.
 The converse holds if~$\Zar(S)$ is defined using one of the parsimonious sites.
 \end{prop}
 
+\begin{prop}The inclusion functor
+\[ \Mod_{\Sh(S)}(\O_S) \longrightarrow \Mod_{\Zar(S)}(\affl),\ \E \longmapsto
+\E^\Zar \]
+is fully faithful.
+\end{prop}
+
+\begin{proof}This follows from the following string of isomorphisms, employing
+the adjunction~$\pi^{-1} \dashv \pi_*$ and the fact that~$\pi_*$ commutes with
+tensor product by Lemma~\ref{lemma:zar-tensor-product-commutes}.
+\begin{align*}
+  \Hom_{\Mod(\affl)}(\E^\Zar, \F^\Zar) &=
+  \Hom_{\Mod(\affl)}(\pi^{-1}\E \otimes_{\pi^{-1}\O_S} \affl, \pi^{-1}\F \otimes_{\pi^{-1}\O_S} \affl) \\
+  &\cong
+  \Hom_{\Mod(\pi^{-1}\O_S)}(\pi^{-1}\E, \pi^{-1}\F \otimes_{\pi^{-1}\O_S} \affl) \\
+  &\cong
+  \Hom_{\Mod(\O_S)}(\E, \pi_*(\pi^{-1}\F \otimes_{\pi^{-1}\O_S} \affl)) \\
+  &\cong
+  \Hom_{\Mod(\O_S)}(\E, \pi_*\pi^{-1}\F \otimes_{\pi_*\pi^{-1}\O_S} \pi_*\affl)) \\
+  &\cong
+  \Hom_{\Mod(\O_S)}(\E, \F \otimes_{\O_S} \O_S) \\
+  &\cong
+  \Hom_{\Mod(\O_S)}(\E, \F). \qedhere
+\end{align*}
+\end{proof}
+
+\begin{warning}The inclusion functor from the category of~$\O_S$-modules to the
+category of~$\affl$-modules is right exact, and preserves even arbitrary
+colimits, but is not left exact.
+\end{warning}
+
 
 \subsection{Quasicoherence}
 

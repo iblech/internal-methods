@@ -10468,9 +10468,6 @@ conservative. This fact, together with the fact that these functors commute
 with geometric constructions, is frequently useful to relate truth in~$\Zar(S)$
 with truth in all of the~$\Sh(X)$.
 
-% We should maybe also discuss relevance of \flat\affl, for instance for
-% constructing Omega?
-%
 % In the introduction to Part III, mention that we're first discussing
 % generalities and that the development of the synthetic approach appears
 % later.
@@ -10510,6 +10507,29 @@ Finally, claim~(4) follows by using a standard property for tensor products
   &\cong \E^\Zar \otimes_\affl \F^\Zar. \qedhere
 \end{align*}
 \end{proof}
+
+\begin{ex}Constructing, internally in~$\Zar(S)$, the
+module~$\Omega^1_{\affl|\flat\affl}$ of Kähler differentials of the ring
+morphism~$\flat\affl \to \affl$ yields the ``universal cotangent sheaf''
+\[ X \longmapsto \Gamma(X, \Omega^1_{X|S}). \]
+This is because constructing the module of Kähler differentials is a geometric
+construction and the restriction functors~$\Zar(S) \to \Zar(X)$ commute with
+geometric constructions, so
+\[ \brak{\Omega^1_{\affl|\flat\affl}}|_{\Sh(X)} \cong
+  \Omega^1_{(\affl|_{\Sh(X)}) | ((\flat\affl)|_{\Sh(X)})} \cong
+  \Omega^1_{\O_X | f^{-1}\O_S} \cong \Omega^1_{X|S} \]
+for any~$S$-scheme~$(f : X \to S)$ contained in the site used to
+define~$\Zar(S)$.
+
+This universal cotangent sheaf doesn't have any finiteness properties from the
+internal point of view. For instance, it isn't finitely generated, because else
+all the individual cotangent sheaves~$\Omega^1_{X|S}$ would be of finite type
+(with a uniform bound on the number of generators) by
+Proposition~\ref{prop:locally-free-big-zariski}.
+
+We feel that the significance of the canonical morphism~$\flat\affl \to
+\affl$ hasn't been adequately explored yet.
+\end{ex}
 
 \begin{rem}Some care is needed when dealing with the modalities~$\flat$
 and~$\sharp$, since they are not compatible with change of base.

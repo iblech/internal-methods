@@ -13050,8 +13050,18 @@ subtopos given by the double negation topology. By Proposition~\ref{prop:a1-fiel
 Proposition~\ref{prop:affl-weakly-algebraically-closed} it holds
 that~$\Zar(S)_{\neg\neg} \models \speak{$\affl$ is an algebraically closed
 geometric field}$. Theorem~\ref{thm:surjective-topology-classifies} implies
-that~$\Zar(S)_{\neg\neg}$ is a subtopos of the subtopos given by the surjective
-topology. These toposes don't coincide, however. \XXX{why}
+that~$\Zar(S)_{\neg\neg}$ is a subtopos of the subtopos~$\Zar(S)_\surj$ given
+by the surjective topology.
+
+These toposes don't coincide, however, for~$\Zar(S)_{\neg\neg}$ is Boolean
+while~$\Zar(S)_\surj$ is not. One way to see this is to appeal to the syntactic
+characterization of when the classifying topos of a coherent theory is
+Boolean~\cite[Theorem~D3.4.6]{johnstone:elephant}. In the coherent theory of an
+algebraically closed geometric field (which is the theory~$\Zar(S)_\surj$
+classifies in the special case~$S = \Spec(\ZZ)$), the formulas~``$n \cdot 1 = 0$''
+for~$n \geq 1$ are pairwise non-equivalent. By the cited characterization, the
+existence of an infinite family of pairwise non-equivalent formulas is
+sufficient to ensure that the classifying topos is not Boolean.
 \end{rem}
 
 

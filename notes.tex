@@ -777,8 +777,6 @@ schemes, there is as yet no direct technical connection.
 
 \XXX{mention and explain: Mulvey/Burden, Vickers, Awodey, Coquand, ...}
 
-\XXX{further work, ...}
-
 \XXX{Mention insights on relative spectrum, Mulvey's "obscure statement", ...}
 
 
@@ -2908,7 +2906,7 @@ semicontinuous~$\NN$-valued functions on~$X$.\end{lemma}
 \begin{proof}
 When referring to the natural numbers in the internal language, we actually
 refer to the constant sheaf~$\ul{\NN}$ on~$X$. (This is because the
-sheaf~$\ul{\NN}$ fulfills the axioms of a natural numbers object,
+sheaf~$\ul{\NN}$ fulfills the axioms for a natural numbers object,
 cf.\@~\cite[Section~VI.1]{moerdijk-maclane:sheaves-logic}.) Recall that its sections on an
 open subset~$U \subseteq X$ are continuous functions~$U \to \NN$, where~$\NN$
 is equipped with the discrete topology.
@@ -3345,7 +3343,7 @@ Explicitly, it is given by
   j(U) &= \text{largest open subset of~$X$ on which~$\Box U$ holds} \\
   &= \bigcup\ \{ V \subseteq X \ |\ \text{$V$ open},\ V \models \Box U \}.
 \end{align*}
-By the axioms on a modal operator, the map~$j$ fulfills similar such axioms: For any open
+By the axioms for a modal operator, the map~$j$ fulfills similar such axioms: For any open
 subsets~$U, V \subseteq X$,
 \begin{enumerate}
 \item $U \subseteq j(U)$,
@@ -3793,7 +3791,7 @@ $\Box(\varphi^\Box) \Longrightarrow \varphi^\Box$.
 \item In the definition of the~$\Box$-translation, one may omit the boxes
 printed in gray.
 \end{enumerate}\end{lemma}
-\begin{proof}The first statement is obvious, since one of the axioms on a modal
+\begin{proof}The first statement is obvious, since one of the axioms for a modal
 operator demands that~$\Box\Box\varphi \Rightarrow \Box\varphi$ for any
 formula~$\varphi$. The second statement follows by an induction on the
 formula structure. By way of example, we prove the case for~``$\Rightarrow$'':
@@ -3841,7 +3839,7 @@ a list) are similar and left to the reader.\end{proof}
 \begin{rem}The reader well-versed in formal logic will have noticed that we are
 mixing syntax and semantics here. The proper way to state the lemma would be
 to formally adjoin a box operator to the language of intuitionistic logic,
-governed by three inference rules which are modeled on the three axioms on a
+governed by three inference rules which are modeled on the three axioms for a
 modal operator. This formal box operator could then be instantiated by any
 concrete modal operator~$\Box : \Omega \to \Omega$.\end{rem}
 
@@ -3899,7 +3897,7 @@ monotonicity of~$\Box$, it follows that~$\Box(\bigvee_i \varphi_i)$.
 Note that an analogous argument for infinite conjunctions is not valid:
 Assume~$(\bigwedge_i \varphi_i)^\Box$. So for all~$j$,~$\varphi_j^\Box$ holds.
 By the induction hypothesis,~$\Box\varphi_j$ holds for any~$j$. But from this
-we may not deduce~$\Box\bigwedge_i \varphi_i$, since the axioms on a modal
+we may not deduce~$\Box\bigwedge_i \varphi_i$, since the axioms for a modal
 operator only require commutativity with finite conjunctions. This failure also
 has a geometric interpretation, for instance in the special case~$\Box =
 \neg\neg$: Given dense open subsets~$U_i$ on which formulas~$\varphi_i$ hold,
@@ -4175,7 +4173,7 @@ and~$\varphi \equiv \bigwedge_i \psi_i$ are trivial. For~$\varphi \equiv \bot$,
 the claim is that~$U \models_X \Box\bot$ if and only if~$j(U)
 \models_{X_\Box} \bot$. The former means~$U \subseteq j(\emptyset)$ and the
 latter means~$j(U) \leq \sup \emptyset = j(\emptyset)$, so the claim follows from
-the first two axioms on a nucleus.
+the first two axioms for a nucleus.
 
 We omit the verification of the remaining cases.
 \end{proof}
@@ -4790,7 +4788,7 @@ modal operator~$\sdense$ instead of~``\notnot''.
 \begin{prop}\label{prop:kx-is-box-sheafification}
 Let~$X$ be a ringed space. Then:
 \begin{enumerate}
-\item The operator~$\sdense$ fulfills the axioms on a modal operator.
+\item The operator~$\sdense$ fulfills the axioms for a modal operator.
 \item $\O_X$ is~$\sdense$-separated.
 \item $\K_X$ is~$\sdense$-separated.
 \item Internally, it holds that~$\sdense(\speak{$f$ \inv})$ implies that~$f$ is
@@ -7181,7 +7179,7 @@ equivalence between the category of \emph{locales over~$X$} -- that is
 locales~$Y$ equipped with a morphism~$Y \to X$ -- and \emph{internal locales
 in~$\Sh(X)$}~\cite[p.~49]{johnstone:point}. An internal locale in a topos~$\E$ is given by an object~$L$ of~$\E$
 (the internal frame of opens of the locale) together with a binary
-relation~$(\preceq) \hookrightarrow L \times L$ such that the axioms on a
+relation~$(\preceq) \hookrightarrow L \times L$ such that the axioms for a
 locale hold from the internal point of view. (For our purposes, we do not need a
 precise wording of these axioms.)
 
@@ -7682,7 +7680,7 @@ of~$\Spec(A)$ by the formula
   \{ \aaa \? \Open(\Spec(A)) \,|\, \aaa = \overline{\aaa} \}, \]
 where~$(\aaa \mapsto \overline{\aaa})$ is the quasicoherator described in
 Remark~\ref{rem:quasicoherator-knaster-tarski}. Since the quasicoherator
-satisfies the axioms on a nucleus, this formula exhibits~$\Spec(A|R)$ as a
+satisfies the axioms for a nucleus, this formula exhibits~$\Spec(A|R)$ as a
 sublocale of~$\Spec(A)$. In particular, suprema are calculated
 in~$\Open(\Spec(A|R))$ by applying the quasicoherator to the suprema calculated
 in~$\Open(\Spec(A))$. We denote the inclusion~$\Spec(A|R) \hookrightarrow
@@ -13284,11 +13282,17 @@ A[S_U^(-1)] otherwise?
 
 XXX:
 "Further work":
-Mention applications to generalized scheme theories, as surveyed by
-http://arxiv.org/abs/0909.0069.
-
-XXX:
-Normalization from an internal point of view?
+* Mention applications to generalized scheme theories, as surveyed by
+  http://arxiv.org/abs/0909.0069.
+* Develop constructive algebraic geometry to actually contain nontrivial
+  theorems of algebraic geometry.
+* Develop synthetic algebraic geometry further. For instance:
+  cohomology, intersection theory, normalization, ...
+* Stacks: A stack on a topological space X should roughly by a
+  category internal (or locally-internal) to Sh(X) such that, if internally there
+  exists an object unique up to unique isomorphism with some property, then
+  externally such an object exists. Note that talking about prestacks should not
+  be possible from the point of view of Sh(X).
 
 XXX:
 Discuss relation to https://golem.ph.utexas.edu/category/2009/06/algebraic_geometry_for_categor.html
@@ -13302,13 +13306,6 @@ Especially, a suitably "finite" module should be a vector bundle
 or a FAC in the sense of Serre so that our simplified topos theory
 could apply more directly to those things it should.
 
-XXX:
-Chapter on stacks: A stack on a topological space X should roughly by a
-category internal (or locally-internal) to Sh(X) such that, if internally there
-exists an object unique up to unique isomorphism with some property, then
-externally such an object exists. Note that talking about prestacks should not
-be possible from the point of view of Sh(X).
-
 Send Marcelo F. a copy of these notes once they are finished.
 
 XXX:
@@ -13317,7 +13314,6 @@ appendix on Hakim's relative scheme theory specialized to ringed spaces)
 Also mention page 151, Remark A.1.2?
 
 XXX: Define morphisms of locales
-XXX: axioms on? axioms of?
 
 XXX:
 Cite Johnstone's "rings, fields, and spectra".

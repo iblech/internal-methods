@@ -1010,8 +1010,8 @@ be a formula over~$U$. Then
 \[ U \models \varphi \qquad\text{iff}\qquad
   \text{$U_i \models \varphi$ for each $i$}. \]
 \end{prop}
-\begin{proof}Induction on the structure of~$\varphi$. Note that the canceled
-rules would make this proposition false.\end{proof}
+\begin{proof}Induction on the structure of~$\varphi$. The canceled
+rules in Table~\ref{table:kripke-joyal} would make this proposition false.\end{proof}
 
 As a corollary, one may restrict the open coverings and universal
 quantifications in the the definition of the Kripke--Joyal semantics
@@ -1154,7 +1154,7 @@ variable~$s\?\F$, the interpretation~$\brak{\{s\?\F\,|\,\varphi(s)\}}$ is given
 by the subpresheaf of~$\F$ defined by
 \[ \text{$U \subseteq X$ open} \quad\longmapsto\quad \{ s \in \Gamma(U,\F) \ |\
   U \models \varphi(s) \}. \]
-Note that by the locality of the internal language, this presheaf is in fact a
+By the locality of the internal language, this presheaf is in fact a
 sheaf.
 \end{itemize}
 \end{defn}
@@ -1183,7 +1183,7 @@ modules). To this end, it suffices to give a formula~$\varphi(s,t)$ satisfying,
 in addition to the condition above, the condition
 $\Sh(X) \models \forall t\?\G\_ \exists! s\?\F\_ \varphi(s,t)$,
 expressing that the induced morphism~$\alpha$ is a bijective map from the
-internal perspective. Note that this implies the statement
+internal perspective. This implies the statement
 \[ \Sh(X) \models \exists \alpha\?\HOM(\F,\G)\_ \speak{$\alpha$ is bijective},
 \]
 but this statement is strictly weaker: Its interpretation with the
@@ -1274,7 +1274,7 @@ constructions are geometric:
 \rangle$ ($\R$ a sheaf of rings, $\F$ a sheaf of sets)
 \item localization of a module: $\F[\S^{-1}]_x \cong \F_x[\S_x^{-1}]$
 \end{itemize}
-Note that compatibility with taking stalks is not sufficient for geometricity.
+Compatibility with taking stalks is not sufficient for geometricity.
 It is just the most easily visualized requirement.
 The following constructions are not in general geometric:
 \begin{itemize}
@@ -1335,9 +1335,9 @@ which case holds. It is in general not enough to show that it is impossible
 that both~$\varphi$ and~$\psi$ fail.
 
 In this picture, it is obvious that one should not adopt the law of excluded
-middle or the principle of double negation elimination as axioms. Note that we
-do not \emph{reject} those axioms in the sense of postulating their
-converses either, we simply don't use them. Therefore any intuitionistically
+middle or the principle of double negation elimination as axioms. But we
+don't \emph{reject} those axioms in the sense of postulating their
+converses, we simply don't use them. Therefore any intuitionistically
 true result is also true classically. In fact, for some special instances,
 these two classical axioms do hold intuitionistically. For example, any natural
 number is zero or is not zero -- this is not a triviality, but can be proven by
@@ -1352,7 +1352,7 @@ case distinction~\cite[Chapter~VI.1, p.~140]{mines-richman-ruitenburg:constructi
 
 A consequence of not adopting these axioms is that proofs by contradiction are
 not generally justified; they are intuitionistically acceptable only for those
-statements which can be proven to be true or false. Note that a proof of a
+statements which can be proven to be true or false. A proof of a
 \emph{negated formula} is not the same as a proof by contradiction. For
 instance, the usual proof that~$\sqrt{2}$ is not rational is
 intuitionistically perfectly fine: From the assumption that~$\sqrt{2}$ is
@@ -1386,7 +1386,7 @@ open neighbourhood~$U$ of a given point~$x$ such that~$U \models \varphi$. Also
 there is a different operator~$\Box$ such that~$X \models \Box\varphi$ if and only
 if~$\varphi$ holds on a scheme-theoretically dense open subset.
 
-For future reference, note that if~$\varphi \Rightarrow \psi$,
+For future reference, we remark that if~$\varphi \Rightarrow \psi$,
 then also~$\neg\neg\varphi \Rightarrow \neg\neg\psi$; that weakening
 twice has no further effect, \ie~$\neg\neg\neg\neg\varphi \Leftrightarrow
 \neg\neg\varphi$;\footnote{In fact, negating thrice is the same as negating
@@ -1645,7 +1645,7 @@ and only if it is reduced. This is straightforward.
 This field property is very useful. We will put it to good use when giving a
 simple proof of the fact that~$\O_X$-modules of finite type on a reduced scheme
 are locally free on a dense open subset (Lemma~\ref{lemma:locally-free-dense}).
-Note that the field property only holds in the precise form as stated;
+The field property only holds in the precise form as stated;
 the classically equivalent condition that any element is invertible or zero is
 intuitionistically stronger. This is an instance of the already remarked upon
 phenomenon of intuitionistic bifurcation of notions.
@@ -1715,7 +1715,7 @@ and only if for any sequence~$(a_0,\ldots,a_n)$ there exists a
 complementary sequence. (The ring~$R$ is trivial if and only if it is
 of Krull dimension~$\leq -1$.)
 \end{defn}
-Note that unlike the usual definition, this definition posits only a condition
+Unlike the usual definition, this definition posits only a condition
 on elements and not on ideals. It is thus of a simpler logical form.
 (The radical ideals appear only for convenience. We will dispose of them in the
 proof of Proposition~\ref{prop:dimension-scheme-ox}.)
@@ -1768,10 +1768,10 @@ sequence for~$(a_0,\ldots,a_n)$.
 \end{proof}
 
 We can apply the constructive theory of Krull dimension to the structure
-sheaf~$\O_X$ of a scheme~$X$ as follows. Note that the condition that a
+sheaf~$\O_X$ of a scheme~$X$ as follows. The condition that a
 scheme~$X$ has dimension exactly~$n$ (in the usual sense using ascending chains
 of closed irreducible subsets) is not local -- the dimension may vary on
-an open cover; therefore it is not possible to characterize this condition in
+an open cover; hence it isn't possible to characterize this condition in
 the internal language. However, the condition that the dimension of~$X$ is less
 than or equal to~$n$ \emph{is} local, thus there is hope that it can be
 internalized. And indeed, this is the case.
@@ -1820,8 +1820,8 @@ Only fields in the sense~(3) are automatically of Krull dimension zero.
 Fields in the weaker senses can have higher Krull dimension, as exhibited by
 the structure sheaf of reduced schemes with positive dimension.
 
-For the following corollary, note that if a scheme~$X$ is not empty, $\dim X
-\leq 0$ is equivalent to~$\dim X = 0$.
+With out conventions, a scheme~$X$ is of dimension~$\leq 0$ if and only if it
+is empty or if it's nonempty and of dimension zero.
 \begin{cor}\label{cor:scheme-dimension-zero}
 Let~$X$ be a scheme. Then:
 \[ \dim X \leq 0 \quad\Longleftrightarrow\quad
@@ -1848,7 +1848,7 @@ case, we are done. In the second case, it follows that~$a$ is nilpotent, so we
 are done as well.
 \end{proof}
 
-As a further corollary note the curious fact that the classicality of the
+As a further corollary we note the curious fact that the classicality of the
 internal language of~$\Sh(X)$, where~$X$ is a scheme, is tightly coupled with
 the properties of the ring~$\O_X$: Internally, the law of excluded middle and
 the principle of double negation elimination are ``almost equivalent'' to the
@@ -1903,7 +1903,7 @@ is a conjunction of two geometric implications,~``$1 = 0 \Rightarrow \bot$''
 and the implication displayed in the definition. Therefore the first statement
 is obvious.
 
-For the second statement, note that the condition on a function~$f \in
+For the second statement, we observe the condition on a function~$f \in
 \Gamma(U,\O_X)$ to be regular from the internal perspective is open: It holds
 at a point~$x \in U$ if and only if it holds on some open neighbourhood of~$x$.
 We will give a proof of this specific feature of locally Noetherian schemes
@@ -1930,7 +1930,7 @@ the internal perspective.\end{lemma}
 \Gamma(U,\O_X)$, $fg = 0$ in~$\Gamma(U,\O_X)$ implies~$g = 0$
 in~$\Gamma(U,\O_X)$.\end{quote}
 So the ``if'' direction is clear (use~$U \defeq X$). For the ``only if'' direction,
-note that~$\Gamma(U,\O_X)$ is a localization of~$A$ and that regular elements
+we use that~$\Gamma(U,\O_X)$ is a localization of~$A$ and that regular elements
 remain regular in localizations.
 \end{proof}
 
@@ -2017,7 +2017,7 @@ fashion, we obtain a diagonal matrix. Its diagonal entries already fulfill
 the divisibility condition and thus do not have to be sorted.
 \end{proof}
 
-Note that phrases such as ``if by chance the entry in the upper left divides
+Phrases such as ``if by chance the entry in the upper left divides
 all the others, we can directly proceed with the next step; otherwise, some
 other entry must be a factor of all entries, so \ldots'' may not be included in
 a proof which is intended to be intuitionistically acceptable.
@@ -2177,7 +2177,7 @@ Since~$X \models \speak{$f(0)$ is inhabited}$, there exists an open covering~$X
 we may assume that the open sets~$U_i$ are standard open sets~$D(f_i)$ and that
 the covering is finite. Since the sheaves~$\I_i$ are quasicoherent (being of
 finite type, they are images of morphisms of the form~$(\O_X|_{U_i}^n \to
-\O_X|_{U_i}$), they correspond to ideals~$J_i \subseteq A[f_i^{-1}]$. Note for future reference
+\O_X|_{U_i}$), they correspond to ideals~$J_i \subseteq A[f_i^{-1}]$. We note for future reference
 that for~$D(g) \subseteq D(f_i)$, the restricted ideal~$\I_i|_{D(g)}$ corresponds to the extension of~$J_i$ in the further
 localized ring~$A[g^{-1}]$.
 
@@ -2650,7 +2650,7 @@ free) as well. It is well-known that this follows; and since the usual proof of
 this fact is intuitionistically acceptable, we are done.
 \end{proof}
 
-Note that the proof works very generally, in the context of arbitrary ringed
+The proof works very generally, in the context of arbitrary ringed
 spaces, and is still very simple. This is common to proofs using the internal
 language. Particular features of schemes enter only at clearly recognizable
 points, for instance when an internal property specific to the structure sheaf
@@ -2770,7 +2770,7 @@ Let~$s_1,\ldots,s_n\?L$ be given elements. Then~$L$ is generated as
 an~$R$-module by these elements if and only if for some~$i$, the image of~$s_i$
 under some isomorphism~$L \to R$ is invertible.
 
-Note that the choice of such an isomorphism does not matter, since any two such
+The choice of such an isomorphism does not matter, since any two such
 isomorphisms~$\alpha, \beta : L \to R$ differ by a unit of~$R$: $\alpha(x) =
 \alpha(\beta^{-1}(1)) \cdot \beta(x)$ for any~$x\?L$,
 and~$\alpha(\beta^{-1}(1)) \cdot \beta(\alpha^{-1}(1)) = 1$ in~$R$.
@@ -2786,7 +2786,7 @@ Since~$R$ is a local ring, it follows that one of the summands and thus one of
 the~$\alpha(s_i)$ is invertible.
 \end{proof}
 
-\begin{rem}Note that the canonical ring homomorphism~$\O_{X,x}
+\begin{rem}The canonical ring homomorphism~$\O_{X,x}
 \twoheadrightarrow k(x)$ is local. Therefore a germ in~$\O_{X,x}$ is invertible
 if and only if its image in~$k(x)$ is not zero. From this one can conclude that
 global sections~$s_1,\ldots,s_n \in \Gamma(X,\F)$ generate~$\F$ if and only if,
@@ -3015,7 +3015,7 @@ only the inhabited ones) is canonically isomorphic to the sheaf of
 upper semicontinuous functions with values in~$\NN \cup \{ +\infty
 \}$.
 
-Note that the correspondence can be used to understand classical facts about
+The correspondence can be used to understand classical facts about
 upper semicontinuous functions as features of intuitionistic number theory. For
 instance, it is well-known that any upper semicontinuous~$\mathbb{N}$-valued
 function on an arbitrary topological space is locally constant on a dense open subset.
@@ -3113,11 +3113,11 @@ By Remark~\ref{rem:surjectivity-embedding}, the rank of such a module~$M$ is
 previous proof, it thus follows that~$M$ is \notnot finite free.
 \end{proof}
 
-\begin{rem}Note that besides basics on natural numbers in an intuitionistic
+\begin{rem}Besides basics on natural numbers in an intuitionistic
 setting and some dictionary terms (``reduced'', ``finite locally free'',
 ``finite type``, ``dense open''), this proof does not depend on any further
-tools. In particular, Nakayama's lemma and facts about semicontinuous functions
-do not enter. For the (more complex) standard proof of this fact, see for
+tools. In particular, it doesn't depend on Nakayama's lemma or on facts about
+semicontinuous functions. For the (more complex) standard proof of this fact, see for
 instance~\cite{vakil:foag}, where the claim is dubbed an ``important hard
 exercise'' (Exercise~13.7.K).\end{rem}
 
@@ -3517,7 +3517,7 @@ To describe the notion of~$\Box$-sheaves and related ones, we switch to the inte
 perspective and thus forget that we're working over a base space~$X$; we are simply given a modal operator~$\Box :
 \Omega \to \Omega$ and have to take care that our proofs are intuitionistically acceptable. A
 reference for the material in this subsection is a preprint by de
-Vries~\cite{vries:sheafification}.\footnote{Note that on page~5 of that
+Vries~\cite{vries:sheafification}.\footnote{On page~5 of that
 preprint there is a slight typing error: Fact~2.1(i) gives the
 characterization of~$j$-closedness, not~$j$-denseness. The correct
 characterization of~$j$-denseness in that context is~$\forall b \in B\_ j(b \in
@@ -3636,10 +3636,10 @@ of~$\Box$-sheaves in~$\Sh(X)$.
 \end{prop}
 \begin{proof}For the further development of the theory, we need the statement
 of this proposition, but not the proof, which really is routine in dealing with
-subtoposes and modal operators. Nevertheless, a proof goes like follows:
-Combine Example~A4.6.2(a) and Theorem~C1.4.7
-of~\cite{johnstone:elephant} and note that for a topos of sheaves on a
-locale~$Y$, it holds that~$\Open(Y) = \Gamma(Y, \Omega_{\Sh(Y)})$, and that the
+subtoposes and modal operators. Nevertheless, a proof can proceed by
+combining Example~A4.6.2(a) and Theorem~C1.4.7
+of~\cite{johnstone:elephant}, observing that for a topos of sheaves on a
+locale~$Y$ it holds that~$\Open(Y) = \Gamma(Y, \Omega_{\Sh(Y)})$, and that the
 subobject classifier of~$\Sh_\Box(\Sh(X))$ is~$\{ \varphi : \Omega_{\Sh(X)} \,|\,
 \Box \varphi \Leftrightarrow \varphi \}$.
 \end{proof}
@@ -3967,7 +3967,7 @@ that~$\Box\varphi_j$. By~$\varphi_j \Rightarrow \bigvee_i \varphi_i$ and the
 monotonicity of~$\Box$, it follows that~$\Box(\bigvee_i \varphi_i)$.
 \end{proof}
 
-Note that an analogous argument for infinite conjunctions is not valid:
+An analogous argument for infinite conjunctions is not valid:
 Assume~$(\bigwedge_i \varphi_i)^\Box$. So for all~$j$,~$\varphi_j^\Box$ holds.
 By the induction hypothesis,~$\Box\varphi_j$ holds for any~$j$. But from this
 we may not deduce~$\Box\bigwedge_i \varphi_i$, since the axioms for a modal
@@ -4629,7 +4629,7 @@ to prove a boxed statement, we may in fact assume~$x_i = 0$. Thus~$I = (0)$ and
 the assertion that~$s$ is regular follows.
 \end{proof}
 
-Note that the proof critically depends on the ideal~$I$ being finitely
+The proof critically depends on the ideal~$I$ being finitely
 generated, since a modal operator need only commute with finite
 conjunctions. Intuitively, each time we use the modus ponens rule~$(\Box\varphi \wedge
 (\varphi \Rightarrow \psi)) \Rightarrow \Box\psi$, we restrict to a smaller open
@@ -4777,8 +4777,7 @@ not~$\K_X$: The quotient ring~$\K_X$ is a~$\neg\neg$-sheaf if and only if
 \end{multline*}
 This is done just as in the proof of Theorem~\ref{thm:qcoh-sheafchar}.
 \XXX{reorder qcoh before this because of the reference?}
-Note
-that~``$b^{-1}$'' refers to the inverse of~$b$ which indeed exists in a doubly
+The expression~``$b^{-1}$'' refers to the inverse of~$b$ which indeed exists in a doubly
 negated context, since~$b$ is assumed regular. More explicitly, we should write
 \[ \neg\neg(\exists c\?\O_X\_ bc = 1 \wedge ca \in T)
   \quad\text{instead of}\quad
@@ -4795,7 +4794,7 @@ Since~$\Gamma(V,\O_X) = A[f^{-1}]$, we can write~$s = a/f^n$ with~$a \in A$
 and~$n \geq 0$.
 
 By Lemma~\ref{lemma:regular-affine}, the function~$b \defeq f^n$ is also regular as an
-element of~$\O_U$ from the internal point of view. Note that~$b$ is invertible
+element of~$\O_U$ from the internal point of view. The function~$b$ is invertible
 on~$V$, since~$V = D(f) = D(b)$. It follows that on the dense
 open subset~$V \subseteq U$, the sections~$s$ and~$b^{-1} a$ agree.
 This observation concludes the proof.
@@ -4933,7 +4932,7 @@ Let~$X$ be a scheme. Then~$\Sh(X) \models \forall\varphi\?\Omega\_
 The converse holds if~$X$ is reduced, so that in
 this case the modal operator~$\sdense$ coincides with the double negation modality.\end{prop}
 \begin{proof}We argue internally. Let~$\varphi$ be an arbitrary truth value and
-assume that~$\sdense\varphi$. Note that~$\neg\varphi$ is
+assume that~$\sdense\varphi$. The negation~$\neg\varphi$ (which is defined as~$\varphi \Rightarrow \bot$) is
 equivalent to~$\varphi \Rightarrow (1 =
 0)$. Since by assumption~$\O_X$ is separated with respect to the~$(\varphi
 \Rightarrow \placeholder)$-modality, this in turn is equivalent to~$1 = 0 \?
@@ -5099,7 +5098,7 @@ Two Cartier divisors are \emph{linearly equivalent} if and only if their
 difference is a principal divisor.
 \end{defn}
 
-Note that decidedly, principality is a global notion: For \emph{any} divisor~$D$ it is
+Decidedly, principality is a global notion: For \emph{any} divisor~$D$ it is
 true that locally there exists sections~$f$ of~$\K_X^\times$ such that~$D = [f]$.
 
 \begin{defn}\label{defn:line-bundle-of-divisor}
@@ -5114,7 +5113,7 @@ representative~$f$, since~$f$ is well-defined up to multiplication by an element
 of~$\O_X^\times$.\end{defn}
 
 The submodule~$\O_X(D)$ is indeed locally free of rank~$1$, since
-internally~$f^{-1}$ gives a one-element basis. Note that~$D$ is effective if
+internally~$f^{-1}$ gives a one-element basis. The divisor~$D$ is effective if
 and only if~$\O_X(-D)$ is a subset of~$\O_X$ from the internal perspective
 (this comparison makes sense, since~$\O_X(-D)$ and~$\O_X$ are both canonically
 embedded in~$\K_X$). In
@@ -5219,7 +5218,7 @@ f = sh/\psi(s) = h\psi^{-1}(1)$, since~$s = \psi^{-1}(\psi(s)) = \psi(s)
 element of~$\L$.
 
 Injectivity of the map~$\O_X(\operatorname{div}(f)) \to \L$ is by
-nontriviality of~$f$. For surjectivity, note that~$(t/\psi(s)) \cdot \psi(v)$ is a
+nontriviality of~$f$. For surjectivity, we observe that~$(t/\psi(s)) \cdot \psi(v)$ is a
 preimage to~$v\?\L$, since~$(t/\psi(s)) \cdot \psi(v) \cdot f = \psi(v) \psi(s)
 \psi^{-1}(1) / \psi(s) = v$.
 \end{proof}
@@ -5313,7 +5312,7 @@ holds. Then by assumption, the sets~$U_i$ form a monotone family and cover~$X$. 
 quasicompactness of~$X$, some single member~$U_i$ covers~$X$ as well, whereby the
 corresponding formula~$\varphi_i$ holds on~$X$.
 
-For the ``if'' direction, note that a monotone family~$(U_i)$ of open subsets
+For the ``if'' direction, we observe that a monotone family~$(U_i)$ of open subsets
 induces a monotone family of formulas by defining~$\varphi_i \defequiv U_i$,
 employing the notational convention set out in
 Section~\ref{sect:modalities-geometric-meaning}. This
@@ -5695,7 +5694,7 @@ sheaf condition is fulfilled.
 
 Since the sheaf~$\F[f^{-1}]$ does not appear in the stated characterization, we
 will first reformulate the separatedness and the sheaf condition in terms
-of~$\F$ instead of~$\F[f^{-1}]$. To this end, note that the separatedness
+of~$\F$ instead of~$\F[f^{-1}]$. To this end, we observe that the separatedness
 condition is equivalent to
 \begin{equation}\label{eqn:separated}
   \forall f\?\O_X\_ \forall s\?\F\_
@@ -6097,7 +6096,7 @@ surjective, since the~$\Box$-translation of the statement~$\speak{$j_!(\F) \to
 \F$ is surjective}$ holds: For any element~$x\?\F$, it holds
 that~$\Box(\speak{$x$ possesses a preimage})$.
 
-For the third property, note that a sheaf~$\F$ on~$X$ fulfills the stated
+For the third property, we observe that a sheaf~$\F$ on~$X$ fulfills the stated
 condition on stalks if and only if, from the internal perspective, it holds
 that~$U \Rightarrow \speak{$\F$ is inhabited}$. We omit further details.
 \end{proof}
@@ -6182,7 +6181,7 @@ can be characterized as the largest open subset on which~``$1 \in \I$'' holds.
 According to Table~\ref{table:nuclei} on page~\pageref{table:nuclei}, the
 stated modal operator thus defines the subspace~$D(\I)^c$, \ie~$V(\I)$.
 
-For the second statement, note that since~$\O_X/\I$ is a sheaf of rings, its
+For the second statement, we observe that since~$\O_X/\I$ is a sheaf of rings, its
 support is closed. Therefore the largest open subset of~$X$ where the internal
 statement~``$\O_X/\I = 0$'' holds is the complement of the support
 (Proposition~\ref{prop:characterization-support}). Since~$D(\I)$ is the largest
@@ -6366,7 +6365,7 @@ be a topological space and let~$U \subseteq X$ be an open subset. Then
 \[ U \models \varphi \quad\text{iff}\quad (\text{$U$ inhabited} \Rightarrow
 \varphi). \]
 \end{lemma}
-Note that we are abusing notation on the left hand side: The parameters
+We are abusing notation on the left hand side: The parameters
 of~$\varphi$, which are sets and elements, must be read as the induced constant
 sheaves and constant functions (sections of that sheaves).
 Unbounded quantifiers have to be read as ranging only over locally constant
@@ -6445,7 +6444,7 @@ filter is indeed a filter of~$\ul{A}$.
 for all prime ideals~$\ppp$ with~$f \not\in \ppp$. This is well-known to be
 equivalent to~$f \in \sqrt{(x)}$.
 
-For the claim about stalks, note that the canonical map~$\F_\ppp \to A
+For the claim about stalks, we observe that the canonical map~$\F_\ppp \to A
 \setminus \ppp$ sending a germ~$[f]$ to~$f(\ppp)$ is invertible with inverse
 being the map which sends an element~$x \not\in \ppp$ to the germ of the
 constant function with value~$x$ (defined on~$D(x)$).
@@ -6601,7 +6600,7 @@ Lemma~\ref{lemma:properties-of-constant-sheaves} this is equivalent to~$1 \cdot
 x = 0$ as elements of~$A$.
 \end{proof}
 
-Note that the ``if'' direction also admits a shorter proof, by simply
+The ``if'' direction also admits a shorter proof, by simply
 considering the Kripke--Joyal interpretation of~$\Sh(\Spec A) \models
 \speak{$\O_{\Spec A}$ is reduced}$ and using~$\Gamma(\Spec A, \O_{\Spec A})
 \cong A$. We included the given proof to give a simple example of the mixed
@@ -12684,7 +12683,7 @@ operator verifying the formula, internally it holds that~$\Box_\text{ét}\varphi
 classifying toposes. We are grateful to Felix Geißler for contributing a key step of
 the argument.
 
-To verify the first statement, note that the displayed formula is a geometric
+To verify the first statement, we observe that the displayed formula is a geometric
 implication and that the big étale topos~$\Et(S)$ has \emph{enough points}.
 Therefore it suffices to show that for any~$S$-scheme~$T$ and any geometric
 point~$\bar t$ of~$T$, the stalk~$\O_{T,\bar t}$ is separably closed. It is

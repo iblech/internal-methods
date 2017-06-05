@@ -3888,7 +3888,7 @@ give an explicit example of this situation below
 Let~$\varphi$ be a formula such that for any subformulas~$\psi$
 appearing as antecedents of implications, it holds that~$\psi^\Box \Rightarrow
 \Box\psi$. (In particular, this condition is satisfied if there are
-no~``$\Rightarrow$'' signs in~$\varphi$ or if~$\varphi$ is a geometric formula.) Then $\Box\varphi \Rightarrow
+no~``$\Rightarrow$'' signs in~$\varphi$ or if~$\varphi$ is a geometric implication.) Then $\Box\varphi \Rightarrow
 \varphi^\Box$.\end{lemma}
 \begin{proof}We prove this by an induction on the formula structure. All cases
 except for~``$\Rightarrow$'' are obvious. For this case, assume~$\Box(\psi
@@ -6339,7 +6339,8 @@ metatheory, one has to add the additional requirement that the locale is
 \emph{overt}; classically, every locale is overt, and intuitionistically,
 at least locales arising from topological spaces are overt. We'll revisit this
 subtle point in Section~\ref{sect:constructive-scheme-theory}, where we sketch
-how scheme theory can be developed in an intuitionistic context.
+how scheme theory can be developed in an intuitionistic context, and more
+specifically in Lemma~\ref{lemma:properties-of-constant-sheaves-over-locales}.
 \end{rem}
 
 
@@ -8975,18 +8976,30 @@ defined by declaring~$U > 0$ if and only if~$U \neq \bot$.\end{ex}
 \end{proof}
 
 \begin{lemma}\label{lemma:properties-of-constant-sheaves-over-locales}
-Let~$\varphi$ be a formula in which arbitrary sets and elements
-may occur as parameters. Let~$X$ be a locale. If~$\varphi$ is a geometric
-formula, then
-\[ U \models \varphi \quad\text{if and only if}\quad U \preceq \bigvee \{ \top \,|\,
-\varphi \}. \]
-If~$X$ is overt, then this equivalence even holds for arbitrary first-order
-formulas, and furthermore in this case~$U \models \varphi$ is equivalent to~$(U
-> 0 \Longrightarrow \varphi)$.
+Let~$\varphi$ be a first-order formula in which arbitrary sets and elements may
+occur as parameters. Let~$X$ be a locale and let~$U$ be an open of~$X$.
+Consider the following statements:
+\begin{enumerate}
+\item $U \models \varphi$ (with the same abuse of notation as in
+Lemma~\ref{lemma:properties-of-constant-sheaves}
+\item $U \preceq \bigvee \{ \top \,|\, \varphi \}$.
+\item (If~$X$ has a positivity predicate.) $U > 0 \Longrightarrow \varphi$.
+\item $\varphi$.
+\end{enumerate}
+Then:
+\begin{itemize}
+\item ``(4)~$\Rightarrow$~(2)''.
+\item If~$\varphi$ is a geometric formula, then~``(1)~$\Leftrightarrow$~(2)''.
+\item If all subformulas of~$\varphi$ appearing as antecedents of implications
+satisfy ``(1)~$\Rightarrow$~(2)'' (for instance, because they are geometric
+formulas or because~$\varphi$ doesn't contain any~``$\Rightarrow$'' signs),
+then~``(2)~$\Rightarrow$~(1)''.
+\item If~$X$ is overt, then~``(1)~$\Leftrightarrow$~(2)~$\Leftrightarrow$~(3)''.
+\end{itemize}
 \end{lemma}
 
-\begin{proof}The first statement can be checked by induction on the structure
-on~$\varphi$. The second statement is by definition of overtness.
+\begin{proof}The implication~``(4)~$\Rightarrow$~(2)'' is trivial. The other
+claims can be checked by induction on the structure of~$\varphi$.
 \end{proof}
 
 \begin{prop}\label{prop:spectrum-overt}
@@ -10813,29 +10826,42 @@ an~$\affl$-module from the internal point of view of~$\Zar(S)$.
 an~$\affl$-module from the internal point of view of~$\Zar(S)$.
 \item $\E$ is of finite presentation if and only if~$\E^\Zar$ is finitely
 presented as an~$\affl$-module from the internal point of view of~$\Zar(S)$.
-\item $\E$ is coherent if and only if~$\E^\Zar$ is coherent
-as an~$\affl$-module from the internal point of view of~$\Zar(S)$.
 \end{itemize}
 \end{prop}
 
 \begin{proof}The ``if'' directions follow just as in
 Proposition~\ref{prop:finite-type-and-co}. The proofs of the ``only if''
-directions further exploit that generators and relations are stable under base
-change.
-%XXX:Does this more conceptual proof work?
-%The proofs of the ``only if'' directions can too proceed by hand, further
-%exploiting only that generators and relations are stable under base change. But
-%there's also a more conceptual proof: From the point of view of~$\Sh(S)$,
-%the~$\affl$-module~$\E^\Zar$ admits the description~$\E^\Zar = \ul{\E}
-%\otimes_{\ul{\O_S}} \affl$, where the underline denotes the constant sheaf
-%construction (which externally is interpreted by the functor~$\pi^{-1}$
-%described in Section~\ref{sect:relation-big-little}). By
-%Lemma~\ref{lemma:properties-of-constant-sheaves},
-%the~$\ul{\O_S}$-module~$\ul{E}$ inherits any property from~$\E$, and the
-%properties under discussion are stable under tensoring.
+directions can too proceed by hand, further exploiting only that generators and
+relations are stable under base change. But there's also a more conceptual
+proof: From the point of view of~$\Sh(S)$, the~$\affl$-module~$\E^\Zar$ admits
+the description~$\E^\Zar = \ul{\E} \otimes_{\ul{\O_S}} \affl$, where the
+underline denotes the constant sheaf construction (which externally is
+interpreted by the functor~$\pi^{-1}$ described in
+Section~\ref{sect:relation-big-little}). By
+Lemma~\ref{lemma:properties-of-constant-sheaves-over-locales} (generalized from
+locales to toposes), the~$\ul{\O_S}$-module~$\ul{\E}$ inherits any property
+from~$\E$ which is of a certain logical form, and the properties under
+discussion are stable under tensoring.
 \end{proof}
 
-An analogous results for sheaves of algebras.
+An analogous result holds for sheaves of algebras and their finiteness
+conditions.
+
+Coherence is missing from the list in
+Proposition~\ref{prop:locally-free-big-zariski} since coherence is not stable
+under pullback (for instance, the pullback of~$\O_{\Spec(\ZZ)}$ is not stable
+under any morphism~$X \to \Spec(\ZZ)$ for which~$\O_X$ is not coherent) and can
+therefore not be characterized by any formula in the internal language of a
+big Zariski topos whose site is sufficiently encompassing.
+
+However, coherence is stable under pullback along locally finitely presented
+morphisms. Therefore we do have the following result.
+
+\begin{prop}\label{prop:locally-free-big-zariski}
+Let~$\E$ be an~$\O_S$-module. If the induced~$\affl$-module~$\E^\Zar$ is
+coherent from the internal point of view of~$\Zar(S)$, then~$\E$ is coherent.
+The converse holds if~$\Zar(S)$ is defined using one of the parsimonious sites.
+\end{prop}
 
 
 \subsection{Quasicoherence}

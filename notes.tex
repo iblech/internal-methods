@@ -3315,7 +3315,7 @@ imposes the \emph{reflexivity axiom}~$\Box\varphi \Rightarrow \varphi$ which we
 don't impose (and which would trivialize the theory). Conversely, our
 axiom~$\varphi \Rightarrow \Box\varphi$ isn't meaningful in the necessity
 interpretation. This axiom is meaningful for the modal operator~``it is
-possible that'', commonly denoted~``$\Diamond$''; but for possibility, the
+possible that'', commonly denoted~``$\Diamond$''; but for this modal operator, the
 axiom~$\Diamond(\varphi \wedge \psi) \Leftrightarrow \Diamond\varphi \wedge
 \Diamond\psi$ isn't meaningful.
 
@@ -9091,6 +9091,15 @@ then~``(2)~$\Rightarrow$~(1)''.
 claims can be checked by induction on the structure of~$\varphi$.
 \end{proof}
 
+\begin{rem}It is no coincidence that the conditions in
+Lemma~\ref{lemma:properties-of-constant-sheaves-over-locales} are reminiscent
+of the conditions in Lemma~\ref{lemma:open-stalk}. In fact, associated to any
+locale~$X$ is a modal operator~$\Box_X$ on~$\Set$, which implicitly appeared in
+Lemma~\ref{lemma:properties-of-constant-sheaves-over-locales}. It maps a truth
+value~$\varphi$ to the truth value~$\brak{X \preceq
+\bigvee\{\top\,|\,\varphi\}}$. The associated sublocale~$\pt_{\Box_X}$ of the
+one-point locale is the image of the unique locale morphism~$X \to \pt$.\end{rem}
+
 \begin{prop}\label{prop:spectrum-overt}
 The localic spectrum of a ring~$A$ is overt if and only if any
 element of~$A$ is nilpotent or not nilpotent.\end{prop}
@@ -13127,6 +13136,8 @@ fppf-algebra. Since~$B \neq 0$, there exists a maximal ideal~$\nnn \subseteq
 B$. The quotient ring~$B/\nnn$ is an algebraic extension of~$K$. Since~$K$ is
 algebraically closed, the identity morphism~$K \to K$ can be extended to a
 morphism~$B/\nnn \to K$ of~$K$-algebras, yielding the desired retraction.
+This statement can also be verified intuitionistically, see
+Proposition~\ref{prop:alg-closed-field-is-fppf-local} below.
 \item Since the condition that a ring is fppf-local is a conjunction of
 geometric implications, a proof that any algebraically closed ring is
 fppf-local using classical logic and the axiom of choice implies that
@@ -13225,7 +13236,7 @@ for which the empty family is a covering is empty.
 
 To show that~$\affl$ is an integral domain in the weak sense, we employ the
 ph~covering~$(V(a) \to X, V(b) \to X)$ for~$S$-schemes~$X$ and functions~$a,b
-\in \Gamma(X,\O_X)$.
+\in \Gamma(X,\O_X)$ such that~$ab = 0$.
 
 To show that for any given functions~$a,b \in \Gamma(X,\O_X)$ one divides the
 other, we employ the ph~covering~$(\RelProj_X \O_X[U,V]/(bU-aV) \to X)$. This
@@ -13351,7 +13362,7 @@ ph~topos classifies contains further axioms.
 \subsection{The surjective topology}
 
 \begin{defn}A family~$(f_i : X_i \to X)_i$ of morphisms between locally finitely
-presented~$S$-schemes if a \emph{covering for the surjective topology} if and
+presented~$S$-schemes is a \emph{covering for the surjective topology} if and
 only if the morphisms~$f_i$ are jointly surjective and each affine open subset
 of~$X$ is the union of the images of finitely many affine open subsets of some of
 the~$X_i$.
@@ -13373,8 +13384,8 @@ condition for a ring to be an algebraically closed geometric field is the
 (countable conjunction of) geometric implications.
 
 \begin{prop}\label{prop:alg-closed-field-is-fppf-local}
-Intuitionistically, any algebraically closed geometric field is an
-fppf-local ring.
+Intuitionistically, an algebraically closed geometric field is
+fppf-local.
 \end{prop}
 
 \begin{proof}Over geometric fields, the kernel of any matrix admits a finite
@@ -13382,7 +13393,7 @@ basis. Moreover, the kernel of any matrix of determinant zero contains a vector
 which has at least one invertible component. Therefore the usual proof that
 commuting matrices admit a common eigenvector (with at least one invertible
 component) applies. This fact can be used to show that the linear algebra
-problem stated on page~\pageref{page:fppf-linear-algebra} characterizing
+problem stated on page~\pageref{page:fppf-linear-algebra} which characterizes
 fppf-locality is solvable.
 \end{proof}
 

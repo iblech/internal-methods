@@ -13230,7 +13230,8 @@ theory. For instance, the conjecture holds in the easy case of two linear
 homogeneous polynomials in two variables, where~$\alpha(f,g)$ can be chosen
 as~$\operatorname{Res}(f,g) = 0$.
 
-\begin{prop}Let~$S$ be a locally Noetherian scheme. Assuming the existence of
+\begin{prop}\label{prop:ph-topos-classifies}
+Let~$S$ be a locally Noetherian scheme. Assuming the existence of
 geometric formulas~$\alpha(f,g)$ as in
 Conjecture~\ref{conj:nullstellensatz-geometric}, the big ph~topos of~$S$
 classifies algebraically closed valuation rings with the extra property that
@@ -13277,6 +13278,22 @@ that~$\affl$ is an algebraically closed valuation ring, which~$\affl \in
 \Zar(S)$ is only in the pathological case~$S = \emptyset$). Combining these, we
 see that~$X \models \Box\varphi$.
 \end{proof}
+
+A corollary of Proposition~\ref{prop:ph-topos-classifies} (assuming
+Conjecture~\ref{conj:nullstellensatz-geometric}) is that the points of the big
+ph~topos are those algebraically closed valuation rings over~$S$ which satisfy
+the condition on solvability of systems of homogeneous polynomial equations.
+Goodwillie and Lichtenbaum have already determined the points of the big
+ph~topos to be the valuation rings with algebraically closed field of fractions
+over~$S$~\cite[Proposition~2.2]{goodwillie-lichtenbaum:cohomological-bound},
+without any extra condition on solvability of systems of equations.
+
+This mismatch can be explained as follows. In classical logic one can show,
+using the valuative criterion for properness, that the rings studied by
+Goodwillie and Lichtenbaum automatically satisfy the condition on solvability
+of systems of equations. However, we don't believe that the proof can be made
+intuitionistic. Assuming this, it's no surprise that the theory which the big
+ph~topos classifies contains further axioms.
 
 
 \subsection{The surjective topology}

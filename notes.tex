@@ -51,7 +51,7 @@
 \newtheorem{rem}[defn]{Remark}
 \newtheorem{question}[defn]{Question}
 \newtheorem{speculation}[defn]{Speculation}
-\newtheorem{warning}[defn]{Warning}
+\newtheorem{caveat}[defn]{Caveat}
 \newtheorem{conjecture}[defn]{Conjecture}
 
 \newcommand{\ZZ}{\mathbb{Z}}
@@ -5484,10 +5484,44 @@ principle, it follows that~$x$ is not invertible or that~$y$ is not invertible.
 Thus~$x$ or~$y$ is nilpotent and therefore zero.
 \end{proof}
 
+\begin{lemma}Let~$X$ be a scheme (or a ringed space). Let~$(\E_i)_i$ be a
+directed system of~$\O_X$-modules such that~$\E \defeq \colim_i \E_i$ is of
+finite type. If~$X$ is quasicompact, there is an index~$i$ such that~$\E_i$ is
+of finite type and such that the coprojection~$\E_i \to \E$ is an epimorphism
+of sheaves of modules.
+\end{lemma}
 
-\begin{itemize}
-\item basic lemmas: filtered colimits, flatness, \ldots
-\end{itemize}
+\begin{proof}Since the usual proof of the statement ``if a directed colimit of
+modules~$(M_i)_i$ is finitely generated, then so is one of the modules and its
+coprojection into~$\colim_i M_i$ is surjective'' is intuitionistic, it can be
+applied in the internal universe of~$\Sh(X)$. Hence we have
+\[ \Sh(X) \models \bigvee_i \speak{$\E_i$ is finitely generated and~$\E_i \to \E$
+is surjective}. \]
+Therefore we can conclude by Proposition~\ref{prop:finite-type-and-co} and
+by Proposition~\ref{prop:quasicompact-meta}.
+\end{proof}
+
+\begin{caveat}There's the lemma that, on a quasicompact and quasiseparated
+scheme, every quasicoherent sheaf of modules is a filtered colimit of finitely
+presented sheaves of modules~\stacksproject{07V9}. There's also the
+corresponding statement for modules, whose standard proof is intuitionistic:
+Any module~$M$ is a filtered colimit of finitely presented modules (namely the
+finitely presented modules mapping to~$M$).
+
+However, the stated lemma does not immediately follow by applying the statement
+for modules in the internal universe. This only yields that any sheaf of
+modules is an \emph{internal} filtered colimit; those are more
+general.\footnote{Any small category~$\I$ induces a small
+category~$\ul{\I}$ internal to~$\Sh(X)$ in such a way that the category of
+diagrams over~$\I$ coincides with the category of internal diagrams
+over~$\ul{\I}$ and the corresponding notions of limit and colimit agree.
+However, not every internal small category is of the form~$\ul{\I}$. Therefore
+internal limits and colimits are more flexible than external ones.
+
+For instance, it's not true that any sheaf of sets is a colimit of a suitable
+system of copies of the terminal sheaf. In contrast, internally, any set is a
+colimit of a suitable system of copies of the singleton set.}
+\end{caveat}
 
 
 \section{Quasicoherent sheaves of modules}
@@ -5787,13 +5821,13 @@ sheaves of ideals. In particular, we want to describe the \emph{quasicoherator} 
 the left adjoint to the inclusion of the quasicoherent radical ideals in the
 poset of all radical ideals -- in simple terms.
 
-\begin{warning}The quasicoherator we refer to does \emph{not} coincide with the
+\begin{caveat}The quasicoherator we refer to does \emph{not} coincide with the
 quasicoherator
 of~$\O_X$-modules~\stacksproject{077P},~\cite{thomason-trobaugh}, which is the
 \emph{right} adjoint to the inclusion of category of
 quasicoherent~$\O_X$-modules in the category of all~$\O_X$-modules. We discuss
 this in more detail in Example~\ref{ex:quasicoherator-of-ideals} below.
-\end{warning}
+\end{caveat}
 
 \begin{prop}\label{prop:quasicoherator-structure-sheaf}
 Let~$X$ be a scheme. Let~$\I \subseteq \O_X$ be a radical ideal.
@@ -7098,7 +7132,7 @@ finitely many steps. This fact is related to the fact that the ordinal~$\omega^n
 well-founded.
 \end{proof}
 
-% YYY: What's the relation to Dickson's lemma?
+% FUTURE: What's the relation to Dickson's lemma?
 
 Since the given internal proof was (necessarily) intuitionistically valid, the
 internal language machinery is intuitionistically valid, and the construction
@@ -11008,10 +11042,10 @@ tensor product by Lemma~\ref{lemma:zar-tensor-product-commutes}.
 \end{align*}
 \end{proof}
 
-\begin{warning}The inclusion functor from the category of~$\O_S$-modules to the
+\begin{caveat}The inclusion functor from the category of~$\O_S$-modules to the
 category of~$\affl$-modules is right exact, and preserves even arbitrary
 colimits, but is not left exact.
-\end{warning}
+\end{caveat}
 
 
 \subsection{Relative spectrum}
@@ -13430,8 +13464,9 @@ Theorem~\ref{thm:big-fppf-largest-subtopos}.
 let~$\Zar(S)_{\neg\neg}$ be the smallest dense subtopos of~$\Zar(S)$, the
 subtopos given by the double negation topology. By Proposition~\ref{prop:a1-field} and
 Proposition~\ref{prop:affl-weakly-algebraically-closed} it holds
-that~$\Zar(S)_{\neg\neg} \models \speak{$\affl$ is an algebraically closed
-geometric field}$. Theorem~\ref{thm:surjective-topology-classifies} implies
+that~$\affl$ is an algebraically closed geometric field from the internal point
+of view of~$\Zar(S)_{\neg\neg}$.
+Hence Theorem~\ref{thm:surjective-topology-classifies} implies
 that~$\Zar(S)_{\neg\neg}$ is a subtopos of the subtopos~$\Zar(S)_\surj$ given
 by the surjective topology.
 
@@ -13439,9 +13474,9 @@ These toposes don't coincide, however, for~$\Zar(S)_{\neg\neg}$ is Boolean
 while~$\Zar(S)_\surj$ is not. One way to see this is to appeal to the syntactic
 characterization of when the classifying topos of a coherent theory is
 Boolean~\cite[Theorem~D3.4.6]{johnstone:elephant}. In the coherent theory of an
-algebraically closed geometric field (which is the theory~$\Zar(S)_\surj$
-classifies in the special case~$S = \Spec(\ZZ)$), the formulas~``$n \cdot 1 = 0$''
-for~$n \geq 1$ are pairwise non-equivalent. By the cited characterization, the
+algebraically closed geometric field (which is the theory which~$\Zar(S)_\surj$
+classifies in the special case~$S = \Spec(\ZZ)$), the formulas~``$p \cdot 1 = 0$''
+for prime numbers~$p$ are pairwise non-equivalent. By the cited characterization, the
 existence of an infinite family of pairwise non-equivalent formulas is
 sufficient to ensure that the classifying topos is not Boolean.
 
@@ -13450,23 +13485,10 @@ Madore~\cite[entry~2002-03-16:036]{madore:diary}.
 \end{rem}
 
 
-\section{Unsorted}
-\begin{itemize}
-\item ``functoriality''
-\item Kähler differentials
-\item closed and open subschemes
-\item $j_! \O_U$ flat over~$\O_X$, \ldots
-\item Koszul resolution; Beilinson resolution?
-\item meta properties: some lemmas about limits of modules
-\item locally small categories
-\item open/closed immersions
-\item morphisms of schemes...
-\item proper maps...
-\item limits and colimits...
-\item Kähler differentials; clear myth that the definition via free modules
-``does not glue very well''
-(\url{http://www.mathematik.uni-kl.de/~gathmann/class/alggeom-2002/chapter-7.pdf})
-\end{itemize}
+% FUTURE (very easy):
+% Kähler differentials; clear myth that the definition via free modules
+% ``does not glue very well'', see
+% \url{http://www.mathematik.uni-kl.de/~gathmann/class/alggeom-2002/chapter-7.pdf}.
 
 
 \chapter*{Appendix}
@@ -13662,8 +13684,6 @@ explain contexts}
 \nocite{*}
 \printbibliography
 
-\XXX{remark on possible pitfalls}
-
 \end{document}
 
 FUTURE:
@@ -13683,6 +13703,8 @@ XXX:
   exists an object unique up to unique isomorphism with some property, then
   externally such an object exists. Note that talking about prestacks should not
   be possible from the point of view of Sh(X).
+* Explore closure of quasicoherent sheaves. For instance sum of submodules.
+* Skim the notes for possible caveats.
 
 XXX:
 Discuss relation to https://golem.ph.utexas.edu/category/2009/06/algebraic_geometry_for_categor.html

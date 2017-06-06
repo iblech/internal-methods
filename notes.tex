@@ -12036,7 +12036,7 @@ Zariski toposes, this notion is not related to open morphisms or open
 immersions between schemes: If~$X \to S$ is any morphism of schemes, the
 induced geometric morphism~$\Zar(X) \to \Zar(S)$ is isomorphic to the canonical
 morphism~$\Zar(S)/\ul{X} \to \Zar(S)$, as detailed in
-Section~\ref{sect:change-of-base}). Geometric morphisms of the form~$\E/A \to
+Section~\ref{sect:change-of-base}. Geometric morphisms of the form~$\E/A \to
 \E$ are always open.\end{rem}
 
 
@@ -12132,7 +12132,7 @@ statements:
 \item The morphism~$f$ is surjective.
 \item From the internal point of view of~$\Zar(S)$, it's not the case that~$\ul{X}$ is
 empty, that is
-\[ Zar(S) \models \neg\neg(\speak{$\ul{X}$ is inhabited}). \]
+\[ \Zar(S) \models \neg\neg(\speak{$\ul{X}$ is inhabited}). \]
 \end{enumerate}
 If~$X$ is locally contained in the site used to define~$\Zar(S)$ (for instance,
 if~$X$ is contained in the universe used to define~$\Zar(S)$ or if one of the
@@ -12141,6 +12141,15 @@ then~(1) implies~(2). The converse holds if the site is closed under
 taking spectra of residue fields or if one of the parsimonious sites is used
 and~$f$ is quasicompact and quasiseparated.
 \end{prop}
+% Slightly more is true:
+% (1) f is surjective.
+% (2) X times_S T empty ==> T empty for all T/S in the site
+% (3) Zar(S) |== neg neg (X inhabited)
+% Then:
+% * (1) ==> (2).
+% * (2) ==> (3) if X is in the site.
+% * (3) ==> (2).
+% * (2) ==> (1) if f is qcqs.
 
 \begin{proof}The translation of the internal statement using the Kripke--Joyal
 semantics is:
@@ -12168,7 +12177,7 @@ quasiseparated as well, the schemes~$X \times_S T_i$ are quasicompact and
 quasiseparated (as absolute schemes). Therefore, if~$X_s = X \times_S T
 = \lim_i (X \times_S T_i)$ is empty, then so is~$X \times_S T_i$ for
 some~$i$~\stacksproject{01ZC}. Thus~$T_i = \emptyset$ and
-therefore~$\Spec(k(s)) = \emptyset$; this is a contradiction.
+hence~$\Spec(k(s)) = \emptyset$; this is a contradiction.
 
 For the converse direction, let an~$S$-scheme~$T$ contained in the site used to
 define~$\Zar(S)$ be given such that~$\ul{X \times_S T} = \ul{\emptyset}$ as
@@ -12702,7 +12711,8 @@ corresponding to the étale topology admits a purely internal characterization
 in~$\Zar(S)$, which furthermore resonates well with the intuition about the
 étale topology.
 
-\begin{thm}Let~$S$ be a scheme. The modal operator~$\Box_\text{ét}$
+\begin{thm}Let~$S$ be a scheme. Employ one of the parsimonious sites to
+define~$\Zar(S)$. The modal operator~$\Box_\text{ét}$
 in~$\Zar(S)$ corresponding to the étale topology is the smallest
 operator~$\Box$ such that the~$\Box$-translation of the statement~``$\affl$ is
 separably closed'' holds.\end{thm}
@@ -13460,15 +13470,91 @@ Corollary~\ref{cor:points-fppf-topos} follow from
 Theorem~\ref{thm:big-fppf-largest-subtopos}.
 \end{proof}
 
-\begin{rem}As in Section~\ref{sect:subspace-to-modal-operator},
-let~$\Zar(S)_{\neg\neg}$ be the smallest dense subtopos of~$\Zar(S)$, the
-subtopos given by the double negation topology. By Proposition~\ref{prop:a1-field} and
-Proposition~\ref{prop:affl-weakly-algebraically-closed} it holds
-that~$\affl$ is an algebraically closed geometric field from the internal point
-of view of~$\Zar(S)_{\neg\neg}$.
-Hence Theorem~\ref{thm:surjective-topology-classifies} implies
-that~$\Zar(S)_{\neg\neg}$ is a subtopos of the subtopos~$\Zar(S)_\surj$ given
-by the surjective topology.
+
+\subsection{The double negation topology}
+
+As in Section~\ref{sect:subspace-to-modal-operator}, let~$\Zar(S)_{\neg\neg}$
+be the smallest dense subtopos of~$\Zar(S)$ (defined using the parsimonious
+sites). It is the topos of sheaves over~$(\Sch/S)_\lfp$ for the double
+negation topology and Boolean. The following proposition describes the double
+negation topology in explicit terms.
+
+\begin{prop}The subtopos~$\Zar(S)_{\neg\neg}$ can be presented as the topos of
+sheaves over the site~$(\Sch/S)_\lfp$ whose covering families~$(X_i \to X)_i$
+are precisely the families such that
+\[ \label{eqn:almost-surjectivity}\tag{$\star$}
+  \textnormal{$T \times_X X_i = \emptyset$ for all $i$} \quad\text{implies}\quad
+  T = \emptyset \]
+for all locally finitely presented~$X$-schemes~$T$.
+
+In case that~$S$ is locally of finite type over a field,
+condition~\eqref{eqn:almost-surjectivity} is satisfied if and only if for every
+closed point~$x \in X$ there is a finite field extension~$K \fieldext k(x)$
+such that~$x$ has a~$K$-valued preimage in one of the~$X_i$.
+\end{prop}
+
+\begin{proof}For the first claim, we note that by a general
+fact~$\Zar(S)_{\neg\neg}$ can be presented as the topos of sheaves
+over~$(\Sch/S)_\lfp$ whose covering families~$(f_i : X_i \to X)_i$ are
+precisely the families such that~$(\ul{X_i}^{++} \to \ul{X}^{++})_i$ is a
+jointly epimorphic family in~$\Zar(S)_{\neg\neg}$, where~$(\placeholder)^{++} :
+\Zar(S) \to \Zar(S)_{\neg\neg}$ is the sheafification functor.
+
+This is the case if and only if the morphisms~$\ul{X_i}^{++} \to \ul{X}^{++}$
+are jointly surjective from the internal point of view of~$\Zar(S)_{\neg\neg}$.
+By the generalization of Theorem~\ref{thm:box-translation-semantically} from
+locales to toposes, this is the case if and only if
+\[ \Zar(S) \models \forall x\?\ul{X}\_
+  \neg\neg \bigl(\bigvee_i \exists u\?\ul{X_i}\_
+    \ul{f_i}(u) = x\bigr). \]
+As detailed in Section~\ref{sect:change-of-base}, this is the case if and only if
+\[ \Zar(X) \models \neg\neg\bigl(\bigvee_i \speak{$\ul{X_i}$ is
+inhabited}\bigr). \]
+Similarly to the (easy part of)
+Proposition~\ref{prop:char-surjective-morphisms}, this in turn is equivalent to
+condition~\eqref{eqn:almost-surjectivity}.
+
+The second claim follows from
+Proposition~\ref{prop:notnot-in-big-zariski-topos}.
+\end{proof}
+
+\begin{prop}Let~$p$ be a point of~$\Zar(S)$. By
+Proposition~\ref{prop:points-of-big-zariski}, the point~$p$ corresponds to a
+local ring~$A$ over~$S$. If~$p$ is even a point of~$\Zar(S)_{\neg\neg}$,
+then~$A$ is an algebraically closed geometric field.\end{prop}
+%If~$S$ is locally of finite type over a field, then conversely any
+%algebraically closed geometric field~$\Spec(A) \to S$ over~$S$ whose image
+%in~$S$ is closed is a point of~$\Zar(S)_{\neg\neg}$.
+
+\begin{proof}By Proposition~\ref{prop:a1-field} and
+Proposition~\ref{prop:affl-weakly-algebraically-closed},
+the~$\neg\neg$-translation of~``$\affl$ is an algebraically closed geometric
+field'' holds in~$\Zar(S)$. Therefore~$\affl$ is an algebraically closed
+geometric field from the internal point of view of~$\Zar(S)_{\neg\neg}$. Since
+being an algebraically closed geometric field is a (conjunction of) geometric
+implications, this property is preserved under pullback along geometric
+morphisms. This suffices to establish the claim.
+%For the second claim, let an algebraically closed geometric field~$A$ together
+%with a closed morphism~$\Spec(A) \to S$ be given. In order to exhibit~$\Spec(A)
+%\to S$ as a point of~$\Zar(S)_{\neg\neg}$, we need to verify that the
+%functor~$\Hom_S(\Spec(A), \placeholder) : (\Sch/S)_\lfp \to \Set$ maps covering
+%families to jointly surjective families. Let a covering family~$(X_i \to X)_i$
+%and a morphism~$g : \Spec(A) \to X$ be given. Since the image of the unique
+%point under~$g$ is closed (NO, IT'S NOT).
+\end{proof}
+
+Since~$\affl$ is an algebraically closed geometric field from the internal
+point of view of~$\Zar(S)_{\neg\neg}$,
+Theorem~\ref{thm:surjective-topology-classifies} implies
+that~$\Zar(S)_{\neg\neg}$ is a subtopos of the
+subtopos~$\Zar(S)_\surj$.\footnote{This can also be seen more directly by
+observing that~$\Zar(S)_\surj$ is a dense subtopos of~$\Zar(S)$.
+Because~$\Zar(S)_{\neg\neg}$ is the smallest dense subtopos of~$\Zar(S)$, this
+observation implies that~$\Zar(S)_{\neg\neg}$ is a subtopos of~$\Zar(S)_\surj$.
+Denseness of~$\Zar(S)_\surj$ can be checked by verifying that
+the internal statement~$\Zar(S) \models \neg \Box_\surj\bot$ holds; this
+amounts to verifying that a scheme which admits a cover in the surjective
+topology by empty schemes, is empty.}
 
 These toposes don't coincide, however, for~$\Zar(S)_{\neg\neg}$ is Boolean
 while~$\Zar(S)_\surj$ is not. One way to see this is to appeal to the syntactic
@@ -13482,7 +13568,12 @@ sufficient to ensure that the classifying topos is not Boolean.
 
 This observation settles a question by
 Madore~\cite[entry~2002-03-16:036]{madore:diary}.
-\end{rem}
+
+We don't know much more about~$\Zar(S)_{\neg\neg}$. Far from knowing which
+theory~$\Zar(S)_{\neg\neg}$ classifies, we don't even have a full description
+of its points. In the case that~$S$ is~$\Spec(\ZZ)$, determining this theory
+would solve the purely algebro-logical problem of describing the
+Booleanization of the theory of a local ring.
 
 
 % FUTURE (very easy):

@@ -2072,12 +2072,12 @@ Intuitionistically, one cannot even show that a weakly descending sequence of
 natural numbers stabilizes in this sense; the statement that one could is
 equivalent to the \emph{limited principle of omniscience for~$\NN$}.
 Intuitionistically, it is only true that a weakly descending sequence~$a_0 \geq
-a_1 \geq \cdots$ of natural numbers eventually \emph{halts} in the sense that
+a_1 \geq \cdots$ of natural numbers eventually \emph{stalls} in the sense that
 there exists an index~$n$ such that~$a_n = a_{n+1}$ (but~$a_{n+1} > a_{n+2}$ is
 allowed).\footnote{Classically, the following three statements about a ring are
 equivalent: (1)~Every ascending chain of ideals stabilizes. (2)~Every ascending
 chain of finitely generated ideals stabilizes. (3)~Every ascending chain of
-finitely generated ideals halts.}
+finitely generated ideals stalls.}
 
 We give two constructively inequivalent notions of Noetherian rings. The first
 one is of independent constructive interest and enjoys the property that the structure sheaf
@@ -2088,6 +2088,14 @@ The second one is quite weak from a constructive point of view, but still
 interesting from a geometric point of view and useful enough to derive
 nontrivial consequences. It is satisfied by the structure sheaf of any (not
 necessarily locally Noetherian) reduced scheme.
+
+There are several proposals for a constructively sensible definition of
+Noetherian rings in the literature on constructive algebra, each with unique
+advantages and
+disadvantages~\cite{richman:noetherian,mines-richman-ruitenburg:constructive-algebra,perdry:noetherian,perdry:lazy,perdry-schuster:noetherian,tennenbaum:hilbert}.
+Insightful comments on why this is so can be found in the introduction and more
+specifically on page~27 of the textbook by Lombardi and
+Quitté~\cite{lombardi:quitte:constructive-algebra}.
 
 
 {\tocless
@@ -2104,19 +2112,29 @@ with values in~$M$} consists of an initial value~$x_0 \in M$ and a function~$f
 \item For any~$x_1 \in f(x_0)$ and any~$x_2 \in f(x_1)$, the set $f(x_2)$ is inhabited.
 \item And so on.
 \end{itemize}
-Such a process \emph{halts} if and only if there
+Such a process \emph{stalls} if and only if there
 exists a step~$n$ and elements~$x_1, \ldots, x_n$ such that~$x_{i+1}
 \in f(x_i)$ for~$i = 0,\ldots,n-1$ and such that~$x_n \in f(x_n)$.
 The set~$M$ satisfies the \emph{ascending process condition} if and only if every
-ascending processes with values in~$M$ halts.
+ascending process with values in~$M$ stalls.
 \end{defn}
 
 Intuitively, we picture~$f(x)$ as the set of all possible results of running
 the process for a single step, starting with the value~$x$. This set could
-be a singleton, but it may also contain more than one element, for instance if
+be a singleton, in case that the process deterministically produces a single
+value, but it may also contain more than one element, for instance if
 the process cannot provide the next value in a canonical way. Instead of
 arbitrarily choosing a definitive value for its result, the process may instead
 collect all the possible values in the set~$f(x)$.
+
+\begin{rem}The usual term for what we call ``to stall'' is
+``to halt''~\cite{richman:noetherian,perdry-schuster:noetherian}. However, this
+choice of wording is slightly unfortunate, since the phrase ``the process
+halts'' intuitively suggests that the process stops and won't produce further
+results in the future, even though this is not what is mathematically meant. We
+are grateful to Matthias Hutzler for proposing ``to stall'', which seems quite
+appropriate.
+\end{rem}
 
 \begin{defn}A ring~$A$ is \emph{processly Noetherian} if and only if the
 set of finitely generated ideals in~$A$ satisfies the ascending process
@@ -2125,7 +2143,7 @@ condition.\end{defn}
 An ascending chain of elements~$a_0 \preceq a_1 \preceq \cdots$ in a partially
 ordered set gives rise to an ascending process by setting~$x_0 \defeq a_0$
 and~$f(x) \defeq \{ y \,|\, \exists n\_ x = a_n \wedge y = a_{n+1} \}$.
-(This process halts iff there is an index~$n$ such that~$a_n = a_{n+1}$.)
+(This process stalls iff there is an index~$n$ such that~$a_n = a_{n+1}$.)
 Conversely, the axiom of dependent choice would allow to construct an
 ascending chain from an ascending process. In the presence of this axiom, for
 instance in a classical context, a ring is therefore
@@ -2135,7 +2153,13 @@ The notion of a processly Noetherian ring works well in an
 intuitionistic context: Important rings such as~$\ZZ$ and more generally~$\O_K$
 for any algebraic number field~$K$ are processly Noetherian, and matrices
 over Bézout rings which are integral domains in the weak sense and
-processly Noetherian can be put into Smith canonical form.
+processly Noetherian can be put into Smith canonical form.\footnote{In the
+algorithm to put a matrix into Smith canonical form, one has to repeatedly
+\emph{choose} generators for principal ideals and associated Bézout
+representations (see for instance~\cite[Section~4]{richman:noetherian}). Since
+these choices are not unique, the algorithm doesn't produce a \emph{sequence}
+of intermediate ideals, but only a \emph{process}. This example was our main
+motivation for the notion of processly Noetherian rings.}
 
 Richman also studied Noetherian rings in a constructive context without
 dependent choice~\cite{richman:noetherian}. His notion of \emph{ascending tree

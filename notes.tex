@@ -52,6 +52,7 @@
 \newtheorem{question}[defn]{Question}
 \newtheorem{speculation}[defn]{Speculation}
 \newtheorem{warning}[defn]{Warning}
+\newtheorem{conjecture}[defn]{Conjecture}
 
 \newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\FF}{\mathbb{F}}
@@ -108,6 +109,7 @@
 \newcommand{\Zar}{\mathrm{Zar}}
 \newcommand{\Et}{\mathrm{\acute{E}t}}
 \newcommand{\fppf}{\mathrm{fppf}}
+\newcommand{\ph}{\mathrm{ph}}
 \newcommand{\surj}{\mathrm{surj}}
 \newcommand{\Sch}{\mathrm{Sch}}
 \newcommand{\Aff}{\mathrm{Aff}}
@@ -7196,7 +7198,7 @@ normalization lemma to the~$\O_{\Spec(\ZZ)}$-algebra~$A^\sim$.
 Writing~$A =
 \ZZ[X_1,\ldots,X_n]/(f_1,\ldots,f_m)$, we thus obtain that, internally,
 it's \notnot the case that~$1 \in (f_1,\ldots,f_m)$ or that there
-is a finite injective 
+is a finite injective
 morphism~$\O_{\Spec(\ZZ)}[Y_1,\ldots,Y_r] \to
 \O_{\Spec(\ZZ)}[X_1,\ldots,X_n]/(f_1,\ldots,f_m) = A^\sim$ for some number~$r
 \geq 0$. Since any positive natural number is invertible in~$A^\sim$ and finite
@@ -13126,6 +13128,155 @@ the~$X_i$.
 Every fppf covering is an fpqc covering. Conversely, since we employ the
 parsimonious sites, every fpqc covering is an fppf covering. Therefore in our
 setup there is no difference between the big fppf topos and the big fpqc topos.
+
+
+\subsection{The ph topology}
+
+The goal of this section is to give an explicit description of the theory which
+the big ph~topos of a scheme classifies, conditional on a conjecture we
+didn't prove.
+
+\begin{defn}\begin{enumerate}
+\item A \emph{standard ph~covering} of an~$S$-scheme~$X$ is a family of
+the form~$(U_i \hookrightarrow T \to X)_i$, where~$T \to X$ is a proper
+surjective morphism and~$T = \bigcup_i U_i$ is an open affine covering.
+\item A family~$(f_i : X_i \to X)_i$ of morphisms between locally finitely
+presented~$S$-schemes if a \emph{covering for the ph~topology} if and
+only if for any affine open subset~$U \subseteq X$ the family~$(X_i \times_X U
+\to U)_i$ can be refined by a standard ph~covering.
+\item The \emph{big ph~topos}~$\Zar(S)_\ph$ of a scheme~$S$ is the topos of
+sheaves over the category~$(\Sch/S)_\lfp$ of locally finitely
+presented~$S$-schemes equipped with the ph~coverings.
+\end{enumerate}
+\end{defn}
+
+The ph~topology is not subcanonical, therefore we mean by ``the affine line in
+the big ph~topos'' the sheafification of~$\affl$. We write~``$\Box_\ph$'' for
+the modal operator of~$\Zar(S)$ corresponding to the ph~topology.
+
+\begin{defn}A \emph{valuation ring} is an integral domain~$R$ in the weak sense
+(see Definition~\ref{defn:integral-domain}) such that, for any
+elements~$a,b\?R$, $a \mid b$ or $b \mid a$.\end{defn}
+
+With this definition, valuation rings are local rings.
+
+\begin{prop}From the point of view of~$\Zar(S)_\ph$, the affine line is an
+algebraically closed valuation ring and a field in the sense that nonzero
+elements are invertible.
+\end{prop}
+
+\begin{proof}Since~$\Zar(S)_\ph$ is a subtopos of~$\Zar(S)_\fppf$, the affine
+line is algebraically closed (and even fppf-local) from the internal point of
+view of~$\Zar(S)$. The proof that nonzero elements are invertible proceeds just
+as in Proposition~\ref{prop:affl-field-informal}, exploiting that an~$S$-scheme
+for which the empty family is a covering is empty.
+
+To show that~$\affl$ is an integral domain in the weak sense, we employ the
+ph~covering~$(V(a) \to X, V(b) \to X)$ for~$S$-schemes~$X$ and functions~$a,b
+\in \Gamma(X,\O_X)$.
+
+To show that for any given functions~$a,b \in \Gamma(X,\O_X)$ one divides the
+other, we employ the ph~covering~$(\RelProj_X \O_X[U,V]/(bU-aV) \to X)$. This
+covering ensures that, from the internal point of view, the set~$\{
+[u\mathbin{:}v] \,|\, bu-av=0 \}$ is inhabited. If~$u$ is invertible, then~$a
+\mid b$; if~$v$ is invertible, then~$b \mid a$.
+\end{proof}
+
+\begin{prop}\label{prop:affine-line-ph}
+The affine line of~$\Zar(S)$ has the following closure property: Any finite
+system of homogeneous polynomial equations which the projective Nullstellensatz
+predicts to have a nontrivial solution~$\Box_\ph$-has a solution. Formally,
+\begin{multline*}
+  \Zar(S) \models \bigwedge_{n,m\geq0}
+    \forall f_1,\ldots,f_m\?\affl[X_0,\ldots,X_n]\_ \\
+      \Bigl(\speak{the $f_j$ are homogeneous} \wedge
+      \neg\bigl((X_0,\ldots,X_n) \subseteq \sqrt{(f_1,\ldots,f_m)}\bigr)\Bigr)
+      \Longrightarrow \\
+        \Box_\ph\Bigl(\exists x_0,\ldots,x_n\?\affl\_
+          \bigvee_{i=0}^n \speak{$x_i$ \inv} \wedge
+          \bigwedge_{j=1}^m f_j(x_0,\ldots,x_n) = 0\Bigr).
+\end{multline*}
+\end{prop}
+
+\begin{proof}Let homogeneous polynomials~$f_1,\ldots,f_m \in
+\Gamma(T,\O_T)[X_0,\ldots,X_n]$ be given such that
+\[ T \models \neg\bigl((X_0,\ldots,X_n) \subseteq
+\sqrt{(f_1,\ldots,f_m)}\bigr). \]
+Then the projection morphism~$T' \defeq \RelProj_T
+\O_T[X_0,\ldots,X_n]/(f_1,\ldots,f_m) \to T$ is surjective. Since
+\[ T' \models \exists x_0,\ldots,x_n\?\affl\_
+  \bigvee_{i=0}^n \speak{$x_i$ \inv} \wedge
+    \bigwedge_{j=1}^m f_j(x_0,\ldots,x_n) = 0 \]
+and since~$(T' \to T)$ is a ph~covering, it follows that
+\[ T \models \Box_\ph\Bigl(\exists x_0,\ldots,x_n\?\affl\_
+  \bigvee_{i=0}^n \speak{$x_i$ \inv} \wedge
+    \bigwedge_{j=1}^m f_j(x_0,\ldots,x_n) = 0\Bigr). \qedhere \]
+\end{proof}
+
+To proceed further, we need to assume the following statement.
+
+\begin{conjecture}\label{conj:nullstellensatz-geometric}
+For any natural numbers~$n$ and~$m$ and any finite set of variables organized
+to yield the coefficients of~$m$ homogeneous polynomials~$f_1,\ldots,f_m$
+in~$n+1$ variables, there is a geometric formula~$\alpha(f_1,\ldots,f_m)$ which
+is equivalent to the formula
+\[ \neg\Bigl(\bigwedge_{i=0}^n X_i \in \sqrt{(f_1,\ldots,f_m)}\Bigr) \]
+in the intuitionistic first-order theory of algebraically closed valuation
+rings which are fields in the sense that an element is invertible if and only
+if its nonzero.\end{conjecture}
+
+We believe that this conjecture can be verified by using classical resultant
+theory. For instance, the conjecture holds in the easy case of two linear
+homogeneous polynomials in two variables, where~$\alpha(f,g)$ can be chosen
+as~$\operatorname{Res}(f,g) = 0$.
+
+\begin{prop}Let~$S$ be a locally Noetherian scheme. Assuming the existence of
+geometric formulas~$\alpha(f,g)$ as in
+Conjecture~\ref{conj:nullstellensatz-geometric}, the big ph~topos of~$S$
+classifies algebraically closed valuation rings with the extra property that
+\[ \alpha(f_1,\ldots,f_m) \Longrightarrow \exists x_0,\ldots,x_n\_
+    \bigvee_{i=0}^n \speak{$x_i$ \inv} \wedge
+      \bigwedge_{j=1}^m f_j(x_0,\ldots,x_n) = 0.
+\]
+\end{prop}
+
+\begin{proof}We show that~$\Zar(S)_\ph$ is the largest subtopos of~$\Zar(S)$
+where~$\affl$ has the properties mentioned in the statement of the proposition.
+The claim then follows in the same way as
+Corollary~\ref{cor:big-fpps-topos-classifies} follows from
+Theorem~\ref{thm:big-fppf-largest-subtopos}.
+
+Applying Proposition~\ref{prop:affine-line-ph}, one can see that the affine
+line has these properties internally in~$\Zar(S)_\ph$.
+
+Conversely, let a modal operator~$\Box$ be given such that~$\affl$ has these
+properties in~$\Zar(S)_\Box$. We want to verify that
+$\Zar(S) \models
+  \forall \varphi \? \Omega\_
+    \Box_\ph\varphi \Rightarrow \Box\varphi$.
+Let a ph~covering~$(X_i \to X)_i$ of an~$S$-scheme~$X$ be given such that~$X_i
+\models \varphi$ for all~$i$. We are to show that~$X \models \Box\varphi$.
+
+Without loss of generality, we may assume that~$X$ is affine and that the
+covering is a standard ph~covering. Furthermore, we may assume that the
+covering is a singleton covering~$(T \to X)$ where~$T \to X$ is a proper
+surjective morphism. By Chow's lemma, we can further assume that~$T \to X$ is
+the canonical projection of a closed subscheme of some projective
+space~$\PP^n_X$ to~$X$. Since~$X$ is locally Noetherian, the defining sheaf of
+ideals is of finite type. Thus we may assume~$T = \RelProj_X
+\O_X[U_0,\ldots,U_n]/(f_1,\ldots,f_m)$. Since~$T \models \varphi$, we have
+\[ X \models \speak{the system ``$f_1 = \cdots = f_m = 0$'' has a nontrivial
+solution}
+\Rightarrow \varphi. \]
+Since~$T \to X$ is surjective, we have
+\[ X \models
+    \neg\Bigl(\bigwedge_{i=0}^n U_i \in \sqrt{(f_1,\ldots,f_m)}\Bigr) \]
+and therefore~$X \models \Box(\alpha(f_1,\ldots,f_m))$ (we might not have~$X
+\models \alpha(f_1,\ldots,f_m)$, since the proof of equivalence may assume
+that~$\affl$ is an algebraically closed valuation ring, which~$\affl \in
+\Zar(S)$ is only in the pathological case~$S = \emptyset$). Combining these, we
+see that~$X \models \Box\varphi$.
+\end{proof}
 
 
 \subsection{The surjective topology}

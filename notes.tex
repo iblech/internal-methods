@@ -143,6 +143,7 @@
 \newcommand{\Gr}{\mathrm{Gr}}
 \newcommand{\Open}{\T}
 \newcommand{\?}{\,{:}\,}
+\newcommand{\hg}{\mathbin{:}}  % homogeneous coordinates
 \renewcommand{\_}{\mathpunct{.}\,}
 \newcommand{\speak}[1]{\ulcorner\text{\textnormal{#1}}\urcorner}
 \newcommand{\Ll}{\vcentcolon\Longleftrightarrow}
@@ -522,7 +523,7 @@ functorial approach. For instance, while the functor associated to
 projective~$n$-space is given on fields by the simple expression
 \[ \begin{array}{r@{}c@{}l}
   K &{}\longmapsto{}& \text{the set of lines through the origin in~$K^{n+1}$} \\
-  && \qquad \cong \{ [x_0:\cdots:x_n] \,|\, \text{$x_i \neq 0$ for some~$i$} \},
+  && \qquad \cong \{ [x_0 \hg \cdots \hg x_n] \,|\, \text{$x_i \neq 0$ for some~$i$} \},
 \end{array} \]
 on general rings it is given by
 \[ \begin{array}{r@{}c@{}l}
@@ -555,7 +556,7 @@ and for projective~$n$-space to be given by either of the expressions
 \begin{multline*}
   \qquad\text{the set of lines through the origin in~$(\ul{\AA}^1)^{n+1}$}
   \quad\text{or} \\
-  \{ [x_0:\cdots:x_n] \,|\, \text{$x_i \neq 0$ for some~$i$} \}.\qquad
+  \{ [x_0 \hg \cdots \hg x_n] \,|\, \text{$x_i \neq 0$ for some~$i$} \}.\qquad
 \end{multline*}
 This is not a specialized trick to give short descriptions of some schemes:
 Like with the internal universe of any topos, the full power of intuitionistic
@@ -11169,8 +11170,8 @@ by~$A_1$ is the set
 
 \begin{ex}\label{ex:proj-polynomial-ring}
 The synthetic Proj of~$R[X_0,\ldots,X_n]$ is canonically isomorphic
-to the set of points~$[x_0:\cdots:x_n]$ with at
-least one coordinate being invertible.
+to the set of points~$[x_0 \hg \cdots \hg x_n]$ with at
+least one invertible coordinate.
 \end{ex}
 
 \begin{prop}\label{prop:relative-proj-big-zariski}
@@ -11189,13 +11190,13 @@ MathOverflow~\cite{mo:pp1}. We are grateful to Yuhao Huang for the impulse.
 
 \begin{cor}\label{cor:pp1-classifies}
 The big Zariski topos of the projective line~$\PP^1_\ZZ$ classifies the theory of ``a local
-ring together with a point~$[a:b]$'' (that is a pair~$(a,b)$ of ring elements,
+ring together with a point~$[a \hg b]$'' (that is a pair~$(a,b)$ of ring elements,
 where at least one coordinate is invertible, up to multiplication by units).
 Explicitly, this theory is given by:
 \begin{enumerate}
 \item A sort~$A$ together with function symbols, constants, and axioms expressing
 that~$A$ is a local ring.
-\item A sort~$P$ (to be thought of as the set of $[a:b]$ with $a,b\?A$ where at
+\item A sort~$P$ (to be thought of as the set of $[a \hg b]$ with $a,b\?A$ where at
 least one coordinate is invertible) together with a
 relation~$\langle\cdot,\cdot,\cdot\rangle$ on $A \times A \times P$ and the
 following axioms:
@@ -11214,9 +11215,9 @@ following axioms:
 
 \begin{proof}The big Zariski topos of~$\PP^1_\ZZ$ is a topos over the big
 Zariski topos of~$\Spec(\ZZ)$; from the point of view of~$\Zar(\Spec(\ZZ))$, it
-is the classifying topos of a point~$[a:b]$ where~$a,b\?\afflz$,
+is the classifying topos of a point~$[a \hg b]$ where~$a,b\?\afflz$,
 since~$\Zar(\PP^1_\ZZ) \simeq \Zar(\Spec(\ZZ))/\ul{\PP^1_\ZZ}$
-as discussed in Section~\ref{sect:change-of-base} and~$\ul{\PP^1_\ZZ} \cong \{ [a:b] \,|\,
+as discussed in Section~\ref{sect:change-of-base} and~$\ul{\PP^1_\ZZ} \cong \{ [a \hg b] \,|\,
 a,b\?\afflz \}$ by Proposition~\ref{prop:relative-proj-big-zariski} and
 Example~\ref{ex:proj-polynomial-ring}. The big Zariski topos of~$\Spec(\ZZ)$
 classifies local rings. Therefore the claim follows by considering the
@@ -11230,7 +11231,7 @@ of~$\ZZ[X,Y]$ meeting the irrelevant ideal together with a local
 homomorphism~$\alpha : \ZZ[X,Y][F^{-1}]_0 \to A$ into a local ring~$A$. Such data
 gives rise to a point~$[\alpha(X/u) : \alpha(Y/u)]$, where~$u$ is a
 homogeneous element of degree~1 contained in~$F$; and conversely any
-point~$[a:b]$ gives rise to a filter
+point~$[a \hg b]$ gives rise to a filter
 \[ F \defeq \{ f \in \ZZ[X,Y] \,|\, \text{$f_n(a,b)$ is invertible in~$A$
 for some~$n \geq 0$} \}, \]
 where~$f_n$ is the homogeneous component of degree~$n$ of~$f$, and a local

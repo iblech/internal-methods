@@ -2249,7 +2249,7 @@ involve ascending sequences: A ring is Noetherian if and only if any of its
 ideals is finitely generated. We mentioned in the footnote on
 page~\pageref{fn:z-principal-ideal-domain} that this condition is far too
 strong from a constructive point of view; not even the ring~$\ZZ$ verifies it.
-However, it can be weakened to yield a constructively sensible notion:
+However, it can be weakened to yield an interesting notion:
 
 \begin{defn}A ring~$A$ is \emph{weakly Noetherian} if and only if any ideal
 of~$A$ is \notnot finitely generated. A module~$M$ is \emph{weakly Noetherian}
@@ -2264,6 +2264,50 @@ minimal element~$d$ of~$\aaa \cap \NN^+$ (which \notnot exists) witnesses~$\aaa
 assumption is \notnot satisfied, the ideal~$\aaa$ is \notnot \notnot finitely
 generated, so \notnot finitely generated. (We remark on this proof scheme on
 page~\pageref{proof-scheme-boxed-statements}.) \end{ex}
+
+It appears that this Noetherian condition has not been studied in the
+literature on constructive algebra. Indeed, from the philosophical and the
+computational point of view on constructive mathematics, the notion of a weakly
+Noetherian ring is not very useful: From an intuitionistic proof that a given
+ideal is finitely generated one can mechanically extract explicit generators,
+thereby satisfying computational or philosophical demands (``the generators are
+really there''). In contrast, an intuitionistic proof that a given ideal is
+\notnot finitely generated doesn't contain computational content in general.
+
+Along the same lines, one could dismiss the fact (proved below) that Hilbert's
+basis theorem, stating that~$A[X]$ is Noetherian if~$A$ is, holds for the
+notion of weakly Noetherian rings. In fact, one could feel mocked by this
+version of Hilbert's basis theorem: It promises that any ideal of~$A[X]$
+``has'' finitely many generators in some Platonic sense (without providing any
+clue on how one might find the generators -- they remain anonymous), provided
+that any ideal of~$A$ ``has'' finitely many generators in the same sense.
+
+However, applications in the internal universe of toposes provide a further
+motivation for constructive reasoning, related but distinct from computational
+or philosophical considerations. A first indication that the notion of weakly
+Noetherian rings is useful is that the structure sheaf~$\O_X$ of any
+scheme is weakly Noetherian from the internal point of view of~$\Sh(X)$. We
+exploit this observation in Section~\ref{sect:generic-freeness} to give a short
+proof of Grothendieck's generic freeness lemma.
+
+Secondly, internal universes of toposes may satisfy certain classicality
+principles which are not generally satisfied in constructive mathematics. If
+a topos is set up in an intuitionistically sensible manner, one might then even
+be able to extract constructive results. For instance, the structure sheaf of a
+reduced scheme satisfies the principle
+\[ \Sh(X) \models \forall s\?\O_X\_
+  \neg\neg(s = 0) \Longrightarrow s = 0. \]
+This principle can be put to use as follows. Let's consider the situation that
+we have an intuitionistic proof that some ring element~$s$ is zero under the
+assumption that some ideal~$\aaa$ is finitely generated. Hence we also have an
+intuitionistic proof that~$s$ is \notnot zero under the assumption that~$\aaa$
+is \notnot finitely generated. This assumption could be validated by the weakly
+Noetherian property, yielding an unconditional proof that~$s$ is \notnot zero.
+Usually in constructive mathematics, we would be stuck at this point; but
+internally in~$\Sh(X)$, we may continue to deduce that~$s$ is actually zero.
+
+This observation is the basis for a fully constructive proof of Grothendieck's
+generic freeness lemma.
 
 \begin{thm}\label{thm:hilbert}
 Let~$A$ be a weakly Noetherian ring. Then the polynomial
@@ -2298,11 +2342,10 @@ Let~$\aaa \subseteq k$ be an arbitrary ideal. We have~$\neg\neg(1 \in \aaa \vee
 is \notnot finitely generated (even \notnot principal).
 \end{proof}
 
-The fact that~$\O_X$ is weakly Noetherian from the internal point of view will
-allow for a quick proof of Grothendieck's generic freeness lemma in
-Section~\ref{sect:generic-freeness}. The translation of the statement
+The external translation of the statement
 that~$\O_X[U_1,\ldots,U_n]$ is weakly Noetherian was displayed on
-page~\pageref{page:convoluted-statement}.
+page~\pageref{page:convoluted-statement}, as an example of a convoluted
+statement which profits from the simpler internal account.
 
 }
 

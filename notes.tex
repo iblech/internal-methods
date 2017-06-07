@@ -2242,7 +2242,7 @@ Remark~\ref{rem:qcoh-in-constructive-mathematics}).
 finite type as well.}
 
 
-\subsection*{Weakly Noetherian rings}
+\subsection*{Anonymously Noetherian rings}
 
 Classically, there is a characterization of Noetherian rings which doesn't
 involve ascending sequences: A ring is Noetherian if and only if any of its
@@ -2251,11 +2251,11 @@ page~\pageref{fn:z-principal-ideal-domain} that this condition is far too
 strong from a constructive point of view; not even the ring~$\ZZ$ verifies it.
 However, it can be weakened to yield an interesting notion:
 
-\begin{defn}A ring~$A$ is \emph{weakly Noetherian} if and only if any ideal
-of~$A$ is \notnot finitely generated. A module~$M$ is \emph{weakly Noetherian}
+\begin{defn}A ring~$A$ is \emph{anonymously Noetherian} if and only if any ideal
+of~$A$ is \notnot finitely generated. A module~$M$ is \emph{anonymously Noetherian}
 if and only if any submodule of~$M$ is \notnot finitely generated.\end{defn}
 
-\begin{ex}There is an intuitionistic proof that the ring~$\ZZ$ is weakly
+\begin{ex}There is an intuitionistic proof that the ring~$\ZZ$ is anonymously
 Noetherian: Let~$\aaa \subseteq \ZZ$ be any ideal. Under the assumption that
 either there exists a nonzero element in~$\aaa$ or not, the ideal~$\aaa$ is
 \notnot finitely generated, even \notnot principal: For in the first case, a
@@ -2267,7 +2267,7 @@ page~\pageref{proof-scheme-boxed-statements}.) \end{ex}
 
 It appears that this Noetherian condition has not been studied in the
 literature on constructive algebra. Indeed, from the philosophical and the
-computational point of view on constructive mathematics, the notion of a weakly
+computational point of view on constructive mathematics, the notion of an anonymously
 Noetherian ring is not very useful: From an intuitionistic proof that a given
 ideal is finitely generated one can mechanically extract explicit generators,
 thereby satisfying computational or philosophical demands (``the generators are
@@ -2276,7 +2276,7 @@ really there''). In contrast, an intuitionistic proof that a given ideal is
 
 Along the same lines, one could dismiss the fact (proved below) that Hilbert's
 basis theorem, stating that~$A[X]$ is Noetherian if~$A$ is, holds for the
-notion of weakly Noetherian rings. In fact, one could feel mocked by this
+notion of anonymously Noetherian rings. In fact, one could feel mocked by this
 version of Hilbert's basis theorem: It promises that any ideal of~$A[X]$
 ``has'' finitely many generators in some Platonic sense (without providing any
 clue on how one might find the generators -- they remain anonymous), provided
@@ -2284,9 +2284,9 @@ that any ideal of~$A$ ``has'' finitely many generators in the same sense.
 
 However, applications in the internal universe of toposes provide a further
 motivation for constructive reasoning, related but distinct from computational
-or philosophical considerations. A first indication that the notion of weakly
-Noetherian rings is useful is that the structure sheaf~$\O_X$ of any
-scheme is weakly Noetherian from the internal point of view of~$\Sh(X)$. We
+or philosophical considerations. A first indication that the notion of anonymously
+Noetherian rings is useful is that the structure sheaf~$\O_X$ of any reduced
+scheme is anonymously Noetherian from the internal point of view of~$\Sh(X)$. We
 exploit this observation in Section~\ref{sect:generic-freeness} to give a short
 proof of Grothendieck's generic freeness lemma.
 
@@ -2301,7 +2301,7 @@ This principle can be put to use as follows. Let's consider the situation that
 we have an intuitionistic proof that some ring element~$s$ is zero under the
 assumption that some ideal~$\aaa$ is finitely generated. Hence we also have an
 intuitionistic proof that~$s$ is \notnot zero under the assumption that~$\aaa$
-is \notnot finitely generated. This assumption could be validated by the weakly
+is \notnot finitely generated. This assumption could be validated by the anonymously
 Noetherian property, yielding an unconditional proof that~$s$ is \notnot zero.
 Usually in constructive mathematics, we would be stuck at this point; but
 internally in~$\Sh(X)$, we may continue to deduce that~$s$ is actually zero.
@@ -2310,8 +2310,8 @@ This observation is the basis for a fully constructive proof of Grothendieck's
 generic freeness lemma.
 
 \begin{thm}\label{thm:hilbert}
-Let~$A$ be a weakly Noetherian ring. Then the polynomial
-algebra~$A[X]$ is weakly Noetherian as well, intuitionistically.
+Let~$A$ be an anonymously Noetherian ring. Then the polynomial
+algebra~$A[X]$ is anonymously Noetherian as well, intuitionistically.
 \end{thm}
 \begin{proof}Classically, this is precisely the statement of Hilbert's basis
 theorem, whose usual accounts do not care about the sensibilities of
@@ -2321,15 +2321,15 @@ the theorem holds intuitionistically as stated.
 \end{proof}
 
 \begin{lemma}Let~$0 \to M' \to M \to M'' \to 0$ be a short exact sequence of
-modules. Intuitionistically, the module~$M$ is weakly Noetherian if and only
+modules. Intuitionistically, the module~$M$ is anonymously Noetherian if and only
 if~$M'$ and~$M''$ are.
 \end{lemma}
 
 \begin{proof}The usual proof applies.\end{proof}
 
-\begin{prop}\label{prop:ox-weakly-noetherian}
+\begin{prop}\label{prop:ox-anonymously-noetherian}
 Let~$X$ be an arbitrary reduced scheme (not necessarily locally
-Noetherian). Then~$\O_X$ is weakly Noetherian from the internal point of view
+Noetherian). Then~$\O_X$ is anonymously Noetherian from the internal point of view
 of~$\Sh(X)$.\end{prop}
 \begin{proof}By Corollary~\ref{cor:field-reduced}, the ring~$\O_X$ fulfills a
 suitable field condition from the internal point of view. Therefore it suffices
@@ -2343,7 +2343,7 @@ is \notnot finitely generated (even \notnot principal).
 \end{proof}
 
 The external translation of the statement
-that~$\O_X[U_1,\ldots,U_n]$ is weakly Noetherian was displayed on
+that~$\O_X[U_1,\ldots,U_n]$ is anonymously Noetherian was displayed on
 page~\pageref{page:convoluted-statement}, as an example of a convoluted
 statement which profits from the simpler internal account.
 
@@ -7137,14 +7137,14 @@ internal point of view of~$\Sh(\Spec(A))$, it's \notnot the case that
 Since~$B^\sim$ is finitely generated as an~$\O_{\Spec(A)}$-algebra, it is
 isomorphic to an algebra of the form~$\O_{\Spec(A)}[X_1,\ldots,X_n]/\aaa$ for
 some number~$n \geq 0$ and some ideal~$\aaa$. By
-Proposition~\ref{prop:ox-weakly-noetherian} and Theorem~\ref{thm:hilbert}, the
-ring~$\O_{\Spec(A)}[X_1,\ldots,X_n]$ is weakly Noetherian. Therefore~$\aaa$ is
+Proposition~\ref{prop:ox-anonymously-noetherian} and Theorem~\ref{thm:hilbert}, the
+ring~$\O_{\Spec(A)}[X_1,\ldots,X_n]$ is anonymously Noetherian. Therefore~$\aaa$ is
 \notnot finitely generated, showing that~$B^\sim$ is \notnot of finite
 presentation over~$\O_{\Spec(A)}$.
 
 Similarly, the module~$M^\sim$ is of the form~$(B^\sim)^m/U$ for some number~$m
-\geq 0$ and some submodule~$U$. Since~$(B^\sim)^m$ is weakly Noetherian as a
-direct sum of weakly Noetherian modules, the submodule~$U$ is \notnot finitely
+\geq 0$ and some submodule~$U$. Since~$(B^\sim)^m$ is anonymously Noetherian as a
+direct sum of anonymously Noetherian modules, the submodule~$U$ is \notnot finitely
 generated. Thus~$M^\sim$ is \notnot a finitely presented~$B^\sim$-module.
 
 The basic idea to show that~$M^\sim$ is \notnot free over~$\O_{\Spec(A)}$ is as
@@ -11679,8 +11679,8 @@ that~$f(\varepsilon) = a + b \varepsilon$ for all~$\varepsilon \? \Delta$.
 considering the finitely presented~$\affl$-algebra~$\affl[T]/(T^2)$.
 \end{proof}
 
-\begin{prop}\label{prop:affl-weakly-algebraically-closed}
-$\affl$ is \emph{weakly algebraically closed}, in the following sense:
+\begin{prop}\label{prop:affl-anonymously-algebraically-closed}
+$\affl$ is \emph{anonymously algebraically closed}, in the following sense:
 Any monic polynomial~$p \? \affl[T]$ of degree at least one does \notnot have
 a zero.\end{prop}
 
@@ -11699,7 +11699,7 @@ which is distinct from all of the~$x_i$.
 \end{prop}
 
 \begin{proof}The polynomial~$f(T) \defeq (T - x_1) \cdots (T - x_n) + 1$
-does \notnot have a zero~$y\?\affl$, since~$\affl$ is weakly algebraically
+does \notnot have a zero~$y\?\affl$, since~$\affl$ is anonymously algebraically
 closed. This element cannot equal any of the elements~$x_i$, since~$f(x_i) = 1$ is not zero.
 \end{proof}
 
@@ -13605,7 +13605,7 @@ then~$A$ is an algebraically closed geometric field.\end{prop}
 %in~$S$ is closed is a point of~$\Zar(S)_{\neg\neg}$.
 
 \begin{proof}By Proposition~\ref{prop:a1-field} and
-Proposition~\ref{prop:affl-weakly-algebraically-closed},
+Proposition~\ref{prop:affl-anonymously-algebraically-closed},
 the~$\neg\neg$-translation of~``$\affl$ is an algebraically closed geometric
 field'' holds in~$\Zar(S)$. Therefore~$\affl$ is an algebraically closed
 geometric field from the internal point of view of~$\Zar(S)_{\neg\neg}$. Since

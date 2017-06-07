@@ -369,7 +369,7 @@ of~$\O_X$-modules is of finite type if and only if, from the internal
 perspective, it is finitely generated as an~$\O_X$-module. Now consider the
 following fact of linear algebra: If in a short exact sequence of modules the two
 outer ones are finitely generated, then the middle one is too. The usual proof of
-this fact is intuitionistically acceptable and can thus be interpreted in the
+this fact is intuitionistically valid and can thus be interpreted in the
 internal language. It then \emph{automatically} yields the following more advanced
 proposition: If in a short exact sequence of sheaves of~$\O_X$-modules the
 two outer ones are of finite type, then the middle one is too.
@@ -1356,7 +1356,7 @@ monic polynomial which the given number is a zero of) suffices to make the
 case distinction~\cite[Chapter~VI.1, p.~140]{mines-richman-ruitenburg:constructive-algebra}.}
 
 A consequence of not adopting these axioms is that proofs by contradiction are
-not generally justified; they are intuitionistically acceptable only for those
+not generally justified; they are intuitionistically valid only for those
 statements which can be proven to be true or false. A proof of a
 \emph{negated formula} is not the same as a proof by contradiction. For
 instance, the usual proof that~$\sqrt{2}$ is not rational is
@@ -1562,7 +1562,7 @@ possessing exactly one maximal ideal. This is a so-called \emph{higher-order
 condition} since it involves quantification over subsets. It is also not of a
 geometric form. Therefore, for our purposes, it is better to
 adopt the following elementary definition of a local ring.
-\begin{defn}A \emph{local ring} is a ring~$R$ such that~$1 \neq 0$ in~$R$ and
+\begin{defn}\label{defn:local-ring}A \emph{local ring} is a ring~$R$ such that~$1 \neq 0$ in~$R$ and
 for all~$x,y \? R$
 \[ \text{$x+y$ invertible} \quad\Longrightarrow\quad
   \text{$x$ invertible}\ \vee\ \text{$y$ invertible}. \]
@@ -1585,7 +1585,7 @@ yielding slightly different theories.
 \begin{prop}\label{prop:local-ring}
 In the internal language of a scheme~$X$ (or a locally ringed
 space), the ring~$\O_X$ is a local ring.\end{prop}
-\begin{proof}The stated locality condition is a conjunction of two geometric
+\begin{proof}The condition in Definition~\ref{defn:local-ring} is a conjunction of two geometric
 implications (the first one being~$1 = 0 \Rightarrow \bot$, the second being
 the displayed one) and holds on each stalk.\end{proof}
 
@@ -2011,10 +2011,10 @@ following fact of linear algebra in the internal universe: Let~$R$ be a ring
 such that of any two elements, one divides the other. Then any matrix over~$R$
 can be put into Smith canonical form.
 
-The usual proof of this fact is indeed intuitionistically acceptable: Let a
+The usual proof of this fact is indeed intuitionistically valid: Let a
 matrix over~$R$ be given. By induction, one can show that for any finite family
-of ring elements, one divides all the others. So some matrix entry is a factor
-of all the others. We can put this entry to the upper left by row and column
+of ring elements, one divides all the others. Hency some matrix entry is a factor
+of all the others. We move this entry to the upper left by row and column
 transformations and then kill the other entries of the first row and the first
 column. After these operations, it is still the case that the entry in the
 first row and column is a factor of all other entries. Continuing in this
@@ -2025,7 +2025,7 @@ the divisibility condition and thus do not have to be sorted.
 Phrases such as ``if by chance the entry in the upper left divides
 all the others, we can directly proceed with the next step; otherwise, some
 other entry must be a factor of all entries, so \ldots'' may not be included in
-a proof which is intended to be intuitionistically acceptable.
+a proof which is intended to be intuitionistically valid.
 Those phrases assume that one may make the case distinction that for
 any two ring elements~$x,y$, either~$x$ divides~$y$ or not. Fortunately, those
 case distinctions are in fact superfluous.
@@ -2434,7 +2434,7 @@ componentwise~$\O_X$-module structure. This coincides with the sheaf~$(\O_X)^n$ 
 usually understood.
 
 It is clear that the two stated internal conditions are equivalent, since the
-corresponding proof in linear algebra is intuitionistically acceptable. The equivalence with
+corresponding proof in linear algebra is intuitionistically valid. The equivalence with
 the external notion of finite local freeness follows because the
 interpretation of the first condition with the Kripke--Joyal semantics is the
 following: There exists a covering of~$X$ by open subsets~$U$ such that for
@@ -2591,7 +2591,7 @@ be~$\O_X$-modules. Then the internally constructed tensor product~$\F
 \end{prop}
 \begin{proof}
 Since the proof of the corresponding fact of commutative algebra is
-intuitionistically acceptable, the internally defined tensor product~$\F \otimes_{\O_X} \G$
+intuitionistically valid, the internally defined tensor product~$\F \otimes_{\O_X} \G$
 has the following universal property: For any~$\O_X$-module~$H$,
 any~$\O_X$-bilinear map~$\F \times \G \to H$ uniquely factors over the
 canonical map~$\F \times \G \to \F \otimes_{\O_X} \G$.
@@ -2767,7 +2767,7 @@ is~$\G$.
 of modules with the outer ones being finitely generated (\resp finite free)
 and we have to show that the middle one is finitely generated (\resp finite
 free) as well. It is well-known that this follows; and since the usual proof of
-this fact is intuitionistically acceptable, we are done.
+this fact is intuitionistically valid, we are done.
 \end{proof}
 
 The proof works very generally, in the context of arbitrary ringed
@@ -2964,10 +2964,10 @@ an~$\O_X$-module.
 submodule~$\F_\tors$ is a torsion module.
 \item The dual sheaf $\F^\vee$ is torsion-free.
 \item If~$\F$ is reflexive (meaning that the canonical morphism~$\F \to
-\F^{\vee\vee}$ is an isomorphism), it is torsion-free.
-\item If~$\F$ is finite locally free, it is reflexive.
+\F^{\vee\vee}$ is an isomorphism), then~$\F$ is torsion-free.
+\item If~$\F$ is finite locally free, then~$\F$ is reflexive.
 \item Assume~$X$ to be a Dedekind scheme and~$\F$ to be of finite presentation.
-If~$\F$ is torsion-free, then it is finite locally free.
+If~$\F$ is torsion-free, then~$\F$ is finite locally free.
 % change references below if numbering changes
 \end{enumerate}
 \end{lemma}
@@ -2996,11 +2996,11 @@ domain in the strong sense such that matrices over~$R$ can be put into
 Smith canonical form. Let~$M$ be a finitely presented torsion-free~$R$-module.
 Then~$M$ is finite free.
 
-This goes as follows: Since~$M$ is finitely presented, it is the cokernel of
-some matrix. Without loss of generality, we may assume that it is a diagonal
-matrix, so~$M$ is isomorphic to some (finite) direct sum~$\bigoplus_i R/(a_i)$.
+Such a proof can proceed as follows: Since~$M$ is finitely presented, it is the cokernel of
+some matrix. Without loss of generality, we may assume that the presentation matrix is diagonal,
+so~$M$ is isomorphic to some finite direct sum~$\bigoplus_i R/(a_i)$.
 Since~$M$ is torsion-free, all the summands~$R/(a_i)$ are torsion-free as well.
-Since~$R$ is an integral domain in the strong sense, this holds if and only if
+Since~$R$ is an integral domain in the strong sense,
 the~$a_i$ are either zero or invertible. Thus~$R/(a_i)$ is isomorphic to~$R$ or
 to the zero module. In any case,~$R/(a_i)$ is finite free and therefore~$M$
 is finite free as well.
@@ -3649,7 +3649,7 @@ of~$X$.
 
 To describe the notion of~$\Box$-sheaves and related ones, we switch to the internal
 perspective and thus forget that we're working over a base space~$X$; we are simply given a modal operator~$\Box :
-\Omega \to \Omega$ and have to take care that our proofs are intuitionistically acceptable. A
+\Omega \to \Omega$ and have to take care that our proofs are intuitionistically valid. A
 reference for the material in this subsection is a preprint by de
 Vries~\cite{vries:sheafification}.\footnote{On page~5 of that
 preprint there is a slight typing error: Fact~2.1(i) gives the
@@ -5703,7 +5703,7 @@ internal statement~$\Sh(X) \models \exists I,J\_ \speak{there exists an
 exact sequence~$\O_X^J \to \O_X^I \to \F \to 0$}$ is true for
 \emph{any}~$\O_X$-module~$\F$. This is because the usual proof of the fact that
 any module admits a resolution by (not necessarily finite) free modules is
-intuitionistically acceptable and thus also valid in the internal
+intuitionistically valid and thus also valid in the internal
 universe.\end{rem}
 
 We don't know a useful internal characterization of

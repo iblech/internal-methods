@@ -2185,31 +2185,29 @@ and suffices for the applications of the Noetherian condition one typically expe
 Thirdly, our definition provides a link to the external condition on a scheme
 to be locally Noetherian, as shown by the following proposition.
 
-\XXX{Adapt the proof of the proposition to conform to the new (corrected)
-definition.}
-
 \begin{prop}\label{prop:internal-noetherianity}
-A scheme~$X$ is locally Noetherian if and only if the ring~$\O_X$
-is processly Noetherian from the internal point of view.\end{prop}
-\begin{proof}We only prove the ``only if'' direction. We may assume that~$X =
+Let~$X$ be a locally Noetherian scheme. Then~$\O_X$ is processly Noetherian
+from the internal point of view.\end{prop}
+\begin{proof}We may assume that~$X =
 \Spec A$ is affine with~$A$ a Noetherian ring and that internally, we are given an
 ascending process on the set of finitely generated ideals of~$\O_X$.
-Externally, this is a morphism~$\ul{\NN} \to \P(\M)$ where~$\NN$ is the
-constant sheaf with value~$\NN$ and~$U$-sections of~$\M$ are finite type ideal
+Externally, this is a finite type sheaf of ideals~$\I$ together with a morphism~$\M
+\to \P(\M)$ where~$\M$ is the sheaf whose~$U$-sections are finite type ideal
 sheaves of~$\O_X|_U$.
 
-Since~$X \models \speak{$f(0)$ is inhabited}$, there exists an open covering~$X
+Since~$X \models \speak{$f(\I)$ is inhabited}$, there exists an open covering~$X
 = \bigcup_i U_i$ and finite type sheaves of ideals~$\I_i \hookrightarrow
-\O_X|_{U_i}$ such that~$U_i \models \I_i \in f(0)$. Without loss of generality,
+\O_X|_{U_i}$ such that~$U_i \models \I_i \in f(\I)$. Without loss of generality,
 we may assume that the open sets~$U_i$ are standard open sets~$D(f_i)$ and that
 the covering is finite. Since the sheaves~$\I_i$ are quasicoherent (being of
-finite type, they are images of morphisms of the form~$(\O_X|_{U_i}^n \to
+finite type, they are images of morphisms of the form~$\O_X|_{U_i}^n \to
 \O_X|_{U_i}$), they correspond to ideals~$J_i \subseteq A[f_i^{-1}]$. We note for future reference
-that for~$D(g) \subseteq D(f_i)$, the restricted ideal~$\I_i|_{D(g)}$ corresponds to the extension of~$J_i$ in the further
+that for~$D(g) \subseteq D(f_i)$, the restricted sheaf of ideals~$\I_i|_{D(g)}$
+corresponds to the extension of~$J_i$ in the further
 localized ring~$A[g^{-1}]$.
 
-For each~$i$,~$D(f_i) \models \exists \aaa \in f(1)\_ \I_i \subseteq \aaa$.
-Thus there exists an open covering~$D(f_i) = \bigcup_j D(g_{ij})$ and finite
+For each~$i$,~$D(f_i) \models \speak{$f(\I_i)$ is inhabited}$.
+Hence there exists an open covering~$D(f_i) = \bigcup_j D(g_{ij})$ and finite
 type sheaves of ideals~$\I_{ij} \hookrightarrow \O_X|_{D(g_{ij})}$; these
 correspond to ideals~$J_{ij} \subseteq A[g_{ij}^{-1}]$ such that~$J_i
 \subseteq J_{ij}$ (where we have suppressed the localization
@@ -2225,8 +2223,9 @@ is an application of the graph-theoretical \emph{König's lemma}).
 
 There thus exists a natural number~$n$ such that~$J_{i_1 \cdots i_n}' = J_{i_1
 \cdots i_n i_{n+1}}'$ for all appropriate indices~$i_1,\ldots,i_n,i_{n+1}$.
-For this number~$n$, the internal statement~$X \models \exists \aaa \in f(n)
-\cap f(n+1)$ holds; we leave further details to the reader.
+For this number~$n$, the internal statement~$U_{i_1 \cdots i_{n+1}} \models
+\J_{i_1 \cdots i_{n+1}} \in f(\J_{i_1 \cdots i_{n+1}})$ holds;
+we omit further details.
 \end{proof}
 
 \begin{rem}The proof shows that, internally speaking, even
@@ -13707,7 +13706,7 @@ Booleanization of the theory of a local ring.
   $X$ is reduced & $\O_X$ is reduced (and $\neg\text{invertible} \Rightarrow \text{zero}$) & Prop.\@~\ref{prop:reduced-ring} \\
   $\dim X \leq n$ & Krull dimension of~$\O_X$ is~$\leq n$ & Prop.\@~\ref{prop:dimension-scheme-ox} \\
   $X$ is integral at all points & $\O_X$ is a integral domain & Prop.\@~\ref{prop:internal-integrality} \\
-  $X$ is locally Noetherian & $\O_X$ is processly Noetherian & Prop.\@~\ref{prop:internal-noetherianity} \\
+  $X$ is locally Noetherian & $\O_X$ is processly Noetherian & Prop.\@~\ref{prop:internal-noetherianity} (only~``$\Rightarrow$'' holds) \\
   $X$ is normal & $\O_X$ is normal (assuming that~$X$ is locally Noetherian) & Prop.\@~\ref{prop:normal-int-ext} \\\\
 
   \textbf{Sheaves of modules} \\

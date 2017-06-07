@@ -64,6 +64,8 @@
 \newcommand{\E}{\mathcal{E}}
 \newcommand{\F}{\mathcal{F}}
 \renewcommand{\G}{\mathcal{G}}
+\let\acuteH\H
+\newcommand{\konig}{K\acuteH onig}
 \renewcommand{\H}{\mathcal{H}}
 \renewcommand{\O}{\mathcal{O}}
 \newcommand{\K}{\mathcal{K}}
@@ -2052,7 +2054,7 @@ and only if~$R$ has the property~$\varphi$ externally
 (Lemma~\ref{lemma:properties-of-constant-sheaves}).
 
 
-\subsection{Noetherian properties}
+\subsection{Noetherian conditions}
 \label{sect:noetherian}
 
 Recall the usual notion of a Noetherian ring: Any sequence~$\aaa_0 \subseteq
@@ -2186,10 +2188,24 @@ Thirdly, our definition provides a link to the external condition on a scheme
 to be locally Noetherian, as shown by the following proposition.
 
 \begin{prop}\label{prop:internal-noetherianity}
-Let~$X$ be a locally Noetherian scheme. Then~$\O_X$ is processly Noetherian
-from the internal point of view.\end{prop}
-\begin{proof}We may assume that~$X =
-\Spec A$ is affine with~$A$ a Noetherian ring and that internally, we are given an
+Let~$X$ be a scheme. The following statements are equivalent:
+\begin{enumerate}
+\item All stalks~$\O_{X,x}$ are Noetherian.
+\item From the internal point of view of~$\Sh(X)$, the ring~$\O_X$ is processly
+Noetherian.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}Statement~(1) can be reformulated in a way so it doesn't refer to stalks:
+For any open affine subscheme~$U \subseteq X$ and any ascending chain~$\aaa_0
+\subseteq \aaa_1 \subseteq \cdots$ of finitely generated ideals in~$\Gamma(U,
+\O_X)$ there is a partition of unity~$1 = \sum_i f_i \in \Gamma(U, \O_X)$ such
+that for each~$i$ there exists an index~$j$ such that~$\aaa_j = \aaa_{j+1}$ as
+ideals of~$\Gamma(U, \O_X)[f_i^{-1}]$.
+
+We'll verify the equivalence using this formulation. For proving the
+direction ``(1)~$\Rightarrow$~(2)'', we may assume that~$X =
+\Spec A$ is affine and that internally, we are given an
 ascending process on the set of finitely generated ideals of~$\O_X$.
 Externally, this is a finite type sheaf of ideals~$\I$ together with a morphism~$\M
 \to \P(\M)$ where~$\M$ is the sheaf whose~$U$-sections are finite type ideal
@@ -2207,34 +2223,67 @@ corresponds to the extension of~$J_i$ in the further
 localized ring~$A[g^{-1}]$.
 
 For each~$i$,~$D(f_i) \models \speak{$f(\I_i)$ is inhabited}$.
-Hence there exists an open covering~$D(f_i) = \bigcup_j D(g_{ij})$ and finite
-type sheaves of ideals~$\I_{ij} \hookrightarrow \O_X|_{D(g_{ij})}$; these
-correspond to ideals~$J_{ij} \subseteq A[g_{ij}^{-1}]$ such that~$J_i
+Hence there exists an open covering~$D(f_i) = \bigcup_j D(f_{ij})$ and finite
+type sheaves of ideals~$\I_{ij} \hookrightarrow \O_X|_{D(f_{ij})}$; these
+correspond to ideals~$J_{ij} \subseteq A[f_{ij}^{-1}]$ such that~$J_i
 \subseteq J_{ij}$ (where we have suppressed the localization
-morphism~$A[f_i^{-1}] \to A[g_{ij}^{-1}]$ in the notation). Equivalently,
+morphism~$A[f_i^{-1}] \to A[f_{ij}^{-1}]$ in the notation). Equivalently,
 writing~$J_i' \defeq A \cap J_i$ and~$J_{ij}' \defeq A \cap J_{ij}$ for the
 contractions, we have the inclusions~$J_i' \subseteq J_{ij}'$ of ideals of~$A$.
 
-Continuing in this fashion, we obtain a tree of ideals~$J_{i_1 \cdots i_n}'$.
-Each path in this tree is a chain of ascending ideals and thus stabilizes
-since~$A$ is Noetherian. Since only finitely many subtrees branch off at
-each node, there appear only finitely many distinct ideals in this tree (this
-is an application of the graph-theoretical \emph{König's lemma}).
+Continuing in this fashion, we obtain an infinite tree of ideals~$J_{i_1 \cdots i_n}'$.
+We now prune this tree in the following fashion: If the node at position~$(i_1,
+\ldots, i_n)$ has the property that~$D(f_{i_1 \cdots i_n}) \models
+\bigvee_{m=0}^{n-1} \I_{i_1 \cdots i_m} = \I_{i_1 \cdots i_{m+1}}$, then we cut
+of all childs of this node.
 
-There thus exists a natural number~$n$ such that~$J_{i_1 \cdots i_n}' = J_{i_1
-\cdots i_n i_{n+1}}'$ for all appropriate indices~$i_1,\ldots,i_n,i_{n+1}$.
-For this number~$n$, the internal statement~$U_{i_1 \cdots i_{n+1}} \models
-\J_{i_1 \cdots i_{n+1}} \in f(\J_{i_1 \cdots i_{n+1}})$ holds;
-we omit further details.
+The resulting tree doesn't contain an infinite path, since any
+sequence~$J_{i_1}' \subseteq J_{i_1 i_2}' \subseteq \cdots$ locally stalls by
+assumption on~$A$. Because only finitely many subtrees branch off at each node,
+the tree is finite (this is an application of the graph-theoretical
+\emph{\konig's lemma}).
+
+The outermost nodes then yield an open covering of~$X$ such that, on each
+member of the covering, the internal statement~$\speak{$f$ stalls}$ holds. By
+the locality of the internal language, this statement holds on~$X$.
+
+For the converse direction, let an affine open subset~$U \subseteq X$ and an
+ascending sequence~$\aaa_0 \subseteq \aaa_1 \subseteq \cdots$ of finitely
+generated ideals in~$\Gamma(U, \O_X)$ be given. Internally, we construct the
+process
+\[ f : \M \lra \P(\M),\ \I \longmapsto \{ \J \? \M \,|\,
+  \bigvee_{n \geq 0} (\I = \aaa_n^\sim \wedge \J = \aaa_{n+1}^\sim) \} \]
+with initial value~$\aaa_0^\sim$. The assumption that~$f$ stalls yields an open
+covering~$U = \bigcup_i D(f_i)$ such that for each~$i$, there is an index~$n$
+such that~$\aaa_n^\sim = \aaa_{n+1}^\sim$ on~$D(f_i)$, that is~$\aaa_n =
+\aaa_{n+1}$ as ideals of~$\Gamma(U, \O_X)[f_i^{-1}]$.
 \end{proof}
 
-\begin{rem}The proof shows that, internally speaking, even
-the set of all quasicoherent ideals (instead of merely the finitely generated
-ones) fulfills the ascending process condition, if the base scheme is locally Noetherian. We have not taken this property
+\begin{rem}The proof shows that, if the base scheme fulfills the stronger
+condition that it is locally Noetherian, then internally speaking even the set
+of all quasicoherent ideals (instead of merely the finitely generated
+ones) fulfills the ascending process condition. We have not taken this property
 as the definition of a processly Noetherian ring since it is a notion not
 usually studied in constructive mathematics (compare
 Remark~\ref{rem:qcoh-in-constructive-mathematics}).
 \end{rem}
+
+There is also an internal characterization of the property that~$X$ is locally
+Noetherian (in contrast to the property that all stalks are Noetherian).
+However, as described above, the corresponding internal notion is of limited
+usefulness.
+
+\begin{prop}Let~$X$ be a scheme. The following statements are equivalent:
+\begin{enumerate}
+\item The scheme~$X$ is locally Noetherian.
+\item From the internal point of view of~$\O_X$, any ascending chain of
+finitely generated ideals stabilizes.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}Similar to, but easier than, the proof of
+Proposition~\ref{prop:internal-noetherianity}.
+\end{proof}
 
 \XXX{Give examples made possible by the internal Noetherianity}
 \XXX{How about: Any quasicoherent submodule of a module of finite type is of

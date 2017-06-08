@@ -1025,7 +1025,7 @@ quantifications in the the definition of the Kripke--Joyal semantics
 (Table~\ref{table:kripke-joyal}) to open subsets of some basis of the topology.
 For instance, if~$X$ is a scheme, one may restrict to affine open subsets.
 
-Furthermore, the proposition shows that the internal language is monotone in
+Furthermore, Proposition~\ref{prop:locality-of-the-internal-language} shows that the internal language is monotone in
 the following sense: If~$U \models \varphi$, and~$V$ is an open subset of~$U$,
 then~$V \models \varphi$. (This follows by applying the proposition to the
 trivial covering~$U = V \cup U$.)
@@ -1220,7 +1220,7 @@ We say that a formula~$\varphi$ holds \emph{at a point~$x \in X$} if and only
 if the formula obtained by substituting all parameters in~$\varphi$ with their
 stalks at~$x$ holds in the usual mathematical sense.
 
-\begin{lemma}\label{lemma:geometric-stalk-neighbourhood}
+\begin{lemma}\label{lemma:geometric-stalk-neighborhood}
 Let~$x \in X$ be a point. Let~$\varphi$ be a geometric formula (over some open
 neighborhood~V of~$x$).
 Then~$\varphi$ holds at~$x$ if and only if there exists an open neighborhood~$U
@@ -1232,7 +1232,7 @@ induction on the structure of~$\varphi$, but we will give a more conceptual
 proof later (Corollary~\ref{cor:geometric-spreading}).
 \end{proof}
 
-This lemma is in fact a very useful metatheorem. We will properly discuss its
+This lemma is a very useful metatheorem. We will properly discuss its
 significance in Section~\ref{sect:spreading}. For now, we just use it to prove a
 simple criterion for the internal truth of a geometric implication; we will
 apply this criterion many times.
@@ -1245,8 +1245,8 @@ the form
 \[ \forall s\?\F\_ \varphi(s) \Rightarrow \psi(s). \]
 For the ``only if'' direction, assume that this formula holds on~$X$ and let~$x
 \in X$ be an arbitrary point. Let~$s_x \in \F_x$ be the germ of an arbitrary
-local section~$s$ of~$\F$ and assume that~$\varphi(s)$ holds at~$x$. Then by
-the lemma, it follows that~$\varphi(s)$ holds on some open neighborhood of~$x$. By
+local section~$s$ of~$\F$ and assume that~$\varphi(s)$ holds at~$x$. By
+Lemma~\ref{lemma:geometric-stalk-neighborhood}, it follows that~$\varphi(s)$ holds on some open neighborhood of~$x$. By
 assumption,~$\psi(s)$ holds on this neighborhood as well. Again by the
 lemma,~$\psi(s)$ holds at~$x$.
 
@@ -1261,7 +1261,7 @@ lemma,~$\varphi(s)$ holds at every point of~$U$.
 
 \begin{ex}Injectivity and surjectivity are geometric implications (surjectivity
 can be spelled~$\forall y\?\G\_ (\top \Rightarrow \exists x\?\F\_ \alpha(x) =
-y)$). Thus the corollary gives a deeper reason for the well-known fact that a
+y)$). Thus Corollary~\ref{cor:geometric-implication} gives a deeper reason for the well-known fact that a
 morphism of sheaves is a monomorphism \resp an epimorphism if and only if it is
 stalkwise injective \resp surjective.\end{ex}
 
@@ -1837,7 +1837,7 @@ Let~$X$ be a scheme. Then:
 If furthermore~$X$ is reduced, this is further equivalent to~$\O_X$ being a
 field in the strong sense that any element of~$\O_X$ is invertible or zero.
 \end{cor}
-\begin{proof}By the proposition and the fact that~$\O_X$ is a local ring from
+\begin{proof}By Proposition~\ref{prop:dimension-scheme-ox} and the fact that~$\O_X$ is a local ring from
 the internal perspective, this is an immediate consequence of
 interpreting the following standard fact of ring theory in the internal
 language of~$\Sh(X)$: A local ring~$R$ is of Krull
@@ -3139,8 +3139,8 @@ is a subobject of~$\ul{\NN}|_U$ which internally is inhabited and upward-closed.
 Further details are left to the reader.
 \end{proof}
 
-Under the correspondence given by the lemma, locally \emph{constant}
-functions map exactly to the (image of the) \emph{ordinary} internal natural numbers
+Under the correspondence given by Lemma~\ref{lemma:upper-semicontinuous-functions}, locally \emph{constant}
+functions map precisely to the (image of the) \emph{ordinary} internal natural numbers
 (in the completed natural numbers).
 In a similar vein, the sheaf given by the internal construction of
 the set of \emph{all} upward-closed subsets of the natural numbers (not
@@ -3180,7 +3180,7 @@ completion.
 
 \begin{prop}\label{prop:rank-function-internally}
 Let~$\F$ be an~$\O_X$-module of finite type on a scheme~$X$ (or a locally ringed
-space). Under the correspondence given by the Lemma~\ref{lemma:upper-semicontinuous-functions}, the internally
+space). Under the correspondence given by Lemma~\ref{lemma:upper-semicontinuous-functions}, the internally
 defined rank maps to the rank function of~$\F$.
 \end{prop}
 \begin{proof}
@@ -3199,9 +3199,9 @@ neighborhood~$U \subseteq V$ of~$x$. On this neighborhood, the~$s_j$ generate
 any stalk~$\F_y$, $y \in U$, so by geometricity we have
 \[ U \models \speak{$s_1,\ldots,s_n$ generate~$\F$}. \qedhere \]
 \end{proof}
-\begin{rem}Once we understand when properties holding at a point spread to
-neighborhoods, we will be able to give a simpler proof of the proposition (see
-Lemma~\ref{lemma:gen-family-n}).\end{rem}
+Once we understand when properties spread from points to
+neighborhoods in logical terms, we will be able to give a simpler proof of Proposition~\ref{prop:rank-function-internally} (see
+Lemma~\ref{lemma:gen-family-n}).
 
 \begin{lemma}\label{lemma:rank-functor-locally-constant}
 Let~$X$ be a scheme (or a locally ringed space). Let~$\F$ be an~$\O_X$-module of
@@ -3856,7 +3856,7 @@ and that it has the universal property of the~$\neg\neg$-sheafification
 of~$\F$.
 \end{proof}
 
-The conditions~(1) and~(2) of the Proposition~\ref{prop:negneg-sheaves} can be
+The conditions~(1) and~(2) of Proposition~\ref{prop:negneg-sheaves} can be
 summarized as follows: A sheaf~$\F$ on a topological space is
 a~$\neg\neg$-sheaf if and only if, for any open subset~$U \subseteq X$, the
 restriction map~$\Gamma(\Int\Clos U, \F) \to \Gamma(U,\F)$ is
@@ -4046,7 +4046,7 @@ The cases for the other rules (see Appendix~\ref{appendix:inference-rules} for
 a list) are similar and left to the reader.\end{proof}
 
 \begin{rem}The reader well-versed in formal logic will have noticed that we are
-mixing syntax and semantics here. The proper way to state the lemma would be
+mixing syntax and semantics here. The proper way to state Lemma~\ref{lemma:box-translation-sound} would be
 to formally adjoin a box operator to the language of intuitionistic logic,
 governed by three inference rules which are modeled on the three axioms for a
 modal operator. This formal box operator could then be instantiated by any
@@ -4465,7 +4465,7 @@ Example~\ref{ex:module-zero-geometric}, using the modal operators~$\Box =
 \notat{x}) \Rightarrow \notat{x})$.
 \end{proof}
 
-\begin{rem}The proposition fails if one drops the hypothesis
+\begin{rem}Lemma~\ref{lemma:module-zero-point-neighbourhood} fails if one drops the hypothesis
 that~$\F$ is of finite type. Indeed, in this case one cannot reformulate the
 condition that~$\F$ is zero in a geometric way.\end{rem}
 
@@ -5485,7 +5485,7 @@ statement holds:
 \begin{proof}Assume that~$\Sh(X) \models (K \Rightarrow \bigvee_i \varphi_i)$.
 This is equivalent to~$K \models \bigvee_i \varphi_i$. By the locality of the
 internal language, it follows that~$K \cap U_j \models \bigvee_i \varphi_i$ for each~$j$.
-Since~$K \cap U_j$ is quasicompact, it follows by the Proposition~\ref{prop:quasicompact-meta} that
+Since~$K \cap U_j$ is quasicompact, it follows by Proposition~\ref{prop:quasicompact-meta} that
 there exists an index~$i_j \in I$ such that~$K \cap U_j \models \varphi_{i_j}$.
 This is equivalent to~$U_j \models (K \Rightarrow \varphi_{i_j})$. In
 particular, it holds that~$U_j \models \bigvee_i (K \Rightarrow \varphi_i)$.
@@ -5496,12 +5496,12 @@ The second statement is a corollary of the first one.
 \end{proof}
 
 \begin{ex}Any retrocompact subset of a scheme is locally quasicompact in the
-sense of the proposition.\end{ex}
+sense of Proposition~\ref{prop:locally-qc}.\end{ex}
 
 \begin{ex}\label{ex:df-locally-compact}
 Let~$X$ be a scheme and~$f \in \Gamma(X,\O_X)$ be a global function.
 Then the open set~$D(f) = \{ x \in X \,|\, \text{$f_x$ is invertible in~$\O_{X,x}$}
-\}$ is locally quasicompact in the sense of the proposition, even in the
+\}$ is locally quasicompact in the sense of Proposition~\ref{prop:locally-qc}, even in the
 stronger sense: Let~$V \subseteq X$ be any open set. Consider a covering~$V = \bigcup_i
 U_i$ by open affine subsets~$U_i = \Spec A_i$. Then~$D(f) \cap U_i \cong \Spec
 A_i[f^{-1}]$ is quasicompact.\end{ex}
@@ -5514,7 +5514,7 @@ pivotal for giving a simple description of the quasicoherator
 needed for an internal understanding of the relative
 spectrum (Section~\ref{sect:relative-spectrum}).
 
-\begin{rem}In applications, the open set~$K$ of the proposition is often given
+\begin{rem}In applications, the open set~$K$ of Proposition~\ref{prop:locally-qc} is often given
 as the largest open subset on which some formula~$\psi$ holds. (For instance,
 in Example~\ref{ex:df-locally-compact},~$K$ was given by the formula~$\speak{$f$
 is invertible in $\O_X$}$.)
@@ -5634,7 +5634,7 @@ Therefore we can conclude by Proposition~\ref{prop:finite-type-and-co} and
 by Proposition~\ref{prop:quasicompact-meta}.
 \end{proof}
 
-\begin{caveat}There's the lemma that, on a quasicompact and quasiseparated
+\begin{caveat}There's a lemma stating that on a quasicompact and quasiseparated
 scheme, every quasicoherent sheaf of modules is a filtered colimit of finitely
 presented sheaves of modules~\stacksproject{07V9}. There's also the
 corresponding statement for modules, whose standard proof is intuitionistic:
@@ -5795,7 +5795,7 @@ annihilator of~$s$, \ie the sheaf of ideals internally defined by the
 formula
 \[ I \defeq \Ann_{\O_X}(s) = \{ t\?\O_X \,|\, st = 0 \} \subseteq \O_X \]
 is quasicoherent. To prove this in the internal language it suffices to
-verify the condition of the proposition.
+verify the condition of Corollary~\ref{cor:submodule-qcoh}.
 So let~$f\?\O_X$ and~$t\?\O_X$ be arbitrary and assume~$\speak{$f$ \inv} \Rightarrow t \in I$,
 \ie assume that if~$f$ were invertible, then~$st$ would be zero. By
 Proposition~\ref{prop:cond-zero} it follows that~$f^n st = 0$ for

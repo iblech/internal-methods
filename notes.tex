@@ -134,7 +134,7 @@
 \newcommand{\RelSpec}{\operatorname{\ul{\mathrm{Spec}}}}
 \newcommand{\RelProj}{\operatorname{\ul{\mathrm{Proj}}}}
 \newcommand{\op}{\mathrm{op}}
-\DeclareMathOperator{\colim}{colim}
+\DeclareMathOperator*{\colim}{colim}
 \DeclareMathOperator{\rank}{rank}
 \DeclareMathOperator{\Ann}{Ann}
 \DeclareMathOperator{\Int}{int}
@@ -167,6 +167,7 @@
 \newcommand{\affl}{\ensuremath{{\ul{\AA}^1_S}}\xspace}
 \newcommand{\afflx}{\ensuremath{{\ul{\AA}^1_X}}\xspace}
 \newcommand{\afflt}{\ensuremath{{\ul{\AA}^1_T}}\xspace}
+\newcommand{\afflvi}{\ensuremath{{\ul{\AA}^1_{V_i}}}\xspace}
 \newcommand{\affla}{\ensuremath{{\ul{\AA}^1_{\Spec A}}}\xspace}
 \newcommand{\afflz}{\ensuremath{{\ul{\AA}^1_{\Spec Z}}}\xspace}
 \newcommand{\xra}{\xrightarrow}
@@ -11556,7 +11557,7 @@ In situation~(1), the only step left to do is to generalize the argument in the
 previous paragraph to morphisms~$f : T \to S$ which are locally of finite
 presentation. This works out because there are open covers of~$S$ and~$T$ such
 that the appropriate restrictions of~$f$ are of finite presentation and affine.
-The assumption of synthetic quasicoherence then needs to be applied to
+The assumption of synthetic quasicoherence then needs to be applied
 to~$\affl$-algebras in suitable slices of~$\Zar(S)$, showing that the canonical
 morphism~\eqref{eqn:want-iso2} is locally an isomorphism and therefore globally
 as well.
@@ -11574,8 +11575,8 @@ quasicompactness and quasiseparatedness from~$S$. Therefore we can apply a
 comparison result on the categories of quasicoherent
 modules~\stacksproject{01Z0}:
 \[
-E(T) = E(\lim_i T_i) \cong \colim\limits_i E(T_i) \cong
-\colim\limits_i \Gamma(T_i, f_i^* \E_0)
+E(T) = E(\lim_i T_i) \cong \colim_i E(T_i) \cong
+\colim_i \Gamma(T_i, f_i^* \E_0)
 \cong \Gamma(T, f^* \E_0). \qedhere
 \]
 \end{proof}
@@ -11607,6 +11608,25 @@ therefore~$\Spec(A) = \emptyset$ from the internal point of view. Thus the
 codomain of the canonical morphism is the zero algebra, but the domain is not.
 \end{rem}
 
+\begin{lemma}\label{lemma:qcoh-ideals}
+Let~$J \hookrightarrow \affl$ be an ideal such that~$\affl/J$ is
+of the form~$(\E_0)^\Zar$ for an~$\O_S$-module~$\E_0$. Let~$\I$ be the kernel
+of the epimorphism~$\O_S \twoheadrightarrow \E_0$ induced by the quotient
+morphism~$\affl \to \affl/J$. Then, for any~$S$-scheme~$(f : X \to S)$
+contained in the site used to define~$\Zar(S)$, there is a canonical
+isomorphism
+\[ \im(f^*\I \to \O_X) \cong J|_{\Sh(X)}. \]
+\end{lemma}
+
+\begin{proof}The short exact sequence~$0 \to J \to \affl \to \affl/J \to 0$
+of~$\affl$-modules in~$\Zar(S)$ remains exact restricting to~$\Sh(X)$, since
+restricting to~$\Sh(X)$ is taking the inverse image along a geometric morphism.
+Hence the sequence~$0 \to J|_{\Sh(X)} \to \O_X \to f^*\E_0 \to 0$ is exact.
+On the other hand, the short exact sequence~$0 \to \I \to \O_S \to \E_0 \to 0$
+yields the short exact sequence~$0 \to \im(f^*\I \to \O_X) \to \O_X \to f^*\E_0
+\to 0$.
+\end{proof}
+
 \begin{rem}\label{rem:radical-not-qcoh}
 The quotient~$\affl/\sqrt{(0)}$ in~$\Zar(S)$ is an example
 for a sheaf of modules which is not quasicoherent even though all of its
@@ -11616,7 +11636,7 @@ Since taking the quotient and taking the radical of an ideal are geometric
 constructions, we have~$(\affl/\sqrt{(0)})|_{\Sh(X)} \cong \O_X/\sqrt{(0)}$.
 These sheaves of modules are quasicoherent (Example~\ref{ex:radical-qcoh}).
 However, in general,~$f^*(\O_S/\sqrt{(0)}) \not\cong \O_X/\sqrt{(0)}$.
-A concrete counterexample is~$S = \Spec(k)$ and~$X = \Spec(k[T]/(T^2))$.
+A specific counterexample is~$S = \Spec(k)$ and~$X = \Spec(k[T]/(T^2))$.
 In this case~$f^*(\O_S/\sqrt{(0)}) \cong f^*(\O_S) \cong \O_X \not\cong
 \O_X/\sqrt{(0)}$.
 \end{rem}
@@ -11661,8 +11681,8 @@ condition for~$A \defeq \affl/(x_1,\ldots,x_n)$. This yields~$1 \in
 invertible.\end{proof}
 
 \begin{prop}\label{prop:a1-not-reduced}
-$\affl$ is not a reduced ring: $\neg \Bigl(\forall x\?\affl\_ (\bigvee_{n \geq
-0} x^n = 0) \Rightarrow x = 0\Bigr).$
+$\affl$ is not a reduced ring:
+\[ \neg \bigl(\forall x\?\affl\_ \bigl(\bigvee_{n \geq 0} x^n = 0\bigr) \Rightarrow x = 0\bigr). \]
 \end{prop}
 
 \begin{proof}Assume that~$\affl$ is reduced. Then the set~$\Delta \defeq \{
@@ -11732,7 +11752,8 @@ fails.
 In synthetic differential geometry, the \emph{axiom of microaffinity} is
 central to the theory. It is fulfilled by the image of~$\RR^1$ in any
 well-adapted model of synthetic differential geometry, and also by~$\affl \in
-\Zar(S)$. (This fact is well-known.)
+\Zar(S)$. This fact is well-known; we include the proof only to show that it
+is a consequence of synthetic quasicoherence.
 
 \begin{prop}\label{prop:affl-microaffine}
 $\affl$ fulfills the axiom of microaffinity: Let~$\Delta = \{ \varepsilon \?
@@ -11932,10 +11953,10 @@ view. The inclusion~$\{ x\?X \,|\, f(x) \neq 0 \} \hookrightarrow X$ is a
 synthetic open immersion.\end{ex}
 
 \begin{prop}\label{prop:characterization-open-subfunctor}
-Let~$X \in \Zar(S)$ be a Zariski sheaf. A subfunctor~$U
-\hookrightarrow X$ is open if and only if, from the internal point of view
-of~$\Zar(S)$, the map~$U \hookrightarrow X$ is a synthetic open immersion.
-In formal language:
+Let~$X \in \Zar(S)$ be a Zariski sheaf. If a subfunctor~$U
+\hookrightarrow X$ is open, then the map~$U \hookrightarrow X$
+is a synthetic open immersion from the internal point of view of~$\Zar(S)$,
+that is
 \begin{multline*}
   \qquad\Zar(S) \models
   \forall x\?X\_
@@ -11943,6 +11964,9 @@ In formal language:
   \speak{$J$ is an ideal} \wedge
   \speak{$\affl/J$ is synth.\@ quasicoherent} \wedge
   (x \in U \Leftrightarrow 1 \in J). \end{multline*}
+The converse holds if one of the parsimonious sites is used to
+define~$\Zar(S)$ or if the ideals~$J$ are required to be finitely generated
+from the internal point of view.
 \end{prop}
 
 We postpone the proof of this proposition in order to give a bit of context
@@ -11979,7 +12003,7 @@ We show that the assumption implies the displayed condition of
 Proposition~\ref{prop:characterization-open-subfunctor} in the internal
 language. Given elements~$f_1,\ldots,f_n$ as in the assumption, we
 construct the ideal~$J \defeq (f_1,\ldots,f_n) \subseteq \affl$. The
-quotient~$\affl/J$ is indeed synthetically quasicoherent, since it is finitely presented, and
+quotient~$\affl/J$ is finitely presented, hence synthetically quasicoherent, and
 the statement that~$1 \in J$ is equivalent to one of
 the~$f_i$ being invertible by locality of~$\affl$.
 \end{proof}
@@ -11992,7 +12016,7 @@ at least one of some numbers is not zero.
 
 Of course, in classical scheme theory, one would put some condition on these
 numbers in order not to trivialize the notion. For instance, one would require
-that these numbers depend continuously on the point in some sense or, more
+that they depend continuously on the point in some sense or, more
 specifically, that these numbers are given by evaluating certain locally
 defined regular functions at the point.
 
@@ -12141,7 +12165,66 @@ Thus~$\neg\neg U$.
 \end{proof}
 
 \begin{proof}[Proof of Proposition~\ref{prop:characterization-open-subfunctor}]
-\XXX{fill in proof}
+We begin with the ``only if'' direction. Let~$T$ be an~$S$-scheme contained in
+the site used to define~$\Zar(S)$ and let~$x \in X(T)$. By assumption there is
+an open subscheme~$T_0 \subseteq T$ such that, for any object~$(T' \xra{f} T
+\to S)$ of the site the morphism~$f$ factors over~$T_0$ if and only if~$X(f)(x)
+\in U(T')$.
+
+There is a quasicoherent sheaf~$\I$ of ideals on~$T$ such that~$T_0 = D(\I)$.
+We set~$J \defeq \im(\I^\Zar \to \afflt)$. Then the quotient module~$\afflt/J$
+coincides with~$(\O_T/\I)^\Zar$ and is therefore quasicoherent, hence
+synthetically quasicoherent from the internal point of view of~$\Zar(T)$ by
+Theorem~\ref{thm:qcoh-big-char}.
+
+To verify that~$T \models (x \in U \Leftrightarrow 1 \in J)$, let an
+object~$(T' \xra{f} T \to S)$ of the site be given. Then we have the
+chain of equivalences
+\begin{align*}
+  &\mathrel{\phantom{\Longleftrightarrow}}
+  X(f)(x) \in U(T') \\
+  &\Longleftrightarrow
+  \text{$T' \to T$ factors over~$T_0$} \\
+  &\Longleftrightarrow
+  T' \models 1 \in \im(f^*\I \to \O_{T'}) \\
+  &\Longleftrightarrow
+  T' \models 1 \in J,
+\end{align*}
+where the last step follows by Lemma~\ref{lemma:qcoh-ideals}.
+
+For the converse direction, let~$T$ be an~$S$-scheme contained in the site and
+let~$x \in X(T)$. By assumption there is an open covering~$T = \bigcup_i V_i$
+and ideals~$J_i \in \Zar(V_i)$ such that~$\afflvi/J_i$ is synthetically
+quasicoherent and such that~$V_i \models (x \in U \Leftrightarrow 1 \in J_i)$.
+
+By Theorem~\ref{thm:qcoh-big-char}, there are quasicoherent modules~$\E_i$
+over~$V_i$ such that~$\afflvi/J_i \cong (\E_i)^\Zar$. We set~$\I_i \defeq
+\Kernel(\O_{V_i} \to \E_i)$. One can check that~$D(\I_i) \cap V_j =
+D(\I_j) \cap V_i$ for all~$i$ and~$j$. We set~$T_0 \defeq \bigcup_i D(\I_i)$.
+
+To verify that this construction satisfies what is expected of it, let~$(T'
+\xra{f} T \to S)$ be an object of the site. We then have the following chain of
+equivalences:
+\begin{align*}
+  &\mathrel{\phantom{\Longleftrightarrow}}
+  \text{$T' \to T$ factors over~$T_0$} \\
+  &\Longleftrightarrow
+  \text{for all~$i$, $f_i : f^{-1}V_i \to V_i$ factors over~$D(\I_i)$} \\
+  &\Longleftrightarrow
+  \text{for all~$i$, $f^{-1}V_i \models 1 \in \im(f_i^*\I_i \to \O_{f^{-1}V_i})$} \\
+  &\stackrel{\star}{\Longleftrightarrow}
+  \text{for all~$i$, $f^{-1}V_i \models 1 \in J_i$} \\
+  &\Longleftrightarrow
+  \text{for all~$i$, $f^{-1}V_i \models x \in U$} \\
+  &\Longleftrightarrow
+  \text{$T' \models x \in U$} \\
+  &\Longleftrightarrow
+  \text{$X(f)(x) \in U(T')$}
+\end{align*}
+For this calculation, it's not important that the ideals~$\I_i$ are
+quasicoherent. The assumption that the quotient modules~$\afflvi/J_i$ are
+quasicoherent is only needed to ensure that Lemma~\ref{lemma:qcoh-ideals}
+can be applied in the marked step.
 \end{proof}
 
 \begin{rem}The radical~$\sqrt{J}$ of the ideal~$J$ appearing in

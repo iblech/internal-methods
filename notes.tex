@@ -140,6 +140,7 @@
 \DeclareMathOperator{\Int}{int}
 \DeclareMathOperator{\Clos}{cl}
 \DeclareMathOperator{\Kernel}{ker}
+\DeclareMathOperator{\cok}{cok}
 \DeclareMathOperator{\im}{im}
 \DeclareMathOperator{\supp}{supp}
 \newcommand{\Ass}{\mathrm{Ass}}
@@ -11427,7 +11428,23 @@ to~$f(a,b)/g(a,b)$.
 \end{proof}
 
 
-\subsection{Quasicoherence}
+\subsection{Quasicoherence} The goal of this section is to give an internal
+characterization of quasicoherence. We'll build several notions of synthetic
+algebraic geometry on quasicoherence; it is therefore central to the theory.
+
+\begin{lemma}\label{lemma:qcoh-local}
+Let~$E$ be an~$\affl$-module. Let~$S = \bigcup_i U_i$ be an open covering such
+that the restrictions~$E|_{\Zar(U_i)}$ are quasicoherent, that is of the
+form~$(\E_i)^\Zar$ for quasicoherent~$\O_{U_i}$-modules~$\E_i$. Then~$E$ is
+quasicoherent, that is of the form~$(\E_0)^\Zar$ for a
+quasicoherent~$\O_S$-module~$\E_0$.
+\end{lemma}
+
+\begin{proof}The given modules~$\E_i$ glue to a
+quasicoherent~$\O_S$-module~$\E_0$, and the sheaf condition ensures that~$E$ is
+isomorphic to~$(\E_0)^\Zar$. The details are mostly given
+in~\stacksproject{03DN}.
+\end{proof}
 
 \begin{defn}\label{defn:synth-qcoh}
 An~$R$-module~$E$ is \emph{synthetically quasicoherent} if and only if,
@@ -11465,9 +11482,10 @@ then~$E$ is synthetically quasicoherent from the internal point of view of~$\Zar
 The converse holds in any of the following situations:
 \begin{enumerate}
 \item The site used to construct~$\Zar(S)$ is one of the parsimonious sites.
-\item The base scheme~$S$ is concentrated (quasicompact and quasiseparated) and
-the functor~$E$ maps directed limits of inverse systems of~$S$-schemes with
+\item The functor~$E$ maps directed limits of inverse systems of~$S$-schemes with
 affine transition morphisms to colimits in~$\Set$.
+\item From the internal point of view of~$\Zar(S)$, the module~$E$ is even
+finitely presented.
 \end{enumerate}
 \end{thm}
 
@@ -11562,11 +11580,12 @@ to~$\affl$-algebras in suitable slices of~$\Zar(S)$, showing that the canonical
 morphism~\eqref{eqn:want-iso2} is locally an isomorphism and therefore globally
 as well.
 
-In situation~(2), we employ the technique of approximating general~$S$-schemes
+In situation~(2), we may assume without loss of generality that~$S$ is affine.
+We then employ the technique of approximating general~$S$-schemes
 by~$S$-schemes of finite presentation. Specifically, let~$f : T \to S$ be an
 arbitrary~$S$-scheme contained in the site used to define~$\Zar(S)$. Without
 loss of generality, we may assume that~$T$ is an affine scheme. Thus~$T$ is
-quasicompact and quasiseparated, and~$S$ is quasiseparated by assumption. We may therefore
+quasicompact and quasiseparated, and~$S$ is quasiseparated since it is affine. We may therefore
 apply the lemma of relative approximation~\stacksproject{09MV} to deduce
 that~$T$ is a directed limit of an inverse system of~$S$-schemes~$f_i : T_i \to
 S$ of finite presentation with affine transition maps. These~$S$-schemes
@@ -11577,8 +11596,16 @@ modules~\stacksproject{01Z0}:
 \[
 E(T) = E(\lim_i T_i) \cong \colim_i E(T_i) \cong
 \colim_i \Gamma(T_i, f_i^* \E_0)
-\cong \Gamma(T, f^* \E_0). \qedhere
+\cong \Gamma(T, f^* \E_0).
 \]
+
+In situation~(3), we may assume by Lemma~\ref{lemma:qcoh-local} that~$E$ is
+the cokernel of a morphism~$\alpha : (\affl)^m \to (\affl)^n$ of~$\affl$-modules.
+This morphism induces a morphism~$\alpha|_{\Sh(S)} : \O_S^m \to \O_S^n$
+of~$\O_S$-modules. One can then check that~$E$ is canonically isomorphic
+to~$(\cok(\alpha|_{\Sh(S)}))^\Zar$, by using that the restriction
+functors~$\Mod_{\Zar(S)}(\affl) \to \Mod_{\Sh(X)}(\O_X)$ are jointly
+conservative and right exact.
 \end{proof}
 
 \begin{scholium}\label{scholium}

@@ -12249,10 +12249,12 @@ of~$\Zar(S)$.
 Proposition~\ref{prop:characterization-open-subfunctor} can be adapted.
 \end{proof}
 
-\begin{lemma}Finite conjunctions and finite disjunctions of quasicompact open
+\begin{lemma}\label{lemma:open-truth-values-stable}
+Finite conjunctions and finite disjunctions of quasicompact open
 truth values are quasicompact open. If~$\Zar(S)$ is defined using one of the
 parsimonious sites, then furthermore finite conjunctions and finite
-disjunctions of open truth values are open.
+disjunctions of open truth values are open from the internal point of view
+of~$\Zar(S)$.
 \end{lemma}
 
 \begin{proof}Let~$\varphi$ and~$\psi$ be quasicompact open truth values with
@@ -12541,6 +12543,39 @@ those closed truth values which admit a finitely generated witnessing ideal.
 For those closed truth values, any given finitely generated witnessing ideals
 are equal.
 \end{rem}
+
+\begin{lemma}If~$\Zar(S)$ is defined using one of the parsimonious sites, then
+finite conjunctions of closed truth values are closed from the internal point
+of view of~$\Zar(S)$.
+\end{lemma}
+
+\begin{proof}We argue internally. Let~$\varphi$ and~$\psi$ be closed truth
+values with witnessing ideals~$I$ and~$J$. Then~$\varphi \wedge \psi$ is
+equivalent to~$I + J = (0)$ and the module~$\affl/(I + J)$ is synthetically
+quasicoherent (as in the proof of Lemma~\ref{lemma:open-truth-values-stable}).
+Hence~$\varphi \wedge \psi$ is a closed truth value.
+\end{proof}
+
+It's in general not the case that finite disjunctions of closed truth
+values are closed, and it's instructive to see why. The external interpretation
+of this failure is the following: Let~$A \hookrightarrow S$ and~$B
+\hookrightarrow S$ be closed subschemes. Then the functor of points of the
+union~$A \cup B$ does \emph{not} coincide with the union of the
+subfunctors~$\ul{A} \hookrightarrow \ul{S}$ and~$\ul{B} \hookrightarrow
+\ul{S}$. An explicit description of the former functor is
+\[ (X \xra{f} S) \longmapsto
+  \{ \star \,|\, \text{$f$ factors over~$A \cup B$} \} \]
+and of the latter is
+\[ (X \xra{f} S) \longmapsto
+  \{ \star \,|\, \text{locally on the target, $f$ factors over~$A$ or over~$B$} \}. \]
+The inclusion~$A \cup B \hookrightarrow S$ trivially factors over~$A \cup B$,
+but in general there isn't an open covering~$S = \bigcup_i U_i$ such that for
+each~$i$, the restriction~$(A \cup B) \cap U_i \hookrightarrow U_i$ factors
+over~$A \cap U_i$ or over~$B \cap U_i$. For instance, this isn't the case
+if~$S$ is the affine plane over a field and~$A$ and~$B$ are the two axes.
+
+This phenomenon doesn't happen for open subschemes, which explains why finite
+disjunctions of open truth values are open.
 
 \begin{rem}\label{rem:closed-geometric-morphism}
 There is the notion of a closed geometric morphism of toposes. For

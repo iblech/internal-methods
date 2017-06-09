@@ -12479,6 +12479,33 @@ quasicoherent~$\O_S$-module~$\E$ such that~$\affl/J \cong \E^\Zar$. We set~$\J
 implies that~$Z$ is the functor of points of the~$S$-scheme~$V(\J)$.
 \end{proof}
 
+\begin{prop}\label{prop:closed-truth-value-ideal}
+Let~$\Zar(S)$ be defined using a parsimonious site and assume
+that~$S$ is locally Noetherian. Then the witnessing ideals of closed truth
+values are uniquely determined by the truth value.
+\end{prop}
+
+\begin{proof}We argue internally. Let~$\varphi$ be a closed truth value.
+Let~$J \subseteq \affl$ be an ideal such that~$\affl/J$ is synthetically
+quasicoherent and such that~$\varphi$ holds if and only if~$J = (0)$.
+
+We set~$K \defeq \{ f \? \affl \,|\, \varphi \Rightarrow f = 0 \}$. Then,
+trivially,~$J \subseteq K$. For the converse containment relation, let~$f \in
+K$. The canonical homomorphism~$\affl/J \to [\brak{\varphi}, \affl]$ is
+bijective by synthetic quasicoherence of~$\affl/J$ and by
+Scholium~\ref{scholium} (it is here that we need that~$S$ is locally Noetherian
+-- else we can't ensure that the~$S$-scheme~$\RelSpec_S((\affl/J)|_{\Sh(S)})$
+is locally finitely presented). The image of~$[f]$ is zero, hence~$f$ is an
+element of~$J$.
+\end{proof}
+
+\begin{rem}Without any assumptions on~$S$ or on the site used to
+define~$\Zar(S)$, Proposition~\ref{prop:closed-truth-value-ideal} holds for
+those closed truth values which admit a finitely generated witnessing ideal.
+For those closed truth values, any given finitely generated witnessing ideals
+are equal.
+\end{rem}
+
 \begin{rem}\label{rem:closed-geometric-morphism}
 There is the notion of a closed geometric morphism of toposes. For
 an arbitrary topos~$\E$ and an object~$A \in \E$, the canonical geometric

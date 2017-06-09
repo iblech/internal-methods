@@ -11043,6 +11043,7 @@ without additional hypotheses.
 Let~$f : X \to S$ and~$g : Y \to S$ be~$S$-schemes which are locally contained
 in the site used to define~$\Zar(S)$. In the case that the site is one of the
 parsimonious sites, further assume that~$f$ and~$g$ are quasicompact and quasiseparated.
+The following statements are equivalent:
 \begin{enumerate}
 \item The image of~$f$ coincides with the image of~$g$ topologically.
 \item $\Zar(S) \models \neg\neg(\speak{$\ul{X}$ inhabited}) \Leftrightarrow
@@ -12655,6 +12656,13 @@ Lemma~\ref{lemma:image-coincides} is applicable and yields that the image of~$X
 \to S$ coincides with the found closed subscheme. This concludes the proof.
 \end{proof}
 
+% Variant of this proposition: Without Noetherian assumption.
+% Require at least a partial universe. Then are equivalent:
+% (1) f has closed image and the ideal can be chosen to be finitely generated.
+% (2) Zar(S) |== exists phi : Omega.
+%         phi is a closed truth value with finitely generated witnessing ideals  and
+%         neg neg (X inhabited) <==> neg neg phi.
+
 \begin{cor}\label{cor:univ-closed}
 Assume that~$S$ is locally Noetherian. Let~$f : X \to S$ be a
 finitely presented morphism. In the situation that one the parsimonious
@@ -12775,7 +12783,8 @@ This phenomenon is well-known in synthetic topology; one has to put some
 restrictions on the kind of allowed open coverings. Being finite is the
 simplest such condition.
 
-\begin{prop}Let~$\Zar(S)$ be defined using the parsimonious sites. Let~$f : X \to
+\begin{prop}\label{prop:big-char-qcqs}
+Let~$\Zar(S)$ be defined using the parsimonious sites. Let~$f : X \to
 S$ be a locally finitely presented morphism. Then:
 \begin{enumerate}
 \item The morphism~$f$ is quasicompact if and only if~$\ul{X}$ is a
@@ -12815,6 +12824,20 @@ Proposition~\ref{prop:char-closed-immersion} instead of the first statement.
 
 
 \subsection{Proper morphisms}
+
+\begin{prop}Let~$\Zar(S)$ be defined using the parsimonious sites. Assume
+that~$S$ is locally Noetherian. Let~$X \in \Zar(S)$ be a Zariski sheaf. Then
+the following statements are equivalent:
+\begin{enumerate}
+\item The sheaf~$X$ is the functor of points of a proper~$S$-scheme.
+\item $\Zar(S) \models \speak{$X$ is a finitely presented synthetic scheme and
+synthetically closed}$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}Follows immediately from Proposition~\ref{prop:synthetic-schemes},
+Proposition~\ref{prop:big-char-qcqs}, and Corollary~\ref{cor:univ-closed}.
+\end{proof}
 
 
 \section{Case studies}

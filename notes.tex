@@ -12175,6 +12175,69 @@ the truth value of~``the fiber of~$x$ is inhabited'' is quasicompact open.
 \end{itemize}
 \end{defn}
 
+\begin{proof}[Proof of Proposition~\ref{prop:characterization-open-subfunctor}]
+We begin with the ``only if'' direction. Let~$T$ be an~$S$-scheme contained in
+the site used to define~$\Zar(S)$ and let~$x \in X(T)$. By assumption there is
+an open subscheme~$T_0 \subseteq T$ such that, for any object~$(T' \xra{f} T
+\to S)$ of the site the morphism~$f$ factors over~$T_0$ if and only if~$X(f)(x)
+\in U(T')$.
+
+There is a quasicoherent sheaf~$\I$ of ideals on~$T$ such that~$T_0 = D(\I)$.
+We set~$J \defeq \im(\I^\Zar \to \afflt)$. Then the quotient module~$\afflt/J$
+coincides with~$(\O_T/\I)^\Zar$ and is therefore quasicoherent, hence
+synthetically quasicoherent from the internal point of view of~$\Zar(T)$ by
+Theorem~\ref{thm:qcoh-big-char}.
+
+To verify that~$T \models (x \in U \Leftrightarrow 1 \in J)$, let an
+object~$(T' \xra{f} T \to S)$ of the site be given. Then we have the
+chain of equivalences
+\begin{align*}
+  &\mathrel{\phantom{\Longleftrightarrow}}
+  X(f)(x) \in U(T') \\
+  &\Longleftrightarrow
+  \text{$T' \to T$ factors over~$T_0$} \\
+  &\Longleftrightarrow
+  T' \models 1 \in \im(f^*\I \to \O_{T'}) \\
+  &\Longleftrightarrow
+  T' \models 1 \in J,
+\end{align*}
+where the last step follows by Lemma~\ref{lemma:qcoh-ideals}.
+
+For the converse direction, let~$T$ be an~$S$-scheme contained in the site and
+let~$x \in X(T)$. By assumption there is an open covering~$T = \bigcup_i V_i$
+and ideals~$J_i \in \Zar(V_i)$ such that~$\afflvi/J_i$ is synthetically
+quasicoherent and such that~$V_i \models (x \in U \Leftrightarrow 1 \in J_i)$.
+
+By Theorem~\ref{thm:qcoh-big-char}, there are quasicoherent modules~$\E_i$
+over~$V_i$ such that~$\afflvi/J_i \cong (\E_i)^\Zar$. We set~$\I_i \defeq
+\Kernel(\O_{V_i} \to \E_i)$. One can check that~$D(\I_i) \cap V_j =
+D(\I_j) \cap V_i$ for all~$i$ and~$j$. We set~$T_0 \defeq \bigcup_i D(\I_i)$.
+
+To verify that this construction satisfies what is expected of it, let~$(T'
+\xra{f} T \to S)$ be an object of the site. We then have the following chain of
+equivalences:
+\begin{align*}
+  &\mathrel{\phantom{\Longleftrightarrow}}
+  \text{$T' \to T$ factors over~$T_0$} \\
+  &\Longleftrightarrow
+  \text{for all~$i$, $f_i : f^{-1}V_i \to V_i$ factors over~$D(\I_i)$} \\
+  &\Longleftrightarrow
+  \text{for all~$i$, $f^{-1}V_i \models 1 \in \im(f_i^*\I_i \to \O_{f^{-1}V_i})$} \\
+  &\stackrel{\star}{\Longleftrightarrow}
+  \text{for all~$i$, $f^{-1}V_i \models 1 \in J_i$} \\
+  &\Longleftrightarrow
+  \text{for all~$i$, $f^{-1}V_i \models x \in U$} \\
+  &\Longleftrightarrow
+  \text{$T' \models x \in U$} \\
+  &\Longleftrightarrow
+  \text{$X(f)(x) \in U(T')$}
+\end{align*}
+For this calculation, it's not important that the ideals~$\I_i$ are
+quasicoherent. The assumption that the quotient modules~$\afflvi/J_i$ are
+quasicoherent is only needed to ensure that Lemma~\ref{lemma:qcoh-ideals}
+can be applied in the marked step.
+\end{proof}
+
 \begin{prop}\label{cor:sufficient-criterion-qc-open-subfunctor}
 Let~$X \in \Zar(S)$ be a Zariski sheaf. A subfunctor~$U \hookrightarrow X$ is a
 quasicompact open subfunctor if and only if~$U \hookrightarrow X$ is a
@@ -12343,69 +12406,6 @@ For the ``if'' direction, we exploit the~$\neg\neg$-stability of~$U$. If~$\neg
 U$, then~$\neg(1 \in J)$, so~$M = \affl$, and since~$M \subseteq (\affl)^\times$ by
 assumption, it follows that zero is invertible. This is a contradiction.
 Thus~$\neg\neg U$.
-\end{proof}
-
-\begin{proof}[Proof of Proposition~\ref{prop:characterization-open-subfunctor}]
-We begin with the ``only if'' direction. Let~$T$ be an~$S$-scheme contained in
-the site used to define~$\Zar(S)$ and let~$x \in X(T)$. By assumption there is
-an open subscheme~$T_0 \subseteq T$ such that, for any object~$(T' \xra{f} T
-\to S)$ of the site the morphism~$f$ factors over~$T_0$ if and only if~$X(f)(x)
-\in U(T')$.
-
-There is a quasicoherent sheaf~$\I$ of ideals on~$T$ such that~$T_0 = D(\I)$.
-We set~$J \defeq \im(\I^\Zar \to \afflt)$. Then the quotient module~$\afflt/J$
-coincides with~$(\O_T/\I)^\Zar$ and is therefore quasicoherent, hence
-synthetically quasicoherent from the internal point of view of~$\Zar(T)$ by
-Theorem~\ref{thm:qcoh-big-char}.
-
-To verify that~$T \models (x \in U \Leftrightarrow 1 \in J)$, let an
-object~$(T' \xra{f} T \to S)$ of the site be given. Then we have the
-chain of equivalences
-\begin{align*}
-  &\mathrel{\phantom{\Longleftrightarrow}}
-  X(f)(x) \in U(T') \\
-  &\Longleftrightarrow
-  \text{$T' \to T$ factors over~$T_0$} \\
-  &\Longleftrightarrow
-  T' \models 1 \in \im(f^*\I \to \O_{T'}) \\
-  &\Longleftrightarrow
-  T' \models 1 \in J,
-\end{align*}
-where the last step follows by Lemma~\ref{lemma:qcoh-ideals}.
-
-For the converse direction, let~$T$ be an~$S$-scheme contained in the site and
-let~$x \in X(T)$. By assumption there is an open covering~$T = \bigcup_i V_i$
-and ideals~$J_i \in \Zar(V_i)$ such that~$\afflvi/J_i$ is synthetically
-quasicoherent and such that~$V_i \models (x \in U \Leftrightarrow 1 \in J_i)$.
-
-By Theorem~\ref{thm:qcoh-big-char}, there are quasicoherent modules~$\E_i$
-over~$V_i$ such that~$\afflvi/J_i \cong (\E_i)^\Zar$. We set~$\I_i \defeq
-\Kernel(\O_{V_i} \to \E_i)$. One can check that~$D(\I_i) \cap V_j =
-D(\I_j) \cap V_i$ for all~$i$ and~$j$. We set~$T_0 \defeq \bigcup_i D(\I_i)$.
-
-To verify that this construction satisfies what is expected of it, let~$(T'
-\xra{f} T \to S)$ be an object of the site. We then have the following chain of
-equivalences:
-\begin{align*}
-  &\mathrel{\phantom{\Longleftrightarrow}}
-  \text{$T' \to T$ factors over~$T_0$} \\
-  &\Longleftrightarrow
-  \text{for all~$i$, $f_i : f^{-1}V_i \to V_i$ factors over~$D(\I_i)$} \\
-  &\Longleftrightarrow
-  \text{for all~$i$, $f^{-1}V_i \models 1 \in \im(f_i^*\I_i \to \O_{f^{-1}V_i})$} \\
-  &\stackrel{\star}{\Longleftrightarrow}
-  \text{for all~$i$, $f^{-1}V_i \models 1 \in J_i$} \\
-  &\Longleftrightarrow
-  \text{for all~$i$, $f^{-1}V_i \models x \in U$} \\
-  &\Longleftrightarrow
-  \text{$T' \models x \in U$} \\
-  &\Longleftrightarrow
-  \text{$X(f)(x) \in U(T')$}
-\end{align*}
-For this calculation, it's not important that the ideals~$\I_i$ are
-quasicoherent. The assumption that the quotient modules~$\afflvi/J_i$ are
-quasicoherent is only needed to ensure that Lemma~\ref{lemma:qcoh-ideals}
-can be applied in the marked step.
 \end{proof}
 
 \begin{rem}The radical~$\sqrt{J}$ of the ideal~$J$ appearing in

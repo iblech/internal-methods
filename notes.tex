@@ -11762,6 +11762,50 @@ holds when using one of the larger sites (the given proof doesn't generalize to
 this situation since Theorem~\ref{thm:qcoh-big-char} can't be applied). We
 expand on this in Section~\ref{sect:outlook}.
 
+\begin{lemma}Let~$A$ and~$B$ be~$\affl$-algebras. The canonical
+map \[ \Hom_{\Alg(\affl)}(A,B) \lra
+\Hom_{\Zar(S)}(\brak{\Spec(B)},\brak{\Spec(A)}) \] is bijective in the following
+situations:
+\begin{enumerate}
+\item The algebra~$B$ is finitely presented.
+\item The algebra~$B$ is quasicoherent and the functor~$\brak{\Spec(B)} \in
+\Zar(S)$ is locally representable by an object of the site used to
+define~$\Zar(S)$. (This situation subsumes the previous one.)
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}By Scholium~\ref{scholium}, the canonical morphism~$B \to
+[\Spec(B), \affl]$ is an isomorphism. Hence the claim follows by the following
+entirely formal calculation:
+\begin{align*}
+  &\mathrel{\phantom{=}}
+  \Hom(\brak{\Spec(B)}, \brak{\Spec(A)}) \\
+  &=
+  \Hom([B,\affl]_{\Alg(\affl)}, [A,\affl]_{\Alg(\affl)}) \\
+  &\cong
+  \Hom([B,\affl]_{\Alg(\affl)} \times A, \affl)_{\text{$\affl$-homomorphism in
+  the second argument}} \\
+  &\cong
+  \Hom_{\Alg(\affl)}(A, [[B, \affl]_{\Alg(\affl)}, \affl]) \\
+  &\cong
+  \Hom_{\Alg(\affl)}(A, [\brak{\Spec(B)}, \affl]) \\
+  &\cong
+  \Hom_{\Alg(\affl)}(A, B). \qedhere
+\end{align*}
+\end{proof}
+
+% FUTURE: Why a condition on B instead of A?
+
+It's a basic fact that for an~$\O_S$-algebra~$\A$, the canonical map
+\[ \Hom_{\Alg(\O_S)}(\A_0, f_*\O_X) \lra
+  \Hom_{\LRL/S}(X, \RelSpec_S(\A_0)) \]
+is bijective for any~$S$-scheme~$(f : X \to S)$. One should not expect that the
+similar statement that for an~$\affl$-algebra~$A$, the canonical map
+\[ \Hom_{\Alg(\affl)}(A, [X,\affl]) \lra \Hom_{\Zar(S)}(X, \brak{\Spec(A)}) \]
+is bijective for arbitrary functors~$X \in \Zar(S)$ is bijective, holds. This
+is because the objects of~$\Zar(S)$ are quite a bit more general than locally
+ringed spaces (or locales) over~$S$.
+
 
 \subsection{Special properties of the affine line}
 \label{sect:special-properties-affl}

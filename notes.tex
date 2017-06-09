@@ -6772,10 +6772,10 @@ x = 0$ as elements of~$A$.
 
 The ``if'' direction also admits a shorter proof, by simply
 considering the Kripke--Joyal interpretation of~$\Sh(\Spec A) \models
-\speak{$\O_{\Spec A}$ is reduced}$ and using~$\Gamma(\Spec A, \O_{\Spec A})
+\speak{$\O_{\Spec A}$ is reduced}$ and using the canonical isomorphism~$\Gamma(\Spec A, \O_{\Spec A})
 \cong A$. We included the given proof to give a simple example of the mixed
 internal/external reasoning with the generic filter. In a similar way we could
-reprove Lemma~\ref{lemma:regular-affine}, that is the statement that a ring
+reprove Lemma~\ref{lemma:regular-affine}, the statement that a ring
 element~$f \in A$ is regular in~$A$ if and only if, from the internal point of
 view, it is regular in~$\O_{\Spec A}$.
 
@@ -11257,26 +11257,34 @@ being the functor of points of an affine~$S$-scheme (an~$S$-scheme whose
 structure morphism to~$S$ is affine).
 
 \begin{prop}\label{prop:char-affine-zar}
-A sheaf~$X \in \Zar(S)$ is isomorphic to the functor of points of
-an affine~$S$-scheme if, in the internal language of~$\Zar(S)$,
+Let~$X \in \Zar(S)$ be a Zariski sheaf. Consider the following statements:
+\begin{enumerate}
+\item The sheaf~$X$ is isomorphic to the functor of points of an
+affine~$S$-scheme.
+\item In the internal language of~$\Zar(S)$,
 the~$\affl$-algebra~$[X,\affl]$ is synthetically quasicoherent
 (Definition~\ref{defn:synth-qcoh}) and the canonical map~$X \to
-\Spec([X,\affl])$ is bijective. The converse holds in any of the following
+\Spec([X,\affl])$ is bijective.
+\end{enumerate}
+If one of the parsimonious sites is used to define~$\Zar(S)$ or if, internally,
+the algebra~$[X,\affl]$ is finitely presented, then~``(2)~$\Rightarrow$~(1)''.
+The converse holds in any of the following
 situations:
-\begin{enumerate}
+\begin{itemize}
 \item The affine~$S$-scheme which~$X$ represents is of finite presentation
 over~$S$.
 \item The site used to define~$\Zar(S)$ is defined using a partial universe
 and the affine~$S$-scheme which~$X$ represents if of finite type over~$S$.
 \item The affine~$S$-scheme which~$X$ represents is contained in the site used
 to define~$\Zar(S)$. (This situation subsumes the previous ones.)
-\end{enumerate}\end{prop}
+\end{itemize}\end{prop}
 
-\begin{proof}The ``if'' direction is straightforward, since the assumption
+\begin{proof}The direction~``(2)~$\Rightarrow$~(1)'' is straightforward, since the assumption
 expresses~$X$ as the functor of points of the relative spectrum of a
-quasicoherent~$\O_S$-algebra.
+quasicoherent~$\O_S$-algebra. Theorem~\ref{thm:qcoh-big-char}, which is needed
+to obtain the sought quasicoherent~$\O_S$-algebra, is applicable.
 
-For the ``only if'' direction, we abuse notation and denote the given
+For the converse direction, we abuse notation and denote the given
 affine~$S$-scheme whose functor of points is~$X$ by~``$f : X \to S$''.
 Then~$f_*\O_X$ is quasicoherent and the canonical morphism~$X \to
 \RelSpec_S{f_*\O_X}$ is an isomorphism. In any of the listed situations, the
@@ -11951,32 +11959,37 @@ From the point of view of the internal language of~$\Zar(S)$, a subfunctor~$U
 how one can characterize those inclusions which externally correspond to open
 subfunctors is answered as follows.
 
-\begin{defn}In the context of a specified local ring, as for instance~$\affl$
+\begin{defn}In the context of a specified local ring~$R$, as for instance~$\affl$
 of the big Zariski topos of a scheme, a truth value~$U \subseteq 1$ is
-\emph{open} if and only if there exists an ideal~$J \subseteq \affl$ such
-that~$\affl/J$ is synthetically quasicoherent
+\emph{open} if and only if there exists an ideal~$J \subseteq R$ such
+that~$R/J$ is synthetically quasicoherent
 (Definition~\ref{defn:synth-qcoh}) and such that~$U$ holds if and only if~$1 \in
 J$. (Section~\ref{sect:basics-on-truth-values} contains generalities on truth
 values.)\end{defn}
 
-\begin{ex}Let~$f \? \affl$. Then~``$f \neq 0$'' is an open truth value with
-witnessing ideal~$J = (f)$. The quotient~$\affl/J$ is indeed synthetically
+\begin{ex}Let~$f \? R$. Then~``$f$ is invertible'' is an open truth value with
+witnessing ideal~$J = (f)$. The quotient~$R/J$ is indeed synthetically
 quasicoherent, since it is finitely presented. More generally,
-let~$f_1,\ldots,f_n \? \affl$. Then~``$f_1 \neq 0 \vee \cdots \vee f_n \neq
-0$'' is an open truth value with witnessing ideal~$J =
-(f_1,\ldots,f_n)$.\end{ex}
+let~$f_1,\ldots,f_n \? R$. Then~``one of the~$f_i$ is invertible''
+is an open truth value with witnessing ideal~$J =
+(f_1,\ldots,f_n)$.
+
+In case that~$R$ fulfills the same field condition as~$\affl$ does,
+one can write this truth value also as~``$f_1 \neq 0 \vee \cdots \vee f_n \neq
+0$''.
+\end{ex}
 
 \begin{defn}In the context of a specified local ring, a map~$U \to X$ of sets is a
 \emph{synthetic open immersion} if and only if it is injective and for any~$x\?X$
 the truth value of~``the fiber of~$x$ is inhabited'' is open.\end{defn}
 
-\begin{ex}The inclusion~$(\affl)^\times \hookrightarrow \affl$ of the
-invertible elements is a synthetic open immersion, since for~$x\?\affl$ the
-truth value of~``the fiber of~$x$ is inhabited'' equals the truth value of~``$x
-\neq 0$''.\end{ex}
+\begin{ex}The inclusion~$R^\times \hookrightarrow R$ of the
+invertible elements is a synthetic open immersion, since for~$x\?R$ the
+truth value of~``the fiber of~$x$ is inhabited'' equals the truth value of~``$x$
+is invertible''.\end{ex}
 
-\begin{ex}Let~$X \in \Zar(S)$. Let~$f \? [X,\affl]$ from the internal point of
-view. The inclusion~$\{ x\?X \,|\, f(x) \neq 0 \} \hookrightarrow X$ is a
+\begin{ex}Let~$X$ be a set. Let~$f : X \to R$ be a function.
+The inclusion~$\{ x\?X \,|\, \text{$f(x)$ is invertible} \} \hookrightarrow X$ is a
 synthetic open immersion.\end{ex}
 
 \begin{prop}\label{prop:characterization-open-subfunctor}
@@ -12038,11 +12051,11 @@ the statement that~$1 \in J$ is equivalent to one of
 the~$f_i$ being invertible by locality of~$\affl$.
 \end{proof}
 
-The internal condition appearing in the corollary reflects basic intuition
-about openness in algebraic geometry: Intuitively, a subset is open if it is
-given by inequations,
-so that to decide whether a point belongs to the subset one has to check that
-at least one of some numbers is not zero.
+The internal condition appearing in
+Corollary~\ref{cor:sufficient-criterion-open-subfunctor} reflects basic
+intuition about openness in algebraic geometry: Intuitively, a subset is open
+if it is given by inequations, so that to decide whether a point belongs to the
+subset one has to check that at least one of some numbers is not zero.
 
 Of course, in classical scheme theory, one would put some condition on these
 numbers in order not to trivialize the notion. For instance, one would require
@@ -12055,6 +12068,37 @@ Corollary~\ref{cor:sufficient-criterion-open-subfunctor}. However, it's
 implicitly built into the language, since by the Kripke--Joyal semantics the
 external meaning of~``$\exists f\?\affl$'' is that there exist, locally on an
 open cover, suitable elements of~$\affl(T)$, that is regular functions on~$T$.
+
+It's useful to give a name for the kind of the subfunctors appearing in
+Corollary~\ref{cor:sufficient-criterion-open-subfunctor}.
+
+\begin{defn}\begin{itemize}
+\item A subfunctor~$U \hookrightarrow X$ in~$\Zar(S)$ is a \emph{quasicompact open subfunctor} if
+and only if for any object~$(T \to S)$ of the site used to define~$\Zar(S)$
+and any~$x \in X(T)$ there exists an open subscheme~$T_0 \subseteq T$
+such that the open immersion~$T_0 \hookrightarrow T$ is quasicompact and such
+that for any object~$(T' \xra{f} T \to S)$ of the site used to define~$\Zar(S)$
+the map~$T' \to T$ factors over~$T_0$ if and only if~$X(f)(x) \in U(T')$.
+\item In the context of a specified local ring, a truth value~$U \subseteq 1$ is
+\emph{quasicompact open} if and only if there exists a finitely generated
+ideal~$J \subseteq R$ such that~$U$ holds if and only if~$1 \in
+J$.
+\item In the context of a specified local ring, a map~$U \to X$ of sets is a
+\emph{synthetic quasicompact open immersion} if and only if it is injective and for any~$x\?X$
+the truth value of~``the fiber of~$x$ is inhabited'' is quasicompact open.
+\end{itemize}
+\end{defn}
+
+\begin{prop}\label{cor:sufficient-criterion-qc-open-subfunctor}
+Let~$X \in \Zar(S)$ be a Zariski sheaf. A subfunctor~$U \hookrightarrow X$ is a
+quasicompact open subfunctor if and only if~$U \hookrightarrow X$ is a
+synthetic quasicompact open immersion from the internal point of view
+of~$\Zar(S)$.
+\end{prop}
+
+\begin{proof}The proof of
+Proposition~\ref{prop:characterization-open-subfunctor} can be adapted.
+\end{proof}
 
 The notion of open truth values is not unique to our account of synthetic
 algebraic geometry. Rather, it's a concept in the established and more general
@@ -12297,60 +12341,71 @@ Section~\ref{sect:change-of-base}. Geometric morphisms of the form~$\E/A \to
 
 \subsection{Closed immersions}
 
-\begin{defn}In the context of a specified local ring, as for instance~$\affl$
+\begin{defn}In the context of a specified local ring~$R$, as for instance~$\affl$
 of the big Zariski topos of a scheme, a truth value~$Z \subseteq 1$ is
-\emph{closed} if and only if there exists an ideal~$J \subseteq \affl$ such
-that~$\affl/J$ is synthetically quasicoherent
+\emph{closed} if and only if there exists an ideal~$J \subseteq R$ such
+that~$R/J$ is synthetically quasicoherent
 (Definition~\ref{defn:synth-qcoh}) and such that~$Z$ holds if and only if~$J =
 (0)$.\end{defn}
 
 In other words, a truth value~$Z \subseteq 1$ is closed if and only if~$Z$ is
 isomorphic to the spectrum of a synthetically quasicoherent quotient algebra
-of~$\affl$.
+of~$R$.
 
-\begin{ex}Let~$f \? \affl$. Then~``$f = 0$'' is a closed truth value with
-witnessing ideal~$J = (f)$. More generally, if~$f_1,\ldots,f_n \? \affl$, the
-truth value~``$f_1 = \cdots = f_n = 0$'' is closed.\end{ex}
+\begin{ex}Let~$f \? R$. Then~``$f = 0$'' is a closed truth value with
+witnessing ideal~$J = (f)$. More generally, if~$f_1,\ldots,f_n \? R$, the
+truth value~``$f_1 = \cdots = f_n = 0$'' is closed with witnessing
+ideal~$(f_1,\ldots,f_n)$.\end{ex}
 
 \begin{defn}In the context of a specified local ring, a map~$Z \to X$ of sets is a
 \emph{synthetic closed immersion} if and only if it is injective and for
 any~$x\?X$ the truth value of~``the fiber of~$x$ is inhabited'' is
 closed.\end{defn}
 
-\begin{ex}The inclusion~$\{0\} \hookrightarrow \affl$ is a synthetic closed
-immersion. More generally, for any functions~$f_1,\ldots,f_m : (\affl)^n \to
-\affl$, the inclusion of the set of their common zeros in~$(\affl)^n$ is a
+\begin{ex}The inclusion~$\{0\} \hookrightarrow R$ is a synthetic closed
+immersion. More generally, for any functions~$f_1,\ldots,f_m : R^n \to
+R$, the inclusion of the set of their common zeros in~$R^n$ is a
 synthetic closed immersion.\end{ex}
 
-\begin{ex}Let~$X \in \Zar(S)$. Let~$f \? [X,\affl]$ from the internal point of
-view. The inclusion~$\{ x\?X \,|\, f(x) = 0 \} \hookrightarrow X$ is a
+\begin{ex}Let~$X$ be a set. Let~$f : X \to R$ be a function.
+The inclusion~$\{ x\?X \,|\, f(x) = 0 \} \hookrightarrow X$ is a
 synthetic closed immersion.\end{ex}
 
 \begin{prop}\label{prop:char-closed-immersion}
 Let~$X$ be an~$S$-scheme.
 \begin{enumerate}
-\item Let~$Z \subseteq X$ be a closed subscheme. Then the subfunctor~$\ul{Z}
+\item Let~$Z \hookrightarrow X$ be a closed subscheme. Then the subfunctor~$\ul{Z}
 \hookrightarrow \ul{X}$ is a synthetic closed immersion from the internal point
 of view of~$\Zar(S)$.
-\item If~$\ul{X}$ is locally representable by an object of the site used to
-define~$\Zar(S)$, any synthetic closed immersion~$Z \hookrightarrow \ul{X}$ is
+\item Assume that~$\ul{X}$ is locally representable by an object of the site used to
+define~$\Zar(S)$. Let~$Z \hookrightarrow \ul{X}$ be a synthetic closed
+immersion. If the site is one of the parsimonious sites or if the witnessing
+ideals for the immersion are finitely generated from the internal point of
+view, then~$Z \hookrightarrow \ul{X}$ is
 isomorphic to the subfunctor associated to a closed subscheme of~$X$.
 \end{enumerate}
 \end{prop}
 
 \begin{proof}To verify the first claim, let a
 quasicoherent~$\O_X$-algebra~$\J_0$ be given such that the closed subscheme~$Z
-\subseteq X$ is the vanishing scheme of~$\J_0$. Following the translation with
+\hookrightarrow X$ is the vanishing scheme of~$\J_0$. Following the translation with
 the Kripke--Joyal semantics, let~$f : T \to S$ be an object of the site used to
 define~$\Zar(S)$ and let~$x \in \ul{X}(T)$. We define~$J \defeq (f^*
 \J_0)^\Zar \in \Zar(S)/\ul{T}$. Then $T \models \speak{$\affl/J$ is
 synthetically quasicoherent}$ and $T \models (x \in \ul{Z} \Leftrightarrow J =
 (0))$, therefore~``$x \in \ul{Z}$'' is a closed truth value.
-\XXX{For the second claim, ...}
-% Idea: First show uniqueness of J.
-% Let J, K be given.
-% Let f in J.
-% Then ...
+
+For the converse direction, we may assume that~$X = S$ since~$\Zar(S)/\ul{X}
+\simeq \Zar(X)$, as discussed in Section~\ref{sect:change-of-base}. We then
+observe that the problem is local on~$S$, since we can glue matching schemes
+defined over the members of an open covering of~$S$~\stacksproject{01JJ}. We
+may therefore assume that we are given an~$\affl$-algebra~$J$ such
+that~$\affl/J$ is synthetically quasicoherent from the internal point of view
+and such that~$Z = \brak{J = (0)}$. The assumptions ensure that
+Theorem~\ref{thm:qcoh-big-char} is applicable. Therefore there is a
+quasicoherent~$\O_S$-module~$\E$ such that~$\affl/J \cong \E^\Zar$. We set~$\J
+\defeq \Kernel(\O_S \twoheadrightarrow \E)$. Lemma~\ref{lemma:qcoh-ideals} then
+implies that~$Z$ is the functor of points of the~$S$-scheme~$V(\J)$.
 \end{proof}
 
 \begin{rem}\label{rem:closed-geometric-morphism}
@@ -12535,13 +12590,17 @@ immersion~$Z \hookrightarrow X$, there is a closed truth value~$\varphi$ such
 that~$Z$ is \notnot inhabited if and only if~$\neg\neg\varphi$.
 \end{defn}
 
-\begin{ex}Any singleton set is synthetically closed.\end{ex}
+\begin{ex}\label{ex:singleton-synth-closed}
+Any singleton set is synthetically closed.\end{ex}
 
-\begin{ex}The specified local ring~$R$ is typically not synthetically closed.
+\begin{ex}\label{ex:r-not-synth-closed}
+The specified local ring~$R$ is typically not synthetically closed.
 For let~$f \? R$ be an element. Then the inclusion~$Z \defeq \{ g \? R \,|\,
-fg - 1 = 0 \}$ is a synthetic closed immersion. The set~$Z$ is \notnot inhabited if and
+fg - 1 = 0 \} \hookrightarrow R$ is a synthetic closed immersion. The set~$Z$ is \notnot inhabited if and
 only if~$f$ is \notnot invertible if and only if~$f$ is invertible (by
-Proposition~\ref{prop:a1-field}); \XXX{continue}\end{ex}
+Proposition~\ref{prop:a1-field}); typically, there is no closed truth
+value~$\varphi$ such that~$\neg\neg\varphi$ is equivalent to the open truth
+value~``$f$ is invertible''.\end{ex}
 
 \begin{prop}\label{prop:char-closed-image}
 Assume that~$S$ is locally Noetherian. Let~$f : X \to S$ be a
@@ -12560,7 +12619,8 @@ closed.
 
 \begin{proof}The direction~``(2)~$\Rightarrow$~(1)'' is trivial, and the
 direction~``(1)~$\Rightarrow$~(2)'' is immediate, since the image of~$X
-\times_T T \to T$ is the preimage of the image of~$f$.
+\times_T T \to T$ is the preimage of the image of~$f$ under the structure
+morphism~$T \to S$.
 
 For the~``(1)~$\Rightarrow$~(3)'' direction, we may pick the subfunctor
 of~$\ul{S}$ induced by the closed immersion~$\im(f) \hookrightarrow S$ as the
@@ -12576,10 +12636,12 @@ inhabited}) \Leftrightarrow \neg\neg(\speak{$Z$ is inhabited})$. By
 Proposition~\ref{prop:char-closed-immersion}, this subfunctor is the functor of
 points of a closed subscheme of~$S$. Since~$S$ is locally Noetherian, this
 subscheme is locally of finite presentation over~$S$. Therefore
-Lemma~\ref{lemma:image-coincides} is applicable. This concludes the proof.
+Lemma~\ref{lemma:image-coincides} is applicable and yields that the image of~$X
+\to S$ coincides with the found closed subscheme. This concludes the proof.
 \end{proof}
 
-\begin{cor}Assume that~$S$ is locally Noetherian. Let~$f : X \to S$ be a
+\begin{cor}\label{cor:univ-closed}
+Assume that~$S$ is locally Noetherian. Let~$f : X \to S$ be a
 finitely presented morphism. In the situation that one the parsimonious
 sites is used to define~$\Zar(S)$, the following statements are equivalent:
 \begin{enumerate}
@@ -12591,6 +12653,13 @@ sites is used to define~$\Zar(S)$, the following statements are equivalent:
 \begin{proof}Immediate using Proposition~\ref{prop:char-closed-immersion} and
 Proposition~\ref{prop:char-closed-image}.
 \end{proof}
+
+In view of Corollary~\ref{cor:univ-closed},
+Example~\ref{ex:singleton-synth-closed} and Example~\ref{ex:r-not-synth-closed}
+have a geometric interpretation. The first example reflects the fact that the
+idenity morphism~$S \to S$ is universally closed. The second example reflects
+the fact that the projection morphism~$\affl \to S$ is typically not
+universally closed.
 
 
 \subsection{Quasicompact and quasiseparated morphisms}
@@ -12630,8 +12699,14 @@ finitely presented, quasicompact, and quasiseparated over~$S$).
 \item[(2')] $\Zar(S) \models \speak{$X$ is a locally finitely presented quasicompact synthetic scheme}$.
 \item[(3')] $\Zar(S) \models \speak{$X$ is a finitely presented synthetic scheme}$.
 \end{enumerate}
-Then~(1)~$\Rightarrow$~(1'), (2)~$\Leftrightarrow$~(2'),
-and~(3)~$\Leftrightarrow$~(3').
+Then:
+\begin{itemize}
+\item (1)~$\Rightarrow$~(1'), (2)~$\Rightarrow$~(2'), and~(3)~$\Rightarrow$~(3'). 
+\item If the parsimonious sites are used to define~$\Zar(S)$, then all three
+converses hold.
+\item If the given synthetic open immersions are even quasicompact open
+immersions, then~(2')~$\Rightarrow$~(2) and~(3')~$\Rightarrow$~(3).
+\end{itemize}
 \end{prop}
 
 \begin{proof}For proving~(1)~$\Rightarrow$~(1'), (2)~$\Rightarrow$~(2'),
@@ -12649,13 +12724,27 @@ and therefore coincides with~$X$.
 
 Since each scheme~$U_i$ can be realized as a relative spectrum of a
 quasicoherent~$\O_S$-algebra, both~$U_i$ and~$S$ being affine, the sets~$U_i$
-are synthetic affine schemes from the internal point of view. This
-proves~(1)~$\Rightarrow$~(1'). If~(2) holds, then the~$U_i$ are spectra of
+are synthetic affine schemes from the internal point of view.
+Hence~(1)~$\Rightarrow$~(1'). If~(2) holds, then the~$U_i$ are spectra of
 finitely presented~$\O_S$-algebras, so~(2') holds. If~(3) holds, then the
 intersections~$U_i \cap U_j$ can be covered by finitely many open subschemes
 which are spectra of finitely presented~$\O_S$-algebras, so~(3') holds.
 
-\XXX{continue proof}
+For the converse directions, we first note that the problem is local on~$S$,
+since we can glue matching schemes defined over the members of an open covering
+of~$S$~\stacksproject{01JJ}. We may therefore assume that we are given
+subfunctors~$U_1,\ldots,U_n \hookrightarrow X$ such that, from the internal
+point of view of~$\Zar(S)$, the subsets~$U_i \subseteq X$ are synthetic affine
+schemes and the inclusions~$U_i \hookrightarrow X$ are synthetic open
+immersions. The extra assumptions ensure that
+Proposition~\ref{prop:characterization-open-subfunctor} and
+Proposition~\ref{prop:char-affine-zar} are applicable. These imply that the
+functors~$U_i$ are representable by affine~$S$-schemes. These can be glued to
+yield an~$S$-scheme which represents the functor~$X$~\stacksproject{01JJ}.
+
+In case that internally further finiteness conditions are satisfied, the
+resulting scheme~$X$ will satisfy the corresponding external finiteness
+conditions.
 \end{proof}
 
 \begin{rem}One can reasonably wonder why we didn't include the following notion

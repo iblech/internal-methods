@@ -11657,6 +11657,29 @@ therefore~$\Spec(A) = \emptyset$ from the internal point of view. Thus the
 codomain of the canonical morphism is the zero algebra, but the domain is not.
 \end{rem}
 
+The internal quasicoherence condition for the little Zariski topos
+(Theorem~\ref{thm:qcoh-sheafchar}) is related to the notion of synthetic
+quasicoherence as follows. Recall that an~$\O_S$-module~$\E_0$ is quasicoherent
+if and only if, from the internal point of view of~$\Sh(S)$, the localized
+module~$\E_0[f^{-1}]$ is a sheaf with respect to the modal operator~$(\speak{$f$
+\inv} \Rightarrow \placeholder)$ for any function~$f\?\O_S$. The sublocale
+associated with this modal operator is the open sublocale~$j :
+\Spec(\O_S[f^{-1}]|\O_S) \hookrightarrow \pt$. The condition can therefore also
+be put in the form 
+\[ \Sh(S) \models
+  \forall f\?\O_S\_
+  \speak{$\E_0[f^{-1}] \lra j_* j^{-1} (\E_0[f^{-1}])$ is bijective}. \]
+One can verify that the functor~$j_* \circ
+j^{-1}$ is canonically isomorphic to the functor~$[\brak{\speak{$f$ \inv}},
+\placeholder]$, hence to the functor~$[\Spec(\O_S[f^{-1}]), \placeholder]$.
+Since~$\E_0[f^{-1}] \cong \E_0 \otimes_{\O_S} \O_S[f^{-1}]$, the condition can
+therefore also be put in the form
+\[ \Sh(S) \models
+  \forall f\?\O_S\_
+  \E_0 \otimes_{\O_S} \O_S[f^{-1}] \lra [\Spec(\O_S[f^{-1}]), \E_0]. \]
+The synthetic quasicoherence condition therefore implies the condition which
+characterizes quasicoherence in the little Zariski topos as a special case.
+
 \begin{lemma}\label{lemma:qcoh-ideals}
 Let~$J \hookrightarrow \affl$ be an ideal such that~$\affl/J$ is
 of the form~$(\E_0)^\Zar$ for an~$\O_S$-module~$\E_0$. Let~$\I$ be the kernel

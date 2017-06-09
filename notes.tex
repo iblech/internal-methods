@@ -11735,6 +11735,33 @@ quasicoherent~$\affl$-modules to arbitrary~$\affl$-modules does not preserve
 them.
 \end{caveat}
 
+\begin{lemma}\label{lemma:tensor-product-qcoh}
+Let~$\Zar(S)$ be defined using one of the parsimonious sites. Then tensor
+products of synthetically quasicoherent modules and cokernels of morphisms
+between synthetically quasicoherent modules are synthetically quasicoherent
+from the internal point of view of~$\Zar(S)$.
+\end{lemma}
+
+\begin{proof}By Theorem~\ref{thm:qcoh-big-char} and the description of the
+slice toposes of~$\Zar(S)$ given in Section~\ref{sect:change-of-base}, the
+first claim reduces to the fact that the tensor product of
+quasicoherent~$\affl$-modules is quasicoherent. Indeed, the tensor product
+of~$(\E_0)^\Zar$ with~$(\F_0)^\Zar$ is~$(\E_0 \otimes_{\O_S} \F_0)^\Zar$ by
+Lemma~\ref{lemma:zar-tensor-product-commutes} and the tensor product of
+quasicoherent~$\O_S$-modules is quasicoherent.
+
+The second claim reduces to the statement that the cokernel of a morphism~$\alpha :
+(\E_0)^\Zar \to (\F_0)^\Zar$, calculated in the category of~$\affl$-modules,
+coincides with~$(\cok(\alpha|_{\Sh(S)}))^\sim$ and that the cokernel of a
+morphism of quasicoherent~$\O_S$-modules is quasicoherent.
+\end{proof}
+
+It's somewhat embarassing that we didn't give an internal proof of
+Lemma~\ref{lemma:tensor-product-qcoh}. Also we don't know whether the result
+holds when using one of the larger sites (the given proof doesn't generalize to
+this situation since Theorem~\ref{thm:qcoh-big-char} can't be applied). We
+expand on this in Section~\ref{sect:outlook}.
+
 
 \subsection{Special properties of the affine line}
 \label{sect:special-properties-affl}
@@ -12160,7 +12187,9 @@ Proposition~\ref{prop:characterization-open-subfunctor} can be adapted.
 \end{proof}
 
 \begin{lemma}Finite conjunctions and finite disjunctions of quasicompact open
-truth values are quasicompact open truth values.
+truth values are quasicompact open. If~$\Zar(S)$ is defined using one of the
+parsimonious sites, then furthermore finite conjunctions and finite
+disjunctions of open truth values are open.
 \end{lemma}
 
 \begin{proof}Let~$\varphi$ and~$\psi$ be quasicompact open truth values with
@@ -12169,6 +12198,13 @@ local,~$\varphi \wedge \psi$ is equivalent to~$1 \in I \cdot J$, and~$\varphi \v
 \psi$ is equivalent to~$1 \in I + J$. The ideals~$I \cdot J$ and~$I + J$ are
 finitely generated. Therefore~$\varphi \wedge \psi$ and~$\varphi \vee \psi$ are
 quasicompact open truth values.
+
+For the case of arbitrary open truth values, we need to verify that~$\affl/(I
+\cdot J)$ and~$\affl/(I + J)$ are synthetically quasicoherent if~$\affl/I$
+and~$\affl/J$ are. This second claim from Lemma~\ref{lemma:tensor-product-qcoh},
+since~$\affl/(I + J) \cong \affl/I \otimes_\affl \affl/J$. The first claim
+follows from a similar calculation.
+% A^1/(IJ) = (O_S/(I_0 J_0))^Zar
 \end{proof}
 
 The notion of open truth values is not unique to our account of synthetic

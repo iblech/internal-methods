@@ -12011,10 +12011,10 @@ how one can characterize those inclusions which externally correspond to open
 subfunctors is answered as follows.
 
 \begin{defn}In the context of a specified local ring~$R$, as for instance~$\affl$
-of the big Zariski topos of a scheme, a truth value~$U \subseteq 1$ is
+of the big Zariski topos of a scheme, a truth value~$\varphi$ is
 \emph{open} if and only if there exists an ideal~$J \subseteq R$ such
 that~$R/J$ is synthetically quasicoherent
-(Definition~\ref{defn:synth-qcoh}) and such that~$U$ holds if and only if~$1 \in
+(Definition~\ref{defn:synth-qcoh}) and such that~$\varphi$ holds if and only if~$1 \in
 J$. (Section~\ref{sect:basics-on-truth-values} contains generalities on truth
 values.)\end{defn}
 
@@ -12130,9 +12130,9 @@ and any~$x \in X(T)$ there exists an open subscheme~$T_0 \subseteq T$
 such that the open immersion~$T_0 \hookrightarrow T$ is quasicompact and such
 that for any object~$(T' \xra{f} T \to S)$ of the site used to define~$\Zar(S)$
 the map~$T' \to T$ factors over~$T_0$ if and only if~$X(f)(x) \in U(T')$.
-\item In the context of a specified local ring, a truth value~$U \subseteq 1$ is
+\item In the context of a specified local ring, a truth value~$\varphi$ is
 \emph{quasicompact open} if and only if there exists a finitely generated
-ideal~$J \subseteq R$ such that~$U$ holds if and only if~$1 \in
+ideal~$J \subseteq R$ such that~$\varphi$ holds if and only if~$1 \in
 J$.
 \item In the context of a specified local ring, a map~$U \to X$ of sets is a
 \emph{synthetic quasicompact open immersion} if and only if it is injective and for any~$x\?X$
@@ -12149,6 +12149,18 @@ of~$\Zar(S)$.
 
 \begin{proof}The proof of
 Proposition~\ref{prop:characterization-open-subfunctor} can be adapted.
+\end{proof}
+
+\begin{lemma}Finite conjunctions and finite disjunctions of quasicompact open
+truth values are quasicompact open truth values.
+\end{lemma}
+
+\begin{proof}Let~$\varphi$ and~$\psi$ be quasicompact open truth values with
+witnessing finitely generated ideals~$I$ and~$J$. Because the ring is
+local,~$\varphi \wedge \psi$ is equivalent to~$1 \in I \cdot J$, and~$\varphi \vee
+\psi$ is equivalent to~$1 \in I + J$. The ideals~$I \cdot J$ and~$I + J$ are
+finitely generated. Therefore~$\varphi \wedge \psi$ and~$\varphi \vee \psi$ are
+quasicompact open truth values.
 \end{proof}
 
 The notion of open truth values is not unique to our account of synthetic
@@ -12393,10 +12405,10 @@ Section~\ref{sect:change-of-base}. Geometric morphisms of the form~$\E/A \to
 \subsection{Closed immersions}
 
 \begin{defn}In the context of a specified local ring~$R$, as for instance~$\affl$
-of the big Zariski topos of a scheme, a truth value~$Z \subseteq 1$ is
+of the big Zariski topos of a scheme, a truth value~$\varphi$ is
 \emph{closed} if and only if there exists an ideal~$J \subseteq R$ such
 that~$R/J$ is synthetically quasicoherent
-(Definition~\ref{defn:synth-qcoh}) and such that~$Z$ holds if and only if~$J =
+(Definition~\ref{defn:synth-qcoh}) and such that~$\varphi$ holds if and only if~$J =
 (0)$.\end{defn}
 
 In other words, a truth value~$Z \subseteq 1$ is closed if and only if~$Z$ is

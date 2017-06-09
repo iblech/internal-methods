@@ -13022,7 +13022,11 @@ Proposition~\ref{prop:big-char-qcqs}, and Corollary~\ref{cor:univ-closed}.
 \begin{prop}The synthetic punctured plane, as constructed by the internal
 language of~$\Zar(S)$, is the functor of points of the ordinary punctured plane
 over~$S$, that is the open subscheme~$D(X) \cup D(Y) \hookrightarrow
-\AA^1_S$.\end{prop}
+\AA^2_S$.\end{prop}
+
+\begin{proof}The set~$P$ can be written as~$\{ (x,y) \? (\affl)^2 \,|\,
+\text{$x$ \inv} \vee \text{$y$ \inv} \}$.
+\end{proof}
 
 \begin{prop}The evaluation morphism~$\affl[X,Y] \to [P, \affl]$ is bijective.\end{prop}
 
@@ -13048,7 +13052,7 @@ Therefore we have the chain of isomorphisms
   &\cong \affl[X,Y].
 \end{align*}
 The penultimate isomorphism exploits the synthetic quasicoherence of~$\affl$,
-which guarantees that the canonical map
+which ensures that the canonical map
 \[ \affl[X,X^{-1}] \longrightarrow [\Spec(\affl[X,X^{-1}]), \affl] \cong
   [D(X), \affl] \]
 is bijective. The ultimate isomorphism rests on the purely algebraic argument
@@ -13061,7 +13065,7 @@ of~$\affl[X,Y]$ and in fact by the same element.
 \end{cor}
 
 \begin{proof}The canonical map~$P \to \Spec([P, \affl])$ is isomorphic to the
-inclusion~$P \hookrightarrow (\affl)^2$ and therefore not bijective.
+strict inclusion~$P \hookrightarrow (\affl)^2$ and therefore not bijective.
 \end{proof}
 
 
@@ -13393,7 +13397,7 @@ least imply the axioms for separably closed rings.
 
 Wraith conjectured that the big fppf topos classifies algebraically closed
 local rings (local rings for which any monic polynomial of positive degree has
-a zero, also called absolutely integrally closed rings). We neither confirm nor
+a zero, also called absolutely integrally closed local rings). We neither confirm nor
 refute his conjecture, but we are able to give an alternative explicit
 description: The big fppf topos of a scheme classifies fppf-local rings
 over~$S$.
@@ -13445,7 +13449,7 @@ over~$A$ admits a solution in~$A$.
 \end{defn}
 
 An fppf-local ring is algebraically closed, since
-the~$A$-algebra~$A[X]/(f)$ is a basic fppf-algebra if~$f$ is a monic polynomial
+the~$A$-algebra~$A[X]/(f)$ is a basic fppf-algebra whenever~$f$ is a monic polynomial
 of positive degree.
 
 We refer to basic fppf-algebras instead of arbitrary integral fppf-algebras in
@@ -14387,6 +14391,7 @@ XXX:
   externally such an object exists. Note that talking about prestacks should not
   be possible from the point of view of Sh(X).
 * Explore closure of quasicoherent sheaves. For instance sum of submodules.
+* Quasicoherence condition
 * Skim the notes for possible caveats.
 
 XXX:

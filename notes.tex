@@ -12688,7 +12688,8 @@ are isomorphic to spectra of finitely presented~$R$-algebras.
 \end{enumerate}
 \end{defn}
 
-\begin{prop}Let~$X \in \Zar(S)$ be a Zariski sheaf. Consider the following
+\begin{prop}\label{prop:synthetic-schemes}
+Let~$X \in \Zar(S)$ be a Zariski sheaf. Consider the following
 statements:
 \begin{enumerate}
 \item $X$ is the functor of points of a quasicompact~$S$-scheme.
@@ -12747,7 +12748,7 @@ resulting scheme~$X$ will satisfy the corresponding external finiteness
 conditions.
 \end{proof}
 
-\begin{rem}One can reasonably wonder why we didn't include the following notion
+One can reasonably wonder why we didn't include the following notion
 in Definition~\ref{defn:synthetic-scheme}: A \emph{synthetic scheme} is a
 set~$X$ which admits an arbitrary open covering by synthetic affine schemes.
 The reason is that, with this definition, any subset~$X$ of the singleton
@@ -12758,10 +12759,45 @@ terminal functor is representable by a scheme.
 This phenomenon is well-known in synthetic topology; one has to put some
 restrictions on the kind of allowed open coverings. Being finite is the
 simplest such condition.
-\end{rem}
 
+\begin{prop}Let~$\Zar(S)$ be defined using the parsimonious sites. Let~$f : X \to
+S$ be a locally finitely presented morphism. Then:
+\begin{enumerate}
+\item The morphism~$f$ is quasicompact if and only if~$\ul{X}$ is a
+quasicompact synthetic scheme from the internal point of view of~$\Zar(S)$.
+\item The morphism~$f$ is quasiseparated if and only if, internally, for any
+elements~$x,y \? \ul{X}$ the set~$\brak{x = y}$ is a quasicompact synthetic
+scheme.
+\item The morphism~$f$ is separated if and only if, internally, for any
+elements~$x,y \? \ul{X}$ the truth value~$\brak{x = y}$ is closed. If this is
+the case, the witnessing ideal can be chosen to be finitely generated.
+\end{enumerate}
+\end{prop}
 
-\subsection{Quasiseparated morphisms}
+\begin{proof}The first statement is by Proposition~\ref{prop:synthetic-schemes}
+and by the fact that the scheme representing a representable functor is unique.
+
+The second statement follows from the first by applying it to the diagonal
+morphism~$\Delta : X \to X \times_S X$. More precisely, we have the following
+chain of equivalences:
+\begin{align*}
+  &\mathrel{\phantom{\Longleftrightarrow}}
+  \Zar(S) \models \forall x,y\?\ul{X}\_
+    \speak{$\brak{x = y}$ is a quasicompact synthetic scheme} \\
+  &\Longleftrightarrow
+  \Zar(X \times_S X) \models
+    \speak{$\ul{X}$ is a quasicompact synthetic scheme} \\
+  &\Longleftrightarrow
+  \text{$\Delta : X \to X \times_S X$ is quasicompact}
+\end{align*}
+The first step is by the discussion in Section~\ref{sect:change-of-base} and
+the second by applying the first statement; the diagonal morphism is locally of
+finite presentation~\stacksproject{0818}, as required.
+
+The third statement follows in a similar way, but employing
+Proposition~\ref{prop:char-closed-immersion} instead of the first statement.
+\end{proof}
+
 
 \subsection{Proper morphisms}
 

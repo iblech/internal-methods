@@ -409,7 +409,7 @@ affine setting is intuitionistically valid.
 We believe that already this application of the internal language is useful to
 working algebraic geometers. However, more advanced applications are also
 possible. They result from considering internal statements whose logical form
-is more complex, in particular those which quantify over subsets or which
+is more complex, in particular from statements which quantify over subsets or which
 contain implication and negation signs.
 
 For instance, if~$X$ is a reduced scheme,
@@ -1288,7 +1288,7 @@ y)$). Thus Corollary~\ref{cor:geometric-implication} gives a deeper reason for t
 morphism of sheaves is a monomorphism \resp an epimorphism if and only if it is
 stalkwise injective \resp surjective.\end{ex}
 
-A construction is \emph{geometric} if and only if it commutes with pullback
+A construction is \emph{geometric}\label{page:geometric-constructions} if and only if it commutes with pullback
 under arbitrary geometric morphisms. We do not want to discuss the notion of
 geometric morphisms here; suffice it to say that calculating the stalk at a
 point~$x \in X$ is an instance of such a pullback. Among others, the following
@@ -2778,6 +2778,102 @@ property nonetheless (see Proposition~\ref{prop:regularity-spreading} for an
 internal proof of this fact). Thus the claim still follows, just like in the
 proof of Proposition~\ref{prop:internal-integrality}.
 \end{proof}
+
+
+\subsection{Kähler differentials}
+
+Let~$A \to B$ be a homomorphism of rings. The~$B$-module~$\Omega^1_{B|A}$ of
+Kähler differentials can be constructed as the free~$B$-module on the
+basis~$(db)_{b \in B}$ consisting of formal symbols modulo appropriate
+relations ensuring that the map~$b \mapsto db$ is~$A$-linear and satisfies the
+Leibniz rule; it verifies the universal property that the map~$B \to
+\Omega^1_{B|A}$ is the initial~$A$-linear derivation of~$B$.
+
+For constructing the sheaf of Kähler differentials for a morphism of schemes,
+one often resorts to the alternative construction as~$I/I^2$, where~$I
+\subseteq B \otimes_A B$ is the kernel of the multiplication map~$B \otimes_A B
+\to B$. The verification of the universal property is slightly harder for this
+construction. Gathmann comments on this situation as follows~\cite[p.~134]{gathmann:ag}:
+\begin{quote}
+Of course, if~$f : X \to Y$ is a morphism of general (not necessarily affine)
+schemes, we want to consider the relative differentials of every restriction
+of~$f$ to affine opens of~$X$ and~$Y$, and glue them together to get a quasi-coherent
+sheaf~$\Omega_{X|Y}$. To do this, we have to give a different description of the relative
+differentials, as the construction [via the free module] does not glue very well.
+\end{quote}
+After having constructed a global sheaf of Kähler differentials using the
+alternative description (only in the case that~$f$ is separated, though with a
+little bit of more work this assumption can be dispensed with), he goes on as
+follows~\cite[Remark~7.4.8]{gathmann:ag}:
+\begin{quote}
+It should be stressed that [the definition using the alternative construction]
+is essentially useless for practical computations. Its only use is to show that
+a global object~$\Omega_{X|Y}$ exists that restricts to the old definition on
+affine open subsets. For applications, we will always use [the definition using
+the free module and the calculation of the Kähler differentials of a morphism
+of the form~$k \to k[x_1,\ldots,x_n]/(f_1,\ldots,f_m)$] on open subsets.
+\end{quote}
+Vakil chooses a similar route~\cite[Section~21.2]{vakil:foag}.
+
+Regarding the sheaf of Kähler differentials as the conormal sheaf of the
+diagonal embedding (and hence using the alternative construction) is of course
+essential for further developments and hence very useful. However, if the goal
+is just to construct a global sheaf of Kähler differentials, we can employ the
+internal language to construct it using only the formal construction via the
+free module.
+
+Specifically, if~$f : X \to S$ is a morphism of schemes, we can construct, in
+the internal universe of~$\Sh(X)$, the module of Kähler differentials of the
+morphism~$f^\sharp : f^{-1}\O_S \to \O_X$. A number of basic properties then
+follow purely formally:
+
+\begin{prop}Let~$f : X \to S$ be a morphism of schemes (or of locally ringed
+spaces). Let~$\Omega^1_{X|S}$ be defined as the interpretation of the internal
+construction~$\Omega^1_{\O_X|f^{-1}\O_S}$.
+\begin{enumerate}
+\item The sheaf of Kähler differentials has the following universal property:
+For any open subset~$U \subseteq X$, any~$(f^{-1}\O_S)|_U$-linear
+derivation~$\O_X|_U \to \E$ over~$U$ uniquely factors over~$\O_X|_U \to
+\Omega^1_{X|S}|_U$.
+\item The stalks~$(\Omega^1_{X|S})_x$ are canonically isomorphic
+to~$\Omega^1_{\O_{X,x}|\O_{S,f(x)}}$.
+\item The sheaf~$\Omega^1_{X|S}$ is quasicoherent.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}The first claim is just the interpretation of the internal
+universal property using the Kripke--Joyal semantics and using the
+simplification rule given in Proposition~\ref{prop:simplification},
+
+The second claim is immediate because the construction of Kähler differentials
+via the free module is geometric (see
+\pageref{page:geometric-constructions}). Therefore the operations~``take
+the Kähler differentials'' and~``take the stalk at~$x$'' commute.
+
+For verifying the third claim, it suffices to verify that~$\Omega^1_{X|S}$ is
+quasicoherent in case that~$X = \Spec(B)$ and~$S = \Spec(A)$ are affine.
+Let~$\varphi : A \to B$ be homomorphism of rings given by~$f$. We employ the
+technique and notation of Section~\ref{sect:generic-filter}:
+\begin{align*}
+  (\Omega^1_{B|A})^\sim &\cong
+  \underline{\Omega^1_{B|A}}[\F^{-1}] \cong
+  \Omega^1_{\ul{B}|\ul{A}}[\F^{-1}] \\
+  &\cong
+  \Omega^1_{\ul{B}[\F^{-1}]|\ul{A}[(\varphi^{-1}[\F])^{-1}]} \cong
+  \Omega^1_{\O_{\Spec(B)}|f^{-1}\O_{\Spec(A)}}.
+\end{align*}
+The first isomorphism is by
+Proposition~\ref{prop:tilde-construction-internally}, the second because the
+geometric construction ``taking Kähler differentials'' commutes with ``taking
+constant sheaves'' (since it can be expressed as pullback along a geometric
+morphism), the third by~\stacksproject{00RT}, and the fourth
+by~Proposition~\ref{prop:tilde-construction-internally}.
+\end{proof}
+
+Incidentally, the Stacks Project too uses the construction via the free
+module~\stacksproject{08RL}, however because the Stacks Project doesn't employ
+the internal language they have to manually sheafify and keep track of open
+subsets.
 
 
 \subsection{Internal proofs of common lemmas}
@@ -14239,12 +14335,6 @@ would solve the purely algebro-logical problem of describing the
 Booleanization of the theory of a local ring.
 
 
-% FUTURE (very easy):
-% Kähler differentials; clear myth that the definition via free modules
-% ``does not glue very well'', see
-% \url{http://www.mathematik.uni-kl.de/~gathmann/class/alggeom-2002/chapter-7.pdf}.
-
-
 \chapter*{Appendix}
 
 \newcounter{saved-section-number}
@@ -14476,3 +14566,6 @@ XXX: Define morphisms of locales
 
 XXX:
 Mention Steven Gubkin and the nCafé post. Also the Secret Blogging Seminar.
+
+However, real algebraic geometry starts where the basics of scheme theory end.
+intersection, cohomology, ...

@@ -345,7 +345,9 @@ this thesis, this would imply the absurd statement that any sheaf of modules on
 a reduced scheme is locally free.
 
 The restriction to intuitionistic reasoning is not as confining as it might first
-appear. We will discuss its practical consequences below (on
+appear, in particular because there is a widely applicable metatheorem ensuring
+that statements of a certain form are provable classically if and only if they
+are provable intuitionistically. We will discuss practical consequences below (on
 page~\pageref{sect:appreciating-intuitionistic-logic}).
 
 
@@ -1426,7 +1428,7 @@ By~$\neg\neg\neg\varphi$,~$\bot$ follows.} and that the double negation of the
 law of excluded middle,~$\neg\neg(\varphi \vee \neg\varphi)$, holds.
 
 A classical mathematician might then ask which classical results are valid
-intuitionistically. The answer is that in linear and commutative algebra, most
+intuitionistically. Firstly, in linear and commutative algebra, most
 of the basic theorems stay valid, provided one exercises some caution in
 formulating them (for instance, one should not arbitrarily weaken assumptions
 by introducing double negations). This is because the proofs of these
@@ -1436,8 +1438,29 @@ distinctions do occur, they can often be eliminated by streamlining the proof.
 Consider as a simple example the proposition that the kernel of a linear map is
 a linear subspace. The case distinction ``either the kernel consists just of the
 zero vector, in which case the claim is trivial, or otherwise \ldots'' is not
-intuitionistically acceptable, but it can be entirely dispensed with: The proof
+intuitionistically acceptable, but can be entirely dispensed with: The proof
 for the general case works in the special case just as well.
+
+Secondly, there is \emph{Barr's theorem}. This metatheorem states that, if a
+geometric implication has a proof using classical logic and the axiom of choice
+(from certain axioms which too can be formulated as geometric implications), then
+it also has a proof using intuitionistic logic. For instance, the
+Nullstellensatz (any finite system of polynomial equations over an
+algebraically closed geometric field either possesses a solution or a
+certificate that there can't be any solutions) is typically proven using
+maximal ideals and therefore using some forms of the axiom of choice. By Barr's
+theorem, there is also an intuitionistically valid proof.
+
+Barr's theorem only requires restrictions on the form of the statement and the
+axioms; the given classical proof can be of any form whatsoever and can freely
+use statements which are not geometric implications. The proof of Barr's
+theorem itself is not intuitionistically valid, which puts us in the curious
+situation that we nonconstructively know that there exists a constructive
+proof. Because we strive, as far as possible, that these notes can be
+interpreted in a constructive metatheory, and because we personally prefer
+direct intuitionistic proofs, we won't use Barr's theorem in what follows.
+However, it's useful to quickly assess whether a classically known proposition
+also has an intuitionistic proof.
 
 Finally, we should clarify the status of the axiom of choice. This axiom, which
 is strictly speaking not part of classical logic, but of a classical set

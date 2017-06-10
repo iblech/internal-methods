@@ -86,6 +86,7 @@
 \newcommand{\CC}{\mathbb{C}}
 \newcommand{\QQ}{\mathbb{Q}}
 \newcommand{\GG}{\mathbb{G}}
+\newcommand{\TT}{\mathbb{T}}
 \newcommand{\aaa}{\mathfrak{a}}
 \newcommand{\bbb}{\mathfrak{b}}
 \newcommand{\ccc}{\mathfrak{c}}
@@ -11951,7 +11952,7 @@ is because the objects of~$\Zar(S)$ are quite a bit more general than locally
 ringed spaces (or locales) over~$S$.
 
 
-\subsection{Special properties of the affine line}
+\subsection{Properties of the affine line}
 \label{sect:special-properties-affl}
 
 The ring object~$\affl$ in the big Zariski topos enjoys several special
@@ -12132,6 +12133,7 @@ dimension~$\leq n$ from the internal point of view of~$\Zar(S)$.
 
 
 \section{Basic constructions of relative scheme theory}
+\label{sect:basic-constructions}
 
 With~$\affl$ at hand, we can perform many of the usual constructions of
 (relative) scheme theory internally.
@@ -14360,6 +14362,109 @@ would solve the purely algebro-logical problem of describing the
 Booleanization of the theory of a local ring.
 
 
+\section{Outlook}
+
+We believe that the approach of using internal language in algebraic geometry
+is already in its current form as developed in Part~\ref{part:little-zariski} and
+Part~\ref{part:big-zariski} useful to working algebraic geometers
+and interesting for topos theorists and logicians.
+
+{\tocless
+
+\subsection*{Further axioms for synthetic algebraic geometry} We showed in
+Section~\ref{sect:special-properties-affl} and in
+Section~\ref{sect:basic-constructions}, that from the single axiom
+\begin{quote}
+``The ring~$\affl$ is local and synthetically quasicoherent.''
+\end{quote}
+a surprising number of properties can be deduced and that the core of a synthetic
+account for algebraic geometry, comprising notions such as affine schemes,
+open and closed immersions, surjective, universally closed and proper
+morphisms, and quasicompact synthetic schemes, can be built around it.
+
+However, we still don't feel that we have a full understanding of the notion of
+quasicoherence.
+
+Firstly, there are several properties of synthetically quasicoherent modules
+which we couldn't account for internally. For instance, the tensor product of
+synthetically quasicoherent modules is synthetically quasicoherent, but our
+only proof of this fact is external (Lemma~\ref{lemma:tensor-product-qcoh}).
+It doesn't seem prudent to just add statements like these as axioms on a
+case-by-case basis. We rather need to find further suitable general axioms from
+which these statements can be deduced.
+
+Secondly, we know of no properties of~$\affl$, formulated purely within the
+first-order language of rings, which wouldn't follow from the axiom that~$\affl$
+is local and synthetically quasicoherent. Have we just not looked hard enough,
+or does this observation have a deeper reason? Determining the first-order
+properties of the universal model of a geometric theory is a well-known
+problem; maybe having a look at this special case can shed light on this
+problem.
+
+While speculating, we can just as well remark that the question can be
+generalized considerably:
+
+\begin{speculation}Let~$\TT$ be an equational theory. Let~$\TT'$ be a geometric
+theory obtained from~$\TT$ by adding further axioms. Then every first-order
+sequent which is true for the universal model~$U$ of~$\TT'$ can be deduced from
+the following quasicoherence condition: ``For any finitely
+presented~$\TT$-model~$A$, the canonical map
+\[ A \lra [ [A,U]_{\Mod(\TT)}, U ] \]
+is bijective.''
+\end{speculation}
+
+To make this speculation into a rigorous conjecture, we would have to specify
+what kind of deductions from the quasicoherence condition (which is a
+higher-order statement) are allowed.
+
+%Returning to synthetic algebraic geometry, we don't know fundamental reasons
+%for the equivalences depicted in the following table.
+%
+%\begin{tabular}{ll}
+%  \toprule
+%  formula~$\varphi$ & negation~$\neg\varphi$ \\\midrule
+%  $\speak{$f$ is zero}$ & $\speak{$f$ is invertible}$ \\
+%  $\speak{$f$ is invertible}$ & $\speak{$f$ is nilpotent}$ \\
+%  \bottomrule
+%\end{tabular}
+
+% proper morphisms
+
+
+\subsection*{Cohomology, intersection theory, derived categories}
+Real algebraic geometry starts where the basics of scheme theory end. Therefore
+there should be an internal treatment of advanced tools like cohomology,
+intersection theory, and bounded derived categories of coherent sheaves. Such
+an account would be particularly interesting in the big Zariski topos, where
+the largest simplications can be expected.
+
+\subsection*{Stacks and other kinds of generalized schemes} These notes only
+deal with classical 1-categorical schemes. An internal treatment of higher
+stacks and derived schemes is also desirable; it would probably rest upon a
+version of homotopy type theory as the internal language of $\infty$-toposes.
+
+If one wants to stay in the 1-categorical setting, then one could extend the
+internal language to the various accounts of scheme theory over the field with
+one element.
+
+}
+
+
+%* Mention applications to generalized scheme theories, as surveyed by
+%  http://arxiv.org/abs/0909.0069.
+%* Develop constructive algebraic geometry to actually contain nontrivial
+%  theorems of algebraic geometry.
+%* Stacks: A stack on a topological space X should roughly by a
+%  category internal (or locally-internal) to Sh(X) such that, if internally there
+%  exists an object unique up to unique isomorphism with some property, then
+%  externally such an object exists. Note that talking about prestacks should not
+%  be possible from the point of view of Sh(X).
+%* Explore closure of quasicoherent sheaves. For instance sum of submodules.
+%* Quasicoherence condition
+%* Skim the notes for possible caveats.
+%* Wie viel hängt ab von O_S? Also Zar(S) für allgemeine LRL S.
+
+
 \chapter*{Appendix}
 
 \newcounter{saved-section-number}
@@ -14591,6 +14696,3 @@ XXX: Define morphisms of locales
 
 XXX:
 Mention Steven Gubkin and the nCafé post. Also the Secret Blogging Seminar.
-
-However, real algebraic geometry starts where the basics of scheme theory end.
-intersection, cohomology, ...

@@ -356,7 +356,7 @@ scheme~$X$: the \emph{little Zariski topos} which is just the topos~$\Sh(X)$ of
 set-valued sheaves on~$X$, and the \emph{big Zariski topos} which we introduce
 below.
 
-The internal language of the little Zariski topos can be applied as follows.
+The internal language of the little Zariski topos can be used as follows.
 The structure sheaf~$\O_X$ of a scheme~$X$ is a sheaf of rings in that its sets of
 local sections carry ring structures and these ring structures are compatible
 with restriction. From the internal point of view of~$\Sh(X)$,
@@ -376,7 +376,7 @@ internal language. It then \emph{automatically} yields the following more advanc
 proposition: If in a short exact sequence of sheaves of~$\O_X$-modules the
 two outer ones are of finite type, then the middle one is too.
 
-This example was not special: \emph{Any (intuitionistically valid) theorem
+This example was not in any way special: \emph{Any (intuitionistically valid) theorem
 about modules yields a corresponding theorem about sheaves of modules.}
 
 The internal language machinery thus allows us to understand the basic notions
@@ -391,7 +391,28 @@ notions of algebra. Once built, this dictionary can be used arbitrarily often.
 We stress that no in-depth knowledge of topos theory or categorical logic is
 necessary to apply this apparatus.
 
-Two highlights of our approach are the following. If~$X$ is a reduced scheme,
+In simple cases, the internal language can be regarded as a tool for ensuring
+that certain kinds of ``fast and loose reasoning'' in algebraic geometry can be
+rigorously justified. For instance, when trying to quickly gauge whether some
+plausible-looking statement holds for schemes and sheaves, we might content
+ourselves to check that the statement holds for rings and modules and then trust
+that it also holds in the general case. Or when trying to construct a certain
+sheaf of modules, we might content ourselves to construct it over affine open
+subsets and then appeal to some gluing lemma, without meticulously checking the
+details.
+
+The internal language apparatus ensures that this kind of reasoning will never
+result in wrong conclusions, provided that one can formulate the statements and
+constructions in the internal language and that the correctness proof in the
+affine setting is intuitionistically valid.
+
+We believe that already this application of the internal language is useful to
+working algebraic geometers. However, more advanced applications are also
+possible. They result from considering internal statements whose logical form
+is more complex, in particular those which quantify over subsets or which
+contain implication and negation signs.
+
+For instance, if~$X$ is a reduced scheme,
 the internal universe of~$\Sh(X)$ has the peculiar feature that~$\O_X$ is
 Noetherian and a field, even if~$X$ is not locally Noetherian and (as will
 almost always be the case) the local rings~$\O_{X,x}$ are not fields. This fact
@@ -432,7 +453,9 @@ we can appeal to induction. The latter implies that~$(x_1,\ldots,x_n)$ is
 linearly independent and therefore a basis. In both cases it follows that~$V$
 is free; thus it's \notnot the case that~$V$ is free.
 
-We expand on the proof schemes used here in
+In this argument, we used the intuitionistically valid proof
+scheme~$\neg\neg\varphi \wedge (\varphi \Rightarrow \psi) \Longrightarrow
+\neg\neg\psi$. We expand on this in
 Section~\ref{sect:appreciating-intuitionistic-logic}.}
 
 It is in this way that the internal language unlocks new approaches: by
@@ -440,7 +463,7 @@ making concepts accessible which would otherwise be too unwieldy to manage and
 by allowing to import a huge corpus of prior work, namely the entire literature
 on constructive algebra.
 
-The second highlight is that we can shed light on the phenomenon that
+The internal language also sheds light on the phenomenon that
 sometimes, truth of a property at a point~$x$ spreads to some open
 neighborhood of~$x$; and in particular that sometimes, truth of a property at
 the generic point spreads to some dense open subset. For instance, if the stalk
@@ -458,7 +481,7 @@ level. The question whether truth at~$x$ spreads to truth on a
 neighborhood can then be formulated in the following way: Does~$\varphi^\Box$
 intuitionistically imply~$\Box\varphi$?
 
-This allows to deal with the question in a simpler, more logical way, with the
+This allows to deal with the question in a simpler, logical way, with the
 technicalities of sheaves blinded out. We also give a metatheorem which
 covers a wide range of cases. Namely, spreading occurs for all those properties
 which can be formulated in the internal language without
@@ -14437,6 +14460,7 @@ XXX:
 * Explore closure of quasicoherent sheaves. For instance sum of submodules.
 * Quasicoherence condition
 * Skim the notes for possible caveats.
+* Wie viel hängt ab von O_S? Also Zar(S) für allgemeine LRL S.
 
 XXX:
 Discuss relation to https://golem.ph.utexas.edu/category/2009/06/algebraic_geometry_for_categor.html

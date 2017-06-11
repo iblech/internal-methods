@@ -13186,6 +13186,7 @@ With these observations, the equivalence of the two statements is immediate.
 
 
 \subsection{Proper morphisms}
+\label{sect:proper-morphisms}
 
 \begin{prop}Let~$\Zar(S)$ be defined using the parsimonious sites. Assume
 that~$S$ is locally Noetherian. Let~$X \in \Zar(S)$ be a Zariski sheaf. Then
@@ -14373,7 +14374,7 @@ and interesting for topos theorists and logicians.
 
 \subsection*{Further axioms for synthetic algebraic geometry} We showed in
 Section~\ref{sect:special-properties-affl} and in
-Section~\ref{sect:basic-constructions}, that from the single axiom
+Section~\ref{sect:basic-constructions} that from the single axiom
 \begin{quote}
 ``The ring~$\affl$ is local and synthetically quasicoherent.''
 \end{quote}
@@ -14428,7 +14429,36 @@ higher-order statement) are allowed.
 %  \bottomrule
 %\end{tabular}
 
-% proper morphisms
+
+\subsection*{Proper morphisms} We characterized proper morphisms in the
+internal language of the big Zariski topos by mimicking the classical
+definition (Section~\ref{sect:proper-morphisms}) as a separated universally
+closed morphism (fulfilling a finiteness condition). Although we didn't tell so
+in Part~\ref{part:little-zariski}, a characterization along similar lines is
+possible in the internal language of the little Zariski topos.
+
+%\begin{prop}A morphism of schemes~$X \to S$ is proper if and only if the
+%locally ringed locale~$I(X)$ internal to~$\Sh(S)$ (over~$(\pt,\O_S)$) has the
+%following properties:
+%\begin{enumerate}
+%\item It is a scheme of finite type, that is, there is a finite open covering
+%of~$I(X)$ by local spectra of quasicoherent finitely generated~$\O_S$-modules.
+%\item It is separated, that is, the diagonal morphism~$I(X) \to I(X)
+%\times I(X)$ is quasicompact in the sense that from the point of
+%view of~$\Sh(I(X) \times I(X))$, the locally ringed locale~$I(I(X))$ admits a
+%finite open covering by local spectra of quasicoherent finitely
+%generated~$\O_{I(X) \times I(X)}$-algebras.
+%\item For any~$n \geq 0$, the map~$I(X) \times \affl^n_{\O_S} \to
+%\affl^n_{\O_S}$ is closed in the sense that ... % for any closed subscheme,
+%% the image is closed. Can't simply say that the map is a closed map of
+%% locales, since this doesn't agree with topological closedness
+%% (https://books.google.de/books?id=Acq6zC_9GL0C&pg=PA39)
+%\end{enumerate}
+%\end{prop}
+
+However, the synthetic approach should facilitate a characterization which is
+closer to the intuitive way of thinking about proper morphisms: that any
+punctured curve can be completed in exactly one way.
 
 
 \subsection*{Cohomology, intersection theory, derived categories}

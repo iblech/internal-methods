@@ -10792,7 +10792,7 @@ which we again denote by~``$f$''. Explicitly, the big Zariski toposes are
 related by the adjoint triple~$f_! \dashv f^{-1} \dashv f_*$ with
 \begin{align*}
   f_* : \Zar(X) \lra \Zar(S),\ F &\longmapsto ((T \xra{g} S) \mapsto F(T \times_S X)), \\
-  f^{-1} : \Zar(S) \lra \Zar(X),\ E &\longmapsto ((T \xra{g} X) \mapsto F(T \xra{g} X \xra{f} S)), \\
+  f^{-1} : \Zar(S) \lra \Zar(X),\ E &\longmapsto ((T \xra{g} X) \mapsto E(T \xra{g} X \xra{f} S)), \\
   f_! : \Zar(X) \lra \Zar(S),\ F &\longmapsto ((T \xra{g} S) \mapsto \coprod_{h : T \to X} F(T \xra{h} X)).
 \end{align*}
 In situation~(2), the well-definedness of these functors is trivial. In
@@ -12209,6 +12209,132 @@ This description of the (not necessarily
 locally trivial) tangent bundle fits nicely with the intuition of tangent
 vectors as infinitesimal curves, and in fact is precisely the definition of the
 tangent bundle in synthetic differential geometry~\cite[Def.~7.1]{kock:sdg}.
+
+
+\subsection{The tilde construction} Let~$A$ be an~$\affl$-algebra.
+If the functor~$\brak{\Spec(A)}$ is representable by a scheme contained in the
+site used to define~$\Zar(S)$, then Section~\ref{sect:change-of-base} described
+the big Zariski topos of that scheme as the slice topos~$\Zar(S)/\Spec(A)$.
+From the point of view of~$\Zar(S)$, this topos looks like~``$\Set/\Spec(A)$'',
+the topos of~$\Spec(A)$-indexed families of sets.
+
+In this picture, the three functors~$f_! \dashv f^{-1} \dashv f_*$
+relating~$\Zar(S)$ and~$\Zar(S)/\Spec(A)$ look as follows. We set~$X
+\defeq \Spec(A)$.
+\begin{enumerate}
+\item The functor~$f_!$ maps a family~$(M_x)_{x{:}X}$ to its \emph{dependent
+sum}~$\coprod_{x{:}X} M_x$, the ``total space'' of the family.
+\item The functor~$f^{-1}$ maps a set~$N$ to the constant family~$(N)_{x{:}X}$.
+\item The functor~$f_*$ maps a family~$(M_x)_{x\?X}$ to its \emph{dependent
+product}, the set~$\prod_{x{:}X} M_x$ of sections of the
+projection~$(\coprod_{x{:}X} M_x) \to X$.
+\end{enumerate}
+
+The affine line over~$X$ is the constant family~$\afflx = (\affl)_{x{:}X}$.
+
+We can canonically associate an~$\afflx$-module~$E^\sim$ to a
+given~$A$-module~$E$. This module lives in the topos~$\Set/X$, so
+is an~$X$-indexed family of~$\affl$-modules. Explicitly, it is the family
+\[ E^\sim \defeq (E \otimes_A \affl)_{x{:}X}, \]
+where for the tensor product in the component~$x\?X$ the ring~$\affl$ is
+regarded as an~$A$-algebra by the~$\affl$-homomorphism~$x : A \to \affl$.
+To render the dependence of the tensor product on~$x$ explicit, we use the
+familiar notation~$E(x) \defeq E \otimes_A \affl$ to denote the fiber of~$E$
+over~$x$.
+
+Conversely, given an~$\afflx$-module~$F = (F_x)_{x{:}X}$, there is a canonically
+associated~$A$-module given by calculating the dependent product. In analogy
+with the classical situation, we write
+\[ \Gamma(X, F) \defeq \prod_{x{:}X} F_x \]
+for this module.
+
+A morphism~$F \to F'$ of~$\afflx$-modules is an~$X$-indexed family~$(F_x \to
+F'_x)_{x{:}X}$ of morphism of~$\affl$-modules.
+
+\begin{prop}The functor~$(\placeholder)^\sim : \Mod(A) \to \Mod(\afflx)$ is
+left adjoint to the functor~$\Gamma(X, \placeholder) : \Mod(\afflx) \to
+\Mod(A)$.
+\end{prop}
+
+\begin{proof}For an~$A$-module~$E$ and an~$\afflx$-module~$F$, the required
+bijection~$\Hom_\afflx(E^\sim,F) \cong \Hom_A(E,\Gamma(X,\F))$ is given by
+\[ (\alpha_x : E(x) \to F_x)_{x{:}X} \longmapsto
+  (v \mapsto (\alpha_x([v \otimes 1]))_{x{:}X}) \]
+with inverse given by
+\[ (v \otimes f \mapsto f \cdot \beta(v)_x) \longmapsfrom
+  \beta. \qedhere \]
+\end{proof}
+
+It's fruitful to study the unit of the adjunction~$(\placeholder)^\sim \dashv
+\Gamma(X,\placeholder)$ in more detail.
+
+\begin{defn}An~$A$-module~$E$ has \emph{cohesive fibers} if and only if the
+canonical linear map~$E \to \prod_{x{:}X} E(x)$ is a bijection.
+\end{defn}
+
+Ordinary modules in classical logic almost never have cohesive fibers.
+Intuitively, the law of excluded middle allows to define ``discontinuous''
+elements of~$\prod_{x{:}X} E(x)$. These can't be induced from elements~$v\?E$,
+whose values~$[v \otimes 1] \? E(x)$ always ``vary continuously'' in~$x\?X$.
+In particular, the trivial~$A$-module~$A$ won't have cohesive fibers in a
+classical context, since~$A$ might not be a product of copies of the base ring.
+
+However, in the intuitionistic context of the internal language of the big
+Zariski topos, the law of excluded middle is not available to define
+discontinuous families of values. And indeed, we have the following
+proposition.
+
+\begin{prop}\label{prop:cohesive-fibers}
+Assume that there is a quasicoherent~$\O_S$-algebra~$\A_0$ such
+that~$A = \A_0^\Zar$. Further assume that~$\brak{\Spec(A)}$ is locally
+representable by an object of the site used to define~$\Zar(S)$.
+Let~$\E_0$ be a quasicoherent~$\A_0$-module. Then~$(\E_0)^\Zar$ has cohesive
+fibers from the internal point of view of~$\Zar(S)$.
+\end{prop}
+
+\begin{proof}This just reflects the fact that the canonical morphism~$\E_0 \to
+f_*((\E_0)^\sim)$, where~$f : \RelSpec_S(\A_0) \to S$ is the structure morphism
+of the relative spectrum and~$(\E_0)^\sim$ is the result of applying the
+(ordinary) relative tilde construction to~$\E_0$, is an
+isomorphism~\stacksproject{01SB}.
+\end{proof}
+
+\begin{cor}\label{cor:higher-typed-quasicoherence}
+Let~$\Zar(S)$ be defined using one of the parsimonious sites. Assume that~$A$
+is a finitely presented~$\affl$-algebra. Then the following statements hold
+from the internal point of view of~$\Zar(S)$.
+\begin{enumerate}
+\item The algebra~$A$ satisfies the following ``higher-typed'' version of the
+synthetic quasicoherence condition: Any~$A$-module which is synthetically
+quasicoherent as an~$\affl$-module (for instance because it is finitely
+presented) has cohesive fibers.
+\item For any~$\afflx$-module~$F = (F_x)_{x{:}X}$ such that~$F_x$ is a synthetically
+quasicoherent~$\affl$-module for all~$x\?X$, the canonical
+map~$\Gamma(X,F)^\sim \to F$ is an isomorphism.
+\end{enumerate}
+\end{cor}
+
+\begin{proof}The first claim is immediate from
+Proposition~\ref{prop:cohesive-fibers} and Theorem~\ref{thm:qcoh-big-char}. The
+second claim is an internal rendition of~\stacksproject{01SB}.
+\end{proof}
+
+\begin{rem}Since the internal language of~$\Set/\Spec(A)$ is just ordinary
+language applied to all fibers, the following properties of
+an~$\afflx$-module~$F = (F_x)_{x{:}X}$ are equivalent:
+\begin{enumerate}
+\item For any~$x\?X$, the~$\affl$-module~$F_x$ is synthetically quasicoherent.
+\item From the point of view of~$\Set/\Spec(A)$, the~$\afflx$-module~$F$ is
+synthetically quasicoherent.
+\end{enumerate}
+\end{rem}
+
+We believe that the condition that~$A$ is synthetically quasicoherent
+is not strong enough to allow an internal proof of
+Corollary~\ref{cor:higher-typed-quasicoherence}. The conclusion of
+Corollary~\ref{cor:higher-typed-quasicoherence} seems quite natural from a
+synthetic point of view; we therefore propose to adopt it as an axiom for
+synthetic algebraic geometry.
 
 
 \subsection{Open immersions}

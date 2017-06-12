@@ -4841,759 +4841,6 @@ of excluded middle is valid; explain consequences
 \end{itemize}
 
 
-\section{Rational functions and Cartier divisors}
-\label{sect:rational-functions}
-
-\subsection{The sheaf of rational functions} Recall that the sheaf~$\K_X$ of rational
-functions on a scheme~$X$ (or a ringed space) can be defined as the sheafification
-of the presheaf
-\[ \text{$U \subseteq X$ open} \quad\longmapsto\quad \Gamma(U,\O_X)[\Gamma(U,\S)^{-1}], \]
-where~$\Gamma(U,\S)$ is the multiplicative set of those sections of~$\O_X$ on~$U$
-which are regular in each stalk~$\O_{X,x}$, $x \in U$. Recall also that there are
-some wrong definitions in the literature~\cite{kleiman:misconceptions}.
-
-Using the internal language, we can give a simpler definition of~$\K_X$.
-Recall that we can associate to any ring~$R$ its total quotient ring, \ie
-its localization at the multiplicative subset of regular elements. Since from
-the internal perspective~$\O_X$ is an ordinary ring, we can associate to it its
-total quotient ring $\O_X[\S^{-1}]$,
-where~$\S$ is internally defined by the formula
-\[ \S \defeq \{ s\?\O_X \,|\, \speak{$s$ is regular} \} \subseteq \O_X. \]
-Externally, this ring is the sheaf~$\K_X$.
-\begin{prop}\label{prop:kx-internally}
-Let~$X$ be a scheme (or a ringed space). The sheaf of rings defined
-in the internal language by localizing~$\O_X$ at its set of regular elements is
-(canonically isomorphic to) the sheaf~$\K_X$ of rational functions.
-\end{prop}
-\begin{proof}Internally, the ring~$\O_X[\S^{-1}]$ has the following
-universal property: For any ring~$R$ and any homomorphism~$\O_X \to R$ which
-maps the elements of~$\S$ to units, there exists exactly one
-homomorphism~$\O_X[\S^{-1}] \to R$ which renders the evident diagram commutative.
-\[ \xymatrix{
-  \O_X \ar[rr] \ar[dr] && R \\
-  & \O_X[\S^{-1}] \ar@{-->}[ru]
-} \]
-The translation using the Kripke--Joyal semantics gives the following universal
-property: For any open subset~$U \subseteq X$, any sheaf of rings~$\R$ on~$U$ and any
-homomorphism~$\O_X|_U \to \R$ which maps all elements of~$\Gamma(V,\S)$ for open subsets $V
-\subseteq U$ to units, there exists exactly one homomorphism~$\O_X[\S^{-1}]|_U \to
-\R$ which renders the evident diagram commutative.
-It is well-known that the sheaf~$\K_X$ as usually defined has
-this universal property as well.
-\end{proof}
-
-\begin{prop}\label{prop:stalks-kx}
-Let~$X$ be a scheme (or a ringed space). Then the stalks of~$\K_X$
-are given by
-\[ \K_{X,x} = \O_{X,x}[\S_x^{-1}]. \]
-The elements of~$\S_x$ are exactly the germs of those local sections which are
-regular not only in~$\O_{X,x}$, but in all rings~$\O_{X,y}$ where~$y$
-ranges over some open neighborhood of~$x$ (depending on the section).\end{prop}
-\begin{proof}
-Since localization is a geometric construction, the first statement is made entirely
-trivial by our framework. The second statement follows since
-\[ \Gamma(U,\S) = \{ s\in\Gamma(U,\O_X) \,|\, U \models \speak{$s$ is regular}
-\} \]
-and since regularity is a geometric implication, so that
-$U \models \speak{$s$ is regular}$ if and only if the germ~$s_y$ is regular
-in~$\O_{X,y}$ for all~$y \in U$.
-\end{proof}
-
-\begin{rem}Speaking internally, the multiplicative set~$\S$ is saturated.
-Therefore an element~$s/t \? \K_X$ is invertible in~$\K_X$ if and only if the
-numerator~$s$ belongs to~$\S$, that is if~$s$ is an regular element of~$\O_X$.\end{rem}
-
-% FUTURE:
-% How can we prove that K_X(U) = K_X^pre(U) = Quot O_X(U) for U affine
-% (and X locally Noetherian or X reduced and locally only finitely many
-% irreducible components)? (cf. Kleiman!)
-%
-% Here is approximately how. Verify that (U |-> K_X^pre(U)) defines a sheaf, if
-% U ranges only of the open affines. To do this, use the description of the
-% subsheaf \T given in the section on "O_X = A[F^(-1)]".
-
-
-\subsection{Regularity of local functions}
-It is well-known that on a locally Noetherian scheme, regularity spreads from
-stalks to neighborhoods, that is that a section of~$\O_X$ is regular
-in~$\O_{X,x}$ if and only if it is regular on some open neighborhood of~$x$.
-This fact has a simple proof in the internal language.
-\begin{prop}\label{prop:regularity-spreading}
-Let~$X$ be a locally Noetherian scheme. Let~$s \in \Gamma(U,\O_X)$
-be a local function on~$X$. Let~$x \in U$. Then the following statements are
-equivalent:
-\begin{enumerate}
-\item The section~$s$ is regular in~$\O_{X,x}$.
-\item The section~$s$ is regular in all local rings~$\O_{X,y}$ where~$y$ ranges
-over some open neighborhood of~$x$.
-\end{enumerate}
-\end{prop}
-\begin{proof}
-Let~$\Box$ be the modal operator defined by~$\Box\varphi \defequiv ((\varphi
-\Rightarrow {!x}) \Rightarrow {!x})$. By Corollary~\ref{cor:spreading}, we are
-to show that the following statements of the internal language are equivalent:
-\begin{enumerate}
-\item $(\speak{$s$ is regular})^\Box$, \ie
-$\forall t\?\O_X\_ st = 0 \Rightarrow \Box(t = 0)$.
-\item $\Box(\speak{$s$ is regular})$, \ie
-$\Box(\forall t\?\O_X\_ st = 0 \Rightarrow t = 0)$.
-\end{enumerate}
-It is clear that the second statement implies the first -- in fact, this is true
-without any assumptions on~$X$: Let~$t\?\O_X$ be such that~$st = 0$. Since we want to
-prove the boxed statement~$\Box(t=0)$, we may assume that~$s$ is regular and
-prove~$t = 0$. This is immediate. (This direction also follows simply by
-examining the logical form and applying Lemma~\ref{lemma:open-stalk}.)
-
-For the converse direction, consider the annihilator of~$s$, \ie the ideal
-\[ I \defeq \Ann_{\O_X}(s) = \{ t\?\O_X \,|\, st = 0 \} \subseteq \O_X. \]
-This ideal satisfies the quasicoherence condition (we will explain how to prove this internally in~\ref{ex:annihilator-qcoh}),
-thus~$I$ is a quasicoherent submodule of a finitely generated module. Since~$X$ is
-locally Noetherian, it follows that~$I$ is finitely generated as well, say by~$x_1,\ldots,x_n \? I$. By
-assumption, each generator~$x_i \? I$ fulfills~$\Box(x_i = 0)$. Since we want
-to prove a boxed statement, we may in fact assume~$x_i = 0$. Thus~$I = (0)$ and
-the assertion that~$s$ is regular follows.
-\end{proof}
-
-The proof critically depends on the ideal~$I$ being finitely
-generated, since a modal operator need only commute with finite
-conjunctions. Intuitively, each time we use the modus ponens rule~$(\Box\varphi \wedge
-(\varphi \Rightarrow \psi)) \Rightarrow \Box\psi$, we restrict to a smaller open
-neighborhood of~$x$. Since infinite intersections of open sets need not be
-open, we cannot expect an infinitary modus ponens rule to hold.
-
-\begin{cor}Let~$X$ be a locally Noetherian scheme. Then the stalks~$\K_{X,x}$
-of the sheaf of rational functions are given by the total quotient rings of the
-local rings~$\O_{X,x}$.\end{cor}
-\begin{proof}Follows by combining Proposition~\ref{prop:stalks-kx} and
-Proposition~\ref{prop:regularity-spreading}.\end{proof}
-
-
-\subsection{Normality}\label{sect:normality}
-Recall that a ring~$R$ is \emph{normal} if and only if
-it is integrally closed in its total quotient ring. Recall also that a
-scheme~$X$ (or a ringed space) is \emph{normal} if and only if all
-rings~$\O_{X,x}$ are normal.
-
-\begin{prop}\label{prop:normal-int-ext}A locally Noetherian scheme is normal if and only if the
-ring~$\O_X$ is normal from the internal perspective.\end{prop}
-\begin{proof}The condition of normality can be put into a form which is almost
-a geometric implication:
-\begin{multline*}
-  \forall s,t\?\O_X\_
-  \bigl(\speak{$t$ regular} \wedge {} \\
-  \exists a_0,\ldots,a_{n-1}\?\O_X\_
-  s^n + a_{n-1} t s^{n-1} + \cdots + a_1 t^{n-1} s + a_0 t^n = 0\bigr)
-  \Longrightarrow \\
-  \exists u\?\O_X\_ s = ut.
-\end{multline*}
-The only non-geometric subpart is the condition on~$t$ to be regular. However,
-by Proposition~\ref{prop:regularity-spreading}, for the purposes of comparing
-its truth at points \vs on neighborhoods, it behaves just like a geometric
-formula. Therefore the claim follows.
-\end{proof}
-
-
-\subsection{Geometric interpretation of rational functions} Recall that on
-integral schemes, rational functions (\ie sections of~$\K_X$) are the same
-thing as regular functions defined on dense open subsets. This amounts to
-saying that~\emph{$\K_X$ is the~$\neg\neg$-sheafification of~$\O_X$}
-(see Proposition~\ref{prop:negneg-sheaves}). We want to rederive this result,
-as far as possible in the internal language, and generalize it to arbitrary
-(not necessarily locally Noetherian) schemes.
-
-\begin{lemma}\label{lemma:regular-notnot-invertible}Let~$X$ be a reduced scheme. Then:
-\begin{enumerate}
-\item $\O_X$ is~$\neg\neg$-separated.
-\item Internally, an element~$s\?\O_X$ is regular
-if and only if it is \notnot invertible.
-\end{enumerate}
-\end{lemma}
-\begin{proof}Recall from Corollary~\ref{cor:field-reduced} that
-\begin{equation}\label{eqn:field-condition}\tag{${\!\Join\!}$}
-  \Sh(X) \models \forall s\?\O_X\_ \neg(\speak{$s$ invertible}) \Leftrightarrow
-  s=0.
-\end{equation}
-From this we can deduce that~$\O_X$ is~$\neg\neg$-separated:
-Assume~$\neg\neg(s=0)$ for~$s\?\O_X$. If~$s$ were invertible, we would
-have~$\neg\neg(1=0)$ and thus~$\bot$. Therefore~$s$ is not invertible and thus
-zero.
-
-For the ``only if'' direction of the second statement,
-note that a regular element is not zero (if it were, then the true statement~$0
-\cdot 0 = 0 \cdot 1$ would imply the false statement~$0 = 1$) and thus \notnot
-invertible (by the contrapositive of equivalence~\eqref{eqn:field-condition}). For the ``if''
-direction, let~$st = 0$ in~$\O_X$. Since~$s$ is \notnot invertible, it follows
-that~$t$ is \notnot zero. Since~$\O_X$ is~$\neg\neg$-separated, this implies
-that~$t$ really is zero.
-\end{proof}
-
-For the following, we need two technical conditions. Say that an affine
-scheme~$\Spec A$ has property~$(\star)$ if and only if:
-\begin{quote}
-Every open dense subset~$U \subseteq \Spec A$ contains a
-\emph{standard open} dense subset.
-\end{quote}
-Say that~$\Spec A$ has property~$(\star\star)$ if and only if:
-\begin{quote}
-Every open scheme-theoretically dense subset~$U \subseteq \Spec A$ contains a
-\emph{standard open} scheme-theoretically dense subset.
-\end{quote}
-The first condition is satisfied if~$A$ is an irreducible ring (\ie if~$\Spec A$
-is irreducible) or more generally if~$A$ contains only finitely many minimal
-prime ideals. Both conditions are satisfied if~$A$ is integral or if~$A$ is
-Noetherian; for convenience, we give a proof in the
-latter case.
-
-\begin{prop}Let~$A$ be a Noetherian ring. Then~$\Spec A$ has properties~$(\star)$
-and~$(\star\star)$.
-\end{prop}
-\begin{proof}Recall that, under the Noetherian hypothesis, an open subset of~$\Spec A$ is dense if and only if it
-contains all minimal prime ideals (this fact holds more generally if there are only finitely many minimal prime ideals) and that it
-is scheme-theoretically dense if and only if it contains all associated prime
-ideals. There are only a finite number of these prime ideals. Therefore the
-claim is reduced to the following statement:
-
-Let~$\ppp_1,\ldots,\ppp_n$ be a
-finite number of points of an open subset~$U \subseteq \Spec A$. Then there
-exists a standard open subset~$D(f) \subseteq U$ which also contains these
-points.
-
-The proof of this statement is a direct application of the prime
-avoidance lemma.
-\end{proof}
-
-\begin{prop}
-\label{prop:kx-is-negneg-sheafification}
-Let~$X$ be a reduced scheme. Assume that every open affine subscheme has
-property~$(\star)$. (For instance, this condition is satisfied if~$X$ is
-integral, the set of irreducible components is locally finite, or if~$X$ is
-locally Noetherian.) Then~$\K_X$ is the~$\neg\neg$-sheafification
-of~$\O_X$.\end{prop}
-\begin{proof}
-We first show that~$\K_X$ is~$\neg\neg$-separated,
-so assume~$\neg\neg(a/s = 0)$ for~$a/s \? \K_X$. Since~$\K_X$ is obtained
-from~$\O_X$ by localizing at regular elements, the fraction~$a/s$ vanishes
-in~$\K_X$ if and only if~$a = 0$ in~$\O_X$. Thus it follows that~$\neg\neg(a =
-0)$ in~$\O_X$ and therefore~$a = 0$ in~$\O_X$; in particular, $a/s = 0$ in~$\K_X$.
-
-We defer the proof that~$\K_X$ is a~$\neg\neg$-sheaf to the end and first
-verify the universal property of~$\neg\neg$-sheafification.
-So let~$G$ be a~$\neg\neg$-sheaf and let~$\alpha : \O_X \to G$ be a map. We
-define an extension~$\bar\alpha : \K_X \to G$ in the following way:
-Let~$f \? \K_X$. Define the subsingleton~$S \defeq \{ x \? G \,|\, \exists
-b\?\O_X\_ f = b/1 \wedge x = \alpha(b) \} \subseteq G$. Since~$f$ can be
-written in the form~$a/s$ with~$s$ \notnot invertible, it follows that~$S$
-is \notnot inhabited. Since~$G$ is a~$\neg\neg$-sheaf, there exists a
-unique~$x\?G$ such that~$\neg\neg(x \in S)$. We declare~$\bar\alpha(f)$ to be
-this~$x$. It is straightforward to check that the composition~$\O_X \to \K_X
-\to G$ equals~$\alpha$ and that~$\bar\alpha$ is unique with this property.
-
-Up to this point, the proof did not need that~$X$ is a scheme -- it was enough
-for~$X$ to be a ringed space such that equivalence~\eqref{eqn:field-condition} holds and
-such that~$\neg(0 = 1)$ in~$\O_X$. Only now, in showing that~$\K_X$ is
-a~$\neg\neg$-sheaf, the scheme condition enters. To this end, we first
-reformulate the sheaf condition in a way such that it only refers to~$\O_X$,
-not~$\K_X$: The quotient ring~$\K_X$ is a~$\neg\neg$-sheaf if and only if
-\begin{multline*}
-  \Sh(X) \models \forall T \subseteq \O_X\_
-  \speak{$T$ is a subsingleton} \wedge \neg\neg(\speak{$T$ is inhabited})
-  \Longrightarrow \\
-  \exists a,b\?\O_X\_ \speak{$b$ is regular} \wedge \neg\neg(b^{-1} a \in T).
-\end{multline*}
-This is done just as in the proof of Theorem~\ref{thm:qcoh-sheafchar}.
-The expression~``$b^{-1}$'' refers to the inverse of~$b$ which indeed exists in a doubly
-negated context, since~$b$ is assumed regular. More explicitly, we should write
-\[ \neg\neg(\exists c\?\O_X\_ bc = 1 \wedge ca \in T)
-  \quad\text{instead of}\quad
-  \neg\neg(b^{-1} a \in T). \]
-To verify the Kripke--Joyal interpretation of the rewritten sheaf condition, let
-an affine open subset~$U = \Spec A \subseteq X$ having property~$(\star)$ and a subsheaf~$T
-\hookrightarrow \O_X|_U$ be given such that~$T$ is internally a subsingleton
-and \notnot inhabited. We may glue the unique germs in the inhabited
-stalks of~$T$ to obtain a section~$s \in \Gamma(V,\O_X)$ where~$V \subseteq U$
-is a dense open subset. Since~$U$ has property~$(\star)$, we may assume that~$V
-= D(f)$ is a standard open subset. Because~$V$ is dense and~$A$ is reduced, the
-function~$f$ is a regular element of~$A$.
-Since~$\Gamma(V,\O_X) = A[f^{-1}]$, we can write~$s = a/f^n$ with~$a \in A$
-and~$n \geq 0$.
-
-By Lemma~\ref{lemma:regular-affine}, the function~$b \defeq f^n$ is also regular as an
-element of~$\O_U$ from the internal point of view. The function~$b$ is invertible
-on~$V$, since~$V = D(f) = D(b)$. It follows that on the dense
-open subset~$V \subseteq U$, the sections~$s$ and~$b^{-1} a$ agree.
-This observation concludes the proof.
-\end{proof}
-
-\begin{cor}Let~$X$ be a reduced scheme such that any open affine subscheme has
-property~$(\star)$. Then~$\K_X$ is the result of
-pulling back~$\O_X$ to the sublocale~$X_{\neg\neg}$ and then pushing forward
-again. If~$X$ is irreducible with generic point~$\xi$, then~$\K_X$ is the
-constant sheaf associated to the set~$\O_{X,\xi}$.\end{cor}
-\begin{proof}Recall from Section~\ref{sect:internal-sheaves} that pulling back
-to~$X_{\neg\neg}$ is equivalent to sheafifying with respect to the double
-negation modality; and that pushing forward is equivalent to forgetting the
-sheaf property. Therefore the first statement holds.
-
-For the second statement, recall from Lemma~\ref{lemma:negneg-generic-point} that the
-sublocale~$X_{\neg\neg}$ is given by the subspace~$\{\xi\}$; that the
-sheafification functor~$\Sh(X) \to \Sh(\{\xi\}) \simeq \Set$ is given by
-calculating the stalk at~$\xi$; and that the inclusion functor~$\Set \simeq
-\Sh(\{\xi\}) \hookrightarrow \Sh(X)$ is given by the constant sheaf
-construction.
-\end{proof}
-
-If~$X$ is a general scheme (not necessarily reduced),
-we can describe~$\K_X$ in a similar way as a sheafification
-of~$\O_X$; specifically, it is the sheafification with respect to the modal
-operator defined by
-\[ \sdense\varphi \defequiv \speak{$\O_X$ is~$(\varphi \Rightarrow
-\placeholder)$-separated} \]
-in the internal language of~$\Sh(X)$, \ie
-\[ \sdense\varphi \defequiv (\forall s\?\O_X\_ (\varphi \Rightarrow s = 0)
-\Rightarrow s = 0). \]
-This modal operator has an explicit scheme-theoretic description.
-
-\begin{lemma}\label{lemma:scheme-theoretical-denseness}
-Let~$U$ be an open subset of a scheme~$X$. Then~$\Sh(X) \models
-\sdense U$ if and only if~$U$ is scheme-theoretically dense in~$X$.
-\end{lemma}
-\begin{proof}We have the following chain of equivalences.
-\begin{align*}
-  &\ X \models \sdense U \\
-  \Longleftrightarrow&\
-    \speak{$\O_X$ is~$(U \Rightarrow \placeholder)$-separated} \\
-  \Longleftrightarrow&\
-    X \models \speak{$\O_X \to \O_X^{+}$ is injective} \\
-  &\qquad\qquad\text{(where the plus construction is wrt.\@ the modality~$(U \Rightarrow \placeholder)$)} \\
-  \Longleftrightarrow&\
-    X \models \speak{$\O_X \to \O_X^{++}$ is injective} \\
-  &\qquad\qquad\text{(by the factorization~$\O_X \to \O_X^{+} \to \O_X^{++}$)} \\
-  \Longleftrightarrow&\
-    \text{the canonical morphism~$\O_X \to j_* \O_U$
-    (with $j : U \hookrightarrow X$) is injective} \\
-  \Longleftrightarrow&\
-    \text{$U$ is scheme-theoretically dense in~$X$.} \qedhere
-\end{align*}
-\end{proof}
-
-Using the internal language of a scheme, talking about scheme-theoretically
-dense open subsets is therefore just as easy as talking about ordinary
-topologically dense open subsets; the difference simply amounts to using the
-modal operator~$\sdense$ instead of~``\notnot''.
-
-\begin{prop}\label{prop:kx-is-box-sheafification}
-Let~$X$ be a ringed space. Then:
-\begin{enumerate}
-\item The operator~$\sdense$ fulfills the axioms for a modal operator.
-\item $\O_X$ is~$\sdense$-separated.
-\item $\K_X$ is~$\sdense$-separated.
-\item Internally, it holds that~$\sdense(\speak{$f$ \inv})$ implies that~$f$ is
-regular for any~$f\?\O_X$.
-% update addtocounter below if numbering changes
-\end{enumerate}
-Suppose furthermore that~$X$ is a scheme. Then:
-\begin{enumerate}
-\addtocounter{enumi}{4}
-\item The converse in~(4) holds.
-\item If every open affine subscheme of~$X$ has
-property~$(\star\star)$, then~$\K_X$ is the~$\sdense$-sheafification of~$\O_X$.
-\end{enumerate}
-\end{prop}
-\begin{proof}The first four properties are entirely formal; we thus skip over
-some details. For the first property, we verify the second axiom on a modal
-operator. So we assume~$\sdense\sdense\varphi$ and have to show~$\sdense\varphi$. To
-this end, let~$s\?\O_X$ be arbitrary such that~$\varphi \Rightarrow (s=0)$; we
-have to prove that~$s = 0$. If~$\O_X$ were separated with respect to the modal
-operator~$(\varphi \Rightarrow \placeholder)$, it would follow that~$s = 0$. So
-unconditionally it holds that~$\sdense\varphi \Rightarrow (s=0)$. Since by
-assumption~$\O_X$ is~$(\sdense\varphi \Rightarrow \placeholder)$-separated, the claim follows.
-
-For the second property, let~$s\?\O_X$ be arbitrary such that~$\sdense(s = 0)$.
-Obviously it holds that~$(s = 0) \Rightarrow (s = 0)$. Thus, since~$\O_X$ is
-separated with respect to~$((s = 0) \Rightarrow \placeholder)$, it follows
-that~$s = 0$. The proof of the third property is similar.
-
-For the fourth property, assume~$\sdense(\speak{$f$ \inv})$ and let~$h\?\O_X$ be
-arbitrary such that~$fh = 0$. Then, trivially, it holds that~$\speak{$f$ \inv}
-\Rightarrow h = 0$. Since~$\O_X$ is separated with respect to~$(\speak{$f$
-\inv} \Rightarrow \placeholder)$, it follows that~$h = 0$.
-
-We now suppose that~$X$ is a scheme. To verify the fifth property, let a
-regular element~$f\?\O_X$ be given. We have to show that~$\O_X$ is separated
-with respect to the modality~$(\speak{$f$ \inv} \Rightarrow \placeholder)$. So
-assume that~$\speak{$f$ \inv} \Rightarrow (s = 0)$ for some~$s\?\O_X$. By
-Proposition~\ref{prop:cond-zero} it follows that~$f^n s = 0$ for some natural
-number~$n$. Since~$f$ is regular, we may conclude that~$s = 0$.
-
-The verification of the universal property of~$\K_X$ is done analogously as in
-the case that~$X$ is reduced: For the proof of
-Proposition~\ref{prop:kx-is-negneg-sheafification}, it was critical that
-regular elements of~$\O_X$ are \notnot invertible. We now need (and have) that
-regular elements of~$\O_X$ are~$\sdense(\speak{invertible})$.
-
-Thus it only remains to verify that~$\K_X$ is a~$\sdense$-sheaf. We may again imitate
-the proof of Proposition~\ref{prop:kx-is-negneg-sheafification}; using the same
-notation, we may now suppose that~$V$ is a standard open subset such that~$U \models \sdense
-V$ (previously, we supposed that~$U \models \neg\neg V$). The proof that the
-denominator~$b$ is regular (as seen from the internal perspective, as an
-element of~$\O_U$) now goes as follows: We have~$V \subseteq
-D(b)$. Therefore~$U \models \sdense V$ implies~$U \models \sdense(\speak{$b$ \inv})$. By
-the fourth property, it follows that~$U \models \speak{$b$ is regular}$.
-\end{proof}
-
-\begin{rem}The modal operator~$\sdense$ is the largest (weakest) operator such
-that~$\O_X$ is~$\sdense$-separated, \ie if~$\sdenseother$ is any modal operator
-such that~$\O_X$ is~$\sdenseother$-separated, then~$\sdenseother\varphi
-\Rightarrow \sdense\varphi$ for any proposition~$\varphi$.\end{rem}
-
-In the special case that~$X$ is a reduced scheme,
-Proposition~\ref{prop:kx-is-box-sheafification} recovers
-the result of Proposition~\ref{prop:kx-is-negneg-sheafification}:
-
-\begin{prop}\label{prop:relation-sdense-notnot}
-Let~$X$ be a scheme. Then~$\Sh(X) \models \forall\varphi\?\Omega\_
-\sdense\varphi \Rightarrow \neg\neg\varphi$.
-The converse holds if~$X$ is reduced, so that in
-this case the modal operator~$\sdense$ coincides with the double negation modality.\end{prop}
-\begin{proof}We argue internally. Let~$\varphi$ be an arbitrary truth value and
-assume that~$\sdense\varphi$. The negation~$\neg\varphi$ (which is defined as~$\varphi \Rightarrow \bot$) is
-equivalent to~$\varphi \Rightarrow (1 =
-0)$. Since by assumption~$\O_X$ is separated with respect to the~$(\varphi
-\Rightarrow \placeholder)$-modality, this in turn is equivalent to~$1 = 0 \?
-\O_X$, \ie to~$\bot$. Thus~$\neg\neg\varphi$.
-
-For the converse direction, let~$\varphi \Rightarrow (s = 0)$ for some~$s\?\O_X$;
-we have to show that in fact~$s = 0$. Since by assumption~$\neg\neg\varphi$, it
-follows that~$s$ is \notnot zero. Since~$X$ is reduced,~$\O_X$
-is~$\neg\neg$-separated, so this implies that~$s$ is really zero.
-\end{proof}
-
-As a corollary, we can reprove the following basic lemma about
-scheme-theoretical denseness.
-\begin{lemma}Let~$U$ be an open subset of a scheme~$X$. If~$U$ is
-scheme-theoretically dense, then~$U$ is also dense in the plain topological
-sense. The converse holds if~$X$ is reduced.\end{lemma}
-\begin{proof}The set~$U$ is scheme-theoretically dense if and only if~$\Sh(X)
-\models \sdense U$ and is dense if and only if~$\Sh(X) \models \neg\neg U$.
-Therefore the claim follows from Proposition~\ref{prop:relation-sdense-notnot}.
-\end{proof}
-
-\begin{prop}\label{prop:kx-ass}
-Let~$X$ be a scheme such that any open affine subscheme has
-property~$(\star\star)$. Then~$\K_X$ is the result of
-pulling back~$\O_X$ to the sublocale~$X_\sdense$ associated to the modal
-operator~$\sdense$ and then pushing forward again. If~$X$ is locally Noetherian,
-this sublocale is the subspace of associated points in~$X$.
-\end{prop}
-
-In formulas, the proposition states that the canonical map
-\[ \K_X \longrightarrow i_* i^{-1} \O_X \]
-is an isomorphism, where~$i : X_\sdense \hookrightarrow X$ is the inclusion of
-the sublocale~$X_\sdense$. This result requires a cover with
-property~$(\star\star)$, but no Noetherian hypothesis.
-
-\begin{proof}The first statement follows trivially by the results of
-Section~\ref{sect:internal-sheaves} and the fact that~$\K_X$ is
-the~$\sdense$-sheafification of~$\O_X$.
-
-For the second statement, we need to verify that the nucleus~$j_{\Ass(\O_X)}$
-associated to the subspace of associated points coincides with the
-nucleus~$j_\sdense$ associated to the modal operator~$\sdense$. Recall from
-Subsection~\ref{sect:subspace-to-modal-operator} that the latter is given by
-\begin{align*}
-  j_\sdense(U) &= \text{largest open subset of~$X$ on which~$\sdense U$ holds} \\
-  &= \bigcup\ \{ V \subseteq X \ |\
-  \text{$V$ open},\ V \models \sdense U \}
-\intertext{and note that the former is given by}
-  j_{\Ass(\O_X)}(U) &= \bigcup\ \{ V \subseteq X \ |\
-  \text{$V$ open},\ V \cap \Ass(\O_X) \subseteq U \}.
-\end{align*}
-This is a general fact of locale theory, not depending on particular properties
-of~$\Ass(\O_X)$. To verify this, one needs to check that~$j_{\Ass(\O_X)}$ is indeed a
-nucleus and that the canonical map
-\[ \{ U \in \Open(X) \,|\, j_{\Ass(\O_X)}(U) = U \} \longrightarrow \Open(\Ass(\O_X)),\ U \longmapsto \Ass(\O_X) \cap U \]
-is an isomorphism of frames with inverse given by~$\Ass(\O_X) \cap U \mapsto
-j_{\Ass(\O_X)}(U)$.
-
-The equivalence thus follows from a standard result on the set of associated
-points on locally Noetherian schemes:
-\begin{align*}
-  &\ V \cap \Ass(\O_X) \subseteq U \\
-  \Longleftrightarrow&\
-    \Ass(\O_V) \subseteq U \\
-  \Longleftrightarrow&\
-    \text{$U \cap V$ is scheme-theoretically dense in~$U$} \\
-  &\qquad\qquad\text{(this step requires the Noetherian assumption)} \\
-  \Longleftrightarrow&\
-    V \models \sdense U. \qedhere
-\end{align*}
-\end{proof}
-
-\begin{lemma}
-Let~$X$ be a scheme such that any open affine subscheme has
-property~$(\star\star)$. Let~$j : U \hookrightarrow X$ be the inclusion of an
-open subset containing the sublocale~$X_\sdense$. (If~$X$ is locally
-Noetherian, this is equivalent to requiring that~$U$ contains~$\Ass(\O_X)$.)
-Then the canonical morphism~$\K_X \to j_* \K_U$ is an isomorphism.
-\end{lemma}
-\begin{proof}Write~$i : X_\sdense \hookrightarrow X$ and~$i' : X_\sdense
-\hookrightarrow U$ for the inclusions. By Proposition~\ref{prop:kx-ass}, the
-sheaf~$\K_X$ is given by~$i_* i^{-1} \O_X$. Similarly, the sheaf~$j_* \K_U$ is
-given by~$j_* i'_* i'^{-1} j^{-1} \O_X$. The claim follows since~$j \circ i' =
-i$.
-\end{proof}
-
-\begin{lemma}\label{lemma:dense-standard-reflection-generalized}
-Let~$X$ be a scheme such that any open affine subscheme has
-property~$(\star)$ respectively~$(\star\star)$. Then
-\[ \Sh(X) \models \forall\varphi\?\Omega\_ \neg\neg\varphi \Longrightarrow \exists f\?\O_X\_
-  \neg\neg(\speak{$f$ \inv}) \wedge (\speak{$f$ \inv} \Rightarrow \varphi) \]
-respectively
-\[ \Sh(X) \models \forall\varphi\?\Omega\_ \sdense\varphi \Longrightarrow \exists f\?\O_X\_
-  \sdense(\speak{$f$ \inv}) \wedge (\speak{$f$ \inv} \Rightarrow \varphi). \]
-\end{lemma}
-\begin{proof}The proof of Lemma~\ref{lemma:dense-standard-reflection} carries
-over, \emph{mutatis mutandis}.
-\end{proof}
-
-\begin{prop}\label{prop:boolean-dim0-continued}
-Let~$X$ be a scheme of dimension~$\leq 0$ such that the set of irreducible components is locally finite or such that~$X$ is locally Noetherian. Then
-the internal language of~$\Sh(X)$ is Boolean. (The converse holds as well and
-was already stated as Corollary~\ref{cor:boolean-dim0}.)
-\end{prop}
-\begin{proof}
-It suffices to verify the principle of double negation elimination, since the
-law of excluded middle is equivalent to it.\footnote{This is a standard fact of
-intuitionistic logic. Assume that the principle of double negation elimination
-holds. We want to verify the law of excluded middle, so let an arbitrary
-formula~$\varphi$ be given. Even intuitionistically it holds
-that~$\neg\neg(\varphi \vee \neg\varphi)$. By double negation elimination it
-follows that~$\varphi \vee \neg\varphi$.}
-So let~$\varphi$ be an arbitrary formula and assume~$\neg\neg\varphi$. By the
-previous lemma there exists an element~$f\?\O_X$ such that~$f$ is \notnot
-invertible and such that~$(\speak{$f$ \inv} \Rightarrow \varphi)$. Since~$\dim
-X \leq 0$, this element is invertible or nilpotent
-(Corollary~\ref{cor:scheme-dimension-zero}).  In the first case, we are done.
-In the second case, some power~$f^n$ is zero and therefore in particular
-\notnot zero. Since~$f$ is \notnot invertible, this implies that \notnot~$1 =
-0$. On the other hand~$1 \neq 0$, so we obtain a contradiction; from this
-contradiction~$\varphi$ trivially follows.
-\end{proof}
-
-\begin{lemma}\label{lemma:torsion-module-generic-stalk-generalized}
-Let~$X$ be a locally Noetherian scheme. Let~$\F$ be a
-quasicoherent~$\O_X$-module. Then~$\F$ is a torsion module if and only if the
-restriction of~$\F$ to~$\Ass(\O_X)$ vanishes.
-\end{lemma}
-\begin{proof}By Proposition~\ref{prop:kx-ass} and
-Lemma~\ref{lemma:dense-standard-reflection-generalized} it suffices to repeat
-the proof of Lemma~\ref{lemma:torsion-module-generic-stalk} with
-``\notnot'' substituted by~``$\sdense$''.
-\end{proof}
-
-
-\subsection{Cartier divisors} Let~$X$ be a scheme (or a ringed space). Recall
-that a \emph{Cartier divisor} on~$X$ is a global section of the sheaf of
-groups~$\K_X^\times / \O_X^\times$. This sheaf can be constructed internally, with the
-same notation: It is the quotient of the group of invertible elements of the
-ring~$\K_X$ by the subgroup of invertible elements of the ring~$\O_X$. So an
-arbitrary section of~$\K_X^\times/\O_X^\times$ is internally of the form~$[s/t]$
-with~$s,t\?\O_X$ being regular elements; this is a simpler description than the
-usual external one as a family~$(f_i)_i$ of functions~$f_i \in
-\Gamma(U_i,\K_X^\times)$ such that~$f_i^{-1}|_{U_i \cap U_j} \cdot f_j|_{U_i \cap
-U_j} \in \Gamma(U_i \cap U_j, \O_X^\times)$ for all~$i,j$.
-
-We can sketch the basic theory of Cartier divisors completely from the internal
-perspective. In accordance with common practice, we write the group
-operation of~$\K_X^\times/\O_X^\times$ (which is induced by multiplication of elements
-in~$\K_X^\times$) additively.
-
-\begin{defn}\label{defn:effective-cartier-divisor}
-A Cartier divisor is \emph{effective} if and only if, from the
-internal perspective, it can be written in the form~$[s/1]$ with~$s\?\O_X$
-being a regular element.\end{defn}
-
-Thus a Cartier divisor~$[s/t]$ is effective if and only if~$s$ is
-an~$\O_X$-multiple of~$t$.
-
-\begin{defn}A Cartier divisor~$D$ is \emph{principal} if and only if there
-exists a global section~$f \in \Gamma(X,\K_X^\times)$ such that internally,~$D = [f]$.
-Two Cartier divisors are \emph{linearly equivalent} if and only if their
-difference is a principal divisor.
-\end{defn}
-
-Decidedly, principality is a global notion: For \emph{any} divisor~$D$ it is
-true that locally there exists sections~$f$ of~$\K_X^\times$ such that~$D = [f]$.
-
-\begin{defn}\label{defn:line-bundle-of-divisor}
-The \emph{line bundle associated to a Cartier divisor}~$D$
-is the~$\O_X$-submodule
-\[ \O_X(D) \defeq \{ g \? \K_X \,|\, g D \in \O_X \} = D^{-1} \O_X \subseteq \K_X
-\]
-of~$\K_X$. Here we are abusing language for~``$gD \in \O_X$'' to mean that~$gf
-\in \O_X$ if~$D = [f]$ with~$f\?\K_X$; and for~``$D^{-1} \O_X$'' to
-mean~$f^{-1}\O_X$. This condition respectively submodule does not depend on the
-representative~$f$, since~$f$ is well-defined up to multiplication by an element
-of~$\O_X^\times$.\end{defn}
-
-The submodule~$\O_X(D)$ is indeed locally free of rank~$1$, since
-internally~$f^{-1}$ gives a one-element basis. The divisor~$D$ is effective if
-and only if~$\O_X(-D)$ is a subset of~$\O_X$ from the internal perspective
-(this comparison makes sense, since~$\O_X(-D)$ and~$\O_X$ are both canonically
-embedded in~$\K_X$). In
-this case, we can define the \emph{support} of~$D$ to be the closed subscheme
-of~$X$ associated to the sheaf of ideals~$\O_X(-D) \subseteq \O_X$.
-
-The line bundle~$\O_X(D)$ can also be written in the familiar form
-\[ \O_X(D) = \{ g \? \K_X \,|\, \operatorname{div}(g) + D \geq 0 \}, \]
-if we define~``$\operatorname{div}(g)$'' as the equivalence class~$[g] :
-\K_X/\O_X^\times$, interpret the left-hand side of the inequality as an element
-of~$\K_X/\O_X^\times$, and declare that~$[s/t] \geq 0$ if and only if~$s$ is
-an~$\O_X$-multiple of~$t$.
-
-On the other hand, a description like
-\[ \text{``$\O_X(D) = \{ 0 \} \cup \{ g \? \K_X^\times \,|\,
-  \operatorname{div}(g) + D \geq 0 \}$''} \]
-is not possible, since the case distinction necessary for a verification of the
-inclusion~``$\subseteq$'' is not possible intuitionistically.
-
-%\begin{prop}Let~$D$ be an effective divisor on~$X$. Then~$\O_X(D)$ is trivial
-%outside of the support of~$D$.\end{prop}
-%\begin{proof}We have to show that~$\O_X(D)|_U$ is trivial on~$U \defeq X \setminus
-%V(\O_X(-D)) = \{ x \in X \,|\, 1 \in \O_X(-D) \}$. We do this by verifying ...
-%D = [f], f : O_X regular. O_X(-D) = (f).
-%Assume 1 in O_X(-D): Then f is invertible. Obviously O_X(-D) --> O_X
-%is an isomorphism. So O_X --> O_X(D) is as well.
-%\end{proof}
-
-\begin{defn}The \emph{Cartier divisor associated to a free~$\O_X$-submodule~$\L \subseteq
-\K_X$ of rank~1} is~$D \defeq [f^{-1}]$, where~$f\?\K_X$ is the unique element of
-some one-element basis of~$\L$.\end{defn}
-
-The basis element~$f\?\K_X$ does indeed lie in~$\K_X^\times$: Write~$f
-= s/t$ with~$s,t \? \O_X$. It suffices to show that~$s$ is a regular element
-of~$\O_X$. So let~$h\?\O_X$ such that~$sh = 0$ in~$\O_X$. Then in
-particular~$hf = 0$ in~$\K_X$. By linear independence, it follows that~$h = 0$
-in~$\K_X$ and thus~$h = 0$ in~$\O_X$.
-
-Furthermore, the associated divisor does not depend on the choice of~$f$,
-since~$f$ is well-defined up to multiplication by an element of~$\O_X^\times$: If~$f
-\O_X = g \O_X \subseteq \K_X$, then there exist elements~$u,v\?\O_X$ such that~$fu = g$
-and~$gv = f$ in~$\K_X$. It follows that~$uv = fuvf^{-1} = gvf^{-1} = ff^{-1} =
-1$ in~$\K_X$ and thus in~$\O_X$, by injectivity of the localization morphism~$\O_X \to
-\K_X$. Therefore~$u$ and~$v$ are elements of~$\O_X^\times$.
-
-\begin{lemma}Let~$D$ and~$D'$ be divisors on~$X$. Then~$\O_X(D) \otimes_{\O_X}
-\O_X(D') \cong \O_X(D + D')$.\end{lemma}
-\begin{proof}The wanted morphism of sheaves~$\O_X(D) \otimes \O_X(D') \to
-\O_X(D + D')$ is given by multiplication. That this is well-defined and an
-isomorphism can be checked from the internal point of view, where the claims
-are obvious.\end{proof}
-
-\begin{prop}The association~$D \mapsto \O_X(D)$ defines a one-to-one
-correspondence between Cartier divisors on~$X$ and rank-one submodules
-of~$\K_X$. This correspondence descends to a one-to-one correspondence between
-Cartier divisors up to linear equivalence and rank-one submodules of~$\K_X$ up
-to isomorphism (as abstract~$\O_X$-modules, ignoring their embedding
-into~$\K_X$).\end{prop}
-\begin{proof}The first statement is obvious from the definitions. For the
-second statement, it suffices to show that~$\O_X(D)$ is isomorphic to~$\O_X$ if
-and only if~$D$ is principal. An isomorphism~$\O_X \to \O_X(D)$ gives a
-global section~$f \in \Gamma(X,\K_X^\times)$ (by considering the image of the unit element)
-such that internally,~$D = [f^{-1}]$; this shows that~$D$ is principal. The
-converse is similar.
-\end{proof}
-
-%\begin{rem}Locally principal subschemes (closed subschemes which are locally
-%the vanishing subscheme of a regular section of~$\O_X$) up to isomorphisms of
-%subschemes are in one-to-one correspondence with rank-1 submodules of~$\O_X$
-%(see~\YYY{ref}). Thus locally principal subschemes (up to isomorphisms of abstract
-%schemes) are in one-to-one correspondence with effective Cartier divisors (up
-%to linear equivalence).\end{rem}
-%\YYY{check this.}
-%Is wrong. On A^2 there are locally principal subschemes, but every Cartier
-%divisor is zero up to linear equivalence.
-
-For the following definition, recall that we can localize an~$\O_X$-module~$\L$
-at the set~$\S \subseteq \O_X$ of regular elements to obtain
-a~$\K_X$-module~$\L[S^{-1}]$.
-
-\begin{defn}Let~$f\?\L[\S^{-1}]$ be a rational section of a line bundle~$\L$
-on~$X$. Assume that~``$f$ is nontrivial'', that is multiplication by~$f$ is an
-injective map~$\O_X \to \L[\S^{-1}]$. Then the \emph{associated divisor} of~$f$
-is~$\operatorname{div}(f) \defeq [\psi(s)/t]$, where~$f = s/t$ with~$s\?\L$ and~$t\?\O_X$
-and~$\psi : \L \to \O_X$ is an isomorphism.\end{defn}
-
-One can check that~$\psi(s)$ is a regular element of~$\O_X$; this statement is
-equivalent to the multiplication map~$\O_X \to \L[\S^{-1}]$ being
-injective. Furthermore one can check that~$[\psi(s)/t]$ does not depend on the
-choice of~$s$,~$t$, and~$\psi$.
-
-\begin{prop}Let~$f\?\L[\S^{-1}]$ be a nontrivial rational section of a line
-bundle~$\L$ on~$X$. Then multiplication by~$f$ induces an
-isomorphism~$\O_X(\operatorname{div}(f)) \to \L$.\end{prop}
-\begin{proof}The isomorphism should map a rational function~$g$ to~$g f$. This
-is a priori an element of~$\L[\S^{-1}]$; we have to check that it can be
-regarded as an element of~$\L$. Just as in the definition
-of~$\operatorname{div}(f)$, write~$f = s/t$ and fix an isomorphism~$\psi : \L
-\to \O_X$. Write~$g = (t/\psi(s)) \cdot h$ for some function~$h\?\O_X$. Then~$g
-f = sh/\psi(s) = h\psi^{-1}(1)$, since~$s = \psi^{-1}(\psi(s)) = \psi(s)
-\cdot \psi^{-1}(1)$. The element~$h\psi^{-1}(1)$ can indeed be considered as an
-element of~$\L$.
-
-Injectivity of the map~$\O_X(\operatorname{div}(f)) \to \L$ is by
-nontriviality of~$f$. For surjectivity, we observe that~$(t/\psi(s)) \cdot \psi(v)$ is a
-preimage to~$v\?\L$, since~$(t/\psi(s)) \cdot \psi(v) \cdot f = \psi(v) \psi(s)
-\psi^{-1}(1) / \psi(s) = v$.
-\end{proof}
-
-\begin{prop}Let~$\L$ be a line bundle on~$X$. Assume that~$\L$ can be embedded
-into~$\K_X$. Then~$\L$ possesses a nontrivial rational section.
-\end{prop}
-\begin{proof}Let~$i : \L \to \K_X$ be the given injection. Let~$(v)$ be an
-one-element basis for~$\L$. Write~$i(v) = s/t$. Then~$s$ is regular,
-since~$hs = 0$ implies~$i(hv) = 0$ and thus~$h = 0$, for any~$h\?\O_X$.
-Therefore~$f \defeq tv/s$ is a well-defined element of~$\L[\S^{-1}]$.
-Furthermore it is nontrivial in the desired sense: If~$h \cdot (tv/s) = 0$,
-then~$htv = 0$, thus~$ht = 0$ and~$h = 0$.
-
-It remains to check that~$f$ is independent of the choice of~$v$ and of the
-representation~$i(v) = s/t$; else we defined only local sections which might not
-glue to a single nontrivial rational section (externally speaking). This verification is
-trivial.
-\end{proof}
-
-\begin{prop}Let~$D$ be an effective divisor on~$X$. Then the complement of its
-support is scheme-theoretically dense.\end{prop}
-\begin{proof}The complement of the support of~$D$, that is the open
-subset~$D(\O_X(-D))$ (where we consider~$\O_X(-D)$ as an ideal of~$\O_X$), is
-the truth value of the statement~``$1 \in \O_X(-D)$''. By
-Lemma~\ref{lemma:scheme-theoretical-denseness}, we therefore have to verify
-that~$\O_X$ is separated with respect to the modal operator~$(1 \in \O_X(-D)
-\Rightarrow \placeholder)$.
-
-Let~$s \? \O_X$ be given such that~$1 \in \O_X(-D) \Rightarrow s = 0$; we have
-to show that~$s = 0$. Writing~$D = [f/1]$ where~$f \? \O_X$ is a regular
-element, this condition is equivalent to~$\speak{$f$ \inv} \Rightarrow s = 0$.
-By Proposition~\ref{prop:cond-zero} it follows that~$f^n s = 0$ for some~$n
-\geq 0$. Since~$f$ is regular, we may cancel~$f^n$ in this equation.
-\end{proof}
-
-\begin{prop}Assume that~$X$ is an integral scheme. Then any line bundle on~$X$
-is (uncanonically) a submodule of~$\K_X$.\end{prop}
-\begin{proof}Let~$\xi$ be the generic point of~$X$ and let~$\Box \defeq \neg\neg$
-denote the modal operator such that internal sheafification with respect
-to~$\Box$ is the same as pulling back to~$\{\xi\}$ and then pushing forward
-to~$X$ again (see Section~\ref{sect:negneg-sheaves}). Let~$\L$ be a line bundle on~$X$. Since~$\L_\xi \cong
-\O_{X,\xi}$ (uncanonically), there is some injection~$\L_\xi \to \K_{X,\xi}$;
-this corresponds internally to an injection~$\L^{++} \to \K_X^{++}$.
-Since~$\K_X$ is already a~$\Box$-sheaf
-(Proposition~\ref{prop:kx-is-negneg-sheafification}) and~$\L$ is~$\Box$-separated
-(being isomorphic to~$\O_X$), we have the global injection
-\[ \L \lhra \L^{++} \lhra \K_X^{++} \stackrel{({\cong})^{-1}}{\longrightarrow} \K_X. \qedhere \]
-\end{proof}
-
-
 \section{Compactness and metaproperties}
 \label{sect:compactness}
 
@@ -6407,6 +5654,759 @@ iff~$V$ is a clopen subset. Thus the converse holds in this case.
 % FUTURE:
 % Think how to prove that modules of finite type are
 % quasicoherent and that cokernels are quasicoherent.
+
+
+\section{Rational functions and Cartier divisors}
+\label{sect:rational-functions}
+
+\subsection{The sheaf of rational functions} Recall that the sheaf~$\K_X$ of rational
+functions on a scheme~$X$ (or a ringed space) can be defined as the sheafification
+of the presheaf
+\[ \text{$U \subseteq X$ open} \quad\longmapsto\quad \Gamma(U,\O_X)[\Gamma(U,\S)^{-1}], \]
+where~$\Gamma(U,\S)$ is the multiplicative set of those sections of~$\O_X$ on~$U$
+which are regular in each stalk~$\O_{X,x}$, $x \in U$. Recall also that there are
+some wrong definitions in the literature~\cite{kleiman:misconceptions}.
+
+Using the internal language, we can give a simpler definition of~$\K_X$.
+Recall that we can associate to any ring~$R$ its total quotient ring, \ie
+its localization at the multiplicative subset of regular elements. Since from
+the internal perspective~$\O_X$ is an ordinary ring, we can associate to it its
+total quotient ring $\O_X[\S^{-1}]$,
+where~$\S$ is internally defined by the formula
+\[ \S \defeq \{ s\?\O_X \,|\, \speak{$s$ is regular} \} \subseteq \O_X. \]
+Externally, this ring is the sheaf~$\K_X$.
+\begin{prop}\label{prop:kx-internally}
+Let~$X$ be a scheme (or a ringed space). The sheaf of rings defined
+in the internal language by localizing~$\O_X$ at its set of regular elements is
+(canonically isomorphic to) the sheaf~$\K_X$ of rational functions.
+\end{prop}
+\begin{proof}Internally, the ring~$\O_X[\S^{-1}]$ has the following
+universal property: For any ring~$R$ and any homomorphism~$\O_X \to R$ which
+maps the elements of~$\S$ to units, there exists exactly one
+homomorphism~$\O_X[\S^{-1}] \to R$ which renders the evident diagram commutative.
+\[ \xymatrix{
+  \O_X \ar[rr] \ar[dr] && R \\
+  & \O_X[\S^{-1}] \ar@{-->}[ru]
+} \]
+The translation using the Kripke--Joyal semantics gives the following universal
+property: For any open subset~$U \subseteq X$, any sheaf of rings~$\R$ on~$U$ and any
+homomorphism~$\O_X|_U \to \R$ which maps all elements of~$\Gamma(V,\S)$ for open subsets $V
+\subseteq U$ to units, there exists exactly one homomorphism~$\O_X[\S^{-1}]|_U \to
+\R$ which renders the evident diagram commutative.
+It is well-known that the sheaf~$\K_X$ as usually defined has
+this universal property as well.
+\end{proof}
+
+\begin{prop}\label{prop:stalks-kx}
+Let~$X$ be a scheme (or a ringed space). Then the stalks of~$\K_X$
+are given by
+\[ \K_{X,x} = \O_{X,x}[\S_x^{-1}]. \]
+The elements of~$\S_x$ are exactly the germs of those local sections which are
+regular not only in~$\O_{X,x}$, but in all rings~$\O_{X,y}$ where~$y$
+ranges over some open neighborhood of~$x$ (depending on the section).\end{prop}
+\begin{proof}
+Since localization is a geometric construction, the first statement is made entirely
+trivial by our framework. The second statement follows since
+\[ \Gamma(U,\S) = \{ s\in\Gamma(U,\O_X) \,|\, U \models \speak{$s$ is regular}
+\} \]
+and since regularity is a geometric implication, so that
+$U \models \speak{$s$ is regular}$ if and only if the germ~$s_y$ is regular
+in~$\O_{X,y}$ for all~$y \in U$.
+\end{proof}
+
+\begin{rem}Speaking internally, the multiplicative set~$\S$ is saturated.
+Therefore an element~$s/t \? \K_X$ is invertible in~$\K_X$ if and only if the
+numerator~$s$ belongs to~$\S$, that is if~$s$ is an regular element of~$\O_X$.\end{rem}
+
+% FUTURE:
+% How can we prove that K_X(U) = K_X^pre(U) = Quot O_X(U) for U affine
+% (and X locally Noetherian or X reduced and locally only finitely many
+% irreducible components)? (cf. Kleiman!)
+%
+% Here is approximately how. Verify that (U |-> K_X^pre(U)) defines a sheaf, if
+% U ranges only of the open affines. To do this, use the description of the
+% subsheaf \T given in the section on "O_X = A[F^(-1)]".
+
+
+\subsection{Regularity of local functions}
+It is well-known that on a locally Noetherian scheme, regularity spreads from
+stalks to neighborhoods, that is that a section of~$\O_X$ is regular
+in~$\O_{X,x}$ if and only if it is regular on some open neighborhood of~$x$.
+This fact has a simple proof in the internal language.
+\begin{prop}\label{prop:regularity-spreading}
+Let~$X$ be a locally Noetherian scheme. Let~$s \in \Gamma(U,\O_X)$
+be a local function on~$X$. Let~$x \in U$. Then the following statements are
+equivalent:
+\begin{enumerate}
+\item The section~$s$ is regular in~$\O_{X,x}$.
+\item The section~$s$ is regular in all local rings~$\O_{X,y}$ where~$y$ ranges
+over some open neighborhood of~$x$.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+Let~$\Box$ be the modal operator defined by~$\Box\varphi \defequiv ((\varphi
+\Rightarrow {!x}) \Rightarrow {!x})$. By Corollary~\ref{cor:spreading}, we are
+to show that the following statements of the internal language are equivalent:
+\begin{enumerate}
+\item $(\speak{$s$ is regular})^\Box$, \ie
+$\forall t\?\O_X\_ st = 0 \Rightarrow \Box(t = 0)$.
+\item $\Box(\speak{$s$ is regular})$, \ie
+$\Box(\forall t\?\O_X\_ st = 0 \Rightarrow t = 0)$.
+\end{enumerate}
+It is clear that the second statement implies the first -- in fact, this is true
+without any assumptions on~$X$: Let~$t\?\O_X$ be such that~$st = 0$. Since we want to
+prove the boxed statement~$\Box(t=0)$, we may assume that~$s$ is regular and
+prove~$t = 0$. This is immediate. (This direction also follows simply by
+examining the logical form and applying Lemma~\ref{lemma:open-stalk}.)
+
+For the converse direction, consider the annihilator of~$s$, \ie the ideal
+\[ I \defeq \Ann_{\O_X}(s) = \{ t\?\O_X \,|\, st = 0 \} \subseteq \O_X. \]
+This ideal satisfies the quasicoherence condition (we will explain how to prove this internally in~\ref{ex:annihilator-qcoh}),
+thus~$I$ is a quasicoherent submodule of a finitely generated module. Since~$X$ is
+locally Noetherian, it follows that~$I$ is finitely generated as well, say by~$x_1,\ldots,x_n \? I$. By
+assumption, each generator~$x_i \? I$ fulfills~$\Box(x_i = 0)$. Since we want
+to prove a boxed statement, we may in fact assume~$x_i = 0$. Thus~$I = (0)$ and
+the assertion that~$s$ is regular follows.
+\end{proof}
+
+The proof critically depends on the ideal~$I$ being finitely
+generated, since a modal operator need only commute with finite
+conjunctions. Intuitively, each time we use the modus ponens rule~$(\Box\varphi \wedge
+(\varphi \Rightarrow \psi)) \Rightarrow \Box\psi$, we restrict to a smaller open
+neighborhood of~$x$. Since infinite intersections of open sets need not be
+open, we cannot expect an infinitary modus ponens rule to hold.
+
+\begin{cor}Let~$X$ be a locally Noetherian scheme. Then the stalks~$\K_{X,x}$
+of the sheaf of rational functions are given by the total quotient rings of the
+local rings~$\O_{X,x}$.\end{cor}
+\begin{proof}Follows by combining Proposition~\ref{prop:stalks-kx} and
+Proposition~\ref{prop:regularity-spreading}.\end{proof}
+
+
+\subsection{Normality}\label{sect:normality}
+Recall that a ring~$R$ is \emph{normal} if and only if
+it is integrally closed in its total quotient ring. Recall also that a
+scheme~$X$ (or a ringed space) is \emph{normal} if and only if all
+rings~$\O_{X,x}$ are normal.
+
+\begin{prop}\label{prop:normal-int-ext}A locally Noetherian scheme is normal if and only if the
+ring~$\O_X$ is normal from the internal perspective.\end{prop}
+\begin{proof}The condition of normality can be put into a form which is almost
+a geometric implication:
+\begin{multline*}
+  \forall s,t\?\O_X\_
+  \bigl(\speak{$t$ regular} \wedge {} \\
+  \exists a_0,\ldots,a_{n-1}\?\O_X\_
+  s^n + a_{n-1} t s^{n-1} + \cdots + a_1 t^{n-1} s + a_0 t^n = 0\bigr)
+  \Longrightarrow \\
+  \exists u\?\O_X\_ s = ut.
+\end{multline*}
+The only non-geometric subpart is the condition on~$t$ to be regular. However,
+by Proposition~\ref{prop:regularity-spreading}, for the purposes of comparing
+its truth at points \vs on neighborhoods, it behaves just like a geometric
+formula. Therefore the claim follows.
+\end{proof}
+
+
+\subsection{Geometric interpretation of rational functions} Recall that on
+integral schemes, rational functions (\ie sections of~$\K_X$) are the same
+thing as regular functions defined on dense open subsets. This amounts to
+saying that~\emph{$\K_X$ is the~$\neg\neg$-sheafification of~$\O_X$}
+(see Proposition~\ref{prop:negneg-sheaves}). We want to rederive this result,
+as far as possible in the internal language, and generalize it to arbitrary
+(not necessarily locally Noetherian) schemes.
+
+\begin{lemma}\label{lemma:regular-notnot-invertible}Let~$X$ be a reduced scheme. Then:
+\begin{enumerate}
+\item $\O_X$ is~$\neg\neg$-separated.
+\item Internally, an element~$s\?\O_X$ is regular
+if and only if it is \notnot invertible.
+\end{enumerate}
+\end{lemma}
+\begin{proof}Recall from Corollary~\ref{cor:field-reduced} that
+\begin{equation}\label{eqn:field-condition}\tag{${\!\Join\!}$}
+  \Sh(X) \models \forall s\?\O_X\_ \neg(\speak{$s$ invertible}) \Leftrightarrow
+  s=0.
+\end{equation}
+From this we can deduce that~$\O_X$ is~$\neg\neg$-separated:
+Assume~$\neg\neg(s=0)$ for~$s\?\O_X$. If~$s$ were invertible, we would
+have~$\neg\neg(1=0)$ and thus~$\bot$. Therefore~$s$ is not invertible and thus
+zero.
+
+For the ``only if'' direction of the second statement,
+note that a regular element is not zero (if it were, then the true statement~$0
+\cdot 0 = 0 \cdot 1$ would imply the false statement~$0 = 1$) and thus \notnot
+invertible (by the contrapositive of equivalence~\eqref{eqn:field-condition}). For the ``if''
+direction, let~$st = 0$ in~$\O_X$. Since~$s$ is \notnot invertible, it follows
+that~$t$ is \notnot zero. Since~$\O_X$ is~$\neg\neg$-separated, this implies
+that~$t$ really is zero.
+\end{proof}
+
+For the following, we need two technical conditions. Say that an affine
+scheme~$\Spec A$ has property~$(\star)$ if and only if:
+\begin{quote}
+Every open dense subset~$U \subseteq \Spec A$ contains a
+\emph{standard open} dense subset.
+\end{quote}
+Say that~$\Spec A$ has property~$(\star\star)$ if and only if:
+\begin{quote}
+Every open scheme-theoretically dense subset~$U \subseteq \Spec A$ contains a
+\emph{standard open} scheme-theoretically dense subset.
+\end{quote}
+The first condition is satisfied if~$A$ is an irreducible ring (\ie if~$\Spec A$
+is irreducible) or more generally if~$A$ contains only finitely many minimal
+prime ideals. Both conditions are satisfied if~$A$ is integral or if~$A$ is
+Noetherian; for convenience, we give a proof in the
+latter case.
+
+\begin{prop}Let~$A$ be a Noetherian ring. Then~$\Spec A$ has properties~$(\star)$
+and~$(\star\star)$.
+\end{prop}
+\begin{proof}Recall that, under the Noetherian hypothesis, an open subset of~$\Spec A$ is dense if and only if it
+contains all minimal prime ideals (this fact holds more generally if there are only finitely many minimal prime ideals) and that it
+is scheme-theoretically dense if and only if it contains all associated prime
+ideals. There are only a finite number of these prime ideals. Therefore the
+claim is reduced to the following statement:
+
+Let~$\ppp_1,\ldots,\ppp_n$ be a
+finite number of points of an open subset~$U \subseteq \Spec A$. Then there
+exists a standard open subset~$D(f) \subseteq U$ which also contains these
+points.
+
+The proof of this statement is a direct application of the prime
+avoidance lemma.
+\end{proof}
+
+\begin{prop}
+\label{prop:kx-is-negneg-sheafification}
+Let~$X$ be a reduced scheme. Assume that every open affine subscheme has
+property~$(\star)$. (For instance, this condition is satisfied if~$X$ is
+integral, the set of irreducible components is locally finite, or if~$X$ is
+locally Noetherian.) Then~$\K_X$ is the~$\neg\neg$-sheafification
+of~$\O_X$.\end{prop}
+\begin{proof}
+We first show that~$\K_X$ is~$\neg\neg$-separated,
+so assume~$\neg\neg(a/s = 0)$ for~$a/s \? \K_X$. Since~$\K_X$ is obtained
+from~$\O_X$ by localizing at regular elements, the fraction~$a/s$ vanishes
+in~$\K_X$ if and only if~$a = 0$ in~$\O_X$. Thus it follows that~$\neg\neg(a =
+0)$ in~$\O_X$ and therefore~$a = 0$ in~$\O_X$; in particular, $a/s = 0$ in~$\K_X$.
+
+We defer the proof that~$\K_X$ is a~$\neg\neg$-sheaf to the end and first
+verify the universal property of~$\neg\neg$-sheafification.
+So let~$G$ be a~$\neg\neg$-sheaf and let~$\alpha : \O_X \to G$ be a map. We
+define an extension~$\bar\alpha : \K_X \to G$ in the following way:
+Let~$f \? \K_X$. Define the subsingleton~$S \defeq \{ x \? G \,|\, \exists
+b\?\O_X\_ f = b/1 \wedge x = \alpha(b) \} \subseteq G$. Since~$f$ can be
+written in the form~$a/s$ with~$s$ \notnot invertible, it follows that~$S$
+is \notnot inhabited. Since~$G$ is a~$\neg\neg$-sheaf, there exists a
+unique~$x\?G$ such that~$\neg\neg(x \in S)$. We declare~$\bar\alpha(f)$ to be
+this~$x$. It is straightforward to check that the composition~$\O_X \to \K_X
+\to G$ equals~$\alpha$ and that~$\bar\alpha$ is unique with this property.
+
+Up to this point, the proof did not need that~$X$ is a scheme -- it was enough
+for~$X$ to be a ringed space such that equivalence~\eqref{eqn:field-condition} holds and
+such that~$\neg(0 = 1)$ in~$\O_X$. Only now, in showing that~$\K_X$ is
+a~$\neg\neg$-sheaf, the scheme condition enters. To this end, we first
+reformulate the sheaf condition in a way such that it only refers to~$\O_X$,
+not~$\K_X$: The quotient ring~$\K_X$ is a~$\neg\neg$-sheaf if and only if
+\begin{multline*}
+  \Sh(X) \models \forall T \subseteq \O_X\_
+  \speak{$T$ is a subsingleton} \wedge \neg\neg(\speak{$T$ is inhabited})
+  \Longrightarrow \\
+  \exists a,b\?\O_X\_ \speak{$b$ is regular} \wedge \neg\neg(b^{-1} a \in T).
+\end{multline*}
+This is done just as in the proof of Theorem~\ref{thm:qcoh-sheafchar}.
+The expression~``$b^{-1}$'' refers to the inverse of~$b$ which indeed exists in a doubly
+negated context, since~$b$ is assumed regular. More explicitly, we should write
+\[ \neg\neg(\exists c\?\O_X\_ bc = 1 \wedge ca \in T)
+  \quad\text{instead of}\quad
+  \neg\neg(b^{-1} a \in T). \]
+To verify the Kripke--Joyal interpretation of the rewritten sheaf condition, let
+an affine open subset~$U = \Spec A \subseteq X$ having property~$(\star)$ and a subsheaf~$T
+\hookrightarrow \O_X|_U$ be given such that~$T$ is internally a subsingleton
+and \notnot inhabited. We may glue the unique germs in the inhabited
+stalks of~$T$ to obtain a section~$s \in \Gamma(V,\O_X)$ where~$V \subseteq U$
+is a dense open subset. Since~$U$ has property~$(\star)$, we may assume that~$V
+= D(f)$ is a standard open subset. Because~$V$ is dense and~$A$ is reduced, the
+function~$f$ is a regular element of~$A$.
+Since~$\Gamma(V,\O_X) = A[f^{-1}]$, we can write~$s = a/f^n$ with~$a \in A$
+and~$n \geq 0$.
+
+By Lemma~\ref{lemma:regular-affine}, the function~$b \defeq f^n$ is also regular as an
+element of~$\O_U$ from the internal point of view. The function~$b$ is invertible
+on~$V$, since~$V = D(f) = D(b)$. It follows that on the dense
+open subset~$V \subseteq U$, the sections~$s$ and~$b^{-1} a$ agree.
+This observation concludes the proof.
+\end{proof}
+
+\begin{cor}Let~$X$ be a reduced scheme such that any open affine subscheme has
+property~$(\star)$. Then~$\K_X$ is the result of
+pulling back~$\O_X$ to the sublocale~$X_{\neg\neg}$ and then pushing forward
+again. If~$X$ is irreducible with generic point~$\xi$, then~$\K_X$ is the
+constant sheaf associated to the set~$\O_{X,\xi}$.\end{cor}
+\begin{proof}Recall from Section~\ref{sect:internal-sheaves} that pulling back
+to~$X_{\neg\neg}$ is equivalent to sheafifying with respect to the double
+negation modality; and that pushing forward is equivalent to forgetting the
+sheaf property. Therefore the first statement holds.
+
+For the second statement, recall from Lemma~\ref{lemma:negneg-generic-point} that the
+sublocale~$X_{\neg\neg}$ is given by the subspace~$\{\xi\}$; that the
+sheafification functor~$\Sh(X) \to \Sh(\{\xi\}) \simeq \Set$ is given by
+calculating the stalk at~$\xi$; and that the inclusion functor~$\Set \simeq
+\Sh(\{\xi\}) \hookrightarrow \Sh(X)$ is given by the constant sheaf
+construction.
+\end{proof}
+
+If~$X$ is a general scheme (not necessarily reduced),
+we can describe~$\K_X$ in a similar way as a sheafification
+of~$\O_X$; specifically, it is the sheafification with respect to the modal
+operator defined by
+\[ \sdense\varphi \defequiv \speak{$\O_X$ is~$(\varphi \Rightarrow
+\placeholder)$-separated} \]
+in the internal language of~$\Sh(X)$, \ie
+\[ \sdense\varphi \defequiv (\forall s\?\O_X\_ (\varphi \Rightarrow s = 0)
+\Rightarrow s = 0). \]
+This modal operator has an explicit scheme-theoretic description.
+
+\begin{lemma}\label{lemma:scheme-theoretical-denseness}
+Let~$U$ be an open subset of a scheme~$X$. Then~$\Sh(X) \models
+\sdense U$ if and only if~$U$ is scheme-theoretically dense in~$X$.
+\end{lemma}
+\begin{proof}We have the following chain of equivalences.
+\begin{align*}
+  &\ X \models \sdense U \\
+  \Longleftrightarrow&\
+    \speak{$\O_X$ is~$(U \Rightarrow \placeholder)$-separated} \\
+  \Longleftrightarrow&\
+    X \models \speak{$\O_X \to \O_X^{+}$ is injective} \\
+  &\qquad\qquad\text{(where the plus construction is wrt.\@ the modality~$(U \Rightarrow \placeholder)$)} \\
+  \Longleftrightarrow&\
+    X \models \speak{$\O_X \to \O_X^{++}$ is injective} \\
+  &\qquad\qquad\text{(by the factorization~$\O_X \to \O_X^{+} \to \O_X^{++}$)} \\
+  \Longleftrightarrow&\
+    \text{the canonical morphism~$\O_X \to j_* \O_U$
+    (with $j : U \hookrightarrow X$) is injective} \\
+  \Longleftrightarrow&\
+    \text{$U$ is scheme-theoretically dense in~$X$.} \qedhere
+\end{align*}
+\end{proof}
+
+Using the internal language of a scheme, talking about scheme-theoretically
+dense open subsets is therefore just as easy as talking about ordinary
+topologically dense open subsets; the difference simply amounts to using the
+modal operator~$\sdense$ instead of~``\notnot''.
+
+\begin{prop}\label{prop:kx-is-box-sheafification}
+Let~$X$ be a ringed space. Then:
+\begin{enumerate}
+\item The operator~$\sdense$ fulfills the axioms for a modal operator.
+\item $\O_X$ is~$\sdense$-separated.
+\item $\K_X$ is~$\sdense$-separated.
+\item Internally, it holds that~$\sdense(\speak{$f$ \inv})$ implies that~$f$ is
+regular for any~$f\?\O_X$.
+% update addtocounter below if numbering changes
+\end{enumerate}
+Suppose furthermore that~$X$ is a scheme. Then:
+\begin{enumerate}
+\addtocounter{enumi}{4}
+\item The converse in~(4) holds.
+\item If every open affine subscheme of~$X$ has
+property~$(\star\star)$, then~$\K_X$ is the~$\sdense$-sheafification of~$\O_X$.
+\end{enumerate}
+\end{prop}
+\begin{proof}The first four properties are entirely formal; we thus skip over
+some details. For the first property, we verify the second axiom on a modal
+operator. So we assume~$\sdense\sdense\varphi$ and have to show~$\sdense\varphi$. To
+this end, let~$s\?\O_X$ be arbitrary such that~$\varphi \Rightarrow (s=0)$; we
+have to prove that~$s = 0$. If~$\O_X$ were separated with respect to the modal
+operator~$(\varphi \Rightarrow \placeholder)$, it would follow that~$s = 0$. So
+unconditionally it holds that~$\sdense\varphi \Rightarrow (s=0)$. Since by
+assumption~$\O_X$ is~$(\sdense\varphi \Rightarrow \placeholder)$-separated, the claim follows.
+
+For the second property, let~$s\?\O_X$ be arbitrary such that~$\sdense(s = 0)$.
+Obviously it holds that~$(s = 0) \Rightarrow (s = 0)$. Thus, since~$\O_X$ is
+separated with respect to~$((s = 0) \Rightarrow \placeholder)$, it follows
+that~$s = 0$. The proof of the third property is similar.
+
+For the fourth property, assume~$\sdense(\speak{$f$ \inv})$ and let~$h\?\O_X$ be
+arbitrary such that~$fh = 0$. Then, trivially, it holds that~$\speak{$f$ \inv}
+\Rightarrow h = 0$. Since~$\O_X$ is separated with respect to~$(\speak{$f$
+\inv} \Rightarrow \placeholder)$, it follows that~$h = 0$.
+
+We now suppose that~$X$ is a scheme. To verify the fifth property, let a
+regular element~$f\?\O_X$ be given. We have to show that~$\O_X$ is separated
+with respect to the modality~$(\speak{$f$ \inv} \Rightarrow \placeholder)$. So
+assume that~$\speak{$f$ \inv} \Rightarrow (s = 0)$ for some~$s\?\O_X$. By
+Proposition~\ref{prop:cond-zero} it follows that~$f^n s = 0$ for some natural
+number~$n$. Since~$f$ is regular, we may conclude that~$s = 0$.
+
+The verification of the universal property of~$\K_X$ is done analogously as in
+the case that~$X$ is reduced: For the proof of
+Proposition~\ref{prop:kx-is-negneg-sheafification}, it was critical that
+regular elements of~$\O_X$ are \notnot invertible. We now need (and have) that
+regular elements of~$\O_X$ are~$\sdense(\speak{invertible})$.
+
+Thus it only remains to verify that~$\K_X$ is a~$\sdense$-sheaf. We may again imitate
+the proof of Proposition~\ref{prop:kx-is-negneg-sheafification}; using the same
+notation, we may now suppose that~$V$ is a standard open subset such that~$U \models \sdense
+V$ (previously, we supposed that~$U \models \neg\neg V$). The proof that the
+denominator~$b$ is regular (as seen from the internal perspective, as an
+element of~$\O_U$) now goes as follows: We have~$V \subseteq
+D(b)$. Therefore~$U \models \sdense V$ implies~$U \models \sdense(\speak{$b$ \inv})$. By
+the fourth property, it follows that~$U \models \speak{$b$ is regular}$.
+\end{proof}
+
+\begin{rem}The modal operator~$\sdense$ is the largest (weakest) operator such
+that~$\O_X$ is~$\sdense$-separated, \ie if~$\sdenseother$ is any modal operator
+such that~$\O_X$ is~$\sdenseother$-separated, then~$\sdenseother\varphi
+\Rightarrow \sdense\varphi$ for any proposition~$\varphi$.\end{rem}
+
+In the special case that~$X$ is a reduced scheme,
+Proposition~\ref{prop:kx-is-box-sheafification} recovers
+the result of Proposition~\ref{prop:kx-is-negneg-sheafification}:
+
+\begin{prop}\label{prop:relation-sdense-notnot}
+Let~$X$ be a scheme. Then~$\Sh(X) \models \forall\varphi\?\Omega\_
+\sdense\varphi \Rightarrow \neg\neg\varphi$.
+The converse holds if~$X$ is reduced, so that in
+this case the modal operator~$\sdense$ coincides with the double negation modality.\end{prop}
+\begin{proof}We argue internally. Let~$\varphi$ be an arbitrary truth value and
+assume that~$\sdense\varphi$. The negation~$\neg\varphi$ (which is defined as~$\varphi \Rightarrow \bot$) is
+equivalent to~$\varphi \Rightarrow (1 =
+0)$. Since by assumption~$\O_X$ is separated with respect to the~$(\varphi
+\Rightarrow \placeholder)$-modality, this in turn is equivalent to~$1 = 0 \?
+\O_X$, \ie to~$\bot$. Thus~$\neg\neg\varphi$.
+
+For the converse direction, let~$\varphi \Rightarrow (s = 0)$ for some~$s\?\O_X$;
+we have to show that in fact~$s = 0$. Since by assumption~$\neg\neg\varphi$, it
+follows that~$s$ is \notnot zero. Since~$X$ is reduced,~$\O_X$
+is~$\neg\neg$-separated, so this implies that~$s$ is really zero.
+\end{proof}
+
+As a corollary, we can reprove the following basic lemma about
+scheme-theoretical denseness.
+\begin{lemma}Let~$U$ be an open subset of a scheme~$X$. If~$U$ is
+scheme-theoretically dense, then~$U$ is also dense in the plain topological
+sense. The converse holds if~$X$ is reduced.\end{lemma}
+\begin{proof}The set~$U$ is scheme-theoretically dense if and only if~$\Sh(X)
+\models \sdense U$ and is dense if and only if~$\Sh(X) \models \neg\neg U$.
+Therefore the claim follows from Proposition~\ref{prop:relation-sdense-notnot}.
+\end{proof}
+
+\begin{prop}\label{prop:kx-ass}
+Let~$X$ be a scheme such that any open affine subscheme has
+property~$(\star\star)$. Then~$\K_X$ is the result of
+pulling back~$\O_X$ to the sublocale~$X_\sdense$ associated to the modal
+operator~$\sdense$ and then pushing forward again. If~$X$ is locally Noetherian,
+this sublocale is the subspace of associated points in~$X$.
+\end{prop}
+
+In formulas, the proposition states that the canonical map
+\[ \K_X \longrightarrow i_* i^{-1} \O_X \]
+is an isomorphism, where~$i : X_\sdense \hookrightarrow X$ is the inclusion of
+the sublocale~$X_\sdense$. This result requires a cover with
+property~$(\star\star)$, but no Noetherian hypothesis.
+
+\begin{proof}The first statement follows trivially by the results of
+Section~\ref{sect:internal-sheaves} and the fact that~$\K_X$ is
+the~$\sdense$-sheafification of~$\O_X$.
+
+For the second statement, we need to verify that the nucleus~$j_{\Ass(\O_X)}$
+associated to the subspace of associated points coincides with the
+nucleus~$j_\sdense$ associated to the modal operator~$\sdense$. Recall from
+Subsection~\ref{sect:subspace-to-modal-operator} that the latter is given by
+\begin{align*}
+  j_\sdense(U) &= \text{largest open subset of~$X$ on which~$\sdense U$ holds} \\
+  &= \bigcup\ \{ V \subseteq X \ |\
+  \text{$V$ open},\ V \models \sdense U \}
+\intertext{and note that the former is given by}
+  j_{\Ass(\O_X)}(U) &= \bigcup\ \{ V \subseteq X \ |\
+  \text{$V$ open},\ V \cap \Ass(\O_X) \subseteq U \}.
+\end{align*}
+This is a general fact of locale theory, not depending on particular properties
+of~$\Ass(\O_X)$. To verify this, one needs to check that~$j_{\Ass(\O_X)}$ is indeed a
+nucleus and that the canonical map
+\[ \{ U \in \Open(X) \,|\, j_{\Ass(\O_X)}(U) = U \} \longrightarrow \Open(\Ass(\O_X)),\ U \longmapsto \Ass(\O_X) \cap U \]
+is an isomorphism of frames with inverse given by~$\Ass(\O_X) \cap U \mapsto
+j_{\Ass(\O_X)}(U)$.
+
+The equivalence thus follows from a standard result on the set of associated
+points on locally Noetherian schemes:
+\begin{align*}
+  &\ V \cap \Ass(\O_X) \subseteq U \\
+  \Longleftrightarrow&\
+    \Ass(\O_V) \subseteq U \\
+  \Longleftrightarrow&\
+    \text{$U \cap V$ is scheme-theoretically dense in~$U$} \\
+  &\qquad\qquad\text{(this step requires the Noetherian assumption)} \\
+  \Longleftrightarrow&\
+    V \models \sdense U. \qedhere
+\end{align*}
+\end{proof}
+
+\begin{lemma}
+Let~$X$ be a scheme such that any open affine subscheme has
+property~$(\star\star)$. Let~$j : U \hookrightarrow X$ be the inclusion of an
+open subset containing the sublocale~$X_\sdense$. (If~$X$ is locally
+Noetherian, this is equivalent to requiring that~$U$ contains~$\Ass(\O_X)$.)
+Then the canonical morphism~$\K_X \to j_* \K_U$ is an isomorphism.
+\end{lemma}
+\begin{proof}Write~$i : X_\sdense \hookrightarrow X$ and~$i' : X_\sdense
+\hookrightarrow U$ for the inclusions. By Proposition~\ref{prop:kx-ass}, the
+sheaf~$\K_X$ is given by~$i_* i^{-1} \O_X$. Similarly, the sheaf~$j_* \K_U$ is
+given by~$j_* i'_* i'^{-1} j^{-1} \O_X$. The claim follows since~$j \circ i' =
+i$.
+\end{proof}
+
+\begin{lemma}\label{lemma:dense-standard-reflection-generalized}
+Let~$X$ be a scheme such that any open affine subscheme has
+property~$(\star)$ respectively~$(\star\star)$. Then
+\[ \Sh(X) \models \forall\varphi\?\Omega\_ \neg\neg\varphi \Longrightarrow \exists f\?\O_X\_
+  \neg\neg(\speak{$f$ \inv}) \wedge (\speak{$f$ \inv} \Rightarrow \varphi) \]
+respectively
+\[ \Sh(X) \models \forall\varphi\?\Omega\_ \sdense\varphi \Longrightarrow \exists f\?\O_X\_
+  \sdense(\speak{$f$ \inv}) \wedge (\speak{$f$ \inv} \Rightarrow \varphi). \]
+\end{lemma}
+\begin{proof}The proof of Lemma~\ref{lemma:dense-standard-reflection} carries
+over, \emph{mutatis mutandis}.
+\end{proof}
+
+\begin{prop}\label{prop:boolean-dim0-continued}
+Let~$X$ be a scheme of dimension~$\leq 0$ such that the set of irreducible components is locally finite or such that~$X$ is locally Noetherian. Then
+the internal language of~$\Sh(X)$ is Boolean. (The converse holds as well and
+was already stated as Corollary~\ref{cor:boolean-dim0}.)
+\end{prop}
+\begin{proof}
+It suffices to verify the principle of double negation elimination, since the
+law of excluded middle is equivalent to it.\footnote{This is a standard fact of
+intuitionistic logic. Assume that the principle of double negation elimination
+holds. We want to verify the law of excluded middle, so let an arbitrary
+formula~$\varphi$ be given. Even intuitionistically it holds
+that~$\neg\neg(\varphi \vee \neg\varphi)$. By double negation elimination it
+follows that~$\varphi \vee \neg\varphi$.}
+So let~$\varphi$ be an arbitrary formula and assume~$\neg\neg\varphi$. By the
+previous lemma there exists an element~$f\?\O_X$ such that~$f$ is \notnot
+invertible and such that~$(\speak{$f$ \inv} \Rightarrow \varphi)$. Since~$\dim
+X \leq 0$, this element is invertible or nilpotent
+(Corollary~\ref{cor:scheme-dimension-zero}).  In the first case, we are done.
+In the second case, some power~$f^n$ is zero and therefore in particular
+\notnot zero. Since~$f$ is \notnot invertible, this implies that \notnot~$1 =
+0$. On the other hand~$1 \neq 0$, so we obtain a contradiction; from this
+contradiction~$\varphi$ trivially follows.
+\end{proof}
+
+\begin{lemma}\label{lemma:torsion-module-generic-stalk-generalized}
+Let~$X$ be a locally Noetherian scheme. Let~$\F$ be a
+quasicoherent~$\O_X$-module. Then~$\F$ is a torsion module if and only if the
+restriction of~$\F$ to~$\Ass(\O_X)$ vanishes.
+\end{lemma}
+\begin{proof}By Proposition~\ref{prop:kx-ass} and
+Lemma~\ref{lemma:dense-standard-reflection-generalized} it suffices to repeat
+the proof of Lemma~\ref{lemma:torsion-module-generic-stalk} with
+``\notnot'' substituted by~``$\sdense$''.
+\end{proof}
+
+
+\subsection{Cartier divisors} Let~$X$ be a scheme (or a ringed space). Recall
+that a \emph{Cartier divisor} on~$X$ is a global section of the sheaf of
+groups~$\K_X^\times / \O_X^\times$. This sheaf can be constructed internally, with the
+same notation: It is the quotient of the group of invertible elements of the
+ring~$\K_X$ by the subgroup of invertible elements of the ring~$\O_X$. So an
+arbitrary section of~$\K_X^\times/\O_X^\times$ is internally of the form~$[s/t]$
+with~$s,t\?\O_X$ being regular elements; this is a simpler description than the
+usual external one as a family~$(f_i)_i$ of functions~$f_i \in
+\Gamma(U_i,\K_X^\times)$ such that~$f_i^{-1}|_{U_i \cap U_j} \cdot f_j|_{U_i \cap
+U_j} \in \Gamma(U_i \cap U_j, \O_X^\times)$ for all~$i,j$.
+
+We can sketch the basic theory of Cartier divisors completely from the internal
+perspective. In accordance with common practice, we write the group
+operation of~$\K_X^\times/\O_X^\times$ (which is induced by multiplication of elements
+in~$\K_X^\times$) additively.
+
+\begin{defn}\label{defn:effective-cartier-divisor}
+A Cartier divisor is \emph{effective} if and only if, from the
+internal perspective, it can be written in the form~$[s/1]$ with~$s\?\O_X$
+being a regular element.\end{defn}
+
+Thus a Cartier divisor~$[s/t]$ is effective if and only if~$s$ is
+an~$\O_X$-multiple of~$t$.
+
+\begin{defn}A Cartier divisor~$D$ is \emph{principal} if and only if there
+exists a global section~$f \in \Gamma(X,\K_X^\times)$ such that internally,~$D = [f]$.
+Two Cartier divisors are \emph{linearly equivalent} if and only if their
+difference is a principal divisor.
+\end{defn}
+
+Decidedly, principality is a global notion: For \emph{any} divisor~$D$ it is
+true that locally there exists sections~$f$ of~$\K_X^\times$ such that~$D = [f]$.
+
+\begin{defn}\label{defn:line-bundle-of-divisor}
+The \emph{line bundle associated to a Cartier divisor}~$D$
+is the~$\O_X$-submodule
+\[ \O_X(D) \defeq \{ g \? \K_X \,|\, g D \in \O_X \} = D^{-1} \O_X \subseteq \K_X
+\]
+of~$\K_X$. Here we are abusing language for~``$gD \in \O_X$'' to mean that~$gf
+\in \O_X$ if~$D = [f]$ with~$f\?\K_X$; and for~``$D^{-1} \O_X$'' to
+mean~$f^{-1}\O_X$. This condition respectively submodule does not depend on the
+representative~$f$, since~$f$ is well-defined up to multiplication by an element
+of~$\O_X^\times$.\end{defn}
+
+The submodule~$\O_X(D)$ is indeed locally free of rank~$1$, since
+internally~$f^{-1}$ gives a one-element basis. The divisor~$D$ is effective if
+and only if~$\O_X(-D)$ is a subset of~$\O_X$ from the internal perspective
+(this comparison makes sense, since~$\O_X(-D)$ and~$\O_X$ are both canonically
+embedded in~$\K_X$). In
+this case, we can define the \emph{support} of~$D$ to be the closed subscheme
+of~$X$ associated to the sheaf of ideals~$\O_X(-D) \subseteq \O_X$.
+
+The line bundle~$\O_X(D)$ can also be written in the familiar form
+\[ \O_X(D) = \{ g \? \K_X \,|\, \operatorname{div}(g) + D \geq 0 \}, \]
+if we define~``$\operatorname{div}(g)$'' as the equivalence class~$[g] :
+\K_X/\O_X^\times$, interpret the left-hand side of the inequality as an element
+of~$\K_X/\O_X^\times$, and declare that~$[s/t] \geq 0$ if and only if~$s$ is
+an~$\O_X$-multiple of~$t$.
+
+On the other hand, a description like
+\[ \text{``$\O_X(D) = \{ 0 \} \cup \{ g \? \K_X^\times \,|\,
+  \operatorname{div}(g) + D \geq 0 \}$''} \]
+is not possible, since the case distinction necessary for a verification of the
+inclusion~``$\subseteq$'' is not possible intuitionistically.
+
+%\begin{prop}Let~$D$ be an effective divisor on~$X$. Then~$\O_X(D)$ is trivial
+%outside of the support of~$D$.\end{prop}
+%\begin{proof}We have to show that~$\O_X(D)|_U$ is trivial on~$U \defeq X \setminus
+%V(\O_X(-D)) = \{ x \in X \,|\, 1 \in \O_X(-D) \}$. We do this by verifying ...
+%D = [f], f : O_X regular. O_X(-D) = (f).
+%Assume 1 in O_X(-D): Then f is invertible. Obviously O_X(-D) --> O_X
+%is an isomorphism. So O_X --> O_X(D) is as well.
+%\end{proof}
+
+\begin{defn}The \emph{Cartier divisor associated to a free~$\O_X$-submodule~$\L \subseteq
+\K_X$ of rank~1} is~$D \defeq [f^{-1}]$, where~$f\?\K_X$ is the unique element of
+some one-element basis of~$\L$.\end{defn}
+
+The basis element~$f\?\K_X$ does indeed lie in~$\K_X^\times$: Write~$f
+= s/t$ with~$s,t \? \O_X$. It suffices to show that~$s$ is a regular element
+of~$\O_X$. So let~$h\?\O_X$ such that~$sh = 0$ in~$\O_X$. Then in
+particular~$hf = 0$ in~$\K_X$. By linear independence, it follows that~$h = 0$
+in~$\K_X$ and thus~$h = 0$ in~$\O_X$.
+
+Furthermore, the associated divisor does not depend on the choice of~$f$,
+since~$f$ is well-defined up to multiplication by an element of~$\O_X^\times$: If~$f
+\O_X = g \O_X \subseteq \K_X$, then there exist elements~$u,v\?\O_X$ such that~$fu = g$
+and~$gv = f$ in~$\K_X$. It follows that~$uv = fuvf^{-1} = gvf^{-1} = ff^{-1} =
+1$ in~$\K_X$ and thus in~$\O_X$, by injectivity of the localization morphism~$\O_X \to
+\K_X$. Therefore~$u$ and~$v$ are elements of~$\O_X^\times$.
+
+\begin{lemma}Let~$D$ and~$D'$ be divisors on~$X$. Then~$\O_X(D) \otimes_{\O_X}
+\O_X(D') \cong \O_X(D + D')$.\end{lemma}
+\begin{proof}The wanted morphism of sheaves~$\O_X(D) \otimes \O_X(D') \to
+\O_X(D + D')$ is given by multiplication. That this is well-defined and an
+isomorphism can be checked from the internal point of view, where the claims
+are obvious.\end{proof}
+
+\begin{prop}The association~$D \mapsto \O_X(D)$ defines a one-to-one
+correspondence between Cartier divisors on~$X$ and rank-one submodules
+of~$\K_X$. This correspondence descends to a one-to-one correspondence between
+Cartier divisors up to linear equivalence and rank-one submodules of~$\K_X$ up
+to isomorphism (as abstract~$\O_X$-modules, ignoring their embedding
+into~$\K_X$).\end{prop}
+\begin{proof}The first statement is obvious from the definitions. For the
+second statement, it suffices to show that~$\O_X(D)$ is isomorphic to~$\O_X$ if
+and only if~$D$ is principal. An isomorphism~$\O_X \to \O_X(D)$ gives a
+global section~$f \in \Gamma(X,\K_X^\times)$ (by considering the image of the unit element)
+such that internally,~$D = [f^{-1}]$; this shows that~$D$ is principal. The
+converse is similar.
+\end{proof}
+
+%\begin{rem}Locally principal subschemes (closed subschemes which are locally
+%the vanishing subscheme of a regular section of~$\O_X$) up to isomorphisms of
+%subschemes are in one-to-one correspondence with rank-1 submodules of~$\O_X$
+%(see~\YYY{ref}). Thus locally principal subschemes (up to isomorphisms of abstract
+%schemes) are in one-to-one correspondence with effective Cartier divisors (up
+%to linear equivalence).\end{rem}
+%\YYY{check this.}
+%Is wrong. On A^2 there are locally principal subschemes, but every Cartier
+%divisor is zero up to linear equivalence.
+
+For the following definition, recall that we can localize an~$\O_X$-module~$\L$
+at the set~$\S \subseteq \O_X$ of regular elements to obtain
+a~$\K_X$-module~$\L[S^{-1}]$.
+
+\begin{defn}Let~$f\?\L[\S^{-1}]$ be a rational section of a line bundle~$\L$
+on~$X$. Assume that~``$f$ is nontrivial'', that is multiplication by~$f$ is an
+injective map~$\O_X \to \L[\S^{-1}]$. Then the \emph{associated divisor} of~$f$
+is~$\operatorname{div}(f) \defeq [\psi(s)/t]$, where~$f = s/t$ with~$s\?\L$ and~$t\?\O_X$
+and~$\psi : \L \to \O_X$ is an isomorphism.\end{defn}
+
+One can check that~$\psi(s)$ is a regular element of~$\O_X$; this statement is
+equivalent to the multiplication map~$\O_X \to \L[\S^{-1}]$ being
+injective. Furthermore one can check that~$[\psi(s)/t]$ does not depend on the
+choice of~$s$,~$t$, and~$\psi$.
+
+\begin{prop}Let~$f\?\L[\S^{-1}]$ be a nontrivial rational section of a line
+bundle~$\L$ on~$X$. Then multiplication by~$f$ induces an
+isomorphism~$\O_X(\operatorname{div}(f)) \to \L$.\end{prop}
+\begin{proof}The isomorphism should map a rational function~$g$ to~$g f$. This
+is a priori an element of~$\L[\S^{-1}]$; we have to check that it can be
+regarded as an element of~$\L$. Just as in the definition
+of~$\operatorname{div}(f)$, write~$f = s/t$ and fix an isomorphism~$\psi : \L
+\to \O_X$. Write~$g = (t/\psi(s)) \cdot h$ for some function~$h\?\O_X$. Then~$g
+f = sh/\psi(s) = h\psi^{-1}(1)$, since~$s = \psi^{-1}(\psi(s)) = \psi(s)
+\cdot \psi^{-1}(1)$. The element~$h\psi^{-1}(1)$ can indeed be considered as an
+element of~$\L$.
+
+Injectivity of the map~$\O_X(\operatorname{div}(f)) \to \L$ is by
+nontriviality of~$f$. For surjectivity, we observe that~$(t/\psi(s)) \cdot \psi(v)$ is a
+preimage to~$v\?\L$, since~$(t/\psi(s)) \cdot \psi(v) \cdot f = \psi(v) \psi(s)
+\psi^{-1}(1) / \psi(s) = v$.
+\end{proof}
+
+\begin{prop}Let~$\L$ be a line bundle on~$X$. Assume that~$\L$ can be embedded
+into~$\K_X$. Then~$\L$ possesses a nontrivial rational section.
+\end{prop}
+\begin{proof}Let~$i : \L \to \K_X$ be the given injection. Let~$(v)$ be an
+one-element basis for~$\L$. Write~$i(v) = s/t$. Then~$s$ is regular,
+since~$hs = 0$ implies~$i(hv) = 0$ and thus~$h = 0$, for any~$h\?\O_X$.
+Therefore~$f \defeq tv/s$ is a well-defined element of~$\L[\S^{-1}]$.
+Furthermore it is nontrivial in the desired sense: If~$h \cdot (tv/s) = 0$,
+then~$htv = 0$, thus~$ht = 0$ and~$h = 0$.
+
+It remains to check that~$f$ is independent of the choice of~$v$ and of the
+representation~$i(v) = s/t$; else we defined only local sections which might not
+glue to a single nontrivial rational section (externally speaking). This verification is
+trivial.
+\end{proof}
+
+\begin{prop}Let~$D$ be an effective divisor on~$X$. Then the complement of its
+support is scheme-theoretically dense.\end{prop}
+\begin{proof}The complement of the support of~$D$, that is the open
+subset~$D(\O_X(-D))$ (where we consider~$\O_X(-D)$ as an ideal of~$\O_X$), is
+the truth value of the statement~``$1 \in \O_X(-D)$''. By
+Lemma~\ref{lemma:scheme-theoretical-denseness}, we therefore have to verify
+that~$\O_X$ is separated with respect to the modal operator~$(1 \in \O_X(-D)
+\Rightarrow \placeholder)$.
+
+Let~$s \? \O_X$ be given such that~$1 \in \O_X(-D) \Rightarrow s = 0$; we have
+to show that~$s = 0$. Writing~$D = [f/1]$ where~$f \? \O_X$ is a regular
+element, this condition is equivalent to~$\speak{$f$ \inv} \Rightarrow s = 0$.
+By Proposition~\ref{prop:cond-zero} it follows that~$f^n s = 0$ for some~$n
+\geq 0$. Since~$f$ is regular, we may cancel~$f^n$ in this equation.
+\end{proof}
+
+\begin{prop}Assume that~$X$ is an integral scheme. Then any line bundle on~$X$
+is (uncanonically) a submodule of~$\K_X$.\end{prop}
+\begin{proof}Let~$\xi$ be the generic point of~$X$ and let~$\Box \defeq \neg\neg$
+denote the modal operator such that internal sheafification with respect
+to~$\Box$ is the same as pulling back to~$\{\xi\}$ and then pushing forward
+to~$X$ again (see Section~\ref{sect:negneg-sheaves}). Let~$\L$ be a line bundle on~$X$. Since~$\L_\xi \cong
+\O_{X,\xi}$ (uncanonically), there is some injection~$\L_\xi \to \K_{X,\xi}$;
+this corresponds internally to an injection~$\L^{++} \to \K_X^{++}$.
+Since~$\K_X$ is already a~$\Box$-sheaf
+(Proposition~\ref{prop:kx-is-negneg-sheafification}) and~$\L$ is~$\Box$-separated
+(being isomorphic to~$\O_X$), we have the global injection
+\[ \L \lhra \L^{++} \lhra \K_X^{++} \stackrel{({\cong})^{-1}}{\longrightarrow} \K_X. \qedhere \]
+\end{proof}
 
 
 \section{Subschemes}

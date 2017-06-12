@@ -234,27 +234,6 @@
 \begin{document}
 
 \begin{abstract}
-  There are several important toposes associated to a scheme, for instance the
-  little and big Zariski toposes. These support an internal mathematical language
-  which closely resembles the usual formal language of mathematics, but is ``local
-  on the base scheme'':
-  For example, from the internal perspective, the structure sheaf looks like an
-  ordinary local ring (instead of a sheaf of rings with local stalks) and vector
-  bundles look like ordinary free modules (instead of sheaves of modules
-  satisfying a certain condition). The translation of internal statements and
-  proofs is facilitated by an easy mechanical procedure.
-
-  These expository notes give an introduction to this topic and show how the internal
-  point of view can be exploited to give simpler definitions and more conceptual
-  proofs of the basic notions and observations in algebraic geometry.
-  % For instance, any theorem about modules yields a corresponding theorem about
-  % sheaves of modules (with a small caveat).
-  We also employ this framework to study the phenomenon that some properties
-  spread from points to open neighborhoods. We give a general sufficient
-  condition for this spreading to occur, depending only on the logical
-  form of the property in question.
-
-  No prior knowledge about topos theory or formal logic is assumed.
 \end{abstract}
 % XXX: update
 
@@ -293,6 +272,48 @@
 %\begin{center}Rough draft in progress, missing explanations, references,
 %proofs, and a proper copyediting. I am happy about comments of any
 %kind; please direct them to \texttt{iblech@web.de}.\end{center}
+
+
+{\tocless
+
+\chapter*{Abstract}
+
+Any scheme has its associated little and big Zariski toposes. These toposes
+support an internal mathematical language which closely resembles the usual
+formal language of mathematics, but is ``local on the base scheme'': For
+example, from the internal perspective, the structure sheaf looks like an
+ordinary local ring (instead of a sheaf of rings with local stalks) and vector
+bundles look like ordinary free modules (instead of sheaves of modules
+satisfying a local triviality condition). The translation of internal statements and
+proofs is facilitated by an easy mechanical procedure.
+
+We investigate how the internal language of the little Zariski topos
+can be exploited to give simpler definitions and more conceptual
+proofs of the basic notions and observations in algebraic geometry.
+% For instance, any theorem about modules yields a corresponding theorem about
+% sheaves of modules (with a small caveat).
+To this end, we build a dictionary relating internal and external notions and
+demonstrate its utility by giving a simple proof of Grothendieck's generic
+freeness lemma in full generality. We also employ this framework to state a
+general transfer principle relating modules, to study the phenomenon that some
+properties spread from points to open neighborhoods, and to compare general
+notions of spectra.
+% We give a general sufficient condition for this spreading to occur, depending
+% only on the logical form of the property in question.
+
+We employ the big Zariski topos set up the foundations of a synthetic account
+of scheme theory. This account is similar to the synthetic account of
+differential geometry, but has a distinct algebraic flavor. Central to the
+theory is the notion of synthetic quasicoherence, which has no analog in
+synthetic differential geometry. We also discuss how various common subtoposes
+of the big Zariski topos can be described from the internal point of view and
+derive explicit descriptions of the geometric theories which are
+classified by the fppf and by the surjective topology.
+
+% No prior knowledge about topos theory or formal logic is assumed.
+
+}
+
 
 \setcounter{tocdepth}{2}
 \tableofcontents

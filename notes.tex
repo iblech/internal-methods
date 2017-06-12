@@ -9217,7 +9217,7 @@ We omit further verifications.
 Scheme theory as classically set up heavily relies on prime ideals and
 therefore only works well in a classical context, where the law of excluded
 middle and (at least some forms of) the axiom of choice are available. However,
-the actual mathematical ideas do not fundamentally require classical logic; we
+the actual mathematical ideas often do not fundamentally require classical logic; we
 don't begin the proof that the kernel of a morphism between quasicoherent
 sheaves of modules is quasicoherent by supposing that it's not. Instead,
 classical logic is only needed because the usual foundations of scheme theory
@@ -9238,6 +9238,9 @@ purposes.\footnote{For instance, some results in linear algebra can
 intuitionistically only be shown for \emph{discrete} fields -- fields such that
 any element is zero or not zero. Such hypotheses are computationally meaningful
 and will entail similar hypotheses for some results in algebraic geometry.}
+McLarty and other researchers study a similar question: Which axioms of set
+theory are actually needed for algebraic geometry, in particular for proving
+Fermat's Last Theorem?~\cite{mclarty:what-does-it-take}
 
 Secondly, one might be interested in concrete computations and might therefore
 leverage the fact that one can mechanically extract algorithms from
@@ -11004,7 +11007,7 @@ statement of Theorem~\ref{thm:big-zariski-topos-of-relative-spectrum} is
 because else~$\RelSpec_S(\A)$ might fail to be a scheme, whereby the notion
 ``big Zariski topos of~$\RelSpec_S(\A)$'' is not defined.
 
-In fact, we propose the following definition: If~$(X,\O_X)$ is an arbitrary
+In fact, we propose the following definition:\label{page:big-zariski-of-lrl} If~$(X,\O_X)$ is an arbitrary
 locally ringed locale (or even a locally ringed topos), then the big Zariski
 topos of~$X$ should be the classifying~$\Sh(X)$-topos of the theory (internal
 to~$\Sh(X)$) of local~$\O_X$-algebras which are local over~$\O_X$.
@@ -14364,6 +14367,7 @@ Booleanization of the theory of a local ring.
 
 
 \section{Outlook}
+\label{sect:outlook}
 
 We believe that the approach of using internal language in algebraic geometry
 is already in its current form as developed in Part~\ref{part:little-zariski} and
@@ -14430,9 +14434,25 @@ higher-order statement) are allowed.
 %\end{tabular}
 
 
-\subsection*{Proper morphisms} We characterized proper morphisms in the
+\subsection*{Characterizing Zariski toposes among arbitrary toposes}
+When is an arbitrary topos the big Zariski topos of a scheme? How can this property
+be detected in the internal language, or in otherwise intrinsic terms? An
+answer to this question would also tell us which axioms should be stipulated
+for synthetic algebraic geometry.
+
+Conversely, we proposed on page~\pageref{page:big-zariski-of-lrl} a definition
+of what could be called the big Zariski topos of an arbitrary locally ringed
+locale~$S$ (or even a locally ringed topos): the classifying~$\Sh(S)$-topos of
+the~$\Sh(S)$-theory of local~$\O_S$-algebras which are local over~$\O_S$.
+Internal to any such topos, one can try to conduct synthetic algebraic
+geometry. Which properties of~$S$, shared by all schemes, are needed for which
+results in synthetic algebraic geometry?
+
+
+\subsection*{Proper morphisms} In Section~\ref{sect:proper-morphisms}, we
+characterized proper morphisms in the
 internal language of the big Zariski topos by mimicking the classical
-definition (Section~\ref{sect:proper-morphisms}) as a separated universally
+definition as a separated universally
 closed morphism (fulfilling a finiteness condition). Although we didn't tell so
 in Part~\ref{part:little-zariski}, a characterization along similar lines is
 possible in the internal language of the little Zariski topos.
@@ -14458,7 +14478,53 @@ possible in the internal language of the little Zariski topos.
 
 However, the synthetic approach should facilitate a characterization which is
 closer to the intuitive way of thinking about proper morphisms: that any
-punctured curve can be completed in exactly one way.
+one-parameter family has a unique limit. This intuition can be formally
+expressed by the valuative criterion for properness, which states that a
+morphism~$X \to S$ of schemes is proper if and only if it is of finite type and
+if for every valuation ring~$A$ with field of fractions~$K$, any solid diagram
+\[ \xymatrix{
+  \Spec(K) \ar[r]\ar[d] & X \ar[d] \\
+  \Spec(A) \ar[r]\ar@{-->}[ru] & S
+} \]
+can be filled by a unique dashed morphism. It is evident from this formulation
+of the valuative criterion that it depends only on the functor of points
+of~$X$; therefore it should be perfectly suited to internalization in the big
+Zariski topos of~$S$.
+
+However, as of yet, we failed to do so. One difficulty is that we don't know of
+a description of the sheaf of rational functions in the internal language of
+the big Zariski topos. We showed in Section~\ref{sect:rational-functions}
+that~$\K_S$ is, from the point of view of the little Zariski topos, just the
+localization of~$\O_S$ at the filter of regular elements. This description
+can't be carried over to the big Zariski topos: Since regular elements
+of~$\affl$ are already invertible by Proposition~\ref{prop:a1-field}, the
+localization of~$\affl$ at the filter of regular elements is just~$\affl$.
+
+Moreover, depending on the site used, the synthetic spectrum of~$\K_S^\Zar$ can
+be empty from the internal point of view. A specific example is given by~$S
+= \Spec(\ZZ)$ and the parsimonious sites. In this case, the synthetic spectrum
+of~$\K_S^\Zar$ coincides with the functor of points of
+the~$\ZZ$-scheme~$\Spec(\QQ)$, which is empty from the internal point of view
+by Proposition~\ref{prop:fingen-algebra-q}.
+
+A related problem is that we don't know how to properly describe punctured
+germs of curves. For instance, a candidate for what could be considered a germ
+of a curve is the synthetic spectrum of the formal power series
+ring~$\affl\brak{T}$. This spectrum is canonically isomorphic to the subset of~$\affl$
+consisting of those elements which are \notnot zero.\footnote{Given an
+element~$a \? \affl$ which is \notnot zero, the evaluation map~$\affl\brak{T}
+\to \affl,\ f \mapsto f(a)$ is a well-defined element of~$\Spec(\affl\brak{T})$
+since~$a$ is nilpotent by Proposition~\ref{prop:a1-nilp}. Conversely,
+Conversely, let~$\varphi : \affl\brak{T} \to \affl$ be a homomorphism
+of~$\affl$-algebras. If~$\varphi(T)$ is invertible, then so
+is~$\varphi(\varphi(T) - T) = \varphi(T) - \varphi(T) = 0$, since~$\varphi(T) -
+T$ is invertible in~$\affl\brak{T}$. Hence~$\varphi(T)$ is not invertible and
+hence \notnot zero.} Removing the origin from this subset yields, however, the
+empty set, and not some nontrivial punctured germ.
+
+We strongly believe that these hurdles can be overcome and that there exists an
+characterization of proper maps in the big Zariski topos which is close to
+geometric intuition.
 
 
 \subsection*{Cohomology, intersection theory, derived categories}
@@ -14475,24 +14541,56 @@ version of homotopy type theory as the internal language of $\infty$-toposes.
 
 If one wants to stay in the 1-categorical setting, then one could extend the
 internal language to the various accounts of scheme theory over the field with
-one element.
+one element~\cite{pena-lorscheid:fun}.
+
+
+\subsection*{Applications to constructive algebra} We demonstrated in
+Section~\ref{sect:generic-freeness} using the example of Grothendieck's generic
+freeness lemma how the internal language of the little Zariski topos can be
+used to derive results in constructive algebra. Particularly useful is the
+property
+\[ \Sh(S) \models \forall f\?\O_S\_ \neg\neg(f = 0) \Longrightarrow f = 0, \]
+valid for reduced schemes, which allows us to use classical logic to some
+extent and still obtain intuitionistically valid results. The internal language
+is therefore a a tool for constructively pretending that a reduced ring is a
+local ring with~$\neg\neg$-stable equality and the field
+property~$\neg(\speak{$f$ \inv}) \Rightarrow f = 0$.
+
+Any of the related toposes, such as the toposes of sheaves for related
+topologies such as the constructible or the flat topology, or the various
+subtoposes of the big Zariski topos, can be used for similar purposes.
+Which statements of constructive algebra profit from the internal language of
+theses toposes? Are there further useful toposes?
+
+
+\subsection*{Constructive algebraic geometry} The book on homotopy type theory
+states~\cite[Section~3.4]{hott}:
+\begin{quote}
+Thus, contrary to how it may appear on the surface, doing mathematics
+``constructively'' does not usually involve giving up important theorems, but
+rather finding the best way to state the definitions so as to make the important
+theorems constructively provable. That is, we may freely use the [law of
+excluded middle] when first investigating a subject, but once that subject is
+better understood, we can hope to refine its definitions and proofs so as to
+avoid that axiom.
+\end{quote}
+We believe that algebraic geometry has definitely reached the necessary
+maturity alluded to in this quote and that it will be a rich and interesting
+endeavor to try to give a completely constructive account of algebraic
+geometry, including nontrivial results of current interest. We sketched why one
+might be interested in such an account in
+Section~\ref{sect:constructive-scheme-theory}.
+
+The Stacks Project~\cite{stacks-project} already takes care to formulate
+statements in proper generality, not needlessly requiring Noetherian hypotheses
+or demanding that fields are algebraically closed. Having such a careful
+treatment is a very valuable first steps towards a fully constructive development.
+Additionally, a constructive account of commutative algebra is readily
+available~\cite{mines-richman-ruitenburg:constructive-algebra,lombardi:quitte:constructive-algebra};
+a constructive account of algebraic geometry is therefore entirely within
+reach.
 
 }
-
-
-%* Mention applications to generalized scheme theories, as surveyed by
-%  http://arxiv.org/abs/0909.0069.
-%* Develop constructive algebraic geometry to actually contain nontrivial
-%  theorems of algebraic geometry.
-%* Stacks: A stack on a topological space X should roughly by a
-%  category internal (or locally-internal) to Sh(X) such that, if internally there
-%  exists an object unique up to unique isomorphism with some property, then
-%  externally such an object exists. Note that talking about prestacks should not
-%  be possible from the point of view of Sh(X).
-%* Explore closure of quasicoherent sheaves. For instance sum of submodules.
-%* Quasicoherence condition
-%* Skim the notes for possible caveats.
-%* Wie viel hängt ab von O_S? Also Zar(S) für allgemeine LRL S.
 
 
 \chapter*{Appendix}

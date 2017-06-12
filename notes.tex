@@ -679,10 +679,34 @@ to~$X$ while the second is an infinitesimal thickening of~$X$, the vanishing sch
 of~$U^2$ in~$\AA^1_X$. In contrast, the sets~$\{ x\?\afflx \,|\, x \neq 0 \}$
 and~$\{ x\?\afflx \,|\, x^2 \neq 0 \}$ should and do coincide. By the field
 property, both conditions are equivalent to~$x$ being invertible.
-% XXX forward reference to tangent bundle
 
-% XXX: Mention that all known cool properties of A^1 follow from synthetic
-% quasicoherence! Maybe also in the introduction to Part III.
+The synthetic spectrum of an~$\afflx$-algebra~$A$ can be defined as
+\[ \Spec(A) \defeq
+  \text{the set of~$\afflx$-algebra homomorphism~$A \to \afflx$}. \]
+On first sight, this definition seems to overlook potential non-maximal prime
+ideals of~$A$, since it only gives the~$\afflx$-valued points. But in fact,
+this description correctly reflects the relative spectrum construction.
+It yields a simple correspondence between synthetic affine schemes and solution
+sets of polynomial equations. For instance, it's easy to show that there is a
+canonical isomorphism
+\begin{multline*}
+  \qquad\Spec(\afflx[U_1,\ldots,U_n]/(f_1,\ldots,f_m)) \cong \\
+  \{ (u_1,\ldots,u_n) \? (\afflx)^n \,|\,
+    f_1(u_1,\ldots,u_n) = \cdots = f_m(u_1,\ldots,u_n) = 0 \}.\qquad
+\end{multline*}
+We give internal descriptions of further constructions of relative scheme
+theory in Section~\ref{sect:basic-constructions}.
+
+In order to be able to reason internally (in contrast to only using the
+internal language to describe~$X$-schemes and more general spaces in a simple
+language), it's crucial to have strong and meaningful axioms available. One
+such axiom posits that~$\afflx$ is a local and \emph{synthetically
+quasicoherent} ring and implies all known ring-theoretic properties
+of~$\afflx$. Synthetic quasicoherence is the internal analog of the usual
+condition on a sheaf of modules to be quasicoherent. This notion doesn't have a
+counterpart in synthetic differential geometry and is central to our account of
+synthetic algebraic geometry, since we derive all of its basic concepts such as
+open and closed immersions and synthetic schemes from it.
 
 Modal operators are useful in the big topos setting as well. For instance,
 there is a modal operator~$\Box_\text{ét}$ in the big Zariski topos such that
@@ -691,13 +715,10 @@ holds on an étale covering and such that the translated
 formula~$\varphi^{\Box_\text{ét}}$ means that~$\varphi$ holds in the \emph{big étale
 topos} familiar from étale cohomology. In this way, we can access the internal
 universe of the big étale topos from within the big Zariski topos. The
-ring~$\afflx$ enjoys additional properties when studied in the étale topos, for
-instance it is separably closed.
-
-
-% \subsection*{Topos-theoretic considerations} In
-% Sections~\ref{sect:relation-big-little},~\ref{sect:double-negation-modality-big-zariski},
-% and~\ref{sect:beyond-zariski} we study ... XXX
+ring~$\afflx$ enjoys additional properties when studied in the étale topos,
+where it is separably closed, in the fppf topos, where it is \emph{fppf-local},
+and in the ph~topos, where it satisfies a strong form of algebraic
+closure.
 
 
 \subsection*{Limitations} The internal language is \emph{local}, in the sense
@@ -757,10 +778,17 @@ theorem (with just one external ingredient needed).
 instance, Wraith used it to construct (and verify the universal property
 of) the little étale topos of a scheme by internally developing the theory of
 strict henselization~\cite{wraith:generic-galois-theory}. However, to the best
-of my knowledge, systematically building a dictionary relating external and
+of our knowledge, systematically building a dictionary relating external and
 internal notions has not been attempted before, and the use of modal operators
 to study the spreading of properties from points to neighborhoods seems to be
 new as well.
+
+In particular, Tierney remarked in 1976 that a certain property of the internal
+universe of the little Zariski topos ``is surely important, though its precise
+significance is still somewhat obscure''~\cite[p.~209]{tierney:spectrum}. This
+property can now be recognized as a small shadow of the internal
+characterization of quasicoherence. We expand on this in
+Section~\ref{sect:field-properties}.
 
 Brandenburg put forward a related program of internalization in his PhD
 thesis~\cite{brandenburg:tensor-foundations}. However, he internalizes
@@ -826,14 +854,10 @@ and others~\cite{clr:dynamicalmethod,cl:logical}.
 
 Caramello uses topos theory to build bridges between different mathematical
 subjects, in a certain precise sense~\cite{caramello:1,caramello:2}. She
-exploits that toposes can admit presentations by different sites. Our
+exploits that toposes can admit presentations by sites of different character. Our
 contribution is certainly related to her grand research program in spirit, but since we
 focus only on specific presentations of a few specific toposes associated to
-schemes, there is as yet no direct technical connection.
-
-\XXX{mention and explain: Mulvey/Burden, Vickers, Awodey, Coquand, ...}
-
-\XXX{Mention insights on relative spectrum, Mulvey's "obscure statement", ...}
+schemes, there is as yet only few direct technical connections.
 
 
 \subsection*{Notational conventions} To stress that a discussion takes place in
@@ -1123,9 +1147,6 @@ properties from points to neighborhoods depends on having the ability to make
 finer distinctions -- distinctions which are not visible in classical logic.
 In Section~\ref{sect:appreciating-intuitionistic-logic} there is a discussion of what the restriction to
 intuitionistic logic amounts to in practice.
-
-\XXXh{Put rules into an appendix and give some explanation regarding contexts
-etc. Don't forget the rules for $\in$, $\bigwedge$, $\bigvee$.}
 
 Because of the multitude of quantifiers, literal translations of internal statements
 can sometimes get slightly unwieldy. There are simplification rules for certain
@@ -1671,7 +1692,8 @@ internal language of~$X$.
 \end{rem}
 
 
-\subsection{Field properties} From the internal point of view, the structure
+\subsection{Field properties}\label{sect:field-properties}
+From the internal point of view, the structure
 sheaf~$\O_X$ of a scheme~$X$ is \emph{almost} a field, in the sense that any
 element which is not invertible is nilpotent. This is a genuine property of
 schemes, not shared with arbitrary locally ringed spaces. It is also a specific
@@ -1729,10 +1751,10 @@ phenomenon of intuitionistic bifurcation of notions.
 
 The observation that the structure sheaf is (almost) a field is attributed by
 Tierney to Mulvey~\cite[p.~209]{tierney:spectrum}.
-Tierney also states that ``its precise significance is still somewhat
+Tierney also states that ``[it] is surely important, though its precise significance is still somewhat
 obscure'' (ibid). We think that it's significant as a special case of the
 following more general proposition,
-which says that we can deduce a certain unconditional
+which states that we can deduce a certain unconditional
 statement from the premise that, under the assumption that some element~$f\?\O_X$ is invertible, an element~$s\?\O_X$ is zero. This is
 interesting on its own, but will be of particular importance in understanding
 quasicoherence from the internal point of view (Section~\ref{sect:qcoh}) and
@@ -2357,9 +2379,10 @@ finitely generated ideals stabilizes.
 Proposition~\ref{prop:internal-noetherianity}.
 \end{proof}
 
-\XXX{Give examples made possible by the internal Noetherianity}
-\XXX{How about: Any quasicoherent submodule of a module of finite type is of
-finite type as well.}
+% FUTURE:
+% Give examples made possible by the internal Noetherianity.
+% How about: Any quasicoherent submodule of a module of finite type is of
+% finite type as well.
 
 
 \subsection*{Anonymously Noetherian rings}
@@ -4134,7 +4157,7 @@ for using the internal language of a space~$X$ to express internal statements
 about sheaves defined on subspaces of~$X$. The~$\Box$-translation has been studied
 in other contexts
 before~\cite{aczel:russell-prawitz,escardo:oliva:peirce-shift}. To the best of
-my knowledge, this application -- expressing the internal language of
+our knowledge, this application -- expressing the internal language of
 subtoposes in the internal language of the ambient topos -- is new.
 
 \begin{defn}The~\emph{$\Box$-translation} is recursively defined as follows.
@@ -4351,7 +4374,7 @@ in~$\Sh(X)$. Let~$\varphi$ be a formula over~$X$. Then
 where on the right hand side, all parameters occurring in~$\varphi$ were pulled
 back to~$X_\Box$ along the inclusion~$X_\Box \hookrightarrow X$.
 \end{thm}
-\XXXh{think about powersets appearing as domains of quantification}
+% FUTURE: think about powersets appearing as domains of quantification
 
 We have not yet explicitly stated the Kripke--Joyal semantics for a sheaf topos
 over a locale, which~$X_\Box$ is in general. The definition is exactly the same
@@ -5078,7 +5101,6 @@ not~$\K_X$: The quotient ring~$\K_X$ is a~$\neg\neg$-sheaf if and only if
   \exists a,b\?\O_X\_ \speak{$b$ is regular} \wedge \neg\neg(b^{-1} a \in T).
 \end{multline*}
 This is done just as in the proof of Theorem~\ref{thm:qcoh-sheafchar}.
-\XXX{reorder qcoh before this because of the reference?}
 The expression~``$b^{-1}$'' refers to the inverse of~$b$ which indeed exists in a doubly
 negated context, since~$b$ is assumed regular. More explicitly, we should write
 \[ \neg\neg(\exists c\?\O_X\_ bc = 1 \wedge ca \in T)
@@ -5264,7 +5286,7 @@ operator~$\sdense$ and then pushing forward again. If~$X$ is locally Noetherian,
 this sublocale is the subspace of associated points in~$X$.
 \end{prop}
 
-In formulas, the proposition says that the canonical map
+In formulas, the proposition states that the canonical map
 \[ \K_X \longrightarrow i_* i^{-1} \O_X \]
 is an isomorphism, where~$i : X_\sdense \hookrightarrow X$ is the inclusion of
 the sublocale~$X_\sdense$. This result requires a cover with
@@ -6488,7 +6510,7 @@ If we're given a further element~$y\?\F$, it trivially holds that~$\Box(x =
 y)$. By~$\Box$-separatedness, it thus follows that~$x = y$. Thus~$\F$ is the
 singleton~$\{x\}$. The proof of the ``only if'' direction is similar.
 
-The second statement says that internally, sheafifying a~$\Box$-sheaf with
+The second statement claims that internally, sheafifying a~$\Box$-sheaf with
 respect to the modal operator~$\Box$ and then forgetting that the result is
 a~$\Box$-sheaf amounts to doing nothing. This is obvious.
 \end{proof}
@@ -12003,7 +12025,7 @@ for any number~$n \geq 0$,
 
 \begin{proof}Let $x\?\affl$ be such that~$\neg(x=0)$. We consider the quasicoherence
 condition for the finitely presented~$\affl$-algebra~$A \defeq \affl/(x)$.
-Since~$\Spec(A) \cong \brak{x=0} = \brak{\bot} = \emptyset$, the condition says
+Since~$\Spec(A) \cong \brak{x=0} = \brak{\bot} = \emptyset$, the condition posits
 that the canonical homomorphism
 \[ \affl/(x) \longrightarrow [\emptyset, \affl] \]
 is an isomorphism. Since its codomain is the zero algebra, so is~$\affl/(x)$.

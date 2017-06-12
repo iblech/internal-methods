@@ -2200,9 +2200,9 @@ Quitté~\cite{lombardi:quitte:constructive-algebra}.
 
 \begin{defn}Let~$M$ be a partially ordered set. An \emph{ascending process
 with values in~$M$} consists of an initial value~$x_0 \in M$ and a function~$f
-: M \to \P(M)$ such that:
+: M \to \P(M)$ such that for any~$x \in M$ and any~$y \in f(x)$, $x \preceq y$,
+and such that:
 \begin{itemize}
-\item For any~$x \in M$ and any~$y \in f(x)$, $x \preceq y$.
 \item The set $f(x_0)$ is inhabited.
 \item For any~$x_1 \in f(x_0)$, the set $f(x_1)$ is inhabited.
 \item For any~$x_1 \in f(x_0)$ and any~$x_2 \in f(x_1)$, the set $f(x_2)$ is inhabited.
@@ -2554,7 +2554,7 @@ only if is finite locally free.
 \subsection{Finite type, finite presentation, coherence}
 Recall the conditions of an~$\O_X$-module~$\F$ on a scheme~$X$ (or a ringed
 space) to be of finite type, of finite presentation, and to be coherent:
-\begin{itemize}
+\begin{enumerate}
 \item $\F$ is \emph{of finite type} if and only if there exists a covering of~$X$ by
 open subsets~$U$ such that for each such~$U$, there exists an exact sequence
 \[ (\O_X|_U)^n \longrightarrow \F|_U \longrightarrow 0 \]
@@ -2565,14 +2565,14 @@ open subsets~$U$ such that for each such~$U$, there exists an exact sequence
 \item $\F$ is \emph{coherent} if and only if~$\F$ is of finite type and the
 kernel of any~$\O_X|_U$-linear morphism~$(\O_X|_U)^n \to \F|_U$, where~$U \subseteq
 X$ is any open subset, is of finite type.
-\end{itemize}
+\end{enumerate}
 
 The following proposition gives translations of these definitions into the
 internal language.
 \begin{prop}\label{prop:finite-type-and-co}
 Let~$X$ be a scheme (or a ringed space). Let~$\F$ be
 an~$\O_X$-module. Then:
-\begin{itemize}
+\begin{enumerate}
 \item $\F$ is of finite type if and only if~$\F$, considered as an ordinary
 module from the internal perspective, is finitely generated, \ie if
 \[ {\qquad\qquad} \Sh(X) \models
@@ -2594,7 +2594,7 @@ internal perspective, \ie if
   \bigwedge_{n \geq 0} \forall \varphi \? \HOM_{\O_X}(\O_X^n,\F)\_
   \speak{$\Kernel \varphi$ is finitely generated}.
 \end{multline*}
-\end{itemize}
+\end{enumerate}
 \end{prop}
 \begin{proof}Straightforward -- the translations of the internal statements using
 the Kripke--Joyal semantics are precisely the corresponding external
@@ -2638,7 +2638,7 @@ validity can thus be checked stalkwise.\end{proof}
 sheaves of algebras instead of sheaves of modules holds. More precisely,
 let~$\A$ be a sheaf of~$\O_X$-algebras on a scheme~$X$ (or a ringed space).
 Then:
-\begin{itemize}
+\begin{enumerate}
 \item $\A$ is of finite type if and only if~$\A$, considered as an ordinary
 algebra from the internal perspective, is finitely generated, \ie if
 \[ {\qquad\qquad} \Sh(X) \models
@@ -2654,7 +2654,7 @@ presented algebra from the internal perspective, \ie if
   \exists f_1,\ldots,f_m \? \O_X[X_1,\ldots,X_n]\_ \\
   \speak{$\A \cong \O_X[X_1,\ldots,X_n]/(f_1,\ldots,f_m)$}. \qquad
 \end{multline*}
-\end{itemize}
+\end{enumerate}
 \end{rem}
 
 
@@ -2969,7 +2969,7 @@ of schemes is used (such as in Proposition~\ref{prop:neginvnilpotent}).
 
 \begin{lemma}\label{lemma:coherent-stuff}
 Let~$X$ be a scheme (or a ringed space).
-\begin{itemize}
+\begin{enumerate}
 \item Let~$0 \to \F \to \G \to \H \to 0$ be an exact sequence
 of~$\O_X$-modules. If two of the three modules are coherent, so is the third.
 \item Let~$\F \to \G$ be a morphism of~$\O_X$-modules such that~$\F$ is
@@ -2977,7 +2977,7 @@ of finite type and~$\G$ is coherent. Then its kernel is of finite type as well.
 \item If~$\F$ is a finitely presented~$\O_X$-module and~$\G$ is a
 coherent~$\O_X$-module, the~$\O_X$-modules~$\HOM_{\O_X}(\F,\G)$ and~$\F \otimes_{\O_X} \G$
 are coherent as well.
-\end{itemize}
+\end{enumerate}
 \end{lemma}
 \begin{proof}These statements follow directly from interpreting the
 corresponding standard proofs of commutative algebra in the internal language.
@@ -4315,13 +4315,13 @@ Assume~$(\psi \Rightarrow \chi)^\Box$. Then~$\psi \Rightarrow \psi^\Box
 
 \begin{lemma}\label{lemma:stalk-open-with-hypothesis}
 Let~$\varphi, \varphi', \psi$ be formulas. Assume that:
-\begin{itemize}
+\begin{enumerate}
 \item The formula $\varphi'$ is geometric. (More generally, it suffices for~$(\varphi')^\Box$
 to imply~$\Box\varphi'$.)
 \item There is an intuitionistic proof that~$\varphi$
 and~$\varphi'$ are equivalent under the (only) hypothesis~$\psi$.
 \item Both~$\Box\psi$ and~$\psi^\Box$ hold.
-\end{itemize}
+\end{enumerate}
 Then $\varphi^\Box \Rightarrow \Box\varphi$.
 \end{lemma}
 \begin{proof}
@@ -4640,13 +4640,13 @@ while also not being nilpotent.
 \begin{lemma}\label{lemma:module-zero-point-neighbourhood}
 Let~$X$ be a scheme (or a ringed space). Let~$\F$ be an~$\O_X$-module
 of finite type.
-\begin{itemize}
+\begin{enumerate}
 \item Let~$x \in X$ be a point. Then the stalk~$\F_x$ is zero if and
 only if~$\F$ is zero on some open neighborhood of~$x$.
 \item Let~$A \subseteq X$ be a closed subset. Then the restriction~$\F|_A$ (\ie
 the pullback of~$\F$ to~$A$) is zero if and only if~$\F$ is zero on some open
 subset of~$X$ containing~$A$.
-\end{itemize}
+\end{enumerate}
 \end{lemma}
 \begin{proof}\emph{Both} statements are simply internalizations of
 Example~\ref{ex:module-zero-geometric}, using the modal operators~$\Box =
@@ -4831,14 +4831,6 @@ and self-contained proof), and therefore~$a^n$ is regular. So~$x \in \F_\tors$.
 By simply using a different modal operator than~``\notnot'', we will -- without
 any additional work -- obtain a more general form of this lemma, applicable to
 non-integral schemes (see Lemma~\ref{lemma:torsion-module-generic-stalk-generalized}).
-
-\begin{itemize}
-\item general explanation of modalities (as for instance in philosophy)
-\item explain that for some modal operators, the~$\Box$-translation of the law
-of excluded middle is valid; explain consequences
-\item spreading of properties from stalk to neighborhood: give many examples
-\item give proof of the expressions for the nuclei listed in the table
-\end{itemize}
 
 
 \section{Compactness and metaproperties}
@@ -6686,11 +6678,6 @@ similar to the proof of Lemma~\ref{lemma:pushforward-finite-type}
 (for~``$\Rightarrow$'').
 \end{proof}
 
-\begin{itemize}
-\item open subschemes
-\item Koszul resolution
-\end{itemize}
-
 
 \section{Transfer principles}
 \label{sect:transfer-principles}
@@ -6763,8 +6750,8 @@ Let~$A$ be a ring.
 A \emph{filter} of~$A$ is a subset~$F \subseteq A$ such that
 \begin{itemize}
 \item $0 \not\in F$,
-\item $1 \in F$,
 \item $x + y \in F \Longrightarrow (x \in F) \vee (y \in F)$, and
+\item $1 \in F$,
 \item $xy \in F \Longleftrightarrow (x \in F) \wedge (y \in F)$
 \end{itemize}
 for all~$x,y \? A$.
@@ -13308,7 +13295,7 @@ strict inclusion~$P \hookrightarrow (\affl)^2$ and therefore not bijective.
 
 \subsection{Cohomology of projective space}
 
-\subsection{Categorical group quotients}
+% FUTURE: \subsection{Categorical group quotients}
 
 \subsection{Grassmannian}
 
@@ -14718,8 +14705,8 @@ reach.
 \section{The inference rules of intuitionistic logic}
 \label{appendix:inference-rules}
 
-\XXX{cite \cite[Section~D1.3.1]{johnstone:elephant}, talk about~$\in$, and
-explain contexts}
+% FUTURE: cite \cite[Section~D1.3.1]{johnstone:elephant}, talk about~$\in$, and
+% explain contexts
 
 \begin{center}
   \textbf{Structural rules} \\
@@ -14836,24 +14823,6 @@ What is a conceptual explanation for O_X(D(f)) = A[f^(-1)] and O_X(U) !=
 A[S_U^(-1)] otherwise?
 
 XXX:
-"Further work":
-* Mention applications to generalized scheme theories, as surveyed by
-  http://arxiv.org/abs/0909.0069.
-* Develop constructive algebraic geometry to actually contain nontrivial
-  theorems of algebraic geometry.
-* Develop synthetic algebraic geometry further. For instance:
-  cohomology, intersection theory, normalization, ...
-* Stacks: A stack on a topological space X should roughly by a
-  category internal (or locally-internal) to Sh(X) such that, if internally there
-  exists an object unique up to unique isomorphism with some property, then
-  externally such an object exists. Note that talking about prestacks should not
-  be possible from the point of view of Sh(X).
-* Explore closure of quasicoherent sheaves. For instance sum of submodules.
-* Quasicoherence condition
-* Skim the notes for possible caveats.
-* Wie viel hängt ab von O_S? Also Zar(S) für allgemeine LRL S.
-
-XXX:
 Discuss relation to https://golem.ph.utexas.edu/category/2009/06/algebraic_geometry_for_categor.html
 
 Send Marcelo F. a copy of these notes once they are finished.
@@ -14862,8 +14831,6 @@ XXX:
 Cite: Compactification of Siegel Moduli Schemes by Ching-Li Chai (contains
 appendix on Hakim's relative scheme theory specialized to ringed spaces)
 Also mention page 151, Remark A.1.2?
-
-XXX: Define morphisms of locales
 
 XXX:
 Mention Steven Gubkin and the nCafé post. Also the Secret Blogging Seminar.

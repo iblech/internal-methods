@@ -208,7 +208,7 @@
 \patchcmd{\@chapter}{\chaptername}{Part}{}{}
 \patchcmd{\@schapter}{\chaptername}{Part}{}{}
 \addto\captionsenglish{\renewcommand\chaptername{Part}}
-\def\l@section{\@tocline{1}{12pt}{1pc}{}{\bfseries}}
+\def\l@section{\@tocline{1}{0pt}{1pc}{}{}} % \bfseries}}
 \def\l@chapter{\@tocline{-1}{12pt}{0pt}{}{\bfseries}}
 \renewcommand\thechapter{\Roman{chapter}}
 \newcommand{\nocontentsline}[3]{}
@@ -368,7 +368,7 @@ our non-mathematical and slightly nonstandard leisure time activities forward.
 }
 
 
-\setcounter{tocdepth}{2}
+\setcounter{tocdepth}{1}
 \tableofcontents
 
 

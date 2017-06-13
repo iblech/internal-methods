@@ -7238,6 +7238,28 @@ counterexample is given by~$A = \ZZ[U,V]/(UV)$. Then~$\Sh(\Spec A) \models [U]
 The goal of this subsection is to give a simple proof of Grothendieck's generic
 freeness lemma in the following general form.
 
+\begin{thm}\label{thm:generic-freeness}
+Let~$A$ be a reduced ring. Let~$B$ be an~$A$-algebra of finite type.
+Let~$M$ be a finitely generated~$B$-module. Then there is a dense open
+subset~$U \subseteq \Spec(A)$ such that over~$U$,
+\begin{enumerate}
+\item $B^\sim$ is finitely presented as an~$\O_{\Spec(A)}$-algebra,
+\item $M^\sim$ is of finite presentation over~$B^\sim$, and
+\item $M^\sim$ is (not necessarily finite) locally free as an~$\O_{\Spec(A)}$-module.
+\end{enumerate}
+\end{thm}
+
+The usual proofs of Grothendieck's generic freeness lemma proceed using a series
+of reduction steps which are arguably not very memorable or
+straightforward, see for instance~\stacksproject{051Q}
+or~\cite{staats:generic-freeness}. In particular, there doesn't seem to be a
+published proof which tackles the Noetherian and non-Noetherian cases in one go.
+Employing the internal language, Grothendieck's generic freeness lemma can be
+proved in a simple, conceptual, and constructive way without any reduction steps.
+
+This section was prompted by a MathOverflow thread~\cite{mo:kernel} and
+greatly benefited from discussions with Brandenburg.
+
 \begin{figure}[h]
   \centering
   \begin{tikzpicture}[scale=1.4]
@@ -7398,28 +7420,6 @@ freeness lemma in the following general form.
   The process terminates after reducing the generating family
   a finite number of times.}
 \end{figure}
-
-\begin{thm}\label{thm:generic-freeness}
-Let~$A$ be a reduced ring. Let~$B$ be an~$A$-algebra of finite type.
-Let~$M$ be a finitely generated~$B$-module. Then there is a dense open
-subset~$U \subseteq \Spec(A)$ such that over~$U$,
-\begin{enumerate}
-\item $B^\sim$ is finitely presented as an~$\O_{\Spec(A)}$-algebra,
-\item $M^\sim$ is of finite presentation over~$B^\sim$, and
-\item $M^\sim$ is (not necessarily finite) locally free as an~$\O_{\Spec(A)}$-module.
-\end{enumerate}
-\end{thm}
-
-The usual proofs of Grothendieck's generic freeness lemma proceed using a series
-of reduction steps which are arguably not very memorable or
-straightforward, see for instance~\stacksproject{051Q}
-or~\cite{staats:generic-freeness}. In particular, there doesn't seem to be a
-published proof which tackles the Noetherian and non-Noetherian cases in one go.
-Employing the internal language, Grothendieck's generic freeness lemma can be
-proved in a simple, conceptual, and constructive way without any reduction steps.
-
-This section was prompted by a MathOverflow thread~\cite{mo:kernel} and
-greatly benefited from discussions with Brandenburg.
 
 \begin{proof}[Proof of Theorem~\ref{thm:generic-freeness}]
 Since ``dense open'' translates to ``not not'' in the internal language
@@ -11412,7 +11412,7 @@ big Zariski topos whose site is sufficiently encompassing.
 However, coherence is stable under pullback along locally finitely presented
 morphisms. Therefore we do have the following result.
 
-\begin{prop}\label{prop:locally-free-big-zariski}
+\begin{prop}\label{prop:coherent-big-zariski}
 Let~$\E$ be an~$\O_S$-module. If the induced~$\affl$-module~$\E^\Zar$ is
 coherent from the internal point of view of~$\Zar(S)$, then~$\E$ is coherent.
 The converse holds if~$\Zar(S)$ is defined using one of the parsimonious sites.

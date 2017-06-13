@@ -12211,7 +12211,8 @@ vectors as infinitesimal curves, and in fact is precisely the definition of the
 tangent bundle in synthetic differential geometry~\cite[Def.~7.1]{kock:sdg}.
 
 
-\subsection{The tilde construction} Let~$A$ be an~$\affl$-algebra.
+\subsection{The tilde construction}\label{sect:relative-tilde-construction}
+Let~$A$ be an~$\affl$-algebra.
 If the functor~$\brak{\Spec(A)}$ is representable by a scheme contained in the
 site used to define~$\Zar(S)$, then Section~\ref{sect:change-of-base} described
 the big Zariski topos of that scheme as the slice topos~$\Zar(S)/\Spec(A)$.
@@ -13421,7 +13422,102 @@ strict inclusion~$P \hookrightarrow (\affl)^2$ and therefore not bijective.
 
 \subsection{Cohomology of projective space}
 
+Let~$\V$ be a finite locally free~$\O_S$-module. In this section, we give
+internal descriptions of the projectivization of~$\V$ and of Serre's twisting
+bundles on~$\PP(V)$, and show how their cohomology groups can be calculated
+internally. Let~$V \defeq \V^\Zar$.
+
+\begin{defn}The \emph{synthetic projective space} is the set
+\[ \PP(V) \defeq \{ \ell \subseteq V \,|\, \speak{$\ell$ is a one-dimensional
+subspace} \}. \]
+\end{defn}
+
+The twisting bundles are modules over the affine line of~$\PP(V)$. As such they
+are~$\PP(V)$-indexed families of~$\affl$-modules, as in
+Section~\ref{sect:relative-tilde-construction}. We set~$X \defeq \PP(V)$.
+
+\begin{defn}\label{defn:twisting-bundle}
+For~$m \in \ZZ$, the \emph{twisting bundle}~$\O(m)$ is
+the~$\afflx$-module~$(\ell^{\otimes(-m)})_{\ell{:}X}$. In particular, the
+\emph{tautological bundle}~$\O(-1)$ is~$(\ell)_{\ell{:}X}$ and its dual
+is~$\O(1) = (\ell^\vee)_{\ell{:}X}$.
+\end{defn}
+
+We stress that Definition~\ref{defn:twisting-bundle} formalizes the common
+geometric intuition about the twisting bundles. In algebraic geometry, one
+often pictures a bundle as the collection of its fibers, well knowing that this
+picture is formally incomplete and that a bundle is not really determined by
+the collection of its fibers. In our account of synthetic algebraic geometry,
+the statement that a bundle is given by its collection of fibers is \emph{just
+true}, and in fact is so by definition.
+
+\begin{prop}\label{prop:twisting-bundles}
+\begin{enumerate}
+\item The canonical map~$\affl \to \Gamma(X, \O(0)) = [X, \affl]$ is an isomorphism.
+\item The canonical map~$V^\vee \to \Gamma(X, \O(1)),\,\vartheta \mapsto
+(\vartheta|_\ell)_{\ell{:}X}$ is an isomorphism.
+\item The module~$\Gamma(X, \O(-1))$ is zero.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}For notational convenience, we assume that~$V$ is isomorphic
+to~$(\affl)^2$. In this case~$X = \{ [x \hg y] \,|\, x \neq 0 \vee y \neq 0
+\}$. Let~$X = U_0 \cup U_1$ be the standard open covering with
+\[ U_0 = \{ [x \hg y] \,|\, x \neq 0 \} = \{ [1 : y] \,|\, y \? \affl \} \cong
+\affl \]
+and similarly with~$U_1$.
+
+For the first claim, let~$f : X \to \affl$ be an arbitrary function.
+Since~$\affl$ is synthetically quasicoherent, the canonical morphism~$\affl[T]
+\lra [U_0, \affl]$ is bijective. Hence there is a unique polynomial~$p_0 \?
+\affl[T]$ such that~$f([x \hg y]) = p_0(y/x)$ for all~$[x \hg y] \in U_0$.
+Analogously, there is a unique polynomial~$p_1 \? \affl[T]$ such that~$f([x \hg
+y]) = p_1(x/y)$ for all~$[x \hg y] \in U_1$.
+
+Since~$\affl$ is synthetically quasicoherent, the canonical morphism
+\[ \affl[T, T^{-1}] \lra [U_0 \cap U_1, \affl] \]
+is bijective. Because~$p_0(y/x) = p_1(x/y)$ as functions on~$U_0 \cap U_1$, the
+polynomials~$p_0(T)$ and~$p_1(1/T)$ agree as elements of~$\affl[T, T^{-1}]$.
+Hence~$p_0$ and~$p_1$, and thus~$f$, are constant.
+
+This shows that the canonical morphism~$\affl \to [X,\affl]$ is surjective.
+This morphism is trivially injective since~$X$ is inhabited.
+
+The other claims are verified similarly.
+\end{proof}
+
+In the same spirit as in the proof of Proposition~\ref{prop:twisting-bundles},
+we can calculate the cohomology of the twisting bundles, if we define it as
+the cohomology of the Čech complex associated to the standard open covering.
+We want to indicate how the general idea of the usual proof can be carried out
+in the synthetic account.
+
+For notational convenience, we assume that~$V$ is isomorphic to~$(\affl)^2$.
+The Čech complex for calculating~$H^\bullet(X, \O(-2))$ is
+\[ 0 \lra \Gamma(U_0,\O(-2))\times\Gamma(U_1,\O(-2)) \lra
+  \Gamma(U_0 \cap U_1,\O(-2)) \lra 0. \]
+The differential maps~$(f,g)$ to~$g|_{U_0 \cap U_1} - f|_{U_0 \cap U_1}$.
+
+The verification that~$H^0(X, \O(-2))$ is zero proceeds similarly to the proof of
+Proposition~\ref{prop:twisting-bundles}. To verify that~$H^1(X, \O(-2)) \cong
+\affl$, we explicitly describe the isomorphism. Given a function~$h \?
+\Gamma(U_0 \cap U_1,\O(-2))$, there is for any number~$y \? (\affl)^\times$ a
+unique value~$h_0(y)$ such that
+\[ h([1 \hg y]) = h_0(y) \cdot \left(\begin{pmatrix}1\\y\end{pmatrix}
+\otimes \begin{pmatrix}1\\y\end{pmatrix}\right) \?
+\operatorname{span}\left(\begin{pmatrix}1\\y\end{pmatrix}\right)^{\otimes 2}. \]
+By the principle of unique choice, the mapping~$y \mapsto h_0(y)$
+defines a well-defined function on~$(\affl)^\times$ as the notation suggests.
+Because~$\affl$ is synthetically quasicoherent, the canonical map
+\[ \affl[T, T^{-1}] \lra [U_0 \cap U_1, \affl] \]
+is bijective. Hence there is a unique Laurent polynomial~$p_0 \in
+\affl[T,T^{-1}]$ such that~$h_0(y) = p_0(y)$ for all~$y \in
+(\affl)^\times$. The sought isomorphism maps~$h$ to the coefficient of~$T^{-1}$
+in~$p_0$.
+
+
 % FUTURE: \subsection{Categorical group quotients}
+
 
 \subsection{Grassmannian}
 

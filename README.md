@@ -35,5 +35,7 @@ No prior knowledge about topos theory or formal logic is assumed.
 * [Slides (PDF)](https://github.com/iblech/internal-methods/raw/master/slides-warwick2017.pdf)
   for the [Algebraic Geometry Seminar](https://homepages.warwick.ac.uk/staff/A.Thompson.8/seminar.html#Blechschmidt)
   in Warwick
+* [Slides (PDF)](https://github.com/iblech/internal-methods/raw/master/slides-duesseldorf2017.pdf)
+  for the Oberseminar Algebra/Geometrie/Topologie in Düsseldorf
 
 ![Sheaves of rings look like ordinary rings from the internal point of view.](images/external-internal-small.png)

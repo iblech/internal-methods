@@ -12,8 +12,8 @@
 \usepackage[protrusion=true,expansion=true]{microtype}
 \usepackage[bookmarksdepth=2,pdfencoding=auto]{hyperref}
 
-%\addtolength{\oddsidemargin}{7mm}
-%\addtolength{\evensidemargin}{-7mm}
+\addtolength{\oddsidemargin}{7mm}
+\addtolength{\evensidemargin}{-7mm}
 
 % Hack to load extpfeil from https://tex.stackexchange.com/a/297109/32372
 \expandafter\def\csname opt@stmaryrd.sty\endcsname
@@ -271,10 +271,10 @@
 
 \newpage
 
-\vspace*{50em}
+\vspace*{55em}
 
 \begin{tabbing}
-  Oral examination: \= \kill
+  Oral examination:\quad \= \kill
   Supervisor: \> Marc Nieper-Wißkirchen, University of Augsburg \\
   Reviewers: \> Thierry Coquand, University of Gothenburg \\
   \> Frank Herrlich, Karlsruhe Institute of Technology \\
@@ -339,7 +339,7 @@ Caramello, Adam Epstein, Felix Geißler, Simon Henry, Matthias Hutzler, Simon
 Kapfer, Guilhermo Frederico Lima de Carvalho e Silva, Tadeusz Litak, Zhen Lin
 Low, and Giovanni Morando. I'm grateful for their many valuable suggestions. I
 particularly thank Adam Epstein for his great hospitality during my stay in
-Warwick, and Jiří Adámek, Jürgen Koslowski, and Ravi Vakil for their
+Warwick and Jiří Adámek, Jürgen Koslowski, and Ravi Vakil for their
 much-appreciated encouragement.
 
 I thank Tim Baumann, Katrin Gimmi, Matthias Hutzler, Sori Lee, and Lukas Stoll for their
@@ -763,7 +763,7 @@ canonical isomorphism
 We give internal descriptions of further constructions of relative scheme
 theory in Section~\ref{sect:basic-constructions}.
 
-In order to be able to reason internally (in contrast to only using the
+In order to be able to \emph{reason} internally (in contrast to only using the
 internal language to describe~$X$-schemes and more general spaces in a simple
 language), it's crucial to have strong and meaningful axioms available. One
 such axiom posits that~$\afflx$ is a local and \emph{synthetically
@@ -814,7 +814,7 @@ basis, employing them as part of longer arguments in the context of ordinary sch
 theory where it's useful to do so. However, if one wants to stay solely in one
 of the provided internal universes and not use ordinary scheme theory at all,
 then one will of course run into the further limitation that internal scheme
-theory, as put forward in this thesis, is only developed to a small amount.
+theory, as put forward in this thesis, is only developed to a small extent.
 
 
 \subsection*{Introductory literature} This text is intended
@@ -824,7 +824,7 @@ particular, we assume no prior familiarity with topos theory or formal logic.
 Nevertheless, a gentle
 introduction to topos theory is an article by
 Leinster~\cite{leinster:introduction}. Standard references for the internal
-language of a topos include the book of Mac~Lane and
+language of toposes include the book of Mac~Lane and
 Moerdijk~\cite[Chapter~VI]{moerdijk-maclane:sheaves-logic}, the book of
 Goldblatt~\cite[Chapter~14]{goldblatt:topoi}, Caramello's and Streicher's lecture
 notes~\cite{caramello:preliminaries,streicher:ctcl}, the book of
@@ -857,7 +857,8 @@ characterization of quasicoherence. We expand on this in
 Section~\ref{sect:field-properties}.
 
 In some regards, this thesis is an extended answer to a MathOverflow question
-by Gubkin~\cite{mo:gubkin}.
+by Gubkin~\cite{mo:gubkin}, who inquired about uses of the internal language of
+toposes in algebraic geometry.
 
 Brandenburg put forward a related program of internalization in his PhD
 thesis~\cite{brandenburg:tensor-foundations}. However, he internalizes
@@ -14695,10 +14696,11 @@ Booleanization of the theory of a local ring.
 \section{Outlook}
 \label{sect:outlook}
 
-We believe that the approach of using internal language in algebraic geometry
+We believe that the approach of using the internal language in algebraic geometry
 is already in its current form as developed in Part~\ref{part:little-zariski} and
 Part~\ref{part:big-zariski} useful to working algebraic geometers
-and interesting for topos theorists and logicians.
+and interesting for topos theorists and logicians. However, there are many
+intriguing avenues for further research.
 
 {\tocless
 
@@ -14817,7 +14819,7 @@ of the valuative criterion that it depends only on the functor of points
 of~$X$; therefore it should be perfectly suited to internalization in the big
 Zariski topos of~$S$.
 
-However, as of yet, we failed to do so. One difficulty is that we don't know of
+However, as of yet, we failed to do so. One difficulty is that we don't know
 a description of the sheaf of rational functions in the internal language of
 the big Zariski topos. We showed in Section~\ref{sect:rational-functions}
 that~$\K_S$ is, from the point of view of the little Zariski topos, just the
@@ -14878,7 +14880,8 @@ property
 \[ \Sh(S) \models \forall f\?\O_S\_ \neg\neg(f = 0) \Longrightarrow f = 0, \]
 valid for reduced schemes, which allows us to use classical logic to some
 extent and still obtain intuitionistically valid results. The internal language
-is therefore a a tool for constructively pretending that a reduced ring is a
+is therefore a tool for constructively pretending that a reduced ring is an
+anonymously Noetherian
 local ring with~$\neg\neg$-stable equality and the field
 property~$\neg(\speak{$f$ \inv}) \Rightarrow f = 0$.
 
@@ -14910,7 +14913,7 @@ Section~\ref{sect:constructive-scheme-theory}.
 The Stacks Project~\cite{stacks-project} already takes care to formulate
 statements in proper generality, not needlessly requiring Noetherian hypotheses
 or demanding that fields are algebraically closed. Having such a careful
-treatment is a very valuable first steps towards a fully constructive development.
+treatment is a very valuable first step towards a fully constructive development.
 Additionally, a constructive account of commutative algebra is readily
 available~\cite{mines-richman-ruitenburg:constructive-algebra,lombardi:quitte:constructive-algebra};
 a constructive account of algebraic geometry is therefore entirely within

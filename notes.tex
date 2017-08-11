@@ -12,8 +12,8 @@
 \usepackage[protrusion=true,expansion=true]{microtype}
 \usepackage[bookmarksdepth=2,pdfencoding=auto]{hyperref}
 
-\addtolength{\oddsidemargin}{7mm}
-\addtolength{\evensidemargin}{-7mm}
+%\addtolength{\oddsidemargin}{7mm}
+%\addtolength{\evensidemargin}{-7mm}
 
 % Hack to load extpfeil from https://tex.stackexchange.com/a/297109/32372
 \expandafter\def\csname opt@stmaryrd.sty\endcsname
@@ -2493,7 +2493,12 @@ notion of anonymously Noetherian rings. In fact, one could feel mocked by this
 version of Hilbert's basis theorem: It promises that any ideal of~$A[X]$
 ``has'' finitely many generators in some Platonic sense (without providing any
 clue on how one might go on to find the generators -- they remain \emph{anonymous}), provided
-that any ideal of~$A$ ``has'' finitely many generators in the same sense.
+that any ideal of~$A$ ``has'' finitely many generators in the same
+sense.\footnote{We borrowed the term ``anonymous'' from type theory, where it
+is used with a similar meaning (see for
+instance~\cite{kraus-escardo-coquand-altenkirch:anonymous}). However, there is
+a subtle difference: Unique and anonymous-in-the-sense-of-type-theory existence
+implies existence, but \notnot existence does not.}
 
 However, applications in the internal universe of toposes provide a further
 motivation for constructive reasoning, related but distinct from computational
@@ -15116,12 +15121,10 @@ reach.
 \printbibliography
 
 \bigskip
-\bigskip
-\bigskip
 \centering
 \rotatebox{90}{\tiny Carina Willbold}\!
 \includegraphics[width=0.5\textwidth]{images/external-internal}
-\enlargethispage{4em}
+\enlargethispage{6em}
 
 \vfill
 \small

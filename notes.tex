@@ -14560,21 +14560,12 @@ It's easily checked that~$E \models (\speak{$f_j$ \inv} \wedge g_{j1} = 0
 conclude that~$X \models \Box\varphi$, it therefore suffices to verify that
 \[ X \models \Box\Bigl(\bigvee_{j=1}^n (\speak{$f_j$ \inv} \wedge
   g_{j1} = 0 \wedge \cdots \wedge g_{j,m_j} = 0)\Bigr). \]
-This claim follows from a basic combinatorial lemma\footnote{Let
+This claim follows from distributivity of disjunction over conjunction\footnote{Let
 statements~$\psi_{jk}$ where~$j = 1,\ldots,n$, $k = 1,\ldots,r_j$ be given.
 We picture this situation as a ragged matrix of statements with~$\psi_{jk}$ located
 at column~$k$ of row~$j$. Assume that, for any selection of one statement from
-each row, at least one of the selected statements holds. Then there is a row
-all of whose statements hold.
-
-The usual proof of this lemma proceeds by contradiction: If no row contains
-only true statements, then on each row there is some statement which is false.
-Since we want to use this lemma in the topos~$\Zar(S)_\Box$, it's important
-that there is also an intuitionistic proof. Such a proof can, for
-instance, proceed by induction. The base case~$n = 1$ is trivial. In the
-induction step~$n \to n+1$, we apply the induction hypothesis to the
-statements~$\psi_{jk}' \defeq (\psi_{jk} \vee \bigwedge_{l=1}^{r_{n+1}}
-\psi_{n+1,l})$ where~$j=1\ldots,n$, $k=1,\ldots,r_j$.}
+each row, at least one of the selected statements holds. By distributivity of
+disjunction over conjunction, there is a row all of whose statements hold.}
 and the elementary reformulation of the statement that~$X = \bigcup_{j=1}^n
 E_j$: For any finite subset~$J \subseteq \{1,\ldots,n\}$ and any indices~$k_j
 \in \{ 1, \ldots, m_j \}$ for~$j \in J$,

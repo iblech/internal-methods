@@ -19,7 +19,7 @@ the property in question.
 
 No prior knowledge about topos theory or formal logic is assumed.
 
-* [Expository notes (PDF)](https://github.com/iblech/internal-methods/raw/master/notes.pdf)
+* **[Expository notes (PDF)](https://github.com/iblech/internal-methods/raw/master/notes.pdf)**
 * [Slides (PDF)](https://www.speicherleck.de/iblech/stuff/gael2013-topos.pdf)
   for [GAeL 2013](https://www.mimuw.edu.pl/~gael/xxi/)
 * [Poster (PDF)](https://github.com/iblech/internal-methods/raw/master/poster.pdf)

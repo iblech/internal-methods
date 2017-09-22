@@ -342,7 +342,7 @@ particularly thank Adam Epstein for his great hospitality during my stay in
 Warwick and Jiří Adámek, Jürgen Koslowski, and Ravi Vakil for their
 much-appreciated encouragement.
 
-I thank Tim Baumann, Katrin Gimmi, Matthias Hutzler, Sori Lee, and Lukas Stoll for their
+I thank Tim Baumann, Katrin Gimmi, Matthias Hutzler, Sori Lee, Lukas Stoll, and Marcus Zibrowius for their
 careful readings of earlier drafts.
 
 Dear to my heart is doing mathematics with children and school students. It was
@@ -3127,14 +3127,14 @@ Such a matrix~$A$ possesses a right inverse. Therefore~$\det A$ is invertible.
 Thus~$A$ is invertible with inverse~$(\det A)^{-1} \cdot \operatorname{ad} A$.
 \end{rem}
 
-\begin{lemma}\label{lemma:mono-iso}Let~$X$ be a scheme (or a ringed space).
-Let~$\alpha : \G \to \H$ be a monomorphism of finite locally
-free~$\O_X$-modules of the same rank. Then~$\alpha$ is an
-isomorphism.\end{lemma}
+\begin{lemma}\label{lemma:mono-iso}Let~$X$ be a scheme (or a locally ringed space).
+Let~$\alpha : \G \to \H$ be a morphism of finite locally
+free~$\O_X$-modules. If~$\alpha$ is a monomorphism, then the rank of~$\G$ is
+less than or equal to the rank of~$\H$.\end{lemma}
 
 \begin{proof}It suffices to give an intuitionistic proof of the following
-statement: A square matrix over a ring, which as a linear map is injective, is
-invertible. Such a proof can for instance be found
+statement: A matrix over a nontrivial ring, which as a linear map is injective,
+has a smaller or equal number of columns than rows. Such a proof can for instance be found
 in~\cite[p.~1013]{richman:trivial-rings}.
 \end{proof}
 

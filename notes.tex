@@ -2360,12 +2360,21 @@ Noetherian.
 \end{enumerate}
 \end{prop}
 
+% XXX: Is this proposition a shadow of a deeper result? This looks a bit
+% as if being processly Noetherian is a geometric implication.
+
 \begin{proof}Statement~(1) can be reformulated in a way so it doesn't refer to stalks:
 For any open affine subscheme~$U \subseteq X$ and any ascending chain~$\aaa_0
 \subseteq \aaa_1 \subseteq \cdots$ of finitely generated ideals in~$\Gamma(U,
 \O_X)$ there is a partition of unity~$1 = \sum_i f_i \in \Gamma(U, \O_X)$ such
 that for each~$i$ there exists an index~$j$ such that~$\aaa_j = \aaa_{j+1}$ as
 ideals of~$\Gamma(U, \O_X)[f_i^{-1}]$.
+
+% The "==>" direction follows by considering the situation at each stalk.
+% Stalling at a point can be lifted to stalling on an open neighbourhood.
+% Note that the indices j may depend on i.
+%
+% The "<==" direction is trivial.
 
 We'll verify the equivalence using this formulation. For proving the
 direction ``(1)~$\Rightarrow$~(2)'', we may assume that~$X =

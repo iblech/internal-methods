@@ -1164,7 +1164,7 @@ be a formula over~$U$. Then
 rules in Table~\ref{table:kripke-joyal} would make this proposition false.\end{proof}
 
 As a corollary, one may restrict the open coverings and universal
-quantifications in the the definition of the Kripke--Joyal semantics
+quantifications in the definition of the Kripke--Joyal semantics
 (Table~\ref{table:kripke-joyal}) to open subsets of some basis of the topology.
 For instance, if~$X$ is a scheme, one may restrict to affine open subsets.
 
@@ -1190,7 +1190,7 @@ formula~$\chi$, then~$\chi$ holds.
 So we are to prove that if~$U \models \varphi \vee \psi$, $U \models (\varphi
 \Rightarrow \chi)$, and $U \models (\psi \Rightarrow \chi)$, then $U \models \chi$.
 This is done as follows: By assumption, there exists a covering~$U = \bigcup_i
-U_i$ such that on each~$U_i$, $U_i \models \varphi$ or $U_i \models \psi$.
+U_i$ such that for each index~$i$, $U_i \models \varphi$ or $U_i \models \psi$.
 Again by assumption, we may conclude that~$U_i \models \chi$ for each~$i$. The statement
 follows because of the locality of the internal language.
 
@@ -8465,7 +8465,7 @@ and ``$\Gamma(Y,\O_Y)$'' refers to~$\mu_*\O_Y$, where~$\mu : (Y,\O_Y) \to
 \end{proof}
 
 Theorem~\ref{thm:local-spectrum-yields-relative-spectrum} settles the question
-how the the little Zariski topos of~$\RelSpec_X(\A)$ looks like from the
+how the little Zariski topos of~$\RelSpec_X(\A)$ looks like from the
 internal point of view of~$\Sh(X)$. A related question is how the big Zariski
 topos looks like. We give the answer in
 Theorem~\ref{thm:big-zariski-topos-of-relative-spectrum}.
@@ -9415,7 +9415,7 @@ The universal property of the localic spectrum ensures that morphisms~$\Spec(B)
 \to \Spec(A)$ of locally ringed locales (or locally ringed toposes) are in
 canonical one-to-one correspondence with ring homomorphisms~$A \to B$, as it
 should be. There are two ways for explicitly constructing a morphism between
-spectra. One is to specify a morphisms of frames going in the other direction.
+spectra. One is to specify a morphism of frames going in the other direction.
 For instance, given a ring homomorphism~$\varphi : A \to B$, one can map a
 radical ideal~$\aaa \subseteq A$ to~$\sqrt{\aaa B} \subseteq B$; this yields a
 morphism~$\Open(\Spec(A)) \to \Open(\Spec(B))$.
@@ -9441,7 +9441,7 @@ As we have seen in Section~\ref{sect:transfer-principles}, for deriving
 transfer principles it's useful to be able to quickly gauge properties of
 constant sheaves over~$\Spec(A)$. For topological spaces,
 Lemma~\ref{lemma:properties-of-constant-sheaves} could be used to this effect.
-For locales in an intuitionistic metatheory, this lemma has to be modified
+For locales in an intuitionistic metatheory, the lemma has to be modified
 slightly.
 
 \begin{defn}\begin{enumerate}
@@ -9460,10 +9460,10 @@ M$ such that~$V > 0$, and
 \end{defn}
 
 \begin{ex}The frame of open subsets of a topological space~$X$ has a positivity
-predicate, namely declaring~$U > 0$ if and only if~$U$ is inhabited.\end{ex}
+predicate, given by declaring~$U > 0$ if and only if~$U$ is inhabited.\end{ex}
 
 \begin{ex}Assuming classical logic, any frame admits the positivity predicate
-defined by declaring~$U > 0$ if and only if~$U \neq \bot$.\end{ex}
+given by declaring~$U > 0$ if and only if~$U \neq \bot$.\end{ex}
 
 \begin{prop}A locale~$X$ is overt if and only if its frame of opens admits a
 \emph{positivity predicate}.\end{prop}
@@ -9649,7 +9649,7 @@ for the site are in Section~\ref{sect:proper-choice-of-site}). The proof that
 this topos classifies local rings over~$S$ is intuitionistically valid.
 
 We don't know whether all of the common subtoposes of the big Zariski topos
-corresponding to finer topologies like the étale or fppf topology, have all the
+corresponding to finer topologies like the étale or fppf topology have all the
 properties which are classically expected of them. In any case, if it's
 classically known that the subtopos of the big Zariski topos corresponding to
 a finer topology classifies a certain explicitly presented geometry
@@ -9904,7 +9904,7 @@ It suffices to change~``$m[\E] \cup \F'$'' to~``$m[\E] + \F''$'', where~$\F''
 
 \begin{rem}The proof of Theorem~\ref{thm:char-injectivity} crucially rests on
 Proposition~\ref{prop:internal-char-flabbiness} and therefore on Zorn's lemma,
-in ensure that the sheaf~$\G$ defined in the proof which has the property that
+to ensure that the sheaf~$\G$ defined in the proof which has the property that
 any of its sections can be locally extended admits a global section. The proof
 is therefore not intuitionistically valid.
 
@@ -10784,7 +10784,7 @@ These constructions are mutually inverse since the morphisms $\Spec(\O_{S,s})
 In the situation that one of the parsimonious sites is used to
 define the big Zariski topos of~$S$, it classifies the theory of local rings
 over~$S$. This is a restatement of Theorem~\ref{thm:zar-classifies}.
-Explicitly, the theory of local rings over~$R$ is given by:
+Explicitly, the theory of local rings over~$S$ is given by:
 \begin{enumerate}
 \item A theory which~$\Sh(S)$ classifies.
 \item Structure and axioms for a ring~$R$.
@@ -13108,7 +13108,7 @@ implies that~$T$ is empty.
 \end{proof}
 
 \begin{cor}\label{cor:char-surjective-morphisms-relative}
-Let~$p : X \to Y$ be a morphism of~$S$-schemes. Assume that~$Y$ is is locally
+Let~$p : X \to Y$ be a morphism of~$S$-schemes. Assume that~$Y$ is locally
 contained in the site used to define~$\Zar(S)$.
 Further assume that the site used to define the big Zariski toposes are closed
 under taking spectra of residue fields or that the parsimonious sites are used

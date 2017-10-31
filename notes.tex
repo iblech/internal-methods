@@ -10739,12 +10739,14 @@ of~$\Zar(\Spec(R))$ as the classifying topos of the theory of
 local~$R$-algebras. For the case of a general base scheme, we introduce the
 following definition.
 
-\begin{defn}A \emph{ring over~$S$} is a ring~$A$ together with a
+\begin{defn}\label{defn:ring-over-s}A \emph{ring over~$S$} is a ring~$A$ together with a
 morphism~$\Spec(A) \to S$ of locally ringed locales. A \emph{morphism of rings
 over~$S$} is a ring homomorphism which is compatible with the structure
 morphisms to~$S$.\end{defn}
 % Let A be a local ring. Then LRL morphisms Spec(A) --> S are the same
 % as LRL morphisms (pt,A) --> S.
+% XXX
+% Are LRL morphisms Spec(A) --> S the same as RL morphisms (pt,A) --> S?
 
 \begin{prop}\label{prop:points-of-big-zariski}
 In the situation that one of the parsimonious sites is used to
@@ -14202,6 +14204,9 @@ The assumption on the modal operator~$\Box$ implies~$W \models \Box\varphi$.
 %the system~``$h_1 = 0, \ldots, h_n = 0$''. The latter has a solution by virtue
 %of~$A$ being algebraically closed.
 %\end{proof}
+
+The next statement uses the concept of a local ring over~$S$. This was defined
+on page~\pageref{defn:ring-over-s}.
 
 \begin{cor}\label{cor:big-fpps-topos-classifies}
 The big fppf topos of a scheme~$S$ is the classifying topos of the

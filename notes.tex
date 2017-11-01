@@ -342,7 +342,7 @@ particularly thank Adam Epstein for his great hospitality during my stay in
 Warwick and Jiří Adámek, Jürgen Koslowski, and Ravi Vakil for their
 much-appreciated encouragement.
 
-I thank Tim Baumann, Katrin Gimmi, Matthias Hutzler, Sori Lee, and Lukas Stoll for their
+I thank Tim Baumann, Katrin Gimmi, Matthias Hutzler, Sori Lee, Lukas Stoll, and Marcus Zibrowius for their
 careful readings of earlier drafts.
 
 Dear to my heart is doing mathematics with children and school students. It was
@@ -748,7 +748,7 @@ property, both conditions are equivalent to~$x$ being invertible.
 
 The synthetic spectrum of an~$\afflx$-algebra~$A$ can be defined as
 \[ \Spec(A) \defeq
-  \text{the set of~$\afflx$-algebra homomorphism~$A \to \afflx$}. \]
+  \text{the set of~$\afflx$-algebra homomorphisms~$A \to \afflx$}. \]
 On first sight, this definition seems to overlook potential non-maximal prime
 ideals of~$A$, since it only gives the~$\afflx$-valued points. But in fact,
 this description correctly reflects the relative spectrum construction.
@@ -927,7 +927,7 @@ subjects, in a certain precise sense~\cite{caramello:1,caramello:2}. She
 exploits that toposes can admit presentations by sites of different character. Our
 contribution is certainly related to her grand research program in spirit, but since we
 focus only on specific presentations of a few specific toposes associated to
-schemes, there is as yet only few direct technical connections.
+schemes, there are as yet only few direct technical connections.
 
 
 \subsection*{Notational conventions} To stress that a discussion takes place in
@@ -975,7 +975,7 @@ by their \emph{global elements}, morphisms from the terminal object.
 
 However, in categories in which the terminal object is not a separator,
 condition~\eqref{injcat} is not very meaningful. This is for instance the case
-if~$\C$ is the category~$\Sh(X)$ of set-valued sheaves on a topological
+if~$\C$ is the category of vector spaces over a field or if~$\C$ is the category~$\Sh(X)$ of set-valued sheaves on a topological
 space~$X$. Global elements of a sheaf~$\F$ are in natural one-to-one
 correspondence with global sections~$s \in \F(X)$ (hence the name), whereby
 condition~\eqref{injcat} only states that~$f$ is \emph{injective on global
@@ -1164,7 +1164,7 @@ be a formula over~$U$. Then
 rules in Table~\ref{table:kripke-joyal} would make this proposition false.\end{proof}
 
 As a corollary, one may restrict the open coverings and universal
-quantifications in the the definition of the Kripke--Joyal semantics
+quantifications in the definition of the Kripke--Joyal semantics
 (Table~\ref{table:kripke-joyal}) to open subsets of some basis of the topology.
 For instance, if~$X$ is a scheme, one may restrict to affine open subsets.
 
@@ -1190,7 +1190,7 @@ formula~$\chi$, then~$\chi$ holds.
 So we are to prove that if~$U \models \varphi \vee \psi$, $U \models (\varphi
 \Rightarrow \chi)$, and $U \models (\psi \Rightarrow \chi)$, then $U \models \chi$.
 This is done as follows: By assumption, there exists a covering~$U = \bigcup_i
-U_i$ such that on each~$U_i$, $U_i \models \varphi$ or $U_i \models \psi$.
+U_i$ such that for each index~$i$, $U_i \models \varphi$ or $U_i \models \psi$.
 Again by assumption, we may conclude that~$U_i \models \chi$ for each~$i$. The statement
 follows because of the locality of the internal language.
 
@@ -1571,8 +1571,8 @@ axioms; the given classical proof can be of any form whatsoever and can freely
 use statements which are not geometric implications. The proof of Barr's
 theorem itself is not intuitionistically valid, which puts us in the curious
 situation that we nonconstructively know that there exists a constructive
-proof. Because we strive, as far as possible, that these notes can be
-interpreted in a constructive metatheory, and because we personally prefer
+proof. Because I strive, as far as possible, that these notes can be
+interpreted in a constructive metatheory, and because I personally prefer
 direct intuitionistic proofs, we won't use Barr's theorem in what follows.
 However, it's useful to quickly assess whether a classically known proposition
 also has an intuitionistic proof.
@@ -1989,7 +1989,7 @@ Only fields in the sense~(3) are automatically of Krull dimension zero.
 Fields in the weaker senses can have higher Krull dimension, as exhibited by
 the structure sheaf of reduced schemes with positive dimension.
 
-With out conventions, a scheme~$X$ is of dimension~$\leq 0$ if and only if it
+With our conventions, a scheme~$X$ is of dimension~$\leq 0$ if and only if it
 is empty or if it's nonempty and of dimension zero.
 \begin{cor}\label{cor:scheme-dimension-zero}
 Let~$X$ be a scheme. Then:
@@ -2248,7 +2248,7 @@ finitely generated ideals stalls.}
 We give two constructively inequivalent notions of Noetherian rings. The first
 one is of independent constructive interest and enjoys the property that the structure sheaf
 of a scheme~$X$ satisfies the Noetherian condition from the internal point of
-view of~$\Sh(X)$ if and only if~$X$ is locally Noetherian.
+view of~$\Sh(X)$ if and only if all stalks~$\O_{X,x}$ are Noetherian.
 
 The second one is quite weak from a constructive point of view, but still
 interesting from a geometric point of view and useful enough to derive
@@ -2334,7 +2334,7 @@ emphasizes the branching nature of a non-deterministic computation, while ours
 emphasizes the step-for-step picture of computation.
 
 There are three reasons why we did not define a ring to be processly Noetherian
-if and only if the set of all (not only finitely generated) ideals satisfies
+if and only if the set of all (not necessarily finitely generated) ideals satisfies
 the ascending process condition. Firstly, this stricter condition excludes
 rings as~$\ZZ$.\footnote{The main ingredient in the proof that~$\ZZ$ is
 Noetherian is that any ideal of~$\ZZ$ is a principal ideal, since (looking at
@@ -2360,12 +2360,21 @@ Noetherian.
 \end{enumerate}
 \end{prop}
 
+% XXX: Is this proposition a shadow of a deeper result? This looks a bit
+% as if being processly Noetherian is a geometric implication.
+
 \begin{proof}Statement~(1) can be reformulated in a way so it doesn't refer to stalks:
 For any open affine subscheme~$U \subseteq X$ and any ascending chain~$\aaa_0
 \subseteq \aaa_1 \subseteq \cdots$ of finitely generated ideals in~$\Gamma(U,
 \O_X)$ there is a partition of unity~$1 = \sum_i f_i \in \Gamma(U, \O_X)$ such
 that for each~$i$ there exists an index~$j$ such that~$\aaa_j = \aaa_{j+1}$ as
 ideals of~$\Gamma(U, \O_X)[f_i^{-1}]$.
+
+% The "==>" direction follows by considering the situation at each stalk.
+% Stalling at a point can be lifted to stalling on an open neighbourhood.
+% Note that the indices j may depend on i.
+%
+% The "<==" direction is trivial.
 
 We'll verify the equivalence using this formulation. For proving the
 direction ``(1)~$\Rightarrow$~(2)'', we may assume that~$X =
@@ -2700,11 +2709,11 @@ an~$\O_X$-module. Then~$\F$ is generated by global sections if and only if
 there exist global sections~$s_i \in \Gamma(X,\F)$, $i \in I$ such that
 \[ \Sh(X) \models \forall x\?\F\_ \bigvee\nolimits_{\textnormal{$J=\{i_1,\ldots,i_n\} \subseteq I$ finite}}
   \exists a_1,\ldots,a_n\?\O_X\_
-  x = \sum_j a_j x_{i_j}. \]
+  x = \sum_j a_j s_{i_j}. \]
 Furthermore,~$\F$ is generated by finitely many global sections if and only if
 there exist global sections~$s_1,\ldots,s_n \in \Gamma(X,\F)$ such that
 \[ \Sh(X) \models \forall x\?\F\_ \exists a_1,\ldots,a_n\?\O_X\_ x = \sum_j a_j
-x_j. \]
+s_j. \]
 \end{prop}
 \begin{proof}The given internal statements are geometric implications, their
 validity can thus be checked stalkwise.\end{proof}
@@ -2988,16 +2997,16 @@ to~$\Omega^1_{\O_{X,x}|\O_{S,f(x)}}$.
 
 \begin{proof}The first claim is just the interpretation of the internal
 universal property using the Kripke--Joyal semantics and using the
-simplification rule given in Proposition~\ref{prop:simplification},
+simplification rule given in Proposition~\ref{prop:simplification}.
 
 The second claim is immediate because the construction of Kähler differentials
-via the free module is geometric (see
-\pageref{page:geometric-constructions}). Therefore the operations~``take
-the Kähler differentials'' and~``take the stalk at~$x$'' commute.
+via the free module is geometric (page
+\pageref{page:geometric-constructions}). Therefore the operations~``taking
+Kähler differentials'' and~``taking the stalk at~$x$'' commute.
 
 For verifying the third claim, it suffices to verify that~$\Omega^1_{X|S}$ is
-quasicoherent in case that~$X = \Spec(B)$ and~$S = \Spec(A)$ are affine.
-Let~$\varphi : A \to B$ be homomorphism of rings given by~$f$. We employ the
+quasicoherent in the case that~$X = \Spec(B)$ and~$S = \Spec(A)$ are affine.
+Let~$\varphi : A \to B$ be the homomorphism of rings given by~$f$. We employ the
 technique and notation of Section~\ref{sect:generic-filter}:
 \begin{align*}
   (\Omega^1_{B|A})^\sim &\cong
@@ -3127,14 +3136,14 @@ Such a matrix~$A$ possesses a right inverse. Therefore~$\det A$ is invertible.
 Thus~$A$ is invertible with inverse~$(\det A)^{-1} \cdot \operatorname{ad} A$.
 \end{rem}
 
-\begin{lemma}\label{lemma:mono-iso}Let~$X$ be a scheme (or a ringed space).
-Let~$\alpha : \G \to \H$ be a monomorphism of finite locally
-free~$\O_X$-modules of the same rank. Then~$\alpha$ is an
-isomorphism.\end{lemma}
+\begin{lemma}\label{lemma:mono-iso}Let~$X$ be a scheme (or a locally ringed space).
+Let~$\alpha : \G \to \H$ be a morphism of finite locally
+free~$\O_X$-modules. If~$\alpha$ is a monomorphism, then the rank of~$\G$ is
+less than or equal to the rank of~$\H$.\end{lemma}
 
 \begin{proof}It suffices to give an intuitionistic proof of the following
-statement: A square matrix over a ring, which as a linear map is injective, is
-invertible. Such a proof can for instance be found
+statement: A matrix over a nontrivial ring, which as a linear map is injective,
+has a smaller or equal number of columns than rows. Such a proof can for instance be found
 in~\cite[p.~1013]{richman:trivial-rings}.
 \end{proof}
 
@@ -3243,7 +3252,7 @@ others follow simply by interpreting the corresponding facts of linear algebra
 in the internal universe. For concreteness, we give intuitionistic proofs of
 the last three statements.
 
-So let~$M$ be an reflexive~$R$-module. We have to show that~$M$ is
+So let~$M$ be a reflexive~$R$-module. We have to show that~$M$ is
 torsion-free. To this end, let an element~$x \? M$ and a regular element~$a \?
 R$ such that~$ax = 0$ be given. For any~$\vartheta \? M^\vee$, it follows
 that~$\vartheta(x) = 0$, since~$a \vartheta(x) = \vartheta(ax) = \vartheta(0) =
@@ -3396,7 +3405,7 @@ if~$n \in \A_x$, there exists an open neighborhood~$V$ of~$x$ such that the cons
 function with value~$n$ is an element of~$\Gamma(V,\A)$ and therefore~$n \in
 \A_y$ for all~$y \in V$.
 
-Conversely, let~$\alpha : U \to \NN$ be a upper semicontinuous function. Then
+Conversely, let~$\alpha : U \to \NN$ be an upper semicontinuous function. Then
 \[ \text{$V \subseteq U$ open} \quad\longmapsto\quad \{ f : V \to \NN \,|\, \text{$f$
 continuous,\ $f \geq \alpha$ on~$V$} \} \]
 is a subobject of~$\ul{\NN}|_U$ which internally is inhabited and upward-closed.
@@ -5377,12 +5386,12 @@ The equivalence can easily be proven in the internal language. The sheaf
 condition is equivalent to the conjunction of the separatedness condition and
 \begin{multline}\label{eqn:sheaf}
   \forall f\?\O_X\_ \forall \K \subseteq \F\_
-  (\speak{$f$ \inv} \Rightarrow \speak{$K$ is a singleton})
+  (\speak{$f$ \inv} \Rightarrow \speak{$\K$ is a singleton})
   \Longrightarrow \\
   \bigvee_{n \geq 0} \exists s\?\F\_
   \speak{$f$ \inv} \Rightarrow f^{-n} s \in \K.
 \end{multline}
-In one direction, a set~$\S \subseteq \F[f^{-1}]$ is given; construct~$K \defeq \{
+In one direction, a set~$\S \subseteq \F[f^{-1}]$ is given; construct~$\K \defeq \{
 s\?\F \,|\, s/1 \in \S \} \subseteq \F$. In the other direction, a set~$\K
 \subseteq \F$ is given; construct~$S \defeq \{ s\?\F[f^{-1}] \,|\, \exists
 s'\?\F\_ s' \in \K \wedge s = s'/1 \} \subseteq \F[f^{-1}]$. The remaining
@@ -5828,7 +5837,7 @@ examining the logical form and applying Lemma~\ref{lemma:open-stalk}.)
 
 For the converse direction, consider the annihilator of~$s$, \ie the ideal
 \[ I \defeq \Ann_{\O_X}(s) = \{ t\?\O_X \,|\, st = 0 \} \subseteq \O_X. \]
-This ideal satisfies the quasicoherence condition (we will explain how to prove this internally in~\ref{ex:annihilator-qcoh}),
+This ideal satisfies the quasicoherence condition (this was Example~\ref{ex:annihilator-qcoh}),
 thus~$I$ is a quasicoherent submodule of a finitely generated module. Since~$X$ is
 locally Noetherian, it follows that~$I$ is finitely generated as well, say by~$x_1,\ldots,x_n \? I$. By
 assumption, each generator~$x_i \? I$ fulfills~$\Box(x_i = 0)$. Since we want
@@ -6304,8 +6313,9 @@ Two Cartier divisors are \emph{linearly equivalent} if and only if their
 difference is a principal divisor.
 \end{defn}
 
-Decidedly, principality is a global notion: For \emph{any} divisor~$D$ it is
-true that locally there exists sections~$f$ of~$\K_X^\times$ such that~$D = [f]$.
+Decidedly, principality is a global notion: For \emph{any} divisor~$D$
+there exists an open covering~$X = \bigcup_i U_i$ and local sections~$f_i \in
+\Gamma(U_i, \K_X^\times)$ such that~$D|_{U_i} = [f_i]$.
 
 \begin{defn}\label{defn:line-bundle-of-divisor}
 The \emph{line bundle associated to a Cartier divisor}~$D$
@@ -6787,7 +6797,7 @@ be a topological space and let~$U \subseteq X$ be an open subset. Then
 \end{lemma}
 We are abusing notation on the left hand side: The parameters
 of~$\varphi$, which are sets and elements, must be read as the induced constant
-sheaves and constant functions (sections of that sheaves).
+sheaves and constant functions (sections of those sheaves).
 Unbounded quantifiers have to be read as ranging only over locally constant
 sheaves, not all sheaves.
 \begin{proof}By induction on the structure of~$\varphi$. By way of example, we
@@ -6980,7 +6990,7 @@ equivalent to~$g$ being invertible in~$A$.
 \end{rem}
 
 \begin{rem}Recall from Proposition~\ref{prop:kx-internally} that the
-sheaf~$\K_{\Spec A}$ of rational functions can internally by obtained by
+sheaf~$\K_{\Spec A}$ of rational functions can internally be obtained by
 localizing~$\O_{\Spec A}$ at the set of regular elements. Since~$\O_{\Spec A}$
 is itself a localization, the sheaf~$\K_{\Spec A}$ is therefore obtained by a
 two-step process. It can also be obtained in a single step by
@@ -7088,7 +7098,7 @@ between quasicoherent~$\O_X$-modules are quasicoherent.\end{lemma}
 \begin{proof}We may assume that~$X = \Spec A$ is affine. A morphism between
 quasicoherent~$\O_X$-modules is of the form~$\ul{\varphi}[\F^{-1}] :
 \ul{M}[\F^{-1}] \to \ul{N}[\F^{-1}]$, where~$\varphi : M \to N$ is a linear map
-between~$A$-modules. Since taking constant shaves and localization are exact,
+between~$A$-modules. Since taking constant sheaves and localization are exact,
 we have the chain of isomorphisms
 \[ (\ul{\Kernel(\varphi)})[\F^{-1}] \cong
   (\Kernel(\ul{\varphi}))[\F^{-1}] \cong
@@ -7110,7 +7120,7 @@ often quite useful. For example:
 is an element of every prime ideal. For instance, this is calculationally simpler
 when proving that the coefficients of a nilpotent polynomial are
 themselves nilpotent.
-\item To verify that there is an relation of the form~$1 = p_1f_1 + \cdots +
+\item To verify that there is a relation of the form~$1 = p_1f_1 + \cdots +
 p_mf_m$ among polynomials~$f_1,\ldots,f_m \in K[X_1,\ldots,X_n]$ where~$K$ is
 an algebraically closed field, it suffices to show that the~$f_i$ don't have a
 common zero.
@@ -7909,7 +7919,7 @@ The answer is well-known classically, but since we want to use this result in
 an internal context, we have to give an intuitionistic proof.
 \begin{lemma}\label{lemma:spectrum-one-point}
 Let~$A$ be a ring. Its spectrum is a one-point
-space (as a locale) if and only if~$1 \neq 0$ in~$A$ any element of~$A$ is nilpotent or
+space (as a locale) if and only if~$1 \neq 0$ in~$A$ and any element of~$A$ is nilpotent or
 invertible.\end{lemma}
 \begin{proof}The locale~$\Spec A$ is a one-point space if and only if the
 unique continuous map~$\Spec(A) \to \pt$ of locales is an isomorphism. This is the case if and only
@@ -8456,7 +8466,7 @@ and ``$\Gamma(Y,\O_Y)$'' refers to~$\mu_*\O_Y$, where~$\mu : (Y,\O_Y) \to
 \end{proof}
 
 Theorem~\ref{thm:local-spectrum-yields-relative-spectrum} settles the question
-how the the little Zariski topos of~$\RelSpec_X(\A)$ looks like from the
+how the little Zariski topos of~$\RelSpec_X(\A)$ looks like from the
 internal point of view of~$\Sh(X)$. A related question is how the big Zariski
 topos looks like. We give the answer in
 Theorem~\ref{thm:big-zariski-topos-of-relative-spectrum}.
@@ -8501,7 +8511,7 @@ of~$\Open(\Spec(A|R))$, there is an index~$i$ such that~$\aaa_i = \sqrt{(1)}$.
 
 The locale~$\Spec(A|R)$ thus has an initial (locale-theoretic) point. This
 focal point can be explicitly described: it is the filter~$A^\times$ (which
-lies over the filter of units because~$R \to A$ is local). As generally the
+lies over the filter of units because~$R \to A$ is local). As is generally the
 case for local locales, taking global sections is the same as taking the stalk
 at the focal point. Therefore we can conclude by the following string of
 isomorphisms.
@@ -9406,7 +9416,7 @@ The universal property of the localic spectrum ensures that morphisms~$\Spec(B)
 \to \Spec(A)$ of locally ringed locales (or locally ringed toposes) are in
 canonical one-to-one correspondence with ring homomorphisms~$A \to B$, as it
 should be. There are two ways for explicitly constructing a morphism between
-spectra. One is to specify a morphisms of frames going in the other direction.
+spectra. One is to specify a morphism of frames going in the other direction.
 For instance, given a ring homomorphism~$\varphi : A \to B$, one can map a
 radical ideal~$\aaa \subseteq A$ to~$\sqrt{\aaa B} \subseteq B$; this yields a
 morphism~$\Open(\Spec(A)) \to \Open(\Spec(B))$.
@@ -9432,7 +9442,7 @@ As we have seen in Section~\ref{sect:transfer-principles}, for deriving
 transfer principles it's useful to be able to quickly gauge properties of
 constant sheaves over~$\Spec(A)$. For topological spaces,
 Lemma~\ref{lemma:properties-of-constant-sheaves} could be used to this effect.
-For locales in an intuitionistic metatheory, this lemma has to be modified
+For locales in an intuitionistic metatheory, the lemma has to be modified
 slightly.
 
 \begin{defn}\begin{enumerate}
@@ -9451,10 +9461,10 @@ M$ such that~$V > 0$, and
 \end{defn}
 
 \begin{ex}The frame of open subsets of a topological space~$X$ has a positivity
-predicate, namely declaring~$U > 0$ if and only if~$U$ is inhabited.\end{ex}
+predicate, given by declaring~$U > 0$ if and only if~$U$ is inhabited.\end{ex}
 
 \begin{ex}Assuming classical logic, any frame admits the positivity predicate
-defined by declaring~$U > 0$ if and only if~$U \neq \bot$.\end{ex}
+given by declaring~$U > 0$ if and only if~$U \neq \bot$.\end{ex}
 
 \begin{prop}A locale~$X$ is overt if and only if its frame of opens admits a
 \emph{positivity predicate}.\end{prop}
@@ -9468,7 +9478,7 @@ occur as parameters. Let~$X$ be a locale and let~$U$ be an open of~$X$.
 Consider the following statements:
 \begin{enumerate}
 \item $U \models \varphi$ (with the same abuse of notation as in
-Lemma~\ref{lemma:properties-of-constant-sheaves}
+Lemma~\ref{lemma:properties-of-constant-sheaves}).
 \item $U \preceq \bigvee \{ \top \,|\, \varphi \}$.
 \item (If~$X$ has a positivity predicate.) $U > 0 \Longrightarrow \varphi$.
 \item $\varphi$.
@@ -9640,7 +9650,7 @@ for the site are in Section~\ref{sect:proper-choice-of-site}). The proof that
 this topos classifies local rings over~$S$ is intuitionistically valid.
 
 We don't know whether all of the common subtoposes of the big Zariski topos
-corresponding to finer topologies like the étale or fppf topology, have all the
+corresponding to finer topologies like the étale or fppf topology have all the
 properties which are classically expected of them. In any case, if it's
 classically known that the subtopos of the big Zariski topos corresponding to
 a finer topology classifies a certain explicitly presented geometry
@@ -9895,7 +9905,7 @@ It suffices to change~``$m[\E] \cup \F'$'' to~``$m[\E] + \F''$'', where~$\F''
 
 \begin{rem}The proof of Theorem~\ref{thm:char-injectivity} crucially rests on
 Proposition~\ref{prop:internal-char-flabbiness} and therefore on Zorn's lemma,
-in ensure that the sheaf~$\G$ defined in the proof which has the property that
+to ensure that the sheaf~$\G$ defined in the proof which has the property that
 any of its sections can be locally extended admits a global section. The proof
 is therefore not intuitionistically valid.
 
@@ -9965,7 +9975,7 @@ over~$X$ can be embedded into an injective (therefore flabby) sheaf of sets.
 give an intuitionistic proof of the following statement: Any set~$F$ can be
 embedded into an injective set.
 
-As already indicated, there at least two simple ways how~$F$ can be embedded
+As already indicated, there are at least two simple ways how~$F$ can be embedded
 into an injective set: by embedding~$F$ in its powerset~$\P(F)$ or by
 embedding~$F$ in~$\P_{\leq1}(F)$, the set of subsingletons of~$F$. For
 conciseness, we only verify that~$\P_{\leq1}(F)$ is injective.
@@ -10730,12 +10740,14 @@ of~$\Zar(\Spec(R))$ as the classifying topos of the theory of
 local~$R$-algebras. For the case of a general base scheme, we introduce the
 following definition.
 
-\begin{defn}A \emph{ring over~$S$} is a ring~$A$ together with a
+\begin{defn}\label{defn:ring-over-s}A \emph{ring over~$S$} is a ring~$A$ together with a
 morphism~$\Spec(A) \to S$ of locally ringed locales. A \emph{morphism of rings
 over~$S$} is a ring homomorphism which is compatible with the structure
 morphisms to~$S$.\end{defn}
 % Let A be a local ring. Then LRL morphisms Spec(A) --> S are the same
 % as LRL morphisms (pt,A) --> S.
+% XXX
+% Are LRL morphisms Spec(A) --> S the same as RL morphisms (pt,A) --> S?
 
 \begin{prop}\label{prop:points-of-big-zariski}
 In the situation that one of the parsimonious sites is used to
@@ -10773,7 +10785,7 @@ These constructions are mutually inverse since the morphisms $\Spec(\O_{S,s})
 In the situation that one of the parsimonious sites is used to
 define the big Zariski topos of~$S$, it classifies the theory of local rings
 over~$S$. This is a restatement of Theorem~\ref{thm:zar-classifies}.
-Explicitly, the theory of local rings over~$R$ is given by:
+Explicitly, the theory of local rings over~$S$ is given by:
 \begin{enumerate}
 \item A theory which~$\Sh(S)$ classifies.
 \item Structure and axioms for a ring~$R$.
@@ -11266,7 +11278,7 @@ since~$\Spec(K) \models \varphi$. Therefore~$T = \emptyset$. Thus~$X_s =
 For the direction~``(1)~$\Rightarrow$~(2)'', let a point~$s \in S$ be given.
 Since we assume that the site used to define~$\Zar(S)$ contains
 the~$S$-scheme~$X \defeq \Spec(k(s))$ and since~$X \neq \emptyset$, the
-assumption implies that there exists an nonempty~$X$-scheme~$T$ such that~$T
+assumption implies that there exists a nonempty~$X$-scheme~$T$ such that~$T
 \models \varphi$.  Since~$T$ is nonempty, there exists a point~$t \in T$. By
 the morphism~$\Spec(k(t)) \to T \to X$, the field~$K \defeq k(t)$ is an
 extension of~$k(s)$, and since~$\Spec(K) \to T \to X \to S$ is contained in the
@@ -11331,7 +11343,7 @@ prove below, statement~(2) is equivalent to:
 \begin{indentblock}
 For any~$S$-scheme~$h : T \to S$ contained in the site used to
 define~$\Zar(S)$, the morphism~$X \times_S T \to T$ is surjective if and only
-if~$Y \times_T T \to T$ is.
+if~$Y \times_S T \to T$ is.
 \end{indentblock}
 We verify that this statement implies statement~(1). Let~$s \in \im(f)$. Then the canonical
 morphism~$X_s \to \Spec(k(s))$ is surjective. Therefore there exists
@@ -11351,7 +11363,7 @@ particular, the morphism~$X \times_S T_i \to T_i$ is surjective. We can
 therefore take~$T \defeq T_i$. The image of~$T_i \to S$ contains~$s$
 since~$\Spec(k(s)) \to S$ factors over~$T_i \to S$.}
 
-The assumption yields that the induced morphism~$Y \times_T T \to T$ is
+The assumption yields that the induced morphism~$Y \times_S T \to T$ is
 surjective. Since~$s \in \im(h)$, also~$s \in \im(g)$.
 
 The proof of the converse containment relation is analogous.
@@ -11551,7 +11563,7 @@ situations:
 \item The affine~$S$-scheme which~$X$ represents is of finite presentation
 over~$S$.
 \item The site used to define~$\Zar(S)$ is defined using a partial universe
-and the affine~$S$-scheme which~$X$ represents if of finite type over~$S$.
+and the affine~$S$-scheme which~$X$ represents is of finite type over~$S$.
 \item The affine~$S$-scheme which~$X$ represents is contained in the site used
 to define~$\Zar(S)$. (This situation subsumes the previous ones.)
 \end{itemize}\end{prop}
@@ -11596,7 +11608,7 @@ representable by an object of the site.
 The following corollary answers a question by
 Madore~\cite[entry~2002-07-07:044]{madore:diary}.
 
-\begin{cor}A morphism~$f : X \to S$ of schemes if finite if, from
+\begin{cor}A morphism~$f : X \to S$ of schemes is finite if, from
 the internal point of view of~$\Zar(S)$, the canonical map~$\ul{X} \to
 \Spec([\ul{X},\affl])$ is bijective and the~$\affl$-algebra~$[\ul{X}, \affl]$
 is synthetically quasicoherent and finitely generated. The converse holds
@@ -11615,7 +11627,7 @@ the pullback of a discrete locale is discrete, whereas the pullback of
 the local spectrum to any of the little Zariski toposes~$\Sh(X)$, where~$f : X
 \to S$ is an~$S$-scheme contained in the site used to define~$\Zar(S)$, is the
 relative spectrum~$\RelSpec_X(f^*\A_0)$, which is typically not discrete as
-an~$X$-locale. (This is because the locale spectrum construction is geometric,
+an~$X$-locale. (This is because the local spectrum construction is geometric,
 by Proposition~\ref{prop:local-spectrum-generic}.)
 
 There is, however, a comparison morphism from the discrete locale on the
@@ -13097,7 +13109,7 @@ implies that~$T$ is empty.
 \end{proof}
 
 \begin{cor}\label{cor:char-surjective-morphisms-relative}
-Let~$p : X \to Y$ be a morphism of~$S$-schemes. Assume that~$Y$ is is locally
+Let~$p : X \to Y$ be a morphism of~$S$-schemes. Assume that~$Y$ is locally
 contained in the site used to define~$\Zar(S)$.
 Further assume that the site used to define the big Zariski toposes are closed
 under taking spectra of residue fields or that the parsimonious sites are used
@@ -13218,7 +13230,7 @@ closed.
 
 \begin{proof}The direction~``(2)~$\Rightarrow$~(1)'' is trivial, and the
 direction~``(1)~$\Rightarrow$~(2)'' is immediate, since the image of~$X
-\times_T T \to T$ is the preimage of the image of~$f$ under the structure
+\times_S T \to T$ is the preimage of the image of~$f$ under the structure
 morphism~$T \to S$.
 
 For the~``(1)~$\Rightarrow$~(3)'' direction, we may pick the subfunctor
@@ -13263,7 +13275,7 @@ Proposition~\ref{prop:char-closed-image}.
 In view of Corollary~\ref{cor:univ-closed},
 Example~\ref{ex:singleton-synth-closed} and Example~\ref{ex:r-not-synth-closed}
 have a geometric interpretation. The first example reflects the fact that the
-idenity morphism~$S \to S$ is universally closed. The second example reflects
+identity morphism~$S \to S$ is universally closed. The second example reflects
 the fact that the projection morphism~$\affl \to S$ is typically not
 universally closed.
 
@@ -14015,11 +14027,11 @@ maps fppf coverings to jointly surjective families.
 and~(3)~$\Leftrightarrow$~(4) are trivial.
 
 For verifying~(1)~$\Rightarrow$~(2), let a basic fppf-algebra~$B$ over~$A$ be
-given. Writing~$B \cong A[X_1,\ldots,X_n]/(f_1,\ldots,f_m)$, we that the
+given. Writing~$B \cong A[X_1,\ldots,X_n]/(f_1,\ldots,f_m)$, we see that the
 polynomial system~``$f_1 = 0, \ldots, f_m = 0$'' has the tautologous
 solution~$([X_1],\ldots,[X_n])$ in~$B$. Since~$A$ is fppf-local, it therefore
 has a solution in~$A$. Such a solution gives rise to an~$A$-algebra
-homomorphism~$A[X_1,\ldots,X_n]/(f_1,\ldots,f_m) \to A$, so to an retraction of
+homomorphism~$A[X_1,\ldots,X_n]/(f_1,\ldots,f_m) \to A$, so to a retraction of
 the structure morphism~$A \to B$.
 
 The proof of the converse direction is similar: A solution of a polynomial
@@ -14194,6 +14206,9 @@ The assumption on the modal operator~$\Box$ implies~$W \models \Box\varphi$.
 %of~$A$ being algebraically closed.
 %\end{proof}
 
+The next statement uses the concept of a local ring over~$S$. This was defined
+on page~\pageref{defn:ring-over-s}.
+
 \begin{cor}\label{cor:big-fpps-topos-classifies}
 The big fppf topos of a scheme~$S$ is the classifying topos of the
 theory of fppf-local rings over~$S$.\end{cor}
@@ -14276,7 +14291,7 @@ rings admit a common nontrivial eigenvector. However, we suspect that this
 stronger statement is false, since it would imply that any matrix over an
 algebraically closed local ring admits a nontrivial eigenvector.
 
-If there is a classical proof of this statement, then there is also a
+Owing to the logical form of this statement, if it admits a classical proof, then there is also a
 constructive proof; however, there is probably no such constructive proof,
 since it would imply that, internally to any topos, matrices over
 algebraically closed local rings admit a
@@ -14560,21 +14575,12 @@ It's easily checked that~$E \models (\speak{$f_j$ \inv} \wedge g_{j1} = 0
 conclude that~$X \models \Box\varphi$, it therefore suffices to verify that
 \[ X \models \Box\Bigl(\bigvee_{j=1}^n (\speak{$f_j$ \inv} \wedge
   g_{j1} = 0 \wedge \cdots \wedge g_{j,m_j} = 0)\Bigr). \]
-This claim follows from a basic combinatorial lemma\footnote{Let
+This claim follows from distributivity of disjunction over conjunction\footnote{Let
 statements~$\psi_{jk}$ where~$j = 1,\ldots,n$, $k = 1,\ldots,r_j$ be given.
 We picture this situation as a ragged matrix of statements with~$\psi_{jk}$ located
 at column~$k$ of row~$j$. Assume that, for any selection of one statement from
-each row, at least one of the selected statements holds. Then there is a row
-all of whose statements hold.
-
-The usual proof of this lemma proceeds by contradiction: If no row contains
-only true statements, then on each row there is some statement which is false.
-Since we want to use this lemma in the topos~$\Zar(S)_\Box$, it's important
-that there is also an intuitionistic proof. Such a proof can, for
-instance, proceed by induction. The base case~$n = 1$ is trivial. In the
-induction step~$n \to n+1$, we apply the induction hypothesis to the
-statements~$\psi_{jk}' \defeq (\psi_{jk} \vee \bigwedge_{l=1}^{r_{n+1}}
-\psi_{n+1,l})$ where~$j=1\ldots,n$, $k=1,\ldots,r_j$.}
+each row, at least one of the selected statements holds. By distributivity of
+disjunction over conjunction, there is a row all of whose statements hold.}
 and the elementary reformulation of the statement that~$X = \bigcup_{j=1}^n
 E_j$: For any finite subset~$J \subseteq \{1,\ldots,n\}$ and any indices~$k_j
 \in \{ 1, \ldots, m_j \}$ for~$j \in J$,
@@ -14865,7 +14871,8 @@ Real algebraic geometry starts where the basics of scheme theory end. Therefore
 there should be an internal treatment of advanced tools like cohomology,
 intersection theory, and bounded derived categories of coherent sheaves. Such
 an account would be particularly interesting in the big Zariski topos, where
-the largest simplications can be expected.
+the largest simplifications can be expected.
+
 
 \subsection*{Stacks and other kinds of generalized schemes} These notes only
 deal with classical 1-categorical schemes. An internal treatment of higher

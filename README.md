@@ -34,22 +34,22 @@ No prior knowledge about topos theory or formal logic is assumed.
 * **[Expository notes (PDF)](https://rawgit.com/iblech/internal-methods/master/notes.pdf)**
 * [Slides (PDF)](https://www.speicherleck.de/iblech/stuff/gael2013-topos.pdf)
   for [GAeL 2013](https://www.mimuw.edu.pl/~gael/xxi/)
-* [Poster (PDF)](https://github.com/iblech/internal-methods/raw/master/poster.pdf)
+* [Poster (PDF)](https://rawgit.com/iblech/internal-methods/master/poster.pdf)
   for [GAeL 2014](https://www.mimuw.edu.pl/~gael/)
-* [Slides (PDF)](https://github.com/iblech/internal-methods/raw/master/slides-ihes2015.pdf)
+* [Slides (PDF)](https://rawgit.com/iblech/internal-methods/master/slides-ihes2015.pdf)
   and [video](https://www.youtube.com/watch?v=7S8--bIKaWQ)
   for [Topos à l'IHÉS 2015](https://indico.math.cnrs.fr/event/747/)
-* [Slides (PDF)](https://github.com/iblech/internal-methods/raw/master/slides-pssl99.pdf)
+* [Slides (PDF)](https://rawgit.com/iblech/internal-methods/master/slides-pssl99.pdf)
   for [PSSL 99](https://www.iti.cs.tu-bs.de/~koslowj/PSSL99)
-* [Slides (PDF)](https://github.com/iblech/internal-methods/raw/master/slides-cambridge2016.pdf)
+* [Slides (PDF)](https://rawgit.com/iblech/internal-methods/master/slides-cambridge2016.pdf)
   for the [Category Theory Seminar](https://talks.cam.ac.uk/talk/index/66318) at
   the Centre for Mathematical Sciences in Cambridge
-* [Slides (PDF)](https://github.com/iblech/internal-methods/raw/master/slides-warwick2017.pdf)
+* [Slides (PDF)](https://rawgit.com/iblech/internal-methods/master/slides-warwick2017.pdf)
   for the [Algebraic Geometry Seminar](https://homepages.warwick.ac.uk/staff/A.Thompson.8/seminar.html#Blechschmidt)
   in Warwick
-* [Slides (PDF)](https://github.com/iblech/internal-methods/raw/master/slides-duesseldorf2017.pdf)
+* [Slides (PDF)](https://rawgit.com/iblech/internal-methods/master/slides-duesseldorf2017.pdf)
   for the Oberseminar Algebra/Geometrie/Topologie in Düsseldorf
-* [Slides (PDF)](https://github.com/iblech/internal-methods/raw/master/slides-pssl2017.pdf)
+* [Slides (PDF)](https://rawgit.com/iblech/internal-methods/master/slides-pssl101.pdf)
   for [PSSL 101](https://www1.maths.leeds.ac.uk/~pmtng/pssl101.html)
 
 ![Sheaves of rings look like ordinary rings from the internal point of view.](images/external-internal-small.png)

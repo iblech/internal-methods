@@ -1,12 +1,14 @@
 https://math.stackexchange.com/questions/2302051/the-classifying-topos-of-local-rings-and-algebraic-geometry
 
-* Knowing which theory a topos classifies tells us what the points
-  of the topos are. [Deligne's
-  theorem](http://stacks.math.columbia.edu/tag/06VX) ensures that all the
-  toposes which are in use in algebraic geometry have enough points, such that,
-  for instance, for checking whether a morphism of sheaves is an epimorphism it
-  suffices to check this on stalks. It's therefore useful to have an explicit
-  description of the points.
+* [Deligne's theorem](http://stacks.math.columbia.edu/tag/06VX) ensures that
+  all the toposes which are in use in algebraic geometry have enough points,
+  such that, for instance, for checking whether a morphism of sheaves is an
+  epimorphism it suffices to check this on stalks.
+  
+  However, this theorem is only really useful in conjunction with knowledge how
+  the points look like. If the theory which a topos classifies is known, the
+  description of the points can be directly read off. (They're just the models
+  of the theory in the category of sets.)
 
 * Knowing the points can help in proving that pushing forward along
   closed immersions is exact. See for instance [Gabber and Kelly's
@@ -14,4 +16,12 @@ https://math.stackexchange.com/questions/2302051/the-classifying-topos-of-local-
 
 * Good for specifying maps between toposes?
 
-* Good for knowing which axioms are satisfied internally
+* Good for knowing which axioms are satisfied internally.
+  (In turn useful for constructive or short proofs.)
+  (But mention phenomenon of nongeometric sequents.)
+
+* Constructive definitions
+
+* Meta: Look at Wraith.
+
+* Conceptual clarity.

@@ -1,3 +1,315 @@
+\documentclass[12pt,utf8,notheorems,compress,t]{beamer}
+\usepackage{etex}
+
+\usepackage[english]{babel}
+
+\usepackage{mathtools}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{ragged2e}
+\usepackage{multicol}
+\usepackage{tabto}
+\usepackage{xstring}
+\usepackage{soul}\setul{0.3ex}{}
+\usepackage[all]{xy}
+\xyoption{rotate}
+\usepackage{tikz}
+\usetikzlibrary{calc,shapes.callouts,shapes.arrows,patterns}
+\hypersetup{colorlinks=true}
+
+\usepackage{pifont}
+\newcommand{\cmark}{\ding{51}}
+\newcommand{\xmark}{\ding{55}}
+
+\graphicspath{{images/}}
+
+\usepackage[protrusion=true,expansion=true]{microtype}
+
+\setlength\parskip{\medskipamount}
+\setlength\parindent{0pt}
+
+\title{Synthetic algebraic geometry and the phenomenon of nongeometric sequents}
+\author{Ingo Blechschmidt}
+\date{April 7th, 2018}
+
+\useinnertheme[shadow=true]{rounded}
+\useoutertheme{split}
+\usecolortheme{orchid}
+\usecolortheme{whale}
+\setbeamerfont{block title}{size={}}
+
+\useinnertheme{rectangles}
+
+\usecolortheme{seahorse}
+\definecolor{mypurple}{RGB}{150,0,255}
+\setbeamercolor{structure}{fg=mypurple}
+\definecolor{myred}{RGB}{150,0,0}
+\setbeamercolor*{title}{bg=myred,fg=white}
+\setbeamercolor*{titlelike}{bg=myred,fg=white}
+
+\usefonttheme{serif}
+\usepackage[T1]{fontenc}
+\usepackage{libertine}
+
+\newcommand{\A}{\mathcal{A}}
+\renewcommand{\AA}{\mathbb{A}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\F}{\mathcal{F}}
+\renewcommand{\G}{\mathcal{G}}
+\newcommand{\GG}{\mathbb{G}}
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\K}{\mathcal{K}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\renewcommand{\P}{\mathcal{P}}
+\newcommand{\ppp}{\mathfrak{p}}
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\defeqv}{\vcentcolon\equiv}
+\newcommand{\Sh}{\mathrm{Sh}}
+\newcommand{\GL}{\mathrm{GL}}
+\newcommand{\Zar}{\mathrm{Zar}}
+\newcommand{\op}{\mathrm{op}}
+\newcommand{\Set}{\mathrm{Set}}
+\newcommand{\Eff}{\mathrm{Ef{}f}}
+\newcommand{\Sch}{\mathrm{Sch}}
+\newcommand{\Aff}{\mathrm{Aff}}
+\newcommand{\LRS}{\mathrm{LRS}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\DeclareMathOperator{\Spec}{Spec}
+\newcommand{\lra}{\longrightarrow}
+\newcommand{\RelSpec}{\operatorname{Spec}}
+\renewcommand{\_}{\mathpunct{.}}
+\newcommand{\?}{\,{:}\,}
+\newcommand{\speak}[1]{\ulcorner\text{\textnormal{#1}}\urcorner}
+\newcommand{\ull}[1]{\underline{#1}}
+\newcommand{\affl}{\ensuremath{{\ull{\AA}^1}}}
+\newcommand{\Ll}{\vcentcolon\!\Longleftrightarrow}
+
+\setbeamertemplate{blocks}[rounded][shadow=false]
+
+\newcommand{\fmini}[2]{\framebox{\begin{minipage}{#1}#2\end{minipage}}}
+\makeatletter
+\def\underunbrace#1{\mathop{\vtop{\m@th\ialign{##\crcr
+      $\hfil\displaystyle{#1}\hfil$\crcr\noalign{\kern3\p@\nointerlineskip}
+      \crcr\noalign{\kern3\p@}}}}\limits}
+\def\overunbrace#1{\mathop{\vbox{\m@th\ialign{##\crcr\noalign{\kern3\p@}
+      \crcr\noalign{\kern3\p@\nointerlineskip}
+      $\hfil\displaystyle{#1}\hfil$\crcr}}}\limits}
+\makeatother
+
+\newenvironment{changemargin}[2]{%
+  \begin{list}{}{%
+    \setlength{\topsep}{0pt}%
+    \setlength{\leftmargin}{#1}%
+    \setlength{\rightmargin}{#2}%
+    \setlength{\listparindent}{\parindent}%
+    \setlength{\itemindent}{\parindent}%
+    \setlength{\parsep}{\parskip}%
+  }%
+  \item[]}{\end{list}}
+
+\newcommand{\pointthis}[2]{%
+  \tikz[remember picture,baseline]{\node[anchor=base,inner sep=0,outer sep=0]%
+    (#1) {#1};\node[overlay,rectangle callout,%
+    callout relative pointer={(-0.5cm,1.0cm)},fill=blue!20] at ($(#1.north)+(0.9cm,-1.6cm)$) {#2};}%
+}%
+
+\newcommand{\hcancel}[5]{%
+  \tikz[baseline=(tocancel.base)]{
+    \node[inner sep=0pt,outer sep=0pt] (tocancel) {#1};
+    \draw[red, line width=0.4mm] ($(tocancel.south west)+(#2,#3)$) -- ($(tocancel.north east)+(#4,#5)$);
+  }%
+}
+
+\newcommand{\slogan}[1]{%
+  \begin{center}%
+    \setlength{\fboxrule}{2pt}%
+    \setlength{\fboxsep}{8pt}%
+    {\usebeamercolor[fg]{item}\fbox{\usebeamercolor[fg]{normal text}\parbox{0.93\textwidth}{#1}}}%
+  \end{center}%
+}
+
+\newcommand{\sloganwithoutborder}[1]{%
+  \begin{center}%
+    \setlength{\fboxrule}{0pt}%
+    \setlength{\fboxsep}{-14pt}%
+    {\usebeamercolor[fg]{item}\fbox{\usebeamercolor[fg]{normal
+    text}\parbox{0.9\textwidth}{\begin{center}#1\end{center}}}}%
+  \end{center}%
+}
+
+% Adapted from https://latex.org/forum/viewtopic.php?t=2251 (Stefan Kottwitz)
+\newenvironment<>{varblock}[2]{
+  \begin{center}
+    \begin{minipage}{#1}
+      \setlength{\textwidth}{#1}
+      \begin{actionenv}#3
+	\def\insertblocktitle{\centering #2}
+	\par
+	\usebeamertemplate{block begin}}{
+        \par
+        \usebeamertemplate{block end}
+      \end{actionenv}
+    \end{minipage}
+  \end{center}}
+
+\setbeamertemplate{frametitle}{%
+  \vskip0.7em%
+  \leavevmode%
+  \begin{beamercolorbox}[dp=1ex,center]{}%
+      \usebeamercolor[fg]{item}{\textbf{{\Large \insertframetitle}}}
+  \end{beamercolorbox}%
+}
+
+\setbeamertemplate{navigation symbols}{}
+
+\newcounter{framenumberpreappendix}
+\newcommand{\backupstart}{
+  \setcounter{framenumberpreappendix}{\value{framenumber}}
+}
+\newcommand{\backupend}{
+  \addtocounter{framenumberpreappendix}{-\value{framenumber}}
+  \addtocounter{framenumber}{\value{framenumberpreappendix}} 
+}
+
+\setbeamertemplate{footline}{%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex,dp=1ex,right,rightskip=1mm,leftskip=1mm]{}%
+    \inserttitle \hfill
+    \insertframenumber\,/\,\inserttotalframenumber
+  \end{beamercolorbox}%
+  \vskip0pt%
+}
+
+
+\newcommand{\hil}[1]{{\usebeamercolor[fg]{item}{\textbf{#1}}}}
+
+\IfSubStr{\jobname}{\detokenize{nonotes}}{
+  \setbeameroption{hide notes}
+}{
+  \setbeameroption{show notes}
+}
+\setbeamertemplate{note page}[plain]
+\setbeameroption{hide notes}
+
+\begin{document}
+
+\addtocounter{framenumber}{-1}
+
+\begin{frame}[c]
+  \centering
+  \includegraphics[scale=0.3]{images/external-internal-small}
+  \medskip
+
+  \hil{Synthetic algebraic geometry} \\
+  \small\emph{a case study in applied topos theory}
+
+  \large\&
+
+  \normalsize
+
+  \hil{the phenomenon of nongeometric sequents}
+
+  \medskip
+
+  \scriptsize
+  Ingo Blechschmidt \\
+  University of Augsburg
+  \medskip
+
+  103rd Peripatetic Seminar on Sheaves and Logic (Brno) \\
+  April 7th, 2018
+  \par
+\end{frame}
+
+
+\section{Preliminaries}
+
+\subsection{Synthetic differential geometry}
+
+\begin{frame}{Synthetic differential geometry}
+  \vspace*{-1em}
+  \begin{varblock}{9.5cm}{The axiom of microaffinity}
+    \justifying
+    Let~$\Delta = \{ \varepsilon \in \RR \,|\, \varepsilon^2 = 0 \}$.
+    For any function $f : \Delta \to \RR$,
+    there are unique numbers~$a, b \in \RR$ such that
+    $f(\varepsilon) = a + b \varepsilon$
+    for all~$\varepsilon \in \Delta$.
+  \end{varblock}
+
+  \begin{center}
+    \includegraphics[width=0.5\textwidth]{microaffinity}
+  \end{center}
+
+  \vspace*{-1em}
+  \begin{itemize}
+    \item The \hil{derivative} of~$f$ as above at zero is~$b$.
+    \item Manifolds are \hil{just sets}.
+    \item A \hil{tangent vector} to~$M$ is a map~$\Delta \to M$.
+  \end{itemize}
+
+  \centering
+  \hil{Toposes provide models for this theory.}
+\end{frame}
+
+
+\subsection{Toposes}
+
+\begin{frame}{The internal universe of a topos}
+  A \hil{topos} is a category which has finite limits,
+  is cartesian closed and has a subobject classifier, for instance
+  \begin{itemize}
+    \item \hil{$\boldsymbol{\Set}$}, the category of sets;
+    \item \hil{$\boldsymbol{\Sh(X)}$}, the category of set-valued sheaves over
+    a space~$X$;
+    \item \hil{$\boldsymbol{\Eff}$}, the ef{}fective topos (roughly: a
+    category of data types).
+  \end{itemize}
+
+  \slogan{Any topos supports an \hil{internal language},
+  which is sound with respect to
+  \only<1>{\hil{intuitionistic reasoning}}%
+  \only<2->{\hil{\pointthis{intuitionistic reasoning}{
+    \textnormal{\textcolor{black}{
+    no $\varphi \vee \neg\varphi$,\ \
+    no $\neg\neg\varphi \Rightarrow \varphi$,\ \
+    no axiom of choice}}}}}.}
+\end{frame}
+
+\newcommand{\intex}[3]{#1 \qquad #2\par #3\medskip}
+
+\begin{frame}{Curious universes}
+  \small
+  \intex{
+    $\Eff \models \text{``There are infinitely many prime numbers.''}$
+  }{\textcolor{green!90}{\cmark}}{
+    External meaning: There is a (Turing) \hil{machine} producing arbitrarily many prime
+    numbers.
+  }
+
+  \intex{
+    $\Eff \not\models \text{``Any Turing machine halts or doesn't halt.''}$
+  }{\textcolor{red!80}{\xmark}}{
+    External meaning: There is a \hil{halting oracle} which determines whether
+    any given machine halts or doesn't halt.
+  }
+
+  \intex{
+    $\Sh(X) \not\models \text{``Any cont. function with opposite signs has
+    a zero.''}$
+  }{\textcolor{red!80}{\xmark}}{
+    External meaning: Zeros can be picked \hil{locally continuously} in
+    continuous families of continuous functions.
+  }
+\end{frame}
+
+
+\end{document}
+
+
+
 "Any map from the reals to the reals is smooth." This statement holds in the
 context of synthetic differential geometry, a well-developed account of smooth
 manifolds and related notions which allows us to bring formal reasoning much

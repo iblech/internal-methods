@@ -18,6 +18,7 @@
 \hypersetup{colorlinks=true}
 \usepackage{multimedia}
 \newcommand{\video}[2]{\movie[width=#2,height=#2,autostart,loop,poster]{}{#1}}
+\hypersetup{colorlinks=false}
 
 \usepackage{pifont}
 \newcommand{\cmark}{\ding{51}}
@@ -181,7 +182,7 @@
 
 \setbeamertemplate{footline}{%
   \begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex,dp=1ex,right,rightskip=1mm,leftskip=1mm]{}%
-    \inserttitle \hfill
+    \hfill
     \insertframenumber\,/\,\inserttotalframenumber
   \end{beamercolorbox}%
   \vskip0pt%
@@ -204,6 +205,7 @@
 
 \begin{frame}[c]
   \centering
+  \medskip
   \includegraphics[scale=0.3]{images/external-internal-small}
   \medskip
 
@@ -223,7 +225,7 @@
   University of Augsburg
   \medskip
 
-  103rd Peripatetic Seminar on Sheaves and Logic (Brno) \\
+  103rd Peripatetic Seminar on Sheaves and Logic in Brno \\
   April 7th, 2018
   \par
 \end{frame}
@@ -283,33 +285,37 @@
     no axiom of choice}}}}}.\end{varblock}
 \end{frame}
 
-\newcommand{\intex}[3]{#1 \quad #2\par #3\medskip}
+\newcommand{\intex}[3]{#1 \quad #2\par #3\bigskip\medskip}
 
 \begin{frame}{Curious universes}
-  \small
-  \intex{
-    $\Eff \models \text{``There are infinitely many prime numbers.''}$
-  }{\textcolor{green!90}{\cmark}}{
-    External meaning: There is a Turing \hil{machine} producing arbitrarily many prime
-    numbers.
-  }
+  \begin{changemargin}{-1.1em}{0em}
+    \small
+    \begin{itemize}
+      \item \intex{
+        $\Eff \models \text{``There are infinitely many prime numbers.''}$
+      }{\textcolor{green!90}{\cmark}}{
+        External meaning: There is a Turing \hil{machine} producing arbitrarily many prime
+        numbers.
+      }
 
-  \intex{
-    $\Eff \not\models \text{``Any Turing machine halts or doesn't halt.''}$
-  }{\textcolor{red!80}{\xmark}}{
-    External meaning: There is a \hil{halting oracle} which determines whether
-    any given machine halts or doesn't halt.
-  }
+      \item \intex{
+        $\Eff \not\models \text{``Any Turing machine halts or doesn't halt.''}$
+      }{\textcolor{red!80}{\xmark}}{
+        External meaning: There is a \hil{halting oracle} which determines whether
+        any given machine halts or doesn't halt.
+      }
 
-  \intex{
-    $\Sh(X) \not\models \text{``Any cont. function with opposite signs has
-    a zero.''}$
-  }{\textcolor{red!80}{\xmark}}{
-    External meaning: Zeros can be picked \hil{locally continuously} in
-    continuous families of continuous functions.
-  }
+      \item \intex{
+        $\Sh(X) \not\models \text{``Any cont. function with opposite signs has
+        a zero.''}$
+      }{\textcolor{red!80}{\xmark}}{
+        External meaning: Zeros can be picked \hil{locally continuously} in
+        continuous families of continuous functions.
+      }
+    \end{itemize}
+  \end{changemargin}
 
-  \vspace*{-1em}
+  \vspace*{-2em}
   \hfill\video{zeros-in-families.mp4}{2cm}
 \end{frame}
 
@@ -444,13 +450,13 @@
 
   \vspace*{-2em}
   \begin{varblock}{11cm}{}  %Fundamental theorem about classifying toposes}
-    For a \hil{geometric sequent}~$\varphi \seq \psi$, the following
+    For a \hil{geometric sequent}~$\forall \vec x\_ (\varphi \Rightarrow \psi)$, the following
     are equivalent:
     \begin{enumerate}
-      \item The theory~$\TT$ \hil{proves}~$\varphi \seq \psi$. \\[-1em]
-      \item $\forall \vec x\_ (\varphi \Rightarrow \psi)$ holds
+      \item It is \hil{provable} by~$\TT$. \\[-1em]
+      \item It holds
       \hil{for all models} of~$\TT$ in all toposes. \\[-1em]
-      \item $\forall \vec x\_ (\varphi \Rightarrow \psi)$ holds
+      \item It holds
       for the \hil{generic model} of~$\TT$ in its \hil{classifying topos}.
     \end{enumerate}
   \end{varblock}

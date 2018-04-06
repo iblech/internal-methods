@@ -294,7 +294,7 @@
       \item \intex{
         $\Eff \models \text{``There are infinitely many prime numbers.''}$
       }{\textcolor{green!90}{\cmark}}{
-        External meaning: There is a Turing \hil{machine} producing arbitrarily many prime
+        External meaning: There is a \hil{Turing machine} producing arbitrarily many prime
         numbers.
       }
 
@@ -309,7 +309,7 @@
         $\Sh(X) \not\models \text{``Any cont. function with opposite signs has
         a zero.''}$
       }{\textcolor{red!80}{\xmark}}{
-        External meaning: Zeros can be picked \hil{locally continuously} in
+        External meaning: Zeros can locally be picked \hil{continuously} in
         continuous families of continuous functions.
       }
     \end{itemize}
@@ -359,14 +359,46 @@
   is a limit diagram for any scheme~$U = \bigcup_i U_i$ over~$S$.
   \end{block}
 
+  \begin{changemargin}{-1.0em}{-0.5em}
   \begin{itemize}
     \item For an~$S$-scheme~$X$, its functor of points $\ull{X} =
     \Hom_S(\cdot,X)$ is an object of~$\Zar(S)$. It feels like \hil{the set of
-    points} of~$X$.
-    \item In particular, there is the ring object $\affl$.
+    points} of~$X$. \\[0.2em]
+    \item \ \\[-1.2em]\mbox{In particular, there is the ring object $\affl$ with~$\affl(U) =
+    \O_U(U)$.} \\[0.2em]
     \item $\Zar(S)$ classifies local~$\O_S$-algebras which are local
     over~$\O_S$.
   \end{itemize}
+  \end{changemargin}
+\end{frame}
+
+\begin{frame}{Synthetic constructions}
+  \small
+  $\hil{$\boldsymbol{\mathbb{A}^n}$} = (\affl)^n = \affl \times \cdots \times \affl$
+
+  $\begin{array}{@{}r@{}c@{}l@{}}
+    \hil{$\boldsymbol{\mathbb{P}^n}$} &\phantom{}=\phantom{}& \{ (x_0,\ldots,x_n) : (\affl)^{n+1} \,|\, x_0 \neq 0 \vee
+    \cdots \vee x_n \neq 0 \}/(\affl)^\times \\
+    &\cong& \text{set of one-dimensional subspaces of~$(\affl)^{n+1}$} \\
+    &&\qquad \text{(with~$\O(-1) = (\ell)_{\ell \? \mathbb{P}^n}$, $\O(1) =
+    (\ell^\vee)_{\ell \? \mathbb{P}^n}$)}
+  \end{array}$
+
+  $\hil{$\boldsymbol{\Spec(R)}$} = \Hom_{\mathrm{Alg}(\affl)}(R, \affl) =
+    \text{set of $\affl$-valued points of $R$}$
+
+  $\hil{$\boldsymbol{TX}$} = X^\Delta$, where $\Delta = \{ \varepsilon \? \affl \,|\, \varepsilon^2 = 0 \}$
+
+  A subset $U \subseteq X$ is \hil{qc-open} if and only if for any $x : X$
+  there exist $f_1,\ldots,f_n \? \affl$ such that $x \in U \Longleftrightarrow
+  \exists i\_ f_i \neq 0$.
+
+  A \hil{synthetic affine scheme} is a set which is in bijection
+  with~$\Spec(R)$ for some finitely presented algebra~$R$.
+
+  A \hil{synthetic scheme} is a set which can be covered by finitely many
+  qc-open synthetic affine schemes~$U_i$ such that the intersections~$U_i \cap
+  U_j$ can be covered by finitely many qc-open synthetic affine schemes.
 \end{frame}
 
 \begin{frame}{Properties of the affine line}
@@ -387,40 +419,11 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Synthetic constructions}
-  \small
-  $\hil{$\boldsymbol{\mathbb{A}^n}$} = (\affl)^n = \affl \times \cdots \times \affl$
-
-  $\begin{array}{@{}r@{}c@{}l@{}}
-    \hil{$\boldsymbol{\mathbb{P}^n}$} &\phantom{}=\phantom{}& \{ (x_0,\ldots,x_n) : (\affl)^{n+1} \,|\, x_0 \neq 0 \vee
-    \cdots \vee x_n \neq 0 \}/(\affl)^\times \\
-    &\cong& \text{set of one-dimensional subspaces of~$(\affl)^{n+1}$} \\
-    &&\qquad \text{(with~$\O(-1) = (\ell)_{\ell \? \mathbb{P}^n}$, $\O(1) =
-    (\ell^\vee)_{\ell \? \mathbb{P}^n}$)}
-  \end{array}$
-
-  $\hil{$\boldsymbol{\Spec(R)}$} = \Hom_{\mathrm{Alg}(\affl)}(R, \affl) =
-    \text{set of $\affl$-valued points of $R$}$
-
-  $\hil{$\boldsymbol{TX}$} = \Hom(\Delta, X)$, where $\Delta = \{ \varepsilon \? \affl \,|\, \varepsilon^2 = 0 \}$
-
-  A subset $U \subseteq X$ is \hil{qc-open} if and only if for any $x : X$
-  there exist $f_1,\ldots,f_n \? \affl$ such that $x \in U \Longleftrightarrow
-  \exists i\_ f_i \neq 0$.
-
-  A \hil{synthetic affine scheme} is a set which is in bijection
-  with~$\Spec(R)$ for some finitely presented algebra~$R$.
-
-  A \hil{synthetic scheme} is a set which can be covered by finitely many
-  qc-open synthetic affine schemes~$U_i$ such that the intersections~$U_i \cap
-  U_j$ can be covered by finitely many qc-open synthetic affine schemes.
-\end{frame}
-
 \begin{frame}{Synthetic quasicoherence}
   Recall~$\Spec(R) = \Hom_{\mathrm{Alg}(\affl)}(R, \affl)$ and consider the statement
   \[ \text{``the canonical map~$
     \begin{array}[t]{rcl}
-      R &\longrightarrow& \Hom(\Spec(R), \affl) \\
+      R &\longrightarrow& (\affl)^{\Spec(R)} \\
       f &\longmapsto& (\alpha \mapsto \alpha(f))
     \end{array}
   $ is bijective''}.
@@ -436,9 +439,9 @@
   Any known property of~$\affl$ follows from this \hil{synthetic
   quasicoherence}.
 
-  \emph{Example.} Let~$f \? \affl$ such that~$f \neq 0$. Set~$R = \affl/(f)$.
-  Then~$\Spec(R) = \emptyset$. Thus~$\Hom(\Spec(R),\affl)$ is a singleton.
-  Hence~$R = 0$. Therefore~$f$ is invertible.
+  \emph{Example.} Let~$x \? \affl$ such that~$x \neq 0$. Set~$R = \affl/(x)$.
+  Then~$\Spec(R) = \emptyset$. Thus~$(\affl)^{\Spec(R)}$ is a singleton.
+  Hence~$R = 0$. Therefore~$x$ is invertible.
 \end{frame}
 
 

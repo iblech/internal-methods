@@ -233,38 +233,34 @@
 
 \section{Preliminaries}
 
-\subsection{Synthetic differential geometry}
+\subsection{Approaches to algebraic geometry}
 
-\begin{frame}{Synthetic differential geometry}
-  \vspace*{-1em}
-  \begin{varblock}{9.5cm}{The axiom of microaffinity}
-    \justifying
-    Let~$\Delta = \{ \varepsilon \in \RR \,|\, \varepsilon^2 = 0 \}$.
-    For any function $f : \Delta \to \RR$,
-    there are unique numbers~$a, b \in \RR$ such that
-    $f(\varepsilon) = a + b \varepsilon$
-    for all~$\varepsilon \in \Delta$.
-  \end{varblock}
-
-  \begin{center}
-    \includegraphics[width=0.5\textwidth]{microaffinity}
-  \end{center}
-
-  \vspace*{-1em}
+\begin{frame}{Approaches to algebraic geometry}
+  Usual approach to algebraic geometry: \hil{layer schemes above ordinary set theory}
+  using either
   \begin{itemize}
-    \item The \hil{derivative} of~$f$ as above at zero is~$b$.
-    \item Manifolds are \hil{just sets}.
-    \item A \hil{tangent vector} to~$M$ is a map~$\Delta \to M$.
+    \item locally ringed spaces
+    \small
+    \begin{multline*}
+      \text{set of prime ideals of~$\ZZ[X,Y,Z]/(X^n+Y^n-Z^n)$} + {} \\
+      \text{Zariski topology} + \text{structure sheaf}
+    \end{multline*}
+    \normalsize
+    \item or Grothendieck's functor-of-points account, where a scheme is a functor~$\mathrm{Ring} \to \mathrm{Set}$.
+    \small\[ A \longmapsto \{ (x,y,z) \in A^3 \,|\, x^n+y^n-z^n=0 \} \]
   \end{itemize}
+  \bigskip
 
-  \centering
-  \hil{Toposes provide models for this theory.}
+  \hil{Synthetic approach:} model schemes \hil{directly as sets} in a certain
+  nonclassical set theory.
+  \small
+  \[ \{ (x,y,z) \? (\affl)^3 \,|\, x^n+y^n-z^n=0 \} \]
 \end{frame}
 
 
-\subsection{Toposes}
+\subsection{Toposes as universes}
 
-\begin{frame}{The internal universe of a topos}
+\begin{frame}{Toposes as mathematical universes}
   A \hil{topos} is a category which has finite limits,
   is cartesian closed and has a subobject classifier, for instance
   \begin{itemize}
@@ -299,14 +295,14 @@
       }
 
       \item \intex{
-        $\Eff \not\models \text{``Any Turing machine halts or doesn't halt.''}$
+        $\Eff \models \text{``Any Turing machine halts or doesn't halt.''}$
       }{\textcolor{red!80}{\xmark}}{
         External meaning: There is a \hil{halting oracle} which determines whether
         any given machine halts or doesn't halt.
       }
 
       \item \intex{
-        $\Sh(X) \not\models \text{``Any cont. function with opposite signs has
+        $\Sh(X) \models \text{``Any cont. function with opposite signs has
         a zero.''}$
       }{\textcolor{red!80}{\xmark}}{
         External meaning: Zeros can locally be picked \hil{continuously} in
@@ -319,31 +315,37 @@
   \hfill\video{zeros-in-families.mp4}{2cm}
 \end{frame}
 
+\begin{frame}{Synthetic differential geometry}
+  \vspace*{-1em}
+  \begin{varblock}{9.5cm}{The axiom of microaffinity}
+    \justifying
+    Let~$\Delta = \{ \varepsilon \in \RR \,|\, \varepsilon^2 = 0 \}$.
+    For any function $f : \Delta \to \RR$,
+    there are unique numbers~$a, b \in \RR$ such that
+    $f(\varepsilon) = a + b \varepsilon$
+    for all~$\varepsilon \in \Delta$.
+  \end{varblock}
+
+  \begin{center}
+    \includegraphics[width=0.5\textwidth]{microaffinity}
+  \end{center}
+
+  \vspace*{-1em}
+  \begin{itemize}
+    \item The \hil{derivative} of~$f$ as above at zero is~$b$.
+    \item Manifolds are \hil{just sets}.
+    \item A \hil{tangent vector} to~$M$ is a map~$\Delta \to M$.
+  \end{itemize}
+
+  \centering
+  \hil{Toposes provide models for this theory.}
+\end{frame}
+
 
 \section{Synthetic algebraic geometry}
 
-\begin{frame}{Approaches to algebraic geometry}
-  Usual approach to algebraic geometry: \hil{layer schemes above ordinary set theory}
-  using either
-  \begin{itemize}
-    \item locally ringed spaces
-    \small
-    \begin{multline*}
-      \text{set of prime ideals of~$\ZZ[X,Y,Z]/(X^n+Y^n-Z^n)$} + {} \\
-      \text{Zariski topology} + \text{structure sheaf}
-    \end{multline*}
-    \normalsize
-    \item or Grothendieck's functor-of-points account, where a scheme is a functor~$\mathrm{Ring} \to \mathrm{Set}$.
-    \small\[ A \longmapsto \{ (x,y,z) \in A^3 \,|\, x^n+y^n-z^n=0 \} \]
-  \end{itemize}
-  \bigskip
-  \pause
 
-  \hil{Synthetic approach:} model schemes \hil{directly as sets} in a certain
-  nonclassical set theory.
-  \small
-  \[ \{ (x,y,z) \? (\affl)^3 \,|\, x^n+y^n-z^n=0 \} \]
-\end{frame}
+\subsection{The big Zariski topos}
 
 \begin{frame}{The big Zariski topos}
   Let~$S$ be a fixed base scheme.
@@ -371,6 +373,9 @@
   \end{itemize}
   \end{changemargin}
 \end{frame}
+
+
+\subsection{Synthetic constructions}
 
 \begin{frame}{Synthetic constructions}
   \small
@@ -401,6 +406,9 @@
   U_j$ can be covered by finitely many qc-open synthetic affine schemes.
 \end{frame}
 
+
+\subsection[Quasicoherence]{Synthetic quasicoherence}
+
 \begin{frame}{Properties of the affine line}
   \begin{itemize}
     \item $\affl$ is a local ring:
@@ -408,14 +416,17 @@
     \text{$y$ \inv} \]
     \item $\affl$ is a field:
     \begin{align*}
-      \neg(x = 0) &\Longleftrightarrow \text{$x$ \inv} \\
-      \neg(\text{$x$ \inv}) &\Longleftrightarrow \text{$x$ nilpotent}
+      \neg(x = 0) &\Longleftrightarrow \text{$x$ invertible} \\
+      \neg(\text{$x$ invertible}) &\Longleftrightarrow \text{$x$ nilpotent}
     \end{align*}
-    \item $\affl$ satisfies the axiom of microaffinity.
+    \item $\affl$ satisfies the axiom of microaffinity: Any map $f : \Delta \to
+    \affl$ is of the form~$f(\varepsilon) = a + b \varepsilon$ for unique
+    values~$a,b \? \affl$, where~$\Delta = \{ \varepsilon \? \affl \,|\,
+    \varepsilon^2 = 0 \}$.
+    \item Any function $\affl \to \affl$ is a polynomial.
     \item $\affl$ is anonymously algebraically closed: Any monic polynomial
     does \emph{not not} have a zero.
     \item $\affl$ is of unbounded Krull dimension.
-    \item Any function $\affl \to \affl$ is a polynomial.
   \end{itemize}
 \end{frame}
 

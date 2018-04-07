@@ -354,11 +354,11 @@
   The \hil{big Zariski topos} $\Zar(S)$ is the
   category $\Sh(\Sch/S)$. It consists of functors
   $(\Sch/S)^\op \to \Set$ satisfying the gluing condition that
-  \[ F(U) \to
+  \[ F(T) \to
     \prod_i F(U_i) \rightrightarrows
     \prod_{j,k} F(U_j \cap U_k) \]
   \\[-0.6em]
-  is a limit diagram for any scheme~$U = \bigcup_i U_i$ over~$S$.
+  is a limit diagram for any scheme~$T = \bigcup_i U_i$ over~$S$.
   \end{block}
 
   \begin{changemargin}{-1.0em}{-0.5em}
@@ -366,8 +366,8 @@
     \item For an~$S$-scheme~$X$, its functor of points $\ull{X} =
     \Hom_S(\cdot,X)$ is an object of~$\Zar(S)$. It feels like \hil{the set of
     points} of~$X$. \\[0.2em]
-    \item \ \\[-1.2em]\mbox{In particular, there is the ring object $\affl$ with~$\affl(U) =
-    \O_U(U)$.} \\[0.2em]
+    \item \ \\[-1.2em]\mbox{In particular, there is the ring object $\affl$ with~$\affl(T) =
+    \O_T(T)$.} \\[0.2em]
     \item $\Zar(S)$ classifies local~$\O_S$-algebras which are local
     over~$\O_S$.
   \end{itemize}
@@ -487,6 +487,42 @@
     generic freeness, \ldots
   \end{itemize}
 \end{frame}
+
+
+\section{Further research}
+
+\begin{frame}{Further research}
+  \vspace*{-1em}
+  \small
+  \begin{itemize}
+    \item Push synthetic algebraic geometry further:
+          true cohomology, intersection theory, derived categories, \ldots
+          \\[-1.9em]
+
+    \item What do the various subtoposes of~$\Zar(S)$ classify
+          (étale, fppf, ph, $\neg\neg$, \ldots)? What about the crystalline
+          topos?
+          \\[-1.9em]
+
+    \item Understand quasicoherence.
+          \\[-1.9em]
+
+    \item Find further applications of nongeometric sequents, for instance in
+    constructive algebra.
+  \end{itemize}
+
+  {\vspace{-0.1em}\centering
+  \rotatebox{90}{\tiny\scalebox{0.5}{Illustration: Carina Willbold}}\hspace{-0.05cm}%
+  \includegraphics[scale=0.18]{images/external-internal-small}
+  \par\medskip\vspace{-0.5em}}
+
+  \centering
+  Expository notes: \\
+  \hil{\href{https://www.ingo-blechschmidt.eu/}{https://www.ingo-blechschmidt.eu/}}
+  \par
+\end{frame}
+
+\addtocounter{framenumber}{-1}
 
 \end{document}
 

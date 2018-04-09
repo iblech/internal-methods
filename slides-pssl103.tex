@@ -312,7 +312,11 @@
   \end{changemargin}
 
   \vspace*{-2em}
-  \hfill\video{zeros-in-families.mp4}{2cm}
+  \hfill\video{zeros-in-families.mp4}{2cm} \\
+  \hfill \scriptsize
+  (see
+  \textcolor{red}{\href{https://rawgit.com/iblech/internal-methods/master/images/zeros-in-families.mp4}{video}}
+  for counterexample)
 \end{frame}
 
 \begin{frame}{Synthetic differential geometry}
@@ -399,7 +403,7 @@
   \exists i\_ f_i \neq 0$.
 
   A \hil{synthetic affine scheme} is a set which is in bijection
-  with~$\Spec(R)$ for some finitely presented algebra~$R$.
+  with~$\Spec(R)$ for some synthetically quasicoherent~$\affl$-algebra~$R$.
 
   A \hil{synthetic scheme} is a set which can be covered by finitely many
   qc-open synthetic affine schemes~$U_i$ such that the intersections~$U_i \cap
@@ -416,7 +420,7 @@
     \text{$y$ \inv} \]
     \item $\affl$ is a field:
     \begin{align*}
-      \neg(x = 0) &\Longleftrightarrow \text{$x$ invertible} \\
+      \neg(x = 0) &\Longleftrightarrow \text{$x$ invertible \quad [Kock 1976]} \\
       \neg(\text{$x$ invertible}) &\Longleftrightarrow \text{$x$ nilpotent}
     \end{align*}
     \item $\affl$ satisfies the axiom of microaffinity: Any map $f : \Delta \to
@@ -447,8 +451,8 @@
     \item True for \hil{any} finitely presented~$\affl$-algebra~$R$.
   \end{itemize}
 
-  Any known property of~$\affl$ follows from this \hil{synthetic
-  quasicoherence}.
+  Any known property of~$\affl$ follows from this \\
+  \hil{synthetic quasicoherence}.
 
   \emph{Example.} Let~$x \? \affl$ such that~$x \neq 0$. Set~$R = \affl/(x)$.
   Then~$\Spec(R) = \emptyset$. Thus~$(\affl)^{\Spec(R)}$ is a singleton.
@@ -480,7 +484,8 @@
     topos, for instance~``$\affl$ is synthetically quasicoherent''
     in~$\Zar(S)$. \\[-1em]
     \item These are \hil{$\boldsymbol{\TT}$-redundant}, but the converse is
-    false. \\[-1em]  % (Bezem--Buchholtz--Coquand 2017). \\[-1em]
+    false. [Bezem--Buchholtz--Coquand 2017; answering a question by Wraith
+    possibly raised at PSSL 1.] \\[-1em]
     \item \ \\[-1.2em]\mbox{Are they precisely the consequences of synthetic
     quasicoherence?} \\[-1em]
     \item Applications: synthetic algebraic geometry,

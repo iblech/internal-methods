@@ -51,5 +51,7 @@ No prior knowledge about topos theory or formal logic is assumed.
   for the Oberseminar Algebra/Geometrie/Topologie in Düsseldorf
 * [Slides (PDF)](https://rawgit.com/iblech/internal-methods/master/slides-pssl101.pdf)
   for [PSSL 101](https://www1.maths.leeds.ac.uk/~pmtng/pssl101.html)
+* [Slides (PDF)](https://rawgit.com/iblech/internal-methods/master/slides-pssl103.pdf)
+  for [PSSL 103](https://www.math.muni.cz/~loregianf/PSSL103/PSSL103.php)
 
 ![Sheaves of rings look like ordinary rings from the internal point of view.](images/external-internal-small.png)

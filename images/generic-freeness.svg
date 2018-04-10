@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="53.181252mm"
+   height="30.238945mm"
+   viewBox="0 0 53.181252 30.238945"
+   version="1.1"
+   id="svg4534"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="generic-freeness.svg">
+  <defs
+     id="defs4528">
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect5087"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect5083"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect5087-3"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect5087-7"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect5087-35"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect5087-9"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect5087-2"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect5087-0"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect5087-35-3"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4"
+     inkscape:cx="98.399601"
+     inkscape:cy="-14.466353"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1366"
+     inkscape:window-height="768"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0">
+    <inkscape:grid
+       type="xygrid"
+       id="grid5079"
+       originx="-21.034375"
+       originy="-261.80587" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata4531">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-21.034374,-4.9551915)">
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 21.166666,35.062501 c 8.819735,-0.881974 17.639178,-1.763918 26.458596,-1.763892 8.819418,2.6e-5 17.638861,0.88197 26.458071,1.763891"
+       id="path5081"
+       inkscape:connector-curvature="0"
+       inkscape:path-effect="#path-effect5083"
+       inkscape:original-d="m 21.166666,35.062501 c 8.819711,-0.88221 17.639154,-1.764154 26.458334,-2.645834 8.819709,0.88168 17.639152,1.763624 26.458333,2.645833"
+       sodipodi:nodetypes="ccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 21.166666,11.25 c 0,6.173346 0,12.346957 0,18.520834"
+       id="path5085"
+       inkscape:connector-curvature="0"
+       inkscape:path-effect="#path-effect5087"
+       inkscape:original-d="m 21.166666,11.25 c 2.65e-4,6.173346 2.65e-4,12.346957 0,18.520834" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 74.083333,11.25 c 0,6.173346 0,12.346957 0,18.520834"
+       id="path5085-6"
+       inkscape:connector-curvature="0"
+       inkscape:path-effect="#path-effect5087-3"
+       inkscape:original-d="m 74.083333,11.25 c 2.66e-4,6.173346 2.66e-4,12.346957 0,18.520834" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 26.269346,10.267262 c 0,6.173347 0,12.346958 0,18.520835"
+       id="path5085-5"
+       inkscape:connector-curvature="0"
+       inkscape:path-effect="#path-effect5087-7"
+       inkscape:original-d="m 26.269346,10.267262 c 2.65e-4,6.173347 2.65e-4,12.346958 0,18.520835" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 32.694941,9.5113093 c 0,6.1733457 0,12.3469567 0,18.5208337"
+       id="path5085-62"
+       inkscape:connector-curvature="0"
+       inkscape:path-effect="#path-effect5087-35"
+       inkscape:original-d="m 32.694941,9.5113093 c 2.65e-4,6.1733457 2.65e-4,12.3469567 0,18.5208337" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 69.358631,10.267261 c 0,6.173347 0,12.346958 0,18.520835"
+       id="path5085-1"
+       inkscape:connector-curvature="0"
+       inkscape:path-effect="#path-effect5087-9"
+       inkscape:original-d="m 69.358631,10.267261 c 2.65e-4,6.173347 2.65e-4,12.346958 0,18.520835" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 63.122024,9.0955351 c 0,6.1733469 0,12.3469579 0,18.5208349"
+       id="path5085-7"
+       inkscape:connector-curvature="0"
+       inkscape:path-effect="#path-effect5087-2"
+       inkscape:original-d="m 63.122024,9.0955351 c 2.65e-4,6.1733469 2.65e-4,12.3469579 0,18.5208349" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 57.641369,8.9065471 c 0,6.1733469 0,12.3469579 0,18.5208349"
+       id="path5085-9"
+       inkscape:connector-curvature="0"
+       inkscape:path-effect="#path-effect5087-0"
+       inkscape:original-d="m 57.641369,8.9065471 c 2.65e-4,6.1733469 2.65e-4,12.3469579 0,18.5208349" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 44.223214,10.494048 v 18.520834 l 7.937499,-5.291668 V 5.2023808 Z"
+       id="path5173"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 38.364583,9.0955353 c 0,6.1733467 0,12.3469577 0,18.5208347"
+       id="path5085-62-6"
+       inkscape:connector-curvature="0"
+       inkscape:path-effect="#path-effect5087-35-3"
+       inkscape:original-d="m 38.364583,9.0955353 c 2.65e-4,6.1733467 2.65e-4,12.3469577 0,18.5208347" />
+  </g>
+</svg>

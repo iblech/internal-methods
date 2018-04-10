@@ -400,9 +400,11 @@
   \pause
   \begin{align*}
     \intertext{The forcing model has additional \hil{unique properties}, e.\,g.\@}
-    A &\models \forall x\?A^\sim\_ \neg(\speak{$x$ inv.}) \Rightarrow \speak{$x$ nilpotent} \\
+    A &\models \forall x\?A^\sim\_ \neg(\speak{$x$ inv.}) \Longrightarrow \speak{$x$ nilpotent} \\
     \intertext{which if~$A$ is reduced implies the \hil{field condition}}
-    A &\models \forall x\?A^\sim\_ \neg(\speak{$x$ inv.}) \Rightarrow x = 0.
+    A &\models \forall x\?A^\sim\_ \neg(\speak{$x$ inv.}) \Longrightarrow x = 0
+    \quad\text{and also} \\
+    A &\models \forall x\?A^\sim\_ \neg\neg(x = 0) \Longrightarrow x = 0.
   \end{align*}
   \emph{Translation.} For any element~$x \in A$, if~$f = 0$ is the only element such
   that~$x$ is invertible in~$A[f^{-1}]$, then~$x = 0$.

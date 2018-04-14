@@ -1,0 +1,147 @@
+\documentclass{amsart}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm,mathtools}
+\usepackage[protrusion=true,expansion=true]{microtype}
+\usepackage{hyperref}
+
+\title{An elementary and constructive proof of Grothendieck's generic freeness
+lemma}
+\author{Ingo Blechschmidt}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[]
+\newtheorem{ex}[defn]{Example}
+
+\theoremstyle{plain}
+\newtheorem{prop}[defn]{Proposition}
+\newtheorem{cor}[defn]{Corollary}
+\newtheorem{lemma}[defn]{Lemma}
+\newtheorem{thm}[defn]{Theorem}
+\newtheorem{scholium}[defn]{Scholium}
+
+\theoremstyle{remark}
+\newtheorem{rem}[defn]{Remark}
+\newtheorem{question}[defn]{Question}
+\newtheorem{speculation}[defn]{Speculation}
+\newtheorem{caveat}[defn]{Caveat}
+\newtheorem{conjecture}[defn]{Conjecture}
+
+\newcommand{\XXX}[1]{\textbf{XXX: #1}}
+\newcommand{\defeq}{\vcentcolon=}
+\DeclareMathOperator{\Spec}{Spec}
+
+\begin{document}
+
+\begin{abstract}
+  We present a new and direct proof of Grothendieck's generic freeness
+  lemma. Unlike the previously published proofs, it doesn't require a series of
+  reduction steps and is fully constructive, not involving the axiom of choice
+  or even the law of excluded middle. It was found using a general
+  topos-theoretic technique. \XXX{self-contained...}
+\end{abstract}
+
+\maketitle
+
+We prove Grothendieck's generic freeness lemma for rings and modules in the
+following form.
+
+\begin{thm}\label{thm:algebraic}Let~$A$ be a reduced ring. Let~$B$ be
+an~$A$-algebra of finite type. Let~$M$ be a finitely generated~$B$-module.
+If~$f = 0$ is the only element of~$A$ such that
+\begin{enumerate}
+\item the~$A[f^{-1}]$-modules $B[f^{-1}]$ and $M[f^{-1}]$ are free,
+\item the~$A[f^{-1}]$-algebra~$B[f^{-1}]$ is of finite presentation, and
+\item the~$B[f^{-1}]$-module~$M[f^{-1}]$ is finitely presented,
+\end{enumerate}
+then~$1 = 0$ in~$A$.
+\end{thm}
+
+Previously known proofs proceed in a series of intermediate steps, reducing
+to the case that~$A$ is a Noetherian integral domain where one can argue by
+\emph{dévissage}; but in fact, a direct proof is possible and shorter.
+
+Grothendieck's generic freeness lemma is often presented in contrapositive form
+or in the following geometric variant:
+
+\begin{thm}\label{thm:geometric}Let~$A$ be a reduced ring. Let~$B$ be
+an~$A$-algebra of finite type. Let~$M$ be a finitely generated~$B$-module. Then
+the space~$\Spec(A)$ contains a dense open~$U$ such that over~$U$,
+\begin{enumerate}
+\item[(a)] $B^\sim$ and~$M^\sim$ are free as sheaves of~$A^\sim$-modules,
+\item[(b)] $B^\sim$ is of finite presentation as a sheaf of~$A^\sim$-algebras, and
+\item[(c)] $M^\sim$ is finitely presented as a sheaf of~$B^\sim$-modules.
+\end{enumerate}
+\end{thm}
+
+Theorem~\ref{thm:geometric} immediately follows from
+Theorem~\ref{thm:algebraic} by defining~$U$ as the union of all the basic
+opens~$D(f)$ such that~(1),~(2), and~(3) hold. It's clear that~(a),~(b),
+and~(c) hold over~$U$, and~$U$ is dense for if~$V$ is an arbitrary open
+such that~$U \cap V = \emptyset$, the open~$V$ is itself empty: Let~$h \in A$
+such that~$D(h) \subseteq V$. The hypothesis implies the assumptions of
+Theorem~\ref{thm:algebraic} for the datum~$(A[h^{-1}], B[h^{-1}], M[h^{-1}])$.
+Thus~$1 = 0 \in A[h^{-1}]$, so~$h$ is nilpotent and~$D(h) = \emptyset$.
+
+The new proof was found using a general topos-theoretical technique which we
+believe to be useful in other situations as well. This technique allows to view
+reduced rings and their modules from a different point of view, one from which
+reduced rings look like fields. Using this technique, Grothendieck's generic freeness
+lemma follows trivially, since the lemma is trivial for fields. The proof
+presented here was obtained by unwinding the topos-theoretic proof, yielding a
+self-contained argument without any references to topos theory.
+
+\XXX{Acknowledgments, especially Martin Brandenburg}
+
+\XXX{References to prior proofs: EGA, Stacks Project, Charles Staats. Check
+\url{https://math.stackexchange.com/questions/1048496/question-on-generic-freeness-ref-matsumura-page-185}}
+
+
+\section{The proof}
+
+\begin{lemma}\label{lemma:basis}
+Let~$A$ be a ring. Let~$M$ be an~$A$-module with generating
+family~$(x_i)_{i \in I}$ where~$I$ is a totally ordered set. Assume that the
+only element~$g \in A$ such that one of the~$x_i$ is an~$A[g^{-1}]$-linear
+combination in~$M[g^{-1}]$ of other generators with smaller index is~$g = 0$.
+Then~$M$ is free with~$(x_i)_{i \in I}$ as a basis.
+\end{lemma}
+
+\begin{proof}Let~$\sum_i a_i x_i = 0$. Starting with the greatest
+index~$i$ which appears in that sum, we see that in~$M[a_i^{-1}]$, the
+element~$x_i$ is an~$A[g^{-1}]$-linear combination of other generators with
+smaller index. Thus~$a_i = 0$ by assumption.\end{proof}
+
+\begin{thm}Let~$A$ be a reduced ring. Let~$B$ be an~$A$-algebra of finite type.
+Let~$M$ be a finitely generated~$B$-module. If~$f = 0$ is the only element
+of~$A$ such that~$M[f^{-1}]$ is free as an~$A[f^{-1}]$-module, then~$1 = 0$
+in~$A$.\end{thm}
+
+\begin{proof}Let~$B$ be generated by~$(x_1,\ldots,x_n)$ as an~$A$-algebra and
+let~$M$ be generated by~$(v_1,\ldots,v_m)$ as an~$B$-module. We endow the set
+\[ I \defeq \{ (\ell, j_1,\ldots,j_n) \,|\,
+  \ell \in \{ 1,\ldots,m \},
+  j_1,\ldots,j_n \in \{ 0,1,\ldots \} \} \]
+with the lexicographic order. The family~$(w_i)_{i \in I} \defeq (x_1^{j_1}
+\ldots x_n^{j_n} v_\ell)_{(\ell,j_1,\ldots,j_n) \in I}$ thus generates~$M$ as
+an~$A$-module, and we'll call a subfamily~$(w_i)_{i \in I' \subseteq I}$
+\emph{good} if and only if for all~$i \in I$, the vector~$w_i$ is a linear
+combination of the vectors~$(w_{i'})_{i' \in I, i' \preceq i}$,
+and if~$(\ell,j_1,\ldots,j_n) \not\in I'$ implies~$(\ell,k_1,\ldots,k_n) \not\in
+I'$ for all~$k_1 \geq j_1, \ldots, k_n \geq j_n$. \XXX{Looks like in Figure XXX}
+
+We induct on the shape of a good generating system, starting with~$(w_i)_{i \in I}$.
+
+We show that~$(w_i)_{i \in I}$ is a basis of~$M$ by verifying the assumptions
+of Lemma~\ref{lemma:basis}. Thus let~$g \in A$ be given such that one of
+the~$w_i$ is an $A[g^{-1}]$-linear combination of generators with smaller index
+in~$M[g^{-1}]$. Removing~$w_i = x_1^{j_1} \ldots x_n^{j_n} v_\ell$ and also all
+vectors~$x_1^{k_1} \ldots x_n^{k_n} v_\ell$ where~$k_1 \geq j_1, \ldots, k_n
+\geq j_n$, we obtain a subfamily which is still good. By induction, applied
+to~$A[g^{-1}]$ and its module~$M[g^{-1}]$, it therefore follows that $A[g^{-1}] = 0$.
+This implies that $g = 0$ since~$A$ is reduced.
+
+Thus~$M$ is free. We finish by using the assumption for~$f = 1$.
+\end{proof}
+
+\end{document}

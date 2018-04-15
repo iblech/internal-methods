@@ -1,7 +1,8 @@
 \documentclass{amsart}
 
 \usepackage[utf8]{inputenc}
-\usepackage{amsthm,mathtools}
+\usepackage{amsthm,mathtools,tikz}
+\usetikzlibrary{patterns,matrix}
 \usepackage[protrusion=true,expansion=true]{microtype}
 \usepackage{hyperref}
 
@@ -133,9 +134,50 @@ an~$A$-module, and we'll call a subfamily~$(w_i)_{i \in I' \subseteq I}$
 \emph{good} if and only if for all~$i \in I$, the vector~$w_i$ is a linear
 combination of the vectors~$(w_{i'})_{i' \in I, i' \preceq i}$,
 and if~$(\ell,j_1,\ldots,j_n) \not\in I'$ implies~$(\ell,k_1,\ldots,k_n) \not\in
-I'$ for all~$k_1 \geq j_1, \ldots, k_n \geq j_n$. \XXX{Looks like in Figure XXX}
+I'$ for all~$k_1 \geq j_1, \ldots, k_n \geq j_n$. Figure~\ref{fig:good} shows
+how a good generating family can look like.
 
-We induct on the shape of a good generating system, starting with~$(w_i)_{i \in I}$.
+\begin{figure}
+  \begin{tikzpicture}[scale=1.0]
+    \draw[step=1cm,gray,very thin] (0,0) grid (8,8);
+
+    \draw
+      (0,8) -- (0,0) -- (8,0);
+
+    \fill[pattern=north east lines,pattern color=gray,opacity=0.5]
+      (2,8) -- (2,5) -- (5,5) -- (5,3) -- (6,3) -- (6,2) -- (8,2) -- (8,8);
+    \draw
+      (2,8) -- (2,5) -- (5,5) -- (5,3) -- (6,3) -- (6,2) -- (8,2);
+
+    \fill[fill=blue!40!white,opacity=0.5]
+      (0,8) -- (0,0) -- (4,0) -- (4,3) -- (3,3) -- (3,5) -- (2,5) -- (2,8);
+
+    \fill[fill=red!40!white,opacity=0.5]
+      (3,3) -- (4,3) -- (4,4) -- (3,4);
+
+    % !perl -we 'for my $y (reverse 0..7) { for my $x (0..7) { print % "\$x^$x\Ey^$y\$ & " } print "\\\\ \n" }'
+    \begin{scope}[yshift=4cm, xshift=4cm]
+      \matrix[matrix of nodes,nodes={inner sep=0pt,text width=1.0cm,align=center,minimum height=1.0cm}]{
+        \tiny $x^0y^7v_1$ & \tiny $x^1y^7v_1$ & \tiny $x^2y^7v_1$ & \tiny $x^3y^7v_1$ & \tiny $x^4y^7v_1$ & \tiny $x^5y^7v_1$ & \tiny $x^6y^7v_1$ & \tiny $x^7y^7v_1$ & \\
+        \tiny $x^0y^6v_1$ & \tiny $x^1y^6v_1$ & \tiny $x^2y^6v_1$ & \tiny $x^3y^6v_1$ & \tiny $x^4y^6v_1$ & \tiny $x^5y^6v_1$ & \tiny $x^6y^6v_1$ & \tiny $x^7y^6v_1$ & \\
+        \tiny $x^0y^5v_1$ & \tiny $x^1y^5v_1$ & \tiny $x^2y^5v_1$ & \tiny $x^3y^5v_1$ & \tiny $x^4y^5v_1$ & \tiny $x^5y^5v_1$ & \tiny $x^6y^5v_1$ & \tiny $x^7y^5v_1$ & \\
+        \tiny $x^0y^4v_1$ & \tiny $x^1y^4v_1$ & \tiny $x^2y^4v_1$ & \tiny $x^3y^4v_1$ & \tiny $x^4y^4v_1$ & \tiny $x^5y^4v_1$ & \tiny $x^6y^4v_1$ & \tiny $x^7y^4v_1$ & \\
+        \tiny $x^0y^3v_1$ & \tiny $x^1y^3v_1$ & \tiny $x^2y^3v_1$ & \tiny $x^3y^3v_1$ & \tiny $x^4y^3v_1$ & \tiny $x^5y^3v_1$ & \tiny $x^6y^3v_1$ & \tiny $x^7y^3v_1$ & \\
+        \tiny $x^0y^2v_1$ & \tiny $x^1y^2v_1$ & \tiny $x^2y^2v_1$ & \tiny $x^3y^2v_1$ & \tiny $x^4y^2v_1$ & \tiny $x^5y^2v_1$ & \tiny $x^6y^2v_1$ & \tiny $x^7y^2v_1$ & \\
+        \tiny $x^0y^1v_1$ & \tiny $x^1y^1v_1$ & \tiny $x^2y^1v_1$ & \tiny $x^3y^1v_1$ & \tiny $x^4y^1v_1$ & \tiny $x^5y^1v_1$ & \tiny $x^6y^1v_1$ & \tiny $x^7y^1v_1$ & \\
+        \tiny $x^0y^0v_1$ & \tiny $x^1y^0v_1$ & \tiny $x^2y^0v_1$ & \tiny $x^3y^0v_1$ & \tiny $x^4y^0v_1$ & \tiny $x^5y^0v_1$ & \tiny $x^6y^0v_1$ & \tiny $x^7y^0v_1$ & \\
+      };
+    \end{scope}
+  \end{tikzpicture}
+  \caption{\label{fig:good}A graphical depiction of a good generating family in
+  the special case~$n = 2, m = 1$. The hatched cells indicate vectors which
+  have already been removed from the family. If the vector in the red cell will
+  be found to be expressible as a linear combination of vectors with smaller
+  index (blue cells), it will be removed, along with the vectors in all cells
+  to the top and to the right of the red cell.}
+\end{figure}
+
+We induct on the shape of a good generating family, starting with~$(w_i)_{i \in I}$.
 
 We show that~$(w_i)_{i \in I}$ is a basis of~$M$ by verifying the assumptions
 of Lemma~\ref{lemma:basis}. Thus let~$g \in A$ be given such that one of

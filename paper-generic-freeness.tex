@@ -28,6 +28,8 @@ lemma}
 \newtheorem{conjecture}[defn]{Conjecture}
 
 \newcommand{\XXX}[1]{\textbf{XXX: #1}}
+\newcommand{\aaa}{\mathfrak{a}}
+\newcommand{\bbb}{\mathfrak{b}}
 \newcommand{\defeq}{\vcentcolon=}
 \DeclareMathOperator{\Spec}{Spec}
 
@@ -35,10 +37,10 @@ lemma}
 
 \begin{abstract}
   We present a new and direct proof of Grothendieck's generic freeness
-  lemma. Unlike the previously published proofs, it doesn't require a series of
-  reduction steps and is fully constructive, not involving the axiom of choice
-  or even the law of excluded middle. It was found using a general
-  topos-theoretic technique. \XXX{self-contained...}
+  lemma in its general form. Unlike the previously published proofs, it doesn't
+  proceed in a series of reduction steps and is fully constructive, not
+  involving the axiom of choice or even the law of excluded middle. It was
+  found by unwinding the result of a general topos-theoretic technique.
 \end{abstract}
 
 \maketitle
@@ -86,15 +88,18 @@ Thus~$1 = 0 \in A[h^{-1}]$, so~$h$ is nilpotent and~$D(h) = \emptyset$.
 The new proof was found using a general topos-theoretical technique which we
 believe to be useful in other situations as well. This technique allows to view
 reduced rings and their modules from a different point of view, one from which
-reduced rings look like fields. Using this technique, Grothendieck's generic freeness
-lemma follows trivially, since the lemma is trivial for fields. The proof
-presented here was obtained by unwinding the topos-theoretic proof, yielding a
-self-contained argument without any references to topos theory.
+reduced rings look like fields. Since Grothendieck's generic freeness
+is trivial for fields, this technique yields a trivial proof for reduced rings.
+The proof presented here was obtained by unwinding the topos-theoretic proof,
+yielding a self-contained argument without any references to topos theory.
+We refer readers who want to learn about this technique to an accompanying
+note~\cite{blechschmidt:wlog}.
 
 \XXX{Acknowledgments, especially Martin Brandenburg}
 
 \XXX{References to prior proofs: EGA, Stacks Project, Charles Staats. Check
-\url{https://math.stackexchange.com/questions/1048496/question-on-generic-freeness-ref-matsumura-page-185}}
+\href{https://math.stackexchange.com/questions/1048496/question-on-generic-freeness-ref-matsumura-page-185}{this
+MO question}}
 
 
 \section{The proof of the general case}
@@ -142,6 +147,78 @@ to~$A[g^{-1}]$ and its module~$M[g^{-1}]$, it therefore follows that $A[g^{-1}] 
 This implies that $g = 0$ since~$A$ is reduced.
 
 Thus~$M$ is free. We finish by using the assumption for~$f = 1$.
+\end{proof}
+
+Recall that a module is Noetherian if and only if all of its submodules are
+finitely generated. We call a module~$M$ over an~$A$-algebra~$B$ \emph{weakly
+Noetherian} (over~$A$) if and only if, for all~$B$-submodules~$U \subseteq M$
+and all~$f \in A$ the condition
+\begin{multline*}
+  \text{for all~$g \in A$, if $U[(fg)^{-1}]$ is finitely generated as
+an~$B[(fg)^{-1}]$-module,} \\
+  \text{then~$fg$ is nilpotent in~$A$} \end{multline*}
+implies that~$f$ is nilpotent. Geometrically, this expresses that all
+quasicoherent sheaves of submodules of~$M^\sim$ are, over a dense open
+of~$\Spec(A)$, of finite type over~$B^\sim$. An~$A$-algebra~$B$
+is \emph{weakly Noetherian} if and only if it is weakly Noetherian as a module
+over itself.
+
+This notion is interesting for the following reason.
+
+\begin{lemma}\label{lemma:self-noetherian}
+Let~$A$ be a reduced ring. Then~$A$, regarded as an algebra over itself, is
+weakly Noetherian.\end{lemma}
+
+\begin{proof}Let~$\aaa \subseteq A$ be an ideal. Let~$f \in A$ such that, for
+any~$g \in A$, if~$\aaa[(fg)^{-1}]$ is finitely generated, then~$fg = 0$.
+We verify that~$f = 0$.
+
+We first show that~$\aaa[f^{-1}] = (0)$. Let~$g \in \aaa$. Then~$\aaa[(fg)^{-1}] =
+(1)$ is finitely generated. Thus~$fg = 0$, hence~$g = 0$ in~$A[f^{-1}]$.
+
+Since~$\aaa[f^{-1}]$ is finitely generated, we finish by using the
+assumption for~$g = 1$.
+\end{proof}
+
+The weak Noetherian condition enjoys the same basic stability properties as the
+usual Noetherian condition:
+
+\begin{lemma}\label{lemma:noetherian-stability}
+Let~$A$ be a ring. Let~$B$ be an~$A$-algebra.
+\begin{enumerate}
+\item If~$B$ is weakly Noetherian, then so is~$B[X]$.
+\item Let~$0 \to M' \to M \to M'' \to 0$ be a short exact sequence
+of~$B$-modules. Then~$M$ is weakly Noetherian if and only if~$M'$ and~$M''$
+are.
+\end{enumerate}
+\end{lemma}
+
+We can use these observations to finish the proof of Grothendieck's generic
+freeness lemma.
+
+\begin{prop}Let~$A$ be a reduced ring. Let~$B$ be an~$A$-algebra of finite type.
+If~$f = 0$ is the only element of~$A$ such that~$B[f^{-1}]$ is of finite
+presentation as an~$A[f^{-1}]$-algebra, then~$1 = 0$ in~$A$.
+\end{prop}
+
+\begin{proof}We write~$B = A[X_1,\ldots,X_n]/\aaa$. By Lemma~\ref{lemma:self-noetherian} and
+Lemma~\ref{lemma:noetherian-stability}, the~$A$-algebra~$A[X_1,\ldots,X_n]$ is
+weakly Noetherian. We can therefore conclude if we can show, for any~$g \in A$,
+that if the ideal~$\aaa[g^{-1}]$ is finitely generated, then~$g = 0$. This
+follows immediately from the assumption (for~$f = g$).
+\end{proof}
+
+\begin{prop}Let~$A$ be a reduced ring. Let~$B$ be an~$A$-algebra of finite type.
+Let~$M$ be a finitely generated~$B$-module. If~$f = 0$ is the only element
+of~$A$ such that~$M[f^{-1}]$ is finitely presented as an~$B[f^{-1}]$-module,
+then~$1 = 0$ in~$A$.
+\end{prop}
+
+\begin{proof}We write~$M = B^n/U$ for an~$B$-submodule~$U$. By Lemma~\ref{lemma:self-noetherian} and
+Lemma~\ref{lemma:noetherian-stability}, the~$B$-module~$B^n$ is weakly
+Noetherian. We can therefore conclude if we can show, for any~$g \in A$, that if
+the submodule~$U[g^{-1}]$ is finitely generated, then~$g = 0$. This follows
+immediately from the assumption (for~$f = g$).
 \end{proof}
 
 

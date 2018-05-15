@@ -61,7 +61,7 @@ an~$A$-algebra of finite type. Let~$M$ be a finitely generated~$B$-module.
 If~$f = 0$ is the only element of~$A$ such that
 \begin{enumerate}
 \item the~$A[f^{-1}]$-modules $B[f^{-1}]$ and $M[f^{-1}]$ are free,
-\item the~$A[f^{-1}]$-algebra~$B[f^{-1}]$ is of finite presentation, and
+\item the~$A[f^{-1}]$-algebra~$B[f^{-1}]$ is of finite presentation and
 \item the~$B[f^{-1}]$-module~$M[f^{-1}]$ is finitely presented,
 \end{enumerate}
 then~$1 = 0$ in~$A$.
@@ -70,7 +70,7 @@ then~$1 = 0$ in~$A$.
 Previously known proofs either only cover the case where~$A$ is a Noetherian
 integral domain, where one can argue by \emph{dévissage} (see for
 instance~\cite[Lemme~6.9.2]{ega-4-2},
-\cite[Thm.~24.1]{matsumura:commutative-ring-theory}, or
+\cite[Thm.~24.1]{matsumura:commutative-ring-theory} or
 \cite[Thm.~14.4]{eisenbud:commutative-algebra}), or proceed in a series of
 intermediate steps, reducing to that case (see for
 instance~\cite{staats:generic-freeness} or~\stacksproject{051Q}); but in fact,
@@ -84,16 +84,16 @@ an~$A$-algebra of finite type. Let~$M$ be a finitely generated~$B$-module. Then
 the space~$\Spec(A)$ contains a dense open~$U$ such that over~$U$,
 \begin{enumerate}
 \item[(a)] $B^\sim$ and~$M^\sim$ are free as sheaves of~$A^\sim$-modules,
-\item[(b)] $B^\sim$ is of finite presentation as a sheaf of~$A^\sim$-algebras, and
+\item[(b)] $B^\sim$ is of finite presentation as a sheaf of~$A^\sim$-algebras and
 \item[(c)] $M^\sim$ is finitely presented as a sheaf of~$B^\sim$-modules.
 \end{enumerate}
 \end{thm}
 
 Theorem~\ref{thm:geometric} immediately follows from
-Theorem~\ref{thm:algebraic} by defining~$U$ as the union of all the basic
-opens~$D(f)$ such that~(1),~(2), and~(3) hold. It's clear that~(a),~(b),
+Theorem~\ref{thm:algebraic} by defining~$U$ as the union of all those basic
+opens~$D(f)$ such that~(1),~(2) and~(3) hold. It's clear that~(a),~(b)
 and~(c) hold over~$U$, and~$U$ is dense for if~$V$ is an arbitrary open
-such that~$U \cap V = \emptyset$, the open~$V$ is itself empty: Let~$h \in A$
+such that~$U \cap V = \emptyset$, the open~$V$ is itself empty: Let~$h \in A$ be
 such that~$D(h) \subseteq V$. The hypothesis implies the assumptions of
 Theorem~\ref{thm:algebraic} for the datum~$(A[h^{-1}], B[h^{-1}], M[h^{-1}])$.
 Thus~$1 = 0 \in A[h^{-1}]$, so~$h$ is nilpotent and~$D(h) = \emptyset$.
@@ -105,14 +105,15 @@ reduced rings look like fields. Since Grothendieck's generic freeness
 is trivial for fields, this technique yields a trivial proof for reduced rings.
 The proof presented here was obtained by unwinding the topos-theoretic proof,
 yielding a self-contained argument without any references to topos theory.
-We refer readers who want to learn about this technique to a companion 
+We refer readers who want to learn about this technique to a forthcoming companion 
 paper~\cite{blechschmidt:wlog}.
 
 \textbf{Acknowledgments.} The proof presented here was prompted by
 user~HeinrichD on MathOverflow~\cite{mo:kernel} and greatly
-benefited from discussions with Martin Brandenburg, who needed the constructive
+benefited from discussions with Martin Brandenburg, who employed the constructive
 version in a paper of his~\cite{brandenburg:schur}. I'm grateful to Marc
-Nieper-Wißkirchen for carefully guiding my PhD thesis, where \XXX{...}
+Nieper-Wißkirchen for carefully guiding my PhD studies at the University of
+Augsburg, where most of the work for this paper was carried out.
 
 
 \section{The proof of the general case}
@@ -183,8 +184,8 @@ how a good generating family can look like.
       };
     \end{scope}
   \end{tikzpicture}
-  \caption{\label{fig:good}A graphical depiction of a good generating family in
-  the special case~$n = 2, m = 1$. The hatched cells indicate vectors which
+  \caption{\label{fig:good}A graphical depiction of a good generating family (the non-hatched cells) in
+  the special case~$n = 2, m = 1$, writing~``$x$'' and~``$y$'' for~$x_1$ and~$x_2$. The hatched cells indicate vectors which
   have already been removed from the family. The small black squares indicate
   \emph{corners}. If the vector in the red cell will be found to be expressible
   as a linear combination of vectors with smaller index (blue cells), it will
@@ -205,7 +206,7 @@ the~$w_j$ is an $A[g^{-1}]$-linear combination of generators with smaller index
 in~$M[g^{-1}]$. Removing~$w_j = x_1^{i_1} \cdots x_n^{i_n} v_\ell$ and also all
 vectors~$x_1^{k_1} \cdots x_n^{k_n} v_\ell$ where~$k_1 \geq i_1, \ldots,
 k_n \geq i_n$, we obtain a subfamily which is still good for
-the~$A[g^{-1}]$-module~$M[g^{-1}]$. By induction, applied
+the~$A[g^{-1}]$-module~$M[g^{-1}]$. By the induction hypothesis, applied
 to~$A[g^{-1}]$ and its module~$M[g^{-1}]$, it therefore follows that $A[g^{-1}] = 0$.
 This implies that $g = 0$ since~$A$ is reduced.
 
@@ -222,7 +223,7 @@ the~$B$-module
 \]
 where the index~$j$ ranges over all corners of~$J$, and is therefore finitely
 presented. In a similar vain, a quotient algebra of~$A[X_1,\ldots,X_n]$, where
-we mod out a suitable ideal with as many generators as corners of~$I$, is
+we mod out a suitable ideal with as many generators as corners of~$I'$, is
 isomorphic to~$B$.
 
 We finish by using the assumption for~$f = 1$.

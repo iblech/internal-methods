@@ -1,0 +1,35 @@
+New reduction techniques in commutative algebra driven by logical methods
+
+Commutative algebra abounds with techniques to reduce given situations to
+simpler ones, for instance passing to a quotient or passing to a
+localization. These techniques switch a given ring with another.
+
+But there are also reduction techniques driven by logical methods, whose effects
+cannot be mimicked by classical techniques. They arise from certain topological
+models and switch a given ring not with a further ring, but with a suitable
+forcing model. For instance, there is a way of forcing any ring to be a local
+ring.
+
+These forcing models make an interesting trade-off: On the one hand, they enjoy
+better properties than the original ring while being simultaneously sufficiently
+close to the original ring in order to be useful, but on the other hand, they
+only validate intuitionistic logic, not classical logic.
+
+They were already discovered in the 1970s, but their applicability to
+commutative algebra was only properly recognized and studied in the 2000s, under
+the umbrella term *dynamical methods in algebra*. The talk presents this
+topic from the point of view of new results [1,2]: It's possible to force any
+reduced ring to be a field, thereby importing any intuitionistic theorem about
+fields into the realm of reduced rings. This technique has been used to give an
+almost trivial and even constructive proof of *Grothendieck's generic freeness
+lemma*, an important theorem in algebraic geometry, which substantially
+improved on the longer, somewhat convoluted and unconstructive previously-known
+proofs.
+
+[1] I. Blechschmidt. An elementary and constructive proof of Grothendieck's
+generic freeness lemma. 2018. Preprint available at
+https://rawgit.com/iblech/internal-methods/master/paper-generic-freeness.pdf.
+
+[2] I. Blechschmidt. Using the internal language of toposes in algebraic
+geometry. PhD thesis, 2018. Available at
+https://rawgit.com/iblech/internal-methods/master/notes.pdf.

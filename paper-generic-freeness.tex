@@ -48,7 +48,7 @@ proof of Grothendieck's generic freeness lemma}
   We present a new and direct proof of Grothendieck's generic freeness
   lemma in its general form. Unlike the previously published proofs, it doesn't
   proceed in a series of reduction steps and is fully constructive, not
-  involving the axiom of choice or even the law of excluded middle. It was
+  using the axiom of choice or even the law of excluded middle. It was
   found by unwinding the result of a general topos-theoretic technique.
 \end{abstract}
 
@@ -56,7 +56,7 @@ proof of Grothendieck's generic freeness lemma}
 \thispagestyle{empty}
 
 \noindent
-We prove Grothendieck's generic freeness lemma for rings and modules in the
+We prove Grothendieck's generic freeness lemma in the
 following form.
 
 \begin{thm}\label{thm:algebraic}Let~$A$ be a reduced ring. Let~$B$ be
@@ -77,7 +77,12 @@ instance~\cite[Lemme~6.9.2]{ega-4-2},
 \cite[Thm.~14.4]{eisenbud:commutative-algebra}), or proceed in a series of
 intermediate steps, reducing to that case (see for
 instance~\cite{staats:generic-freeness} or~\stacksproject{051Q}); but in fact,
-a direct proof is possible and shorter.
+a direct proof is possible and shorter. The new proof unveils a certain
+combinatorial aspect to Grothendieck's generic freeness lemma, doesn't require
+any advanced prerequisites in commutative algebra and doesn't use the axiom of
+choice or the law of excluded middle. It is purely element-based, not referring
+to ideals of~$A$.
+\enlargethispage{3em}
 
 Grothendieck's generic freeness lemma is often presented in contrapositive form
 or in the following geometric variant:
@@ -101,7 +106,7 @@ such that~$D(h) \subseteq V$. The hypothesis implies the assumptions of
 Theorem~\ref{thm:algebraic} for the datum~$(A[h^{-1}], B[h^{-1}], M[h^{-1}])$.
 Thus~$1 = 0 \in A[h^{-1}]$, so~$h$ is nilpotent and~$D(h) = \emptyset$.
 
-The new proof was found using a general topos-theoretical technique which we
+The new proof was found using a general topos-theoretic technique which we
 believe to be useful in other situations as well. This technique allows to view
 reduced rings and their modules from a different point of view, one from which
 reduced rings look like fields. Since Grothendieck's generic freeness
@@ -114,8 +119,9 @@ paper~\cite{blechschmidt:wlog}.
 \textbf{Acknowledgments.} The proof presented here was prompted by
 user~HeinrichD on MathOverflow~\cite{mo:kernel} and greatly
 benefited from discussions with Martin Brandenburg, who employed the constructive
-version in a paper of his~\cite{brandenburg:schur}. I'm grateful to Marc
-Nieper-Wißkirchen for carefully guiding my PhD studies at the University of
+version in a paper of his~\cite{brandenburg:schur}. I'm grateful to Thierry
+Coquand and Peter Schuster for valuable advice and to Marc
+Nieper-Wißkirchen for carefully guiding my PhD studies~\cite{blechschmidt:phd} at the University of
 Augsburg, where most of the work for this paper was carried out.
 
 
@@ -261,7 +267,6 @@ We finish by using the assumption for~$f = 1$.
 \end{proof}
 
 
-\nocite{blechschmidt:phd}
 \printbibliography
 
 

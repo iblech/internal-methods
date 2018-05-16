@@ -335,7 +335,7 @@ notions of spectra.
 We employ the big Zariski topos to set up the foundations of a synthetic account
 of scheme theory. This account is similar to the synthetic account of
 differential geometry, but has a distinct algebraic flavor. Central to the
-theory is the notion of synthetic quasicoherence, which has no analog in
+theory is the notion of synthetic quasicoherence, which has no analogue in
 synthetic differential geometry. We also discuss how various common subtoposes
 of the big Zariski topos can be described from the internal point of view and
 derive explicit descriptions of the geometric theories which are
@@ -680,7 +680,7 @@ On the other hand, the $A$-valued points for more general rings~$A$ are crucial
 in order to impart a meaningful sense of cohesion on the field-valued
 points. They therefore can't simply be dropped.\footnote{For instance,
 let~$\ul{\AA}^1 : A \mapsto A$ be the functor associated to the affine line.
-Yoneda's lemma guarantees that the set of morphisms~$\ul{\AA}^1 \to \ul{\AA}^1$
+The Yoneda lemma guarantees that the set of morphisms~$\ul{\AA}^1 \to \ul{\AA}^1$
 in the functor category~$[\Ring,\Set]$ is in canonical bijection with the
 set~$\ZZ[U]$, as one would expect: Algebraic functions~$\AA^1 \to \AA^1$ should
 be given by polynomials. (The discussion could also be relativized so that the
@@ -792,7 +792,7 @@ internal language to describe~$X$-schemes and more general spaces in a simple
 language), it's crucial to have strong and meaningful axioms available. One
 such axiom posits that~$\afflx$ is a local and \emph{synthetically
 quasicoherent} ring and implies all known ring-theoretic properties
-of~$\afflx$. Synthetic quasicoherence is the internal analog of the usual
+of~$\afflx$. Synthetic quasicoherence is the internal analogue of the usual
 condition on a sheaf of modules to be quasicoherent. This notion doesn't have a
 counterpart in synthetic differential geometry and is central to our account of
 synthetic algebraic geometry, since we derive all of its basic concepts such as
@@ -2743,7 +2743,7 @@ s_j. \]
 \begin{proof}The given internal statements are geometric implications, their
 validity can thus be checked stalkwise.\end{proof}
 
-\begin{rem}The analog of Proposition~\ref{prop:finite-type-and-co} for
+\begin{rem}The analogue of Proposition~\ref{prop:finite-type-and-co} for
 sheaves of algebras instead of sheaves of modules holds. More precisely,
 let~$\A$ be a sheaf of~$\O_X$-algebras on a scheme~$X$ (or a ringed space).
 Then:
@@ -2959,7 +2959,7 @@ proof of Proposition~\ref{prop:internal-integrality}.
 \end{proof}
 
 
-\subsection{Kähler differentials}
+\subsection{Kähler differentials}\label{sect:kaehler-differentials}
 
 Let~$A \to B$ be a homomorphism of rings. The~$B$-module~$\Omega^1_{B|A}$ of
 Kähler differentials can be constructed as the free~$B$-module on the
@@ -3006,7 +3006,7 @@ the internal universe of~$\Sh(X)$, the module of Kähler differentials of the
 morphism~$f^\sharp : f^{-1}\O_S \to \O_X$. A number of basic properties then
 follow purely formally:
 
-\begin{prop}Let~$f : X \to S$ be a morphism of schemes (or of locally ringed
+\begin{prop}\label{prop:kaehler}Let~$f : X \to S$ be a morphism of schemes (or of locally ringed
 spaces). Let~$\Omega^1_{X|S}$ be defined as the interpretation of the internal
 construction~$\Omega^1_{\O_X|f^{-1}\O_S}$.
 \begin{enumerate}
@@ -7880,12 +7880,12 @@ that therefore a true pointfree approach as provided by lattice theory/locale th
 theory, or formal topology~\cite{schuster:formal-zariski} is necessary to construct the spectrum in an
 intuitionistic context.\footnote{When following
 reference~\cite{tierney:spectrum}, note that Tierney calls ``primes'' what we
-call ``filters''. Joyal's example was none other than the ring~$\affl$
+call ``filters''. Joyal's example was none other than the ring~$\afflz$
 in the functor category~$[\Ring_\mathrm{fp}, \Set]$. The big Zariski topos
 of~$\Spec(\ZZ)$, when defined using the parsimonious sites, is a subtopos of
 that topos; in it, the ring~$\affl$ does have filters, for instance the filter
 of units. These two facts are not contradictory, since not having any filters
-is not a geometric implication and is therefore not preserved by inverse image
+is not a geometric implication and is therefore not guaranteed to be preserved by inverse image
 parts of geometric morphisms.}
 
 
@@ -8501,9 +8501,10 @@ Theorem~\ref{thm:big-zariski-topos-of-relative-spectrum}.
 
 A basic fact about the ordinary spectrum is that the ring of global sections
 of~$\O_{\Spec(A)}$ is canonically isomorphic to~$A$. This is not true for the
-local spectrum: A trivial example is given by any nonzero algebra over a
-ring~$R$ which is not local in the sense that there are some nonunits which sum
-to a unit. In this case the theory which~$\Spec(A|R)$ classifies is
+local spectrum: A trivial example is given by any algebra over a
+ring~$R$ which is not local over~$R$ in the sense that there are some nonunits
+of~$R$ which generate the unit ideal in~$A$.
+In this case the theory which~$\Spec(A|R)$ classifies is
 inconsistent. Thus~$\Spec(A|R)$ is the empty locale and the ring of global
 sections of~$\O_{\Spec(A|R)}$ is the zero ring.\footnote{This failure is not
 entirely unexpected, since Coste's general result on sheaf
@@ -8587,7 +8588,7 @@ constructions.
 a topological space in order to work in an intuitionistic setting: $\Ring^\op \to
 \LRS$ or $\Ring^\op \to \LRL$
 \item The local spectrum of an algebra: $\Alg(R)^\op \to \LRL/(\pt,R)$
-\item Gillam's spectrum of a sheaf of algebras~\cite{gillam:localization}:
+\item (A special case of) Gillam's spectrum of a sheaf of algebras~\cite{gillam:localization}:
 $\Alg(\O_X)^\op \to \LRS/(X,\O_X)$
 \item Hakim's spectrum of a ringed topos~\cite{hakim:relative-schemes},
 yielding a locally ringed topos: $\RT \to \LRT$.
@@ -9296,7 +9297,8 @@ to~$\Proj(S|R)$. This filter has the special property
   \forall r\?\ul{R}\_
     r \in \F \Rightarrow \speak{$r$ \inv\@ in $\ul{R}$}. \]
 
-\begin{thm}Let~$X$ be a scheme (or a locally ringed locale). Let~$\S$ be
+\begin{thm}\label{thm:local-proj-yields-relative-proj}
+Let~$X$ be a scheme (or a locally ringed locale). Let~$\S$ be
 an~$\NN$-graded $\O_X$-algebra. Then the externalization~$E(\Proj(\S|\O_X))$ coincides
 with the relative Proj construction~$\RelProj_X(\S)$ as locally ringed locales
 over~$X$.\end{thm}
@@ -9932,8 +9934,8 @@ It suffices to change~``$m[\E] \cup \F'$'' to~``$m[\E] + \F''$'', where~$\F''
 
 \begin{rem}The proof of Theorem~\ref{thm:char-injectivity} crucially rests on
 Proposition~\ref{prop:internal-char-flabbiness} and therefore on Zorn's lemma,
-to ensure that the sheaf~$\G$ defined in the proof which has the property that
-any of its sections can be locally extended admits a global section. The proof
+to ensure that the sheaf~$\G$ defined in the proof, which has the property that
+any of its sections can be locally extended, admits a global section. The proof
 is therefore not intuitionistically valid.
 
 On a related note, we don't think that the statement of
@@ -10249,7 +10251,7 @@ with~$\EXT^n$, the module constructed in this way is unique up to a unique
 isomorphism induced by a morphism of resolutions.
 
 
-\subsection{Higher direct images}
+\subsection{Higher direct images}\label{sect:higher-direct-images}
 
 Higher direct images are thought of as a relative ``fiberwise'' version of
 cohomology. One way to make this precise is to show that higher direct images
@@ -10289,7 +10291,7 @@ gains a logical interpretation. Let
   Y' \ar[r]^{g'}\ar[d]_{f'} & Y \ar[d]^f \\
   X' \ar[r]_g & X
 } \]
-be a pullback diagram of ringed locales. Let~$\E$ be a sheaf of modules on~$Y$.
+be a pullback diagram of locally ringed locales. Let~$\E$ be a sheaf of modules on~$Y$.
 If taking cohomology was a geometric construction, then it would be preserved
 by pullback along arbitrary geometric morphisms. Since higher direct images are
 just cohomology from the internal point of view, we would therefore have a
@@ -10361,7 +10363,7 @@ Instead of
   &\qquad\qquad\qquad\qquad T' \models \varphi(s)
 \end{align*}
 
-The analogs of Proposition~\ref{prop:locality-of-the-internal-language} and
+The analogues of Proposition~\ref{prop:locality-of-the-internal-language} and
 Proposition~\ref{prop:soundness-of-the-internal-language} are true for the internal
 language of the big Zariski topos:
 
@@ -10947,9 +10949,10 @@ plain unstructured sets from the internal point of view
 of~$\Zar(S)$''.\footnote{The requirement on~$f$ mentioned at the beginning of
 this subsection is really necessary. For instance, let~$f$ be the unique
 morphism~$\Spec(\QQ) \to \Spec(\ZZ)$. This morphism is not locally of finite
-presentation. By Proposition~\ref{prop:fingen-algebra-q}, the functor of
+presentation. By Proposition~\ref{prop:fingen-algebra-q}, if the parsimonious
+sites are used, the functor of
 points~$\ul{\QQ} \in \Zar(\Spec(\ZZ))$ coincides with the functor of points of
-the empty scheme if the parsimonious sites are used and is thus the initial
+the empty schemeu and is thus the initial
 object in~$\Zar(S)$. Therefore~$\Zar(\Spec(\ZZ))/\ul{\QQ}$ is the trivial
 topos. In contrast,~$\Zar(\Spec(\QQ))$ is not.}
 
@@ -10998,7 +11001,7 @@ that a morphism~$p : Y \to X$ of~$S$-schemes is surjective if and only if
 \[ \Zar(S) \models \forall x\?\ul{X}\_ \neg\neg(\speak{the fiber of~$\ul{p}$
 over~$x$ is inhabited}). \]
 
-Many properties of morphisms in algebraic geometry, and any properties which
+Many properties of morphisms in algebraic geometry, and all properties which
 can be characterized using the internal language of the big Zariski topos, are
 stable under base change. For those kinds of properties~$P$, if a morphism~$Y
 \to X$ is~$P$, then for any point~$x \in X$ the base change~$Y_x \to
@@ -11079,7 +11082,7 @@ define~$\Zar(S)$.
 This universal cotangent sheaf doesn't have any finiteness properties from the
 internal point of view. For instance, it isn't finitely generated, because else
 all the individual cotangent sheaves~$\Omega^1_{X|S}$ would be of finite type
-(with a uniform bound on the number of generators) by
+(even with a uniform bound on the number of generators, if~$S$ is quasicompact) by
 Proposition~\ref{prop:locally-free-big-zariski}.
 
 We feel that the significance of the canonical morphism~$\flat\affl \to
@@ -11186,7 +11189,7 @@ internally to that topos, the slice topos over~$[\A^\Zar,
 \end{prop}
 
 \begin{proof}
-If~$S$ is indeed a scheme, as is supposed throughout this part, and~$\A$ is
+If~$S$ is indeed a scheme, as is supposed throughout Part~\ref{part:big-zariski}, and~$\A$ is
 quasicoherent, then all three constructions yield the big
 Zariski topos of~$\RelSpec_S(\A)$ (defined using one of the parsimonious
 sites). For the first construction, this is by
@@ -14141,7 +14144,7 @@ m \geq 0$ and polynomials~$f_1,\ldots,f_m \in A[X_1,\ldots,X_n]$ the
 implication
 \begin{multline*}
   \quad \speak{$A[X_1,\ldots,X_n]/(f_1,\ldots,f_m)$ is a basic fppf-algebra} \Longrightarrow \\
-    \exists x_1,\ldots,x_n \? A\_ \bigwedge_{l=1}^m f_l(v_1,\ldots,v_n) = 0 \quad
+    \exists x_1,\ldots,x_n \? A\_ \bigwedge_{l=1}^m f_l(x_1,\ldots,x_n) = 0 \quad
 \end{multline*}
 holds. Since the antecedent can be expressed as a geometric formula, this
 formula is a geometric implication.
@@ -14989,9 +14992,11 @@ reach.
   local sheaf of rings & local ring & Prop.\@~\ref{prop:local-ring} \\
   $X$ is reduced & $\O_X$ is reduced (and $\neg\text{invertible} \Rightarrow \text{zero}$) & Prop.\@~\ref{prop:reduced-ring} \\
   $\dim X \leq n$ & Krull dimension of~$\O_X$ is~$\leq n$ & Prop.\@~\ref{prop:dimension-scheme-ox} \\
-  $X$ is integral at all points & $\O_X$ is a integral domain & Prop.\@~\ref{prop:internal-integrality} \\
+  $X$ is integral at all points & $\O_X$ is an integral domain & Prop.\@~\ref{prop:internal-integrality} \\
   $X$ is locally Noetherian & $\O_X$ is processly Noetherian & Prop.\@~\ref{prop:internal-noetherianity} (only~``$\Rightarrow$'' holds) \\
-  $X$ is normal & $\O_X$ is normal (assuming that~$X$ is locally Noetherian) & Prop.\@~\ref{prop:normal-int-ext} \\\\
+  $X$ is normal & $\O_X$ is normal (assuming that~$X$ is locally Noetherian) & Prop.\@~\ref{prop:normal-int-ext} \\
+  relative spectrum~$\RelSpec_X{\A}$ & local spectrum $\Spec(\A|\O_X)$ & Thm.\@~\ref{thm:local-spectrum-yields-relative-spectrum} \\
+  relative Proj~$\RelProj_X{\A}$ & local Proj $\Proj(\A|\O_X)$ & Thm.\@~\ref{thm:local-proj-yields-relative-proj} \\\\
 
   \textbf{Sheaves of modules} \\
   sheaf of modules & module \\
@@ -15002,13 +15007,18 @@ reach.
   $\F$ is quasicoherent & $\F[f^{-1}]$ is a sheaf wrt.\@~$(\speak{$f$ \inv} \Rightarrow \placeholder)$ for~$f\?\O_X$ & Thm.\@~\ref{thm:qcoh-sheafchar} \\
   $\F$ is flat & $\F$ is flat & Prop.\@~\ref{prop:flatness} \\
   $\F$ is torsion & $\F$ is torsion & Prop.\@~\ref{prop:torsion-int-ext} \\
+  $\F$ is flabby & partially-defined elements of~$\F$ can be refined & Prop.\@~\ref{prop:internal-char-flabbiness} \\
+  $\F$ is injective & $\F$ is injective & Thm.\@~\ref{thm:char-injectivity-modules} \\
+  rank function of~$\F$ & minimal number of generators for~$\F$ & Prop.\@~\ref{prop:rank-function-internally} \\
   $M^\sim$ & $\ul{M}[\F^{-1}]$ (localization at generic filter) & Prop.\@~\ref{prop:tilde-construction-internally} \\
   tensor product $\F \otimes \G$ & tensor product $\F \otimes \G$ & Prop.\@~\ref{prop:internal-tensor-product} \\
   dual~$\F^\vee = \HOM_{\O_X}(\F,\O_X)$ & dual $\F^\vee = \Hom_{\O_X}(\F,\O_X)$ \\
   $\Int(X \setminus \supp\F)$ & truth value of~``$\F = 0$'' & Prop.\@~\ref{prop:characterization-support} \\
   quasicoherator of~$\I$ & $\{ s\?\O_X \,|\, \speak{$s$ \inv}
   \Rightarrow s \in \I \}$ ($\I$ a radical ideal) & Prop.\@~\ref{prop:quasicoherator-structure-sheaf} \\
-  rank function of~$\F$ & minimal number of generators for~$\F$ & Prop.\@~\ref{prop:rank-function-internally} \\\\
+  $\Omega^1_{X|S}$ & $\Omega^1_{\O_X | f^{-1}\O_S}$ & Prop.\@~\ref{prop:kaehler} \\
+  Tor, sheaf Ext & Tor, Ext & Sect.\@~\ref{sect:sheaf-ext-and-tor} \\
+  higher direct images & cohomology & Sect.\@~\ref{sect:higher-direct-images} \\\\
 
   \multicolumn{3}{@{}l@{}}{\textbf{Subspaces} ($i : A \hookrightarrow X$ closed immersion, $j : U \hookrightarrow X$ open immersion)} \\
   sheaf supported on~$A$ & $\Box$-sheaf, where~$\Box = (\placeholder \vee A^c)$ & Lemma~\ref{lemma:essim-closed-immersion} \\
@@ -15018,7 +15028,7 @@ reach.
   extension of~$\F$ by zero & $j_!(\F) = \{ x\?\F \,|\, (x = 0) \vee U \}$ & Lemma~\ref{lemma:extension-by-zero} \\
   sheaf with empty/zero stalks on~$U^c$ & sheaf of the form~$j_!(\F)$ \\
   sections of~$\F$ are equal if they agree on dense open & $\F$ is $\neg\neg$-separated & Prop.\@~\ref{prop:negneg-sheaves} \\
-  sheaf of sections of~$\F$ defined on dense open subsets & $\F^{++}$ with respect to~$\Box = \neg\neg$ (assuming that~$\F$ is~$\neg\neg$-separated) & Prop.\@~\ref{prop:negneg-sheaves} \\
+  sheaf of sections of~$\F$ defined on dense open subsets & $\F^+$ with respect to~$\Box = \neg\neg$ (assuming that~$\F$ is~$\neg\neg$-separated) & Prop.\@~\ref{prop:negneg-sheaves} \\
   $U$ is dense & $\neg\neg U$ & Prop.\@~\ref{prop:modops-kripke} \\
   $U$ is scheme-theoretically dense & $\sdense U$, \ie $\O_X$ is separated
   wrt.~$(U \Rightarrow \placeholder)$ & Lemma\@~\ref{lemma:scheme-theoretical-denseness} \\

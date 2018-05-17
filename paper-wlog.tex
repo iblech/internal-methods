@@ -1,0 +1,175 @@
+\documentclass{amsart}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm,mathtools,tikz,float,caption,xspace}
+\usetikzlibrary{patterns,matrix}
+\usepackage[protrusion=true,expansion=true]{microtype}
+\usepackage{hyperref}
+\usepackage{cleveref}
+
+\usepackage[natbib=true,style=numeric,maxnames=10]{biblatex}
+\usepackage[babel]{csquotes}
+\bibliography{paper-wlog.bib}
+
+\title{Without loss of generality, \\ any reduced ring is a field}
+\author{Ingo Blechschmidt}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[]
+\newtheorem{ex}[defn]{Example}
+
+\theoremstyle{plain}
+\newtheorem{prop}[defn]{Proposition}
+\newtheorem{cor}[defn]{Corollary}
+\newtheorem{lemma}[defn]{Lemma}
+\newtheorem{thm}[defn]{Theorem}
+\newtheorem{scholium}[defn]{Scholium}
+
+\theoremstyle{remark}
+\newtheorem{rem}[defn]{Remark}
+\newtheorem{question}[defn]{Question}
+\newtheorem{speculation}[defn]{Speculation}
+\newtheorem{caveat}[defn]{Caveat}
+\newtheorem{conjecture}[defn]{Conjecture}
+
+\crefname{defn}{Definition}{Definitions}
+\crefname{thm}{Theorem}{Theorems}
+\crefname{lemma}{Lemma}{Lemmas}
+\crefname{prop}{Proposition}{Propositions}
+\crefname{ex}{Example}{Examples}
+\crefname{section}{Section}{Sections}
+
+% Workaround from David Carlisle described at https://tex.stackexchange.com/a/316037
+\makeatletter
+\let\xx@thm\@thm
+\AtBeginDocument{\let\@thm\xx@thm}
+\makeatother
+
+\newcommand{\XXX}[1]{\textbf{XXX: #1}}
+\newcommand{\aaa}{\mathfrak{a}}
+\newcommand{\bbb}{\mathfrak{b}}
+\newcommand{\mmm}{\mathfrak{m}}
+\newcommand{\ppp}{\mathfrak{p}}
+\newcommand{\I}{\mathcal{I}}
+\newcommand{\J}{\mathcal{J}}
+\newcommand{\defeq}{\vcentcolon=}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Quot}{Quot}
+\newcommand{\?}{\,{:}\,}
+\newcommand{\notnot}{\emph{not not}\xspace}
+\newcommand{\negg}{\neg\!\!\!\neg}
+
+\newcommand{\stacksproject}[1]{\cite[{\href{https://stacks.math.columbia.edu/tag/#1}{Tag~#1}}]{stacks-project}}
+
+\begin{document}
+
+\begin{abstract}
+  XXX
+\end{abstract}
+
+\maketitle
+\thispagestyle{empty}
+
+\noindent
+XXX
+
+
+\section{Case studies}
+
+\subsection{Linear surjections between finite free modules}
+
+\begin{prop}\label{surjection}
+Let~$M \in A^{n \times m}$ be a matrix over a ring~$A$ such that~$n
+> m$. Assume that the induced linear map~$A^m \to A^n$ is surjective. Then~$1 =
+0 \in A$.
+\end{prop}
+
+\begin{proof}[Proof~A (classical)]Assume to the contrary that~$1 \neq 0 \in A$.
+Then there exists a maximal ideal~$\mmm \subseteq A$. Tensoring the given linear map
+over~$A$ with~$A/\mmm$ yields a linear map~$(A/\mmm)^m \to (A/\mmm)^n$ which is
+still surjective, since tensoring is right exact. Since~$A/\mmm$ is a field,
+this is a contradiction by basic linear algebra.
+\end{proof}
+
+This proof uses the axiom of choice in the guise of the lemma that nontrivial
+rings contain maximal ideals in order to reduce from general rings to
+fields.\footnote{It's possible to avoid the full axiom of choice here and only
+assume the Boolean Prime Ideal Theorem, at the expense of slightly complicating
+the proof. This theorem is strong enough to conclude that a nontrivial ring has
+a prime ideal~$\ppp$. One then first passes to the quotient~$A/\ppp$, where
+surjectivity is preserved thanks to right-exactness of tensoring, and then to
+the field of fractions~$\Quot(A/\ppp)$, where surjectivity is preserved thanks
+to exactness of localization.} In fact, the statement even admits a fully
+constructive proof. It's not hard to give such a proof explicitly, for instance
+using determinants~\cite{richman:trivial-rings}, but in this section we want to
+see how the forcing technique can be used to translate the classical proof into
+a constructive one.
+
+Starting point is the observation that \Cref{surjection} admits an easy proof
+in the case that the ring~$A$ is local:
+
+\begin{proof}[Proof~B (constructive, but only of the special case
+that~$A$ is a local ring)]
+Since~$M$ is surjective, some linear combination of its columns sums to the
+first canonical basis vector~$e_1$. Since~$A$ is local, some entry of the first row
+is invertible. By employing elementary row and column transformations, we can
+change this entry to the unit of the ring, move it to the top left, and kill
+any remaining entries in the first row and in the first column. Continuing in
+this fashion, we can assume~$A$ to be a rectangular diagonal matrix. Since~$A$
+has more rows than columns, all entries in the last row are zero. On the other
+hand, one of its entries is the unit. Thus~$1 = 0$.
+\end{proof}
+
+\begin{proof}[Proof~C (constructive, general case)]
+By~XXX, the given matrix~$M$ is also surjective as a matrix over~$A^\sim$.
+Since~$A^\sim$ is a local ring, the previous proof applies and shows
+that~$A^\sim \models 1 = 0 \? A^\sim$. This is equivalent to~$1 = 0 \in A$ by
+definition.
+\end{proof}
+
+This attempt succeeds in eliminating the axiom of choice and the law of
+excluded middle; but it isn't yet a faithful translation of Proof~A, since the
+standard linear algebra proof referenced in Proof~A proceeds slightly
+differently than Proof~B. To obtain such a translation, we use the special
+field property of~$A^\sim$.
+
+\begin{proof}[Proof~D (constructive, general case)]
+By passing from~$A$ to its quotient ring~$A/\sqrt{(0)}$, which preserves
+surjectivity since tensoring is right-exact, we may assume that~$A$ is a
+reduced ring. Thus~$A^\sim$ is a field in the sense that non-invertible
+elements are zero. It therefore suffices to give a constructive proof of
+\Cref{surjection} in the special that~$A$ is such a kind of field.
+
+Every entry of the given matrix is \notnot invertible or not invertible. Since
+the statement we want to verify,~$1 = 0$, is~$\neg\neg$-stable, we may
+assume that every entry is actually invertible or not invertible. If
+one of the entries is invertible, we can change it to the unit, move it to the
+top left, kill the remaining entries in the first row and in the first
+column, and then continue in this fashion. We may thus assume that~$M$ is a
+rectangular diagonal matrix having only zeros and ones on the diagonal.
+
+XXX
+\end{proof}
+
+
+\subsection{Linear injections between finite free modules: McCoy's theorem}
+
+\begin{proof}Let~$a \? A^\sim$ such that~$a \cdot (\Lambda^m M) = (0)$. We want
+to verify that~$a = 0$. Instead of employing~$\neg\neg$ like on previous
+occasions, we employ~$\negg\negg$, where~$\negg\varphi$ doesn't mean~$(\varphi
+\Rightarrow \bot)$, but~$(\varphi \Rightarrow a = 0)$.
+
+For any entry~$M_{ij}$ of the matrix, we~$\negg\negg$-have that it's invertible
+or~$\negg($invertible$)$. The latter is equivalent to some power XXX
+\end{proof}
+
+
+\subsection{Nilpotent polynomials}
+
+XXX
+
+\subsection{Grothendieck's generic freeness lemma}
+
+XXX
+
+\end{document}

@@ -1,0 +1,289 @@
+\documentclass[13pt,utf8,notheorems,compress,t]{beamer}
+\usepackage{etex}
+
+\usepackage[english]{babel}
+
+\usepackage{mathtools}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{ragged2e}
+\usepackage{multicol}
+\usepackage{tabto}
+\usepackage{xstring}
+\usepackage{ifthen}
+\usepackage{soul}\setul{0.3ex}{}
+\usepackage[all]{xy}
+\xyoption{rotate}
+\usepackage{tikz}
+\usetikzlibrary{calc,shapes.callouts,shapes.arrows,patterns,fit,backgrounds}
+\hypersetup{colorlinks=true}
+\usepackage{multimedia}
+\newcommand{\video}[2]{\movie[width=#2,height=#2,autostart,loop,poster]{}{#1}}
+\hypersetup{colorlinks=false}
+
+\usepackage{pifont}
+\newcommand{\cmark}{\ding{51}}
+\newcommand{\xmark}{\ding{55}}
+
+\graphicspath{{images/}}
+
+\usepackage[protrusion=true,expansion=true]{microtype}
+
+\setlength\parskip{\medskipamount}
+\setlength\parindent{0pt}
+
+\title{Exploring mathematical objects from custom-tailored mathematical universes}
+\author{Ingo Blechschmidt}
+\date{May 26th, 2018}
+
+\useinnertheme[shadow=true]{rounded}
+\useoutertheme{split}
+\usecolortheme{orchid}
+\usecolortheme{whale}
+\setbeamerfont{block title}{size={}}
+
+\useinnertheme{rectangles}
+
+\usecolortheme{seahorse}
+\definecolor{mypurple}{RGB}{150,0,255}
+\setbeamercolor{structure}{fg=mypurple}
+\definecolor{myred}{RGB}{150,0,0}
+\setbeamercolor*{title}{bg=myred,fg=white}
+\setbeamercolor*{titlelike}{bg=myred,fg=white}
+
+\usefonttheme{serif}
+\usepackage[T1]{fontenc}
+\usepackage{libertine}
+
+\newcommand{\A}{\mathcal{A}}
+\renewcommand{\AA}{\mathbb{A}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\F}{\mathcal{F}}
+\renewcommand{\G}{\mathcal{G}}
+\newcommand{\GG}{\mathbb{G}}
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\K}{\mathcal{K}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\TT}{\mathbb{T}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\renewcommand{\P}{\mathcal{P}}
+\newcommand{\ppp}{\mathfrak{p}}
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\defeqv}{\vcentcolon\equiv}
+\newcommand{\Sh}{\mathrm{Sh}}
+\newcommand{\GL}{\mathrm{GL}}
+\newcommand{\Zar}{\mathrm{Zar}}
+\newcommand{\op}{\mathrm{op}}
+\newcommand{\Set}{\mathrm{Set}}
+\newcommand{\Eff}{\mathrm{Ef{}f}}
+\newcommand{\Sch}{\mathrm{Sch}}
+\newcommand{\Aff}{\mathrm{Aff}}
+\newcommand{\LRS}{\mathrm{LRS}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\Spec}{\mathrm{Spec}}
+\newcommand{\lra}{\longrightarrow}
+\newcommand{\RelSpec}{\operatorname{Spec}}
+\renewcommand{\_}{\mathpunct{.}}
+\newcommand{\?}{\,{:}\,}
+\newcommand{\speak}[1]{\ulcorner\text{\textnormal{#1}}\urcorner}
+\newcommand{\ull}[1]{\underline{#1}}
+\newcommand{\affl}{\ensuremath{{\ull{\AA}^1}}}
+\newcommand{\Ll}{\vcentcolon\!\Longleftrightarrow}
+\newcommand{\inv}{inv.\@}
+\newcommand{\seq}{\vdash_{\!\!\!\vec x}}
+
+\setbeamertemplate{blocks}[rounded][shadow=false]
+
+\newcommand{\fmini}[2]{\framebox{\begin{minipage}{#1}#2\end{minipage}}}
+\makeatletter
+\def\underunbrace#1{\mathop{\vtop{\m@th\ialign{##\crcr
+      $\hfil\displaystyle{#1}\hfil$\crcr\noalign{\kern3\p@\nointerlineskip}
+      \crcr\noalign{\kern3\p@}}}}\limits}
+\def\overunbrace#1{\mathop{\vbox{\m@th\ialign{##\crcr\noalign{\kern3\p@}
+      \crcr\noalign{\kern3\p@\nointerlineskip}
+      $\hfil\displaystyle{#1}\hfil$\crcr}}}\limits}
+\makeatother
+
+\newenvironment{changemargin}[2]{%
+  \begin{list}{}{%
+    \setlength{\topsep}{0pt}%
+    \setlength{\leftmargin}{#1}%
+    \setlength{\rightmargin}{#2}%
+    \setlength{\listparindent}{\parindent}%
+    \setlength{\itemindent}{\parindent}%
+    \setlength{\parsep}{\parskip}%
+  }%
+  \item[]}{\end{list}}
+
+\newcommand{\pointthis}[2]{%
+  \tikz[remember picture,baseline]{\node[anchor=base,inner sep=0,outer sep=0]%
+    (#1) {#1};\node[overlay,rectangle callout,%
+    callout relative pointer={(0.3cm,1.0cm)},fill=blue!20] at ($(#1.north)+(-0.1cm,-1.6cm)$) {#2};}%
+}%
+
+\newcommand{\hcancel}[5]{%
+  \tikz[baseline=(tocancel.base)]{
+    \node[inner sep=0pt,outer sep=0pt] (tocancel) {#1};
+    \draw[red, line width=0.4mm] ($(tocancel.south west)+(#2,#3)$) -- ($(tocancel.north east)+(#4,#5)$);
+  }%
+}
+
+\newcommand{\slogan}[1]{%
+  \begin{center}%
+    \setlength{\fboxrule}{2pt}%
+    \setlength{\fboxsep}{8pt}%
+    {\usebeamercolor[fg]{item}\fbox{\usebeamercolor[fg]{normal text}\parbox{0.93\textwidth}{#1}}}%
+  \end{center}%
+}
+
+\newcommand{\sloganwithoutborder}[1]{%
+  \begin{center}%
+    \setlength{\fboxrule}{0pt}%
+    \setlength{\fboxsep}{-14pt}%
+    {\usebeamercolor[fg]{item}\fbox{\usebeamercolor[fg]{normal
+    text}\parbox{0.9\textwidth}{\begin{center}#1\end{center}}}}%
+  \end{center}%
+}
+
+% Adapted from https://latex.org/forum/viewtopic.php?t=2251 (Stefan Kottwitz)
+\newenvironment<>{varblock}[2]{
+  \begin{center}
+    \begin{minipage}{#1}
+      \setlength{\textwidth}{#1}
+      \begin{actionenv}#3
+	\def\insertblocktitle{\centering #2}
+	\par
+	\usebeamertemplate{block begin}}{
+        \par
+        \usebeamertemplate{block end}
+      \end{actionenv}
+    \end{minipage}
+  \end{center}}
+
+\setbeamertemplate{frametitle}{%
+  \vskip0.7em%
+  \leavevmode%
+  \begin{beamercolorbox}[dp=1ex,center]{}%
+      \usebeamercolor[fg]{item}{\textbf{{\Large \insertframetitle}}}
+  \end{beamercolorbox}%
+}
+
+\setbeamertemplate{navigation symbols}{}
+
+\newcounter{framenumberpreappendix}
+\newcommand{\backupstart}{
+  \setcounter{framenumberpreappendix}{\value{framenumber}}
+}
+\newcommand{\backupend}{
+  \addtocounter{framenumberpreappendix}{-\value{framenumber}}
+  \addtocounter{framenumber}{\value{framenumberpreappendix}} 
+}
+
+\setbeamertemplate{footline}{%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex,dp=1ex,right,rightskip=1mm,leftskip=1mm]{}%
+    \hfill
+    \insertframenumber\,/\,\inserttotalframenumber
+  \end{beamercolorbox}%
+  \vskip0pt%
+}
+
+
+\newcommand{\hil}[1]{{\usebeamercolor[fg]{item}{\textbf{#1}}}}
+
+\IfSubStr{\jobname}{\detokenize{nonotes}}{
+  \setbeameroption{hide notes}
+}{
+  \setbeameroption{show notes}
+}
+\setbeamertemplate{note page}[plain]
+\setbeameroption{hide notes}
+
+\begin{document}
+
+\addtocounter{framenumber}{-1}
+
+\begin{frame}[c]
+  \centering
+  \medskip
+  \includegraphics[scale=0.3]{images/external-internal-small}
+  \medskip
+
+  \hil{Exploring mathematical objects from custom-tailored mathematical universes} \\
+
+  \medskip
+
+  \scriptsize
+  Max Planck Institute for Mathematics in the Sciences \\
+  Ingo Blechschmidt \\
+ 
+  \medskip
+
+  Third international conference of the Italian Network for the Philosophy of
+  Mathematics \\
+  May 26th, 2018
+  \par
+\end{frame}
+
+\begin{frame}[fragile]{A glimpse of the toposophic landscape}
+  \tikzstyle{topos} = [draw=mypurple, very thick,
+      rectangle, rounded corners, inner sep=10pt, inner ysep=20pt]
+  \tikzstyle{title} = [fill=mypurple, text=white]
+
+  \input{images/primes.tex}
+
+  \newcommand{\drawbox}[3]{
+    \node[topos] [fit = #3] (#1) {};
+    \node[title] at (#1.north) {#2};
+  }
+
+  \newcommand{\muchstuff}{
+    \includegraphics[height=3em]{filmat}
+    \scalebox{0.5}{\sieve{14}{2}}
+  }
+
+  \newcommand{\fewstuff}{
+    \includegraphics[height=3em]{filmat}
+    \scalebox{0.5}{\sieve{7}{2}}
+  }
+
+  \newcommand{\threeblobs}{
+    \colorbox{mypurple}{\ \ }\quad
+    \colorbox{mypurple}{\ \ }\quad
+    \colorbox{mypurple}{\ \ }
+  }
+
+  \begin{tikzpicture}
+    \node (objs-set0) at (0,0) {\muchstuff};
+    \node[scale=0.4] (objs-set1) at (-3.5,-2.5) {\fewstuff};
+    \node[scale=0.4] (objs-eff1) at (3.5,-2.5) {\fewstuff};
+    \node[scale=0.4] (objs-sh1)  at (0,-2.5) {\fewstuff};
+
+    \node (prop-eff1) [below of=objs-eff1, align=left] {
+      Every function \\
+      is computable.
+    };
+
+    \node (prop-sh1) [below of=objs-sh1, align=left] {
+      The axiom of \\
+      choice fails.
+    };
+
+    \node (prop-set1) [below of=objs-set1, align=left] {
+      The usual laws \\
+      of logic hold.
+    };
+
+    \node (more-eff1) [below of=prop-eff1] {\threeblobs};
+    \node (more-sh1)  [below of=prop-sh1]  {\threeblobs};
+    \node (more-set1) [below of=prop-set1] {\threeblobs};
+
+    \drawbox{set1}{$\mathrm{Set}$}{(objs-set1) (prop-set1)}
+    \drawbox{eff1}{Ef{}f}{(objs-eff1) (prop-eff1)}
+    \drawbox{sh1}{$\operatorname{Sh} X$}{(objs-sh1) (prop-sh1)}
+    \drawbox{set0}{$\mathrm{Set}$}{(objs-set0) (set1) (eff1) (sh1)}
+  \end{tikzpicture}
+\end{frame}
+
+\end{document}

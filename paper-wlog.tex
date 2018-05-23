@@ -219,7 +219,33 @@ or~$\negg($invertible$)$. The latter is equivalent to some power XXX
 
 \subsection{Nilpotent polynomials}
 
-XXX
+\begin{prop}Let~$f \in A[X]$ be a nilpotent polynomial over a ring~$A$. Then
+the coefficients of~$f$ are nilpotent as elements of~$A$.
+\end{prop}
+
+\begin{proof}[Proof A (classical)]It suffices to show that the coefficients
+of~$f$ are contained in every prime ideal of~$A$. Thus let~$\ppp$ be an
+arbitrary prime ideal. Since some power of~$f$ is zero as an element of~$A[X]$,
+a~forteriori it is zero as an element of~$(A/\ppp)[X]$. Since~$A/\ppp$ is an
+integral domain, so is~$(A/\ppp)[X]$ (this requires a quick verification using
+induction). Thus~$f$ is zero as an element of~$(A/\ppp)[X]$, so all of its
+coefficients are elements of~$\ppp$.
+\end{proof}
+
+Proof~A is ineffective: It doesn't give any bounds on the indices of nilpotency
+of the coefficients in terms of the index of nilpotency of~$f$.\footnote{The
+proof does tell us that there is \emph{some} uniform bound, since we can apply
+it to the generic situation, that is the polynomial~$f = \sum_i A_i X^i$ over the
+ring~$\ZZ[A_0,\ldots,A_d]/(\ldots)$, where we put the individual coefficients of~$(\sum_i
+A_i X^i)^n$ at~``$\ldots$''.} The standard way to mine Proof~A for effective
+content is to employ a technique suitable for capturing the \emph{generic prime
+ideal}, for instance \cite{XXXcoquand} or \cite{XXXschuster}. These techniques
+come down to the forcing language of the space~$\Spec(A)$, but equipped with
+the \emph{flat topology} (also called \emph{co-Zariski topology}), and allow
+for a constructive interpretation of a verbatim copy of Proof~A.
+
+\begin{proof}[Proof B (constructive)]
+\end{proof}
 
 \subsection{Grothendieck's generic freeness lemma}
 

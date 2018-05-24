@@ -15,11 +15,35 @@
 \usepackage[all]{xy}
 \xyoption{rotate}
 \usepackage{tikz}
-\usetikzlibrary{calc,shapes.callouts,shapes.arrows,patterns,fit,backgrounds}
+\usetikzlibrary{calc,shapes,shapes.callouts,shapes.arrows,patterns,fit,backgrounds,decorations.pathmorphing}
 \hypersetup{colorlinks=true}
 \usepackage{multimedia}
 \newcommand{\video}[2]{\movie[width=#2,height=#2,autostart,loop,poster]{}{#1}}
 \hypersetup{colorlinks=false}
+
+% http://www.texample.net/tikz/examples/hand-drawn-lines/
+\pgfdeclaredecoration{penciline}{initial}{
+    \state{initial}[width=+\pgfdecoratedinputsegmentremainingdistance,
+    auto corner on length=1mm,]{
+        \pgfpathcurveto%
+        {% From
+            \pgfqpoint{\pgfdecoratedinputsegmentremainingdistance}
+                      {\pgfdecorationsegmentamplitude}
+        }
+        {%  Control 1
+        \pgfmathrand
+        \pgfpointadd{\pgfqpoint{\pgfdecoratedinputsegmentremainingdistance}{0pt}}
+                    {\pgfqpoint{-\pgfdecorationsegmentaspect
+                     \pgfdecoratedinputsegmentremainingdistance}%
+                               {\pgfmathresult\pgfdecorationsegmentamplitude}
+                    }
+        }
+        {%TO
+        \pgfpointadd{\pgfpointdecoratedinputsegmentlast}{\pgfpoint{1pt}{1pt}}
+        }
+    }
+    \state{final}{}
+}
 
 \usepackage{pifont}
 \newcommand{\cmark}{\ding{51}}
@@ -210,37 +234,48 @@
   \includegraphics[scale=0.3]{images/external-internal-small}
   \medskip
 
-  \hil{Exploring mathematical objects from custom-tailored mathematical universes} \\
+  \hil{Exploring mathematical objects from \\ custom-tailored mathematical universes} \\
 
-  \medskip
+  \bigskip
 
   \scriptsize
-  Max Planck Institute for Mathematics in the Sciences \\
   Ingo Blechschmidt \\
+  Max Planck Institute for Mathematics in the Sciences, Leipzig \\
  
   \medskip
 
-  Third international conference of the Italian Network for the Philosophy of
-  Mathematics \\
+  Third international conference of the \\
+  \emph{Italian Network for the Philosophy of Mathematics} \\
+  \medskip
   May 26th, 2018
   \par
 \end{frame}
 
 \begin{frame}[fragile]{A glimpse of the toposophic landscape}
-  \tikzstyle{topos} = [draw=mypurple, very thick,
-      rectangle, rounded corners, inner sep=10pt, inner ysep=20pt]
+  \tikzstyle{topos} = [draw=mypurple, very thick, rectangle, rounded corners, inner sep=5pt, inner ysep=10pt]
   \tikzstyle{title} = [fill=mypurple, text=white]
+  \tikzset{
+    invisible/.style={opacity=0,text opacity=0},
+    visible on/.style={alt={#1{}{invisible}}},
+    alt/.code args={<#1>#2#3}{%
+      \alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}}}
+  }
 
   \input{images/primes.tex}
 
-  \newcommand{\drawbox}[3]{
-    \node[topos] [fit = #3] (#1) {};
+  \newcommand{\drawbox}[4]{
+    \node[topos, #4] [fit = #3] (#1) {};
     \node[title] at (#1.north) {#2};
   }
 
   \newcommand{\muchstuff}{
     \includegraphics[height=3em]{filmat}
     \scalebox{0.5}{\sieve{14}{2}}
+  }
+
+  \newcommand{\muchstuffplaceholder}{
+    \includegraphics[height=3em]{filmat-placeholder}
+    \scalebox{0.5}{\fakesieve{14}{2}}
   }
 
   \newcommand{\fewstuff}{
@@ -255,34 +290,72 @@
   }
 
   \begin{tikzpicture}
-    \node (objs-set0) at (0,0) {\muchstuff};
-    \node[scale=0.4] (objs-set1) at (-3.5,-2.5) {\fewstuff};
-    \node[scale=0.4] (objs-eff1) at (3.5,-2.5) {\fewstuff};
-    \node[scale=0.4] (objs-sh1)  at (0,-2.5) {\fewstuff};
-
-    \node (prop-eff1) [below of=objs-eff1, align=left] {
-      Every function \\
-      is computable.
+    \node (objs-set0) at (0,0) {
+      \only<1-2>{\muchstuffplaceholder}
+      \only<3>{\muchstuff}
     };
-
-    \node (prop-sh1) [below of=objs-sh1, align=left] {
-      The axiom of \\
-      choice fails.
+    \node[scale=0.4] (objs-set1) at (-3.5,-2.5) {
+      \only<1->{\fewstuff}
+    };
+    \node[scale=0.4] (objs-eff1) at (3.5,-2.5) {
+      \only<2->{\fewstuff}
+    };
+    \node[scale=0.4] (objs-sh1)  at (0,-2.5) {
+      \only<2->{\fewstuff}
     };
 
     \node (prop-set1) [below of=objs-set1, align=left] {
-      The usual laws \\
-      of logic hold.
+      \only<1->{%
+        The usual laws \\
+        of logic hold.
+      }
     };
 
-    \node (more-eff1) [below of=prop-eff1] {\threeblobs};
-    \node (more-sh1)  [below of=prop-sh1]  {\threeblobs};
-    \node (more-set1) [below of=prop-set1] {\threeblobs};
+    \node (prop-eff1) [below of=objs-eff1, align=left] {
+      \only<2->{%
+        Every function \\
+        is computable.
+      }
+    };
 
-    \drawbox{set1}{$\mathrm{Set}$}{(objs-set1) (prop-set1)}
-    \drawbox{eff1}{Ef{}f}{(objs-eff1) (prop-eff1)}
-    \drawbox{sh1}{$\operatorname{Sh} X$}{(objs-sh1) (prop-sh1)}
-    \drawbox{set0}{$\mathrm{Set}$}{(objs-set0) (set1) (eff1) (sh1)}
+    \node (prop-sh1) [below of=objs-sh1, align=left] {
+      \only<2->{%
+        The axiom of \\
+        choice fails.
+      }
+    };
+
+    \node (more-eff1) [below of=prop-eff1, visible on=<3->] {
+      \threeblobs
+    };
+    \node (more-sh1)  [below of=prop-sh1, visible on=<3->] {
+      \threeblobs
+    };
+    \node (more-set1) [below of=prop-set1, visible on=<3->] {
+      \threeblobs
+    };
+
+    \begin{scope}[visible on=<1->]
+      \drawbox{set1}{$\mathrm{Set}$}{(objs-set1) (prop-set1) (more-set1)}{}
+    \end{scope}
+    \begin{scope}[visible on=<2->]
+      \drawbox{eff1}{Ef{}f}{(objs-eff1) (prop-eff1) (more-eff1)}{tape}
+    \end{scope}
+    \begin{scope}[visible on=<2->]
+      \drawbox{sh1}{$\operatorname{Sh} X$}{(objs-sh1) (prop-sh1) (more-sh1)}{draw=none}
+      \def\R{8pt}
+      \begin{pgfonlayer}{background}
+      \draw[decoration={bumps,segment length=8pt}, decorate, very thick, draw=mypurple, visible on=<2->]
+        ($(sh1.south west) + (\R, 0)$) arc(270:180:\R) --
+        ($(sh1.north west) + (0, -\R)$) arc(180:90:\R) --
+        ($(sh1.north east) + (-\R, 0)$) arc(90:0:\R) --
+        ($(sh1.south east) + (0, \R)$) arc(0:-90:\R) --
+        cycle;
+      \end{pgfonlayer}
+    \end{scope}
+    \begin{scope}[visible on=<3->]
+      \drawbox{set0}{$\mathrm{Set}$}{(objs-set0) (set1) (eff1) (sh1)}{}
+    \end{scope}
   \end{tikzpicture}
 \end{frame}
 

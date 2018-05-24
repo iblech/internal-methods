@@ -121,3 +121,54 @@
 
   \end{tikzpicture}
 }
+
+\newcommand{\fakesieve}[2]{
+  \def\cols{#1}
+  \def\rows{#2}
+  \begin{tikzpicture}[scale=.5,opacity=0]
+  \pgfmathtruncatemacro{\nmax}{\rows * \cols}
+
+  \foreach \n in {1,...,\nmax} {
+    \begin{scope}[fill=gray,
+                  draw=gray,
+                  line width=4]
+      \drawpolygon{\n}{\n}
+    \end{scope}
+    \setisprime{\n}
+    \ifthenelse{\isprime=1}{
+      \numlabel{\n}{\bf\n}
+    }{
+      \def\startintensity{.33}
+      \def\incrintensity{.10}
+      \def\intensity{\startintensity}
+
+      \def\m{\n}
+      \pgfmathtruncatemacro{\i}{\m / 2}
+
+      % Divide \m by \i until \m is extinguished.
+      % Increment \i each time it does not divide into \m.
+      \whiledo{\m>1}{
+        \setisprime{\i}
+        \pgfmathparse{Mod(\m,\i)==0? 1:0}
+        \ifthenelse{\pgfmathresult=1\and\isprime=1}{
+          \setpolygoncolor{\i}
+          \begin{scope}[fill=\polycolor,
+                        draw=\polycolor!85!black,
+                        line width=\intensity*1.5]
+            \drawpolygon{\n}{\i}
+          \end{scope}
+          \pgfmathtruncatemacro{\m}{\m / \i}
+          \pgfmathparse{\intensity + \incrintensity}\let\intensity\pgfmathresult
+        }{
+          \pgfmathtruncatemacro{\i}{\i - 1}
+          \def\intensity{\startintensity}
+        }
+      }
+      \begin{scope}[text=black]
+        \numlabel{\n}{\scriptsize\n}
+      \end{scope}
+    }
+  }
+
+  \end{tikzpicture}
+}

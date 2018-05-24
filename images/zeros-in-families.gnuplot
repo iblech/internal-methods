@@ -5,7 +5,7 @@ unset border
 set terminal png size 400,418
 set xrange [ -1 : 1 ]
 set yrange [ -1 : 1 ]
-set xzeroaxis ls 1
+set xzeroaxis ls 1 lw 4 linecolor rgb '#000000'
 set style line 1 linecolor rgb '#9600ff' linetype 1 linewidth 4
 set samples 10000
 

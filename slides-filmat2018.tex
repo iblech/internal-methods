@@ -120,15 +120,20 @@
 
 \setbeamertemplate{blocks}[rounded][shadow=false]
 
-\newcommand{\fmini}[2]{\framebox{\begin{minipage}{#1}#2\end{minipage}}}
-\makeatletter
-\def\underunbrace#1{\mathop{\vtop{\m@th\ialign{##\crcr
-      $\hfil\displaystyle{#1}\hfil$\crcr\noalign{\kern3\p@\nointerlineskip}
-      \crcr\noalign{\kern3\p@}}}}\limits}
-\def\overunbrace#1{\mathop{\vbox{\m@th\ialign{##\crcr\noalign{\kern3\p@}
-      \crcr\noalign{\kern3\p@\nointerlineskip}
-      $\hfil\displaystyle{#1}\hfil$\crcr}}}\limits}
-\makeatother
+% Adapted from https://latex.org/forum/viewtopic.php?t=2251 (Stefan Kottwitz)
+\newenvironment<>{hilblock}{
+  \begin{center}
+    \begin{minipage}{8.25cm}
+      \setlength{\textwidth}{8.25cm}
+      \begin{actionenv}#1
+	\def\insertblocktitle{}
+	\par
+	\usebeamertemplate{block begin}}{
+        \par
+        \usebeamertemplate{block end}
+      \end{actionenv}
+    \end{minipage}
+  \end{center}}
 
 \newenvironment{changemargin}[2]{%
   \begin{list}{}{%
@@ -144,32 +149,8 @@
 \newcommand{\pointthis}[2]{%
   \tikz[remember picture,baseline]{\node[anchor=base,inner sep=0,outer sep=0]%
     (#1) {#1};\node[overlay,rectangle callout,%
-    callout relative pointer={(0.3cm,1.0cm)},fill=blue!20] at ($(#1.north)+(-0.1cm,-1.6cm)$) {#2};}%
+    callout relative pointer={(0.3cm,0.5cm)},fill=blue!20] at ($(#1.north)+(-0.1cm,-1.1cm)$) {#2};}%
 }%
-
-\newcommand{\hcancel}[5]{%
-  \tikz[baseline=(tocancel.base)]{
-    \node[inner sep=0pt,outer sep=0pt] (tocancel) {#1};
-    \draw[red, line width=0.4mm] ($(tocancel.south west)+(#2,#3)$) -- ($(tocancel.north east)+(#4,#5)$);
-  }%
-}
-
-\newcommand{\slogan}[1]{%
-  \begin{center}%
-    \setlength{\fboxrule}{2pt}%
-    \setlength{\fboxsep}{8pt}%
-    {\usebeamercolor[fg]{item}\fbox{\usebeamercolor[fg]{normal text}\parbox{0.93\textwidth}{#1}}}%
-  \end{center}%
-}
-
-\newcommand{\sloganwithoutborder}[1]{%
-  \begin{center}%
-    \setlength{\fboxrule}{0pt}%
-    \setlength{\fboxsep}{-14pt}%
-    {\usebeamercolor[fg]{item}\fbox{\usebeamercolor[fg]{normal
-    text}\parbox{0.9\textwidth}{\begin{center}#1\end{center}}}}%
-  \end{center}%
-}
 
 % Adapted from https://latex.org/forum/viewtopic.php?t=2251 (Stefan Kottwitz)
 \newenvironment<>{varblock}[2]{
@@ -235,6 +216,8 @@
   \medskip
 
   \hil{Exploring mathematical objects from \\ custom-tailored mathematical universes} \\
+
+  \emph{an invitation}
 
   \bigskip
 
@@ -357,6 +340,95 @@
       \drawbox{set0}{$\mathrm{Set}$}{(objs-set0) (set1) (eff1) (sh1)}{}
     \end{scope}
   \end{tikzpicture}
+\end{frame}
+
+\begin{frame}{The internal universe of a topos}
+  For any topos~$\E$ and any statement~$\varphi$, we define
+  \begin{gather*}
+    \E \models \varphi \\
+    \text{``$\varphi$ holds in the internal universe of~$\E$''}
+  \end{gather*}
+  using a simple recursive definition, the \hil{Kripke--Joyal semantics}.
+  \medskip
+
+  \begin{columns}
+    \begin{column}{0.3\textwidth}
+      \centering
+      $\Set \models \varphi$ \\
+      ``$\varphi$ holds \\ in the usual sense.''
+    \end{column}
+
+    \begin{column}{0.3\textwidth}
+      \centering
+      $\Sh(X) \models \varphi$ \\
+      ``$\varphi$ holds continuously.''
+    \end{column}
+
+    \begin{column}{0.3\textwidth}
+      \centering
+      $\Eff \models \varphi$ \\
+      ``$\varphi$ holds computably.''
+    \end{column}
+  \end{columns}
+  \medskip
+
+  \pause
+  Any topos supports \hil{mathematical reasoning}:
+
+  \vspace*{-1em}
+  \begin{hilblock}
+    If~$\E \models \varphi$ and if~$\varphi \vdash \psi$
+    \only<1-2>{intuitionistically}%
+    \only<3>{\pointthis{intuitionistically}{%
+      no $\varphi \vee \neg\varphi$,\ \
+      no $\neg\neg\varphi \Rightarrow \varphi$,\ \
+      no axiom of choice}},
+    then~$\E \models \psi$.
+  \end{hilblock}
+\end{frame}
+
+\newcommand{\intex}[3]{#1 \quad #2\par #3\bigskip\medskip}
+
+\begin{frame}{First steps in alternate universes}
+  \begin{changemargin}{-1.1em}{0em}
+    \small
+    \begin{itemize}
+      \item \intex{
+        $\Eff \models \text{``Any number is prime or is not prime.''}$
+      }{\textcolor{green!90}{\cmark}}{
+        External meaning: There is a \hil{Turing machine} which determines of
+        any given number whether it is prime or not.
+      }
+
+      \item \intex{
+        $\Eff \models \text{``There are infinitely many prime numbers.''}$
+      }{\textcolor{green!90}{\cmark}}{
+        External meaning: There is a \hil{Turing machine} producing arbitrarily many prime
+        numbers.
+      }
+
+      \item \intex{
+        $\Eff \models \text{``Any function~$\NN \to \NN$ is the zero function or not.''}$
+      }{\textcolor{red!80}{\xmark}}{
+        External meaning: There is a \hil{Turing machine} which, given a Turing
+        machine computing a function~$f : \NN \to \NN$, determines whether~$f$
+        is the zero function or not.
+      }
+
+      \item \intex{
+        $\Eff \models \text{``Any function~$\NN \to \NN$ is computable.''}$
+      }{\textcolor{green!90}{\cmark}}{}
+
+      \item \intex{
+        $\Sh(X) \models \text{``Any cont. function with opposite signs has
+        a zero.''}$
+      }{\textcolor{red!80}{\xmark}}{
+        External meaning: Zeros can locally be picked \hil{continuously} in
+        continuous families of continuous functions.
+        \textcolor{red}{(\href{https://rawgit.com/iblech/internal-methods/master/images/zeros-in-families.mp4}{video} for counterexample)}
+      }
+    \end{itemize}
+  \end{changemargin}
 \end{frame}
 
 \end{document}

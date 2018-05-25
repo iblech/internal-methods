@@ -397,23 +397,23 @@
       \item \intex{
         $\Eff \models \text{``Any number is prime or is not prime.''}$
       }{\textcolor{green!90}{\cmark}}{
-        There is a \hil{Turing machine} which determines of
+        Meaning: There is a \hil{Turing machine} which determines of
         any given number whether it is prime or not.
       }
 
       \item \intex{
         $\Eff \models \text{``There are infinitely many prime numbers.''}$
       }{\textcolor{green!90}{\cmark}}{
-        There is a \hil{Turing machine} producing arbitrarily many prime
-        numbers.
+        Meaning: There is a \hil{Turing machine} producing arbitrarily many
+        primes.\\[0em]
       }
 
       \item \intex{
         $\Eff \models \text{``Any function~$\NN \to \NN$ is the zero function or not.''}$
       }{\textcolor{red!80}{\xmark}}{
-        There is a \hil{Turing machine} which, given a Turing
+        Meaning: There is a \hil{Turing machine} which, given a Turing
         machine computing a function~$f : \NN \to \NN$, determines whether~$f$
-        is the zero function or not.
+        is zero or not.
       }
 
       \item \intex{
@@ -424,7 +424,7 @@
         $\Sh(X) \models \text{``Any cont. function with opposite signs has
         a zero.''}$
       }{\textcolor{red!80}{\xmark}}{
-        Zeros can locally be picked \hil{continuously} in
+        Meaning: Zeros can locally be picked \hil{continuously} in
         continuous families of continuous functions.
         \textcolor{red}{(\href{https://rawgit.com/iblech/internal-methods/master/images/zeros-in-families.mp4}{video} for counterexample)}
       }
@@ -438,7 +438,7 @@
 \begin{frame}{Applications in commutative algebra}
   Let~$A$ be a reduced commutative ring.
 
-  \hil{For example:}\ \ $\ZZ$,\ \ $\ZZ[X]$,\ \ $\ZZ[X,Y,Z]/(X^n+Y^n-Z^n)$,\ \ $\QQ$,\ \ $\RR$
+  \hil{For instance:}\ \ $\ZZ$,\ \ $\ZZ[X]$,\ \ $\ZZ[X,Y,Z]/(X^n+Y^n-Z^n)$,\ \ $\QQ$,\ \ $\RR$
 
   \mbox{The \hil{little Zariski topos} of~$A$ contains a \hil{mirror image} of~$A$:
   $A^\sim$.}
@@ -485,10 +485,36 @@
   \end{columns}
 \end{frame}
 
+{\renewcommand{\insertframenumber}{4a}
+\begin{frame}{The little Zariski topos in more detail}
+  Recall~$A[f^{-1}] = \bigl\{ \frac{u}{f^n} \,|\, u \in A, n \in \NN \bigr\}$.
+
+  \begin{itemize}
+    \item $\Sh(\Spec(A)) \models \text{``For all~$x \in A^\sim$, \ldots''}$
+
+          Meaning: For all~$f \in A$ and all~$x \in A[f^{-1}]$, \ldots
+          \medskip
+
+    \item $\Sh(\Spec(A)) \models \text{``There is~$x \in A^\sim$ such that \ldots''}$
+
+          \mbox{Meaning: There is a partition of unity,~$1 = f_1 + \cdots + f_n \in A$,}
+          such that for each~$i$, there exists~$x_i \in A[f_i^{-1}]$
+          with~\ldots
+          \medskip
+
+    \item $\Sh(\Spec(A)) \models \text{``$\varphi$ implies $\psi$''}$
+
+          Meaning: For all~$f \in A$, if~$\varphi$ on stage~$f$, then~$\psi$ on
+          stage~$f$.
+  \end{itemize}
+\end{frame}
+\addtocounter{framenumber}{-1}}
+
 
 \section{Conclusion}
 
 \begin{frame}{Topos theory \ldots}
+  \vspace*{-0.5em}
   \begin{itemize}
     \item enriches the platonism debate,
     %\item yields a new view on ``continuous dependence on parameters'',

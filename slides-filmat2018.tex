@@ -1,4 +1,4 @@
-\documentclass[13pt,utf8,notheorems,compress,t]{beamer}
+\documentclass[12pt,utf8,notheorems,compress,t]{beamer}
 \usepackage{etex}
 
 \usepackage[english]{babel}
@@ -21,30 +21,6 @@
 \newcommand{\video}[2]{\movie[width=#2,height=#2,autostart,loop,poster]{}{#1}}
 \hypersetup{colorlinks=false}
 
-% http://www.texample.net/tikz/examples/hand-drawn-lines/
-\pgfdeclaredecoration{penciline}{initial}{
-    \state{initial}[width=+\pgfdecoratedinputsegmentremainingdistance,
-    auto corner on length=1mm,]{
-        \pgfpathcurveto%
-        {% From
-            \pgfqpoint{\pgfdecoratedinputsegmentremainingdistance}
-                      {\pgfdecorationsegmentamplitude}
-        }
-        {%  Control 1
-        \pgfmathrand
-        \pgfpointadd{\pgfqpoint{\pgfdecoratedinputsegmentremainingdistance}{0pt}}
-                    {\pgfqpoint{-\pgfdecorationsegmentaspect
-                     \pgfdecoratedinputsegmentremainingdistance}%
-                               {\pgfmathresult\pgfdecorationsegmentamplitude}
-                    }
-        }
-        {%TO
-        \pgfpointadd{\pgfpointdecoratedinputsegmentlast}{\pgfpoint{1pt}{1pt}}
-        }
-    }
-    \state{final}{}
-}
-
 \usepackage{pifont}
 \newcommand{\cmark}{\ding{51}}
 \newcommand{\xmark}{\ding{55}}
@@ -61,13 +37,13 @@
 \date{May 26th, 2018}
 
 \useinnertheme[shadow=true]{rounded}
-\useoutertheme{split}
-\usecolortheme{orchid}
-\usecolortheme{whale}
+\useoutertheme[subsection=false]{miniframes}
 \setbeamerfont{block title}{size={}}
+\addtobeamertemplate{headline}{\vskip-0.5ex}{}
 
 \useinnertheme{rectangles}
 
+\usecolortheme{orchid}
 \usecolortheme{seahorse}
 \definecolor{mypurple}{RGB}{150,0,255}
 \setbeamercolor{structure}{fg=mypurple}
@@ -88,6 +64,7 @@
 \renewcommand{\O}{\mathcal{O}}
 \newcommand{\K}{\mathcal{K}}
 \newcommand{\NN}{\mathbb{N}}
+\newcommand{\QQ}{\mathbb{Q}}
 \newcommand{\RR}{\mathbb{R}}
 \newcommand{\TT}{\mathbb{T}}
 \newcommand{\PP}{\mathbb{P}}
@@ -123,12 +100,12 @@
 % Adapted from https://latex.org/forum/viewtopic.php?t=2251 (Stefan Kottwitz)
 \newenvironment<>{hilblock}{
   \begin{center}
-    \begin{minipage}{8.25cm}
-      \setlength{\textwidth}{8.25cm}
+    \begin{minipage}{9.05cm}
+      \setlength{\textwidth}{9.05cm}
       \begin{actionenv}#1
-	\def\insertblocktitle{}
-	\par
-	\usebeamertemplate{block begin}}{
+        \def\insertblocktitle{}
+        \par
+        \usebeamertemplate{block begin}}{
         \par
         \usebeamertemplate{block end}
       \end{actionenv}
@@ -146,11 +123,19 @@
   }%
   \item[]}{\end{list}}
 
-\newcommand{\pointthis}[2]{%
-  \tikz[remember picture,baseline]{\node[anchor=base,inner sep=0,outer sep=0]%
-    (#1) {#1};\node[overlay,rectangle callout,%
-    callout relative pointer={(0.3cm,0.5cm)},fill=blue!20] at ($(#1.north)+(-0.1cm,-1.1cm)$) {#2};}%
-}%
+\tikzset{
+  invisible/.style={opacity=0,text opacity=0},
+  visible on/.style={alt={#1{}{invisible}}},
+  alt/.code args={<#1>#2#3}{%
+    \alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}}}
+}
+
+\newcommand{\pointthis}[3]{%
+  \tikz[remember picture,baseline]{
+    \node[anchor=base,inner sep=0,outer sep=0] (#2) {#2};
+    \node[visible on=#1,overlay,rectangle callout,rounded corners,callout relative pointer={(0.3cm,0.5cm)},fill=blue!20] at ($(#2.north)+(-0.1cm,-1.1cm)$) {#3};
+  }%
+}
 
 % Adapted from https://latex.org/forum/viewtopic.php?t=2251 (Stefan Kottwitz)
 \newenvironment<>{varblock}[2]{
@@ -188,6 +173,7 @@
 
 \setbeamertemplate{footline}{%
   \begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex,dp=1ex,right,rightskip=1mm,leftskip=1mm]{}%
+    \inserttitle
     \hfill
     \insertframenumber\,/\,\inserttotalframenumber
   \end{beamercolorbox}%
@@ -209,42 +195,48 @@
 
 \addtocounter{framenumber}{-1}
 
+{\title{}
 \begin{frame}[c]
   \centering
   \medskip
-  \includegraphics[scale=0.3]{images/external-internal-small}
+  \includegraphics[height=0.4\textheight]{acquaviva-platani-street}%
+  \includegraphics[height=0.4\textheight]{mussomeli-sheep}%
+  \includegraphics[height=0.4\textheight]{mussomeli-performance}%
+  \includegraphics[height=0.4\textheight]{mussomeli-castle}%
   \medskip
 
   \hil{Exploring mathematical objects from \\ custom-tailored mathematical universes} \\
 
-  \emph{an invitation}
+  \emph{-- an invitation --}
 
   \bigskip
 
   \scriptsize
   Ingo Blechschmidt \\
+  University of Augsburg / \\
   Max Planck Institute for Mathematics in the Sciences, Leipzig \\
  
   \medskip
 
   Third international conference of the \\
   \emph{Italian Network for the Philosophy of Mathematics} \\
+  in Mussomeli
   \medskip
+
   May 26th, 2018
   \par
-\end{frame}
+\end{frame}}
+
+
+\section[Toposophic landscape]{A glimpse of the toposophic landscape}
 
 \begin{frame}[fragile]{A glimpse of the toposophic landscape}
   \tikzstyle{topos} = [draw=mypurple, very thick, rectangle, rounded corners, inner sep=5pt, inner ysep=10pt]
   \tikzstyle{title} = [fill=mypurple, text=white]
-  \tikzset{
-    invisible/.style={opacity=0,text opacity=0},
-    visible on/.style={alt={#1{}{invisible}}},
-    alt/.code args={<#1>#2#3}{%
-      \alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}}}
-  }
 
   \input{images/primes.tex}
+  %\renewcommand{\sieve}[2]{SIEVE}
+  %\renewcommand{\fakesieve}[2]{SIEVE}
 
   \newcommand{\drawbox}[4]{
     \node[topos, #4] [fit = #3] (#1) {};
@@ -325,7 +317,7 @@
       \drawbox{eff1}{Ef{}f}{(objs-eff1) (prop-eff1) (more-eff1)}{tape}
     \end{scope}
     \begin{scope}[visible on=<2->]
-      \drawbox{sh1}{$\operatorname{Sh} X$}{(objs-sh1) (prop-sh1) (more-sh1)}{draw=none}
+      \drawbox{sh1}{$\mathrm{Sh}\, X$}{(objs-sh1) (prop-sh1) (more-sh1)}{draw=none}
       \def\R{8pt}
       \begin{pgfonlayer}{background}
       \draw[decoration={bumps,segment length=8pt}, decorate, very thick, draw=mypurple, visible on=<2->]
@@ -342,33 +334,40 @@
   \end{tikzpicture}
 \end{frame}
 
-\begin{frame}{The internal universe of a topos}
-  For any topos~$\E$ and any statement~$\varphi$, we define
-  \begin{gather*}
-    \E \models \varphi \\
-    \text{``$\varphi$ holds in the internal universe of~$\E$''}
-  \end{gather*}
-  using a simple recursive definition, the \hil{Kripke--Joyal semantics}.
-  \medskip
 
+\section[Internal universe]{The internal universe of a topos}
+
+\begin{frame}{The internal universe of a topos}
+  For any topos~$\E$ and any statement~$\varphi$, we define the meaning of
+  \vspace*{-0.5em}
+  \[
+    \text{``$\E \models \varphi$''} \quad
+    \text{(``$\varphi$ holds in the internal universe of~$\E$'')}
+  \]
+
+  \vspace*{-1.0em}
+  using the \hil{Kripke--Joyal semantics}.
+
+  \vspace*{-1em}
   \begin{columns}
-    \begin{column}{0.3\textwidth}
+    \def\insertblocktitle{}
+    \begin{column}{0.3\textwidth}\usebeamertemplate{block begin}
       \centering
       $\Set \models \varphi$ \\
-      ``$\varphi$ holds \\ in the usual sense.''
-    \end{column}
+      ``$\varphi$ holds in the usual sense.''
+    \usebeamertemplate{block end}\end{column}
 
-    \begin{column}{0.3\textwidth}
+    \begin{column}{0.3\textwidth}\usebeamertemplate{block begin}
       \centering
       $\Sh(X) \models \varphi$ \\
       ``$\varphi$ holds continuously.''
-    \end{column}
+    \usebeamertemplate{block end}\end{column}
 
-    \begin{column}{0.3\textwidth}
+    \begin{column}{0.3\textwidth}\usebeamertemplate{block begin}
       \centering
       $\Eff \models \varphi$ \\
       ``$\varphi$ holds computably.''
-    \end{column}
+    \usebeamertemplate{block end}\end{column}
   \end{columns}
   \medskip
 
@@ -378,39 +377,41 @@
   \vspace*{-1em}
   \begin{hilblock}
     If~$\E \models \varphi$ and if~$\varphi \vdash \psi$
-    \only<1-2>{intuitionistically}%
-    \only<3>{\pointthis{intuitionistically}{%
+    \pointthis{<3>}{intuitionistically}{%
       no $\varphi \vee \neg\varphi$,\ \
       no $\neg\neg\varphi \Rightarrow \varphi$,\ \
-      no axiom of choice}},
+      no axiom of choice},
     then~$\E \models \psi$.
   \end{hilblock}
 \end{frame}
+
+
+\section[First steps]{First steps in alternate universes}
 
 \newcommand{\intex}[3]{#1 \quad #2\par #3\bigskip\medskip}
 
 \begin{frame}{First steps in alternate universes}
   \begin{changemargin}{-1.1em}{0em}
-    \small
+    \fontsize{10pt}{12pt}\selectfont
     \begin{itemize}
       \item \intex{
         $\Eff \models \text{``Any number is prime or is not prime.''}$
       }{\textcolor{green!90}{\cmark}}{
-        External meaning: There is a \hil{Turing machine} which determines of
+        There is a \hil{Turing machine} which determines of
         any given number whether it is prime or not.
       }
 
       \item \intex{
         $\Eff \models \text{``There are infinitely many prime numbers.''}$
       }{\textcolor{green!90}{\cmark}}{
-        External meaning: There is a \hil{Turing machine} producing arbitrarily many prime
+        There is a \hil{Turing machine} producing arbitrarily many prime
         numbers.
       }
 
       \item \intex{
         $\Eff \models \text{``Any function~$\NN \to \NN$ is the zero function or not.''}$
       }{\textcolor{red!80}{\xmark}}{
-        External meaning: There is a \hil{Turing machine} which, given a Turing
+        There is a \hil{Turing machine} which, given a Turing
         machine computing a function~$f : \NN \to \NN$, determines whether~$f$
         is the zero function or not.
       }
@@ -423,12 +424,84 @@
         $\Sh(X) \models \text{``Any cont. function with opposite signs has
         a zero.''}$
       }{\textcolor{red!80}{\xmark}}{
-        External meaning: Zeros can locally be picked \hil{continuously} in
+        Zeros can locally be picked \hil{continuously} in
         continuous families of continuous functions.
         \textcolor{red}{(\href{https://rawgit.com/iblech/internal-methods/master/images/zeros-in-families.mp4}{video} for counterexample)}
       }
     \end{itemize}
   \end{changemargin}
+\end{frame}
+
+
+\section[Applications]{Applications in commutative algebra}
+
+\begin{frame}{Applications in commutative algebra}
+  Let~$A$ be a reduced commutative ring.
+
+  \hil{For example:}\ \ $\ZZ$,\ \ $\ZZ[X]$,\ \ $\ZZ[X,Y,Z]/(X^n+Y^n-Z^n)$,\ \ $\QQ$,\ \ $\RR$
+
+  \mbox{The \hil{little Zariski topos} of~$A$ contains a \hil{mirror image} of~$A$:
+  $A^\sim$.}
+
+  \setlength\columnsep{0pt}
+  \begin{multicols*}{2}
+    \begin{enumerate}
+      \item $A^\sim$ is always a \hil{field}. \columnbreak
+      \item $A^\sim$ is still \hil{very close} to~$A$.
+    \end{enumerate}
+  \end{multicols*}
+  % \item Studying~$A^\sim$ is the same as studying~$A$ \hil{from a different
+  % point of view}.
+
+  \vspace*{-2em}
+  \begin{columns}[t]
+    \begin{column}[t]{0.47\textwidth}
+      \centering
+
+      \begin{varblock}{\textwidth}{A baby application}
+        \justifying
+        Let~$M$ be a surjective matrix with more rows than columns over a ring~$A$.
+        Then~$A = 0$.
+      \end{varblock}
+
+      \scalebox{0.8}{$\begin{pmatrix}
+        \cdot & \cdot \\
+        \cdot & \cdot \\
+        \cdot & \cdot
+      \end{pmatrix}$}
+    \end{column}
+
+    \begin{column}[t]{0.47\textwidth}
+      \centering
+
+      \begin{varblock}{\textwidth}{Generic freeness\phantom{p}}
+        \justifying
+        Generically, any finitely generated module over a reduced ring is free.
+      \end{varblock}
+      \vspace*{-0.5em}
+
+      \includegraphics[width=0.6\textwidth]{generic-freeness}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+
+\section{Conclusion}
+
+\begin{frame}{Topos theory \ldots}
+  \begin{itemize}
+    \item enriches the platonism debate,
+    %\item yields a new view on ``continuous dependence on parameters'',
+    \item uncovers further relations between objects,
+    \item allows to view objects from a different point of view,
+    \item has applications in mathematical practice.
+  \end{itemize}
+
+  \centering
+  \href{https://www.oliviacaramello.com/Papers/Papers.htm}{\includegraphics[height=0.45\textheight]{olivia-tst}}
+  \href{http://math.andrej.com/2014/03/04/intuitionistic-mathematics-and-realizability-in-the-physical-world/}{\includegraphics[height=0.45\textheight]{zenil-computable-universe}}
+  \href{https://pizzaseminar.speicherleck.de/skript2/zariski-topos-klein.pdf}{\includegraphics[height=0.45\textheight]{fun-with-the-zariski-topos}}
+  \href{https://rawgit.com/iblech/internal-methods/master/notes.pdf}{\includegraphics[height=0.45\textheight]{phd-cover}}
 \end{frame}
 
 \end{document}

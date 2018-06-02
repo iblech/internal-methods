@@ -6,8 +6,6 @@
 \usepackage[protrusion=true,expansion=true]{microtype}
 \usepackage{hyperref}
 
-\usepackage{geometry}
-
 \usepackage[natbib=true,style=numeric,maxnames=10]{biblatex}
 \usepackage[babel]{csquotes}
 \bibliography{paper-generic-freeness.bib}
@@ -164,53 +162,6 @@ verify~$1 = 0$, but as an intermediate step we verify that~$M$ is free, which
 after the fact will be a trivial statement. The general proof in the next
 section will have a similar style. This approach is reminiscient of
 Richman's uses of trivial rings~\cite{richman:trivial-rings}.
-\enlargethispage{8em}
-
-\begin{figure}[H]
-  \captionsetup{width=.9\linewidth}
-  \begin{tikzpicture}[scale=0.9]
-    \draw[step=1cm,gray,very thin] (0,0) grid (8,8);
-
-    \draw
-      (0,8) -- (0,0) -- (8,0);
-
-    \fill[pattern=north east lines,pattern color=gray,opacity=0.5]
-      (2,8) -- (2,5) -- (5,5) -- (5,3) -- (6,3) -- (6,2) -- (8,2) -- (8,8);
-    \draw
-      (2,8) -- (2,5) -- (5,5) -- (5,3) -- (6,3) -- (6,2) -- (8,2);
-
-    \fill[fill=black] (2,5.25) -- (2,5) -- (2.25,5) -- (2.25,5.25);
-    \fill[fill=black] (5,3.25) -- (5,3) -- (5.25,3) -- (5.25,3.25);
-    \fill[fill=black] (6,2.25) -- (6,2) -- (6.25,2) -- (6.25,2.25);
-
-    \fill[fill=blue!40!white,opacity=0.5]
-      (0,8) -- (0,0) -- (4,0) -- (4,3) -- (3,3) -- (3,5) -- (2,5) -- (2,8);
-
-    \fill[fill=red!40!white,opacity=0.5]
-      (3,3) -- (4,3) -- (4,4) -- (3,4);
-
-    % !perl -we 'for my $y (reverse 0..7) { for my $x (0..7) { print % "\$x^$x\Ey^$y\$ & " } print "\\\\ \n" }'
-    \begin{scope}[yshift=4cm, xshift=4cm]
-      \matrix[matrix of nodes,nodes={inner sep=0pt,text width=0.9cm,align=center,minimum height=0.9cm}]{
-        \tiny $x^0y^7v_1$ & \tiny $x^1y^7v_1$ & \tiny $x^2y^7v_1$ & \tiny $x^3y^7v_1$ & \tiny $x^4y^7v_1$ & \tiny $x^5y^7v_1$ & \tiny $x^6y^7v_1$ & \tiny $x^7y^7v_1$ & \\
-        \tiny $x^0y^6v_1$ & \tiny $x^1y^6v_1$ & \tiny $x^2y^6v_1$ & \tiny $x^3y^6v_1$ & \tiny $x^4y^6v_1$ & \tiny $x^5y^6v_1$ & \tiny $x^6y^6v_1$ & \tiny $x^7y^6v_1$ & \\
-        \tiny $x^0y^5v_1$ & \tiny $x^1y^5v_1$ & \tiny $x^2y^5v_1$ & \tiny $x^3y^5v_1$ & \tiny $x^4y^5v_1$ & \tiny $x^5y^5v_1$ & \tiny $x^6y^5v_1$ & \tiny $x^7y^5v_1$ & \\
-        \tiny $x^0y^4v_1$ & \tiny $x^1y^4v_1$ & \tiny $x^2y^4v_1$ & \tiny $x^3y^4v_1$ & \tiny $x^4y^4v_1$ & \tiny $x^5y^4v_1$ & \tiny $x^6y^4v_1$ & \tiny $x^7y^4v_1$ & \\
-        \tiny $x^0y^3v_1$ & \tiny $x^1y^3v_1$ & \tiny $x^2y^3v_1$ & \tiny $x^3y^3v_1$ & \tiny $x^4y^3v_1$ & \tiny $x^5y^3v_1$ & \tiny $x^6y^3v_1$ & \tiny $x^7y^3v_1$ & \\
-        \tiny $x^0y^2v_1$ & \tiny $x^1y^2v_1$ & \tiny $x^2y^2v_1$ & \tiny $x^3y^2v_1$ & \tiny $x^4y^2v_1$ & \tiny $x^5y^2v_1$ & \tiny $x^6y^2v_1$ & \tiny $x^7y^2v_1$ & \\
-        \tiny $x^0y^1v_1$ & \tiny $x^1y^1v_1$ & \tiny $x^2y^1v_1$ & \tiny $x^3y^1v_1$ & \tiny $x^4y^1v_1$ & \tiny $x^5y^1v_1$ & \tiny $x^6y^1v_1$ & \tiny $x^7y^1v_1$ & \\
-        \tiny $x^0y^0v_1$ & \tiny $x^1y^0v_1$ & \tiny $x^2y^0v_1$ & \tiny $x^3y^0v_1$ & \tiny $x^4y^0v_1$ & \tiny $x^5y^0v_1$ & \tiny $x^6y^0v_1$ & \tiny $x^7y^0v_1$ & \\
-      };
-    \end{scope}
-  \end{tikzpicture}
-  \caption{\label{fig:good}A graphical depiction of a good generating family (the non-hatched cells) in
-  the special case~$n = 2, m = 1$, writing~``$x$'' and~``$y$'' for~$x_1$ and~$x_2$. The hatched cells indicate vectors which
-  have already been removed from the family. The small black squares indicate
-  \emph{corners}. If the vector in the red cell will be found to be expressible
-  as a linear combination of vectors with smaller index (blue cells), it will
-  be removed, along with the vectors in all cells to the top and to the right
-  of the red cell.}
-\end{figure}
 
 
 \section{The proof of the general case}
@@ -275,6 +226,53 @@ isomorphic to~$B$. Thus~$B$ is finitely presented as an~$A$-algebra.
 
 We finish by using the assumption for~$f = 1$.
 \end{proof}
+
+\begin{figure}[t]
+  \captionsetup{width=.9\linewidth}
+  \begin{tikzpicture}[scale=0.9]
+    \draw[step=1cm,gray,very thin] (0,0) grid (8,8);
+
+    \draw
+      (0,8) -- (0,0) -- (8,0);
+
+    \fill[pattern=north east lines,pattern color=gray,opacity=0.5]
+      (2,8) -- (2,5) -- (5,5) -- (5,3) -- (6,3) -- (6,2) -- (8,2) -- (8,8);
+    \draw
+      (2,8) -- (2,5) -- (5,5) -- (5,3) -- (6,3) -- (6,2) -- (8,2);
+
+    \fill[fill=black] (2,5.25) -- (2,5) -- (2.25,5) -- (2.25,5.25);
+    \fill[fill=black] (5,3.25) -- (5,3) -- (5.25,3) -- (5.25,3.25);
+    \fill[fill=black] (6,2.25) -- (6,2) -- (6.25,2) -- (6.25,2.25);
+
+    \fill[fill=blue!40!white,opacity=0.5]
+      (0,8) -- (0,0) -- (4,0) -- (4,3) -- (3,3) -- (3,5) -- (2,5) -- (2,8);
+
+    \fill[fill=red!40!white,opacity=0.5]
+      (3,3) -- (4,3) -- (4,4) -- (3,4);
+
+    % !perl -we 'for my $y (reverse 0..7) { for my $x (0..7) { print % "\$x^$x\Ey^$y\$ & " } print "\\\\ \n" }'
+    \begin{scope}[yshift=4cm, xshift=4cm]
+      \matrix[matrix of nodes,nodes={inner sep=0pt,text width=0.9cm,align=center,minimum height=0.9cm}]{
+        \tiny $x^0y^7v_1$ & \tiny $x^1y^7v_1$ & \tiny $x^2y^7v_1$ & \tiny $x^3y^7v_1$ & \tiny $x^4y^7v_1$ & \tiny $x^5y^7v_1$ & \tiny $x^6y^7v_1$ & \tiny $x^7y^7v_1$ & \\
+        \tiny $x^0y^6v_1$ & \tiny $x^1y^6v_1$ & \tiny $x^2y^6v_1$ & \tiny $x^3y^6v_1$ & \tiny $x^4y^6v_1$ & \tiny $x^5y^6v_1$ & \tiny $x^6y^6v_1$ & \tiny $x^7y^6v_1$ & \\
+        \tiny $x^0y^5v_1$ & \tiny $x^1y^5v_1$ & \tiny $x^2y^5v_1$ & \tiny $x^3y^5v_1$ & \tiny $x^4y^5v_1$ & \tiny $x^5y^5v_1$ & \tiny $x^6y^5v_1$ & \tiny $x^7y^5v_1$ & \\
+        \tiny $x^0y^4v_1$ & \tiny $x^1y^4v_1$ & \tiny $x^2y^4v_1$ & \tiny $x^3y^4v_1$ & \tiny $x^4y^4v_1$ & \tiny $x^5y^4v_1$ & \tiny $x^6y^4v_1$ & \tiny $x^7y^4v_1$ & \\
+        \tiny $x^0y^3v_1$ & \tiny $x^1y^3v_1$ & \tiny $x^2y^3v_1$ & \tiny $x^3y^3v_1$ & \tiny $x^4y^3v_1$ & \tiny $x^5y^3v_1$ & \tiny $x^6y^3v_1$ & \tiny $x^7y^3v_1$ & \\
+        \tiny $x^0y^2v_1$ & \tiny $x^1y^2v_1$ & \tiny $x^2y^2v_1$ & \tiny $x^3y^2v_1$ & \tiny $x^4y^2v_1$ & \tiny $x^5y^2v_1$ & \tiny $x^6y^2v_1$ & \tiny $x^7y^2v_1$ & \\
+        \tiny $x^0y^1v_1$ & \tiny $x^1y^1v_1$ & \tiny $x^2y^1v_1$ & \tiny $x^3y^1v_1$ & \tiny $x^4y^1v_1$ & \tiny $x^5y^1v_1$ & \tiny $x^6y^1v_1$ & \tiny $x^7y^1v_1$ & \\
+        \tiny $x^0y^0v_1$ & \tiny $x^1y^0v_1$ & \tiny $x^2y^0v_1$ & \tiny $x^3y^0v_1$ & \tiny $x^4y^0v_1$ & \tiny $x^5y^0v_1$ & \tiny $x^6y^0v_1$ & \tiny $x^7y^0v_1$ & \\
+      };
+    \end{scope}
+  \end{tikzpicture}
+  \caption{\label{fig:good}A graphical depiction of a good generating family (the non-hatched cells) in
+  the special case~$n = 2, m = 1$, writing~``$x$'' and~``$y$'' for~$x_1$ and~$x_2$. The hatched cells indicate vectors which
+  have already been removed from the family. The small black squares indicate
+  \emph{corners}. If the vector in the red cell will be found to be expressible
+  as a linear combination of vectors with smaller index (blue cells), it will
+  be removed, along with the vectors in all cells to the top and to the right
+  of the red cell.}
+\end{figure}
+
 
 
 \section{Conclusion}

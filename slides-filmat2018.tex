@@ -183,13 +183,8 @@
 
 \newcommand{\hil}[1]{{\usebeamercolor[fg]{item}{\textbf{#1}}}}
 
-\IfSubStr{\jobname}{\detokenize{nonotes}}{
-  \setbeameroption{hide notes}
-}{
-  \setbeameroption{show notes}
-}
 \setbeamertemplate{note page}[plain]
-\setbeameroption{hide notes}
+\setbeameroption{show notes}
 
 \begin{document}
 
@@ -333,6 +328,17 @@
     \end{scope}
   \end{tikzpicture}
 \end{frame}
+
+\note{\justifying
+  The concept of a platonic heaven, where the
+  objects live which mathematicians study, can be mathematically realized by
+  the topos~$\Set$. As a category, it consists of all sets and all maps between
+  these sets.
+
+  But besides~$\Set$, there are many more toposes. Each such topos can be
+  thought of as a mathematical universe, containing their own versions of the
+  natural numbers,
+}
 
 
 \section[Internal universe]{The internal universe of a topos}

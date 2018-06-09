@@ -1,0 +1,526 @@
+\documentclass[oneside]{amsart}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm,mathtools,tikz,float,caption}
+\usetikzlibrary{patterns,matrix,decorations.pathreplacing}
+\usepackage[all]{xy}
+\usepackage[protrusion=true,expansion=true]{microtype}
+\usepackage{hyperref}
+
+\usepackage[natbib=true,style=numeric,maxnames=10]{biblatex}
+\usepackage[babel]{csquotes}
+\bibliography{paper-generic-freeness.bib}
+
+\title{Flabby and injective objects in toposes}
+\author{Ingo Blechschmidt}
+\address{Max Planck Institute for Mathematics in the Sciences \\
+Inselstraße 22 \\
+04103 Leipzig, Germany}
+\email{ingo.blechschmidt@mis.mpg.de}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{ex}[defn]{Example}
+
+\theoremstyle{plain}
+\newtheorem{prop}[defn]{Proposition}
+\newtheorem{cor}[defn]{Corollary}
+\newtheorem{lemma}[defn]{Lemma}
+\newtheorem{thm}[defn]{Theorem}
+\newtheorem{scholium}[defn]{Scholium}
+
+\theoremstyle{remark}
+\newtheorem{rem}[defn]{Remark}
+\newtheorem{question}[defn]{Question}
+\newtheorem{speculation}[defn]{Speculation}
+\newtheorem{caveat}[defn]{Caveat}
+\newtheorem{conjecture}[defn]{Conjecture}
+
+\newcommand{\xra}[1]{\xrightarrow{#1}}
+\newcommand{\XXX}[1]{\textbf{XXX: #1}}
+\newcommand{\aaa}{\mathfrak{a}}
+\newcommand{\bbb}{\mathfrak{b}}
+\newcommand{\mmm}{\mathfrak{m}}
+\newcommand{\I}{\mathcal{I}}
+\newcommand{\J}{\mathcal{J}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\renewcommand{\P}{\mathcal{P}}
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\op}{\mathrm{op}}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Mod}{Mod}
+\DeclareMathOperator{\Sh}{Sh}
+\renewcommand{\_}{\mathpunct{.}\,}
+
+\newcommand{\stacksproject}[1]{\cite[{\href{https://stacks.math.columbia.edu/tag/#1}{Tag~#1}}]{stacks-project}}
+
+\begin{document}
+
+\begin{abstract}
+  We introduce a general notion of \emph{flabby objects} in elementary toposes
+  and study its basic properties. In the special case of localic toposes, this
+  notion reduces to the common notion of flabby sheaves, yielding a
+  site-independent characterization of flabby sheaves. We use this notion to
+  show that an internal notion of injective objects coincides with the
+  corresponding external notion, in stark contrast with the situation for
+  projective objects. As an application, we give internal characterizations of
+  sheaf cohomology and show that higher direct images can be understood as
+  internal cohomology.
+\end{abstract}
+
+\maketitle
+\thispagestyle{empty}
+
+\noindent
+
+\section{Flabby sheaves}
+
+A sheaf~$F$ on a topological space (or locale)~$X$ is \emph{flabby} if and only
+if all restriction maps~$F(X) \to F(U)$ are surjective. The following
+properties of flabby sheaves render them fundamental to the theory of sheaf
+cohomology:
+\begin{enumerate}
+\item Let~$(U_i)_i$ be an open covering of~$X$.
+A sheaf~$F$ is flabby if and only if all of its restrictions~$F|_{U_i}$
+are flabby as sheaves on~$U_i$.
+\item Let~$f : X \to Y$ be a continuous map. If~$F$ is a flabby sheaf on~$X$,
+then~$f_*(F)$ is a flabby sheaf on~$Y$.
+\item[(3a)] Let~$0 \to F \to G \to H \to 0$ be a short exact sequence of sheaves of
+modules. If~$F$ is flabby, then this sequence is also exact as a sequence of
+presheaves.
+\item[(3b)] Let~$0 \to F \to G \to H \to 0$ be a short exact sequence of sheaves of
+modules. If~$F$ and~$H$ are flabby, then so is~$G$.
+% XXX: more?
+\item[(4a)] Any sheaf can be embedded into a flabby sheaf.
+\item[(4b)] Any sheaf of modules can be embedded into a flabby sheaf of modules.
+\end{enumerate}
+
+Since we want to develop an analogous theory for flabby objects in elementary
+toposes, it is worthwhile to analyze the logical and set-theoretic commitments
+which are required to establish these properties. The standard proofs of
+properties~(1),~(3a),~(3b) and~(4b) require Zorn's lemma to construct maximal
+extensions of given sections. Properties~(2) and~(4a) can be verified purely
+intuitionistically.
+
+There is an alternative definition of flabbiness, to be introduced below, which
+is equivalent to the usual one in presence of Zorn's lemma and which
+requires different commitments: For the alternative definition,
+properties~(1),~(3b) and~(4a) can be verified purely intuitionistically, and
+property~(2) can be verified purely intuitionistically for open maps~$f$.
+
+Both definitions can be generalized to yield notions of flabby objects in
+elementary toposes; but for toposes which are not localic, the two resulting
+notions will differ, and only the one induced by the alternative definition
+can be characterized in the internal language. We therefore adapt in this paper the
+alternative one as the official definition.
+
+\begin{defn}\label{defn:flabby-sheaf}
+A sheaf~$F$ on a topological space (or locale)~$X$ is \emph{flabby}
+if and only if for all opens~$U$ and all sections~$s \in F(U)$, there is an
+open covering~$X = \bigcup_i U_i$ such that, for all~$i$, the section~$s$ can
+be extended to a section on~$U \cup U_i$.\end{defn}
+
+If~$F$ is a flabby sheaf in the traditional sense, then~$F$ is obviously also
+flabby in the sense of Definition~\ref{defn:flabby-sheaf} -- singleton
+coverings will do. Conversely, let~$F$ be a flabby sheaf in the sense of
+Definition~\ref{defn:flabby-sheaf}. Let~$s \in F(U)$ be a local section. Zorn's
+lemma implies that there is a maximal extension~$s' \in F(U')$. By assumption,
+there is an open covering~$X = \bigcup_i U_i$ such that, for all~$i$, the
+section~$s'$ can be extended to~$U' \cup U_i$. Since~$s'$ is maximal, $U' \cup
+U_i = U'$ for all~$i$. Therefore~$X = \bigcup_i U_i \subseteq U'$; hence~$s'$ is a
+global section, as desired.
+
+We remark that unlike the traditional definition of flabbiness,
+Definition~\ref{defn:flabby-sheaf} exhibits flabbiness as a manifestly local
+notion.
+
+
+\section{Flabby sets}
+
+We intend this section to be applied in the internal language of an elementary
+topos. We will therefore reason purely intuitionistically. We
+adopt the terminology of~\cite{XXX:benno} regarding subterminals and
+subsingletons: A subset~$K \subseteq X$ is \emph{subterminal} if and only if any given
+elements are equal ($\forall x,y \in K\_ x = y$), and it is a
+\emph{subsingleton} if and only if there is an element~$x \in X$ such that~$K
+\subseteq \{ x \}$. Any subsingleton is trivially subterminal, but the converse
+might fail.
+
+\begin{defn}A set~$X$ is \emph{flabby} if and only if any subterminal subset
+of~$X$ is a subsingleton, that is, if and only if for any subset~$K \subseteq
+X$ such that~$\forall x,y \in K\_ x = y$, there exists an element~$x \in X$
+such that~$K \subseteq \{ x \}$.
+\end{defn}
+
+In the presence of the law of excluded middle, a set is flabby if and only if
+it is inhabited. Let~$\P_{\leq 1}(X)$ be the set of subterminals of~$X$.
+
+\begin{prop}A set~$X$ is flabby if and only if the canonical map~$X \to
+\P_{\leq 1}(X)$ which sends an element~$x$ to the singleton set~$\{x\}$ is
+final.
+\end{prop}
+
+\begin{proof}By definition.\end{proof}
+
+The set~$\P_{\leq 1}(X)$ of subterminals of $X$ can be interpreted as the set
+of \emph{partially-defined elements} of $X$. In this view, the empty subset is
+the maximally undefined element and a singleton is a maximally defined element.
+A set is flabby if and only if any of its partially-defined elements can be
+refined to an honest element.
+
+\begin{defn}A set~$X$ is \emph{injective} if and only if, for any injection~$i
+: A \to B$, any map~$f : A \to X$ can be extended to a map~$B \to X$.
+An~$R$-module~$M$ is \emph{injective} if and only if, for any linear
+injection~$i : A \to B$ between~$R$-modules, any linear map~$f : A \to M$ can
+be extended to a linear map~$B \to X$.\end{defn}
+
+In the presence of the law of excluded middle, a set is injective if and only
+if it is inhabited. In the presence of the axiom of choice, an abelian group is
+injective (as a~$\ZZ$-module) if and only if it is divisible. Injective sets
+and modules have been intensively studied before~\cite{XXX}; the following
+properties are well-known:
+
+\begin{prop}\label{prop:basics-injective}
+\begin{enumerate}
+% Take care if numbering changes (referenced below)
+\item Any set can be embedded into an injective set.
+\item Any injective module is also injective as a set.
+\item Assuming the axiom of choice, any module can be embedded into an
+injective module.
+\end{enumerate}\end{prop}
+
+\begin{proof}\begin{enumerate}
+\item One can check that, for instance, the full powerset~$\P(X)$ and the set of
+subterminals~$\P_{\leq 1}(X)$ are each injective.~\cite{XXX}
+\item The forgetful functor from modules to sets possesses a left exact left
+adjoint. More explicitly, if~$i : A \to B$ is an injective map between sets and
+if~$f : A \to M$ is an arbitrary map, then the induced map~$R\langle A \rangle
+\to R\langle B \rangle$ between free modules is also injective, the given
+map~$f$ lifts to a linear map~$R\langle A \rangle \to M$, and an
+extension~$R\langle B \rangle \to M$ induces an extension~$B \to M$ of~$f$.
+\item One verifies that any abelian group can be embedded into a divisible
+abelian group. By the axiom of choice, divisible abelian groups are injective.
+The result for modules over arbitrary rings then follows purely
+formally~\cite{XXX}. \qedhere
+\end{enumerate}\end{proof}
+
+\begin{prop}\label{prop:injective-flabby}
+Any injective set is flabby.\end{prop}
+
+\begin{proof}Let~$X$ be an injective set. Let~$K \subseteq X$ be a subterminal.
+The inclusion~$f : K \to X$ extends along the injection~$K \to 1 = \{\star\}$
+to a map~$1 \to X$. The unique image~$x$ of that map has the property that~$K
+\subseteq \{x\}$.\end{proof}
+
+\begin{cor}\label{cor:enough-flabby-sets}
+Any set can be embedded into a flabby set.\end{cor}
+
+\begin{proof}Immediate by Proposition~\ref{prop:basics-injective}(1) and
+Proposition~\ref{prop:injective-flabby}.\end{proof}
+
+\begin{prop}\label{prop:hom-flabby}
+\begin{enumerate}
+\item Let~$I$ be an injective set. Let~$T$ be an arbitrary set. Then the
+set~$I^T$ of maps from~$T$ to~$I$ is flabby.
+\item Let~$I$ be an injective module. Let~$T$ be an arbitrary module. Then the
+set~$\Hom_R(T,I)$ of linear maps from~$T$ to~$I$ is flabby.
+\end{enumerate}\end{prop}
+
+\begin{proof}We first cover the case of sets. Let~$K \subseteq I^T$ be a
+subterminal. We consider the injectivity diagram
+\[ \xymatrix{
+  T' \ar[r]\ar[d] & T \ar@{-->}[ld] \\
+  I
+} \]
+where~$T'$ is the subset~$\{ s \in T \,|\, \text{$K$ is inhabited} \} \subseteq T$ and the
+solid vertical map sends~$s \in T'$ to~$g(s)$, where~$g$ is an arbitrary element
+of~$K$. This association is well-defined. Since~$I$ is injective, a dotted lift
+as indicated exists. If~$K$ is inhabited, this lift is an element of~$K$.
+
+The same kind of argument applies to the case of modules. If~$K$ is a
+subterminal of~$\Hom_R(T,I)$, we define~$T'$ to be the submodule
+$\{ s \in I \,|\, \text{$s = 0$ or $K$ is inhabited} \}$ and consider the
+analogous injectivity diagram, where the solid vertical map~$f : T' \to I$ is now
+defined by cases: Let~$s \in T'$. If~$s = 0$, then we set~$f(s) = 0$; if~$K$ is
+inhabited, then we set~$f(s) \defeq g(s)$, where~$g$ is an arbitrary element
+of~$K$. This association is again well-defined, and a dotted lift yields the
+desired element of~$\Hom_R(T,I)$.
+\end{proof}
+
+Proposition~\ref{prop:hom-flabby} can be used to give an alternative proof of
+Proposition~\ref{prop:injective-flabby} and to generalize
+Proposition~\ref{prop:injective-flabby} to modules: If~$I$ is an injective set,
+then the set~$I^1 \cong I$ is flabby. If~$I$ is an injective module, then the
+set~$\Hom_R(R,I) \cong I$ is flabby.
+
+\begin{prop}\label{prop:set-of-extensions-flabby}
+Let~$I$ be an injective set. Let~$i : A \to B$ be an injection.
+Let~$f : A \to I$ be an arbitrary map. Then the set of extensions of~$f$ to~$B$
+is flabby.\end{prop}
+
+\begin{proof}Set~$X \defeq \{ \bar{f} \in I^B \,|\, \bar{f} \circ i =
+f \}$. Let~$K \subseteq X$ be a subsingleton. We consider the injectivity diagram
+\[ \xymatrix{
+  i[A] \cup B' \ar@{^{(}->}[r]\ar[d]_g & B \ar@{-->}[ld] \\
+  I
+} \]
+where~$B'$ is the set~$\{ s \in B \,|\, \text{$K$ is inhabited} \}$ and the solid
+vertical arrow~$g$ is defined in the following way: Let~$s \in i[A] \cup B'$.
+If~$s \in i[A]$, then we set~$g(s) \defeq f(a)$, where~$a \in A$ is an element such
+that~$s = i(a)$. If~$s \in B'$, then we set~$g(s) \defeq \bar{f}(s)$,
+where~$\bar{f}$ is any element of~$K$. These prescriptions determine a well-defined
+map.
+
+Since~$I$ is injective, there exists a dotted map rendering the diagram
+commutative. This map is an element of~$X$. Furthermore, if~$K$ is inhabited,
+then this map is an element of~$K$.
+\end{proof}
+
+\begin{prop}Let~$0 \to M' \xra{i} M \xra{p} M'' \to 0$ be a short exact
+sequence of modules. Let~$s \in M''$. If~$M'$ is flabby, then the set of
+preimages of~$s$ under~$p$ is flabby.
+\end{prop}
+
+\begin{proof}For the first statement, let~$X \defeq \{ u \in M \,|\, p(u) = s
+\}$. Let~$K \subseteq X$ be a subterminal. Since~$p$ is surjective, there is a
+preimage~$u_0 \in X$. The translated set~$K - u_0 \subseteq M$ is still a
+subterminal, and its preimage under~$i$ is as well. Since~$M'$ is flabby, there
+is an element~$v \in M'$ such that~$i^{-1}[K - u_0] \subseteq \{v\}$. We verify
+that~$K \subseteq \{u_0 + i(v)\}$.
+
+Thus let~$u \in K$ be given. Then~$p(u - u_0) = 0$, so by exactness the
+set~$i^{-1}[K - u_0]$ is inhabited. It therefore contains~$v$. Thus~$i(v) \in K
+- u_0$. Since~$K = \{u\}$, it follows that~$i(v) = u - u_0$, so~$u \in \{u_0 +
+i(v)\}$ as claimed.
+\end{proof}
+
+\begin{prop}Let~$0 \to M' \xra{i} M \xra{p} M'' \to 0$ be a short exact
+sequence of modules. If~$M'$ and~$M''$ are flabby, so is~$M$.
+\end{prop}
+
+\begin{proof}Let~$K \subseteq M$ be a subterminal. Then its image~$p[K] \subseteq M''$
+is a subterminal as well. Since~$M''$ is flabby, there is an element~$s \in
+M''$ such that~$p[K] \subseteq \{ s \}$.
+
+Since~$p$ is surjective, there is an element~$u_0 \in M$ such that~$p(u_0) =
+s$.
+
+The preimage~$i^{-1}[K - u_0] \subseteq M'$ is a subterminal. Since~$M'$ is
+flabby, there exists an element~$v \in M'$ such that~$i^{-1}[K - u_0] \subseteq
+\{v\}$.
+
+Thus~$K \subseteq \{ u_0 + i(v) \}$.
+\end{proof}
+
+
+\section{Flabby objects}
+
+\begin{defn}An object~$X$ of an elementary topos~$\E$ is \emph{flabby} if and
+only if it is a flabby set from the point of view of the internal language
+of~$\E$.\end{defn}
+
+This definition amounts to the following: An object~$X$ of an elementary
+topos~$\E$ is flabby if and only if, for any object~$A$ of~$\E$, the object~$X'
+\defeq X \times A \in \E/A$ has the following property:
+\begin{quote}
+For any monomorphism~$K \to 1$ in~$\E/A$ and any morphism~$K \to X'$%
+\tikz[remember picture] \node[coordinate,yshift=0.7em,xshift=1.0em] (n1) {};
+in~$\E/A$, there exists an epimorphism~$B \to 1$ in~$\E/A$ and a morphism~$B
+\to X'$ in~$\E/A$ such that the following diagram commutes.
+\end{quote}
+\[ \xymatrix{
+  K \times_A B \ar[r]\ar[rd] & X' \times_A B \ar[r] & X' \\
+  & B \ar[ru]
+} \]
+\tikz[remember picture] \node[coordinate,yshift=0.3em] (n2) {};
+\begin{tikzpicture}[overlay,remember picture]
+  \path (n2) -| node[coordinate] (n3) {} (n1);
+  \draw[thick,decorate,decoration={brace,amplitude=3pt}]
+  (n1) -- (n3) node[midway, right=4pt] {$({\star})$};
+\end{tikzpicture}
+
+Instead of referencing arbitrary stages~$A \in \E$, one can also just reference
+the generic stage: Let~$\P_{\leq1}(X)$ denote the \emph{object of subterminals}
+of~$X$; this object is a certain suboject of~$\P(X) = [X,\Omega_\E]_\E$, the
+powerobject of~$X$. The subobject~$K$ of~$\P_{\leq1}(X) \times X$ classified by the
+evaluation morphism~$\P_{\leq1}(X) \times X \to \P(X) \times X \to \Omega_\E$
+is the \emph{generic subterminal} of~$X$. The object~$X$ is flabby if and only
+if there exists an epimorphism~$B \to \P_{\leq1}(X)$ and a morphism~$B \to X$
+such that the following diagram commutes.
+\[ \xymatrix{
+  K \times_{\P_{\leq1}(X)} B \ar[r]\ar[rd] & X \times B \ar[r] & X \\
+  & B \ar[ru]
+} \]
+
+\begin{prop}\label{prop:flabby-sheaves-objects}
+Let~$F$ be a sheaf on a topological space~$X$ (or a locale).
+Then~$F$ is flabby as a sheaf if and only if~$F$ is a flabby object of the
+sheaf topos~$\Sh(X)$.
+\end{prop}
+
+\begin{proof}It suffices to verify condition~$({\star})$ for stages of the
+form~$A = \Hom(\cdot,U)$, where~$U$ is an open of~$X$. XXX
+\end{proof}
+
+\begin{prop}Let~$f : \E \to \F$ be an open geometric morphism between
+elementary toposes. Let~$X \in \E$ be a flabby object. Then~$f_*(X)$ is flabby
+as well.\end{prop}
+
+\begin{proof}Without loss of generality, it suffices to verify
+condition~$({\star})$ for the terminal stage~$A = 1$. Let~$k : K \to 1$ be a
+monomorphism in~$\F$ and let~$x : K \to f_*(X)$ be an arbitrary morphism.
+Then~$f^*(k) : f^*(K) \to 1$ is a monomorphism in~$\E$ and~$x^t : f^*(K) \to X$
+is a morphism in~$\E$. Since~$X$ is flabby, there is an epimorphism~$B \to 1$
+in~$\E$ and a morphism~$y : B \to X$ such that the morphism~$f^*(K) \times B \to X
+\times B \to B$ factors over~$y$. XXX
+\end{proof}
+
+\begin{defn}An object~$I$ of an elementary topos~$\E$ is \emph{externally
+injective} if and only if for any monomorphism~$A \to B$ in~$\E$, the canonical
+map~$\Hom_\E(B,I) \to \Hom_\E(A,I)$ is surjective. It is \emph{internally
+injective} if and only if for any monomorphism~$A \to B$ in~$\E$, the canonical
+morphism~$[B,I] \to [A,I]$ between Hom objects is an epimorphism in~$\E$.
+\end{defn}
+
+If~$R$ is a ring in an elementary topos~$\E$, a similar definition can be given
+for~$R$-modules in~$\E$, referring only to the set respectively the object of
+linear maps. The condition for an object to be internally injective can be
+rephrased in various ways. The following proposition lists five of these
+conditions. The equivalence of the first four is due to
+Harting~\cite{harting:XXX}.
+
+\begin{prop}\label{prop:notions-of-internal-injectivity}
+Let~$\E$ be an elementary topos. Then the following statements about an
+object~$I \in \E$ are equivalent.
+\begin{enumerate}
+\item $I$ is internally injective.
+\item The functor~$[\cdot, I] : \E^\op \to \E$ maps monomorphisms in $\E$
+to morphisms for which any global element of the target locally (after change of
+base along an epimorphism) possesses a preimage.
+\item For any morphism $p : A \to 1$ in $\E$, the object $p^*(I)$ has property~(1)
+as an object of $\E/A$.
+\item For any morphism $p : A \to 1$ in $\E$, the object $p^*(I)$ has property~(2)
+as an object of $\E/A$.
+\item From the point of view of the internal language of~$\E$, the object~$I$
+is an injective set.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+The implications ``(1)~$\Rightarrow$~(2)'', ``(3)~$\Rightarrow$~(4)'',
+``(3)~$\Rightarrow$~(1)'', and ``(4)~$\Rightarrow$~(2)'' are trivial.
+
+The equivalence ``(3)~$\Leftrightarrow$~(5)'' follows directly from the
+interpretation rules of the stack semantics.
+
+The implication ``(2)~$\Rightarrow$~(4)'' employs the
+extra left adjoint $p_! : \E/A \to \E$ of $p^* : \E
+\to \E/A$~(which maps an object~$(X \to A)$ to~$X$), as in the usual proof that
+injective sheaves remain injective when
+restricted to smaller open subsets: We have that $p_* \circ [\cdot, p^*(I)]_{\E/A}
+\cong [\cdot, I]_\E \circ p_!$, the functor $p_!$ preserves monomorphisms, and one
+can check that $p_*$ reflects the property that global elements locally possess
+preimages. Details are in~\cite[Thm.~1.1]{harting}.\footnote{Harting formulates
+the statement for abelian group objects, and has to assume that~$\E$ contains a
+natural numbers object to ensure the existence of an abelian version of~$p_!$.}
+
+The implication ``(4)~$\Rightarrow$~(3)'' follows by performing an extra change of
+base, since any non-global element becomes a global element after a suitable
+change of base.
+\end{proof}
+
+Let~$R$ be a ring in~$\E$. Then the analogue of
+Proposition~\ref{prop:notions-of-internal-injectivity} holds for~$R$-modules
+in~$\E$, if~$\E$ is assumed to have a natural numbers object. The extra
+assumption is needed in order to construct the left adjoint~$p_! :
+\Mod_{\E/A}(R \times A) \to \Mod_\E(R)$. Phrased in the internal language, this
+adjoint maps a family~$(M_a)_{a \in A}$ of~$R$-modules to the direct
+sum~$\bigoplus_{a \in A} M_a$.
+
+% XXX: Explain construction. Show that p_! preserves monos.
+
+Somewhat surprisingly, and in stark contrast with the situation for internally
+projective objects (which are defined dually), internal injectivity coincides
+with external injectivity for localic toposes.
+
+\begin{thm}\label{thm:injectivity-external-internal}
+Let~$I$ be an object of an elementary topos~$\E$. If~$I$ is externally
+injective, then~$I$ is also internally injective. The converse holds if~$\E$ is
+localic and Zorn's lemma is available.
+\end{thm}
+
+\begin{proof}For the ``only if'' direction, let~$I$ be an object
+which is externally injective. Then~$I$ satisfies Condition~(2) in
+Proposition~\ref{prop:notions-of-internal-injectivity}, even without having to
+pass to covers.
+
+For the ``if'' direction, write~$\E = \Sh(X)$ and let~$I$ be an internally
+injective object. Let~$i : A \to B$ be a monomorphism in~$\Sh(X)$ and let~$f :
+A \to I$ be an arbitrary morphism. We want to show that there exists an
+extension $B \to I$ of~$f$ along~$i$. To this end, we consider the sheaf of
+such extensions, defined by the internal expression
+\[ F \defeq \{ \bar{f} \in [B,I] \,|\, \bar{f} \circ i = f \}. \]
+Global elements of~$F$ are extensions of the kind we are looking for.
+By Proposition~\ref{prop:set-of-extensions-flabby}, this sheaf is a flabby
+object and therefore by Proposition~\ref{prop:flabby-sheaves-objects} a flabby
+sheaf. Zorn's lemma implies that~$F$ has a global element.
+\end{proof}
+
+
+\section{Characterizing cohomology}
+
+% EXT, TOR
+% Higher direct images
+
+
+\section{Conclusion}
+
+We originally set out to develop an intuitionistic account of Grothendieck's
+sheaf cohomology. Čech methods can be carried out constructively, and
+XXX(Barakat), but it appears that there is not a general framework for sheaf
+cohomology which works in an intuitionistic metatheory.
+
+The main obstacle preventing Grothendieck's theory to be interpreted
+constructively is its reliance on injective resolutions. It is known that in
+the absence of the axiom of choice, much less in a purely intuitionistic
+context, there might not be any nontrivial injective abelian
+group~\cite{blass:XXX}.
+
+In principle, this problem could be remedied by employing flabby resolutions
+instead of injective ones. There are, however, two problems with this
+suggestion. Firstly, we needed Zorn's lemma to show that flabby sheaves are
+acyclic for the global sections functor (Proposition~XXX); however, we noticed
+the substitute property in XXX which might be good enough for further
+developments. The more serious problem is that it is an open question whether
+one can show, purely intuitionistically, that any sheaf of modules embeds into
+a flabby sheaf of modules. The following is known about this problem:
+
+\begin{enumerate}
+\item There is a purely intuitionistic proof that any sheaf of sets embeds into
+a flabby sheaf of sets (Corollary~\ref{cor:enough-flabby-sets}).
+\item The existence of enough flabby modules, and even the existence of enough
+injective modules, is \emph{not} a constructive taboo, that is, they do not
+entail a classical principle like the law of excluded middle or the principle
+of omniscience. We know this since assuming the axiom of choice, any
+Grothendieck topos has enough injective (and therefore flabby) modules. 
+\item There is a way of embedding any module into a flabby module if one is
+prepared to ignore set-theoretical difficulties. Namely, let~$M$ be an~$R$-module.
+Inductively construct a collection~$T$ of terms by the following clauses: $0 \in T$;
+if~$x,y \in T$, then~$x + y \in T$; if~$x \in T$ and~$r \in R$, then~$rx \in
+T$; if~$x \in M$, then~$\underline{x} \in T$; if~$K \subseteq T$ is a
+subterminal, then~$\varepsilon_K \in T$. Then~$T/{\sim}$, where~$({\sim})$ is
+the finest equivalence relation such that the module axioms hold, such
+that~$\underline{x+y} \sim \underline{x} + \underline{y}$, $\underline{rx} \sim
+r \underline{x}$, $\underline{0} \sim 0$ and such that~$\varepsilon_{\{t\}} \sim
+t$ for all terms~$t$, is a flabby~$R$-module into which~$M$ embeds.
+\end{enumerate}
+
+We currently believe that it is not possible to give a constructive account of
+a global cohomology functor. However, XXX.
+
+\end{document}

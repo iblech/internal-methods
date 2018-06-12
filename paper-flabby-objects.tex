@@ -281,6 +281,32 @@ commutative. This map is an element of~$X$. Furthermore, if~$K$ is inhabited,
 then this map is an element of~$K$.
 \end{proof}
 
+\begin{prop}\label{prop:set-of-linear-extensions-flabby}
+Let~$I$ be an injective~$R$-module. Let~$i : A \to B$ be a linear injection.
+Let~$f : A \to I$ be an arbitrary linear map. Then the set of linear extensions of~$f$ to~$B$
+is flabby.\end{prop}
+
+\begin{proof}The proof is similar to the proof of
+Proposition~\ref{prop:set-of-extensions-flabby}. We
+set~$X \defeq \{ \bar{f} \in \Hom_R(B,I) \,|\, \bar{f} \circ i =
+f \}$. Let~$K \subseteq X$ be a subsingleton. We consider the injectivity diagram
+\[ \xymatrix{
+  i[A] + B' \ar@{^{(}->}[r]\ar[d]_g & B \ar@{-->}[ld] \\
+  I
+} \]
+where~$B'$ is the submodule~$\{ s \in B \,|\, \text{$s = 0$ or $K$ is
+inhabited} \} \subseteq B$ and the solid vertical arrow~$g$ is defined in the following
+way: Let~$s \in i[A] + B'$. Then~$s = i(a) + t$ for an element~$a \in A$ and an
+element~$t \in B'$. Since~$t \in B'$, $t = 0$ or~$K$ is inhabited. If~$t = 0$,
+we set~$g(s) \defeq f(a)$. If~$K$ is inhabited, we set~$g(s) \defeq f(a) +
+\bar{f}(s)$, where~$\bar{f}$ is any element of~$K$. These prescriptions
+determine a well-defined map.
+
+Since~$I$ is injective, there exists a dotted map rendering the diagram
+commutative. This map is an element of~$X$. Furthermore, if~$K$ is inhabited,
+then this map is an element of~$K$.
+\end{proof}
+
 \begin{prop}Let~$0 \to M' \xra{i} M \xra{p} M'' \to 0$ be a short exact
 sequence of modules. Let~$s \in M''$. If~$M'$ is flabby, then the set of
 preimages of~$s$ under~$p$ is flabby.

@@ -9,7 +9,7 @@
 
 \usepackage[natbib=true,style=numeric,maxnames=10]{biblatex}
 \usepackage[babel]{csquotes}
-\bibliography{paper-generic-freeness.bib}
+\bibliography{paper-flabby-objects.bib}
 
 \title{Flabby and injective objects in toposes}
 \author{Ingo Blechschmidt}
@@ -55,6 +55,8 @@ Inselstraße 22 \\
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\Mod}{Mod}
 \DeclareMathOperator{\Sh}{Sh}
+\DeclareMathOperator{\PSh}{PSh}
+\newcommand{\Set}{\mathrm{Set}}
 \renewcommand{\_}{\mathpunct{.}\,}
 
 \newcommand{\stacksproject}[1]{\cite[{\href{https://stacks.math.columbia.edu/tag/#1}{Tag~#1}}]{stacks-project}}
@@ -80,22 +82,24 @@ Inselstraße 22 \\
 
 \section{Flabby sheaves}
 
-A sheaf~$F$ on a topological space (or locale)~$X$ is \emph{flabby} if and only
+A sheaf~$F$ on a topological space (or locale)~$X$ is \emph{flabby} (flasque) if and only
 if all restriction maps~$F(X) \to F(U)$ are surjective. The following
 properties of flabby sheaves render them fundamental to the theory of sheaf
 cohomology:
 \begin{enumerate}
 \item Let~$(U_i)_i$ be an open covering of~$X$.
-A sheaf~$F$ is flabby if and only if all of its restrictions~$F|_{U_i}$
+A sheaf~$F$ on~$X$ is flabby if and only if all of its restrictions~$F|_{U_i}$
 are flabby as sheaves on~$U_i$.
 \item Let~$f : X \to Y$ be a continuous map. If~$F$ is a flabby sheaf on~$X$,
 then~$f_*(F)$ is a flabby sheaf on~$Y$.
-\item[(3a)] Let~$0 \to F \to G \to H \to 0$ be a short exact sequence of sheaves of
-modules. If~$F$ is flabby, then this sequence is also exact as a sequence of
+\item[(3)] Let~$0 \to F \to G \to H \to 0$ be a short exact sequence of sheaves of
+modules.
+\begin{enumerate}
+\item If~$F$ is flabby, then this sequence is also exact as a sequence of
 presheaves.
-\item[(3b)] Let~$0 \to F \to G \to H \to 0$ be a short exact sequence of sheaves of
-modules. If~$F$ and~$H$ are flabby, then so is~$G$.
-% XXX: more?
+\item If~$F$ and~$H$ are flabby, then so is~$G$.
+\item If~$F$ and~$G$ are flabby, then so is~$H$.
+\end{enumerate}
 \item[(4a)] Any sheaf can be embedded into a flabby sheaf.
 \item[(4b)] Any sheaf of modules can be embedded into a flabby sheaf of modules.
 \end{enumerate}
@@ -103,15 +107,20 @@ modules. If~$F$ and~$H$ are flabby, then so is~$G$.
 Since we want to develop an analogous theory for flabby objects in elementary
 toposes, it is worthwhile to analyze the logical and set-theoretic commitments
 which are required to establish these properties. The standard proofs of
-properties~(1),~(3a),~(3b) and~(4b) require Zorn's lemma to construct maximal
-extensions of given sections. Properties~(2) and~(4a) can be verified purely
+properties~(1),~(3a),~(3b) and~(3c) require Zorn's lemma to construct maximal
+extensions of given sections. The standard proof of property~(4b) requires the
+law of excluded middle, to ensure that the Godement construction actually
+yields a flabby sheaf. Properties~(2) and~(4a) can be verified purely
 intuitionistically.
 
 There is an alternative definition of flabbiness, to be introduced below, which
 is equivalent to the usual one in presence of Zorn's lemma and which
 requires different commitments: For the alternative definition,
 properties~(1),~(3b) and~(4a) can be verified purely intuitionistically, and
-property~(2) can be verified purely intuitionistically for open maps~$f$.
+property~(2) can be verified purely intuitionistically for open injections~$f$.
+There is a substitute for property~(3a) which can be verified purely
+intuitionistically. We comment on the status of property~(4b) in
+Section~\ref{sect:conclusion}.
 
 Both definitions can be generalized to yield notions of flabby objects in
 elementary toposes; but for toposes which are not localic, the two resulting
@@ -144,7 +153,7 @@ notion.
 
 We intend this section to be applied in the internal language of an elementary
 topos. We will therefore reason purely intuitionistically. We
-adopt the terminology of~\cite{XXX:benno} regarding subterminals and
+adopt the terminology of~\cite{kock:partial-maps} regarding subterminals and
 subsingletons: A subset~$K \subseteq X$ is \emph{subterminal} if and only if any given
 elements are equal ($\forall x,y \in K\_ x = y$), and it is a
 \emph{subsingleton} if and only if there is an element~$x \in X$ such that~$K
@@ -237,11 +246,19 @@ Any set can be embedded into a flabby set.\end{cor}
 \begin{proof}Immediate by Proposition~\ref{prop:basics-injective}(1) and
 Proposition~\ref{prop:injective-flabby}.\end{proof}
 
+\begin{prop}Any singleton set is flabby. The cartesian product of flabby sets
+is flabby.\end{prop}
+
+\begin{proof}Immediate.\end{proof}
+
+Subsets of flabby sets are in general not flabby, as else any set would be
+flabby in view of Corollary~\ref{cor:enough-flabby-sets}.
+
 \begin{prop}\label{prop:hom-flabby}
 \begin{enumerate}
 \item Let~$I$ be an injective set. Let~$T$ be an arbitrary set. Then the
 set~$I^T$ of maps from~$T$ to~$I$ is flabby.
-\item Let~$I$ be an injective module. Let~$T$ be an arbitrary module. Then the
+\item Let~$I$ be an injective~$R$-module. Let~$T$ be an arbitrary~$R$-module. Then the
 set~$\Hom_R(T,I)$ of linear maps from~$T$ to~$I$ is flabby.
 \end{enumerate}\end{prop}
 
@@ -480,9 +497,9 @@ in~$\E$, if~$\E$ is assumed to have a natural numbers object. The extra
 assumption is needed in order to construct the left adjoint~$p_! :
 \Mod_{\E/A}(R \times A) \to \Mod_\E(R)$. Phrased in the internal language, this
 adjoint maps a family~$(M_a)_{a \in A}$ of~$R$-modules to the direct
-sum~$\bigoplus_{a \in A} M_a$.
-
-% XXX: Explain construction. Show that p_! preserves monos.
+sum~$\bigoplus_{a \in A} M_a$. Details on this construction, phrased in the
+language of sets but interpretable in the internal language, can for instance
+be found in~\cite[page~54]{mines-richman-ruitenburg:constructive-algebra}.
 
 Somewhat surprisingly, and in stark contrast with the situation for internally
 projective objects (which are defined dually), internal injectivity coincides
@@ -511,6 +528,24 @@ object and therefore by Proposition~\ref{prop:flabby-sheaves-objects} a flabby
 sheaf. Zorn's lemma implies that~$F$ has a global element.
 \end{proof}
 
+\begin{rem}A generalization of the traditional notion of a flabby sheaf to
+elementary toposes is the following. An object~$X$ of an elementary topos~$\E$
+is \emph{strongly flabby} if and only if, for any monomorphism~$K \to 1$
+in~$\E$, any morphism~$K \to X$ lifts to a morphism~$1 \to X$.
+
+One can verify, purely intuitionistically, that a sheaf~$F$ on a space~$T$ is
+flabby in the traditional sense if and only if~$F$ is a strongly flabby object
+of~$\Sh(T)$.
+
+The notion of strongly flabby objects is, however, not stable under base change
+and therefore cannot be characterized in the internal language. A specific
+example is the~$G$-set~$G$ (with the translation action), considered as an
+object of the topos~$\PSh(BG)$ of~$G$-sets, where~$G$ is a nontrivial group.
+This object is not strongly flabby, since the morphism~$\emptyset \to G$ does
+not lift, but its pullback to the slice~$\PSh(BG)/G \simeq \Set$ is (assuming
+the law of excluded middle).
+\end{rem}
+
 
 \section{Characterizing cohomology}
 
@@ -519,6 +554,7 @@ sheaf. Zorn's lemma implies that~$F$ has a global element.
 
 
 \section{Conclusion}
+\label{sect:conclusion}
 
 We originally set out to develop an intuitionistic account of Grothendieck's
 sheaf cohomology. Čech methods can be carried out constructively, and
@@ -529,7 +565,7 @@ The main obstacle preventing Grothendieck's theory to be interpreted
 constructively is its reliance on injective resolutions. It is known that in
 the absence of the axiom of choice, much less in a purely intuitionistic
 context, there might not be any nontrivial injective abelian
-group~\cite{blass:XXX}.
+group~\cite{blass:inj-proj-axc}.
 
 In principle, this problem could be remedied by employing flabby resolutions
 instead of injective ones. There are, however, two problems with this
@@ -544,20 +580,24 @@ a flabby sheaf of modules. The following is known about this problem:
 \item There is a purely intuitionistic proof that any sheaf of sets embeds into
 a flabby sheaf of sets (Corollary~\ref{cor:enough-flabby-sets}).
 \item The existence of enough flabby modules, and even the existence of enough
-injective modules, is \emph{not} a constructive taboo, that is, they do not
+injective modules, is \emph{not} a constructive taboo, that is, these statements do not
 entail a classical principle like the law of excluded middle or the principle
-of omniscience. We know this since assuming the axiom of choice, any
+of omniscience. This is because assuming the axiom of choice, any
 Grothendieck topos has enough injective (and therefore flabby) modules. 
 \item There is a way of embedding any module into a flabby module if one is
 prepared to ignore set-theoretical difficulties. Namely, let~$M$ be an~$R$-module.
-Inductively construct a collection~$T$ of terms by the following clauses: $0 \in T$;
-if~$x,y \in T$, then~$x + y \in T$; if~$x \in T$ and~$r \in R$, then~$rx \in
+Inductively construct a collection~$T$ of terms by the following clauses: $0
+\in T$ (where~$0$ is a formal symbol);
+if~$t,s \in T$, then~$t + s \in T$; if~$t \in T$ and~$r \in R$, then~$rt \in
 T$; if~$x \in M$, then~$\underline{x} \in T$; if~$K \subseteq T$ is a
-subterminal, then~$\varepsilon_K \in T$. Then~$T/{\sim}$, where~$({\sim})$ is
-the finest equivalence relation such that the module axioms hold, such
+subterminal, then~$\varepsilon_K \in T$. Let~$({\sim})$ be
+the finest equivalence relation on~$T$ such that~$t + (s + u) \sim (t + s) +
+u$, $t + s \sim s + t$, $t + 0 \sim t \sim 0 + t$, $1t \sim t$, $r(t+s) \sim rt
++ rs$, $(r+r')t \sim rt + r't$ and such
 that~$\underline{x+y} \sim \underline{x} + \underline{y}$, $\underline{rx} \sim
 r \underline{x}$, $\underline{0} \sim 0$ and such that~$\varepsilon_{\{t\}} \sim
-t$ for all terms~$t$, is a flabby~$R$-module into which~$M$ embeds.
+t$ for all terms~$t$. Then the quotient~$T/({\sim})$ is a flabby~$R$-module
+into which~$M$ embeds.
 \end{enumerate}
 
 We currently believe that it is not possible to give a constructive account of

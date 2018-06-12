@@ -158,7 +158,21 @@ such that~$K \subseteq \{ x \}$.
 \end{defn}
 
 In the presence of the law of excluded middle, a set is flabby if and only if
-it is inhabited. Let~$\P_{\leq 1}(X)$ be the set of subterminals of~$X$.
+it is inhabited. In fact, this characterization is a constructive taboo:
+
+\begin{prop}If any inhabited set is flabby, then the law of excluded middle
+holds.
+\end{prop}
+
+\begin{proof}Let~$\varphi$ be a truth value. The set~$X \defeq \{ 0 \}
+\cup \{ 1 \,|\, \varphi \} \subseteq \{ 0,1 \}$ is inhabited by~$0$ and
+contains~$1$ if and only if~$\varphi$ holds. Let~$K$ be the subterminal~$\{ 1 \,|\, \varphi
+\} \subseteq X$. Flabbiness of~$X$ implies that there exists an element~$x \in
+X$ such that~$K \subseteq \{x\}$. We have~$x = 0$ or~$x = 1$. The first case
+entails~$\neg\varphi$. The second case entails~$1 \in X$, so~$\varphi$.
+\end{proof}
+
+Let~$\P_{\leq 1}(X)$ be the set of subterminals of~$X$.
 
 \begin{prop}A set~$X$ is flabby if and only if the canonical map~$X \to
 \P_{\leq 1}(X)$ which sends an element~$x$ to the singleton set~$\{x\}$ is

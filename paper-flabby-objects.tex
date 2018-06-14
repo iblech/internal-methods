@@ -67,7 +67,8 @@ Inselstraße 22 \\
   We introduce a general notion of \emph{flabby objects} in elementary toposes
   and study its basic properties. In the special case of localic toposes, this
   notion reduces to the common notion of flabby sheaves, yielding a
-  site-independent characterization of flabby sheaves. We use this notion to
+  site-independent characterization of flabby sheaves. Continuing a line of
+  research started by Roswitha Harting, we use this notion to
   show that an internal notion of injective objects coincides with the
   corresponding external notion, in stark contrast with the situation for
   projective objects. As an application, we give internal characterizations of
@@ -338,7 +339,8 @@ commutative. This map is an element of~$X$. Furthermore, if~$K$ is inhabited,
 then this map is an element of~$K$.
 \end{proof}
 
-\begin{prop}Let~$0 \to M' \xra{i} M \xra{p} M'' \to 0$ be a short exact
+\begin{prop}\label{prop:set-of-preimages-flabby}
+Let~$0 \to M' \xra{i} M \xra{p} M'' \to 0$ be a short exact
 sequence of modules. Let~$s \in M''$. If~$M'$ is flabby, then the set of
 preimages of~$s$ under~$p$ is flabby.
 \end{prop}
@@ -470,7 +472,7 @@ for~$R$-modules in~$\E$, referring only to the set respectively the object of
 linear maps. The condition for an object to be internally injective can be
 rephrased in various ways. The following proposition lists five of these
 conditions. The equivalence of the first four is due to
-Harting~\cite{harting:XXX}.
+Harting~\cite{harting:locally-injective}.
 
 \begin{prop}\label{prop:notions-of-internal-injectivity}
 Let~$\E$ be an elementary topos. Then the following statements about an
@@ -521,6 +523,9 @@ adjoint maps a family~$(M_a)_{a \in A}$ of~$R$-modules to the direct
 sum~$\bigoplus_{a \in A} M_a$. Details on this construction, phrased in the
 language of sets but interpretable in the internal language, can for instance
 be found in~\cite[page~54]{mines-richman-ruitenburg:constructive-algebra}.
+It seems that Harting was not aware that this construction is possible, as she
+(mistakingly) states in~\cite[page~233]{harting:remark} that ``the notions of
+injectivity and internal injectivity do not coincide'' for modules.
 
 Somewhat surprisingly, and in stark contrast with the situation for internally
 projective objects (which are defined dually), internal injectivity coincides
@@ -548,6 +553,53 @@ By Proposition~\ref{prop:set-of-extensions-flabby}, this sheaf is a flabby
 object and therefore by Proposition~\ref{prop:flabby-sheaves-objects} a flabby
 sheaf. Zorn's lemma implies that~$F$ has a global element.
 \end{proof}
+
+Since we were careful in Section~\ref{sect:flabby-sets} to use the law of
+excluded middle or the axiom of choice only where needed, most results of that
+section carry over to flabby and internally injective objects. Specifically, we
+have:
+
+\begin{scholium}For any elementary topos~$\E$:
+\begin{enumerate}
+\item Any object can be embedded into an internally injective object.
+\item The underlying unstructured object of an internally injective module is
+internally injective.
+\item Any internally injective object is flabby.
+\item Any object can be embedded into a flabby object.
+\item The terminal object is flabby. The product of flabby objects if flabby.
+\item Let~$I$ be an internally injective object. Let~$T$ be an arbitrary
+object. Then~$[T,I]$ is a flabby object.
+\item (If~$\E$ has a natural numbers object.) Let~$I$ be an internally
+injective~$R$-module. Let~$T$ be an arbitrary~$R$-module. Then~$[T,I]_R$, the
+subobject of the internal Hom consisting only of the linear maps, is a flabby
+object.
+\item Let~$0 \to M' \to M \to M'' \to 0$ be a short exact sequence
+of~$R$-modules in~$\E$. If~$M'$ and~$M''$ are flabby objects, so is~$M$.
+\end{enumerate}
+\end{scholium}
+
+\begin{proof}The analogous statements were established purely
+intuitionistically in Section~\ref{sect:flabby-sets}, and the stack semantics
+is sound with respect to intuitionistic logic.
+\end{proof}
+
+\begin{scholium}\label{scholium:exact-as-presheaves}
+Let~$0 \to M' \to M \to M'' \to 0$ be a short exact sequence
+of~$R$-modules in an elementary topos~$\E$. Let~$M'$ be a flabby object.
+If~$\E$ is localic and Zorn's lemma is available, the induced sequence~$0 \to
+\Gamma(M') \to \Gamma(M) \to \Gamma(M') \to 0$ of~$\Gamma(R)$-modules is exact,
+where~$\Gamma(X) = \Hom_\E(1,X)$.\end{scholium}
+
+\begin{proof}We only have to verify exactness at~$\Gamma(M'')$, so let~$s \in
+\Gamma(M')$. Interpreting Proposition~\ref{prop:set-of-preimages-flabby}
+in~$\E$, we see that the object of preimages of~$s$ is object. Since~$\E$ is
+localic, this object is a flabby sheaf; since Zorn's lemma is available, it
+possesses a global element. Such an element is the desired preimage of~$s$
+in~$\Gamma(M)$.\end{proof}
+
+If~$\E$ is not necessarily localic or Zorn's lemma is not available, only a
+weaker substitute for Scholium~\ref{scholium:exact-as-presheaves} is available:
+Given~$s \in \Gamma(M'')$, the object of preimages of~$s$ is flabby. XXX
 
 \begin{rem}A generalization of the traditional notion of a flabby sheaf to
 elementary toposes is the following. An object~$X$ of an elementary topos~$\E$

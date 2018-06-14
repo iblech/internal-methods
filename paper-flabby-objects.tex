@@ -421,8 +421,23 @@ Then~$F$ is flabby as a sheaf if and only if~$F$ is a flabby object of the
 sheaf topos~$\Sh(X)$.
 \end{prop}
 
-\begin{proof}It suffices to verify condition~$({\star})$ for stages of the
-form~$A = \Hom(\cdot,U)$, where~$U$ is an open of~$X$. XXX
+\begin{proof}The proof is routine; we only verify ``only if'' direction.
+Let~$F$ be flabby as a sheaf. It suffices to verify the definition for stages
+of the form~$A = \Hom(\cdot,U)$, where~$U$ is an open of~$X$. A monomorphism~$K
+\to A$ then amounts to an open~$V \subseteq U$ (the union of all opens on
+which~$K$ is inhabited). A morphism~$K \to F$ amounts to a section~$s \in
+F(V)$. Since~$F$ is flabby as a sheaf, there is an open covering~$X =
+\bigcup_{i \in I} V_i$ such that, for all~$i$, the section~$s$ can be extended
+to a section~$s_i$ of~$V \cup V_i$. The desired epimorphism is~$B \defeq
+\coprod_i \Hom(\cdot,(V \cup V_i) \cap U) \to A$, and the desired morphism~$B
+\to X$ is given by the sections~$s_i|_{(V \cup V_i) \cap U}$.
+
+As stated, the argument in the previous paragraph requires the axiom of choice
+to pick the extensions~$s_i$; this can be avoided by a standard trick of
+expanding the index set of the coproduct to include the choices: We redefine $B \defeq
+\coprod_{(i,t) \in I'} \Hom(\cdot, (V \cup V_i) \cap U)$, where~$I' = \{ (i \in
+I, t \in F(V \cup V_i)) \,|\, t|_V = s \}$ and define the morphism~$B \to X$ on
+the~$(i,t)$-summand by~$t|_{(V \cup V_i) \cap U}$.
 \end{proof}
 
 \begin{prop}Let~$f : \E \to \F$ be an open geometric morphism between

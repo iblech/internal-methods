@@ -378,41 +378,42 @@ Thus~$K \subseteq \{ u_0 + i(v) \}$.
 \section{Flabby objects}
 
 \begin{defn}An object~$X$ of an elementary topos~$\E$ is \emph{flabby} if and
-only if it is a flabby set from the point of view of the internal language
+only if the statement~``$X$ is a flabby set'' holds in the stack semantics
 of~$\E$.\end{defn}
 
 This definition amounts to the following: An object~$X$ of an elementary
-topos~$\E$ is flabby if and only if, for any object~$A$ of~$\E$, the object~$X'
-\defeq X \times A \in \E/A$ has the following property:
-\begin{quote}
-For any monomorphism~$K \to 1$ in~$\E/A$ and any morphism~$K \to X'$%
-\tikz[remember picture] \node[coordinate,yshift=0.7em,xshift=1.0em] (n1) {};
-in~$\E/A$, there exists an epimorphism~$B \to 1$ in~$\E/A$ and a morphism~$B
-\to X'$ in~$\E/A$ such that the following diagram commutes.
-\end{quote}
+topos~$\E$ is flabby if and only if, for any monomorphism~$K \to A$ and any
+morphism~$K \to X$, there exists an epimorphism~$B \to A$ and a morphism~$B
+\to X$ such that the following diagram commutes.
 \[ \xymatrix{
-  K \times_A B \ar[r]\ar[rd] & X' \times_A B \ar[r] & X' \\
-  & B \ar[ru]
+  K \times_A B \ar@{^{(}->}[r]\ar[d] & B \ar@{-->}@/^/[ld] \\
+  X
 } \]
-\tikz[remember picture] \node[coordinate,yshift=0.3em] (n2) {};
-\begin{tikzpicture}[overlay,remember picture]
-  \path (n2) -| node[coordinate] (n3) {} (n1);
-  \draw[thick,decorate,decoration={brace,amplitude=3pt}]
-  (n1) -- (n3) node[midway, right=4pt] {$({\star})$};
-\end{tikzpicture}
 
 Instead of referencing arbitrary stages~$A \in \E$, one can also just reference
 the generic stage: Let~$\P_{\leq1}(X)$ denote the \emph{object of subterminals}
 of~$X$; this object is a certain suboject of~$\P(X) = [X,\Omega_\E]_\E$, the
-powerobject of~$X$. The subobject~$K$ of~$\P_{\leq1}(X) \times X$ classified by the
+powerobject of~$X$. The subobject~$K_0$ of~$\P_{\leq1}(X) \times X$ classified by the
 evaluation morphism~$\P_{\leq1}(X) \times X \to \P(X) \times X \to \Omega_\E$
 is the \emph{generic subterminal} of~$X$. The object~$X$ is flabby if and only
 if there exists an epimorphism~$B \to \P_{\leq1}(X)$ and a morphism~$B \to X$
 such that the following diagram commutes.
 \[ \xymatrix{
-  K \times_{\P_{\leq1}(X)} B \ar[r]\ar[rd] & X \times B \ar[r] & X \\
-  & B \ar[ru]
+  K_0 \times_{\P_{\leq1}(X)} B \ar@{^{(}->}[r]\ar[d] & \P_{\leq1}(X) \ar@{-->}@/^/[ld] \\
+  X
 } \]
+
+\begin{prop}\label{prop:basic-properties-of-flabby-objects}
+Let~$X$ and~$T$ be objects of an elementary topos~$\E$.
+\begin{enumerate}
+\item If~$X$ is flabby, so is~$X \times T$ as an object in~$\E/T$.
+\item The converse holds if the unique morphism~$T \to 1$ is an epimorphism.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}These properties are shared by any property which can be defined
+in the stack semantics~\cite[Lemma~7.3]{shulman:stack-semantics}.
+\end{proof}
 
 \begin{prop}\label{prop:flabby-sheaves-objects}
 Let~$F$ be a sheaf on a topological space~$X$ (or a locale).

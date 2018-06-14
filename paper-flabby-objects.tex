@@ -440,18 +440,23 @@ I, t \in F(V \cup V_i)) \,|\, t|_V = s \}$ and define the morphism~$B \to X$ on
 the~$(i,t)$-summand by~$t|_{(V \cup V_i) \cap U}$.
 \end{proof}
 
-\begin{prop}Let~$f : \E \to \F$ be an open geometric morphism between
-elementary toposes. Let~$X \in \E$ be a flabby object. Then~$f_*(X)$ is flabby
-as well.\end{prop}
+\begin{prop}\label{prop:pushforward-of-flabby-objects}
+Let~$f : \F \to \E$ be a geometric morphism. If~$f_*$ preserves epimorphisms,
+then~$f_*$ preserves flabby objects.\end{prop}
 
-\begin{proof}Without loss of generality, it suffices to verify
-condition~$({\star})$ for the terminal stage~$A = 1$. Let~$k : K \to 1$ be a
-monomorphism in~$\F$ and let~$x : K \to f_*(X)$ be an arbitrary morphism.
-Then~$f^*(k) : f^*(K) \to 1$ is a monomorphism in~$\E$ and~$x^t : f^*(K) \to X$
-is a morphism in~$\E$. Since~$X$ is flabby, there is an epimorphism~$B \to 1$
-in~$\E$ and a morphism~$y : B \to X$ such that the morphism~$f^*(K) \times B \to X
-\times B \to B$ factors over~$y$. XXX
+\begin{proof}Let~$X \in \F$ be a flabby object. Without loss of generality, it
+suffices to verify condition~$({\star})$ for the terminal stage~$A = 1 \in \E$.
+Let~$k : K \to 1$ be a monomorphism in~$\E$ and let~$x : K \to f_*(X)$ be an arbitrary morphism.
+Then~$f^*(k) : f^*(K) \to 1$ is a monomorphism in~$\F$ and~$x^t : f^*(K) \to X$
+is a morphism in~$\F$. Since~$X$ is flabby, there is an epimorphism~$B \to 1$
+in~$\F$ and a morphism~$y : B \to X$ such that the morphism~$f^*(K) \times B
+\to X$ factors over~$y$. Hence~$x$ factors over~$f_*(y) : f_*(B) \to f_*(X)$.
+By assumption, the morphism~$f_*(B) \to f_*(1)$ is an epimorphism.
 \end{proof}
+
+The assumption on~$f_*$ of Proposition~\ref{prop:pushforward-of-flabby-objects}
+is for instance satisfied if~$f$ is a local geometric morphism or if~$f$ is
+induced by an open continuous injection between topological spaces. % XXX
 
 \begin{defn}An object~$I$ of an elementary topos~$\E$ is \emph{externally
 injective} if and only if for any monomorphism~$A \to B$ in~$\E$, the canonical

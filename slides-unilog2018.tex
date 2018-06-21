@@ -303,76 +303,76 @@
 
 \section{Alternate universes}
 
-%\begin{frame}[fragile]{A glimpse of the toposophic landscape}
-%  \begin{tikzpicture}
-%    \node (objs-set0) at (0,0) {
-%      \only<1-2>{\muchstuffplaceholder}
-%      \only<3>{\muchstuff}
-%    };
-%    \node[scale=0.4] (objs-set1) at (-3.5,-2.5) {
-%      \only<1->{\fewstuff}
-%    };
-%    \node[scale=0.4] (objs-eff1) at (3.5,-2.5) {
-%      \only<2->{\fewstuff}
-%    };
-%    \node[scale=0.4] (objs-sh1)  at (0,-2.5) {
-%      \only<2->{\fewstuff}
-%    };
-%
-%    \node (prop-set1) [below of=objs-set1, align=left] {
-%      \only<1->{%
-%        The usual laws \\
-%        of logic hold.
-%      }
-%    };
-%
-%    \node (prop-eff1) [below of=objs-eff1, align=left] {
-%      \only<2->{%
-%        Every function \\
-%        is computable.
-%      }
-%    };
-%
-%    \node (prop-sh1) [below of=objs-sh1, align=left] {
-%      \only<2->{%
-%        The axiom of \\
-%        choice fails.
-%      }
-%    };
-%
-%    \node (more-eff1) [below of=prop-eff1, visible on=<3->] {
-%      \threeblobs
-%    };
-%    \node (more-sh1)  [below of=prop-sh1, visible on=<3->] {
-%      \threeblobs
-%    };
-%    \node (more-set1) [below of=prop-set1, visible on=<3->] {
-%      \threeblobs
-%    };
-%
-%    \begin{scope}[visible on=<1->]
-%      \drawbox{set1}{$\mathrm{Set}$}{(objs-set1) (prop-set1) (more-set1)}{}
-%    \end{scope}
-%    \begin{scope}[visible on=<2->]
-%      \drawbox{eff1}{Ef{}f}{(objs-eff1) (prop-eff1) (more-eff1)}{tape}
-%    \end{scope}
-%    \begin{scope}[visible on=<2->]
-%      \drawbox{sh1}{$\mathrm{Sh}\, X$}{(objs-sh1) (prop-sh1) (more-sh1)}{draw=none}
-%      \def\R{8pt}
-%      \begin{pgfonlayer}{background}
-%      \draw[decoration={bumps,segment length=8pt}, decorate, very thick, draw=mypurple, visible on=<2->]
-%        ($(sh1.south west) + (\R, 0)$) arc(270:180:\R) --
-%        ($(sh1.north west) + (0, -\R)$) arc(180:90:\R) --
-%        ($(sh1.north east) + (-\R, 0)$) arc(90:0:\R) --
-%        ($(sh1.south east) + (0, \R)$) arc(0:-90:\R) --
-%        cycle;
-%      \end{pgfonlayer}
-%    \end{scope}
-%    \begin{scope}[visible on=<3->]
-%      \drawbox{set0}{$\mathrm{Set}$}{(objs-set0) (set1) (eff1) (sh1)}{}
-%    \end{scope}
-%  \end{tikzpicture}
-%\end{frame}
+\begin{frame}[fragile]{A glimpse of the toposophic landscape}
+  \begin{tikzpicture}
+    \node (objs-set0) at (0,0) {
+      \only<1-2>{\muchstuffplaceholder}
+      \only<3>{\muchstuff}
+    };
+    \node[scale=0.4] (objs-set1) at (-3.5,-2.5) {
+      \only<1->{\fewstuff}
+    };
+    \node[scale=0.4] (objs-eff1) at (3.5,-2.5) {
+      \only<2->{\fewstuff}
+    };
+    \node[scale=0.4] (objs-sh1)  at (0,-2.5) {
+      \only<2->{\fewstuff}
+    };
+
+    \node (prop-set1) [below of=objs-set1, align=left] {
+      \only<1->{%
+        The usual laws \\
+        of logic hold.
+      }
+    };
+
+    \node (prop-eff1) [below of=objs-eff1, align=left] {
+      \only<2->{%
+        Every function \\
+        is computable.
+      }
+    };
+
+    \node (prop-sh1) [below of=objs-sh1, align=left] {
+      \only<2->{%
+        The axiom of \\
+        choice fails.
+      }
+    };
+
+    \node (more-eff1) [below of=prop-eff1, visible on=<3->] {
+      \threeblobs
+    };
+    \node (more-sh1)  [below of=prop-sh1, visible on=<3->] {
+      \threeblobs
+    };
+    \node (more-set1) [below of=prop-set1, visible on=<3->] {
+      \threeblobs
+    };
+
+    \begin{scope}[visible on=<1->]
+      \drawbox{set1}{$\mathrm{Set}$}{(objs-set1) (prop-set1) (more-set1)}{}
+    \end{scope}
+    \begin{scope}[visible on=<2->]
+      \drawbox{eff1}{Ef{}f}{(objs-eff1) (prop-eff1) (more-eff1)}{tape}
+    \end{scope}
+    \begin{scope}[visible on=<2->]
+      \drawbox{sh1}{$\mathrm{Sh}\, X$}{(objs-sh1) (prop-sh1) (more-sh1)}{draw=none}
+      \def\R{8pt}
+      \begin{pgfonlayer}{background}
+      \draw[decoration={bumps,segment length=8pt}, decorate, very thick, draw=mypurple, visible on=<2->]
+        ($(sh1.south west) + (\R, 0)$) arc(270:180:\R) --
+        ($(sh1.north west) + (0, -\R)$) arc(180:90:\R) --
+        ($(sh1.north east) + (-\R, 0)$) arc(90:0:\R) --
+        ($(sh1.south east) + (0, \R)$) arc(0:-90:\R) --
+        cycle;
+      \end{pgfonlayer}
+    \end{scope}
+    \begin{scope}[visible on=<3->]
+      \drawbox{set0}{$\mathrm{Set}$}{(objs-set0) (set1) (eff1) (sh1)}{}
+    \end{scope}
+  \end{tikzpicture}
+\end{frame}
 
 
 \begin{frame}{The internal universe of a topos}
@@ -658,18 +658,75 @@
   \end{itemize}
 \end{frame}
 
+\begin{frame}{Internalizing the base}
+  \vspace*{-1em}
+  \begin{varblock}{0.9\textwidth}{}
+    \justifying
+    Understand notions of algebraic geometry over a scheme~$X$ as
+    notions of algebra internal to~$\Sh(X)$.
+  \end{varblock}
+
+  \small\centering
+  \scalebox{0.83}{\begin{tabular}{ll}
+    \toprule
+    externally & internally to $\Sh(X)$ \\
+    \midrule
+    sheaf of sets & set \\
+    %sheaf of rings & ring \\
+    sheaf of modules & module \\
+    % sheaf of finite type & finitely generated module \\
+    finite locally free sheaf & finite free module \\
+    % coherent sheaf & coherent module \\
+    tensoring sheaves & tensoring modules \\
+    % sheaf of Kähler differentials & module of Kähler differentials \\
+    % sheaf of rational functions & total quotient ring of~$\O_X$ \\
+    dimension of $X$ & Krull dimension of~$\O_X$ \\
+    spectrum of a sheaf of~$\O_X$-algebras & ordinary spectrum [with a twist] \\
+    \bottomrule
+  \end{tabular}}
+
+  \begin{columns}[c]
+    \begin{column}{0.43\textwidth}
+      \begin{exampleblock}{}
+        \justifying
+        Let~$0 \to M' \to M \to M'' \to 0$ be a short exact sequence of
+        modules. If~$M'$ and~$M''$ are finitely generated, so is~$M$.
+      \end{exampleblock}
+    \end{column}
+
+    \scalebox{3}{$\Rightarrow$}
+    \hspace*{0.4em}
+
+    \begin{column}{0.47\textwidth}
+      \begin{exampleblock}{}
+        \justifying
+        Let $0 \to \F' \to \F \to \F'' \to 0$ be a short exact sequence
+        of sheaves of~$\O_X$-modules. If~$\F'$ and~$\F''$ are of finite type,
+        so is~$\F$.
+      \end{exampleblock}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Synthetic algebraic geometry}
+  yada yada
+\end{frame}
+
 
 \section{Vision}
 
-\begin{frame}{Topos theory \ldots}
+\begin{frame}{Vision for the future}
   \vspace*{-0.5em}
-  \begin{itemize}
-    \item enriches the platonism debate,
-    %\item yields a new view on ``continuous dependence on parameters'',
-    \item uncovers further relations between objects,
-    \item allows to study objects from a different point of view,
-    \item has applications in mathematical practice.
-  \end{itemize}
+  yada yada
+  \vfill
+
+%  \begin{itemize}
+%    \item enriches the platonism debate,
+%    %\item yields a new view on ``continuous dependence on parameters'',
+%    \item uncovers further relations between objects,
+%    \item allows to study objects from a different point of view,
+%    \item has applications in mathematical practice.
+%  \end{itemize}
 
   \centering
   \href{https://www.oliviacaramello.com/Papers/Papers.htm}{\includegraphics[height=0.45\textheight]{olivia-tst}}

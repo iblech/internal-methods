@@ -5,6 +5,7 @@
 
 \usepackage{mathtools}
 \usepackage{booktabs}
+\usepackage{stmaryrd}
 \usepackage{array}
 \usepackage{ragged2e}
 \usepackage{multicol}
@@ -24,6 +25,8 @@
 \usepackage{pifont}
 \newcommand{\cmark}{\ding{51}}
 \newcommand{\xmark}{\ding{55}}
+\DeclareSymbolFont{extraup}{U}{zavm}{m}{n}
+\DeclareMathSymbol{\varheart}{\mathalpha}{extraup}{86}
 
 \graphicspath{{images/}}
 
@@ -115,6 +118,7 @@
 \newcommand{\bignumber}[1]{
   \renewcommand{\insertenumlabel}{#1}\scalebox{1.5}{\usebeamertemplate{enumerate item}}
 }
+\newcommand{\bigheart}[1]{\scalebox{1.5}{\hil{$\varheart$}}}
 
 \newenvironment{changemargin}[2]{%
   \begin{list}{}{%
@@ -184,7 +188,7 @@
 
 \setbeamertemplate{footline}{%
   \begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex,dp=1ex,right,rightskip=1mm,leftskip=1mm]{}%
-    \inserttitle
+    % \inserttitle
     \hfill
     \insertframenumber\,/\,\inserttotalframenumber
   \end{beamercolorbox}%
@@ -231,7 +235,6 @@
   \colorbox{mypurple}{\ \ }
 }
 
-{\title{}
 \begin{frame}[c]
   \centering
   \medskip
@@ -298,21 +301,22 @@
   Workshop on Categories and Logic organized by Peter Arndt \\
   June 22nd, 2018
   \par
-\end{frame}}
+\end{frame}
 
 
 \section{Alternate universes}
 
 \begin{frame}[fragile]{A glimpse of the toposophic landscape}
+  \hspace*{-1em}%
   \begin{tikzpicture}
     \node (objs-set0) at (0,0) {
       \only<1-2>{\muchstuffplaceholder}
       \only<3>{\muchstuff}
     };
-    \node[scale=0.4] (objs-set1) at (-3.5,-2.5) {
+    \node[scale=0.4] (objs-set1) at (-4.0,-2.5) {
       \only<1->{\fewstuff}
     };
-    \node[scale=0.4] (objs-eff1) at (3.5,-2.5) {
+    \node[scale=0.4] (objs-eff1) at (4.0,-2.5) {
       \only<2->{\fewstuff}
     };
     \node[scale=0.4] (objs-sh1)  at (0,-2.5) {
@@ -333,10 +337,10 @@
       }
     };
 
-    \node (prop-sh1) [below of=objs-sh1, align=left] {
+    \node (prop-sh1) [below of=objs-sh1, align=left, inner sep=0pt] {
       \only<2->{%
-        The axiom of \\
-        choice fails.
+        The intermediate \\
+        value theorem fails.
       }
     };
 
@@ -376,6 +380,8 @@
 
 
 \begin{frame}{The internal universe of a topos}
+  A \hil{topos} is a finitely complete cartesian closed category with a
+  subobject classifier.
   For any topos~$\E$ and any statement~$\varphi$, we define the meaning of
   \vspace*{-0.5em}
   \[
@@ -412,7 +418,7 @@
   \pause
   Any topos supports \hil{mathematical reasoning}:
 
-  \vspace*{-1em}
+  \vspace*{-1.5em}
   \begin{hilblock}
     If~$\E \models \varphi$ and if~$\varphi \vdash \psi$
     \pointthis{<3>}{intuitionistically}{%
@@ -421,6 +427,7 @@
       no axiom of choice},
     then~$\E \models \psi$.
   \end{hilblock}
+  \bigskip
 \end{frame}
 
 
@@ -548,7 +555,7 @@
     \begin{column}{0.5\textwidth}
       \begin{varblock}{\textwidth}{}
         \justifying
-        Assuming the Boolean prime ideal theorem, any first-order
+        Assuming the Boolean prime ideal theorem, a first-order
         formula ``$\forall \ldots \forall\_ (\cdots \Longrightarrow \cdots\!\,)$'',
         where the two subformulas may not contain~``$\Rightarrow$'' and~``$\forall$'',
         holds for~$A^\sim$ iff it holds for all stalks~$A_\ppp$.
@@ -580,7 +587,7 @@
     \node[anchor=south west,inner sep=0] (image) at (0,0.8) {\vbox{
       \centering
       \includegraphics[width=0.9\textwidth]{tierney-on-the-spectrum-of-a-ringed-topos} \\
-      \small
+      \footnotesize
       Miles Tierney. On the spectrum of a ringed topos. 1976.
     }};
   \end{tikzpicture}}
@@ -596,22 +603,22 @@
       \centering
 
       \scalebox{0.8}{$\begin{pmatrix}
-        \cdot & \cdot \\
-        \cdot & \cdot \\
-        \cdot & \cdot
+        \cdot & \cdot & \cdot & \cdot & \cdot \\
+        \cdot & \cdot & \cdot & \cdot & \cdot \\
+        \cdot & \cdot & \cdot & \cdot & \cdot
       \end{pmatrix}$}
       \vspace*{-1em}
 
       \begin{varblock}{\textwidth}{A baby application}
         \justifying
-        Let~$M$ be a surjective matrix with more rows than columns over~$A$.
+        Let~$M$ be an injective matrix over~$A$ with more columns than rows.
         Then~$1 = 0$ in~$A$.
       \end{varblock}
 
       \justifying
-      \textbf{Proof.} $M$ is also surjective as a matrix over~$A^\sim$.
+      \textbf{Proof.} $M$ is also injective as a matrix over~$A^\sim$.
       Since~$A^\sim$ is a field, trivially~$1 = 0$ in~$A^\sim$.
-      This translates to~$1 = 0$ in~$A$.
+      This means~$1 = 0$ in~$A$.
     \end{column}
 
     \begin{column}[t]{0.57\textwidth}
@@ -658,8 +665,8 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Internalizing the base}
-  \vspace*{-1em}
+\begin{frame}{Applications in algebraic geometry}
+  \vspace*{-1.5em}
   \begin{varblock}{0.9\textwidth}{}
     \justifying
     Understand notions of algebraic geometry over a scheme~$X$ as
@@ -674,14 +681,15 @@
     sheaf of sets & set \\
     %sheaf of rings & ring \\
     sheaf of modules & module \\
-    % sheaf of finite type & finitely generated module \\
-    finite locally free sheaf & finite free module \\
+    sheaf of finite type & finitely generated module \\
+    % finite locally free sheaf & finite free module \\
     % coherent sheaf & coherent module \\
-    tensoring sheaves & tensoring modules \\
+    tensor product of sheaves & tensor product of modules \\
     % sheaf of Kähler differentials & module of Kähler differentials \\
-    % sheaf of rational functions & total quotient ring of~$\O_X$ \\
+    sheaf of rational functions & total quotient ring of~$\O_X$ \\
     dimension of $X$ & Krull dimension of~$\O_X$ \\
     spectrum of a sheaf of~$\O_X$-algebras & ordinary spectrum [with a twist] \\
+    higher direct images & sheaf cohomology \\
     \bottomrule
   \end{tabular}}
 
@@ -695,7 +703,7 @@
     \end{column}
 
     \scalebox{3}{$\Rightarrow$}
-    \hspace*{0.4em}
+    \hspace*{0.5em}
 
     \begin{column}{0.47\textwidth}
       \begin{exampleblock}{}
@@ -709,24 +717,92 @@
 \end{frame}
 
 \begin{frame}{Synthetic algebraic geometry}
-  yada yada
+  Usual approach to algebraic geometry: \hil{layer schemes above ordinary set theory}
+  using either
+  \begin{itemize}
+    \item locally ringed spaces
+    \small
+    \begin{multline*}
+      \text{set of prime ideals of~$\ZZ[X,Y,Z]/(X^n+Y^n-Z^n)$} + {} \\
+      \text{Zariski topology} + \text{structure sheaf}
+    \end{multline*}
+    \normalsize
+    \item or Grothendieck's functor-of-points account, where a scheme is a functor~$\mathrm{Ring} \to \mathrm{Set}$.
+    \small\[ A \longmapsto \{ (x,y,z) \in A^3 \,|\, x^n+y^n-z^n=0 \} \]
+  \end{itemize}
+  \bigskip
+  \pause
+
+  \hil{Synthetic approach:} model schemes \hil{directly as sets} in a certain
+  nonclassical set theory, the internal universe of the \mbox{\hil{big Zariski
+  topos}} of a base scheme.
+  \small
+  \[ \{ (x,y,z) \? (\affl)^3 \,|\, x^n+y^n-z^n=0 \} \]
+\end{frame}
+
+\begin{frame}{The big Zariski topos}
+  The \hil{big Zariski topos} $\Zar(S)$ of a scheme~$S$ is equivalently
+  \begin{enumerate}
+    \item the topos of sheaves over~$\Aff/S$,
+    \item the classifying topos of local rings over~$S$ or
+    \item the classifying~$\Sh(S)$-topos of local~$\O_S$-algebras which are local
+    over~$\O_S$.
+  \end{enumerate}
+
+  \begin{itemize}
+    \item For an~$S$-scheme~$X$, its functor of points $\ull{X} =
+    \Hom_S(\cdot,X)$ is an object of~$\Zar(S)$. It feels like \hil{the set of
+    points} of~$X$.
+    \item Internally, $\affl$ (given by $\affl(X) = \O_X(X)$)
+    looks like a field
+    %\[ \Zar(S) \models \forall x\?\affl\_ x \neq 0 \Longrightarrow \text{$x$ invertible} \]
+    and is \hil{synthetically quasicoherent}: For any finitely
+    presented~$\affl$-algebra~$B$, the canonical map is bijective.
+    \[ B \longrightarrow (\affl)^{\Hom_\affl(B,\affl)},\ f \longmapsto (\varphi \mapsto \varphi(f)) \]
+    \item \ \\[-1.2em]\mbox{$\ull{\mathbb{P}}^n = \llbracket \{ (x_0,\ldots,x_n) : (\affl)^{n+1} \,|\,
+    x_0 \neq 0 \vee \cdots \vee x_n \neq 0 \}/(\affl)^\times \rrbracket$}
+  \end{itemize}
 \end{frame}
 
 
 \section{Vision}
 
 \begin{frame}{Vision for the future}
-  \vspace*{-0.5em}
-  yada yada
-  \vfill
+  \begin{columns}
+    \small
+    \begin{column}{0.35\textwidth}
+      \centering
+      \bigheart
+      \par
 
-%  \begin{itemize}
-%    \item enriches the platonism debate,
-%    %\item yields a new view on ``continuous dependence on parameters'',
-%    \item uncovers further relations between objects,
-%    \item allows to study objects from a different point of view,
-%    \item has applications in mathematical practice.
-%  \end{itemize}
+      constructive algebra \\
+      conceptual proofs \\
+      proof assistants
+    \end{column}
+
+    \begin{column}{0.47\textwidth}
+      \centering
+      \bigheart
+      \par
+
+      constructive algebraic geometry \\
+      synthetic algebraic geometry \\
+      intersection theory \\
+      derived categories
+    \end{column}
+
+    \begin{column}{0.25\textwidth}
+      \centering
+      \bigheart
+      \par
+
+      quasicoherence \\
+      nongeometric mysteries \\
+      further fields
+    \end{column}
+  \end{columns}
+
+  \vfill
 
   \centering
   \href{https://www.oliviacaramello.com/Papers/Papers.htm}{\includegraphics[height=0.45\textheight]{olivia-tst}}

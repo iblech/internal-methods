@@ -687,11 +687,6 @@
   \end{minipage}}
 \end{frame}
 
-% Großer Zariskitopos
-% Zusammenhang zum kleinen Topos
-% Synthetische Quasikohärenz
-% Klassifizierende Topoi
-
 
 \section{Algebraic geometry}
 
@@ -804,6 +799,33 @@
   \end{itemize}
 \end{frame}
 
+\begin{frame}{Relations between the Zariski toposes}
+  The big Zariski topos is a topos over the small Zariski topos:
+  \[ \begin{array}{crcl}
+    \pi : & \Zar(A) &\longrightarrow& \Spec(A) \\
+    & \text{local~$A$-algebra~$(A \xrightarrow{\alpha} B)$} &\longmapsto& (A \to A[(\alpha^{-1}[B^\times])^{-1}])
+  \end{array} \]
+  This morphism is \hil{connected} ($\pi^{-1}$ is fully faithful) and
+  \hil{local}, so there is a preinverse
+  \[ \begin{array}{rcl}
+    \Spec(A) &\longrightarrow& \Zar(A) \\
+    \text{local localization~$(A \to B)$} &\longmapsto& (A \to B)
+  \end{array} \]
+  which is a subtopos inclusion inducing an idempotent monad~$\sharp$ and an
+  idempotent comonad~$\flat$ on~$\Zar(S)$.
+
+  \begin{itemize}
+  \justifying
+    \item Internally to~$\Zar(S)$, $\Spec(S)$ can be constructed as the
+    \hil{largest subtopos} where~$\flat \affl \to \affl$ is bijective.
+    \item Internally to~$\Spec(S)$, $\Zar(S)$ can be constructed as the
+    \hil{classifying topos} of local~$\O_S$-algebras which are local over~$\O_S$.
+    \item $\Zar(A)$ is the \hil{lax pullback}~$(\Set
+    \Rightarrow_{\Set[\mathrm{Ring}]} \Set[\mathrm{LocRing}])$.
+  \end{itemize}
+\end{frame}
+
+
 \begin{frame}{Synthetic constructions}
   \small
   $\hil{$\boldsymbol{\mathbb{A}^n}$} = (\affl)^n = \affl \times \cdots \times \affl$
@@ -877,7 +899,11 @@
   \hil{synthetic quasicoherence}.
 
   \centering
-  \hil{The mystery of nongeometric sequents}
+  \begin{varblock}{0.6344\textwidth}{}
+    \centering
+    \hil{the mystery of nongeometric sequents}
+    \par
+  \end{varblock}
 
 % \emph{Example.} Let~$x \? \affl$ such that~$x \neq 0$. Set~$R = \affl/(x)$.
 % Then~$\Spec(R) = \emptyset$. Thus~$(\affl)^{\Spec(R)}$ is a singleton.

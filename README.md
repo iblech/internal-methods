@@ -57,5 +57,7 @@ No prior knowledge about topos theory or formal logic is assumed.
   for the Oberseminar Mathematische Logik in München
 * [Slides (PDF)](https://rawgit.com/iblech/internal-methods/master/slides-unilog2018.pdf)
   for UNILOG 2018
+* [Slides (PDF)](https://rawgit.com/iblech/internal-methods/master/slides-como2018.pdf)
+  for Toposes in Como 2018
 
 ![Sheaves of rings look like ordinary rings from the internal point of view.](images/external-internal-small.png)

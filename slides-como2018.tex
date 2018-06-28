@@ -225,6 +225,11 @@
 
 \addtocounter{framenumber}{-1}
 
+{\usebackgroundtemplate{\includegraphics[width=\paperwidth]{slides-como2018-titlepage-blurred}}
+\begin{frame}[plain]\end{frame}}
+
+\addtocounter{framenumber}{-1}
+
 {\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{4.95cm}\includegraphics[width=\paperwidth]{topos-horses}\end{minipage}}
 \begin{frame}[c]
   \centering
@@ -247,29 +252,27 @@
     \begin{column}{0.35\textwidth}
       \centering
       \bignumber{1}
+      \smallskip
 
       \hil{Background on the internal language}
       \medskip
-
     \end{column}
     \hspace*{0.5em}
     \begin{column}{0.35\textwidth}
       \centering
       \bignumber{2}
-      
+      \smallskip
+
       \hil{Applications in commutative algebra}
       \medskip
-
-%      \includegraphics[height=5.5em]{calabi-yau}
     \end{column}
     \begin{column}{0.4\textwidth}
       \centering
       \bignumber{3}
-      
+      \smallskip
+
       \hil{The mystery of nongeometric sequents}
       \medskip
-
-%      \includegraphics[height=5.5em]{question-mark}
     \end{column}
   \end{columns}
 
@@ -799,33 +802,6 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Relations between the Zariski toposes}
-  The big Zariski topos is a topos over the small Zariski topos:
-  \[ \begin{array}{crcl}
-    \pi : & \Zar(A) &\longrightarrow& \Spec(A) \\
-    & \text{local~$A$-algebra~$(A \xrightarrow{\alpha} B)$} &\longmapsto& (A \to A[(\alpha^{-1}[B^\times])^{-1}])
-  \end{array} \]
-  This morphism is \hil{connected} ($\pi^{-1}$ is fully faithful) and
-  \hil{local}, so there is a preinverse
-  \[ \begin{array}{rcl}
-    \Spec(A) &\longrightarrow& \Zar(A) \\
-    \text{local localization~$(A \to B)$} &\longmapsto& (A \to B)
-  \end{array} \]
-  which is a subtopos inclusion inducing an idempotent monad~$\sharp$ and an
-  idempotent comonad~$\flat$ on~$\Zar(S)$.
-
-  \begin{itemize}
-  \justifying
-    \item Internally to~$\Zar(S)$, $\Spec(S)$ can be constructed as the
-    \hil{largest subtopos} where~$\flat \affl \to \affl$ is bijective.
-    \item Internally to~$\Spec(S)$, $\Zar(S)$ can be constructed as the
-    \hil{classifying topos} of local~$\O_S$-algebras which are local over~$\O_S$.
-    \item $\Zar(A)$ is the \hil{lax pullback}~$(\Set
-    \Rightarrow_{\Set[\mathrm{Ring}]} \Set[\mathrm{LocRing}])$.
-  \end{itemize}
-\end{frame}
-
-
 \begin{frame}{Synthetic constructions}
   \small
   $\hil{$\boldsymbol{\mathbb{A}^n}$} = (\affl)^n = \affl \times \cdots \times \affl$
@@ -850,9 +826,36 @@
   A \hil{synthetic affine scheme} is a set which is in bijection
   with~$\Spec(R)$ for some synthetically quasicoherent~$\affl$-algebra~$R$.
 
-  A \hil{synthetic scheme} is a set which can be covered by finitely many
-  qc-open synthetic affine schemes~$U_i$ such that the intersections~$U_i \cap
-  U_j$ can be covered by finitely many qc-open synthetic affine schemes.
+  A \hil{finitely presented synthetic scheme} is a set which can be covered by
+  finitely many qc-open f.p. synthetic affine schemes~$U_i$ such that the
+  intersections~$U_i \cap U_j$ can be covered by finitely many qc-open f.p.
+  synthetic affine schemes.
+\end{frame}
+
+\begin{frame}{Relations between the Zariski toposes}
+  The big Zariski topos is a topos over the small Zariski topos:
+  \[ \begin{array}{crcl}
+    \pi : & \Zar(A) &\longrightarrow& \Spec(A) \\
+    & \text{local~$A$-algebra~$(A \xrightarrow{\alpha} B)$} &\longmapsto& (A \to A[(\alpha^{-1}[B^\times])^{-1}])
+  \end{array} \]
+  This morphism is \hil{connected} ($\pi^{-1}$ is fully faithful) and
+  \hil{local}, so there is a preinverse
+  \[ \begin{array}{rcl}
+    \Spec(A) &\longrightarrow& \Zar(A) \\
+    \text{local localization~$(A \to B)$} &\longmapsto& (A \to B)
+  \end{array} \]
+  which is a subtopos inclusion inducing an idempotent monad~$\sharp$ and an
+  idempotent comonad~$\flat$ on~$\Zar(S)$.
+
+  \begin{itemize}
+  \justifying
+    \item Internally to~$\Zar(S)$, $\Spec(S)$ can be constructed as the
+    \hil{largest subtopos} where~$\flat \affl \to \affl$ is bijective.
+    \item Internally to~$\Spec(S)$, $\Zar(S)$ can be constructed as the
+    \hil{classifying topos} of local~$\O_S$-algebras which are local over~$\O_S$.
+    \item $\Zar(A)$ is the \hil{lax pullback}~$(\Set
+    \Rightarrow_{\Set[\mathrm{Ring}]} \Set[\mathrm{LocRing}])$.
+  \end{itemize}
 \end{frame}
 
 
@@ -920,12 +923,12 @@
     étale & separably closed local rings [Hakim 1972, Wraith 1979] \\[0.6em]
     \usebeamercolor[fg]{item}{fppf} & \usebeamercolor[fg]{item}{fppf-local rings} \\
     & \textcolor{red!90}{(conjecturally: algebraically closed local rings)} \\[0.6em]
-    \textcolor{red!80}{ph} & \textcolor{red!80}{?? (conjecturally: algebraically closed valuation} \\
-    & \qquad \textcolor{red!80}{rings validating the projective Nullstellensatz)} \\[0.6em]
+    \textcolor{red!80}{ph} & \textcolor{red!80}{?? (conjecturally: algebraically closed valuation rings} \\
+    & \qquad \textcolor{red!80}{validating the projective Nullstellensatz)} \\[0.6em]
     \usebeamercolor[fg]{item}{surjective} & \usebeamercolor[fg]{item}{algebraically closed geometric fields} \\[0.6em]
     \textcolor{red!80}{$\neg\neg$} & \textcolor{red!80}{?? (conjecturally: algebraically closed geometric} \\
     & \qquad \textcolor{red!80}{fields are integral over the base)} \\[0.6em]
-    \usebeamercolor[fg]{item}{infinitesimal} & \usebeamercolor[fg]{item}{XXX [Hutzler 2018]} \\[0.6em]
+    \usebeamercolor[fg]{item}{infinitesimal} & \usebeamercolor[fg]{item}{local algebras together with a nilpotent ideal [Hutzler 2018]} \\[0.6em]
     \textcolor{red!100}{crystalline} & \textcolor{red!100}{??} \\
     \bottomrule
   \end{tabular}

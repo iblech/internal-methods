@@ -65,6 +65,7 @@
 \newcommand{\E}{\mathcal{E}}
 \newcommand{\F}{\mathcal{F}}
 \renewcommand{\G}{\mathcal{G}}
+\newcommand{\J}{\mathcal{J}}
 \newcommand{\GG}{\mathbb{G}}
 \renewcommand{\O}{\mathcal{O}}
 \newcommand{\K}{\mathcal{K}}
@@ -135,6 +136,13 @@
     \setlength{\parsep}{\parskip}%
   }%
   \item[]}{\end{list}}
+
+\newenvironment{indentblock}{%
+  \list{}{\leftmargin\leftmargin}%
+  \item\relax
+}{%
+  \endlist
+}
 
 \newcommand{\hcancel}[5]{%
   \tikz[baseline=(tocancel.base)]{
@@ -217,6 +225,7 @@
 
 \addtocounter{framenumber}{-1}
 
+{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{4.95cm}\includegraphics[width=\paperwidth]{topos-horses}\end{minipage}}
 \begin{frame}[c]
   \centering
   \medskip
@@ -226,10 +235,11 @@
 %  \includegraphics[height=0.3\textheight]{vichy-4}%
 %  \includegraphics[height=0.3\textheight]{vichy-5}%
 
-  \hil{Exploring the internal language of toposes} \\
+  \hil{How topos theory can help algebra} \\
 
   \emph{-- an invitation --}
 
+  \bigskip
   \bigskip
 
   \begin{columns}
@@ -237,17 +247,17 @@
     \begin{column}{0.35\textwidth}
       \centering
       \bignumber{1}
-      
-      \hil{Alternate universes}
+
+      \hil{Background on the internal language}
       \medskip
 
     \end{column}
     \hspace*{0.5em}
-    \begin{column}{0.25\textwidth}
+    \begin{column}{0.35\textwidth}
       \centering
       \bignumber{2}
       
-      \hil{Applications}
+      \hil{Applications in commutative algebra}
       \medskip
 
 %      \includegraphics[height=5.5em]{calabi-yau}
@@ -256,7 +266,7 @@
       \centering
       \bignumber{3}
       
-      \hil{Vision for the future}
+      \hil{The mystery of nongeometric sequents}
       \medskip
 
 %      \includegraphics[height=5.5em]{question-mark}
@@ -266,9 +276,12 @@
   \scriptsize
   Ingo Blechschmidt (MPI Leipzig) \\
   Toposes in Como \\
-  June 29th, 20s18
+  June 29th, 2018
   \par
-\end{frame}
+\end{frame}}
+
+
+\section{Motivation}
 
 \begin{frame}{Motivating testcases}
   Let $A$ be a ring (commutative, with unit, $1 = 0$ allowed). \\
@@ -331,7 +344,7 @@
 
   \centering
 
-  % XXX: \includegraphics[height=3em]{generic-freeness}
+  \includegraphics[height=3em]{generic-freeness}
   \vspace*{-1em}
 
   \begin{varblock}{0.9\textwidth}{Generic freeness$\phantom{p}$}
@@ -349,9 +362,14 @@
   \end{varblock}
   \vspace*{-0.5em}
 
-  \pause\raggedright
-  \textbf{Proof.} See [Stacks Project, Tag 051Q].
+  \pause\center
+  \begin{minipage}{0.9\textwidth}
+    \textbf{Proof.} See [Stacks Project, Tag 051Q].
+  \end{minipage}
 \end{frame}
+
+
+\section{Internal language}
 
 \begin{frame}{The internal language of a topos}
   For any topos~$\E$ and any formula~$\varphi$, we define the meaning of
@@ -367,19 +385,19 @@
   \vspace*{-1em}
   \begin{columns}
     \def\insertblocktitle{}
-    \begin{column}{0.3\textwidth}\usebeamertemplate{block begin}
+    \begin{column}{0.25\textwidth}\usebeamertemplate{block begin}
       \centering
       $\Set \models \varphi$ \\
       ``$\varphi$ holds in the \\ usual sense.''
       \usebeamertemplate{block end}\end{column}
 
-    \begin{column}{0.3\textwidth}\usebeamertemplate{block begin}
+    \begin{column}{0.25\textwidth}\usebeamertemplate{block begin}
       \centering
       $\Sh(X) \models \varphi$ \\
       ``$\varphi$ holds continuously.''
       \usebeamertemplate{block end}\end{column}
 
-    \begin{column}{0.3\textwidth}\usebeamertemplate{block begin}
+    \begin{column}{0.25\textwidth}\usebeamertemplate{block begin}
       \centering
       $\Eff \models \varphi$ \\
       ``$\varphi$ holds \\ computably.''
@@ -439,12 +457,16 @@
     \bar f : \C \longrightarrow \C,\
     \text{on $U$:}\ s \longmapsto (x \mapsto f_x(s(x))).
   \]
+
+  \vspace*{-1em}
+
   \begin{itemize}
     \item $\Sh(X) \models \speak{The set $\C$ is the set of (Dedekind) reals}$.
-    \item $\Sh(X) \models \speak{The function $\bar f : \RR \to \RR$ is continuous}$.
+    \item $\Sh(X) \models \speak{The function $\bar f : \RR \to \RR$ is continuous}$. \bigskip
     \item Iff $f_x(-1) < 0$ for all $x$, then $\Sh(X) \models \bar f(-1) < 0$.
     \item Iff $f_x(+1) > 0$ for all $x$, then $\Sh(X) \models \bar f(+1) > 0$.
-    \item Iff all $f_x$ are increasing, then $\Sh(X) \models \speak{$\bar f$ is increasing}$.
+    \item Iff all $f_x$ are increasing, then $\Sh(X) \models \speak{$\bar f$ is
+    increasing}$. \bigskip
     \item \ \\[-1.2em]\mbox{Iff there is an open cover~$X = \bigcup_i U_i$ such
     that for each~$i$ there is a} \mbox{continuous function~$s : U_i \to \RR$
     with~$f_x(s(x)) = 0$ for all~$x \in U_i$,} then $\Sh(X) \models \exists s
@@ -452,11 +474,14 @@
   \end{itemize}
 \end{frame}
 
+
+\section{The little Zariski topos}
+
 \begin{frame}{The little Zariski topos}
   Let~$A$ be a ring. Its \hil{little Zariski topos} is equivalently
   \begin{enumerate}
     \item the classifying topos of \hil{local localizations} of $A$,
-    \item the classifying topos of \hil{prime filters} of $A$,
+    \item the classifying locale of \hil{prime filters} of $A$,
     \item the locale given by the frame of \hil{radical ideals} of $A$,
     \item the topos of sheaves over the poset $A$ with $f \preceq g$ iff $f \in \sqrt{(g)}$ and with $(f_i \to f)_i$ deemed covering iff $f \in \sqrt{(f_i)_i}$ or
     \item the topos of sheaves over $\Spec(A)$.
@@ -486,16 +511,18 @@
     \ull{M}[\fff_0^{-1}]$.
   \end{itemize}
 
-  \only<1>{\begin{center}
+  \pause
+  \only<2>{\begin{center}
     \includegraphics[width=0.9\textwidth]{hartshorne-tilde-construction} \\
     \footnotesize
     Robin Hartshorne. Algebraic Geometry. 1977.
   \end{center}}
-
   \pause
 
+  \vspace*{-1.5em}
+
   \begin{columns}
-    \begin{column}{0.5\textwidth}
+    \begin{column}{0.48\textwidth}
       \begin{varblock}{\textwidth}{}
         \justifying
         Assuming the Boolean prime ideal theorem, a geometric sequent
@@ -503,17 +530,21 @@
         where the two subformulas may not contain~``$\Rightarrow$'' and~``$\forall$'',
         holds for~$M^\sim$ iff it holds for all stalks~$M_\ppp$.
       \end{varblock}
-    \end{column}
 
-    \begin{column}{0.5\textwidth}
+      \vspace*{-1.5em}
+
       \begin{varblock}{\textwidth}{}
         $M^\sim$ inherits any property of~$M$ which is \hil{localization-stable}.
       \end{varblock}
+    \end{column}
 
-      \bigskip
+    \begin{column}{0.5\textwidth}
+      \vspace*{1.5em}
+
       If $A$ is reduced ($x^n = 0 \Rightarrow x = 0$):
 
-      \vspace*{-1em}
+      \vspace*{-1.0em}
+
       \setbeamercolor{block body}{bg=red!30}
       \setbeamercolor{structure}{fg=purple}
       \begin{varblock}{\textwidth}{}
@@ -527,13 +558,42 @@
     \end{column}
   \end{columns}
 
-  \visible<3>{\begin{tikzpicture}[overlay]
+  \visible<4-5>{\begin{tikzpicture}[overlay]
     \draw[fill=white, draw=white, opacity=0.95] (-1,0) rectangle (\paperwidth,7.4);
     \node[anchor=south west,inner sep=0] (image) at (0,0.8) {\vbox{
-      \centering
-      \includegraphics[width=0.9\textwidth]{tierney-on-the-spectrum-of-a-ringed-topos} \\
-      \footnotesize
-      Miles Tierney. On the spectrum of a ringed topos. 1976.
+      \only<4>{
+	\centering
+	\includegraphics[width=0.9\textwidth]{tierney-on-the-spectrum-of-a-ringed-topos} \\
+	\footnotesize
+	Miles Tierney. On the spectrum of a ringed topos. 1976.
+      }
+
+      \only<5>{
+	\begin{varblock}{\textwidth}{Complexity reduction}
+	  The external meaning of
+	  \[
+	    \Spec(A) \models
+	      \speak{$A^\sim[X_1,\ldots,X_n]$ is anonymously Noetherian}
+	  \]
+	  is:
+	  \medskip
+
+	  \begin{indentblock}
+	  For any element~$f \in A$ and any (not necessarily quasicoherent) sheaf of
+	  ideals~$\J \hookrightarrow A^\sim[X_1,\ldots,X_n]|_{D(f)}$: If
+	  \begin{indentblock}
+	  for any element~$g \in A$ the condition that
+	  \begin{indentblock}
+	  the sheaf~$\J$ is of finite type on~$D(g)$
+	  \end{indentblock}
+	  implies that~$g = 0$,
+	  \end{indentblock}
+	  then~$f = 0$.
+	  \end{indentblock}
+	\end{varblock}
+
+	\vspace*{-2em}
+      }
     }};
   \end{tikzpicture}}
 \end{frame}
@@ -542,7 +602,7 @@
   Let $A$ be a reduced ring.
 
   \only<1>{\begin{columns}[t]
-    \begin{column}[t]{0.50\textwidth}
+    \begin{column}[t]{0.47\textwidth}
       \centering
 
       \scalebox{0.8}{$\begin{pmatrix}
@@ -559,11 +619,11 @@
       \end{varblock}
 
       \justifying
-      \textbf{Proof.} The matrix is surjective over the field~$A^\sim$. This is
-      a contradiction to basic linear algebra. Hence $\Spec(A) \models \bot$,
-      thus $1 = 0$ in $A$.
+      \textbf{Proof.} The matrix is surjective over the field~$A^\sim$.
+      This is a contradiction to basic linear algebra. Hence $\Spec(A) \models
+      \bot$, thus $1 = 0$ in $A$.
     \end{column}
-    \begin{column}[t]{0.5\textwidth}
+    \begin{column}[t]{0.47\textwidth}
       \centering
 
       \scalebox{0.8}{$\begin{pmatrix}
@@ -588,41 +648,52 @@
 
   \pause
 
-  \centering
-
-  % XXX: \includegraphics[height=3em]{generic-freeness}
+  \vspace*{-5.3em}\hspace*{21em}\begin{minipage}{3cm}
+    $\xymatrixcolsep{3.5pc}\xymatrixrowsep{1.2pc}\xymatrix{
+      & \ar@{-}[d]^{\substack{\text{finitely}\\\text{generated}}} M \\
+      A \ar[r]_{\text{of finite type}} & B
+    }$
+  \end{minipage}
   \vspace*{-1em}
 
-  \begin{varblock}{\textwidth}{Generic freeness$\phantom{p}$}
+  \centering
+
+  \begin{varblock}{0.9\textwidth}{Generic freeness$\phantom{p}$}
     \justifying
     Let~$B$ be an~$A$-algebra of finite type ($\cong A[X_1,\ldots,X_n]/\aaa$). \\
     Let~$M$ be a finitely generated~$B$-module ($\cong B^m/U$).
 
     If~$f = 0$ is the only element of~$A$ such that
     \begin{enumerate}
-      \item $B[f^{-1}]$ and $M[f^{-1}]$ are free modules over $A[f^{-1}]$, \\[-1.6em]
-      \item $A[f^{-1}] \to B[f^{-1}]$ is of finite presentation and \\[-1.6em]
+      \item $B[f^{-1}]$ and $M[f^{-1}]$ are free modules over $A[f^{-1}]$,
+      \item $A[f^{-1}] \to B[f^{-1}]$ is of finite presentation and
       \item $M[f^{-1}]$ is finitely presented as a module over~$B[f^{-1}]$,
     \end{enumerate}
     then $1 = 0$ in~$A$.
   \end{varblock}
   \vspace*{-0.5em}
 
-  \pause\raggedright\bigskip
-  \textbf{Proof.} In the little Zariski topos it's \hil{not not} the case that % \\[-1.4em]
-  \begin{enumerate}
-    \item $B^\sim$ and $M^\sim$ are free modules over $A^\sim$,
-    \item $A^\sim \to B^\sim$ is of finite presentation and
-    \item $M^\sim$ is finitely presented as a module over $B^\sim$
-  \end{enumerate}
-  by basic linear algebra over the field $A^\sim$. The claim is precisely the
-  external translation of this fact.
+  \pause
+
+  \scalebox{0.9}{\begin{minipage}{1\textwidth}
+    \textbf{Proof.} In the little Zariski topos it's \hil{not not} the case that % \\[-1.4em]
+    \begin{enumerate}
+      \item $B^\sim$ and $M^\sim$ are free modules over $A^\sim$,
+      \item \vspace*{-0.3em}$A^\sim \to B^\sim$ is of finite presentation and
+      \item \vspace*{-0.3em}$M^\sim$ is finitely presented as a module over $B^\sim$,
+    \end{enumerate}
+    by basic linear algebra over the field $A^\sim$. The claim is precisely the
+    external translation of this fact.
+  \end{minipage}}
 \end{frame}
 
 % Großer Zariskitopos
 % Zusammenhang zum kleinen Topos
 % Synthetische Quasikohärenz
 % Klassifizierende Topoi
+
+
+\section{Algebraic geometry}
 
 \begin{frame}{Understanding algebraic geometry}
   \vspace*{-1.5em}
@@ -663,23 +734,25 @@
   \end{tabular}}
 
   \begin{columns}[c]
-    \begin{column}{0.43\textwidth}
-      \begin{exampleblock}{}
-        \justifying
-        Let~$0 \to M' \to M \to M'' \to 0$ be a short exact sequence of
-        modules. If~$M'$ and~$M''$ are finitely generated, so is~$M$.
-      \end{exampleblock}
-    \end{column}
-
-    \scalebox{3}{$\Rightarrow$}
-    \hspace*{0.5em}
-
     \begin{column}{0.47\textwidth}
       \begin{exampleblock}{}
         \justifying
         Let $0 \to \F' \to \F \to \F'' \to 0$ be a short exact sequence
         of sheaves of~$\O_X$-modules. If~$\F'$ and~$\F''$ are of finite type,
         so is~$\F$.
+      \end{exampleblock}
+    \end{column}
+
+    \begin{column}{0.1\textwidth}
+      \vspace*{0.7em}
+      \scalebox{3}{$\Leftarrow$}
+    \end{column}
+
+    \begin{column}{0.44\textwidth}
+      \begin{exampleblock}{}
+        \justifying
+        Let~$0 \to M' \to M \to M'' \to 0$ be a short exact sequence of
+        modules. If~$M'$ and~$M''$ are finitely generated, so is~$M$.
       \end{exampleblock}
     \end{column}
   \end{columns}
@@ -702,34 +775,134 @@
   \end{itemize}
   \bigskip
 
-  \hil{Synthetic approach:} model schemes \hil{directly as sets} in a certain
-  nonclassical set theory, the internal universe of the \mbox{\hil{big Zariski
-  topos}} of a base scheme.
+  \hil{Synthetic approach:} model schemes \hil{directly as sets} in
+  the internal universe of the \mbox{\hil{big Zariski topos}} of a base scheme.
   \small
   \[ \{ (x,y,z) \? (\affl)^3 \,|\, x^n+y^n-z^n=0 \} \]
 \end{frame}
 
 \begin{frame}{The big Zariski topos}
-  The \hil{big Zariski topos} $\Zar(S)$ of a scheme~$S$ is equivalently
-  \begin{enumerate}
-    \item the topos of sheaves over~$(\Aff/S)_{\mathrm{lofp}}$,
-    \item the classifying topos of local rings over~$S$ or
-    \item the classifying~$\Sh(S)$-topos of local~$\O_S$-algebras which are local
-    over~$\O_S$.
-  \end{enumerate}
+  Let~$S$ be a fixed base scheme.
+  \begin{varblock}{0.9\textwidth}{Definition}
+    The \hil{big Zariski topos} $\Zar(S)$ of a scheme~$S$ is equivalently
+    \begin{enumerate}
+      \item the topos of sheaves over~$(\Aff/S)_{\mathrm{lofp}}$,
+      \item the classifying topos of local rings over~$S$ or
+      \item the classifying~$\Sh(S)$-topos of local~$\O_S$-algebras which are
+      local over~$\O_S$.
+    \end{enumerate}
+  \end{varblock}
 
   \begin{itemize}
     \item For an~$S$-scheme~$X$, its functor of points $\ull{X} =
     \Hom_S(\cdot,X)$ is an object of~$\Zar(S)$. It feels like \hil{the set of
     points} of~$X$.
-    \item The ring $\affl$, given by $\affl(T) = \O_T(T)$,
-    is a \hil{field} (nonzero implies invertible).
-    \item \ \\[-1.2em]\mbox{$\ull{\mathbb{P}}^n = \llbracket \{ (x_0,\ldots,x_n) : (\affl)^{n+1} \,|\,
-      x_0 \neq 0 \vee \cdots \vee x_n \neq 0 \}/(\affl)^\times \rrbracket$}
-    \item $\ull{\Spec_S(\B)} = \llbracket \Hom_\affl(\B^\Zar,\affl) \rrbracket$
-    \item $\ull{U} \hookrightarrow \ull{X}$ qc-open immersion iff
-    \[ \Zar(S) \models \forall x\?\ull{X}\_ \bigvee_{n\geq0} \exists f_1,\ldots,f_n\?\affl\_ x \in \ull{U} \Leftrightarrow f_1 \neq 0 \vee \cdots \vee f_n \neq 0. \]
+    \item In particular, there is the ring object~$\affl$ with~$\affl(T) =
+    \O_T(T)$.
+    \item This ring object is a \hil{field}: nonzero implies
+    invertible. \\{} [Kock 1976]
   \end{itemize}
+\end{frame}
+
+\begin{frame}{Synthetic constructions}
+  \small
+  $\hil{$\boldsymbol{\mathbb{A}^n}$} = (\affl)^n = \affl \times \cdots \times \affl$
+
+  $\begin{array}{@{}r@{}c@{}l@{}}
+    \hil{$\boldsymbol{\mathbb{P}^n}$} &\phantom{}=\phantom{}& \{ (x_0,\ldots,x_n) : (\affl)^{n+1} \,|\, x_0 \neq 0 \vee
+    \cdots \vee x_n \neq 0 \}/(\affl)^\times \\
+    &\cong& \text{set of one-dimensional subspaces of~$(\affl)^{n+1}$} \\
+    &&\qquad \text{(with~$\O(-1) = (\ell)_{\ell \? \mathbb{P}^n}$, $\O(1) =
+    (\ell^\vee)_{\ell \? \mathbb{P}^n}$)}
+  \end{array}$
+
+  $\hil{$\boldsymbol{\Spec(R)}$} = \Hom_{\mathrm{Alg}(\affl)}(R, \affl) =
+    \text{set of $\affl$-valued points of $R$}$
+
+  $\hil{$\boldsymbol{TX}$} = X^\Delta$, where $\Delta = \{ \varepsilon \? \affl \,|\, \varepsilon^2 = 0 \}$
+
+  A subset $U \subseteq X$ is \hil{qc-open} if and only if for any $x : X$
+  there exist $f_1,\ldots,f_n \? \affl$ such that $x \in U \Longleftrightarrow
+  \exists i\_ f_i \neq 0$.
+
+  A \hil{synthetic affine scheme} is a set which is in bijection
+  with~$\Spec(R)$ for some synthetically quasicoherent~$\affl$-algebra~$R$.
+
+  A \hil{synthetic scheme} is a set which can be covered by finitely many
+  qc-open synthetic affine schemes~$U_i$ such that the intersections~$U_i \cap
+  U_j$ can be covered by finitely many qc-open synthetic affine schemes.
+\end{frame}
+
+
+\section{The mystery of nongeometric sequents}
+
+\begin{frame}{Properties of the affine line}
+  \begin{itemize}
+    \item $\affl$ is a local ring:
+    \[ 1 \neq 0 \qquad\qquad \text{$x + y$ \inv} \Longrightarrow \text{$x$ \inv} \vee
+    \text{$y$ \inv} \]
+    \item $\affl$ is a field:
+    \begin{align*}
+      \neg(x = 0) &\Longleftrightarrow \text{$x$ invertible \quad [Kock 1976]} \\
+      \neg(\text{$x$ invertible}) &\Longleftrightarrow \text{$x$ nilpotent}
+    \end{align*}
+    \item $\affl$ satisfies the axiom of microaffinity: Any map $f : \Delta \to
+    \affl$ is of the form~$f(\varepsilon) = a + b \varepsilon$ for unique
+    values~$a,b \? \affl$, where~$\Delta = \{ \varepsilon \? \affl \,|\,
+    \varepsilon^2 = 0 \}$.
+    \item Any map $\affl \to \affl$ is a polynomial.
+    \item $\affl$ is anonymously algebraically closed: Any monic polynomial
+    does \emph{not not} have a zero.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Synthetic quasicoherence}
+  Recall~$\Spec(R) = \Hom_{\mathrm{Alg}(\affl)}(R, \affl)$ and consider the statement
+  \[ \text{``the canonical map~$
+    \begin{array}[t]{rcl}
+      R &\longrightarrow& (\affl)^{\Spec(R)} \\
+      f &\longmapsto& (\alpha \mapsto \alpha(f))
+    \end{array}
+  $ is bijective''}.
+  \]
+  \vspace*{-1em}
+
+  \begin{itemize}
+    \item True for~$R = \affl[X]/(X^2)$ (microaffinity).
+    \item True for~$R = \affl[X]$ (every function is a polynomial).
+    \item True for \hil{any} finitely presented~$\affl$-algebra~$R$.
+  \end{itemize}
+
+  Any known property of~$\affl$ follows from this \\
+  \hil{synthetic quasicoherence}.
+
+  \centering
+  \hil{The mystery of nongeometric sequents}
+
+% \emph{Example.} Let~$x \? \affl$ such that~$x \neq 0$. Set~$R = \affl/(x)$.
+% Then~$\Spec(R) = \emptyset$. Thus~$(\affl)^{\Spec(R)}$ is a singleton.
+% Hence~$R = 0$. Therefore~$x$ is invertible.
+\end{frame}
+
+\begin{frame}{Classifying toposes in algebraic geometry}
+  \small
+  \centering
+  \begin{tabular}{ll}
+    \toprule
+    (Big) topos & classified theory \\\midrule
+    Zariski & local rings [Hakim 1972] \\[0.6em]
+    étale & separably closed local rings [Hakim 1972, Wraith 1979] \\[0.6em]
+    \usebeamercolor[fg]{item}{fppf} & \usebeamercolor[fg]{item}{fppf-local rings} \\
+    & \textcolor{red!90}{(conjecturally: algebraically closed local rings)} \\[0.6em]
+    \textcolor{red!80}{ph} & \textcolor{red!80}{?? (conjecturally: algebraically closed valuation} \\
+    & \qquad \textcolor{red!80}{rings validating the projective Nullstellensatz)} \\[0.6em]
+    \usebeamercolor[fg]{item}{surjective} & \usebeamercolor[fg]{item}{algebraically closed geometric fields} \\[0.6em]
+    \textcolor{red!80}{$\neg\neg$} & \textcolor{red!80}{?? (conjecturally: algebraically closed geometric} \\
+    & \qquad \textcolor{red!80}{fields are integral over the base)} \\[0.6em]
+    \usebeamercolor[fg]{item}{infinitesimal} & \usebeamercolor[fg]{item}{XXX [Hutzler 2018]} \\[0.6em]
+    \textcolor{red!100}{crystalline} & \textcolor{red!100}{??} \\
+    \bottomrule
+  \end{tabular}
 \end{frame}
 
 % XXX: Mehr Leute zitieren!

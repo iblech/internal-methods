@@ -1,6 +1,11 @@
 \documentclass[11pt,utf8,notheorems,compress,t]{beamer}
 \usepackage{etex}
 
+\usepackage{pgfpages}
+\setbeameroption{show notes on second screen}
+\setbeamertemplate{note page}[plain]
+\newcommand{\jnote}[2]{\only<#1>{\note{\justifying#2\par}}}
+
 \usepackage[english]{babel}
 
 \usepackage{mathtools}
@@ -18,15 +23,6 @@
 \usepackage{tikz}
 \usetikzlibrary{calc,shapes,shapes.callouts,shapes.arrows,patterns,fit,backgrounds,decorations.pathmorphing}
 \hypersetup{colorlinks=true}
-\usepackage{multimedia}
-\newcommand{\video}[2]{\movie[width=#2,height=#2,autostart,loop,poster]{}{#1}}
-\hypersetup{colorlinks=false}
-
-\usepackage{pifont}
-\newcommand{\cmark}{\ding{51}}
-\newcommand{\xmark}{\ding{55}}
-\DeclareSymbolFont{extraup}{U}{zavm}{m}{n}
-\DeclareMathSymbol{\varheart}{\mathalpha}{extraup}{86}
 
 \graphicspath{{images/}}
 
@@ -64,6 +60,7 @@
 \renewcommand{\C}{\mathcal{C}}
 \newcommand{\E}{\mathcal{E}}
 \newcommand{\F}{\mathcal{F}}
+\newcommand{\M}{\mathcal{M}}
 \renewcommand{\G}{\mathcal{G}}
 \newcommand{\J}{\mathcal{J}}
 \newcommand{\GG}{\mathbb{G}}
@@ -124,18 +121,6 @@
 \newcommand{\bignumber}[1]{
   \renewcommand{\insertenumlabel}{#1}\scalebox{1.5}{\usebeamertemplate{enumerate item}}
 }
-\newcommand{\bigheart}[1]{\scalebox{1.5}{\hil{$\varheart$}}}
-
-\newenvironment{changemargin}[2]{%
-  \begin{list}{}{%
-    \setlength{\topsep}{0pt}%
-    \setlength{\leftmargin}{#1}%
-    \setlength{\rightmargin}{#2}%
-    \setlength{\listparindent}{\parindent}%
-    \setlength{\itemindent}{\parindent}%
-    \setlength{\parsep}{\parskip}%
-  }%
-  \item[]}{\end{list}}
 
 \newenvironment{indentblock}{%
   \list{}{\leftmargin\leftmargin}%
@@ -196,7 +181,7 @@
 }
 \newcommand{\backupend}{
   \addtocounter{framenumberpreappendix}{-\value{framenumber}}
-  \addtocounter{framenumber}{\value{framenumberpreappendix}} 
+  \addtocounter{framenumber}{\value{framenumberpreappendix}}
 }
 
 \setbeamertemplate{headline}{%
@@ -223,10 +208,9 @@
 
 \begin{document}
 
-\addtocounter{framenumber}{-1}
-
-{\usebackgroundtemplate{\includegraphics[width=\paperwidth]{slides-como2018-titlepage-blurred}}
-\begin{frame}[plain]\end{frame}}
+%\addtocounter{framenumber}{-1}
+%{\usebackgroundtemplate{\includegraphics[width=\paperwidth]{slides-como2018-titlepage-blurred}}
+%\begin{frame}[plain]\end{frame}}
 
 \addtocounter{framenumber}{-1}
 
@@ -235,10 +219,6 @@
   \centering
   \medskip
   \hspace*{-3.9em}%
-%  \includegraphics[height=0.3\textheight]{vichy-2}%
-%  \includegraphics[height=0.3\textheight]{vichy-1}%
-%  \includegraphics[height=0.3\textheight]{vichy-4}%
-%  \includegraphics[height=0.3\textheight]{vichy-5}%
 
   \hil{How topos theory can help algebra} \\
 
@@ -249,7 +229,7 @@
 
   \begin{columns}
     \small
-    \begin{column}{0.35\textwidth}
+    \begin{column}{0.33\textwidth}
       \centering
       \bignumber{1}
       \smallskip
@@ -257,8 +237,7 @@
       \hil{Background on the internal language}
       \medskip
     \end{column}
-    \hspace*{0.5em}
-    \begin{column}{0.35\textwidth}
+    \begin{column}{0.33\textwidth}
       \centering
       \bignumber{2}
       \smallskip
@@ -266,12 +245,12 @@
       \hil{Applications in commutative algebra}
       \medskip
     \end{column}
-    \begin{column}{0.4\textwidth}
+    \begin{column}{0.33\textwidth}
       \centering
       \bignumber{3}
       \smallskip
 
-      \hil{The mystery of nongeometric sequents}
+      \hil{The mystery of \mbox{\!\!nongeometric sequents}}
       \medskip
     \end{column}
   \end{columns}
@@ -289,6 +268,60 @@
 \begin{frame}{Motivating testcases}
   Let $A$ be a ring (commutative, with unit, $1 = 0$ allowed). \\
   Assume that $A$ is reduced: If $x^n = 0$, then $x = 0$.
+
+  \jnote{1-3}{The two displayed statements are trivial for fields. It is
+  therefore natural to try to reduce the general situation to the field
+  situation.}
+
+  \jnote{2-3}{The displayed proofs, which could have been taken from any
+  standard textbook on commutative algebra, succeed in this reduction quite
+  easily by employing maximal ideals or minimal prime ideals. However, this way
+  of reducing comes at a cost: It requires the Boolean Prime Ideal Theorem
+  (for ensuring the existence of a prime ideal and for ensuring that stalks at
+  minimal prime ideals are fields) and even the full axiom of choice (for
+  ensuring the existence of a minimal prime ideal).
+
+  It therefore doesn't work in the internal universe of most toposes, and in
+  any case it obscures explicit computational content: Statements so simple as
+  the two displayed ones should admit explicit, computational proofs.
+
+  We'll learn how the internal language of a certain well-chosen topos provides
+  a way to perform the reduction in an entirely constructive manner. If so
+  desired, the resulting topos-theoretic proofs can be unwinded to yield fully
+  explicit, topos-free, direct proofs.
+
+  Beautiful constructive proofs can also be found in Richman's note on
+  \href{https://www.ams.org/journals/proc/1988-103-04/S0002-9939-1988-0954974-5/S0002-9939-1988-0954974-5.pdf}{nontrivial
+  uses of nontrivial rings} and in the
+  \href{https://arxiv.org/abs/1605.04832}{recent textbook by Lombardi and
+  Quitté} on constructive commutative algebra.}
+
+  \jnote{4-}{Grothendieck's generic freeness lemma is an important theorem in
+  algebraic geometry, where it is usually stated in the following geometric
+  form:
+  \begin{indentblock}Let~$X$ be a reduced scheme. Let~$\B$ be
+  an~$\O_X$-algebra of finite type. Let~$\M$ be a~$\B$-module of finite type.
+  Then over a dense open,
+  \begin{enumerate}
+  \item[(a)] $\B$ and~$\M$ are locally free as sheaves of~$\O_X$-modules,
+  \item[(b)] $\B$ is of finite presentation as a sheaf of~$\O_X$-algebras and
+  \item[(c)] $\M$ is of finite presentation as a sheaf of~$\B$-modules.
+  \end{enumerate}\end{indentblock}}
+
+  \jnote{5}{All previously known proofs proceed in a series of reduction steps,
+  finally culminating in the case where~$A$ is a Noetherian integral domain.
+  They are somewhat convoluted (for instance, the proof in the Stacks Project
+  is three pages long) and employ several results in commutative algebra which
+  have not yet been constructivized.
+
+  Using the internal language of toposes, we will give a short, conceptual and
+  constructive proof of Grothendieck's generic freeness lemma. Again, if so
+  desired, one can unwind the internal proof to obtain a
+  constructive proof which doesn't reference topos theory. The proof obtained
+  in this way is still an improvement on the previously known proofs, requiring
+  no advanced prerequisites in commutative algebra, and takes
+  \href{https://rawgit.com/iblech/internal-methods/master/paper-generic-freeness.pdf}{about
+  a page}.}
 
   \only<1-3>{\begin{columns}[t]
   \begin{column}[t]{0.50\textwidth}
@@ -333,7 +366,7 @@
       Let~$M$ be an injective matrix over~$A$ with more columns than rows.
       Then~$1 = 0$ in~$A$.
     \end{varblock}
-    
+
     \justifying
     \visible<2-3>{\textbf{Proof.} \bad{Assume not.} Then there is a \bad{minimal
     prime ideal} $\ppp$. The matrix is injective over the field~$A_\ppp = A[(A
@@ -385,6 +418,49 @@
   \vspace*{-1.0em}
   using (Shulman's extension of) the \hil{Kripke--Joyal semantics}.
 
+  \jnote{1}{The internal language of a topos allows to construct objects and
+  morphisms, formulate statements about them and prove such statements in a
+  naive element-based language. From the internal point of view, objects look
+  like sets [more precisely, types]; morphisms look like maps; epimorphisms
+  look like surjections; group objects look like groups; and so on.
+
+  To determine whether a statement~$\varphi$ holds in the internal universe of a
+  given topos, one can use the Kripke--Joyal semantics to translate it into an
+  ordinary external statement and then check the validity of the external
+  translation.
+
+  For instance, in the ef{}fective topos the curious statement~``any function
+  $\NN \to \NN$ is computable'' holds, for its external meaning is the
+  triviality ``there is a Turing machine which given a Turing machine computing
+  some function~$f : \NN \to \NN$ outputs a Turing machine computing~$f$''. In
+  contrast, the statement~``any function~$\NN \to \NN$ is either the zero
+  function or not'' does not hold in the ef{}fective topos, since its external
+  meaning is ``there exists a Turing machine which given a Turing machine
+  computing some function~$f : \NN \to \NN$ decides whether~$f$ is the zero
+  function or not''.}
+
+  \jnote{2}{Any theorem which has an intuitionistic proof holds in
+  the internal universe of any topos. The restriction to intuitionistic logic
+  is not due to philosophical concerns; it is a fact of life that only very few
+  toposes validate the law of excluded middle (for instance, sheaf toposes over
+  discrete topological space do if the law of excluded middle is available in
+  the metatheory). Luckily, vast amounts of mathematics can be developed in a
+  purely intuitionistic setting.
+
+  The internal language machinery itself can be developed in an intuitionistic
+  setting.
+
+  The standard internal language of toposes in not enough for our purposes, as
+  it misses unbounded quantification (``for all groups'', ``for all rings'')
+  and dependent types. Shulman's \href{https://arxiv.org/abs/1004.3802}{stack
+  semantics} offers what we need. No knowledge of stacks is necessary to enjoy
+  his paper. Prior work includes
+  \href{https://www.cl.cam.ac.uk/~amp12/papers/polist/polist.pdf}{Polymorphism
+  is Set Theoretic, Constructively} by Pitts and
+  \href{http://www.phil.cmu.edu/projects/ast/Papers/Awodey-Butz-Simpson-Streicher-APAL-2013.pdf}{Relating
+  first-order set theories, toposes and categories of classes} by Awodey, Butz,
+  Simpson and Streicher (obtained independently and published after Shulman).}
+
   \vspace*{-1em}
   \begin{columns}
     \def\insertblocktitle{}
@@ -428,26 +504,56 @@
   \mbox{for open subsets~$U \subseteq X$ and formulas~$\varphi$.
   Write~``$\Sh(X) \models \varphi$'' to mean~$X \models \varphi$.}
   \[ \renewcommand{\arraystretch}{1.25}\begin{array}{@{}l@{\ }c@{\ }l@{}}
-  U \models f = g \? F &\Ll& f|_U = g|_U \in F(U) \\
+  U \models s = t \? F &\Ll& s|_U = t|_U \in F(U) \\
   U \models \varphi \wedge \psi &\Ll&
   \text{$U \models \varphi$ and $U \models \psi$} \\
   U \models \varphi \vee \psi &\Ll&
   \hcancel{\text{$U \models \varphi$ or $U \models \psi$}}{0pt}{3pt}{0pt}{-2pt}\ \text{there exists a covering $U = \bigcup_i U_i$ s.\,th.} \\
   && \quad\quad\text{for all~$i$: $U_i \models \varphi$ or $U_i \models \psi$} \\
   U \models \varphi \Rightarrow \psi &\Ll&
-  \text{for all open~$V \subseteq U$: } 
+  \text{for all open~$V \subseteq U$: }
   \text{$V \models \varphi$ implies $V \models \psi$} \\
-  U \models \forall f \? F\_ \varphi(f) &\Ll&
-  \text{for all open $V \subseteq U$ and sections~$f_0 \in F(V)$: $V \models \varphi(f_0)$} \\
+  U \models \forall s \? F\_ \varphi(s) &\Ll&
+  \text{for all open $V \subseteq U$ and sections~$s_0 \in F(V)$: $V \models \varphi(s_0)$} \\
   U \models \forall F\_ \varphi(F) &\Ll&
   \text{for all open $V \subseteq U$ and sheaves~$F_0$ over~$V$: $V \models \varphi(F_0)$} \\
-  U \models \exists f \? F\_ \varphi(f) &\Ll&
+  U \models \exists s \? F\_ \varphi(s) &\Ll&
   \text{there exists a covering $U = \bigcup_i U_i$ s.\,th. for all~$i$:} \\
-  && \quad\quad \text{there exists~$f_0 \in F(U_i)$ s.\,th. $U_i \models \varphi(f_0)$} \\
+  && \quad\quad \text{there exists~$s_0 \in F(U_i)$ s.\,th. $U_i \models \varphi(s_0)$} \\
   U \models \exists F\_ \varphi(F) &\Ll&
   \text{there exists a covering $U = \bigcup_i U_i$ s.\,th. for all~$i$:} \\
   && \quad\quad \text{there exists a sheaf~$F_0$ on $U_i$ s.\,th. $U_i \models \varphi(F_0)$}
   \end{array} \]
+
+  \jnote{1}{Many interesting sheaves have few global sections, which is why a
+  definition should as ``$U \models \forall s \? F\_ \varphi(s)$ iff $U \models
+  \varphi(s_0)$ for all~$s_0 \in F(U)$'' would miss the point. More precisely,
+  changing the definitions like this would yield the internal language of the
+  topos of presheaves on~$X$.
+
+  Here is an explicit example of the translation procedure. Let~$\alpha : \F
+  \to \G$ be a morphism of sheaves on~$X$. Then:
+  \begin{align*}
+    & X \models \speak{$\alpha$ is injective} \\[0.5em]
+    \Longleftrightarrow\
+    & X \models \forall s,t\?\F\_ \alpha(s) = \alpha(t) \Rightarrow s = t \\[0.5em]
+    \Longleftrightarrow\ &
+      \text{for all open~$U \subseteq X$, sections $s, t \in \F(U)$:} \\
+    &\qquad\qquad
+        U \models \alpha(s) = \alpha(t) \Rightarrow s = t \\[0.5em]
+    \Longleftrightarrow\ &
+      \text{for all open~$U \subseteq X$, sections $s, t \in \F(U)$:} \\
+    &\qquad\qquad
+        \text{for all open~$V \subseteq U$:} \\
+    &\qquad\qquad\qquad\qquad
+          \text{$\alpha_V(s|_V) = \alpha_V(t|_V)$ implies $s|_V = t|_V$} \\[0.5em]
+    \Longleftrightarrow\ &
+      \text{for all open~$U \subseteq X$, sections $s, t \in \F(U)$:} \\
+    &\qquad\qquad
+          \text{$\alpha_U(s|_U) = \alpha_U(t|_U)$ implies $s|_U = t|_U$} \\[0.5em]
+    \Longleftrightarrow\ &
+      \text{$\alpha$ is a monomorphism of sheaves}
+  \end{align*}}
 \end{frame}
 
 \begin{frame}{Internalizing parameter-dependence}
@@ -475,6 +581,41 @@
     with~$f_x(s(x)) = 0$ for all~$x \in U_i$,} then $\Sh(X) \models \exists s
     \? \RR\_ \bar f(s) = 0$.
   \end{itemize}
+
+  \jnote{1}{This slide, unrelated to commutative algebra or algebraic geometry,
+  aims to illustrate one of the basic uses of the internal language of toposes:
+  Upgrading any theorem admitting an intuitionistic proof to a
+  parameter-dependent version.
+
+  Constructively, there are several non-equivalent forms of the intermediate
+  value theorem. The following version doesn't admit an intuitionistic proof:
+  \begin{indentblock}Let~$g : \RR \to \RR$ be a function between the (Dedekind)
+  reals which is continuous in the usual epsilon/delta sense. Assume~$g(-1) < 0
+  < g(1)$. Then there exists a number~$x \in \RR$ such that~$g(x) = 0$.
+  \end{indentblock}
+  If there was an intuitionistic proof, the statement would hold in any topos,
+  so in particular in sheaf toposes over topological spaces. By the
+  translations shown on the slide (the corner quotes ``$\speak{\ldots}$''
+  indicate that translation into formal language is left to the reader), this
+  would amount to the following strengthening of the intermediate value
+  theorem: In continuous families of continuous functions, zeros can locally be
+  picked continuously. However, this strengthening is invalid, as
+  \href{https://raw.githubusercontent.com/iblech/internal-methods/master/images/zeros-in-families.mp4}{this
+  video shows}.
+
+  \centering\includegraphics[width=0.1\textwidth]{zeros-in-families-still}}
+
+  \jnote{2}{In contrast, the following version does admit an intuitionistic
+  proof. We can therefore interpret it in sheaf toposes over topological
+  spaces and thereby obtain the strengthening that in continuous families of
+  strictly increasing continuous functions, zeros can locally be picked
+  continuously. You are invited to prove this strengthening directly, without
+  reference to the internal language.
+  \begin{indentblock}Let~$g : \RR \to \RR$ be a function between the (Dedekind)
+  reals which is continuous in the usual epsilon/delta sense and which is
+  strictly increasing ($a < b$ implies~$g(a) < g(b)$). Assume~$g(-1) < 0 <
+  g(1)$. Then there exists a number~$x \in \RR$ such that~$g(x) =
+  0$.\end{indentblock}}
 \end{frame}
 
 
@@ -501,6 +642,30 @@
   \hspace*{0.5pt}\,\,
   $1 \in \fff$;\,
   $xy \in \fff \Leftrightarrow x \in \fff \wedge y \in \fff$
+
+  \jnote{1}{Any geometric theory has a classifying topos; if the theory under
+  consideration is propositional (doesn't have any sorts), then its classifying
+  topos can be chosen to be the topos of sheaves over a locale. One can also
+  give a direct account of classifying locales, as a pedagogical stepping stone
+  to the full theory of classifying toposes.
+
+  The slide contains a small lie: The classical definition of the spectrum of a
+  ring is via the set of prime ideals of~$A$, not prime filters. If the law of
+  excluded middle is available, there is no difference between these
+  definitions since the complement of a prime ideal is a prime filter and vice
+  versa.
+
+  One can also consider the classifying local of prime \emph{ideals} of~$A$.
+  Its associated topological space of points is the the set of prime ideal
+  of~$A$ equipped with the \emph{constructible topology}.
+
+  In an intuitionistic context, any of the (generalized) spaces of items~1--4
+  can be adopted as sensible definitions of the spectrum of~$A$. Item~5 is then
+  a tautology. The classical definition of the spectrum as a topological space
+  doesn't work very well, because verifying the universal property one expects
+  of it requires the Boolean Prime Ideal Theorem. Most dramatically, there are
+  rings which are not trivial yet don't have any prime ideals or prime filters.
+  The classical definition yields in this case the empty space.}
 \end{frame}
 
 \begin{frame}{First steps in the little Zariski topos}
@@ -513,6 +678,78 @@
     \item Given an~$A$-module~$M$, we have the~$A^\sim$-module $M^\sim \defeq
     \ull{M}[\fff_0^{-1}]$.
   \end{itemize}
+
+  \jnote{1-3}{The generic prime filter~$\fff_0$ can be described in explicit
+  terms. For ring elements~$f$ and~$s$, $D(f) \models (s \in \fff_0)$ iff~$f
+  \in \sqrt{(s)}$.}
+
+  \jnote{2-3}{Our description of~$M^\sim$ reveals a precise sense in
+  which~$M^\sim$ and~$M$ are related: $M^\sim$ is simply a localization of~$M$
+  (first lifted to another universe by the constant sheaf construction). The
+  classical descriptions don't make the relation evident.}
+
+  \jnote{3}{One can show, assuming that the little Zariski topos is
+  \emph{overt}, that the module~$M$ in~$\Set$ and the module~$\ull{M}$ of the
+  little Zariski topos share all first-order properties. This observation
+  explains the metatheorem displayed at the bottom left. The assumption is
+  satisfied if any element of~$A$ is nilpotent or not nilpotent, so it's always
+  satisfied if the law of excluded middle is available. In an intuitionistic
+  context, it's still ``morally satisfied''. Details are in Section~12.9 of
+  \href{https://rawgit.com/iblech/internal-methods/master/notes.pdf}{these
+  notes}.}
+
+  \jnote{3}{As a first approximation, the module~$M^\sim$ can be thought of as
+  a reification of all the stalks of~$M$ as a single object. The metatheorem
+  makes this precise and also shows the limits of this view: It is only correct
+  for geometric sequents. When considering nongeometric sequents, phenomena
+  appear which are unique to~$M^\sim$ in the sense that they are in general not
+  shared by~$M$, its stalks or its quotients.}
+
+  \jnote{4}{Assuming that~$A$ is reduced, the following nongeometric sequents
+  hold in the little Zariski topos (among others):
+
+  $A^\sim$ is a field in the sense that zero is the only noninvertible
+  element. This field property was already observed in the 1970s by Mulvey, who
+  didn't know a deeper reason for this property. We now know that it's a
+  shadow of an internal property whose external translation expresses
+  that~$A^\sim$ is quasicoherent.
+
+  $A^\sim$ has~$\neg\neg$-stable equality in the sense that
+  \[ \Spec(A) \models \forall s\?A^\sim\_ \neg\neg(s = 0) \Rightarrow s = 0. \]
+  Classically, every set has~$\neg\neg$-stable equality; intuitionistically,
+  this is a special property of some sets. It's quite useful, as some theorems
+  of classical commutative algebra can only be proven intuitionistically when
+  weakened by double negation. The stability then allows, in some cases, to
+  obtain the original conclusion.
+
+  $A^\sim$ is anonymously Noetherian in the sense that any of its ideals
+  is \mbox{\emph{not not}} finitely generated. A philosophically-motivated
+  constructivist might be offended by this notion, since it runs counter to the
+  maxim that constructive mathematics should be informative. However, in the
+  internal context it is a useful notion: Hilbert's basis theorem holds for it,
+  and we'll put it to good use in our proof of Grothendieck's generic freeness
+  lemma.}
+
+  \jnote{5}{Are there theorems which can only be proven using the internal
+  language and not be proven without?
+
+  No. Just as the translation from internal statements to external statements
+  is entirely mechanical, so is the translation from internal proofs to
+  external proofs. Any proof employing the internal language can be unwinded to
+  yield an external proof not referencing the internal language.
+
+  However, depending on the logical complexity of the statements occuring in a
+  given proof, the resulting external proof might be (much) more complex than
+  the internal proof. This is particularly the case if the proof involves
+  double negation, for much the same reason as that in computer science,
+  continuations can twist the control flow in nontrivial ways which are
+  sometimes hard to understand. It is in these cases where we can extract the
+  most value of the internal language, unlocking notions and proofs which might
+  otherwise be hard to obtain.
+
+  The slide shows a specific example. The internal statement
+  that~$A^\sim[X_1,\ldots,X_n]$ is anonymously Noetherian is quite simple; its
+  external translation is quite convoluted.}
 
   \pause
   \only<2>{\begin{center}
@@ -962,53 +1199,5 @@
           stage~$f$.
   \end{itemize}
 \end{frame}
-
-\section{Vision}
-
-\begin{frame}{Vision for the future}
-  \begin{columns}
-    \small
-    \begin{column}{0.35\textwidth}
-      \centering
-      \bigheart
-      \par
-
-      constructive algebra \\
-      conceptual proofs \\
-      proof assistants
-    \end{column}
-
-    \begin{column}{0.47\textwidth}
-      \centering
-      \bigheart
-      \par
-
-      constructive algebraic geometry \\
-      synthetic algebraic geometry \\
-      intersection theory \\
-      derived categories
-    \end{column}
-
-    \begin{column}{0.25\textwidth}
-      \centering
-      \bigheart
-      \par
-
-      quasicoherence \\
-      nongeometric mysteries \\
-      further fields
-    \end{column}
-  \end{columns}
-
-  \vfill
-
-  \centering
-  \href{https://www.oliviacaramello.com/Papers/Papers.htm}{\includegraphics[height=0.45\textheight]{olivia-tst}}
-  \href{http://math.andrej.com/2014/03/04/intuitionistic-mathematics-and-realizability-in-the-physical-world/}{\includegraphics[height=0.45\textheight]{zenil-computable-universe}}
-  \href{https://pizzaseminar.speicherleck.de/skript2/zariski-topos-klein.pdf}{\includegraphics[height=0.45\textheight]{fun-with-the-zariski-topos}}
-  \href{https://rawgit.com/iblech/internal-methods/master/notes.pdf}{\includegraphics[height=0.45\textheight]{phd-cover}}
-\end{frame}
-
-\addtocounter{framenumber}{-1}
 
 \end{document}

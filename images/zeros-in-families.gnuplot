@@ -2,7 +2,7 @@ unset xtics
 unset ytics
 unset border
 
-set terminal png size 400,418
+set terminal pngcairo size 400,418
 set xrange [ -1 : 1 ]
 set yrange [ -1 : 1 ]
 set xzeroaxis ls 1 lw 4 linecolor rgb '#000000'
@@ -25,7 +25,7 @@ do for [t=0:188] {
   a = cos(t/30.) * 0.7
   filenamePNG=sprintf("video/%04d.png", t)
   set output filenamePNG
-  plot f(a,x) t "" w l ls 1, "<" . sprintf("echo %f %f", zer(a), 0) t "" w p ps 6 pt 7, \
+  plot f(a,x) t "" w l ls 1, "<" . sprintf("echo %f %f", zer(a), 0) t "" w p ps 5 pt 7 lc rgb "#4545ff", \
     abs(a) < 0.01 ? (x >= -0.5 && x <= 0.5 ? 0 : 1/0) : 1/0 t "" w l lw 60
 }
 

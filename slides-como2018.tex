@@ -6,6 +6,10 @@
 \setbeamertemplate{note page}[plain]
 \newcommand{\jnote}[2]{\only<#1>{\note{\justifying#2\par}}}
 
+% Workaround for the issue described at
+% https://tex.stackexchange.com/questions/164406/beamer-using-href-in-notes.
+\newcommand{\fixedhref}[2]{\makebox[0pt][l]{\hspace*{\paperwidth}\href{#1}{#2}}\href{#1}{#2}}
+
 \usepackage[english]{babel}
 
 \usepackage{mathtools}
@@ -291,9 +295,9 @@
   explicit, topos-free, direct proofs.
 
   Beautiful constructive proofs can also be found in Richman's note on
-  \href{https://www.ams.org/journals/proc/1988-103-04/S0002-9939-1988-0954974-5/S0002-9939-1988-0954974-5.pdf}{nontrivial
+  \fixedhref{https://www.ams.org/journals/proc/1988-103-04/S0002-9939-1988-0954974-5/S0002-9939-1988-0954974-5.pdf}{nontrivial
   uses of nontrivial rings} and in the
-  \href{https://arxiv.org/abs/1605.04832}{recent textbook by Lombardi and
+  \fixedhref{https://arxiv.org/abs/1605.04832}{recent textbook by Lombardi and
   Quitté} on constructive commutative algebra.}
 
   \jnote{3}{We can slightly reduce the requirements of the proof of the first
@@ -327,7 +331,7 @@
   constructive proof which doesn't reference topos theory. The proof obtained
   in this way is still an improvement on the previously known proofs, requiring
   no advanced prerequisites in commutative algebra, and takes
-  \href{https://rawgit.com/iblech/internal-methods/master/paper-generic-freeness.pdf}{about
+  \fixedhref{https://rawgit.com/iblech/internal-methods/master/paper-generic-freeness.pdf}{about
   a page}.}
 
   \only<1-3>{\begin{columns}[t]
@@ -459,12 +463,12 @@
 
   The standard internal language of toposes in not enough for our purposes, as
   it misses unbounded quantification (``for all groups'', ``for all rings'')
-  and dependent types. Shulman's \href{https://arxiv.org/abs/1004.3802}{stack
+  and dependent types. Shulman's \fixedhref{https://arxiv.org/abs/1004.3802}{stack
   semantics} offers what we need. No knowledge of stacks is necessary to enjoy
   his paper. Prior work includes
-  \href{https://www.cl.cam.ac.uk/~amp12/papers/polist/polist.pdf}{Polymorphism
+  \fixedhref{https://www.cl.cam.ac.uk/~amp12/papers/polist/polist.pdf}{Polymorphism
   is Set Theoretic, Constructively} by Pitts and
-  \href{http://www.phil.cmu.edu/projects/ast/Papers/Awodey-Butz-Simpson-Streicher-APAL-2013.pdf}{Relating
+  \fixedhref{http://www.phil.cmu.edu/projects/ast/Papers/Awodey-Butz-Simpson-Streicher-APAL-2013.pdf}{Relating
   first-order set theories, toposes and categories of classes} by Awodey, Butz,
   Simpson and Streicher (obtained independently and published after Shulman).}
 
@@ -607,7 +611,7 @@
   would amount to the following strengthening of the intermediate value
   theorem: In continuous families of continuous functions, zeros can locally be
   picked continuously. However, this strengthening is invalid, as
-  \href{https://raw.githubusercontent.com/iblech/internal-methods/master/images/zeros-in-families.mp4}{this
+  \fixedhref{https://raw.githubusercontent.com/iblech/internal-methods/master/images/zeros-in-families.mp4}{this
   video shows}.
 
   \centering\includegraphics[width=0.1\textwidth]{zeros-in-families-still}}
@@ -702,7 +706,7 @@
   satisfied if any element of~$A$ is nilpotent or not nilpotent, so it's always
   satisfied if the law of excluded middle is available. In an intuitionistic
   context, it's still ``morally satisfied''. Details are in Section~12.9 of
-  \href{https://rawgit.com/iblech/internal-methods/master/notes.pdf}{these
+  \fixedhref{https://rawgit.com/iblech/internal-methods/master/notes.pdf}{these
   notes}.}
 
   \jnote{3}{As a first approximation, the module~$M^\sim$ can be thought of as

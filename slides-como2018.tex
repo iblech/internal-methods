@@ -269,11 +269,11 @@
   Let $A$ be a ring (commutative, with unit, $1 = 0$ allowed). \\
   Assume that $A$ is reduced: If $x^n = 0$, then $x = 0$.
 
-  \jnote{1-3}{The two displayed statements are trivial for fields. It is
+  \jnote{1-2}{The two displayed statements are trivial for fields. It is
   therefore natural to try to reduce the general situation to the field
   situation.}
 
-  \jnote{2-3}{The displayed proofs, which could have been taken from any
+  \jnote{2}{The displayed proofs, which could have been taken from any
   standard textbook on commutative algebra, succeed in this reduction quite
   easily by employing maximal ideals or minimal prime ideals. However, this way
   of reducing comes at a cost: It requires the Boolean Prime Ideal Theorem
@@ -295,6 +295,13 @@
   uses of nontrivial rings} and in the
   \href{https://arxiv.org/abs/1605.04832}{recent textbook by Lombardi and
   Quitté} on constructive commutative algebra.}
+
+  \jnote{3}{We can slightly reduce the requirements of the proof of the first
+  statement by employing not a maximal ideal, but a prime ideal. The existence
+  of maximal ideals is nontrivial rings is equivalent to the axiom of choice,
+  while the existence of prime ideals is equivalent to the weaker Boolean Prime
+  Ideal Theorem. However, this improvement doesn't change the main point; the
+  proof is still wildly unconstructive.}
 
   \jnote{4-}{Grothendieck's generic freeness lemma is an important theorem in
   algebraic geometry, where it is usually stated in the following geometric
@@ -664,7 +671,7 @@
   a tautology. The classical definition of the spectrum as a topological space
   doesn't work very well, because verifying the universal property one expects
   of it requires the Boolean Prime Ideal Theorem. Most dramatically, there are
-  rings which are not trivial yet don't have any prime ideals or prime filters.
+  rings which are not trivial yet have neither prime ideals nor prime filters.
   The classical definition yields in this case the empty space.}
 \end{frame}
 
@@ -840,6 +847,8 @@
 
 \begin{frame}{Revisiting the testcases}
   Let $A$ be a reduced ring.
+
+  \jnote{1}{XXX ... succeeded ...}
 
   \only<1>{\begin{columns}[t]
     \begin{column}[t]{0.47\textwidth}

@@ -104,6 +104,7 @@
 \newcommand{\Ll}{\text{iff}}
 \newcommand{\inv}{inv.\@}
 \newcommand{\seq}{\vdash_{\!\!\!\vec x}}
+\newcommand{\hg}{\mathbin{:}}  % homogeneous coordinates
 
 \setbeamertemplate{blocks}[rounded][shadow=false]
 
@@ -756,7 +757,10 @@
   The metatheorem soups up a number of lemmas of algebraic geometry, there
   stated in geometric language. For instance, if~$M$ is finitely generated,
   then~$M^\sim$ is of finite type. If~$M$ is finitely presented, then~$M^\sim$
-  is of finite presentation. If~$M$ is coherent, then~$M^\sim$ is coherent.}
+  is of finite presentation. If~$M$ is coherent, then~$M^\sim$ is coherent.
+
+  As an aside, the little Zariski topos is seldomly Boolean (validates the law of
+  excluded middle). A necessary condition is that~$A$ is of dimension~$\leq 0$.}
 
   \jnote{4}{Assuming that~$A$ is reduced, the following nongeometric sequents
   hold in the little Zariski topos (among others):
@@ -923,7 +927,20 @@
   algebra is of finite presentation. External translations of internal proofs
   which use double negation will always take such a course.}
 
-  \jnote{3}{XXX}
+  \jnote{3}{Here's a rough sketch why the double negations occur. In
+  undergraduate linear algebra, we learn that any finitely generated vector
+  space is free (has a basis), by the following argument:
+  Let~$(v_1,\ldots,v_n)$ be a generating family. Either one of the generators can
+  be expressed as a linear combination of the others or not. In the latter
+  case, the family is linearly independent and we're done. In the former, we
+  remove the redundant generator and continue by induction.
+
+  This argument relies on the law of excluded middle and can therefore not put
+  to work in the internal universe as is. However, intuitionistically we do
+  have the weaker statement~$\neg\neg(\varphi \vee \neg\varphi)$, and we can
+  use this law in place of the law of excluded middle to intuitionistially
+  deduce that any finitely generated vector space does \emph{not not} have a
+  basis.}
 
   \only<1>{\begin{columns}[t]
     \begin{column}[t]{0.47\textwidth}
@@ -1093,6 +1110,52 @@
     \small\[ A \longmapsto \{ (x,y,z) \in A^3 \,|\, x^n+y^n-z^n=0 \} \]
   \end{itemize}
   \bigskip
+
+  \jnote{1}{At the
+  \fixedhref{https://sbseminar.wordpress.com/2009/08/06/algebraic-geometry-without-prime-ideals/}{Secret
+  Blogging Seminar}, there was an insightful long-running discussion on the
+  merits of the functorial approach. Two disadvantages of the approach using
+  locally ringed spaces is that the underlying topological spaces don't
+  actually parametrize ``honest'', ``geometric'' points, but irreducible closed
+  subsets; and that they don't work well in a constructive setting. (For this,
+  they would have to be replaced by locally ringed locales.)
+
+  Given a functor~$F : \mathrm{Ring} \to \Set$, we imagine~$F(A)$ to be the set
+  of~``$A$-valued points'' of the hypothetical scheme described by~$F$, the set
+  of ``points with coordinates in~$A$''. These sets are geometrically important.
+
+  The functorial approach is more economical, philosophically rewarding, and
+  works constructively. However, typically only field-valued points are easy
+  to describe. For instance, the functor representing projective~$n$-space is
+  given on fields by
+  \[ \begin{array}{r@{}c@{}l}
+  K &{}\longmapsto{}& \text{the set of lines through the origin in~$K^{n+1}$} \\
+  && \qquad \cong \{ [x_0 \hg \cdots \hg x_n] \,|\, \text{$x_i \neq 0$ for some~$i$} \},
+  \end{array} \]
+  whereas on general rings it is given by
+  \[ \begin{array}{r@{}c@{}l}
+    A &{}\longmapsto{}& \text{the set of quotients~$A^{n+1} \twoheadrightarrow P$,
+    where~$P$ is projective,} \\
+    && \qquad \text{modulo isomorphism}.
+  \end{array} \]
+  It are these more general kinds of points which impart a meaningful sense of
+  cohesion on the field-valued points, so they can't simply be dropped from
+  consideration.}
+
+  \jnote{2}{This tension is resolved by observing that the category of
+  functors~$\Ring \to \Set$ is a topos (the big Zariski topos of~$\Spec(\ZZ)$)
+  and that we can therefore employ its internal language. This language takes
+  care of managing stages behind the scenes. For instance, projective~$n$-space
+  can be described by the naive expression
+  \[ \{ (x_0,\ldots,x_n) : (\affl)^{n+1} \,|\, x_0 \neq 0 \vee \cdots \vee x_n
+  \neq 0 \}/(\affl)^\times. \]
+  This example illustrates our goal: to develop a synthetic account of
+  algebraic geometry, in which schemes are plain sets and morphisms between
+  schemes are maps between those sets. It turns out that there are many
+  similarities with the well-developed synthetic account of differential
+  geometry, but also important differences.}
+
+  \pause
 
   \hil{Synthetic approach:} model schemes \hil{directly as sets} in
   the internal universe of the \mbox{\hil{big Zariski topos}} of a base scheme.

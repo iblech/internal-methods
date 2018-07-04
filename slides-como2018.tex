@@ -88,6 +88,7 @@
 \newcommand{\Zar}{\mathrm{Zar}}
 \newcommand{\op}{\mathrm{op}}
 \newcommand{\Set}{\mathrm{Set}}
+\newcommand{\Ring}{\mathrm{Ring}}
 \newcommand{\Eff}{\mathrm{Ef{}f}}
 \newcommand{\Sch}{\mathrm{Sch}}
 \newcommand{\Aff}{\mathrm{Aff}}
@@ -1106,26 +1107,25 @@
     \end{multline*}
     \normalsize
     \item or Grothendieck's functor-of-points account, where a scheme is a
-    functor~$\mathrm{Ring} \to \mathrm{Set}$.
+    functor~$\Ring \to \Set$.
     \small\[ A \longmapsto \{ (x,y,z) \in A^3 \,|\, x^n+y^n-z^n=0 \} \]
   \end{itemize}
   \bigskip
 
-  \jnote{1}{At the
+  \jnote{1}{\footnotesize At the
   \fixedhref{https://sbseminar.wordpress.com/2009/08/06/algebraic-geometry-without-prime-ideals/}{Secret
   Blogging Seminar}, there was an insightful long-running discussion on the
-  merits of the functorial approach. Two disadvantages of the approach using
+  merits of the two approaches. Two disadvantages of the approach using
   locally ringed spaces is that the underlying topological spaces don't
   actually parametrize ``honest'', ``geometric'' points, but irreducible closed
   subsets; and that they don't work well in a constructive setting. (For this,
   they would have to be replaced by locally ringed locales.)
 
-  Given a functor~$F : \mathrm{Ring} \to \Set$, we imagine~$F(A)$ to be the set
-  of~``$A$-valued points'' of the hypothetical scheme described by~$F$, the set
-  of ``points with coordinates in~$A$''. These sets are geometrically important.
-
   The functorial approach is more economical, philosophically rewarding, and
-  works constructively. However, typically only field-valued points are easy
+  works constructively. Given a functor~$F : \Ring \to \Set$, we imagine~$F(A)$
+  to be the set of~``$A$-valued points'' of the hypothetical scheme described
+  by~$F$, the set of ``points with coordinates in~$A$''. These sets have direct
+  geometric meaning. However, typically only field-valued points are easy
   to describe. For instance, the functor representing projective~$n$-space is
   given on fields by
   \[ \begin{array}{r@{}c@{}l}
@@ -1143,9 +1143,9 @@
   consideration.}
 
   \jnote{2}{This tension is resolved by observing that the category of
-  functors~$\Ring \to \Set$ is a topos (the big Zariski topos of~$\Spec(\ZZ)$)
+  functors~$\Ring \to \Set$ is a topos (the \emph{big Zariski topos} of~$\Spec(\ZZ)$)
   and that we can therefore employ its internal language. This language takes
-  care of managing stages behind the scenes. For instance, projective~$n$-space
+  care of juggling stages behind the scenes. For instance, projective~$n$-space
   can be described by the naive expression
   \[ \{ (x_0,\ldots,x_n) : (\affl)^{n+1} \,|\, x_0 \neq 0 \vee \cdots \vee x_n
   \neq 0 \}/(\affl)^\times. \]
@@ -1184,6 +1184,32 @@
     \item This ring object is a \hil{field}: nonzero implies
     invertible. \\{} [Kock 1976]
   \end{itemize}
+
+  \jnote{1}{The objects of the category~$(\Aff/S)_{\mathrm{lofp}}$ are
+  morphisms of the form~$\Spec(R) \to S$ which are locally of finite
+  presentation. (Other choices of resolving set-theoretical issues of size are
+  also possible.)
+
+  A functor~$F : (\Aff/S)_{\mathrm{lofp}}^\op \to \Set$ is a sheaf
+  for the Zariski topology if and only if the diagram
+  \[ F(T) \to
+    \prod_i F(U_i) \rightrightarrows
+    \prod_{j,k} F(U_j \cap U_k) \]
+  is a limit diagram for any open covering~$T = \bigcup_i U_i$ of any
+  scheme~$T \in (\Aff/S)_{\mathrm{lofp}}$.
+
+  In the case that~$S = \Spec(A)$ is affine, the big Zariski topos of~$S$ is also
+  simply called ``big Zariski topos of~$A$''. It is a subtopos of the topos of
+  functors $\mathrm{Alg}(A) \to \Set$ and classifies local~$A$-algebras.
+
+  From the internal point of view of~$\Sh(S)$, the sheaf~$\O_S$ of rings is
+  just an ordinary ring, and one can construct internally to~$\Sh(S)$ the big
+  Zariski topos of~$\O_S$. Externally, this construction will yield a certain
+  bounded topos over~$\Sh(S)$. However, as indicated on the slide, this topos
+  will \emph{not} coincide with the true big Zariski topos of~$S$. To
+  construct the true big Zariski topos, one has to build, internally
+  to~$\Sh(S)$, the classifying topos of local \emph{and local-over-$\O_S$}
+  $\O_S$-algebras.}
 \end{frame}
 
 \begin{frame}{Synthetic constructions}

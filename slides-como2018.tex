@@ -35,9 +35,9 @@
 \setlength\parskip{\medskipamount}
 \setlength\parindent{0pt}
 
-\title{Exploring the internal language of toposes}
+\title{How topos theory can help commutative algebra}
 \author{Ingo Blechschmidt}
-\date{June 22nd, 2018 XXX}
+\date{June 29th, 2018}
 
 \useinnertheme[shadow=true]{rounded}
 \useoutertheme[subsection=false]{miniframes}
@@ -224,7 +224,7 @@
   \medskip
   \hspace*{-3.9em}%
 
-  \hil{How topos theory can help algebra} \\
+  \hil{How topos theory can help commutative algebra} \\
 
   \emph{-- an invitation --}
 
@@ -508,19 +508,22 @@
   \end{hilblock}
 \end{frame}
 
-\begin{frame}{The internal language of~$\boldsymbol{\Sh(X)}$}
-  \small
+\begin{frame}{The Kripke--Joyal semantics of~$\boldsymbol{\Sh(X)}$}
+  \small\vspace*{-0.5em}
   Let~$X$ be a topological space. We recursively define
   \[ U \models \varphi \quad \text{(``$\varphi$ holds on~$U$'')} \]
   \mbox{for open subsets~$U \subseteq X$ and formulas~$\varphi$.
   Write~``$\Sh(X) \models \varphi$'' to mean~$X \models \varphi$.}
-  \[ \renewcommand{\arraystretch}{1.25}\begin{array}{@{}l@{\ }c@{\ }l@{}}
+  \footnotesize
+  \[ \renewcommand{\arraystretch}{1.08}\begin{array}{@{}l@{\ }c@{\ }l@{}}
+  U \models \top &\Ll& \text{true} \\
+  U \models \bot &\Ll& \hcancel{\text{false}}{0pt}{3pt}{0pt}{-2pt}\ U = \emptyset \\
   U \models s = t \? F &\Ll& s|_U = t|_U \in F(U) \\
   U \models \varphi \wedge \psi &\Ll&
   \text{$U \models \varphi$ and $U \models \psi$} \\
   U \models \varphi \vee \psi &\Ll&
-  \hcancel{\text{$U \models \varphi$ or $U \models \psi$}}{0pt}{3pt}{0pt}{-2pt}\ \text{there exists a covering $U = \bigcup_i U_i$ s.\,th.} \\
-  && \quad\quad\text{for all~$i$: $U_i \models \varphi$ or $U_i \models \psi$} \\
+  \hcancel{\text{$U \models \varphi$ or $U \models \psi$}}{0pt}{3pt}{0pt}{-2pt}\ \text{there exists a covering $U = \bigcup_i U_i$} \\
+  && \quad\quad\text{such that for all~$i$: $U_i \models \varphi$ or $U_i \models \psi$} \\
   U \models \varphi \Rightarrow \psi &\Ll&
   \text{for all open~$V \subseteq U$: }
   \text{$V \models \varphi$ implies $V \models \psi$} \\
@@ -529,11 +532,16 @@
   U \models \forall F\_ \varphi(F) &\Ll&
   \text{for all open $V \subseteq U$ and sheaves~$F_0$ over~$V$: $V \models \varphi(F_0)$} \\
   U \models \exists s \? F\_ \varphi(s) &\Ll&
-  \text{there exists a covering $U = \bigcup_i U_i$ s.\,th. for all~$i$:} \\
-  && \quad\quad \text{there exists~$s_0 \in F(U_i)$ s.\,th. $U_i \models \varphi(s_0)$} \\
+  \hcancel{\text{there exists $s_0 \in F(U)$ such that $U \models \varphi(s_0)$}}{0pt}{3pt}{0pt}{-2pt} \\
+  && \quad\quad
+  \text{there exists a covering $U = \bigcup_i U_i$ such that for all~$i$:} \\
+  && \quad\quad\quad\quad \text{there exists~$s_0 \in F(U_i)$ such that $U_i \models \varphi(s_0)$} \\
   U \models \exists F\_ \varphi(F) &\Ll&
-  \text{there exists a covering $U = \bigcup_i U_i$ s.\,th. for all~$i$:} \\
-  && \quad\quad \text{there exists a sheaf~$F_0$ on $U_i$ s.\,th. $U_i \models \varphi(F_0)$}
+  \hcancel{\text{there exists a sheaf $F_0$ on $U$ such that $U \models
+  \varphi(F_0)$}}{0pt}{3pt}{0pt}{-2pt} \\
+  && \quad\quad
+  \text{there exists a covering $U = \bigcup_i U_i$ such that for all~$i$:} \\
+  && \quad\quad\quad\quad \text{there exists a sheaf~$F_0$ on $U_i$ such that $U_i \models \varphi(F_0)$}
   \end{array} \]
 
   \jnote{1}{Many interesting sheaves have few global sections, which is why a
@@ -542,26 +550,33 @@
   changing the definitions like this would yield the internal language of the
   topos of presheaves on~$X$.
 
-  Here is an explicit example of the translation procedure. Let~$\alpha : \F
-  \to \G$ be a morphism of sheaves on~$X$. Then:
+  Here is an explicit example of the translation procedure. Let~$\alpha : F
+  \to G$ be a morphism of sheaves on~$X$. Then (the corner quotes ``$\speak{\ldots}$''
+  indicate that translation into formal language is left to the reader):
+  \footnotesize
   \begin{align*}
-    & X \models \speak{$\alpha$ is injective} \\[0.5em]
+    & X \models \speak{$\alpha$ is injective} \\[0.2em]
     \Longleftrightarrow\
-    & X \models \forall s,t\?\F\_ \alpha(s) = \alpha(t) \Rightarrow s = t \\[0.5em]
+    & X \models \forall s\?F\_ \forall t\?F\_ \alpha(s) = \alpha(t) \Rightarrow s = t \\[0.2em]
     \Longleftrightarrow\ &
-      \text{for all open~$U \subseteq X$, sections $s, t \in \F(U)$:} \\
+      \text{for all open~$U \subseteq X$, sections $s_0 \in F(U)$:} \\
     &\qquad\qquad
-        U \models \alpha(s) = \alpha(t) \Rightarrow s = t \\[0.5em]
+        U \models \forall t\?F\_ \alpha(s_0) = \alpha(t) \Rightarrow s_0 = t \\[0.2em]
     \Longleftrightarrow\ &
-      \text{for all open~$U \subseteq X$, sections $s, t \in \F(U)$:} \\
+      \text{for all open~$U \subseteq X$, sections $s_0 \in F(U)$:} \\
     &\qquad\qquad
-        \text{for all open~$V \subseteq U$:} \\
+        \text{for all open~$V \subseteq U$, sections $t_0 \in F(V)$:} \\
     &\qquad\qquad\qquad\qquad
-          \text{$\alpha_V(s|_V) = \alpha_V(t|_V)$ implies $s|_V = t|_V$} \\[0.5em]
+          V \models \alpha(s_0) = \alpha(t_0) \Rightarrow s_0 = t_0 \\[0.2em]
     \Longleftrightarrow\ &
-      \text{for all open~$U \subseteq X$, sections $s, t \in \F(U)$:} \\
+      \text{for all open~$U \subseteq X$, sections $s_0 \in F(U)$:} \\
     &\qquad\qquad
-          \text{$\alpha_U(s|_U) = \alpha_U(t|_U)$ implies $s|_U = t|_U$} \\[0.5em]
+        \text{for all open~$V \subseteq U$, sections $t_0 \in F(V)$:} \\
+    &\qquad\qquad\qquad\qquad
+          \text{for all open $W \subseteq V$: $\alpha_V(s_0|_W) = \alpha_V(t_0|_W)$ implies $s_0|_W = t_0|_W$} \\[0.2em]
+    \Longleftrightarrow\ &
+      \text{for all open~$U \subseteq X$, sections $s, t \in F(U)$:
+        $\alpha_U(s|_U) = \alpha_U(t|_U)$ implies $s|_U = t|_U$} \\[0.2em]
     \Longleftrightarrow\ &
       \text{$\alpha$ is a monomorphism of sheaves}
   \end{align*}}
@@ -606,8 +621,7 @@
   \end{indentblock}
   If there was an intuitionistic proof, the statement would hold in any topos,
   so in particular in sheaf toposes over topological spaces. By the
-  translations shown on the slide (the corner quotes ``$\speak{\ldots}$''
-  indicate that translation into formal language is left to the reader), this
+  translations shown on the slide, this
   would amount to the following strengthening of the intermediate value
   theorem: In continuous families of continuous functions, zeros can locally be
   picked continuously. However, this strengthening is invalid, as
@@ -690,31 +704,59 @@
     \ull{M}[\fff_0^{-1}]$.
   \end{itemize}
 
-  \jnote{1-3}{The generic prime filter~$\fff_0$ can be described in explicit
+  \jnote{1}{The Kripke--Joyal semantics for the little Zariski topos amounts to
+  the following: $\Spec(A) \models \varphi$ iff~$D(1) \models \varphi$, and the
+  clauses for~$D(f) \models \varphi$, where~$f$ ranges over the elements
+  of~$A$, are given by the following table.
+  \[\footnotesize\renewcommand{\arraystretch}{1.25}\begin{array}{@{}l@{\quad}c@{\quad}l@{}}
+    D(f) \models \top &\text{iff}& \text{true} \\
+    D(f) \models \bot &\text{iff}& \text{$f$ is nilpotent} \\
+    D(f) \models x = y &\text{iff}& x = y \in A[f^{-1}] \\
+    D(f) \models \varphi \wedge \psi &\text{iff}&
+      \text{$D(f) \models \varphi$ and $D(f) \models \psi$} \\
+    D(f) \models \varphi \vee \psi &\text{iff}&
+      \text{there exists a partition~$f^n = fg_1 + \cdots + fg_m$ with,} \\
+    &&\quad\text{for each~$i$, $D(fg_i) \models \varphi$ or $D(fg_i) \models \psi$} \\
+    D(f) \models \varphi \Rightarrow \psi &\text{iff}&
+      \text{for all~$g \in A$, $D(fg) \models \varphi$ implies $D(fg) \models \psi$} \\
+    D(f) \models \forall x\?M^\sim\_ \varphi(x) &\text{iff}&
+      \text{for all~$g \in A$ and $x_0 \in M[(fg)^{-1}]$, $D(fg) \models \varphi[x_0/x]$} \\
+    D(f) \models \exists x\?M^\sim\_ \varphi(x) &\text{iff}&
+      \text{there exists a partition~$f^n = fg_1 + \cdots + fg_m$ with,} \\
+    &&\quad\text{for each~$i$, $D(fg_i) \models \varphi[x_0/x]$ for some~$x_0 \in M[(fg_i)^{-1}]$}
+  \end{array} \]
+  The generic prime filter~$\fff_0$ can also be described in explicit
   terms. For ring elements~$f$ and~$s$, $D(f) \models (s \in \fff_0)$ iff~$f
   \in \sqrt{(s)}$.}
 
-  \jnote{2-3}{Our description of~$M^\sim$ reveals a precise sense in
+  \jnote{2}{Our description of~$M^\sim$ reveals a precise sense in
   which~$M^\sim$ and~$M$ are related: $M^\sim$ is simply a localization of~$M$
   (first lifted to another universe by the constant sheaf construction). The
-  classical descriptions don't make the relation evident.}
+  classical descriptions don't make the relation evident.
+
+  As a first approximation, the module~$M^\sim$ can be thought of as a
+  reification of all the stalks of~$M$ as a single object. The metatheorem
+  displayed at the top left on the next slides makes this precise and also
+  exposes the limits of this view: It is only correct for geometric sequents.
+  When considering nongeometric sequents, phenomena appear which are unique
+  to~$M^\sim$ in the sense that they are in general not shared by~$M$, its
+  stalks or its quotients.}
 
   \jnote{3}{One can show, assuming that the little Zariski topos is
   \emph{overt}, that the module~$M$ in~$\Set$ and the module~$\ull{M}$ of the
   little Zariski topos share all first-order properties. This observation
   explains the metatheorem displayed at the bottom left. The assumption is
   satisfied if any element of~$A$ is nilpotent or not nilpotent, so it's always
-  satisfied if the law of excluded middle is available. In an intuitionistic
-  context, it's still ``morally satisfied''. Details are in Section~12.9 of
+  satisfied if the law of excluded middle is available in the metatheory. In an
+  intuitionistic context, it's still ``morally satisfied''. Details are in
+  Section~12.9 of
   \fixedhref{https://rawgit.com/iblech/internal-methods/master/notes.pdf}{these
-  notes}.}
+  notes}.
 
-  \jnote{3}{As a first approximation, the module~$M^\sim$ can be thought of as
-  a reification of all the stalks of~$M$ as a single object. The metatheorem
-  makes this precise and also shows the limits of this view: It is only correct
-  for geometric sequents. When considering nongeometric sequents, phenomena
-  appear which are unique to~$M^\sim$ in the sense that they are in general not
-  shared by~$M$, its stalks or its quotients.}
+  The metatheorem soups up a number of lemmas of algebraic geometry, there
+  stated in geometric language. For instance, if~$M$ is finitely generated,
+  then~$M^\sim$ is of finite type. If~$M$ is finitely presented, then~$M^\sim$
+  is of finite presentation. If~$M$ is coherent, then~$M^\sim$ is coherent.}
 
   \jnote{4}{Assuming that~$A$ is reduced, the following nongeometric sequents
   hold in the little Zariski topos (among others):
@@ -852,7 +894,36 @@
 \begin{frame}{Revisiting the testcases}
   Let $A$ be a reduced ring.
 
-  \jnote{1}{XXX ... succeeded ...}
+  \jnote{1}{This slide delivers on the promise made earlier: Using the internal
+  language of the little Zariski topos, we can reduce to the case of fields
+  without having to employ maximal ideals, prime ideals or minimal prime ideals.
+  Since the internal language machinery is itself constructive, the displayed
+  proofs can be unwinded to yield external constructive proofs which don't
+  reference topos theory. Details on these external proofs can soon be found in
+  a forthcoming paper titled
+  \fixedhref{https://rawgit.com/iblech/internal-methods/master/paper-wlog.pdf}{Without
+  loss of generality, any reduced ring is a field}.}
+
+  \jnote{2}{The testcase of Grothendieck's generic freeness lemma illustrates
+  that the internal language of toposes can help commutative algebra even if
+  one is not interested in constructivity issues. The previously known proofs
+  are somewhat long and somewhat convoluted; the new proof is arguably short
+  and simple.
+
+  Details on the internal proof are in Section~11.5 of
+  \fixedhref{https://rawgit.com/iblech/internal-methods/master/notes.pdf}{these
+  notes}. The
+  \fixedhref{https://rawgit.com/iblech/internal-methods/master/paper-generic-freeness.pdf}{external
+  proof} obtained by unwinding the internal one is still quite direct, compared
+  to the previously published proofs, and interestingly follows a curious
+  course: It starts with verifying, in an inductive manner, that~$B$ and~$M$
+  are free; that~$A \to B$ is of finite presentation; and that~$M$ is finitely
+  presented as a~$B$-module. Then the assumption for~$f = 1$ is used, rendering
+  the prior steps moot, since over the zero ring any module is free and any
+  algebra is of finite presentation. External translations of internal proofs
+  which use double negation will always take such a course.}
+
+  \jnote{3}{XXX}
 
   \only<1>{\begin{columns}[t]
     \begin{column}[t]{0.47\textwidth}

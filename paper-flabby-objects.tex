@@ -67,10 +67,10 @@ Inselstraße 22 \\
 
 \begin{abstract}
   We introduce a general notion of \emph{flabby objects} in elementary toposes
-  and study its basic properties. In the special case of localic toposes, this
+  and study their basic properties. In the special case of localic toposes, this
   notion reduces to the common notion of flabby sheaves, yielding a
   site-independent characterization of flabby sheaves. Continuing a line of
-  research started by Roswitha Harting, we use this notion to
+  research started by Roswitha Harting, we use flabby objects to
   show that an internal notion of injective objects coincides with the
   corresponding external notion, in stark contrast with the situation for
   projective objects. As an application, we give internal characterizations of
@@ -82,6 +82,8 @@ Inselstraße 22 \\
 \thispagestyle{empty}
 
 \noindent
+
+% XXX: In Einleitung interne Sprache erinnern.
 
 \section{Flabby sheaves}
 
@@ -127,7 +129,8 @@ Section~\ref{sect:conclusion}.
 
 Both definitions can be generalized to yield notions of flabby objects in
 elementary toposes; but for toposes which are not localic, the two resulting
-notions will differ, and only the one induced by the alternative definition
+notions will differ, and only the one obtained from the alternative definition
+is stable under pullback and
 can be characterized in the internal language. We therefore adapt in this paper the
 alternative one as the official definition.
 
@@ -440,7 +443,7 @@ in the stack semantics~\cite[Lemma~7.3]{shulman:stack-semantics}.
 
 \begin{prop}\label{prop:flabby-sheaves-objects}
 Let~$F$ be a sheaf on a topological space~$X$ (or a locale).
-Then~$F$ is flabby as a sheaf if and only if~$F$ is a flabby object of the
+Then~$F$ is flabby as a sheaf if and only if~$F$ is flabby as an object of the
 sheaf topos~$\Sh(X)$.
 \end{prop}
 
@@ -465,7 +468,7 @@ the~$(i,t)$-summand by~$t|_{(V \cup V_i) \cap U}$.
 
 \begin{prop}\label{prop:global-elements}
 Let~$X$ be a flabby object in an elementary topos~$\E$. If~$\E$ is localic and
-Zorn's lemma is available, then~$X$ possesses a global element (a morphism~$1 \to X$).
+Zorn's lemma is available in the metatheory, then~$X$ possesses a global element (a morphism~$1 \to X$).
 \end{prop}
 
 \begin{proof}This is a restatement of the discussion following
@@ -591,9 +594,9 @@ Proposition~\ref{prop:set-of-linear-extensions-flabby}.
 It seems that Harting was not aware of this, even though she did show that
 injectivity of sheaves of modules over topological spaces is a local
 notion~\cite{XXX}, as she
-(mistakingly) states in~\cite[page~233]{harting:remark} that ``the notions of
+(mistakenly) states in~\cite[page~233]{harting:remark} that ``the notions of
 injectivity and internal injectivity do not coincide'' for modules.
-% XXX "mistakenly"? comparison with Harting's proof (Barr's lemma...)
+% XXX comparison with Harting's proof (Barr's lemma...)
 
 Since we were careful in Section~\ref{sect:flabby-sets} to use the law of
 excluded middle or the axiom of choice only where needed, most results of that
@@ -609,7 +612,7 @@ object of an internally injective module is internally injective.
 \item Any internally injective object is flabby.
 % Take care if numbering changes (referenced below).
 \item Any object can be embedded into a flabby object.
-\item The terminal object is flabby. The product of flabby objects if flabby.
+\item The terminal object is flabby. The product of flabby objects is flabby.
 \item Let~$I$ be an internally injective object. Let~$T$ be an arbitrary
 object. Then~$[T,I]$ is a flabby object.
 \item (If~$\E$ has a natural numbers object.) Let~$I$ be an internally
@@ -657,9 +660,9 @@ of~$\Sh(T)$.
 The notion of strongly flabby objects is, however, not stable under base change
 and therefore cannot be characterized in the internal language. A specific
 example is the~$G$-set~$G$ (with the translation action), considered as an
-object of the topos~$\PSh(BG)$ of~$G$-sets, where~$G$ is a nontrivial group.
+object of the topos~$BG$ of~$G$-sets, where~$G$ is a nontrivial group.
 This object is not strongly flabby, since the morphism~$\emptyset \to G$ does
-not lift, but its pullback to the slice~$\PSh(BG)/G \simeq \Set$ is (assuming
+not lift, but its pullback to the slice~$BG/G \simeq \Set$ is (assuming
 the law of excluded middle).
 \end{rem}
 
@@ -678,7 +681,7 @@ therefore closely connected to Grothendieck toposes. It is therefore instructive
 to study flabby objects in elementary toposes which are not Grothendieck
 toposes, away from their original conceptual home. We begin this study with
 establishing the following observations on flabby objects in the effective
-topos.
+topos. We follow the terminology of~\cite{hyland:effective-topos}.
 
 \begin{prop}\label{prop:flabby-effective-sets}
 Let~$X$ be a flabby object in the effective topos. Let~$f : X \to X$
@@ -691,12 +694,12 @@ Assuming the law of excluded middle, any~$\neg\neg$-separated
 module in the effective topos can be embedded into a flabby module.
 \end{prop}
 
-We follow the terminology of~\cite{hyland:effective-topos}(XXX). The intuitive
+The intuitive
 reason for why Proposition~\ref{prop:flabby-effective-sets} holds is the
-following. Let~$X$ be a flabby object of the effective topos. Then there is a
+following. Let~$X$ be a flabby object in the effective topos. Then there is a
 procedure which computes for any subterminal~$K \subseteq X$ an element~$x_K$
 such that~$K \subseteq \{ x_K \}$. This element might not depend extensionally
-on~$K$, but this fine point is not important for the further discussion. Let
+on~$K$, but this fine point is not important for this discussion. Let
 now~$f : X \to X$ be a morphism. We construct the self-referential subset~$K
 \defeq \{ f(x_K) \}$; the formal proof below will indicate how this can be
 done. Then~$K \subseteq \{ x_K \}$, so~$f(x_K) = x_K$.
@@ -718,11 +721,11 @@ informative. Metaphorically speaking, a procedure witnessing flabbiness has to
 conjure elements out of thin air.
 
 This problem does not manifest with objects~$X$ which are not effective sets.
-Reflexivity realizers for these objects may not be very informative themselves;
+Reflexivity realizers for these objects are themselves not very informative;
 a procedure witnessing flabbiness therefore only has to turn one kind of
 non-informative realizers into another kind. The flabby modules featuring in
 the proof of Proposition~\ref{prop:semienough-flabby-modules} will accordingly
-be not effective sets.
+not be effective sets.
 
 \begin{proof}[Proof of Proposition~\ref{prop:flabby-effective-sets}]
 For any Turing machine~$e$, let~$v_e$ be the set
@@ -818,15 +821,15 @@ subterminal, then~$\varepsilon_K \in T$. Let~$({\sim})$ be
 the finest equivalence relation on~$T$ such that~$t + (s + u) \sim (t + s) +
 u$, $t + s \sim s + t$, $t + 0 \sim t \sim 0 + t$, $1t \sim t$, $r(t+s) \sim rt
 + rs$, $(r+r')t \sim rt + r't$ and such
-that~$\underline{x+y} \sim \underline{x} + \underline{y}$, $\underline{rx} \sim
-r \underline{x}$, $\underline{0} \sim 0$ and such that~$\varepsilon_{\{t\}} \sim
+that~$\underline{0} \sim 0$, $\underline{x+y} \sim \underline{x} + \underline{y}$, $\underline{rx} \sim
+r \underline{x}$, and such that~$\varepsilon_{\{t\}} \sim
 t$ for all terms~$t$. Then the quotient~$T/{\sim}$ is a flabby~$R$-module
 into which~$M$ embeds. However, it is not clear that~$T/{\sim}$ is a set.
 
 \item There appears to be some tension regarding the effective topos:
 Proposition~\ref{prop:semienough-flabby-modules} shows that at
 least~$\neg\neg$-separated modules in the effective topos always embed into
-flabby modules, assuming the law of excluded middle, while
+flabby modules, assuming the law of excluded middle in the metatheory, while
 Proposition~\ref{prop:flabby-effective-sets} shows that no nontrivial effective
 module is flabby.
 \end{enumerate}

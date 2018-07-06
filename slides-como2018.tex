@@ -89,6 +89,7 @@
 \newcommand{\op}{\mathrm{op}}
 \newcommand{\Set}{\mathrm{Set}}
 \newcommand{\Ring}{\mathrm{Ring}}
+\newcommand{\LocRing}{\mathrm{LocRing}}
 \newcommand{\Eff}{\mathrm{Ef{}f}}
 \newcommand{\Sch}{\mathrm{Sch}}
 \newcommand{\Aff}{\mathrm{Aff}}
@@ -243,6 +244,7 @@
       \hil{Background on the internal language}
       \medskip
     \end{column}
+
     \begin{column}{0.33\textwidth}
       \centering
       \bignumber{2}
@@ -251,6 +253,7 @@
       \hil{Applications in commutative algebra}
       \medskip
     \end{column}
+
     \begin{column}{0.33\textwidth}
       \centering
       \bignumber{3}
@@ -333,7 +336,7 @@
   constructive proof which doesn't reference topos theory. The proof obtained
   in this way is still an improvement on the previously known proofs, requiring
   no advanced prerequisites in commutative algebra, and takes
-  \fixedhref{https://rawgit.com/iblech/internal-methods/master/paper-generic-freeness.pdf}{about
+  \fixedhref{https://arxiv.org/abs/1807.01231}{about
   a page}.}
 
   \only<1-3>{\begin{columns}[t]
@@ -918,7 +921,7 @@
   Details on the internal proof are in Section~11.5 of
   \fixedhref{https://rawgit.com/iblech/internal-methods/master/notes.pdf}{these
   notes}. The
-  \fixedhref{https://rawgit.com/iblech/internal-methods/master/paper-generic-freeness.pdf}{external
+  \fixedhref{https://arxiv.org/abs/1807.01231}{external
   proof} obtained by unwinding the internal one is still quite direct, compared
   to the previously published proofs, and interestingly follows a curious
   course: It starts with verifying, in an inductive manner, that~$B$ and~$M$
@@ -1040,6 +1043,38 @@
     \hil{notions of algebra} internal to~$\Sh(X)$.
   \end{varblock}
 
+  \jnote{1}{One doesn't need to be an expert in topos theory in order to know
+  that many notions in algebraic geometry are inspired by notions in algebra
+  and that proofs in algebraic geometry often proceed by reducing to algebra.
+  The internal language is a way of making this connection precise: In many
+  cases, the former are simply interpretations of the latter internal
+  to~$\Sh(X)$. Because this connection is precise instead of informal,
+  additional value is gained: We can skip many basic proofs in algebraic
+  geometry because they're just externalizations of proofs in algebra carried
+  out internally to~$\Sh(X)$.}
+
+  \jnote{2}{A basic example is as follows. A short exact sequence of sheaves of
+  modules looks like a short exact sequence of plain modules from the internal
+  point of view of~$\Sh(X)$. If the two outer sheaves are of finite type, then
+  from the internal point of view, the two outer modules will look like
+  finitely generated modules. Because the standard proof of the proposition
+  quoted on the lower right is intuitionistically valid, it follows that, from
+  the internal point of view, the middle module is too finitely generated.
+  Consulting the dictionary a second time, this amounts to saying that the
+  middle sheaf is of finite type.
+
+  More details on this research program can be found in
+  \fixedhref{https://rawgit.com/iblech/internal-methods/master/notes.pdf}{these
+  notes}, partly reported on at the
+  \fixedhref{https://www.youtube.com/watch?v=7S8--bIKaWQ}{2015 IHÉS
+  conference}. Even though many important dictionary entries
+  are still missing (for instance pertaining derived categories and
+  intersection theory), I believe that it is already at its current stage
+  useful to working algebraic geometers.
+
+  The next few slides illustrate an entirely different way of approaching
+  algebraic geometry using topos theory.}
+
   \only<1>{
     \centering
     \rotatebox{90}{\tiny\scalebox{0.8}{Illustration: Carina Willbold}}\hspace{-0.05cm}%
@@ -1117,9 +1152,10 @@
   Blogging Seminar}, there was an insightful long-running discussion on the
   merits of the two approaches. Two disadvantages of the approach using
   locally ringed spaces is that the underlying topological spaces don't
-  actually parametrize ``honest'', ``geometric'' points, but irreducible closed
-  subsets; and that they don't work well in a constructive setting. (For this,
-  they would have to be replaced by locally ringed locales.)
+  actually parametrize ``honest'', ``geometric'' points, but the more complex
+  notion of irreducible closed subsets; and that they don't work well in a
+  constructive setting. (For this, they would have to be replaced by locally
+  ringed locales.)
 
   The functorial approach is more economical, philosophically rewarding, and
   works constructively. Given a functor~$F : \Ring \to \Set$, we imagine~$F(A)$
@@ -1138,7 +1174,7 @@
     where~$P$ is projective,} \\
     && \qquad \text{modulo isomorphism}.
   \end{array} \]
-  It are these more general kinds of points which impart a meaningful sense of
+  It is these more general kinds of points which impart a meaningful sense of
   cohesion on the field-valued points, so they can't simply be dropped from
   consideration.}
 
@@ -1240,6 +1276,44 @@
   finitely many qc-open f.p. synthetic affine schemes~$U_i$ such that the
   intersections~$U_i \cap U_j$ can be covered by finitely many qc-open f.p.
   synthetic affine schemes.
+
+  \jnote{1}{In the internal universe of the big Zariski topos of a base
+  scheme~$S$, $S$-schemes can simply be modeled by sets (enjoying the special
+  property that, in a certain precise sense, they are locally affine). This
+  slide expresses some of the basic constructions of~$S$-schemes in that
+  language.
+
+  Particularly nice are the following items.
+  \begin{itemize}\justifying
+    \item Projective~$n$-space can be given by the any of the two quite naive
+    expressions displayed on the slide.
+    \item Let~$X$ be an~$S$-scheme. We often think about a sheaves
+    of~$\O_X$-modules over~$X$ by their fibers; but for a rigorous
+    treatment in the standard foundations, we have to take the full sheaf
+    structure into account; the fibers do not determine a sheaf
+    uniquely.
+
+    From the internal point of view of~$\Zar(S)$, a sheaf of~$\O_X$-modules is
+    indeed simply a family of~$\affl$-modules, one~$\affl$-module for each
+    element of~$\ull{X}$. The slide illustrates how we can define the Serre
+    twisting sheaves in this language.
+  \end{itemize}}
+
+  \jnote{2}{\begin{itemize}\justifying
+    \item The spectrum of an~$\affl$-algebra can be given by the naive
+    expression displayed on the slide. It looks like this expression can't be
+    right, ignoring any non-maximal ideals; however, it is.
+    \item The big Zariski topos of an~$S$-scheme~$X$ is, from the internal
+    point of view of~$\Zar(S)$, simply the slice topos~$\Set/\ull{X}$. Hence to
+    give an~$X$-scheme simply amounts to giving an~$\ull{X}$-indexed family of
+    sets.
+  \end{itemize}
+
+  Synthetic algebraic geometry has been developed up to the point of étale
+  geometric morphisms. Much remains to be done: For instance, as of yet there
+  is only an account of Čech methods for computing cohomology, there is not yet
+  a synthetic treatment of true cohomology. Derived categories and intersection
+  theory are also missing.}
 \end{frame}
 
 \begin{frame}{Relations between the Zariski toposes}
@@ -1264,8 +1338,32 @@
     \item Internally to~$\Spec(S)$, $\Zar(S)$ can be constructed as the
     \hil{classifying topos} of local~$\O_S$-algebras which are local over~$\O_S$.
     \item $\Zar(A)$ is the \hil{lax pullback}~$(\Set
-    \Rightarrow_{\Set[\mathrm{Ring}]} \Set[\mathrm{LocRing}])$.
+    \Rightarrow_{\Set[\Ring]} \Set[\LocRing])$.
   \end{itemize}
+
+  \jnote{1}{Let~$A$ be a ring. By definition, we obtain a geometric
+  morphism~$\Set \to \Set[\Ring]$ into the classifying topos of rings.
+  There is also a geometric morphism~$\Set[\LocRing] \to \Set[\Ring]$, obtained
+  by realizing that any local ring is in particular a ring. These morphisms fit
+  together in a lax pullback square as follows:
+  \[ \xymatrix{
+    \Zar(A) \ar[r] \ar[d] & \Set[\LocRing] \ar[d] \\
+    \Set \ar[r] \ar@{}[ur]^(.3){}="a"^(.7){}="b" \ar@{=>} "a";"b" & \Set[\Ring]
+  } \]
+  This observation is joint with Peter Arndt and Matthias Hutzler.
+
+  Incidentally, the pseudo pullback of the morphism~$\Set[\LocRing] \to
+  \Set[\Ring]$ along~$\Set \to \Set[\Ring]$ is not very interesting: It's the
+  largest subtopos of~$\Set$ where~$A$ is a local ring. Assuming the law of
+  excluded middle, this subtopos is either the trivial topos (if~$A$ is not
+  local) or~$\Set$ (if~$A$ is local).
+
+  There is also a way of realizing the little Zariski topos of~$A$ as a pseudo
+  pullback, exploiting that the (localic) spectrum construction is geometric.
+  See Section~12.6 of
+  \fixedhref{https://rawgit.com/iblech/internal-methods/master/notes.pdf}{these
+  notes} for details.
+  }
 \end{frame}
 
 
@@ -1289,6 +1387,16 @@
     \item $\affl$ is anonymously algebraically closed: Any monic polynomial
     does \emph{not not} have a zero.
   \end{itemize}
+
+  \jnote{1}{The axiom of microaffinity is a special instance of the
+  \emph{Kock--Lawvere axiom} known from synthetic differential geometry. We'll
+  see on the next slide that~$\affl$ validates an unusually strong form of the
+  Kock--Lawvere axiom, not at all satisfied in the usual well-adapted models of
+  synthetic differential geometry.
+
+  The fact that, internally to~$\Zar(S)$, any map~$\affl \to \affl$ is a
+  polynomial can be seen as a formal version of the general motto that in
+  algebraic geometry, ``morphisms are polynomials''.}
 \end{frame}
 
 \begin{frame}{Synthetic quasicoherence}
@@ -1318,17 +1426,64 @@
     \par
   \end{varblock}
 
-% \emph{Example.} Let~$x \? \affl$ such that~$x \neq 0$. Set~$R = \affl/(x)$.
-% Then~$\Spec(R) = \emptyset$. Thus~$(\affl)^{\Spec(R)}$ is a singleton.
-% Hence~$R = 0$. Therefore~$x$ is invertible.
+  \jnote{1}{Let~$R$ be an~$\affl$-algebra. An element~$f \in R$ induces
+  an~$\affl$-valued function on~$\Spec(R)$; functions of this form can
+  reasonably be called ``algebraic''. In a synthetic context, there should be
+  no other~$\affl$-valued functions on~$\Spec(R)$ as these algebraic ones, and
+  different algebraic expressions should yield different functions. This is
+  precisely what the bijectivity of the displayed map expresses (in a positive
+  way).
+
+  In synthetic differential geometry, the closest cousin of synthetic algebraic
+  geometry, the analogue of the displayed map is only bijective for Weil
+  algebras such as~$\affl[X]/(X^2)$ or $\affl[X,Y]/(X^2,XY)$, not for arbitrary
+  finitely presented~$\affl$-algebras. This is a major difference to synthetic
+  differential geometry.}
+
+  \jnote{2}{The notion of synthetic quasicoherence is interesting for a number
+  of reasons:\vspace*{-1.2em}
+  \begin{itemize}\justifying
+    \item All currently known properties of~$\affl$, such as all the properties
+    listed on the previous slide, follow from the statement that~$\affl$ is
+    synthetically quasicoherent.
+
+    For instance, here is how we can verify the field property. Let~$x \?
+    \affl$ such that~$x \neq 0$. Set~$R = \affl/(x)$. Then~$\Spec(R) =
+    \emptyset$. Thus~$(\affl)^{\Spec(R)}$ is a singleton. Hence~$R = 0$.
+    Therefore~$x$ is invertible.
+    \item Given an~$\affl$-module~$E$, we can formulate the following variant
+    of the axiom of synthetic quasicoherence: ``For any finitely
+    presented~$\affl$-algebra~$R$, the canonical map~$R \otimes_\affl E \to
+    E^{\Spec(R)}$ is bijective.'' This axiom is satisfied if and only if~$E$ is
+    induced by a quasicoherent sheaf of~$\O_S$-modules.
+    \item The notion of synthetic quasicoherence is central to synthetic
+    algebraic geometry. The notions of synthetic open immersions, closed
+    immersion, schemes and several others all refer to synthetic
+    quasicoherence.
+  \end{itemize}}
+
+  \jnote{3}{An anlogue of synthetic quasicoherence holds in the classifying
+  topos of rings, demonstrating that even presheaf toposes can validate
+  interesting nontrivial nongeometric sequents.
+
+  We believe that an analogue of synthetic quasicoherence holds for the generic
+  model of any geometric theory. This is work in progress. If true, this would
+  yield a major source of nongeometric sequents in classifying toposes. Because
+  of the many applications on nongeometric sequents, it's very desirable to
+  possess such a source.
+
+  The mystery of nongeometric sequents is this: On the one hand, they are very
+  useful to have because of surprising applications; on the other hand, they
+  are as of yet quite elusive.}
 \end{frame}
 
+{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{4.95cm}\includegraphics[width=\paperwidth]{topos-horses-lighter}\end{minipage}}
 \begin{frame}{Classifying toposes in algebraic geometry}
   \small
   \centering
   \begin{tabular}{ll}
     \toprule
-    (Big) topos & classified theory \\\midrule
+    (big) topos & classified theory \\\midrule
     Zariski & local rings [Hakim 1972] \\[0.6em]
     étale & separably closed local rings [Hakim 1972, Wraith 1979] \\[0.6em]
     \usebeamercolor[fg]{item}{fppf} & \usebeamercolor[fg]{item}{fppf-local rings} \\
@@ -1337,40 +1492,49 @@
     & \qquad \textcolor{red!80}{validating the projective Nullstellensatz)} \\[0.6em]
     \usebeamercolor[fg]{item}{surjective} & \usebeamercolor[fg]{item}{algebraically closed geometric fields} \\[0.6em]
     \textcolor{red!80}{$\neg\neg$} & \textcolor{red!80}{?? (conjecturally: algebraically closed geometric} \\
-    & \qquad \textcolor{red!80}{fields are integral over the base)} \\[0.6em]
+    & \qquad \textcolor{red!80}{fields which are integral over the base)} \\[0.6em]
     \usebeamercolor[fg]{item}{infinitesimal} & \usebeamercolor[fg]{item}{local algebras together with a nilpotent ideal [Hutzler 2018]} \\[0.6em]
     \textcolor{red!100}{crystalline} & \textcolor{red!100}{??} \\
     \bottomrule
   \end{tabular}
-\end{frame}
+
+  \jnote{1}{Toposes, and also more specifically classifying toposes, originated
+  in algebraic geometry. It is therefore deeply embarassing that as of now,
+  still very little is known about the theories classified by the major toposes
+  in active use by algebraic geometers.
+  \begin{center}
+    \includegraphics[width=0.99\textwidth]{wraith-generic-galois-theory} \\
+    \footnotesize
+    Gavin Wraith. Generic Galois theory of local rings. 1979.
+  \end{center}}
+
+  \jnote{2}{For almost forty years, only the big Zariski topos and its étale
+  subtopos were understood in that way.
+  \fixedhref{https://rawgit.com/iblech/internal-methods/master/notes.pdf}{These~2017
+  notes} answer the question for the fppf topology and the surjective topology
+  (in Section~21) and state conjectures for the ph topology and the
+  double negation topology. However, while good to have, the answer for the
+  fppf topology remains unsatisfactory, since Wraith's conjecture that the fppf
+  topos classifies the simpler theory of algebraically closed local rings has
+  neither been confirmed nor refuted.
+
+  A couple of weeks ago, Matthias Hutzler managed to determine the theory
+  classified by the big infinitesimal topos of a ring~$A$: It classifies
+  pairs~$(B,\aaa)$ consisting of a local~$A$-algebra~$B$ and a nilpotent
+  ideal~$\aaa \subseteq B$. Details will be in his forthcoming Master's thesis.
+  He is currently working on answering the question for the closely related big
+  crystalline topos.
+
+  It will be exciting to learn what the crystalline topos and the many other
+  toposes in algebraic geometry classify; how algebraic geometry can profit
+  from these discoveries; and which new flavors of synthetic algebraic geometry
+  they unlock.}
+\end{frame}}
 
 % XXX: Mehr Leute zitieren!
 % XXX: Einordnung in Gesamtkontext (etwa SDG, Kock--Lawvere, Coquand & Co., ...)
 % XXX: Folie zu klassifizierenden Topoi
 
 \end{document}
-
-\begin{frame}{The Kripke--Joyal semantics for the little Zariski topos}
-  Recall~$A[f^{-1}] = \bigl\{ \frac{u}{f^n} \,|\, u \in A, n \in \NN \bigr\}$.
-
-  \begin{itemize}
-    \item $\Sh(\Spec(A)) \models \text{``For all~$x \in A^\sim$, \ldots''}$
-
-          Meaning: For all~$f \in A$ and all~$x \in A[f^{-1}]$, \ldots
-          \medskip
-
-    \item $\Sh(\Spec(A)) \models \text{``There is~$x \in A^\sim$ such that \ldots''}$
-
-          \mbox{Meaning: There is a partition of unity,~$1 = f_1 + \cdots + f_n \in A$,}
-          such that for each~$i$, there exists~$x_i \in A[f_i^{-1}]$
-          with~\ldots
-          \medskip
-
-    \item $\Sh(\Spec(A)) \models \text{``$\varphi$ implies $\psi$''}$
-
-          Meaning: For all~$f \in A$, if~$\varphi$ on stage~$f$, then~$\psi$ on
-          stage~$f$.
-  \end{itemize}
-\end{frame}
 
 \end{document}

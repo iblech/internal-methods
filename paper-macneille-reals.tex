@@ -1,0 +1,82 @@
+\documentclass[oneside]{amsart}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm,mathtools,tikz,float,caption}
+\usetikzlibrary{patterns,matrix}
+\usepackage[protrusion=true]{microtype}
+\usepackage{breakurl}
+\usepackage{hyperref}
+
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\RR}{\mathbb{R}}
+
+\title{A constructive Knaster--Tarski proof of the uncountability of the reals}
+\author{Ingo Blechschmidt and Matthias Hutzler}
+%\address{Max Planck Institute for Mathematics in the Sciences \\
+%Inselstraße 22 \\
+%04103 Leipzig, Germany}
+\email{ingo.blechschmidt@mis.mpg.de, matthias.matthias.ralph.hutzler@student.uni-augsburg.de}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[]
+\newtheorem{ex}[defn]{Example}
+
+\theoremstyle{plain}
+\newtheorem{prop}[defn]{Proposition}
+\newtheorem{cor}[defn]{Corollary}
+\newtheorem{lemma}[defn]{Lemma}
+\newtheorem{thm}[defn]{Theorem}
+\newtheorem{scholium}[defn]{Scholium}
+
+\theoremstyle{remark}
+\newtheorem{rem}[defn]{Remark}
+\newtheorem{question}[defn]{Question}
+\newtheorem{speculation}[defn]{Speculation}
+\newtheorem{caveat}[defn]{Caveat}
+\newtheorem{conjecture}[defn]{Conjecture}
+
+\newcommand{\XXX}[1]{\textbf{XXX: #1}}
+\newcommand{\aaa}{\mathfrak{a}}
+\newcommand{\bbb}{\mathfrak{b}}
+\newcommand{\mmm}{\mathfrak{m}}
+\newcommand{\I}{\mathcal{I}}
+\newcommand{\J}{\mathcal{J}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\B}{\mathcal{B}}
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\defeq}{\vcentcolon=}
+\DeclareMathOperator{\Spec}{Spec}
+
+\newcommand{\stacksproject}[1]{\cite[{\href{https://stacks.math.columbia.edu/tag/#1}{Tag~#1}}]{stacks-project}}
+
+\begin{document}
+
+\begin{abstract}
+  Leaning heavily on Levy's unusual proof of the uncountability of the reals,
+  we give an uncountability proof of the (MacNeille) reals which ... XXX
+\end{abstract}
+
+\maketitle
+\thispagestyle{empty}
+
+\begin{thm}Let~$f : \NN \to \RR$ be a map. Then there is a number~$x_0 \in \RR$
+such that for no~$n \in \NN$, $f(n) = x_0$.\end{thm}
+
+\begin{proof}The map
+\[ g : \RR \longrightarrow \RR,\
+  x \longmapsto \sup_M \sum_{n \in M} 2^{-n}, \]
+where~$M$ ranges over all those finite detachable subsets of~$\NN$ such
+that~$f[M] < x$, is well-defined, monotone, has a postfixpoint ($0 \leq g(0)$),
+and has an upper bound for all of its postfixpoints (if~$x \leq g(x)$, then~$x
+\leq 2$). By the Knaster--Tarski fixed point theorem, it therefore has a
+greatest postfixpoint~$x_0$.
+
+If~$x_0 = f(n_0)$ for a number~$n_0 \in \NN$, then for any finite detachable
+subset~$M$ of~$\NN$ such that~$f[M] < x_0$,
+\[ \sum_{n \in M} 2^{-n} + 2^{-n_0} = \sum_{n \in M \cup \{n_0\}} 2^{-n}
+  \leq g(x_0 + 2^{-n_0}), \]
+hence~$g(x_0 + 2^{-n_0}) \geq g(x_0) + 2^{-n_0} \geq x_0 + 2^{-n_0}$.
+Thus~$x_0 + 2^{-n_0}$ is a greater postfixpoint that~$x_0$, a contradiction.
+\end{proof}
+
+\end{document}

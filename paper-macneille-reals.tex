@@ -3,7 +3,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{amsthm,mathtools,tikz,float,caption}
 \usetikzlibrary{patterns,matrix}
-\usepackage[protrusion=true]{microtype}
+\usepackage[expansion=true,protrusion=true]{microtype}
 \usepackage{breakurl}
 \usepackage{hyperref}
 
@@ -26,6 +26,7 @@
 \newtheorem{cor}[defn]{Corollary}
 \newtheorem{lemma}[defn]{Lemma}
 \newtheorem{thm}[defn]{Theorem}
+\newtheorem*{thm*}{Theorem}
 \newtheorem{scholium}[defn]{Scholium}
 
 \theoremstyle{remark}
@@ -52,24 +53,54 @@
 \begin{document}
 
 \begin{abstract}
-  Leaning heavily on Levy's unusual proof of the uncountability of the reals,
-  we give an uncountability proof of the (MacNeille) reals which ... XXX
+  We give an uncountability proof of the reals which does not rely on their
+  sequential completeness, but on their order completeness. We use neither a
+  form of the axiom of choice nor the law of excluded middle, therefore
+  the proof applies to the MacNeille reals in any flavor of constructive
+  mathematics. The proof leans heavily on Levy's unusual proof of the
+  uncountability of the reals.
 \end{abstract}
 
 \maketitle
 \thispagestyle{empty}
 
-\begin{thm}Let~$f : \NN \to \RR$ be a map. Then there is a number~$x_0 \in \RR$
-such that for no~$n \in \NN$, $f(n) = x_0$.\end{thm}
+One way to verify the uncountability of the reals is as follows. We first
+observe that the usual diagonalization technique shows that the powerset of the
+naturals is uncountable. We then show that this powerset is in bijection with
+the reals. In constructive mathematics, more precisely the kind of mathematics
+which can be carried out in any topos, the first step is still valid, while the
+second might fail -- for any of the several possible flavors of the reals
+which in constructive mathematics might not coincide. Therefore a different
+approach is needed.
+
+This note gives a constructive proof that a specific flavor of the reals,
+namely the MacNeille reals, is uncountable. To the best of our knowledge, this
+is the first result in that direction. However, it is just a baby step towards
+an understanding whether any of the more interesting flavors of the reals --
+for instance the Cauchy reals or the Dedekind reals -- can constructively be
+shown to be uncountable. The proof presented here is made possible because the
+MacNeille reals -- unlike the Cauchy or Dedekind reals -- can constructively be
+shown to be order-complete.
+
+Sensibilities of constructive mathematics aside, the proof presented here is
+interesting because it uses only the order completeness of the reals, not their
+sequential completeness, and because it puts the Knaster--Tarski fixed point
+theorem to good use. This fixed point theorem is fundamental to theoretical
+computer science, but appears to be seldomly used in classical analysis.
+The proof is an adaption of Levy's unusual proof~\cite{levy}.
+
+\begin{thm*}Let~$f : \NN \to \RR$ be a map. Then there is a number~$x_0 \in \RR$
+such that for no~$n \in \NN$, $f(n) = x_0$.\end{thm*}
 
 \begin{proof}The map
 \[ g : \RR \longrightarrow \RR,\
   x \longmapsto \sup_M \sum_{n \in M} 2^{-n}, \]
 where~$M$ ranges over all those finite detachable subsets of~$\NN$ such
-that~$f[M] < x$, is well-defined, monotone, has a postfixpoint ($0 \leq g(0)$),
-and has an upper bound for all of its postfixpoints (if~$x \leq g(x)$, then~$x
-\leq 2$). By the Knaster--Tarski fixed point theorem, it therefore has a
-greatest postfixpoint~$x_0$.
+that~$f[M] < x$, is well-defined (because the sets the suprema are taken of are
+inhabited by zero and bounded from above by~$2$), monotone, has a postfixpoint
+($0 \leq g(0)$), and has an upper bound for all of its postfixpoints (if~$x
+\leq g(x)$, then~$x \leq 2$). By the Knaster--Tarski fixed point theorem, it
+therefore has a greatest postfixpoint~$x_0$.
 
 If~$x_0 = f(n_0)$ for a number~$n_0 \in \NN$, then for any finite detachable
 subset~$M$ of~$\NN$ such that~$f[M] < x_0$,
@@ -77,6 +108,22 @@ subset~$M$ of~$\NN$ such that~$f[M] < x_0$,
   \leq g(x_0 + 2^{-n_0}), \]
 hence~$g(x_0 + 2^{-n_0}) \geq g(x_0) + 2^{-n_0} \geq x_0 + 2^{-n_0}$.
 Thus~$x_0 + 2^{-n_0}$ is a greater postfixpoint that~$x_0$, a contradiction.
+\end{proof}
+
+It is possible to unwind the application of the Knaster--Tarski fixed point
+theorem to obtain an entirely elementary proof of uncountability. This
+unwinding makes the impredicative nature of the proof manifest.
+
+\begin{proof}[Second proof]We consider the same map~$g : \RR \to \RR$ as in the
+first proof. Let~$x_0$ be the supremum of the set~$A \defeq \{ x \in \RR \,|\,
+x \leq g(x) \}$; this supremum exists because that set is inhabited (by zero)
+and bounded from above (by~$2$).
+
+If~$x_0 = f(n_0)$ for a number~$n_0 \in \NN$, then~$x_0 - 2^{-n_0}$ is an
+upper bound for~$A$, contradicting the fact that~$x_0$ is the least upper bound
+of~$A$: Let~$x \in A$. If~$x > x_0 - 2^{-n_0}$, then~$g(x +
+2^{-n_0}) \geq g(x) + 2^{-n_0} \geq x + 2^{-n_0}$, hence~$x + 2^{-n_0} \in A$,
+thus~$x + 2^{-n_0} \leq x_0$, a contradiction. Hence~$x \leq x_0 - 2^{-n_0}$.
 \end{proof}
 
 \end{document}

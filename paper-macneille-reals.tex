@@ -15,7 +15,7 @@
 %\address{Max Planck Institute for Mathematics in the Sciences \\
 %Inselstraße 22 \\
 %04103 Leipzig, Germany}
-\email{ingo.blechschmidt@mis.mpg.de, matthias.matthias.ralph.hutzler@student.uni-augsburg.de}
+\email{ingo.blechschmidt@mis.mpg.de, matthias.ralph.hutzler@student.uni-augsburg.de}
 
 \theoremstyle{definition}
 \newtheorem{defn}{Definition}[]
@@ -87,7 +87,7 @@ interesting because it uses only the order completeness of the reals, not their
 sequential completeness, and because it puts the Knaster--Tarski fixed point
 theorem to good use. This fixed point theorem is fundamental to theoretical
 computer science, but appears to be seldomly used in classical analysis.
-The proof is an adaption of Levy's unusual proof~\cite{levy}.
+The proof is an adaptation of Levy's unusual proof~\cite{levy}.
 
 \begin{thm*}Let~$f : \NN \to \RR$ be a map. Then there is a number~$x_0 \in \RR$
 such that for no~$n \in \NN$, $f(n) = x_0$.\end{thm*}
@@ -116,7 +116,7 @@ unwinding makes the impredicative nature of the proof manifest.
 
 \begin{proof}[Second proof]We consider the same map~$g : \RR \to \RR$ as in the
 first proof. Let~$x_0$ be the supremum of the set~$A \defeq \{ x \in \RR \,|\,
-x \leq g(x) \}$; this supremum exists because that set is inhabited (by zero)
+x \leq g(x) \}$; this supremum exists because~$A$ is inhabited (by zero)
 and bounded from above (by~$2$).
 
 If~$x_0 = f(n_0)$ for a number~$n_0 \in \NN$, then~$x_0 - 2^{-n_0}$ is an

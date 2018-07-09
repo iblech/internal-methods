@@ -61,5 +61,8 @@ No prior knowledge about topos theory or formal logic is assumed.
   for UNILOG 2018
 * [Slides (PDF)](https://rawgit.com/iblech/internal-methods/master/slides-como2018.pdf)
   for Toposes in Como 2018
+* [Slides (PDF)](https://rawgit.com/iblech/internal-methods/master/slides-leipzig2018.pdf)
+  for the [Group Seminar](https://www.mis.mpg.de/calendar/lectures/2018/abstract-26140.html)
+  of Jürgen Jost's group in Leipzig
 
 ![Sheaves of rings look like ordinary rings from the internal point of view.](images/external-internal-small.png)

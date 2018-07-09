@@ -521,7 +521,7 @@
   \mbox{for open subsets~$U \subseteq X$ and formulas~$\varphi$.
   Write~``$\Sh(X) \models \varphi$'' to mean~$X \models \varphi$.}
   \footnotesize
-  \[ \renewcommand{\arraystretch}{1.08}\begin{array}{@{}l@{\ }c@{\ }l@{}}
+  \[ \renewcommand{\arraystretch}{1.08}\begin{array}{@{}l@{\ \ }c@{\ \ }l@{}}
   U \models \top &\Ll& \text{true} \\
   U \models \bot &\Ll& \hcancel{\text{false}}{0pt}{3pt}{0pt}{-2pt}\ U = \emptyset \\
   U \models s = t \? F &\Ll& s|_U = t|_U \in F(U) \\
@@ -539,15 +539,15 @@
   \text{for all open $V \subseteq U$ and sheaves~$F_0$ over~$V$: $V \models \varphi(F_0)$} \\
   U \models \exists s \? F\_ \varphi(s) &\Ll&
   \hcancel{\text{there exists $s_0 \in F(U)$ such that $U \models \varphi(s_0)$}}{0pt}{3pt}{0pt}{-2pt} \\
-  && \quad\quad
+  &&
   \text{there exists a covering $U = \bigcup_i U_i$ such that for all~$i$:} \\
-  && \quad\quad\quad\quad \text{there exists~$s_0 \in F(U_i)$ such that $U_i \models \varphi(s_0)$} \\
+  && \quad\quad \text{there exists~$s_0 \in F(U_i)$ such that $U_i \models \varphi(s_0)$} \\
   U \models \exists F\_ \varphi(F) &\Ll&
   \hcancel{\text{there exists a sheaf $F_0$ on $U$ such that $U \models
   \varphi(F_0)$}}{0pt}{3pt}{0pt}{-2pt} \\
-  && \quad\quad
+  &&
   \text{there exists a covering $U = \bigcup_i U_i$ such that for all~$i$:} \\
-  && \quad\quad\quad\quad \text{there exists a sheaf~$F_0$ on $U_i$ such that $U_i \models \varphi(F_0)$}
+  && \quad\quad \text{there exists a sheaf~$F_0$ on $U_i$ such that $U_i \models \varphi(F_0)$}
   \end{array} \]
 
   \jnote{1}{Many interesting sheaves have few global sections, which is why a
@@ -1506,7 +1506,9 @@
   \begin{center}
     \includegraphics[width=0.99\textwidth]{wraith-generic-galois-theory} \\
     \footnotesize
-    Gavin Wraith. Generic Galois theory of local rings. 1979.
+    Gavin Wraith. Generic Galois theory of local rings. 1979. \\
+    (A cult classic and must-read for anyone interested in \\
+    the intersection of topos theory and algebraic geometry.)
   \end{center}}
 
   \jnote{2}{For almost forty years, only the big Zariski topos and its étale

@@ -108,8 +108,8 @@
 % Adapted from https://latex.org/forum/viewtopic.php?t=2251 (Stefan Kottwitz)
 \newenvironment<>{hilblock}{
   \begin{center}
-    \begin{minipage}{9.05cm}
-      \setlength{\textwidth}{9.05cm}
+    \begin{minipage}{9.85cm}
+      \setlength{\textwidth}{9.85cm}
       \begin{actionenv}#1
         \def\insertblocktitle{}
         \par
@@ -448,11 +448,11 @@
 
   \vspace*{-1.5em}
   \begin{hilblock}
-    If~$\E \models \varphi$ and if~$\varphi \vdash \psi$
+    If~$\E \models \varphi$ and if~$\varphi$
     \pointthis{<3>}{intuitionistically}{%
       no $\varphi \vee \neg\varphi$,\ \
       no $\neg\neg\varphi \Rightarrow \varphi$,\ \
-      no axiom of choice},
+      no axiom of choice} entails~$\psi$,
     then~$\E \models \psi$.
   \end{hilblock}
   \bigskip
@@ -569,7 +569,7 @@
   \small\vspace*{-0.8em}
   Let~$X$ be a topological space. We recursively define
   \[ U \models \varphi \quad \text{(``$\varphi$ holds on~$U$'')} \]
-  for open subsets~$U \subseteq X$ and formulas~$\varphi$.
+  for open subsets~$U \subseteq X$ and statements~$\varphi$.
   Write~``$\Sh(X) \models \varphi$'' to mean~$X \models \varphi$.
   Let~$\C(U)$ be the set of continuous functions~$U \to \RR$.
 
@@ -634,7 +634,7 @@
   \small\vspace*{-0.8em}
   Let~$A$ be a ring (commutative, with unit). We recursively define
   \[ D(f) \models \varphi \quad \text{(``$\varphi$ holds away from the zeros of~$f$'')} \]
-  for~$f \in A$ and formulas~$\varphi$. Write
+  for~$f \in A$ and statements~$\varphi$. Write
   ``$\Spec(A) \models \varphi$'' to mean~$D(1) \models \varphi$.
 
   \vspace*{-1em}

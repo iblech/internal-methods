@@ -274,7 +274,7 @@
 
 \section{Motivation}
 
-\begin{frame}{Motivating testcases}
+\begin{frame}{Motivating test cases}
   Let $A$ be a ring (commutative, with unit, $1 = 0$ allowed). \\
   Assume that $A$ is reduced: If $x^n = 0$, then $x = 0$.
 
@@ -296,7 +296,7 @@
 
   We'll learn how the internal language of a certain well-chosen topos provides
   a way to perform the reduction in an entirely constructive manner. If so
-  desired, the resulting topos-theoretic proofs can be unwinded to yield fully
+  desired, the resulting topos-theoretic proofs can be unwound to yield fully
   explicit, topos-free, direct proofs.
 
   Beautiful constructive proofs can also be found in Richman's note on
@@ -307,10 +307,10 @@
 
   \jnote{3}{We can slightly reduce the requirements of the proof of the first
   statement by employing not a maximal ideal, but a prime ideal. The existence
-  of maximal ideals is nontrivial rings is equivalent to the axiom of choice,
+  of maximal ideals in nontrivial rings is equivalent to the axiom of choice,
   while the existence of prime ideals is equivalent to the weaker Boolean Prime
   Ideal Theorem. However, this improvement doesn't change the main point; the
-  proof is still wildly unconstructive.}
+  proof is still wildly nonconstructive.}
 
   \jnote{4-}{Grothendieck's generic freeness lemma is an important theorem in
   algebraic geometry, where it is usually stated in the following geometric
@@ -435,9 +435,10 @@
   using (Shulman's extension of) the \hil{Kripke--Joyal semantics}.
 
   \jnote{1}{The internal language of a topos allows to construct objects and
-  morphisms, formulate statements about them and prove such statements in a
-  naive element-based language. From the internal point of view, objects look
-  like sets [more precisely, types]; morphisms look like maps; epimorphisms
+  morphisms of the topos, formulate statements about them and prove such
+  statements \emph{in a naive element-based language}. From the internal point
+  of view, objects look like sets [more precisely, types]; morphisms look like
+  maps; monomorphisms look like injections; epimorphisms
   look like surjections; group objects look like groups; and so on.
 
   To determine whether a statement~$\varphi$ holds in the internal universe of a
@@ -459,7 +460,7 @@
   the internal universe of any topos. The restriction to intuitionistic logic
   is not due to philosophical concerns; it is a fact of life that only very few
   toposes validate the law of excluded middle (for instance, sheaf toposes over
-  discrete topological space do if the law of excluded middle is available in
+  discrete topological spaces do if the law of excluded middle is available in
   the metatheory). Luckily, vast amounts of mathematics can be developed in a
   purely intuitionistic setting.
 
@@ -550,10 +551,8 @@
   \end{array} \]
 
   \jnote{1}{Many interesting sheaves have few global sections, which is why a
-  definition should as ``$U \models \forall s \? F\_ \varphi(s)$ iff $U \models
-  \varphi(s_0)$ for all~$s_0 \in F(U)$'' would miss the point. More precisely,
-  changing the definitions like this would yield the internal language of the
-  topos of presheaves on~$X$.
+  definition such as ``$U \models \forall s \? F\_ \varphi(s)$ iff $U \models
+  \varphi(s_0)$ for all~$s_0 \in F(U)$'' would miss the point.
 
   Here is an explicit example of the translation procedure. Let~$\alpha : F
   \to G$ be a morphism of sheaves on~$X$. Then (the corner quotes ``$\speak{\ldots}$''
@@ -581,7 +580,7 @@
           \text{for all open $W \subseteq V$: $\alpha_V(s_0|_W) = \alpha_V(t_0|_W)$ implies $s_0|_W = t_0|_W$} \\[0.2em]
     \Longleftrightarrow\ &
       \text{for all open~$U \subseteq X$, sections $s, t \in F(U)$:
-        $\alpha_U(s|_U) = \alpha_U(t|_U)$ implies $s|_U = t|_U$} \\[0.2em]
+        $\alpha_U(s) = \alpha_U(t)$ implies $s = t$} \\[0.2em]
     \Longleftrightarrow\ &
       \text{$\alpha$ is a monomorphism of sheaves}
   \end{align*}}
@@ -685,8 +684,8 @@
   definitions since the complement of a prime ideal is a prime filter and vice
   versa.
 
-  One can also consider the classifying local of prime \emph{ideals} of~$A$.
-  Its associated topological space of points is the the set of prime ideal
+  One can also consider the classifying locale of prime \emph{ideals} of~$A$.
+  Its associated topological space of points is the set of prime ideals
   of~$A$ equipped with the \emph{constructible topology}.
 
   In an intuitionistic context, any of the (generalized) spaces of items~1--4
@@ -763,7 +762,7 @@
   then~$M^\sim$ is of finite type. If~$M$ is finitely presented, then~$M^\sim$
   is of finite presentation. If~$M$ is coherent, then~$M^\sim$ is coherent.
 
-  As an aside, the little Zariski topos is seldomly Boolean (validates the law of
+  As an aside, the little Zariski topos is rarely Boolean (validates the law of
   excluded middle). A necessary condition is that~$A$ is of dimension~$\leq 0$.}
 
   \jnote{4}{Assuming that~$A$ is reduced, the following nongeometric sequents
@@ -796,10 +795,10 @@
 
   No. Just as the translation from internal statements to external statements
   is entirely mechanical, so is the translation from internal proofs to
-  external proofs. Any proof employing the internal language can be unwinded to
+  external proofs. Any proof employing the internal language can be unwound to
   yield an external proof not referencing the internal language.
 
-  However, depending on the logical complexity of the statements occuring in a
+  However, depending on the logical complexity of the statements occurring in a
   given proof, the resulting external proof might be (much) more complex than
   the internal proof. This is particularly the case if the proof involves
   double negation, for much the same reason as that in computer science,
@@ -899,20 +898,20 @@
   \end{tikzpicture}}
 \end{frame}
 
-\begin{frame}{Revisiting the testcases}
+\begin{frame}{Revisiting the test cases}
   Let $A$ be a reduced ring.
 
   \jnote{1}{This slide delivers on the promise made earlier: Using the internal
   language of the little Zariski topos, we can reduce to the case of fields
   without having to employ maximal ideals, prime ideals or minimal prime ideals.
   Since the internal language machinery is itself constructive, the displayed
-  proofs can be unwinded to yield external constructive proofs which don't
+  proofs can be unwound to yield external constructive proofs which don't
   reference topos theory. Details on these external proofs can soon be found in
   a forthcoming paper titled
   \fixedhref{https://rawgit.com/iblech/internal-methods/master/paper-wlog.pdf}{Without
   loss of generality, any reduced ring is a field}.}
 
-  \jnote{2}{The testcase of Grothendieck's generic freeness lemma illustrates
+  \jnote{2}{The test case of Grothendieck's generic freeness lemma illustrates
   that the internal language of toposes can help commutative algebra even if
   one is not interested in constructivity issues. The previously known proofs
   are somewhat long and somewhat convoluted; the new proof is arguably short
@@ -942,7 +941,7 @@
   This argument relies on the law of excluded middle and can therefore not put
   to work in the internal universe as is. However, intuitionistically we do
   have the weaker statement~$\neg\neg(\varphi \vee \neg\varphi)$, and we can
-  use this law in place of the law of excluded middle to intuitionistially
+  use this law in place of the law of excluded middle to intuitionistically
   deduce that any finitely generated vector space does \emph{not not} have a
   basis.}
 
@@ -1371,9 +1370,9 @@
 
 \begin{frame}{Properties of the affine line}
   \begin{itemize}
-    \item $\affl$ is a local ring:
-    \[ 1 \neq 0 \qquad\qquad \text{$x + y$ \inv} \Longrightarrow \text{$x$ \inv} \vee
-    \text{$y$ \inv} \]
+%   \item $\affl$ is a local ring:
+%   \[ 1 \neq 0 \qquad\qquad \text{$x + y$ \inv} \Longrightarrow \text{$x$ \inv} \vee
+%   \text{$y$ \inv} \]
     \item $\affl$ is a field:
     \begin{align*}
       \neg(x = 0) &\Longleftrightarrow \text{$x$ invertible \quad [Kock 1976]} \\
@@ -1383,7 +1382,9 @@
     \affl$ is of the form~$f(\varepsilon) = a + b \varepsilon$ for unique
     values~$a,b \? \affl$, where~$\Delta = \{ \varepsilon \? \affl \,|\,
     \varepsilon^2 = 0 \}$.
-    \item Any map $\affl \to \affl$ is a polynomial.
+    \bigskip
+    \item Any map $\affl \to \affl$ is a polynomial function.
+    \bigskip
     \item $\affl$ is anonymously algebraically closed: Any monic polynomial
     does \emph{not not} have a zero.
   \end{itemize}
@@ -1462,7 +1463,7 @@
     quasicoherence.
   \end{itemize}}
 
-  \jnote{3}{An anlogue of synthetic quasicoherence holds in the classifying
+  \jnote{3}{An analogue of synthetic quasicoherence holds in the classifying
   topos of rings, demonstrating that even presheaf toposes can validate
   interesting nontrivial nongeometric sequents.
 
@@ -1499,7 +1500,7 @@
   \end{tabular}
 
   \jnote{1}{Toposes, and also more specifically classifying toposes, originated
-  in algebraic geometry. It is therefore deeply embarassing that as of now,
+  in algebraic geometry. It is therefore deeply embarrassing that as of now,
   still very little is known about the theories classified by the major toposes
   in active use by algebraic geometers.
   \begin{center}

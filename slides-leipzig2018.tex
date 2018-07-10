@@ -130,10 +130,6 @@
     \end{minipage}
   \end{center}}
 
-\newcommand{\bignumber}[1]{
-  \renewcommand{\insertenumlabel}{#1}\scalebox{1.5}{\usebeamertemplate{enumerate item}}
-}
-
 \newenvironment{indentblock}{%
   \list{}{\leftmargin\leftmargin}%
   \item\relax
@@ -216,11 +212,7 @@
   \vskip0pt%
 }
 
-
 \newcommand{\hil}[1]{{\usebeamercolor[fg]{item}{\textbf{#1}}}}
-
-\newcommand{\bad}[1]{\textcolor{red!90}{\textnormal{#1}}}
-
 
 \begin{document}
 
@@ -414,7 +406,7 @@
   they say ``Let~$G$ be a group.''.)
 
   Crucially, two theories~$T$ and~$T'$ can have equivalent classifying
-  toposes even when they are not syntactially related in any way. This
+  toposes even when they are not syntactically related in any way. This
   observation is the starting point of Olivia Caramello's
   \fixedhref{https://www.oliviacaramello.com/}{\emph{bridge
   technique}}, a grand research program with applications in many different
@@ -511,14 +503,14 @@
   over~$X$}. They are useful in analysis for internalizing
   parameter-dependence. Apart from pathological cases like~$X$
   being discrete, the intermediate value theorem in the form
-  \begin{indentblock}Let~$f : \RR \to \RR$ be a continuous function.
+  \begin{indentblock}\emph{Let~$f : \RR \to \RR$ be a continuous function.
   Assume~$f(-1) < 0 < f(1)$. Then there is a number~$x \in \RR$ such
-  that~$f(x) = 0$.\end{indentblock}
+  that~$f(x) = 0$.}\end{indentblock}
   fails in these toposes -- for very meaningful reasons discussed below.
   The following, classically equivalent, version does hold:
-  \begin{indentblock}Let~$f : \RR \to \RR$ be a continuous function.
+  \begin{indentblock}\emph{Let~$f : \RR \to \RR$ be a continuous function.
   Assume~$f(-1) < 0 < f(1)$. Then, for every~$\varepsilon > 0$, there is
-  a number~$x \in \RR$ such that~$|f(x)| < \varepsilon$.\end{indentblock}
+  a number~$x \in \RR$ such that~$|f(x)| < \varepsilon$.}\end{indentblock}
 
   The \emph{effective topos}~$\Eff$ is a computer scientist's dream come true:
   In it, any function~$\NN \to \NN$ is computable by a Turing machine. The
@@ -553,8 +545,8 @@
   using the \hil{Kripke--Joyal semantics}.
 
   \jnote{1-2}{We can picture the Kripke--Joyal semantics as a kind of translation
-  engine. When we're talking with Anna, a mathematician who lives in the
-  ef{}fective topos, at first we might be weirded out when she states ``it's a basic
+  engine. When we're talking over the phone with Anna, a mathematician who lives in the
+  ef{}fective topos, at first we might feel uncomfortable when she states ``it's a basic
   fact of life that any function~$\NN \to \NN$ is computable''. But if we
   remember to switch on the Kripke--Joyal translation, we instead hear~``it's a
   basic fact of life that there is a Turing machine which, given a Turing
@@ -646,7 +638,7 @@
   entertaining talk \emph{Five Stages of Accepting Constructive Mathematics}
   by Andrej Bauer
   (\fixedhref{https://www.youtube.com/watch?v=21qPOReu4FI}{video},
-  \fixedhref{http://www.ams.org/journals/bull/2017-54-03/S0273-0979-2016-01556-4/}{notes}).}
+  \fixedhref{https://www.ams.org/journals/bull/2017-54-03/S0273-0979-2016-01556-4/}{notes}).}
 
   \vspace*{-1em}
   \begin{columns}
@@ -817,10 +809,12 @@
 
   \jnote{1}{The applications of the internal language of toposes in several
   branches of mathematics are driven by the following fundamental empirical fact:
+  \vspace*{-1em}
   \begin{center}The external translations of \\
   some easy-to-prove internal statements of suitable toposes \\
   are \\
   nontrivial statements about the subject matter at hand.\end{center}
+  \vspace*{-1em}
   For instance, Grothendieck's generic freeness lemma, an important theorem in
   commutative algebra and algebraic geometry, is the external translation of
   the basic observation ``finitely generated modules over finitely generated
@@ -836,9 +830,9 @@
   syntactical complexity of the involved statements, the resulting external
   proof might be quite complex.
 
-  The next slide shows two examples.}
+  The next two slides show examples regarding this increase in complexity.}
 
-  \jnote{2}{\begin{itemize}\justifying
+  \jnote{2}{\begin{enumerate}\justifying
     \item The statement ``if the two outer sheaves in a short exact sequence of
     sheaves of modules are of finite type, then so is the middle one'' is the
     external translation of the basic fact ``if the two outer modules
@@ -846,20 +840,24 @@
     middle one'' of constructive linear algebra.
 
     The syntactical complexity of the internal statement is quite low (just one
-    implication sign, on toplevel, no long chains of quantifiers of mixed
+    implication sign, at toplevel, no long chains of quantifiers of mixed
     types). Therefore the resulting external proof obtained by unwinding will
     still be quite short and straightforward. In fact, this external proof will
     coincide with what anyone well-versed in scheme theory will produce,
-    judiciously juggling with open subsets.
+    judiciously juggling open subsets.
 
-    Using the internal language of toposes here is therefore mostly for mental
-    hygiene, making rigorous the intuitive idea that the two statements are
-    related to each other.
+    Using the internal language of toposes in situations like this is therefore
+    mostly for mental hygiene, making rigorous the intuitive idea that the two
+    statements are related to each other.
+  \end{enumerate}}
 
+  \jnote{3}{\begin{enumerate}\justifying\addtocounter{enumi}{1}
     \item A version of Hilbert's basis theorem, ``polynomial rings over
     anonymously Noetherian rings are again anonymously Noetherian'', can be put
     to use in the proof of Grothendieck's generic freeness lemma alluded to
-    above. This statement has nontrivial syntactical complexity (the
+    above.
+
+    This statement has nontrivial syntactical complexity (the
     Noetherian condition involves a double negation, therefore nested
     implications). For this reason, already the translation of the
     \emph{statement} is quite convoluted (a part of it is
@@ -870,20 +868,24 @@
     Hilbert's basis theorem, one has to actually redo its proof).
 
     In situations like this, the internal language is of real value.
-  \end{itemize}}
+  \end{enumerate}}
 
-  \jnote{3}{We're used to the fact that the usual laws of mathematical
+  \jnote{4}{We're used to the fact that the usual laws of mathematical
   reasoning apply to mathematical objects. The internal language of toposes
   encapsulates and makes useful the following observation: The usual laws of
   reasoning apply to our favorite mathematical objects \emph{also in
-  nontrivial, different ways}. I find this quite astonishing.
+  nontrivial ways different from the accustomed one}. I find this quite astonishing.
 
   The next slide shows a basic application of this train of thought in
   analysis. The presented example is of a rather simple nature and serves only
   to explain the translation process in an explicit and rigorous fashion,
   contrasting the previous slides which were somewhat short on details.
   Details on the application to homotopy theory can be found in the
-  \fixedhref{https://homotopytypetheory.org/book/}{HoTT book}.}
+  \fixedhref{https://homotopytypetheory.org/book/}{HoTT book}.
+ 
+  A tour of applications in algebraic geometry can be found in
+  \fixedhref{https://rawgit.com/iblech/internal-methods/master/notes.pdf}{these
+  notes}.}
 \end{frame}
 
 
@@ -1012,22 +1014,27 @@
 
   Synthetic differential geometry was born to provide an account of
   differential geometry which is both rigorous and closer to intuition than the
-  standard account. Its starting point is the axiom of microaffinity, which is
-  very useful but wildly false in classical mathematics. The fundamental
+  standard account, allowing for instance to read the classic works of Sophus
+  Lie in a literal manner.
+
+  Its starting point is the axiom of microaffinity, which is
+  quite useful but wildly false in classical mathematics. The fundamental
   theorem about synthetic differential geometry, connecting it with the
-  ordinary world of smooth manifolds, is that there exist \emph{well-adapted
-  models} for synthetic differential geometry -- toposes~$\E$ such that:
+  ordinary world of smooth manifolds, states that there exist \emph{well-adapted
+  models} for synthetic differential geometry -- toposes~$\E$ such that:\par
+  \scriptsize
   \begin{enumerate}\justifying
     \item There is a functorial way of associating to any smooth manifold~$M$
     an object~$y(M)$ of~$\E$ (something which~$\E$ believes to be a set) and
     to any smooth map~$f : M \to N$ a morphism~$y(f) : y(M) \to y(N)$ of~$\E$
     (something which~$\E$ believes to be map).
     % (item is referenced below by number)
-    \item Any morphism in~$\E$ of type~$y(M) \to y(N)$ is
+    \item Any morphism of~$\E$ of type~$y(M) \to y(N)$ is
     of the form~$y(f)$ for a smooth map~$f$, and if~$\E \models y(f) = y(g)$,
     then actually~$f = g$.
     \item In~$\E$, the axiom of microaffinity and related axioms hold for the
-    ring~$y(\RR^1)$.
+    ring~$y(\RR^1)$. [Technical comment: This ring will usually not be the ring of
+    Dedekind real numbers in~$\E$.]
   \end{enumerate}}
 
   \jnote{2}{Here are two examples for synthetic reasoning and synthetic
@@ -1057,7 +1064,7 @@
   thought of as \emph{functionals} on (exterior powers of) the tangent bundle
   -- as \emph{quantities} (maps from~$M$ into a certain nonclassical object).}
 
-  \jnote{3}{Recall the following standard reflection principle taught in
+  \jnote{3}{The following reflection principle is routinely used in
   undergraduate calculus: Even though continuity is officially a property which
   depends only on the input/output behaviour of a function, reflecting on the
   \emph{term} used to define a given function often allows us to quickly
@@ -1081,10 +1088,7 @@
     \item \emph{A Primer of Infinitesimal Analysis}, a short introduction by John Bell
     \item \emph{\fixedhref{http://home.imf.au.dk/kock/sdg99.pdf}{Synthetic
     Differential Geometry}}, the definitive book by Anders Kock
-  \end{itemize}
-
-  [Technical comment: The object~$y(\RR^1)$ will usually not be the object of
-  Dedekind real numbers in~$\E$.]}
+  \end{itemize}}
 \end{frame}
 
 
@@ -1171,7 +1175,9 @@
   \jnote{3}{As mentioned before, any proof involving the internal language can be
   \emph{unwound} to yield a direct proof not referencing toposes. Depending on
   the logical complexity of the statements appearing in the internal proof,
-  this process can substantially lengthen the proof. In the case of the new
+  this process can substantially lengthen the proof.
+
+  In the case of the new
   proof of Grothendieck's generic freeness lemma, we were lucky to
   \fixedhref{https://arxiv.org/abs/1807.01231}{obtain a one-page proof} using
   this process. (That the resulting external proof was so short is because it
@@ -1350,7 +1356,7 @@
   similarities with the well-developed synthetic account of differential
   geometry, but also important differences, and it also turns out that
   synthetic algebraic geometry has close connections to a certain age-old
-  unresolved problem in topos theory, the \emph{mystery of nongeometric
+  unsolved problem in topos theory, the \emph{mystery of nongeometric
   sequents}.
 
   Details are in

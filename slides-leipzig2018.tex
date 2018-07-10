@@ -159,7 +159,7 @@
 \newcommand{\pointthis}[3]{%
   \tikz[remember picture,baseline]{
     \node[anchor=base,inner sep=0,outer sep=0] (#2) {#2};
-    \node[visible on=#1,overlay,rectangle callout,rounded corners,callout relative pointer={(0.3cm,0.5cm)},fill=blue!20] at ($(#2.north)+(-0.1cm,-1.1cm)$) {#3};
+    \node[visible on=#1,overlay,rectangle callout,rounded corners,callout relative pointer={(-0.1cm,0.5cm)},fill=blue!20] at ($(#2.north)+(-0.1cm,-1.1cm)$) {#3};
   }%
 }
 
@@ -448,11 +448,11 @@
 
   \vspace*{-1.5em}
   \begin{hilblock}
-    If~$\E \models \varphi$ and if~$\varphi$
+    If~$\E \models \varphi$ and if~$\varphi$ entails~$\psi$
     \pointthis{<3>}{intuitionistically}{%
       no $\varphi \vee \neg\varphi$,\ \
       no $\neg\neg\varphi \Rightarrow \varphi$,\ \
-      no axiom of choice} entails~$\psi$,
+      no axiom of choice},
     then~$\E \models \psi$.
   \end{hilblock}
   \bigskip
@@ -582,7 +582,7 @@
   U \models \varphi \wedge \psi &\Ll&
   \text{$U \models \varphi$ and $U \models \psi$} \\
   U \models \varphi \vee \psi &\Ll&
-  \hcancel{\text{$U \models \varphi$ or $U \models \psi$}}{0pt}{3pt}{0pt}{-2pt}\ \text{there exists a covering $U = \bigcup_i U_i$} \\
+  \hcancel{\text{$U \models \varphi$ or $U \models \psi$}}{0pt}{3pt}{0pt}{-2pt}\ \text{there exists an open covering $U = \bigcup_i U_i$} \\
   && \quad\quad\text{such that for all~$i$: $U_i \models \varphi$ or $U_i \models \psi$} \\
   U \models \varphi \Rightarrow \psi &\Ll&
   \text{for all open~$V \subseteq U$: }
@@ -592,7 +592,7 @@
   U \models \exists s \? \RR\_ \varphi(s) &\Ll&
   \hcancel{\text{there exists $s_0 \in \C(U)$ such that $U \models \varphi(s_0)$}}{0pt}{3pt}{0pt}{-2pt} \\
   &&
-  \text{there exists a covering $U = \bigcup_i U_i$ such that for all~$i$:} \\
+  \text{there exists an open covering $U = \bigcup_i U_i$ such that for all~$i$:} \\
   && \quad\quad \text{there exists~$s_0 \in \C(U_i)$ such that $U_i \models \varphi(s_0)$}
   \end{array} \]
 \end{frame}
@@ -641,7 +641,7 @@
   \[\footnotesize\renewcommand{\arraystretch}{1.25}\begin{array}{@{}l@{\ }c@{\ }l@{}}
     D(f) \models \top &\text{iff}& \text{true} \\
     D(f) \models \bot &\text{iff}& \text{$f$ is nilpotent} \\
-    D(f) \models x = y &\text{iff}& x = y \in A[f^{-1}] \\
+    D(f) \models x = y &\text{iff}& x = y \in M[f^{-1}] \\
     D(f) \models \varphi \wedge \psi &\text{iff}&
       \text{$D(f) \models \varphi$ and $D(f) \models \psi$} \\
     D(f) \models \varphi \vee \psi &\text{iff}&
@@ -713,7 +713,7 @@
     \end{column}
 
     \begin{column}{0.1\textwidth}
-      \vspace*{0.7em}
+      \vspace*{1.1em}
       \scalebox{3}{$\Leftarrow$}
     \end{column}
 

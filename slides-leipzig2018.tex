@@ -650,13 +650,15 @@
     D(f) \models \varphi \Rightarrow \psi &\text{iff}&
       \text{for all~$g \in A$, $D(fg) \models \varphi$ implies $D(fg) \models \psi$} \\
     D(f) \models \forall x\?M^\sim\_ \varphi(x) &\text{iff}&
-      \text{for all~$g \in A$ and $x_0 \in M[(fg)^{-1}]$, $D(fg) \models \varphi[x_0/x]$} \\
+      \text{for all~$g \in A$ and $x_0 \in M[(fg)^{-1}]$, $D(fg) \models \varphi(x_0)$} \\
     D(f) \models \exists x\?M^\sim\_ \varphi(x) &\text{iff}&
       \text{there exists a partition~$f^n = fg_1 + \cdots + fg_m$ with,} \\
-    &&\quad\text{for each~$i$, $D(fg_i) \models \varphi[x_0/x]$ for some~$x_0 \in M[(fg_i)^{-1}]$}
+    &&\quad\text{for each~$i$, $D(fg_i) \models \varphi(x_0)$ for some~$x_0 \in M[(fg_i)^{-1}]$}
   \end{array} \]
 \end{frame}
 
+
+\backupstart
 
 \section[Algebraic geometry]{Applications in algebraic geometry}
 
@@ -747,5 +749,7 @@
   \small
   \[ \{ (x,y,z) \? (\affl)^3 \,|\, x^n+y^n-z^n=0 \} \]
 \end{frame}
+
+\backupend
 
 \end{document}

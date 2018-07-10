@@ -1,6 +1,11 @@
 \documentclass[12pt,utf8,notheorems,compress,t]{beamer}
 \usepackage{etex}
 
+\usepackage{pgfpages}
+\setbeameroption{show notes on second screen}
+\setbeamertemplate{note page}[plain]
+\newcommand{\jnote}[2]{\only<#1>{\note{\footnotesize\justifying#2\par}}}
+
 \usepackage[english]{babel}
 
 \usepackage{mathtools}
@@ -68,6 +73,7 @@
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\QQ}{\mathbb{Q}}
 \newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
 \newcommand{\TT}{\mathbb{T}}
 \newcommand{\PP}{\mathbb{P}}
 \newcommand{\ZZ}{\mathbb{Z}}
@@ -332,6 +338,73 @@
       ``Let~$G$ be a group.''
     \end{column}
   \end{columns}
+
+  \jnote{1}{Toposes were invented in the 1960s by Grothendieck in order to
+  solve concrete problems in algebraic geometry. Their raison d'être is the
+  following. In algebraic geometry, we want (and sometimes have to) work over
+  fields other than~$\RR$ and~$\CC$ and even over arbitrary commutative rings.
+  For the geometric objects in such settings, the \emph{schemes}, the Euclidean
+  topology is not available; we have to make do with the \emph{Zariski
+  topology}. However, important tools as singular cohomology don't work well
+  with this topology.
+
+  The problem was solved by inventing \emph{étale topology} as an enhancement
+  of the Zariski topology. However, contrary to its name, the étale topology
+  isn't a true topology in the usual sense. Putting the étale topology on a
+  scheme doesn't yield a refined topological space, but a \emph{topos}.
+
+  Toposes generalize topological spaces in two ways: Firstly, the ``open sets''
+  of toposes don't actually have to be sets of points; they can be more general
+  kinds of objects such as coverings. Toposes can even have no points at all
+  and still be nontrivial (this is for instance the case for the \emph{topos of
+  random sequences}). Secondly, while classically a given open
+  subset is either contained in a further open subset or not, the opens of
+  toposes can be contained in further opens in many different ways.
+
+  Recently, toposes are being used to help the mysterious field with
+  one element come into being.}
+
+  \jnote{2}{Since the 1960s, many more aspects of toposes were discovered.
+  A popular reference on toposes starts with a list of 13 ways of viewing
+  toposes.
+
+  In this talk, we'll focus on the view of toposes as \emph{alternate
+  mathematical universes}. We can do mathematics inside these alternate
+  universes just as well as we can do mathematics inside the \emph{standard
+  universe} (which is represented by a particular topos called~``$\Set$'').
+  Each topos contains own versions of all the familiar mathematical objects --
+  numbers, functions, manifolds -- but the properties they enjoy differ
+  slightly from topos to topos.
+
+  The definition of what a topos is, displayed in the lower left of the slide,
+  has two problems. Firstly, it's only useful if one knows the relevant
+  category-theoretic jargon. Secondly, a topos has lots of further vital
+  structure, which is crucial for a rounded understanding. However, the
+  displayed definition is trimmed for minimality and therefore doesn't mention
+  it. A more comprehensive definition is: A \emph{topos} is a locally cartesian
+  closed, finitely complete and cocomplete Heyting category which is exact,
+  extensive and has a subobject classifier. We won't need either definition in
+  this talk.}
+
+  \jnote{3}{Toposes can also be thought as reifying the ``semantic essence'' of
+  mathematical theories (the theory of groups, the theory of rings, the theory
+  of intervals, \ldots). Given any such theory~$T$, there is a so-called
+  \emph{classifying topos}~$\Set[T]$. Its points are precisely the set-based
+  models of~$T$ (the groups, the rings, the intervals, \ldots), and it contains
+  a \emph{generic model} which has exactly those properties which all models
+  have. (This generic model is what mathematicians implicitly refer to when
+  they say ``Let~$G$ be a group.''.)
+
+  Crucially, two theories~$T$ and~$T'$ can have equivalent classifying
+  toposes even when they are not syntactially related in any way. This
+  observation is the starting point of Olivia Caramello's \emph{bridge
+  technique}, a grand research program with applications in many different
+  fields.
+
+  \[ \xymatrix{
+    & \Set[T] \simeq \Set[T'] \ar@{--}@/^1pc/[rd] \ar@{--}@/_1pc/[ld] \\
+    T && T'
+  } \]}
 \end{frame}
 
 
@@ -407,6 +480,32 @@
       \drawbox{set0}{$\mathrm{Set}$}{(objs-set0) (set1) (eff1) (sh1)}{}
     \end{scope}
   \end{tikzpicture}
+
+  \jnote{1}{The topos~$\Set$ is the standard topos. This topos is where
+  ordinary mathematics takes place.}
+
+  \jnote{2}{Besides~$\Set$, there is a proper class worth of further toposes.
+  We'll get to know some of these better during the remaining course of the
+  talk.
+
+  For any topological space~$X$, there is a topos~$\Sh(X)$ of \emph{sheaves
+  over~$X$}. They are useful in analysis for internalizing
+  parameter-dependence. Apart from pathological cases like~$X$
+  being discrete, the intermediate value theorem in the form
+  \begin{indentblock}Let~$f : \RR \to \RR$ be a continuous function.
+  Assume~$f(-1) < 0 < f(1)$. Then there is a number~$x \in \RR$ such
+  that~$f(x) = 0$.\end{indentblock}
+  fails in these toposes -- for very meaningful reasons discussed below.
+  The following, classically equivalent, version does hold:
+  \begin{indentblock}Let~$f : \RR \to \RR$ be a continuous function.
+  Assume~$f(-1) < 0 < f(1)$. Then, for every~$\varepsilon > 0$, there is
+  a number~$x \in \RR$ such that~$|f(x)| < \varepsilon$.\end{indentblock}
+
+  The \emph{effective topos}~$\Eff$ is a computer scientist's dream come true:
+  In it, any function~$\NN \to \NN$ is computable by a Turing machine. The
+  effective topos and its close cousins can be used to study the differences
+  between the many models of computation, particularly those differences which
+  are only visible at higher types.}
 \end{frame}
 
 \begin{frame}{The internal universe of a topos}

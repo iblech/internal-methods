@@ -6,6 +6,10 @@
 \setbeamertemplate{note page}[plain]
 \newcommand{\jnote}[2]{\only<#1>{\note{\footnotesize\justifying#2\par}}}
 
+% Workaround for the issue described at
+% https://tex.stackexchange.com/questions/164406/beamer-using-href-in-notes.
+\newcommand{\fixedhref}[2]{\makebox[0pt][l]{\hspace*{\paperwidth}\href{#1}{#2}}\href{#1}{#2}}
+
 \usepackage[english]{babel}
 
 \usepackage{mathtools}
@@ -346,11 +350,11 @@
   For the geometric objects in such settings, the \emph{schemes}, the Euclidean
   topology is not available; we have to make do with the \emph{Zariski
   topology}. However, important tools as singular cohomology don't work well
-  with this topology.
+  with this topology (too few opens).
 
   The problem was solved by inventing \emph{étale topology} as an enhancement
   of the Zariski topology. However, contrary to its name, the étale topology
-  isn't a true topology in the usual sense. Putting the étale topology on a
+  isn't actually a topology in the usual sense. Putting the étale topology on a
   scheme doesn't yield a refined topological space, but a \emph{topos}.
 
   Toposes generalize topological spaces in two ways: Firstly, the ``open sets''
@@ -360,9 +364,11 @@
   random sequences}). Secondly, while classically a given open
   subset is either contained in a further open subset or not, the opens of
   toposes can be contained in further opens in many different ways.
+  % XXX: Link to Alex Simpson
 
   Recently, toposes are being used to help the mysterious field with
   one element come into being.}
+  % XXX: Link to John Baez
 
   \jnote{2}{Since the 1960s, many more aspects of toposes were discovered.
   A popular reference on toposes starts with a list of 13 ways of viewing
@@ -373,15 +379,15 @@
   universes just as well as we can do mathematics inside the \emph{standard
   universe} (which is represented by a particular topos called~``$\Set$'').
   Each topos contains own versions of all the familiar mathematical objects --
-  numbers, functions, manifolds -- but the properties they enjoy differ
-  slightly from topos to topos.
+  numbers, functions, manifolds -- but the properties they enjoy can differ
+  slightly from the properties they enjoy in the standard topos.
 
   The definition of what a topos is, displayed in the lower left of the slide,
   has two problems. Firstly, it's only useful if one knows the relevant
   category-theoretic jargon. Secondly, a topos has lots of further vital
-  structure, which is crucial for a rounded understanding. However, the
-  displayed definition is trimmed for minimality and therefore doesn't mention
-  it. A more comprehensive definition is: A \emph{topos} is a locally cartesian
+  structure, which is crucial for a rounded understanding, but not listed in the
+  displayed definition (which is trimmed for minimality).
+  A more comprehensive definition is: A \emph{topos} is a locally cartesian
   closed, finitely complete and cocomplete Heyting category which is exact,
   extensive and has a subobject classifier. We won't need either definition in
   this talk.}
@@ -400,6 +406,7 @@
   observation is the starting point of Olivia Caramello's \emph{bridge
   technique}, a grand research program with applications in many different
   fields.
+  % XXX: Link Olivia
 
   \[ \xymatrix{
     & \Set[T] \simeq \Set[T'] \ar@{--}@/^1pc/[rd] \ar@{--}@/_1pc/[ld] \\
@@ -485,10 +492,10 @@
   ordinary mathematics takes place.}
 
   \jnote{2}{Besides~$\Set$, there is a proper class worth of further toposes.
-  We'll get to know some of these better during the remaining course of the
+  We'll get to know some of these better during the course of the
   talk.
 
-  For any topological space~$X$, there is a topos~$\Sh(X)$ of \emph{sheaves
+  For any topological space~$X$, there is the topos~$\Sh(X)$ of \emph{sheaves
   over~$X$}. They are useful in analysis for internalizing
   parameter-dependence. Apart from pathological cases like~$X$
   being discrete, the intermediate value theorem in the form
@@ -506,6 +513,18 @@
   effective topos and its close cousins can be used to study the differences
   between the many models of computation, particularly those differences which
   are only visible at higher types.}
+
+  \jnote{3}{This talk is still part of ordinary mathematics, that is, of the
+  topos~$\Set$. Therefore a more accurate picture depicts the three examples as
+  part of~$\Set$. (Technically, while they might not be ``toposes
+  over~$\Set$'', they are still locally-internal to~$\Set$ in the sense of
+  Penon.)
+
+  Most of the toposes in active use are either toposes of sheaves (over a
+  topological space or a XXXnLab \emph{site}), realizability toposes (such
+  as~$\Eff$ or variants constructed using different models of computation), or
+  arise from those using topos-theoretic constructions; but this is not a
+  complete classification.}
 \end{frame}
 
 \begin{frame}{The internal universe of a topos}
@@ -518,6 +537,100 @@
 
   \vspace*{-1.0em}
   using the \hil{Kripke--Joyal semantics}.
+
+  \jnote{1-2}{We can picture the Kripke--Joyal semantics as a kind of translation
+  engine. When we're talking with Anna, a mathematician who lives in the
+  ef{}fective topos, at first we might be weirded out when she states ``it's a basic
+  fact of life that any function~$\NN \to \NN$ is computable''. But if we
+  remember to switch on the Kripke--Joyal translation, we instead hear~``it's a
+  basic fact of life that there is a Turing machine which, given a Turing
+  machine computing a function~$f : \NN \to \NN$, outputs a Turing machine
+  computing~$f$'' which we can easily agree with.
+
+  The precise translation rules will be explained by osmosis for the
+  ef{}fective topos, on the next slide, and by a formal definition for sheaf
+  toposes and for the little Zariski topos, further below.}
+
+  \jnote{2}{When exploring a new topos for the first time, the only way to
+  find out which statements hold in it is to translate them using the
+  Kripke--Joyal semantics and check whether the translation holds in the usual
+  mathematical sense. As soon as we have established a certain Grundstock XXX,
+  we can switch to a more efficient procedure: We just use mathematical
+  reasoning to deduce from known statements new ones.}
+
+  \jnote{3}{Irrespective of philosophical preferences, it's a fact of life that
+  most toposes only support constructive reasoning; in most toposes, proof by
+  contradiction is not valid. (Examples for toposes in which this is possible
+  are sheaf toposes~$\Sh(X)$ over discrete topological spaces, but not many
+  more than that.)
+
+  One might fear that most of mathematics breaks down in a constructive
+  setting. This is only true if interpreted naively: Often, already very small
+  changes to the definitions and statements suffice to make them constructively
+  valid (and are classically simply equivalent reformulations).
+  In other cases, we need to add interesting additional hypotheses --
+  hypotheses which are classically always satisfied. Here are a couple of
+  examples.
+
+  \begin{enumerate}\justifying
+    \item The usual proof that~$\sqrt{2}$ is not rational is perfectly fine
+    from a constructive point of view. It shows that the assumption
+    that~$\sqrt{2}$ is rational entails a contradiction. This is just the
+    definition of what it means to be not rational. (There's a difference
+    XXX Link Andrej
+    between a true proof by contradiction and a proof of a negated statement.
+    Only the former can't generally be carried out in constructive
+    mathematics.)
+    \item Constructively it's still true that there is no such thing as a
+    statement being neither true nor false: That is, we still
+    have~$\neg\neg(\varphi \vee \neg\varphi)$.
+  \end{enumerate}}
+
+  \jnote{4}{\begin{enumerate}\justifying\addtocounter{enumi}{2}
+    \item Constructively, we can't show that any inhabited subset of the
+    natural numbers has a minimal element. [We can also not show the
+    negation of that statement -- any valid constructive proof is a fortiori
+    a valid classical proof.] But we can show (quite
+    easily, by induction) that any inhabited and \emph{detachable} subset
+    of the natural numbers has a minimal element: A subset~$U \subseteq
+    \NN$ is detachable iff for any number~$n \in \NN$,~$n
+    \in U$ or~$n \not\in U$. Weakening the conclusion, we can also show that
+    any inhabited subset of the natural numbers does \emph{not not} have a
+    minimal element.
+
+    Both the failure and the two fixes can be interpreted computationally:
+    Given just the promise of an inhabited subset, we can't algorithmically
+    determine its minimum. But we can do so when given a \emph{membership
+    oracle}, or if it's okay to return the result in the
+    \emph{continuation monad}. XXX Link Ingo
+
+    \item We can't constructively prove that any finitely generated vector
+    space admits a basis. We can, however, constructively verify that any
+    finitely generated vector does \emph{not not} admit a basis. (By exploiting
+    that given a generating family~$(x_1,\ldots,x_n)$ it's \emph{not not} the
+    case that either one of the generators can be expressed as a linear
+    combination of the others, or not.) We'll see below that this particular
+    example implies that any sheaf of finite type over a reduced scheme is
+    locally free on a dense open.
+  \end{enumerate}}
+
+  \jnote{5}{\begin{enumerate}\justifying\addtocounter{enumi}{4}
+    \item We can't constructively verify the fundamental theorem of Galois
+    theory for arbitrary (not necessarily finite) Galois extensions in its
+    usual formulation. But if we pass from the topological Galois group
+    to the \emph{localic Galois group}, we can. Some aspects of the proof even
+    get simpler that way.
+
+    \item Similarly, we can't constructively verify the Gelfand--Naimark
+    correspondence between commutative~$C^*$-algebras with unit and compact Hausdorff
+    spaces. But we can do so if we pass from compact Hausdorff spaces to
+    compact Hausdorff locales.
+    XXX Naimark
+  \end{enumerate}
+
+  A recommendation for more on constructive mathematics is the informative and
+  entertaining talk \emph{Five Stages of Accepting Constructive Mathematics}
+  by Andrej Bauer (video, notes). XXX Link}
 
   \vspace*{-1em}
   \begin{columns}
@@ -548,7 +661,7 @@
   \vspace*{-1.5em}
   \begin{hilblock}
     If~$\E \models \varphi$ and if~$\varphi$ entails~$\psi$
-    \pointthis{<3>}{constructively}{%
+    \pointthis{<3->}{constructively}{%
       no $\varphi \vee \neg\varphi$,\ \
       no $\neg\neg\varphi \Rightarrow \varphi$,\ \
       no axiom of choice},
@@ -600,6 +713,28 @@
       }
     \end{itemize}
   \end{changemargin}
+
+  \jnote{1}{There is a variant of the effective topos which is not built using
+  Turing machines, but using \emph{infinite-time Turing machines}, a popular
+  model for hypercomputation. In that variant, the statement ``any
+  function~$\NN \to \NN$ is the zero function or not'' is true; the statement
+  ``any function~$\NN \to \NN$ is computable by a Turing machine'' is false;
+  and the statement~``any function~$\NN \to \NN$ is computable by an
+  infinite-time Turing machine'' is true again. Details can be found in
+  \fixedhref{...}{this set of slides}. XXX
+
+  \begin{center}\includegraphics[width=0.6\textwidth]{exploring-hypercomputation-slides}\end{center}}
+
+  \jnote{2}{We can also build a variant of the effective topos which uses
+  \emph{machines of the real world} instead of idealized Turing machines. In
+  doing so, we leave the realm of rigorous mathematics, but obtain interesting
+  connections with philosophy and physics. For instance, in that variant the
+  statement~``any function~$\RR \to \RR$ is continuous'' is true if machines in
+  the real world can only perform finitely many computational steps in finite
+  time and if it's possible to build hidden communication channels. Details can
+  be found in the book chapter \emph{\fixedhref{...}{Realizability for the Real
+  World}} by Andrej Bauer.
+  \begin{center}\includegraphics[width=0.3\textwidth]{zenil-computable-universe}\end{center}}
 \end{frame}
 
 \newcommand{\appl}[3]{\centering\includegraphics[height=3.5em]{#1}\par\hil{#2}\\\footnotesize#3}
@@ -694,6 +829,59 @@
   \text{there exists an open covering $U = \bigcup_i U_i$ such that for all~$i$:} \\
   && \quad\quad \text{there exists~$s_0 \in \C(U_i)$ such that $U_i \models \varphi(s_0)$}
   \end{array} \]
+
+  \jnote{1}{It's an instructive exercise to verify that~$\Sh(X) \models
+  \neg\neg\varphi$ if and only if there is a dense open subset~$U \subseteq X$
+  such that~$U \models \varphi$. This equivalence gives geometric meaning to
+  the failure of classical logic in~$\Sh(X)$.}
+\end{frame}
+
+\begin{frame}{Internalizing parameter-dependence}
+  \justifying
+  Let~$(f_x)_{x \in X}$ be a continuous family of continuous
+  functions (that is, let a continuous function~$X \times \RR \to \RR,\,(x,a) \mapsto
+  f_x(a)$ be given). From the internal point of view of~$\Sh(X)$, this family
+  looks like a single function~$f : \RR \to \RR$.
+  \begin{itemize}
+    \item $\Sh(X) \models (\text{The function $f : \RR \to \RR$ is
+    continuous})$.\medskip
+    \item Iff $f_x(-1) < 0$ for all $x \in X$, then $\Sh(X) \models f(-1) < 0$.
+    \item Iff $f_x(+1) > 0$ for all $x \in X$, then $\Sh(X) \models f(+1) > 0$.
+    \item Iff all $f_x$ are increasing, then $\Sh(X) \models (\text{$f$ is
+    increasing})$.\medskip
+    \item Iff there is an open cover~$X = \bigcup_i U_i$ such
+    that for each~$i$, there is a continuous function~$s : U_i \to \RR$
+    with~$f_x(s(x)) = 0$ for all~$x \in U_i$, then $\Sh(X) \models \exists s
+    \? \RR\_ f(s) = 0$.
+  \end{itemize}
+
+  \jnote{1}{Hence:
+  \begin{enumerate}\justifying
+    \item The standard formulation of the intermediate value theorem fails
+    in~$\Sh(X)$, because its external interpretation is that in continuous
+    families of continuous functions, zeros can locally be picked continuously.
+    That claim is false, as
+    \fixedhref{https://rawgit.com/iblech/internal-methods/master/images/zeros-in-families.mp4}{this
+    counterexample} demonstrates.
+
+    As a corollary, we deduce that the standard formulation of the
+    intermediate value theorem is not constructively provable.
+
+    \item The approximative version of the intermediate value theorem (stating
+    that for any~$\varepsilon > 0$, there is a number~$x$ such that~$|f(x)| <
+    \varepsilon$) has a constructive proof and therefore holds in~$\Sh(X)$. The
+    external interpretation is that in continuous families of continuous
+    functions, approximate zeros can locally be picked continuously.
+    % XXX Link Matt F.
+
+    \item The monotone intermediate value theorem, stating that a strictly
+    increasing continuous function with opposite signs has a unique zero,
+    admits a constructive proof and therefore holds in~$\Sh(X)$. The external
+    interpretation is that in continuous families of strictly increasing
+    continuous functions, zeros can globally be picked continuously. You are
+    invited to prove this fact directly, without reference to the internal
+    language. This exercise isn't particularly hard, but it's not trivial either.
+  \end{enumerate}}
 \end{frame}
 
 
@@ -724,6 +912,85 @@
     \item Manifolds are \hil{just sets}. \\[-1.2em]
     \item A \hil{tangent vector} to~$M$ is a map~$\Delta \to M$.
   \end{itemize}
+
+  \jnote{1}{Differential geometry abounds with intuition which can't be
+  formalized in the standard account of differential geometry. For instance, we
+  can't literally define a tangent vector to be an infinitesimal piece of a
+  curve -- we have to resort to germs of smooth functions or derivations --
+  or speak about infinitesimal deformations of the identity transformation.
+
+  Synthetic differential geometry was born to provide an account of
+  differential geometry which is both rigorous and closer to intuition than the
+  standard account. Its starting point is the axiom of microaffinity, which is
+  very useful but wildly false in classical mathematics. The fundamental
+  theorem about synthetic differential geometry, connecting it with the
+  ordinary world of smooth manifolds, is that there exist \emph{well-adapted
+  models} for synthetic differential geometry -- toposes~$\E$ such that:
+  \begin{enumerate}\justifying
+    \item There is a functorial way of associating to any smooth manifold~$M$
+    an object~$y(M)$ of~$\E$ (something which~$\E$ believes to be a set) and
+    to any smooth map~$f : M \to N$ a morphism~$y(f) : y(M) \to y(N)$ of~$\E$
+    (something which~$\E$ believes to be map).
+    % (item is referenced below by number)
+    \item Any morphism in~$\E$ of type~$y(M) \to y(N)$ is
+    of the form~$y(f)$ for a smooth map~$f$, and if~$\E \models y(f) = y(g)$,
+    then actually~$f = g$.
+    \item In~$\E$, the axiom of microaffinity and related axioms hold for the
+    ring~$y(\RR^1)$.
+  \end{enumerate}}
+
+  \jnote{2}{Here are two examples for synthetic reasoning and synthetic
+  constructions.
+
+  \begin{itemize}\justifying
+    \item We can compute the derivative of~$f$ with~$f(x) = x^2$ as follows:
+    For all~$\varepsilon \in \Delta$, $f(x + \varepsilon) = (x + \varepsilon)^2
+    = x^2 + 2x\varepsilon$, hence~$f'(x) = 2x$ by the definition on the slide.
+
+    \item Write~``$M^\Delta$'' for the set of all maps~$\Delta \to M$. A
+    \emph{vector field} on a manifold (set)~$M$ is just a map~$X : M \to
+    M^\Delta$ such that~$X(p)(0) = p$ for all~$p \in M$. A tangent field~$X$
+    induces an infinitesimal path~$\gamma : \Delta \to M^M$ in the space (set)
+    of transformations of~$M$, by setting~$\gamma(\varepsilon) = (p \mapsto
+    X(p)(\varepsilon))$.
+
+    Conversely, a path~$\gamma : \Delta \to M^M$ such that~$\gamma(0) =
+    \mathrm{id}_M$ yields a vector field~$X : M \to M^\Delta$ by setting~$X(p) =
+    (\varepsilon \mapsto \gamma(\varepsilon)(p)$. No continuity or smoothness
+    checks have to be carried out.
+  \end{itemize}
+
+  There are also notions in synthetic differential geometry which
+  don't have a classical counterpart. For instance, in synthetic differential
+  geometry it's possible to view differential forms on~$M$ -- which are usually
+  thought of as \emph{functionals} on (exterior powers of) the tangent bundle
+  -- as \emph{quantities} (maps from~$M$ into a certain nonclassical object).}
+
+  \jnote{3}{Recall the following standard reflection principle taught in
+  undergraduate calculus: Even though continuity is officially a property which
+  depends only on the input/output behaviour of a function, reflecting on the
+  \emph{term} used to define a given function often allows us to quickly
+  conclude that it's continuous. For instance, any function defined by a
+  polynomial expression is continuous.
+
+  Synthetic differential geometry yields a new reflection principle, for
+  ordinary manifolds, which improves both on the assumption and on the
+  conclusion: Any map between manifolds which is definable in constructive
+  mathematics (so in particular, any map which is given by a polynomial
+  expression) is smooth (so in particular continuous). This is due to item~2
+  above.
+
+  Synthetic differential geometry is very well-developed and at your disposal.
+  References include:
+  \begin{itemize}
+    \item \fixedhref{...}{Notes for highschool students} (in German)
+    \item \fixedhref{...}{...}, a blog post by Andrej Bauer
+    \item \fixedhref{...}{...}, a short introduction by ... (Primer)
+    \item \fixedhref{...}{...}, the definitive book by Anders Kock
+  \end{itemize}
+
+  [Technical comment: The object~$y(\RR^1)$ will usually not be the object of
+  Dedekind real numbers in~$\E$.]}
 \end{frame}
 
 
@@ -754,6 +1021,53 @@
       \text{there exists a partition~$f^n = fg_1 + \cdots + fg_m$ with,} \\
     &&\quad\text{for each~$i$, $D(fg_i) \models \varphi(x_0)$ for some~$x_0 \in M[(fg_i)^{-1}]$}
   \end{array} \]
+
+  \jnote{1}{Irrespective of whether~$A$ is a local ring, its mirror
+  image~$A^\sim$ is always a local ring (that is, the axioms of what it means
+  to be a local ring hold in~$\Spec(A)$).
+
+  A basic application of the internal language of~$\Spec(A)$ are
+  local-to-global principles. For instance:
+  \begin{itemize}\justifying
+    \item The statement ``the kernel of a surjective matrix over a local ring
+    is finite free'' admits a constructive proof. It therefore holds
+    in~$\Spec(A)$. Its external meaning is that the kernel of a surjective
+    matrix~$M$ over~$A$ is finite locally free (there exists a partition~$1 =
+    f_1 + \cdots + f_n$ such that for each~$i$, the localized
+    module~$(\operatorname{ker} M)[f_i^{-1}]$ is finite free).
+
+    \item The ring~$A$ is a Prüfer domain if and only if~$A^\sim$ is a Bézout
+    domain. Therefore any constructive theorem about Bézout domains entails a
+    corresponding theorem about Prüfer domains. Bézout domains are quite rare,
+    while Prüfer domains abound (for instance the ring of integers of any
+    number field is a Prüfer domain).
+  \end{itemize}}
+
+  \jnote{2}{More advanced applications are rendered possible by the observation
+  that, if~$A$ is a reduced ring ($x^n = 0 \Rightarrow x = 0$), its mirror
+  image~$A^\sim$ is \emph{anonymously Noetherian} (every ideal is \emph{not
+  not} finitely generated) and \emph{a field}. This fact doesn't have a
+  classical counterpart -- in general, neither~$A$ nor its stalks nor
+  its quotients nor its subrings are Noetherian or fields.
+
+  This reduction technique allows to give a new proof of
+  Grothendieck's generic freeness lemma which substantially improves on the
+  previously known proofs in length and clarity: from approximately three
+  pages (requiring several advanced prerequisites in commutative algebra) to a
+  single paragraph (requiring only the tiny bit of topos theory needed in order to
+  setup the internal language).
+
+  Details are \fixedhref{...}{here} (XXX link Munich slides).
+
+  As mentioned before, any proof involving the internal language can be
+  \emph{unwound} to yield a direct proof not referencing toposes. Depending on
+  the logical complexity of the statements appearing in the internal proof,
+  this process can substantially lengthen the proof. In the case of the new
+  proof of Grothendieck's generic freeness lemma, we were lucky to
+  \fixedhref{obtain a one-page proof}{...} using this process. (This crucially
+  rested on the fact that we were able to eliminate the use of the Noetherian
+  property from the internal proof; else the unwound proof would have been much
+  longer.)}
 \end{frame}
 
 

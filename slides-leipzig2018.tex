@@ -26,7 +26,7 @@
 \xyoption{rotate}
 \usepackage{tikz}
 \usetikzlibrary{mindmap,calc,shapes,shapes.callouts,shapes.arrows,patterns,fit,backgrounds,decorations.pathmorphing}
-\hypersetup{colorlinks=false}
+\hypersetup{colorlinks=true}
 
 \usepackage{pifont}
 \newcommand{\cmark}{\ding{51}}
@@ -275,6 +275,18 @@
   Ingo Blechschmidt \\
   July 10th, 2018
   \par
+
+  \jnote{1}{This talk has two parts. In the first part, we'll learn that
+  besides the standard mathematical universe, in which ordinary mathematics
+  takes place, there is a host of alternate mathematical universes. In these
+  alternate universes, the usual objects of mathematics enjoy slightly
+  different properties. For instance, we'll encounter universes in which the
+  intermediate value theorem fails or in which any map~$\RR \to \RR$ is
+  continuous.
+
+  In the second part, we'll see that these alternate universes, while seeming
+  strange on first contact, yield concrete applications in algebra and
+  geometry.}
 \end{frame}}
 
 \begin{frame}{Toposes are \ldots}
@@ -360,15 +372,15 @@
   Toposes generalize topological spaces in two ways: Firstly, the ``open sets''
   of toposes don't actually have to be sets of points; they can be more general
   kinds of objects such as coverings. Toposes can even have no points at all
-  and still be nontrivial (this is for instance the case for the \emph{topos of
-  random sequences}). Secondly, while classically a given open
+  and still be nontrivial (this is for instance the case for the
+  \fixedhref{https://homepages.inf.ed.ac.uk/als/Talks/ccc09.pdf}{\emph{topos of
+  random sequences}}). Secondly, while classically a given open
   subset is either contained in a further open subset or not, the opens of
   toposes can be contained in further opens in many different ways.
-  % XXX: Link to Alex Simpson
 
-  Recently, toposes are being used to help the mysterious field with
-  one element come into being.}
-  % XXX: Link to John Baez
+  Recently, toposes are being used to help the mythical
+  \fixedhref{http://math.ucr.edu/home/baez/week259.html}{field with
+  one element} come into being.}
 
   \jnote{2}{Since the 1960s, many more aspects of toposes were discovered.
   A popular reference on toposes starts with a list of 13 ways of viewing
@@ -403,10 +415,10 @@
 
   Crucially, two theories~$T$ and~$T'$ can have equivalent classifying
   toposes even when they are not syntactially related in any way. This
-  observation is the starting point of Olivia Caramello's \emph{bridge
-  technique}, a grand research program with applications in many different
+  observation is the starting point of Olivia Caramello's
+  \fixedhref{https://www.oliviacaramello.com/}{\emph{bridge
+  technique}}, a grand research program with applications in many different
   fields.
-  % XXX: Link Olivia
 
   \[ \xymatrix{
     & \Set[T] \simeq \Set[T'] \ar@{--}@/^1pc/[rd] \ar@{--}@/_1pc/[ld] \\
@@ -491,7 +503,7 @@
   \jnote{1}{The topos~$\Set$ is the standard topos. This topos is where
   ordinary mathematics takes place.}
 
-  \jnote{2}{Besides~$\Set$, there is a proper class worth of further toposes.
+  \jnote{2}{Besides~$\Set$, there is a proper class' worth of further toposes.
   We'll get to know some of these better during the course of the
   talk.
 
@@ -521,10 +533,12 @@
   Penon.)
 
   Most of the toposes in active use are either toposes of sheaves (over a
-  topological space or a XXXnLab \emph{site}), realizability toposes (such
-  as~$\Eff$ or variants constructed using different models of computation), or
-  arise from those using topos-theoretic constructions; but this is not a
-  complete classification.}
+  topological space or a
+  \fixedhref{https://ncatlab.org/nlab/show/site}{\emph{site}}), realizability
+  toposes (such as~$\Eff$ or variants constructed using different models of
+  computation), or arise from those using topos-theoretic constructions; but
+  this is not a complete classification. (The topos~$\Set$ is equivalent to the
+  topos of sheaves over the one-point space.)}
 \end{frame}
 
 \begin{frame}{The internal universe of a topos}
@@ -554,9 +568,9 @@
   \jnote{2}{When exploring a new topos for the first time, the only way to
   find out which statements hold in it is to translate them using the
   Kripke--Joyal semantics and check whether the translation holds in the usual
-  mathematical sense. As soon as we have established a certain Grundstock XXX,
-  we can switch to a more efficient procedure: We just use mathematical
-  reasoning to deduce from known statements new ones.}
+  mathematical sense. As soon as we have established a certain stock of
+  statements in this way, we can switch to a more efficient procedure: We can
+  just use mathematical reasoning to deduce new statements from known ones.}
 
   \jnote{3}{Irrespective of philosophical preferences, it's a fact of life that
   most toposes only support constructive reasoning; in most toposes, proof by
@@ -576,13 +590,13 @@
     \item The usual proof that~$\sqrt{2}$ is not rational is perfectly fine
     from a constructive point of view. It shows that the assumption
     that~$\sqrt{2}$ is rational entails a contradiction. This is just the
-    definition of what it means to be not rational. (There's a difference
-    XXX Link Andrej
-    between a true proof by contradiction and a proof of a negated statement.
+    definition of what it means to be not rational.
+    (\fixedhref{http://math.andrej.com/2010/03/29/proof-of-negation-and-proof-by-contradiction/}{There's a difference}
+    between a proof by contradiction and a proof of a negated statement.
     Only the former can't generally be carried out in constructive
     mathematics.)
     \item Constructively it's still true that there is no such thing as a
-    statement being neither true nor false: That is, we still
+    statement which is neither true nor false: That is, we still
     have~$\neg\neg(\varphi \vee \neg\varphi)$.
   \end{enumerate}}
 
@@ -601,17 +615,18 @@
     Both the failure and the two fixes can be interpreted computationally:
     Given just the promise of an inhabited subset, we can't algorithmically
     determine its minimum. But we can do so when given a \emph{membership
-    oracle}, or if it's okay to return the result in the
-    \emph{continuation monad}. XXX Link Ingo
+    oracle}, or if it's
+    \fixedhref{https://rawgit.com/iblech/talk-constructive-mathematics/master/hal2015-notes.pdf}{okay to return the result in the
+    \emph{continuation monad}}.
 
     \item We can't constructively prove that any finitely generated vector
     space admits a basis. We can, however, constructively verify that any
-    finitely generated vector does \emph{not not} admit a basis. (By exploiting
-    that given a generating family~$(x_1,\ldots,x_n)$ it's \emph{not not} the
-    case that either one of the generators can be expressed as a linear
-    combination of the others, or not.) We'll see below that this particular
-    example implies that any sheaf of finite type over a reduced scheme is
-    locally free on a dense open.
+    finitely generated vector does \emph{not not} admit a basis, (By exploiting
+    that given a generating family~$(x_1,\ldots,x_n)$, it's \emph{not not} the
+    case that either one of the generators is a linear combination of the
+    others, or not.) We'll see below that this particular example entails that
+    any sheaf of finite type over a reduced scheme is locally free on a dense
+    open.
   \end{enumerate}}
 
   \jnote{5}{\begin{enumerate}\justifying\addtocounter{enumi}{4}
@@ -621,16 +636,17 @@
     to the \emph{localic Galois group}, we can. Some aspects of the proof even
     get simpler that way.
 
-    \item Similarly, we can't constructively verify the Gelfand--Naimark
+    \item Similarly, we can't constructively verify the Gelfand--Neumark
     correspondence between commutative~$C^*$-algebras with unit and compact Hausdorff
     spaces. But we can do so if we pass from compact Hausdorff spaces to
     compact Hausdorff locales.
-    XXX Naimark
   \end{enumerate}
 
   A recommendation for more on constructive mathematics is the informative and
   entertaining talk \emph{Five Stages of Accepting Constructive Mathematics}
-  by Andrej Bauer (video, notes). XXX Link}
+  by Andrej Bauer
+  (\fixedhref{https://www.youtube.com/watch?v=21qPOReu4FI}{video},
+  \fixedhref{http://www.ams.org/journals/bull/2017-54-03/S0273-0979-2016-01556-4/}{notes}).}
 
   \vspace*{-1em}
   \begin{columns}
@@ -704,6 +720,10 @@
       }{\textcolor{green!90}{\cmark}}{}
 
       \item \intex{
+        $\Eff \models \text{``Any function~$\RR \to \RR$ is continuous.''}$
+      }{\textcolor{green!90}{\cmark}}{}
+
+      \item \intex{
         $\Sh(X) \models \text{``Any cont. function with opposite signs has
         a zero.''}$
       }{\textcolor{red!80}{\xmark}}{
@@ -721,9 +741,9 @@
   ``any function~$\NN \to \NN$ is computable by a Turing machine'' is false;
   and the statement~``any function~$\NN \to \NN$ is computable by an
   infinite-time Turing machine'' is true again. Details can be found in
-  \fixedhref{...}{this set of slides}. XXX
+  \fixedhref{https://rawgit.com/iblech/mathezirkel-kurs/master/superturingmaschinen/slides-warwick2017.pdf}{this set of slides}.
 
-  \begin{center}\includegraphics[width=0.6\textwidth]{exploring-hypercomputation-slides}\end{center}}
+  \begin{center}\fixedhref{https://rawgit.com/iblech/mathezirkel-kurs/master/superturingmaschinen/slides-warwick2017.pdf}{\includegraphics[width=0.6\textwidth]{exploring-hypercomputation-slides}}\end{center}}
 
   \jnote{2}{We can also build a variant of the effective topos which uses
   \emph{machines of the real world} instead of idealized Turing machines. In
@@ -732,9 +752,9 @@
   statement~``any function~$\RR \to \RR$ is continuous'' is true if machines in
   the real world can only perform finitely many computational steps in finite
   time and if it's possible to build hidden communication channels. Details can
-  be found in the book chapter \emph{\fixedhref{...}{Realizability for the Real
-  World}} by Andrej Bauer.
-  \begin{center}\includegraphics[width=0.3\textwidth]{zenil-computable-universe}\end{center}}
+  be found in the book chapter
+  \emph{\fixedhref{http://math.andrej.com/2014/03/04/intuitionistic-mathematics-and-realizability-in-the-physical-world/}{Intuitionistic Mathematics and Realizability in the Physical World}} by Andrej Bauer.
+  \begin{center}\fixedhref{http://math.andrej.com/2014/03/04/intuitionistic-mathematics-and-realizability-in-the-physical-world/}{\includegraphics[width=0.3\textwidth]{zenil-computable-universe}}\end{center}}
 \end{frame}
 
 \newcommand{\appl}[3]{\centering\includegraphics[height=3.5em]{#1}\par\hil{#2}\\\footnotesize#3}
@@ -794,6 +814,76 @@
       }
     \end{column}
   \end{columns}
+
+  \jnote{1}{The applications of the internal language of toposes in several
+  branches of mathematics are driven by the following fundamental empirical fact:
+  \begin{center}The external translations of \\
+  some easy-to-prove internal statements of suitable toposes \\
+  are \\
+  nontrivial statements about the subject matter at hand.\end{center}
+  For instance, Grothendieck's generic freeness lemma, an important theorem in
+  commutative algebra and algebraic geometry, is the external translation of
+  the basic observation ``finitely generated modules over finitely generated
+  algebras over fields are \emph{not not} free over the field and \emph{not
+  not} finitely presented over the algebra'' of constructive linear algebra.
+
+  Is there a theorem which can only be proven by topos-theoretic methods?
+  \emph{No,} for any proof employing the internal language can be unwound to
+  yield an external proof not referencing topos theory. Just as the translation
+  from internal statements to external ones is entirely mechanical, so is the
+  translation from internal proofs to external ones. However, this translation
+  will always make the proof longer, and, depending on the
+  syntactical complexity of the involved statements, the resulting external
+  proof might be quite complex.
+
+  The next slide shows two examples.}
+
+  \jnote{2}{\begin{itemize}\justifying
+    \item The statement ``if the two outer sheaves in a short exact sequence of
+    sheaves of modules are of finite type, then so is the middle one'' is the
+    external translation of the basic fact ``if the two outer modules
+    in a short exact sequence of modules are finitely generated, then so is the
+    middle one'' of constructive linear algebra.
+
+    The syntactical complexity of the internal statement is quite low (just one
+    implication sign, on toplevel, no long chains of quantifiers of mixed
+    types). Therefore the resulting external proof obtained by unwinding will
+    still be quite short and straightforward. In fact, this external proof will
+    coincide with what anyone well-versed in scheme theory will produce,
+    judiciously juggling with open subsets.
+
+    Using the internal language of toposes here is therefore mostly for mental
+    hygiene, making rigorous the intuitive idea that the two statements are
+    related to each other.
+
+    \item A version of Hilbert's basis theorem, ``polynomial rings over
+    anonymously Noetherian rings are again anonymously Noetherian'', can be put
+    to use in the proof of Grothendieck's generic freeness lemma alluded to
+    above. This statement has nontrivial syntactical complexity (the
+    Noetherian condition involves a double negation, therefore nested
+    implications). For this reason, already the translation of the
+    \emph{statement} is quite convoluted (a part of it is
+    \fixedhref{https://rawgit.com/iblech/internal-methods/master/slides-como2018.pdf}{displayed
+    in this set of slides} for your viewing pleasure). The translation of its
+    \emph{proof} contains a deformed copy of the standard proof of Hilbert's
+    basis theorem (in a way which doesn't allow to simply \emph{apply}
+    Hilbert's basis theorem, one has to actually redo its proof).
+
+    In situations like this, the internal language is of real value.
+  \end{itemize}}
+
+  \jnote{3}{We're used to the fact that the usual laws of mathematical
+  reasoning apply to mathematical objects. The internal language of toposes
+  encapsulates and makes useful the following observation: The usual laws of
+  reasoning apply to our favorite mathematical objects \emph{also in
+  nontrivial, different ways}. I find this quite astonishing.
+
+  The next slide shows a basic application of this train of thought in
+  analysis. The presented example is of a rather simple nature and serves only
+  to explain the translation process in an explicit and rigorous fashion,
+  contrasting the previous slides which were somewhat short on details.
+  Details on the application to homotopy theory can be found in the
+  \fixedhref{https://homotopytypetheory.org/book/}{HoTT book}.}
 \end{frame}
 
 
@@ -869,10 +959,11 @@
 
     \item The approximative version of the intermediate value theorem (stating
     that for any~$\varepsilon > 0$, there is a number~$x$ such that~$|f(x)| <
-    \varepsilon$) has a constructive proof and therefore holds in~$\Sh(X)$. The
+    \varepsilon$)
+    \fixedhref{https://mathoverflow.net/questions/253059/approximate-intermediate-value-theorem-in-pure-constructive-mathematics}{has
+    a constructive proof} and therefore holds in~$\Sh(X)$. The
     external interpretation is that in continuous families of continuous
     functions, approximate zeros can locally be picked continuously.
-    % XXX Link Matt F.
 
     \item The monotone intermediate value theorem, stating that a strictly
     increasing continuous function with opposite signs has a unique zero,
@@ -949,7 +1040,7 @@
 
     \item Write~``$M^\Delta$'' for the set of all maps~$\Delta \to M$. A
     \emph{vector field} on a manifold (set)~$M$ is just a map~$X : M \to
-    M^\Delta$ such that~$X(p)(0) = p$ for all~$p \in M$. A tangent field~$X$
+    M^\Delta$ such that~$X(p)(0) = p$ for all~$p \in M$. A vector field~$X$
     induces an infinitesimal path~$\gamma : \Delta \to M^M$ in the space (set)
     of transformations of~$M$, by setting~$\gamma(\varepsilon) = (p \mapsto
     X(p)(\varepsilon))$.
@@ -983,10 +1074,13 @@
   Synthetic differential geometry is very well-developed and at your disposal.
   References include:
   \begin{itemize}
-    \item \fixedhref{...}{Notes for highschool students} (in German)
-    \item \fixedhref{...}{...}, a blog post by Andrej Bauer
-    \item \fixedhref{...}{...}, a short introduction by ... (Primer)
-    \item \fixedhref{...}{...}, the definitive book by Anders Kock
+    \item \emph{\fixedhref{https://rawgit.com/iblech/mathezirkel-kurs/master/thema05-sdg/blatt05.pdf}{Synthetische
+    Differentialgeometrie}}, notes for high school students (in German)
+    \item \emph{\fixedhref{http://math.andrej.com/2008/08/13/intuitionistic-mathematics-for-physics/}{Intuitionistic
+    mathematics for physics}}, a blog post by Andrej Bauer
+    \item \emph{A Primer of Infinitesimal Analysis}, a short introduction by John Bell
+    \item \emph{\fixedhref{http://home.imf.au.dk/kock/sdg99.pdf}{Synthetic
+    Differential Geometry}}, the definitive book by Anders Kock
   \end{itemize}
 
   [Technical comment: The object~$y(\RR^1)$ will usually not be the object of
@@ -994,7 +1088,7 @@
 \end{frame}
 
 
-\section[Commutative algebra]{Applications to commutative algebra}
+\section[Commutative algebra]{Applications in commutative algebra}
 
 \begin{frame}{The little Zariski topos of a ring}
   \small\vspace*{-0.8em}
@@ -1040,8 +1134,13 @@
     domain. Therefore any constructive theorem about Bézout domains entails a
     corresponding theorem about Prüfer domains. Bézout domains are quite rare,
     while Prüfer domains abound (for instance the ring of integers of any
-    number field is a Prüfer domain).
-  \end{itemize}}
+    number field is a Prüfer domain, even constructively so).
+  \end{itemize}
+
+  There are
+  \fixedhref{https://rawgit.com/iblech/internal-methods/master/slides-munich2018.pdf}{general
+  metatheorems} which state a precise connection between~$A$ and~$A^\sim$,
+  allowing in some cases to quickly pass from one to the other.}
 
   \jnote{2}{More advanced applications are rendered possible by the observation
   that, if~$A$ is a reduced ring ($x^n = 0 \Rightarrow x = 0$), its mirror
@@ -1057,21 +1156,29 @@
   single paragraph (requiring only the tiny bit of topos theory needed in order to
   setup the internal language).
 
-  Details are \fixedhref{...}{here} (XXX link Munich slides).
+  Sometimes, the effects of this topos-theoretic reduction technique can be
+  mimicked by classical techniques in commutative algebra such as passing
+  to quotient rings or stalks. To the best of my knowledge, that's not the case
+  for Grothendieck's generic freeness lemma. (In other cases, where they can,
+  the classical techniques require the axiom of choice, while the
+  topos-theoretic technique doesn't and therefore yields a more calculational,
+  informative proof.)
 
-  As mentioned before, any proof involving the internal language can be
+  Details can be found
+  \fixedhref{https://rawgit.com/iblech/internal-methods/master/slides-munich2018.pdf}{in
+  this set of slides}.}
+
+  \jnote{3}{As mentioned before, any proof involving the internal language can be
   \emph{unwound} to yield a direct proof not referencing toposes. Depending on
   the logical complexity of the statements appearing in the internal proof,
   this process can substantially lengthen the proof. In the case of the new
   proof of Grothendieck's generic freeness lemma, we were lucky to
-  \fixedhref{obtain a one-page proof}{...} using this process. (This crucially
-  rested on the fact that we were able to eliminate the use of the Noetherian
-  property from the internal proof; else the unwound proof would have been much
-  longer.)}
+  \fixedhref{https://arxiv.org/abs/1807.01231}{obtain a one-page proof} using
+  this process. (That the resulting external proof was so short is because it
+  was possible to eliminate the use of the Noetherian property from the
+  internal proof; without that elimination, the unwound proof was much longer.)}
 \end{frame}
 
-
-\backupstart
 
 \section[Algebraic geometry]{Applications in algebraic geometry}
 
@@ -1089,6 +1196,43 @@
     \includegraphics[width=0.7\textwidth]{external-internal-small}
     \par
   }
+
+  \jnote{1}{One doesn't need to be an expert in topos theory in order to know
+  that many notions in algebraic geometry are inspired by notions in algebra
+  and that proofs in algebraic geometry often proceed by reducing to algebra.
+  The internal language is a way of making this connection precise: In many
+  cases, the former are simply interpretations of the latter internal
+  to~$\Sh(X)$. Because this connection is precise instead of informal,
+  additional value is gained: We can skip many basic proofs in algebraic
+  geometry because they're just externalizations of proofs in algebra carried
+  out internally to~$\Sh(X)$.}
+
+  \jnote{2}{A basic example is as follows. A short exact sequence of sheaves of
+  modules looks like a short exact sequence of plain modules from the internal
+  point of view of~$\Sh(X)$. If the two outer sheaves are of finite type, then
+  from the internal point of view, the two outer modules will look like
+  finitely generated modules. Because the standard proof of the proposition
+  quoted on the lower right is constructively valid, it follows that, from
+  the internal point of view, the middle module is too finitely generated.
+  Consulting the dictionary a second time, this amounts to saying that the
+  middle sheaf is of finite type.
+
+  A more advanced example is: The theorem ``any finitely generated vector space
+  does \emph{not not} have a basis'' of constructive linear algebra entails, by
+  interpretation in~$\Sh(X)$, that any sheaf of finite type over a reduced
+  scheme is finite locally free on a \emph{dense open subset}.
+
+  More details on this research program can be found in
+  \fixedhref{https://rawgit.com/iblech/internal-methods/master/notes.pdf}{these
+  notes}, partly reported on at the
+  \fixedhref{https://www.youtube.com/watch?v=7S8--bIKaWQ}{2015 IHÉS topos
+  theory conference}. Even though many important dictionary entries are still
+  missing (for instance pertaining to derived categories and intersection
+  theory), I believe that it is already in its current form useful to working
+  algebraic geometers.
+
+  The next slide illustrates a further, different way of approaching algebraic
+  geometry using topos theory.}
 
   \pause
 
@@ -1157,12 +1301,61 @@
   \end{itemize}
   \bigskip
 
-  \hil{Synthetic approach:} model schemes \hil{directly as sets} in
+  \visible<2>{\hil{Synthetic approach:} model schemes \hil{directly as sets} in
   the internal universe of the \mbox{\hil{big Zariski topos}} of a base scheme.
   \small
-  \[ \{ (x,y,z) \? (\affl)^3 \,|\, x^n+y^n-z^n=0 \} \]
-\end{frame}
+  \[ \{ (x,y,z) \? (\affl)^3 \,|\, x^n+y^n-z^n=0 \} \]}
 
-\backupend
+  \jnote{1}{At the
+  \fixedhref{https://sbseminar.wordpress.com/2009/08/06/algebraic-geometry-without-prime-ideals/}{Secret
+  Blogging Seminar}, there was an insightful long-running discussion on the
+  merits of the two approaches. Two disadvantages of the approach using
+  locally ringed spaces is that the underlying topological spaces don't
+  actually parametrize ``honest'', ``geometric'' points, but the more complex
+  notion of irreducible closed subsets; and that they don't work well in a
+  constructive setting. (For this, they would have to be replaced by locally
+  ringed locales.)
+
+  The functorial approach is more economical, philosophically rewarding, and
+  works constructively. Given a functor~$F : \Ring \to \Set$, we imagine~$F(A)$
+  to be the set of~``$A$-valued points'' of the hypothetical scheme described
+  by~$F$, the set of ``points with coordinates in~$A$''. These sets have direct
+  geometric meaning. However, typically only field-valued points are easy
+  to describe. For instance, the functor representing projective~$n$-space is
+  given on fields by
+  \[ \begin{array}{r@{}c@{}l}
+  K &{}\longmapsto{}& \text{the set of lines through the origin in~$K^{n+1}$} \\
+  && \qquad \cong \{ [x_0 \hg \cdots \hg x_n] \,|\, \text{$x_i \neq 0$ for some~$i$} \},
+  \end{array} \]
+  whereas on general rings it is given by
+  \[ \begin{array}{r@{}c@{}l}
+    A &{}\longmapsto{}& \text{the set of quotients~$A^{n+1} \twoheadrightarrow P$,
+    where~$P$ is projective,} \\
+    && \qquad \text{modulo isomorphism}.
+  \end{array} \]
+  It is these more general kinds of points which impart a sense of
+  cohesion on the field-valued points, so they can't simply be dropped from
+  consideration.\bigskip}
+
+  \jnote{2}{This tension is resolved by observing that the category of
+  functors~$\Ring \to \Set$ is a topos (the \emph{big Zariski topos} of~$\Spec(\ZZ)$)
+  and that we can therefore employ its internal language. This language takes
+  care of juggling stages behind the scenes. For instance, projective~$n$-space
+  can be described by the naive expression
+  \[ \{ (x_0,\ldots,x_n) : (\affl)^{n+1} \,|\, x_0 \neq 0 \vee \cdots \vee x_n
+  \neq 0 \}/(\affl)^\times. \]
+  This example illustrates the goal: to develop a synthetic account of
+  algebraic geometry, in which schemes are plain sets and morphisms between
+  schemes are maps between those sets. It turns out that there are many
+  similarities with the well-developed synthetic account of differential
+  geometry, but also important differences, and it also turns out that
+  synthetic algebraic geometry has close connections to a certain age-old
+  unresolved problem in topos theory, the \emph{mystery of nongeometric
+  sequents}.
+
+  Details are in
+  \fixedhref{https://rawgit.com/iblech/internal-methods/master/slides-como2018.pdf}{this
+  set of slides}.}
+\end{frame}
 
 \end{document}

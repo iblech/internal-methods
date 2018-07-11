@@ -54,13 +54,13 @@ No prior knowledge about topos theory or formal logic is assumed.
 * [Slides (PDF)](https://rawgit.com/iblech/internal-methods/master/slides-pssl103.pdf)
   for [PSSL 103](https://www.math.muni.cz/~loregianf/PSSL103/PSSL103.php)
 * [Slides (PDF)](https://rawgit.com/iblech/internal-methods/master/slides-munich2018.pdf)
-  for the Oberseminar Mathematische Logik in München
+  for the [Oberseminar Mathematische Logik in München](https://www.mathematik.uni-muenchen.de/~schwicht/seminars/osem/indexosem.php)
 * [Slides (PDF)](https://rawgit.com/iblech/internal-methods/master/slides-filmat2018.pdf)
-  for FILMAT 2018
+  for [FilMat 2018](https://filmatnetwork.com/filmat-2018-program/)
 * [Slides (PDF)](https://rawgit.com/iblech/internal-methods/master/slides-unilog2018.pdf)
-  for UNILOG 2018
+  for [UNILOG 2018](https://www.uni-log.org/wk6-CAT.html)
 * [Slides (PDF)](https://rawgit.com/iblech/internal-methods/master/slides-como2018.pdf)
-  for Toposes in Como 2018
+  for [Toposes in Como 2018](http://tcsc.lakecomoschool.org/)
 * [Slides (PDF)](https://rawgit.com/iblech/internal-methods/master/slides-leipzig2018.pdf)
   for the [Group Seminar](https://www.mis.mpg.de/calendar/lectures/2018/abstract-26140.html)
   of Jürgen Jost's group in Leipzig

@@ -10807,9 +10807,15 @@ morphism~$\Spec(A) \to S$ of locally ringed locales. A \emph{morphism of rings
 over~$S$} is a ring homomorphism which is compatible with the structure
 morphisms to~$S$.\end{defn}
 % Let A be a local ring. Then LRL morphisms Spec(A) --> S are the same
-% as LRL morphisms (pt,A) --> S.
+% as LRL morphisms (pt,A) --> S. This is indeed true, if S is a scheme.
+% An LRL morphism (pt,A) --> S is given by a point s in S together with
+% a local morphism O_{S,s} --> A. An LRL morphism Spec(A) --> S factors
+% over some open Spec(B) --> S, hence is given by a morphism B --> A.
+% Such a morphism can uniquely be factored by a local localization followed
+% by a local morphism.
 % XXX
 % Are LRL morphisms Spec(A) --> S the same as RL morphisms (pt,A) --> S?
+% No.
 
 \begin{prop}\label{prop:points-of-big-zariski}
 In the situation that one of the parsimonious sites is used to

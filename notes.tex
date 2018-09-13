@@ -1302,6 +1302,31 @@ invertible})$'' means that~$f$ is \emph{nowhere invertible}, not even on
 smaller non\-empty open subsets. This implies that~$f$ is nilpotent.
 \end{rem}
 
+It's instructive to consider the special case that~$X$ is the one-point space.
+In this case~$\Sh(X) \simeq \Set$, by taking constant sheaves.
+Let~$\varphi$ be a formula in which arbitrary sets and elements may occur as
+parameters. Then we can regard~$\varphi$ as a formula over the open set~$X$ by
+substituting any occuring set by the induced constant sheaf and any occuring
+element by the induced global section, whereby it's meaningful to
+write~``$\Set \models \varphi$''. One can check that
+\[ \Set \models \varphi \qquad\text{iff}\qquad \text{$\varphi$ in the usual
+mathematical sense}. \]
+(A proof is presented in Lemma~\ref{lemma:properties-of-constant-sheaves}.)
+Hence the internal language of the topos~$\Set$ is just the ordinary
+mathematical language.\footnote{Readers familiar with Tarski's theorem on
+undefinability of truth will recognize that we're sweeping a subtle issue under
+the rug, as it's not actually possible, within the confines of a chosen formal
+system as foundation of mathematics, to formally define what it means for a
+formula to ``hold in the usual mathematical sense''. This issue can be solved
+in a number of ways, for instance by performing the Kripke--Joyal translation
+at the meta level (at the price of not having arbitrary set-indexed
+conjunctions and disjunctions available in the internal language, at least if
+the meta level is taken to be something like~$\mathrm{PRA}$) or by choosing a
+universe~$U$ and replacing~$\Set$ by the full subcategory of those sets
+contained in~$U$. The latter option can even be carried out without an increase
+in consistency strength, by employing a system
+like Feferman's~$\mathrm{ZFC}/\mathrm{S}$~\cite{shulman:set-theory,feferman:set-foundations}.}
+
 
 \subsection{Internal constructions}
 \label{sect:internal-constructions}
@@ -1385,7 +1410,6 @@ sheaves appearing as function symbols in~$\varphi$.
 We say that a formula~$\varphi$ holds \emph{at a point~$x \in X$} if and only
 if the formula obtained by substituting all parameters in~$\varphi$ with their
 stalks at~$x$ holds in the usual mathematical sense.
-% XXX: Discuss Tarski?
 
 \begin{lemma}\label{lemma:geometric-stalk-neighborhood}
 Let~$x \in X$ be a point. Let~$\varphi$ be a geometric formula (over some open
@@ -1613,7 +1637,7 @@ of set theory.
 Standard references for intuitionistic algebra are a textbook by Mines,
 Richman and
 Ruitenburg~\cite{mines-richman-ruitenburg:constructive-algebra} and a textbook
-by Lombardi~\cite{lombardi:quitte:constructive-algebra}, the standard
+by Lombardi~\cite{lombardi:quitte:constructive-algebra}. The standard
 reference for intuitionistic analysis is a book by Bishop and
 Bridges~\cite{bishop-bridges:constructive-analysis}. Further explanations and
 pointers to relevant literature can be found in an expository article and a
@@ -15210,8 +15234,6 @@ https://core.ac.uk/download/pdf/82351288.pdf. Wait, that doesn't seem to be
 true.
 
 XXX: Cite http://matematicas.unex.es/~navarro/res/ifag.pdf
-
-XXX: Mention Tarski undefiniability when saying "Set \models phi iff phi".
 
 XXX: Cite:
 https://www.researchgate.net/profile/Wim_Veldman/publication/2814951_An_intuitionistic_proof_of_Kruskal%27s_Theorem/links/00b4952f508dd31bf3000000/An-intuitionistic-proof-of-Kruskals-Theorem.pdf

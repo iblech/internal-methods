@@ -267,7 +267,7 @@
   \vspace*{-2em}
 
   \begin{columns}[t]
-    \begin{column}[t]{0.55\textwidth}
+    \begin{column}[t]{0.51\textwidth}
       \centering
 
       \begin{varblock}{\textwidth}{A baby example}
@@ -287,8 +287,8 @@
       \visible<2->{
         \justifying
         \textbf{Proof.} \bad{Assume not.} Then there is a \bad{minimal
-        prime ideal} $\ppp$. The matrix is injective over the \bad{field}~$A_\ppp = A[(A
-        \setminus \ppp)^{-1}]$. This is a contradiction to basic linear algebra.
+        prime ideal} $\ppp \subseteq A$. The matrix is injective over the \bad{field}~$A_\ppp = A[(A
+        \setminus \ppp)^{-1}]$; contradiction to basic linear algebra.
       }
     \end{column}
 
@@ -297,10 +297,17 @@
 
       \begin{varblock}{\textwidth}{Generic freeness\phantom{p}}
         \justifying
-        Generically, any finitely generated module over a reduced ring is free.
+        Generically, any finitely generated module over a reduced ring
+        is free.\phantom{g}
       \end{varblock}
 
-      \only<1-2>{\vspace*{-0.5em}\includegraphics[width=0.73\textwidth]{generic-freeness}}
+      \only<1-2>{{
+        \scriptsize\raggedright
+        (A ring is reduced iff $x^n=0$ implies $x=0$.)
+        \par
+      }}
+
+      \only<1-2>{\includegraphics[width=0.73\textwidth]{generic-freeness}}
 
       \visible<3->{
         \justifying
@@ -314,6 +321,32 @@
 \section{The forcing model}
 \setbeamertemplate{headline}{\mynav{gray}{black}{gray}}
 
+\renewcommand{\insertframeextra}{a}
+\begin{frame}{The Kripke--Joyal semantics}
+  \small
+  \mbox{\!\!\!Recall~$A[f^{-1}] = \bigl\{ \frac{u}{f^n} \,|\, u \in A, n \in \NN \bigr\}$.
+  Let~``$\models \varphi$'' be short for~``$1 \models \varphi$''.}
+  \[ \renewcommand{\arraystretch}{1.25}\begin{array}{@{}l@{\quad}c@{\quad}l@{}}
+    f \models \top &\text{iff}& \top \\
+    f \models \bot &\text{iff}& \text{$f$ is nilpotent} \\
+    f \models x = y &\text{iff}& x = y \in A[f^{-1}] \\
+    f \models \varphi \wedge \psi &\text{iff}&
+      \text{$f \models \varphi$ and $f \models \psi$} \\
+    f \models \varphi \vee \psi &\text{iff}&
+      \text{there exists a partition~$f^n = fg_1 + \cdots + fg_m$ with,} \\
+    &&\quad\text{for each~$i$, $fg_i \models \varphi$ or $fg_i \models \psi$} \\
+    f \models \varphi \Rightarrow \psi &\text{iff}&
+      \text{for all~$g \in A$, $fg \models \varphi$ implies $fg \models \psi$} \\
+    f \models \forall x\?A^\sim\_ \varphi &\text{iff}&
+      \text{for all~$g \in A$ and all $x_0 \in A[(fg)^{-1}]$, $fg \models \varphi[x_0/x]$} \\
+    f \models \exists x\?A^\sim\_ \varphi &\text{iff}&
+      \text{there exists a partition~$f^n = fg_1 + \cdots + fg_m$ with,} \\
+    &&\quad\text{for each~$i$, $fg_i \models \varphi[x_0/x]$ for some~$x_0 \in A[(fg_i)^{-1}]$}
+  \end{array} \]
+\end{frame}
+
+\renewcommand{\insertframeextra}{b}
+\addtocounter{framenumber}{-1}
 \begin{frame}{The little Zariski topos of a ring}
   Let~$A$ be a reduced commutative ring ($x^n = 0 \Rightarrow x = 0$).
 
@@ -371,31 +404,6 @@
       Miles Tierney. On the spectrum of a ringed topos. 1976.
     }};
   \end{tikzpicture}}
-\end{frame}
-
-\renewcommand{\insertframeextra}{b}
-\addtocounter{framenumber}{-1}
-\begin{frame}{The Kripke--Joyal semantics}
-  \small
-  \mbox{\!\!\!Recall~$A[f^{-1}] = \bigl\{ \frac{u}{f^n} \,|\, u \in A, n \in \NN \bigr\}$.
-  Let~``$\models \varphi$'' be short for~``$1 \models \varphi$''.}
-  \[ \renewcommand{\arraystretch}{1.25}\begin{array}{@{}l@{\quad}c@{\quad}l@{}}
-    f \models \top &\text{iff}& \top \\
-    f \models \bot &\text{iff}& \text{$f$ is nilpotent} \\
-    f \models x = y &\text{iff}& x = y \in A[f^{-1}] \\
-    f \models \varphi \wedge \psi &\text{iff}&
-      \text{$f \models \varphi$ and $f \models \psi$} \\
-    f \models \varphi \vee \psi &\text{iff}&
-      \text{there exists a partition~$f^n = fg_1 + \cdots + fg_m$ with,} \\
-    &&\quad\text{for each~$i$, $fg_i \models \varphi$ or $fg_i \models \psi$} \\
-    f \models \varphi \Rightarrow \psi &\text{iff}&
-      \text{for all~$g \in A$, $fg \models \varphi$ implies $fg \models \psi$} \\
-    f \models \forall x\?A^\sim\_ \varphi &\text{iff}&
-      \text{for all~$g \in A$ and all $x_0 \in A[(fg)^{-1}]$, $fg \models \varphi[x_0/x]$} \\
-    f \models \exists x\?A^\sim\_ \varphi &\text{iff}&
-      \text{there exists a partition~$f^n = fg_1 + \cdots + fg_m$ with,} \\
-    &&\quad\text{for each~$i$, $fg_i \models \varphi[x_0/x]$ for some~$x_0 \in A[(fg_i)^{-1}]$}
-  \end{array} \]
 \end{frame}
 \renewcommand{\insertframeextra}{}
 

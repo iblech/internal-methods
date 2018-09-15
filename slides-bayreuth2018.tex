@@ -160,7 +160,7 @@
   \end{center}}
 
 \setbeamertemplate{frametitle}{%
-  \vskip0.7em%
+  \vskip1.2em%
   \leavevmode%
   \begin{beamercolorbox}[dp=1ex,center]{}%
       \usebeamercolor[fg]{item}{\textbf{{\Large \insertframetitle}}}
@@ -178,11 +178,26 @@
   \addtocounter{framenumber}{\value{framenumberpreappendix}} 
 }
 
-\setbeamertemplate{headline}{%
+\newcommand{\mynav}[3]{%
   \begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex]{}%
-    \insertsectionnavigationhorizontal{\paperwidth}{}{}%
+    \begin{columns}
+      \begin{column}{0.333\textwidth}
+        \raggedright
+        \textcolor{#1}{\qquad\qquad Summary}
+        \par
+      \end{column}
+      \begin{column}{0.333\textwidth}
+        \centering
+        \textcolor{#2}{The forcing model}
+        \par
+      \end{column}
+      \begin{column}{0.333\textwidth}
+        \raggedleft
+        \textcolor{#3}{Revisiting the test cases \qquad\qquad}
+        \par
+      \end{column}
+    \end{columns}
   \end{beamercolorbox}%
-  \vskip0pt%
 }
 
 \newcommand{\insertframeextra}{}
@@ -203,10 +218,13 @@
 
 \addtocounter{framenumber}{-1}
 
+\setbeamertemplate{headline}{\mynav{gray}{gray}{gray}}
+
 {\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{4.95cm}\includegraphics[width=\paperwidth]{topos-horses}\end{minipage}}
 \begin{frame}[c]
   \centering
 
+  \bigskip
   \includegraphics[width=0.4\textwidth]{external-internal}
   \bigskip
 
@@ -227,11 +245,12 @@
 
 
 \section{Summary}
+\setbeamertemplate{headline}{\mynav{black}{gray}{gray}}
 
 \begin{frame}{Summary}
   \vspace*{-1em}
 
-  \visible<3>{
+  \visible<4>{
     \begin{changemargin}{-2.0em}{-0.5em}
       \begin{itemize}
         \item \ \\[-1.2em]\mbox{For any reduced ring~$A$, there is a ring~$A^\sim$ in a certain topos with}
@@ -251,7 +270,7 @@
     \begin{column}[t]{0.55\textwidth}
       \centering
 
-      \begin{varblock}{\textwidth}{A baby application}
+      \begin{varblock}{\textwidth}{A baby example}
         \justifying
         Let~$M$ be an injective matrix with more columns than rows over a ring~$A$.
         Then~$1 = 0$ in~$A$.
@@ -281,9 +300,9 @@
         Generically, any finitely generated module over a reduced ring is free.
       \end{varblock}
 
-      \only<1>{\vspace*{-0.5em}\includegraphics[width=0.73\textwidth]{generic-freeness}}
+      \only<1-2>{\vspace*{-0.5em}\includegraphics[width=0.73\textwidth]{generic-freeness}}
 
-      \visible<2->{
+      \visible<3->{
         \justifying
         \textbf{Proof.} See [Stacks Project].
       }
@@ -293,6 +312,7 @@
 
 
 \section{The forcing model}
+\setbeamertemplate{headline}{\mynav{gray}{black}{gray}}
 
 \begin{frame}{The little Zariski topos of a ring}
   Let~$A$ be a reduced commutative ring ($x^n = 0 \Rightarrow x = 0$).
@@ -343,7 +363,7 @@
   \end{columns}
 
   \visible<2>{\begin{tikzpicture}[overlay]
-    \draw[fill=white, draw=white, opacity=0.95] (-1,0) rectangle (\paperwidth,7.4);
+    \draw[fill=white, draw=white, opacity=0.85] (-1,0) rectangle (\paperwidth,7.4);
     \node[anchor=south west,inner sep=0] (image) at (0,0.8) {\vbox{
       \centering
       \includegraphics[width=0.9\textwidth]{tierney-on-the-spectrum-of-a-ringed-topos} \\
@@ -381,6 +401,7 @@
 
 
 \section{Revisiting the test cases}
+\setbeamertemplate{headline}{\mynav{gray}{gray}{black}}
 
 \begin{frame}{Revisiting the test cases}
   \vspace*{-1em}
@@ -388,7 +409,7 @@
   Let~$A^\sim$ be its mirror image in the little Zariski topos.
 
   \begin{columns}[t]
-    \begin{column}[t]{0.46\textwidth}
+    \begin{column}[t]{0.48\textwidth}
       \centering
 
       \scalebox{0.5}{$\begin{pmatrix}
@@ -398,7 +419,7 @@
       \end{pmatrix}$}
       \vspace*{-1em}
 
-      \begin{varblock}{\textwidth}{A baby application}
+      \begin{varblock}{\textwidth}{A baby example}
         \justifying
         Let~$M$ be an injective matrix over~$A$ with more columns than rows.
         Then~$1 = 0$ in~$A$.
@@ -406,11 +427,11 @@
 
       \justifying
       \textbf{Proof.} $M$ is also injective as a matrix over~$A^\sim$.
-      Since~$A^\sim$ is a field, we have~$1 = 0$ in~$A^\sim$ by basic linear
-      algebra. This amounts to~$1 = 0$ in~$A$.
+      Since~$A^\sim$ is a field, this is a contradiction by basic linear
+      algebra. Thus~$\models \bot$. This amounts to~$1 = 0$ in~$A$.
     \end{column}
 
-    \begin{column}[t]{0.58\textwidth}
+    \begin{column}[t]{0.57\textwidth}
       \centering
 
       \includegraphics[height=1.9em]{generic-freeness}
@@ -435,6 +456,7 @@
 
 
 \backupstart
+\setbeamertemplate{headline}{\mynav{gray}{gray}{gray}}
 
 {\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{4.95cm}\includegraphics[width=\paperwidth]{topos-horses}\end{minipage}}
 \begin{frame}

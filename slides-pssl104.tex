@@ -1,0 +1,263 @@
+\documentclass[11pt,utf8,notheorems,compress,t]{beamer}
+\usepackage{etex}
+
+\usepackage[english]{babel}
+
+\usepackage{mathtools}
+\usepackage{booktabs}
+\usepackage{stmaryrd}
+\usepackage{array}
+\usepackage{ragged2e}
+\usepackage{multicol}
+\usepackage{tabto}
+\usepackage{xstring}
+\usepackage{ifthen}
+\usepackage{soul}\setul{0.3ex}{}
+\usepackage[all]{xy}
+\xyoption{rotate}
+\usepackage{tikz}
+\usetikzlibrary{calc,shapes,shapes.callouts,shapes.arrows,patterns,fit,backgrounds,decorations.pathmorphing}
+\hypersetup{colorlinks=true}
+\usepackage{multimedia}
+\newcommand{\video}[2]{\movie[width=#2,height=#2,autostart,loop,poster]{}{#1}}
+\hypersetup{colorlinks=false}
+
+\usepackage{pifont}
+\newcommand{\cmark}{\ding{51}}
+\newcommand{\xmark}{\ding{55}}
+\DeclareSymbolFont{extraup}{U}{zavm}{m}{n}
+\DeclareMathSymbol{\varheart}{\mathalpha}{extraup}{86}
+
+\graphicspath{{images/}}
+
+\usepackage[protrusion=true,expansion=true]{microtype}
+
+\setlength\parskip{\medskipamount}
+\setlength\parindent{0pt}
+
+\title{How not to constructivize cohomology}
+\author{Ingo Blechschmidt}
+\date{October 6th, 2018}
+
+\useinnertheme[shadow=true]{rounded}
+\setbeamerfont{block title}{size={}}
+
+\useinnertheme{rectangles}
+
+\usecolortheme{orchid}
+\usecolortheme{seahorse}
+\definecolor{mypurple}{RGB}{150,0,255}
+\setbeamercolor{structure}{fg=mypurple}
+\definecolor{myred}{RGB}{150,0,0}
+\setbeamercolor*{title}{bg=myred,fg=white}
+\setbeamercolor*{titlelike}{bg=myred,fg=white}
+\setbeamercolor{frame}{bg=black}
+
+\usefonttheme{serif}
+\usepackage[T1]{fontenc}
+\usepackage{libertine}
+
+\newcommand{\A}{\mathcal{A}}
+\renewcommand{\AA}{\mathbb{A}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\F}{\mathcal{F}}
+\renewcommand{\G}{\mathcal{G}}
+\newcommand{\GG}{\mathbb{G}}
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\K}{\mathcal{K}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\TT}{\mathbb{T}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\renewcommand{\P}{\mathcal{P}}
+\newcommand{\ppp}{\mathfrak{p}}
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\defeqv}{\vcentcolon\equiv}
+\newcommand{\Sh}{\mathrm{Sh}}
+\newcommand{\GL}{\mathrm{GL}}
+\newcommand{\Zar}{\mathrm{Zar}}
+\newcommand{\op}{\mathrm{op}}
+\newcommand{\Set}{\mathrm{Set}}
+\newcommand{\Eff}{\mathrm{Ef{}f}}
+\newcommand{\Sch}{\mathrm{Sch}}
+\newcommand{\Aff}{\mathrm{Aff}}
+\newcommand{\LRS}{\mathrm{LRS}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\Spec}{\mathrm{Spec}}
+\newcommand{\lra}{\longrightarrow}
+\newcommand{\RelSpec}{\operatorname{Spec}}
+\renewcommand{\_}{\mathpunct{.}}
+\newcommand{\?}{\,{:}\,}
+\newcommand{\speak}[1]{\ulcorner\text{\textnormal{#1}}\urcorner}
+\newcommand{\ull}[1]{\underline{#1}}
+\newcommand{\affl}{\ensuremath{{\ull{\AA}^1}}}
+\newcommand{\Ll}{\vcentcolon\!\Longleftrightarrow}
+\newcommand{\inv}{inv.\@}
+\newcommand{\seq}{\vdash_{\!\!\!\vec x}}
+
+\setbeamertemplate{blocks}[rounded][shadow=false]
+
+% Adapted from https://latex.org/forum/viewtopic.php?t=2251 (Stefan Kottwitz)
+\newenvironment<>{hilblock}{
+  \begin{center}
+    \begin{minipage}{9.05cm}
+      \setlength{\textwidth}{9.05cm}
+      \begin{actionenv}#1
+        \def\insertblocktitle{}
+        \par
+        \usebeamertemplate{block begin}}{
+        \par
+        \usebeamertemplate{block end}
+      \end{actionenv}
+    \end{minipage}
+  \end{center}}
+
+\newcommand{\bignumber}[1]{
+  \renewcommand{\insertenumlabel}{#1}\scalebox{1.5}{\usebeamertemplate{enumerate item}}
+}
+\newcommand{\bigheart}{\includegraphics{heart}}
+
+\newenvironment{changemargin}[2]{%
+  \begin{list}{}{%
+    \setlength{\topsep}{0pt}%
+    \setlength{\leftmargin}{#1}%
+    \setlength{\rightmargin}{#2}%
+    \setlength{\listparindent}{\parindent}%
+    \setlength{\itemindent}{\parindent}%
+    \setlength{\parsep}{\parskip}%
+  }%
+  \item[]}{\end{list}}
+
+\tikzset{
+  invisible/.style={opacity=0,text opacity=0},
+  visible on/.style={alt={#1{}{invisible}}},
+  alt/.code args={<#1>#2#3}{%
+    \alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}}}
+}
+
+\newcommand{\pointthis}[3]{%
+  \tikz[remember picture,baseline]{
+    \node[anchor=base,inner sep=0,outer sep=0] (#2) {#2};
+    \node[visible on=#1,overlay,rectangle callout,rounded corners,callout relative pointer={(0.3cm,0.5cm)},fill=blue!20] at ($(#2.north)+(-0.1cm,-1.1cm)$) {#3};
+  }%
+}
+
+% Adapted from https://latex.org/forum/viewtopic.php?t=2251 (Stefan Kottwitz)
+\newenvironment<>{varblock}[2]{
+  \begin{center}
+    \begin{minipage}{#1}
+      %\setlength{\textwidth}{#1}
+      \begin{actionenv}#3
+	\def\insertblocktitle{\centering #2}
+	\par
+	\usebeamertemplate{block begin}}{
+        \par
+        \usebeamertemplate{block end}
+      \end{actionenv}
+    \end{minipage}
+  \end{center}}
+
+\setbeamertemplate{headline}{%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex]{}%
+    \insertsectionnavigationhorizontal{\paperwidth}{}{}%
+  \end{beamercolorbox}%
+  \vskip0pt%
+}
+
+\setbeamertemplate{frametitle}{%
+  \vskip1.2em%
+  \leavevmode%
+  \begin{beamercolorbox}[dp=1ex,center]{}%
+      \usebeamercolor[fg]{item}{\textbf{{\Large \insertframetitle}}}
+  \end{beamercolorbox}%
+}
+
+\setbeamertemplate{navigation symbols}{}
+
+\newcounter{framenumberpreappendix}
+\newcommand{\backupstart}{
+  \setcounter{framenumberpreappendix}{\value{framenumber}}
+}
+\newcommand{\backupend}{
+  \addtocounter{framenumberpreappendix}{-\value{framenumber}}
+  \addtocounter{framenumber}{\value{framenumberpreappendix}} 
+}
+
+\newcommand{\insertframeextra}{}
+\setbeamertemplate{footline}{%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex,dp=1ex,right,rightskip=1mm,leftskip=1mm]{}%
+    % \inserttitle
+    \hfill
+    \insertframenumber\insertframeextra\,/\,\inserttotalframenumber
+  \end{beamercolorbox}%
+  \vskip0pt%
+}
+
+\newcommand{\hil}[1]{{\usebeamercolor[fg]{item}{\textbf{#1}}}}
+\newcommand{\bad}[1]{\textcolor{red!90}{\textbf{#1}}}
+
+\begin{document}
+
+\addtocounter{framenumber}{-1}
+
+{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{4.95cm}\includegraphics[width=\paperwidth]{topos-horses}\end{minipage}}
+\begin{frame}[c]
+  \centering
+
+  \bigskip
+  \includegraphics[width=0.2\textwidth]{sheaf}
+  \bigskip
+
+  \hil{How not to constructivize cohomology}
+
+  \scriptsize
+  \textit{-- interruptions welcome at any point --}
+  \bigskip
+
+  Ingo Blechschmidt \\
+  University of Verona
+  \bigskip
+
+  104th Peripatetic Seminar on Sheaves and Logic in Amsterdam \\
+  October 6th, 2018
+  \par
+\end{frame}}
+
+
+\section{Sheaf cohomology}
+
+\begin{frame}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \centering{\usebeamercolor[fg]{item}{\textbf{\Large Sheaf cohomology}}}\bigskip
+
+      \justifying
+      Let~$E$ be a sheaf of modules over a space~$X$.
+      Choose an \bad{injective resolution} $0 \to E \to I^0 \to I^1 \to \cdots$.
+      Then $H^n(X; E)$ is the $n$-th cohomology of
+      \[ (0 \xrightarrow{\phantom{d^0}} I^0(X) \xrightarrow{d^0} I^1(X) \xrightarrow{d^1} \cdots), \]
+      that is~$\operatorname{ker}(d^n)\mathop{/}\operatorname{im}(d^{n-1})$.
+    %  \begin{align*}
+    %    H^n(X; E) &\defeq \text{$n$-th cohomology of $(0 \to I^0(X) \to I^1(X) \to \cdots)$} \\
+    %    &\phantom{\vcentcolon}= \operatorname{ker}(I^n(X) \to I^{n+1}(X))\mathop{/}\operatorname{im}(I^{n-1}(X) \to I^n(X))
+    %  \end{align*}
+    %  is well-defined up to isomorphism.
+
+      \begin{itemize}
+        \item The modules~$H^n(X; E)$ are important invariants.
+        \item Let~$A$ be a ring. Then $H^n(X; \underline{A}) = H_{\text{sing}}^n(X;
+        A)$, if~$X$ is locally semiconnected [XXX].
+      \end{itemize}
+    \end{column}
+  
+    \begin{column}{0.6\textwidth}
+      \centering{\usebeamercolor[fg]{item}{\textbf{\Large Constructive mathematics}}}\bigskip
+
+      \justifying
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\end{document}

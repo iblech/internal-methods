@@ -91,6 +91,10 @@ A sheaf~$F$ on a topological space (or locale)~$X$ is \emph{flabby} (flasque) if
 if all restriction maps~$F(X) \to F(U)$ are surjective. The following
 properties of flabby sheaves render them fundamental to the theory of sheaf
 cohomology:
+% XXX: Je nachdem, wie die Einleitung aussieht, hier die Betonung anders
+% setzen. Fundamental ist nur, dass man welke Auflösungen zur Berechnung von
+% Garbenkohomologie verwenden kann und dass sie von f_* bewahrt werden. Die
+% restlichen Eigenschaften sind wichtig, aber nicht fundamental.
 \begin{enumerate}
 \item Let~$(U_i)_i$ be an open covering of~$X$.
 A sheaf~$F$ on~$X$ is flabby if and only if all of its restrictions~$F|_{U_i}$
@@ -124,14 +128,15 @@ requires different commitments: For the alternative definition,
 properties~(1),~(3b) and~(4a) can be verified purely intuitionistically, and
 property~(2) can be verified purely intuitionistically for open injections~$f$.
 There is a substitute for property~(3a) which can be verified purely
-intuitionistically. We comment on the status of property~(4b) in
+intuitionistically. We do not know whether property~(4b) can be established
+purely intuitionistically, but we give a rudimentary analysis in
 Section~\ref{sect:conclusion}.
 
 Both definitions can be generalized to yield notions of flabby objects in
 elementary toposes; but for toposes which are not localic, the two resulting
 notions will differ, and only the one obtained from the alternative definition
 is stable under pullback and
-can be characterized in the internal language. We therefore adapt in this paper the
+can be characterized in the internal language. We therefore adopt in this paper the
 alternative one as the official definition.
 
 \begin{defn}\label{defn:flabby-sheaf}
@@ -312,12 +317,18 @@ Proposition~\ref{prop:injective-flabby} to modules: If~$I$ is an injective set,
 then the set~$I^1 \cong I$ is flabby. If~$I$ is an injective module, then the
 set~$\Hom_R(R,I) \cong I$ is flabby.
 
-\begin{prop}\label{prop:set-of-extensions-flabby}
-Let~$I$ be an injective set. Let~$i : A \to B$ be an injection.
+\begin{lemma}\label{lemma:set-of-extensions-flabby}
+\begin{enumerate}
+\item Let~$I$ be an injective set. Let~$i : A \to B$ be an injection.
 Let~$f : A \to I$ be an arbitrary map. Then the set of extensions of~$f$ to~$B$
-is flabby.\end{prop}
+is flabby.
+\item Let~$I$ be an injective~$R$-module. Let~$i : A \to B$ be a linear injection.
+Let~$f : A \to I$ be an arbitrary linear map. Then the set of linear extensions of~$f$ to~$B$
+is flabby.
+\end{enumerate}
+\end{lemma}
 
-\begin{proof}Set~$X \defeq \{ \bar{f} \in I^B \,|\, \bar{f} \circ i =
+\begin{proof}For the first claim, we set~$X \defeq \{ \bar{f} \in I^B \,|\, \bar{f} \circ i =
 f \}$. Let~$K \subseteq X$ be a subsingleton. We consider the injectivity diagram
 \[ \xymatrix{
   i[A] \cup B' \ar@{^{(}->}[r]\ar[d]_g & B \ar@{-->}@/^/[ld] \\
@@ -325,23 +336,16 @@ f \}$. Let~$K \subseteq X$ be a subsingleton. We consider the injectivity diagra
 } \]
 where~$B'$ is the set~$\{ s \in B \,|\, \text{$K$ is inhabited} \}$ and the solid
 vertical arrow~$g$ is defined in the following way: Let~$s \in i[A] \cup B'$.
-If~$s \in i[A]$, then we set~$g(s) \defeq f(a)$, where~$a \in A$ is an element such
-that~$s = i(a)$. If~$s \in B'$, then we set~$g(s) \defeq \bar{f}(s)$,
+If~$s \in i[A]$, we set~$g(s) \defeq f(a)$, where~$a \in A$ is an element such
+that~$s = i(a)$. If~$s \in B'$, we set~$g(s) \defeq \bar{f}(s)$,
 where~$\bar{f}$ is any element of~$K$. These prescriptions determine a well-defined
 map.
 
 Since~$I$ is injective, there exists a dotted map rendering the diagram
 commutative. This map is an element of~$X$. Furthermore, if~$K$ is inhabited,
 then this map is an element of~$K$.
-\end{proof}
 
-\begin{prop}\label{prop:set-of-linear-extensions-flabby}
-Let~$I$ be an injective~$R$-module. Let~$i : A \to B$ be a linear injection.
-Let~$f : A \to I$ be an arbitrary linear map. Then the set of linear extensions of~$f$ to~$B$
-is flabby.\end{prop}
-
-\begin{proof}The proof is similar to the proof of
-Proposition~\ref{prop:set-of-extensions-flabby}. We
+The proof of the second claim is similar. We
 set~$X \defeq \{ \bar{f} \in \Hom_R(B,I) \,|\, \bar{f} \circ i =
 f \}$. Let~$K \subseteq X$ be a subsingleton. We consider the injectivity diagram
 \[ \xymatrix{
@@ -432,7 +436,7 @@ such that the following diagram commutes.
 \begin{prop}\label{prop:basic-properties-of-flabby-objects}
 Let~$X$ and~$T$ be objects of an elementary topos~$\E$.
 \begin{enumerate}
-\item If~$X$ is flabby, so is~$X \times T$ as an object in~$\E/T$.
+\item If~$X$ is flabby, so is~$X \times T$ as an object of~$\E/T$.
 \item The converse holds if the unique morphism~$T \to 1$ is an epimorphism.
 \end{enumerate}
 \end{prop}
@@ -447,8 +451,8 @@ Then~$F$ is flabby as a sheaf if and only if~$F$ is flabby as an object of the
 sheaf topos~$\Sh(X)$.
 \end{prop}
 
-\begin{proof}The proof is routine; we only verify ``only if'' direction.
-Let~$F$ be flabby as a sheaf. It suffices to verify the definition for stages
+\begin{proof}The proof is routine; we only verify the ``only if'' direction.
+Let~$F$ be flabby as a sheaf. It suffices to verify the definining condition for stages
 of the form~$A = \Hom(\cdot,U)$, where~$U$ is an open of~$X$. A monomorphism~$K
 \to A$ then amounts to an open~$V \subseteq U$ (the union of all opens on
 which~$K$ is inhabited). A morphism~$K \to F$ amounts to a section~$s \in
@@ -467,7 +471,7 @@ the~$(i,t)$-summand by~$t|_{(V \cup V_i) \cap U}$.
 \end{proof}
 
 \begin{prop}\label{prop:global-elements}
-Let~$X$ be a flabby object in an elementary topos~$\E$. If~$\E$ is localic and
+Let~$X$ be a flabby object of a localic topos~$\E$. If
 Zorn's lemma is available in the metatheory, then~$X$ possesses a global element (a morphism~$1 \to X$).
 \end{prop}
 
@@ -582,15 +586,15 @@ extension $B \to I$ of~$f$ along~$i$. To this end, we consider the object of
 such extensions, defined by the internal expression
 \[ F \defeq \{ \bar{f} \in [B,I] \,|\, \bar{f} \circ i = f \}. \]
 Global elements of~$F$ are extensions of the kind we are looking for.
-By Proposition~\ref{prop:set-of-extensions-flabby}, this object is flabby.
+By Lemma~\ref{lemma:set-of-extensions-flabby}, this object is flabby.
 By Proposition~\ref{prop:global-elements}, it has a global element.
 \end{proof}
 
 The analogue of Theorem~\ref{thm:injectivity-external-internal} for modules
 holds as well, if~$\E$ is assumed to have a natural numbers object. The proof
 carries over word for word, only referencing
-Proposition~\ref{prop:set-of-extensions-flabby} instead of
-Proposition~\ref{prop:set-of-linear-extensions-flabby}.
+Lemma~\ref{lemma:set-of-extensions-flabby}(2) instead of
+Lemma~\ref{lemma:set-of-extensions-flabby}(1).
 It seems that Harting was not aware of this, even though she did show that
 injectivity of sheaves of modules over topological spaces is a local
 notion~\cite{XXX}, as she
@@ -690,9 +694,21 @@ holds in the effective topos.
 \end{prop}
 
 \begin{prop}\label{prop:semienough-flabby-modules}
-Assuming the law of excluded middle, any~$\neg\neg$-separated
+Assuming the law of excluded middle in the metatheory, any~$\neg\neg$-separated
 module in the effective topos can be embedded into a flabby module.
 \end{prop}
+
+% Δ(X) ist welk, falls X bewohnt.
+% Δ(X) ist separiert.
+% Ist A separierter Modul, so lässt sich A in einen welken Modul einbetten
+% (der seinerseits separiert ist, er ist nämlich Δ(Γ(A))).
+% Sind welke Mengen separiert? Nein: Omega.
+% Sind welke Moduln separiert? Nein: Ich denke mittlerweile, dass sich jeder
+% Modul in einen welken einbetten lässt, über etwas, was wie eine induktive
+% Konstruktion aussieht.
+
+% Rem.: diskret =/=> welk, sep =/=> welk (Bsp.: konstante Garbe Z auf Mnf.)
+% Umkehrung auch nicht (Bsp.: Godemontkonstruktion, Omega)
 
 The intuitive
 reason for why Proposition~\ref{prop:flabby-effective-sets} holds is the
@@ -728,15 +744,16 @@ the proof of Proposition~\ref{prop:semienough-flabby-modules} will accordingly
 not be effective sets.
 
 \begin{proof}[Proof of Proposition~\ref{prop:flabby-effective-sets}]
-For any Turing machine~$e$, let~$v_e$ be the set
+For any Turing machine~$e$, let~$v_e : |X| \to \Sigma$ be the nonstandard
+predicate given by
 \begin{multline*}
-  v_e = \{ m \in \NN \,|\,
+  v_e(x) = \{ m \in \NN \,|\,
   \text{there is an element~$x_0 \in |X|$ such that} \\
   \text{$e$ terminates with an element of~$\llbracket x_0 = x_0 \rrbracket$ and
   $m \in \llbracket x = x_0 \rrbracket$} \}
 \end{multline*}
 and let~$K_e \in \Sigma^{|X| \times \Sigma}$ be the nonstandard predicate given by
-\[ K_e(x,u) = \llbracket (x = x) \wedge (u \leftrightarrow v_e) \rrbracket. \]
+\[ K_e(x,u) = \llbracket (x = x) \wedge (u \leftrightarrow v_e(x)) \rrbracket. \]
 One can explicitly construct a realizer~$a_e$ of the statement~``$K_e = K_e$'',
 where~$({=})$ is the nonstandard equality predicate of the object~$\P_{\leq1}(X)$
 of subterminals of~$X$. This is where the assumption that~$X$ is effective is
@@ -769,7 +786,7 @@ realized; hence~``$f(x_{K_e}) = x_{K_e}$'' is as well.
 \end{proof}
 
 \begin{proof}[Proof of Proposition~\ref{prop:semienough-flabby-modules}]
-Let~$(\Delta \dashv \Gamma) : \Set \to \Eff$ be the inclusion of the
+Let~$(\Gamma \dashv \Delta) : \Set \to \Eff$ be the inclusion of the
 double-negation sheaves. For a~$\neg\neg$-separated module~$M$ in the effective
 topos, the canonical morphism~$M \to \Delta(\Gamma(M))$ is a monomorphism; the
 set~$\Gamma(M)$ is flabby by virtue of being inhabited; and~$\Delta$ preserves

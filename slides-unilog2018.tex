@@ -25,7 +25,7 @@
 \usepackage{pifont}
 \newcommand{\cmark}{\ding{51}}
 \newcommand{\xmark}{\ding{55}}
-\DeclareSymbolFont{extraup}{U}{zavm}{m}{n}
+\DeclareSymbolFont{extraup}{U}{zavm}{m}{n}  % needs arev package installed
 \DeclareMathSymbol{\varheart}{\mathalpha}{extraup}{86}
 
 \graphicspath{{images/}}
@@ -37,7 +37,7 @@
 
 \title{Exploring the internal language of toposes}
 \author{Ingo Blechschmidt}
-\date{June 22nd, 2018 XXX}
+\date{June 22nd, 2018}
 
 \useinnertheme[shadow=true]{rounded}
 \useoutertheme[subsection=false]{miniframes}
@@ -181,7 +181,7 @@
 
 \setbeamertemplate{headline}{%
   \begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex]{}%
-    \insertnavigation{\paperwidth}%
+    \insertsectionnavigationhorizontal{\paperwidth}{}{}%
   \end{beamercolorbox}%
   \vskip0pt%
 }

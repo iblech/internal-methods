@@ -4,7 +4,7 @@
 \usepackage{pgfpages}
 \setbeameroption{show notes on second screen}
 \setbeamertemplate{note page}[plain]
-\newcommand{\jnote}[2]{\only<#1>{\note{\justifying#2\par}}}
+\newcommand{\jnote}[2]{\only<#1>{\note{\setlength\parskip{\medskipamount}\justifying#2\par}}}
 
 % Workaround for the issue described at
 % https://tex.stackexchange.com/questions/164406/beamer-using-href-in-notes.
@@ -193,7 +193,7 @@
 
 \setbeamertemplate{headline}{%
   \begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex]{}%
-    \insertnavigation{\paperwidth}%
+    \insertsectionnavigationhorizontal{\paperwidth}{}{}%
   \end{beamercolorbox}%
   \vskip0pt%
 }

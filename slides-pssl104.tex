@@ -157,7 +157,8 @@
         \usebeamertemplate{block end}
       \end{actionenv}
     \end{minipage}
-  \end{center}}
+  \end{center}
+}
 
 \setbeamertemplate{headline}{%
   \begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex]{}%
@@ -167,7 +168,7 @@
 }
 
 \setbeamertemplate{frametitle}{%
-  \vskip1.2em%
+  \vskip1.0em%
   \leavevmode%
   \begin{beamercolorbox}[dp=1ex,center]{}%
       \usebeamercolor[fg]{item}{\textbf{{\Large \insertframetitle}}}
@@ -196,7 +197,7 @@
 }
 
 \newcommand{\hil}[1]{{\usebeamercolor[fg]{item}{\textbf{#1}}}}
-\newcommand{\bad}[1]{\textcolor{red!90}{\textbf{#1}}}
+\newcommand{\bad}[1]{\textcolor{red!90}{#1}}
 
 \begin{document}
 
@@ -228,36 +229,225 @@
 
 \section{Sheaf cohomology}
 
-\begin{frame}
+%{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\includegraphics[width=\paperwidth]{leray-shaded}\end{minipage}}
+\begin{frame}{Sheaf cohomology}
+  \vspace*{-1.2em}
+  \begin{varblock}{\textwidth}{}
+    \justifying
+    Let~$E$ be a sheaf of modules over a space~$X$.
+    Let~$\Gamma$ be the global sections functor.
+    Choose an \bad{injective resolution} $0 \to E \to I^0 \to I^1 \to \cdots$.
+    Then the \hil{$\boldsymbol{n}$-th cohomology of $\boldsymbol{E}$ is}
+    \begin{align*}
+      H^n(X; E) &\defeq \text{$n$-th cohomology of $(0 \to \Gamma I^0 \to \Gamma I^1 \to \cdots)$} \\
+      &\phantom{\vcentcolon}= \operatorname{ker}(\Gamma I^n \to \Gamma I^{n+1})\mathop{/}\operatorname{im}(\Gamma I^{n-1} \to \Gamma I^n).
+    \end{align*}
+  \end{varblock}
+
+  \begin{itemize}
+    \item The modules~$H^n(X; E)$ are important invariants.
+
+          [ $\chi(X; \O_X) = 1 - \operatorname{genus}_X$, $(C \cdot C') = \chi(\O_C \otimes_{\O_X}^{\mathbb{L}} \O_C')$ ]
+          \\[0.6em]
+    \item Let~$A$ be an abelian group. Let~$X$ be semi-locally contractible.
+          Then $H^n(X; \underline{A}) = H_{\text{sing}}^n(X; A)$.
+          \\[0.6em]
+    \item Let~$f : X \to Y$ be continuous. Then there is a spectral sequence
+          $H^i(Y; R^jf_*(E)) \Rightarrow H^{i+j}(X; E)$.
+  \end{itemize}
+\end{frame}
+%}
+
+
+\section{Constructive mathematics}
+
+\begin{frame}{Constructive mathematics}
+  \centering
+
+  \vspace*{-1em}
+  mathematics without $\varphi \vee \neg\varphi$,\ \ $\neg\neg\varphi \Rightarrow \varphi$,\ \ axiom of choice
+  \bigskip
+
+  \centering\includegraphics[width=0.5\textwidth]{andrej-bauer-five-stages} \\
+  \scriptsize\href{https://video.ias.edu/members/1213/0318-AndrejBauer}{Andrej Bauer, talk at the IAS}\par
+  \small
+  \bigskip
+
   \begin{columns}
-    \begin{column}{0.5\textwidth}
-      \centering{\usebeamercolor[fg]{item}{\textbf{\Large Sheaf cohomology}}}\bigskip
+    \begin{column}{0.50\textwidth}
+      \centering
+      \hil{Axiomatic freedom}
 
-      \justifying
-      Let~$E$ be a sheaf of modules over a space~$X$.
-      Choose an \bad{injective resolution} $0 \to E \to I^0 \to I^1 \to \cdots$.
-      Then $H^n(X; E)$ is the $n$-th cohomology of
-      \[ (0 \xrightarrow{\phantom{d^0}} I^0(X) \xrightarrow{d^0} I^1(X) \xrightarrow{d^1} \cdots), \]
-      that is~$\operatorname{ker}(d^n)\mathop{/}\operatorname{im}(d^{n-1})$.
-    %  \begin{align*}
-    %    H^n(X; E) &\defeq \text{$n$-th cohomology of $(0 \to I^0(X) \to I^1(X) \to \cdots)$} \\
-    %    &\phantom{\vcentcolon}= \operatorname{ker}(I^n(X) \to I^{n+1}(X))\mathop{/}\operatorname{im}(I^{n-1}(X) \to I^n(X))
-    %  \end{align*}
-    %  is well-defined up to isomorphism.
-
-      \begin{itemize}
-        \item The modules~$H^n(X; E)$ are important invariants.
-        \item Let~$A$ be a ring. Then $H^n(X; \underline{A}) = H_{\text{sing}}^n(X;
-        A)$, if~$X$ is locally semiconnected [XXX].
-      \end{itemize}
+      \footnotesize
+      \mbox{``Every map~$\NN \to \NN$ is computable.''}
+      \mbox{``Every map~$\RR \to \RR$ is continuous.''}
+      \mbox{``Every map~$\affl \to \affl$ is polynomial.''}
+      \mbox{``Heyting Arithmetic has exactly one model.''}
+      \mbox{``The subsets of~$\{\heartsuit\}$ form a proper class.''}
+      \mbox{``There is an injection~$\RR \to \NN$.''}
     \end{column}
-  
-    \begin{column}{0.6\textwidth}
-      \centering{\usebeamercolor[fg]{item}{\textbf{\Large Constructive mathematics}}}\bigskip
 
-      \justifying
+    \begin{column}{0.50\textwidth}
+      \centering
+      \hil{Applications}
+
+      \footnotesize
+      \mbox{program extraction} \\
+      \mbox{synthetic differential geometry} \\
+      \mbox{synthetic algebraic geometry} \\
+      \mbox{synthetic domain theory} \\
+      \mbox{new reduction techniques in algebra} \\
+      \mbox{Bohr topos for quantum mechanics}
     \end{column}
   \end{columns}
 \end{frame}
+
+
+\section{Relativization by internalization}
+
+\begin{frame}{Relativization by internalization}
+  \vspace*{-0.5em}
+  Let~$X$ be a space. The \hil{internal language} of the topos~$\Sh(X)$ allows us to reason
+  about sheaves on~$X$ in \hil{naive element-based terms}.
+
+  \only<1>{
+    \centering
+    \rotatebox{90}{\tiny\scalebox{0.8}{Illustration: Carina Willbold}}\hspace{-0.05cm}%
+    \includegraphics[width=0.7\textwidth]{external-internal-small}
+    \par
+  }
+  \pause
+
+  \begin{center}
+    \small
+    \begin{tabular}{ll}
+      \toprule
+      externally & internally to $\Sh(X)$ \\
+      \midrule
+      sheaf & set/type \\
+      morphism of sheaves & map between sets \\
+      %monomorphism of sheaves & injective map between sets \\
+      %epimorphism of sheaves & surjective map between sets \\
+      sheaf of cont.\@ real-valued functions & set of Dedekind reals \\
+      %sheaf of modules & module \\
+      %coherent sheaf of modules & coherent module \\
+      over-locale~$f : Y \to X$ & locale~$I(Y)$ \\
+      sheaf over~$Y$ & sheaf over~$I(Y)$ \\
+      higher direct image $R^n f_* E$ & \bad{??} \\
+      \midrule
+      \pause
+      \begin{minipage}{5.1cm}
+        In continuous families of continuous functions with opposite signs,
+        zeros can locally be picked continuously.
+      \end{minipage} &
+      \begin{minipage}{4.4cm}
+        \raggedright
+        The intermediate value theorem holds.
+      \end{minipage} \\
+      \midrule
+      \begin{minipage}{5.1cm}
+        Every finite type sheaf of modules is finite locally free \emph{on a dense open}.
+      \end{minipage} &
+      \begin{minipage}{4.4cm}
+        Every finitely generated vector space is \emph{not not} finite free.
+      \end{minipage} \\
+      \midrule
+      \begin{minipage}{5.1cm}
+        \raggedright
+        Grothendieck's generic freeness lemma holds.
+      \end{minipage} &
+      \begin{minipage}{4.2cm}
+        \raggedright
+        (Some trivial observation about modules over fields.)
+      \end{minipage} \\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+\end{frame}
+
+
+\section{Internalizing higher direct images}
+
+\begin{frame}{On injective objects}
+  \begin{block}{}
+    A set~$M$ is \hil{injective} iff for any injection~$A \to B$,
+    any map~$A \to M$ extends to a map on~$B$.
+  \end{block}
+  \vspace*{-1em}
+
+  \begin{itemize}
+    \small
+    \item ``A set is injective iff it's inhabited'' is
+          a \hil{constructive taboo}.
+    \item Constructively, there are still \hil{enough injective sets}.
+          % Every set~$M$ embeds into an injective set, for instance~$P(M)$ or~$P_{\leq1}(M)$.
+  \end{itemize}
+  \pause
+
+  \begin{block}{}
+    A module~$M$ is \hil{injective} iff for any linear injection~$A \to B$,
+    any linear map~$A \to M$ extends to a linear map on~$B$.
+  \end{block}
+  \vspace*{-1em}
+
+  \begin{itemize}
+    \small
+    \item It's consistent with \textbf{ZF} that there are no injective modules [Blass 1979].
+    \item The existence of enough injective modules is \hil{constructively neutral}.
+  \end{itemize}
+  \pause
+
+  \begin{block}{}
+    \justifying
+    A sheaf of modules~$M$ is \hil{injective} iff for any linear monomorphism~$A \to B$,
+    any linear morphism~$A \to M$ extends to a linear morphism on~$B$.
+  \end{block}
+  \vspace*{-1em}
+
+  \begin{itemize}
+    \small
+    \item Assuming choice, there are enough injectives over any site.
+    \item Assuming Zorn's lemma, a sheaf of modules over a locale~$X$ is injective iff, from the internal
+    point of view of~$\Sh(X)$, it is an injective module.
+  \end{itemize}
+\end{frame}
+
+
+\section{Flabby resolutions}
+
+\begin{frame}{Flabby resolutions}
+  \begin{block}{}
+    A sheaf~$E$ on a space~$X$ is \hil{flabby} iff any local section~$s \in
+    E(U)$ on an open~$U$ extends to a global section~$\bar s \in E(X)$: $\bar s|_U = s$.
+    % XXX: change
+  \end{block}
+  \vspace*{-1em}
+
+  \begin{itemize}
+    \small
+    \item Injective sheaves of sets and injectives sheaves of modules are flabby.
+    \item Every sheaf embeds into a flabby sheaf.
+    \item Assuming the law of excluded middle, any sheaf of modules over a
+    topological space embeds into a flabby sheaf of modules.
+    \item Assuming Zorn's lemma, flabby sheaves of modules are \hil{acyclic for the global sections functor}.
+    \item Assuming \bad{??}, sheaf cohomology and higher direct images can be computed using \hil{flabby resolutions}.
+  \end{itemize}
+
+  \begin{block}{}
+    A set~$M$ is \hil{flabby} iff for any subterminal~$K \subseteq M$, there is
+    an element~$x \in M$ such that~$K \subseteq \{x\}$.
+  \end{block}
+  \vspace*{-1em}
+
+  \begin{itemize}
+    \small
+    \item A sheaf is flabby iff, from the internal point of view, it's a flabby set.
+    \item Every set embeds into a flabby set.
+    \item \bad{Open question:} Does every module embed into a flabby module?
+  \end{itemize}
+\end{frame}
+
+% XXX: Results about Eff
+% XXX: Summary slide
 
 \end{document}

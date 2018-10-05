@@ -139,8 +139,17 @@
 
 \newcommand{\pointthis}[3]{%
   \tikz[remember picture,baseline]{
-    \node[anchor=base,inner sep=0,outer sep=0] (#2) {#2};
-    \node[visible on=#1,overlay,rectangle callout,rounded corners,callout relative pointer={(0.3cm,0.5cm)},fill=blue!20] at ($(#2.north)+(-0.1cm,-1.1cm)$) {#3};
+    \node[anchor=base,inner sep=0,outer sep=0,color=blue!90] (#2) {#2};
+    \node[visible on=#1,overlay,rectangle callout,rounded corners,callout
+    relative pointer={(0.0cm,-0.5cm)},fill=blue!20] at ($(#2.north)+(-0.1cm,0.7cm)$) {#3};
+  }%
+}
+
+\newcommand{\pointthisbelow}[3]{%
+  \tikz[remember picture,baseline]{
+    \node[anchor=base,inner sep=0,outer sep=0,color=blue!90] (#2) {#2};
+    \node[visible on=#1,overlay,rectangle callout,rounded corners,callout
+    relative pointer={(0.0cm,0.5cm)},fill=blue!20] at ($(#2.north)+(-0.1cm,-1.0cm)$) {#3};
   }%
 }
 
@@ -227,7 +236,7 @@
 \end{frame}}
 
 
-\section{Sheaf cohomology}
+\section[Cohomology]{Sheaf cohomology}
 
 %{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\includegraphics[width=\paperwidth]{leray-shaded}\end{minipage}}
 \begin{frame}{Sheaf cohomology}
@@ -247,19 +256,20 @@
   \begin{itemize}
     \item The modules~$H^n(X; E)$ are important invariants.
 
-          [ $\chi(X; \O_X) = 1 - \operatorname{genus}_X$, $(C \cdot C') = \chi(\O_C \otimes_{\O_X}^{\mathbb{L}} \O_C')$ ]
+          [ $\chi(X; \O_X) = 1 - \operatorname{genus}_X$,
+          $(C \cdot C') = \chi(\O_C \otimes_{\O_X}^{\mathbb{L}} \O_C')$, \ldots ]
           \\[0.6em]
     \item Let~$A$ be an abelian group. Let~$X$ be semi-locally contractible.
           Then $H^n(X; \underline{A}) = H_{\text{sing}}^n(X; A)$.
           \\[0.6em]
-    \item Let~$f : X \to Y$ be continuous. Then there is a spectral sequence
-          $H^i(Y; R^jf_*(E)) \Rightarrow H^{i+j}(X; E)$.
+    \item Let~$f : X \to B$ be continuous. Then there is a spectral sequence
+          $H^i(B; R^jf_*(E)) \Longrightarrow H^{i+j}(X; E)$.
   \end{itemize}
 \end{frame}
 %}
 
 
-\section{Constructive mathematics}
+\section[Constructivism]{Constructive mathematics}
 
 \begin{frame}{Constructive mathematics}
   \centering
@@ -269,7 +279,7 @@
   \bigskip
 
   \centering\includegraphics[width=0.5\textwidth]{andrej-bauer-five-stages} \\
-  \scriptsize\href{https://video.ias.edu/members/1213/0318-AndrejBauer}{Andrej Bauer, talk at the IAS}\par
+  \scriptsize\href{https://video.ias.edu/members/1213/0318-AndrejBauer}{Andrej Bauer at an IAS talk}\par
   \small
   \bigskip
 
@@ -284,7 +294,8 @@
       \mbox{``Every map~$\affl \to \affl$ is polynomial.''}
       \mbox{``Heyting Arithmetic has exactly one model.''}
       \mbox{``The subsets of~$\{\heartsuit\}$ form a proper class.''}
-      \mbox{``There is an injection~$\RR \to \NN$.''}
+      \mbox{``There is an injection~$\RR \to \NN$.''} \\
+      \rotatebox{90}{\dots}
     \end{column}
 
     \begin{column}{0.50\textwidth}
@@ -297,7 +308,8 @@
       \mbox{synthetic algebraic geometry} \\
       \mbox{synthetic domain theory} \\
       \mbox{new reduction techniques in algebra} \\
-      \mbox{Bohr topos for quantum mechanics}
+      \mbox{Bohr topos for quantum mechanics} \\
+      \rotatebox{90}{\dots}
     \end{column}
   \end{columns}
 \end{frame}
@@ -311,6 +323,7 @@
   about sheaves on~$X$ in \hil{naive element-based terms}.
 
   \only<1>{
+    \vspace*{0.5em}
     \centering
     \rotatebox{90}{\tiny\scalebox{0.8}{Illustration: Carina Willbold}}\hspace{-0.05cm}%
     \includegraphics[width=0.7\textwidth]{external-internal-small}
@@ -368,7 +381,7 @@
 
 \section{Internalizing higher direct images}
 
-\begin{frame}{On injective objects}
+\begin{frame}{Internalizing higher direct images}
   \begin{block}{}
     A set~$M$ is \hil{injective} iff for any injection~$A \to B$,
     any map~$A \to M$ extends to a map on~$B$.
@@ -399,8 +412,9 @@
 
   \begin{block}{}
     \justifying
-    A sheaf of modules~$M$ is \hil{injective} iff for any linear monomorphism~$A \to B$,
-    any linear morphism~$A \to M$ extends to a linear morphism on~$B$.
+    A sheaf of modules~$M$ is \hil{injective} iff for any linear monomorphism
+    \mbox{$A \!\!\to\!\! B$,
+    any linear morphism~$A \!\!\to\!\! M$ extends to a linear morphism on~$B$.}
   \end{block}
   \vspace*{-1em}
 
@@ -424,18 +438,22 @@
   \vspace*{-1em}
 
   \begin{itemize}
-    \small
-    \item Injective sheaves of sets and injectives sheaves of modules are flabby.
+    \small\justifying
+    %\item Injective sheaves of sets and injectives sheaves of modules are flabby.
     \item Every sheaf embeds into a flabby sheaf.
     \item Assuming the law of excluded middle, any sheaf of modules over a
     topological space embeds into a flabby sheaf of modules.
     \item Assuming Zorn's lemma, flabby sheaves of modules are \hil{acyclic for the global sections functor}.
-    \item Assuming \bad{??}, sheaf cohomology and higher direct images can be computed using \hil{flabby resolutions}.
+    Hence, assuming \bad{??}, sheaf cohomology and higher direct images can be computed using \hil{flabby resolutions}.
   \end{itemize}
 
+  \bigskip
+  \bigskip
+
   \begin{block}{}
-    A set~$M$ is \hil{flabby} iff for any subterminal~$K \subseteq M$, there is
-    an element~$x \in M$ such that~$K \subseteq \{x\}$.
+    A set~$M$ is \hil{flabby} iff any \pointthis{<1>}{subterminal}{$\forall x,y
+    \in K\_ x = y$}~$K \subseteq M$ is a \pointthis{<1>}{subsingleton}{$\exists
+    a \in M\_ \forall x \in K\_ x = a$}.
   \end{block}
   \vspace*{-1em}
 
@@ -447,7 +465,96 @@
   \end{itemize}
 \end{frame}
 
-% XXX: Results about Eff
-% XXX: Summary slide
+\begin{frame}{Flabbiness as an organizing principle}
+  \begin{block}{}
+    A set~$M$ is \hil{flabby} iff any \pointthisbelow{<1>}{subterminal}{$\forall x,y
+    \in K\_ x = y$}~$K \subseteq M$ is a \pointthisbelow{<1>}{subsingleton}{$\exists
+    a \in M\_ \forall x \in K\_ x = a$}.
+  \end{block}
+  \bigskip
+  \bigskip
+  \justifying
+
+  \textbf{Proposition.} Let~$E$ be a sheaf over a locale~$X$. Then~$E$ is flabby
+  iff it is a flabby set from the point of view of~$\Sh(X)$.
+
+  \textbf{Proof.} Routine/Zorn's lemma.
+
+  \textbf{Proposition.} Let~$M$ be a sheaf of modules over a locale~$X$.
+  Then~$M$ is injective iff it is injective from the point of view of~$\Sh(X)$.
+
+  \textbf{Proof.} (Only ``$\Leftarrow$''.) Let~$i : A \to B$ be a linear
+  monomorphism. Let~$f : A \to M$ be a linear morphism. Then verify, internally, that
+  the set~$E \defeq \{ \bar f : B \to M \,|\, \bar f \circ i = f \}$ is flabby.
+%  Let~$K \subseteq E$ be a subterminal.
+%  We consider the injectivity diagram
+%  \[ \xymatrix{
+%    i[A] + B' \ar@{^{(}->}[r]\ar[d]_g & B \ar@{-->}@/^/[ld] \\
+%    I
+%  } \]
+%  where~$B'$ is the submodule~$\{ s \in B \,|\, \text{$s = 0$ or $K$ is
+%  inhabited} \} \subseteq B$ and the solid vertical arrow~$g$ is defined in the following
+%  way: Let~$s \in i[A] + B'$. Then~$s = i(a) + t$ for an element~$a \in A$ and an
+%  element~$t \in B'$. Since~$t \in B'$, $t = 0$ or~$K$ is inhabited. If~$t = 0$,
+%  we set~$g(s) \defeq f(a)$. If~$K$ is inhabited, we set~$g(s) \defeq f(a) +
+%  \bar{f}(s)$, where~$\bar{f}$ is any element of~$K$. These prescriptions
+%  determine a well-defined map.
+\end{frame}
+
+
+\section[In the effective topos]{Flabbiness in the effective topos}
+
+\begin{frame}{Flabbiness in the effective topos}
+  \begin{block}{}
+    A set~$M$ is \hil{flabby} iff any \pointthisbelow{<1>}{subterminal}{$\forall x,y
+    \in K\_ x = y$}~$K \subseteq M$ is a \pointthisbelow{<1>}{subsingleton}{$\exists
+    a \in M\_ \forall x \in K\_ x = a$}.
+  \end{block}
+  \bigskip
+  \bigskip
+  \bigskip
+
+  \justifying
+  \textbf{Proposition.}
+  Let~$X$ be an effective object in the effective topos. Then
+  \[ \text{``If~$X$ is flabby, any endomap on~$X$ has a fixed point.''} \]
+  from the point of view of the effective topos.
+  \medskip
+
+  \textbf{Proposition.}
+  Assuming the law of excluded middle, any~$\neg\neg$-separated
+  module in the effective topos can be embedded into a flabby module.
+  \medskip
+
+  \textbf{Question.} Are there enough flabby modules in the effective
+  topos?
+\end{frame}
+
+% XXX: ctcl.pdf, realizability book
+% XXX: Harting
+
+\begin{frame}{State of affairs}
+  \centering
+
+  \textcolor{blue!90}{\Huge :-)}
+
+  The existence of enough flabby modules is constructively neutral. \\
+  Higher direct images can be understood as internal sheaf cohomology.
+
+  \bigskip
+
+  \bad{\Huge \scalebox{2}{:-(}}
+
+  Flabby sheaves can fail to be acyclic, constructively. \\
+  There is still no general constructive framework for sheaf cohomology.
+  Even though:
+
+  \begin{itemize}
+    \item Basic homological algebra is entirely constructive.
+    \item There are algorithms for computing cohomology [Barakat XXX].
+    \item Čech methods work constructively, even in a synthetic context.
+  \end{itemize}
+\end{frame}
+\addtocounter{framenumber}{-1}
 
 \end{document}

@@ -245,8 +245,8 @@
 
   Trivially, any subsingleton is a subterminal.
 
-  \textbf{Definition.}\visible<2->{\hil{$^\star$}}
-  The set~$M$ is \hil{flabby} iff the converse holds.
+  \mbox{\textbf{Definition.}\visible<2->{\hil{$^\star$}}
+  The set~$M$ is \hil{flabby} iff any subterminal is a subsingleton.}
 
   Any flabby set is inhabited.
   %Conversely, any inhabited set is flabby iff the law of excluded middle holds.
@@ -256,8 +256,8 @@
 
     \justifying
     \textbf{Proof.} We have~$M \hookrightarrow P(M)$, and~$P(M)$ is flabby:
-    Let~$K \subseteq P(M)$ be a subterminal. Then~$K \subseteq \{ \bigcup K \}$.
-    % for if~$A \in K$, then~$K = \{ A \}$ and hence~$\bigcup K = K$.
+    Let~$K \subseteq P(M)$ be a subterminal. Then~$K \subseteq \{ \bigcup K \}$,
+    for if~$A \in K$, then~$K = \{ A \}$ and hence~$A \in \{ \bigcup K \} = \{ A \}$.
   }
 
   \visible<5->{
@@ -284,12 +284,12 @@
   Is $\vcenter{\hbox{\includegraphics[height=0.1\textwidth]{sphere}}}$ homeomorphic to
   $\vcenter{\hbox{\includegraphics[height=0.1\textwidth]{torus}}}$? No:
   \begin{align*}
-    H^0(\smallsphere,\ZZ) &\cong \ZZ &
-    H^1(\smallsphere,\ZZ) &\cong 0   &
-    H^2(\smallsphere,\ZZ) &\cong \ZZ \\
-    H^0(\smalltorus,\ZZ) & \cong \ZZ &
-    H^2(\smalltorus,\ZZ) & \cong \ZZ \oplus \ZZ &
-    H^2(\smalltorus,\ZZ) & \cong \ZZ
+    H^0_{\text{sing}}(\smallsphere,\ZZ) &\cong \ZZ &
+    H^1_{\text{sing}}(\smallsphere,\ZZ) &\cong 0   &
+    H^2_{\text{sing}}(\smallsphere,\ZZ) &\cong \ZZ \\
+    H^0_{\text{sing}}(\smalltorus,\ZZ) & \cong \ZZ &
+    H^1_{\text{sing}}(\smalltorus,\ZZ) & \cong \ZZ \oplus \ZZ &
+    H^2_{\text{sing}}(\smalltorus,\ZZ) & \cong \ZZ
   \end{align*}
 
   \begin{block}{}
@@ -321,7 +321,7 @@
           $(C \cdot C') = \chi(\O_C \otimes_{\O_X}^{\mathbb{L}} \O_C')$, \ldots ]
           \\[0.6em]
     \item Let~$A$ be an abelian group. Let~$X$ be semi-locally contractible.
-          Then $H^n(X, \underline{A}) = H_{\text{sing}}^n(X, A)$.
+          Then $H^n(X, \underline{A}) = H_{\text{sing}}^n(X, A)$ [XXX].
           \\[0.6em]
     \item Let~$f : X \to B$ be continuous. Then there is a spectral sequence
           $H^i(B, R^jf_*(E)) \Longrightarrow H^{i+j}(X, E)$.
@@ -367,7 +367,7 @@
       \mbox{program extraction} \\
       \mbox{synthetic differential geometry} \\
       \mbox{synthetic algebraic geometry} \\
-      \mbox{synthetic probability theory} \\
+      % \mbox{synthetic probability theory} \\
       \mbox{synthetic domain theory} \\
       \mbox{new reduction techniques in algebra} \\
       \mbox{Bohr topos for quantum mechanics} \\
@@ -375,6 +375,8 @@
     \end{column}
   \end{columns}
 \end{frame}
+
+% DURING THE TALK: Zitat vorlesen
 
 
 \section{Relativization by internalization}
@@ -408,9 +410,16 @@
       %coherent sheaf of modules & coherent module \\
       over-locale~$f : Y \to X$ & locale~$I(Y)$ \\
       sheaf over~$Y$ & sheaf over~$I(Y)$ \\
-      higher direct image $R^n f_* E$ & \bad{??} \\
+      higher direct image $R^n f_* E$ & \bad{??} sheaf cohomology $H^n(I(Y), E)$ \\
       \midrule
       \pause
+      \begin{minipage}{5.1cm}
+        Every finite type sheaf of modules is finite locally free \emph{on a dense open}.
+      \end{minipage} &
+      \begin{minipage}{4.4cm}
+        Every finitely generated vector space is \emph{not not} finite free.
+      \end{minipage} \\
+      \midrule
       \begin{minipage}{5.1cm}
         In continuous families of continuous functions with opposite signs,
         zeros can locally be picked continuously.
@@ -418,13 +427,6 @@
       \begin{minipage}{4.4cm}
         \raggedright
         The intermediate value theorem holds.
-      \end{minipage} \\
-      \midrule
-      \begin{minipage}{5.1cm}
-        Every finite type sheaf of modules is finite locally free \emph{on a dense open}.
-      \end{minipage} &
-      \begin{minipage}{4.4cm}
-        Every finitely generated vector space is \emph{not not} finite free.
       \end{minipage} \\
       \midrule
       \begin{minipage}{5.1cm}
@@ -439,6 +441,9 @@
     \end{tabular}
   \end{center}
 \end{frame}
+
+% DURING THE TALK: Mention Set as a special case
+% DURING THE TALK: Mention Mike and Awodey, Butz, Simpson, Streicher
 
 
 \section{Internalizing higher direct images}
@@ -553,17 +558,18 @@
   \bar{f}(s)$, where~$\bar{f}$ is any element of~$K$.
 
   Since~$M$ is injective, there exists a dotted map~$\bar g \in E$.
-  We have~$K \subseteq \{ \bar g \}$.
+  We have~$K \subseteq \{ \bar g \}$. \qed
 \end{frame}
 
 
-\section[In the effective topos]{Flabbiness in the effective topos}
+\section[In the ef{}fective topos]{Flabbiness in the ef{}fective topos}
 
-\begin{frame}{Flabbiness in the effective topos}
+\begin{frame}{Flabbiness in the ef{}fective topos}
+  \small
   \begin{block}{}
     A set~$M$ is \hil{flabby} iff any \pointthisbelow{<1>}{subterminal}{$\forall x,y
     \in K\_ x = y$}~$K \subseteq M$ is a \pointthisbelow{<1>}{subsingleton}{$\exists
-    a \in M\_ \forall x \in K\_ x = a$}.
+    a \in M\_ K \subseteq \{a\}$}.
   \end{block}
   \bigskip
   \bigskip
@@ -571,30 +577,35 @@
 
   \justifying
   \textbf{Proposition.}
-  Let~$X$ be an effective object in the effective topos. Then
+  Let~$X$ be an ef{}fective object in the ef{}fective topos. Then
   \[ \text{``If~$X$ is flabby, any endomap on~$X$ has a fixed point.''} \]
-  from the point of view of the effective topos.
+  from the point of view of the ef{}fective topos.
 
   \textbf{Proof (sketch).}
   We have a procedure which computes for any subterminal~$K \subseteq X$ an
-  element~$x_K$ such that~$K \subseteq \{ x_K \}$. Let~$f : X \to X$ be a map.
-  Construct~$K \defeq \{ f(x_K) \}$. Then~$K \subseteq \{ x_K \}$, so~$f(x_K) =
-  x_K$.
+  element~$a_K$ such that~$K \subseteq \{ a_K \}$. Let~$f : X \to X$ be a map.
+  Construct~$K \defeq \{ f(a_K) \}$. Then~$K \subseteq \{ a_K \}$, so~$f(a_K) =
+  a_K$. \qed
   \medskip
+
+  \textbf{Corollary.}
+  The only ef{}fective flabby module~$M$ is the zero module.
+
+  \textbf{Proof.} Let~$x \in M$.
+  Then~$x + a = a$ for some~$a \in M$; hence~$x = 0$. \qed
 
   \textbf{Proposition.}
   Assuming the law of excluded middle, any~$\neg\neg$-separated
-  module in the effective topos can be embedded into a flabby module.
+  module in the ef{}fective topos can be embedded into a flabby module.
 
-  \textbf{Proof.} We have~$M \hookrightarrow \Delta\Gamma M$.
+  \textbf{Proof.} We have~$M \hookrightarrow \Delta\Gamma M$. \qed
   \medskip
 
-  \textbf{Question.} Are there enough flabby modules in the effective
-  topos?
+  \textbf{Question.} Are there enough flabby modules in the ef{}fective topos?
 \end{frame}
 
 % XXX: ctcl.pdf, realizability book
-% XXX: Harting
+% DURING THE TALK: Harting
 
 \begin{frame}{State of affairs}
   \centering

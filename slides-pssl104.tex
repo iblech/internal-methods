@@ -235,6 +235,42 @@
   \par
 \end{frame}}
 
+\begin{frame}{Flabby sets}
+  Let~$M$ be a set. A subset~$K \subseteq M$ is \ldots
+  \begin{itemize}
+    \item a \hil{subterminal} iff $\forall x,y \in K\_ x = y$.
+    \item \mbox{a \hil{subsingleton} iff $\exists a \in M\_ \forall x \in K\_ x = a$, that is,} \\
+    \mbox{\phantom{a \hil{subsingleton}} iff $K \subseteq \{ a \}$ for some~$a \in M$.}
+  \end{itemize}
+
+  Trivially, any subsingleton is a subterminal.
+
+  \textbf{Definition.}\visible<2->{\hil{$^\star$}}
+  The set~$M$ is \hil{flabby} iff the converse holds.
+
+  Any flabby set is inhabited.
+  %Conversely, any inhabited set is flabby iff the law of excluded middle holds.
+
+  \visible<4->{
+    \textbf{Proposition.} Any set embeds into a flabby set.
+
+    \justifying
+    \textbf{Proof.} We have~$M \hookrightarrow P(M)$, and~$P(M)$ is flabby:
+    Let~$K \subseteq P(M)$ be a subterminal. Then~$K \subseteq \{ \bigcup K \}$.
+    % for if~$A \in K$, then~$K = \{ A \}$ and hence~$\bigcup K = K$.
+  }
+
+  \visible<5->{
+    \bad{\textbf{Open question.}} Does any module embed into a flabby module?
+  }
+
+  \vfill
+  \visible<3->{
+    \small
+    \hil{$^\star$ This talk is set in the context of constructive mathematics:} \\
+    \hil{\phantom{$^\star$}} mathematics without $\varphi \vee \neg\varphi$,\ \ $\neg\neg\varphi \Rightarrow \varphi$,\ \ axiom of choice
+  }
+\end{frame}
 
 \section[Cohomology]{Sheaf cohomology}
 
@@ -331,6 +367,7 @@
       \mbox{program extraction} \\
       \mbox{synthetic differential geometry} \\
       \mbox{synthetic algebraic geometry} \\
+      \mbox{synthetic probability theory} \\
       \mbox{synthetic domain theory} \\
       \mbox{new reduction techniques in algebra} \\
       \mbox{Bohr topos for quantum mechanics} \\
@@ -419,6 +456,7 @@
           a \hil{constructive taboo}.
     \item Constructively, there are still \hil{enough injective sets}.
           % Every set~$M$ embeds into an injective set, for instance~$P(M)$ or~$P_{\leq1}(M)$.
+    \item Any injective set is flabby.
   \end{itemize}
   \pause
 
@@ -458,72 +496,64 @@
   \begin{block}{}
     A sheaf~$E$ on a space~$X$ is \hil{flabby} iff any local section~$s \in
     E(U)$ on an open~$U$ extends to a global section~$\bar s \in E(X)$: $\bar s|_U = s$.
-    % XXX: change
   \end{block}
   \vspace*{-1em}
 
   \begin{itemize}
-    \small\justifying
+    \justifying
     %\item Injective sheaves of sets and injectives sheaves of modules are flabby.
-    \item Every sheaf embeds into a flabby sheaf.
-    \item Assuming the law of excluded middle, any sheaf of modules over a
-    topological space embeds into a flabby sheaf of modules.
+    \item Assuming Zorn's lemma:
+
+          A sheaf is flabby iff, from the internal point of view, it's a flabby
+          set. \\[0.6em]
+    \item Assuming the law of excluded middle:
+
+          Any sheaf of modules over a topological space embeds into a flabby
+          sheaf of modules. \\[0.6em]
     \item Assuming Zorn's lemma, flabby sheaves of modules are \hil{acyclic for the global sections functor}.
     Hence, assuming \bad{??}, sheaf cohomology and higher direct images can be computed using \hil{flabby resolutions}.
-  \end{itemize}
-
-  \bigskip
-  \bigskip
-
-  \begin{block}{}
-    A set~$M$ is \hil{flabby} iff any \pointthis{<1>}{subterminal}{$\forall x,y
-    \in K\_ x = y$}~$K \subseteq M$ is a \pointthis{<1>}{subsingleton}{$\exists
-    a \in M\_ \forall x \in K\_ x = a$}.
-  \end{block}
-  \vspace*{-1em}
-
-  \begin{itemize}
-    \small
-    \item A sheaf is flabby iff, from the internal point of view, it's a flabby set.
-    \item Every set embeds into a flabby set.
-    \item \bad{Open question:} Does every module embed into a flabby module?
   \end{itemize}
 \end{frame}
 
 \begin{frame}{Flabbiness as an organizing principle}
-  \begin{block}{}
-    A set~$M$ is \hil{flabby} iff any \pointthisbelow{<1>}{subterminal}{$\forall x,y
-    \in K\_ x = y$}~$K \subseteq M$ is a \pointthisbelow{<1>}{subsingleton}{$\exists
-    a \in M\_ \forall x \in K\_ x = a$}.
-  \end{block}
-  \bigskip
-  \bigskip
-  \justifying
+%  \begin{block}{}
+%    A set~$M$ is \hil{flabby} iff any \pointthisbelow{<1>}{subterminal}{$\forall x,y
+%    \in K\_ x = y$}~$K \subseteq M$ is a \pointthisbelow{<1>}{subsingleton}{$\exists
+%    a \in M\_ \forall x \in K\_ x = a$}.
+%  \end{block}
+%  \bigskip
+%  \bigskip
+%  \justifying
 
-  \textbf{Proposition.} Let~$E$ be a sheaf over a locale~$X$. Then~$E$ is flabby
-  iff it is a flabby set from the point of view of~$\Sh(X)$.
+%  \textbf{Proposition.} Let~$E$ be a sheaf over a locale~$X$. Then~$E$ is flabby
+%  iff it is a flabby set from the point of view of~$\Sh(X)$.
+%
+%  \textbf{Proof.} Routine/Zorn's lemma.
 
-  \textbf{Proof.} Routine/Zorn's lemma.
-
+  \justifying\small
   \textbf{Proposition.} Let~$M$ be a sheaf of modules over a locale~$X$.
   Then~$M$ is injective iff it is injective from the point of view of~$\Sh(X)$.
 
   \textbf{Proof.} (Only ``$\Leftarrow$''.) Let~$i : A \to B$ be a linear
   monomorphism. Let~$f : A \to M$ be a linear morphism. Then verify, internally, that
   the set~$E \defeq \{ \bar f : B \to M \,|\, \bar f \circ i = f \}$ is flabby.
-%  Let~$K \subseteq E$ be a subterminal.
-%  We consider the injectivity diagram
-%  \[ \xymatrix{
-%    i[A] + B' \ar@{^{(}->}[r]\ar[d]_g & B \ar@{-->}@/^/[ld] \\
-%    I
-%  } \]
-%  where~$B'$ is the submodule~$\{ s \in B \,|\, \text{$s = 0$ or $K$ is
-%  inhabited} \} \subseteq B$ and the solid vertical arrow~$g$ is defined in the following
-%  way: Let~$s \in i[A] + B'$. Then~$s = i(a) + t$ for an element~$a \in A$ and an
-%  element~$t \in B'$. Since~$t \in B'$, $t = 0$ or~$K$ is inhabited. If~$t = 0$,
-%  we set~$g(s) \defeq f(a)$. If~$K$ is inhabited, we set~$g(s) \defeq f(a) +
-%  \bar{f}(s)$, where~$\bar{f}$ is any element of~$K$. These prescriptions
-%  determine a well-defined map.
+  \pause
+
+  Let~$K \subseteq E$ be a subterminal.
+  We consider the injectivity diagram
+  \[ \xymatrix{
+    i[A] + B' \ar@{^{(}->}[r]\ar[d]_g & B \ar@{-->}@/^/[ld]^{\bar g} \\
+    I
+  } \]
+  where~$B' \defeq \{ t \in B \,|\, \text{$t = 0$ or $K$ is
+  inhabited} \} \subseteq B$ and~$g$ is defined as follows:
+  Let~$s \in i[A] + B'$. Then~$s = i(a) + t$ for some~$a \in A$ and~$t \in B'$.
+  Since~$t \in B'$, $t = 0$ or~$K$ is inhabited. If~$t = 0$,
+  we set~$g(s) \defeq f(a)$. If~$K$ is inhabited, we set~$g(s) \defeq f(a) +
+  \bar{f}(s)$, where~$\bar{f}$ is any element of~$K$.
+
+  Since~$M$ is injective, there exists a dotted map~$\bar g \in E$.
+  We have~$K \subseteq \{ \bar g \}$.
 \end{frame}
 
 
@@ -544,11 +574,19 @@
   Let~$X$ be an effective object in the effective topos. Then
   \[ \text{``If~$X$ is flabby, any endomap on~$X$ has a fixed point.''} \]
   from the point of view of the effective topos.
+
+  \textbf{Proof (sketch).}
+  We have a procedure which computes for any subterminal~$K \subseteq X$ an
+  element~$x_K$ such that~$K \subseteq \{ x_K \}$. Let~$f : X \to X$ be a map.
+  Construct~$K \defeq \{ f(x_K) \}$. Then~$K \subseteq \{ x_K \}$, so~$f(x_K) =
+  x_K$.
   \medskip
 
   \textbf{Proposition.}
   Assuming the law of excluded middle, any~$\neg\neg$-separated
   module in the effective topos can be embedded into a flabby module.
+
+  \textbf{Proof.} We have~$M \hookrightarrow \Delta\Gamma M$.
   \medskip
 
   \textbf{Question.} Are there enough flabby modules in the effective

@@ -1,6 +1,15 @@
 \documentclass[11pt,utf8,notheorems,compress,t]{beamer}
 \usepackage{etex}
 
+\usepackage{pgfpages}
+\setbeameroption{show notes on second screen}
+\setbeamertemplate{note page}[plain]
+\newcommand{\jnote}[2]{\only<#1>{\note{\setlength\parskip{\medskipamount}\footnotesize\justifying#2\par}}}
+
+% Workaround for the issue described at
+% https://tex.stackexchange.com/questions/164406/beamer-using-href-in-notes.
+\newcommand{\fixedhref}[2]{\makebox[0pt][l]{\hspace*{\paperwidth}\href{#1}{#2}}\href{#1}{#2}}
+
 \usepackage[english]{babel}
 
 \usepackage{mathtools}
@@ -18,9 +27,6 @@
 \usepackage{tikz}
 \usetikzlibrary{calc,shapes,shapes.callouts,shapes.arrows,patterns,fit,backgrounds,decorations.pathmorphing}
 \hypersetup{colorlinks=true}
-\usepackage{multimedia}
-\newcommand{\video}[2]{\movie[width=#2,height=#2,autostart,loop,poster]{}{#1}}
-\hypersetup{colorlinks=false}
 
 \usepackage{pifont}
 \newcommand{\cmark}{\ding{51}}
@@ -192,7 +198,7 @@
 }
 \newcommand{\backupend}{
   \addtocounter{framenumberpreappendix}{-\value{framenumber}}
-  \addtocounter{framenumber}{\value{framenumberpreappendix}} 
+  \addtocounter{framenumber}{\value{framenumberpreappendix}}
 }
 
 \newcommand{\insertframeextra}{}
@@ -246,7 +252,7 @@
   Trivially, any subsingleton is a subterminal.
 
   \mbox{\textbf{Definition.}\visible<2->{\hil{$^\star$}}
-  The set~$M$ is \hil{flabby} iff any subterminal is a subsingleton.}
+  A set~$M$ is \hil{flabby} iff any subterminal is a subsingleton.}
 
   Any flabby set is inhabited.
   %Conversely, any inhabited set is flabby iff the law of excluded middle holds.
@@ -270,7 +276,32 @@
     \hil{$^\star$ This talk is set in the context of constructive mathematics:} \\
     \hil{\phantom{$^\star$}} mathematics without $\varphi \vee \neg\varphi$,\ \ $\neg\neg\varphi \Rightarrow \varphi$,\ \ axiom of choice
   }
+
+  \jnote{1-}{Any flabby set is inhabited, for there is always the empty
+  subterminal.
+
+  Conversely, given a set~$M$ inhabited by some element~$x_0 \in M$, it
+  might appear that we have an easy proof that~$M$ is flabby: Any
+  subterminal~$K \subseteq M$ is empty or of the form~$K = \{ x \}$ for some~$x
+  \in M$. In the first case, $K$ is a subsingleton for~$K \subseteq \{x_0\}$,
+  and in the second case,~$K$ is a subsingleton for~$K \subseteq \{x\}$.
+
+  Hence it might appear that the definition doesn't make much sense, since it
+  might appear that flabbiness is equivalent to being inhabited.}
+
+  \jnote{2-}{However, one always has to look out for the fine print.}
+
+  \jnote{3-}{In constructive mathematics, the condition for a set to be flabby
+  is nontrivial. We'll later see that the condition is also interesting for
+  classical mathematics, if interpreted internally to suitable toposes.}
+
+  \jnote{4-}{Even though constructively we can't show that any inhabited set is
+  flabby, we can still verify that there are \emph{enough flabby sets}.}
+
+  \jnote{5-}{A module is \emph{flabby} if and only if its underlying set is.
+  We'll see what the significance of this open question is later on.}
 \end{frame}
+
 
 \section[Cohomology]{Sheaf cohomology}
 
@@ -285,7 +316,7 @@
   $\vcenter{\hbox{\includegraphics[height=0.1\textwidth]{torus}}}$? No:
   \begin{align*}
     H^0_{\text{sing}}(\smallsphere,\ZZ) &\cong \ZZ &
-    H^1_{\text{sing}}(\smallsphere,\ZZ) &\cong 0   &
+    H^1_{\text{sing}}(\smallsphere,\ZZ) &\cong 0 &
     H^2_{\text{sing}}(\smallsphere,\ZZ) &\cong \ZZ \\
     H^0_{\text{sing}}(\smalltorus,\ZZ) & \cong \ZZ &
     H^1_{\text{sing}}(\smalltorus,\ZZ) & \cong \ZZ \oplus \ZZ &
@@ -293,13 +324,28 @@
   \end{align*}
 
   \begin{block}{}
-  \justifying
-  Given~$f : X \to B$, can we compute the cohomology of~$X$ if we
-  understand the cohomology of~$B$ and the cohomology of the fibers of~$f$?
+    \justifying
+    Given~$f : X \to B$, can we compute the cohomology of~$X$ if we
+    understand the cohomology of~$B$ and the cohomology of the fibers of~$f$?
   \end{block}{}
+
+  \jnote{1-}{Associated to any topological space~$X$ and any abelian group~$A$
+  are the groups~$H^n_{\text{sing}}(X, A)$, the singular cohomology groups
+  of~$X$ with coefficients in~$A$. They depend functorially on~$X$; hence one
+  of many of their applications is to verify that given spaces are not
+  homeomorphic.
+
+  Given a space~$X$, we can hope that we can write~$X$ as the
+  codomain of a continuous map~$f : X \to B$, in such a way that the base space~$B$
+  and the fibers of~$f$ are in some sense easy to understand. In particular, we
+  could ask whether the cohomology of~$X$ can be computed from the cohomology
+  of~$B$ and the cohomology of the fibers.
+
+  The answer, given by Jean Leray in the 1940s, is: Yes, we can, but the
+  framework of singular cohomology is too rigid. For a positive answer we have
+  to generalize to sheaf cohomology. And thus, the notion of sheaves was born.}
 \end{frame}}
 
-%{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\includegraphics[width=\paperwidth]{leray-shaded}\end{minipage}}
 \begin{frame}{Sheaf cohomology}
   \vspace*{-1.2em}
   \begin{varblock}{\textwidth}{}
@@ -321,13 +367,45 @@
           $(C \cdot C') = \chi(\O_C \otimes_{\O_X}^{\mathbb{L}} \O_C')$, \ldots ]
           \\[0.6em]
     \item Let~$A$ be an abelian group. Let~$X$ be semi-locally contractible.
-          Then $H^n(X, \underline{A}) = H_{\text{sing}}^n(X, A)$ [Sella 2016].
+          Then $H^n(X, \underline{A}) = H_{\text{sing}}^n(X, A)$
+          \href{https://arxiv.org/abs/1602.06674}{[Sella 2016]}.
           \\[0.6em]
     \item Let~$f : X \to B$ be continuous. Then there is a spectral sequence
           $H^i(B, R^jf_*(E)) \Longrightarrow H^{i+j}(X, E)$.
   \end{itemize}
+
+  \jnote{1-}{An injective resolution is a sequence of sheaves and modules and
+  linear morphisms as indicated such that the sequence is \emph{exact}
+  (the kernel of any outgoing morphism equals the image of the respective incoming
+  morphism) and such that the sheaves~$I^n$ are injective (a notion recalled
+  below).
+
+  The fundamental fact of homological algebra is: Even though the sequence~$0
+  \to I^0 \to I^1 \to \cdots$ can only fail to be exact at the front, the
+  sequence~$0 \to \Gamma I^0 \to \Gamma I^1 \to \cdots$ of global sections can
+  fail to be exact at any place. Sheaf cohomology measures the extent of this
+  failure.
+
+  The standard proof of the existence of injective resolutions requires Zorn's
+  lemma and the law of excluded middle. Injective resolutions are not unique,
+  but the resulting sheaf cohomology modules are unique up to isomorphism.
+  A primer on these matters is located
+  \fixedhref{https://rawgit.com/iblech/talk-homological-algebra/master/notes-derived-functors.pdf}{here}.
+
+  The positive answer to the question posed on the previous slide is given by
+  the spectral sequence displayed at the bottom of this slide. The sheaves~$R^n
+  f_*(E)$ are called the \emph{higher direct images of~$E$} (along~$f$). Even
+  if~$E$ is a constant sheaf, its higher direct images might not be. This is
+  the reason why singular cohomology is too restrictive.
+
+  The higher direct images~$R^n f_*(E)$ are defined exactly as the sheaf
+  cohomology~$H^n(X, E)$, only with the global sections functor~$\Gamma$
+  replaced by the pushforward functor~$f_*$. They are dubbed ``relative
+  cohomology'', for instance because under some conditions, there are
+  isomorphisms~$(R^n f_*(E))_b \cong H^n(X_b, E|_{X_b})$ where~$X_b$ is the
+  fiber of~$b$ under~$f$. This talk presents a rigorous and general way to
+  regard higher direct images as sheaf cohomology.}
 \end{frame}
-%}
 
 
 \section[Constructivism]{Constructive mathematics}
@@ -374,6 +452,37 @@
       \rotatebox{90}{\dots}
     \end{column}
   \end{columns}
+
+  \jnote{1-}{Constructive mathematics can be studied for philosophical reasons
+  or out of general mathematical curiosity. But restricting to constructive
+  reasoning in our proofs also yields concrete gains for
+  classical mathematics.
+
+  One of these is \emph{program extraction}: From any constructive proof, we can
+  mechanically extract a program witnessing the proven statement. A basic
+  example is that any constructive proof of the infinitude of primes yields an
+  algorithm for computing primes (together with a termination and correctness
+  proof).
+
+  Another is that, since constructive mathematics is consistent with a number
+  of anti-classical dream axioms, constructive mathematics allows to develop
+  \emph{synthetic accounts} of several subjects. For instance, in synthetic
+  algebraic geometry, a scheme is just a set, a morphism of schemes is just
+  a map of sets, and any map of the ground field into itself is polynomial.
+
+  There are also \emph{reduction techniques} which propose interesting deals. For
+  instance, there is a technique which allows us to pretend that reduced rings
+  are Noetherian and in fact fields -- if in return we switch from classical
+  reasoning to constructive. This particular technique has been used to turn
+  the slightly convoluted multi-page proof of Grothendieck's generic
+  freeness lemma into a simple one-paragraph argument.
+
+  An informative and entertaining primer on constructive mathematics can be
+  found in the linked talk recording by Andrej Bauer or his
+  \fixedhref{http://www.ams.org/journals/bull/2017-54-03/S0273-0979-2016-01556-4/S0273-0979-2016-01556-4.pdf}{written
+  notes} on the subject. Don't worry, the standard proof that~$\sqrt{2}$ is not rational is
+  perfectly fine in constructive mathematics.
+  }
 \end{frame}
 
 % DURING THE TALK: Zitat vorlesen
@@ -447,6 +556,39 @@
       \bottomrule
     \end{tabular}
   \end{center}
+
+  \jnote{2-}{The internal language of a topos~$\E$ is a device which defines
+  for any formula~$\varphi$ of a certain language (a form of extensional type
+  theory) what it means for~$\varphi$ to hold \emph{internally to~$\E$},
+  written~``$\E \models \varphi$''. This translation process is sound with
+  respect to intuitionistic logic; hence any theorem of constructive
+  mathematics is valid in any topos. Only few toposes validate classical logic
+  (for instance~$\Sh(X)$ does if~$X$ is a discrete space and the law of
+  excluded middle is available in the metatheory).
+
+  As a special case, the internal language of the topos~$\Set$ is just the
+  usual mathematical language; more formally, $\Set \models \varphi$ if and
+  only if~$\varphi$.}
+
+  % XXX: Cite Shulman and ABSS. Also Streicher's lecture notes.
+
+  \jnote{3-}{The intermediate value theorem (``any continuous function with
+  opposite signs has a zero'') doesn't admit a constructive proof, because for
+  most spaces~$X$ the external translation~$\Sh(X) \models \text{IVT}$ is not
+  true -- it's not true that in continuous families of continuous functions
+  with opposite signs, zeros can locally be picked continuously, as
+  \fixedhref{https://raw.githubusercontent.com/iblech/internal-methods/master/images/zeros-in-families.mp4}{this
+  video shows}.
+
+  Over reduced schemes, every finite type sheaf of modules is finite locally free on a
+  dense open. This statement (``important hard exercise'' 13.7.K in
+  \fixedhref{http://math.stanford.edu/~vakil/216blog/FOAGnov1817public.pdf}{[Vakil
+  2017]}) is just the external translation of the easy-to-prove internal
+  statement that every finitely generated vector space does \emph{not not}
+  admit a finite basis. (A scheme is reduced if and only if its structure sheaf
+  looks like a field from the internal point of view (in the sense that $1 \neq
+  0$ and~$\neg(\text{$x$ invertible}) \Rightarrow x = 0$). This is why the
+  reducedness condition is important.)}
 \end{frame}
 
 % DURING THE TALK: Mention Set as a special case
@@ -480,7 +622,8 @@
 
   \begin{itemize}
     \small
-    \item It's consistent with \textbf{ZF} that there are no injective modules [Blass 1979].
+    \item It's consistent with \textbf{ZF} that there are no injective modules
+    \href{http://www.ams.org/journals/tran/1979-255-00/S0002-9947-1979-0542870-6/S0002-9947-1979-0542870-6.pdf}{[Blass 1979]}.
     \item The existence of enough injective modules is \hil{constructively neutral}.
   \end{itemize}
   \pause
@@ -499,6 +642,52 @@
     \item Assuming Zorn's lemma, a sheaf of modules over a locale~$X$ is injective iff, from the internal
     point of view of~$\Sh(X)$, it is an injective module.
   \end{itemize}
+
+  \jnote{2-3}{Somewhat surprisingly, even though the standard proof that there
+  are enough injective modules requires the axiom of choice and even though
+  it's consistent with Zermelo--Fraenkel set theory that the zero module is the
+  only injective~$\ZZ$-module, the existence of enough injective modules is
+  \emph{constructively neutral}, that is, does not imply a fundamentally
+  nonconstructive principle like the law of excluded middle.
+
+  Indeed, assuming the axiom of choice in the metatheory, the statement~``any
+  module can be embedded into an injective module'' holds in the internal
+  language of any Grothendieck topos. This is because, assuming the axiom of
+  choice in the metatheory, any sheaf of modules over a site can be embedded
+  into an injective sheaf of modules and, somewhat
+  surprisingly, \ldots}
+
+  \jnote{3}{\ldots{} a sheaf of modules is injective if and only if it is an
+  injective module from the internal point of view. The~``$\Rightarrow$''
+  direction is straightforward; the~``$\Leftarrow$'' direction is nontrivial:
+  The external meaning of the internal existential quantifier is \emph{local}
+  existence. Hence linear morphisms into a sheaf of modules which is injective from the internal
+  point of view can \emph{locally} be extended. But
+  these extensions need not be compatible, hence might not glue to a global
+  extension. For the case of sheaves of abelian groups, this result is due to
+  Roswitha Harting in an
+  \fixedhref{https://www.tandfonline.com/doi/pdf/10.1080/00927878308822853}{1983
+  paper of her}. The case of sheaves of modules is arguably also due to her,
+  even though she states that the result doesn't hold for sheaves of modules.
+  (Technology has improved since then, and using flabbiness as an organizing
+  principle one can give a reasonably straightforward proof of the general
+  statement.)
+
+  In contrast, internally and externally projective modules do not coincide at
+  all.}
+
+  \jnote{4}{A consequence of the fact that internal and external injectivity
+  coincides for sheaves of modules over locales is that we can interpret the
+  higher direct images~$R^n f_*(Y, E)$ of a sheaf~$E$ of modules over an
+  over-locale~$f : Y \to X$ as sheaf cohomology~$H^n(I(Y), E)$, where~$I(Y)$ is
+  the internal locale of~$\Sh(X)$ corresponding to~$Y$.
+
+  A basic application is the following. Any student in algebraic geometry
+  needs, at some point in her life, compute the cohomology of projective space.
+  At a later point she needs to compute higher direct images
+  along~$\mathbb{P}^n_S \to S$, where~$\mathbb{P}^n_S$ is a relative version of
+  projective space. Since higher direct images are just internal
+  sheaf cohomology, she can in fact skip the second computation.}
 \end{frame}
 
 % DURING THE TALK: Harting
@@ -527,6 +716,11 @@
     \item Assuming Zorn's lemma, flabby sheaves of modules are \hil{acyclic for the global sections functor}.
     Hence, assuming \bad{??}, sheaf cohomology and higher direct images can be computed using \hil{flabby resolutions}.
   \end{itemize}
+
+  \jnote{1-}{Since we cannot show the existence of enough injective sheaves of
+  modules (or even just plain modules) constructively, the definition of sheaf
+  cohomology using injective resolutions doesn't work in a constructive
+  setting.}
 \end{frame}
 
 \begin{frame}{Flabbiness as an organizing principle}
@@ -549,7 +743,7 @@
   Then~$M$ is injective iff it is injective from the point of view of~$\Sh(X)$.
 
   \textbf{Proof.} (Only ``$\Leftarrow$''.) Let~$i : A \to B$ be a linear
-  monomorphism. Let~$f : A \to M$ be a linear morphism. Then verify, internally, that
+  monomorphism. Let~$f : A \to M$ be a linear morphism. We verify, internally, that
   the set~$E \defeq \{ \bar f : B \to M \,|\, \bar f \circ i = f \}$ is flabby.
   \pause
 

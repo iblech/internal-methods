@@ -292,7 +292,7 @@
   \jnote{2-}{However, one always has to look out for the fine print.}
 
   \jnote{3-}{In constructive mathematics, the condition for a set to be flabby
-  is nontrivial. We'll later see that the condition is also interesting for
+  is nontrivial. We'll see later that the condition is also interesting for
   classical mathematics, if interpreted internally to suitable toposes.}
 
   \jnote{4-}{Even though constructively we can't show that any inhabited set is
@@ -337,12 +337,12 @@
 
   Given a space~$X$, we can hope that we can write~$X$ as the
   codomain of a continuous map~$f : X \to B$, in such a way that the base space~$B$
-  and the fibers of~$f$ are in some sense easy to understand. In particular, we
+  and the fibers of~$f$ are in some sense easy to understand. In such a situation we
   could ask whether the cohomology of~$X$ can be computed from the cohomology
   of~$B$ and the cohomology of the fibers.
 
   The answer, given by Jean Leray in the 1940s, is: Yes, we can, but the
-  framework of singular cohomology is too rigid. For a positive answer we have
+  framework of singular cohomology is too rigid for this task. For a positive answer we have
   to generalize to sheaf cohomology. And thus, the notion of sheaves was born.}
 \end{frame}}
 
@@ -374,7 +374,7 @@
           $H^i(B, R^jf_*(E)) \Longrightarrow H^{i+j}(X, E)$.
   \end{itemize}
 
-  \jnote{1-}{An injective resolution is a sequence of sheaves and modules and
+  \jnote{1-}{An injective resolution is a sequence of sheaves of modules and
   linear morphisms as indicated such that the sequence is \emph{exact}
   (the kernel of any outgoing morphism equals the image of the respective incoming
   morphism) and such that the sheaves~$I^n$ are injective (a notion recalled
@@ -471,8 +471,8 @@
   a map of sets, and any map of the ground field into itself is polynomial.
 
   There are also \emph{reduction techniques} which propose interesting deals. For
-  instance, there is a technique which allows us to pretend that reduced rings
-  are Noetherian and in fact fields -- if in return we switch from classical
+  instance, there is a technique which allows us to pretend that a reduced ring
+  is Noetherian and in fact a field -- if in return we switch from classical
   reasoning to constructive. This particular technique has been used to turn
   the slightly convoluted multi-page proof of Grothendieck's generic
   freeness lemma into a simple one-paragraph argument.
@@ -683,7 +683,7 @@
   the internal locale of~$\Sh(X)$ corresponding to~$Y$.
 
   A basic application is the following. Any student in algebraic geometry
-  needs, at some point in her life, compute the cohomology of projective space.
+  needs, at some point in her life, to compute the cohomology of projective space.
   At a later point she needs to compute higher direct images
   along~$\mathbb{P}^n_S \to S$, where~$\mathbb{P}^n_S$ is a relative version of
   projective space. Since higher direct images are just internal
@@ -720,24 +720,29 @@
   \jnote{1-}{Since we cannot show the existence of enough injective sheaves of
   modules (or even just plain modules) constructively, the definition of sheaf
   cohomology using injective resolutions doesn't work in a constructive
-  setting.}
+  setting. Classically it's known that \emph{flabby resolutions} can also be
+  used to compute sheaf cohomology. There are more flabby sheaves than injective
+  ones, they have better stability properties (flabby sheaves are preserved
+  under pushforward) and the axiom of choice is not needed to construct flabby
+  resolutions (the standard proof uses only the law of excluded middle, and not
+  Zorn's lemma). Hence it seems reasonable to base a constructively sensible
+  definition of sheaf cohomology on flabby resolutions. We tried to do so, and
+  failed.
+
+  Assuming Zorn's lemma, the notion of a flabby sheaf is a local notion,
+  meaning that a sheaf is flabby if and only if its restrictions to every
+  member of an open covering are, but this fact is not obvious from the
+  definition. In contrast, the notion that a sheaf~$E$ is flabby from the
+  internal point of view is local without any assumptions (as is any
+  internal notion), hence maybe we should consider adopting internal flabbiness as the
+  official definition of flabbiness. Its external translation is:
+
+  A sheaf~$E$ is flabby from the internal point of view if and only if for any
+  local section~$s \in E(U)$, there is an open covering~$X = \bigcup_i U_i$
+  such that for all~$i$, the section~$s$ extends to a section on~$U \cup U_i$.}
 \end{frame}
 
 \begin{frame}{Flabbiness as an organizing principle}
-%  \begin{block}{}
-%    A set~$M$ is \hil{flabby} iff any \pointthisbelow{<1>}{subterminal}{$\forall x,y
-%    \in K\_ x = y$}~$K \subseteq M$ is a \pointthisbelow{<1>}{subsingleton}{$\exists
-%    a \in M\_ \forall x \in K\_ x = a$}.
-%  \end{block}
-%  \bigskip
-%  \bigskip
-%  \justifying
-
-%  \textbf{Proposition.} Let~$E$ be a sheaf over a locale~$X$. Then~$E$ is flabby
-%  iff it is a flabby set from the point of view of~$\Sh(X)$.
-%
-%  \textbf{Proof.} Routine/Zorn's lemma.
-
   \justifying\small
   \textbf{Proposition.} Let~$M$ be a sheaf of modules over a locale~$X$.
   Then~$M$ is injective iff it is injective from the point of view of~$\Sh(X)$.
@@ -762,6 +767,26 @@
 
   Since~$M$ is injective, there exists a dotted map~$\bar g \in E$.
   We have~$K \subseteq \{ \bar g \}$. \qed
+
+  \jnote{1-}{The notion of being flabby from the internal point of view turns
+  out to have valuable organizing power. For instance, both of the
+  following statements can be proven by first verifying that a certain sheaf is
+  internally flabby (which can be done entirely constructively) and then
+  appealing to Zorn's lemma in order to obtain a global section of that sheaf.
+
+  \begin{itemize}\justifying
+    \item Flabby sheaves are acyclic for the global sections functor: Let~$0
+    \to E \to F \to G \to 0$ be a short exact sequence of sheaves of modules
+    and let~$E$ be flabby. Then the sequence remains exact after taking global
+    sections.
+
+    (Verify that the sheaf of local preimages of a given section~$s \in G(X)$ is
+    flabby.)
+
+    \item Internally injective modules are externally injective.
+
+    (See proof on the slide.)
+  \end{itemize}}
 \end{frame}
 
 
@@ -805,6 +830,23 @@
   \medskip
 
   \textbf{Question.} Are there enough flabby modules in the ef{}fective topos?
+
+  \jnote{1-}{The notion of flabby sets was conceived to model the notion of
+  flabby sheaves and is therefore closely connected to Grothendieck toposes.
+  Hence it is instructive to study flabby objects in elementary toposes which
+  are not Grothendieck toposes, away from their original conceptual home.
+
+  In particular, we hope to prove the conjecture that the statement ``any
+  module embeds into a flabby module'' is not constructively provable by
+  verifying that it doesn't hold in the effective topos.
+
+  To this end, the slide displays two results.
+
+  Details on the self-referential construction~``$K \defeq \{ f(a_K) \}$'' are in
+  \fixedhref{https://rawgit.com/iblech/internal-methods/master/paper-flabby-objects.pdf}{this
+  draft paper}.
+
+  A module is~$\neg\neg$-separated if and only if~$\neg\neg(x = 0)$ implies~$x = 0$.}
 \end{frame}
 
 % XXX: ctcl.pdf, realizability book
@@ -830,6 +872,11 @@
     \item There are algorithms for computing cohomology [Barakat, \ldots].
     \item Čech methods work constructively, even in a synthetic context.
   \end{itemize}
+
+  \jnote{1-}{Even if we could constructively prove that there are enough flabby
+  modules, there is still the problem that the proof that flabby
+  sheaves of modules are acyclic for the global sections functor (appears to)
+  require Zorn's lemma.}
 \end{frame}
 \addtocounter{framenumber}{-1}
 

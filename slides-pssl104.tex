@@ -876,7 +876,33 @@
   \jnote{1-}{Even if we could constructively prove that there are enough flabby
   modules, there is still the problem that the proof that flabby
   sheaves of modules are acyclic for the global sections functor (appears to)
-  require Zorn's lemma.}
+  require Zorn's lemma.
+
+  Hence it appears that the simple idea of basing sheaf cohomology on flabby
+  resolutions doesn't work, constructively. More work is needed to give a
+  constructive account of sheaf cohomology and, more generally, derived functors.
+
+  I hope that some day, we can study the cohomology of the the smallest dense
+  sublocale of the one-point space.$^\star$
+
+  \bigskip
+  \bigskip
+  \bigskip
+  \bigskip
+
+  $^\star$ Assuming the law of excluded middle, this locale is just
+  the one-point space again. Hence cohomology of this locale should measure the
+  extent to which we're nonclassical, being zero if and only if the law of
+  excluded middle holds.
+
+  An alternative way to phrase this question is as follows.
+  Let~$\Set_{\neg\neg}$ be the smallest dense subtopos of~$\Set$, the topos of
+  double-negation sheaves. The forgetful functor~$\mathrm{Ab}(\Set_{\neg\neg})
+  \to \mathrm{Ab}$ is left-exact, but might not be right-exact, since
+  a map~$f : A \to B$ is an epimorphism
+  in~$\mathrm{Ab}(\Set_{\neg\neg})$ if and only if~$\forall y \in B\_
+  \neg\neg(\exists x \in A\_ f(x) = y)$, which is weaker than being surjective.
+  What do its right derived functors look like?\par}
 \end{frame}
 \addtocounter{framenumber}{-1}
 

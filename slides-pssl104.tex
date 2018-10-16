@@ -431,9 +431,9 @@
       \mbox{``Every map~$\NN \to \NN$ is computable.''}
       \mbox{``Every map~$\RR \to \RR$ is continuous.''}
       \mbox{``Every map~$\affl \to \affl$ is polynomial.''}
-      \mbox{``Heyting Arithmetic has exactly one model.''}
-      \mbox{``The subsets of~$\{\heartsuit\}$ form a proper class.''}
-      \mbox{``There is an injection~$\RR \to \NN$.''} \\
+      \href{https://www.staff.science.uu.nl/~ooste110/realizability/arithcatsubmit.pdf}{\mbox{``Heyting Arithmetic has exactly one model.''}}
+      \href{http://www1.maths.leeds.ac.uk/~pmtng/Slides/gambino-lisbon-jan2018.pdf}{\mbox{``The subsets of~$\{\heartsuit\}$ form a proper class.''}}
+      \href{https://rawgit.com/iblech/mathezirkel-kurs/master/superturingmaschinen/slides-warwick2017.pdf}{\mbox{``There is an injection~$\RR \to \NN$.''}} \\
       \rotatebox{90}{\dots}
     \end{column}
 
@@ -443,12 +443,11 @@
 
       \footnotesize
       \mbox{program extraction} \\
-      \mbox{synthetic differential geometry} \\
-      \mbox{synthetic algebraic geometry} \\
-      % \mbox{synthetic probability theory} \\
-      \mbox{synthetic domain theory} \\
-      \mbox{new reduction techniques in algebra} \\
-      \mbox{Bohr topos for quantum mechanics} \\
+      \href{http://math.andrej.com/2008/08/13/intuitionistic-mathematics-for-physics/}{\mbox{synthetic differential geometry}} \\
+      \href{https://rawgit.com/iblech/internal-methods/master/notes.pdf}{\mbox{synthetic algebraic geometry}} \\
+      \href{https://www.dpmms.cam.ac.uk/~martin/Research/Oldpapers/synthetic91.pdf}{\mbox{synthetic domain theory}} \\
+      \href{https://rawgit.com/iblech/internal-methods/master/slides-bayreuth2018.pdf}{\mbox{new reduction techniques in algebra}} \\
+      \href{https://rawgit.com/iblech/internal-methods/master/}{\mbox{Bohr topos for quantum mechanics}} \\
       \rotatebox{90}{\dots}
     \end{column}
   \end{columns}
@@ -557,7 +556,7 @@
     \end{tabular}
   \end{center}
 
-  \jnote{2-}{The internal language of a topos~$\E$ is a device which defines
+  \jnote{2-3}{The internal language of a topos~$\E$ is a device which defines
   for any formula~$\varphi$ of a certain language (a form of extensional type
   theory) what it means for~$\varphi$ to hold \emph{internally to~$\E$},
   written~``$\E \models \varphi$''. This translation process is sound with
@@ -570,9 +569,7 @@
   usual mathematical language; more formally, $\Set \models \varphi$ if and
   only if~$\varphi$.}
 
-  % XXX: Cite Shulman and ABSS. Also Streicher's lecture notes.
-
-  \jnote{3-}{The intermediate value theorem (``any continuous function with
+  \jnote{3}{The intermediate value theorem (``any continuous function with
   opposite signs has a zero'') doesn't admit a constructive proof, because for
   most spaces~$X$ the external translation~$\Sh(X) \models \text{IVT}$ is not
   true -- it's not true that in continuous families of continuous functions
@@ -589,6 +586,22 @@
   looks like a field from the internal point of view (in the sense that $1 \neq
   0$ and~$\neg(\text{$x$ invertible}) \Rightarrow x = 0$). This is why the
   reducedness condition is important.)}
+
+  \jnote{4-}{Excellent references on the internal language include:
+  \begin{center}
+    \fixedhref{https://www.oliviacaramello.com/Papers/Papers.htm}{\includegraphics[height=3.5cm]{olivia-tst}}
+    \fixedhref{https://store.doverpublications.com/0486450260.html}{\includegraphics[height=3.5cm]{goldblatt-logic}}
+    \fixedhref{https://www.worldcat.org/title/sheaves-in-geometry-and-logic-a-first-introduction-to-topos-theory/oclc/24428855}{\includegraphics[height=3.5cm]{moerdijk-mac-lane-sheaves}}
+    \fixedhref{https://www2.mathematik.tu-darmstadt.de/~streicher/CTCL.pdf}{\includegraphics[height=3.5cm]{streicher-ctcl}}
+  \end{center}
+
+  We use an extension of the original form of the internal language which
+  allows for unbounded quantification, Mike Shulman's
+  \fixedhref{https://arxiv.org/abs/1004.3802}{\emph{stack semantics}}.
+  (Independently, Steve Awodey, Carsten Butz, Alex Simpson and Thomas Streicher
+  developed a
+  \fixedhref{http://homepages.inf.ed.ac.uk/als/Research/Sources/set-models.pdf}{similar
+  semantics}.)}
 \end{frame}
 
 % DURING THE TALK: Mention Set as a special case
@@ -687,7 +700,10 @@
   At a later point she needs to compute higher direct images
   along~$\mathbb{P}^n_S \to S$, where~$\mathbb{P}^n_S$ is a relative version of
   projective space. Since higher direct images are just internal
-  sheaf cohomology, she can in fact skip the second computation.}
+  sheaf cohomology, she can in fact skip the second computation.
+
+  Further progress along these lines is hindered by the fact that we don't yet
+  have a constructive account of sheaf cohomology.}
 \end{frame}
 
 % DURING THE TALK: Harting
@@ -838,18 +854,19 @@
 
   In particular, we hope to prove the conjecture that the statement ``any
   module embeds into a flabby module'' is not constructively provable by
-  verifying that it doesn't hold in the effective topos.
+  verifying that it doesn't hold in the ef{}fective topos.
 
   To this end, the slide displays two results.
 
   Details on the self-referential construction~``$K \defeq \{ f(a_K) \}$'' are in
   \fixedhref{https://rawgit.com/iblech/internal-methods/master/paper-flabby-objects.pdf}{this
-  draft paper}.
+  draft paper}. A module is~$\neg\neg$-separated if and only if~$\neg\neg(x = 0)$ implies~$x = 0$.
+  References on the ef{}fective topos include Martin Hyland's
+  \fixedhref{https://webdpmms.maths.cam.ac.uk/~martin/Research/Oldpapers/hyland-effectivetopos.pdf}{survey
+  paper} and the canonical book by one of our honoraries:
 
-  A module is~$\neg\neg$-separated if and only if~$\neg\neg(x = 0)$ implies~$x = 0$.}
+  {\centering\fixedhref{https://www.staff.science.uu.nl/~ooste110/boekbegin.pdf}{\includegraphics[height=3.5cm]{oosten-realizability}}\par}}
 \end{frame}
-
-% XXX: ctcl.pdf, realizability book
 
 \begin{frame}{State of affairs}
   \centering
@@ -878,26 +895,23 @@
   sheaves of modules are acyclic for the global sections functor (appears to)
   require Zorn's lemma.
 
-  Hence it appears that the simple idea of basing sheaf cohomology on flabby
-  resolutions doesn't work, constructively. More work is needed to give a
-  constructive account of sheaf cohomology and, more generally, derived functors.
+  Hence it appears that the simple idea of basing a constructive account of sheaf cohomology on flabby
+  resolutions doesn't work.
 
-  I hope that some day, we can study the cohomology of the the smallest dense
+  More work is needed.
+  I hope that some day, we can study the cohomology of the smallest dense
   sublocale of the one-point space.$^\star$
 
-  \bigskip
-  \bigskip
-  \bigskip
-  \bigskip
+  {\centering\includegraphics[height=2cm]{phantoms}\par}
 
   $^\star$ Assuming the law of excluded middle, this locale is just
   the one-point space again. Hence cohomology of this locale should measure the
   extent to which we're nonclassical, being zero if and only if the law of
   excluded middle holds.
 
-  An alternative way to phrase this question is as follows.
+  An alternative way of putting this question is as follows.
   Let~$\Set_{\neg\neg}$ be the smallest dense subtopos of~$\Set$, the topos of
-  double-negation sheaves. The forgetful functor~$\mathrm{Ab}(\Set_{\neg\neg})
+  double negation sheaves. The forgetful functor~$\mathrm{Ab}(\Set_{\neg\neg})
   \to \mathrm{Ab}$ is left-exact, but might not be right-exact, since
   a map~$f : A \to B$ is an epimorphism
   in~$\mathrm{Ab}(\Set_{\neg\neg})$ if and only if~$\forall y \in B\_

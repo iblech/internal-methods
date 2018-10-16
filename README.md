@@ -66,5 +66,7 @@ No prior knowledge about topos theory or formal logic is assumed.
   of Jürgen Jost's group in Leipzig
 * [Slides (PDF)](https://rawgit.com/iblech/internal-methods/master/slides-bayreuth2018.pdf)
   for the [Colloquium Logicum 2018](https://www.cl2018.uni-bayreuth.de/en/index.html) in Bayreuth
+* [Slides (PDF)](https://rawgit.com/iblech/internal-methods/master/slides-pssl104.pdf)
+  for [PSSL 104](https://mysite.science.uottawa.ca/phofstra/PSSL18.html) in Amsterdam
 
 ![Sheaves of rings look like ordinary rings from the internal point of view.](images/external-internal-small.png)

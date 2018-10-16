@@ -407,7 +407,11 @@ flabby, there exists an element~$v \in M'$ such that~$i^{-1}[K - u_0] \subseteq
 Thus~$K \subseteq \{ u_0 + i(v) \}$.
 \end{proof}
 
-Noticeably missing here is XXX ...
+Noticeably missing here is a statement as follows: ``Let~$0 \to M' \to M \to
+M'' \to 0$ be a short exact sequence of modules. If~$M'$ and~$M$ are flabby, so
+is~$M''$.'' Assuming Zorn's lemma in the metatheory, this statement is true in
+every topos of sheaves over a locale, but we don't know whether it has an
+intuitionistic proof and in fact we surmise that it has not.
 
 
 \section{Flabby objects}
@@ -666,13 +670,16 @@ One can verify, purely intuitionistically, that a sheaf~$F$ on a space~$T$ is
 flabby in the traditional sense if and only if~$F$ is a strongly flabby object
 of~$\Sh(T)$.
 
-The notion of strongly flabby objects is, however, not stable under base change
+The notion of strongly flabby objects is, however, not local (in the same sense
+that the notion of flabby objects is, as stated in
+Proposition~\ref{prop:basic-properties-of-flabby-objects})
 and therefore cannot be characterized in the internal language. A specific
 example is the~$G$-set~$G$ (with the translation action), considered as an
 object of the topos~$BG$ of~$G$-sets, where~$G$ is a nontrivial group.
 This object is not strongly flabby, since the morphism~$\emptyset \to G$ does
 not lift, but its pullback to the slice~$BG/G \simeq \Set$ is (assuming
-the law of excluded middle).
+the law of excluded middle in the metatheory), and the unique morphism~$G \to
+1$ is indeed an epimorphism.
 \end{rem}
 
 
@@ -861,7 +868,10 @@ module is flabby.
 \end{enumerate}
 
 We currently believe that it is not possible to give a constructive account of
-a global cohomology functor. However, XXX.
+a global cohomology functor which would associate to any sheaf of modules its
+cohomology. However, it should be possible to do so for a restricted class of
+sheaves, while still preserving the good formal properties expected from
+derived functors.
 
 \printbibliography
 

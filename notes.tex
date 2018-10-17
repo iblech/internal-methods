@@ -10085,13 +10085,12 @@ module over that set is not flabby in general.
 
 Since by the Godement construction the statement that any sheaf of modules can
 be embedded into a flabby sheaf of modules is true in many models of
-intuitionistic logic, the sheaf toposes over topological spaces, and
-furthermore the proof that the Godement construction yields a flabby sheaf is
-intuitionistically valid,\footnote{In order for the Godement construction to
-work in a intuitionistic metatheory, one has to tweak its definition a little
-bit. Instead of mapping an open subset~$U$ to~$\prod_{x \in U} \F_x$, one has
-to map~$U$ to~$\prod_{x \in U} \P_{\leq1}(\F_x)$. This has the added advantage
-that it works even if~$\F$ is not inhabited.} it's not entirely unreasonable to believe
+intuitionistic logic, the sheaf toposes over topological
+spaces,\footnote{However it should be noted that the Godement construction
+doesn't work in an intuitionistic metatheory, unless the underlying set of
+points of the given topological space is postulated to have decidable
+equality.}
+it's not entirely unreasonable to believe
 that such an intuitionistic proof is possible.\footnote{There is a metatheorem
 guaranteeing that a statement is intuitionistically provable if and only if it
 holds in the sheaf topos over any topological
@@ -10280,11 +10279,12 @@ The~$\O_X$-module constructed in this way coincides with the sheaf Ext as
 usually conceived.
 
 Along the same lines, we can construct Tor sheaves internally. Let~$\E$
-and~$\F$ be~$\O_X$-modules. Assume that~$\F$ is of finite type. Internally, we
+and~$\F$ be~$\O_X$-modules. Assume that~$\O_X$ and~$\F$ are coherent. Internally, we
 define~$\TOR_n(\E,\F) \defeq H_n(\E \otimes_{\O_X} \P_\bullet)$,
-where~$\P_\bullet \to \F \to 0$ is a projective resolution. Since~$\F$ is
-finitely generated, such a resolution exists; in fact, we can resolve~$\F$ by
-finite free modules (which are projective even without the axiom of choice). As
+where~$\P_\bullet \to \F \to 0$ is a projective resolution.
+Such a resolution exists; in fact, we can resolve~$\F$ by
+finite free modules (which are projective even without the axiom of choice) by
+the coherence assumptions on~$\F$ and~$\O_X$. As
 with~$\EXT^n$, the module constructed in this way is unique up to a unique
 isomorphism induced by a morphism of resolutions.
 

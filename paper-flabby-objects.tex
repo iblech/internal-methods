@@ -683,11 +683,51 @@ the law of excluded middle in the metatheory), and the unique morphism~$G \to
 \end{rem}
 
 
-\section{Characterizing cohomology}
+\section{Higher direct images as internal sheaf cohomology}
 
-XXX
-% EXT, TOR
-% Higher direct images
+Let~$X$ be a locale and let~$f : Y \to X$ be an over-locale. By the fundamental
+relation between locales and topological spaces, this situation arises
+for instance, when given a sober topological space and a topological
+space over it, as is often the case in algebraic topology or algebraic
+geometry. Let a sheaf~$\O_Y$ of rings on~$Y$ be given. Then the
+traditional way to define the \emph{higher direct images} of a sheaf~$E$
+of~$\O_Y$-modules is to pick an injective resolution~$0 \to E \to I^\bullet$
+and set~$R^n f_*(E) \defeq H^n(\Gamma(I^\bullet))$.
+
+We adopt in this section the axiom of choice, so that enough injectives are
+available to ensure that this recipe can be carried out. The resulting sheaf
+of~$f_*\O_Y$-modules is well-defined in the following sense: Given a further
+injective resolution~$0 \to E \to J^\bullet$, there is up to homotopy precisely
+one morphism~$I^\bullet \to J^\bullet$ compatible with the identity on~$E$, and
+this morphism induces an isomorphism on cohomology.
+
+Higher direct images are pictured as a ``relative'' version of sheaf
+cohomology. Due to the result that injectivity of sheaves of modules can be
+characterized in the internal language, we can give the following precise
+rendering of this slogan.
+
+The over-locale~$Y$ corresponds to a locale~$I(Y)$ internal to~$\Sh(X)$, in
+such a way that the category of internal sheaves over this internal locale
+coincides with~$\Sh(Y)$~\cite{XXX}; in particular, a given sheaf~$E$ of~$\O_Y$-modules can
+be regarded as a sheaf over~$I(Y)$. Under this equivalence, the morphism~$f : Y
+\to X$ corresponds to the unique morphism~$I(Y) \to \mathrm{pt}$ to the
+internal one-point locale. Hence it makes sense to construct, from the internal
+point of view of~$\Sh(X)$, the sheaf cohomology~$H^n(I(Y), E)$ of~$E$.
+
+\begin{thm}The sheaf on~$X$ obtained by evaluating the expression~``$H^n(I(Y),
+E)$'' of the internal language of~$\Sh(X)$ coincides with~$R^n
+f_*(E)$.\end{thm}
+
+\begin{proof}We recall that the stack semantics is idempotent in the sense
+that~$\Sh(X) \models (\Sh(I(Y)) \models \varphi)$ if and only if~$\Sh(Y)
+\models \varphi$. Hence a sheaf of modules on~$Y$ is injective if and only if
+it is an injective module from the point of view of~$\Sh(Y)$, if and only if it
+is ... XXX Since we have assumed the axiom of choice in the metatheory and
+since internal and external injectivity coincide by
+Theorem~\ref{thm:injectivity-external-internal}, the statement~``any module has
+an injective resolution'' holds internally to~$\Sh(Y)$. Therefore the
+statement XXX
+\end{proof}
 
 
 \section{Flabby objects in the effective topos}

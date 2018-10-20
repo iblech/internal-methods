@@ -233,8 +233,9 @@ be extended to a linear map~$B \to M$.
 In the presence of the law of excluded middle, a set is injective if and only
 if it is inhabited. In the presence of the axiom of choice, an abelian group is
 injective (as a~$\ZZ$-module) if and only if it is divisible. Injective sets
-and modules have been intensively studied before~\cite{XXX}; the following
-properties are well-known:
+and modules have been intensively studied in the context of foundations
+before~\cite{blass:inj-proj-axc,harting:locally-injective,kenney:injective-choice,aczel-berg-granstroem-schuster:injective};
+the following properties are well-known:
 
 \begin{prop}\label{prop:basics-injective}
 \begin{enumerate}
@@ -388,6 +389,17 @@ set~$i^{-1}[K - u_0]$ is inhabited. It therefore contains~$v$. Thus~$i(v) \in K
 - u_0$. Since~$K = \{u\}$, it follows that~$i(v) = u - u_0$, so~$u \in \{u_0 +
 i(v)\}$ as claimed.
 \end{proof}
+
+Kenney stressed that the notion of an injective set should be regarded as an
+interesting strengthening of the constructively rather ill-behaved notion of a
+nonempty set~\cite{kenney:injective-choice}. For instance, while the statements
+``there is a choice function for every set of nonempty sets'' and even ``there
+is a choice function for every set of inhabited sets'' are constructive taboos,
+the statement ``there is a choice function for every set of injective sets'' is
+constructively neutral. Proposition~\ref{prop:set-of-preimages-flabby} demonstrates
+that the notion of a flabby set can be regarded as an interesting intermediate
+notion: In the situation of Proposition~\ref{prop:set-of-preimages-flabby}, the
+set of preimages is not only not empty or inhabited, but even flabby.
 
 \begin{prop}Let~$0 \to M' \xra{i} M \xra{p} M'' \to 0$ be a short exact
 sequence of modules. If~$M'$ and~$M''$ are flabby, so is~$M$.

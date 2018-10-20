@@ -718,8 +718,8 @@ traditional way to define the \emph{higher direct images} of a sheaf~$E$
 of~$\O_Y$-modules is to pick an injective resolution~$0 \to E \to I^\bullet$
 and set~$R^n f_*(E) \defeq H^n(\Gamma(I^\bullet))$.
 
-We adopt in this section the axiom of choice, so that enough injectives are
-available to ensure that this recipe can be carried out. The resulting sheaf
+Assuming the axiom of choice, there are enough injective sheaves of modules so
+that this recipe can be carried out. The resulting sheaf
 of~$f_*\O_Y$-modules is well-defined in the following sense: Given a further
 injective resolution~$0 \to E \to J^\bullet$, there is up to homotopy precisely
 one morphism~$I^\bullet \to J^\bullet$ compatible with the identity on~$E$, and
@@ -727,30 +727,87 @@ this morphism induces an isomorphism on cohomology.
 
 Higher direct images are pictured as a ``relative'' version of sheaf
 cohomology. Due to the result that injectivity of sheaves of modules can be
-characterized in the internal language, we can give the following precise
-rendering of this slogan.
+characterized in the internal language, we can give a precise
+rendering of this slogan: We can understand higher direct images as
+internal sheaf cohomology.
 
-The over-locale~$Y$ corresponds to a locale~$I(Y)$ internal to~$\Sh(X)$, in
+The details are as follows. The over-locale~$Y$ corresponds to a locale~$I(Y)$ internal to~$\Sh(X)$, in
 such a way that the category of internal sheaves over this internal locale
-coincides with~$\Sh(Y)$~\cite{XXX}; in particular, a given sheaf~$E$ of~$\O_Y$-modules can
+coincides with~$\Sh(Y)$; in particular, a given sheaf~$E$ of~$\O_Y$-modules can
 be regarded as a sheaf over~$I(Y)$. Under this equivalence, the morphism~$f : Y
 \to X$ corresponds to the unique morphism~$I(Y) \to \mathrm{pt}$ to the
 internal one-point locale. Hence it makes sense to construct, from the internal
 point of view of~$\Sh(X)$, the sheaf cohomology~$H^n(I(Y), E)$ of~$E$.
 
-\begin{thm}The sheaf on~$X$ obtained by evaluating the expression~``$H^n(I(Y),
-E)$'' of the internal language of~$\Sh(X)$ coincides with~$R^n
-f_*(E)$.\end{thm}
+Usually one would not expect an internal construction which depends on
+arbitary choices to yield a globally-defined sheaf on~$X$ -- following the
+definition of the stack semantics we only obtain a family of sheaves defined on
+members of some open covering of~$X$; but we verify in
+Theorem~\ref{thm:higher-direct-images-as-internal-sheaf-cohomology} that in our
+case, it does, and that the resulting sheaf coincides with the~$n$-th higher
+direct image of~$E$.
 
-\begin{proof}We recall that the stack semantics is idempotent in the sense
-that~$\Sh(X) \models (\Sh(I(Y)) \models \varphi)$ if and only if~$\Sh(Y)
-\models \varphi$. Hence a sheaf of modules on~$Y$ is injective if and only if
-it is an injective module from the point of view of~$\Sh(Y)$, if and only if it
-is ... XXX Since we have assumed the axiom of choice in the metatheory and
-since internal and external injectivity coincide by
-Theorem~\ref{thm:injectivity-external-internal}, the statement~``any module has
-an injective resolution'' holds internally to~$\Sh(Y)$. Therefore the
-statement XXX
+\begin{lemma}\label{lemma:notions-of-internal-injectivity}
+Let~$Y$ be a ringed locale over a locale~$X$. Let~$I$ be a sheaf of modules on~$Y$.
+Assuming Zorn's lemma in the metatheory, the following statements are equivalent:
+\begin{enumerate}
+\item $I$ is an injective sheaf of modules.
+\item From the point of view of~$\Sh(Y)$, $I$ is an injective module.
+\item From the point of view of~$\Sh(X)$, $I$ is an injective module from the
+point of view of~$\Sh(I(Y))$.
+\item From the point of view of~$\Sh(X)$, $I$ is an injective sheaf of modules
+on~$I(Y)$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}The equivalence of the first two statements is by
+Theorem~\ref{thm:injectivity-external-internal}. The equivalence~$\text{(2)}
+\Leftrightarrow \text{(3)}$ is by the idempotency of the stack semantics:
+$\Sh(Y) \models \varphi$ if and only if~$\Sh(X) \models (\Sh(I(Y)) \models
+\varphi)$. (Shulman stated and proved a restricted version of this idempotency property
+in his original paper on the stack semantics~\cite[Lemma~7.20]{shulman:stack-semantics}.
+A proof of the general case is slightly less
+accessible~\cite[Lemma~1.20]{blechschmidt:master}.) The equivalence~$\text{(3)}
+\Leftrightarrow \text{(4)}$ is by interpreting
+Theorem~\ref{thm:injectivity-external-internal} internally to~$\Sh(X)$. This
+requires Zorn's lemma to hold internally to~$\Sh(X)$; this is indeed the case
+since we assume Zorn's lemma in the metatheory and since the validity of Zorn's
+lemma passes from the metatheory to localic
+toposes~\cite[Proposition~D4.5.14]{johnstone:elephant}.
+\end{proof}
+
+\begin{thm}\label{thm:higher-direct-images-as-internal-sheaf-cohomology}
+Let~$f : Y \to X$ be a ringed locale over a locale~$X$. Let~$E$ be a sheaf of modules over~$Y$.
+Assuming the axiom of choice in the metatheory, the expression~``$H^n(I(Y), E)$''
+of the internal language of~$\Sh(X)$ denotes a globally-defined sheaf
+on~$X$, and this sheaf coincides with~$R^n f_*(E)$.\end{thm}
+
+\begin{proof}By Lemma~\ref{lemma:notions-of-internal-injectivity} and by the
+fact that every sheaf of modules over~$Y$ admits an injective resolution, every sheaf
+of modules over~$I(Y)$ admits an injective resolution from the point of view
+of~$\Sh(X)$. Hence we can, internally to~$\Sh(X)$, carry out the construction of~$H^n(I(Y), E)$.
+Externally, this yields an open covering of~$X$ such that we have, for each
+member~$U$ of that covering
+\begin{itemize}
+\item a sheaf~$M$ on~$U$,
+\item a module structure on~$M$,
+\item a resolution~$0 \to E|_{f^{-1}U} \to I^\bullet$ by sheaves of modules which are
+internally and hence externally injective and
+\item data exhibiting~$M$ as the~$n$-th cohomology
+of~$(f|_{f^{-1}U})_*(I^\bullet)$.
+\end{itemize}
+On intersections of such opens~$U$ and~$U'$, there is exactly one
+isomorphism~$M|_{U \cap U'} \to M'|_{U \cap U'}$ of sheaves of modules induced by
+a morphism of resolutions which is compatible with the identity on~$E$.
+Hence the cocycle condition for these isomorphisms is satisfied, ensuring that
+the individual sheaves~$M$ glue to a globally-defined sheaf of modules on~$X$.
+(The individual injective resolutions need not glue to a global injective
+resolution.)
+
+The claim that this sheaf coincides with~$R^n f_*(E)$ follows from the fact
+that we can pick as internal resolution of~$E$ (considered as a sheaf
+over~$I(Y)$), the particular injective resolution of~$E$ (considered as a sheaf
+over~$Y$) used to define~$R^n f_*(E)$.
 \end{proof}
 
 

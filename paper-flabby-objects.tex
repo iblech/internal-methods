@@ -197,7 +197,7 @@ holds.
 \cup \{ 1 \,|\, \varphi \} \subseteq \{ 0,1 \}$ is inhabited by~$0$ and
 contains~$1$ if and only if~$\varphi$ holds. Let~$K$ be the subterminal~$\{ 1 \,|\, \varphi
 \} \subseteq X$. Flabbiness of~$X$ implies that there exists an element~$x \in
-X$ such that~$K \subseteq \{x\}$. We have~$x = 0$ or~$x = 1$. The first case
+X$ such that~$K \subseteq \{x\}$. We have~$x \neq 1$ or~$x = 1$. The first case
 entails~$\neg\varphi$. The second case entails~$1 \in X$, so~$\varphi$.
 \end{proof}
 
@@ -216,17 +216,23 @@ the maximally undefined element and a singleton is a maximally defined element.
 A set is flabby if and only if any of its partially-defined elements can be
 refined to an honest element.
 
+\begin{rem}Although we will see in Section~\ref{sect:in-eff} that there is some
+relation between flabby sets and~$\neg\neg$-separated sets, neither notion
+encompasses the other. The set~$\Omega$ is flabby, but might fail to
+be~$\neg\neg$-separated; the set~$\NN$ is~$\neg\neg$-separated, even discrete,
+but might fail to be flabby.
+\end{rem}
+
 \begin{defn}\begin{enumerate}
-\item A set~$X$ is \emph{injective} if and only if, for any injection~$i
-: A \to B$, any map~$f : A \to X$ can be extended to a map~$B \to X$.
-\item An~$R$-module~$M$ is \emph{injective} if and only if, for any linear
-injection~$i : A \to B$ between~$R$-modules, any linear map~$f : A \to M$ can
-be extended to a linear map~$B \to M$.
+\item A set~$I$ is \emph{injective} if and only if, for any injection~$i
+: A \to B$, any map~$f : A \to I$ can be extended to a map~$B \to I$.
+\item An~$R$-module~$I$ is \emph{injective} if and only if, for any linear
+injection~$i : A \to B$ between~$R$-modules, any linear map~$f : A \to I$ can
+be extended to a linear map~$B \to I$.
 \end{enumerate}
 \[ \xymatrix{
-  A \ar@{^{(}->}[r]\ar[d] & B \ar@{-->}@/^/[ld] &&
   A \ar@{^{(}->}[r]\ar[d] & B \ar@{-->}@/^/[ld] \\
-  X &&& M
+  I
 } \]
 \end{defn}
 
@@ -251,12 +257,12 @@ injective module.
 subterminals~$\P_{\leq 1}(X)$ are each injective.~\cite{XXX}
 \item The forgetful functor from modules to sets possesses a left exact left
 adjoint. More explicitly, if~$i : A \to B$ is an injective map between sets and
-if~$f : A \to M$ is an arbitrary map, then the induced map~$R\langle A \rangle
+if~$f : A \to I$ is an arbitrary map, then the induced map~$R\langle A \rangle
 \to R\langle B \rangle$ between free modules is also injective, the given
-map~$f$ lifts to a linear map~$R\langle A \rangle \to M$, and an~$R$-linear
-extension~$R\langle B \rangle \to M$ induces an extension~$B \to M$ of~$f$.
+map~$f$ lifts to a linear map~$R\langle A \rangle \to I$, and an~$R$-linear
+extension~$R\langle B \rangle \to I$ induces an extension~$B \to M$ of~$f$.
 \item One verifies that any abelian group can be embedded into a divisible
-abelian group. By the axiom of choice, divisible abelian groups are injective.
+abelian group. By Baer's criterion (which requires the axiom of choice), divisible abelian groups are injective.
 The result for modules over arbitrary rings then follows purely
 formally~\cite{XXX}. \qedhere
 \end{enumerate}\end{proof}
@@ -264,13 +270,13 @@ formally~\cite{XXX}. \qedhere
 \begin{prop}\label{prop:injective-flabby}
 Any injective set is flabby.\end{prop}
 
-\begin{proof}Let~$X$ be an injective set. Let~$K \subseteq X$ be a subterminal.
-The inclusion~$f : K \to X$ extends along the injection~$K \to 1 = \{\star\}$
-to a map~$1 \to X$. The unique image~$x$ of that map has the property that~$K
+\begin{proof}Let~$I$ be an injective set. Let~$K \subseteq I$ be a subterminal.
+The inclusion~$f : K \to I$ extends along the injection~$K \to 1 = \{\star\}$
+to a map~$1 \to I$. The unique image~$x$ of that map has the property that~$K
 \subseteq \{x\}$.\end{proof}
 
 \begin{cor}\label{cor:enough-flabby-sets}
-Any set can be embedded into a flabby set.\end{cor}
+Any set embeds into a flabby set.\end{cor}
 
 \begin{proof}Immediate by Proposition~\ref{prop:basics-injective}(1) and
 Proposition~\ref{prop:injective-flabby}.\end{proof}
@@ -749,6 +755,7 @@ statement XXX
 
 
 \section{Flabby objects in the effective topos}
+\label{sect:in-eff}
 
 The notion of flabby objects originates from the notion of flabby shaves and is
 therefore closely connected to Grothendieck toposes. Hence it is instructive
@@ -776,9 +783,6 @@ module in the effective topos can be embedded into a flabby module.
 % Sind welke Moduln separiert? Nein: Ich denke mittlerweile, dass sich jeder
 % Modul in einen welken einbetten lässt, über etwas, was wie eine induktive
 % Konstruktion aussieht.
-
-% Rem.: diskret =/=> welk, sep =/=> welk (Bsp.: konstante Garbe Z auf Mnf.)
-% Umkehrung auch nicht (Bsp.: Godemontkonstruktion, Omega)
 
 % In Eff gilt: Jede negneg-separierte abelsche Gruppe bettet in eine injektive
 % ein. Nämlich A --> ΔΓA --> ΔI für ΓA --> I Einbettung in eine injektive
@@ -890,10 +894,11 @@ group~\cite{blass:inj-proj-axc}.
 
 In principle, this problem could be remedied by employing flabby resolutions
 instead of injective ones. There are, however, two problems with this
-suggestion. Firstly, we needed Zorn's lemma to show that flabby sheaves are
-acyclic for the global sections functor (Proposition~XXX). This problem might
-be mitigated by relying on the substitute property XXX.
-The more serious problem is that it is an open question whether
+suggestion. Firstly, all proofs known to us that flabby sheaves are
+acyclic for the global sections functor require Zorn's lemma. This problem might
+be mitigated by relying on the substitute property discussed
+following Scholium~\ref{scholium:exact-as-presheaves}.
+But secondly, it is an open question whether
 one can show, purely intuitionistically, that any sheaf of modules embeds into
 a flabby sheaf of modules. The following is known about this problem:
 

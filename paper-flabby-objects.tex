@@ -656,13 +656,13 @@ is sound with respect to intuitionistic logic.
 
 \begin{scholium}\label{scholium:exact-as-presheaves}
 Let~$0 \to M' \to M \to M'' \to 0$ be a short exact sequence
-of~$R$-modules in an elementary topos~$\E$. Let~$M'$ be a flabby object.
-If~$\E$ is localic and Zorn's lemma is available, the induced sequence~$0 \to
-\Gamma(M') \to \Gamma(M) \to \Gamma(M') \to 0$ of~$\Gamma(R)$-modules is exact,
+of~$R$-modules in a localic topos~$\E$. Let~$M'$ be a flabby object.
+Assuming Zorn's lemma in the metatheory, the induced sequence~$0 \to
+\Gamma(M') \to \Gamma(M) \to \Gamma(M'') \to 0$ of~$\Gamma(R)$-modules is exact,
 where~$\Gamma(X) = \Hom_\E(1,X)$.\end{scholium}
 
 \begin{proof}We only have to verify exactness at~$\Gamma(M'')$, so let~$s \in
-\Gamma(M')$. Interpreting Proposition~\ref{prop:set-of-preimages-flabby}
+\Gamma(M'')$. Interpreting Proposition~\ref{prop:set-of-preimages-flabby}
 in~$\E$, we see that the object of preimages of~$s$ is flabby. Since~$\E$ is
 localic, this object is a flabby sheaf; since Zorn's lemma is available, it
 possesses a global element. Such an element is the desired preimage of~$s$
@@ -670,7 +670,13 @@ in~$\Gamma(M)$.\end{proof}
 
 If~$\E$ is not necessarily localic or Zorn's lemma is not available, only a
 weaker substitute for Scholium~\ref{scholium:exact-as-presheaves} is available:
-Given~$s \in \Gamma(M'')$, the object of preimages of~$s$ is flabby. XXX
+Given~$s \in \Gamma(M'')$, the object of preimages of~$s$ is flabby. In
+particular, given any point of~$\E$, we can extend any local preimage of~$s$ to
+a preimage which is defined on an open neighborhood of that point. We believe
+that there are situations in which this weaker substitute is good enough,
+similar to how in constructive algebra often the existence of a sufficiently
+large field extension is good enough where one would classically blithely pass
+to an algebraic closure.
 
 \begin{rem}A direct generalization of the traditional notion of a flabby sheaf, as
 opposed to our reimagining in Definition~\ref{defn:flabby-sheaf}, to
@@ -688,7 +694,7 @@ Proposition~\ref{prop:basic-properties-of-flabby-objects})
 and therefore cannot be characterized in the internal language. A specific
 example is the~$G$-set~$G$ (with the translation action), considered as an
 object of the topos~$BG$ of~$G$-sets, where~$G$ is a nontrivial group.
-This object is not strongly flabby, since the morphism~$\emptyset \to G$ does
+This object is not strongly flabby, since the morphism~$\emptyset \to 1$ does
 not lift, but its pullback to the slice~$BG/G \simeq \Set$ is (assuming
 the law of excluded middle in the metatheory), and the unique morphism~$G \to
 1$ is indeed an epimorphism.
@@ -849,7 +855,7 @@ and~$\P_{\leq1}(X)$ are known to be not very informative.
 
 Passing~$a_e$ to~$r$ yields a reflexivity realizer of some element~$x_{K_e} \in
 |X|$. Therefore the Turing machine~$e$ does terminate, with a reflexivity
-realizer for~$f(x_{K_e})$. Thus the statement~``$f(x_{K_e}) \in K$'' is
+realizer for~$f(x_{K_e})$. Thus the statement~``$f(x_{K_e}) \in K_e$'' is
 realized; hence~``$f(x_{K_e}) = x_{K_e}$'' is as well.
 \end{proof}
 
@@ -938,15 +944,16 @@ if~$t,s,u \in T$ and~$r,r' \in R$, then~$t + (s + u) = (t + s) + u$, $t + s = s 
 
 However, it is an open question under which circumstances quotient inductive
 types can be shown to exist. Zermelo--Fraenkel with choice certainly suffices,
-while Zermelo--Fraenkel without choice doesn't~\cite[Section~9]{shulman-lumsdaine:hits},\footnote{With
-quotient inductive types, any infinitary algebraic theory admits free algebras.
-However, it is consistent with Zermelo--Fraenkel set theory that some such
-theories don't admit free algebras~\cite{blass:free-algebras}.} hence IZF also
-doesn't. Quotient inductive types seem to be, as the existence of enough
-injective modules, \emph{constructively neutral}.
+while Zermelo--Fraenkel without choice doesn't~\cite[Section~9]{shulman-lumsdaine:hits},
+hence IZF also doesn't.\footnote{With quotient inductive types, any infinitary
+algebraic theory admits free algebras. However, it is consistent with
+Zermelo--Fraenkel set theory that some such theories don't admit free
+algebras~\cite{blass:free-algebras}.} The existence of quotient inductive types
+seem to be, as the existence of enough injective modules, \emph{constructively
+neutral}.
 
 \item There is a number of simple constructions which come close to providing
-flabby envelopes for arbitrary modules~$M$. For instance, we could equip~$T
+flabby envelopes for arbitrary modules~$M$. For instance, we could equip the set~$T
 \defeq \P_{\leq1}(X)/{\sim}$, where~$K \sim L$ if and only if~$K = L$ or~$K
 \cup L \subseteq \{0\}$, with a module structure given by~$0 \defeq [\{0\}]$,
 $[K]+[L] \defeq [K+L]$ and~$r [K] \defeq rK$. The resulting module admits a

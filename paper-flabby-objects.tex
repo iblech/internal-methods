@@ -77,15 +77,12 @@ Strada le Grazie 15 \\
   show that an internal notion of injective objects coincides with the
   corresponding external notion, in stark contrast with the situation for
   projective objects. We show as an application that higher direct images can
-  be understood as internal cohomology, and study flabby objects in the
+  be understood as internal cohomology, and we study flabby objects in the
   \effective topos.
 \end{abstract}
 
 \maketitle
 \thispagestyle{empty}
-
-{\centering \textbf{Rough draft, comments welcome! iblech@speicherleck.de}\par}
-\bigskip
 
 \noindent
 As is nowadays well-established, any topos supports an \emph{internal language}
@@ -128,7 +125,7 @@ Section~\ref{sect:flabby-objects} and in
 Section~\ref{sect:higher-direct-images}: A sheaf is flabby if and only if, from
 the internal point of view, it is a flabby set, a notion introduced in
 Section~\ref{sect:flabby-sets} below; and higher direct images look like sheaf
-cohomology from the internal point view.
+cohomology from the internal point of view.
 
 As a byproduct, we demonstrate how the notion of flabby sets is a useful
 organizing principle in the study of injective objects. We employ flabby sets
@@ -137,7 +134,7 @@ a local notion~\cite{harting:remark} and that a sheaf is injective if and only
 if it is injective from the internal point of
 view~\cite{harting:locally-injective}, which she stated (in slightly different
 language) for sheaves of abelian groups. We use the opportunity to correct a
-small mistake of her, namely claiming that no generalization to sheaves of
+small mistake of hers, namely claiming that no generalization to sheaves of
 modules would be possible.
 
 When employing the internal language, we are always referring to Mike Shulman's
@@ -161,21 +158,24 @@ of sheaf cohomology is still open.
 In view of almost 80 years of sheaf cohomology, this state of affairs is
 slightly embarassing, challenging the call that ``once [a] subject is better
 understood, we can hope to refine its definitions and proofs so as to
-avoid that axiom''~\cite[Section~3.4]{hott}.
+avoid [the law of excluded middle]''~\cite[Section~3.4]{hott}.
 
 A constructive account of sheaf cohomology would be highly desirable, not only
 out of a philosophical desire to obtain a deeper understanding of the
 foundations of sheaf cohomology, but also to: use the tools of sheaf cohomology
-in the internal setting of toposes, thereby extending the applicability of
+in the internal setting of toposes, thereby extending their applicability by
 relativization by internalization; and to carry out \emph{integrated
 developments} of algorithms for computing sheaf cohomology, where we would
 extract algorithms together with termination and correctness proofs from a
 hypothetical constructive account.
 
+% XXX eff topos
+
 \textbf{Acknowledgments.} We are grateful to Thorsten Altenkirch, Simon Henry
 and Maria Emilia Maietti for insightful discussions and pointers to prior work,
-and to Jürgen Jost, Marc Nieper-Wißkirchen and Peter Schuster for valuable
-guidance. Most of the work for this note was carried out at the University of
+to Jürgen Jost, Marc Nieper-Wißkirchen and Peter Schuster for valuable
+guidance, and to Daniel Albert and Caterina Cozzi for their careful readings of
+earlier drafts. Most of the work for this note was carried out at the University of
 Augsburg and the Max Planck Institute for Mathematics in the Sciences in
 Leipzig.
 
@@ -216,8 +216,7 @@ intuitionistically.
 There is an alternative definition of flabbiness, to be introduced below, which
 is equivalent to the usual one in presence of Zorn's lemma and which
 requires different commitments: For the alternative definition,
-properties~(1),~(3b) and~(4a) can be verified purely intuitionistically, and
-property~(2) can be verified purely intuitionistically for open injections~$f$.
+properties~(1),~(3b) and~(4a) can be verified purely intuitionistically.
 There is a substitute for property~(3a) which can be verified purely
 intuitionistically. We do not know whether property~(4b) can be established
 purely intuitionistically, but we give a rudimentary analysis in
@@ -305,9 +304,13 @@ refined to an honest element.
 \begin{rem}Although we will see in Section~\ref{sect:in-eff} that there is some
 relation between flabby sets and~$\neg\neg$-separated sets, neither notion
 encompasses the other. The set~$\Omega$ is flabby, but might fail to
-be~$\neg\neg$-separated; the set~$\NN$ is~$\neg\neg$-separated, even discrete,
-but might fail to be flabby. % XXX because sheaf cohomology is often nontrivial
-% and because of the Brouwerian counterexample
+be~$\neg\neg$-separated; the set~$\ZZ$ is~$\neg\neg$-separated, even discrete,
+but might fail to be flabby. This can abstractly be seen by adapting the proof of
+Proposition~\ref{prop:taboo}. An explicit model in which~$\ZZ$ is not flabby
+can be obtained by picking any topological space~$T$ such that~$H^1(T,
+\underline{\ZZ}) \neq 0$. Then the constant sheaf~$\underline{\ZZ}$ is not
+flabby and hence, by Proposition~\ref{prop:flabby-sheaves-objects} below, not a
+flabby set from the internal point of view of~$\Sh(T)$.
 \end{rem}
 
 \begin{defn}\begin{enumerate}
@@ -315,7 +318,7 @@ but might fail to be flabby. % XXX because sheaf cohomology is often nontrivial
 : A \to B$, any map~$f : A \to I$ can be extended to a map~$B \to I$.
 \item An~$R$-module~$I$ is \emph{injective} if and only if, for any linear
 injection~$i : A \to B$ between~$R$-modules, any linear map~$f : A \to I$ can
-be extended to a linear map~$B \to I$.
+be extended to a linear map~$B \to I$, as in the diagram below.
 \end{enumerate}
 \[ \xymatrix{
   A \ar@{^{(}->}[r]\ar[d] & B \ar@{-->}@/^/[ld] \\
@@ -347,11 +350,12 @@ adjoint. More explicitly, if~$i : A \to B$ is an injective map between sets and
 if~$f : A \to I$ is an arbitrary map, then the induced map~$R\langle A \rangle
 \to R\langle B \rangle$ between free modules is also injective, the given
 map~$f$ lifts to a linear map~$R\langle A \rangle \to I$, and an~$R$-linear
-extension~$R\langle B \rangle \to I$ induces an extension~$B \to M$ of~$f$.
+extension~$R\langle B \rangle \to I$ induces an extension~$B \to I$ of~$f$.
 \item One verifies that any abelian group embeds into a divisible
 abelian group. By Baer's criterion (which requires the axiom of choice), divisible abelian groups are injective.
 The result for modules over arbitrary rings then follows purely
-formally~\cite{XXX}. \qedhere
+formally, since the functor~$A \mapsto \Hom(R,A)$ from abelian groups
+to~$R$-modules has a left exact left adjoint with monic unit. \qedhere
 \end{enumerate}\end{proof}
 
 \begin{prop}\label{prop:injective-flabby}
@@ -515,7 +519,7 @@ Thus~$K \subseteq \{ u_0 + i(v) \}$.
 Noticeably missing here is a statement as follows: ``Let~$0 \to M' \to M \to
 M'' \to 0$ be a short exact sequence of modules. If~$M'$ and~$M$ are flabby, so
 is~$M''$.'' Assuming Zorn's lemma in the metatheory, this statement is true in
-every topos of sheaves over a locale, but we don't know whether it has an
+every topos of sheaves over a locale, but we do not know whether it has an
 intuitionistic proof and in fact we surmise that it has not.
 
 
@@ -611,8 +615,7 @@ assumption.
 \end{proof}
 
 The assumption on~$f_*$ of Proposition~\ref{prop:pushforward-of-flabby-objects}
-is for instance satisfied if~$f$ is a local geometric morphism or if~$f$ is
-induced by an open continuous injection between topological spaces. XXX
+is for instance satisfied if~$f$ is a local geometric morphism.
 
 \begin{defn}An object~$I$ of an elementary topos~$\E$ is \emph{externally
 injective} if and only if for any monomorphism~$A \to B$ in~$\E$, the canonical
@@ -1054,7 +1057,9 @@ same proofs.\end{rem}
 
 We originally set out to develop an intuitionistic account of Grothendieck's
 sheaf cohomology. Čech methods can be carried out constructively, and
-XXX(Barakat), but it appears that there is not a general framework for sheaf
+there are constructive accounts of special cases, resulting even in
+efficient-in-practice algorithms~\cite{barakat-lh:homalg,barakat-lh:ext},
+but it appears that there is not a general framework for sheaf
 cohomology which works in an intuitionistic metatheory.
 
 The main obstacle preventing Grothendieck's theory of derived functors to be interpreted
@@ -1120,10 +1125,10 @@ if~$t,s,u \in T$ and~$r,r' \in R$, then~$t + (s + u) = (t + s) + u$, $t + s = s 
 
 However, it is an open question under which circumstances quotient inductive
 types can be shown to exist. Zermelo--Fraenkel with choice certainly suffices,
-while Zermelo--Fraenkel without choice doesn't~\cite[Section~9]{shulman-lumsdaine:hits},
-hence IZF also doesn't.\footnote{With quotient inductive types, any infinitary
+while Zermelo--Fraenkel without choice does not~\cite[Section~9]{shulman-lumsdaine:hits},
+hence IZF also does not.\footnote{With quotient inductive types, any infinitary
 algebraic theory admits free algebras. However, it is consistent with
-Zermelo--Fraenkel set theory that some such theories don't admit free
+Zermelo--Fraenkel set theory that some such theories do not admit free
 algebras~\cite{blass:free-algebras}.} The existence of quotient inductive types
 seem to be, as the existence of enough injective modules, \emph{constructively
 neutral}.
@@ -1153,5 +1158,6 @@ sheaves, while still preserving the good formal properties expected from
 derived functors.
 
 \printbibliography
+\enlargethispage{1em}
 
 \end{document}

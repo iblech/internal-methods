@@ -6,6 +6,7 @@
 \usepackage[all]{xy}
 \usepackage[protrusion=true,expansion=true]{microtype}
 \usepackage{hyperref}
+\usepackage{xspace}
 
 \usepackage[natbib=true,style=numeric,maxnames=10]{biblatex}
 \usepackage[babel]{csquotes}
@@ -61,6 +62,7 @@ Strada le Grazie 15 \\
 \newcommand{\Set}{\mathrm{Set}}
 \newcommand{\Eff}{\mathrm{Ef{}f}}
 \renewcommand{\_}{\mathpunct{.}\,}
+\newcommand{\effective}{ef{}fective\xspace}
 
 \newcommand{\stacksproject}[1]{\cite[{\href{https://stacks.math.columbia.edu/tag/#1}{Tag~#1}}]{stacks-project}}
 
@@ -74,9 +76,9 @@ Strada le Grazie 15 \\
   research started by Roswitha Harting, we use flabby objects to
   show that an internal notion of injective objects coincides with the
   corresponding external notion, in stark contrast with the situation for
-  projective objects. As an application, we give internal characterizations of
-  sheaf cohomology and show that higher direct images can be understood as
-  internal cohomology.
+  projective objects. We show as an application that higher direct images can
+  be understood as internal cohomology, and study flabby objects in the
+  \effective topos.
 \end{abstract}
 
 \maketitle
@@ -396,7 +398,7 @@ set~$i^{-1}[K - u_0]$ is inhabited. It therefore contains~$v$. Thus~$i(v) \in K
 i(v)\}$ as claimed.
 \end{proof}
 
-Kenney stressed that the notion of an injective set should be regarded as an
+Toby Kenney stressed that the notion of an injective set should be regarded as an
 interesting strengthening of the constructively rather ill-behaved notion of a
 nonempty set~\cite{kenney:injective-choice}. For instance, while the statements
 ``there is a choice function for every set of nonempty sets'' and even ``there
@@ -433,6 +435,7 @@ intuitionistic proof and in fact we surmise that it has not.
 
 
 \section{Flabby objects}
+\label{sect:flabby-objects}
 
 \begin{defn}An object~$X$ of an elementary topos~$\E$ is \emph{flabby} if and
 only if the statement~``$X$ is a flabby set'' holds in the stack semantics
@@ -538,7 +541,7 @@ for~$R$-modules in~$\E$, referring only to the set respectively the object of
 linear maps. The condition for an object to be internally injective can be
 rephrased in various ways. The following proposition lists five of these
 conditions. The equivalence of the first four is due to
-Harting~\cite{harting:locally-injective}.
+Roswitha Harting~\cite{harting:locally-injective}.
 
 \begin{prop}\label{prop:notions-of-internal-injectivity}
 Let~$\E$ be an elementary topos. Then the following statements about an
@@ -572,7 +575,7 @@ injective sheaves remain injective when
 restricted to smaller open subsets: We have that $p_* \circ [\cdot, p^*(I)]_{\E/A}
 \cong [\cdot, I]_\E \circ p_!$, the functor $p_!$ preserves monomorphisms, and one
 can check that $p_*$ reflects the property that global elements locally possess
-preimages. Details are in~\cite[Thm.~1.1]{harting}.\footnote{Harting formulates
+preimages. Details are in~\cite[Thm.~1.1]{harting:locally-injective}.\footnote{Harting formulates
 the statement for abelian group objects, and has to assume that~$\E$ contains a
 natural numbers object to ensure the existence of an abelian version of~$p_!$.}
 
@@ -593,12 +596,14 @@ be found in~\cite[page~54]{mines-richman-ruitenburg:constructive-algebra}.
 
 Somewhat surprisingly, and in stark contrast with the situation for internally
 projective objects (which are defined dually), internal injectivity coincides
-with external injectivity for localic toposes.
+with external injectivity for localic toposes. In the special case of sheaves
+of abelian groups, this result is due to Roswitha
+Harting~\cite[Proposition~2.1]{harting:locally-injective}.
 
 \begin{thm}\label{thm:injectivity-external-internal}
 Let~$I$ be an object of an elementary topos~$\E$. If~$I$ is externally
 injective, then~$I$ is also internally injective. The converse holds if~$\E$ is
-localic and Zorn's lemma is available.
+localic and Zorn's lemma is available in the metatheory.
 \end{thm}
 
 \begin{proof}For the ``only if'' direction, let~$I$ be an object
@@ -622,9 +627,9 @@ holds as well, if~$\E$ is assumed to have a natural numbers object. The proof
 carries over word for word, only referencing
 Lemma~\ref{lemma:set-of-extensions-flabby}(2) instead of
 Lemma~\ref{lemma:set-of-extensions-flabby}(1).
-It seems that Harting was not aware of this, even though she did show that
+It seems that Roswitha Harting was not aware of this generalization, even though she did show that
 injectivity of sheaves of modules over topological spaces is a local
-notion~\cite{XXX}, as she
+notion~\cite[Remark~5]{harting:remark}, as she
 (mistakenly) states in~\cite[page~233]{harting:remark} that ``the notions of
 injectivity and internal injectivity do not coincide'' for modules.
 % XXX comparison with Harting's proof (Barr's lemma...)
@@ -655,7 +660,7 @@ of~$R$-modules in~$\E$. If~$M'$ and~$M''$ are flabby objects, so is~$M$.
 \end{enumerate}
 \end{scholium}
 
-\begin{proof}The analogous statements were established purely
+\begin{proof}We established the analogous statements for sets and modules purely
 intuitionistically in Section~\ref{sect:flabby-sets}, and the stack semantics
 is sound with respect to intuitionistic logic.
 \end{proof}
@@ -708,6 +713,7 @@ the law of excluded middle in the metatheory), and the unique morphism~$G \to
 
 
 \section{Higher direct images as internal sheaf cohomology}
+\label{sect:higher-direct-images}
 
 Let~$X$ be a locale and let~$f : Y \to X$ be an over-locale. By the fundamental
 relation between locales and topological spaces, this situation arises
@@ -716,7 +722,7 @@ space over it, as is often the case in algebraic topology or algebraic
 geometry. Let a sheaf~$\O_Y$ of rings on~$Y$ be given. Then the
 traditional way to define the \emph{higher direct images} of a sheaf~$E$
 of~$\O_Y$-modules is to pick an injective resolution~$0 \to E \to I^\bullet$
-and set~$R^n f_*(E) \defeq H^n(\Gamma(I^\bullet))$.
+and set~$R^n f_*(E) \defeq H^n(f_*(I^\bullet))$.
 
 Assuming the axiom of choice, there are enough injective sheaves of modules so
 that this recipe can be carried out. The resulting sheaf
@@ -743,9 +749,8 @@ Usually one would not expect an internal construction which depends on
 arbitary choices to yield a globally-defined sheaf on~$X$ -- following the
 definition of the stack semantics we only obtain a family of sheaves defined on
 members of some open covering of~$X$; but we verify in
-Theorem~\ref{thm:higher-direct-images-as-internal-sheaf-cohomology} that in our
-case, it does, and that the resulting sheaf coincides with the~$n$-th higher
-direct image of~$E$.
+Theorem~\ref{thm:higher-direct-images-as-internal-sheaf-cohomology} below that in our
+case, it does, and that the resulting sheaf coincides with~$R^n f_*(E)$.
 
 \begin{lemma}\label{lemma:notions-of-internal-injectivity}
 Let~$Y$ be a ringed locale over a locale~$X$. Let~$I$ be a sheaf of modules on~$Y$.
@@ -812,7 +817,7 @@ over~$Y$) used to define~$R^n f_*(E)$.
 
 The internal characterization provided by
 Theorem~\ref{thm:higher-direct-images-as-internal-sheaf-cohomology} gives, as a
-simple application, a geometric explanation that higher direct images along
+simple application, a logical explanation that higher direct images along
 the identity~$\mathrm{id} : X \to X$ vanish: From the internal point of view
 of~$\Sh(X)$, the over-locale~$X$ corresponds to the one-point locale, and the
 higher cohomology of the one-point locale vanishes.
@@ -825,25 +830,26 @@ cohomology of projective~$n$-space. Background on carrying out scheme
 theory internally to a topos, is given in~\cite[Section~12]{blechschmidt:phd}.
 
 
-\section{Flabby objects in the effective topos}
+\section{Flabby objects in the \effective topos}
 \label{sect:in-eff}
 
 The notion of flabby objects originates from the notion of flabby shaves and is
 therefore closely connected to Grothendieck toposes. Hence it is instructive
 to study flabby objects in elementary toposes which are not Grothendieck
 toposes, away from their original conceptual home. We begin this study with
-establishing the following observations on flabby objects in the effective
-topos. We follow the terminology of~\cite{hyland:effective-topos}.
+establishing the following observations on flabby objects in the \effective
+topos. We follow the terminology of Martin Hyland's survey on the \effective
+topos~\cite{hyland:effective-topos}.
 
 \begin{prop}\label{prop:flabby-effective-sets}
-Let~$X$ be a flabby object in the effective topos. Let~$f : X \to X$
-be a morphism. If~$X$ is effective, the statement ``$f$ has a fixed point''
-holds in the effective topos.
+Let~$X$ be a flabby object in the \effective topos. Let~$f : X \to X$
+be a morphism. If~$X$ is \effective, the statement ``$f$ has a fixed point''
+holds in the \effective topos.
 \end{prop}
 
 \begin{prop}\label{prop:semienough-flabby-modules}
 Assuming the law of excluded middle in the metatheory, any~$\neg\neg$-separated
-module in the effective topos embeds into a flabby module.
+module in the \effective topos embeds into a flabby module.
 \end{prop}
 
 % Δ(X) ist welk, falls X bewohnt.
@@ -861,7 +867,7 @@ module in the effective topos embeds into a flabby module.
 
 The intuitive
 reason for why Proposition~\ref{prop:flabby-effective-sets} holds is the
-following. Let~$X$ be a flabby object in the effective topos. Then there is a
+following. Let~$X$ be a flabby object in the \effective topos. Then there is a
 procedure which computes for any subterminal~$K \subseteq X$ an element~$x_K$
 such that~$K \subseteq \{ x_K \}$. This element might not depend extensionally
 on~$K$, but this fine point is not important for this discussion. Let
@@ -870,14 +876,14 @@ now~$f : X \to X$ be a morphism. We construct the self-referential subset~$K
 done. Then~$K \subseteq \{ x_K \}$, so~$f(x_K) = x_K$.
 
 A corollary of Proposition~\ref{prop:flabby-effective-sets} is that the trivial
-module is the only flabby module in the effective topos whose underlying
-unstructured object is an effective set: Given such a flabby module~$M$, let~$v
+module is the only flabby module in the \effective topos whose underlying
+unstructured object is an \effective set: Given such a flabby module~$M$, let~$v
 \in M$ be an arbitrary element. Then the morphism~$x \mapsto v + x$ has a fixed
 point; thus~$v + x = x$ for some element~$x$, and hence~$v = 0$.
 
 It is the self-referentiality which makes the proof of
 Proposition~\ref{prop:flabby-effective-sets} work, but the blame for paucity
-of flabby objects in the effective topos is to put on the realizers for
+of flabby objects in the \effective topos is to put on the realizers for
 statements of the form~``$K = K$'', where~$({=})$ is the nonstandard equality
 predicate of the powerobject~$\P(X)$. A procedure witnessing flabbiness has to
 compute a reflexivity realizer for a suitable element~$x_K$ from a reflexivity
@@ -885,12 +891,12 @@ realizer for a given element~$K$. However, such realizers are not very
 informative. Metaphorically speaking, a procedure witnessing flabbiness has to
 conjure elements out of thin air.
 
-This problem does not manifest with objects~$X$ which are not effective sets.
+This problem does not manifest with objects~$X$ which are not \effective sets.
 Reflexivity realizers for these objects are themselves not very informative;
 a procedure witnessing flabbiness therefore only has to turn one kind of
 non-informative realizers into another kind. The flabby modules featuring in
 the proof of Proposition~\ref{prop:semienough-flabby-modules} will accordingly
-not be effective sets.
+not be \effective sets.
 
 \begin{proof}[Proof of Proposition~\ref{prop:flabby-effective-sets}]
 For any Turing machine~$e$, let~$v_e : |X| \to \Sigma$ be the nonstandard
@@ -905,7 +911,7 @@ and let~$K_e \in \Sigma^{|X| \times \Sigma}$ be the nonstandard predicate given 
 \[ K_e(x,u) = \llbracket (x = x) \wedge (u \leftrightarrow v_e(x)) \rrbracket. \]
 One can explicitly construct a realizer~$a_e$ of the statement~``$K_e = K_e$'',
 where~$({=})$ is the nonstandard equality predicate of the object~$\P_{\leq1}(X)$
-of subterminals of~$X$. This is where the assumption that~$X$ is effective is
+of subterminals of~$X$. This is where the assumption that~$X$ is \effective is
 important; without it, we could only verify~``$K_e = K_e$'' where~$({=})$ is
 the nonstandard equality predicate of the full powerobject~$\P(X)$.
 
@@ -936,7 +942,7 @@ realized; hence~``$f(x_{K_e}) = x_{K_e}$'' is as well.
 
 \begin{proof}[Proof of Proposition~\ref{prop:semienough-flabby-modules}]
 Let~$(\Gamma \dashv \Delta) : \Set \to \Eff$ be the inclusion of the
-double-negation sheaves. For a~$\neg\neg$-separated module~$M$ in the effective
+double-negation sheaves. For a~$\neg\neg$-separated module~$M$ in the \effective
 topos, the canonical morphism~$M \to \Delta(\Gamma(M))$ is a monomorphism; the
 set~$\Gamma(M)$ is flabby by virtue of being inhabited; and~$\Delta$ preserves
 flabby objects by Proposition~\ref{prop:pushforward-of-flabby-objects}.
@@ -1038,11 +1044,11 @@ fails to be flabby. Given a subterminal~$E \subseteq \P_{\leq1}(X)/{\sim}$,
 there is the well-defined element~$v \defeq [\{x \in M\,|\,\text{$x \in K$ for
 some~$[K] \in E$}\}]$, but we cannot verify~$E \subseteq \{v\}$.
 
-\item There appears to be some tension regarding the effective topos:
+\item There appears to be some tension regarding the \effective topos:
 Proposition~\ref{prop:semienough-flabby-modules} shows that at
-least~$\neg\neg$-separated modules in the effective topos always embed into
+least~$\neg\neg$-separated modules in the \effective topos always embed into
 flabby modules, assuming the law of excluded middle in the metatheory, while
-Proposition~\ref{prop:flabby-effective-sets} shows that no nontrivial effective
+Proposition~\ref{prop:flabby-effective-sets} shows that no nontrivial \effective
 module is flabby.
 \end{enumerate}
 

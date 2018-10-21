@@ -89,8 +89,80 @@ Strada le Grazie 15 \\
 
 \noindent
 
-XXX: introduction
-% XXX: In Einleitung interne Sprache erinnern.
+As is nowadays well-established, any topos supports an \emph{internal language}
+which can be used to reason about the objects and morphisms of the topos in a
+naive element-based language, allowing us to pretend that the objects are plain
+sets (or types) and the morphisms are plain maps between those sets. The
+internal language is sound with respect to intuitionistic reasoning, whereby
+any intuitionistic theorem holds in any topos.
+
+The internal language of a sheaf topos enables \emph{relativization by
+internalization}. For instance, by interpreting the
+proposition \begin{quote}``in any short exact sequence of modules, if the two
+outer ones are finitely generated then so is the middle one''\end{quote} of
+intuitionistic commutative algebra internally to the topos of sheaves over a
+space~$X$, we obtain the geometric analogue \begin{quote}``in any short exact
+sequence of sheaves of modules over~$X$, if the two outer ones are of finite
+type then so is the middle one''.\end{quote}
+This way of deducing geometric theorems provides conceptual clarity, reduces
+technical overhead and justifies certain kinds of ``fast and loose reasoning''
+typical of informal algebraic geometry. As soon as we go beyond the fragment of
+geometric sequents and consider more involved first-order or even higher-order
+statements, also significant improvements in proof length and proof complexity
+can be gained. For instance, Grothendieck's generic freeness lemma admits a
+short and simple proof in this framework, while previously-published proofs
+proceed in a somewhat involved series of reduction steps and require a fair
+amount of prerequisites in commutative
+algebra~\cite{blechschmidt:phd,blechschmidt:generic-freeness}.
+
+The practicality of this approach hinges on the extent to which the dictionary
+between internal and external notions has been worked out. For instance, the
+simple example displayed above hinges on the dictionary entry stating that a
+sheaf of modules is of finite type if and only if it looks like a
+finitely-generated module from the internal point of view. The motivation for
+this note was to find internal characterizations of flabbiness and of higher
+direct images, and the resulting entries are laid out in
+Section~\ref{sect:flabby-objects} and in
+Section~\ref{sect:higher-direct-images}: A sheaf is flabby if and only if, from
+the internal point of view, it is a flabby set -- a notion introduced in
+Section~\ref{sect:flabby-sets} below; and higher direct images look like sheaf
+cohomology from the internal point view.
+
+As a byproduct, we demonstrate how the notion of flabby sets is a useful
+organizing principle in the study of injective objects. We employ flabby sets
+to give a new proof of Roswitha Harting's result that injectivity of sheaves is
+a local notion~\cite{harting:remark} and that a sheaf is injective if and only
+if it is injective from the internal point of
+view~\cite{harting:locally-injective}, which she stated (in slightly different
+language) for sheaves of abelian groups. We use the opportunity to correct a
+small mistake of her, namely claiming that no generalization to sheaves of
+modules is possible.
+
+A further motivation for this note was our desire to seek a constructive
+account of sheaf cohomology. Sheaf cohomology is commonly defined using
+injective resolutions, which can fail to exist in the absence of the axiom of
+choice~\cite{blass:inj-proj-axc}, but it is also known that flabby resolutions
+can be used in their stead, making them the obvious candidate for a
+constructively sensible replacement of the usual definition. However, we show
+in Section~\ref{sect:in-eff} and in Section~\ref{sect:conclusion} that flabby
+resolutions present their own challenges, and in summary we failed to reach our
+goal. To the best of our knowledge, the problem of giving a constructive accout
+of sheaf cohomology is still open.
+
+In view of almost 80 years of sheaf cohomology, this state of affairs is
+slightly embarassing, challenging the call that ``once [a] subject is better
+understood, we can hope to refine its definitions and proofs so as to
+avoid that axiom''~\cite[Section~3.4]{hott}.
+
+A constructive account of sheaf cohomology would be highly desirable, not only
+out of a philosophical desire to obtain a deeper understanding of the
+foundations of sheaf cohomology, but also to: use the tools of sheaf cohomology
+in the internal setting of toposes, thereby extending the applicability of
+relativization by internalization; and to carry out \emph{integrated
+developments} of algorithms for computing sheaf cohomology, where we would
+extract algorithms together with termination and correctness proofs from a
+hypothetical constructive account.
+
 
 \section{Flabby sheaves}
 

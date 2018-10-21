@@ -88,13 +88,15 @@ Strada le Grazie 15 \\
 \bigskip
 
 \noindent
-
 As is nowadays well-established, any topos supports an \emph{internal language}
 which can be used to reason about the objects and morphisms of the topos in a
 naive element-based language, allowing us to pretend that the objects are plain
-sets (or types) and the morphisms are plain maps between those sets. The
-internal language is sound with respect to intuitionistic reasoning, whereby
-any intuitionistic theorem holds in any topos.
+sets (or types) and that the morphisms are plain maps between those sets
+(\cite[Chapter~6]{borceux:handbook3}, \cite[Section~1.3]{caramello:ttt},
+\cite[Chapter~14]{goldblatt:topoi},
+\cite[Chapter~VI]{moerdijk-maclane:sheaves-logic}). The internal language is
+sound with respect to intuitionistic reasoning, whereby any intuitionistic
+theorem holds in any topos.
 
 The internal language of a sheaf topos enables \emph{relativization by
 internalization}. For instance, by interpreting the
@@ -120,11 +122,11 @@ between internal and external notions has been worked out. For instance, the
 simple example displayed above hinges on the dictionary entry stating that a
 sheaf of modules is of finite type if and only if it looks like a
 finitely-generated module from the internal point of view. The motivation for
-this note was to find internal characterizations of flabbiness and of higher
+this note was to find internal characterizations of flabby sheaves and of higher
 direct images, and the resulting entries are laid out in
 Section~\ref{sect:flabby-objects} and in
 Section~\ref{sect:higher-direct-images}: A sheaf is flabby if and only if, from
-the internal point of view, it is a flabby set -- a notion introduced in
+the internal point of view, it is a flabby set, a notion introduced in
 Section~\ref{sect:flabby-sets} below; and higher direct images look like sheaf
 cohomology from the internal point view.
 
@@ -136,7 +138,14 @@ if it is injective from the internal point of
 view~\cite{harting:locally-injective}, which she stated (in slightly different
 language) for sheaves of abelian groups. We use the opportunity to correct a
 small mistake of her, namely claiming that no generalization to sheaves of
-modules is possible.
+modules would be possible.
+
+When employing the internal language, we are always referring to Mike Shulman's
+extension of the usual language, his \emph{stack
+semantics}~\cite{shulman:stack-semantics}. This extension allows to internalize
+unbounded quantification, which among other things is required to express the
+internal injectivity condition and the internal construction of sheaf
+cohomology.
 
 A further motivation for this note was our desire to seek a constructive
 account of sheaf cohomology. Sheaf cohomology is commonly defined using
@@ -163,17 +172,20 @@ developments} of algorithms for computing sheaf cohomology, where we would
 extract algorithms together with termination and correctness proofs from a
 hypothetical constructive account.
 
+\textbf{Acknowledgments.} We are grateful to Thorsten Altenkirch, Simon Henry
+and Maria Emilia Maietti for insightful discussions and pointers to prior work,
+and to Jürgen Jost, Marc Nieper-Wißkirchen and Peter Schuster for valuable
+guidance. Most of the work for this note was carried out at the University of
+Augsburg and the Max Planck Institute for Mathematics in the Sciences in
+Leipzig.
+
 
 \section{Flabby sheaves}
 
-A sheaf~$F$ on a topological space (or locale)~$X$ is \emph{flabby} (flasque) if and only
+A sheaf~$F$ on a topological space or a locale~$X$ is \emph{flabby} (flasque) if and only
 if all restriction maps~$F(X) \to F(U)$ are surjective. The following
 properties of flabby sheaves render them fundamental to the theory of sheaf
 cohomology:
-% XXX: Je nachdem, wie die Einleitung aussieht, hier die Betonung anders
-% setzen. Fundamental ist nur, dass man welke Auflösungen zur Berechnung von
-% Garbenkohomologie verwenden kann und dass sie von f_* bewahrt werden. Die
-% restlichen Eigenschaften sind wichtig, aber nicht fundamental.
 \begin{enumerate}
 \item Let~$(U_i)_i$ be an open covering of~$X$.
 A sheaf~$F$ on~$X$ is flabby if and only if all of its restrictions~$F|_{U_i}$
@@ -328,7 +340,7 @@ injective module.
 
 \begin{proof}\begin{enumerate}
 \item One can check that, for instance, the full powerset~$\P(X)$ and the set of
-subterminals~$\P_{\leq 1}(X)$ are each injective.~\cite{XXX}
+subterminals~$\P_{\leq 1}(X)$ are each injective.
 \item The forgetful functor from modules to sets possesses a left exact left
 adjoint. More explicitly, if~$i : A \to B$ is an injective map between sets and
 if~$f : A \to I$ is an arbitrary map, then the induced map~$R\langle A \rangle

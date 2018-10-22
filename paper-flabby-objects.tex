@@ -118,7 +118,7 @@ The practicality of this approach hinges on the extent to which the dictionary
 between internal and external notions has been worked out. For instance, the
 simple example displayed above hinges on the dictionary entry stating that a
 sheaf of modules is of finite type if and only if it looks like a
-finitely-generated module from the internal point of view. The motivation for
+finitely generated module from the internal point of view. The motivation for
 this note was to find internal characterizations of flabby sheaves and of higher
 direct images, and the resulting entries are laid out in
 Section~\ref{sect:flabby-objects} and in
@@ -129,16 +129,16 @@ cohomology from the internal point of view.
 
 As a byproduct, we demonstrate how the notion of flabby sets is a useful
 organizing principle in the study of injective objects. We employ flabby sets
-to give a new proof of Roswitha Harting's result that injectivity of sheaves is
+to give a new proof of Roswitha Harting's results that injectivity of sheaves is
 a local notion~\cite{harting:remark} and that a sheaf is injective if and only
 if it is injective from the internal point of
 view~\cite{harting:locally-injective}, which she stated (in slightly different
 language) for sheaves of abelian groups. We use the opportunity to correct a
-small mistake of hers, namely claiming that no generalization to sheaves of
-modules would be possible.
+small mistake of hers, namely claiming that the analogous results for sheaves of
+modules would be false.
 
-When employing the internal language, we are always referring to Mike Shulman's
-extension of the usual language, his \emph{stack
+When employing the internal language of a topos, we are always referring to Mike Shulman's
+extension of the usual internal language, his \emph{stack
 semantics}~\cite{shulman:stack-semantics}. This extension allows to internalize
 unbounded quantification, which among other things is required to express the
 internal injectivity condition and the internal construction of sheaf
@@ -147,12 +147,12 @@ cohomology.
 A further motivation for this note was our desire to seek a constructive
 account of sheaf cohomology. Sheaf cohomology is commonly defined using
 injective resolutions, which can fail to exist in the absence of the axiom of
-choice~\cite{blass:inj-proj-axc}, but it is also known that flabby resolutions
-can be used in their stead, making them the obvious candidate for a
+choice~\cite{blass:inj-proj-axc}, but flabby resolutions
+can also be used in their stead, making them the obvious candidate for a
 constructively sensible replacement of the usual definition. However, we show
 in Section~\ref{sect:in-eff} and in Section~\ref{sect:conclusion} that flabby
 resolutions present their own challenges, and in summary we failed to reach our
-goal. To the best of our knowledge, the problem of giving a constructive accout
+goal. To the best of our knowledge, the problem of giving a constructive account
 of sheaf cohomology is still open.
 
 In view of almost 80 years of sheaf cohomology, this state of affairs is
@@ -445,8 +445,8 @@ where~$\bar{f}$ is any element of~$K$. These prescriptions determine a well-defi
 map.
 
 Since~$I$ is injective, there exists a dotted map rendering the diagram
-commutative. This map is an element of~$X$. Furthermore, if~$K$ is inhabited,
-then this map is an element of~$K$.
+commutative. This map is an element of~$X$. If~$K$ is inhabited,
+this map is an element of~$K$.
 
 The proof of the second claim is similar. We
 set~$X \defeq \{ \bar{f} \in \Hom_R(B,I) \,|\, \bar{f} \circ i =
@@ -625,7 +625,7 @@ morphism~$[B,I] \to [A,I]$ between Hom objects is an epimorphism in~$\E$.
 \end{defn}
 
 If~$R$ is a ring in an elementary topos~$\E$, a similar definition can be given
-for~$R$-modules in~$\E$, referring only to the set respectively the object of
+for~$R$-modules in~$\E$, referring to the set respectively the object of
 linear maps. The condition for an object to be internally injective can be
 rephrased in various ways. The following proposition lists five of these
 conditions. The equivalence of the first four is due to
@@ -664,11 +664,11 @@ restricted to smaller open subsets: We have that $p_* \circ [\cdot, p^*(I)]_{\E/
 \cong [\cdot, I]_\E \circ p_!$, the functor $p_!$ preserves monomorphisms, and one
 can check that $p_*$ reflects the property that global elements locally possess
 preimages. Details are in~\cite[Thm.~1.1]{harting:locally-injective}.\footnote{Harting formulates
-the statement for abelian group objects, and has to assume that~$\E$ contains a
+her theorem for abelian group objects, and has to assume that~$\E$ contains a
 natural numbers object to ensure the existence of an abelian version of~$p_!$.}
 
 The implication (2')~$\Rightarrow$~(1') follows by performing an extra change of
-base, since any non-global element becomes a global element after a suitable
+base, exploting that any non-global element becomes a global element after a suitable
 change of base.
 \end{proof}
 
@@ -706,7 +706,7 @@ extension $B \to I$ of~$f$ along~$i$. To this end, we consider the object of
 such extensions, defined by the internal expression
 \[ F \defeq \{ \bar{f} \in [B,I] \,|\, \bar{f} \circ i = f \}. \]
 Global elements of~$F$ are extensions of the kind we are looking for.
-By Lemma~\ref{lemma:set-of-extensions-flabby}, this object is flabby.
+By Lemma~\ref{lemma:set-of-extensions-flabby}(1), interpreted in~$\E$, this object is flabby.
 By Proposition~\ref{prop:global-elements}, it has a global element.
 \end{proof}
 
@@ -722,7 +722,7 @@ notion~\cite[Remark~5]{harting:remark}, as she
 injectivity and internal injectivity do not coincide'' for modules.
 
 It is worth noting that, because the internal language machinery was at that
-point not as well-developed as it is today, she had to go to considerable
+point not as well-developed as it is today, Harting had to go to considerable
 length to construct internal direct sums of abelian group
 objects~\cite{harting:coproduct}, and in order to verify that taking internal
 direct sums is faithful she felt the need to employ Barr's
@@ -732,7 +732,7 @@ the topos of sets and then trusting the internal language to obtain the
 generalization to arbitrary elementary toposes with a natural numbers object.
 
 Since we were careful in Section~\ref{sect:flabby-sets} to use the law of
-excluded middle or the axiom of choice only where needed, most results of that
+excluded middle and the axiom of choice only where needed, most results of that
 section carry over to flabby and internally injective objects. Specifically, we
 have:
 
@@ -843,14 +843,14 @@ internal one-point locale. Hence it makes sense to construct, from the internal
 point of view of~$\Sh(X)$, the sheaf cohomology~$H^n(I(Y), E)$ of~$E$.
 
 Usually one would not expect an internal construction which depends on
-arbitary choices to yield a globally-defined sheaf on~$X$ -- following the
+arbitary choices to yield a globally-defined sheaf over~$X$ -- following the
 definition of the stack semantics we only obtain a family of sheaves defined on
 members of some open covering of~$X$; but we verify in
 Theorem~\ref{thm:higher-direct-images-as-internal-sheaf-cohomology} below that in our
 case, it does, and that the resulting sheaf coincides with~$R^n f_*(E)$.
 
 \begin{lemma}\label{lemma:notions-of-internal-injectivity}
-Let~$Y$ be a ringed locale over a locale~$X$. Let~$I$ be a sheaf of modules on~$Y$.
+Let~$Y$ be a ringed locale over a locale~$X$. Let~$I$ be a sheaf of modules over~$Y$.
 Assuming Zorn's lemma in the metatheory, the following statements are equivalent:
 \begin{enumerate}
 \item $I$ is an injective sheaf of modules.
@@ -882,7 +882,7 @@ toposes~\cite[Proposition~D4.5.14]{johnstone:elephant}.
 Let~$f : Y \to X$ be a ringed locale over a locale~$X$. Let~$E$ be a sheaf of modules over~$Y$.
 Assuming the axiom of choice in the metatheory, the expression~``$H^n(I(Y), E)$''
 of the internal language of~$\Sh(X)$ denotes a globally-defined sheaf
-on~$X$, and this sheaf coincides with~$R^n f_*(E)$.\end{thm}
+over~$X$, and this sheaf coincides with~$R^n f_*(E)$.\end{thm}
 
 \begin{proof}By Lemma~\ref{lemma:notions-of-internal-injectivity} and by the
 fact that every sheaf of modules over~$Y$ admits an injective resolution, every sheaf
@@ -891,7 +891,7 @@ of~$\Sh(X)$. Hence we can, internally to~$\Sh(X)$, carry out the construction of
 Externally, this yields an open covering of~$X$ such that we have, for each
 member~$U$ of that covering
 \begin{itemize}
-\item a sheaf~$M$ on~$U$,
+\item a sheaf~$M$ over~$U$,
 \item a module structure on~$M$,
 \item a resolution~$0 \to E|_{f^{-1}U} \to I^\bullet$ by sheaves of modules which are
 internally and hence externally injective and
@@ -908,7 +908,7 @@ resolution.)
 
 The claim that this sheaf coincides with~$R^n f_*(E)$ follows from the fact
 that we can pick as internal resolution of~$E$ (considered as a sheaf
-over~$I(Y)$), the particular injective resolution of~$E$ (considered as a sheaf
+over~$I(Y)$) the particular injective resolution of~$E$ (considered as a sheaf
 over~$Y$) used to define~$R^n f_*(E)$.
 \end{proof}
 
@@ -924,13 +924,13 @@ deduce the explicit description of the higher direct images of Serre's twisting
 sheaves along the projection~$\mathbb{P}^n_S \to S$, where~$S$ is an arbitrary
 base scheme (or even base locally ringed locale), from a computation of the
 cohomology of projective~$n$-space. Background on carrying out scheme
-theory internally to a topos, is given in~\cite[Section~12]{blechschmidt:phd}.
+theory internally to a topos is given in~\cite[Section~12]{blechschmidt:phd}.
 
 
 \section{Flabby objects in the \effective topos}
 \label{sect:in-eff}
 
-The notion of flabby objects originates from the notion of flabby shaves and is
+The notion of flabby objects originates from the notion of flabby sheaves and is
 therefore closely connected to Grothendieck toposes. Hence it is instructive
 to study flabby objects in elementary toposes which are not Grothendieck
 toposes, away from their original conceptual home. We begin this study with
@@ -967,8 +967,8 @@ reason for why Proposition~\ref{prop:flabby-effective-sets} holds is the
 following. Let~$X$ be a flabby object in the \effective topos. Then there is a
 procedure which computes for any subterminal~$K \subseteq X$ an element~$x_K$
 such that~$K \subseteq \{ x_K \}$. This element might not depend extensionally
-on~$K$, but this fine point is not important for this discussion. Let
-now~$f : X \to X$ be a morphism. We construct the self-referential subset~$K
+on~$K$, but this fine point is not important for this discussion. Let~$f : X \to X$
+be a morphism. We construct the self-referential subset~$K
 \defeq \{ f(x_K) \}$; the formal proof below will indicate how this can be
 done. Then~$K \subseteq \{ x_K \}$, so~$f(x_K) = x_K$.
 
@@ -1024,7 +1024,7 @@ follows:
 f(x) = f(x) \rrbracket$.
 \item[3.] Output~$c$.
 \end{enumerate}
-The description of the machine~$e$ makes use of the number~$e$ coding it;
+This description of the machine~$e$ makes use of the number~$e$ coding it;
 the recursion theorem yields a general reason why this self-referentiality is
 possible. Here we can even do without this theorem, since a close inspection of
 the construction of~$a_e$ shows that~$a_e$ is actually independent of~$e$. This
@@ -1060,7 +1060,7 @@ sheaf cohomology. Čech methods can be carried out constructively, and
 there are constructive accounts of special cases, resulting even in
 efficient-in-practice algorithms~\cite{barakat-lh:homalg,barakat-lh:ext},
 but it appears that there is not a general framework for sheaf
-cohomology which works in an intuitionistic metatheory.
+cohomology which would work in an intuitionistic metatheory.
 
 The main obstacle preventing Grothendieck's theory of derived functors to be interpreted
 constructively is its reliance on injective resolutions. It is known that in
@@ -1121,7 +1121,7 @@ if~$t,s,u \in T$ and~$r,r' \in R$, then~$t + (s + u) = (t + s) + u$, $t + s = s 
 = t + 0$, $0t = 0$, $1t = t$, $r(t+u) = rt + ru$, $(r+r')t = rt + r't$; if~$x,y
 \in M$ and~$r \in R$, then~$\underline{0} = 0$, $\underline{x + y} =
 \underline{x} + \underline{y}$, $\underline{rx} = r \underline{x}$; and if~$t
-\in M$, then~$\varepsilon_{\{t\}} = t$.
+\in T$, then~$\varepsilon_{\{t\}} = t$.
 
 However, it is an open question under which circumstances quotient inductive
 types can be shown to exist. Zermelo--Fraenkel with choice certainly suffices,
@@ -1133,7 +1133,7 @@ algebras~\cite{blass:free-algebras}.} The existence of quotient inductive types
 seem to be, as the existence of enough injective modules, \emph{constructively
 neutral}.
 
-\item There is a number of simple constructions which come close to providing
+\item There are a number of simple constructions which come close to providing
 flabby envelopes for arbitrary modules~$M$. For instance, we could equip the set~$T
 \defeq \P_{\leq1}(X)/{\sim}$, where~$K \sim L$ if and only if~$K = L$ or~$K
 \cup L \subseteq \{0\}$, with a module structure given by~$0 \defeq [\{0\}]$,

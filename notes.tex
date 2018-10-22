@@ -8535,7 +8535,7 @@ Theorem~\ref{thm:big-zariski-topos-of-relative-spectrum}.
 A basic fact about the ordinary spectrum is that the ring of global sections
 of~$\O_{\Spec(A)}$ is canonically isomorphic to~$A$. This is not true for the
 local spectrum: A trivial example is given by any algebra over a
-ring~$R$ which is not local over~$R$ in the sense that there are some nonunits
+ring~$R$ which is strongly not local over~$R$ in the sense that there are some nonunits
 of~$R$ which generate the unit ideal in~$A$.
 In this case the theory which~$\Spec(A|R)$ classifies is
 inconsistent. Thus~$\Spec(A|R)$ is the empty locale and the ring of global
@@ -8552,7 +8552,7 @@ rewritten as a finite disjunction.}
 \begin{prop}\label{prop:local-spectrum-global-functions}
 Let~$R$ be a local ring. Let~$A$ be an~$R$-algebra. The canonical
 homomorphism~$A \to \Gamma(\Spec(A|R), \O_{\Spec(A|R)})$ is an isomorphism in
-the following situations:
+any of the following situations:
 \begin{enumerate}
 \item The algebra~$A$ satisfies the quasicoherence condition given in
 Theorem~\ref{thm:qcoh-sheafchar}.
@@ -8587,7 +8587,7 @@ isomorphisms.
 Let~$X$ be a scheme. Let~$\A$ be an~$\O_X$-algebra.
 Let~$f : \RelSpec_X(\A) \to X$ be the canonical projection morphism.
 The canonical morphism~$\A \to f_*\O_{\RelSpec_X(\A)}$ of~$\O_X$-algebras is an
-isomorphism in the following situations:
+isomorphism in any of the following situations:
 \begin{enumerate}
 \item The algebra~$\A$ is quasicoherent.
 \item From the point of view of~$\Sh(X)$, the algebra~$\A$ is local and the
@@ -15081,6 +15081,12 @@ reach.
   $V(\I)$ is reduced & $\I$ is a radical ideal & Lemma~\ref{lemma:closed-subspace-reduced} \\
   $\O_{X_\mathrm{red}}$ & $\O_X/\sqrt{(0)}$ & Lemma~\ref{lemma:reduced-subspace} \\\\
 
+  \multicolumn{3}{@{}l@{}}{\textbf{Over-schemes and over-toposes}} \\
+  relative spectrum~$\RelSpec_X(\A)$ & local spectrum $\Spec(\A|\O_X)$ & Theorem\@~\ref{thm:local-spectrum-yields-relative-spectrum} \\
+  relative Proj~$\RelProj_X(\S)$ & local Proj construction $\Proj(\S|\O_X)$ & Theorem\@~\ref{thm:local-proj-yields-relative-proj} \\
+  big Zariski topos of~$X$ & local Zariski topos~$\Zar(\O_X|\O_X)$ & Theorem\@~\ref{thm:big-zariski-topos-of-relative-spectrum} \\
+  big Zariski topos of~$\RelSpec_X(\A)$ & local Zariski topos~$\Zar(\A|\O_X)$ & Theorem\@~\ref{thm:big-zariski-topos-of-relative-spectrum} \\\\
+
   \multicolumn{3}{@{}l@{}}{\textbf{Rational functions and Cartier divisors}} \\
   $\K_X$ & total quotient ring of~$\O_X$ & Prop.\@~\ref{prop:kx-internally} \\
   Cartier divisor & element of~$\K_X^\times/\O_X^\times$ \\
@@ -15093,7 +15099,6 @@ reach.
   $X$ is irreducible & if $\neg(\varphi \wedge \psi)$, then $\neg\varphi$ or~$\neg\psi$ & Prop.\@~\ref{prop:irreducibility-internally} \\
   \bottomrule
 \end{longtable}}
-% missing: relative spectrum and big Zariski topos
 
 
 \section{The inference rules of intuitionistic logic}
@@ -15235,8 +15240,6 @@ XXX:
 Cite: Compactification of Siegel Moduli Schemes by Ching-Li Chai (contains
 appendix on Hakim's relative scheme theory specialized to ringed spaces)
 Also mention page 151, Remark A.1.2?
-
-XXX: Add injective and flabby sheaves to the dictionary, also spectra.
 
 XXX: Cite general duality result (discovered by Kock's posting to the categories
 mailing list dated April 6th, 2016)

@@ -1,0 +1,117 @@
+\documentclass[oneside]{amsart}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm,mathtools,stmaryrd}
+\usepackage[all]{xy}
+%\usepackage[protrusion=true,expansion=true]{microtype}
+\usepackage[hyphens]{url}
+\usepackage[breaklinks=true]{hyperref}
+\usepackage{xspace}
+
+\usepackage[natbib=true,style=numeric,maxnames=10]{biblatex}
+\usepackage[babel]{csquotes}
+\bibliography{paper-flabby-objects.bib}
+
+\title{Exploring mathematical objects from custom-tailored mathematical universes}
+\author{Ingo Blechschmidt}
+\address{Università di Verona \\
+Department of Computer Science \\
+Strada le Grazie 15 \\
+37134 Verona, Italy}
+\email{iblech@speicherleck.de}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{ex}[defn]{Example}
+
+\theoremstyle{plain}
+\newtheorem{prop}[defn]{Proposition}
+\newtheorem{cor}[defn]{Corollary}
+\newtheorem{lemma}[defn]{Lemma}
+\newtheorem{thm}[defn]{Theorem}
+\newtheorem{scholium}[defn]{Scholium}
+
+\theoremstyle{remark}
+\newtheorem{rem}[defn]{Remark}
+\newtheorem{question}[defn]{Question}
+\newtheorem{speculation}[defn]{Speculation}
+\newtheorem{caveat}[defn]{Caveat}
+\newtheorem{conjecture}[defn]{Conjecture}
+
+\newcommand{\xra}[1]{\xrightarrow{#1}}
+\newcommand{\XXX}[1]{\textbf{XXX: #1}}
+\newcommand{\aaa}{\mathfrak{a}}
+\newcommand{\bbb}{\mathfrak{b}}
+\newcommand{\mmm}{\mathfrak{m}}
+\newcommand{\I}{\mathcal{I}}
+\newcommand{\J}{\mathcal{J}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\renewcommand{\P}{\mathcal{P}}
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\op}{\mathrm{op}}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Mod}{Mod}
+\DeclareMathOperator{\Sh}{Sh}
+\DeclareMathOperator{\PSh}{PSh}
+\newcommand{\Set}{\mathrm{Set}}
+\newcommand{\Eff}{\mathrm{Ef{}f}}
+\renewcommand{\_}{\mathpunct{.}\,}
+\newcommand{\effective}{ef{}fective\xspace}
+
+\newcommand{\stacksproject}[1]{\cite[{\href{https://stacks.math.columbia.edu/tag/#1}{Tag~#1}}]{stacks-project}}
+
+\begin{document}
+
+\begin{abstract}
+  foo
+\end{abstract}
+
+\maketitle
+\thispagestyle{empty}
+
+\noindent
+
+\printbibliography
+
+\end{document}
+
+
+Outline:
+
+
+Stuff that should be mentioned:
+
+* Andrej's realizability in the real world
+* Cauchy vs. Dedekind numbers (physical quantities, ...)
+* Syntactical vs. semantical interpretation
+* phone call analogy
+* detailed explanation of the pretty picture; analogy with "inner models"
+  of set theory
+* different intention with the alternative universes in comparison to set theory
+* quick overview of the several aspects of toposes (maybe at the end,
+  as an outlook?)
+* enrichment of platonism debate (find better term for this!)
+* uncovering further relations between objects
+* allowing a switch of perspective
+* applications in mathematical practice
+* int. logic as common denominator
+* arbitrariness of the "standard axioms"
+* models of ZF yield toposes (models of ETCS), including a quick discussion of
+  equivalence
+* what giving up classical logic actually amounts to in practice
+* examples in Eff
+* examples in Sh(X)
+* examples in Spec(A), "reifying all the individual localizations into a
+  single coherent entity which can be reasoned about as if it were a single
+  ring"
+* importance of having an adapted language
+* SDG (infinitesimals are well-studied in philosophy of mathematics)
+* beautiful and intriguing fact: laws of logic apply to mathematical objects
+  not only on the face, but also in different ways
+* quick remark on the internal language being based on types instead of sets

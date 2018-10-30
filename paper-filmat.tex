@@ -2,17 +2,20 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage{amsthm,mathtools,stmaryrd}
+\usepackage{booktabs}
 \usepackage[all]{xy}
-%\usepackage[protrusion=true,expansion=true]{microtype}
-\usepackage[hyphens]{url}
-\usepackage[breaklinks=true]{hyperref}
+\usepackage[protrusion=true,expansion=true]{microtype}
 \usepackage{xspace}
 
 \usepackage[natbib=true,style=numeric,maxnames=10]{biblatex}
 \usepackage[babel]{csquotes}
-\bibliography{paper-flabby-objects.bib}
+\bibliography{paper-filmat.bib}
 
-\title{Exploring mathematical objects from custom-tailored mathematical universes}
+\usepackage{pifont}
+\newcommand{\cmark}{\ding{51}}
+\newcommand{\xmark}{\ding{55}}
+
+\title[]{Exploring mathematical objects from custom-tailored mathematical universes}
 \author{Ingo Blechschmidt}
 \address{Università di Verona \\
 Department of Computer Science \\
@@ -49,6 +52,7 @@ Strada le Grazie 15 \\
 \newcommand{\F}{\mathcal{F}}
 \newcommand{\B}{\mathcal{B}}
 \newcommand{\NN}{\mathbb{N}}
+\newcommand{\RR}{\mathbb{R}}
 \newcommand{\ZZ}{\mathbb{Z}}
 \renewcommand{\P}{\mathcal{P}}
 \renewcommand{\O}{\mathcal{O}}
@@ -63,6 +67,7 @@ Strada le Grazie 15 \\
 \newcommand{\Eff}{\mathrm{Ef{}f}}
 \renewcommand{\_}{\mathpunct{.}\,}
 \newcommand{\effective}{ef{}fective\xspace}
+\newcommand{\?}{\,{:}\,}
 
 \newcommand{\stacksproject}[1]{\cite[{\href{https://stacks.math.columbia.edu/tag/#1}{Tag~#1}}]{stacks-project}}
 
@@ -76,6 +81,142 @@ Strada le Grazie 15 \\
 \thispagestyle{empty}
 
 \noindent
+
+
+\section{Exploring the \effective topos}
+
+% XXX introduction
+
+\begin{tabular}{lll}
+  \toprule
+  Statement & in $\Set$ & in $\Eff$ \\
+  \midrule
+  Any natural number is prime or not prime. & \cmark{} (trivially so) & \cmark \\
+  There are infinitely many primes. & \cmark & \cmark \\
+  Any function $\NN \to \NN$ is the zero function or not. & \cmark{} (trivially so) & \xmark \\
+  Any function $\NN \to \NN$ is computable by a Turing machine. & \xmark & \cmark{} (trivially so) \\
+  Any function $\RR \to \RR$ is continuous. & \xmark & \cmark \\
+  \bottomrule
+\end{tabular}
+
+\subsection*{``Any natural number is prime or not.''} Even without knowing what
+a prime number is, one can safely judge this statement to be true in
+the standard topos, since it is just an instance of the law of excluded middle.
+
+By the Kripke--Joyal semantics, saying that it's true in the \effective topos
+amounts to saying that there is a Turing machine which, given a natural
+number~$n$ as input, terminates with a correct judgment whether~$n$ is prime or
+not. Such a Turing machine indeed exists -- writing such a program is often a
+first exercise in programming courses. Hence the statement is also true in the
+\effective topos, but for the nontrivial reason that such a machine exists.
+
+
+\subsection*{``There are infinitely many primes.''} A first-order formalization
+of this statement is ``for any natural number~$n$, there is a natural
+number~$p$ which is greater than~$n$'', and is known to be true in the standard
+topos by any of the many proofs of this fact.
+
+Its external meaning when interpreted in the \effective topos is that there exists
+a Turing machine which, given a natural number~$n$ as input, terminates with a
+prime number~$p > n$ as output. Such a Turing machine exists, hence the
+statement is true in the \effective topos.
+
+
+\subsection*{``Any function~$\NN \to \NN$ is the zero function or not.''} More
+formally, the statement is
+\[ \forall f \? \NN^\NN\_
+  \bigl((\forall n \? \NN\_ f(n) = 0) \vee
+  \neg
+  (\forall n \? \NN\_ f(n) = 0)\bigr). \]
+By the law of excluded middle, this statement is trivially true in the standard
+topos.
+
+Its meaning when interpreted in the \effective topos is that there exists a
+Turing machine~$M$ which, given the description of a Turing machine~$F$ which
+computes a function~$f : \NN \to \NN$ as input, terminates with a correct
+judgment of whether~$f$ is the zero function or not. Such a machine~$M$ does
+not exist, hence the statement is false in the \effective topos.
+
+A formal proof that such a machine~$M$ does not exist will reduce its assumed
+existence to the undecidability of the halting problem. Intuitively, the issue
+is the following. Turing machines are able to simulate other Turing machines.
+Hence~$M$ could simulate~$F$ on various inputs to search the list of
+function values~$f(0), f(1), \ldots$ for a nonzero number. In case that after
+a certain number of steps a nonzero function value is found, the machine~$M$
+can correctly output the judgment that~$f$ is not the zero function. But if the
+search only turned up zero values, it cannot come to any verdict -- it cannot
+rule out that a nonzero function value will show up in the as yet unexplored
+part of the function.
+
+
+\subsection*{``Any function~$\NN \to \NN$ is computable by a Turing machine.''}
+The preceding examples could give the impression that what is true in the
+\effective topos is simply a subset of what is true in the standard topos. This
+statement shows that the relation between these two toposes is more nuanced.
+
+The fundamental observation of computability theory is that, in the standard
+topos, there are functions~$\NN \to \NN$ which are not computable by a Turing
+machine. Explicit examples include the \emph{halting
+function}, which maps a number~$n$ to zero or one depending on whether
+the~$n$'th Turing machine (in some fixed enumeration of all Turing machines)
+terminates or not, and the \emph{busy beaver function}. Cardinality arguments
+even show that most functions~$\NN \to \NN$ are not computable: There
+are~$\aleph_0^{\aleph_0} = 2^{\aleph_0}$ functions~$\NN \to \NN$, but
+only~$\aleph_0$ Turing machines and hence only~$\aleph_0$ functions which are
+computable by a Turing machine.
+
+In contrast, in the \effective topos, any function~$\NN \to \NN$ is computable
+by a Turing machine: The external meaning of this internal statement is that
+there exists a Turing machine~$M$ which, given a description of a Turing
+machine~$F$ computing a function~$f : \NN \to \NN$, outputs a description of a
+Turing machine computing~$f$. It is trivial to program such a machine~$M$; the
+machine~$M$ simply has to echo its input back to the caller.
+
+To avert a paradox, we should point out where the proof of the fundamental
+observation of computability theory employs nonconstructive reasoning, for if
+it would admit a constructive proof, it would also hold internally to the
+\effective topos, in contradiction to the fact that it does not. The halting
+function~$h : \NN \to \NN$, defined using the case distinction
+\[ h : n \mapsto \begin{cases}
+  1, & \text{if the $n$'th Turing machine terminates}, \\
+  0, & \text{if the $n$'th Turing machine does not terminate},
+\end{cases} \]
+cannot be given as a counterexample in the \effective topos since, in the
+\effective topos, it is not actually a total function from~$\NN$ to~$\NN$. It
+is only defined on those numbers~$n$ for which the~$n$'th Turing machine
+terminates or does not terminate. Assuming the law of excluded middle, this is
+a trivial condition; but intuitionistically, it is not. The definition of the
+busy beaver function requires a similar case distinction and therefore also
+does not give rise to a well-defined counterexample within the \effective
+topos.
+
+
+\subsection*{``Any function~$\RR \to \RR$ is continuous.''} In the standard
+topos, this statement is plainly false, with the signum and Heaviside functions
+being prominent counterexamples. In the \effective topos, this statement is
+true. A formal proof is not entirely straightforward~\cite{XXX}; the intuitive
+reason for why this is so is as follows.
+
+What the \effective topos believes to be a real number is, from the external
+point of view, a Turing machine~$X$ which outputs, when called with a natural
+number~$n$ as input, a rational approximation~$X(n)$. These approximations are
+required to be \emph{consistent} in the sense that~$|X(n) - X(m)|
+\leq 1/(n+1) + 1/(m+1)$. Intuitively, such a machine~$X$ denotes the real
+number~$\lim_{n \to \infty} X(n)$, and the approximations~$X(n)$ must be
+within~$1/(n+1)$ of the limit.
+
+A function~$f : \RR \to \RR$ in the \effective topos is therefore given by a
+Turing machine~$M$ which, given the description of such a Turing machine~$X$ as
+input, outputs the description of a similar such Turing machine~$Y$ as output.
+To compute a rational approximation~$Y(n)$, the machine~$Y$ may simulate~$X$
+and can therefore determine arbitrarily many rational approximations~$X(m)$.
+However, within finite time, the machine~$Y$ can only acquire finitely many
+such approximations. Hence a function such as the signum function, for which
+even rough rational approximations of~$\sgn(x)$ require infinite precision in
+the input~$x$, do not exist in the \effective topos.
+
+
+% XXX formal rules
 
 \printbibliography
 
@@ -106,6 +247,7 @@ Stuff that should be mentioned:
   equivalence
 * what giving up classical logic actually amounts to in practice
 * examples in Eff
+* examples in Eff(STM)
 * examples in Sh(X)
 * examples in Spec(A), "reifying all the individual localizations into a
   single coherent entity which can be reasoned about as if it were a single
@@ -115,3 +257,9 @@ Stuff that should be mentioned:
 * beautiful and intriguing fact: laws of logic apply to mathematical objects
   not only on the face, but also in different ways
 * quick remark on the internal language being based on types instead of sets
+* reference to Bohr topos approach
+* Source https://plato.stanford.edu/entries/category-theory/ for relevant
+  literatur
+* the internal language as a generalized modal operator
+
+Send to Georg.

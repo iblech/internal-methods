@@ -1,7 +1,7 @@
 \documentclass[oneside]{amsart}
 
 \usepackage[utf8]{inputenc}
-\usepackage{amsthm,mathtools,stmaryrd}
+\usepackage{amsthm,mathtools,stmaryrd,amssymb}
 \usepackage{booktabs}
 \usepackage[all]{xy}
 \usepackage[protrusion=true,expansion=true]{microtype}
@@ -68,6 +68,7 @@ Strada le Grazie 15 \\
 \renewcommand{\_}{\mathpunct{.}\,}
 \newcommand{\effective}{ef{}fective\xspace}
 \newcommand{\?}{\,{:}\,}
+\newcommand{\realizes}{\Vdash}
 
 \newcommand{\stacksproject}[1]{\cite[{\href{https://stacks.math.columbia.edu/tag/#1}{Tag~#1}}]{stacks-project}}
 
@@ -212,11 +213,40 @@ To compute a rational approximation~$Y(n)$, the machine~$Y$ may simulate~$X$
 and can therefore determine arbitrarily many rational approximations~$X(m)$.
 However, within finite time, the machine~$Y$ can only acquire finitely many
 such approximations. Hence a function such as the signum function, for which
-even rough rational approximations of~$\sgn(x)$ require infinite precision in
-the input~$x$, do not exist in the \effective topos.
+even rough rational approximations of~$\operatorname{sgn}(x)$ require infinite
+precision in the input~$x$, do not exist in the \effective topos.
 
 
-% XXX formal rules
+\subsection*{The formal translation rules} The previous examples were picked to
+convey an intuitive understanding of what statements in the \effective topos
+externally mean, and to showcase a variety of different situations. The
+formal translation rules are given in Table~\ref{table:eff}.
+
+\begin{table}
+  \begin{tabbing}
+    $\Eff \models (\forall n\?\NN\_ \varphi(n))\!\!\!$ \= \kill
+    $\Eff \models \varphi$ \> iff there is a Turing machine~$M$ such that~$M
+    \realizes \varphi$. \\\\
+    $M \realizes \top$ \> is true for any machine~$M$. \\
+    $M \realizes \bot$ \> is false for any machine~$M$. \\
+    $M \realizes (\varphi \wedge \psi)$ \> iff~$M$ terminates on inputs~$0$
+    and~$1$ such that $M(0) \realizes \varphi$ and~$M(1) \realizes \psi$. \\
+    $M \realizes (\varphi \vee \psi)$ \> iff~$M$ terminates on inputs~$0$ and~$1$
+    such that, \\ \> \qquad if~$M(0) = 0$ then~$M(1) \realizes \varphi$, and if~$M(0) \neq
+    0$ then~$M(1) \realizes \psi$. \\
+    $M \realizes (\varphi \Rightarrow \psi)$ \> iff for any Turing machine~$E$
+    such that~$E \realizes \varphi$, \\ \> \qquad $M$ terminates on input~$E$ such
+    that~$M(E) \realizes \psi$. \\
+    $M \realizes (\forall n\?\NN\_ \varphi(n))$ \> iff for any natural number~$n_0
+    \in \NN$, \\ \> \qquad $M$ terminates on input~$n_0$ such that~$M(n_0)
+    \realizes \varphi(n_0)$. \\
+    $M \realizes (\exists n\?\NN\_ \varphi(n))$ \> iff~$M$ terminates on
+    inputs~$0$ and~$1$ such that $M(1) \realizes \varphi(M(0))$.
+  \end{tabbing}
+
+  \caption{\label{table:eff} The (first-order fragment of) the translation
+  rules defining the meaning of statements internal to the \effective topos.}
+\end{table}
 
 \printbibliography
 

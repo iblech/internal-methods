@@ -160,7 +160,7 @@ The fundamental observation of computability theory is that, in the standard
 topos, there are functions~$\NN \to \NN$ which are not computable by a Turing
 machine. Explicit examples include the \emph{halting
 function}, which maps a number~$n$ to zero or one depending on whether
-the~$n$'th Turing machine (in some fixed enumeration of all Turing machines)
+the~$n$-th Turing machine (in some fixed enumeration of all Turing machines)
 terminates or not, and the \emph{busy beaver function}. Cardinality arguments
 even show that most functions~$\NN \to \NN$ are not computable: There
 are~$\aleph_0^{\aleph_0} = 2^{\aleph_0}$ functions~$\NN \to \NN$, but
@@ -180,12 +180,12 @@ it would admit a constructive proof, it would also hold internally to the
 \effective topos, in contradiction to the fact that it does not. The halting
 function~$h : \NN \to \NN$, defined using the case distinction
 \[ h : n \mapsto \begin{cases}
-  1, & \text{if the $n$'th Turing machine terminates}, \\
-  0, & \text{if the $n$'th Turing machine does not terminate},
+  1, & \text{if the $n$-th Turing machine terminates}, \\
+  0, & \text{if the $n$-th Turing machine does not terminate},
 \end{cases} \]
 cannot be given as a counterexample in the \effective topos since, in the
 \effective topos, it is not actually a total function from~$\NN$ to~$\NN$. It
-is only defined on those numbers~$n$ for which the~$n$'th Turing machine
+is only defined on those numbers~$n$ for which the~$n$-th Turing machine
 terminates or does not terminate. Assuming the law of excluded middle, this is
 a trivial condition; but intuitionistically, it is not. The definition of the
 busy beaver function requires a similar case distinction and therefore also
@@ -225,29 +225,37 @@ formal translation rules are given in Table~\ref{table:eff}.
 
 \begin{table}
   \begin{tabbing}
-    $\Eff \models (\forall n\?\NN\_ \varphi(n))\!\!\!$ \= \kill
-    $\Eff \models \varphi$ \> iff there is a Turing machine~$M$ such that~$M
+    $\Eff \models (\forall f\?\NN^\NN \varphi(n))\!\!$ \= \kill
+    $\Eff \models \varphi$ \> iff there is a natural number~$e$ such that~$e
     \realizes \varphi$. \\\\
-    $M \realizes \top$ \> is true for any machine~$M$. \\
-    $M \realizes \bot$ \> is false for any machine~$M$. \\
-    $M \realizes (\varphi \wedge \psi)$ \> iff~$M$ terminates on inputs~$0$
-    and~$1$ such that $M(0) \realizes \varphi$ and~$M(1) \realizes \psi$. \\
-    $M \realizes (\varphi \vee \psi)$ \> iff~$M$ terminates on inputs~$0$ and~$1$
-    such that, \\ \> \qquad if~$M(0) = 0$ then~$M(1) \realizes \varphi$, and if~$M(0) \neq
-    0$ then~$M(1) \realizes \psi$. \\
-    $M \realizes (\varphi \Rightarrow \psi)$ \> iff for any Turing machine~$E$
-    such that~$E \realizes \varphi$, \\ \> \qquad $M$ terminates on input~$E$ such
-    that~$M(E) \realizes \psi$. \\
-    $M \realizes (\forall n\?\NN\_ \varphi(n))$ \> iff for any natural number~$n_0
-    \in \NN$, \\ \> \qquad $M$ terminates on input~$n_0$ such that~$M(n_0)
-    \realizes \varphi(n_0)$. \\
-    $M \realizes (\exists n\?\NN\_ \varphi(n))$ \> iff~$M$ terminates on
-    inputs~$0$ and~$1$ such that $M(1) \realizes \varphi(M(0))$.
-    % XXX: NN^NN
+    $e \realizes \top$ \> is true for any number~$e$. \\
+    $e \realizes \bot$ \> is false for any number~$e$. \\
+    $e \realizes (\varphi \wedge \psi)$ \> iff~$e \cdot 0 \downarrow$ and~$e
+    \cdot 1 \downarrow$ and $e\cdot0 \realizes \varphi$ and~$e\cdot1 \realizes \psi$. \\
+    $e \realizes (\varphi \vee \psi)$ \> iff~$e \cdot 0 \downarrow$ and~$e
+    \cdot 1 \downarrow$ and \\ \> \qquad if~$e\cdot0 = 0$ then~$e\cdot1 \realizes
+    \varphi$, and \\ \> \qquad if~$e\cdot0 \neq 0$ then~$e\cdot1 \realizes \psi$. \\
+    $e \realizes (\varphi \Rightarrow \psi)$ \> iff for any number~$r$
+    such that~$r \realizes \varphi$, $e \cdot r \downarrow$ and~$e \cdot r \realizes \psi$. \\
+    $e \realizes (\forall n\?\NN\_ \varphi(n))$ \> iff for any natural number~$n_0
+    \in \NN$, $e \cdot n_0 \downarrow$ and~$e \cdot n_0 \realizes \varphi(n_0)$. \\
+    $e \realizes (\exists n\?\NN\_ \varphi(n))$ \> iff~$e\cdot0 \downarrow$ and~$e\cdot1 \downarrow$
+    terminate and~$e\cdot1 \realizes \varphi(e\cdot0)$. \\
+    $e \realizes (\forall f\?\NN^\NN\_ \varphi(f))$ \> iff for any function~$f_0
+    : \NN \to \NN$ and any number~$r_0$ such that \\ \> \qquad $f_0$ is computed by the~$r_0$-th
+    Turing machine, \\ \> \qquad
+    $e \cdot r_0 \downarrow$ and~$e \cdot r_0 \realizes \varphi(f_0)$. \\
+    $e \realizes (\exists f\?\NN\_ \varphi(f))$ \> iff~$e \cdot 0 \downarrow$
+    and~$e \cdot 1 \downarrow$ such that
+    the $(e \cdot 0)$-th Turing machine \\ \> \qquad computes a function~$f_0 : \NN \to \NN$
+    and $e \cdot 1 \realizes \varphi(f_0)$.
   \end{tabbing}
 
-  \caption{\label{table:eff} The (first-order fragment of) the translation
-  rules defining the meaning of statements internal to the \effective topos.}
+  \caption{\label{table:eff} A (fragment of) the translation
+  rules defining the meaning of statements internal to the \effective topos.
+  We write~``$e \cdot n \downarrow$'' to mean that calling the~$e$-th Turing
+  machine on input~$n$ terminates, and in this case denote the result by~``$e
+  \cdot n$''.}
 \end{table}
 
 \printbibliography

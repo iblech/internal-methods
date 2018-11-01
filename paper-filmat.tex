@@ -303,8 +303,8 @@ As detailled in Section~\ref{sect:eff-continuous}, what the \effective topos bel
 actually a Turing machine computing arbitrarily-good consistent rational
 approximations. A similarly drastic shift in meaning, though in an orthogonal
 direction, occurs with~$\Sh(X)$. What~$\Sh(X)$ believes to be a (Dedekind) real
-number~$a$ is actually a continuous function~$a : X \to \RR$, that is, a continuous
-family of real numbers on~$X$.
+number~$a$ is actually a continuous family of real numbers on~$X$, that is, a
+function~$a : X \to \RR$.
 
 Such a function is everywhere positive on~$X$ if and only if, from the internal point of
 view~$\Sh(X)$, the number~$a$ is positive; it is everywhere zero if and only
@@ -367,6 +367,38 @@ with the unique zero removed.
   the property that~$a$ is everywhere negative, everywhere zero or everywhere
   positive on~$V$.}
 \end{figure}
+
+
+\subsection{Real functions} Let~$(f_x)_{x \in X}$ be a continuous family of
+continuous real-valued functions; that is, each of the individual
+functions~$f_x : \RR \to \RR$ should be continuous and moreover the map~$\RR
+\times X \to \RR, (a,x) \mapsto f_x(a)$ should be continuous.
+From the point of view of~$\Sh(X)$, this family looks like a single continuous
+function~$f : \RR \to \RR$.
+
+The internal statement that~$f(-1) < 0$ means that~$f_x(-1) < 0$ for all~$x \in
+X$, and similarly so for being positive. More generally, if~$a$ and~$b$ are
+continuous functions~$X \to \RR$ (hence real numbers from the internal point of
+view), the internal statement~$f(a) < b$ means that~$f_x(a(x)) < b(x)$ for
+all~$x \in X$.
+
+The internal statement that~$f$ possesses a zero, that is, that there exists a
+number~$a$ such that~$f(a) = 0$, means that all the functions~$f_x$ each
+possess a zero and that moreover, these zeros can locally be picked in a
+continuous fashion. More precisely, this statement means that there is an open
+covering~$X = \bigcup_i U_i$ such that, for each~$i$, there is a continuous
+function~$a : U_i \to \RR$ such that~$f_x(a(x)) = 0$ for all~$x \in U_i$. (On
+overlaps~$U_i \cap U_j$, the zero-picking functions~$a$ need not agree.)
+
+From these observations we can deduce that the intermediate value theorem of
+basic analysis does in general not hold in~$\Sh(X)$ and hence does not allow
+for an intuitionistic proof. This theorem states: ``If~$f : \RR \to \RR$
+is a continuous function such that~$f(-1) < 0$ and~$f(1) > 0$, there exists a
+number~$a$ such that~$f(a) = 0$.'' The external meaning of this statement is
+that in any continuous family~$(f_x)_x$ of continuous functions with~$f_x(-1) <
+0$ and~$f_x(1) > 0$ for all~$x \in X$, it's locally possible to pick zeros of
+the family in a continuous fashion. Figure~\ref{fig:ivt} shows a counterexample
+to this claim.
 
 \printbibliography
 

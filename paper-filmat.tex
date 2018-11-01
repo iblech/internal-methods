@@ -1,7 +1,7 @@
 \documentclass[oneside]{amsart}
 
 \usepackage[utf8]{inputenc}
-\usepackage{amsthm,mathtools,stmaryrd,amssymb}
+\usepackage{amsthm,mathtools,stmaryrd,amssymb,graphicx}
 \usepackage{booktabs}
 \usepackage[all]{xy}
 \usepackage[protrusion=true,expansion=true]{microtype}
@@ -10,6 +10,8 @@
 \usepackage[natbib=true,style=numeric,maxnames=10]{biblatex}
 \usepackage[babel]{csquotes}
 \bibliography{paper-filmat.bib}
+
+\graphicspath{{images/}}
 
 \usepackage{pifont}
 \newcommand{\cmark}{\ding{51}}
@@ -69,6 +71,7 @@ Strada le Grazie 15 \\
 \newcommand{\effective}{ef{}fective\xspace}
 \newcommand{\?}{\,{:}\,}
 \newcommand{\realizes}{\Vdash}
+\newcommand{\notnot}{\emph{not~not}\xspace}
 
 \newcommand{\stacksproject}[1]{\cite[{\href{https://stacks.math.columbia.edu/tag/#1}{Tag~#1}}]{stacks-project}}
 
@@ -257,6 +260,112 @@ formal translation rules are given in Table~\ref{table:eff}.
   machine on input~$n$ terminates, and in this case denote the result by~``$e
   \cdot n$''.}
 \end{table}
+
+
+\section{Exploring toposes of sheaves}
+
+Associated to any topological space~$X$ (such as Euclidean space), there is the
+\emph{topos of sheaves over~$X$}, $\Sh(X)$. To a first approximation, a
+statement is true in~$\Sh(X)$ if and only if it ``holds locally on~$X$'';
+what~$\Sh(X)$ believes to be a set is a ``continuous family of sets, one set
+for each point of~$X$''. The precise rules of the Kripke--Joyal semantics
+of~$\Sh(X)$ are listed in Table~\ref{table:sheaf}.
+
+
+\subsection{A geometric interpretation of double negation}
+In intuitionistic logic, the double negation~$\neg\neg\varphi$ of a
+statement~$\varphi$ is a slight weakening of~$\varphi$; while~$(\varphi
+\Rightarrow \neg\neg\varphi)$ is an intuitionistic tautology, the converse can
+only be shown for some specific statements. The internal language of~$\Sh(X)$
+gives geometric meaning to this logical peculiarity.
+
+Namely, one can show that~$\Sh(X) \models \neg\neg\varphi$ is equivalent to the
+existence of a \emph{dense open}~$U$ of~$X$ such that~$U \models \varphi$.
+If~$\Sh(X) \models \varphi$, that is if~$X \models \varphi$, then there
+obviously exists such a dense open, namely~$X$ itself; however the converse
+usually fails.
+
+The only case that the law of excluded middle does hold internally to~$\Sh(X)$
+is when the only dense open of~$X$ is~$X$ itself; assuming classical logic in
+the metatheory, this holds if and only if every open is also closed. This is
+for instance satisfied if~$X$ is discrete.
+
+An important special case is when~$X$ is the one-point space. In this
+case~$\Sh(X)$ is equivalent (as categories and hence toposes) to the standard
+topos. If mathematics within~$\Sh(X)$ can be described as ``mathematics
+over~$X$'', then this observation justifies saying that ``ordinary mathematics
+is mathematics over the point''.
+
+
+\subsection{Real numbers}
+As detailled in Section~\ref{sect:eff-continuous}, what the \effective topos believes to be a real number is
+actually a Turing machine computing arbitrarily-good consistent rational
+approximations. A similarly drastic shift in meaning, though in an orthogonal
+direction, occurs with~$\Sh(X)$. What~$\Sh(X)$ believes to be a (Dedekind) real
+number~$a$ is actually a continuous function~$a : X \to \RR$, that is, a continuous
+family of real numbers on~$X$.
+
+Such a function is everywhere positive on~$X$ if and only if, from the internal point of
+view~$\Sh(X)$, the number~$a$ is positive; it is everywhere zero if and only
+if, internally, the number~$a$ is zero; and it is everywhere negative if and
+only if, internally, the number~$a$ is negative.
+
+The law of trichotomy, stating that any real number is either negative, zero or
+positive, generally fails in~$\Sh(X)$. By the Kripke--Joyal semantics, the external
+meaning of this internal statement is that for any continuous function~$a : U
+\to \RR$ defined on any open~$U$ of~$X$, there is an open covering~$U =
+\bigcup_i U_i$ such that on each member~$U_i$ of this covering, the function~$a$ is
+either everywhere negative on~$U_i$, everywhere zero on~$U_i$ or everywhere
+positive on~$U_i$. But this statement is, for most base spaces~$X$, false.
+Figure~\ref{fig:trichotomy}(c) shows a counterexample.
+
+The weaker statement that for any real number~$a$ it's \notnot the case that~$a < 0$
+or~$a = 0$ or~$a > 0$ does hold in~$\Sh(X)$, for this statement is an
+intuitionistic tautology. Its meaning is that there exists a
+dense open~$U$ such that~$U$ can be covered by opens on which~$a$ is either
+everywhere negative, everywhere zero or everywhere positive. In the example
+given in Figure~\ref{fig:trichotomy}(c), this open~$U$ could be taken as~$X$
+with the unique zero removed.
+
+\begin{table}
+  \begin{tabbing}
+    $U \models (\forall x\?\RR\_ \varphi(x))$ \= \kill
+    $\Sh(X) \models \varphi$ \> iff $X \models \varphi$. \\\\
+    $U \models a = b$ \> iff~$a = b$ on~$U$. \\
+    $U \models \top$ \> is true for any open~$U$. \\
+    $U \models \bot$ \> iff~$U$ is the empty open. \\
+    $U \models (\varphi \wedge \psi)$ \> iff~$U \models \varphi$ and~$U \models \psi$. \\
+    $U \models (\varphi \vee \psi)$ \> iff there is an open covering~$U =
+    \bigcup_i U_i$ such that, \\ \> \qquad for each~$i$, $U_i \models \varphi$
+    or $U_i \models \psi$. \\
+    $U \models (\varphi \Rightarrow \psi)$ \> iff for every open~$V \subseteq U$,
+    $V \models \varphi$ implies~$V \models \psi$. \\
+    $U \models (\forall a\?\RR\_ \varphi(x))$ \> iff for every open~$V
+    \subseteq U$ and any continuous function~$a_0 : V \to \RR$, $V \models
+    \varphi(a_0)$. \\
+    $U \models (\exists a\?\RR\_ \varphi(x))$ \> iff there is an open
+    covering~$U = \bigcup_i U_i$ such that, \\ \> \qquad for each~$i$,
+    there exists a continuous function~$a_0 : U_i \to \RR$ with~$U_i \models
+    \varphi(a_0)$.
+  \end{tabbing}
+
+  \caption{\label{table:sheaf} A (fragment of) the translation rules defining
+  the meaning of statements internal to~$\Sh(X)$, the topos of sheaves over a
+  topological space~$X$.}
+\end{table}
+
+\begin{figure}
+  \includegraphics[height=3cm]{trichotomy-1}
+  \includegraphics[height=3cm]{trichotomy-2}
+  \includegraphics[height=3cm]{trichotomy-3}
+  \caption{\label{fig:trichotomy} Three examples for what the topos~$\Sh(X)$
+  each believes to be a single real number, where the base space~$X$ is the
+  unit interval. (a) A positive real number. (b) A negative real number. (c) A
+  number which is neither negative nor zero nor positive. Externally speaking,
+  no open neighborhood~$V$ of the unique zero of the depicted function~$a$ has
+  the property that~$a$ is everywhere negative, everywhere zero or everywhere
+  positive on~$V$.}
+\end{figure}
 
 \printbibliography
 

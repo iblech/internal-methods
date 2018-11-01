@@ -104,7 +104,7 @@ Strada le Grazie 15 \\
   \bottomrule
 \end{tabular}
 
-\subsection*{``Any natural number is prime or not.''} Even without knowing what
+\subsection{``Any natural number is prime or not.''} Even without knowing what
 a prime number is, one can safely judge this statement to be true in
 the standard topos, since it is just an instance of the law of excluded middle.
 
@@ -116,7 +116,7 @@ first exercise in programming courses. Hence the statement is also true in the
 \effective topos, but for the nontrivial reason that such a machine exists.
 
 
-\subsection*{``There are infinitely many primes.''} A first-order formalization
+\subsection{``There are infinitely many primes.''} A first-order formalization
 of this statement is ``for any natural number~$n$, there is a natural
 number~$p$ which is greater than~$n$'', and is known to be true in the standard
 topos by any of the many proofs of this fact.
@@ -127,7 +127,7 @@ prime number~$p > n$ as output. Such a Turing machine exists, hence the
 statement is true in the \effective topos.
 
 
-\subsection*{``Any function~$\NN \to \NN$ is the zero function or not.''} More
+\subsection{``Any function~$\NN \to \NN$ is the zero function or not.''} More
 formally, the statement is
 \[ \forall f \? \NN^\NN\_
   \bigl((\forall n \? \NN\_ f(n) = 0) \vee
@@ -154,7 +154,7 @@ rule out that a nonzero function value will show up in the as yet unexplored
 part of the function.
 
 
-\subsection*{``Any function~$\NN \to \NN$ is computable by a Turing machine.''}
+\subsection{``Any function~$\NN \to \NN$ is computable by a Turing machine.''}
 The preceding examples could give the impression that what is true in the
 \effective topos is simply a subset of what is true in the standard topos. This
 statement shows that the relation between these two toposes is more nuanced.
@@ -196,8 +196,8 @@ does not give rise to a well-defined counterexample within the \effective
 topos.
 
 
-\subsection*{``Any function~$\RR \to \RR$ is continuous.''} In the standard
-topos, this statement is plainly false, with the signum and Heaviside functions
+\subsection{``Any function~$\RR \to \RR$ is continuous.''}\label{sect:eff-continuous}
+In the standard topos, this statement is plainly false, with the signum and Heaviside functions
 being prominent counterexamples. In the \effective topos, this statement is
 true. A formal proof is not entirely straightforward~\cite{XXX}; the intuitive
 reason for why this is so is as follows.
@@ -221,16 +221,17 @@ even rough rational approximations of~$\operatorname{sgn}(x)$ require infinite
 precision in the input~$x$, do not exist in the \effective topos.
 
 
-\subsection*{The formal translation rules} The previous examples were picked to
+\subsection{The formal translation rules} The previous examples were picked to
 convey an intuitive understanding of what statements in the \effective topos
 externally mean, and to showcase a variety of different situations. The
 formal translation rules are given in Table~\ref{table:eff}.
 
 \begin{table}
   \begin{tabbing}
-    $\Eff \models (\forall f\?\NN^\NN \varphi(n))\!\!$ \= \kill
+    $e \models (\forall f\?\NN^\NN\_ \varphi(n))$ \= \kill
     $\Eff \models \varphi$ \> iff there is a natural number~$e$ such that~$e
     \realizes \varphi$. \\\\
+    $e \realizes s = t$ \> iff $s = t$. \\
     $e \realizes \top$ \> is true for any number~$e$. \\
     $e \realizes \bot$ \> is false for any number~$e$. \\
     $e \realizes (\varphi \wedge \psi)$ \> iff~$e \cdot 0 \downarrow$ and~$e

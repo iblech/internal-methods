@@ -199,8 +199,8 @@ topos.
 \subsection{``Any function~$\RR \to \RR$ is continuous.''}\label{sect:eff-continuous}
 In the standard topos, this statement is plainly false, with the signum and Heaviside functions
 being prominent counterexamples. In the \effective topos, this statement is
-true. A formal proof is not entirely straightforward~\cite{XXX}; the intuitive
-reason for why this is so is as follows.
+true. A formal proof is not entirely straightforward~\cite{XXX}, but an intuitive
+explanation is as follows.
 
 What the \effective topos believes to be a real number is, from the external
 point of view, a Turing machine~$X$ which outputs, when called with a natural
@@ -231,6 +231,10 @@ formal translation rules are given in Table~\ref{table:eff}.
     $e \models (\forall f\?\NN^\NN\_ \varphi(n))$ \= \kill
     $\Eff \models \varphi$ \> iff there is a natural number~$e$ such that~$e
     \realizes \varphi$. \\\\
+    \begin{minipage}{\textwidth}
+    In the following, we write~``$e \cdot n \downarrow$'' to mean that calling
+    the~$e$-th Turing machine on input~$n$ terminates, and in this case denote
+    the result by~``$e \cdot n$''.\end{minipage} \\\\
     $e \realizes s = t$ \> iff $s = t$. \\
     $e \realizes \top$ \> is true for any number~$e$. \\
     $e \realizes \bot$ \> is false for any number~$e$. \\
@@ -256,11 +260,45 @@ formal translation rules are given in Table~\ref{table:eff}.
   \end{tabbing}
 
   \caption{\label{table:eff} A (fragment of) the translation
-  rules defining the meaning of statements internal to the \effective topos.
-  We write~``$e \cdot n \downarrow$'' to mean that calling the~$e$-th Turing
-  machine on input~$n$ terminates, and in this case denote the result by~``$e
-  \cdot n$''.}
+  rules defining the meaning of statements internal to the \effective topos.}
 \end{table}
+
+
+\subsection{Variants of the \effective topos} The \effective topos belongs to a
+wider class of \emph{realizability toposes}. These can be obtained by repeating
+the construction of the \effective topos with any other reasonable model of
+computation in place of Turing machines. The resulting toposes will in general
+not be equivalent and reflect higher-order properties of the employed models.
+Two of these further toposes are of special philosphical interest.
+
+Firstly, in place of ordinary Turing machines, one can employ the
+\emph{infinite-time Turing machines} pioneered by Hamkins and
+Lewis~\cite{hamkins-lewis:ittm}. These machines model \emph{hypercomputation}
+in that they can run for ``longer than infinity''; more precisely, the
+computational steps are indexed by the ordinal numbers instead of the natural
+numbers.
+
+In the realizability topos made using infinite-time Turing machines, the full
+law of excluded middle still fails, but some instances which are wrong in the
+\effective topos do hold in this topos. For instance, the statement ``any
+function~$\NN \to \NN$ is the zero function or not'' does: Its external meaning
+is that there is an infinite-time Turing machine~$M$ which, given the
+description of an infinite-time Turing machine~$F$ computing a function~$f :
+\NN \to \NN$ as input, terminates (at some ordinal time step) with a correct
+judgment of whether~$f$ is the zero function or not. Such a machine~$M$ indeed
+exists: It simply has to simulate~$F$ on all inputs~$0,1,\ldots$ in order and
+check whether one of the resulting function values is not zero. This
+will require a transfinite amount of time (not least because simulating~$F$ on
+just one input might require a transfinite amount of time), but as an
+infinite-time Turing machine,~$M$ is capable of carrying out this procedure.
+
+This realizability topos provides an intriguing environment challenging many
+mathematical intuitions shaped by classical logic. For instance, while from the
+point of view of this topos the reals are still uncountable in the sense that
+there is no surjection~$\NN \to \RR$, there is an injection~$\RR \to
+\NN$~\cite{bauer:injection}.
+
+A second ......
 
 
 \section{Exploring toposes of sheaves}

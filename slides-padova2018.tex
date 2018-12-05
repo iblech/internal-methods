@@ -1,6 +1,15 @@
 \documentclass[12pt,utf8,notheorems,compress,t]{beamer}
 \usepackage{etex}
 
+\usepackage{pgfpages}
+\setbeameroption{show notes on second screen}
+\setbeamertemplate{note page}[plain]
+\newcommand{\jnote}[2]{\only<#1>{\note{\setlength\parskip{\medskipamount}\justifying\footnotesize#2\par}}}
+
+% Workaround for the issue described at
+% https://tex.stackexchange.com/questions/164406/beamer-using-href-in-notes.
+\newcommand{\fixedhref}[2]{\makebox[0pt][l]{\hspace*{\paperwidth}\href{#1}{#2}}\href{#1}{#2}}
+
 \usepackage[english]{babel}
 
 \usepackage{mathtools}
@@ -18,9 +27,6 @@
 \usepackage{tikz}
 \usetikzlibrary{calc,shapes,shapes.callouts,shapes.arrows,patterns,fit,backgrounds,decorations.pathmorphing}
 \hypersetup{colorlinks=true}
-\usepackage{multimedia}
-\newcommand{\video}[2]{\movie[width=#2,height=#2,autostart,loop,poster]{}{#1}}
-\hypersetup{colorlinks=false}
 
 \usepackage{pifont}
 \newcommand{\cmark}{\ding{51}}
@@ -58,6 +64,8 @@
 \usepackage{libertine}
 
 \newcommand{\A}{\mathcal{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\M}{\mathcal{M}}
 \renewcommand{\AA}{\mathbb{A}}
 \newcommand{\E}{\mathcal{E}}
 \newcommand{\F}{\mathcal{F}}
@@ -74,6 +82,7 @@
 \newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\CC}{\mathbb{C}}
 \renewcommand{\P}{\mathcal{P}}
+\newcommand{\aaa}{\mathfrak{a}}
 \newcommand{\ppp}{\mathfrak{p}}
 \newcommand{\fff}{\mathfrak{f}}
 \newcommand{\defeq}{\vcentcolon=}
@@ -228,8 +237,6 @@
 \newcommand{\hil}[1]{{\usebeamercolor[fg]{item}{\textbf{#1}}}}
 \newcommand{\bad}[1]{\textcolor{red!90}{\textnormal{#1}}}
 
-\newcommand{\jnote}[2]{}
-
 \begin{document}
 
 \addtocounter{framenumber}{-1}
@@ -330,10 +337,67 @@
 
       \visible<3->{
         \justifying
-        \textbf{Proof.} See [Stacks Project].
+        \textbf{Proof.} See \href{https://stacks.math.columbia.edu/tag/051Q}{[Stacks Project]}.
       }
     \end{column}
   \end{columns}
+
+  \jnote{1}{The two displayed statements are trivial for fields. It is
+  therefore natural to try to reduce the general situation to the field
+  situation.}
+
+  \jnote{2}{The displayed proof, which could have been taken from any
+  standard textbook on commutative algebra, succeeds in this reduction
+  by employing proof by contradition and minimal prime ideals. However, this way
+  of reducing comes at a cost: It requires the Boolean Prime Ideal Theorem
+  (for ensuring the existence of a prime ideal and for ensuring that stalks at
+  minimal prime ideals are fields) and even the full axiom of choice (for
+  ensuring the existence of a minimal prime ideal).
+
+  We should hope that such a simple statement admits a more informative,
+  explicit, computational proof: There should be an explicit method for
+  transforming the given conditional equations expressing injectivity into the
+  equation~$1 = 0$. And indeed there is: Beautiful constructive proofs can
+  be found in Richman's note on
+  \fixedhref{https://www.ams.org/journals/proc/1988-103-04/S0002-9939-1988-0954974-5/S0002-9939-1988-0954974-5.pdf}{nontrivial
+  uses of trivial rings} and in the
+  \fixedhref{https://arxiv.org/abs/1605.04832}{recent textbook by Lombardi and
+  Quitté} on constructive commutative algebra.
+
+  The new reduction technique presented in this talk provides a way of
+  performing the reduction in an entirely constructive manner, avoiding the
+  axiom of choice. If so desired, resulting topos-theoretic proofs can be
+  unwound to yield fully explicit, topos-free, direct proofs.}
+
+  \jnote{3}{The baby example demonstrates that the reduction technique of this
+  talk is of interest to constructive commutative algebra. What about classical
+  commutative algebra? This is what the second example aims at.
+  Grothendieck's generic freeness lemma is an important theorem in algebraic
+  geometry, where it is usually stated in the following geometric form:
+
+  \vspace*{-1.2em}
+  \begin{indentblock}Let~$X$ be a reduced scheme. Let~$\B$ be
+  an~$\O_X$-algebra of finite type. Let~$\M$ be a~$\B$-module of finite type.
+  Then over a dense open,
+  \begin{enumerate}
+  \item[(a)] $\B$ and~$\M$ are locally free as sheaves of~$\O_X$-modules,
+  \item[(b)] $\B$ is of finite presentation as a sheaf of~$\O_X$-algebras and
+  \item[(c)] $\M$ is of finite presentation as a sheaf of~$\B$-modules.
+  \end{enumerate}\end{indentblock}
+  \vspace*{-1.2em}
+
+  All previously known proofs proceed in a series of reduction steps,
+  finally culminating in the case where~$A$ is a Noetherian integral domain.
+  They are somewhat convoluted (spanning several pages) and require nontrivial
+  prerequisites in commutative algebra.
+
+  Using the new reduction technique, there is a short (one-paragraph) and
+  conceptual proof of Grothendieck's generic freeness lemma. It is constructive
+  as a bonus; and if desired, one can unwind the resulting proof to obtain a
+  constructive proof which doesn't reference topos theory. The proof obtained
+  in this way is still an improvement on the previously known proofs, requiring
+  no advanced prerequisites in commutative algebra, and takes
+  \fixedhref{https://arxiv.org/abs/1807.01231}{about a page}.}
 \end{frame}
 
 
@@ -358,17 +422,32 @@
       \item The element $x$ is invertible in~$A[x^{-1}]$.
       \item The element $y$ is invertible in~$A[y^{-1}]$.
     \end{itemize}
+    (Recall~$A[f^{-1}] = \bigl\{ \frac{u}{f^n} \,|\, u \in A, n \in \NN \bigr\}$.)
   }
     \hil{Locally,} any ring is local.
   \end{varblockextra}
+
+  \jnote{1}{In topos theory, we have lots of experience of ``changing
+  universes'' in order to ``force'' some statements to be true. However,
+  because the field condition we are aiming at is not a ``geometric sequent'', these
+  techniques do not work here. Hence we try to take it more slowly and devise a
+  semantics which forces the given ring only to be local.
+
+  The key insight is that \emph{locally} (in the sense of topology/geometry),
+  any ring is a local ring. That is, we may pretend that any given ring is
+  local if we are prepared to pass to numerous localizations during the course
+  of an argument. The semantics displayed on the next slide manages this
+  localization-juggling for us.}
 \end{frame}
 
 \begin{frame}{The Kripke--Joyal semantics}
-  \small
-  \mbox{\!\!\!Recall~$A[f^{-1}] = \bigl\{ \frac{u}{f^n} \,|\, u \in A, n \in \NN \bigr\}$.
-  Let~``$\models \varphi$'' be short for~``$1 \models \varphi$''.}
+  \small\vspace*{-0.7em}
+  \only<1>{Let~$A$ be a ring (commutative, with unit). We recursively define
+  \[ f \models \varphi \quad \text{(``$\varphi$ holds away from the zeros of~$f$'')} \]
+  for elements~$f \in A$ and statements~$\varphi$. Write
+  ``$\models \varphi$'' to mean~$1 \models \varphi$.}
   \only<1>{\[ \renewcommand{\arraystretch}{1.25}\begin{array}{@{}l@{\quad}c@{\quad}l@{}}
-    f \models \top &\text{iff}& \top \\
+    f \models \top &\text{is}& \text{true} \\
     f \models \bot &\text{iff}& \text{$f$ is nilpotent} \\
     f \models x = y &\text{iff}& x = y \in A[f^{-1}] \\
     f \models \varphi \wedge \psi &\text{iff}&
@@ -384,6 +463,7 @@
       \text{there exists a partition~$f^n = fg_1 + \cdots + fg_m$ with,} \\
     &&\quad\text{for each~$i$, $fg_i \models \varphi[x_0/x]$ for some~$x_0 \in A[(fg_i)^{-1}]$}
   \end{array} \]}
+  \only<2->{Write ``$\models \varphi$'' to mean~$1 \models \varphi$.}
   \only<2->{\[ \renewcommand{\arraystretch}{1.25}\begin{array}{@{}l@{\quad}c@{\quad}l@{}}
     f \models x = y &\text{iff}& x = y \in A[f^{-1}] \\
     f \models \varphi \wedge \psi &\text{iff}&
@@ -392,6 +472,45 @@
       \text{there exists a partition~$f^n = fg_1 + \cdots + fg_m$ with,} \\
     &&\quad\text{for each~$i$, $fg_i \models \varphi$ or $fg_i \models \psi$}
   \end{array} \]}
+
+  \jnote{1}{The clause for~``$\vee$'' is made exactly in such a way as to
+  ensure, if~$x + y = 1$, that~$1 \models ((\exists z\?A^\sim\_ xz = 1) \vee
+  (\exists z\?A^\sim\_ yz = 1))$.
+  
+  The definition of the semantics is reminiscient of Kripke and Beth models.
+  Indeed, it is a fragment of the Kripke--Joyal semantics of the \emph{internal
+  language of a topos}, and this general semantics encompasses Kripke and Beth
+  models as special cases.}
+
+  \jnote{2}{The soundness lemma states: If~$f \models \varphi$, and
+  if~$\varphi$ intuitionistically entails a further statement~$\psi$, then
+  also~$f \models \psi$. In this way we can \emph{reason} with the forcing
+  model, similarly as if~$A^\sim$ would actually exist as a ring instead of
+  merely being a convenient syntactic fiction.
+
+  If we want~$A^\sim$ to actually exist, not just as a figure of speech, then
+  we have to broaden our notion of existence and accept ring objects in
+  toposes. More on this on the next slide.
+
+  Irrespective of whether~$A$ is a local ring, its mirror
+  image~$A^\sim$ is always a local ring (that is, the axioms of what it means
+  to be a local ring hold under the translation rules specified by the
+  semantics). A basic application of this forcing model are local-to-global
+  principles. For instance:
+  \begin{itemize}\justifying
+    \item The statement ``the kernel of a surjective matrix over a local ring
+    is finite free'' admits a constructive proof. It therefore holds
+    for~$A^\sim$. Its external meaning is that the kernel of a surjective
+    matrix~$M$ over~$A$ is finite locally free (there exists a partition~$1 =
+    f_1 + \cdots + f_n$ such that for each~$i$, the localized
+    module~$(\operatorname{ker} M)[f_i^{-1}]$ is finite free).
+
+    \item The ring~$A$ is a Prüfer domain if and only if~$A^\sim$ is a Bézout
+    domain. Therefore any constructive theorem about Bézout domains entails a
+    corresponding theorem about Prüfer domains. Bézout domains are quite rare,
+    while Prüfer domains abound (for instance the ring of integers of any
+    number field is a Prüfer domain, even constructively so).
+  \end{itemize}}
 
   \pause
 
@@ -1098,7 +1217,7 @@
 
 \fontsize{10pt}{12}
 {\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{4.95cm}\includegraphics[width=\paperwidth]{topos-horses-lighter}\end{minipage}}
-\begin{frame}{Classifying toposes in algebraic geometry}
+\begin{frame}{\!\!\!\mbox{Classifying toposes in algebraic geometry}}
   \footnotesize
   \centering
   \begin{tabular}{ll}

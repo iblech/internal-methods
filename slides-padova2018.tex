@@ -265,6 +265,15 @@
   Logic Seminar Padova \\
   December 5st, 2018
   \par
+
+  \jnote{1}{We can associate to any reduced ring~$A$ a \emph{forcing
+  model}~$A^\sim$.
+  \begin{itemize}
+    \item The forcing model has the pleasant property that it is a field.
+    \item Reasoning about it requires that we restrict ourselves to
+    intuitionistic logic.
+  \end{itemize}
+  Details are on the following slides.}
 \end{frame}}
 
 
@@ -348,14 +357,15 @@
 
   \jnote{2}{The displayed proof, which could have been taken from any
   standard textbook on commutative algebra, succeeds in this reduction
-  by employing proof by contradition and minimal prime ideals. However, this way
+  by employing proof by contradiction and minimal prime ideals. However, this way
   of reducing comes at a cost: It requires the Boolean Prime Ideal Theorem
   (for ensuring the existence of a prime ideal and for ensuring that stalks at
   minimal prime ideals are fields) and even the full axiom of choice (for
   ensuring the existence of a minimal prime ideal).
 
   We should hope that such a simple statement admits a more informative,
-  explicit, computational proof: There should be an explicit method for
+  explicit, computational proof not employing transfinite methods: There should
+  be an explicit method for
   transforming the given conditional equations expressing injectivity into the
   equation~$1 = 0$. And indeed there is: Beautiful constructive proofs can
   be found in Richman's note on
@@ -408,8 +418,9 @@
   have an underlying \emph{set} of elements, but instead an underlying
   \emph{sheaf} of elements. It is a \emph{ring object} in a certain category,
   the \emph{little Zariski topos} of~$A$. But as long as we restrict to intuitionistic
-  reasoning, this difference is immaterial. Any intuitionistic theorem about
-  rings applies to~$A^\sim$ as if~$A$ were a proper ring.
+  reasoning, this difference is immaterial. A metatheorem displayed on a later
+  slide states that any intuitionistic theorem about
+  rings applies to~$A^\sim$ just as if~$A$ were a proper, ordinary ring.
   
   Studying~$A^\sim$ is in fact the same as studying~$A$ from a certain
   different, \emph{local} point of view. The precise meaning of this statement
@@ -492,7 +503,7 @@
   localization-juggling for us.
 
   By~$A[f^{-1}]$, we mean the localization of~$A$ away from~$f$. This
-  construction makes sense even if~$f$ is a zerodivisor, in which
+  construction makes sense even if~$f$ is a zero divisor, in which
   case~$A[f^{-1}]$ is the zero ring.}
 \end{frame}
 
@@ -533,7 +544,7 @@
   ensure, if~$x + y = 1$, that~$1 \models ((\exists z\?A^\sim\_ xz = 1) \vee
   (\exists z\?A^\sim\_ yz = 1))$.
   
-  The definition of the semantics is reminiscient of Kripke and Beth models.
+  The definition of the semantics is reminiscent of Kripke and Beth models.
   Indeed, it is a fragment of the Kripke--Joyal semantics of the \emph{internal
   language of a topos}, and this general semantics encompasses Kripke and Beth
   models as special cases.}
@@ -696,7 +707,7 @@
 
   \jnote{2-}{A free local ring~$A'$ over~$A$ is a local ring~$A'$
   together with a ring homomorphism~$A \to A'$ such that any ring
-  homomorphim~$A \to R$ to a local ring uniquely factors over a local ring
+  homomorphism~$A \to R$ to a local ring uniquely factors over a local ring
   homomorphism~$A' \to R$. (A ring homomorphism is \emph{local} iff it reflects
   invertibility.)
 
@@ -1044,7 +1055,7 @@
   \jnote{1}{Summarizing, we can associate to any reduced ring~$A$ the forcing
   model~$A^\sim$.
   \begin{itemize}
-    \item It has the pleasant property that it is a field.
+    \item The forcing model has the pleasant property that it is a field.
     \item Reasoning about it requires that we restrict ourselves to
     intuitionistic logic.
   \end{itemize}

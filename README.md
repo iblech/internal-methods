@@ -68,5 +68,9 @@ No prior knowledge about topos theory or formal logic is assumed.
   for the [Colloquium Logicum 2018](https://www.cl2018.uni-bayreuth.de/en/index.html) in Bayreuth
 * [Slides (PDF)](https://rawgit.com/iblech/internal-methods/master/slides-pssl104.pdf)
   for [PSSL 104](https://mysite.science.uottawa.ca/phofstra/PSSL18.html) in Amsterdam
+* [Slides (PDF)](https://rawgit.com/iblech/internal-methods/master/slides-muenchenwiler2018.pdf)
+  for the [Münchenwiler Meeting Autumn 2018](http://mw.inf.unibe.ch/) in Münchenwiler
+* *[Slides (PDF)](https://rawgit.com/iblech/internal-methods/master/slides-padova2018.pdf)
+  for the Logic Seminar in Padova*
 
 ![Sheaves of rings look like ordinary rings from the internal point of view.](images/external-internal-small.png)

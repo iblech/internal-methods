@@ -110,6 +110,7 @@
 \newcommand{\Ll}{\vcentcolon\!\Longleftrightarrow}
 \newcommand{\inv}{inv.\@}
 \newcommand{\seq}{\vdash_{\!\!\!\vec x}}
+\newcommand{\hg}{\mathbin{:}}  % homogeneous coordinates
 
 \setbeamertemplate{blocks}[rounded][shadow=false]
 
@@ -273,7 +274,7 @@
 \begin{frame}{Summary}
   \vspace*{-1em}
 
-  \visible<4>{
+  \visible<4->{
     \begin{changemargin}{-2.0em}{-0.5em}
       \begin{itemize}
         \item \ \\[-1.2em]\mbox{For any reduced ring~$A$, there is a ring~$A^\sim$ in a certain topos with}
@@ -343,8 +344,7 @@
   \end{columns}
 
   \jnote{1}{The two displayed statements are trivial for fields. It is
-  therefore natural to try to reduce the general situation to the field
-  situation.}
+  therefore natural to try to reduce the general situation to that of fields.}
 
   \jnote{2}{The displayed proof, which could have been taken from any
   standard textbook on commutative algebra, succeeds in this reduction
@@ -398,6 +398,53 @@
   in this way is still an improvement on the previously known proofs, requiring
   no advanced prerequisites in commutative algebra, and takes
   \fixedhref{https://arxiv.org/abs/1807.01231}{about a page}.}
+
+  \jnote{4}{Instead of passing from a given ring~$A$ to one of its
+  stalks~$A_\ppp$ or quotient rings~$A/\aaa$, the reduction technique presented
+  in this talk passes from~$A$ to a \emph{forcing model}~$A^\sim$.
+
+  Unlike stalks or quotient rings, which are honest rings, the forcing
+  model~$A^\sim$ is not a ring in the strict sense of the word: It doesn't
+  have an underlying \emph{set} of elements, but instead an underlying
+  \emph{sheaf} of elements. It is a \emph{ring object} in a certain category,
+  the \emph{little Zariski topos} of~$A$. But as long as we restrict to intuitionistic
+  reasoning, this difference is immaterial. Any intuitionistic theorem about
+  rings applies to~$A^\sim$ as if~$A$ were a proper ring.
+  
+  Studying~$A^\sim$ is in fact the same as studying~$A$ from a certain
+  different, \emph{local} point of view. The precise meaning of this statement
+  will be explained on slide~3.}
+
+  \jnote{5}{Intuitionistic logic is the same as classical logic, but without:
+  \vspace*{-1em}
+  \begin{itemize}
+    \item the law of excluded middle: $\varphi \vee \neg\varphi$ \\[-1.5em]
+    \item the law of double negation elimination: $\neg\neg\varphi \Rightarrow \varphi$ \\[-1.5em]
+    \item the axiom of choice
+  \end{itemize}
+  \vspace*{-1em}
+  If one is unfamiliar with constructive mathematics, then doing without these
+  three laws seems unmotivated, rather peculiar and overtly restrictive. Here, the
+  restriction to intuitionistic logic is not by some philosophical choice.
+  Rather, it's by mathematical necessity. It's just a fact that in general, the
+  laws of classical logic don't apply to~$A^\sim$. (Assuming a classical
+  metatheory and assuming~$A$ to be Noetherian, they do iff~$A$ is of Krull
+  dimension~$\leq 0$.)
+
+  Luckily, vast amounts of commutative algebra work in the intuitionistic
+  setting, as for instance evidenced by the recent 1000$^+$-page
+  \fixedhref{https://arxiv.org/abs/1605.04832}{textbook by
+  Lombardi and Quitté}. This claim extends to statements which are usually
+  proven using maximal ideals or minimal ideal prime ideals and hence require
+  Zorn's lemma. Indeed, the technique presented in this talk allows to
+  constructivize some results of this kind.
+ 
+  Background on constructive mathematics can for instance be found in a
+  \fixedhref{https://video.ias.edu/members/1213/0318-AndrejBauer}{talk by
+  Andrej Bauer}
+  (\fixedhref{https://www.ams.org/journals/bull/2017-54-03/S0273-0979-2016-01556-4/S0273-0979-2016-01556-4.pdf}{written
+  notes}). The standard proof that~$\sqrt{2}$ is not rational is perfectly fine
+  in constructive mathematics.}
 \end{frame}
 
 
@@ -427,17 +474,26 @@
     \hil{Locally,} any ring is local.
   \end{varblockextra}
 
-  \jnote{1}{In topos theory, we have lots of experience of ``changing
-  universes'' in order to ``force'' some statements to be true. However,
-  because the field condition we are aiming at is not a ``geometric sequent'', these
-  techniques do not work here. Hence we try to take it more slowly and devise a
-  semantics which forces the given ring only to be local.
+  \jnote{1}{In topos theory, we have lots of experience of \emph{changing
+  universes} in order to \emph{force} some statements to become true. However,
+  because the field condition we are aiming at is not a \emph{geometric
+  sequent}, these techniques do not work here. Hence we'll take it more slowly
+  and only devise a semantics which forces the given ring to be local.
+
+  The displayed definition of a local ring is, in the presence of the axiom of
+  choice, equivalent to the more common one (ring with exactly one maximal
+  ideal). In constructive mathematics, the displayed definition usually works
+  better.
 
   The key insight is that \emph{locally} (in the sense of topology/geometry),
   any ring is a local ring. That is, we may pretend that any given ring is
   local if we are prepared to pass to numerous localizations during the course
   of an argument. The semantics displayed on the next slide manages this
-  localization-juggling for us.}
+  localization-juggling for us.
+
+  By~$A[f^{-1}]$, we mean the localization of~$A$ away from~$f$. This
+  construction makes sense even if~$f$ is a zerodivisor, in which
+  case~$A[f^{-1}]$ is the zero ring.}
 \end{frame}
 
 \begin{frame}{The Kripke--Joyal semantics}
@@ -492,7 +548,10 @@
   we have to broaden our notion of existence and accept ring objects in
   toposes. More on this on the next slide.
 
-  Irrespective of whether~$A$ is a local ring, its mirror
+  The four lemmas displayed on this slide, as well as all the claims on
+  further slides, can be proven in very weak intuitionistic metatheories.}
+
+  \jnote{3}{Irrespective of whether~$A$ is a local ring, its mirror
   image~$A^\sim$ is always a local ring (that is, the axioms of what it means
   to be a local ring hold under the translation rules specified by the
   semantics). A basic application of this forcing model are local-to-global
@@ -623,6 +682,35 @@
     \end{scope}
   \end{tikzpicture}
 
+  \jnote{1}{A topos is a special kind of category. Every topos has an
+  associated \emph{internal language} which can be used to do mathematics
+  \emph{internally to the topos}.
+  
+  The prototypical example of a topos is the category~$\Set$. Doing mathematics
+  internally to~$\Set$ amounts to just doing mathematics in the usual sense.
+  A primer on the topos-theoretic landscape is contained in
+  \fixedhref{https://rawgit.com/iblech/internal-methods/master/slides-leipzig2018.pdf}{these
+  slides}. These slides also explain the geometric reason why the intermediate value
+  theorem fails in most toposes of sheaves, and why in the ef{}fective topos
+  any function~$\NN \to \NN$ is computable.}
+
+  \jnote{2-}{A free local ring~$A'$ over~$A$ is a local ring~$A'$
+  together with a ring homomorphism~$A \to A'$ such that any ring
+  homomorphim~$A \to R$ to a local ring uniquely factors over a local ring
+  homomorphism~$A' \to R$. (A ring homomorphism is \emph{local} iff it reflects
+  invertibility.)
+
+  Assuming the Boolean Prime Ideal Theorem, one can show that there is a free
+  local ring over~$A$ if and only if~$A$ has exactly one prime ideal. In this
+  case~$A$ is already local, and we can take~$A' \defeq A$. If we want every
+  ring to possess a free local ring over it, we need to accept ring objects of
+  different toposes than~$\Set$.
+
+  The little Zariski topos contains the \emph{generic filter} of~$A$.
+  Localizing~$A$ at this filter yields the desired free local ring. It is
+  precisely what was called~$A^\sim$ before. It is also known as the structure
+  sheaf of~$\Spec(A)$.}
+
   \pause
 
   Is there a \hil{free local ring}~$A \to A'$ over~$A$?
@@ -637,7 +725,7 @@
     \begin{column}{0.50\textwidth}
       \small\justifying
       For a fixed ring~$R$, the localization $A' \defeq A[S^{-1}]$ with $S \defeq
-      \alpha^{-1}[R^\times]$ would do the job.
+      \alpha^{-1}[R^\times]$ would do the job. ($S$ is a \emph{filter}.)
       \medskip
 
       Hence we need the \hil{generic filter}.
@@ -669,6 +757,32 @@
   \hspace*{0.5pt}\,\,
   $1 \in \fff$;\,
   $xy \in \fff \Leftrightarrow x \in \fff \wedge y \in \fff$
+
+  \jnote{1}{Any geometric theory has a \emph{classifying topos} which contains
+  the \emph{generic model} of that theory (any model in any topos is uniquely
+  the pullback of the generic one); if the theory under consideration is
+  propositional (doesn't have any sorts), then its classifying topos can be
+  chosen to be the topos of sheaves over a locale. One can also give a direct
+  account of classifying locales, as a pedagogical stepping stone to the full
+  theory of classifying toposes.
+
+  The slide contains a small lie: The classical definition of the spectrum of a
+  ring is via the set of prime ideals of~$A$, not filters. If the law of
+  excluded middle is available, there is no difference between these
+  definitions since the complement of a prime ideal is a filter and vice
+  versa.
+  One can also consider the classifying locale of prime ideals of~$A$.
+  Its associated topological space of points is the set of prime ideals
+  of~$A$ equipped with the \emph{constructible topology}.
+
+  In an intuitionistic (but still impredicative) context, any of the
+  (generalized) spaces of items~1--4 can be adopted as sensible definitions of
+  the spectrum. Item~5 is then a tautology. The classical definition of
+  the spectrum as a topological space doesn't work very well, because verifying
+  the universal property one expects of it requires the Boolean Prime Ideal
+  Theorem. Most dramatically, in some toposes there are rings which are not
+  trivial yet have neither prime ideals nor filters. The classical definition
+  yields in this case the empty space.}
 \end{frame}
 
 \begin{frame}{Investigating the forcing model}
@@ -724,17 +838,72 @@
     \end{column}
   \end{columns}
 
-  \visible<2->{\begin{tikzpicture}[overlay]
+  \jnote{1}{For working with~$A^\sim$, it's important to know how properties
+  of~$A$ relate to properties of~$A^\sim$.
+
+  The first displayed metatheorem justifies that, to a first approximation, the
+  forcing model~$A^\sim$ is a reification of all the stalks of~$A$ into a
+  single coherent entity. But crucially, this slogan is only correct for
+  properties which can be put in the displayed syntactical form (called
+  \emph{geometric sequents}). The reductive power of passing from~$A$
+  to~$A^\sim$ results from surprising non-geometric sequents which are
+  satisfied by~$A^\sim$ and not shared by~$A$, its localizations or its
+  quotients.
+
+  A slight generalization of the second metatheorem soups up a number of basic
+  lemmas of algebraic geometry, there stated in geometric language. For
+  instance, if~$M$ is finitely generated, then~$M^\sim$ is of finite type.
+  If~$M$ is finitely presented, then~$M^\sim$ is of finite presentation. If~$M$
+  is coherent, then~$M^\sim$ is coherent.}
+
+  \jnote{2}{Surprisingly and significantly, in case that~$A$ is reduced, there
+  are a number of non-geometric sequents validated by~$A^\sim$. These are
+  unique features of the forcing model.
+
+  $A^\sim$ is a field in the sense that zero is the only
+  noninvertible element.
+
+  $A^\sim$ has~$\neg\neg$-stable equality in the sense that
+  \[ \models \forall x\?A^\sim\_ \forall y\?A^\sim\_ \neg\neg(x = y) \Rightarrow x = y. \]
+  Classically, every set has~$\neg\neg$-stable equality; intuitionistically,
+  this is a special property of some sets. It's quite useful, as some theorems
+  of classical commutative algebra can only be proven intuitionistically when
+  weakened by double negation. The stability then allows, in some cases, to
+  obtain the original conclusion.
+
+  $A^\sim$ is \emph{anonymously Noetherian} in the sense that any of its ideals is
+  \mbox{\emph{not not}} finitely generated. A philosophically-motivated
+  constructivist might be offended by this notion, since it runs counter to the
+  maxim that constructive mathematics should be informative, telling us only
+  that there can't not be finite generating families. However, in the forcing
+  context it is a useful notion: Hilbert's basis theorem holds for it, and it
+  can be put to good use in the proof of (the general case of) Grothendieck's
+  generic freeness lemma.}
+
+  \jnote{3}{The field property was already observed in the 1970s
+  by Mulvey, but apparently back then its significance for applications was
+  overlooked and no deeper reason for this property was known. We now know
+  that it's a shadow of a forced higher-order property whose external translation
+  expresses that~$A^\sim$ is quasicoherent (details are in Section~3.3 of
+  \fixedhref{https://rawgit.com/iblech/internal-methods/master/notes.pdf}{these
+  notes}).}
+
+  \jnote{4}{Some properties of the forcing model, which are easy to state and
+  prove as properties about~$A^\sim$, have quite complex meanings when
+  unravelled to refer directly to~$A$. In this way the forcing model unlocks
+  observations which might otherwise be too unwieldy to manage.}
+
+  \visible<3->{\begin{tikzpicture}[overlay]
     \draw[fill=white, draw=white, opacity=0.85] (-1,0) rectangle (\paperwidth,8.0);
     \node[anchor=south west,inner sep=0] (image) at (0,1.0) {\vbox{
-      \only<2>{
+      \only<3>{
         \centering
         \includegraphics[width=0.9\textwidth]{tierney-on-the-spectrum-of-a-ringed-topos} \\
         \footnotesize
         Miles Tierney. On the spectrum of a ringed topos. 1976.
       }
 
-      \only<3>{
+      \only<4>{
 	\begin{varblock}{\textwidth}{}
 	  The external meaning of
 	  \[
@@ -818,6 +987,33 @@
       basic linear algebra.
     \end{column}
   \end{columns}
+
+  \jnote{1}{With the baby example, we see that the new reduction technique
+  presented in this talk allows to reinterpret the core content of the
+  classical proof shown on slide~1 in a constructive fashion. Since the forcing
+  model was set up in a constructive way, we could mechanically extract an
+  explicit procedure from the new proof.
+
+  For the second example, a remark might be in order. A basic theorem of
+  undergraduate linear algebra is that any finitely generated vector space has
+  a basis. In this form, the theorem cannot quite be proven intuitionistically.
+  Indeed, the standard proof uses the law of excluded middle in the first step:
+  \begin{indentblock}
+    \scriptsize
+    Let~$(x_1,\ldots,x_n)$ be a given finite generating family.
+    It might be the case that one of the vectors~$x_i$ can be expressed as a
+    linear combination of the others, or not.
+    In the second case, the family is linearly independent and thus the vector
+    space is shown to have a basis.
+    In the first case, we continue with the smaller generating
+    family~$(x_1,\ldots,x_{i-1},x_{i+1},\ldots,x_n)$ in an inductive fashion.
+  \end{indentblock}
+  Intuitionistically, the law of excluded middle is not available; however its
+  double negation ($\neg\neg(\varphi \vee \neg\varphi)$) is. Threading the
+  double negation through the rest of the proof yields the following theorem of
+  intuitionistic linear algebra: Any finitely generated vector space is
+  \emph{not not} free. It is this theorem which the proof on the slide refers
+  to.}
 \end{frame}
 
 
@@ -845,17 +1041,38 @@
     \item the age-old mystery of nongeometric sequents
   \end{itemize}
 
+  \jnote{1}{Summarizing, we can associate to any reduced ring~$A$ the forcing
+  model~$A^\sim$.
+  \begin{itemize}
+    \item It has the pleasant property that it is a field.
+    \item Reasoning about it requires that we restrict ourselves to
+    intuitionistic logic.
+  \end{itemize}
+  Depending on the application, this trade-off can not be useful at all, or be
+  quite valuable. It certainly is so for proving Grothendieck's generic
+  freeness lemma, simplifying a multi-page argument to a single and conceptual
+  paragraph. (The previous slide only showed a fragment of the general
+  statement of Grothendieck's generic freeness lemma. The technique outlined in
+  these slides is amenable to the full version. Details are in Section~11.5 of
+  \fixedhref{https://rawgit.com/iblech/internal-methods/master/notes.pdf}{these
+  notes}.)
+
+  The ideas underlying this new reduction technique can also be used for
+  different purposes: for understanding, in a rigorous way, notions of algebraic
+  geometry as notions of algebra, and for developing a synthetic account of
+  algebraic geometry. This is very briefly touched upon on the next two
+  slides.}
+
+  \jnote{2}{
+    \centering
+    \hil{Further reading}
+    \medskip
+
+    \framebox{\fixedhref{https://pizzaseminar.speicherleck.de/skript2/zariski-topos-klein.pdf}{\includegraphics[height=0.8\textheight]{fun-with-the-zariski-topos}}}\qquad%
+    \framebox{\fixedhref{https://rawgit.com/iblech/internal-methods/master/notes.pdf}{\includegraphics[height=0.8\textheight]{phd-cover}}}
+    \par
+  }
 \end{frame}}
-
-\begin{frame}[plain,c]
-  \centering%
-  \hil{Further reading}
-  \medskip
-
-  \framebox{\href{https://pizzaseminar.speicherleck.de/skript2/zariski-topos-klein.pdf}{\includegraphics[height=0.8\textheight]{fun-with-the-zariski-topos}}}\qquad%
-  \framebox{\href{https://rawgit.com/iblech/internal-methods/master/notes.pdf}{\includegraphics[height=0.8\textheight]{phd-cover}}}
-  \par
-\end{frame}
 
 \begin{frame}{Applications in algebraic geometry}
   \vspace*{-1.5em}
@@ -908,6 +1125,44 @@
       \end{exampleblock}
     \end{column}
   \end{columns}
+
+  \jnote{1}{One doesn't need to be an expert in topos theory in order to know
+  that many notions in algebraic geometry are inspired by notions in algebra
+  and that proofs in algebraic geometry often proceed by reducing to algebra.
+
+  If~$X$ is a scheme, the internal language of the topos~$\Sh(X)$ is a way of
+  making this connection precise: In many cases, the former are simply
+  interpretations of the latter internal to~$\Sh(X)$. Because this connection
+  is precise instead of informal, additional value is gained: We can skip many
+  basic proofs in algebraic geometry because they're just externalizations of
+  proofs in algebra carried out internally to~$\Sh(X)$.}
+
+  \jnote{2}{A basic example is as follows. A short exact sequence of sheaves of
+  modules looks like a short exact sequence of plain modules from the internal
+  point of view of~$\Sh(X)$. If the two outer sheaves are of finite type, then
+  from the internal point of view, the two outer modules will look like
+  finitely generated modules. Because the standard proof of the proposition
+  quoted on the lower right is intuitionistically valid, it follows that, from
+  the internal point of view, the middle module is too finitely generated.
+  Consulting the dictionary a second time, this amounts to saying that the
+  middle sheaf is of finite type.
+
+  A more advanced example is: The theorem ``any finitely generated vector space
+  does \emph{not not} have a basis'' of constructive linear algebra entails, by
+  interpretation in~$\Sh(X)$, that any sheaf of finite type over a reduced
+  scheme is finite locally free on a \emph{dense open subset}.
+
+  More details on this research program can be found in
+  \fixedhref{https://rawgit.com/iblech/internal-methods/master/notes.pdf}{these
+  notes}, partly reported on at the
+  \fixedhref{https://www.youtube.com/watch?v=7S8--bIKaWQ}{2015 IHÉS topos
+  theory conference}. Even though many important dictionary entries are still
+  missing (for instance pertaining to derived categories and intersection
+  theory), I believe that it is already in its current form useful to working
+  algebraic geometers.
+
+  The next slide illustrates a further, different way of approaching algebraic
+  geometry using topos theory.}
 \end{frame}
 
 \begin{frame}{Synthetic algebraic geometry}
@@ -926,351 +1181,66 @@
   \end{itemize}
   \bigskip
 
+  \jnote{1}{At the
+  \fixedhref{https://sbseminar.wordpress.com/2009/08/06/algebraic-geometry-without-prime-ideals/}{Secret
+  Blogging Seminar}, there was an insightful long-running discussion on the
+  merits of the two approaches to algebraic geometry. Two disadvantages of the approach using
+  locally ringed spaces is that the underlying topological spaces don't
+  actually parametrize ``honest'', ``geometric'' points, but the more complex
+  notion of irreducible closed subsets; and that they don't work well in a
+  constructive setting. (For this, they would have to be replaced by locally
+  ringed locales.)
+
+  The functorial approach is more economical, philosophically rewarding, and
+  works constructively. Given a functor~$F : \Ring \to \Set$, we imagine~$F(A)$
+  to be the set of~``$A$-valued points'' of the hypothetical scheme described
+  by~$F$, the set of ``points with coordinates in~$A$''. These sets have direct
+  geometric meaning. However, typically only field-valued points are easy
+  to describe. For instance, the functor representing projective~$n$-space is
+  given on fields by
+  \[ \begin{array}{r@{}c@{}l}
+  K &{}\longmapsto{}& \text{the set of lines through the origin in~$K^{n+1}$} \\
+  && \qquad \cong \{ [x_0 \hg \cdots \hg x_n] \,|\, \text{$x_i \neq 0$ for some~$i$} \},
+  \end{array} \]
+  whereas on general rings it is given by
+  \[ \begin{array}{r@{}c@{}l}
+    A &{}\longmapsto{}& \text{the set of quotients~$A^{n+1} \twoheadrightarrow P$,
+    where~$P$ is projective,} \\
+    && \qquad \text{modulo isomorphism}.
+  \end{array} \]
+  It is these more general kinds of points which impart a sense of
+  cohesion on the field-valued points, so they can't simply be dropped from
+  consideration.\bigskip}
+
+  \pause
+
   \hil{Synthetic approach:} model schemes \hil{directly as sets} in a certain
   nonclassical set theory, the internal universe of the \mbox{\hil{big Zariski
   topos}} of a base scheme.
   \small
   \[ \{ (x,y,z) \? (\affl)^3 \,|\, x^n+y^n-z^n=0 \} \]
+
+  \jnote{2}{This tension is resolved by observing that the category of
+  functors~$\Ring \to \Set$ is a topos (the \emph{big Zariski topos} of~$\Spec(\ZZ)$)
+  and that we can therefore employ its internal language. This language takes
+  care of juggling stages behind the scenes. For instance, projective~$n$-space
+  can be described by the naive expression
+  \[ \{ (x_0,\ldots,x_n) : (\affl)^{n+1} \,|\, x_0 \neq 0 \vee \cdots \vee x_n
+  \neq 0 \}/(\affl)^\times. \]
+  This example illustrates the goal: to develop a synthetic account of
+  algebraic geometry, in which schemes are plain sets and morphisms between
+  schemes are maps between those sets. It turns out that there are many
+  similarities with the well-developed synthetic account of differential
+  geometry, but also important differences, and it also turns out that
+  synthetic algebraic geometry has close connections to a certain age-old
+  unsolved problem in topos theory, the \emph{mystery of nongeometric
+  sequents}.
+
+  Details are in
+  \fixedhref{https://rawgit.com/iblech/internal-methods/master/slides-como2018.pdf}{this
+  set of slides}.}
 \end{frame}
 
-\fontsize{11pt}{13.2}
-
-\begin{frame}{The big Zariski topos}
-  Let~$S$ be a fixed base scheme.
-  \begin{varblock}{0.9\textwidth}{Definition}
-    The \hil{big Zariski topos} $\Zar(S)$ of a scheme~$S$ is equivalently
-    \begin{enumerate}
-      \item the topos of sheaves over~$(\Aff/S)_{\mathrm{lofp}}$,
-      \item the classifying topos of local rings over~$S$ or
-      \item the classifying~$\Sh(S)$-topos of local~$\O_S$-algebras which are
-      local over~$\O_S$.
-    \end{enumerate}
-  \end{varblock}
-
-  \begin{itemize}
-    \item For an~$S$-scheme~$X$, its functor of points $\ull{X} =
-    \Hom_S(\cdot,X)$ is an object of~$\Zar(S)$. It feels like \hil{the set of
-    points} of~$X$.
-    \item In particular, there is the ring object~$\affl$ with~$\affl(T) =
-    \O_T(T)$.
-    \item This ring object is a \hil{field}: nonzero implies
-    invertible. \\{} [Kock 1976]
-  \end{itemize}
-
-  \jnote{1}{The objects of the category~$(\Aff/S)_{\mathrm{lofp}}$ are
-  morphisms of the form~$\Spec(R) \to S$ which are locally of finite
-  presentation. (Other choices of resolving set-theoretical issues of size are
-  also possible.)
-
-  A functor~$F : (\Aff/S)_{\mathrm{lofp}}^\op \to \Set$ is a sheaf
-  for the Zariski topology if and only if the diagram
-  \[ F(T) \to
-    \prod_i F(U_i) \rightrightarrows
-    \prod_{j,k} F(U_j \cap U_k) \]
-  is a limit diagram for any open covering~$T = \bigcup_i U_i$ of any
-  scheme~$T \in (\Aff/S)_{\mathrm{lofp}}$.
-
-  In the case that~$S = \Spec(A)$ is affine, the big Zariski topos of~$S$ is also
-  simply called ``big Zariski topos of~$A$''. It is a subtopos of the topos of
-  functors $\mathrm{Alg}(A) \to \Set$ and classifies local~$A$-algebras.
-
-  From the internal point of view of~$\Sh(S)$, the sheaf~$\O_S$ of rings is
-  just an ordinary ring, and we can construct internally to~$\Sh(S)$ the big
-  Zariski topos of~$\O_S$. Externally, this construction will yield a certain
-  bounded topos over~$\Sh(S)$. However, as indicated on the slide, this topos
-  will \emph{not} coincide with the true big Zariski topos of~$S$. To
-  construct the true big Zariski topos, we have to build, internally
-  to~$\Sh(S)$, the classifying topos of local \emph{and local-over-$\O_S$}
-  $\O_S$-algebras.}
-\end{frame}
-
-\begin{frame}{Synthetic constructions}
-  \small
-  $\hil{$\boldsymbol{\mathbb{A}^n}$} = (\affl)^n = \affl \times \cdots \times \affl$
-
-  $\begin{array}{@{}r@{}c@{}l@{}}
-    \hil{$\boldsymbol{\mathbb{P}^n}$} &\phantom{}=\phantom{}& \{ (x_0,\ldots,x_n) : (\affl)^{n+1} \,|\, x_0 \neq 0 \vee
-    \cdots \vee x_n \neq 0 \}/(\affl)^\times \\
-    &\cong& \text{set of one-dimensional subspaces of~$(\affl)^{n+1}$} \\
-    &&\qquad \text{(with~$\O(-1) = (\ell)_{\ell \? \mathbb{P}^n}$, $\O(1) =
-    (\ell^\vee)_{\ell \? \mathbb{P}^n}$)}
-  \end{array}$
-
-  $\hil{$\boldsymbol{\Spec(R)}$} = \Hom_{\mathrm{Alg}(\affl)}(R, \affl) =
-    \text{set of $\affl$-valued points of $R$}$
-
-  $\hil{$\boldsymbol{TX}$} = X^\Delta$, where $\Delta = \{ \varepsilon \? \affl \,|\, \varepsilon^2 = 0 \}$
-
-  A subset $U \subseteq X$ is \hil{qc-open} if and only if for any $x : X$
-  there exist $f_1,\ldots,f_n \? \affl$ such that $x \in U \Longleftrightarrow
-  \exists i\_ f_i \neq 0$.
-
-  A \hil{synthetic affine scheme} is a set which is in bijection
-  with~$\Spec(R)$ for some synthetically quasicoherent~$\affl$-algebra~$R$.
-
-  A \hil{finitely presented synthetic scheme} is a set which can be covered by
-  finitely many qc-open f.p. synthetic affine schemes~$U_i$ such that the
-  intersections~$U_i \cap U_j$ can be covered by finitely many qc-open f.p.
-  synthetic affine schemes.
-
-  \jnote{1}{In the internal universe of the big Zariski topos of a base
-  scheme~$S$, $S$-schemes can simply be modeled by sets (enjoying the special
-  property that, in a certain precise sense, they are locally affine). This
-  slide expresses some of the basic constructions of~$S$-schemes in that
-  language.
-
-  Particularly nice are the following items.
-  \begin{itemize}\justifying
-    \item Projective~$n$-space can be given by the any of the two quite naive
-    expressions displayed on the slide.
-    \item Let~$X$ be an~$S$-scheme. We often think about a sheaves
-    of~$\O_X$-modules over~$X$ by their fibers; but for a rigorous
-    treatment in the standard foundations, we have to take the full sheaf
-    structure into account; the fibers do not determine a sheaf
-    uniquely.
-
-    From the internal point of view of~$\Zar(S)$, a sheaf of~$\O_X$-modules is
-    indeed simply a family of~$\affl$-modules, one~$\affl$-module for each
-    element of~$\ull{X}$. The slide illustrates how we can define the Serre
-    twisting sheaves in this language.
-  \end{itemize}}
-
-  \jnote{2}{\begin{itemize}\justifying
-    \item The spectrum of an~$\affl$-algebra can be given by the naive
-    expression displayed on the slide. It looks like this expression can't be
-    right, ignoring any non-maximal ideals; however, it is.
-    \item The big Zariski topos of an~$S$-scheme~$X$ is, from the internal
-    point of view of~$\Zar(S)$, simply the slice topos~$\Set/\ull{X}$. Hence to
-    give an~$X$-scheme simply amounts to giving an~$\ull{X}$-indexed family of
-    sets.
-  \end{itemize}
-
-  Synthetic algebraic geometry has been developed up to the point of étale
-  geometric morphisms. Much remains to be done: For instance, as of yet there
-  is only an account of Čech methods for computing cohomology, there is not yet
-  a synthetic treatment of true cohomology. Derived categories and intersection
-  theory are also missing.}
-\end{frame}
-
-\begin{frame}{Relations between the Zariski toposes}
-  The big Zariski topos is a topos over the small Zariski topos:
-  \[ \begin{array}{crcl}
-    \pi : & \Zar(A) &\longrightarrow& \Spec(A) \\
-    & \text{local~$A$-algebra~$(A \xrightarrow{\alpha} B)$} &\longmapsto& (A \to A[(\alpha^{-1}[B^\times])^{-1}])
-  \end{array} \]
-  This morphism is \hil{connected} ($\pi^{-1}$ is fully faithful) and
-  \hil{local}, so there is a preinverse
-  \[ \begin{array}{rcl}
-    \Spec(A) &\longrightarrow& \Zar(A) \\
-    \text{local localization~$(A \to B)$} &\longmapsto& (A \to B)
-  \end{array} \]
-  which is a subtopos inclusion inducing an idempotent monad~$\sharp$ and an
-  idempotent comonad~$\flat$ on~$\Zar(S)$.
-
-  \begin{itemize}
-  \justifying
-    \item Internally to~$\Zar(S)$, $\Spec(S)$ can be constructed as the
-    \hil{largest subtopos} where~$\flat \affl \to \affl$ is bijective.
-    \item Internally to~$\Spec(S)$, $\Zar(S)$ can be constructed as the
-    \hil{classifying topos} of local~$\O_S$-algebras which are local over~$\O_S$.
-    \item $\Zar(A)$ is the \hil{lax pullback}~$(\Set
-    \Rightarrow_{\Set[\Ring]} \Set[\LocRing])$.
-  \end{itemize}
-
-  \jnote{1}{Let~$A$ be a ring. By definition, we obtain a geometric
-  morphism~$\Set \to \Set[\Ring]$ into the classifying topos of rings.
-  There is also a geometric morphism~$\Set[\LocRing] \to \Set[\Ring]$, obtained
-  by realizing that any local ring is in particular a ring. These morphisms fit
-  together in a lax pullback square as follows:
-  \[ \xymatrix{
-    \Zar(A) \ar[r] \ar[d] & \Set[\LocRing] \ar[d] \\
-    \Set \ar[r] \ar@{}[ur]^(.3){}="a"^(.7){}="b" \ar@{=>} "a";"b" & \Set[\Ring]
-  } \]
-  This observation is joint with Peter Arndt and Matthias Hutzler.
-
-  Incidentally, the pseudo pullback of the morphism~$\Set[\LocRing] \to
-  \Set[\Ring]$ along~$\Set \to \Set[\Ring]$ is not very interesting: It's the
-  largest subtopos of~$\Set$ where~$A$ is a local ring. Assuming the law of
-  excluded middle, this subtopos is either the trivial topos (if~$A$ is not
-  local) or~$\Set$ (if~$A$ is local).
-
-  There is also a way of realizing the little Zariski topos of~$A$ as a pseudo
-  pullback, exploiting that the (localic) spectrum construction is geometric.
-  See Section~12.6 of
-  \fixedhref{https://rawgit.com/iblech/internal-methods/master/notes.pdf}{these
-  notes} for details.
-  }
-\end{frame}
-
-
-\section{The mystery of nongeometric sequents}
-
-\begin{frame}{Properties of the affine line}
-  \begin{itemize}
-%   \item $\affl$ is a local ring:
-%   \[ 1 \neq 0 \qquad\qquad \text{$x + y$ \inv} \Longrightarrow \text{$x$ \inv} \vee
-%   \text{$y$ \inv} \]
-    \item $\affl$ is a field:
-    \begin{align*}
-      \neg(x = 0) &\Longleftrightarrow \text{$x$ invertible \quad [Kock 1976]} \\
-      \neg(\text{$x$ invertible}) &\Longleftrightarrow \text{$x$ nilpotent}
-    \end{align*}
-    \item $\affl$ satisfies the axiom of microaffinity: Any map $f : \Delta \to
-    \affl$ is of the form~$f(\varepsilon) = a + b \varepsilon$ for unique
-    values~$a,b \? \affl$, where~$\Delta = \{ \varepsilon \? \affl \,|\,
-    \varepsilon^2 = 0 \}$.
-    \bigskip
-    \item Any map $\affl \to \affl$ is a polynomial function.
-    \bigskip
-    \item $\affl$ is anonymously algebraically closed: Any monic polynomial
-    does \emph{not not} have a zero.
-  \end{itemize}
-
-  \jnote{1}{The axiom of microaffinity is a special instance of the
-  \emph{Kock--Lawvere axiom} known from synthetic differential geometry. We'll
-  see on the next slide that~$\affl$ validates an unusually strong form of the
-  Kock--Lawvere axiom, not at all satisfied in the usual well-adapted models of
-  synthetic differential geometry.
-
-  The fact that, internally to~$\Zar(S)$, any map~$\affl \to \affl$ is a
-  polynomial can be seen as a formal version of the general motto that in
-  algebraic geometry, ``morphisms are polynomials''.}
-\end{frame}
-
-\begin{frame}{Synthetic quasicoherence}
-  Recall~$\Spec(R) = \Hom_{\mathrm{Alg}(\affl)}(R, \affl)$ and consider the statement
-  \[ \text{``the canonical map~$
-    \begin{array}[t]{rcl}
-      R &\longrightarrow& (\affl)^{\Spec(R)} \\
-      f &\longmapsto& (\alpha \mapsto \alpha(f))
-    \end{array}
-  $ is bijective''}.
-  \]
-  \vspace*{-1em}
-
-  \begin{itemize}
-    \item True for~$R = \affl[X]/(X^2)$ (microaffinity).
-    \item True for~$R = \affl[X]$ (every function is a polynomial).
-    \item True for \hil{any} finitely presented~$\affl$-algebra~$R$.
-  \end{itemize}
-
-  Any known property of~$\affl$ follows from this \\
-  \hil{synthetic quasicoherence}.
-
-  \centering
-  \begin{varblock}{0.6344\textwidth}{}
-    \centering
-    \hil{the mystery of nongeometric sequents}
-    \par
-  \end{varblock}
-
-  \jnote{1}{Let~$R$ be an~$\affl$-algebra. An element~$f \in R$ induces
-  an~$\affl$-valued function on~$\Spec(R)$; functions of this form can
-  reasonably be called ``algebraic''. In a synthetic context, there should be
-  no other~$\affl$-valued functions on~$\Spec(R)$ as these algebraic ones, and
-  different algebraic expressions should yield different functions. This is
-  precisely what the bijectivity of the displayed map expresses (in a positive
-  way).
-
-  In synthetic differential geometry, the closest cousin of synthetic algebraic
-  geometry, the analogue of the displayed map is only bijective for Weil
-  algebras such as~$\affl[X]/(X^2)$ or $\affl[X,Y]/(X^2,XY)$, not for arbitrary
-  finitely presented~$\affl$-algebras. This is a major difference to synthetic
-  differential geometry.}
-
-  \jnote{2}{The notion of synthetic quasicoherence is interesting for a number
-  of reasons:\vspace*{-1.2em}
-  \begin{itemize}\justifying
-    \item All currently known properties of~$\affl$, such as all the properties
-    listed on the previous slide, follow from the statement that~$\affl$ is
-    synthetically quasicoherent.
-
-    For instance, here is how we can verify the field property. Let~$x \?
-    \affl$ such that~$x \neq 0$. Set~$R = \affl/(x)$. Then~$\Spec(R) =
-    \emptyset$. Thus~$(\affl)^{\Spec(R)}$ is a singleton. Hence~$R = 0$.
-    Therefore~$x$ is invertible.
-    \item Given an~$\affl$-module~$E$, we can formulate the following variant
-    of the axiom of synthetic quasicoherence: ``For any finitely
-    presented~$\affl$-algebra~$R$, the canonical map~$R \otimes_\affl E \to
-    E^{\Spec(R)}$ is bijective.'' This axiom is satisfied if and only if~$E$ is
-    induced by a quasicoherent sheaf of~$\O_S$-modules.
-    \item The notion of synthetic quasicoherence is central to synthetic
-    algebraic geometry. The notions of synthetic open immersions, closed
-    immersion, schemes and several others all refer to synthetic
-    quasicoherence.
-  \end{itemize}}
-
-  \jnote{3}{An analogue of synthetic quasicoherence holds in the classifying
-  topos of rings, demonstrating that even presheaf toposes can validate
-  interesting nontrivial nongeometric sequents.
-
-  We believe that an analogue of synthetic quasicoherence holds for the generic
-  model of any geometric theory. This is work in progress. If true, this would
-  yield a major source of nongeometric sequents in classifying toposes. Because
-  of the many applications on nongeometric sequents, it's very desirable to
-  possess such a source.
-
-  The mystery of nongeometric sequents is this: On the one hand, they are very
-  useful to have because of surprising applications; on the other hand, they
-  are as of yet quite elusive.}
-\end{frame}
-
-\fontsize{10pt}{12}
-{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{4.95cm}\includegraphics[width=\paperwidth]{topos-horses-lighter}\end{minipage}}
-\begin{frame}{\!\!\!\mbox{Classifying toposes in algebraic geometry}}
-  \footnotesize
-  \centering
-  \begin{tabular}{ll}
-    \toprule
-    (big) topos & classified theory \\\midrule
-    Zariski & local rings [Hakim 1972] \\[0.6em]
-    étale & separably closed local rings [Hakim 1972, Wraith 1979] \\[0.6em]
-    \usebeamercolor[fg]{item}{fppf} & \usebeamercolor[fg]{item}{fppf-local rings} \\
-    & \textcolor{red!90}{(conjecturally: algebraically closed local rings)} \\[0.6em]
-    \textcolor{red!80}{ph} & \textcolor{red!80}{?? (conjecturally: algebraically closed valuation rings} \\
-    & \qquad \textcolor{red!80}{validating the projective Nullstellensatz)} \\[0.6em]
-    \usebeamercolor[fg]{item}{surjective} & \usebeamercolor[fg]{item}{algebraically closed geometric fields} \\[0.6em]
-    \textcolor{red!80}{$\neg\neg$} & \textcolor{red!80}{?? (conjecturally: algebraically closed geometric} \\
-    & \qquad \textcolor{red!80}{fields which are integral over the base)} \\[0.6em]
-    \usebeamercolor[fg]{item}{infinitesimal} & \usebeamercolor[fg]{item}{local algebras together with a nilpotent ideal [Hutzler 2018]} \\[0.6em]
-    \textcolor{red!100}{crystalline} & \textcolor{red!100}{??} \\
-    \bottomrule
-  \end{tabular}
-
-  \jnote{1}{Toposes, and also more specifically classifying toposes, originated
-  in algebraic geometry. It is therefore deeply embarrassing that as of now,
-  still very little is known about the theories classified by the major toposes
-  in active use by algebraic geometers.
-  \begin{center}
-    \includegraphics[width=0.99\textwidth]{wraith-generic-galois-theory} \\
-    \footnotesize
-    Gavin Wraith. Generic Galois theory of local rings. 1979. \\
-    (A cult classic and must-read for anyone interested in \\
-    the intersection of topos theory and algebraic geometry.)
-  \end{center}}
-
-  \jnote{2}{For almost forty years, only the big Zariski topos and its étale
-  subtopos were understood in that way.
-  \fixedhref{https://rawgit.com/iblech/internal-methods/master/notes.pdf}{These~2017
-  notes} answer the question for the fppf topology and the surjective topology
-  (in Section~21) and state conjectures for the ph topology and the
-  double negation topology. However, while good to have, the answer for the
-  fppf topology remains unsatisfactory, since Wraith's conjecture that the fppf
-  topos classifies the simpler theory of algebraically closed local rings has
-  neither been confirmed nor refuted.
-
-  A couple of weeks ago, Matthias Hutzler managed to determine the theory
-  classified by the big infinitesimal topos of a ring~$A$: It classifies
-  pairs~$(B,\aaa)$ consisting of a local~$A$-algebra~$B$ and a nilpotent
-  ideal~$\aaa \subseteq B$. Details will be in his forthcoming Master's thesis.
-  He is currently working on answering the question for the closely related big
-  crystalline topos.
-
-  It will be exciting to learn what the crystalline topos and the many other
-  toposes in algebraic geometry classify; how algebraic geometry can profit
-  from these discoveries; and which new flavors of synthetic algebraic geometry
-  they unlock.}
-\end{frame}}
 \backupend
 
 \end{document}

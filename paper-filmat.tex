@@ -87,6 +87,69 @@ Strada le Grazie 15 \\
 \noindent
 
 
+\section{Unsorted}
+
+Toposes can be pictured as ``universes in which we can do mathematics in'' in
+much the same way as models of set theory can be viewed in this way. In fact,
+to any model~$M$ of a set theory such as~$\mathbf{ZF}$ or~$\mathbf{ZFC}$, there
+is a topos~$\Set_M$ such that a statement holds in the internal language
+of~$\Set_M$ if and only if it holds in~$M$.\footnote{The topos~$\Set_M$ can be
+described as follows: Its objects are the elements of~$M$, that is the things
+which~$M$ believes to be sets, and its morphisms are those things which~$M$
+believes to be maps. The topos~$\Set_M$ validates the axioms of
+$\mathbf{ETCS}$~\cite{XXX}, and for models which are not elementarily
+equivalent, their associated toposes will not be equivalent.} This
+includes~$V$, the trivial inner model consisting of all sets there are, in case
+such a thing exists in one's chosen ontology; in this case the associated
+topos~$\Set_V$ is the category of all sets, and a statement holds in~$\Set_V$
+if and only if it's true in the ordinary mathematical sense.
+
+Carrying the analogy further, just as using forcing and other techniques we can
+construct new models of set theory from given ones, thereby exploring the
+set-theoretic multiverse, we can construct new toposes from given toposes.
+However, there are two important differences between the notion of mathematical
+universe as provided by toposes and as provided by models of set theory, both
+regarding the subject matter and the reasons for why we are interested in them.
+
+Firstly, toposes are more general than models of set theory. By definition, a
+model of~$\mathbf{ZFC}$ will always satisfy the axioms of~$\mathbf{ZFC}$; in
+contrast, most toposes do not even validate the law of excluded middle, much
+less so the axiom of choice (which implies the law of excluded middle in
+presence of the remaining axioms of intuitionistic Zermelo--Fraenkel set
+theory~\cite{XXX}). This failure of classicality is often for interesting
+geometric or algebraic reasons instead of because of logical issues, as will be
+detailed in Section~\ref{several-toposes}.
+
+Secondly, there is a difference in motivation. The main philosophical reason
+for studying models of set theory is to study which notions of sets are
+coherent: Does the cardinality of the reals need to be the cardinal directly
+succeeding~$\aleph_0$, the cardinality of the naturals? No, there are models of
+set theory in which the continuum hypothesis fails. Do non-measurable sets of
+reals need to exist? No, in models of~$\mathbf{ZF}+\mathbf{AD}$,
+Zermelo--Fraenkel set theory plus the axiom of determinacy, it's a theorem that
+every subset of~$\RR^n$ is Lebesgue-measurable. Can the axiom of choice be
+added to the axioms of~$\mathbf{ZF}$ without causing inconsistency? Yes, if~$M$
+is a model of~$\mathbf{ZF}$ then~$L^M$, the set of definable sets of~$M$, is a
+model of~$\mathbf{ZFC}$.~\cite{XXX, maybe SEP?}
+
+While toposes can be used for similar such purposes, and indeed have been,
+especially to explore the various intuitionistic notions of sets, an important
+aspect of topos theory is that toposes are used to explore the standard
+mathematical universe: Truth in the \effective topos tells us what is
+computable; truth in sheaf toposes tells us what's true locally, in a fashion
+which depends continuously on parameters; the little Zariski topos of a general
+commutative ring can be used to pretend that the given ring is a field; toposes
+adapted to synthetic differential geometry can be used to rigorously work with
+infinitesimals. All of these examples will be presented in more detail in
+Section~\ref{several-toposes}.
+
+In a certain precise way, toposes allow us to study the common objects of
+mathematics from a different point of view -- one such view for every topos --
+and it is a beautiful and intriguing fact that with the sole exception of the
+law of excluded middle, the laws of logic apply to mathematical objects also
+when viewed through the lens of a specific topos.
+
+
 \section{Exploring the \effective topos}
 
 % XXX introduction
@@ -466,16 +529,11 @@ Stuff that should be mentioned:
 * models of ZF yield toposes (models of ETCS), including a quick discussion of
   equivalence
 * what giving up classical logic actually amounts to in practice
-* examples in Eff
-* examples in Eff(STM)
-* examples in Sh(X)
 * examples in Spec(A), "reifying all the individual localizations into a
   single coherent entity which can be reasoned about as if it were a single
   ring"
 * importance of having an adapted language
 * SDG (infinitesimals are well-studied in philosophy of mathematics)
-* beautiful and intriguing fact: laws of logic apply to mathematical objects
-  not only on the face, but also in different ways
 * quick remark on the internal language being based on types instead of sets
 * reference to Bohr topos approach
 * Source https://plato.stanford.edu/entries/category-theory/ for relevant

@@ -1,0 +1,203 @@
+\documentclass[oneside,reqno]{amsart}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm,mathtools,stmaryrd,amssymb,graphicx}
+\usepackage{booktabs}
+\usepackage[all]{xy}
+\usepackage[protrusion=true,expansion=true]{microtype}
+\usepackage{xspace}
+
+\usepackage[natbib=true,style=numeric,maxnames=10]{biblatex}
+\usepackage[babel]{csquotes}
+\bibliography{paper-filmat.bib}
+
+\graphicspath{{images/}}
+
+\usepackage{pifont}
+\newcommand{\cmark}{\ding{51}}
+\newcommand{\xmark}{\ding{55}}
+
+\title[]{Reflections on reflection for \\ intuitionistic set theories}
+\author{}
+\email{iblech@speicherleck.de}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{ex}[defn]{Example}
+
+\theoremstyle{plain}
+\newtheorem{prop}[defn]{Proposition}
+\newtheorem{cor}[defn]{Corollary}
+\newtheorem{lemma}[defn]{Lemma}
+\newtheorem{thm}[defn]{Theorem}
+\newtheorem{scholium}[defn]{Scholium}
+
+\theoremstyle{remark}
+\newtheorem{rem}[defn]{Remark}
+\newtheorem{question}[defn]{Question}
+\newtheorem{speculation}[defn]{Speculation}
+\newtheorem{caveat}[defn]{Caveat}
+\newtheorem{conjecture}[defn]{Conjecture}
+
+\newcommand{\xra}[1]{\xrightarrow{#1}}
+\newcommand{\XXX}[1]{\textbf{XXX: #1}}
+\newcommand{\aaa}{\mathfrak{a}}
+\newcommand{\bbb}{\mathfrak{b}}
+\newcommand{\mmm}{\mathfrak{m}}
+\newcommand{\I}{\mathcal{I}}
+\newcommand{\J}{\mathcal{J}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\renewcommand{\SS}{\mathbb{S}}
+\renewcommand{\P}{\mathcal{P}}
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\op}{\mathrm{op}}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Mod}{Mod}
+\DeclareMathOperator{\Sh}{Sh}
+\DeclareMathOperator{\PSh}{PSh}
+\newcommand{\Set}{\mathrm{Set}}
+\newcommand{\Eff}{\mathrm{Ef{}f}}
+\renewcommand{\_}{\mathpunct{.}\,}
+\newcommand{\effective}{ef{}fective\xspace}
+\newcommand{\?}{\,{:}\,}
+\newcommand{\realizes}{\Vdash}
+\newcommand{\notnot}{\emph{not~not}\xspace}
+
+\newcommand{\stacksproject}[1]{\cite[{\href{https://stacks.math.columbia.edu/tag/#1}{Tag~#1}}]{stacks-project}}
+
+\renewcommand{\paragraph}[1]{\noindent\textbf{#1.}}
+
+\newcommand{\ZF}{\textsc{zf}}
+\newcommand{\IZF}{\textsc{izf}}
+\newcommand{\CZF}{\textsc{czf}}
+\newcommand{\ZFC}{\textsc{zfc}}
+\newcommand{\ZFCS}{\textsc{zfc/s}}
+\newcommand{\RRS}{\textsc{rrs}}
+\newcommand{\ES}{(\IZF+\RRS)/\textsc{s}}
+
+\begin{document}
+
+\begin{abstract}
+  We study the well-known reflection principle of Zermelo--Fraenkel set theory
+  in the context of intuitionistic Zermelo--Fraenkel set theory~$\IZF$. We show
+  that the reflection principle is equivalent to Aczel's relation reflection scheme~$\RRS$. As
+  applications, we give a new proof that relativized dependent choice is
+  equivalent to the conjunction of~$\RRS$ and dependent choice and we present
+  an intuitionistic version of Feferman's~$\ZFC/S$, a conservative extension
+  of~$\ZFC$ which is useful as a foundation for category theory.
+\end{abstract}
+
+\maketitle
+\thispagestyle{empty}
+
+\section{Introduction}
+
+In its basic form, the reflection principle for Zermelo--Fraenkel set
+theory~$\ZF$ states:
+\begin{thm}Let~$\varphi(x_1,\ldots,x_n)$ be a formula in the language of set
+theory with free variables as indicated. Then~$\ZF$ proves
+\[ \forall M\_
+  \exists S \supseteq M\_
+  \forall x_1,\ldots,x_n \in S\_
+  \varphi(x_1,\ldots,x_n) \Leftrightarrow \varphi^S(x_1,\ldots,x_n), \]
+where~$\varphi^S$ is the~$S$-relativization of~$\varphi$, obtained by
+substituting any occurence of~``$\forall x$'' and~``$\exists x$'' by~``$\forall
+x \in S$'' and~``$\exists x \in S$''.
+\end{thm}
+Furthermore, the resulting set~$S$ may be supposed to be transitive, closed
+under subsets or even to be a stage~$V_\alpha$ of the cumulative hierarchy.
+% XXX: "hence" instead of "or even"?
+
+The reflection principle is important both for philosophical and for practical
+reasons: Philosophically, it tells us that truth of any formula can already be
+checked in an initial segment of the universe. Practically, it allows to
+transfer results obtained for a restricted class of objects to all such
+objects. For instance, if we manage to verify (the $S$-relativization of) some
+group-theoretic statement for all groups contained in an arbitrary set~$X$,
+then we may deduce by the reflection principle that in fact the statement holds
+for all groups in the universe.
+
+This observation has been used by Feferman to construct~$\ZFCS$ (``$\ZFC$ with
+smallness''), a conservative extension of~$\ZFC$ which provides a useful
+foundation of category theory~\cite{feferman:zfcs}. This theory extends~$\ZFC$
+by the addition of a new constant symbol~$\SS$ together with axioms stating
+that~$\SS$ is transitive, closed under subsets and reflective with respect to
+every formula~$\varphi(x_1,\ldots,x_n)$ of the original language:
+\[ \label{ax:refl}\tag{$\star$}
+\forall x_1,\ldots,x_n \in \SS\_ \varphi(x_1,\ldots,x_n) \Leftrightarrow
+\varphi^{\SS}(x_1,\ldots,x_n). \]
+This theory is conservative over~$\ZFC$ because any given proof in~$\ZFCS$ uses
+only a finite number of instances of this axiom scheme and hence the reflection
+principle yields a honest set~$S$ which validates just the same equivalences.
+
+Elements of~$\SS$ are deemed ``small'', so that~$\SS$ is the set of all small
+sets. The system~$\ZFCS$ is useful as a foundation for category theory because
+it allows a native treatment of large structures -- for instance, the category
+of all small sets can be formed entirely withing~$\ZFCS$, without resorting to
+classes -- while not requiring new set-theoretical commitments such as the
+existence of Grothendieck universes. We invite the reader who wants to learn
+more about the merits of~$\ZFCS$ to a survey by
+Shulman~\cite[Section~11]{shulman:sets}.
+
+To our naive eyes, the passage from~$\ZFC$ to~$\ZFCS$ looked sufficiently
+innocent so that we set out to create an intuitionistic version of~$\ZFCS$: To
+our mind, size issues were entirely separate from issues of constructivity, and
+we hence opined that they should be dealt with separately. Such a separation
+would lead to improved mental hygiene and would allow us to use the benefits
+of~$\ZFCS$ in situations where the law of excluded middle and the axiom of
+choice are not available, such as in realizability semantics, sheaf semantics
+or quite generally topos semantics.
+
+We expected this modification to be entirely straightforward. However, the
+situation turned out to be more subtle and we failed in our original goal of
+verifying the reflection principle for intuitionistic Zermelo--Fraenkel set
+theory~$\IZF$. The situation for~$\CZF$, the predicative subtheory of~$\IZF$
+commonly heralded as the largest common denominator of all flavors of
+constructive set theory, is even more mysterious.
+
+More specifically, the main result of this note is the following.
+
+\begin{thm}The reflection principle is equivalent, over~$\IZF$, to Aczel's relation reflection
+scheme~$\RRS$.\end{thm}
+
+Aczel's relation reflection scheme will be reviewed below. It is validated by
+all known models of~$\IZF$, hence might be regarded as not entirely
+unconstructive, even though it's conjectured to be independent of~$\IZF$. As a
+result, the question whether the reflection principle holds for~$\IZF$ remains
+open (though conjectured to be false), and for the stronger system~$\IZF+\RRS$
+we can give a variant ``with smallness'' which can serve as a set-theoretic
+foundation for category theory.
+
+\begin{conjecture}The system $\IZF$ does not prove the reflection
+principle.\end{conjecture}
+
+\begin{defn}The system $\ES$ is obtained from~$\IZF+\RRS$ by
+adding a constant symbol~$\SS$ together with axioms
+stating that~$\SS$ is transitive, closed under subsets and reflective for all
+formulas of the original language (that is, adding one instance
+of~\eqref{ax:refl} for each formula of~$\IZF$).\end{defn}
+
+\begin{cor}The system~$\ES$ is conservative
+over~$\IZF+\RRS$.\end{cor}
+
+This note is organized as follows. Section~1 reviews the classical proof of the
+reflection principle in the context of~$\ZF$ set theory. Section~2 reviews
+Aczel's relation reflection scheme and presents our main result. We conclude in
+Section~3 and Section~4 with two short applications.
+
+\textbf{Acknowledgments.} XXX
+
+
+\end{document}
+
+% XXX: Topos which validates exactly those statements which are true
+% externally.
+
+% XXX: Review axioms of IZF.

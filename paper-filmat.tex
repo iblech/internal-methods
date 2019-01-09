@@ -75,6 +75,8 @@ Strada le Grazie 15 \\
 
 \newcommand{\stacksproject}[1]{\cite[{\href{https://stacks.math.columbia.edu/tag/#1}{Tag~#1}}]{stacks-project}}
 
+\renewcommand{\paragraph}[1]{\noindent\textbf{#1.}}
+
 \begin{document}
 
 \begin{abstract}
@@ -334,12 +336,16 @@ computation in place of Turing machines. The resulting toposes will in general
 not be equivalent and reflect higher-order properties of the employed models.
 Two of these further toposes are of special philosphical interest.
 
+\paragraph{Hypercomputation}
 Firstly, in place of ordinary Turing machines, one can employ the
 \emph{infinite-time Turing machines} pioneered by Hamkins and
 Lewis~\cite{hamkins-lewis:ittm}. These machines model \emph{hypercomputation}
 in that they can run for ``longer than infinity''; more precisely, the
 computational steps are indexed by the ordinal numbers instead of the natural
-numbers.
+numbers. For instance, an infinite-time Turing machine can trivially decide the
+twin prime conjecture, by simply walking along the natural number line and
+recording any twin primes it finds. Then, on day~$\omega$, it can observe
+whether it has found finitely many twins or not.
 
 In the realizability topos made using infinite-time Turing machines, the full
 law of excluded middle still fails, but some instances which are wrong in the
@@ -361,7 +367,18 @@ point of view of this topos the reals are still uncountable in the sense that
 there is no surjection~$\NN \to \RR$, there is an injection~$\RR \to
 \NN$~\cite{bauer:injection}.
 
-A second ......
+\paragraph{Machines of the real physical world} A second variant of the
+\effective topos is obtained by using machines of the real physical world
+instead of abstract Turing machines in its construction. In doing so, we of
+course leave the realm of mathematics, as real-world machines are not objects
+of mathematical studies, but still it is interesting to see which commitments
+about the natural of the physical world imply which internal statements of the
+resulting topos.
+
+For instance, Andrej Bauer proved that inside this topos any function~$\RR \to
+\RR$ is continuous if, in the physical world, only finitely many computational
+steps can be carried out in finite time and if it is possible to form
+tamper-free private communication channels~\cite{XXX}.  % XXX: look up precise formulation
 
 
 \section{Exploring toposes of sheaves}

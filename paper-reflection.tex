@@ -62,6 +62,7 @@
 \DeclareMathOperator{\Mod}{Mod}
 \DeclareMathOperator{\Sh}{Sh}
 \DeclareMathOperator{\PSh}{PSh}
+\DeclareMathOperator{\rank}{rank}
 \newcommand{\Set}{\mathrm{Set}}
 \newcommand{\Eff}{\mathrm{Ef{}f}}
 \renewcommand{\_}{\mathpunct{.}\,}
@@ -194,6 +195,107 @@ Section~3 and Section~4 with two short applications.
 
 \textbf{Acknowledgments.} XXX
 
+
+\section{Review of the classical reflection principle}
+
+A basic proof of the reflection principle for~$\ZF$ runs as follows. Our proof
+of the reflection principle for~$\IZF+\RRS$ will follow the same outline.
+
+\begin{lemma}\label{lemma:zf-onestep}
+Let~$\varphi(u_1,\ldots,u_n,x)$ be a formula in the language of set
+theory with free variables as indicated. Then~$\ZF$ proves
+\begin{multline*}
+  {\qquad}\forall M\_
+  \exists S \supseteq M\_
+  \forall u_1,\ldots,u_n \in S\_ \\
+  (\exists x\_ \varphi(u_1,\ldots,u_n,x)) \Longrightarrow
+  (\exists x \in S\_ \varphi(u_1,\ldots,u_n,x)).{\qquad}
+\end{multline*}
+Furthermore:
+\begin{enumerate}
+\item We may suppose that~$S$ is transitive.
+\item We may suppose that~$S$ is closed under subsets.
+\item Given a finite list~$\varphi_1,\ldots,\varphi_k$ of formulas instead of
+the single formula~$\varphi$, we may suppose that~$S$ bounds all of
+the~$\varphi_i$.
+% XXX: better explanation
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}Given a class~$X$ (as commonly understood as the comprehension of
+a formula), we denote by~$X^\sim$ its subclass~$\{ x \in X \,|\, \forall y
+\in X\_ \rank(x) \leq \rank(y) \}$, where the rank function refers to the stage
+in the cumulative hierarchy. The two fundamental properties of this construction are:
+This subclass is equal to a set,\footnote{If~$X$ is empty, then
+this claim is trivial; if~$X$ is inhabited by some element~$x_0$, then~$X^\sim$ can
+be obtained using separation from~$V_{\rank(x_0)+1}$; and in fact, by an argument
+using the set of truth values and unbounded separation, the claim can also be
+proven in~$\IZF$.} and it is inhabited if and only if~$X$ is.
+
+Starting with~$S_0 \defeq M$, we construct~$S_{k+1}$ from~$S_k$ as the union of
+sets
+\[ S_{k+1} \defeq S_k \cup \bigcup_{u_1,\ldots,u_n \in S_k} \{ x \,|\,
+\varphi(u_1,\ldots,u_n,x) \}^\sim. \]
+It is then easy to check that~$S \defeq \bigcup_{k \in \NN} S_k$ has the
+required property.
+
+For addendum~(1), we redeclare~$S \defeq \bigcup_{k \in \NN} S_k'$,
+where~$S_k'$ is the transitive closure of~$S_k$.
+
+To ensure both addendum~(1) and addendum~(2), we redeclare~$S \defeq \bigcup_{k
+\in \NN} P^\omega(S_k')$, where~$P^\omega(X) \defeq \bigcup_{\ell \in \NN}
+P^{(\ell)}(X)$ is the union of iterated powersets.
+
+For addendum~(3), we change the definition of~$S_{k+1}$ to include one summand
+for each formula~$\varphi_i$.
+\end{proof}
+
+The proof of Lemma~\ref{lemma:zf-onestep} is mostly constructive; however,
+there is one issue with nontrivial ramifications: While~$\IZF$ does still show
+that the subclass~$X^\sim$ of a given class~$X$ is a set, it does not verify
+that~$X^\sim$ is inhabited if~$X$ is. This would amount to the constructive
+taboo that any inhabited set contains a rank-minimal element; and in fact, by
+a result of Friedman and Scedrov~\cite{XXX}, no definable substitute
+for~$X^\sim$ exists. The remedy presented in
+Section~\ref{sect:constructive-proof} will construct~$X^\sim$ in a non-unique
+fashion and then take the union using some additional care.
+
+\begin{thm}\label{thm:zf-bigstep}
+Let~$\varphi(x_1,\ldots,x_n)$ be a formula in the language of set
+theory with free variables as indicated. Then~$\ZF$ proves
+\[ \forall M\_
+  \exists S \supseteq M\_
+  \forall x_1,\ldots,x_n \in S\_
+  \varphi(x_1,\ldots,x_n) \Leftrightarrow \varphi^S(x_1,\ldots,x_n), \]
+where~$\varphi^S$ is the~$S$-relativization of~$\varphi$.
+\end{thm}
+
+\begin{proof}Let a set~$M$ be given. We obtain~$S$ by applying
+Lemma~\ref{lemma:zf-onestep} to the list of all subformulas of~$\varphi$. We
+then verify that~$S$ has the required property by an induction on the structure
+of~$\varphi$. The cases~$\text{``$=$''}, \text{``$\in$''}, \text{``$\top$''},
+\text{``$\bot$''}, \text{``$\wedge$''},
+\text{``$\vee$''}, \text{``$\Rightarrow$''}$ follow
+trivially from the induction hypothesis. The case~``$\forall$'' does
+not need to be treated, since we may assume without loss of generality that all
+universal quantifiers in~$\varphi$ have been rewritten
+as~``$\neg\exists\neg$''.
+
+The remaining case is where~$\varphi$ is of the form~$\varphi \equiv (\exists
+x\_ \psi(u_1,\ldots,u_m,x))$. In this case, the claim is that
+\[ \forall u_1,\ldots,u_m \in S\_
+  (\exists x\_ \psi(u_1,\ldots,u_m,x)) \Longrightarrow
+  (\exists x \in S\_ \psi^S(u_1,\ldots,u_m,x)), \]
+and this follows by the property of~$S$ guaranteed by
+Lemma~\ref{lemma:zf-onestep} and by the induction hypothesis concerning the
+subformula~$\psi^S(u_1,\ldots,u_m,x)$.
+\end{proof}
+
+The proof of Theorem~\ref{thm:zf-bigstep} is constructive with the sole
+exception of treating the case of universal quantifiers by appealing to the law
+of excluded middle. For the constructive proof in
+Section~\ref{sect:constructive-proof}, we will instead appeal to a strengthened
+version of Lemma~\ref{lemma:zf-onestep}.
 
 \end{document}
 

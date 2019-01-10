@@ -425,17 +425,16 @@ formulas~$\varphi_i$.
 % XXX: better explanation
 \end{lemma}
 
-\begin{proof}By~$\MDC$ and Lemma~\ref{lemma:izf-microstep}, there is a
+\begin{proof}We first consider the case~$n = 1$.
+
+By~$\MDC$ and Lemma~\ref{lemma:izf-microstep}, there is a
 function~$f : \NN \to P(V)$, where~$V$ is the universe, such that~$M \in
 f(0)$ and such that for any number~$k$ and any set~$H \in f(k)$, there is a
 set~$H' \in f(k+1)$ such that~$H$ and~$H'$ are related as in the conclusion of
 Lemma~\ref{lemma:izf-microstep}.
 
 We set~$S \defeq \bigcup \bigl(\bigcup_{k \in \NN} f(k)\bigr)$. This set~$S$
-has the required property; to verify this, it is useful to observe that
-given~$u_1,\ldots,u_n \in S$, there exists a common number~$k$ such
-that~$u_1,\ldots,u_n \in H$ for some~$H \in f(k)$.
-% XXX
+has the required property.
 
 In order to ensure addendum~(1) and~(2), we apply~$\MDC$ in a slightly
 different way such that for any number~$k$ and any set~$H \in f(k)$, there is a
@@ -443,7 +442,10 @@ set~$H' \in f(k+1)$ such that~$H$ and~$H'$ are related as in the conclusion of
 Lemma~\ref{lemma:izf-microstep} and such that~$H'$ is transitive and closed
 under subsets. Even though it cannot be expected that for any number~$k$,
 any set~$H \in f(k)$ will be transitive and closed under subsets, the union~$S$
-will.
+will. Addendum~(3) can be ensured because of addendum~(3) of
+Lemma~\ref{lemma:izf-microstep}.
+
+For the case~$n \neq 1$, \textbf{???}
 \end{proof}
 
 \begin{thm}\label{thm:izf-bigstep}

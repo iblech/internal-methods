@@ -81,6 +81,7 @@
 \newcommand{\ZFC}{\textsc{zfc}}
 \newcommand{\ZFCS}{\textsc{zfc/s}}
 \newcommand{\RRS}{\textsc{rrs}}
+\newcommand{\MDC}{\textsc{mdc}}
 \newcommand{\ES}{(\IZF+\RRS)/\textsc{s}}
 
 \begin{document}
@@ -303,6 +304,158 @@ exception of treating the case of universal quantifiers by appealing to the law
 of excluded middle. For the constructive proof in
 Section~\ref{sect:constructive-proof}, we will instead appeal to a strengthened
 version of Lemma~\ref{lemma:zf-smallstep}.
+
+
+\section{Constructivizing the reflection principle}
+\label{sect:constructive-proof}
+
+Our constructive rendition of the reflection principle will require Aczel's
+relation reflection scheme~$\RRS$ displayed in Definition~\ref{defn:rrs}. This
+result is the best possible, as conversely the reflection principle entails the
+relation reflection scheme. The relation reflection scheme first surfaced in
+the theory of coinductive definitions of classes and enjoys substantial
+stability properties, as it passes from the metatheory to XXX[all kinds of]
+models. Background on~$\RRS$ can be found in Aczel's original article
+introducing it~\cite{aczel:rrs}.
+
+\begin{defn}[$\RRS$, Aczel's relation reflection scheme]\label{defn:rrs}
+Let~$X$ and~$R \subseteq X \times X$ be classes. Let~$A \subseteq X$ be a
+subset. If~$\forall x \in X\_ \exists y \in X\_ \langle x,y \rangle \in R$,
+then there is a set~$B$ such that~$A \subseteq B \subseteq X$ and such
+that~$\forall x \in B\_ \exists y \in B\_ \langle x,y \rangle \in R$.
+\end{defn}
+
+For our purposes, Palmgren's multivalued dependent choice is slightly more
+convenient to work with than~$\RRS$. It is equivalent, over~$\CZF$ and
+a~fortiori over~$\IZF$, to~$\RRS$~\cite{palmgren:mdc}.
+
+\begin{defn}[$\MDC$, Palmgren's multivalued dependent choice]
+Let~$X$ and~$R \subseteq X \times X$ be classes. Let~$A \subseteq X$ be a
+subset. If~$\forall x \in X\_ \exists y \in X\_ \langle x,y \rangle \in R$,
+then there is a function~$f : \NN \to P(X)$ (the class of all subsets of~$X$)
+such that~$A \subseteq f(0)$ and such that~$\forall x \in f(n)\_ \exists y \in
+f(n+1)\_ \langle x,y \rangle \in R$ for every~$n$.\end{defn}
+
+Even though superficially similar, the following lemma is \emph{not} yet a
+constructivization of Lemma~\ref{lemma:zf-smallstep}; these two lemmas differ
+in the set from which~$u_1,\ldots,u_n$ are drawn.
+
+\begin{lemma}\label{lemma:izf-microstep}
+Let~$\varphi(u_1,\ldots,u_n,x)$ be a formula in the language of set
+theory with free variables as indicated. Then~$\IZF$ proves
+\begin{multline*}
+  {\qquad}\forall H\_
+  \exists H' \supseteq H\_
+  \forall u_1,\ldots,u_n \in H\_ \\
+  \begin{array}{@{}rcl@{}}
+  (\exists x\_ \varphi(u_1,\ldots,u_n,x)) &\Longrightarrow&
+  (\exists x \in H'\_ \varphi(u_1,\ldots,u_n,x)) \quad\mathop{\wedge} \\
+  (\forall x\_ \varphi(u_1,\ldots,u_n,x)) &\Longleftarrow&
+  (\forall x \in H'\_ \varphi(u_1,\ldots,u_n,x)).\end{array}
+  {\qquad}
+\end{multline*}
+Furthermore, we may assume that~$H'$ is transitive and closed under subsets;
+and given a finite list~$\varphi_1,\ldots,\varphi_s$ of formulas instead of
+the single formula~$\varphi$, we may suppose that~$H'$ has the displayed
+property for each of the formulas~$\varphi_i$.
+\end{lemma}
+
+\begin{proof}Let~$\Omega \defeq P(\{0\})$ be the set of truth values.
+For given elements~$u_1,\ldots,u_n \in H$, we have
+\[ \begin{array}{@{}l@{}l@{}}
+  \forall a \in \{ a \in \{0\} \,|\, \exists x\_ \varphi(u_1,\ldots,u_n,x) \}\_ &
+  \exists x\_ \varphi(u_1,\ldots,u_n,x) \quad\text{and} \\
+  \forall p \in \{ p \in \Omega \,|\, \exists x\_ (0 \in p \Leftrightarrow
+  \varphi(u_1,\ldots,u_n,x)) \}\_ &
+  \exists x\_ (0 \in p \Leftrightarrow \varphi(u_1,\ldots,u_n,x)).
+\end{array} \]
+Hence, by collection, there are sets~$C$ and~$D$ such that
+\[ \begin{array}{@{}rcl@{}}
+  (\exists x\_ \varphi(u_1,\ldots,u_n,x)) &\Longrightarrow&
+  (\exists x \in C\_ \varphi(u_1,\ldots,u_n,x)) \quad\text{and} \\
+  (\forall x\_ \varphi(u_1,\ldots,u_n,x)) &\Longleftarrow&
+  (\forall x \in D\_ \varphi(u_1,\ldots,u_n,x)).
+\end{array} \]
+The union~$C \cup D$ satisfies both of these conditions at once.
+
+Applying collection again, there is a set~$X$ such that for
+any~$u_1,\ldots,u_n \in H$ there exists a set~$E \in X$ such that
+\[ \begin{array}{@{}rcl@{}}
+  (\exists x\_ \varphi(u_1,\ldots,u_n,x)) &\Longrightarrow&
+  (\exists x \in E\_ \varphi(u_1,\ldots,u_n,x)) \quad\text{and} \\
+  (\forall x\_ \varphi(u_1,\ldots,u_n,x)) &\Longleftarrow&
+  (\forall x \in E\_ \varphi(u_1,\ldots,u_n,x)).
+\end{array} \]
+Hence the set~$H' \defeq M \cup \bigcup X$ has the required property.
+
+To ensure that~$H'$ is transitive and closed under subsets, we simply pass
+first to its transitive closure and then compute the union of all its
+finitely-iterated powersets.
+
+In order to accomodate more than a single formula~$\varphi$, we add one summand
+in the definition of~$H'$ for each formula~$\varphi_i$.
+\end{proof}
+
+\begin{lemma}\label{lemma:izf-smallstep}
+Let~$\varphi(u_1,\ldots,u_n,x)$ be a formula in the language of set
+theory with free variables as indicated. Then~$\IZF+\RRS$ proves
+\begin{multline*}
+  {\qquad}\forall M\_
+  \exists S \supseteq M\_
+  \forall u_1,\ldots,u_n \in S\_ \\
+  \begin{array}{@{}rcl@{}}
+  (\exists x\_ \varphi(u_1,\ldots,u_n,x)) &\Longrightarrow&
+  (\exists x \in S\_ \varphi(u_1,\ldots,u_n,x)) \quad\mathop{\wedge} \\
+  (\forall x\_ \varphi(u_1,\ldots,u_n,x)) &\Longleftarrow&
+  (\forall x \in S\_ \varphi(u_1,\ldots,u_n,x)).\end{array}
+  {\qquad}
+\end{multline*}
+Furthermore:
+\begin{enumerate}
+\item We may suppose that~$S$ is transitive.
+\item We may suppose that~$S$ is closed under subsets.
+\item Given a finite list~$\varphi_1,\ldots,\varphi_s$ of formulas instead of
+the single formula~$\varphi$, we may suppose that~$S$ bounds all of
+the formulas~$\varphi_i$.
+% XXX: better explanation
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}By~$\MDC$ and Lemma~\ref{lemma:izf-microstep}, there is a
+function~$f : \NN \to P(V)$, where~$V$ is the universe, such that~$M \in
+f(0)$ and such that for any number~$k$ and any set~$H \in f(k)$, there is a
+set~$H' \in f(k+1)$ such that~$H$ and~$H'$ are related as in the conclusion of
+Lemma~\ref{lemma:izf-microstep}.
+
+We set~$S \defeq \bigcup \bigl(\bigcup_{k \in \NN} f(k)\bigr)$. This set~$S$
+has the required property; to verify this, it is useful to observe that
+given~$u_1,\ldots,u_n \in S$, there exists a common number~$k$ such
+that~$u_1,\ldots,u_n \in H$ for some~$H \in f(k)$.
+
+In order to ensure addendum~(1) and~(2), we apply~$\MDC$ in a slightly
+different way such that for any number~$k$ and any set~$H \in f(k)$, there is a
+set~$H' \in f(k+1)$ such that~$H$ and~$H'$ are related as in the conclusion of
+Lemma~\ref{lemma:izf-microstep} and such that~$H'$ is transitive and closed
+under subsets. Even though it cannot be expected that for any number~$k$,
+any set~$H \in f(k)$ will be transitive and closed under subsets, the union~$S$
+will.
+\end{proof}
+
+\begin{thm}\label{thm:izf-bigstep}
+Let~$\varphi(x_1,\ldots,x_n)$ be a formula in the language of set
+theory with free variables as indicated. Then~$\IZF+\RRS$ proves
+\[ \forall M\_
+  \exists S \supseteq M\_
+  \forall x_1,\ldots,x_n \in S\_
+  \varphi(x_1,\ldots,x_n) \Leftrightarrow \varphi^S(x_1,\ldots,x_n), \]
+where~$\varphi^S$ is the~$S$-relativization of~$\varphi$.
+\end{thm}
+
+\begin{proof}The proof of Theorem~\ref{thm:zf-bigstep} carries over. The only
+difference is that instead of Lemma~\ref{lemma:zf-smallstep},
+Lemma~\ref{lemma:izf-smallstep} has to be used, and that the case for the
+universal quantifier has to be treated just as the case for the existential
+quantifier is.\end{proof}
 
 \end{document}
 

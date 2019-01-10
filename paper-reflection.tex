@@ -250,15 +250,12 @@ Starting with~$S_0 \defeq M$, we construct~$S_{k+1}$ from~$S_k$ as the union
 It is then easy to check that~$S \defeq \bigcup_{k \in \NN} S_k$ is a set with the
 required property.
 
-For addendum~(1), we redeclare~$S \defeq \bigcup_{k \in \NN} S_k^t$,
-where~$S_k^t$ is the transitive closure of~$S_k$.
-
-To ensure both addendum~(1) and addendum~(2), we redeclare~$S \defeq \bigcup_{k
-\in \NN} P^\omega(S_k^t)$, where~$P^\omega(X) \defeq \bigcup_{\ell \in \NN}
-P^{(\ell)}(X)$ is the union of iterated powersets.
-
-For addendum~(3), we change the definition of~$S_{k+1}$ to include one summand
-for each formula~$\varphi_i$.
+For addendum~(1), we change the definition of~$S_{k+1}$ to be the transitive
+closure of what is was before. To further accommodate addendum~(2), we change
+this definition again, to be~$P^\omega$ of what is was before,
+where~$P^\omega(X) \defeq \bigcup_{\ell \in \NN} P^{(\ell)}(X)$ is the union of
+iterated powersets. For addendum~(3), we change the definition of~$S_{k+1}$ to
+include one summand for each formula~$\varphi_i$.
 \end{proof}
 
 The proof of Lemma~\ref{lemma:zf-smallstep} is mostly constructive; however,

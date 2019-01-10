@@ -254,7 +254,7 @@ For addendum~(1), we redeclare~$S \defeq \bigcup_{k \in \NN} S_k^t$,
 where~$S_k^t$ is the transitive closure of~$S_k$.
 
 To ensure both addendum~(1) and addendum~(2), we redeclare~$S \defeq \bigcup_{k
-\in \NN} P^\omega(S_k')$, where~$P^\omega(X) \defeq \bigcup_{\ell \in \NN}
+\in \NN} P^\omega(S_k^t)$, where~$P^\omega(X) \defeq \bigcup_{\ell \in \NN}
 P^{(\ell)}(X)$ is the union of iterated powersets.
 
 For addendum~(3), we change the definition of~$S_{k+1}$ to include one summand
@@ -398,7 +398,7 @@ any~$u_1,\ldots,u_n \in H$ there exists a set~$E \in X$ such that
 \end{array} \]
 Hence the set~$H' \defeq M \cup \bigcup X$ has the required property.
 
-To ensure that~$H'$ is transitive and closed under subsets, we simply pass
+To ensure that~$H'$ is transitive and closed under subsets, we pass
 first to its transitive closure and then compute the union of all its
 finitely-iterated powersets.
 
@@ -438,6 +438,7 @@ We set~$S \defeq \bigcup \bigl(\bigcup_{k \in \NN} f(k)\bigr)$. This set~$S$
 has the required property; to verify this, it is useful to observe that
 given~$u_1,\ldots,u_n \in S$, there exists a common number~$k$ such
 that~$u_1,\ldots,u_n \in H$ for some~$H \in f(k)$.
+% XXX
 
 In order to ensure addendum~(1) and~(2), we apply~$\MDC$ in a slightly
 different way such that for any number~$k$ and any set~$H \in f(k)$, there is a

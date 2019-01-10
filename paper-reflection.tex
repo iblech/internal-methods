@@ -181,7 +181,8 @@ extension of~$\IZF$:
 \begin{thm}The reflection principle is equivalent, over~$\IZF$, to Aczel's relation reflection
 scheme~$\RRS$.\end{thm}
 
-Aczel's relation reflection scheme will be reviewed below. It is validated by
+Aczel's relation reflection scheme will be reviewed below. It is validated not
+only by~$\ZFC$, but also by~$\ZF$, and furthermore by
 all known models of~$\IZF$, hence might be regarded as not entirely
 unconstructive, even though it's conjectured to be independent of~$\IZF$. As a
 result, the question whether the reflection principle holds for~$\IZF$ remains
@@ -318,7 +319,8 @@ version of Lemma~\ref{lemma:zf-smallstep}.
 
 Our constructive rendition of the reflection principle will require Aczel's
 relation reflection scheme~$\RRS$ displayed in Definition~\ref{defn:rrs}. This
-result is the best possible, as conversely the reflection principle entails the
+result is the best possible, as we verify in Theorem~\ref{thm:refl-entails-rrs}
+that conversely the reflection principle entails the
 relation reflection scheme. The relation reflection scheme first surfaced in
 the theory of coinductive definitions of classes and enjoys substantial
 stability properties, as it passes from the meta theory to XXX[all kinds of]
@@ -584,3 +586,6 @@ formula~$\varphi$, the system proves~``$(\Set_\SS \models \varphi)
 % XXX: Review axioms of IZF.
 
 % XXX: Think about pairs.
+
+% XXX: Remark that the new proof of reflection also works over ZF, but that the
+% usual proof is probably preferable.

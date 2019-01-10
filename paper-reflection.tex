@@ -115,7 +115,7 @@ theory with free variables as indicated. Then~$\ZF$ proves
   \forall x_1,\ldots,x_n \in S\_
   \varphi(x_1,\ldots,x_n) \Leftrightarrow \varphi^S(x_1,\ldots,x_n), \]
 where~$\varphi^S$ is the~$S$-relativization of~$\varphi$, obtained by
-substituting any occurence of~``$\forall x$'' and~``$\exists x$'' by~``$\forall
+substituting any occurrence of~``$\forall x$'' and~``$\exists x$'' by~``$\forall
 x \in S$'' and~``$\exists x \in S$''.
 Furthermore, the resulting set~$S$ may be supposed to be transitive, to be closed
 under subsets or even to be a stage~$V_\alpha$ of the cumulative hierarchy;
@@ -153,9 +153,9 @@ Elements of~$\SS$ are deemed ``small'', so that~$\SS$ is the set of all small
 sets. The system~$\ZFCS$ is useful as a foundation for category theory because
 it supports, without requiring new set-theoretical commitments such as the
 existence of Grothendieck universes, a native treatment of large structures.
-for instance, the category of all small sets can be formed entirely
-withing~$\ZFCS$, without resorting to classes. We invite the reader wanting
-to learn more about the merits of~$\ZFCS$ to a survey by
+For instance, the category of all small sets can be formed entirely
+within~$\ZFCS$, without resorting to classes. We invite the reader wanting
+to learn more about the merits of~$\ZFCS$ to study the survey by
 Shulman~\cite[Section~11]{shulman:sets}.
 
 To our naive eyes, the passage from~$\ZFC$ to~$\ZFCS$ looked sufficiently
@@ -171,11 +171,11 @@ or quite generally topos semantics.
 We expected this modification to be entirely straightforward. However, the
 situation turned out to be more subtle and we failed in our original goal of
 verifying the reflection principle for intuitionistic Zermelo--Fraenkel set
-theory~$\IZF$. The situation for~$\CZF$, the predicative subtheory of~$\IZF$
+theory~$\IZF$. The situation for~$\CZF$, the predicative subsystem of~$\IZF$
 commonly heralded as the largest common denominator of all flavors of
 constructive set theory, is even more mysterious.
 
-However, we suceeded in verifying the reflection principle for a slight
+However, we succeeded in verifying the reflection principle for a slight
 extension of~$\IZF$:
 
 \begin{thm}The reflection principle is equivalent, over~$\IZF$, to Aczel's relation reflection
@@ -402,7 +402,7 @@ To ensure that~$H'$ is transitive and closed under subsets, we simply pass
 first to its transitive closure and then compute the union of all its
 finitely-iterated powersets.
 
-In order to accomodate more than a single formula~$\varphi$, we add one summand
+In order to accommodate more than a single formula~$\varphi$, we add one summand
 in the definition of~$H'$ for each formula~$\varphi_i$.
 \end{proof}
 
@@ -575,7 +575,7 @@ However, truth in a Grothendieck universe~$U$ need not be related to actual
 truth. A solution is provided by~$\ZFCS$ and by~$\ES$. In these systems, we can
 form the topos~$\Set_\SS$, define truth in it, prove for all formulas~$\varphi$
 that~$(\Set_\SS \models \varphi) \Leftrightarrow (\SS \models \varphi)$; and
-reflectin for~$\SS$ ensures that for each (external, standard)
+reflection for~$\SS$ ensures that for each (external, standard)
 formula~$\varphi$, the system proves~``$(\Set_\SS \models \varphi)
 \Leftrightarrow \varphi$''.
 
@@ -591,3 +591,7 @@ formula~$\varphi$, the system proves~``$(\Set_\SS \models \varphi)
 % usual proof is probably preferable.
 
 % XXX: Über Verallgemeinerung zu CZF spekulieren.
+
+% XXX: Note that the result fails over IZF_R.
+
+% XXX: Reference more choice axioms?

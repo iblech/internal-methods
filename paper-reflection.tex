@@ -75,12 +75,16 @@
 
 \renewcommand{\paragraph}[1]{\noindent\textbf{#1.}}
 
+\newcommand{\PRA}{\textsc{pra}}
 \newcommand{\ZF}{\textsc{zf}}
 \newcommand{\IZF}{\textsc{izf}}
 \newcommand{\CZF}{\textsc{czf}}
 \newcommand{\ZFC}{\textsc{zfc}}
 \newcommand{\ZFCS}{\textsc{zfc/s}}
+\newcommand{\ZFCI}{\textsc{zfc+i}}
 \newcommand{\RRS}{\textsc{rrs}}
+\newcommand{\RDC}{\textsc{rdc}}
+\newcommand{\DC}{\textsc{dc}}
 \newcommand{\MDC}{\textsc{mdc}}
 \newcommand{\ES}{(\IZF+\RRS)/\textsc{s}}
 
@@ -478,15 +482,104 @@ formulas~``$x \in X$'', ``$\langle x,y \rangle \in R$'' and~``$\exists y \in X\_
 x,y \rangle \in R$''.
 
 By separation, the class~$S \cap X$ is a set, and hence we may set~$f(k) \defeq S \cap X$
-for all numbers~$k$. Then~$A \subseteq f(0)$, any given~$x \in f(k)$, by
+for all numbers~$k$. Then~$A \subseteq f(0)$; any given~$x \in f(k)$, by
 assumption and the reflecting property of~$S$ there exists~$y \in S$ such
 that~$y \in X$ (hence~$y \in f(k+1)$) and~$\langle x,y \rangle \in R$.
 \end{proof}
 
-\end{document}
 
-% XXX: Topos which validates exactly those statements which are true
-% externally.
+\section{A new proof of~$\RDC = \RRS + \DC$}
+\label{sect:appl-rdc}
+
+When he introduced~$\RRS$, Aczel proved that over $\CZF$ without subset
+collection, relative dependent choice $\RDC$ is equivalent to the conjunction
+of~$\RRS$ and dependent choice~$\DC$~\cite[Theorem~2.4]{aczel:rrs}. Using
+reflection, we can provide a new proof of this fact, although over the much
+stronger base theory~$\IZF$ instead of~$\CZF^{-}$. The idea is that reflection
+allows to reduce~$\RDC$ to~$\DC$.
+
+\begin{defn}[$\DC$, dependent choice]
+Let~$X$ and~$R \subseteq X \times X$ be sets. Let~$x_0 \in X$.
+If~$\forall x \in X\_ \exists y \in X\_ \langle x,y \rangle \in R$,
+then there is a function~$f : \NN \to X$ such that~$f(0) = x_0$ and
+such that~$\langle f(k), f(k+1) \rangle \in R$ for all numbers~$k$.
+\end{defn}
+
+\begin{defn}[$\RDC$, relative dependent choice]
+Let~$X$ and~$R \subseteq X \times X$ be classes. Let~$x_0 \in X$.
+If~$\forall x \in X\_ \exists y \in X\_ \langle x,y \rangle \in R$,
+then there is a function~$f : \NN \to X$ such that~$f(0) = x_0$ and
+such that~$\langle f(k), f(k+1) \rangle \in R$ for all numbers~$k$.
+\end{defn}
+
+\begin{prop}Over~$\IZF$, $\RDC$ is equivalent to~$\RRS + \DC$.
+\end{prop}
+
+\begin{proof}It's clear that~$\RDC$ implies~$\RRS + \DC$. % XXX: check
+
+Conversely, assume~$\RRS$ and~$\DC$. In order to verify~$\RDC$, let classes~$X$
+and~$R \subseteq X \times X$ be given. Let~$x_0 \in X$ and assume~$\forall x
+\in X\_ \exists y \in X\_ \langle x,y \rangle \in R$.
+
+By Theorem~\ref{thm:izf-bigstep}, reflection is available; hence there is a
+set~$S \supseteq \{x_0\}$ which reflects the three formulas~``$x \in X$'', ``$\langle x,y
+\rangle \in R$'' and~``$\forall x\_ x \in X \Rightarrow \exists y\_ (y \in X \wedge \langle x,y
+\rangle \in R)$''.
+
+Hence~$\forall x \in X \cap S\_ \exists y \in X \cap S\_ \langle x,y \rangle
+\in R$. By~$\DC$, there is a choice function~$f : \NN \to X \cap S$ such
+that~$f(0) = x_0$ and~$\langle f(k), f(k+1) \rangle \in R$ for all numbers~$k$.
+This is a function of the kind required by~$\RDC$.
+\end{proof}
+
+
+\section{An intuitionistic version of Feferman's~$\ZFCS$}
+
+XXX: repeat definition and conservativity statement?
+
+The system~$\ES$ is also interesting from the point of view of topos theory.
+Any topos supports an internal language which can be used to reason about the
+objects and morphisms of the topos in a naive element-based language, allowing
+us to pretend that the objects are plain sets (or types) and that the morphisms
+are plain maps between those sets (\cite[Chapter~6]{borceux:handbook3},
+\cite[Section~1.3]{caramello:ttt}, \cite[Chapter~14]{goldblatt:topoi},
+\cite[Chapter~VI]{moerdijk-maclane:sheaves-logic}).
+
+Given a topos~$\mathcal{E}$ and a formula~$\varphi$ in its internal language,
+we write~``$\mathcal{E} \models \varphi$'' to mean that~$\varphi$ holds
+in~$\E$. As a special case, truth in the topos~$\Set$, the category of all sets,
+coincides with truth in the background theory; symbolically: $\Set \models
+\varphi$ iff~$\varphi$.
+
+However, in the context of~($\IZF$ or)~$\ZFC$, it is difficult to make this
+claim precise. Because in~$\ZFC$ the category~$\Set$ of all sets can not be
+coded as a set,~$\ZFC$ cannot define truth in~$\Set$. We must therefore resort
+to a meta theory in order to express this claim, for instance by stating
+that primitive recursive arithmetic~$\PRA$ proves that for any
+formula~$\varphi$ of~$\ZFC$, $\ZFC$ proves that~$(\Set \models \varphi)
+\Leftrightarrow \varphi$, where~``$\Set \models \varphi$'' is to be unrolled
+by~$\PRA$.
+
+An alternative is offered by~$\ZFCI$, $\ZFC$ plus the existence of a
+strongly inaccessible cardinal. In this system, there is a Grothendieck
+universe~$U$, we can form the category~$\Set_U$ of all sets of~$U$ as an honest
+set, can define truth in~$\Set_U$ and prove, within the system, that for any
+formula~$\varphi$, $(\Set_U \models \varphi) \Leftrightarrow (U \models
+\varphi)$. This even holds for formulas of the full infinitary language of
+toposes, which allows for infinite disjunctions and infinite conjunctions; this
+could not be mimicked by resorting to~$\PRA$ as indicated above.
+
+However, truth in a Grothendieck universe~$U$ need not be related to actual
+truth. A solution is provided by~$\ZFCS$ and by~$\ES$. In these systems, we can
+form the topos~$\Set_\SS$, define truth in it, prove for all formulas~$\varphi$
+that~$(\Set_\SS \models \varphi) \Leftrightarrow (\SS \models \varphi)$; and
+reflectin for~$\SS$ ensures that for each (external, standard)
+formula~$\varphi$, the system proves~``$(\Set_\SS \models \varphi)
+\Leftrightarrow \varphi$''.
+
+\printbibliography
+
+\end{document}
 
 % XXX: Review axioms of IZF.
 

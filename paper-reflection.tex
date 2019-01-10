@@ -90,9 +90,10 @@
   in the context of intuitionistic Zermelo--Fraenkel set theory~$\IZF$. We show
   that the reflection principle is equivalent to Aczel's relation reflection scheme~$\RRS$. As
   applications, we give a new proof that relativized dependent choice is
-  equivalent to the conjunction of~$\RRS$ and dependent choice and we present
-  an intuitionistic version of Feferman's~$\ZFC/S$, a conservative extension
-  of~$\ZFC$ which is useful as a foundation for category theory.
+  equivalent to the conjunction of the relation reflection scheme and dependent
+  choice and we present an intuitionistic version of Feferman's~$\ZFCS$, a
+  conservative extension of~$\ZFC$ which is useful as a foundation for category
+  theory.
 \end{abstract}
 
 \maketitle
@@ -100,8 +101,8 @@
 
 \section{Introduction}
 
-In its basic form, the reflection principle for Zermelo--Fraenkel set
-theory~$\ZF$ states:
+The basic form of the reflection principle for Zermelo--Fraenkel set
+theory~$\ZF$ is the following.
 \begin{thm}Let~$\varphi(x_1,\ldots,x_n)$ be a formula in the language of set
 theory with free variables as indicated. Then~$\ZF$ proves
 \[ \forall M\_
@@ -111,47 +112,50 @@ theory with free variables as indicated. Then~$\ZF$ proves
 where~$\varphi^S$ is the~$S$-relativization of~$\varphi$, obtained by
 substituting any occurence of~``$\forall x$'' and~``$\exists x$'' by~``$\forall
 x \in S$'' and~``$\exists x \in S$''.
-\end{thm}
 Furthermore, the resulting set~$S$ may be supposed to be transitive, closed
 under subsets or even to be a stage~$V_\alpha$ of the cumulative hierarchy.
 % XXX: "hence" instead of "or even"?
+\end{thm}
 
 The reflection principle is important both for philosophical and for practical
 reasons: Philosophically, it tells us that truth of any formula can already be
 checked in an initial segment of the universe. Practically, it allows to
+% XXX: be more precise about philosophy
 transfer results obtained for a restricted class of objects to all such
 objects. For instance, if we manage to verify (the $S$-relativization of) some
 group-theoretic statement for all groups contained in an arbitrary set~$X$,
-then we may deduce by the reflection principle that in fact the statement holds
+then we may deduce by the reflection principle that the statement holds
 for all groups in the universe.
 
 This observation has been used by Feferman to construct~$\ZFCS$ (``$\ZFC$ with
 smallness''), a conservative extension of~$\ZFC$ which provides a useful
-foundation of category theory~\cite{feferman:zfcs}. This theory extends~$\ZFC$
+foundation of category theory~\cite{feferman:zfcs}. This system extends~$\ZFC$
 by the addition of a new constant symbol~$\SS$ together with axioms stating
 that~$\SS$ is transitive, closed under subsets and reflective with respect to
 every formula~$\varphi(x_1,\ldots,x_n)$ of the original language:
 \[ \label{ax:refl}\tag{$\star$}
 \forall x_1,\ldots,x_n \in \SS\_ \varphi(x_1,\ldots,x_n) \Leftrightarrow
 \varphi^{\SS}(x_1,\ldots,x_n). \]
-This theory is conservative over~$\ZFC$ because any given proof in~$\ZFCS$ uses
-only a finite number of instances of this axiom scheme and hence the reflection
-principle yields a honest set~$S$ which validates just the same equivalences.
+The system~$\ZFCS$ is conservative over~$\ZFC$ because any given proof in~$\ZFCS$ uses
+only a finite number of instances of the axioms~\eqref{ax:refl}, whereby the reflection
+principle can be used to yield an honest set~$S$ which validates just the same equivalences
+and can hence be used in place of~$\SS$.
 
 Elements of~$\SS$ are deemed ``small'', so that~$\SS$ is the set of all small
 sets. The system~$\ZFCS$ is useful as a foundation for category theory because
-it allows a native treatment of large structures -- for instance, the category
-of all small sets can be formed entirely withing~$\ZFCS$, without resorting to
-classes -- while not requiring new set-theoretical commitments such as the
-existence of Grothendieck universes. We invite the reader who wants to learn
-more about the merits of~$\ZFCS$ to a survey by
+it supports, without requiring new set-theoretical commitments such as the
+existence of Grothendieck universes, a native treatment of large structures.
+for instance, the category of all small sets can be formed entirely
+withing~$\ZFCS$, without resorting to classes. We invite the reader wanting
+to learn more about the merits of~$\ZFCS$ to a survey by
 Shulman~\cite[Section~11]{shulman:sets}.
 
 To our naive eyes, the passage from~$\ZFC$ to~$\ZFCS$ looked sufficiently
 innocent so that we set out to create an intuitionistic version of~$\ZFCS$: To
 our mind, size issues were entirely separate from issues of constructivity, and
 we hence opined that they should be dealt with separately. Such a separation
-would lead to improved mental hygiene and would allow us to use the benefits
+would not only lead to improved mental hygiene and better understanding, but
+would also allow us to use the benefits
 of~$\ZFCS$ in situations where the law of excluded middle and the axiom of
 choice are not available, such as in realizability semantics, sheaf semantics
 or quite generally topos semantics.
@@ -163,7 +167,8 @@ theory~$\IZF$. The situation for~$\CZF$, the predicative subtheory of~$\IZF$
 commonly heralded as the largest common denominator of all flavors of
 constructive set theory, is even more mysterious.
 
-More specifically, the main result of this note is the following.
+However, we suceeded in verifying the reflection principle for a slight
+extension of~$\IZF$:
 
 \begin{thm}The reflection principle is equivalent, over~$\IZF$, to Aczel's relation reflection
 scheme~$\RRS$.\end{thm}
@@ -188,20 +193,22 @@ of~\eqref{ax:refl} for each formula of~$\IZF$).\end{defn}
 \begin{cor}The system~$\ES$ is conservative
 over~$\IZF+\RRS$.\end{cor}
 
-This note is organized as follows. Section~1 reviews the classical proof of the
-reflection principle in the context of~$\ZF$ set theory. Section~2 reviews
-Aczel's relation reflection scheme and presents our main result. We conclude in
-Section~3 and Section~4 with two short applications.
+This note is organized as follows. Section~\ref{sect:review} reviews the
+classical proof of the reflection principle in the context of~$\ZF$ set theory.
+Section~\ref{sect:classical-proof} reviews Aczel's relation reflection scheme
+and presents our main result. We conclude in Section~\ref{sect:appl-rdc} and
+Section~\ref{sect:appl-smallness} with two short applications.
 
 \textbf{Acknowledgments.} XXX
 
 
 \section{Review of the classical reflection principle}
+\label{sect:review}
 
 A basic proof of the reflection principle for~$\ZF$ runs as follows. Our proof
 of the reflection principle for~$\IZF+\RRS$ will follow the same outline.
 
-\begin{lemma}\label{lemma:zf-onestep}
+\begin{lemma}\label{lemma:zf-smallstep}
 Let~$\varphi(u_1,\ldots,u_n,x)$ be a formula in the language of set
 theory with free variables as indicated. Then~$\ZF$ proves
 \begin{multline*}
@@ -215,9 +222,9 @@ Furthermore:
 \begin{enumerate}
 \item We may suppose that~$S$ is transitive.
 \item We may suppose that~$S$ is closed under subsets.
-\item Given a finite list~$\varphi_1,\ldots,\varphi_k$ of formulas instead of
+\item Given a finite list~$\varphi_1,\ldots,\varphi_s$ of formulas instead of
 the single formula~$\varphi$, we may suppose that~$S$ bounds all of
-the~$\varphi_i$.
+the formulas~$\varphi_i$.
 % XXX: better explanation
 \end{enumerate}
 \end{lemma}
@@ -232,15 +239,14 @@ be obtained using separation from~$V_{\rank(x_0)+1}$; and in fact, by an argumen
 using the set of truth values and unbounded separation, the claim can also be
 proven in~$\IZF$.} and it is inhabited if and only if~$X$ is.
 
-Starting with~$S_0 \defeq M$, we construct~$S_{k+1}$ from~$S_k$ as the union of
-sets
+Starting with~$S_0 \defeq M$, we construct~$S_{k+1}$ from~$S_k$ as the union
 \[ S_{k+1} \defeq S_k \cup \bigcup_{u_1,\ldots,u_n \in S_k} \{ x \,|\,
 \varphi(u_1,\ldots,u_n,x) \}^\sim. \]
-It is then easy to check that~$S \defeq \bigcup_{k \in \NN} S_k$ has the
+It is then easy to check that~$S \defeq \bigcup_{k \in \NN} S_k$ is a set with the
 required property.
 
-For addendum~(1), we redeclare~$S \defeq \bigcup_{k \in \NN} S_k'$,
-where~$S_k'$ is the transitive closure of~$S_k$.
+For addendum~(1), we redeclare~$S \defeq \bigcup_{k \in \NN} S_k^t$,
+where~$S_k^t$ is the transitive closure of~$S_k$.
 
 To ensure both addendum~(1) and addendum~(2), we redeclare~$S \defeq \bigcup_{k
 \in \NN} P^\omega(S_k')$, where~$P^\omega(X) \defeq \bigcup_{\ell \in \NN}
@@ -250,15 +256,16 @@ For addendum~(3), we change the definition of~$S_{k+1}$ to include one summand
 for each formula~$\varphi_i$.
 \end{proof}
 
-The proof of Lemma~\ref{lemma:zf-onestep} is mostly constructive; however,
-there is one issue with nontrivial ramifications: While~$\IZF$ does still show
+The proof of Lemma~\ref{lemma:zf-smallstep} is mostly constructive; however,
+there is one issue with nontrivial ramifications: While~$\IZF$ does show
 that the subclass~$X^\sim$ of a given class~$X$ is a set, it does not verify
 that~$X^\sim$ is inhabited if~$X$ is. This would amount to the constructive
 taboo that any inhabited set contains a rank-minimal element; and in fact, by
 a result of Friedman and Scedrov~\cite{XXX}, no definable substitute
 for~$X^\sim$ exists. The remedy presented in
 Section~\ref{sect:constructive-proof} will construct~$X^\sim$ in a non-unique
-fashion and then take the union using some additional care.
+fashion and then deal with the resulting fallout that taking the union requires
+additional care.
 
 \begin{thm}\label{thm:zf-bigstep}
 Let~$\varphi(x_1,\ldots,x_n)$ be a formula in the language of set
@@ -271,23 +278,23 @@ where~$\varphi^S$ is the~$S$-relativization of~$\varphi$.
 \end{thm}
 
 \begin{proof}Let a set~$M$ be given. We obtain~$S$ by applying
-Lemma~\ref{lemma:zf-onestep} to the list of all subformulas of~$\varphi$. We
-then verify that~$S$ has the required property by an induction on the structure
+Lemma~\ref{lemma:zf-smallstep} to the list of all subformulas of~$\varphi$. That
+the resulting set~$S$ has the required property can be checked by an induction on the structure
 of~$\varphi$. The cases~$\text{``$=$''}, \text{``$\in$''}, \text{``$\top$''},
 \text{``$\bot$''}, \text{``$\wedge$''},
 \text{``$\vee$''}, \text{``$\Rightarrow$''}$ follow
 trivially from the induction hypothesis. The case~``$\forall$'' does
-not need to be treated, since we may assume without loss of generality that all
+not need to be treated since we may assume without loss of generality that all
 universal quantifiers in~$\varphi$ have been rewritten
 as~``$\neg\exists\neg$''.
 
 The remaining case is where~$\varphi$ is of the form~$\varphi \equiv (\exists
 x\_ \psi(u_1,\ldots,u_m,x))$. In this case, the claim is that
 \[ \forall u_1,\ldots,u_m \in S\_
-  (\exists x\_ \psi(u_1,\ldots,u_m,x)) \Longrightarrow
-  (\exists x \in S\_ \psi^S(u_1,\ldots,u_m,x)), \]
-and this follows by the property of~$S$ guaranteed by
-Lemma~\ref{lemma:zf-onestep} and by the induction hypothesis concerning the
+  (\exists x\_ \psi(u_1,\ldots,u_m,x)) \Longleftrightarrow
+  (\exists x \in S\_ \psi^S(u_1,\ldots,u_m,x)). \]
+This claim follows by the property of~$S$ guaranteed by
+Lemma~\ref{lemma:zf-smallstep} and by the induction hypothesis concerning the
 subformula~$\psi^S(u_1,\ldots,u_m,x)$.
 \end{proof}
 
@@ -295,7 +302,7 @@ The proof of Theorem~\ref{thm:zf-bigstep} is constructive with the sole
 exception of treating the case of universal quantifiers by appealing to the law
 of excluded middle. For the constructive proof in
 Section~\ref{sect:constructive-proof}, we will instead appeal to a strengthened
-version of Lemma~\ref{lemma:zf-onestep}.
+version of Lemma~\ref{lemma:zf-smallstep}.
 
 \end{document}
 

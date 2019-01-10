@@ -113,9 +113,12 @@ theory with free variables as indicated. Then~$\ZF$ proves
 where~$\varphi^S$ is the~$S$-relativization of~$\varphi$, obtained by
 substituting any occurence of~``$\forall x$'' and~``$\exists x$'' by~``$\forall
 x \in S$'' and~``$\exists x \in S$''.
-Furthermore, the resulting set~$S$ may be supposed to be transitive, closed
-under subsets or even to be a stage~$V_\alpha$ of the cumulative hierarchy.
+Furthermore, the resulting set~$S$ may be supposed to be transitive, to be closed
+under subsets or even to be a stage~$V_\alpha$ of the cumulative hierarchy;
 % XXX: "hence" instead of "or even"?
+and given not a single formula~$\varphi$ but a finite
+list~$\varphi_1,\ldots,\varphi_s$ of formulas, we may suppose that~$S$ reflects
+all of them.
 \end{thm}
 
 The reflection principle is important both for philosophical and for practical
@@ -271,7 +274,11 @@ theory with free variables as indicated. Then~$\ZF$ proves
   \exists S \supseteq M\_
   \forall x_1,\ldots,x_n \in S\_
   \varphi(x_1,\ldots,x_n) \Leftrightarrow \varphi^S(x_1,\ldots,x_n), \]
-where~$\varphi^S$ is the~$S$-relativization of~$\varphi$.
+where~$\varphi^S$ is the~$S$-relativization of~$\varphi$. Furthermore, the
+resulting set~$S$ may be supposed to be transitive and to be closed under
+subsets; and given not a single formula~$\varphi$ but a finite
+list~$\varphi_1,\ldots,\varphi_s$ of formulas, we may suppose that~$S$ reflects
+all of them.
 \end{thm}
 
 \begin{proof}Let a set~$M$ be given. We obtain~$S$ by applying
@@ -443,6 +450,10 @@ theory with free variables as indicated. Then~$\IZF+\RRS$ proves
   \forall x_1,\ldots,x_n \in S\_
   \varphi(x_1,\ldots,x_n) \Leftrightarrow \varphi^S(x_1,\ldots,x_n), \]
 where~$\varphi^S$ is the~$S$-relativization of~$\varphi$.
+Furthermore, the resulting set~$S$ may be supposed to be transitive and to be closed
+under subsets; and given not a single formula~$\varphi$ but a finite
+list~$\varphi_1,\ldots,\varphi_s$ of formulas, we may suppose that~$S$ reflects
+all of them.
 \end{thm}
 
 \begin{proof}The proof of Theorem~\ref{thm:zf-bigstep} carries over. The only
@@ -451,9 +462,32 @@ Lemma~\ref{lemma:izf-smallstep} has to be used, and that the case for the
 universal quantifier has to be treated just as the case for the existential
 quantifier is.\end{proof}
 
+\begin{thm}\label{thm:refl-entails-rrs}
+Over~$\IZF$, each instance of Aczel's relation reflection scheme~$\RRS$ can be
+deduced from suitable instances of the assumption that, given a finite list
+of formulas, for every set~$M$ there is a set~$S \supseteq M$ reflecting the
+given formulas.
+\end{thm}
+
+\begin{proof}We verify the equivalent~$\MDC$ instead of~$\RRS$. Let~$X$ and~$R
+\subseteq X \times X$ be classes. Let~$A \subseteq X$ be a subset and
+suppose~$\forall x \in X\_ \exists y \in X\_ \langle x,y \rangle \in R$.
+
+By assumption, there is a set~$S \supseteq A$ which reflects the three
+formulas~``$x \in X$'', ``$\langle x,y \rangle \in R$'' and~``$\exists y \in X\_ \langle
+x,y \rangle \in R$''.
+
+By separation, the class~$S \cap X$ is a set, and hence we may set~$f(k) \defeq S \cap X$
+for all numbers~$k$. Then~$A \subseteq f(0)$, any given~$x \in f(k)$, by
+assumption and the reflecting property of~$S$ there exists~$y \in S$ such
+that~$y \in X$ (hence~$y \in f(k+1)$) and~$\langle x,y \rangle \in R$.
+\end{proof}
+
 \end{document}
 
 % XXX: Topos which validates exactly those statements which are true
 % externally.
 
 % XXX: Review axioms of IZF.
+
+% XXX: Think about pairs.

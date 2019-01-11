@@ -569,8 +569,13 @@ union~$S$ will. Addendum~(3) can be ensured because of addendum~(3) of
 Lemma~\ref{lemma:izf-microstep}.
 \end{proof}
 
-\begin{rem}In the special case~$n = 1$, the proof of Lemma~\ref{lemma:izf-smallstep} can
-be simplified to only use~$\RRS$ instead of~$\RRS_2$.\end{rem}
+\begin{rem}\label{rem:izf-smallstep-1}
+In the special case~$n = 1$, the proof of Lemma~\ref{lemma:izf-smallstep} can
+be simplified to only use~$\RRS$ instead of~$\RRS_2$, because in this case it
+suffices for the set~$B$ to be such that for any~$H \in B$, there is a set~$H'
+\in B$ such that~$H$ and~$H'$ are related as in the conclusion of
+Lemma~\ref{lemma:izf-microstep}.
+\end{rem}
 
 \begin{thm}\label{thm:izf-bigstep}
 Let~$\varphi(x_1,\ldots,x_n)$ be a formula in the language of set
@@ -592,7 +597,19 @@ Lemma~\ref{lemma:izf-smallstep} has to be used, and that the case for the
 universal quantifier has to be treated just as the case for the existential
 quantifier has to.\end{proof}
 
-% XXX: State mini-reflection theorem.
+\begin{scholium}\label{scholium:izf-bigstep-1}
+Let~$\varphi(x_1,\ldots,x_n)$ be a formula in the language of set
+theory with free variables as indicated. Assume that the surrounding scope of
+any unbounded quantifier in~$\varphi$ contains at most one free variable.
+Then~$\IZF+\RRS$ proves the same conclusion as stated in
+Theorem~\ref{thm:izf-bigstep}.
+\end{scholium}
+
+\begin{proof}The condition on the number of free variables allows the proof of
+Theorem~\ref{thm:izf-bigstep} to be adapted to employ the version of
+Lemma~\ref{lemma:izf-smallstep} outlined in Remark~\ref{rem:izf-smallstep-1},
+which requires only~$\IZF+\RRS$ instead of~$\IZF+\RRS_2$.
+\end{proof}
 
 \begin{thm}\label{thm:refl-entails-rrs2}
 Over~$\IZF$, each instance of Aczel's relation reflection scheme~$\RRS_2$ can be
@@ -638,11 +655,16 @@ Conversely, assume~$\RRS$ and~$\DC$. In order to verify~$\RDC$, let classes~$X$
 and~$R \subseteq X \times X$ be given. Let~$x_0 \in X$ and assume~$\forall x
 \in X\_ \exists y \in X\_ \langle x,y \rangle \in R$.
 
-\textbf{XXX: Use mini-reflection theorem instead.}
-By Theorem~\ref{thm:izf-bigstep}, reflection is available; hence there is a
-set~$S \supseteq \{x_0\}$ which reflects the three formulas~``$x \in X$'', ``$\langle x,y
-\rangle \in R$'' and~``$\forall x\_ x \in X \Rightarrow \exists y\_ (y \in X \wedge \langle x,y
-\rangle \in R)$''.
+We cannot apply Scholium~\ref{scholium:izf-bigstep-1} to the formula~``$\forall
+x \in X\_ \exists y \in X\_ \langle x,y \rangle \in R$'' since unbounded
+quantifiers implicitly appearing in the formulas~``$x \in X$'' and~``$\langle
+x,y \rangle \in R$'' (recalling that~$X$ and~$R$ are classes) may violate the
+condition on the number of free variables. However, we can opt to leave these
+subformulas to be untranslated when carrying out the~$S$-relativization; with
+this understanding, Scholium~\ref{scholium:izf-bigstep-1} can be applied to
+yield a set~$S \ni x_0$ such that
+\[ \forall x \in S\_ (x \in X \Rightarrow \exists y \in S\_
+  (y \in X \wedge \langle x,y \rangle \in R)). \]
 
 Hence~$\forall x \in X \cap S\_ \exists y \in X \cap S\_ \langle x,y \rangle
 \in R$. By~$\DC$, there is a choice function~$f : \NN \to X \cap S$ such

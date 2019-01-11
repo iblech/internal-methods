@@ -39,6 +39,13 @@
 \newtheorem{caveat}[defn]{Caveat}
 \newtheorem{conjecture}[defn]{Conjecture}
 
+\newenvironment{indentblock}{%
+  \list{}{\leftmargin\leftmargin}%
+  \item\relax
+}{%
+  \endlist
+}
+
 \newcommand{\xra}[1]{\xrightarrow{#1}}
 \newcommand{\XXX}[1]{\textbf{XXX: #1}}
 \newcommand{\aaa}{\mathfrak{a}}
@@ -63,6 +70,8 @@
 \DeclareMathOperator{\Sh}{Sh}
 \DeclareMathOperator{\PSh}{PSh}
 \DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\length}{length}
+\DeclareMathOperator{\List}{List}
 \newcommand{\Set}{\mathrm{Set}}
 \newcommand{\Eff}{\mathrm{Ef{}f}}
 \renewcommand{\_}{\mathpunct{.}\,}
@@ -86,14 +95,15 @@
 \newcommand{\RDC}{\textsc{rdc}}
 \newcommand{\DC}{\textsc{dc}}
 \newcommand{\MDC}{\textsc{mdc}}
-\newcommand{\ES}{(\IZF+\RRS)/\textsc{s}}
+\newcommand{\ES}{(\IZF+\RRS_2)/\textsc{s}}
 
 \begin{document}
 
 \begin{abstract}
   We study the well-known reflection principle of Zermelo--Fraenkel set theory
   in the context of intuitionistic Zermelo--Fraenkel set theory~$\IZF$. We show
-  that the reflection principle is equivalent to Aczel's relation reflection scheme~$\RRS$. As
+  that the reflection principle is equivalent to~$\RRS_2$, a strengthened
+  version of Aczel's relation reflection scheme. As
   applications, we give a new proof that relativized dependent choice is
   equivalent to the conjunction of the relation reflection scheme and dependent
   choice and we present an intuitionistic version of Feferman's~$\ZFCS$, a
@@ -178,34 +188,38 @@ constructive set theory, is even more mysterious.
 However, we succeeded in verifying the reflection principle for a slight
 extension of~$\IZF$:
 
-\begin{thm}The reflection principle is equivalent, over~$\IZF$, to Aczel's relation reflection
-scheme~$\RRS$.\end{thm}
+\begin{thm}The reflection principle is equivalent, over~$\IZF$, to the strong
+relation reflection scheme~$\RRS_2$.\end{thm}
 
-Aczel's relation reflection scheme will be reviewed below. It is validated not
+We also give a weaker version of the reflection principle which is equivalent
+to Aczel's original reflection scheme~$\RRS$.
+Both~$\RRS$ and~$\RRS_2$ will be reviewed below. They are validated not
 only by~$\ZFC$, but also by~$\ZF$, and furthermore by
 all known models of~$\IZF$, hence might be regarded as not entirely
-unconstructive, even though it's conjectured to be independent of~$\IZF$. As a
+% XXX: be more precise in "all known"
+unconstructive, even though they are conjectured to be independent of~$\IZF$. As a
 result, the question whether the reflection principle holds for~$\IZF$ remains
-open (though conjectured to be false), and for the stronger system~$\IZF+\RRS$
+open (though conjectured to be false), and for the stronger system~$\IZF+\RRS_2$
 we can give a variant ``with smallness'' which can serve as a set-theoretic
 foundation for category theory.
 
 \begin{conjecture}The system $\IZF$ does not prove the reflection
 principle.\end{conjecture}
 
-\begin{defn}The system $\ES$ is obtained from~$\IZF+\RRS$ by
+\begin{defn}The system $\ES$ is obtained from~$\IZF+\RRS_2$ by
 adding a constant symbol~$\SS$ together with axioms
 stating that~$\SS$ is transitive, closed under subsets and reflective for all
 formulas of the original language (that is, adding one instance
 of~\eqref{ax:refl} for each formula of~$\IZF$).\end{defn}
 
 \begin{cor}The system~$\ES$ is conservative
-over~$\IZF+\RRS$.\end{cor}
+over~$\IZF+\RRS_2$.\end{cor}
 
 This note is organized as follows. Section~\ref{sect:review} reviews the
 classical proof of the reflection principle in the context of~$\ZF$ set theory.
-Section~\ref{sect:classical-proof} reviews Aczel's relation reflection scheme
-and presents our main result. We conclude in Section~\ref{sect:appl-rdc} and
+Section~\ref{sect:axioms} reviews Aczel's relation reflection scheme and its
+variants. Our main result is presented in Section~\ref{sect:constructive-proof}.
+We conclude in Section~\ref{sect:appl-rdc} and
 Section~\ref{sect:appl-smallness} with two short applications.
 
 \textbf{Acknowledgments.} XXX
@@ -214,8 +228,8 @@ Section~\ref{sect:appl-smallness} with two short applications.
 \section{Review of the classical reflection principle}
 \label{sect:review}
 
-A basic proof of the reflection principle for~$\ZF$ runs as follows. Our proof
-of the reflection principle for~$\IZF+\RRS$ will follow the same outline.
+A basic proof of the reflection principle in~$\ZF$ runs as follows. Our proof
+of the reflection principle in~$\IZF+\RRS_2$ will follow the same outline.
 
 \begin{lemma}\label{lemma:zf-smallstep}
 Let~$\varphi(u_1,\ldots,u_n,x)$ be a formula in the language of set
@@ -312,36 +326,147 @@ Section~\ref{sect:constructive-proof}, we will instead appeal to a strengthened
 version of Lemma~\ref{lemma:zf-smallstep}.
 
 
-\section{Constructivizing the reflection principle}
-\label{sect:constructive-proof}
+\section{Aczel's relation reflection axiom scheme and its variants}
+\label{sect:axioms}
 
-Our constructive rendition of the reflection principle will require Aczel's
-relation reflection scheme~$\RRS$ displayed in Definition~\ref{defn:rrs}. This
-result is the best possible, as we verify in Theorem~\ref{thm:refl-entails-rrs}
-that conversely the reflection principle entails the
-relation reflection scheme. The relation reflection scheme first surfaced in
+We write~``$R : X \rightrightarrows Y$'' to mean~``$\forall x \in X\_ \exists y
+\in Y\_ \langle x,y \rangle \in R$''.
+
+\begin{defn}Let~$X$ and~$R \subseteq X \times X$ be classes. Let~$x_0 \in X$.
+\begin{itemize}
+\setlength{\itemsep}{0.3em}
+\item[$\DC$] \emph{dependent choice} \\ If~$X$ and~$R$ are sets and
+if~$R : X \rightrightarrows X$, then there is a function~$f : \NN \to X$ such that~$f(0) =
+x_0$ and~$\langle f(k), f(k+1) \rangle \in R$ for all numbers~$k$.
+\item[$\RDC$] \emph{relativized dependent choice} \\ If~$R : X
+\rightrightarrows X$, then there is a function~$f : \NN \to X$ such that~$f(0)
+= x_0$ and~$\langle f(k), f(k+1) \rangle \in R$ for all numbers~$k$.
+\item[$\RRS$] \emph{Aczel's relation reflection scheme} \\
+If~$R : X \rightrightarrows X$, then there is
+a set~$B$ such that~$x_0 \in B \subseteq X$ and~$R : B \rightrightarrows B$.
+\item[$\MDC$] \emph{Palmgren's multivalued dependent choice} \\
+If~$R : X \rightrightarrows X$, then there is a function~$f : \NN \to P(X)$
+(the class of all subsets of~$X$) such that~$x_0 \in f(0)$ and such
+that~$\forall x \in f(k)\_ \exists y \in f(k+1)\_ \langle x,y \rangle \in R$
+for every number~$k$.
+\end{itemize}
+\end{defn}
+
+\begin{defn}\label{defn:rrs2}
+Let~$X$ and~$R \subseteq X \times X \times X$ be classes. Let~$x_0 \in X$.
+\begin{itemize}
+\setlength{\itemsep}{0.3em}
+\item[$\RRS_2$]
+If~$R : X \times X \rightrightarrows X$, then there is a set~$B$ such that~$x_0
+\in B \subseteq X$ and~$R : B \times B \rightrightarrows B$.
+\item[$\MDC_2$]
+If~$R : X \times X \rightrightarrows X$, then there is a function~$f : \NN \to
+P(X)$ such that~$x_0 \in f(0)$ and such that~$\forall x \in f(k)\_ \forall x'
+\in f(k')\_ \exists y \in f(\max\{k,k'\}+1)\_ \langle x,x',y \rangle \in R$ for
+any numbers~$k, k'$.
+\end{itemize}
+\end{defn}
+
+Aczel's relation reflection scheme~$\RRS$ first surfaced in
 the theory of coinductive definitions of classes and enjoys substantial
 stability properties, as it passes from the meta theory to XXX[all kinds of]
 models. Background on~$\RRS$ can be found in Aczel's original article
-introducing it~\cite{aczel:rrs}.
+introducing it~\cite{aczel:rrs}. $\RRS$ is equivalent, over~$\CZF$ and
+a~fortiori over~$\IZF$, to Palmgren's multivalued dependent
+choice~\cite{palmgren:mdc}; this observation makes the relationship to
+dependent choice more visible.
 
-\begin{defn}[$\RRS$, Aczel's relation reflection scheme]\label{defn:rrs}
-Let~$X$ and~$R \subseteq X \times X$ be classes. Let~$A \subseteq X$ be a
-subset. If~$\forall x \in X\_ \exists y \in X\_ \langle x,y \rangle \in R$,
-then there is a set~$B$ such that~$A \subseteq B \subseteq X$ and such
-that~$\forall x \in B\_ \exists y \in B\_ \langle x,y \rangle \in R$.
-\end{defn}
+\begin{rem}Most published renderings of~$\RRS$ and~$\MDC$ do not refer to an initial
+element~$x_0 \in X$, but to a set~$A \subseteq X$ and then require instead
+of that~$x_0 \in B$, that~$A \subseteq B$. This difference is immaterial, thanks in
+one direction to the existence of singleton sets and in the other to strong
+collection. The same is true for~$\RRS_2$ and~$\MDC_2$, though the proof is not
+as easy.
+\end{rem}
 
-For our purposes, Palmgren's multivalued dependent choice is slightly more
-convenient to work with than~$\RRS$. It is equivalent, over~$\CZF$ and
-a~fortiori over~$\IZF$, to~$\RRS$~\cite{palmgren:mdc}.
+% First prove that in RRS_2^∈, we may suppose that not only a single given
+% element x0 is contained in B, but also a further given element x1.
+% Do this by applying RRS_2^∈ to X^ := { ∅ } U { {x} | x ∈ X } and
+% R^(p,p',q) given by:
+% * p = ∅   and p' = ∅    and q = {x0}  or
+% * p = ∅   and p' = {x0} and q = {x1}  or  the other way round  or
+% * p = {x} and p' = {x'} and q = {y} and R(x,x',y).
+%
+% Now let R : X × X ⇉ X and a set A ⊆ X be given. We want to verify RRS_2^⊆
+% for this data.
+%
+% Given H ∈ P(X), H' ∈ P(X), consider:
+%
+%    Let x ∈ H, x' ∈ H'.
+%    Then by the strengthened RRS_2^∈, there is a set B ⊆ X
+%    such that x, x' ∈ B and R : B × B ⇉ B.
+%
+% We can use collection to obtain a set J of such B's, and consider U J.
+%
+% We can then apply RRS_2^∈ to this relation to obtain a set T such that
+% A ∈ T ⊆ P(X) and ... Set C := U T. Then A ⊆ C ⊆ X and R : C × C ⇉ C.
 
-\begin{defn}[$\MDC$, Palmgren's multivalued dependent choice]
-Let~$X$ and~$R \subseteq X \times X$ be classes. Let~$A \subseteq X$ be a
-subset. If~$\forall x \in X\_ \exists y \in X\_ \langle x,y \rangle \in R$,
-then there is a function~$f : \NN \to P(X)$ (the class of all subsets of~$X$)
-such that~$A \subseteq f(0)$ and such that~$\forall x \in f(k)\_ \exists y \in
-f(k+1)\_ \langle x,y \rangle \in R$ for every number~$k$.\end{defn}
+Aczel's $\RRS$ should not in itself be regarded as a choice principle; however in
+its presence, ordinary~$\DC$ entails~$\RDC$. This result is due to
+Aczel~\cite[Theorem~2.4]{aczel:rrs}, who proved the equivalence~$\RDC = \RRS +
+\DC$ over~$\CZF^-$, and we give a new proof of this equivalence over the
+stronger theory~$\IZF$, in Section~\ref{sect:appl-rdc}.
+
+In the presence of~$\DC$, $\RRS$ is equivalent to~$\RRS_2$:
+
+\begin{prop}\label{prop:rdc-rrs2-dc}
+Over~$\CZF^-$, $\RDC$ is equivalent to~$\RRS_2 + \DC$.
+\end{prop}
+
+\begin{proof}Trivially,~$\RDC$ entails~$\DC$, and~$\RRS_2 + \DC$
+entails~$\RDC$ by Aczel's result since~$\RRS_2$ entails~$\RRS$.
+
+To verify that~$\RDC$ entails~$\RRS_2$, let classes~$X$ and~$R \subseteq X
+\times X \times X$ be given, let~$x_0 \in X$ be an element and assume~$R : X
+\times X \rightrightarrows X$. Let~$\List(X)$ be the class of finite lists with
+entries in~$X$. We declare a class~$\widehat X$ by
+\[ \widehat X \defeq \{ \langle i,j,v \rangle \,|\, i,j \in
+\NN, v \in \List(X), i,j < \length(v) \} \]
+and a relation~$\widehat R \subseteq \widehat X \times \widehat X$ by
+defining~$\langle \langle i,j,v \rangle, \langle i',j',v' \rangle \rangle \in
+\widehat R$ to be equivalent to
+\begin{indentblock}
+there exists an element~$y \in X$ such that
+\begin{enumerate}
+\item $\langle v!i, v!j, y \rangle \in R$ (where~$v!k$ is the element of the
+list~$v$ at position~$k$),
+\item $v'$ is obtained from~$v$ by adding the single element~$y$ at the end and
+\item $\langle i',j' \rangle$ is the next point after~$\langle i,j
+\rangle$ in some fixed enumeration of~$\NN^2$ which, for each number~$n$, first visits
+all points~$\langle k,l \rangle$ with~$k,l < n$ before it visits any of
+the other points.
+\end{enumerate}
+\end{indentblock}
+Then~$\widehat R : \widehat X \rightrightarrows \widehat X$. Applying~$\RDC$
+with initial value~$\langle 0,0, [x_0] \rangle \in \widehat X$ yields a
+function~$f : \NN \to \widehat X$. Let~$B$ be the set of all
+entries of the lists contained in the tuples~$f(k)$. Then~$x_0 \in B
+\subseteq X$ and~$R : B \times B \rightrightarrows B$.
+\end{proof}
+
+A consequence of Proposition~\ref{prop:rdc-rrs2-dc} is that~$\RRS_2$ holds in
+Aczel's type-theoretic ``sets as trees'' model
+of~$\CZF$~\cite{aczel:sets-as-trees}, since that model validates~$\RDC$.
+
+\begin{prop}Over~$\CZF^-$, $\RRS_2$ is equivalent to~$\MDC_2$.\end{prop}
+
+\begin{proof}The proof in~\cite{palmgren:mdc} carries over.\end{proof}
+
+% XXX: RRS_2 holds in ZF.
+
+
+\section{Constructivizing the reflection principle}
+\label{sect:constructive-proof}
+
+Our constructive rendition of the reflection principle will require the axiom
+scheme~$\RRS_2$ displayed in Definition~\ref{defn:rrs2}. This result is the
+best possible, as we verify in Theorem~\ref{thm:refl-entails-rrs2} that
+conversely the reflection principle entails~$\RRS_2$.
 
 Even though superficially similar, the following lemma is \emph{not} yet a
 constructivization of Lemma~\ref{lemma:zf-smallstep}; these two lemmas differ
@@ -406,7 +531,7 @@ in the definition of~$H'$ for each formula~$\varphi_i$.
 
 \begin{lemma}\label{lemma:izf-smallstep}
 Let~$\varphi(u_1,\ldots,u_n,x)$ be a formula in the language of set
-theory with free variables as indicated. Then~$\IZF+\RRS$ proves
+theory with free variables as indicated. Then~$\IZF+\RRS_2$ proves
 \begin{multline*}
   {\qquad}\forall M\_
   \exists S \supseteq M\_
@@ -426,32 +551,30 @@ formulas~$\varphi_i$.
 % XXX: better explanation
 \end{lemma}
 
-\begin{proof}We first consider the case~$n = 1$.
+\begin{proof}By~$\RRS_2$, there is a set~$B$ such that~$M \in B$ and such that
+for any~$H_1, H_2 \in B$, there is a set~$H' \in B$ such that~$H \defeq H_1
+\cup H_2$ and~$H'$ are related as in the conclusion of Lemma~\ref{lemma:izf-microstep}.
 
-By~$\MDC$ and Lemma~\ref{lemma:izf-microstep}, there is a
-function~$f : \NN \to P(V)$, where~$V$ is the universe, such that~$M \in
-f(0)$ and such that for any number~$k$ and any set~$H \in f(k)$, there is a
-set~$H' \in f(k+1)$ such that~$H$ and~$H'$ are related as in the conclusion of
+We set~$S \defeq \bigcup B$. This set has the required property. To verify
+this, it is useful to observe that given~$u_1,\ldots,u_n \in S$, there is a
+common set~$H \in B$ such that~$u_1,\ldots,u_n \in H$.
+
+In order to ensure addendum~(1) and~(2), we apply~$\RRS_2$ in a slightly
+different way to guarantee that for any sets~$H_1, H_2 \in B$, there is a
+set~$H' \in B$ such that~$H \defeq H_1 \cup H_2$ and~$H'$ are related as in the
+conclusion of Lemma~\ref{lemma:izf-microstep} and such that furthermore~$H'$ is
+transitive and closed under subsets. Even though it cannot be expected that any
+particular set~$H \in B$ will be transitive and closed under subsets, the
+union~$S$ will. Addendum~(3) can be ensured because of addendum~(3) of
 Lemma~\ref{lemma:izf-microstep}.
-
-We set~$S \defeq \bigcup \bigl(\bigcup_{k \in \NN} f(k)\bigr)$. This set~$S$
-has the required property.
-
-In order to ensure addendum~(1) and~(2), we apply~$\MDC$ in a slightly
-different way such that for any number~$k$ and any set~$H \in f(k)$, there is a
-set~$H' \in f(k+1)$ such that~$H$ and~$H'$ are related as in the conclusion of
-Lemma~\ref{lemma:izf-microstep} and such that~$H'$ is transitive and closed
-under subsets. Even though it cannot be expected that for any number~$k$,
-any set~$H \in f(k)$ will be transitive and closed under subsets, the union~$S$
-will. Addendum~(3) can be ensured because of addendum~(3) of
-Lemma~\ref{lemma:izf-microstep}.
-
-For the case~$n \neq 1$, \textbf{???}
 \end{proof}
+
+\begin{rem}In the special case~$n = 1$, the proof of Lemma~\ref{lemma:izf-smallstep} can
+be simplified to only use~$\RRS$ instead of~$\RRS_2$.\end{rem}
 
 \begin{thm}\label{thm:izf-bigstep}
 Let~$\varphi(x_1,\ldots,x_n)$ be a formula in the language of set
-theory with free variables as indicated. Then~$\IZF+\RRS$ proves
+theory with free variables as indicated. Then~$\IZF+\RRS_2$ proves
 \[ \forall M\_
   \exists S \supseteq M\_
   \forall x_1,\ldots,x_n \in S\_
@@ -467,27 +590,30 @@ all of them.
 difference is that instead of Lemma~\ref{lemma:zf-smallstep},
 Lemma~\ref{lemma:izf-smallstep} has to be used, and that the case for the
 universal quantifier has to be treated just as the case for the existential
-quantifier is.\end{proof}
+quantifier has to.\end{proof}
 
-\begin{thm}\label{thm:refl-entails-rrs}
-Over~$\IZF$, each instance of Aczel's relation reflection scheme~$\RRS$ can be
+% XXX: State mini-reflection theorem.
+
+\begin{thm}\label{thm:refl-entails-rrs2}
+Over~$\IZF$, each instance of Aczel's relation reflection scheme~$\RRS_2$ can be
 deduced from suitable instances of the assumption that, given a finite list
 of formulas, for every set~$M$ there is a set~$S \supseteq M$ reflecting the
 given formulas.
 \end{thm}
 
-\begin{proof}We verify the equivalent~$\MDC$ instead of~$\RRS$. Let~$X$ and~$R
-\subseteq X \times X$ be classes. Let~$A \subseteq X$ be a subset and
-suppose~$\forall x \in X\_ \exists y \in X\_ \langle x,y \rangle \in R$.
+\begin{proof}Let~$X$ and~$R \subseteq X \times X \times X$ be classes. Let~$x_0 \in X$
+be an element and suppose~$R : X \times X \rightrightarrows X$.
 
-By assumption, there is a set~$S \supseteq A$ which reflects the three
-formulas~``$x \in X$'', ``$\langle x,y \rangle \in R$'' and~``$\exists y \in X\_ \langle
-x,y \rangle \in R$''.
+By assumption, there is a set~$S \ni x_0$ which reflects the three
+formulas~``$x \in X$'', ``$\langle x,x',y \rangle \in R$'' and~``$\exists y \in X\_ \langle
+x,x',y \rangle \in R$''.
 
-By separation, the class~$S \cap X$ is a set, and hence we may set~$f(k) \defeq S \cap X$
-for all numbers~$k$. Then~$A \subseteq f(0)$; any given~$x \in f(k)$, by
-assumption and the reflecting property of~$S$ there exists~$y \in S$ such
-that~$y \in X$ (hence~$y \in f(k+1)$) and~$\langle x,y \rangle \in R$.
+The class~$B \defeq X \cap S$ is a set by separation and contains~$x_0$.
+Given~$x,x' \in B$, there is a set~$y$ such that~$y \in X$ and~$\langle x,y,y'
+\rangle \in R$. By the reflecting property of~$S$, we can assume that such an
+element~$y$ exists in~$S$.
+
+Hence~$R : B \times B \rightrightarrows B$.
 \end{proof}
 
 
@@ -501,29 +627,18 @@ reflection, we can provide a new proof of this fact, although over the much
 stronger base theory~$\IZF$ instead of~$\CZF^{-}$. The idea is that reflection
 allows to reduce~$\RDC$ to~$\DC$.
 
-\begin{defn}[$\DC$, dependent choice]
-Let~$X$ and~$R \subseteq X \times X$ be sets. Let~$x_0 \in X$.
-If~$\forall x \in X\_ \exists y \in X\_ \langle x,y \rangle \in R$,
-then there is a function~$f : \NN \to X$ such that~$f(0) = x_0$ and
-such that~$\langle f(k), f(k+1) \rangle \in R$ for all numbers~$k$.
-\end{defn}
-
-\begin{defn}[$\RDC$, relative dependent choice]
-Let~$X$ and~$R \subseteq X \times X$ be classes. Let~$x_0 \in X$.
-If~$\forall x \in X\_ \exists y \in X\_ \langle x,y \rangle \in R$,
-then there is a function~$f : \NN \to X$ such that~$f(0) = x_0$ and
-such that~$\langle f(k), f(k+1) \rangle \in R$ for all numbers~$k$.
-\end{defn}
-
 \begin{prop}Over~$\IZF$, $\RDC$ is equivalent to~$\RRS + \DC$.
 \end{prop}
 
-\begin{proof}It's clear that~$\RDC$ implies~$\RRS + \DC$. % XXX: check
+\begin{proof}Trivially,~$\RDC$ implies~$\DC$, and~$\RDC$ implies~$\RRS$ by a
+similar, though much simpler, argument as in the proof of
+Proposition~\ref{prop:rdc-rrs2-dc}.
 
 Conversely, assume~$\RRS$ and~$\DC$. In order to verify~$\RDC$, let classes~$X$
 and~$R \subseteq X \times X$ be given. Let~$x_0 \in X$ and assume~$\forall x
 \in X\_ \exists y \in X\_ \langle x,y \rangle \in R$.
 
+\textbf{XXX: Use mini-reflection theorem instead.}
 By Theorem~\ref{thm:izf-bigstep}, reflection is available; hence there is a
 set~$S \supseteq \{x_0\}$ which reflects the three formulas~``$x \in X$'', ``$\langle x,y
 \rangle \in R$'' and~``$\forall x\_ x \in X \Rightarrow \exists y\_ (y \in X \wedge \langle x,y
@@ -537,6 +652,7 @@ This is a function of the kind required by~$\RDC$.
 
 
 \section{An intuitionistic version of Feferman's~$\ZFCS$}
+\label{sect:appl-smallness}
 
 XXX: repeat definition and conservativity statement?
 
@@ -559,18 +675,18 @@ claim precise. Because in~$\ZFC$ the category~$\Set$ of all sets can not be
 coded as a set,~$\ZFC$ cannot define truth in~$\Set$. We must therefore resort
 to a meta theory in order to express this claim, for instance by stating
 that primitive recursive arithmetic~$\PRA$ proves that for any
-formula~$\varphi$ of~$\ZFC$, $\ZFC$ proves that~$(\Set \models \varphi)
-\Leftrightarrow \varphi$, where~``$\Set \models \varphi$'' is to be unrolled
+formula~$\varphi$ of~$\ZFC$, $\ZFC$ proves~``$(\Set \models \varphi)
+\Leftrightarrow \varphi$'', where~``$\Set \models \varphi$'' is to be unrolled
 by~$\PRA$.
 
 An alternative is offered by~$\ZFCI$, $\ZFC$ plus the existence of a
 strongly inaccessible cardinal. In this system, there is a Grothendieck
-universe~$U$, we can form the category~$\Set_U$ of all sets of~$U$ as an honest
-set, can define truth in~$\Set_U$ and prove, within the system, that for any
+universe~$U$; we can form the category~$\Set_U$ of all sets of~$U$ as an honest
+set; can define truth in~$\Set_U$; and prove, within the system, that for any
 formula~$\varphi$, $(\Set_U \models \varphi) \Leftrightarrow (U \models
 \varphi)$. This even holds for formulas of the full infinitary language of
-toposes, which allows for infinite disjunctions and infinite conjunctions; this
-could not be mimicked by resorting to~$\PRA$ as indicated above.
+toposes, which allows infinite disjunctions and infinite conjunctions; this
+extended language could not be treated by resorting to~$\PRA$ as indicated above.
 
 However, truth in a Grothendieck universe~$U$ need not be related to actual
 truth. A solution is provided by~$\ZFCS$ and by~$\ES$. In these systems, we can
@@ -595,4 +711,5 @@ formula~$\varphi$, the system proves~``$(\Set_\SS \models \varphi)
 
 % XXX: Note that the result fails over IZF_R.
 
-% XXX: Reference more choice axioms?
+% XXX: Reference more choice axioms? e.g. Aczel and Rathjen; and that one PhD
+% thesis

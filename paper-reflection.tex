@@ -47,7 +47,6 @@
 }
 
 \newcommand{\xra}[1]{\xrightarrow{#1}}
-\newcommand{\XXX}[1]{\textbf{XXX: #1}}
 \newcommand{\aaa}{\mathfrak{a}}
 \newcommand{\bbb}{\mathfrak{b}}
 \newcommand{\mmm}{\mathfrak{m}}
@@ -56,6 +55,7 @@
 \newcommand{\E}{\mathcal{E}}
 \newcommand{\F}{\mathcal{F}}
 \newcommand{\B}{\mathcal{B}}
+\newcommand{\EE}{\mathbb{E}}
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\RR}{\mathbb{R}}
 \newcommand{\ZZ}{\mathbb{Z}}
@@ -87,6 +87,7 @@
 \newcommand{\PRA}{\textsc{pra}}
 \newcommand{\ZF}{\textsc{zf}}
 \newcommand{\IZF}{\textsc{izf}}
+\newcommand{\IZFS}{\textsc{izf/s}}
 \newcommand{\CZF}{\textsc{czf}}
 \newcommand{\ZFC}{\textsc{zfc}}
 \newcommand{\ZFCS}{\textsc{zfc/s}}
@@ -119,7 +120,8 @@
 The basic form of the reflection principle for Zermelo--Fraenkel set
 theory~$\ZF$ is the following.
 \begin{thm}Let~$\varphi(x_1,\ldots,x_n)$ be a formula in the language of set
-theory with free variables as indicated. Then~$\ZF$ proves
+theory with some of its free variables as indicated (and further free variables
+allowed). Then~$\ZF$ proves
 \[ \forall M\_
   \exists S \supseteq M\_
   \forall x_1,\ldots,x_n \in S\_
@@ -135,20 +137,24 @@ list~$\varphi_1,\ldots,\varphi_s$ of formulas, we may suppose that~$S$ reflects
 all of them.
 \end{thm}
 
-The reflection principle is important both for philosophical and for practical
-reasons: Philosophically, it tells us that truth of any formula can already be
-checked in an initial segment of the universe. Practically, it allows to
-% XXX: be more precise about philosophy
+The reflection principle expresses that truth of any formula can already be
+checked in an initial segment of the universe. This observation
+is important both for philosophical and for practical
+reasons: Philosophically, it tells us that the set-theoretic universe cannot be
+distinguished from its initial segments by any set-theoretical property.
+Practically, it allows to
 transfer results obtained for a restricted class of objects to all such
 objects. For instance, if we manage to verify (the $S$-relativization of) some
 group-theoretic statement for all groups contained in an arbitrary set~$X$,
 then we may deduce by the reflection principle that the statement holds
-for all groups in the universe.
+for all groups in the universe. Examples from sheaf cohomology and more
+generally category theory abound; an example from set theory is presented in
+Proposition~\ref{prop:zf-rrs2}.
 
-This observation has been used by Feferman to construct~$\ZFCS$ (``$\ZFC$ with
+The reflection principle has been used by Feferman to construct~$\ZFCS$ (``$\ZFC$ with
 smallness''), a conservative extension of~$\ZFC$ which provides a useful
 foundation of category theory~\cite{feferman:zfcs}. This system extends~$\ZFC$
-by the addition of a new constant symbol~$\SS$ together with axioms stating
+by a new constant symbol~$\SS$ together with axioms stating
 that~$\SS$ is transitive, closed under subsets and reflective with respect to
 every formula~$\varphi(x_1,\ldots,x_n)$ of the original language:
 \[ \label{ax:refl}\tag{$\star$}
@@ -169,8 +175,8 @@ to learn more about the merits of~$\ZFCS$ to study the survey by
 Shulman~\cite[Section~11]{shulman:sets}.
 
 To our naive eyes, the passage from~$\ZFC$ to~$\ZFCS$ looked sufficiently
-innocent so that we set out to create an intuitionistic version of~$\ZFCS$: To
-our mind, size issues were entirely separate from issues of constructivity, and
+innocent so that we set out to develop an intuitionistic version of~$\ZFCS$: To
+our mind, size issues were entirely different concerns than issues of constructivity, and
 we hence opined that they should be dealt with separately. Such a separation
 would not only lead to improved mental hygiene and better understanding, but
 would also allow us to use the benefits
@@ -180,12 +186,12 @@ or quite generally topos semantics.
 
 We expected this modification to be entirely straightforward. However, the
 situation turned out to be more subtle and we failed in our original goal of
-verifying the reflection principle for intuitionistic Zermelo--Fraenkel set
+verifying the reflection principle in intuitionistic Zermelo--Fraenkel set
 theory~$\IZF$. The situation for~$\CZF$, the predicative subsystem of~$\IZF$
 commonly heralded as the largest common denominator of all flavors of
-constructive set theory, is even more mysterious.
+constructive set theory, remains even more elusive.
 
-However, we succeeded in verifying the reflection principle for a slight
+However, we succeeded in verifying the reflection principle in only a slight
 extension of~$\IZF$:
 
 \begin{thm}The reflection principle is equivalent, over~$\IZF$, to the strong
@@ -203,17 +209,9 @@ open (though conjectured to be false), and for the stronger system~$\IZF+\RRS_2$
 we can give a variant ``with smallness'' which can serve as a set-theoretic
 foundation for category theory.
 
-\begin{conjecture}The system $\IZF$ does not prove the reflection
-principle.\end{conjecture}
-
-\begin{defn}The system $\ES$ is obtained from~$\IZF+\RRS_2$ by
-adding a constant symbol~$\SS$ together with axioms
-stating that~$\SS$ is transitive, closed under subsets and reflective for all
-formulas of the original language (that is, adding one instance
-of~\eqref{ax:refl} for each formula of~$\IZF$).\end{defn}
-
-\begin{cor}The system~$\ES$ is conservative
-over~$\IZF+\RRS_2$.\end{cor}
+% Since~$\ZF$ proves~$\RRS_2$, our proof of the reflection principle also serves
+% as a new classical proof. However, the standard proof is shorter, XXX
+% Hint that we don't need regularity.
 
 This note is organized as follows. Section~\ref{sect:review} reviews the
 classical proof of the reflection principle in the context of~$\ZF$ set theory.
@@ -233,7 +231,7 @@ of the reflection principle in~$\IZF+\RRS_2$ will follow the same outline.
 
 \begin{lemma}\label{lemma:zf-smallstep}
 Let~$\varphi(u_1,\ldots,u_n,x)$ be a formula in the language of set
-theory with free variables as indicated. Then~$\ZF$ proves
+theory. Then~$\ZF$ proves
 \begin{multline*}
   {\qquad}\forall M\_
   \exists S \supseteq M\_
@@ -245,7 +243,6 @@ Furthermore: (1)~We may suppose that~$S$ is transitive. (2)~We may suppose that~
 closed under subsets. (3)~Given a finite list~$\varphi_1,\ldots,\varphi_s$
 of formulas instead of the single formula~$\varphi$, we may suppose that~$S$
 bounds all of the formulas~$\varphi_i$.
-% XXX: better explanation
 \end{lemma}
 
 \begin{proof}Given a class~$X$ (as commonly understood as the comprehension of
@@ -285,12 +282,12 @@ additional care.
 
 \begin{thm}\label{thm:zf-bigstep}
 Let~$\varphi(x_1,\ldots,x_n)$ be a formula in the language of set
-theory with free variables as indicated. Then~$\ZF$ proves
+theory. Then~$\ZF$ proves
 \[ \forall M\_
   \exists S \supseteq M\_
   \forall x_1,\ldots,x_n \in S\_
-  \varphi(x_1,\ldots,x_n) \Leftrightarrow \varphi^S(x_1,\ldots,x_n), \]
-where~$\varphi^S$ is the~$S$-relativization of~$\varphi$. Furthermore, the
+  \varphi(x_1,\ldots,x_n) \Leftrightarrow \varphi^S(x_1,\ldots,x_n). \]
+Furthermore, the
 resulting set~$S$ may be supposed to be transitive and to be closed under
 subsets; and given not a single formula~$\varphi$ but a finite
 list~$\varphi_1,\ldots,\varphi_s$ of formulas, we may suppose that~$S$ reflects
@@ -298,9 +295,9 @@ all of them.
 \end{thm}
 
 \begin{proof}Let a set~$M$ be given. We obtain~$S$ by applying
-Lemma~\ref{lemma:zf-smallstep} to the list of all subformulas of~$\varphi$. That
-% XXX: "all" subformulas
-the resulting set~$S$ has the required property can be checked by an induction on the structure
+Lemma~\ref{lemma:zf-smallstep} to the list of all subformulas of~$\varphi$
+which start with an existential quantifier. That
+the resulting set~$S$ has the required property can then be checked by an induction on the structure
 of~$\varphi$. The cases~$\text{``$=$''}, \text{``$\in$''}, \text{``$\top$''},
 \text{``$\bot$''}, \text{``$\wedge$''},
 \text{``$\vee$''}, \text{``$\Rightarrow$''}$ follow
@@ -320,14 +317,20 @@ subformula~$\psi^S(u_1,\ldots,u_m,x)$.
 \end{proof}
 
 The proof of Theorem~\ref{thm:zf-bigstep} is constructive with the sole
-exception of treating the case of universal quantifiers by appealing to the law
-of excluded middle. For the constructive proof in
-Section~\ref{sect:constructive-proof}, we will instead appeal to a strengthened
+exceptions of treating the case of universal quantifiers by appealing to the law
+of excluded middle and referring to the unconstructive Lemma~\ref{lemma:zf-smallstep}. For the constructive proof in
+Section~\ref{sect:constructive-proof}, we will solve both issues by instead appealing to a strengthened
 version of Lemma~\ref{lemma:zf-smallstep}.
 
 
 \section{Aczel's relation reflection axiom scheme and its variants}
 \label{sect:axioms}
+
+We follow the usual convention that~$\IZF$ is the set theory with the following
+axioms: extensionality, pair, union, empty set, infinity, unbounded separation,
+collection, powerset and~$\in$-induction. We direct the reader wishing for a
+survey of~$\IZF$ and other nonclassical set theories to Crosilla's entry in the
+SEP~\cite{crosilla:cst-izf}.
 
 We write~``$R : X \rightrightarrows Y$'' to mean~``$\forall x \in X\_ \exists y
 \in Y\_ \langle x,y \rangle \in R$''.
@@ -371,7 +374,10 @@ Aczel's relation reflection scheme~$\RRS$ first surfaced in
 the theory of coinductive definitions of classes and enjoys substantial
 stability properties, as it passes from the meta theory to XXX[all kinds of]
 models. Background on~$\RRS$ can be found in Aczel's original article
-introducing it~\cite{aczel:rrs}. $\RRS$ is equivalent, over~$\CZF$ and
+introducing it~\cite{aczel:rrs}, and more information on choice axioms in
+general is contained in the book draft by Aczel and
+Rathjen~\cite[Section~10]{aczel-rathjen:cst}.
+$\RRS$ is equivalent, over~$\CZF$ and
 a~fortiori over~$\IZF$, to Palmgren's multivalued dependent
 choice~\cite{palmgren:mdc}; this observation makes the relationship to
 dependent choice more visible.
@@ -411,6 +417,12 @@ its presence, ordinary~$\DC$ entails~$\RDC$. This result is due to
 Aczel~\cite[Theorem~2.4]{aczel:rrs}, who proved the equivalence~$\RDC = \RRS +
 \DC$ over~$\CZF^-$, and we give a new proof of this equivalence over the
 stronger theory~$\IZF$, in Section~\ref{sect:appl-rdc}.
+
+The axiom scheme~$\RRS_2$ does not appear to have been studied much. Apart from
+the PhD thesis by Ziegler~\cite{ziegler:phd}, where it is called the
+\emph{strong relation reflection principle}, we have not been able to track
+down further mentions of it in the literature; hence it seems prudent to verify
+some of its basic properties here.
 
 In the presence of~$\DC$, $\RRS$ is equivalent to~$\RRS_2$:
 
@@ -457,8 +469,14 @@ of~$\CZF$~\cite{aczel:sets-as-trees}, since that model validates~$\RDC$.
 
 \begin{proof}The proof in~\cite{palmgren:mdc} carries over.\end{proof}
 
-% XXX: RRS_2 holds in ZF.
+\begin{prop}\label{prop:zf-rrs2}
+$\ZF$ proves~$\RRS_2$.\end{prop}
 
+\begin{proof}Let~$X$ and~$R \subseteq X \times X$ be classes. Let~$x_0 \in X$
+and assume~$R : X \rightrightarrows X$. By the reflection principle, there is a
+set~$S \ni x_0$ such that~$R : X \cap S \rightrightarrows X \cap S$. This
+concludes the proof as the class~$B \defeq X \cap S$ is a set by separation.
+\end{proof}
 
 \section{Constructivizing the reflection principle}
 \label{sect:constructive-proof}
@@ -474,7 +492,7 @@ in the set from which~$u_1,\ldots,u_n$ are drawn.
 
 \begin{lemma}\label{lemma:izf-microstep}
 Let~$\varphi(u_1,\ldots,u_n,x)$ be a formula in the language of set
-theory with free variables as indicated. Then~$\IZF$ proves
+theory. Then~$\IZF$ proves
 \begin{multline*}
   {\qquad}\forall H\_
   \exists H' \supseteq H\_
@@ -529,9 +547,16 @@ In order to accommodate more than a single formula~$\varphi$, we add one summand
 in the definition of~$H'$ for each formula~$\varphi_i$.
 \end{proof}
 
+The proof of Lemma~\ref{lemma:izf-microstep} makes crucial use of unbounded
+separation and the powerset axiom. Hence we do not believe that it can
+be improved to work over~$\CZF$. Since we do not have any uniqueness guarantee
+on the~``$\exists x$'' quantifiers in the proof, it also does not work
+over~$\IZF_\text{Rep}$, the variant of~$\IZF$ with replacement instead of
+collection.
+
 \begin{lemma}\label{lemma:izf-smallstep}
 Let~$\varphi(u_1,\ldots,u_n,x)$ be a formula in the language of set
-theory with free variables as indicated. Then~$\IZF+\RRS_2$ proves
+theory. Then~$\IZF+\RRS_2$ proves
 \begin{multline*}
   {\qquad}\forall M\_
   \exists S \supseteq M\_
@@ -548,7 +573,6 @@ that~$S$ is closed under subsets. (3)~Given a finite
 list~$\varphi_1,\ldots,\varphi_s$ of formulas instead of the single
 formula~$\varphi$, we may suppose that~$S$ bounds all of the
 formulas~$\varphi_i$.
-% XXX: better explanation
 \end{lemma}
 
 \begin{proof}By~$\RRS_2$, there is a set~$B$ such that~$M \in B$ and such that
@@ -579,7 +603,7 @@ Lemma~\ref{lemma:izf-microstep}.
 
 \begin{thm}\label{thm:izf-bigstep}
 Let~$\varphi(x_1,\ldots,x_n)$ be a formula in the language of set
-theory with free variables as indicated. Then~$\IZF+\RRS_2$ proves
+theory. Then~$\IZF+\RRS_2$ proves
 \[ \forall M\_
   \exists S \supseteq M\_
   \forall x_1,\ldots,x_n \in S\_
@@ -599,7 +623,7 @@ quantifier has to.\end{proof}
 
 \begin{scholium}\label{scholium:izf-bigstep-1}
 Let~$\varphi(x_1,\ldots,x_n)$ be a formula in the language of set
-theory with free variables as indicated. Assume that the surrounding scope of
+theory. Assume that the surrounding scope of
 any unbounded quantifier in~$\varphi$ contains at most one free variable.
 Then~$\IZF+\RRS$ proves the same conclusion as stated in
 Theorem~\ref{thm:izf-bigstep}.
@@ -676,15 +700,31 @@ This is a function of the kind required by~$\RDC$.
 \section{An intuitionistic version of Feferman's~$\ZFCS$}
 \label{sect:appl-smallness}
 
-XXX: repeat definition and conservativity statement?
+\begin{defn}The system $\ES$ is obtained from~$\IZF+\RRS_2$ by
+adding a constant symbol~$\SS$ together with axioms
+stating that~$\SS$ is transitive, closed under subsets and reflective for all
+formulas of the original language.\end{defn}
+
+\begin{prop}The system~$\ES$ is conservative
+over~$\IZF+\RRS_2$.\end{prop}
+
+\begin{proof}Because the reflection principle is available in~$\IZF+\RRS_2$,
+the same argument as for~$\ZFCS$ applies.\end{proof}
+
+Just as~$\ZFCS$ can serve as a set-theoretic foundation for category theory in
+a classical context, we argue that~$\ES$ can serve as such a foundation in an
+intuitionistic context (provided, of course, one is willing to
+accept~$\RRS_2$).
 
 The system~$\ES$ is also interesting from the point of view of topos theory.
-Any topos supports an internal language which can be used to reason about the
+We recall that any topos supports an internal language which can be used to reason about the
 objects and morphisms of the topos in a naive element-based language, allowing
 us to pretend that the objects are plain sets (or types) and that the morphisms
 are plain maps between those sets (\cite[Chapter~6]{borceux:handbook3},
 \cite[Section~1.3]{caramello:ttt}, \cite[Chapter~14]{goldblatt:topoi},
-\cite[Chapter~VI]{moerdijk-maclane:sheaves-logic}).
+\cite[Chapter~VI]{moerdijk-maclane:sheaves-logic}). We refer
+to~\cite[Sections~1 and~2]{blechschmidt:phd} for a short introduction and a
+review of some of the applications of the internal language.
 
 Given a topos~$\mathcal{E}$ and a formula~$\varphi$ in its internal language,
 we write~``$\mathcal{E} \models \varphi$'' to mean that~$\varphi$ holds
@@ -711,27 +751,35 @@ toposes, which allows infinite disjunctions and infinite conjunctions; this
 extended language could not be treated by resorting to~$\PRA$ as indicated above.
 
 However, truth in a Grothendieck universe~$U$ need not be related to actual
-truth. A solution is provided by~$\ZFCS$ and by~$\ES$. In these systems, we can
+truth. A solution to this problem is provided by~$\ZFCS$ and by~$\ES$. In these systems, we can
 form the topos~$\Set_\SS$, define truth in it, prove for all formulas~$\varphi$
 that~$(\Set_\SS \models \varphi) \Leftrightarrow (\SS \models \varphi)$; and
 reflection for~$\SS$ ensures that for each (external, standard)
 formula~$\varphi$, the system proves~``$(\Set_\SS \models \varphi)
 \Leftrightarrow \varphi$''.
 
+
+\section{Outlook}
+
+We proved that, over~$\IZF$, the reflection principle is equivalent
+to~$\RRS_2$. This gives credence to the claim that the reflection principle is
+not provable over~$\IZF$ alone. However, the following question remains open:
+
+\begin{question}Does~$\IZF$ prove~$\RRS_2$?\end{question}
+
+If the answer is in the negative, as is most likely, then no conservative
+extension could include a constant symbol~$\SS$ should that~$\SS$-relativized
+truth is the same as absolute truth.
+
+However, truth in toposes is a more flexible notion than~$S$-relativized
+truth for any set~$S$. Hence one might hope that even in this case, the
+following question does have a positive answer:
+
+\begin{question}Is there a conservative extension~$\IZF'$ of~$\IZF$, containing
+a constant symbol~$\EE$, such that~$\IZF'$ proves that~$\EE$ is an elementary
+topos and such that~$\IZF'$ proves~``$(\EE \models \varphi) \Leftrightarrow
+\varphi$'' for any formula~$\varphi$?\end{question}
+
 \printbibliography
 
 \end{document}
-
-% XXX: Review axioms of IZF.
-
-% XXX: Think about pairs.
-
-% XXX: Remark that the new proof of reflection also works over ZF, but that the
-% usual proof is probably preferable.
-
-% XXX: Über Verallgemeinerung zu CZF spekulieren.
-
-% XXX: Note that the result fails over IZF_R.
-
-% XXX: Reference more choice axioms? e.g. Aczel and Rathjen; and that one PhD
-% thesis

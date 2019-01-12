@@ -1,6 +1,7 @@
 \documentclass[oneside,reqno]{amsart}
 
 \usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
 \usepackage{amsthm,mathtools,stmaryrd,amssymb,graphicx}
 \usepackage{booktabs}
 \usepackage[all]{xy}
@@ -17,7 +18,7 @@
 \newcommand{\cmark}{\ding{51}}
 \newcommand{\xmark}{\ding{55}}
 
-\title[]{Reflections on reflection for \\ intuitionistic set theories}
+\title[Reflections on reflection for intuitionistic set theories]{Reflections on reflection for \\ intuitionistic set theories}
 \author{}
 \email{}
 
@@ -145,8 +146,8 @@ distinguished from its initial segments by any set-theoretical property.
 Practically, it allows to
 transfer results obtained for a restricted class of objects to all such
 objects. For instance, if we manage to verify (the $S$-relativization of) some
-group-theoretic statement for all groups contained in an arbitrary set~$X$,
-then we may deduce by the reflection principle that the statement holds
+group-theoretic statement for all groups contained in an arbitrary set~$S$,
+then we may deduce that the statement holds
 for all groups in the universe. Examples from sheaf cohomology and more
 generally category theory abound; an example from set theory is presented in
 Proposition~\ref{prop:zf-rrs2}.
@@ -416,7 +417,7 @@ Aczel's $\RRS$ should not in itself be regarded as a choice principle; however i
 its presence, ordinary~$\DC$ entails~$\RDC$. This result is due to
 Aczel~\cite[Theorem~2.4]{aczel:rrs}, who proved the equivalence~$\RDC = \RRS +
 \DC$ over~$\CZF^-$, and we give a new proof of this equivalence over the
-stronger theory~$\IZF$, in Section~\ref{sect:appl-rdc}.
+stronger theory~$\IZF$ in Section~\ref{sect:appl-rdc}.
 
 The axiom scheme~$\RRS_2$ does not appear to have been studied much. Apart from
 the PhD thesis by Ziegler~\cite{ziegler:phd}, where it is called the
@@ -607,8 +608,7 @@ theory. Then~$\IZF+\RRS_2$ proves
 \[ \forall M\_
   \exists S \supseteq M\_
   \forall x_1,\ldots,x_n \in S\_
-  \varphi(x_1,\ldots,x_n) \Leftrightarrow \varphi^S(x_1,\ldots,x_n), \]
-where~$\varphi^S$ is the~$S$-relativization of~$\varphi$.
+  \varphi(x_1,\ldots,x_n) \Leftrightarrow \varphi^S(x_1,\ldots,x_n). \]
 Furthermore, the resulting set~$S$ may be supposed to be transitive and to be closed
 under subsets; and given not a single formula~$\varphi$ but a finite
 list~$\varphi_1,\ldots,\varphi_s$ of formulas, we may suppose that~$S$ reflects
@@ -743,7 +743,7 @@ by~$\PRA$.
 
 An alternative is offered by~$\ZFCI$, $\ZFC$ plus the existence of a
 strongly inaccessible cardinal. In this system, there is a Grothendieck
-universe~$U$; we can form the category~$\Set_U$ of all sets of~$U$ as an honest
+universe~$U$; we can form the category~$\Set_U$ of all sets in~$U$ as an honest
 set; can define truth in~$\Set_U$; and prove, within the system, that for any
 formula~$\varphi$, $(\Set_U \models \varphi) \Leftrightarrow (U \models
 \varphi)$. This even holds for formulas of the full infinitary language of
@@ -752,7 +752,7 @@ extended language could not be treated by resorting to~$\PRA$ as indicated above
 
 However, truth in a Grothendieck universe~$U$ need not be related to actual
 truth. A solution to this problem is provided by~$\ZFCS$ and by~$\ES$. In these systems, we can
-form the topos~$\Set_\SS$, define truth in it, prove for all formulas~$\varphi$
+form the topos~$\Set_\SS$ of all sets in~$\SS$, define truth in it, prove for all formulas~$\varphi$
 that~$(\Set_\SS \models \varphi) \Leftrightarrow (\SS \models \varphi)$; and
 reflection for~$\SS$ ensures that for each (external, standard)
 formula~$\varphi$, the system proves~``$(\Set_\SS \models \varphi)

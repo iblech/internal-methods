@@ -63,7 +63,6 @@
 \newcommand{\op}{\mathrm{op}}
 \DeclareMathOperator{\Spec}{Spec}
 \DeclareMathOperator{\Hom}{Hom}
-\DeclareMathOperator{\Mod}{Mod}
 \DeclareMathOperator{\Sh}{Sh}
 \DeclareMathOperator{\PSh}{PSh}
 \DeclareMathOperator{\rank}{rank}
@@ -81,6 +80,8 @@
 \renewcommand{\ul}[1]{\text{\oldul{$#1$}}}
 \newcommand{\affl}{\ensuremath{{\ul{\AA}^1}}\xspace}
 \newcommand{\speak}[1]{\ulcorner\text{\textnormal{#1}}\urcorner}
+\newcommand{\brak}[1]{\llbracket #1 \rrbracket}
+\newcommand{\Mod}[1]{{#1}\mathrm{\text{-}mod}}
 
 \newcommand{\stacksproject}[1]{\cite[{\href{https://stacks.math.columbia.edu/tag/#1}{Tag~#1}}]{stacks-project}}
 
@@ -305,6 +306,8 @@ the relation~$f(X) = 0$, the relation~$g([X]) = 0$ holds. Hence we obtain
     (\forall x \? U_\TT\_ f(x) = 0 \Rightarrow g(x) = 0) \Longleftrightarrow
       \exists h \in U_\TT[X]\_ g = hf\bigr). \]
 
+In case that~$\TT$ is the quotient of a Horn theory XXX
+
 Theorem~\ref{thm:nullstellensatz0} is a source of nongeometric sequents. Indeed,
 it is the universal such source in the sense that any first-order formula
 holding for~$U_\TT$ can be deduced from~\eqref{eq:nullstellensatz}:
@@ -321,6 +324,7 @@ scheme~\eqref{eq:nullstellensatz}.
 \end{enumerate}
 \end{thm}
 
+
 \paragraph{Acknowledgments} XXX
 
 
@@ -328,7 +332,132 @@ scheme~\eqref{eq:nullstellensatz}.
 
 \section{Proofs of the main theorems}
 
+The following lemma shows that for coherent theories, there is no difference
+between provability and provability$^*$.
+
+\begin{lemma}Let~$\E$ be a Grothendieck topos. Let~$\TT$ be a coherent theory
+internal to~$\E$. Let~$\sigma$ be a coherent sequent over the signature
+of~$\TT$. Then the following statements are equivalent.
+\begin{enumerate}
+\item $\E \models \speak{There is a~$\TT$-derivation of~$\sigma$ of externally
+finite shape}.$
+\item $\E \models \speak{There is a~$\TT$-derivation of~$\sigma$ of arbitrary
+external shape}.$
+\item $\E \models \speak{There is a~$\TT$-derivation of~$\sigma$ of arbitrary
+internal shape}.$
+\item $\E \models \speak{There is a~$\TT$-derivation of~$\sigma$ of internally
+finite shape}.$
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}It is obvious that~(1) implies~(2) implies~(3).
+
+To verify that~(3) implies~(4), we can mimick the usual proof of this fact in
+the internal language of~$\E$: One can construct a variant of the syntactic
+site of~$\TT$ which is built using only coherent sequents and finitary
+derivability~\cite[Section~1.4]{caramello:tst}. The sheaf topos over this site
+is another model for the classifying topos of~$\TT$. If~$\sigma$
+is~$\TT$-derivable by a proof tree of arbitrary shape, then~$\sigma$ holds in
+this model of the classifying topos. By the analogue of
+Proposition~\ref{prop:classifying-topos} for this model, we obtain
+that~$\sigma$ is~$\TT$-derivable by a proof tree of finite shape.
+
+That~(4) implies~(1) is a routine exercise exploiting that
+\[ \E \models \forall X\_ \speak{$X$ is Kuratowski-finite} \Leftrightarrow
+  \bigvee_{n \geq 0} \exists x_1,\ldots,x_n \? X\_
+  \forall x \? X\_ \bigvee_{i=1}^n x = x_i. \]
+\end{proof}
+
+
 \section{The special case of Horn theories}
+
+Throughout this section, let~$\TT$ be a Horn theory.
+
+\begin{lemma}\label{lemma:free-models}
+Let~$X$ be a set equipped with a morphism~$X \to S$ to the set of sorts
+of the signature~$\Sigma$ of~$\TT$. Let~$R$ be a set of atomic propositions in which the
+elements of~$X$ may appear as new constants of the respective sorts. Then there
+is~$\TT\langle X | R \rangle$, the free~$\TT$-model on the generators~$X$ modulo
+the relations~$R$.\end{lemma}
+
+\begin{proof}The desired model can be constructed as a term algebra. As a set,
+it consists of the terms (in the empty context) of the signature~$\Sigma + X$
+modulo the equivalence relation identifying two terms if and only if~$\TT + R$
+proves them to be equal. The function symbols~$f$ of~$\Sigma$ are interpreted
+by declaring~$\brak{f}([t_1],\ldots,[t_n]) = [f(t_1,\ldots,t_n)]$ and the
+relation symbols~$R$ are interpreted by declaring~$([t_1],\ldots,[t_n]) \in
+\brak{S} \Leftrightarrow (\TT + R \vdash S(t_1,\ldots,t_n))$.
+
+We omit the required verifications and only remark that while the same
+construction can be carried out if~$\TT$ is a general geometric theory, the
+resulting object would in general not be a model of~$\TT$.
+\end{proof}
+
+\begin{lemma}The category of~$\TT$-models is complete and
+cocomplete.\end{lemma}
+
+\begin{proof}Limits are computed as the limits of the underlying sets, colimits
+are computed by using the construction of Lemma~\ref{lemma:free-models}. For
+instance, the coproduct of~$\TT\langle X | R \rangle$ and~$\TT\langle X' | R'
+\rangle$ is~$\TT\langle X \amalg X' \,|\, R, R' \rangle$.\end{proof}
+
+Having the special case of the theory of rings in mind, we write the coproduct
+in the category of~$\TT$-models as~``$\otimes$''.
+
+\begin{lemma}Let~$\sigma = (\varphi_1 \wedge \cdots \wedge \varphi_n
+\seq{x_1,\ldots,x_k} \psi_1 \wedge \cdots \wedge \psi_m)$ be a Horn sequent
+over the signature of~$\TT$. Then the following statements are equivalent.
+\begin{enumerate}
+\item The theory~$\TT$ proves~$\sigma$.
+\item In~$\TT\langle x_1,\ldots,x_k | \varphi_1,\ldots,\varphi_n \rangle$, the
+propositions~$\psi_1,\ldots,\psi_m$ hold for
+the~$k$-tuple~$([x_1],\ldots,[x_k])$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}By construction of the term algebra.\end{proof}
+
+\begin{lemma}A~$\TT$-model is a finitely presented object of the category
+of~$\TT$-models if and only if it is isomorphic to a model of the
+form~$\TT\langle X | R \rangle$ where~$X$ is Bishop-finite and~$R$ is
+Kuratowski-finite.
+\end{lemma}
+
+\begin{proof}It is an instructive exercise to verify that models of the stated
+form are compact. Conversely, let a~$\TT$-model~$M$ be given. Then~$\TT$ is the
+filtered colimit of all models over~$M$ which are of the stated form. If~$M$ is
+compact, the identity on~$M$ factors over such a model. Hence~$M$ is a
+retract of such a model and hence itself isomorphic to a model of this form.
+\end{proof}
+
+% Set[T] einführen
+
+Any~$\TT$-model~$A$ has a mirror image in the topos~$\Set[\TT]$, namely the
+functor~$A^\sim : \Mod{\TT}_\mathrm{fp} \to \Set$ given by~$T \mapsto A \otimes T$.
+This object is in a canonical way a~$\TT$-model over~$U_\TT$, hence from the
+point of view of~$\Set[\TT]$ a~$\ul{\TT}/U_\TT$-model.
+
+\begin{lemma}The functor~$(\cdot)^\sim$ from~$\TT$-models to~$\ul{\TT}/U_\TT$-models
+in~$\Set[\TT]$ is left adjoint to functor~$\Gamma = \Hom(1, \cdot)$ computing
+global elements.
+\end{lemma}
+
+\begin{proof}An~$U_\TT$-algebra-homomorphism~$\alpha : A^\sim \to M$ yields
+the~$\TT$-model-homo\-mor\-phism~$\alpha_0 : A \to M(0) = \Gamma(M)$, where~$0$ is the
+initial~$\TT$-model. Conversely, a~$\TT$-model-homomorphism~$\beta : A \to
+\Gamma(M)$ yields an~$U_\TT$-algebra-homomorphism by summing~$A \to M(0) \to
+M(T)$ with the structure morphism~$T = U_\TT(T) \to
+M(T)$.\end{proof}
+
+\begin{defn}The \emph{spectrum}~$\Spec(M)$ of a~$U_\TT$-algebra~$M$ in~$\Set[\TT]$
+is the result of constructing, internally to~$\Set[\TT]$, the set
+of~$U_\TT$-algebra-homomorphisms~$M \to U_\TT$.
+\end{defn}
+
+Externally, the spectrum of~$M$ is the functor
+mapping a finitely presented~$\TT$-model~$T$ to~$\Hom_T(M(T), T)$, the set
+of~$\TT$-homomorphisms~$M(T) \to T$ compatible with the structure morphisms~$T
+\to M(T)$ and~$T \to T$.
 
 \section{Applications}
 

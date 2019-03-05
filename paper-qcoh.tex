@@ -120,7 +120,7 @@ coincide: \begin{enumerate} \item The sequent~$\sigma$ is provable
 modulo~$\TT$. \item The sequent~$\sigma$ holds for any~$\TT$-model in any
 Grothendieck topos. \item The sequent~$\sigma$ holds for~$U_\TT$.
 \end{enumerate} One could argue that it is this model which mathematicians
-implicitly refer to when they utter ``Let~$M$ be a~$\TT$-model.''. It can
+implicitly refer to when they utter the phrase ``Let~$M$ be a~$\TT$-model.''. It can
 typically not be realized as a set-theoretic model, consisting of a set for
 each sort, a function for each function symbol and so on; instead it is a model
 in a custom-tailored syntactically constructed Grothendieck topos, the
@@ -157,7 +157,7 @@ functor which maps any (l.o.f.p.) scheme~$X$ to~$\Hom(X,\mathbb{A}^1) =
 
 From the point of view of the topos, the ring object~$\affl$ is not only a
 local ring, but even a field in the sense that
-\[ \text{any nonzero element is invertible}. \]
+any nonzero element is invertible.
 As this condition is of nongeometric form, it is not inherited by arbitrary
 local rings, which are indeed typically not fields. However, any intuitionistic
 consequence of this condition which is of geometric form is inherited
@@ -180,19 +180,19 @@ arbitrary base scheme have been found~\cite[Section~18.4]{blechschmidt:phd}. The
 \begin{itemize}
 \item $\affl$ is \emph{anonymously algebraically closed} in the sense that
 any monic polynomial~$p \? \affl[T]$ of degree at least one does \notnot have a
-zero.
-\item $\affl$ fulfills the following version of the Nullstellensatz:
+zero. \smallskip
+\item The Nullstellensatz holds:
 Let $f_1,\ldots,f_m \in \affl[X_1,\ldots,X_n]$ be polynomials without a common
 zero in~$(\affl)^n$. Then there are polynomials~$g_1,\ldots,g_m \in
-\affl[X_1,\ldots,X_n]$ such that~$\sum_i g_i f_i = 1$.
-\item Any function~$\affl \to \affl$ is given by a unique polynomial.
-\item $\affl$ fulfills the axiom of microaffinity: Let~$\Delta = \{ \varepsilon \?
+\affl[X_1,\ldots,X_n]$ such that~$\sum_i g_i f_i = 1$. \smallskip
+\item Any function~$\affl \to \affl$ is given by a unique polynomial. \smallskip
+\item $\affl$ is microaffine: Let~$\Delta = \{ \varepsilon \?
 \affl \,|\, \varepsilon^2 = 0 \}$. Let~$f : \Delta \to \affl$ be an arbitrary
 function. Then there are unique elements~$a, b \? \affl$ such
-that~$f(\varepsilon) = a + b \varepsilon$ for all~$\varepsilon \? \Delta$.
-\item $\affl$ is \emph{synthetically quasicoherent} in the sense that for any
+that~$f(\varepsilon) = a + b \varepsilon$ for all~$\varepsilon \? \Delta$. \smallskip
+\item $\affl$ is \emph{synthetically quasicoherent}: For any
 finitely presented~$\affl$-algebra~$A$, the canonical homomorphism~$A \to
-(\affl)^{\Spec(A)}$, where~$\Spec(A)$ is defined to be the set
+(\affl)^{\Spec(A)}$, where~$\Spec(A)$ is defined as the set
 of~$\affl$-algebra-homomorphisms~$A \to \affl$, is bijective.
 \end{itemize}
 All of these nongeometric sequents are useful for the purposes of synthetic
@@ -234,23 +234,36 @@ out to be true, in the sense we will now make precise.
 \paragraph{A general Nullstellensatz} To explain the relevant background, the
 somewhat vague question ``to which extent does the classifying
 topos~$\Set[\TT]$ realize that it is the classifying topos for~$\TT$?'' is a
-useful guiding principle.
+useful guiding principle. This is easiest to visualize with a concrete example
+for~$\TT$, such as the theory of rings.
 
-From the point of view of~$\Set[\TT]$, the model~$U_\TT$ is an ordinary
-set-theoretic model. While in general properties of a specific set-theoretic
-model do not follow solely from the axioms of the theory, it is on first sight
-conceivable that this could be true for~$U_\TT$. That it, is is reasonable to
-wonder whether
-\[ \Set[\TT] \models \speak{a geometric sequent~$\sigma$ holds for~$U_\TT$ iff~$\ul{\TT}$ proves~$\sigma$} \]
-holds.\footnote{Here~$\ul{\TT}$ is the internal geometric theory induced
+Let~$A$ be a ring. A simple version of the classical Nullstellensatz states:
+\emph{For any polynomials~$f$ and~$g$ over~$A$, if any zero of~$f$ is also a
+zero of~$g$, then there is a polynomial~$h$ such that~$g = hf$.} The
+polynomial~$h$ can be regarded as an ``algebraic certificate'' of the
+hypothesis. This principle holds for instance in the case that~$A$ is an
+algebraically closed field and that~$g$ is the unit polynomial. It is also
+true, without any restriction on~$g$, for the generic ring.
+
+We could try to generalize the Nullstellensatz to arbitrary geometric theories~$\TT$ as
+follows. \emph{For any geometric sequent~$\sigma$, if~$\sigma$ holds for a
+given~$\TT$-model~$M$ then~$\sigma$ is provable modulo~$\TT$.} In place of the
+algebraic certificate we now have a logical certificate, a \emph{proof}
+of~$\sigma$. However, this generalized statement is typically false, even for
+the generic model~$U_\TT$: The statement
+\begin{multline*}
+  \qquad\qquad\qquad\Set[\TT] \models \ulcorner\text{for any geometric sequent~$\sigma$,} \\
+    \text{if~$\sigma$ holds for~$U_\TT$ then~$\ul{\TT}$
+    proves~$\sigma$}\urcorner\qquad\qquad\qquad
+\end{multline*}
+does not hold.\footnote{Here~$\ul{\TT}$ is the internal geometric theory induced
 by~$\TT$, obtained by pulling back the set of sorts, the set of function
-symbols and so on along the geometric morphism~$\Set[\TT] \to \Set$. More
-details will be given in Section~\ref{sect:review}. The corner quotes indicate
+symbols and so on along the geometric morphism~$\Set[\TT] \to \Set$. For
+instance, if~$\TT$ is the theory of rings, then from the internal point of view
+of~$\Set[\TT]$ the theory~$\ul{\TT}$ will again be the theory of rings.
+More details will be given in Section~\ref{sect:review}. The corner quotes indicate
 that for sake of readability, the translation into formal language is to be
-carried out by the reader.} While the ``if'' direction
-certainly holds (observing that the generic model~$U_\TT$ is, from the point of
-view of~$\Set[\TT]$, a model of~$\ul{\TT}$), the ``only if'' direction
-typically fails.
+carried out by the reader.}
 
 For instance, let~$\TT$ be the theory of rings and let~$\sigma$ be
 the sequent~$(\top \vdash 1 + 1 = 0)$. Since there is an intuitionistic proof
@@ -262,46 +275,53 @@ point of view. In fact, this statement holds in a nontrivial slice
 of~$\Set[\TT]$, the open subtopos coinciding with the classifying topos of
 the theory of rings of characteristic two.
 
-Intuitively, the problem is that while the meaning of~$\speak{$\ul{\TT} \vdash
-\sigma$}$ is fixed, the meaning of~$\speak{$\sigma$ holds for~$U_\TT$}$ can vary
+Intuitively, the problem is that while the meaning of~$\speak{$\ul{\TT}$
+proves~$\sigma$}$ is fixed, the meaning of~$\speak{$\sigma$ holds for~$U_\TT$}$ can vary
 with the slice. This problem can be solved by passing from~$\ul{\TT}$ to a
-varying theory, the internal theory~$\ul{\TT}/U_\TT$ defined below.
+varying theory, the internal theory~$\ul{\TT}/U_\TT$ defined in
+Section~\ref{sect:main}. If~$\TT$ is the theory of rings, then~$\ul{\TT}/U_\TT$
+is the~$\Set[\TT]$-theory of~$U_\TT$-algebras.
 Unlike~$\ul{\TT}$, this theory is not the pullback of an external geometric
-theory.
+theory. We then have, subject to some qualifications made precise in
+Section~\ref{sect:main}:
 
-\begin{defn}Let~$\TT$ be a geometric theory. The theory~$\ul{\TT}/U_\TT$ is the
-geometric theory internal to~$\Set[\TT]$ which arises from~$\ul{\TT}$
-by adding additional constant symbols~$e_x$, one for each
-element~$x : U_\TT$, axioms~$(\top \vdash f(e_{x_1},\ldots,e_{x_n}) =
-e_{f(x_1,\ldots,x_n)})$ for each function symbol~$f$ and~$n$-tuple of elements
-of~$U_\TT$, and axioms~$(\top \vdash R(e_{x_1},\ldots,e_{x_n}))$ for each
-relation symbol~$R$ and~$n$-tuple~$(e_{x_1},\ldots,e_{x_n})$ such
-that~$R(e_{x_1},\ldots,e_{x_n})$ holds for~$U_\TT$.
-\end{defn}
-
-From the point of view of~$\Set[\TT]$, a model of~$\ul{\TT}/U_\TT$ is a model
-of~$\ul{\TT}$ equipped with a~$\ul{\TT}$-homomorphism from~$U_\TT$. In
-particular, the identity~$(U_\TT \to U_\TT)$ is a model of~$\ul{\TT}/U_\TT$.
-
-\begin{thm}Let~$\TT$ be a geometric theory. Then, internally to~$\Set[\TT]$:
-\begin{quote}
-A geometric sequent~$\sigma$ over the signature of~$\ul{\TT}/U_\TT$ holds
-for~$U_\TT$ if and only if~$\ul{\TT}/U_\TT$ proves~$\sigma$.
-\end{quote}
+\begin{thm}\label{thm:nullstellensatz0}
+Let~$\TT$ be a geometric theory. Then, internally to~$\Set[\TT]$:
+\begin{equation}\tag{$\ddagger$}\label{eq:nullstellensatz}
+\text{A geometric$^*$ sequent~$\sigma$ holds for~$U_\TT$ if and only
+if~$\ul{\TT}/U_\TT$ proves$^*$~$\sigma$.}
+\end{equation}
 \end{thm}
 
-\begin{thm}Let~$\TT$ be a geometric theory. Let~$\alpha$ be a first-order
+To illustrate Theorem~\ref{thm:nullstellensatz0}, let~$\TT$ be the theory of
+rings and let~$\sigma$ be of the form~$(f(x) = 0 \seq{x} g(x) = 0)$ for some
+polynomials~$f$ and~$g$. To say that~$\sigma$ holds for~$U_\TT$ amounts to
+saying that any zero~$x \? U_\TT$ of~$f$ is also a zero of~$g$, and to say
+that~$\ul{\TT}/U_\TT$ proves~$\sigma$ amounts to saying that
+in~$U_\TT[X]/(f(X))$, the free~$U_\TT$-algebra on one generator~$X$ subject to
+the relation~$f(X) = 0$, the relation~$g([X]) = 0$ holds. Hence we obtain
+\[ \Set[\TT] \models
+  \forall f,g \? U_\TT[X]\_ \bigl(
+    (\forall x \? U_\TT\_ f(x) = 0 \Rightarrow g(x) = 0) \Longleftrightarrow
+      \exists h \in U_\TT[X]\_ g = hf\bigr). \]
+
+Theorem~\ref{thm:nullstellensatz0} is a source of nongeometric sequents. Indeed,
+it is the universal such source in the sense that any first-order formula
+holding for~$U_\TT$ can be deduced from~\eqref{eq:nullstellensatz}:
+
+\begin{thm}\label{thm:characterization0}
+Let~$\TT$ be a geometric theory. Let~$\alpha$ be a first-order
 formula over the signature of~$\TT$. Then the following statements are
 equivalent.
 \begin{enumerate}
 \item The formula~$\alpha$ holds for~$U_\TT$.
 \item The formula~$\alpha$ is provable in first-order intuitionistic logic
-modulo the axioms of~$\TT$ and the additional axioms
-\[ \sigma \quad\Longleftrightarrow\quad
-  \ul{\TT}/U \vdash' \sigma \]
-where~$\sigma$ ranges over all geometric sequents.
+modulo the axioms of~$\TT$ and the additional axiom
+scheme~\eqref{eq:nullstellensatz}.
 \end{enumerate}
 \end{thm}
+
+\paragraph{Acknowledgments} XXX
 
 
 \section{Background on classifying toposes}
@@ -334,3 +354,72 @@ where~$\sigma$ ranges over all geometric sequents.
 
 * Cite https://docplayer.net/55796150-Intuitionistic-algebra-some-recent-developments-in-topos-theory.html
   (in general and for internal theories)
+
+\begin{defn}Let~$\TT$ be a geometric theory. The theory~$\ul{\TT}/U_\TT$ is the
+geometric theory internal to~$\Set[\TT]$ which arises from~$\ul{\TT}$
+by adding additional constant symbols~$e_x$, one for each
+element~$x : U_\TT$, axioms~$(\top \vdash f(e_{x_1},\ldots,e_{x_n}) =
+e_{f(x_1,\ldots,x_n)})$ for each function symbol~$f$ and~$n$-tuple of elements
+of~$U_\TT$, and axioms~$(\top \vdash R(e_{x_1},\ldots,e_{x_n}))$ for each
+relation symbol~$R$ and~$n$-tuple~$(e_{x_1},\ldots,e_{x_n})$ such
+that~$R(e_{x_1},\ldots,e_{x_n})$ holds for~$U_\TT$.
+\end{defn}
+
+From the point of view of~$\Set[\TT]$, a model of~$\ul{\TT}/U_\TT$ is a model
+of~$\ul{\TT}$ equipped with a~$\ul{\TT}$-homomorphism from~$U_\TT$. In
+particular, the identity~$(U_\TT \to U_\TT)$ is a model of~$\ul{\TT}/U_\TT$.
+We then have:
+
+% We would not expect the statement
+% \[ \text{``for any geometric sequent~$\sigma$, if~$\sigma$ holds for~$A$
+% then the theory of rings proves~$\sigma$''} \]
+% to hold for an ordinary ring~$A$ in the topos of sets.
+%
+% Let~$M$ be a~$\TT$-model. We then trivially have
+% signature of~$\TT$. While we always have the implication
+% \[ \text{$\TT$ proves~$\sigma$} \quad\Longrightarrow\quad
+%   \text{$\sigma$ holds for~$M$}, \]
+% the converse is of course typically false,
+%
+% Furthermore, in a first introduction, it is useful to
+% restrict to an instructive special case, such as the theory of (commutative) rings.
+%
+% A simple version of the classical Nullstellensatz, valid for algebraically
+% closed fields, states: Let~$f \in A[X]$ be a polynomial. If
+% \[ \forall x \in A\_ (f(x) = 0 \in A \Rightarrow 1 = 0 \in A), \]
+% then there is a polynomial~$g \in A[X]$ such that~$gf = 1$. This polynomial~$g$
+% can be regarded as an ``algebraic certificate'' that the equation~$f(x) = 0$
+% only has a solution in the trivial case~$1 = 0$. The conclusion can also be phrased as
+% follows: In the free~$A$-algebra on one generator modulo the relation~$f(X) =
+% 0$, the relation~$1 = 0$ holds.
+%
+% Let~$A$ be a specific ring. Let~$f,g \in \ZZ[X]$ be
+% polynomials. While we always have the implication
+% \[ g([X]) = 0 \in \ZZ[X]/(f) \quad\Longrightarrow\quad
+%   \forall x \in A\_ (f(x) = 0 \Rightarrow g(x) = 0), \]
+% the converse is typically false: Just that~$g(x) = 0$ holds for every zero
+% of~$f$ in~$A$ does not imply that~$g([X]) = 0$ holds for the generic zero
+% of~$f$ in the free ring on one generator~$X$ modulo the relation~$f(X) = 0$.
+%
+%
+% the case that~$\TT$ is a Horn theory (where the axioms are of the
+% form~$(\phi \seq{\vec x} \psi)$ with the formulas~$\phi$ and~$\psi$ being
+% finite conjunctions of atomic propositions (equality and the given relations)),
+% such that we can switch from a logical terminology to a more algebraic one.
+% In the Horn case, for any set~$X$ and any set~$R$ of atomic propositions the
+% term algebra construction yields~$\TT\langle X | R\rangle$, the
+% free~$\TT$-model generated by~$X$ modulo the relations~$R$. We will also abuse
+% notation to pretend that~$\TT$ is single-sorted.
+%
+% Let~$M$ be a specific~$\TT$-model and assume that for
+% all~$n$-tuples~$x = (x_1,\ldots,x_n)$ of elements of~$M$, if some set~$R_1$ of
+% atomic propositions is satisfied for~$x$ then so is some set~$R_2$. In this
+% case it is unreasonable to expect that~$R_2$ holds for the~$n$-tuple of
+% generators of~$\TT\langle e_1,\ldots,e_n | R_1\rangle$.
+%
+% let~$R_1$ and~$R_2$ be sets of atomic
+% propositions with~$n$ free variables. Then
+% and assume, for some sets of relations~$R_1$
+% and~$R_2$
+%
+% The term algebra of a Horn theory~$\TT$ is always a model of~$\TT$, such that

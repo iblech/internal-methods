@@ -1,0 +1,336 @@
+\documentclass[oneside,reqno]{amsart}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsthm,mathtools,stmaryrd,amssymb,graphicx}
+\usepackage{booktabs}
+\usepackage[all]{xy}
+\usepackage[protrusion=true,expansion=true]{microtype}
+\usepackage{xspace}
+
+\usepackage[natbib=true,style=numeric,maxnames=10]{biblatex}
+\usepackage[babel]{csquotes}
+\bibliography{paper-qcoh.bib}
+
+\title{A general Nullstellensatz for generalized spaces}
+\author{Ingo Blechschmidt}
+\email{ingo.blechschmidt@univr.it}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{ex}[defn]{Example}
+
+\theoremstyle{plain}
+\newtheorem{prop}[defn]{Proposition}
+\newtheorem{cor}[defn]{Corollary}
+\newtheorem{lemma}[defn]{Lemma}
+\newtheorem{thm}[defn]{Theorem}
+\newtheorem{scholium}[defn]{Scholium}
+
+\theoremstyle{remark}
+\newtheorem{rem}[defn]{Remark}
+\newtheorem{question}[defn]{Question}
+\newtheorem{speculation}[defn]{Speculation}
+\newtheorem{caveat}[defn]{Caveat}
+\newtheorem{conjecture}[defn]{Conjecture}
+
+\newenvironment{indentblock}{%
+  \list{}{\leftmargin\leftmargin}%
+  \item\relax
+}{%
+  \endlist
+}
+
+\newcommand{\xra}[1]{\xrightarrow{#1}}
+\newcommand{\aaa}{\mathfrak{a}}
+\newcommand{\bbb}{\mathfrak{b}}
+\newcommand{\mmm}{\mathfrak{m}}
+\newcommand{\I}{\mathcal{I}}
+\newcommand{\J}{\mathcal{J}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\B}{\mathcal{B}}
+\renewcommand{\AA}{\mathbb{A}}
+\newcommand{\EE}{\mathbb{E}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\TT}{\mathbb{T}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\renewcommand{\SS}{\mathbb{S}}
+\renewcommand{\P}{\mathcal{P}}
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\op}{\mathrm{op}}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Mod}{Mod}
+\DeclareMathOperator{\Sh}{Sh}
+\DeclareMathOperator{\PSh}{PSh}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\length}{length}
+\DeclareMathOperator{\List}{List}
+\newcommand{\Set}{\mathrm{Set}}
+\newcommand{\Eff}{\mathrm{Ef{}f}}
+\renewcommand{\_}{\mathpunct{.}\,}
+\newcommand{\effective}{ef{}fective\xspace}
+\newcommand{\?}{\,{:}\,}
+\newcommand{\realizes}{\Vdash}
+\newcommand{\notnot}{\emph{not~not}\xspace}
+\usepackage{soul}\setul{0.3ex}{}
+\let\oldul\ul
+\renewcommand{\ul}[1]{\text{\oldul{$#1$}}}
+\newcommand{\affl}{\ensuremath{{\ul{\AA}^1}}\xspace}
+\newcommand{\speak}[1]{\ulcorner\text{\textnormal{#1}}\urcorner}
+
+\newcommand{\stacksproject}[1]{\cite[{\href{https://stacks.math.columbia.edu/tag/#1}{Tag~#1}}]{stacks-project}}
+
+\renewcommand{\paragraph}[1]{\noindent\textbf{#1.}}
+
+\newcommand{\ZFC}{\textsc{zfc}}
+
+\newcommand{\seq}[1]{\mathrel{\vdash\!\!\!_{#1}}}
+
+\begin{document}
+
+\begin{abstract}
+  We give a general Nullstellensatz for the generic model of a
+  geometric theory, useful as a source of nongeometric sequents validated by
+  the generic model, and characterize the first-order formulas validated by the
+  genetric model. XXX
+\end{abstract}
+
+\maketitle
+\thispagestyle{empty}
+
+\section{Introduction}
+
+\paragraph{Generic models} Let~$\TT$ be a geometric theory, such as the theory
+of rings, local rings or intervals. We follow Caramello's
+terminology~\cite{caramello:tst} to mean by \emph{geometric theory} a system
+given by a set of sorts, a set of finitary function symbols, a set of finitary
+relation symbols and a set of axioms, consisting of geometric sequents
+(sequents of the form~$\varphi \seq{\vec x} \psi$ where~$\varphi$ and~$\psi$
+are geometric formulas, that is formulas built from equality and the relation
+symbols by the logical connectives~${\top}\,{\bot}\,{\wedge}\,{\vee}\,{\exists}$
+and by arbitrary set-indexed disjunctions~$\bigvee$).
+
+A fundamental result is that there is a \emph{generic model}~$U_\TT$ of~$\TT$,
+a model such that for any geometric sequent~$\sigma$, the following notions
+coincide: \begin{enumerate} \item The sequent~$\sigma$ is provable
+modulo~$\TT$. \item The sequent~$\sigma$ holds for any~$\TT$-model in any
+Grothendieck topos. \item The sequent~$\sigma$ holds for~$U_\TT$.
+\end{enumerate} One could argue that it is this model which mathematicians
+implicitly refer to when they utter ``Let~$M$ be a~$\TT$-model.''. It can
+typically not be realized as a set-theoretic model, consisting of a set for
+each sort, a function for each function symbol and so on; instead it is a model
+in a custom-tailored syntactically constructed Grothendieck topos, the
+\emph{classifying topos}~$\Set[\TT]$ of~$\TT$, hence consists of an object
+of~$\Set[\TT]$ for each sort, a morphism for each function symbol and so on.
+
+To state what it means for a~$\TT$-structure in a topos~$\E$ to verify the
+axioms of~$\TT$, rendering it a model, the \emph{internal language} of~$\E$ is
+used, roughly reviewed in Section~\ref{sect:review} below. We write~``$\E
+\models \alpha$'' to mean that the statement~$\alpha$ holds from the internal
+point of view of~$\E$. Since this language is a form of a higher-order
+dependently-typed intuitionistic logic, the classifying topos~$\Set[\TT]$ can
+be regarded as a higher-order completion of the geometric theory~$\TT$. The
+generic model enjoys the universal property that any~$\TT$-model in any
+(Grothendieck) topos~$\E$ is the pullback of~$U_\TT$ along an essentially
+unique geometric morphism~$\E \to \Set[\TT]$.
+\medskip
+
+\paragraph{Nongeometric sequents} Crucially, the
+equivalence~$(1)\Leftrightarrow(2)\Leftrightarrow(3)$ relating
+provability and truth in~$\Set[\TT]$ only pertains to geometric sequents. The
+generic model may validate additional nongeometric sequents which are not
+provable from the axioms of~$\TT$ in first-order or even higher-order logic,
+and these nongeometric sequents may be quite surprising and have useful
+consequences.
+
+One of the most celebrated such sequents arises in the case that~$\TT$ is the
+theory of local rings. In this case, the classifying topos~$\Set[\TT]$ is also
+known as the \emph{big Zariski topos} of~$\Spec(\ZZ)$ from algebraic geometry,
+the topos of sheaves over the site of schemes locally of finite presentation,
+and the generic model is the functor~$\affl$ of points of the affine line, the
+functor which maps any (l.o.f.p.) scheme~$X$ to~$\Hom(X,\mathbb{A}^1) =
+\O_X(X)$.
+
+From the point of view of the topos, the ring object~$\affl$ is not only a
+local ring, but even a field in the sense that
+\[ \text{any nonzero element is invertible}. \]
+As this condition is of nongeometric form, it is not inherited by arbitrary
+local rings, which are indeed typically not fields. However, any intuitionistic
+consequence of this condition which is of geometric form is inherited
+by any local ring in any topos. Hence we may, when verifying a general fact
+about local rings, suppose without loss of generality that the given ring is a
+field. This observation is due to Kock~\cite{kock:univ-proj-geometry}, who exploited it to
+develop projective geometry over local rings, and was further used by Reyes to
+prove a Jacobian criterion for étale morphisms~\cite{reyes:cramer}.
+
+A related nongeometric sequent is valid in the little Zariski topos of the
+spectrum of a ring~$A$, the classifying topos of local localizations of~$A$.
+If~$A$ is reduced, the generic model validates the dual condition that any
+noninvertible element is zero. This property has been used to give a short and
+even constructive proof of Grothendieck's generic freeness lemma,
+substantially improving on previously published
+proofs~\cite{blechschmidt:generic-freeness}.
+
+In time, further nongeometric sequents holding in the big Zariski topos of an
+arbitrary base scheme have been found~\cite[Section~18.4]{blechschmidt:phd}. These include:
+\begin{itemize}
+\item $\affl$ is \emph{anonymously algebraically closed} in the sense that
+any monic polynomial~$p \? \affl[T]$ of degree at least one does \notnot have a
+zero.
+\item $\affl$ fulfills the following version of the Nullstellensatz:
+Let $f_1,\ldots,f_m \in \affl[X_1,\ldots,X_n]$ be polynomials without a common
+zero in~$(\affl)^n$. Then there are polynomials~$g_1,\ldots,g_m \in
+\affl[X_1,\ldots,X_n]$ such that~$\sum_i g_i f_i = 1$.
+\item Any function~$\affl \to \affl$ is given by a unique polynomial.
+\item $\affl$ fulfills the axiom of microaffinity: Let~$\Delta = \{ \varepsilon \?
+\affl \,|\, \varepsilon^2 = 0 \}$. Let~$f : \Delta \to \affl$ be an arbitrary
+function. Then there are unique elements~$a, b \? \affl$ such
+that~$f(\varepsilon) = a + b \varepsilon$ for all~$\varepsilon \? \Delta$.
+\item $\affl$ is \emph{synthetically quasicoherent} in the sense that for any
+finitely presented~$\affl$-algebra~$A$, the canonical homomorphism~$A \to
+(\affl)^{\Spec(A)}$, where~$\Spec(A)$ is defined to be the set
+of~$\affl$-algebra-homomorphisms~$A \to \affl$, is bijective.
+\end{itemize}
+All of these nongeometric sequents are useful for the purposes of synthetic
+algebraic geometry, the desire to carry out algebraic geometry in a language
+close to the simple language on the 19th and the beginning of the 20th century
+while still being fully rigorous and fully general, working over arbitrary base
+schemes instead of restricting to the field of complex numbers.
+\medskip
+
+\paragraph{Characterizing nongeometric sequents} Referring to one of the previous
+examples, Tierney remarked around the time that those sequents were first
+studied that ``[it] is surely important, though its precise significance is
+still somewhat obscure---as is the case with many such nongeometric
+formulas''~\cite[p.~209]{tierney:spectrum}. In view of their importance, is
+there a way to discover nongeometric sequents in a systematic fashion? To
+characterize the nongeometric sequents holding in classifying toposes? To this
+end, Wraith put forward a specific conjecture~\cite[p.~336]{wraith:intuitionistic-algebra}:
+\begin{quote}
+\emph{The problem of characterising all the non-geometric properties of a generic
+model appears to be difficult. If the generic model of a geometric theory~$\TT$
+satisfies a sentence~$\alpha$ then any geometric consequence of $\TT + \alpha$ has to be a
+consequence of~$\TT$. We might call~$\alpha$ $\TT$-redundant. Does the
+generic~$\TT$-model satisfy all~$\TT$-redundant sentences?}
+\end{quote}
+This question was recently answered in the negative by Bezem, Buchholtz and
+Coquand~\cite{bezem-buchholtz-coquand:syntactic-forcing-models}; hence the
+characterization we propose is necessarily more nuanced.
+
+Our starting point was the empirical
+observation~\cite[p.~164]{blechschmidt:phd} that in the case of the big
+Zariski topos, every true known nongeometric sequent followed from just a
+single such, namely the synthetic quasicoherence of the generic
+model, and in earlier work we surmised that one could formulate an appropriate
+metatheorem explaining this observation and generalizing it to arbitrary
+classifying toposes~\cite[Speculation~22.1]{blechschmidt:phd}. This hope turned
+out to be true, in the sense we will now make precise.
+\medskip
+
+\paragraph{A general Nullstellensatz} To explain the relevant background, the
+somewhat vague question ``to which extent does the classifying
+topos~$\Set[\TT]$ realize that it is the classifying topos for~$\TT$?'' is a
+useful guiding principle.
+
+From the point of view of~$\Set[\TT]$, the model~$U_\TT$ is an ordinary
+set-theoretic model. While in general properties of a specific set-theoretic
+model do not follow solely from the axioms of the theory, it is on first sight
+conceivable that this could be true for~$U_\TT$. That it, is is reasonable to
+wonder whether
+\[ \Set[\TT] \models \speak{a geometric sequent~$\sigma$ holds for~$U_\TT$ iff~$\ul{\TT}$ proves~$\sigma$} \]
+holds.\footnote{Here~$\ul{\TT}$ is the internal geometric theory induced
+by~$\TT$, obtained by pulling back the set of sorts, the set of function
+symbols and so on along the geometric morphism~$\Set[\TT] \to \Set$. More
+details will be given in Section~\ref{sect:review}. The corner quotes indicate
+that for sake of readability, the translation into formal language is to be
+carried out by the reader.} While the ``if'' direction
+certainly holds (observing that the generic model~$U_\TT$ is, from the point of
+view of~$\Set[\TT]$, a model of~$\ul{\TT}$), the ``only if'' direction
+typically fails.
+
+For instance, let~$\TT$ be the theory of rings and let~$\sigma$ be
+the sequent~$(\top \vdash 1 + 1 = 0)$. Since there is an intuitionistic proof
+that~$\TT$ does not prove~$\sigma$ and toposes are sound with respect to
+intuitionistic logic, the statement~$\speak{\ul{\TT} proves~$\sigma$}$ is false
+from the internal point of view of~$\Set[\TT]$. However, it is not the case
+that the statement~$\speak{$1 + 1 = 0$ in~$U_\TT$}$ is false from the internal
+point of view. In fact, this statement holds in a nontrivial slice
+of~$\Set[\TT]$, the open subtopos coinciding with the classifying topos of
+the theory of rings of characteristic two.
+
+Intuitively, the problem is that while the meaning of~$\speak{$\ul{\TT} \vdash
+\sigma$}$ is fixed, the meaning of~$\speak{$\sigma$ holds for~$U_\TT$}$ can vary
+with the slice. This problem can be solved by passing from~$\ul{\TT}$ to a
+varying theory, the internal theory~$\ul{\TT}/U_\TT$ defined below.
+Unlike~$\ul{\TT}$, this theory is not the pullback of an external geometric
+theory.
+
+\begin{defn}Let~$\TT$ be a geometric theory. The theory~$\ul{\TT}/U_\TT$ is the
+geometric theory internal to~$\Set[\TT]$ which arises from~$\ul{\TT}$
+by adding additional constant symbols~$e_x$, one for each
+element~$x : U_\TT$, axioms~$(\top \vdash f(e_{x_1},\ldots,e_{x_n}) =
+e_{f(x_1,\ldots,x_n)})$ for each function symbol~$f$ and~$n$-tuple of elements
+of~$U_\TT$, and axioms~$(\top \vdash R(e_{x_1},\ldots,e_{x_n}))$ for each
+relation symbol~$R$ and~$n$-tuple~$(e_{x_1},\ldots,e_{x_n})$ such
+that~$R(e_{x_1},\ldots,e_{x_n})$ holds for~$U_\TT$.
+\end{defn}
+
+From the point of view of~$\Set[\TT]$, a model of~$\ul{\TT}/U_\TT$ is a model
+of~$\ul{\TT}$ equipped with a~$\ul{\TT}$-homomorphism from~$U_\TT$. In
+particular, the identity~$(U_\TT \to U_\TT)$ is a model of~$\ul{\TT}/U_\TT$.
+
+\begin{thm}Let~$\TT$ be a geometric theory. Then, internally to~$\Set[\TT]$:
+\begin{quote}
+A geometric sequent~$\sigma$ over the signature of~$\ul{\TT}/U_\TT$ holds
+for~$U_\TT$ if and only if~$\ul{\TT}/U_\TT$ proves~$\sigma$.
+\end{quote}
+\end{thm}
+
+\begin{thm}Let~$\TT$ be a geometric theory. Let~$\alpha$ be a first-order
+formula over the signature of~$\TT$. Then the following statements are
+equivalent.
+\begin{enumerate}
+\item The formula~$\alpha$ holds for~$U_\TT$.
+\item The formula~$\alpha$ is provable in first-order intuitionistic logic
+modulo the axioms of~$\TT$ and the additional axioms
+\[ \sigma \quad\Longleftrightarrow\quad
+  \ul{\TT}/U \vdash' \sigma \]
+where~$\sigma$ ranges over all geometric sequents.
+\end{enumerate}
+\end{thm}
+
+
+\section{Background on classifying toposes}
+
+\section{Proofs of the main theorems}
+
+\section{The special case of Horn theories}
+
+\section{Applications}
+
+
+%We do have, for any geometric sequent~$\sigma$, that
+%\[ \Set[\TT] \models \speak{$\sigma$ holds for~$U_\TT$} \quad\text{iff}\quad
+%  \Set[\TT] \models \speak{$\ul{\TT}$ proves~$\sigma$}, \]
+%since~$\Set[\TT] \models \speak{$\sigma$ holds for~$U_\TT$}$ implies that~$\TT$
+%proves~$\sigma$ and since~$\TT \vdash \sigma$ implies~$\E \models
+%(\ul{\TT} \vdash \sigma)$ for any topos~$\E$ over~$\Set$. However, this
+%equivalence is not stable under slicing ...
+
+
+
+\printbibliography
+
+\end{document}
+
+* Discuss case of SDG: Why does the Kock--Lawvere there hold only for Weil
+  algebras? Answer: It doesn't really! We do have that [U,U] is isomorphic to
+  the free C^∞-ring on one generator. But this observation doesn't appear to be
+  useful for further developments.
+
+* Cite https://docplayer.net/55796150-Intuitionistic-algebra-some-recent-developments-in-topos-theory.html
+  (in general and for internal theories)

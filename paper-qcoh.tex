@@ -306,11 +306,15 @@ the relation~$f(X) = 0$, the relation~$g([X]) = 0$ holds. Hence we obtain
     (\forall x \? U_\TT\_ f(x) = 0 \Rightarrow g(x) = 0) \Longleftrightarrow
       \exists h \in U_\TT[X]\_ g = hf\bigr). \]
 
-In case that~$\TT$ is the quotient of a Horn theory XXX
+The statement~\eqref{eq:nullstellensatz} is not a geometric sequent. Therefore
+it is not to be expected that it passes from~$\Set[\TT]$ to a
+subtopos~$\Set[\TT']$ corresponding to a quotient theory~$\TT'$ of~$\TT$, and
+indeed in general it does not. We formulate a substitute as Theorem~XXX,
+substantially broading the scope of the Nullstellensatz.
 
 Theorem~\ref{thm:nullstellensatz0} is a source of nongeometric sequents. Indeed,
 it is the universal such source in the sense that any first-order formula
-holding for~$U_\TT$ can be deduced from~\eqref{eq:nullstellensatz}:
+which holds for~$U_\TT$ can be deduced from~\eqref{eq:nullstellensatz}:
 
 \begin{thm}\label{thm:characterization0}
 Let~$\TT$ be a geometric theory. Let~$\alpha$ be a first-order
@@ -365,8 +369,51 @@ that~$\sigma$ is~$\TT$-derivable by a proof tree of finite shape.
 That~(4) implies~(1) is a routine exercise exploiting that
 \[ \E \models \forall X\_ \speak{$X$ is Kuratowski-finite} \Leftrightarrow
   \bigvee_{n \geq 0} \exists x_1,\ldots,x_n \? X\_
-  \forall x \? X\_ \bigvee_{i=1}^n x = x_i. \]
+  \forall x \? X\_ \bigvee_{i=1}^n x = x_i. \qedhere \]
 \end{proof}
+
+\begin{thm}\label{thm:nullstellensatz-horn}
+Let~$\TT$ be a geometric theory. Let~$\TT'$ be a quotient theory
+of~$\TT$. Assume that the generic model~$U_\TT$ is a sheaf for the topology
+on~$\Set[\TT]$ cutting out the subtopos~$\Set[\TT']$. Then the following
+statement holds internally to~$\Set[\TT']$:
+\[ \text{A geometric$^\star$ sequent~$\sigma$ with Horn consequent holds for~$U_{\TT'}$
+  iff~$\ul{\TT}/U_\TT$ proves$^\star$~$\sigma$.} \]
+\end{thm}
+
+\begin{proof}In general, the generic model of~$\TT'$ is the pullback of the
+generic model of~$\TT$ to the
+subtopos~$\Set[\TT']$~\cite[Lemma~2.3]{caramello:definability}. By the sheaf
+assumption, the objects~$U_{\TT'}$ and~$U_\TT$ actually agree, that is~$U_\TT$
+is contained in the subtopos and has the universal property of~$U_{\TT'}$.
+
+The ``if'' direction is trivial, as~$U_{\TT'}$ is a~$\ul{\TT}/U_\TT$-model.
+
+For the ``only if'' direction, we use that a statement holds in~$\Set[\TT']$ if
+and only if its~$\nabla$-translation holds in~$\Set[\TT]$, where~$\nabla$ is
+the modal operator associated to the topology cutting
+out~$\Set[\TT']$~\cite[Theorem~6.31]{blechschmidt:phd}. Exploiting some of the
+simplification rules of the~$\nabla$-translation~\cite[Section~6.6]{blechschmidt:phd},
+it hence suffices to verify, internally to~$\Set[\TT]$, that:
+\begin{multline*}
+  \text{For any geometric$^\star$ sequent~$\sigma = (\varphi \seq{\vec x} \psi)$ where~$\psi$ is a Horn formula,} \\
+    \text{if~$\forall x_1,\ldots,x_n\?U_\TT'\_ (\varphi \Rightarrow \nabla
+    \psi)$, then~$\ul{\TT}/U_\TT$ proves$^\star$~$\sigma$.}
+\end{multline*}
+Since~$\nabla$ commutes with finite conjunctions and since the sheaf assumption
+implies that $\nabla(s = t)$ is equivalent
+to~$s = t$ and that, for relation symbols~$R$, the
+statement~$\nabla(R(s_1,\ldots,s_m))$ is equivalent to~$R(s_1,\ldots,s_m)$,
+the statement~$\nabla\psi$ is equivalent to~$\psi$. Hence the claim follows
+from Theorem~\ref{thm:nullstellensatz}.
+\end{proof}
+
+A situation in which the sheaf assumption of Theorem~\ref{thm:nullstellensatz-horn}
+is satisfied is when~$\TT$ is a Horn theory and the topology cutting
+out~$\Set[\TT']$ is subcanonical. For instance, this is the case if~$\TT$ is
+the theory of rings and~$\Set[\TT']$ is any of the well-known toposes in
+algebraic geometry such as the big Zariski topos, the big étale topos or the
+big fppf topos.
 
 
 \section{The special case of Horn theories}
@@ -458,6 +505,20 @@ Externally, the spectrum of~$M$ is the functor
 mapping a finitely presented~$\TT$-model~$T$ to~$\Hom_T(M(T), T)$, the set
 of~$\TT$-homomorphisms~$M(T) \to T$ compatible with the structure morphisms~$T
 \to M(T)$ and~$T \to T$.
+
+\begin{lemma}Let~$A$ be a~$\TT$-model. Then~$\Spec(A^\sim)$ coincides
+with~$yA$, where~$y : \Mod{\TT} \to \Set[\TT]$ is the Yoneda embedding.
+\end{lemma}
+
+\begin{proof}XXX\end{proof}
+
+\begin{lemma}Let~$A$ and~$B$ be finitely presented~$\TT$-models. Then the
+canonical morphism
+\[ \Hom_{U_\TT}(A^\sim, B^\sim) \longrightarrow \Spec(A^\sim)^{\Spec(B^\sim)}
+\]
+is an isomorphism.
+\end{lemma}
+
 
 \section{Applications}
 
@@ -552,3 +613,22 @@ We then have:
 % and~$R_2$
 %
 % The term algebra of a Horn theory~$\TT$ is always a model of~$\TT$, such that
+
+
+* Sei T' subkanonisch für T.
+
+* Sei φ eine Hornformel. Gelte ∇φ. Folgt dann φ?
+
+* Für φ = (x = y) stimmt das, da U separiert ist.
+
+* Für φ = (R(x,y)) stimmt, das ...?
+
+  Was heißt das denn? Habe R \--> U x U. Gehe davon aus, dass ∇φ bedeutet, dass
+  ∇((x,y) ∈ R). Daraus folgt aber (x,y) ∈ R:
+
+  K = { (x,y) | (x,y) ∈ R } ist Subsingleton von U x U und ∇-bewohnt.
+  Also existiert (a,b) ∈ U x U mit ∇... Hilft nicht.
+
+  Aber: K = { (a,b) ∈ R | a = x & b = y } ist Subsingleton von R.
+  Und ∇-bewohnt. Also existiert (a,b) ∈ R mit ∇(a=x & b = y).
+  Wegen Separiertheit folgt a = x & b = y. Fertig. :-)

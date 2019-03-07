@@ -1,0 +1,191 @@
+\documentclass[oneside,reqno]{amsart}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsthm,mathtools,stmaryrd,amssymb,graphicx}
+\usepackage{booktabs}
+\usepackage[all]{xy}
+\usepackage[protrusion=true,expansion=true]{microtype}
+\usepackage{xspace}
+
+\usepackage[natbib=true,style=numeric,maxnames=10]{biblatex}
+\usepackage[babel]{csquotes}
+\bibliography{paper-composition.bib}
+
+\title{Composition of internal theories}
+
+\author{Ingo Blechschmidt}
+\email{ingo.blechschmidt@univr.it}
+
+\author{Matthias Hutzler}
+\email{matthias.ralph.hutzler@student.uni-augsburg.de}
+
+\author{Alexander Oldenziel}
+\email{a.f.d.a.gietelinkoldenziel@gmail.com}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{ex}[defn]{Example}
+
+\theoremstyle{plain}
+\newtheorem{prop}[defn]{Proposition}
+\newtheorem{cor}[defn]{Corollary}
+\newtheorem{lemma}[defn]{Lemma}
+\newtheorem{thm}[defn]{Theorem}
+\newtheorem{scholium}[defn]{Scholium}
+
+\theoremstyle{remark}
+\newtheorem{rem}[defn]{Remark}
+\newtheorem{question}[defn]{Question}
+\newtheorem{speculation}[defn]{Speculation}
+\newtheorem{caveat}[defn]{Caveat}
+\newtheorem{conjecture}[defn]{Conjecture}
+
+\newenvironment{indentblock}{%
+  \list{}{\leftmargin\leftmargin}%
+  \item\relax
+}{%
+  \endlist
+}
+
+\newcommand{\xra}[1]{\xrightarrow{#1}}
+\newcommand{\aaa}{\mathfrak{a}}
+\newcommand{\bbb}{\mathfrak{b}}
+\newcommand{\mmm}{\mathfrak{m}}
+\newcommand{\I}{\mathcal{I}}
+\newcommand{\J}{\mathcal{J}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\C}{\mathcal{C}}
+\renewcommand{\AA}{\mathbb{A}}
+\newcommand{\EE}{\mathbb{E}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\TT}{\mathbb{T}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\renewcommand{\SS}{\mathbb{S}}
+\renewcommand{\P}{\mathcal{P}}
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\op}{\mathrm{op}}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Sh}{Sh}
+\DeclareMathOperator{\PSh}{PSh}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\length}{length}
+\DeclareMathOperator{\List}{List}
+\newcommand{\Set}{\mathrm{Set}}
+\newcommand{\Eff}{\mathrm{Ef{}f}}
+\renewcommand{\_}{\mathpunct{.}\,}
+\newcommand{\effective}{ef{}fective\xspace}
+\newcommand{\?}{\,{:}\,}
+\newcommand{\realizes}{\Vdash}
+\newcommand{\notnot}{\emph{not~not}\xspace}
+\usepackage{soul}\setul{0.3ex}{}
+\let\oldul\ul
+\renewcommand{\ul}[1]{\text{\oldul{$#1$}}}
+\newcommand{\affl}{\ensuremath{{\ul{\AA}^1}}\xspace}
+\newcommand{\speak}[1]{\ulcorner\text{\textnormal{#1}}\urcorner}
+\newcommand{\brak}[1]{\llbracket #1 \rrbracket}
+\newcommand{\Mod}[1]{{#1}\mathrm{\text{-}mod}}
+
+\newcommand{\stacksproject}[1]{\cite[{\href{https://stacks.math.columbia.edu/tag/#1}{Tag~#1}}]{stacks-project}}
+
+\renewcommand{\paragraph}[1]{\noindent\textbf{#1.}}
+
+\newcommand{\ZFC}{\textsc{zfc}}
+
+\newcommand{\seq}[1]{\mathrel{\vdash\!\!\!_{#1}}}
+
+\begin{document}
+
+\begin{abstract}
+  XXX
+\end{abstract}
+
+\maketitle
+\thispagestyle{empty}
+
+\section{Introduction}
+
+XXX state main lemma (to be proved in Section 3)
+
+\begin{defn}A geometric morphism~$\F \to \E$ is \emph{of presheaf type} if and
+only if it is equivalent (XXX be more precise) to the canonical
+functor~$\E^{\C^\op} \to \E$ for an internal category~$\C$ in~$\E$.\end{defn}
+
+XXX This notion is the relativization of the notion of a presheaf category; a
+geometric theory~$\TT$ is of presheaf type if and only if the canonical
+geometric morphism~$\Set[\TT] \to \Set$ is of presheaf type.
+
+\begin{prop}The composition of geometric morphisms of presheaf type is of
+presheaf type.\end{prop}
+
+\begin{proof}(This is what Sina confirmed for us.) Spell out construction.
+(Maybe in Section 4.)
+\end{proof}
+
+
+\section{Background on internal geometric theories}
+
+XXX: State definition of geometric theory, being careful to only use geometric
+constructions
+
+XXX: State definition of model of a geometric theory, being careful to only use
+geometric constructions
+
+XXX: Explain internal geometric theories
+
+XXX: Remark subtletly with respect to infinitary disjunctions and infinitary
+proofs
+
+
+\section{Proof of the main result}
+
+XXX: State and prove main lemma about~$\Set[\TT][\TT']$
+
+
+\section{Criteria for theories to be of presheaf type}
+
+XXX: Give semantic criterion for being of presheaf type: Let~$\TT$ be of
+presheaf type and let~$\TT''$ be an extension of~$\TT$ such that there is a
+theory~$\TT'$ internal to~$\Set[\TT]$ such that~$\Set[\TT][\TT'] =
+\Set[\TT'']$. If~$\TT'$ is of presheaf type from the point of view
+of~$\Set[\TT]$, then~$\TT''$ is of presheaf type.
+
+XXX: Explain that in the previous paragraph, the existence of~$\TT'$ is not
+actually an assumption, but is in fact always satisfied. (?)
+
+XXX: Draw conclusions, for instance that adding a further constant preserves
+being of presheaf type (find lots of further such syntactical examples).
+
+
+\section{Applications}
+
+XXX: Results from the Master thesis of Matthias
+
+XXX: Show that the naive definition of the big Zariski topos does not work.
+(From the point of view of Sh(S), the big Zariski topos of S is \emph{not} the
+topos of local~$\O_S$-algebras, but the topos of local~$\O_S$-algebras which
+are local over~$\O_S$.)
+
+
+\section{XXX general todo}
+
+XXX cite Martha Bunge's characterization of functors of presheaf type
+
+XXX cite Shawn Henry's PhD thesis
+
+XXX cite that other guy who mentioned internal geometric theories (forgot whom
+right now, might be Freyd or Andreas Blass, either in the result that the
+object of Kuratowski-finite subsets is preserved under pullback or in the paper
+about existential fixed-point logic)
+
+XXX cite Azriel Lévy
+\url{https://www.ams.org/journals/proc/1961-012-02/S0002-9939-1961-0122702-2/S0002-9939-1961-0122702-2.pdf}
+
+\printbibliography
+
+\end{document}

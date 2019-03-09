@@ -163,7 +163,8 @@ As this condition is of nongeometric form, it is not inherited by arbitrary
 local rings, which are indeed typically not fields. However, any intuitionistic
 consequence of this condition which is of geometric form is inherited
 by any local ring in any topos. Hence we may, when verifying a general fact
-about local rings, suppose without loss of generality that the given ring is a
+about local rings which is expressible as a geometric sequent,
+suppose without loss of generality that the given ring is a
 field. This observation is due to Kock~\cite{kock:univ-proj-geometry}, who exploited it to
 develop projective geometry over local rings, and was further used by Reyes to
 prove a Jacobian criterion for étale morphisms~\cite{reyes:cramer}.
@@ -243,11 +244,12 @@ Let~$A$ be a ring. A simple version of the classical Nullstellensatz states:
 zero of~$g$, then there is a polynomial~$h$ such that~$g = hf$.} The
 polynomial~$h$ can be regarded as an ``algebraic certificate'' of the
 hypothesis. This principle holds for instance in the case that~$A$ is an
-algebraically closed field and that~$g$ is the unit polynomial. It is also
+algebraically closed field and that~$g$ is the unit polynomial. We will see
+below that it is also
 true, without any restriction on~$g$, for the generic ring.
 
 We could try to generalize the Nullstellensatz to arbitrary geometric theories~$\TT$ as
-follows. \emph{For any geometric sequent~$\sigma$, if~$\sigma$ holds for a
+follows: \emph{For any geometric sequent~$\sigma$, if~$\sigma$ holds for a
 given~$\TT$-model~$M$ then~$\sigma$ is provable modulo~$\TT$.} In place of the
 algebraic certificate we now have a logical certificate, a \emph{proof}
 of~$\sigma$. However, this generalized statement is typically false, even for
@@ -264,7 +266,11 @@ instance, if~$\TT$ is the theory of rings, then from the internal point of view
 of~$\Set[\TT]$ the theory~$\ul{\TT}$ will again be the theory of rings.
 More details will be given in Section~\ref{sect:review}. The corner quotes indicate
 that for sake of readability, the translation into formal language is to be
-carried out by the reader.}
+carried out by the reader. \par The displayed statement is much stronger than
+the statement that for any geometric sequent~$\sigma$, if $\Set[\TT] \models
+\speak{$\sigma$ holds for~$U_\TT$}$ then~$\TT$ proves~$\sigma$. This latter statement,
+where the universal quantifier and the ``if \ldots then'' have been pulled out,
+is true.}
 
 For instance, let~$\TT$ be the theory of rings and let~$\sigma$ be
 the sequent~$(\top \vdash 1 + 1 = 0)$. Since there is an intuitionistic proof
@@ -284,7 +290,7 @@ Section~\ref{sect:main}. If~$\TT$ is the theory of rings, then~$\ul{\TT}/U_\TT$
 is the~$\Set[\TT]$-theory of~$U_\TT$-algebras.
 Unlike~$\ul{\TT}$, this theory is not the pullback of an external geometric
 theory. We then have, subject to some qualifications made precise in
-Section~\ref{sect:main}:
+Section~\ref{sect:main}, the following general Nullstellensatz:
 
 \begin{thm}\label{thm:nullstellensatz0}
 Let~$\TT$ be a geometric theory. Then, internally to~$\Set[\TT]$:
@@ -295,7 +301,7 @@ if~$\ul{\TT}/U_\TT$ proves$^*$~$\sigma$.}
 \end{thm}
 
 To illustrate Theorem~\ref{thm:nullstellensatz0}, let~$\TT$ be the theory of
-rings and let~$\sigma$ be of the form~$(f(x) = 0 \seq{x} g(x) = 0)$ for some
+rings and let~$\sigma$ be the sequent~$(f(x) = 0 \seq{x} g(x) = 0)$ for some
 polynomials~$f$ and~$g$. To say that~$\sigma$ holds for~$U_\TT$ amounts to
 saying that any zero~$x \? U_\TT$ of~$f$ is also a zero of~$g$, and to say
 that~$\ul{\TT}/U_\TT$ proves~$\sigma$ amounts to saying that
@@ -310,7 +316,7 @@ The statement~\eqref{eq:nullstellensatz} is not a geometric sequent. Therefore
 it is not to be expected that it passes from~$\Set[\TT]$ to a
 subtopos~$\Set[\TT']$ corresponding to a quotient theory~$\TT'$ of~$\TT$, and
 indeed in general it does not. We formulate a substitute as Theorem~XXX,
-substantially broading the scope of the Nullstellensatz.
+substantially broadening the scope of the Nullstellensatz.
 
 Summarizing, the situation is as follows.
 \begin{itemize}
@@ -421,7 +427,7 @@ from Theorem~\ref{thm:nullstellensatz}.
 A situation in which the sheaf assumption of Theorem~\ref{thm:nullstellensatz-horn}
 is satisfied is when~$\TT$ is a Horn theory and the topology cutting
 out~$\Set[\TT']$ is subcanonical. For instance, this is the case if~$\TT$ is
-the theory of rings and~$\Set[\TT']$ is any of the well-known toposes in
+the theory of rings and~$\Set[\TT']$ is one of several well-known toposes in
 algebraic geometry such as the big Zariski topos, the big étale topos or the
 big fppf topos.
 
@@ -442,11 +448,11 @@ it consists of the terms (in the empty context) of the signature~$\Sigma + X$
 modulo the equivalence relation identifying two terms if and only if~$\TT + R$
 proves them to be equal. The function symbols~$f$ of~$\Sigma$ are interpreted
 by declaring~$\brak{f}([t_1],\ldots,[t_n]) = [f(t_1,\ldots,t_n)]$ and the
-relation symbols~$R$ are interpreted by declaring~$([t_1],\ldots,[t_n]) \in
+relation symbols~$S$ are interpreted by declaring~$([t_1],\ldots,[t_n]) \in
 \brak{S} \Leftrightarrow (\TT + R \vdash S(t_1,\ldots,t_n))$.
 
 We omit the required verifications and only remark that while the same
-construction can be carried out if~$\TT$ is a general geometric theory, the
+construction could be carried out if~$\TT$ is a general geometric theory, the
 resulting object would in general not be a model of~$\TT$.
 \end{proof}
 
@@ -474,7 +480,7 @@ the~$k$-tuple~$([x_1],\ldots,[x_k])$.
 
 \begin{proof}By construction of the term algebra.\end{proof}
 
-\begin{lemma}A~$\TT$-model is a finitely presented object of the category
+\begin{lemma}A~$\TT$-model is finitely presentable as an object of the category
 of~$\TT$-models if and only if it is isomorphic to a model of the
 form~$\TT\langle X | R \rangle$ where~$X$ is Bishop-finite and~$R$ is
 Kuratowski-finite.
@@ -517,7 +523,7 @@ of~$\TT$-homomorphisms~$M(T) \to T$ compatible with the structure morphisms~$T
 \to M(T)$ and~$T \to T$.
 
 \begin{lemma}Let~$A$ be a~$\TT$-model. Then~$\Spec(A^\sim)$ coincides
-with~$yA$, where~$y : \Mod{\TT} \to \Set[\TT]$ is the Yoneda embedding.
+with~$yA$, the functor~$\Hom_{\Mod{\TT}}(A, \cdot)$.
 \end{lemma}
 
 \begin{proof}XXX\end{proof}
@@ -653,3 +659,5 @@ TODO:
 
 * Anmerken, dass der Nullstellensatz für first-order sequents NICHT stimmt
   (Beispiel: ¬(x=0) ⇒ (x inv.))
+
+* Anmerken, dass wir in konstruktiver Metalogik arbeiten.

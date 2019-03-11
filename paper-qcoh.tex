@@ -377,11 +377,12 @@ finite shape}.$
 
 \begin{proof}It is trivial that~(1) implies~(2) implies~(3).
 
-To verify that~(3) implies~(4), we can mimick the usual proof of this fact in
-the internal language of~$\E$: One can construct a variant of the syntactic
+To verify that~(3) implies~(4), we can mimic the usual proof of this fact in
+the internal language of~$\E$: There is a variant of the syntactic
 site of~$\TT$ which is built using only coherent sequents and finitary
 derivability~\cite[Section~1.4]{caramello:tst}. The sheaf topos over this site
-is another model for the classifying topos of~$\TT$. If~$\sigma$
+is another model for the classifying topos of~$\TT$, and still validates, like
+any Grothendieck topos, full infinitary logic. Hence, if~$\sigma$
 is~$\TT$-derivable by a proof tree of arbitrary shape, then~$\sigma$ holds in
 this model of the classifying topos. By the analogue of
 Proposition~\ref{prop:classifying-topos} for this model, we obtain
@@ -412,7 +413,7 @@ atomic propositions is by definition of~$\ul{\TT}/U_\TT$.
 \begin{lemma}\label{lemma:locally-constant}
 Let~$\TT$ be a geometric theory.
 Let~$\varphi$ be a section of the sheaf of geometric$^\star$ formulas over the signature
-of~$\ul{\TT}/U_\TT$ over a stage~$A$. Then there is a covering~$(A_i \to A)_i$
+of~$\ul{\TT}/U_\TT$ over a stage~$A \in \C_\TT$. Then there is a covering~$(A_i \to A)_i$
 of~$A$ such that for each index~$i$, there is a formula~$\varphi_i$ over the signature
 of~$\TT/U_\TT(A_i)$ such that~$A_i \models \speak{$\ul{\TT}/U_\TT$ proves$^\star$
 $(\varphi \dashv\vdash \varphi_i)$}$.
@@ -420,17 +421,20 @@ $(\varphi \dashv\vdash \varphi_i)$}$.
 
 \begin{proof}By passing to a covering, we may suppose that~$\varphi$ is given
 by an (external) geometric formula over the signature
-of~$\ul{\TT}(A)/U_\TT(A)$. Any function symbol and relation symbol
-of~$\ul{\TT}(A)$ occuring in~$\varphi$ is locally given by a symbol in~$\TT$.
+of~$\ul{\TT}(A)/U_\TT(A)$.
+
+Any function symbol and relation symbol
+of~$\ul{\TT}(A)$ occurring in~$\varphi$ is locally given by a symbol of~$\TT$.
 Hence the claim would be trivial if~$\varphi$ were a coherent formula, for in
 this case we would just have to pass to further coverings, one for each
 occuring symbol, a finite number of times in total.
 
 However, in general, we cannot conclude as easily. Write~$A = \{ \vec x\_
 \alpha \}$. Let~$R$ be a relation symbol of~$\ul{\TT}(A)$ occuring
-in~$\varphi$. Then there is a covering~$(\{ \vec y_j\_ \alpha_j \}
+in~$\varphi$. By the explicit description of constant sheaves as sheaves of
+locally constant maps, there is a covering~$(\{ \vec y_j\_ \alpha_j \}
 \xrightarrow{[\theta_j]} \{ \vec x\_ \alpha \})_j$ such that, restricted to~$\{
-\vec y_j\_ \alpha_j \}$, $R$ is given by a symbol~$R_j$ of~$\TT$. To construct
+\vec y_j\_ \alpha_j \}$, $R$ is given by a relation symbol~$R_j$ of~$\TT$. To construct
 the desired formula~$\varphi'$, we replace any such occurrence~$R(\ldots)$
 in~$\varphi$ by
 \[ \bigvee_j \bigl((\exists \vec y_j\_ \theta_j) \wedge R_j(\ldots)\bigr). \]
@@ -438,12 +442,14 @@ In a similar vein we treat any occurrence of function symbols.
 
 The verification of~$A \models \speak{$\ul{\TT}/U_\TT$ proves$^\star$
 $(\varphi \dashv\vdash \varphi')$}$ rests on the observation
-\[ A \models \speak{$\ul{\TT}/U_\TT$ proves$^\star$ $\bigl((\exists \vec y_j\_
-\theta_j) \seq{\vec x} \bigvee_j \{ \top \,|\, \text{$(\exists \vec y_j\_ \theta_j)$
+\[ A \models \speak{$\ul{\TT}/U_\TT$ proves$^\star$ $\bigl((\exists \vec y_k\_
+\theta_k) \seq{[]} \bigvee_k \{ \top \,|\, \text{$(\exists \vec y_k\_ \theta_k)$
 holds for~$U_\TT$} \}\bigr)$} \]
-which in turn follows from Lemma~\ref{lemma:truth-to-provability} exploiting
-that~$(\exists \vec y_j\_ \theta_j) \wedge (\exists \vec y_k\_ \theta_k)
-\seq{\vec x} \bigvee \{ \top \,|\, j = k \}$.
+which in turn can be checked on the covering~$(\{ \vec y_j\_ \alpha_j \}
+\xrightarrow{[\theta_j]} \{ \vec x\_ \alpha \})_j$, applying
+Lemma~\ref{lemma:truth-to-provability} and using that~$\TT$ (and
+hence~$\ul{\TT}$) proves~$(\exists \vec y_j\_ \theta_j) \wedge (\exists \vec
+y_k\_ \theta_k) \seq{\vec x} \bigvee \{ \top \,|\, j = k \}$.
 \end{proof}
 
 \begin{thm}\label{thm:nullstellensatz}
@@ -463,7 +469,7 @@ sequent~$\sigma$, if~$\ul{\TT}/U_\TT$ proves~$\sigma$, then~$\sigma$ holds
 for~$U_\TT$.}
 
 For the direction~$(1) \Rightarrow (2)$ we have to verify that, given any
-stage~$A$ and any section~$\sigma$ of the sheaf of
+stage~$A \in \C_\TT$ and any section~$\sigma$ of the sheaf of
 geometric$^\star$ sequents over~$A$, if~$A \models
 \speak{$\sigma$ holds for~$U_\TT$}$ then~$A \models
 \speak{$\ul{\TT}/U_\TT$ proves$^\star$~$\sigma$}$. By
@@ -483,8 +489,6 @@ variables occuring in~$\alpha$ are interpreted as the generic values available
 over~$A$), hence~$A \models \speak{$\ul{\TT}/U_\TT$ proves$^\star$~$(\varphi
 \seq{\vec y} \psi)$}$.
 \end{proof}
-
-% XXX: check contexts.
 
 \begin{thm}\label{thm:nullstellensatz-horn}
 Let~$\TT$ be a geometric theory. Let~$\TT'$ be a quotient theory
@@ -510,9 +514,9 @@ out~$\Set[\TT']$~\cite[Theorem~6.31]{blechschmidt:phd}. Exploiting some of the
 simplification rules of the~$\nabla$-translation~\cite[Section~6.6]{blechschmidt:phd},
 it hence suffices to verify, internally to~$\Set[\TT]$, that:
 \begin{multline*}
-  \text{For any geometric$^\star$ sequent~$\sigma = (\varphi \seq{\vec x} \psi)$ where~$\psi$ is a Horn formula,} \\
-    \text{if~$\forall x_1,\ldots,x_n\?U_\TT\_ (\varphi \Rightarrow \nabla
-    \psi)$, then~$\ul{\TT}/U_\TT$ proves$^\star$~$\sigma$.}
+  \text{\emph{For any geometric$^\star$ sequent~$\sigma = (\varphi \seq{\vec x} \psi)$ where~$\psi$ is a Horn formula,}} \\
+    \text{\emph{if~$\forall x_1,\ldots,x_n\?U_\TT\_ (\varphi \Rightarrow \nabla
+    \psi)$, then~$\ul{\TT}/U_\TT$ proves$^\star$~$\sigma$.}}
 \end{multline*}
 Since~$\nabla$ commutes with finite conjunctions and since the sheaf assumption
 implies that $\nabla(s = t)$ is equivalent
@@ -550,7 +554,7 @@ over the signature of~$\TT$, the statement~$\speak{$\ul{\TT}/U_\TT$
 proves$^\star$~$\sigma$}$ can be expressed as a geometric formula over the
 signature of~$\TT$. Applying this observation successively to subformulas
 of the given formula~$\alpha$, Theorem~\ref{thm:nullstellensatz} on the
-semantic side and the axiom scheme~\eqref{eq:nullstellensatz} imply that we may
+semantic side and the axiom scheme~\eqref{eq:nullstellensatz} on the syntactic side imply that we may
 assume that~$\alpha$ is in fact a geometric formula. Hence we are reduced to
 the basic fact that, for geometric formulas~$\varphi$, $\Set[\TT] \models
 \varphi$ implies that~$\TT$ proves~$\varphi$.

@@ -117,10 +117,13 @@ and by arbitrary set-indexed disjunctions~$\bigvee$).
 
 A fundamental result is that there is a \emph{generic model}~$U_\TT$ of~$\TT$,
 a model such that for any geometric sequent~$\sigma$, the following notions
-coincide: \begin{enumerate} \item The sequent~$\sigma$ is provable
-modulo~$\TT$. \item The sequent~$\sigma$ holds for any~$\TT$-model in any
-Grothendieck topos. \item The sequent~$\sigma$ holds for~$U_\TT$.
-\end{enumerate} One could argue that it is this model which mathematicians
+coincide:
+\begin{enumerate}
+\item The sequent~$\sigma$ is provable modulo~$\TT$.
+\item The sequent~$\sigma$ holds for any~$\TT$-model in any Grothendieck topos.
+\item The sequent~$\sigma$ holds for~$U_\TT$.
+\end{enumerate}
+One could argue that it is this model which mathematicians
 implicitly refer to when they utter the phrase ``Let~$M$ be a~$\TT$-model.''. It can
 typically not be realized as a set-theoretic model, consisting of a set for
 each sort, a function for each function symbol and so on; instead it is a model
@@ -131,7 +134,7 @@ of~$\Set[\TT]$ for each sort, a morphism for each function symbol and so on.
 To state what it means for a~$\TT$-structure in a topos~$\E$ to verify the
 axioms of~$\TT$, rendering it a model, the \emph{internal language} of~$\E$ is
 used, roughly reviewed in Section~\ref{sect:review} below. We write~``$\E
-\models \alpha$'' to mean that the statement~$\alpha$ holds from the internal
+\models \alpha$'' to mean that the formula~$\alpha$ holds from the internal
 point of view of~$\E$. Since this language is a form of a higher-order
 dependently-typed intuitionistic logic, the classifying topos~$\Set[\TT]$ can
 be regarded as a higher-order completion of the geometric theory~$\TT$. The
@@ -270,9 +273,10 @@ carried out by the reader. \par The displayed statement is much stronger than
 the statement that for any geometric sequent~$\sigma$, if $\Set[\TT] \models
 \speak{$\sigma$ holds for~$U_\TT$}$ then~$\TT$ proves~$\sigma$. This latter statement,
 where the universal quantifier and the ``if \ldots then'' have been pulled out,
-is true.}
+is true.} In this sense~$\Set[\TT]$ does not believe that~$U_\TT$ is the
+generic~$\ul{\TT}$-model.
 
-For instance, let~$\TT$ be the theory of rings and let~$\sigma$ be
+A concrete counterexample is as follows. Let~$\TT$ be the theory of rings and let~$\sigma$ be
 the sequent~$(\top \vdash 1 + 1 = 0)$. Since there is an intuitionistic proof
 that~$\TT$ does not prove~$\sigma$ and toposes are sound with respect to
 intuitionistic logic, the statement~$\speak{\ul{\TT} proves~$\sigma$}$ is false
@@ -370,7 +374,7 @@ finite shape}.$
 \end{enumerate}
 \end{lemma}
 
-\begin{proof}It is obvious that~(1) implies~(2) implies~(3).
+\begin{proof}It is trivial that~(1) implies~(2) implies~(3).
 
 To verify that~(3) implies~(4), we can mimick the usual proof of this fact in
 the internal language of~$\E$: One can construct a variant of the syntactic
@@ -387,6 +391,94 @@ That~(4) implies~(1) is a routine exercise exploiting that
   \bigvee_{n \geq 0} \exists x_1,\ldots,x_n \? X\_
   \forall x \? X\_ \bigvee_{i=1}^n x = x_i. \qedhere \]
 \end{proof}
+
+\begin{lemma}\label{lemma:truth-to-provability}
+Let~$\TT$ be a geometric theory. Let~$\alpha$ be a geometric formula over the
+signature of~$\TT$ in a context~$\vec x$. Then
+\[ \{ \vec x\_ \alpha \} \models \speak{$\ul{\TT}/U_\TT$ proves $(\top
+\vdash_{[]} \alpha)$}, \]
+where the free variables~$\vec x$ occurring in~$\alpha$ are interpreted by
+their generic values over~$\{ \vec x\_ \alpha \}$.
+\end{lemma}
+
+% XXX fill in proof
+
+\begin{lemma}\label{lemma:locally-constant}
+Let~$\TT$ be a geometric theory.
+Let~$\varphi$ be a section of the sheaf of geometric$^\star$ formulas over the signature
+of~$\ul{\TT}/U_\TT$ over a stage~$A$. Then there is a covering~$(A_i \to A)_i$
+of~$A$ such that for each index~$i$, there is a formula~$\varphi_i$ over the signature
+of~$\TT/U_\TT(A_i)$ such that~$A_i \models \speak{$\ul{\TT}/U_\TT$ proves$^\star$
+$(\varphi \dashv\vdash \varphi_i)$}$.
+\end{lemma}
+
+\begin{proof}By passing to a covering, we may suppose that~$\varphi$ is given
+by an (external) geometric formula over the signature
+of~$\ul{\TT}(A)/U_\TT(A)$. Any function symbol and relation symbol
+of~$\ul{\TT}(A)$ occuring in~$\varphi$ is locally given by a symbol in~$\TT$.
+Hence the claim would be trivial if~$\varphi$ were a coherent formula, for in
+this case we would just have to pass to further coverings, one for each
+occuring symbol, a finite number of times in total.
+
+However, in general, we cannot conclude as easily. Write~$A = \{ \vec x\_
+\alpha \}$. Let~$R$ be a relation symbol of~$\ul{\TT}(A)$ occuring
+in~$\varphi$. Then there is a covering~$(\{ \vec y_j\_ \alpha_j \}
+\xrightarrow{[\theta_j]} \{ \vec x\_ \alpha \})_j$ such that, restricted to~$\{
+\vec y_j\_ \alpha_j \}$, $R$ is given by a symbol~$R_j$ of~$\TT$. To construct
+the desired formula~$\varphi'$, we replace any such occurrence~$R(\ldots)$
+in~$\varphi$ by
+\[ \bigvee_j \bigl((\exists \vec y_j\_ \theta_j) \wedge R_j(\ldots)\bigr). \]
+In a similar vein we treat any occurrence of function symbols.
+
+The verification of~$A \models \speak{$\ul{\TT}/U_\TT$ proves$^\star$
+$(\varphi \dashv\vdash \varphi')$}$ rests on the observation
+\[ A \models \speak{$\ul{\TT}/U_\TT$ proves$^\star$ $\bigl((\exists \vec y_j\_
+\theta_j) \seq{\vec x} \bigvee_j \{ \top \,|\, \text{$(\exists \vec y_j\_ \theta_j)$
+holds for~$U_\TT$} \}\bigr)$} \]
+which in turn follows from Lemma~\ref{lemma:truth-to-provability} exploiting
+that~$(\exists \vec y_j\_ \theta_j) \wedge (\exists \vec y_k\_ \theta_k)
+\seq{\vec x} \bigvee \{ \top \,|\, j = k \}$.
+\end{proof}
+
+\begin{thm}\label{thm:nullstellensatz}
+Let~$\TT$ be a geometric theory. Then, internally to~$\Set[\TT]$, for any
+geometric$^\star$ sequent~$\sigma$ over the signature of~$\ul{\TT}/U_\TT$, the
+following statements are equivalent:
+\begin{enumerate}
+\item The sequent~$\sigma$ holds for~$U_\TT$.
+\item The sequent~$\sigma$ is provable$^\star$ modulo~$\ul{\TT}/U_\TT$.
+\end{enumerate}
+\end{thm}
+
+\begin{proof}The direction~$(2) \Rightarrow (1)$ is immediate because~$U_\TT$ is, from the
+internal point of view of~$\Set[\TT]$, a~$\ul{\TT}/U_\TT$-model. Hence even the
+following stronger statement holds internally: \emph{For any geometric
+sequent~$\sigma$, if~$\ul{\TT}/U_\TT$ proves~$\sigma$, then~$\sigma$ holds
+for~$U_\TT$.}
+
+For the direction~$(1) \Rightarrow (2)$ we have to verify that, given any
+stage~$A$ and any section~$\sigma$ of the sheaf of
+geometric$^\star$ sequents over~$A$, if~$A \models
+\speak{$\sigma$ holds for~$U_\TT$}$ then~$A \models
+\speak{$\ul{\TT}/U_\TT$ proves$^\star$~$\sigma$}$. By
+Lemma~\ref{lemma:locally-constant} we may suppose that~$\sigma$ is an
+(external) geometric sequent over the signature of~$\TT/U_\TT(A)$.
+
+Writing~$A = \{ \vec x\_ \alpha \}$ and~$\sigma = (\varphi \seq{\vec y} \psi)$,
+we have~$\{ \vec x\_ \alpha \} \models \forall y\_ (\varphi \Rightarrow \psi)$,
+hence~$\{ \vec x, \vec y\_ \alpha \wedge \varphi \} \models \psi$. Thus~$\TT$
+proves~$(\alpha \wedge \varphi \seq{\vec x, \vec y} \psi)$. This proof can be
+pulled back from~$\Set$ to~$\Set[\TT]/A$ to show~$A \models
+\speak{$\ul{\TT}/U_\TT$ proves$^\star$~$(\alpha
+\wedge \varphi \seq{\vec x, \vec y} \psi)$}$. By
+Lemma~\ref{lemma:truth-to-provability}, we also have~$A \models
+\speak{$\ul{\TT}/U_\TT$ proves$^\star$~$(\top \seq{[]} \alpha)$}$ (where the free
+variables occuring in~$\alpha$ are interpreted as the generic values available
+over~$A$), hence~$A \models \speak{$\ul{\TT}/U_\TT$ proves$^\star$~$(\varphi
+\seq{\vec y} \psi)$}$.
+\end{proof}
+
+% XXX: check contexts.
 
 \begin{thm}\label{thm:nullstellensatz-horn}
 Let~$\TT$ be a geometric theory. Let~$\TT'$ be a quotient theory
@@ -430,6 +522,35 @@ out~$\Set[\TT']$ is subcanonical. For instance, this is the case if~$\TT$ is
 the theory of rings and~$\Set[\TT']$ is one of several well-known toposes in
 algebraic geometry such as the big Zariski topos, the big étale topos or the
 big fppf topos.
+
+\begin{thm}\label{thm:characterization}
+Let~$\TT$ be a geometric theory. Let~$\alpha$ be a first-order
+formula over the signature of~$\TT$. Then the following statements are
+equivalent.
+\begin{enumerate}
+\item The formula~$\alpha$ holds for~$U_\TT$.
+\item The formula~$\alpha$ is provable in first-order intuitionistic logic
+modulo the axioms of~$\TT$ and the additional axiom
+scheme~\eqref{eq:nullstellensatz}.
+\end{enumerate}
+\end{thm}
+
+\begin{proof}The direction~$(1) \Rightarrow (2)$ is immediate, as the internal
+language of~$\Set[\TT]$ validates first-order intuitionistic logic and the
+axiom scheme~\eqref{eq:nullstellensatz} by Theorem~\ref{thm:nullstellensatz}.
+
+For the converse direction, we note that, given a geometric sequent~$\sigma$
+over the signature of~$\TT$, the statement~$\speak{$\ul{\TT}/U_\TT$
+proves$^\star$~$\sigma$}$ can be expressed as a geometric formula over the
+signature of~$\TT$. Applying this observation successively to subformulas
+of the given formula~$\alpha$, Theorem~\ref{thm:nullstellensatz} on the
+semantic side and the axiom scheme~\eqref{eq:nullstellensatz} imply that we may
+assume that~$\alpha$ is in fact a geometric formula. Hence we are reduced to
+the basic fact that, for geometric formulas~$\varphi$, $\Set[\TT] \models
+\varphi$ implies that~$\TT$ proves~$\varphi$.
+\end{proof}
+
+% XXX coherent case
 
 
 \section{The special case of Horn theories}
@@ -536,8 +657,39 @@ is an isomorphism.
 \end{lemma}
 
 
+\section{The generalization to the higher-order case}
+
+\begin{thm}\label{thm:higher-order-nullstellensatz}
+Let~$\TT$ be a geometric theory. Let~$x_1\?X_1,\ldots,x_n\?X_n$ be a context over the
+signature of~$\TT$. Then the canonical morphism
+\[ \mathrm{Form}^\star_{\vec x}(\ul{\TT}/U_\TT)/(\dashv\vdash_{\vec x}) \longrightarrow P(X_1 \times
+\cdots \times X_n) \]
+sending the equivalence class of a geometric$^\star$ formula~$\varphi$ over the
+signature of~$\ul{\TT}/U_\TT$ to the subset~$\{ (x_1,\ldots,x_n) \,|\, \varphi
+\}$ is an isomorphism.
+% XXX explain equivalence relation
+\end{thm}
+
+An immediate corollary of Theorem~\ref{thm:higher-order-nullstellensatz} is the
+Nullstellensatz of Theorem~\ref{thm:nullstellensatz}. Indeed, arguing
+internally to~$\Set[\TT]$, let~$\sigma = (\varphi \seq{\vec x} \psi)$ be a
+geometric$^\star$ sequent over the signature of~$\ul{\TT}/U_\TT$. Assume
+that~$\sigma$ holds for~$U_\TT$. Then the subsets~$\{ (\vec x) \,|\, \varphi
+\}$ and~$\{ (\vec x) \,|\, \varphi \wedge \psi \}$ are equal. Hence, by
+Theorem~\ref{thm:higher-order-nullstellensatz}, the formulas~$\varphi$
+and~$\varphi \wedge \psi$ are provably~$^\star$ equivalent.
+Thus~$\ul{\TT}/U_\TT$ proves$^\star$~$(\varphi \seq{\vec x} \psi)$.
+
+% XXX corollary: function spaces
+
+% XXX prove higher-order characterization?
+
+
 \section{Applications}
 
+% Zariski
+
+% Kock--Lawvere in SDG
 
 %We do have, for any geometric sequent~$\sigma$, that
 %\[ \Set[\TT] \models \speak{$\sigma$ holds for~$U_\TT$} \quad\text{iff}\quad
@@ -562,6 +714,8 @@ is an isomorphism.
   (in general and for internal theories)
 
 * Discuss related work, especially: Olivia 6.1.3, ...
+
+* Discuss higher-order case
 
 \begin{defn}Let~$\TT$ be a geometric theory. The theory~$\ul{\TT}/U_\TT$ is the
 geometric theory internal to~$\Set[\TT]$ which arises from~$\ul{\TT}$

@@ -624,7 +624,7 @@ compact, the identity on~$M$ factors over such a model. Hence~$M$ is a
 retract of such a model and hence itself isomorphic to a model of this form.
 \end{proof}
 
-% Set[T] einführen
+% XXX Set[T] einführen
 
 Any~$\TT$-model~$A$ has a mirror image in the topos~$\Set[\TT]$, namely the
 functor~$A^\sim : \Mod{\TT}_\mathrm{fp} \to \Set$ given by~$T \mapsto A \otimes T$.
@@ -690,9 +690,40 @@ Theorem~\ref{thm:higher-order-nullstellensatz}, the formulas~$\varphi$
 and~$\varphi \wedge \psi$ are provably~$^\star$ equivalent.
 Thus~$\ul{\TT}/U_\TT$ proves$^\star$~$(\varphi \seq{\vec x} \psi)$.
 
-% XXX corollary: function spaces
+\begin{cor}Let~$\TT$ be a geometric theory. Let~$\{\vec x\_ \varphi\}$
+and~$\{\vec y\_ \psi\}$ be geometric formulas in given contexts. Then,
+internally to~$\Set[\TT]$, the canonical map from the set of equivalence classes
+of~$\ul{\TT}/U$-provably$^\star$ functional geometric$^\star$ formulas
+from~$\{\vec x\_ \varphi\}$ to~$\{\vec y\_ \psi\}$ to the set of maps~$\{(\vec y)
+\,|\, \psi \}^{\{(\vec x) \,|\, \varphi\}}$ is a bijection.
+\end{cor}
 
-% XXX prove higher-order characterization?
+% XXX fill in proof
+
+\begin{thm}\label{thm:higher-order-nullstellensatz}
+Let~$\TT$ be a geometric theory. Then, internally to~$\Set[\TT]$, for any
+higher-order geometric$^\star$ sequent~$\sigma$ over the signature
+of~$\ul{\TT}/U$, the following statements are equivalent:
+\begin{enumerate}
+\item The sequent~$\sigma$ holds for~$U_\TT$.
+\item The sequent~$\sigma$ is provable$^\star$ modulo~$\TT/U_\TT$ in geometric
+higher-order logic.
+\end{enumerate}
+\end{thm}
+
+% XXX fill in proof
+
+\begin{thm}\label{thm:higher-order-characterization}
+Let~$\TT$ be a geometric theory. Let~$\alpha$ be a higher-order formula over
+the signature of~$\TT$. Then the following statements are equivalent:
+\begin{enumerate}
+\item The formula~$\alpha$ holds for~$U_\TT$.
+\item The formula~$\alpha$ is provable in higher-order intuitionistic logic
+modulo the axioms of~$\TT$ and the additional axiom scheme~XXX.
+\end{enumerate}
+\end{thm}
+
+% XXX fill in proof
 
 
 \section{Applications}

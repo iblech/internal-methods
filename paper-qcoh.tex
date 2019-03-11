@@ -45,6 +45,7 @@
 \newcommand{\aaa}{\mathfrak{a}}
 \newcommand{\bbb}{\mathfrak{b}}
 \newcommand{\mmm}{\mathfrak{m}}
+\newcommand{\C}{\mathcal{C}}
 \newcommand{\I}{\mathcal{I}}
 \newcommand{\J}{\mathcal{J}}
 \newcommand{\E}{\mathcal{E}}
@@ -394,14 +395,19 @@ That~(4) implies~(1) is a routine exercise exploiting that
 
 \begin{lemma}\label{lemma:truth-to-provability}
 Let~$\TT$ be a geometric theory. Let~$\alpha$ be a geometric formula over the
-signature of~$\TT$ in a context~$\vec x$. Then
+signature of~$\TT$ in a context~$x_1\?X_1,\ldots,x_n\?X_n$. Then
 \[ \{ \vec x\_ \alpha \} \models \speak{$\ul{\TT}/U_\TT$ proves $(\top
 \vdash_{[]} \alpha)$}, \]
 where the free variables~$\vec x$ occurring in~$\alpha$ are interpreted by
-their generic values over~$\{ \vec x\_ \alpha \}$.
+their generic values over~$\{ \vec x\_ \alpha \}$, that is the projection
+maps~$\{ \vec x\_ \alpha \} \to \{ x_i\?X_i\_ \top \}$.
 \end{lemma}
 
-% XXX fill in proof
+\begin{proof}By induction on the structure of~$\alpha$. The cases
+of~``$\top$'' and ``$\wedge$'' are trivial; the cases of~``$\bigvee$''
+and~``$\exists$'' follow from passing to suitable coverings; and the case of
+atomic propositions is by definition of~$\ul{\TT}/U_\TT$.
+\end{proof}
 
 \begin{lemma}\label{lemma:locally-constant}
 Let~$\TT$ be a geometric theory.

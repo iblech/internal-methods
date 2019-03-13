@@ -375,17 +375,16 @@ will again be recursively axiomatizable.
 \paragraph{Acknowledgments} XXX
 
 
-\section{Background on \ldots}
+\section{Background}
 
-\subsection{the internal language of Grothendieck toposes}
+\subsection{Background on the internal language of Grothendieck toposes}
 
 % XXX
 
 
-\subsection{internal geometric theories}
+\subsection{Background on internal geometric theories}
 
-% XXX, especially the notion of provability and
-% provability*
+% XXX
 
 Given an internal theory~$\Sigma$ internal to a Grothendieck topos~$\E$ (or
 elementary topos with a natural numbers object), we can successively build the
@@ -393,10 +392,86 @@ object of contexts (the object of lists of sorts); the object of terms
 (equipped with a morphism to the object of contexts); the object of atomic
 propositions (again equipped with such a morphism); the object of geometric
 formulas (again so); the object of geometric sequents (again so); and, given an
-internal theory~$\TT$ over~$\Sigma$, the object of proof trees of~$\TT$.
+internal geometric theory~$\TT$ over~$\Sigma$, the object of proof trees of~$\TT$.
+
+From the internal point of view of~$\E$, these objects can be obtained by
+simply carrying out the usual constructions of the set of contexts, the set of
+terms and so on. Having the object of proof trees at hand, we can define
+provability:
+
+\begin{defn}\label{defn:provability}
+Let~$\TT$ be a geometric theory internal to a Grothendieck topos~$\E$.
+Internally to~$\E$, an element~$\sigma$ of the object of geometric sequents is
+\emph{provable modulo~$\TT$} if and only if there is an element of the object
+of proof trees of~$\TT$ which has~$\sigma$ as its conclusion.\end{defn}
+
+\begin{ex}An ordinary geometric theory is the same as a geometric theory
+internal to the topos~$\Set$. A geometric sequent is provable in the ordinary
+sense if and only if, from the internal point of view of~$\Set$, it is provable
+in the sense of Definition~\ref{defn:provability}.\end{ex}
+
+Disjunctions appearing in internal geometric formulas may be indexed by
+arbitrary objects of the topos, just like disjunctions appearing in ordinary
+external geometric formulas over an ordinary signature may be indexed by
+arbitrary sets. If~$\E$ is a Grothendieck topos, the object of geometric
+formulas over an internal signature~$\Sigma$ in~$\E$ has an important
+subobject, the subobject of those formulas such that locally, any appearing
+disjunction is indexed by a constant sheaf. Such internal geometric formulas
+will be called \emph{geometric$^\star$ formulas}.
+
+Correspondingly, there is a subobject of the object of proof trees, the object
+of~\emph{proof$^\star$ trees} where any occurring geometric formulas is a
+geometric$^\star$ formula. The shape of such a proof$^\star$ tree is locally
+given by the shape of an ordinary external proof tree.
+
+\begin{defn}\label{defn:provability*}
+Let~$\TT$ be a geometric theory internal to a Grothendieck topos~$\E$.
+Internally to~$\E$, an element~$\sigma$ of the object of geometric$^\star$
+sequents is \emph{provable$^\star$ modulo~$\TT$} if and only if there is an
+element of the object of proof$^\star$ trees of~$\TT$ which has~$\sigma$ as its
+conclusion.\end{defn}
+
+The following lemma shows that for coherent theories, there is no difference
+between provability and provability$^*$.
+
+\begin{lemma}Let~$\E$ be a Grothendieck topos. Let~$\TT$ be a coherent theory
+internal to~$\E$. Let~$\sigma$ be a coherent sequent over the signature
+of~$\TT$. Then the following statements are equivalent.
+\begin{enumerate}
+\item $\E \models \speak{There is a~$\TT$-derivation of~$\sigma$ of externally
+finite shape}.$
+\item $\E \models \speak{There is a~$\TT$-derivation of~$\sigma$ of arbitrary
+external shape}$, that is~$\E \models \speak{$\sigma$ is provable$^\star$
+modulo~$\TT$}$.
+\item $\E \models \speak{There is a~$\TT$-derivation of~$\sigma$ of arbitrary
+internal shape}$, that is~$\E \models \speak{$\sigma$ is provable
+modulo~$\TT$}$.
+\item $\E \models \speak{There is a~$\TT$-derivation of~$\sigma$ of internally
+finite shape}.$
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}It is trivial that~(1) implies~(2) implies~(3).
+
+To verify that~(3) implies~(4), we can mimic the usual proof of this fact in
+the internal language of~$\E$: There is a variant of the syntactic
+site of~$\TT$ which is built using only coherent sequents and finitary
+derivability~\cite[Section~1.4]{caramello:tst}. The sheaf topos over this site
+is another model for the classifying topos of~$\TT$, and still validates, like
+any Grothendieck topos, full infinitary logic. Hence, if~$\sigma$
+is~$\TT$-derivable by a proof tree of arbitrary shape, then~$\sigma$ holds in
+this model of the classifying topos. By the analogue of
+Proposition~\ref{prop:classifying-topos} for this model, we obtain
+that~$\sigma$ is~$\TT$-derivable by a proof tree of finite shape.
+
+That~(4) implies~(1) is a routine exercise exploiting that
+\[ \E \models \forall X\_ \speak{$X$ is Kuratowski-finite} \Leftrightarrow
+  \bigvee_{n \geq 0} \exists x_1,\ldots,x_n \? X\_
+  \forall x \? X\_ \bigvee_{i=1}^n x = x_i. \qedhere \]
+\end{proof}
 
 
-\subsection{classifying toposes}
+\subsection{Background on classifying toposes}
 
 \begin{defn}The \emph{syntactic site}~$\C_\TT$ of a geometric theory~$\TT$ has:
 \begin{enumerate}
@@ -450,39 +525,9 @@ unrolling the Kripke--Joyal semantics. The equivalence~$(2) \Leftrightarrow
 The following lemma shows that for coherent theories, there is no difference
 between provability and provability$^*$.
 
-\begin{lemma}Let~$\E$ be a Grothendieck topos. Let~$\TT$ be a coherent theory
-internal to~$\E$. Let~$\sigma$ be a coherent sequent over the signature
-of~$\TT$. Then the following statements are equivalent.
-\begin{enumerate}
-\item $\E \models \speak{There is a~$\TT$-derivation of~$\sigma$ of externally
-finite shape}.$
-\item $\E \models \speak{There is a~$\TT$-derivation of~$\sigma$ of arbitrary
-external shape}.$
-\item $\E \models \speak{There is a~$\TT$-derivation of~$\sigma$ of arbitrary
-internal shape}.$
-\item $\E \models \speak{There is a~$\TT$-derivation of~$\sigma$ of internally
-finite shape}.$
-\end{enumerate}
-\end{lemma}
 
-\begin{proof}It is trivial that~(1) implies~(2) implies~(3).
 
-To verify that~(3) implies~(4), we can mimic the usual proof of this fact in
-the internal language of~$\E$: There is a variant of the syntactic
-site of~$\TT$ which is built using only coherent sequents and finitary
-derivability~\cite[Section~1.4]{caramello:tst}. The sheaf topos over this site
-is another model for the classifying topos of~$\TT$, and still validates, like
-any Grothendieck topos, full infinitary logic. Hence, if~$\sigma$
-is~$\TT$-derivable by a proof tree of arbitrary shape, then~$\sigma$ holds in
-this model of the classifying topos. By the analogue of
-Proposition~\ref{prop:classifying-topos} for this model, we obtain
-that~$\sigma$ is~$\TT$-derivable by a proof tree of finite shape.
 
-That~(4) implies~(1) is a routine exercise exploiting that
-\[ \E \models \forall X\_ \speak{$X$ is Kuratowski-finite} \Leftrightarrow
-  \bigvee_{n \geq 0} \exists x_1,\ldots,x_n \? X\_
-  \forall x \? X\_ \bigvee_{i=1}^n x = x_i. \qedhere \]
-\end{proof}
 
 \begin{lemma}\label{lemma:truth-to-provability}
 Let~$\TT$ be a geometric theory. Let~$\alpha$ be a geometric formula over the

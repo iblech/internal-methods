@@ -69,6 +69,7 @@
 \DeclareMathOperator{\rank}{rank}
 \DeclareMathOperator{\length}{length}
 \DeclareMathOperator{\List}{List}
+\DeclareMathOperator{\id}{id}
 \newcommand{\Set}{\mathrm{Set}}
 \newcommand{\Eff}{\mathrm{Ef{}f}}
 \renewcommand{\_}{\mathpunct{.}\,}
@@ -114,7 +115,10 @@ relation symbols and a set of axioms, consisting of geometric sequents
 (sequents of the form~$\varphi \seq{\vec x} \psi$ where~$\varphi$ and~$\psi$
 are geometric formulas, that is formulas built from equality and the relation
 symbols by the logical connectives~${\top}\,{\bot}\,{\wedge}\,{\vee}\,{\exists}$
-and by arbitrary set-indexed disjunctions~$\bigvee$).
+and by arbitrary set-indexed disjunctions~$\bigvee$). By \emph{first-order
+formula} we will mean a formula which may contain, additionally to the
+connectives allowed for geometric formulas, the connectives~${\Rightarrow}$
+and~${\forall}$.
 
 A fundamental result is that there is a \emph{generic model}~$U_\TT$ of~$\TT$,
 a model such that for any geometric sequent~$\sigma$, the following notions
@@ -135,9 +139,9 @@ of~$\Set[\TT]$ for each sort, a morphism for each function symbol and so on.
 To state what it means for a~$\TT$-structure in a topos~$\E$ to verify the
 axioms of~$\TT$, rendering it a model, the \emph{internal language} of~$\E$ is
 used, roughly reviewed in Section~\ref{sect:review} below. We write~``$\E
-\models \alpha$'' to mean that the formula~$\alpha$ holds from the internal
+\models \alpha$'' to mean that a formula~$\alpha$ holds from the internal
 point of view of~$\E$. Since this language is a form of a higher-order
-dependently-typed intuitionistic logic, the classifying topos~$\Set[\TT]$ can
+intuitionistic extensional dependent type theory, the classifying topos~$\Set[\TT]$ can
 be regarded as a higher-order completion of the geometric theory~$\TT$. The
 generic model enjoys the universal property that any~$\TT$-model in any
 (Grothendieck) topos~$\E$ is the pullback of~$U_\TT$ along an essentially
@@ -199,7 +203,7 @@ that~$f(\varepsilon) = a + b \varepsilon$ for all~$\varepsilon \? \Delta$. \smal
 \item $\affl$ is \emph{synthetically quasicoherent}: For any
 finitely presented~$\affl$-algebra~$A$, the canonical homomorphism~$A \to
 (\affl)^{\Spec(A)}$, where~$\Spec(A)$ is defined as the set
-of~$\affl$-algebra-homomorphisms~$A \to \affl$, is bijective.
+of~$\affl$-algebra homomorphisms~$A \to \affl$, is bijective.
 \end{itemize}
 All of these nongeometric sequents are useful for the purposes of synthetic
 algebraic geometry, the desire to carry out algebraic geometry in a language
@@ -234,7 +238,7 @@ single such, namely the synthetic quasicoherence of the generic
 model, and in earlier work we surmised that one could formulate an appropriate
 metatheorem explaining this observation and generalizing it to arbitrary
 classifying toposes~\cite[Speculation~22.1]{blechschmidt:phd}. This hope turned
-out to be true, in the sense we will now make precise.
+out to be true, in the sense we will now indicate.
 \medskip
 
 \paragraph{A general Nullstellensatz} To explain the relevant background, the
@@ -680,14 +684,14 @@ signature of~$\ul{\TT}/U_\TT$ to the subset~$\{ (x_1,\ldots,x_n) \,|\, \varphi
 % XXX explain equivalence relation
 \end{thm}
 
-An immediate corollary of Theorem~\ref{thm:higher-order-nullstellensatz} is the
+An immediate corollary of Theorem~\ref{thm:definability} is the
 Nullstellensatz of Theorem~\ref{thm:nullstellensatz}. Indeed, arguing
 internally to~$\Set[\TT]$, let~$\sigma = (\varphi \seq{\vec x} \psi)$ be a
 geometric$^\star$ sequent over the signature of~$\ul{\TT}/U_\TT$. Assume
 that~$\sigma$ holds for~$U_\TT$. Then the subsets~$\{ (\vec x) \,|\, \varphi
 \}$ and~$\{ (\vec x) \,|\, \varphi \wedge \psi \}$ are equal. Hence, by
-Theorem~\ref{thm:higher-order-nullstellensatz}, the formulas~$\varphi$
-and~$\varphi \wedge \psi$ are provably~$^\star$ equivalent.
+Theorem~\ref{thm:definability}, the formulas~$\varphi$
+and~$\varphi \wedge \psi$ are provably$^\star$ equivalent.
 Thus~$\ul{\TT}/U_\TT$ proves$^\star$~$(\varphi \seq{\vec x} \psi)$.
 
 \begin{cor}Let~$\TT$ be a geometric theory. Let~$\{\vec x\_ \varphi\}$

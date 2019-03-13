@@ -522,12 +522,35 @@ unrolling the Kripke--Joyal semantics. The equivalence~$(2) \Leftrightarrow
 
 \section{Proofs of the main theorems}
 
-The following lemma shows that for coherent theories, there is no difference
-between provability and provability$^*$.
+Given a geometric theory~$\TT$, the main theorems reference a certain internal
+theory~$\ul{\TT}/U_\TT$ internal to~$\Set[\TT]$. This theory is defined as
+follows.
 
+\begin{defn}Let~$\TT$ be a geometric theory. The theory~$\ul{\TT}/U_\TT$ is the
+geometric theory internal to~$\Set[\TT]$ which arises from the pulled-back
+theory~$\ul{\TT}$ by adding additional constant symbols~$e_x$ of the
+appropriate sorts, one for each element~$x : U_\TT$, axioms~$(\top \vdash
+f(e_{x_1},\ldots,e_{x_n}) = e_{f(x_1,\ldots,x_n)})$ for each function
+symbol~$f$ and~$n$-tuple of elements of~$U_\TT$ (of the appropriate sorts), and
+axioms~$(\top \vdash R(e_{x_1},\ldots,e_{x_n}))$ for each relation symbol~$R$
+and~$n$-tuple~$(x_1,\ldots,x_n)$ (of the appropriate sorts) such
+that~$R(x_1,\ldots,x_n)$ holds for~$U_\TT$.\end{defn}
 
+From the point of view of~$\Set[\TT]$, a model of~$\ul{\TT}/U_\TT$ is a model
+of~$\ul{\TT}$ equipped with a~$\ul{\TT}$-homomorphism from~$U_\TT$. In
+particular, the identity~$(U_\TT \to U_\TT)$ is a model of~$\ul{\TT}/U_\TT$.
+This is what we mean when we say that~$U_\TT$ is in a canonical way
+a~$\ul{\TT}/U_\TT$-model.
 
+\begin{ex}Let~$\TT$ be the theory of rings. Then~$\ul{\TT}/U_\TT$ is, from the
+internal point of view of~$\Set[\TT]$, the theory of~$U_\TT$-algebras.\end{ex}
 
+\begin{ex}Let~$\TT$ be a geometric theory. Let~$M$ be a model of~$\TT$ in the
+category of sets. Let~$f : \Set \to \Set[\TT]$ be the corresponding geometric
+morphism. Then~$f^*(\ul{\TT}/U_\TT)$ is the theory of~$M$-algebras
+($\TT$-models equipped with a~$\TT$-homomorphism from~$M$). This is
+because~$f^*\ul{\TT} = \TT$, $f^*U_\TT = M$ and because the construction of the
+theory~$\ul{\TT}/U_\TT$ is geometric.\end{ex}
 
 \begin{lemma}\label{lemma:truth-to-provability}
 Let~$\TT$ be a geometric theory. Let~$\alpha$ be a geometric formula over the
@@ -986,23 +1009,6 @@ modulo the axioms of~$\TT$ and the additional axiom scheme~XXX.
   (in general and for internal theories)
 
 * Discuss related work, especially: Olivia 6.1.3, ...
-
-* Discuss higher-order case
-
-\begin{defn}Let~$\TT$ be a geometric theory. The theory~$\ul{\TT}/U_\TT$ is the
-geometric theory internal to~$\Set[\TT]$ which arises from~$\ul{\TT}$
-by adding additional constant symbols~$e_x$, one for each
-element~$x : U_\TT$, axioms~$(\top \vdash f(e_{x_1},\ldots,e_{x_n}) =
-e_{f(x_1,\ldots,x_n)})$ for each function symbol~$f$ and~$n$-tuple of elements
-of~$U_\TT$, and axioms~$(\top \vdash R(e_{x_1},\ldots,e_{x_n}))$ for each
-relation symbol~$R$ and~$n$-tuple~$(e_{x_1},\ldots,e_{x_n})$ such
-that~$R(e_{x_1},\ldots,e_{x_n})$ holds for~$U_\TT$.
-\end{defn}
-
-From the point of view of~$\Set[\TT]$, a model of~$\ul{\TT}/U_\TT$ is a model
-of~$\ul{\TT}$ equipped with a~$\ul{\TT}$-homomorphism from~$U_\TT$. In
-particular, the identity~$(U_\TT \to U_\TT)$ is a model of~$\ul{\TT}/U_\TT$.
-We then have:
 
 % We would not expect the statement
 % \[ \text{``for any geometric sequent~$\sigma$, if~$\sigma$ holds for~$A$

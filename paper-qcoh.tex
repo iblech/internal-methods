@@ -375,7 +375,75 @@ will again be recursively axiomatizable.
 \paragraph{Acknowledgments} XXX
 
 
-\section{Background on classifying toposes}
+\section{Background on \ldots}
+
+\subsection{the internal language of Grothendieck toposes}
+
+% XXX
+
+
+\subsection{internal geometric theories}
+
+% XXX, especially the notion of provability and
+% provability*
+
+Given an internal theory~$\Sigma$ internal to a Grothendieck topos~$\E$ (or
+elementary topos with a natural numbers object), we can successively build the
+object of contexts (the object of lists of sorts); the object of terms
+(equipped with a morphism to the object of contexts); the object of atomic
+propositions (again equipped with such a morphism); the object of geometric
+formulas (again so); the object of geometric sequents (again so); and, given an
+internal theory~$\TT$ over~$\Sigma$, the object of proof trees of~$\TT$.
+
+
+\subsection{classifying toposes}
+
+\begin{defn}The \emph{syntactic site}~$\C_\TT$ of a geometric theory~$\TT$ has:
+\begin{enumerate}
+\item as objects ``geometric formulas in contexts''~$\{x_1\?X_1,\ldots,x_n\?X_n\_
+\varphi\}$ where~$\varphi$ is a geometric formula over the signature of~$\TT$
+in the displayed context;
+\item as set of morphisms~$\Hom_{\C_\TT}(\{\vec x\_
+\varphi\}, \{\vec y\_ \psi\})$ the set of formulas~$\theta$ in the
+context~$\vec x, \vec y$ which are~$\TT$-provably functional,
+modulo~$\TT$-provable equivalence of such formulas;
+\item as covering families those families~$(\{\vec x_i\_ \varphi_i\} \xrightarrow{\theta_i}
+\{\vec y\_ \psi\})_i$ for which~$\TT$ proves~$(\psi \seq{\vec y} \bigvee_i \exists \vec x_i\_
+\theta_i)$.
+\end{enumerate}
+\end{defn}
+
+\begin{defn}The \emph{classifying topos}~$\Set[\TT]$ of a geometric
+theory~$\TT$ is the topos of set-valued sheaves on~$\C_\TT$.\end{defn}
+
+Writing~$y : \C_\TT \to \Set[\TT]$ for the Yoneda embedding, the \emph{generic
+model}~$U_\TT$ of~$\TT$ interprets a sort~$X$ of~$\TT$ as the sheaf~$y\{x\?X\_ \top\}$,
+a function symbol~$f : X_1 \cdots X_n \to Y$ as the morphism given by
+the~$\TT$-provably functional formula~$f(x_1,\ldots,x_n) = y$ and a relation
+symbol~$R \rightarrowtail X_1 \cdots X_n$ by the subobject~$y\{\vec x\_ R(\vec
+x)\} \rightarrowtail y\{\vec x\_ \top\}$.
+
+\begin{thm}The generic model is universal in the sense that for any
+Grothendieck topos~$\E$, the functor
+\[ \text{(category of geometric morphisms~$\E \to \Set[\TT]$)} \longrightarrow
+\text{(category of~$\TT$-models in~$\E$)} \]
+given by~$f \mapsto f^*U_\TT$ is an equivalence of categories.
+\end{thm}
+
+\begin{prop}Let~$\alpha$ and~$\varphi$ be geometric formulas in a context~$\vec
+x$ over the signature of a geometric theory~$\TT$. Then the following
+statements are equivalent:
+\begin{enumerate}
+\item $\Set[\TT] \models \forall \vec x\_ (\alpha \Rightarrow \varphi)$.
+\item $\{\vec x\_ \alpha\} \models \varphi$.
+\item $\TT$ proves~$(\alpha \seq{\vec x} \varphi)$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}The equivalence~$(1) \Leftrightarrow (2)$ follows immediately by
+unrolling the Kripke--Joyal semantics. The equivalence~$(2) \Leftrightarrow
+(3)$ is by induction on the structure of~$\varphi$.\end{proof}
+
 
 \section{Proofs of the main theorems}
 

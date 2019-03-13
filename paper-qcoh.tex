@@ -813,7 +813,33 @@ where the final isomorphism is by Lemma~\ref{lemma:fp-double-dual}.
 
 \section{The generalization to the higher-order case}
 
-\begin{thm}\label{thm:higher-order-nullstellensatz}
+% XXX introduction
+
+By \emph{geometric higher-order logic} we mean the extension of geometric
+logic where we are allowed to form, in addition to the basic sorts supplied by
+a given signature: finite limits of sorts; set-indexed colimits of sorts; and
+powers of sorts. These derived sorts come with respective term constructors
+(tuple formers, coprojections, set comprehension) and the usual rules governing
+these constructors.
+
+A \emph{geometric higher-order formula} is a formula built from equality and
+relation symbols by the logical
+connectives~${\top}\,{\bot}\,{\wedge}\,{\vee}\,{\exists}$
+and by arbitrary set-indexed disjunctions~$\bigvee$. The existential
+quantification can be over any sort, including the derived sorts. A
+\emph{geometric higher-order sequent} is a sequent of the form~$(\varphi
+\seq{\vec x} \psi)$ where~$\varphi$ and~$\psi$ are geometric higher-order
+formulas and the sorts of the variables~$\vec x$ may be derived sorts.
+
+The truth of geometric higher-order sequents is in general not preserved under
+pullback along geometric morphisms; however for the fragment not containing
+powersorts, this is true. In fact, there is a canonical way of associating to
+any geometric higher-order sequent~$\sigma$ in this fragment a
+family~$(\sigma_i)_i$ of ordinary geometric sequents such that~$\sigma$ is
+provable in geometric higher-order logic if and only if all the
+sequents~$\sigma_i$ are provable in ordinary geometric logic.
+
+\begin{thm}\label{thm:definability}
 Let~$\TT$ be a geometric theory. Let~$x_1\?X_1,\ldots,x_n\?X_n$ be a context over the
 signature of~$\TT$. Then the canonical morphism
 \[ \mathrm{Form}^\star_{\vec x}(\ul{\TT}/U_\TT)/(\dashv\vdash_{\vec x}) \longrightarrow P(X_1 \times
@@ -842,7 +868,23 @@ from~$\{\vec x\_ \varphi\}$ to~$\{\vec y\_ \psi\}$ to the set of maps~$\{(\vec y
 \,|\, \psi \}^{\{(\vec x) \,|\, \varphi\}}$ is a bijection.
 \end{cor}
 
-% XXX fill in proof
+\begin{proof}We argue internally to~$\Set[\TT]$.
+The canonical map sends an equivalence class~$[\theta]$ to the unique map~$f :
+\{(\vec x) \,|\, \varphi\} \to \{(\vec y) \,|\, \psi \}$ whose graph is given
+by the set~$\{ (\vec x, \vec y) \,|\, \theta \}$.
+
+For verifying surjectivity, let a map~$f : \{(\vec x) \,|\, \varphi\} \to
+\{(\vec y) \,|\, \psi \}$ be given. Then its graph is a subset of~$\vec X
+\times \vec Y$, hence by Theorem~\ref{thm:definability} given by a
+geometric$^\star$ formula~$\theta$. Because~$f$ is a map, this formula is
+functional; and by the Nullstellensatz, it is~$\ul{\TT}/U_\TT$-provably$^\star$ so.
+
+For verifying injectivity, let~$\theta$ and~$\theta'$
+be~$\ul{\TT}/U_\TT$-provably$^\star$ functional formulas which give rise to
+identical maps. Then they also give rise to identical graphs, hence
+are~$\ul{\TT}/U_\TT$-provably$^\star$ equivalent by
+Theorem~\ref{thm:definability}.
+\end{proof}
 
 \begin{thm}\label{thm:higher-order-nullstellensatz}
 Let~$\TT$ be a geometric theory. Then, internally to~$\Set[\TT]$, for any

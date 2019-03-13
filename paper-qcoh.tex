@@ -726,35 +726,89 @@ in~$\Set[\TT]$ is left adjoint to functor~$\Gamma = \Hom(1, \cdot)$ computing
 global elements.
 \end{lemma}
 
-\begin{proof}An~$U_\TT$-algebra-homomorphism~$\alpha : A^\sim \to M$ yields
-the~$\TT$-model-homo\-mor\-phism~$\alpha_0 : A \to M(0) = \Gamma(M)$, where~$0$ is the
-initial~$\TT$-model. Conversely, a~$\TT$-model-homomorphism~$\beta : A \to
-\Gamma(M)$ yields an~$U_\TT$-algebra-homomorphism by summing~$A \to M(0) \to
+\begin{proof}An~$U_\TT$-algebra homomorphism~$\alpha : A^\sim \to M$ yields
+the~$\TT$-model homo\-mor\-phism~$\alpha_0 : A \to M(0) = \Gamma(M)$, where~$0$ is the
+initial~$\TT$-model. Conversely, a~$\TT$-model homomorphism~$\beta : A \to
+\Gamma(M)$ yields an~$U_\TT$-algebra homomorphism by summing~$A \to M(0) \to
 M(T)$ with the structure morphism~$T = U_\TT(T) \to
 M(T)$.\end{proof}
 
 \begin{defn}The \emph{spectrum}~$\Spec(M)$ of a~$U_\TT$-algebra~$M$ in~$\Set[\TT]$
 is the result of constructing, internally to~$\Set[\TT]$, the set
-of~$U_\TT$-algebra-homomorphisms~$M \to U_\TT$.
+of~$U_\TT$-algebra homomorphisms~$M \to U_\TT$.
 \end{defn}
 
-Externally, the spectrum of~$M$ is the functor
-mapping a finitely presented~$\TT$-model~$T$ to~$\Hom_T(M(T), T)$, the set
-of~$\TT$-homomorphisms~$M(T) \to T$ compatible with the structure morphisms~$T
-\to M(T)$ and~$T \to T$.
+% This is wrong:
+% Externally, the spectrum of~$M$ is the functor
+% mapping a finitely presented~$\TT$-model~$T$ to~$\Hom_T(M(T), T)$, the set
+% of~$\TT$-homomorphisms~$M(T) \to T$ compatible with the structure morphisms~$T
+% \to M(T)$ and~$T \to T$.
 
-\begin{lemma}Let~$A$ be a~$\TT$-model. Then~$\Spec(A^\sim)$ coincides
+\begin{lemma}\label{lemma:spec-sim-representable}
+Let~$A$ be a~$\TT$-model. Then~$\Spec(A^\sim)$ coincides
 with~$yA$, the functor~$\Hom_{\Mod{\TT}}(A, \cdot)$.
 \end{lemma}
 
-\begin{proof}XXX\end{proof}
+\begin{proof}By the Yoneda lemma, the sections of the sheaf~$\Spec(A^\sim) :
+\Mod{\TT}_\mathrm{fp} \to \Set$ on an object~$T$ are given by the set
+\begin{align*}
+  \Spec(A^\sim)(T) &\cong \Hom(yT, \Spec(A^\sim)) =
+  \Hom(yT, [A^\sim,U_\TT]_{U_\TT}) \\
+  &\cong \Hom(yT \times A^\sim, U_\TT)_{\text{$U_\TT$-algebra homomorphism in second
+  argument}} \\
+  &\cong \Hom_{U_\TT}(A^\sim, (U_\TT)^{yT})
+  \cong \Hom_{U_\TT}(A^\sim, U_\TT|T),
+\end{align*}
+where~$[A^\sim,U_\TT]_{U_\TT}$ is the object of~$U_\TT$-algebra homomorphisms from~$A^\sim$
+to~$U_\TT$ (a subobject of the internal Hom~$U_\TT^{A^\sim}$); $\Hom_{U_\TT}$
+denotes the set of~$U_\TT$-algebra homomorphisms; $(U_\TT)^{yT}$ is the object of morphisms
+from~$yT$ to~$U_\TT$; and~$U_\TT|T$ is the functor~$U_\TT(T \times \cdot)$, that is~$S
+\mapsto T \otimes S$.
 
-\begin{lemma}Let~$A$ and~$B$ be finitely presented~$\TT$-models. Then the
-canonical morphism
+An arbitrary element~$f \in (yA)(T)$, that is an arbitrary~$\TT$-model
+homomorphism~$f : A \to T$, induces a~$U_\TT$-algebra homomorphism~$g : A^\sim \to
+U_\TT|T$ by setting~$g_S \defeq f \otimes \id_S : A \otimes S \to T \otimes S$. The
+given homomorphism~$f$ can be recovered by~$f = g_0$, the component of~$g$ at
+the initial model.
+
+Conversely, a~$U_\TT$-algebra homomorphism~$g : A^\sim \to U_\TT|T$ induces
+a~$\TT$-model homomorphism~$f : A \to T$ by setting~$f \defeq g_0$. Because~$g$
+is a natural transformation and because~$g$ is compatible with the structure
+morphisms~$U_\TT \to A^\sim$ and~$U_\TT \to U_\TT|T$, the morphism~$g$ is determined
+by~$f$.
+\end{proof}
+
+\begin{lemma}\label{lemma:fp-double-dual}
+Let~$A$ be a finitely presented~$\TT$-model. Then the canonical morphism
+\[ A^\sim \longrightarrow (U_\TT)^{\Spec(A^\sim)} \]
+is an isomorphism of~$U_\TT$-algebras.
+\end{lemma}
+
+\begin{proof}By Lemma~\ref{lemma:spec-sim-representable}, the
+functor~$\Spec(A^\sim)$ coincides with~$yA$. Since by assumption~$A$ is
+contained in the site defining~$\Set[\TT]$, the exponential~$(U_\TT)^{yA}$
+coincides with~$U_\TT|A$ (notation as in the proof in
+Lemma~\ref{lemma:spec-sim-representable}), that is, the~$U_\TT$-algebra~$A^\sim$.
+\end{proof}
+
+\begin{cor}Let~$A$ and~$B$ be~$\TT$-models. Assume that~$B$ is finitely
+presented. Then the canonical morphism
 \[ \Hom_{U_\TT}(A^\sim, B^\sim) \longrightarrow \Spec(A^\sim)^{\Spec(B^\sim)}
 \]
 is an isomorphism.
-\end{lemma}
+\end{cor}
+
+\begin{proof}We have the chain of isomorphisms
+\begin{align*}
+  \Spec(A^\sim)^{\Spec(B^\sim)} &=
+  {[A^\sim,U_\TT]_{U_\TT}}^{\Spec(B^\sim)} \cong
+  [\Spec(B^\sim) \times A^\sim, U_\TT]_{U_\TT} \\
+  &\cong
+  [A^\sim, U_\TT^{\Spec(B^\sim)}]_{U_\TT} \cong
+  [A^\sim, B^\sim],
+\end{align*}
+where the final isomorphism is by Lemma~\ref{lemma:fp-double-dual}.
+\end{proof}
 
 
 \section{The generalization to the higher-order case}

@@ -384,7 +384,7 @@ will again be recursively axiomatizable.
 
 \subsection{Background on internal geometric theories}
 
-% XXX
+% XXX, esp. pullback
 
 Given an internal theory~$\Sigma$ internal to a Grothendieck topos~$\E$ (or
 elementary topos with a natural numbers object), we can successively build the
@@ -606,10 +606,12 @@ in~$\varphi$ by
 \[ \bigvee_j \bigl((\exists \vec y_j\_ \theta_j) \wedge R_j(\ldots)\bigr). \]
 In a similar vein we treat any occurrence of function symbols.
 
+The resulting formula~$\varphi'$ is a geometric formula over the signature
+of~$\TT/U_\TT(A)$.
 The verification of~$A \models \speak{$\ul{\TT}/U_\TT$ proves$^\star$
 $(\varphi \dashv\vdash \varphi')$}$ rests on the observation
 \[ A \models \speak{$\ul{\TT}/U_\TT$ proves$^\star$ $\bigl((\exists \vec y_k\_
-\theta_k) \seq{[]} \bigvee_k \{ \top \,|\, \text{$(\exists \vec y_k\_ \theta_k)$
+\theta_k) \seq{[]} \bigvee_\ell \{ \top \,|\, \text{$(\exists \vec y_\ell\_ \theta_\ell)$
 holds for~$U_\TT$} \}\bigr)$} \]
 which in turn can be checked on the covering~$(\{ \vec y_j\_ \alpha_j \}
 \xrightarrow{[\theta_j]} \{ \vec x\_ \alpha \})_j$, applying
@@ -643,10 +645,10 @@ Lemma~\ref{lemma:locally-constant} we may suppose that~$\sigma$ is an
 (external) geometric sequent over the signature of~$\TT/U_\TT(A)$.
 
 Writing~$A = \{ \vec x\_ \alpha \}$ and~$\sigma = (\varphi \seq{\vec y} \psi)$,
-we have~$\{ \vec x\_ \alpha \} \models \forall y\_ (\varphi \Rightarrow \psi)$,
+we have~$\{ \vec x\_ \alpha \} \models \forall \vec y\_ (\varphi \Rightarrow \psi)$,
 hence~$\{ \vec x, \vec y\_ \alpha \wedge \varphi \} \models \psi$. Thus~$\TT$
 proves~$(\alpha \wedge \varphi \seq{\vec x, \vec y} \psi)$. This proof can be
-pulled back from~$\Set$ to~$\Set[\TT]/A$ to show~$A \models
+pulled back from~$\Set$ to~$\Set[\TT]/yA$ to show~$A \models
 \speak{$\ul{\TT}/U_\TT$ proves$^\star$~$(\alpha
 \wedge \varphi \seq{\vec x, \vec y} \psi)$}$. By
 Lemma~\ref{lemma:truth-to-provability}, we also have~$A \models

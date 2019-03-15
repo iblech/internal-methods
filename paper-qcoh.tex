@@ -916,7 +916,38 @@ is an isomorphism.
 
 \begin{proof}The proof of Lemma~\ref{lemma:char-fp-models} is constructive and
 thus valid in the internal language of~$\Set[\TT]$. Hence we can apply it,
-internally, to the theory~$\ul{\TT}/U_\TT$. XXX
+internally, to the theory~$\ul{\TT}/U_\TT$ to deduce that a~$U_\TT$-algebra~$A$
+is finitely presentable if and only if it is isomorphic to a~$U_\TT$-algebra of
+the form~$(\ul{\TT}/U_\TT)\langle X | R \rangle$ with~$X$ Bishop-finite and~$R$
+Kuratowski-finite.
+
+We therefore have to verify the following internal
+statement: \emph{For any number~$n$, for any sorts~$X_1,\ldots,X_n$
+of~$\ul{\TT}/U_\TT$, for any number~$m$, for any atomic
+propositions~$R_1,\ldots,R_m$ over the signature of~$\ul{\TT}/U_\TT$ extended
+by constants~$e_1 \? X_1, \ldots, e_n \? X_n$, the canonical map~$A \to
+(U_\TT)^{\Spec(A)}$ where~$A \defeq (\ul{\TT}/U_\TT)\langle
+e_1\?X_1,\ldots,e_n\?X_n \,|\, R_1,\ldots,R_m \rangle$ is an isomorphism.}
+
+Following the Kripke--Joyal translation of this statement, let a stage~$T \in
+\Mod{\TT}_\mathrm{fp}$,~$T$-elements~$X_1,\ldots,X_n$ of the object of sorts of
+the signature of~$\ul{\TT}/U_\TT$ (that is the constant sheaf on the set of
+sorts of~$\TT$), and~$T$-elements~$R_1,\ldots,R_m$ of the object of atomic
+propositions over the signature of~$\ul{\TT}/U_\TT$ be given. By passing to a
+covering of~$T$, we may assume that the~$X_i$ are given by sorts of~$\TT$ and
+that the~$R_j$ are given by atomic propositions over the signature
+of~$\TT/U_\TT(T)$.
+
+Since the slice~$\Set[\TT]/\yon T$ is equivalent to~$\Set[\TT/T]$,
+hence again the classifying topos of a Horn theory, we may without loss of
+generality assume that~$T$ is the initial~$\TT$-model.
+
+In this case the claim follows from Lemma~\ref{lemma:fp-double-dual}, since
+the result of constructing, internally to~$\Set[\TT]$, the
+model~$(\ul{\TT}/U_\TT)\langle
+e_1\?X_1,\ldots,e_n\?X_n \,|\, R_1,\ldots,R_m \rangle$ coincides with
+the~$U_\TT$-algebra~$(\TT\langle
+e_1\?X_1,\ldots,e_n\?X_n \,|\, R_1,\ldots,R_m \rangle)^\sim$.
 \end{proof}
 
 

@@ -984,21 +984,28 @@ Let~$\TT$ be a geometric theory. Let~$x_1\?X_1,\ldots,x_n\?X_n$ be a context ove
 signature of~$\TT$. Then the canonical morphism
 \[ \mathrm{Form}^\star_{\vec x}(\ul{\TT}/U_\TT)/(\dashv\vdash_{\vec x}) \longrightarrow P(X_1 \times
 \cdots \times X_n) \]
-sending the equivalence class of a geometric$^\star$ formula~$\varphi$ over the
-signature of~$\ul{\TT}/U_\TT$ to the subset~$\{ (x_1,\ldots,x_n) \,|\, \varphi
+sending, internally speaking, the equivalence class of a geometric$^\star$ formula~$\varphi$ over the
+signature of~$\ul{\TT}/U_\TT$ in the context~$\vec x$ to the subset~$\{ (x_1,\ldots,x_n) \,|\, \varphi
 \}$ is an isomorphism.
 % XXX explain equivalence relation
 \end{thm}
 
-An immediate corollary of Theorem~\ref{thm:definability} is the
-Nullstellensatz of Theorem~\ref{thm:nullstellensatz}. Indeed, arguing
-internally to~$\Set[\TT]$, let~$\sigma = (\varphi \seq{\vec x} \psi)$ be a
-geometric$^\star$ sequent over the signature of~$\ul{\TT}/U_\TT$. Assume
-that~$\sigma$ holds for~$U_\TT$. Then the subsets~$\{ (\vec x) \,|\, \varphi
-\}$ and~$\{ (\vec x) \,|\, \varphi \wedge \psi \}$ are equal. Hence, by
-Theorem~\ref{thm:definability}, the formulas~$\varphi$
-and~$\varphi \wedge \psi$ are provably$^\star$ equivalent.
-Thus~$\ul{\TT}/U_\TT$ proves$^\star$~$(\varphi \seq{\vec x} \psi)$.
+\begin{proof}Injectivity is by the Nullstellensatz of
+Theorem~\ref{thm:nullstellensatz}. Surjectivity is by the definability
+result~\cite[Theorem~2.2]{caramello:definability}, exploiting that the internal
+statement localizes well by Lemma~\ref{lemma:truth-to-provability}.
+% XXX check reference number
+\end{proof}
+
+% An immediate corollary of Theorem~\ref{thm:definability} is the
+% Nullstellensatz of Theorem~\ref{thm:nullstellensatz}. Indeed, arguing
+% internally to~$\Set[\TT]$, let~$\sigma = (\varphi \seq{\vec x} \psi)$ be a
+% geometric$^\star$ sequent over the signature of~$\ul{\TT}/U_\TT$. Assume
+% that~$\sigma$ holds for~$U_\TT$. Then the subsets~$\{ (\vec x) \,|\, \varphi
+% \}$ and~$\{ (\vec x) \,|\, \varphi \wedge \psi \}$ are equal. Hence, by
+% Theorem~\ref{thm:definability}, the formulas~$\varphi$
+% and~$\varphi \wedge \psi$ are provably$^\star$ equivalent.
+% Thus~$\ul{\TT}/U_\TT$ proves$^\star$~$(\varphi \seq{\vec x} \psi)$.
 
 \begin{cor}Let~$\TT$ be a geometric theory. Let~$\{\vec x\_ \varphi\}$
 and~$\{\vec y\_ \psi\}$ be geometric formulas in given contexts. Then,
@@ -1037,7 +1044,9 @@ higher-order logic.
 \end{enumerate}
 \end{thm}
 
-% XXX fill in proof
+\begin{proof}The implication~$(2) \Rightarrow (1)$ is immediate since~$U_\TT$
+is a model of~$\TT/U_\TT$. XXX
+\end{proof}
 
 \begin{thm}\label{thm:higher-order-characterization}
 Let~$\TT$ be a geometric theory. Let~$\alpha$ be a higher-order formula over

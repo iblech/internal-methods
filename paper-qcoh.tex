@@ -510,12 +510,16 @@ Grothendieck topos~$\E$, the functor
 given by~$f \mapsto f^*U_\TT$ is an equivalence of categories.
 \end{thm}
 
-\begin{prop}Let~$\alpha$ and~$\varphi$ be geometric formulas in a context~$\vec
+\begin{prop}\label{prop:basic-truth}
+Let~$\alpha$ and~$\varphi$ be geometric formulas in a context~$\vec
 x$ over the signature of a geometric theory~$\TT$. Then the following
 statements are equivalent:
 \begin{enumerate}
 \item $\Set[\TT] \models \forall \vec x\_ (\alpha \Rightarrow \varphi)$.
-\item $\{\vec x\_ \alpha\} \models \varphi$.
+\item $\{\vec x\_ \alpha\} \models \varphi$, where the free variables
+in~$\varphi$ are interpreted as their generic values over~$\{\vec
+x\_\alpha\}$, that is the projection maps~$\{ \vec x\_ \alpha \} \to \{
+x_i\?X_i\_ \top \})$.
 \item $\TT$ proves~$(\alpha \seq{\vec x} \varphi)$.
 \end{enumerate}
 \end{prop}
@@ -570,9 +574,8 @@ Let~$\TT$ be a geometric theory. Let~$\alpha$ be a geometric formula over the
 signature of~$\TT$ in a context~$x_1\?X_1,\ldots,x_n\?X_n$. Then
 \[ \{ \vec x\_ \alpha \} \models \speak{$\ul{\TT}/U_\TT$ proves $(\top
 \vdash_{[]} \alpha)$}, \]
-where the free variables~$\vec x$ occurring in~$\alpha$ are interpreted by
-their generic values over~$\{ \vec x\_ \alpha \}$, that is the projection
-maps~$\{ \vec x\_ \alpha \} \to \{ x_i\?X_i\_ \top \}$.
+where the free variables~$\vec x$ occurring in~$\alpha$ are interpreted as in
+Proposition~\ref{prop:basic-truth}.
 \end{lemma}
 
 \begin{proof}By induction on the structure of~$\alpha$. The cases
@@ -598,10 +601,10 @@ Any function symbol and relation symbol
 of~$\ul{\TT}(A)$ occurring in~$\varphi$ is locally given by a symbol of~$\TT$.
 Hence the claim would be trivial if~$\varphi$ were a coherent formula, for in
 this case we would just have to pass to further coverings, one for each
-occuring symbol, a finite number of times in total.
+occurring symbol, a finite number of times in total.
 
 However, in general, we cannot conclude as easily. Write~$A = \{ \vec x\_
-\alpha \}$. Let~$R$ be a relation symbol of~$\ul{\TT}(A)$ occuring
+\alpha \}$. Let~$R$ be a relation symbol of~$\ul{\TT}(A)$ occurring
 in~$\varphi$. By the explicit description of constant sheaves as sheaves of
 locally constant maps, there is a covering~$(\{ \vec y_j\_ \alpha_j \}
 \xrightarrow{[\theta_j]} \{ \vec x\_ \alpha \})_j$ such that, restricted to~$\{
@@ -658,7 +661,7 @@ pulled back from~$\Set$ to~$\Set[\TT]/\yon A$ to show~$A \models
 \wedge \varphi \seq{\vec x, \vec y} \psi)$}$. By
 Lemma~\ref{lemma:truth-to-provability}, we also have~$A \models
 \speak{$\ul{\TT}/U_\TT$ proves$^\star$~$(\top \seq{[]} \alpha)$}$ (where the free
-variables occuring in~$\alpha$ are interpreted as the generic values available
+variables occurring in~$\alpha$ are interpreted as the generic values available
 over~$A$), hence~$A \models \speak{$\ul{\TT}/U_\TT$ proves$^\star$~$(\varphi
 \seq{\vec y} \psi)$}$.
 \end{proof}

@@ -8,6 +8,11 @@
 \usepackage[protrusion=true,expansion=true]{microtype}
 \usepackage{xspace}
 
+% lifted from https://arxiv.org/abs/1506.08870
+\DeclareFontFamily{U}{min}{}
+\DeclareFontShape{U}{min}{m}{n}{<-> udmj30}{}
+\newcommand\yon{\!\text{\usefont{U}{min}{m}{n}\symbol{'210}}\!}
+
 \usepackage[natbib=true,style=numeric,maxnames=10]{biblatex}
 \usepackage[babel]{csquotes}
 \bibliography{paper-qcoh.bib}
@@ -491,12 +496,12 @@ modulo~$\TT$-provable equivalence of such formulas;
 \begin{defn}The \emph{classifying topos}~$\Set[\TT]$ of a geometric
 theory~$\TT$ is the topos of set-valued sheaves on~$\C_\TT$.\end{defn}
 
-Writing~$y : \C_\TT \to \Set[\TT]$ for the Yoneda embedding, the \emph{generic
-model}~$U_\TT$ of~$\TT$ interprets a sort~$X$ of~$\TT$ as the sheaf~$y\{x\?X\_ \top\}$,
+Writing~$\yon : \C_\TT \to \Set[\TT]$ for the Yoneda embedding, the \emph{generic
+model}~$U_\TT$ of~$\TT$ interprets a sort~$X$ of~$\TT$ as the sheaf~$\yon\{x\?X\_ \top\}$,
 a function symbol~$f : X_1 \cdots X_n \to Y$ as the morphism given by
 the~$\TT$-provably functional formula~$f(x_1,\ldots,x_n) = y$ and a relation
-symbol~$R \rightarrowtail X_1 \cdots X_n$ by the subobject~$y\{\vec x\_ R(\vec
-x)\} \rightarrowtail y\{\vec x\_ \top\}$.
+symbol~$R \rightarrowtail X_1 \cdots X_n$ by the subobject~$\yon\{\vec x\_ R(\vec
+x)\} \rightarrowtail \yon\{\vec x\_ \top\}$.
 
 \begin{thm}The generic model is universal in the sense that for any
 Grothendieck topos~$\E$, the functor
@@ -648,7 +653,7 @@ Writing~$A = \{ \vec x\_ \alpha \}$ and~$\sigma = (\varphi \seq{\vec y} \psi)$,
 we have~$\{ \vec x\_ \alpha \} \models \forall \vec y\_ (\varphi \Rightarrow \psi)$,
 hence~$\{ \vec x, \vec y\_ \alpha \wedge \varphi \} \models \psi$. Thus~$\TT$
 proves~$(\alpha \wedge \varphi \seq{\vec x, \vec y} \psi)$. This proof can be
-pulled back from~$\Set$ to~$\Set[\TT]/yA$ to show~$A \models
+pulled back from~$\Set$ to~$\Set[\TT]/\yon A$ to show~$A \models
 \speak{$\ul{\TT}/U_\TT$ proves$^\star$~$(\alpha
 \wedge \varphi \seq{\vec x, \vec y} \psi)$}$. By
 Lemma~\ref{lemma:truth-to-provability}, we also have~$A \models
@@ -824,26 +829,26 @@ of~$U_\TT$-algebra homomorphisms~$M \to U_\TT$.
 
 \begin{lemma}\label{lemma:spec-sim-representable}
 Let~$A$ be a~$\TT$-model. Then~$\Spec(A^\sim)$ coincides
-with~$yA$, the functor~$\Hom_{\Mod{\TT}}(A, \cdot)$.
+with~$\yon A$, the functor~$\Hom_{\Mod{\TT}}(A, \cdot)$.
 \end{lemma}
 
 \begin{proof}By the Yoneda lemma, the sections of the sheaf~$\Spec(A^\sim) :
 \Mod{\TT}_\mathrm{fp} \to \Set$ on an object~$T$ are given by the set
 \begin{align*}
-  \Spec(A^\sim)(T) &\cong \Hom(yT, \Spec(A^\sim)) =
-  \Hom(yT, [A^\sim,U_\TT]_{U_\TT}) \\
-  &\cong \Hom(yT \times A^\sim, U_\TT)_{\text{$U_\TT$-algebra homomorphism in second
+  \Spec(A^\sim)(T) &\cong \Hom(\yon T, \Spec(A^\sim)) =
+  \Hom(\yon T, [A^\sim,U_\TT]_{U_\TT}) \\
+  &\cong \Hom(\yon T \times A^\sim, U_\TT)_{\text{$U_\TT$-algebra homomorphism in second
   argument}} \\
-  &\cong \Hom_{U_\TT}(A^\sim, (U_\TT)^{yT})
+  &\cong \Hom_{U_\TT}(A^\sim, (U_\TT)^{\yon T})
   \cong \Hom_{U_\TT}(A^\sim, U_\TT|T),
 \end{align*}
 where~$[A^\sim,U_\TT]_{U_\TT}$ is the object of~$U_\TT$-algebra homomorphisms from~$A^\sim$
 to~$U_\TT$ (a subobject of the internal Hom~$U_\TT^{A^\sim}$); $\Hom_{U_\TT}$
-denotes the set of~$U_\TT$-algebra homomorphisms; $(U_\TT)^{yT}$ is the object of morphisms
-from~$yT$ to~$U_\TT$; and~$U_\TT|T$ is the functor~$U_\TT(T \times \cdot)$, that is~$S
+denotes the set of~$U_\TT$-algebra homomorphisms; $(U_\TT)^{\yon T}$ is the object of morphisms
+from~$\yon T$ to~$U_\TT$; and~$U_\TT|T$ is the functor~$U_\TT(T \times \cdot)$, that is~$S
 \mapsto T \otimes S$.
 
-An arbitrary element~$f \in (yA)(T)$, that is an arbitrary~$\TT$-model
+An arbitrary element~$f \in (\yon A)(T)$, that is an arbitrary~$\TT$-model
 homomorphism~$f : A \to T$, induces a~$U_\TT$-algebra homomorphism~$g : A^\sim \to
 U_\TT|T$ by setting~$g_S \defeq f \otimes \id_S : A \otimes S \to T \otimes S$. The
 given homomorphism~$f$ can be recovered by~$f = g_0$, the component of~$g$ at
@@ -863,8 +868,8 @@ is an isomorphism of~$U_\TT$-algebras.
 \end{lemma}
 
 \begin{proof}By Lemma~\ref{lemma:spec-sim-representable}, the
-functor~$\Spec(A^\sim)$ coincides with~$yA$. Since by assumption~$A$ is
-contained in the site defining~$\Set[\TT]$, the exponential~$(U_\TT)^{yA}$
+functor~$\Spec(A^\sim)$ coincides with~$\yon A$. Since by assumption~$A$ is
+contained in the site defining~$\Set[\TT]$, the exponential~$(U_\TT)^{\yon A}$
 coincides with~$U_\TT|A$ (notation as in the proof in
 Lemma~\ref{lemma:spec-sim-representable}), that is, the~$U_\TT$-algebra~$A^\sim$.
 \end{proof}

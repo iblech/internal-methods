@@ -277,7 +277,7 @@ by~$\TT$, obtained by pulling back the set of sorts, the set of function
 symbols and so on along the geometric morphism~$\Set[\TT] \to \Set$. For
 instance, if~$\TT$ is the theory of rings, then from the internal point of view
 of~$\Set[\TT]$ the theory~$\ul{\TT}$ will again be the theory of rings.
-More details will be given in Section~\ref{sect:review}. The corner quotes indicate
+More details will be given in Section~\ref{sect:review-theories}. The corner quotes indicate
 that for sake of readability, the translation into formal language is to be
 carried out by the reader. \par The displayed statement is much stronger than
 the statement that for any geometric sequent~$\sigma$, if $\Set[\TT] \models
@@ -329,8 +329,9 @@ the relation~$f(X) = 0$, the relation~$g([X]) = 0$ holds. Hence we obtain
 The statement~\eqref{eq:nullstellensatz} is not a geometric sequent. Therefore
 it is not to be expected that it passes from~$\Set[\TT]$ to a
 subtopos~$\Set[\TT']$ corresponding to a quotient theory~$\TT'$ of~$\TT$, and
-indeed in general it does not. We formulate a substitute as Theorem~XXX,
-substantially broadening the scope of the Nullstellensatz.
+indeed in general it does not. However, there is still a useful substitute,
+which formulate as Theorem~\ref{thm:nullstellensatz-horn}. This substitute
+substantially broadens the scope of the Nullstellensatz.
 
 Summarizing, the situation is as follows.
 \begin{itemize}
@@ -355,11 +356,12 @@ equivalent.
 \item The formula~$\alpha$ is provable in first-order intuitionistic logic
 modulo the axioms of~$\TT$ and the additional axiom
 scheme~\eqref{eq:nullstellensatz}.
+% XXX be more precise about "scheme"
 \end{enumerate}
 \end{thm}
 
-Theorem~\ref{thm:characterization0} characterizes which first-order formulas
-hold for the generic model. We could of course wish for a more explicit
+Theorem~\ref{thm:characterization0} characterizes the first-order formulas
+which hold for the generic model. We could of course wish for a more explicit
 characterization; but since even the characterization of geometric sequents
 holding for the generic model (they are precisely those which are provable in
 geometric logic modulo~$\TT$) is of a rather implicit nature, this wish appears
@@ -367,7 +369,7 @@ unfounded.
 
 We stress that our characterization is more explicit than the tautologous
 characterization (``a first-order formula holds for~$U_\TT$ iff it is provable
-in~$\TT'$, where~$\TT'$ is the first-order theory whose set of axioms is the
+modulo~$\TT'$, where~$\TT'$ is the first-order theory whose set of axioms is the
 set of first-order formulas satisfied by~$U_\TT$'') and the (incorrect)
 characterization ``a first-order formula holds for~$U_\TT$ iff it
 is~$\TT$-redundant''. Indeed, if~$\TT$ happens to be coherent and recursively
@@ -388,10 +390,11 @@ will again be recursively axiomatizable.
 
 
 \subsection{Background on internal geometric theories}
+\label{sect:review-theories}
 
 % XXX, esp. pullback
 
-Given an internal theory~$\Sigma$ internal to a Grothendieck topos~$\E$ (or
+Given an internal signature~$\Sigma$ internal to a Grothendieck topos~$\E$ (or
 elementary topos with a natural numbers object), we can successively build the
 object of contexts (the object of lists of sorts); the object of terms
 (equipped with a morphism to the object of contexts); the object of atomic
@@ -402,7 +405,7 @@ internal geometric theory~$\TT$ over~$\Sigma$, the object of proof trees of~$\TT
 From the internal point of view of~$\E$, these objects can be obtained by
 simply carrying out the usual constructions of the set of contexts, the set of
 terms and so on. Having the object of proof trees at hand, we can define
-provability:
+the notion of provability:
 
 \begin{defn}\label{defn:provability}
 Let~$\TT$ be a geometric theory internal to a Grothendieck topos~$\E$.
@@ -425,7 +428,7 @@ disjunction is indexed by a constant sheaf. Such internal geometric formulas
 will be called \emph{geometric$^\star$ formulas}.
 
 Correspondingly, there is a subobject of the object of proof trees, the object
-of~\emph{proof$^\star$ trees} where any occurring geometric formulas is a
+of~\emph{proof$^\star$ trees} where any occurring geometric formula is a
 geometric$^\star$ formula. The shape of such a proof$^\star$ tree is locally
 given by the shape of an ordinary external proof tree.
 
@@ -466,7 +469,7 @@ is another model for the classifying topos of~$\TT$, and still validates, like
 any Grothendieck topos, full infinitary logic. Hence, if~$\sigma$
 is~$\TT$-derivable by a proof tree of arbitrary shape, then~$\sigma$ holds in
 this model of the classifying topos. By the analogue of
-Proposition~\ref{prop:classifying-topos} for this model, we obtain
+Proposition~\ref{prop:basic-truth} for this model, we obtain
 that~$\sigma$ is~$\TT$-derivable by a proof tree of finite shape.
 
 That~(4) implies~(1) is a routine exercise exploiting that
@@ -477,6 +480,7 @@ That~(4) implies~(1) is a routine exercise exploiting that
 
 
 \subsection{Background on classifying toposes}
+% XXX move up to avoid future reference
 
 \begin{defn}The \emph{syntactic site}~$\C_\TT$ of a geometric theory~$\TT$ has:
 \begin{enumerate}
@@ -530,12 +534,14 @@ unrolling the Kripke--Joyal semantics. The equivalence~$(2) \Leftrightarrow
 
 
 \section{Proofs of the main theorems}
+\label{sect:main}
 
 Given a geometric theory~$\TT$, the main theorems reference a certain internal
 theory~$\ul{\TT}/U_\TT$ internal to~$\Set[\TT]$. This theory is defined as
 follows.
 
-\begin{defn}Let~$\TT$ be a geometric theory. The theory~$\ul{\TT}/U_\TT$ is the
+\begin{defn}\label{defn:tu}
+Let~$\TT$ be a geometric theory. The theory~$\ul{\TT}/U_\TT$ is the
 geometric theory internal to~$\Set[\TT]$ which arises from the pulled-back
 theory~$\ul{\TT}$ by adding additional constant symbols~$e_x$ of the
 appropriate sorts, one for each element~$x : U_\TT$, axioms~$(\top \vdash
@@ -722,7 +728,8 @@ scheme~\eqref{eq:nullstellensatz}.
 \end{thm}
 
 \begin{proof}The direction~$(1) \Rightarrow (2)$ is immediate, as the internal
-language of~$\Set[\TT]$ validates first-order intuitionistic logic and the
+language of~$\Set[\TT]$ validates first-order intuitionistic logic and as it
+validates the
 axiom scheme~\eqref{eq:nullstellensatz} by Theorem~\ref{thm:nullstellensatz}.
 
 For the converse direction, we note that, given a geometric sequent~$\sigma$
@@ -759,7 +766,7 @@ relation symbols~$S$ are interpreted by declaring~$([t_1],\ldots,[t_n]) \in
 \brak{S} \Leftrightarrow (\TT + R \vdash S(t_1,\ldots,t_n))$.
 
 We omit the required verifications and only remark that while the same
-construction could be carried out if~$\TT$ is a general geometric theory, the
+construction could be carried out if~$\TT$ was a general geometric theory, the
 resulting object would in general not be a model of~$\TT$.
 \end{proof}
 
@@ -779,7 +786,7 @@ in the category of~$\TT$-models as~``$\otimes$''.
 over the signature of~$\TT$. Then the following statements are equivalent.
 \begin{enumerate}
 \item The theory~$\TT$ proves~$\sigma$.
-\item In~$\TT\langle x_1,\ldots,x_k | \varphi_1,\ldots,\varphi_n \rangle$, the
+\item In~$\TT\langle x_1,\ldots,x_k \,|\, \varphi_1,\ldots,\varphi_n \rangle$, the
 propositions~$\psi_1,\ldots,\psi_m$ hold for
 the~$k$-tuple~$([x_1],\ldots,[x_k])$.
 \end{enumerate}
@@ -813,10 +820,10 @@ in~$\Set[\TT]$ is left adjoint to functor~$\Gamma = \Hom(1, \cdot)$ computing
 global elements.
 \end{lemma}
 
-\begin{proof}An~$U_\TT$-algebra homomorphism~$\alpha : A^\sim \to M$ yields
+\begin{proof}A~$U_\TT$-algebra homomorphism~$\alpha : A^\sim \to M$ yields
 the~$\TT$-model homo\-mor\-phism~$\alpha_0 : A \to M(0) = \Gamma(M)$, where~$0$ is the
 initial~$\TT$-model. Conversely, a~$\TT$-model homomorphism~$\beta : A \to
-\Gamma(M)$ yields an~$U_\TT$-algebra homomorphism by summing~$A \to M(0) \to
+\Gamma(M)$ yields a~$U_\TT$-algebra homomorphism by summing~$A \to M(0) \to
 M(T)$ with the structure morphism~$T = U_\TT(T) \to
 M(T)$.\end{proof}
 

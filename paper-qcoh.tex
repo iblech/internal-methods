@@ -206,7 +206,7 @@ zero in~$(\affl)^n$. Then there are polynomials~$g_1,\ldots,g_m \in
 function. Then there are unique elements~$a, b \? \affl$ such
 that~$f(\varepsilon) = a + b \varepsilon$ for all~$\varepsilon \? \Delta$. \smallskip
 \item $\affl$ is \emph{synthetically quasicoherent}: For any
-finitely presented~$\affl$-algebra~$A$, the canonical homomorphism~$A \to
+finitely presentable~$\affl$-algebra~$A$, the canonical homomorphism~$A \to
 (\affl)^{\Spec(A)}$, where~$\Spec(A)$ is defined as the set
 of~$\affl$-algebra homomorphisms~$A \to \affl$, is bijective.
 \end{itemize}
@@ -787,7 +787,8 @@ the~$k$-tuple~$([x_1],\ldots,[x_k])$.
 
 \begin{proof}By construction of the term algebra.\end{proof}
 
-\begin{lemma}A~$\TT$-model is finitely presentable as an object of the category
+\begin{lemma}\label{lemma:char-fp-models}
+A~$\TT$-model is finitely presentable as an object of the category
 of~$\TT$-models if and only if it is isomorphic to a model of the
 form~$\TT\langle X | R \rangle$ where~$X$ is Bishop-finite and~$R$ is
 Kuratowski-finite.
@@ -865,7 +866,7 @@ by~$f$.
 \end{proof}
 
 \begin{lemma}\label{lemma:fp-double-dual}
-Let~$A$ be a finitely presented~$\TT$-model. Then the canonical morphism
+Let~$A$ be a finitely presentable~$\TT$-model. Then the canonical morphism
 \[ A^\sim \longrightarrow (U_\TT)^{\Spec(A^\sim)} \]
 is an isomorphism of~$U_\TT$-algebras.
 \end{lemma}
@@ -878,7 +879,7 @@ Lemma~\ref{lemma:spec-sim-representable}), that is, the~$U_\TT$-algebra~$A^\sim$
 \end{proof}
 
 \begin{cor}Let~$A$ and~$B$ be~$\TT$-models. Assume that~$B$ is finitely
-presented. Then the canonical morphism
+presentable. Then the canonical morphism
 \[ \Hom_{U_\TT}(A^\sim, B^\sim) \longrightarrow \Spec(A^\sim)^{\Spec(B^\sim)}
 \]
 is an isomorphism.
@@ -894,6 +895,21 @@ is an isomorphism.
   [A^\sim, B^\sim],
 \end{align*}
 where the final isomorphism is by Lemma~\ref{lemma:fp-double-dual}.
+\end{proof}
+
+% XXX terminology "U_T-algebra". location of the tensor explanation
+
+\begin{thm}The generic~$\TT$-model is \emph{quasicoherent} in the following sense:
+From the point of view of~$\Set[\TT]$, for any finitely
+presentable~$U_\TT$-algebra~$A$ (finitely presented object in the category
+of~$U_\TT$-algebras), the canonical~$U_\TT$-algebra homomorphism
+\[ A \longrightarrow (U_\TT)^{\Spec(A)} \]
+is an isomorphism.
+\end{thm}
+
+\begin{proof}The proof of Lemma~\ref{lemma:char-fp-models} is constructive and
+thus valid in the internal language of~$\Set[\TT]$. Hence we can apply it,
+internally, to the theory~$\ul{\TT}/U_\TT$. XXX
 \end{proof}
 
 

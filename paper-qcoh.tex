@@ -103,8 +103,8 @@
 \begin{abstract}
   We give a general Nullstellensatz for the generic model of a
   geometric theory, useful as a source of nongeometric sequents validated by
-  the generic model, and characterize the first-order formulas validated by the
-  genetric model. XXX
+  the generic model, and characterize the first-order and higher-order formulas validated by the
+  genetric model.
 \end{abstract}
 
 \maketitle
@@ -113,14 +113,14 @@
 \section{Introduction}
 
 \paragraph{Generic models} Let~$\TT$ be a geometric theory, such as the theory
-of rings, local rings or intervals. We follow Caramello's
+of rings, of local rings or of intervals. We follow Caramello's
 terminology~\cite{caramello:tst} to mean by \emph{geometric theory} a system
 given by a set of sorts, a set of finitary function symbols, a set of finitary
 relation symbols and a set of axioms, consisting of geometric sequents
 (sequents of the form~$\varphi \seq{\vec x} \psi$ where~$\varphi$ and~$\psi$
 are geometric formulas, that is formulas built from equality and the relation
 symbols by the logical connectives~${\top}\,{\bot}\,{\wedge}\,{\vee}\,{\exists}$
-and by arbitrary set-indexed disjunctions~$\bigvee$). By \emph{first-order
+and by arbitrary set-indexed disjunctions~$\bigvee$). By (infinitary) \emph{first-order
 formula} we will mean a formula which may contain, additionally to the
 connectives allowed for geometric formulas, the connectives~${\Rightarrow}$
 and~${\forall}$.
@@ -133,8 +133,8 @@ coincide:
 \item The sequent~$\sigma$ holds for any~$\TT$-model in any Grothendieck topos.
 \item The sequent~$\sigma$ holds for~$U_\TT$.
 \end{enumerate}
-One could argue that it is this model which mathematicians
-implicitly refer to when they utter the phrase ``Let~$M$ be a~$\TT$-model.''. It can
+One could argue that it is this model which we
+implicitly refer to when we utter the phrase ``Let~$M$ be a~$\TT$-model.''. It can
 typically not be realized as a set-theoretic model, consisting of a set for
 each sort, a function for each function symbol and so on; instead it is a model
 in a custom-tailored syntactically constructed Grothendieck topos, the
@@ -143,7 +143,7 @@ of~$\Set[\TT]$ for each sort, a morphism for each function symbol and so on.
 
 To state what it means for a~$\TT$-structure in a topos~$\E$ to verify the
 axioms of~$\TT$, rendering it a model, the \emph{internal language} of~$\E$ is
-used, roughly reviewed in Section~\ref{sect:review} below. We write~``$\E
+used, roughly reviewed in Section~\ref{sect:review-language} below. We write~``$\E
 \models \alpha$'' to mean that a formula~$\alpha$ holds from the internal
 point of view of~$\E$. Since this language is a form of a higher-order
 intuitionistic extensional dependent type theory, the classifying topos~$\Set[\TT]$ can
@@ -257,7 +257,7 @@ Let~$A$ be a ring. A simple version of the classical Nullstellensatz states:
 zero of~$g$, then there is a polynomial~$h$ such that~$g = hf$.} The
 polynomial~$h$ can be regarded as an ``algebraic certificate'' of the
 hypothesis. This principle holds for instance in the case that~$A$ is an
-algebraically closed field and that~$g$ is the unit polynomial. We will see
+algebraically closed field and~$g$ is the unit polynomial. We will see
 below that it is also
 true, without any restriction on~$g$, for the generic ring.
 
@@ -324,13 +324,13 @@ the relation~$f(X) = 0$, the relation~$g([X]) = 0$ holds. Hence we obtain
 \[ \Set[\TT] \models
   \forall f,g \? U_\TT[X]\_ \bigl(
     (\forall x \? U_\TT\_ f(x) = 0 \Rightarrow g(x) = 0) \Longleftrightarrow
-      \exists h \in U_\TT[X]\_ g = hf\bigr). \]
+      \exists h \? U_\TT[X]\_ g = hf\bigr). \]
 
 The statement~\eqref{eq:nullstellensatz} is not a geometric sequent. Therefore
 it is not to be expected that it passes from~$\Set[\TT]$ to a
 subtopos~$\Set[\TT']$ corresponding to a quotient theory~$\TT'$ of~$\TT$, and
 indeed in general it does not. However, there is still a useful substitute,
-which formulate as Theorem~\ref{thm:nullstellensatz-horn}. This substitute
+which we formulate as Theorem~\ref{thm:nullstellensatz-horn}. This substitute
 substantially broadens the scope of the Nullstellensatz.
 
 Summarizing, the situation is as follows.
@@ -354,9 +354,7 @@ equivalent.
 \begin{enumerate}
 \item The formula~$\alpha$ holds for~$U_\TT$.
 \item The formula~$\alpha$ is provable in first-order intuitionistic logic
-modulo the axioms of~$\TT$ and the additional axiom
-scheme~\eqref{eq:nullstellensatz}.
-% XXX be more precise about "scheme"
+modulo the axioms of~$\TT$ and the additional axiom~\eqref{eq:nullstellensatz}.
 \end{enumerate}
 \end{thm}
 
@@ -378,6 +376,8 @@ restrict to coherent existential fixed-point logic, and the resulting theory
 will again be recursively axiomatizable.
 \medskip
 
+% XXX outline and higher-order
+
 
 \paragraph{Acknowledgments} XXX
 
@@ -385,6 +385,7 @@ will again be recursively axiomatizable.
 \section{Background}
 
 \subsection{Background on the internal language of Grothendieck toposes}
+\label{sect:review-language}
 
 % XXX
 
@@ -727,7 +728,7 @@ scheme~\eqref{eq:nullstellensatz}.
 \end{enumerate}
 \end{thm}
 
-\begin{proof}The direction~$(1) \Rightarrow (2)$ is immediate, as the internal
+\begin{proof}The direction~$(2) \Rightarrow (1)$ is immediate, as the internal
 language of~$\Set[\TT]$ validates first-order intuitionistic logic and as it
 validates the
 axiom scheme~\eqref{eq:nullstellensatz} by Theorem~\ref{thm:nullstellensatz}.
@@ -816,7 +817,7 @@ This object is in a canonical way a~$\TT$-model over~$U_\TT$, hence from the
 point of view of~$\Set[\TT]$ a~$\ul{\TT}/U_\TT$-model.
 
 \begin{lemma}The functor~$(\cdot)^\sim$ from~$\TT$-models to~$\ul{\TT}/U_\TT$-models
-in~$\Set[\TT]$ is left adjoint to functor~$\Gamma = \Hom(1, \cdot)$ computing
+in~$\Set[\TT]$ is left adjoint to the functor~$\Gamma = \Hom(1, \cdot)$ computing
 global elements.
 \end{lemma}
 
@@ -1058,10 +1059,34 @@ modulo the axioms of~$\TT$ and the additional axiom scheme~XXX.
 \end{enumerate}
 \end{thm}
 
-% XXX fill in proof
+\begin{proof}Theorem~\ref{thm:definability} on the semantic side and the axiom
+scheme on the syntactic side allow us to replace any mention of a
+powersort~$P(X)$ in~$\alpha$
+by~$\mathrm{Form}^\star_{x\!\?\!X}(\ul{\TT}/U_\TT)/({\dashv\vdash_x})$. Then we
+can argue as in the proof of Theorem~\ref{thm:characterization}, noting that
+the axiom scheme indeed entails the axiom scheme posited by
+Theorem~\ref{thm:characterization}.\end{proof}
+
+% XXX check
+
+%In einem ersten Schritt schreiben wir alle Existenzquantifikationen und freie Variablen
+%über Potenzsorten um. Aus "exists A : P(X)" wird "exists φ :
+%Form*(T/U_T)_{x:X}/-||-". (Dabei kann X immer noch eine abgeleitete Sorte sein!) Aus
+%der freien Variable "A : P(X)" wird analog eine freie Variable.
+%
+%Entsprechend verändern wir den Rumpf. Aus "x0 ∈ A" wird φ[x0/x].
+%
+%Dann sind wir fertig mit dem Nullstellensatz für extended geometric logic.
+%
+%Noch klären:
+%* P(X) x Y
+%* Form* Teil von extended geometric logic?
+%* Beweisbarkeit modulo extended geometric logic ist geometrische Formel?
 
 
 \section{Applications}
+
+% XXX
 
 % Zariski
 
@@ -1086,91 +1111,18 @@ modulo the axioms of~$\TT$ and the additional axiom scheme~XXX.
   the free C^∞-ring on one generator. But this observation doesn't appear to be
   useful for further developments.
 
-* Cite https://docplayer.net/55796150-Intuitionistic-algebra-some-recent-developments-in-topos-theory.html
+* XXX Cite https://docplayer.net/55796150-Intuitionistic-algebra-some-recent-developments-in-topos-theory.html
   (in general and for internal theories)
 
-* Discuss related work, especially: Olivia 6.1.3, ...
-
-% We would not expect the statement
-% \[ \text{``for any geometric sequent~$\sigma$, if~$\sigma$ holds for~$A$
-% then the theory of rings proves~$\sigma$''} \]
-% to hold for an ordinary ring~$A$ in the topos of sets.
-%
-% Let~$M$ be a~$\TT$-model. We then trivially have
-% signature of~$\TT$. While we always have the implication
-% \[ \text{$\TT$ proves~$\sigma$} \quad\Longrightarrow\quad
-%   \text{$\sigma$ holds for~$M$}, \]
-% the converse is of course typically false,
-%
-% Furthermore, in a first introduction, it is useful to
-% restrict to an instructive special case, such as the theory of (commutative) rings.
-%
-% A simple version of the classical Nullstellensatz, valid for algebraically
-% closed fields, states: Let~$f \in A[X]$ be a polynomial. If
-% \[ \forall x \in A\_ (f(x) = 0 \in A \Rightarrow 1 = 0 \in A), \]
-% then there is a polynomial~$g \in A[X]$ such that~$gf = 1$. This polynomial~$g$
-% can be regarded as an ``algebraic certificate'' that the equation~$f(x) = 0$
-% only has a solution in the trivial case~$1 = 0$. The conclusion can also be phrased as
-% follows: In the free~$A$-algebra on one generator modulo the relation~$f(X) =
-% 0$, the relation~$1 = 0$ holds.
-%
-% Let~$A$ be a specific ring. Let~$f,g \in \ZZ[X]$ be
-% polynomials. While we always have the implication
-% \[ g([X]) = 0 \in \ZZ[X]/(f) \quad\Longrightarrow\quad
-%   \forall x \in A\_ (f(x) = 0 \Rightarrow g(x) = 0), \]
-% the converse is typically false: Just that~$g(x) = 0$ holds for every zero
-% of~$f$ in~$A$ does not imply that~$g([X]) = 0$ holds for the generic zero
-% of~$f$ in the free ring on one generator~$X$ modulo the relation~$f(X) = 0$.
-%
-%
-% the case that~$\TT$ is a Horn theory (where the axioms are of the
-% form~$(\phi \seq{\vec x} \psi)$ with the formulas~$\phi$ and~$\psi$ being
-% finite conjunctions of atomic propositions (equality and the given relations)),
-% such that we can switch from a logical terminology to a more algebraic one.
-% In the Horn case, for any set~$X$ and any set~$R$ of atomic propositions the
-% term algebra construction yields~$\TT\langle X | R\rangle$, the
-% free~$\TT$-model generated by~$X$ modulo the relations~$R$. We will also abuse
-% notation to pretend that~$\TT$ is single-sorted.
-%
-% Let~$M$ be a specific~$\TT$-model and assume that for
-% all~$n$-tuples~$x = (x_1,\ldots,x_n)$ of elements of~$M$, if some set~$R_1$ of
-% atomic propositions is satisfied for~$x$ then so is some set~$R_2$. In this
-% case it is unreasonable to expect that~$R_2$ holds for the~$n$-tuple of
-% generators of~$\TT\langle e_1,\ldots,e_n | R_1\rangle$.
-%
-% let~$R_1$ and~$R_2$ be sets of atomic
-% propositions with~$n$ free variables. Then
-% and assume, for some sets of relations~$R_1$
-% and~$R_2$
-%
-% The term algebra of a Horn theory~$\TT$ is always a model of~$\TT$, such that
-
-
-* Sei T' subkanonisch für T.
-
-* Sei φ eine Hornformel. Gelte ∇φ. Folgt dann φ?
-
-* Für φ = (x = y) stimmt das, da U separiert ist.
-
-* Für φ = (R(x,y)) stimmt, das ...?
-
-  Was heißt das denn? Habe R \--> U x U. Gehe davon aus, dass ∇φ bedeutet, dass
-  ∇((x,y) ∈ R). Daraus folgt aber (x,y) ∈ R:
-
-  K = { (x,y) | (x,y) ∈ R } ist Subsingleton von U x U und ∇-bewohnt.
-  Also existiert (a,b) ∈ U x U mit ∇... Hilft nicht.
-
-  Aber: K = { (a,b) ∈ R | a = x & b = y } ist Subsingleton von R.
-  Und ∇-bewohnt. Also existiert (a,b) ∈ R mit ∇(a=x & b = y).
-  Wegen Separiertheit folgt a = x & b = y. Fertig. :-)
+* XXX Discuss related work, especially: Olivia 6.1.3, ...
 
 
 TODO:
 
-* Nichttrivialität des Nullstellensatzes diskutieren (Spezialfall top |- φ
+* XXX Nichttrivialität des Nullstellensatzes diskutieren (Spezialfall top |- φ
   betrachten, dieser ist nämlich schon mehr oder weniger trivial)
 
-* Anmerken, dass der Nullstellensatz für first-order sequents NICHT stimmt
+* XXX Anmerken, dass der Nullstellensatz für first-order sequents NICHT stimmt
   (Beispiel: ¬(x=0) ⇒ (x inv.))
 
-* Anmerken, dass wir in konstruktiver Metalogik arbeiten.
+* XXX Anmerken, dass wir in konstruktiver Metalogik arbeiten.

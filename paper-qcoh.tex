@@ -376,13 +376,27 @@ restrict to coherent existential fixed-point logic, and the resulting theory
 will again be recursively axiomatizable.
 \medskip
 
-% XXX outline and higher-order
+
+\paragraph{Outline} In Section~\ref{sect:review}, we review background on the
+internal language of toposes, internal geometric theories and classifying
+toposes. Section~\ref{sect:main} contains proofs of the main theorems in the
+full generality of geometric theories. Restricting to Horn theories allows for
+a treatment which is more algebraic and less logical in flavor. For the benefit
+of readers with a more algebraic background, we include a mostly self-contained
+account of the Horn case as Section~\ref{sect:horn}. We generalize our main
+theorems to the higher-order case in Section~\ref{sect:higher-order} and
+conclude with applications in Section~\ref{sect:applications}.
+
+Throughout we work in a constructive metatheory, to allow our results to be
+interpreted internally to toposes.
+\medskip
 
 
 \paragraph{Acknowledgments} XXX
 
 
 \section{Background}
+\label{sect:review}
 
 \subsection{Background on the internal language of Grothendieck toposes}
 \label{sect:review-language}
@@ -765,6 +779,7 @@ the basic fact that, for geometric formulas~$\varphi$, $\Set[\TT] \models
 
 
 \section{The special case of Horn theories}
+\label{sect:horn}
 
 Throughout this section, let~$\TT$ be a Horn theory.
 
@@ -970,6 +985,7 @@ e_1\?X_1,\ldots,e_n\?X_n \,|\, R_1,\ldots,R_m \rangle)^\sim$.
 
 
 \section{The generalization to the higher-order case}
+\label{sect:higher-order}
 
 % XXX introduction
 
@@ -1140,6 +1156,7 @@ Theorem~\ref{thm:characterization}.\end{proof}
 
 
 \section{Applications}
+\label{sect:applications}
 
 % XXX
 
@@ -1176,5 +1193,3 @@ TODO:
 
 * XXX Nichttrivialität des Nullstellensatzes diskutieren (Spezialfall top |- φ
   betrachten, dieser ist nämlich schon mehr oder weniger trivial)
-
-* XXX Anmerken, dass wir in konstruktiver Metalogik arbeiten.

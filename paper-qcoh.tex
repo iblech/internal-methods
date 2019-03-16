@@ -956,29 +956,64 @@ e_1\?X_1,\ldots,e_n\?X_n \,|\, R_1,\ldots,R_m \rangle)^\sim$.
 
 % XXX introduction
 
-By \emph{geometric higher-order logic} we mean the extension of geometric
-logic where we are allowed to form, in addition to the basic sorts supplied by
-a given signature: finite limits of sorts; set-indexed colimits of sorts; and
-powers of sorts. These derived sorts come with respective term constructors
-(tuple formers, coprojections, set comprehension) and the usual rules governing
-these constructors.
+By \emph{extended geometric logic} we mean the extension of geometric logic
+where we are allowed to form, in addition to the basic sorts supplied by
+a given signature, finite limits of sorts and set-indexed colimits of sorts. By
+(intuitionistic) \emph{higher-order logic}, we mean the further extension where
+we may also form powersorts. These derived sorts come with respective term
+constructors (tuple formers, coprojections, set comprehension) and the usual
+rules governing these constructors.
 
-A \emph{geometric higher-order formula} is a formula built from equality and
+An \emph{extended geometric formula} is a formula of extended geometric logic built from equality and
 relation symbols by the logical
 connectives~${\top}\,{\bot}\,{\wedge}\,{\vee}\,{\exists}$
 and by arbitrary set-indexed disjunctions~$\bigvee$. The existential
-quantification can be over any sort, including the derived sorts. A
-\emph{geometric higher-order sequent} is a sequent of the form~$(\varphi
-\seq{\vec x} \psi)$ where~$\varphi$ and~$\psi$ are geometric higher-order
+quantification can be over any sorts of extended geometric logic, including the derived sorts. An
+\emph{extended geometric sequent} is a sequent of the form~$(\varphi
+\seq{\vec x} \psi)$ where~$\varphi$ and~$\psi$ are extended geometric
 formulas and the sorts of the variables~$\vec x$ may be derived sorts.
 
-The truth of geometric higher-order sequents is in general not preserved under
-pullback along geometric morphisms; however for the fragment not containing
-powersorts, this is true. In fact, there is a canonical way of associating to
-any geometric higher-order sequent~$\sigma$ in this fragment a
-family~$(\sigma_i)_i$ of ordinary geometric sequents such that~$\sigma$ is
-provable in geometric higher-order logic if and only if all the
-sequents~$\sigma_i$ are provable in ordinary geometric logic.
+It is possible to extend the Kripke--Joyal semantics so that higher-order logic
+can be interpreted in any Grothendieck topos. The truth of a higher-order
+sequent~$(\varphi \seq{\vec x} \psi)$ is in general not preserved under
+pullback along geometric morphisms, even if~$\varphi$ and~$\psi$ do not
+contain~${\forall}$ and~$\Rightarrow$, since powerobjects are in general not
+preserved under pullback. However, as can be deduced from the following lemma,
+the truth of extended geometric sequents is preserved; as is folklore, extended
+geometric logic is just a thin layer over ordinary geometric logic.
+
+\begin{lemma}\label{lemma:extended-conservative}
+Let~$\sigma$ be an extended geometric sequent over the signature
+of a geometric theory~$\TT$. Then there is a set-indexed family~$(\sigma_i)_i$ of ordinary
+geometric sequents over the same signature, so that~$\sigma$ is provable in
+extended geometric logic if and only if all the sequents~$\sigma_i$ are
+provable in ordinary geometric logic.\end{lemma}
+
+\begin{proof}Any existential quantification of the form~``$\exists p \? X
+\times Y$'' can be replaced by the string~``$\exists x \? X\_ \exists y \?
+Y$'', and similarly for free variables of product sorts appearing in the
+context of~$\sigma$. In a similar vein more general finite limits are treated.
+
+An existential quantification of the form~``$\exists x \? \coprod_i X_i$'' can
+be replaced by the string~``$\bigvee_i \exists x \? X_i$''.
+
+Finally, for any occurrence of a free variable~$x \?
+\coprod_i X_i$ in the context of~$\sigma$, we can replace~$\sigma$ by the
+family of sequents~$(\sigma_i)_i$, where the sequent~$\sigma_i$ is the same
+as~$\sigma$ only that the free variable~$x$ is changed to be of sort~$X_i$ (and
+the corresponding change in the consequent and the antecedent is applied,
+applying the appropriate coprojection).
+
+After carrying out these steps, the free variables are only of the basic sorts
+supplied by the signature of~$\TT$ and existential quantifications only
+range over the basic sorts. However, in the consequents and antecedents, still
+tuple formers and coprojections may appear. These can be replaced as suggested
+by the rules governing these. For instance, an equation~``$\langle x,y \rangle
+= \langle x',y' \rangle$'' can be replaced by the conjunction~``$x = x' \wedge
+y = y'$'', and an equation~``$\iota_i(x) = \iota_j(y)$'' (where~$\iota_i$
+and~$\iota_j$ are coprojections associated with coproduct sorts) can be
+replaced by the subsingleton-indexed disjunction~``$\bigvee\{ x = y \,|\, i = j \}$''.
+\end{proof}
 
 \begin{thm}\label{thm:definability}
 Let~$\TT$ be a geometric theory. Let~$x_1\?X_1,\ldots,x_n\?X_n$ be a context over the
@@ -1036,17 +1071,20 @@ Theorem~\ref{thm:definability}.
 
 \begin{thm}\label{thm:higher-order-nullstellensatz}
 Let~$\TT$ be a geometric theory. Then, internally to~$\Set[\TT]$, for any
-higher-order geometric$^\star$ sequent~$\sigma$ over the signature
+extended geometric$^\star$ sequent~$\sigma$ over the signature
 of~$\ul{\TT}/U$, the following statements are equivalent:
 \begin{enumerate}
 \item The sequent~$\sigma$ holds for~$U_\TT$.
-\item The sequent~$\sigma$ is provable$^\star$ modulo~$\TT/U_\TT$ in geometric
-higher-order logic.
+\item The sequent~$\sigma$ is provable$^\star$ modulo~$\TT/U_\TT$ in extended
+geometric logic.
 \end{enumerate}
 \end{thm}
 
-\begin{proof}The implication~$(2) \Rightarrow (1)$ is immediate since~$U_\TT$
-is a model of~$\TT/U_\TT$. XXX
+\begin{proof}The implication~$(2) \Rightarrow (1)$ is
+immediate since~$U_\TT$ is a model of~$\TT/U_\TT$. The converse direction is by
+Lemma~\ref{lemma:extended-conservative}, which holds internally in~$\Set[\TT]$
+as the proof we supplied is constructive, and the Nullstellensatz for ordinary
+geometric logic of Theorem~\ref{thm:nullstellensatz}.
 \end{proof}
 
 \begin{thm}\label{thm:higher-order-characterization}

@@ -673,6 +673,13 @@ over~$A$), hence~$A \models \speak{$\ul{\TT}/U_\TT$ proves$^\star$~$(\varphi
 \seq{\vec y} \psi)$}$.
 \end{proof}
 
+\begin{rem}Theorem~\ref{thm:nullstellensatz} cannot be strengthened to
+arbitrary geometric sequents. For instance, in the case that~$\TT$ is the
+theory of rings, the internal geometric sequent~$(\top \seq{x\?U_\TT}
+\bigvee_{a\?U_\TT} (x = e_a))$ trivially holds for~$U_\TT$. However, it is not
+provable modulo~$\TT/U_\TT$, as for instance the polynomial algebra~$U_\TT[X]$
+does not validate it.\end{rem}
+
 \begin{thm}\label{thm:nullstellensatz-horn}
 Let~$\TT$ be a geometric theory. Let~$\TT'$ be a quotient theory
 of~$\TT$. Assume that the generic model~$U_\TT$ is a sheaf for the topology
@@ -715,6 +722,15 @@ out~$\Set[\TT']$ is subcanonical. For instance, this is the case if~$\TT$ is
 the theory of rings and~$\Set[\TT']$ is one of several well-known toposes in
 algebraic geometry such as the big Zariski topos, the big étale topos or the
 big fppf topos.
+
+Theorem~\ref{thm:nullstellensatz} cannot be strengthened to arbitrary
+first-order (or first-order$^\star$ or even just coherent) formulas in place of
+geometric$^\star$ sequents. For instance, in the case that~$\TT$ is the theory
+of local rings, the generic model~$U_\TT$ validates the coherent
+formula~$\speak{any element which is not zero is invertible}$, but~$\TT/U_\TT$
+does not prove this fact, as it is for instance not validated by the polynomial
+algebra~$U_\TT[X]$. However, Theorem~\ref{thm:nullstellensatz} still plays an
+important role in understanding first-order formulas:
 
 \begin{thm}\label{thm:characterization}
 Let~$\TT$ be a geometric theory. Let~$\alpha$ be a first-order
@@ -1160,8 +1176,5 @@ TODO:
 
 * XXX Nichttrivialität des Nullstellensatzes diskutieren (Spezialfall top |- φ
   betrachten, dieser ist nämlich schon mehr oder weniger trivial)
-
-* XXX Anmerken, dass der Nullstellensatz für first-order sequents NICHT stimmt
-  (Beispiel: ¬(x=0) ⇒ (x inv.))
 
 * XXX Anmerken, dass wir in konstruktiver Metalogik arbeiten.

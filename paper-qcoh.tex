@@ -1155,15 +1155,20 @@ result~\cite[Theorem~2.4]{caramello:definability}, exploiting that the internal
 statement localizes well by Lemma~\ref{lemma:truth-to-provability}.
 \end{proof}
 
-% An immediate corollary of Theorem~\ref{thm:definability} is the
-% Nullstellensatz of Theorem~\ref{thm:nullstellensatz}. Indeed, arguing
-% internally to~$\Set[\TT]$, let~$\sigma = (\varphi \seq{\vec x} \psi)$ be a
-% geometric$^\star$ sequent over the signature of~$\ul{\TT}/U_\TT$. Assume
-% that~$\sigma$ holds for~$U_\TT$. Then the subsets~$\{ (\vec x) \,|\, \varphi
-% \}$ and~$\{ (\vec x) \,|\, \varphi \wedge \psi \}$ are equal. Hence, by
-% Theorem~\ref{thm:definability}, the formulas~$\varphi$
-% and~$\varphi \wedge \psi$ are provably$^\star$ equivalent.
-% Thus~$\ul{\TT}/U_\TT$ proves$^\star$~$(\varphi \seq{\vec x} \psi)$.
+\begin{rem}\label{rem:definability-entails-nullstellensatz}
+The proof of Theorem~\ref{thm:definability} used the Nullstellensatz
+of Theorem~\ref{thm:nullstellensatz}. Conversely, the internal statement of
+Theorem~\ref{thm:definability} entails the internal
+statement~\eqref{eq:nullstellensatz} of Theorem~\ref{thm:nullstellensatz} in
+extended geometric logic. Indeed, leaving the translation to formal logic to
+the reader, let~$\sigma = (\varphi \seq{\vec x} \psi)$ be a
+geometric$^\star$ sequent over the signature of~$\ul{\TT}/U_\TT$ such
+that~$\sigma$ holds for~$U_\TT$. Then the subsets~$\{ (\vec x) \,|\, \varphi
+\}$ and~$\{ (\vec x) \,|\, \varphi \wedge \psi \}$ are equal. Hence the
+assumption implies that the formulas~$\varphi$
+and~$\varphi \wedge \psi$ are provably$^\star$ equivalent.
+Thus~$\ul{\TT}/U_\TT$ proves$^\star$~$(\varphi \seq{\vec x} \psi)$.
+\end{rem}
 
 \begin{cor}Let~$\TT$ be a geometric theory. Let~$\{\vec x\_ \varphi\}$
 and~$\{\vec y\_ \psi\}$ be geometric formulas in given contexts. Then,
@@ -1232,8 +1237,8 @@ by~$\mathrm{Form}^\star_{x\!\?\!X}(\ul{\TT}/U_\TT)/({\dashv\vdash_x})$,
 similarly to how the proof of Lemma~\ref{lemma:extended-conservative} compiles
 extended geometric logic to ordinary geometric. Then we
 can argue as in the proof of Theorem~\ref{thm:characterization}, noting that
-the axiom scheme indeed entails the axiom scheme~\eqref{eq:nullstellensatz} posited by
-Theorem~\ref{thm:characterization}.\end{proof}
+the axiom scheme indeed entails the axiom scheme~\eqref{eq:nullstellensatz} by
+Remark~\ref{rem:definability-entails-nullstellensatz}.\end{proof}
 
 % XXX check
 

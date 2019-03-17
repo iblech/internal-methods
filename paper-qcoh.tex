@@ -784,9 +784,19 @@ where~$\sigma$ ranges over the geometric formulas over the signature of~$\TT$.
 \end{enumerate}
 \end{thm}
 
-% XXX handholding
+In stating the axiom scheme~\eqref{eq:nullstellensatz}, we are slightly abusing
+notation. At face value, this axiom scheme would only make sense in the internal
+language of~$\Set[\TT]$, where the generic model~$U_\TT$ actually lives.
+However, here we are interpreting it in a purely syntactic context; when
+writing~``$U_\TT$'', we actually mean the tautologous ``model'' in which any
+sort of~$\TT$ is interpreted by the sort itself. For instance, if~$\sigma =
+(\varphi \seq{x_1\!\?\!X_1,\ldots,x_n\!\?\!X_n} \psi)$ is a sequent,
+then~$\speak{$\sigma$ holds for~$U_\TT$}$ is to be interpreted as the
+formula~``$\forall x_1\?X_1\_ \ldots \forall x_n\?X_n\_ (\varphi \Rightarrow
+\psi)$''.
 
-\begin{proof}The direction~$(2) \Rightarrow (1)$ is immediate, as the internal
+\begin{proof}[Proof of Theorem~\ref{thm:characterization}]
+The direction~$(2) \Rightarrow (1)$ is immediate, as the internal
 language of~$\Set[\TT]$ validates first-order intuitionistic logic and as it
 validates the
 axiom scheme~\eqref{eq:nullstellensatz} by Theorem~\ref{thm:nullstellensatz}.

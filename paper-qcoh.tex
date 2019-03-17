@@ -378,8 +378,8 @@ will again be recursively axiomatizable.
 
 
 \paragraph{Outline} In Section~\ref{sect:review}, we review background on the
-internal language of toposes, internal geometric theories and classifying
-toposes. Section~\ref{sect:main} contains proofs of the main theorems in the
+internal language of toposes, classifying toposes and internal geometric theories.
+Section~\ref{sect:main} contains proofs of the main theorems in the
 full generality of geometric theories. Restricting to Horn theories allows for
 a treatment which is more algebraic and less logical in flavor. For the benefit
 of readers with a more algebraic background, we include a mostly self-contained
@@ -402,6 +402,60 @@ interpreted internally to toposes.
 \label{sect:review-language}
 
 % XXX
+
+
+\subsection{Background on classifying toposes}
+\label{sect:review-classifying-toposes}
+
+\begin{defn}The \emph{syntactic site}~$\C_\TT$ of a geometric theory~$\TT$ has:
+\begin{enumerate}
+\item as objects ``geometric formulas in contexts''~$\{x_1\?X_1,\ldots,x_n\?X_n\_
+\varphi\}$ where~$\varphi$ is a geometric formula over the signature of~$\TT$
+in the displayed context;
+\item as set of morphisms~$\Hom_{\C_\TT}(\{\vec x\_
+\varphi\}, \{\vec y\_ \psi\})$ the set of formulas~$\theta$ in the
+context~$\vec x, \vec y$ which are~$\TT$-provably functional,
+modulo~$\TT$-provable equivalence of such formulas;
+\item as covering families those families~$(\{\vec x_i\_ \varphi_i\} \xrightarrow{\theta_i}
+\{\vec y\_ \psi\})_i$ for which~$\TT$ proves~$(\psi \seq{\vec y} \bigvee_i \exists \vec x_i\_
+\theta_i)$.
+\end{enumerate}
+\end{defn}
+
+\begin{defn}The \emph{classifying topos}~$\Set[\TT]$ of a geometric
+theory~$\TT$ is the topos of set-valued sheaves on~$\C_\TT$.\end{defn}
+
+Writing~$\yon : \C_\TT \to \Set[\TT]$ for the Yoneda embedding, the \emph{generic
+model}~$U_\TT$ of~$\TT$ interprets a sort~$X$ of~$\TT$ as the sheaf~$\yon\{x\?X\_ \top\}$,
+a function symbol~$f : X_1 \cdots X_n \to Y$ as the morphism given by
+the~$\TT$-provably functional formula~$f(x_1,\ldots,x_n) = y$ and a relation
+symbol~$R \rightarrowtail X_1 \cdots X_n$ by the subobject~$\yon\{\vec x\_ R(\vec
+x)\} \rightarrowtail \yon\{\vec x\_ \top\}$.
+
+\begin{thm}The generic model is universal in the sense that for any
+Grothendieck topos~$\E$, the functor
+\[ \text{(category of geometric morphisms~$\E \to \Set[\TT]$)} \longrightarrow
+\text{(category of~$\TT$-models in~$\E$)} \]
+given by~$f \mapsto f^*U_\TT$ is an equivalence of categories.
+\end{thm}
+
+\begin{prop}\label{prop:basic-truth}
+Let~$\alpha$ and~$\varphi$ be geometric formulas in a context~$\vec
+x$ over the signature of a geometric theory~$\TT$. Then the following
+statements are equivalent:
+\begin{enumerate}
+\item $\Set[\TT] \models \forall \vec x\_ (\alpha \Rightarrow \varphi)$.
+\item $\{\vec x\_ \alpha\} \models \varphi$, where the free variables
+in~$\varphi$ are interpreted as their generic values over~$\{\vec
+x\_\alpha\}$, that is the projection maps~$\{ \vec x\_ \alpha \} \to \{
+x_i\?X_i\_ \top \})$.
+\item $\TT$ proves~$(\alpha \seq{\vec x} \varphi)$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}The equivalence~$(1) \Leftrightarrow (2)$ follows immediately by
+unrolling the Kripke--Joyal semantics. The equivalence~$(2) \Leftrightarrow
+(3)$ is by induction on the structure of~$\varphi$.\end{proof}
 
 
 \subsection{Background on internal geometric theories}
@@ -510,60 +564,6 @@ That~(4) implies~(1) is a routine exercise exploiting that
   \bigvee_{n \geq 0} \exists x_1,\ldots,x_n \? X\_
   \forall x \? X\_ \bigvee_{i=1}^n x = x_i. \qedhere \]
 \end{proof}
-
-
-\subsection{Background on classifying toposes}
-% XXX move up to avoid future reference
-
-\begin{defn}The \emph{syntactic site}~$\C_\TT$ of a geometric theory~$\TT$ has:
-\begin{enumerate}
-\item as objects ``geometric formulas in contexts''~$\{x_1\?X_1,\ldots,x_n\?X_n\_
-\varphi\}$ where~$\varphi$ is a geometric formula over the signature of~$\TT$
-in the displayed context;
-\item as set of morphisms~$\Hom_{\C_\TT}(\{\vec x\_
-\varphi\}, \{\vec y\_ \psi\})$ the set of formulas~$\theta$ in the
-context~$\vec x, \vec y$ which are~$\TT$-provably functional,
-modulo~$\TT$-provable equivalence of such formulas;
-\item as covering families those families~$(\{\vec x_i\_ \varphi_i\} \xrightarrow{\theta_i}
-\{\vec y\_ \psi\})_i$ for which~$\TT$ proves~$(\psi \seq{\vec y} \bigvee_i \exists \vec x_i\_
-\theta_i)$.
-\end{enumerate}
-\end{defn}
-
-\begin{defn}The \emph{classifying topos}~$\Set[\TT]$ of a geometric
-theory~$\TT$ is the topos of set-valued sheaves on~$\C_\TT$.\end{defn}
-
-Writing~$\yon : \C_\TT \to \Set[\TT]$ for the Yoneda embedding, the \emph{generic
-model}~$U_\TT$ of~$\TT$ interprets a sort~$X$ of~$\TT$ as the sheaf~$\yon\{x\?X\_ \top\}$,
-a function symbol~$f : X_1 \cdots X_n \to Y$ as the morphism given by
-the~$\TT$-provably functional formula~$f(x_1,\ldots,x_n) = y$ and a relation
-symbol~$R \rightarrowtail X_1 \cdots X_n$ by the subobject~$\yon\{\vec x\_ R(\vec
-x)\} \rightarrowtail \yon\{\vec x\_ \top\}$.
-
-\begin{thm}The generic model is universal in the sense that for any
-Grothendieck topos~$\E$, the functor
-\[ \text{(category of geometric morphisms~$\E \to \Set[\TT]$)} \longrightarrow
-\text{(category of~$\TT$-models in~$\E$)} \]
-given by~$f \mapsto f^*U_\TT$ is an equivalence of categories.
-\end{thm}
-
-\begin{prop}\label{prop:basic-truth}
-Let~$\alpha$ and~$\varphi$ be geometric formulas in a context~$\vec
-x$ over the signature of a geometric theory~$\TT$. Then the following
-statements are equivalent:
-\begin{enumerate}
-\item $\Set[\TT] \models \forall \vec x\_ (\alpha \Rightarrow \varphi)$.
-\item $\{\vec x\_ \alpha\} \models \varphi$, where the free variables
-in~$\varphi$ are interpreted as their generic values over~$\{\vec
-x\_\alpha\}$, that is the projection maps~$\{ \vec x\_ \alpha \} \to \{
-x_i\?X_i\_ \top \})$.
-\item $\TT$ proves~$(\alpha \seq{\vec x} \varphi)$.
-\end{enumerate}
-\end{prop}
-
-\begin{proof}The equivalence~$(1) \Leftrightarrow (2)$ follows immediately by
-unrolling the Kripke--Joyal semantics. The equivalence~$(2) \Leftrightarrow
-(3)$ is by induction on the structure of~$\varphi$.\end{proof}
 
 
 \section{Proofs of the main theorems}

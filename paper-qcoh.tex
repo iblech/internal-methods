@@ -862,7 +862,17 @@ existential fixed-point logic.
 \section{The special case of Horn theories}
 \label{sect:horn}
 
-Throughout this section, let~$\TT$ be a Horn theory.
+% XXX introduction
+
+Throughout this section, let~$\TT$ be a Horn theory. It is a basic result that
+Horn theories are of presheaf type, such that the classifying topos~$\Set[\TT]$
+can be taken as the topos of functors~$\Mod{\TT}_\mathrm{fp} \to \Set$,
+where~$\Mod{\TT}_\mathrm{fp}$ is the full subcategory of the category
+of~$\TT$-models (in~$\Set$) on the finitely presentable objects. The
+(underlying object of the) generic model is the tautologous functor~$U_\TT : T
+\mapsto T$. By~\emph{$U_\TT$-algebra} we mean, in analogy with the terminology in
+the case that~$\TT$ is the theory of rings, a~$\TT$-model~$M$ equipped with
+a~$\TT$-homomorphism~$U_\TT \to M$.
 
 \begin{lemma}\label{lemma:free-models}
 Let~$X$ be a set equipped with a morphism~$X \to S$ to the set of sorts
@@ -883,17 +893,6 @@ We omit the required verifications and only remark that while the same
 construction could be carried out if~$\TT$ was a general geometric theory, the
 resulting object would in general not be a model of~$\TT$.
 \end{proof}
-
-\begin{lemma}The category of~$\TT$-models is complete and
-cocomplete.\end{lemma}
-
-\begin{proof}Limits are computed as the limits of the underlying sets, colimits
-are computed by using the construction of Lemma~\ref{lemma:free-models}. For
-instance, the coproduct of~$\TT\langle X | R \rangle$ and~$\TT\langle X' | R'
-\rangle$ is~$\TT\langle X \amalg X' \,|\, R, R' \rangle$.\end{proof}
-
-Having the special case of the theory of rings in mind, we write the coproduct
-in the category of~$\TT$-models as~``$\otimes$''.
 
 \begin{lemma}Let~$\sigma = (\varphi_1 \wedge \cdots \wedge \varphi_n
 \seq{x_1,\ldots,x_k} \psi_1 \wedge \cdots \wedge \psi_m)$ be a Horn sequent
@@ -922,7 +921,16 @@ compact, the identity on~$M$ factors over such a model. Hence~$M$ is a
 retract of such a model and hence itself isomorphic to a model of this form.
 \end{proof}
 
-% XXX Set[T] einführen
+\begin{lemma}The category of~$\TT$-models (in~$\Set$) is complete and
+cocomplete.\end{lemma}
+
+\begin{proof}Limits are computed as the limits of the underlying sets, colimits
+are computed by using the construction of Lemma~\ref{lemma:free-models}. For
+instance, the coproduct of~$\TT\langle X | R \rangle$ and~$\TT\langle X' | R'
+\rangle$ is~$\TT\langle X \amalg X' \,|\, R, R' \rangle$.\end{proof}
+
+Having the special case of the theory of rings in mind, we write the coproduct
+in the category of~$\TT$-models as~``$\otimes$''.
 
 Any~$\TT$-model~$A$ has a mirror image in the topos~$\Set[\TT]$, namely the
 functor~$A^\sim : \Mod{\TT}_\mathrm{fp} \to \Set$ given by~$T \mapsto A \otimes T$.
@@ -1017,8 +1025,6 @@ is an isomorphism.
 \end{align*}
 where the final isomorphism is by Lemma~\ref{lemma:fp-double-dual}.
 \end{proof}
-
-% XXX terminology "U_T-algebra". location of the tensor explanation
 
 \begin{thm}The generic~$\TT$-model is \emph{quasicoherent} in the following sense:
 From the point of view of~$\Set[\TT]$, for any finitely

@@ -407,15 +407,27 @@ interpreted internally to toposes.
 \subsection{Background on internal geometric theories}
 \label{sect:review-theories}
 
-% XXX, esp. pullback
+The notions of signatures, geometric theories and classifying toposes can be
+relativized to the internal world of arbitrary toposes with natural numbers
+objects. Basics on internal signatures, internal geometric
+theories and internal classifying toposes are
+folklore~\cite[p.~334]{wraith:intuitionistic-algebra}; a careful treatment is
+due to Shawn Henry~\cite{henry:phd}.
+
+Briefly, an internal signature~$\Sigma$ internal to a topos~$\E$ consists of an
+object of sorts, an object of function symbols, an object of relation symbols,
+and various morphisms indicating the sorts involved with the function and
+relation symbols.
 
 Given an internal signature~$\Sigma$ internal to a Grothendieck topos~$\E$ (or
 elementary topos with a natural numbers object), we can successively build the
 object of contexts (the object of lists of sorts); the object of terms
 (equipped with a morphism to the object of contexts); the object of atomic
 propositions (again equipped with such a morphism); the object of geometric
-formulas (again so); the object of geometric sequents (again so); and, given an
-internal geometric theory~$\TT$ over~$\Sigma$, the object of proof trees of~$\TT$.
+formulas (again so); the object of geometric sequents (again so). A internal
+geometric theory~$\TT$ over~$\Sigma$ is then given by a subobject of the object
+of geometric sequents, interpreted as the object of axioms of~$\TT$. Given such
+an internal theory~$\TT$, we can build the object of proof trees of~$\TT$.
 
 From the internal point of view of~$\E$, these objects can be obtained by
 simply carrying out the usual constructions of the set of contexts, the set of
@@ -433,11 +445,17 @@ internal to the topos~$\Set$. A geometric sequent is provable in the ordinary
 sense if and only if, from the internal point of view of~$\Set$, it is provable
 in the sense of Definition~\ref{defn:provability}.\end{ex}
 
+\begin{ex}An ordinary geometric theory~$\TT$ over an ordinary
+signature~$\Sigma$ can be pulled back along a geometric morphism~$\E \to \Set$
+to yield an internal geometric theory~$\ul{\TT}$ over the internal
+signature~$\ul{\Sigma}$ in~$\E$. The object of sorts of~$\ul{\Sigma}$ is the pullback of
+the set of sorts of~$\Sigma$, and so on.\end{ex}
+
 Disjunctions appearing in internal geometric formulas may be indexed by
 arbitrary objects of the topos, just like disjunctions appearing in ordinary
 external geometric formulas over an ordinary signature may be indexed by
-arbitrary sets. If~$\E$ is a Grothendieck topos, the object of geometric
-formulas over an internal signature~$\Sigma$ in~$\E$ has an important
+arbitrary sets. If~$\Sigma$ is an internal signature in a Grothendieck topos~$\E$, the object of geometric
+formulas over~$\Sigma$ has an important
 subobject, the subobject of those formulas such that locally, any appearing
 disjunction is indexed by a constant sheaf. Such internal geometric formulas
 will be called \emph{geometric$^\star$ formulas}.

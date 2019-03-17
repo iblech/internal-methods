@@ -842,9 +842,13 @@ Hence the the analogue of Theorem~\ref{thm:characterization} cannot be
 formulated for coherent logic.
 
 A fragment of logic which is still finitary, but is powerful enough to express
-its own provability predicate, is coherent existential fixed-point
-logic~\cite{blass:topoi-and-computation,blass:existential-fixed-point-logic}.
-For this fragment, we have the following characterization.
+its own provability predicate, is \emph{coherent existential fixed-point
+logic}, coherent logic enriched by list sorts and the fixed-point operator of
+existential fixed-point logic~\cite{blass:topoi-and-computation,blass:existential-fixed-point-logic}.
+The list sorts are necessary to express raw terms, raw formulas and raw
+sequents; the fixed-point operator is then used to express well-formedness of
+raw terms, raw formulas and raw sequents; and to express provability. For this
+fragment, we have the following characterization.
 
 \begin{scholium}Let~$\TT$ be a coherent theory (or more generally theory in coherent
 existential fixed-point logic). Let~$\alpha$ be a finitary first-order
@@ -854,10 +858,10 @@ equivalent.
 \item The formula~$\alpha$ holds for~$U_\TT$. \smallskip
 \item The formula~$\alpha$ is provable in coherent existential fixed-point logic
 modulo the axioms of~$\TT$ and the additional axioms
-\begin{equation}
+\[
   \speak{$\sigma$ holds for~$U_\TT$} \Longrightarrow \speak{$\ul{\TT}/U_\TT$
   proves~$\sigma$}
-\end{equation}
+\]
 where~$\sigma$ ranges over the formulas of coherent existential fixed-point
 logic over the signature of~$\TT$.
 \end{enumerate}

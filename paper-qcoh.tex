@@ -63,7 +63,6 @@
 \newcommand{\TT}{\mathbb{T}}
 \newcommand{\ZZ}{\mathbb{Z}}
 \renewcommand{\SS}{\mathbb{S}}
-\renewcommand{\P}{\mathcal{P}}
 \renewcommand{\O}{\mathcal{O}}
 \newcommand{\defeq}{\vcentcolon=}
 \newcommand{\op}{\mathrm{op}}
@@ -308,7 +307,7 @@ Section~\ref{sect:main}, the following general Nullstellensatz:
 
 \begin{thm}\label{thm:nullstellensatz0}
 Let~$\TT$ be a geometric theory. Then, internally to~$\Set[\TT]$:
-\begin{equation}\tag{$\ddagger$}\label{eq:nullstellensatz}
+\begin{equation}\tag{$\dagger$}\label{eq:nullstellensatz0}
 \text{A geometric$^*$ sequent~$\sigma$ holds for~$U_\TT$ if and only
 if~$\ul{\TT}/U_\TT$ proves$^*$~$\sigma$.}
 \end{equation}
@@ -326,7 +325,7 @@ the relation~$f(X) = 0$, the relation~$g([X]) = 0$ holds. Hence we obtain
     (\forall x \? U_\TT\_ f(x) = 0 \Rightarrow g(x) = 0) \Longleftrightarrow
       \exists h \? U_\TT[X]\_ g = hf\bigr). \]
 
-The statement~\eqref{eq:nullstellensatz} is not a geometric sequent. Therefore
+The statement~\eqref{eq:nullstellensatz0} is not a geometric sequent. Therefore
 it is not to be expected that it passes from~$\Set[\TT]$ to a
 subtopos~$\Set[\TT']$ corresponding to a quotient theory~$\TT'$ of~$\TT$, and
 indeed in general it does not. However, there is still a useful substitute,
@@ -345,7 +344,7 @@ is a conservative$^\star$~$\ul{\TT}/U_\TT$-model.
 
 Theorem~\ref{thm:nullstellensatz0} is a source of nongeometric sequents. Indeed,
 it is the universal such source in the sense that any first-order formula
-which holds for~$U_\TT$ can be deduced from~\eqref{eq:nullstellensatz}:
+which holds for~$U_\TT$ can be deduced from~\eqref{eq:nullstellensatz0}:
 
 \begin{thm}\label{thm:characterization0}
 Let~$\TT$ be a geometric theory. Let~$\alpha$ be a first-order
@@ -354,7 +353,7 @@ equivalent.
 \begin{enumerate}
 \item The formula~$\alpha$ holds for~$U_\TT$.
 \item The formula~$\alpha$ is provable in first-order intuitionistic logic
-modulo the axioms of~$\TT$ and the additional axiom~\eqref{eq:nullstellensatz}.
+modulo the axioms of~$\TT$ and the additional axiom~\eqref{eq:nullstellensatz0}.
 \end{enumerate}
 \end{thm}
 
@@ -771,11 +770,16 @@ equivalent.
 \begin{enumerate}
 \item The formula~$\alpha$ holds for~$U_\TT$.
 \item The formula~$\alpha$ is provable in first-order intuitionistic logic
-modulo the axioms of~$\TT$ and the additional axiom
-scheme~\eqref{eq:nullstellensatz}.
-% XXX be more explicit about that being a scheme
+modulo the axioms of~$\TT$ and the additional axioms
+\begin{equation}\label{eq:nullstellensatz}\tag{$\ddagger$}
+  \speak{$\sigma$ holds for~$U_\TT$} \Longrightarrow \speak{$\ul{\TT}/U_\TT$
+  proves$^\star$~$\sigma$}
+\end{equation}
+where~$\sigma$ ranges over the geometric formulas over the signature of~$\TT$.
 \end{enumerate}
 \end{thm}
+
+% XXX handholding
 
 \begin{proof}The direction~$(2) \Rightarrow (1)$ is immediate, as the internal
 language of~$\Set[\TT]$ validates first-order intuitionistic logic and as it
@@ -1144,16 +1148,24 @@ the signature of~$\TT$. Then the following statements are equivalent:
 \begin{enumerate}
 \item The formula~$\alpha$ holds for~$U_\TT$.
 \item The formula~$\alpha$ is provable in higher-order intuitionistic logic
-modulo the axioms of~$\TT$ and the additional axiom scheme~XXX.
+modulo the axioms of~$\TT$ and the additional axiom scheme
+\begin{equation}\label{eq:higher-order-nullstellensatz}\tag{$\P$}
+  \speak{the map~$\mathrm{Form}^\star_{\vec
+  x}(\ul{\TT}/U_\TT)/(\dashv\vdash_{\vec x}) \longrightarrow P(X_1 \times
+  \cdots \times X_n)$ is bijective},
+\end{equation}
+where~$X_1,\ldots,X_n$ is any list of sorts.
 \end{enumerate}
 \end{thm}
 
 \begin{proof}Theorem~\ref{thm:definability} on the semantic side and the axiom
-scheme on the syntactic side allow us to replace any mention of a
+scheme~\eqref{eq:higher-order-nullstellensatz} on the syntactic side allow us to replace any mention of a
 powersort~$P(X)$ in~$\alpha$
-by~$\mathrm{Form}^\star_{x\!\?\!X}(\ul{\TT}/U_\TT)/({\dashv\vdash_x})$. Then we
+by~$\mathrm{Form}^\star_{x\!\?\!X}(\ul{\TT}/U_\TT)/({\dashv\vdash_x})$,
+similarly to how the proof of Lemma~\ref{lemma:extended-conservative} compiles
+extended geometric logic to ordinary geometric. Then we
 can argue as in the proof of Theorem~\ref{thm:characterization}, noting that
-the axiom scheme indeed entails the axiom scheme posited by
+the axiom scheme indeed entails the axiom scheme~\eqref{eq:nullstellensatz} posited by
 Theorem~\ref{thm:characterization}.\end{proof}
 
 % XXX check

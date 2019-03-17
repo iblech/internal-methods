@@ -532,7 +532,8 @@ conclusion.\end{defn}
 The following lemma shows that for coherent theories, there is no difference
 between provability and provability$^*$.
 
-\begin{lemma}Let~$\E$ be a Grothendieck topos. Let~$\TT$ be a coherent theory
+\begin{lemma}\label{lemma:provability-in-coherent-case}
+Let~$\E$ be a Grothendieck topos. Let~$\TT$ be a coherent theory
 internal to~$\E$. Let~$\sigma$ be a coherent sequent over the signature
 of~$\TT$. Then the following statements are equivalent.
 \begin{enumerate}
@@ -812,7 +813,50 @@ the basic fact that, for geometric formulas~$\varphi$, $\Set[\TT] \models
 \varphi$ implies that~$\TT$ proves~$\varphi$.
 \end{proof}
 
-% XXX coherent case
+The Nullstellensatz of Theorem~\ref{thm:nullstellensatz} and the
+characterization of Theorem~\ref{thm:characterization} pertain to geometric
+logic and hence require some care in dealing with the flexibility of
+disjunctions. In particular, the internal statement of
+Theorem~\ref{thm:nullstellensatz} requires external ingredients in referring to
+geometric$^\star$ sequents and provability$^\star$. A natural question is
+therefore whether, in the case that~$\TT$ is a coherent theory, the statements
+of these two theorems can be simplified.
+
+As stated in Lemma~\ref{lemma:provability-in-coherent-case}, for coherent
+sequents modulo a coherent theory there is no difference between provability in
+geometric logic, provability$^\star$ in geometric logic and provability in
+coherent logic. However, while geometric logic is powerful enough to express
+provability$^\star$ in geometric logic, coherent logic is not powerful enough
+to express provability in coherent logic. ``Coherent logic cannot eat itself.''
+Hence the the analogue of Theorem~\ref{thm:characterization} cannot be
+formulated for coherent logic.
+
+A fragment of logic which is still finitary, but is powerful enough to express
+its own provability predicate, is coherent existential fixed-point
+logic~\cite{blass:topoi-and-computation,blass:existential-fixed-point-logic}.
+For this fragment, we have the following characterization.
+
+\begin{scholium}Let~$\TT$ be a coherent theory (or more generally theory in coherent
+existential fixed-point logic). Let~$\alpha$ be a finitary first-order
+formula over the signature of~$\TT$. Then the following statements are
+equivalent.
+\begin{enumerate}
+\item The formula~$\alpha$ holds for~$U_\TT$. \smallskip
+\item The formula~$\alpha$ is provable in coherent existential fixed-point logic
+modulo the axioms of~$\TT$ and the additional axioms
+\begin{equation}
+  \speak{$\sigma$ holds for~$U_\TT$} \Longrightarrow \speak{$\ul{\TT}/U_\TT$
+  proves~$\sigma$}
+\end{equation}
+where~$\sigma$ ranges over the formulas of coherent existential fixed-point
+logic over the signature of~$\TT$.
+\end{enumerate}
+\end{scholium}
+
+\begin{proof}The proofs of Theorem~\ref{thm:nullstellensatz} and
+Theorem~\ref{thm:characterization} can be adapted to the setting of coherent
+existential fixed-point logic.
+\end{proof}
 
 
 \section{The special case of Horn theories}

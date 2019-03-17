@@ -351,7 +351,7 @@ Let~$\TT$ be a geometric theory. Let~$\alpha$ be a first-order
 formula over the signature of~$\TT$. Then the following statements are
 equivalent.
 \begin{enumerate}
-\item The formula~$\alpha$ holds for~$U_\TT$.
+\item The formula~$\alpha$ holds for~$U_\TT$. \smallskip
 \item The formula~$\alpha$ is provable in first-order intuitionistic logic
 modulo the axioms of~$\TT$ and the additional axiom~\eqref{eq:nullstellensatz0}.
 \end{enumerate}
@@ -406,17 +406,20 @@ interpreted internally to toposes.
 \subsection{Background on classifying toposes}
 \label{sect:review-classifying-toposes}
 
+We use the usual convention of abbreviating~``$x_1\?X_1,\ldots,x_n\?X_n$''
+as~``$\vec x \? \vec X$'' or even just~``$\vec x$''.
+
 \begin{defn}The \emph{syntactic site}~$\C_\TT$ of a geometric theory~$\TT$ has:
 \begin{enumerate}
 \item as objects ``geometric formulas in contexts''~$\{x_1\?X_1,\ldots,x_n\?X_n\_
 \varphi\}$ where~$\varphi$ is a geometric formula over the signature of~$\TT$
-in the displayed context;
+in the displayed context; \smallskip
 \item as set of morphisms~$\Hom_{\C_\TT}(\{\vec x\_
 \varphi\}, \{\vec y\_ \psi\})$ the set of formulas~$\theta$ in the
 context~$\vec x, \vec y$ which are~$\TT$-provably functional,
-modulo~$\TT$-provable equivalence of such formulas;
+modulo~$\TT$-provable equivalence of such formulas; \smallskip
 \item as covering families those families~$(\{\vec x_i\_ \varphi_i\} \xrightarrow{\theta_i}
-\{\vec y\_ \psi\})_i$ for which~$\TT$ proves~$(\psi \seq{\vec y} \bigvee_i \exists \vec x_i\_
+\{\vec y\_ \psi\})_i$ for which~$\TT$ proves the sequent~$(\psi \seq{\vec y} \bigvee_i \exists \vec x_i\_
 \theta_i)$.
 \end{enumerate}
 \end{defn}
@@ -444,10 +447,11 @@ x$ over the signature of a geometric theory~$\TT$. Then the following
 statements are equivalent:
 \begin{enumerate}
 \item $\Set[\TT] \models \forall \vec x\_ (\alpha \Rightarrow \varphi)$.
+\smallskip
 \item $\{\vec x\_ \alpha\} \models \varphi$, where the free variables
 in~$\varphi$ are interpreted as their generic values over~$\{\vec
 x\_\alpha\}$, that is the projection maps~$\{ \vec x\_ \alpha \} \to \{
-x_i\?X_i\_ \top \})$.
+x_i\?X_i\_ \top \})$. \smallskip
 \item $\TT$ proves~$(\alpha \seq{\vec x} \varphi)$.
 \end{enumerate}
 \end{prop}
@@ -533,13 +537,13 @@ internal to~$\E$. Let~$\sigma$ be a coherent sequent over the signature
 of~$\TT$. Then the following statements are equivalent.
 \begin{enumerate}
 \item $\E \models \speak{There is a~$\TT$-derivation of~$\sigma$ of externally
-finite shape}.$
+finite shape}.$ \smallskip
 \item $\E \models \speak{There is a~$\TT$-derivation of~$\sigma$ of arbitrary
 external shape}$, that is~$\E \models \speak{$\sigma$ is provable$^\star$
-modulo~$\TT$}$.
+modulo~$\TT$}$. \smallskip
 \item $\E \models \speak{There is a~$\TT$-derivation of~$\sigma$ of arbitrary
 internal shape}$, that is~$\E \models \speak{$\sigma$ is provable
-modulo~$\TT$}$.
+modulo~$\TT$}$. \smallskip
 \item $\E \models \speak{There is a~$\TT$-derivation of~$\sigma$ of internally
 finite shape}.$
 \end{enumerate}
@@ -568,7 +572,8 @@ That~(4) implies~(1) is a routine exercise exploiting that
 \section{Proofs of the main theorems}
 \label{sect:main}
 
-Given a geometric theory~$\TT$, the main theorems reference a certain internal
+Given a geometric theory~$\TT$ with its generic model~$U_\TT$ in~$\Set[\TT]$,
+the main theorems reference a certain internal
 theory~$\ul{\TT}/U_\TT$ internal to~$\Set[\TT]$. This theory is defined as
 follows.
 
@@ -671,7 +676,7 @@ Let~$\TT$ be a geometric theory. Then, internally to~$\Set[\TT]$, for any
 geometric$^\star$ sequent~$\sigma$ over the signature of~$\ul{\TT}/U_\TT$, the
 following statements are equivalent:
 \begin{enumerate}
-\item The sequent~$\sigma$ holds for~$U_\TT$.
+\item The sequent~$\sigma$ holds for~$U_\TT$. \smallskip
 \item The sequent~$\sigma$ is provable$^\star$ modulo~$\ul{\TT}/U_\TT$.
 \end{enumerate}
 \end{thm}
@@ -768,7 +773,7 @@ Let~$\TT$ be a geometric theory. Let~$\alpha$ be a first-order
 formula over the signature of~$\TT$. Then the following statements are
 equivalent.
 \begin{enumerate}
-\item The formula~$\alpha$ holds for~$U_\TT$.
+\item The formula~$\alpha$ holds for~$U_\TT$. \smallskip
 \item The formula~$\alpha$ is provable in first-order intuitionistic logic
 modulo the axioms of~$\TT$ and the additional axioms
 \begin{equation}\label{eq:nullstellensatz}\tag{$\ddagger$}
@@ -840,7 +845,7 @@ in the category of~$\TT$-models as~``$\otimes$''.
 \seq{x_1,\ldots,x_k} \psi_1 \wedge \cdots \wedge \psi_m)$ be a Horn sequent
 over the signature of~$\TT$. Then the following statements are equivalent.
 \begin{enumerate}
-\item The theory~$\TT$ proves~$\sigma$.
+\item The theory~$\TT$ proves~$\sigma$. \smallskip
 \item In~$\TT\langle x_1,\ldots,x_k \,|\, \varphi_1,\ldots,\varphi_n \rangle$, the
 propositions~$\psi_1,\ldots,\psi_m$ hold for
 the~$k$-tuple~$([x_1],\ldots,[x_k])$.
@@ -909,7 +914,7 @@ with~$\yon A$, the functor~$\Hom_{\Mod{\TT}}(A, \cdot)$.
   \cong \Hom_{U_\TT}(A^\sim, U_\TT|T),
 \end{align*}
 where~$[A^\sim,U_\TT]_{U_\TT}$ is the object of~$U_\TT$-algebra homomorphisms from~$A^\sim$
-to~$U_\TT$ (a subobject of the internal Hom~$U_\TT^{A^\sim}$); $\Hom_{U_\TT}$
+to~$U_\TT$ (a subobject of the internal Hom~$(U_\TT)^{A^\sim}$); $\Hom_{U_\TT}$
 denotes the set of~$U_\TT$-algebra homomorphisms; $(U_\TT)^{\yon T}$ is the object of morphisms
 from~$\yon T$ to~$U_\TT$; and~$U_\TT|T$ is the functor~$U_\TT(T \times \cdot)$, that is~$S
 \mapsto T \otimes S$.
@@ -1129,7 +1134,7 @@ Let~$\TT$ be a geometric theory. Then, internally to~$\Set[\TT]$, for any
 extended geometric$^\star$ sequent~$\sigma$ over the signature
 of~$\ul{\TT}/U$, the following statements are equivalent:
 \begin{enumerate}
-\item The sequent~$\sigma$ holds for~$U_\TT$.
+\item The sequent~$\sigma$ holds for~$U_\TT$. \smallskip
 \item The sequent~$\sigma$ is provable$^\star$ modulo~$\TT/U_\TT$ in extended
 geometric logic.
 \end{enumerate}
@@ -1146,7 +1151,7 @@ geometric logic of Theorem~\ref{thm:nullstellensatz}.
 Let~$\TT$ be a geometric theory. Let~$\alpha$ be a higher-order formula over
 the signature of~$\TT$. Then the following statements are equivalent:
 \begin{enumerate}
-\item The formula~$\alpha$ holds for~$U_\TT$.
+\item The formula~$\alpha$ holds for~$U_\TT$. \smallskip
 \item The formula~$\alpha$ is provable in higher-order intuitionistic logic
 modulo the axioms of~$\TT$ and the additional axiom scheme
 \begin{equation}\label{eq:higher-order-nullstellensatz}\tag{$\P$}

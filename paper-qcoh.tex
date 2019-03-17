@@ -1137,13 +1137,16 @@ replaced by the subsingleton-indexed disjunction~``$\bigvee\{ x = y \,|\, i = j 
 
 \begin{thm}\label{thm:definability}
 Let~$\TT$ be a geometric theory. Let~$x_1\?X_1,\ldots,x_n\?X_n$ be a context over the
-signature of~$\TT$. Then the canonical morphism
+signature of~$\TT$. Let~$\mathrm{Form}^\star_{\vec
+x}(\ul{\TT}/U_\TT)/(\dashv\vdash_{\vec x})$ be the~$\Set[\TT]$-object of
+geometric$^\star$ formulas over the signature of~$\ul{\TT}/U_\TT$ in the
+context~$\vec x$, where any two such formulas are identified if and only
+if~$\ul{\TT}/U_\TT$ proves them equivalent.
+Then the canonical morphism
 \[ \mathrm{Form}^\star_{\vec x}(\ul{\TT}/U_\TT)/(\dashv\vdash_{\vec x}) \longrightarrow P(X_1 \times
 \cdots \times X_n) \]
-sending, internally speaking, the equivalence class of a geometric$^\star$ formula~$\varphi$ over the
-signature of~$\ul{\TT}/U_\TT$ in the context~$\vec x$ to the subset~$\{ (x_1,\ldots,x_n) \,|\, \varphi
-\}$ is an isomorphism.
-% XXX explain equivalence relation
+sending, internally speaking, the equivalence class of a geometric$^\star$
+formula~$\varphi$ to the subset~$\{ (x_1,\ldots,x_n) \,|\, \varphi \}$ is an isomorphism.
 \end{thm}
 
 \begin{proof}Injectivity is by the Nullstellensatz of

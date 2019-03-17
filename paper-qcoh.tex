@@ -711,11 +711,20 @@ over~$A$), hence~$A \models \speak{$\ul{\TT}/U_\TT$ proves$^\star$~$(\varphi
 \seq{\vec y} \psi)$}$.
 \end{proof}
 
+The force of the Nullstellensatz of Theorem~\ref{thm:nullstellensatz} is for
+sequents~$\sigma$ which are not of the form~$(\top \seq{[]} \varphi)$. Indeed,
+for such sequents, even~$\TT$ proves~$(\speak{$\sigma$ holds for~$U_\TT$}
+\Rightarrow \speak{$\ul{\TT}/U_\TT$ proves~$(\top \seq{[]} \varphi)$})$, as can
+be seen by a simple induction on the structure of~$\varphi$. For more general
+sequents, Theorem~\ref{thm:nullstellensatz} expresses a nontrivial fact: that
+truth of a conditional, universally-quantified statement implies a single
+unconditional statement.
+
 \begin{rem}Theorem~\ref{thm:nullstellensatz} cannot be strengthened to
 arbitrary geometric sequents. For instance, in the case that~$\TT$ is the
 theory of rings, the internal geometric sequent~$(\top \seq{x\?U_\TT}
-\bigvee_{a\?U_\TT} (x = e_a))$ trivially holds for~$U_\TT$. However, it is not
-provable modulo~$\TT/U_\TT$, as for instance the polynomial algebra~$U_\TT[X]$
+\bigvee_{a\?U_\TT} (x = e_a))$ trivially holds for~$U_\TT$. However, this sequent is not
+provable modulo~$\ul{\TT}/U_\TT$, as for instance the polynomial algebra~$U_\TT[X]$
 does not validate it.\end{rem}
 
 \begin{thm}\label{thm:nullstellensatz-horn}
@@ -1292,8 +1301,3 @@ Remark~\ref{rem:definability-entails-nullstellensatz}.\end{proof}
 * XXX Discuss related work, especially: Olivia 6.1.3, ...
 
 * XXX Cite Filip Bár?
-
-TODO:
-
-* XXX Nichttrivialität des Nullstellensatzes diskutieren (Spezialfall top |- φ
-  betrachten, dieser ist nämlich schon mehr oder weniger trivial)

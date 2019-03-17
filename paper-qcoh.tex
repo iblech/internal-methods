@@ -777,8 +777,8 @@ allow~$\bot$ as consequent, since in this case~$(\nabla\bot) \Rightarrow \bot$.\
 Theorem~\ref{thm:nullstellensatz} cannot be strengthened to arbitrary
 first-order (or first-order$^\star$ or even just coherent) formulas in place of
 geometric$^\star$ sequents. For instance, in the case that~$\TT$ is the theory
-of local rings, the generic model~$U_\TT$ validates the coherent
-formula~$\speak{any element which is not zero is invertible}$, but~$\TT/U_\TT$
+of rings, the generic model~$U_\TT$ validates the coherent
+formula~$\speak{any element~$x$ for which~$(x = 0 \Rightarrow 1 = 0)$ is invertible}$, but~$\ul{\TT}/U_\TT$
 does not prove this fact, as it is for instance not validated by the polynomial
 algebra~$U_\TT[X]$. However, Theorem~\ref{thm:nullstellensatz} still plays an
 important role in understanding first-order formulas:
@@ -796,6 +796,7 @@ modulo the axioms of~$\TT$ and the additional axioms
   proves$^\star$~$\sigma$}
 \end{equation}
 where~$\sigma$ ranges over the geometric formulas over the signature of~$\TT$.
+% XXX include free variables
 \end{enumerate}
 \end{thm}
 

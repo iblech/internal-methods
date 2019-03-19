@@ -61,6 +61,7 @@
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\RR}{\mathbb{R}}
 \newcommand{\TT}{\mathbb{T}}
+\newcommand{\OO}{\mathbb{O}}
 \newcommand{\ZZ}{\mathbb{Z}}
 \renewcommand{\SS}{\mathbb{S}}
 \renewcommand{\O}{\mathcal{O}}
@@ -1288,7 +1289,39 @@ Remark~\ref{rem:definability-entails-nullstellensatz}.\end{proof}
 \section{Applications}
 \label{sect:applications}
 
-\section{Nongeometric sequents in the ring classifier}
+\subsection{Nongeometric sequents in the object classifier}
+
+Johnstone~\cite{XXX} lists several nongeometric sequents(XXX) holding in the
+classifying topos of the theory~$\OO$ of objects, the theory with a single sort and
+no function symbols, relations symbols or axioms, including:
+\begin{align*}
+  \forall x,y\?U_\OO\_ \neg\neg(x = y) &&
+  \forall x_1,\ldots,x_n\?U_\OO\_ \neg \forall y\?U_\OO\_ \bigvee_{i=1}^n (y = x_i)
+\end{align*}
+Intuitively, the first expresses that~$U_\OO$ is close to a subsingleton, while
+the second expresses that~$U_\OO$ is close to being infinite. Using the
+Nullstellensatz, these formulas can be verified as follows.
+
+We argue internally to~$\Set[\OO]$. Let~$x,y\?U_\OO$ and assume~$\neg(x = y)$.
+Then~$\ul{\OO}/U_\OO$ proves~$(x = y \seq{[]} \bot)$. Hence this sequent holds
+of any model of~$\ul{\OO}/U_\OO$, in particular of the
+quotient~$U_\OO/(x \sim y)$. Hence~$\bot$ holds for this model, that is, we
+have a contradiction.
+
+For the second formula, let~$x_1,\ldots,x_n\?U_\OO$ and assume~$\forall
+y\?U_\OO\_ \bigvee_{i=1}^n (y = x_i)$. By the Nullstellensatz, this universal
+statement is provable and hence holds for every~$\ul{\OO}/U_\OO$-model. But it
+does not hold for~$U_\OO \amalg \{\star\}$.
+
+The argument using the Nullstellensatz makes it transparent that both formulas
+are also satisfied by the generic model of any Horn theory~$\TT$: In that case,
+instead of constructing the quotient set~$U_\OO/(x \sim y)$, we construct the
+quotient model~$(\ul{\TT}/U_\TT)\langle \,|\, x = y \rangle$; and instead of~$U_\OO
+\amalg \{\star\}$, we construct the free model~$(\ul{\TT}/U_\TT)\langle \star
+\,|\, \rangle$ (XXX need to exclude trivial singleton theory).
+
+
+\subsection{Nongeometric sequents in the ring classifier}
 
 Each of the nongeometric sequents mentioned in Section~\ref{sect:introduction}
 can be deduced from the first-order or higher-order Nullstellensatz. Here we
@@ -1329,7 +1362,7 @@ the point of view of that topos,~$x = 0$ in~$\O_{\Spec(U_\TT/(x))}$, hence~$1 =
 hence~$x$ is invertible in~$U_\TT$.
 
 
-\section{On the Kock--Lawvere axiom in synthetic differential geometry}
+\subsection{On the Kock--Lawvere axiom in synthetic differential geometry}
 
 The generic local ring~$\affl$ validates the following strong form of the Kock--Lawvere
 axiom (Theorem~\ref{thm:quasicoherence}): \emph{For any finitely

@@ -166,6 +166,21 @@
   }%
 }
 
+\tikzset{
+  invisible/.style={opacity=0,text opacity=0},
+  visible on/.style={alt={#1{}{invisible}}},
+  alt/.code args={<#1>#2#3}{%
+    \alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}}}
+}
+
+\newcommand{\explain}[7]{%
+  \tikz[remember picture,baseline]{
+    \node[anchor=base,inner sep=2pt,outer sep=0,fill=#3,rounded corners] (label) {#1};
+    \node[anchor=north,visible on=<#2>,overlay,rectangle callout,rounded corners,callout
+    relative pointer={(0.0cm,0.5cm)+(0.0cm,#6)},fill=#3] at ($(label.south)+(0,-0.3cm)+(#4,#5)$) {#7};
+  }%
+}
+
 % Adapted from https://latex.org/forum/viewtopic.php?t=2251 (Stefan Kottwitz)
 \newenvironment<>{varblock}[2]{\begin{varblockextra}{#1}{#2}{}}{\end{varblockextra}}
 \newenvironment<>{varblockextra}[3]{
@@ -184,7 +199,7 @@
   \end{center}}
 
 \setbeamertemplate{frametitle}{%
-  \vskip1.2em%
+  \vskip0.6em%
   \leavevmode%
   \begin{beamercolorbox}[dp=1ex,center]{}%
   %   \usebeamercolor[fg]{item}{\textbf{{\Large \insertframetitle}}}
@@ -201,6 +216,7 @@
       \end{pgfonlayer}
     \end{tikzpicture}
   \end{beamercolorbox}%
+  \vskip-0.6em%
 }
 
 \setbeamertemplate{navigation symbols}{}
@@ -215,25 +231,7 @@
 }
 
 \newcommand{\mynav}[3]{%
-  \begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex]{}%
-    \begin{columns}
-      \begin{column}{0.333\textwidth}
-        \raggedright
-        \textcolor{#1}{\qquad\qquad Summary}
-        \par
-      \end{column}
-      \begin{column}{0.333\textwidth}
-        \centering
-        \textcolor{#2}{The forcing model}
-        \par
-      \end{column}
-      \begin{column}{0.333\textwidth}
-        \raggedleft
-        \textcolor{#3}{Revisiting the test cases \qquad\qquad}
-        \par
-      \end{column}
-    \end{columns}
-  \end{beamercolorbox}%
+  foo
 }
 
 \newcommand{\insertframeextra}{}
@@ -288,35 +286,51 @@
   6th Workshop on Formal Topology in Birmingham \\
   April 11st, 2019
   \par
-
-  \jnote{1}{We can associate to any reduced ring~$A$ a \emph{forcing
-  model}~$A^\sim$.
-  \begin{itemize}
-    \item The forcing model has the pleasant property that it is a field.
-    \item Reasoning about it requires that we restrict ourselves to
-    intuitionistic logic.
-  \end{itemize}
-  Details are on the following slides.}
 \end{frame}}
 
-
 \begin{frame}{The mystery of nongeometric sequents}
-  Let~$\TT$ be a geometric theory, for instance the theory of rings.
+  Let~$\TT$ be a \explain{geometric theory}{4-}{red!20}{-1cm}{0cm}{0cm}{\begin{minipage}{4.3cm}
+  sorts,
+  function symbols,
+  relation symbols,
+  geometric sequents as axioms
+  \end{minipage}}, for instance the
+  \explain{theory of rings}{4-}{blue!20}{-1cm}{0cm}{0cm}{\begin{minipage}{4.3cm}
+    \begin{tabbing}
+      fun. symb.: \= \kill
+      sorts: \> $R$ \\
+      fun. symb.: \> $0$, $1$, $+$, $-$, $\cdot$ \\
+      % rel. symb.: \> \emph{none} \\
+      axioms: \> $(\top \vdash_{x,y:R} x y = y x)$, \ldots
+    \end{tabbing}
+  \end{minipage}}.
 
   % Illustration
+  \vspace{2.5cm}
+
+  \pause
 
   \textbf{Theorem.} There is a \hil{generic model}~$U_\TT$, a model such that
-  for any geometric sequent~$\sigma$ the following notions coincide:
+  for any \explain{geometric sequent}{4-}{yellow!70}{0cm}{0cm}{0cm}{
+    a sequent of the form~$(\varphi \vdash_{x_1,\ldots,x_n} \psi)$
+    where~$\varphi$ and~$\psi$ are geometric formulas
+  }~$\sigma$ the following notions coincide:
   \begin{enumerate}
     \item The sequent~$\sigma$ holds for~$U_\TT$.
-    \item The sequent~$\sigma$ holds for any~$\TT$-model in any topos.
+    \item The sequent~$\sigma$ holds for any~$\TT$-model in any
+    \explain{topos}{4-}{purple!20}{0cm}{0cm}{0cm}{foo}.
     \item The sequent~$\sigma$ is provable modulo~$\TT$.
   \end{enumerate}
 
+  \pause
+
   \justifying
-  \textbf{Main observation.} The generic model can validate nongeometric
-  sequents which are not provable modulo~$\TT$ and which do not hold for
-  arbitrary models in arbitrary toposes.
+  %\textbf{Main observation.} The generic model can validate nongeometric
+  %sequents which are not provable modulo~$\TT$ and which do not hold for
+  %arbitrary models in arbitrary toposes.
+
+  \textbf{Observation (Kock).} The generic local ring is a field:
+  \[ (x = 0 \Rightarrow \bot) \vdash_{x:R} (\exists y\?R\_ xy = 1) \]
 \end{frame}
 
 \end{document}

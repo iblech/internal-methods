@@ -22,7 +22,6 @@
 \usepackage{xstring}
 \usepackage{ifthen}
 \usepackage[normalem]{ulem}
-\usepackage{soul}\setul{0.3ex}{}
 \usepackage[all]{xy}
 \xyoption{rotate}
 \usepackage{tikz}
@@ -112,7 +111,7 @@
 \renewcommand{\_}{\mathpunct{.}}
 \newcommand{\?}{\,{:}\,}
 \newcommand{\speak}[1]{\ulcorner\text{\textnormal{#1}}\urcorner}
-\newcommand{\ull}[1]{\underline{#1}}
+\newcommand{\ul}[1]{\underline{#1}}
 \newcommand{\affl}{\ensuremath{{\ull{\AA}^1}}}
 \newcommand{\Ll}{\vcentcolon\!\Longleftrightarrow}
 \newcommand{\inv}{inv.\@}
@@ -457,7 +456,7 @@
 
   The \hil{generic local ring} validates:
   \begin{enumerate}
-    \item $\neg \forall x\?U_\TT\_ \neg\neg(x = 0)$ (as~$1 \neq 0$).
+    \item $\neg \forall x\?U_\TT\_ \neg\neg(x = 0)$.
     \item $\forall a_0,\ldots,a_{n-1}\?U_\TT\_ \neg\neg \exists x\?U_\TT\_
       x^n + a_{n-1}x^{n-1} + \cdots + a_0 x^0 = 0$.
     \item \justifying Let~$\Delta = \{ \varepsilon \? U_\TT \,|\, \varepsilon^2 = 0 \}$.
@@ -522,26 +521,26 @@
 \section{Internal conservativity}
 
 \begin{frame}{Internal conservativity}
-  The generic model~$U_\TT$ is conservative in the sense that:
+  The generic model~$U_\TT$ is conservative in the sense that
   \begin{multline*}
-    \qquad\textit{For any geometric sequent~$\sigma$,} \\
-    \textit{if $\Set[\TT] \models \speak{$U_\TT \models \sigma$}$,
-    then~$\TT$ proves~$\sigma$}.\qquad
+    \quad\textit{for any geometric sequent~$\sigma$,} \\
+    \textit{if $\Set[\TT] \models \speak{$\sigma$ holds for~$U_\TT$}$,
+    then~$\TT$ proves~$\sigma$}.\quad
   \end{multline*}
-  But~$U_\TT$ \hil{does not believe} that it is conservative in the sense that
-  \hil{neither}
+  But~$U_\TT$ \hil{does not believe} that it's conservative in the sense that
   \begin{multline*}
-    \qquad\textit{For any geometric sequent~$\sigma$,} \\
-    \Set[\TT] \models (\speak{$U_\TT \models \sigma$} \Rightarrow
-    \speak{$\TT$ proves~$\sigma$}) \qquad
+    \quad\Set[\TT] \models \ulcorner\text{for any geometric sequent~$\sigma$,} \\
+      \text{if~$\sigma$ holds for~$U_\TT$, then~$\ul{\TT}$
+      proves~$\sigma$}\urcorner\quad
   \end{multline*}
-  \hil{nor}
-  \begin{multline*}
-    \qquad\Set[\TT] \models \ulcorner\text{For any geometric sequent~$\sigma$,} \\
-      \text{if~$U_\TT \models \sigma$ then~$\TT$
-      proves~$\sigma$}\urcorner\qquad
-  \end{multline*}
-  hold.
+  does \hil{not} hold.
+
+  \textbf{Example.} Let~$\TT$ be the theory of rings. Then
+  \begin{align*}
+    \Set[\TT] &\models \neg(\speak{$\ul{\TT}$ proves $(\top \vdash 1 + 1 =
+    0)$}) \\
+    \text{but}\quad \Set[\TT] & \not\models \neg(1 + 1 = 0).
+  \end{align*}
 \end{frame}
 
 \begin{frame}{The Nullstellensatz}
@@ -556,11 +555,29 @@
     \underbrace{\bigl(\exists h \in A[X]\_ g = hf\bigr)}_{\text{algebraic certificate}}
   \]
 
-  \justifying
+%  \textbf{Definition.} The theory~$\ul{\TT}/U_\TT$ is the
+%  internal geometric theory which arises from~$\ul{\TT}$ by adding:
+%  \begin{enumerate}
+%    \justifying
+%    \item constant symbols~$e_x$, one for each element~$x : U_\TT$,
+%    \item axioms~$(\top \vdash f(e_{x_1},\ldots,e_{x_n}) = e_{f(x_1,\ldots,x_n)})$ for each function
+%    symbol~$f$ and~$n$-tuple~$(x_1,\ldots,x_n) \in (U_\TT)^n$,
+%    \item axioms~$(\top \vdash R(e_{x_1},\ldots,e_{x_n}))$ for each relation symbol~$R$
+%    and~$n$-tuple~$(x_1,\ldots,x_n) \in (U_\TT)^n$ such
+%    that~$R(x_1,\ldots,x_n)$.
+%  \end{enumerate}
+
+  \textbf{The false naive topos-theoretic Nullstellensatz.}
+  Internally to~$\Set[\TT]$, for any geometric sequent~$\sigma$ over
+  the signature of~$\underline{\TT}$,
+  \[ \text{if~$\sigma$ holds for~$U_\TT$, then~$\underline{\TT}$
+    proves~$\sigma$.}
+  \]
+
   \textbf{The topos-theoretic Nullstellensatz.}
   Internally to~$\Set[\TT]$, for any geometric$^\star$ sequent~$\sigma$ over
   the signature of~$\underline{\TT}/U_\TT$,
-  \[ \text{if~$U_\TT \models \sigma$, then~$\underline{\TT}/U_\TT$
+  \[ \text{if~$\sigma$ holds for~$U_\TT$, then~$\underline{\TT}/U_\TT$
     proves$^\star$~$\sigma$.}
   \]
 \end{frame}

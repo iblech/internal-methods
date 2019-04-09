@@ -21,6 +21,7 @@
 \usepackage{tabto}
 \usepackage{xstring}
 \usepackage{ifthen}
+\usepackage[normalem]{ulem}
 \usepackage{soul}\setul{0.3ex}{}
 \usepackage[all]{xy}
 \xyoption{rotate}
@@ -63,8 +64,14 @@
 \usepackage[T1]{fontenc}
 \usepackage{libertine}
 
+% lifted from https://arxiv.org/abs/1506.08870
+\DeclareFontFamily{U}{min}{}
+\DeclareFontShape{U}{min}{m}{n}{<-> udmj30}{}
+\newcommand\yon{\!\text{\usefont{U}{min}{m}{n}\symbol{'210}}\!}
+
 \newcommand{\A}{\mathcal{A}}
 \newcommand{\B}{\mathcal{B}}
+\renewcommand{\C}{\mathcal{C}}
 \newcommand{\M}{\mathcal{M}}
 \renewcommand{\AA}{\mathbb{A}}
 \newcommand{\E}{\mathcal{E}}
@@ -109,7 +116,7 @@
 \newcommand{\affl}{\ensuremath{{\ull{\AA}^1}}}
 \newcommand{\Ll}{\vcentcolon\!\Longleftrightarrow}
 \newcommand{\inv}{inv.\@}
-\newcommand{\seq}{\vdash_{\!\!\!\vec x}}
+\newcommand{\seq}[1]{\mathrel{\vdash\!\!\!_{#1}}}
 \newcommand{\hg}{\mathbin{:}}  % homogeneous coordinates
 
 \setbeamertemplate{blocks}[rounded][shadow=false]
@@ -173,6 +180,13 @@
     \alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}}}
 }
 
+\newcommand{\hcancel}[5]{%
+  \tikz[baseline=(tocancel.base)]{
+    \node[inner sep=0pt,outer sep=0pt] (tocancel) {#1};
+    \draw[red, line width=0.4mm] ($(tocancel.south west)+(#2,#3)$) -- ($(tocancel.north east)+(#4,#5)$);
+  }%
+}
+
 \newcommand{\explain}[7]{%
   \tikz[remember picture,baseline]{
     \node[anchor=base,inner sep=2pt,outer sep=0,fill=#3,rounded corners] (label) {#1};
@@ -180,6 +194,8 @@
     relative pointer={(0.0cm,0.5cm)+(0.0cm,#6)},fill=#3] at ($(label.south)+(0,-0.3cm)+(#4,#5)$) {#7};
   }%
 }
+
+\newcommand{\squiggly}[1]{\textcolor{red}{#1}}  % XXX
 
 % Adapted from https://latex.org/forum/viewtopic.php?t=2251 (Stefan Kottwitz)
 \newenvironment<>{varblock}[2]{\begin{varblockextra}{#1}{#2}{}}{\end{varblockextra}}
@@ -197,6 +213,13 @@
       \end{actionenv}
     \end{minipage}
   \end{center}}
+
+\setbeamertemplate{headline}{%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex]{}%
+    \insertsectionnavigationhorizontal{\paperwidth}{}{}%
+  \end{beamercolorbox}%
+  \vskip0pt%
+}
 
 \setbeamertemplate{frametitle}{%
   \vskip0.6em%
@@ -252,7 +275,7 @@
 
 \addtocounter{framenumber}{-1}
 
-\setbeamertemplate{headline}{\mynav{gray}{gray}{gray}}
+%\setbeamertemplate{headline}{\mynav{gray}{gray}{gray}}
 
 {\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{4.95cm}\includegraphics[width=\paperwidth]{topos-horses}\end{minipage}}
 \begin{frame}[c]
@@ -288,6 +311,11 @@
   \par
 \end{frame}}
 
+
+\section{The generic model}
+
+\subsection{The mystery of nongeometric sequents}
+
 \begin{frame}{The mystery of nongeometric sequents}
   Let~$\TT$ be a \explain{geometric theory}{4-}{red!20}{-1cm}{0cm}{0cm}{\begin{minipage}{4.3cm}
   sorts,
@@ -310,11 +338,14 @@
 
   \pause
 
-  \textbf{Theorem.} There is a \hil{generic model}~$U_\TT$, a model such that
+  \justifying
+  \textbf{Theorem.} There is a \hil{generic model}~$U_\TT$. It is
+  \hil{conservative} in that
   for any \explain{geometric sequent}{4-}{yellow!70}{0cm}{0cm}{0cm}{
     a sequent of the form~$(\varphi \vdash_{x_1,\ldots,x_n} \psi)$
     where~$\varphi$ and~$\psi$ are geometric formulas
   }~$\sigma$ the following notions coincide:
+  \vspace*{-1.2em}
   \begin{enumerate}
     \item The sequent~$\sigma$ holds for~$U_\TT$.
     \item The sequent~$\sigma$ holds for any~$\TT$-model in any
@@ -331,6 +362,207 @@
 
   \textbf{Observation (Kock).} The generic local ring is a field:
   \[ (x = 0 \Rightarrow \bot) \vdash_{x:R} (\exists y\?R\_ xy = 1) \]
+\end{frame}
+
+
+\subsection{Construction of the generic model}
+
+\begin{frame}{Construction of the generic model}
+  The generic model is \hil{not} the same as \ldots
+  \begin{itemize}
+    \item the \hil{initial model}, think~$\ZZ$, or
+    \item the \hil{free model on one generator}, think~$\ZZ[X]$.
+  \end{itemize}
+  Set-theoretic models are \hil{too inflexible}.
+
+  \textbf{Definition.} The \hil{syntactic site}~$\C_\TT$ has \ldots
+  \begin{enumerate}
+    \item objects: $\{ x_1\?X_1, \ldots, x_n\?X_n\_ \varphi \}$ (shorter:
+    $\{ \vec x\_ \varphi \}$)
+    \item morphisms: eqv. classes of \explain{provably functional
+    formulas}{2-}{red!20}{-2.5cm}{-1.5cm}{0cm}{$\Hom(\{\vec x\_ \varphi\},\{\vec
+    y\_ \psi\}) = \{ \theta \,|\, (\theta \seq{\vec x, \vec y} \varphi
+    \wedge \psi), (\varphi \seq{\vec x} \exists! \vec
+    y\_ \theta) \text{ mod~$\TT$} \}/({\dashv\vdash})$}
+    \item coverings: provably jointly surjective families
+  \end{enumerate}
+  The topos of sheaves over~$\C_\TT$ is the \hil{classifying
+  topos}~$\Set[\TT]$. The generic model interprets a sort~$X$ by~$\yon\{x\?X\_\top\}$.
+\end{frame}
+
+
+\subsection{Going internal}
+
+\begin{frame}{Going internal}
+  \small
+  Let~$\C$ be a site. We recursively define
+  \[
+    U \models \varphi \quad
+    \text{(``$\varphi$ holds on~$U$'')}
+  \]
+  for objects~$U \in \C$ and \squiggly{formulas}~$\varphi$.
+  Write~``$\Sh(\C) \models \varphi$'' to mean~$1_\CC \models \varphi$.
+  \footnotesize
+  \[ \renewcommand{\arraystretch}{1.08}\begin{array}{@{}l@{\ \ }c@{\ \ }l@{}}
+  U \models \top &\Ll& \text{true} \\
+  U \models \bot &\Ll& \hcancel{\text{false}}{0pt}{3pt}{0pt}{-2pt}\ \text{the
+  empty family is a covering of~$U$} \\
+  U \models s = t \? F &\Ll& s|_U = t|_U \in F(U) \\
+  U \models \varphi \wedge \psi &\Ll&
+  \text{$U \models \varphi$ and $U \models \psi$} \\
+  U \models \varphi \vee \psi &\Ll&
+  \hcancel{\text{$U \models \varphi$ or $U \models
+  \psi$}}{0pt}{3pt}{0pt}{-2pt}\ \text{there exists a covering $(U_i \to U)_i$} \\
+  && \quad\quad\text{such that for all~$i$: $U_i \models \varphi$ or $U_i \models \psi$} \\
+  U \models \varphi \Rightarrow \psi &\Ll&
+  \text{for all~$V \to U$: }
+  \text{$V \models \varphi$ implies $V \models \psi$} \\
+  U \models \forall s \? F\_ \varphi(s) &\Ll&
+  \text{for all $V \to U$ and sections~$s_0 \in F(V)$: $V \models \varphi(s_0)$} \\
+  % U \models \forall F\_ \varphi(F) &\Ll&
+  % \text{for all $V \to U$ and sheaves~$F_0$ over~$V$: $V \models \varphi(F_0)$} \\
+  U \models \exists s \? F\_ \varphi(s) &\Ll&
+  \hcancel{\text{there exists $s_0 \in F(U)$ such that $U \models \varphi(s_0)$}}{0pt}{3pt}{0pt}{-2pt} \\
+  &&
+  \text{there exists a covering $(U_i \to U)_i$ such that for all~$i$:} \\
+  && \quad\quad \text{there exists~$s_0 \in F(U_i)$ such that $U_i \models \varphi(s_0)$}
+  %U \models \exists F\_ \varphi(F) &\Ll&
+  %\hcancel{\text{there exists a sheaf $F_0$ on $U$ such that $U \models
+  %\varphi(F_0)$}}{0pt}{3pt}{0pt}{-2pt} \\
+  %&&
+  %\text{there exists a covering $(U_i \to U)_i$ such that for all~$i$:} \\
+  %&& \quad\quad \text{there exists a sheaf~$F_0$ on $U_i$ such that $U_i \models \varphi(F_0)$}
+  \end{array} \]
+\end{frame}
+
+
+% \begin{document}
+
+\section{Examples for nongeometric properties}
+
+\begin{frame}{Examples for nongeometric properties}
+  The \hil{generic object} validates [XXX]:
+  \begin{enumerate}
+    \item $\forall x,y\?U_\TT\_ \neg\neg(x = y)$.
+    \item $\forall x_1,\ldots,x_n\?U_\TT\_ \neg \forall y\?U_\TT\_
+    \bigvee_{i=1}^n y = x_i.$
+  \end{enumerate}
+
+  The \hil{generic ring} validates:
+  \begin{enumerate}
+    \item $\forall x\?U_\TT\_ \neg\neg(x = 0)$.
+    \item $\forall x\?U_\TT\_ (x = 0 \Rightarrow 1 = 0) \Rightarrow (\exists
+    y\?U_\TT\_ xy = 1)$.
+  \end{enumerate}
+
+  The \hil{generic local ring} validates:
+  \begin{enumerate}
+    \item $\neg \forall x\?U_\TT\_ \neg\neg(x = 0)$ (as~$1 \neq 0$).
+    \item $\forall a_0,\ldots,a_{n-1}\?U_\TT\_ \neg\neg \exists x\?U_\TT\_
+      x^n + a_{n-1}x^{n-1} + \cdots + a_0 x^0 = 0$.
+    \item \justifying Let~$\Delta = \{ \varepsilon \? U_\TT \,|\, \varepsilon^2 = 0 \}$.
+    For any map~$f : \Delta \to U_\TT$, there are unique elements~$a,b \?
+    U_\TT$ such that~$f(\varepsilon) = a + b\varepsilon$ for all~$\varepsilon
+    \? \Delta$.
+%   \item For any finitely presented~$U_\TT$-algebra~$A$,
+%   the canonical map~$A \to (U_\TT)^{\Hom_{U_\TT}(A,U_\TT)}$
+%   is an isomorphism.
+  \end{enumerate}
+\end{frame}
+
+
+\section{Motivation for generic models}
+
+\begin{frame}{Motivation for generic models}
+  Let~$A$ be a ring. Is there a \hil{free local ring}~$A \to A'$ over~$A$?
+  \begin{columns}[t]
+    \begin{column}{0.4\textwidth}
+      $\xymatrix{
+        A \ar[rd] \ar[rrr]^\alpha &&& {\substack{\phantom{\text{local}}\\\text{\normalsize$R$}\\\text{local}}} \\
+        & {\substack{\text{\normalsize$A'$}\\\text{local}}} \ar@{-->}_[@!35]{\text{local}}[rru]
+      }$
+    \end{column}
+
+    \begin{column}{0.50\textwidth}
+      \small\justifying
+      For a fixed ring~$R$, the localization $A' \defeq A[S^{-1}]$ with $S \defeq
+      \alpha^{-1}[R^\times]$ would do the job. ($S$ is a \emph{filter}.)
+      \medskip
+
+      Hence we need the \hil{generic filter}.
+    \end{column}
+  \end{columns}
+
+  \pause
+
+  \justifying
+  The free local ring over~$A$ is~$A^\sim \defeq \underline{A}[F^{-1}]$,
+  where~$F$ is the generic filter, living in~$\Spec(A)$, the classifying topos
+  of filters of~$A$.
+
+  \pause
+
+  If~$A$ is reduced ($x^n = 0 \Rightarrow x = 0$):
+
+  \vspace*{-0.8em}
+  \setbeamercolor{block body}{bg=red!30}
+  \setbeamercolor{structure}{fg=purple}
+  \begin{varblock}{\textwidth}{}
+    $A^\sim$ is a \hil{field}: $\forall x\?A^\sim\_ (\neg(\exists y\?A^\sim\_
+    xy = 1) \Rightarrow x = 0)$.
+
+    $A^\sim$ has \hil{$\boldsymbol{\neg\neg}$-stable equality}:
+    $\forall x,y\?A^\sim\_ \neg\neg(x = y) \Rightarrow x = y$.
+
+    \mbox{$A^\sim$ is \hil{anonymously Noetherian}.}\\[-1.2em]
+  \end{varblock}
+\end{frame}
+
+
+\section{Internal conservativity}
+
+\begin{frame}{Internal conservativity}
+  The generic model~$U_\TT$ is conservative in the sense that:
+  \begin{multline*}
+    \qquad\textit{For any geometric sequent~$\sigma$,} \\
+    \textit{if $\Set[\TT] \models \speak{$U_\TT \models \sigma$}$,
+    then~$\TT$ proves~$\sigma$}.\qquad
+  \end{multline*}
+  But~$U_\TT$ \hil{does not believe} that it is conservative in the sense that
+  \hil{neither}
+  \begin{multline*}
+    \qquad\textit{For any geometric sequent~$\sigma$,} \\
+    \Set[\TT] \models (\speak{$U_\TT \models \sigma$} \Rightarrow
+    \speak{$\TT$ proves~$\sigma$}) \qquad
+  \end{multline*}
+  \hil{nor}
+  \begin{multline*}
+    \qquad\Set[\TT] \models \ulcorner\text{For any geometric sequent~$\sigma$,} \\
+      \text{if~$U_\TT \models \sigma$ then~$\TT$
+      proves~$\sigma$}\urcorner\qquad
+  \end{multline*}
+  hold.
+\end{frame}
+
+\begin{frame}{The Nullstellensatz}
+  \justifying
+  \textbf{The algebraic Nullstellensatz.}
+  Let~$A$ be a ring.
+  Let~$f,g \in A[X]$ be polynomials.
+  Then, subject to some conditions:
+  \[
+    \underbrace{\bigl(\forall x \in A\_ (f(x) = 0 \Rightarrow g(x) =
+    0)\bigr)}_{\text{algebraic truth}} \Longrightarrow
+    \underbrace{\bigl(\exists h \in A[X]\_ g = hf\bigr)}_{\text{algebraic certificate}}
+  \]
+
+  \justifying
+  \textbf{The topos-theoretic Nullstellensatz.}
+  Internally to~$\Set[\TT]$, for any geometric$^\star$ sequent~$\sigma$ over
+  the signature of~$\underline{\TT}/U_\TT$,
+  \[ \text{if~$U_\TT \models \sigma$, then~$\underline{\TT}/U_\TT$
+    proves$^\star$~$\sigma$.}
+  \]
 \end{frame}
 
 % Analogy with the harmonic oscillator in the study of physics
@@ -361,3 +593,7 @@
 % Are there size issues when KJ'ing internally?
 % Comparison to the approach by Vickers?
 % When does a theory prove the Nullstellensatz?
+
+% Sei T eine Theorie, für die ein konservatives Modell in Set existiert.
+% Dann haben wir eine Surjektion Set --> Set[T]. Also existiert eine
+% geometric expansion von T, welche Morita-äquivalent zur leeren Theorie ist.

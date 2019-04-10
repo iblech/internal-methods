@@ -1,10 +1,10 @@
 \documentclass[12pt,utf8,notheorems,compress,t]{beamer}
 \usepackage{etex}
 
-\usepackage{pgfpages}
-\setbeameroption{show notes on second screen}
-\setbeamertemplate{note page}[plain]
-\newcommand{\jnote}[2]{\only<#1>{\note{\setlength\parskip{\medskipamount}\justifying\footnotesize#2\par}}}
+%\usepackage{pgfpages}
+%\setbeameroption{show notes on second screen}
+%\setbeamertemplate{note page}[plain]
+\newcommand{\jnote}[2]{}%\only<#1>{\note{\setlength\parskip{\medskipamount}\justifying\footnotesize#2\par}}}
 
 % Workaround for the issue described at
 % https://tex.stackexchange.com/questions/164406/beamer-using-href-in-notes.
@@ -112,7 +112,7 @@
 \newcommand{\?}{\,{:}\,}
 \newcommand{\speak}[1]{\ulcorner\text{\textnormal{#1}}\urcorner}
 \newcommand{\ul}[1]{\underline{#1}}
-\newcommand{\affl}{\ensuremath{{\ull{\AA}^1}}}
+\newcommand{\affl}{\ensuremath{{\ul{\ensuremath{\AA}}^1}}}
 \newcommand{\Ll}{\vcentcolon\!\Longleftrightarrow}
 \newcommand{\inv}{inv.\@}
 \newcommand{\seq}[1]{\mathrel{\vdash\!\!\!_{#1}}}
@@ -194,6 +194,12 @@
   }%
 }
 
+\newcommand{\explainstub}[2]{%
+  \tikz[remember picture,baseline]{
+    \node[anchor=base,inner sep=2pt,outer sep=0,fill=#2,rounded corners] (label) {#1};
+  }%
+}
+
 \newcommand{\squiggly}[1]{\textcolor{red}{#1}}  % XXX
 
 % Adapted from https://latex.org/forum/viewtopic.php?t=2251 (Stefan Kottwitz)
@@ -227,7 +233,7 @@
   %   \usebeamercolor[fg]{item}{\textbf{{\Large \insertframetitle}}}
     \begin{tikzpicture}
       \def\R{8pt}
-      \node (title) {\hil{\insertframetitle}};
+      \node (title) {\hil{\large\insertframetitle}};
       \begin{pgfonlayer}{background}
       \draw[decoration={bumps,segment length=8pt}, decorate, very thick, draw=mypurple]
         ($(title.south west) + (\R, 0)$) arc(270:180:\R) --
@@ -340,15 +346,12 @@
   \justifying
   \textbf{Theorem.} There is a \hil{generic model}~$U_\TT$. It is
   \hil{conservative} in that
-  for any \explain{geometric sequent}{4-}{yellow!70}{0cm}{0cm}{0cm}{
-    a sequent of the form~$(\varphi \vdash_{x_1,\ldots,x_n} \psi)$
-    where~$\varphi$ and~$\psi$ are geometric formulas
-  }~$\sigma$ the following notions coincide:
+  for any \explainstub{geometric sequent}{yellow!70}~$\sigma$ the following notions coincide:
   \vspace*{-1.2em}
   \begin{enumerate}
     \item The sequent~$\sigma$ holds for~$U_\TT$.
     \item The sequent~$\sigma$ holds for any~$\TT$-model in any
-    \explain{topos}{4-}{purple!20}{0cm}{0cm}{0cm}{foo}.
+    \explainstub{topos}{purple!20}.
     \item The sequent~$\sigma$ is provable modulo~$\TT$.
   \end{enumerate}
 
@@ -369,8 +372,8 @@
 \begin{frame}{Construction of the generic model}
   The generic model is \hil{not} the same as \ldots
   \begin{itemize}
-    \item the \hil{initial model}, think~$\ZZ$, or
-    \item the \hil{free model on one generator}, think~$\ZZ[X]$.
+    \item the \hil{initial model} (think~$\ZZ$) or
+    \item the \hil{free model on one generator} (think~$\ZZ[X]$).
   \end{itemize}
   Set-theoretic models are \hil{too inflexible}.
 
@@ -378,12 +381,10 @@
   \begin{enumerate}
     \item objects: $\{ x_1\?X_1, \ldots, x_n\?X_n\_ \varphi \}$ (shorter:
     $\{ \vec x\_ \varphi \}$)
-    \item morphisms: eqv. classes of \explain{provably functional
-    formulas}{2-}{red!20}{-2.5cm}{-1.5cm}{0cm}{$\Hom(\{\vec x\_ \varphi\},\{\vec
-    y\_ \psi\}) = \{ \theta \,|\, (\theta \seq{\vec x, \vec y} \varphi
-    \wedge \psi), (\varphi \seq{\vec x} \exists! \vec
-    y\_ \theta) \text{ mod~$\TT$} \}/({\dashv\vdash})$}
-    \item coverings: provably jointly surjective families
+    \item morphisms: eqv. classes of \explainstub{provably functional
+    formulas}{red!20}
+    \item coverings: \explainstub{provably jointly surjective
+    families}{purple!30}
   \end{enumerate}
   The topos of sheaves over~$\C_\TT$ is the \hil{classifying
   topos}~$\Set[\TT]$. The generic model interprets a sort~$X$ by~$\yon\{x\?X\_\top\}$.
@@ -392,7 +393,7 @@
 
 \subsection{Going internal}
 
-\begin{frame}{Going internal}
+\begin{frame}{Working internally to toposes}
   \small
   Let~$\C$ be a site. We recursively define
   \[
@@ -437,14 +438,15 @@
 
 % \begin{document}
 
-\section{Examples for nongeometric properties}
+\section[Nongeometric properties]{A selection of nongeometric properties}
 
-\begin{frame}{Examples for nongeometric properties}
-  The \hil{generic object} validates [XXX]:
+\begin{frame}{A selection of nongeometric properties}
+  The \hil{generic object} validates:
   \begin{enumerate}
     \item $\forall x,y\?U_\TT\_ \neg\neg(x = y)$.
     \item $\forall x_1,\ldots,x_n\?U_\TT\_ \neg \forall y\?U_\TT\_
     \bigvee_{i=1}^n y = x_i.$
+    \item $(U_\TT)^{U_\TT} \cong 1 \amalg U_\TT$.
   \end{enumerate}
 
   The \hil{generic ring} validates:
@@ -461,7 +463,7 @@
       x^n + a_{n-1}x^{n-1} + \cdots + a_0 x^0 = 0$.
     \item \justifying Let~$\Delta = \{ \varepsilon \? U_\TT \,|\, \varepsilon^2 = 0 \}$.
     For any map~$f : \Delta \to U_\TT$, there are unique elements~$a,b \?
-    U_\TT$ such that~$f(\varepsilon) = a + b\varepsilon$ for all~$\varepsilon
+    U_\TT$ s.\,th.~$f(\varepsilon) = a + b\varepsilon$ for all~$\varepsilon
     \? \Delta$.
 %   \item For any finitely presented~$U_\TT$-algebra~$A$,
 %   the canonical map~$A \to (U_\TT)^{\Hom_{U_\TT}(A,U_\TT)}$
@@ -470,9 +472,9 @@
 \end{frame}
 
 
-\section{Motivation for generic models}
+\section{Affine schemes}
 
-\begin{frame}{Motivation for generic models}
+\begin{frame}{Affine schemes}
   Let~$A$ be a ring. Is there a \hil{free local ring}~$A \to A'$ over~$A$?
   \begin{columns}[t]
     \begin{column}{0.4\textwidth}
@@ -495,7 +497,7 @@
   \pause
 
   \justifying
-  The free local ring over~$A$ is~$A^\sim \defeq \underline{A}[F^{-1}]$,
+  The free local ring over~$A$ is~$A^\sim \defeq \ul{A}[F^{-1}]$,
   where~$F$ is the generic filter, living in~$\Spec(A)$, the classifying topos
   of filters of~$A$.
 
@@ -518,33 +520,75 @@
 \end{frame}
 
 
-\section{Internal conservativity}
+% \begin{document}
 
-\begin{frame}{Internal conservativity}
-  The generic model~$U_\TT$ is conservative in the sense that
-  \begin{multline*}
-    \quad\textit{for any geometric sequent~$\sigma$,} \\
-    \textit{if $\Set[\TT] \models \speak{$\sigma$ holds for~$U_\TT$}$,
-    then~$\TT$ proves~$\sigma$}.\quad
-  \end{multline*}
-  But~$U_\TT$ \hil{does not believe} that it's conservative in the sense that
-  \begin{multline*}
-    \quad\Set[\TT] \models \ulcorner\text{for any geometric sequent~$\sigma$,} \\
-      \text{if~$\sigma$ holds for~$U_\TT$, then~$\ul{\TT}$
-      proves~$\sigma$}\urcorner\quad
-  \end{multline*}
-  does \hil{not} hold.
+\section[A systematic source]{A systematic source of nongeometricity?}
 
-  \textbf{Example.} Let~$\TT$ be the theory of rings. Then
-  \begin{align*}
-    \Set[\TT] &\models \neg(\speak{$\ul{\TT}$ proves $(\top \vdash 1 + 1 =
-    0)$}) \\
-    \text{but}\quad \Set[\TT] & \not\models \neg(1 + 1 = 0).
-  \end{align*}
+\begin{frame}{A systematic source of nongeometricity?}
+  \justifying
+  \textbf{Empirical fact.}
+  In \hil{synthetic algebraic geometry}, every known property of~$\affl$ followed from
+  its \hil{synthetic quasicoherence}:
+
+  \begin{quote}
+    \emph{\mbox{For any finitely presented~$\affl$-algebra~$A$, the canonical map}
+    \[ A \longrightarrow (\affl)^{\Hom_\affl(A,\affl)},\ s \longmapsto (x
+    \mapsto x(s)) \]
+    is an isomorphism of~$\affl$-algebras.}
+  \end{quote}
+
+  \vspace*{1.0em}
+  \begin{enumerate}
+    \item Does a general metatheorem explain this observation?
+    \item Is there a systematic source in any classifying topos?
+    \item Is there even an exhaustive source?
+  \end{enumerate}
+  \vspace*{-3.3em}
+
+  \visible<2>{\begin{tikzpicture}[overlay]
+    \draw[fill=white, draw=white, opacity=0.95] (-1,1.4) rectangle (\paperwidth,5.4);
+    \node[anchor=south west,inner sep=0] (image) at (0,1.0) {\vbox{
+      \only<2>{
+	\centering
+	\includegraphics[width=0.9\textwidth]{wraith-some-recent-developments-in-topos-theory} \\
+	\scriptsize
+        Gavin Wraith. Some recent developments in topos theory. \\ In:
+        Proc.\@ of the ICM (Helsinki, 1978).
+      }
+    }};
+  \end{tikzpicture}}%
+
+  \[ \xymatrix{
+    \text{$\TT$ proves~$\varphi$\;} \ar@/_1pc/@{=>}[r] &
+    \text{\;$\varphi$ holds for~$U_\TT$\;} \ar@/_1pc/@{=>}[r]
+    \ar@/_1pc/@{=>}@[red][l]
+    |{\SelectTips{cm}{}\textbf{\scalebox{3}{\textcolor{red}{\texttimes}}}}|{} &
+    \text{\;$\varphi$ is~$\TT$-redundant}
+    \ar@/_1pc/@{=>}@[red][l]
+    |{\SelectTips{cm}{}\textbf{\scalebox{3}{\textcolor{red}{\texttimes}}}}|{}
+  } \]
 \end{frame}
 
-\begin{frame}{The Nullstellensatz}
+
+\section{A topos-theoretic Nullstellensatz}
+
+\newcommand{\nullstellensatz}{%
   \justifying
+  \textbf{Theorem.} Internally to~$\Set[\TT]$:
+
+  \begin{quote}\emph{\mbox{For any \explainstub{geometric$^\star$ sequent}{red!20}~$\sigma$ over
+  the \explainstub{signature of~$\ul{\TT}/U_\TT$}{blue!20},}
+  if~\explainstub{$\sigma$ holds for~$U_\TT$}{yellow!70}, then~\explainstub{$\ul{\TT}/U_\TT$
+  proves$^\star$~$\sigma$}{yellow!70}.}
+  \end{quote}
+  \vspace*{-0.6em}
+}
+
+\begin{frame}{A topos-theoretic Nullstellensatz}
+  \nullstellensatz
+
+  \pause
+
   \textbf{The algebraic Nullstellensatz.}
   Let~$A$ be a ring.
   Let~$f,g \in A[X]$ be polynomials.
@@ -554,33 +598,89 @@
     0)\bigr)}_{\text{algebraic truth}} \Longrightarrow
     \underbrace{\bigl(\exists h \in A[X]\_ g = hf\bigr)}_{\text{algebraic certificate}}
   \]
+  \vspace*{-0.9em}
 
-%  \textbf{Definition.} The theory~$\ul{\TT}/U_\TT$ is the
-%  internal geometric theory which arises from~$\ul{\TT}$ by adding:
-%  \begin{enumerate}
-%    \justifying
-%    \item constant symbols~$e_x$, one for each element~$x : U_\TT$,
-%    \item axioms~$(\top \vdash f(e_{x_1},\ldots,e_{x_n}) = e_{f(x_1,\ldots,x_n)})$ for each function
-%    symbol~$f$ and~$n$-tuple~$(x_1,\ldots,x_n) \in (U_\TT)^n$,
-%    \item axioms~$(\top \vdash R(e_{x_1},\ldots,e_{x_n}))$ for each relation symbol~$R$
-%    and~$n$-tuple~$(x_1,\ldots,x_n) \in (U_\TT)^n$ such
-%    that~$R(x_1,\ldots,x_n)$.
-%  \end{enumerate}
+  \pause
 
-  \textbf{The false naive topos-theoretic Nullstellensatz.}
-  Internally to~$\Set[\TT]$, for any geometric sequent~$\sigma$ over
-  the signature of~$\underline{\TT}$,
-  \[ \text{if~$\sigma$ holds for~$U_\TT$, then~$\underline{\TT}$
-    proves~$\sigma$.}
-  \]
-
-  \textbf{The topos-theoretic Nullstellensatz.}
-  Internally to~$\Set[\TT]$, for any geometric$^\star$ sequent~$\sigma$ over
-  the signature of~$\underline{\TT}/U_\TT$,
-  \[ \text{if~$\sigma$ holds for~$U_\TT$, then~$\underline{\TT}/U_\TT$
-    proves$^\star$~$\sigma$.}
-  \]
+  \textbf{A naive version.}
+  ``Internally to~$\Set[\TT]$, for any geometric sequent~$\sigma$ over
+  the signature of~$\ul{\TT}$,
+  if~$\sigma$ holds for~$U_\TT$, then~$\ul{\TT}$
+  proves~$\sigma$.'' \textbf{False,} for instance with the theory of rings we
+  have
+  \begin{align*}
+    \Set[\TT] &\models \neg(\speak{$\ul{\TT}$ proves $(\top \vdash 1 + 1 =
+    0)$}) \\
+    \text{but}\quad \Set[\TT] & \not\models \neg(1 + 1 = 0).
+  \end{align*}
 \end{frame}
+
+\begin{frame}{A varying internal theory}
+  \nullstellensatz
+
+  \explainstub{\textbf{Definition.}}{blue!20} The theory~$\ul{\TT}/U_\TT$ is the
+  internal geometric theory of~\hil{$U_\TT$-algebras}, the theory which arises from~$\ul{\TT}$ by adding:
+  \begin{enumerate}
+    \justifying\small
+    \item for each element~$x : U_\TT$, a constant symbols~$e_x$,
+    \item for each function symbol~$f$ and~$n$-tuple~$(x_1,\ldots,x_n) \in (U_\TT)^n$, the axiom
+    $(\top \vdash f(e_{x_1},\ldots,e_{x_n}) = e_{f(x_1,\ldots,x_n)})$,
+    \item for each relation symbol~$R$ and~$n$-tuple~$(x_1,\ldots,x_n) \in (U_\TT)^n$ such
+    that~$R(x_1,\ldots,x_n)$, the axiom~$(\top \vdash R(e_{x_1},\ldots,e_{x_n}))$.
+  \end{enumerate}
+
+  \textbf{Remark.} Externalizing the internal classifying
+  topos~$\Set[\TT][\ul{\TT}/U_\TT]$ yields the classifying topos
+  of~$\TT$-homomorphisms.
+\end{frame}
+
+\begin{frame}{Example applications}
+  \nullstellensatz
+
+  \textbf{In the object classifier.}
+  Let~$x \? U_\TT$. Assume~$\neg(x = 0)$. By the Nullstellensatz~$\ul{\TT}/U_\TT$ proves~$(x = 0
+  \Rightarrow \bot)$. But this is false in the~$\ul{\TT}/U_\TT$-model~$(U_\TT
+  \amalg \{ \heartsuit \})$.
+
+  \textbf{In the ring classifier.}
+  Let~$f,g \? U_\TT[X]$ such that any zero of~$f$ is a zero of~$g$.
+  By the Nullstellensatz~$\ul{\TT}/U_\TT$ proves this fact.
+  Hence it holds in the~$\ul{\TT}/U_\TT$-model~$U_\TT[X]/(f)$. Hence~$g = 0$
+  in~$U_\TT[X]/(f)$, that is~$g = hf$ for some~$h \? U_\TT[X]$.
+\end{frame}
+
+{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{5.95cm}\hfill\mbox{\includegraphics[width=0.13\paperwidth]{hen}\;\;}\end{minipage}}
+\begin{frame}{Exhaustion and extensions}
+  \justifying
+  \textbf{Theorem.} A first-order formula holds for~$U_\TT$ iff it is
+  intuitionistically provable from the axioms of~$\TT$ and
+  the scheme
+  \begin{equation}\tag{Nullstellensatz} \speak{$\sigma$ holds} \implies \speak{$\ul{\TT}/U_\TT$
+  proves$^{\star\star}$~$\sigma$}. \end{equation}
+
+  \textbf{Theorem.}
+  Let~$\TT'$ be a quotient theory
+  of~$\TT$. Assume that~$U_\TT$ is contained in the subtopos~$\Set[\TT']$. Then internally
+  to~$\Set[\TT']$:
+  \begin{quote}
+    \emph{A geometric$^\star$ sequent~$\sigma$ with Horn consequent holds for~$U_{\TT'}$
+    iff~$\ul{\TT}/U_\TT$ proves$^\star$~$\sigma$.}
+  \end{quote}
+  \vspace*{-0.3em}
+
+  \textbf{Theorem.}
+  % Let~$\mathrm{Form}^\star_{x\?X}(\ul{\TT}/U_\TT)/(\dashv\vdash_{x\?X})$ be the~$\Set[\TT]$-object of
+  % geometric$^\star$ formulas over the signature of~$\ul{\TT}/U_\TT$ in the
+  % context~$x\?X$, where any two such formulas are identified if and only
+  % if~$\ul{\TT}/U_\TT$ proves them equivalent.
+  The morphism~$\mathrm{ev}$ is an isomorphism.
+  \[ \mathrm{ev} : \mathrm{FunctFormulas}^\star(\ul{\TT}/U_\TT)/(\dashv\vdash)
+  \longrightarrow P(U_\TT) \]
+
+  \textbf{Theorem.} A higher-order formula holds for~$U_\TT$ iff it is
+  provable in intuitionistic higher-order logic from the axioms of~$\TT$ and
+  the higher-order Nullstellensatz scheme.
+\end{frame}}
 
 % Analogy with the harmonic oscillator in the study of physics
 
@@ -610,6 +710,7 @@
 % Are there size issues when KJ'ing internally?
 % Comparison to the approach by Vickers?
 % When does a theory prove the Nullstellensatz?
+% Look up what Kock and Reyes used the wlog for.
 
 % Sei T eine Theorie, für die ein konservatives Modell in Set existiert.
 % Dann haben wir eine Surjektion Set --> Set[T]. Also existiert eine

@@ -350,11 +350,11 @@
 
   \begin{center}
     \begin{tikzpicture}[ultra thick, node distance=7mm]
-      \node[rectangle, draw=blue!80, fill=blue!20] (a) {$\ZZ$};
-      \node[rectangle, draw=blue!80, fill=blue!20, right=of a] (b) {$\ZZ[X,Y,Z]/(X^n+Y^n-Z^n)$};
+      \node[rectangle, rounded corners=1pt, draw=blue!80, fill=blue!20] (a) {$\ZZ$};
+      \node[rectangle, rounded corners=1pt, draw=blue!80, fill=blue!20, right=of a] (b) {$\ZZ[X,Y,Z]/(X^n+Y^n-Z^n)$};
       \node[regular polygon, regular polygon sides=5, draw=orange!80,
-      fill=orange!20, right=of b, inner sep=0cm] (c) {$\O_X$};
-      \node[star, star points=10, inner sep=0cm, draw=purple!80, fill=purple!20, right=of c] {$U_\TT$};
+      fill=orange!20, right=of b, rounded corners=1pt, inner sep=0cm] (c) {$\O_X$};
+      \node[star, rounded corners=1pt, star points=10, inner sep=0cm, draw=purple!80, fill=purple!20, right=of c] {$U_\TT$};
     \end{tikzpicture}
   \end{center}
 

@@ -25,7 +25,7 @@
 \usepackage[all]{xy}
 \xyoption{rotate}
 \usepackage{tikz}
-\usetikzlibrary{calc,shapes,shapes.callouts,shapes.arrows,patterns,fit,backgrounds,decorations.pathmorphing}
+\usetikzlibrary{calc,shapes,shapes.callouts,shapes.arrows,patterns,fit,backgrounds,decorations.pathmorphing,positioning}
 \hypersetup{colorlinks=true}
 
 \usepackage{pifont}
@@ -41,9 +41,9 @@
 \setlength\parskip{\medskipamount}
 \setlength\parindent{0pt}
 
-\title{A general Nullstellensatz for generalized spaces}
+\title{A general Nullstellensatz for generalised spaces}
 \author{Ingo Blechschmidt}
-\date{April 11st, 2019}
+\date{April 11th, 2019}
 
 \useinnertheme[shadow=true]{rounded}
 \setbeamerfont{block title}{size={}}
@@ -113,7 +113,7 @@
 \newcommand{\speak}[1]{\ulcorner\text{\textnormal{#1}}\urcorner}
 \newcommand{\ul}[1]{\underline{#1}}
 \newcommand{\affl}{\ensuremath{{\ul{\ensuremath{\AA}}^1}}}
-\newcommand{\Ll}{\vcentcolon\!\Longleftrightarrow}
+\newcommand{\Ll}{\text{iff}}
 \newcommand{\inv}{inv.\@}
 \newcommand{\seq}[1]{\mathrel{\vdash\!\!\!_{#1}}}
 \newcommand{\hg}{\mathbin{:}}  % homogeneous coordinates
@@ -182,7 +182,7 @@
 \newcommand{\hcancel}[5]{%
   \tikz[baseline=(tocancel.base)]{
     \node[inner sep=0pt,outer sep=0pt] (tocancel) {#1};
-    \draw[red, line width=0.4mm] ($(tocancel.south west)+(#2,#3)$) -- ($(tocancel.north east)+(#4,#5)$);
+    \draw[red!80, line width=0.4mm] ($(tocancel.south west)+(#2,#3)$) -- ($(tocancel.north east)+(#4,#5)$);
   }%
 }
 
@@ -200,7 +200,13 @@
   }%
 }
 
-\newcommand{\squiggly}[1]{\textcolor{red}{#1}}  % XXX
+\newcommand{\squiggly}[1]{%
+  \tikz[remember picture,baseline]{
+    \node[anchor=base,inner sep=0,outer sep=0] (label) {#1};
+    \draw[thick,color=red!80,decoration={snake,amplitude=0.5pt,segment
+    length=3pt},decorate] ($(label.south west) + (0,-2pt)$) -- ($(label.south east) + (0,-2pt)$);
+  }%
+}
 
 % Adapted from https://latex.org/forum/viewtopic.php?t=2251 (Stefan Kottwitz)
 \newenvironment<>{varblock}[2]{\begin{varblockextra}{#1}{#2}{}}{\end{varblockextra}}
@@ -227,7 +233,7 @@
 }
 
 \setbeamertemplate{frametitle}{%
-  \vskip0.6em%
+  \vskip0.4em%
   \leavevmode%
   \begin{beamercolorbox}[dp=1ex,center]{}%
   %   \usebeamercolor[fg]{item}{\textbf{{\Large \insertframetitle}}}
@@ -235,12 +241,12 @@
       \def\R{8pt}
       \node (title) {\hil{\large\insertframetitle}};
       \begin{pgfonlayer}{background}
-      \draw[decoration={bumps,segment length=8pt}, decorate, very thick, draw=mypurple]
-        ($(title.south west) + (\R, 0)$) arc(270:180:\R) --
-        ($(title.north west) + (0, -\R)$) arc(180:90:\R) --
-        ($(title.north east) + (-\R, 0)$) arc(90:0:\R) --
-        ($(title.south east) + (0, \R)$) arc(0:-90:\R) --
-        cycle;
+        \draw[decoration={bumps,segment length=8pt}, decorate, very thick, draw=mypurple]
+          ($(title.south west) + (\R, 0)$) arc(270:180:\R) --
+          ($(title.north west) + (0, -\R)$) arc(180:90:\R) --
+          ($(title.north east) + (-\R, 0)$) arc(90:0:\R) --
+          ($(title.south east) + (0, \R)$) arc(0:-90:\R) --
+          cycle;
       \end{pgfonlayer}
     \end{tikzpicture}
   \end{beamercolorbox}%
@@ -292,14 +298,14 @@
 
   \begin{tikzpicture}
     \def\R{8pt}
-    \node (title) {\hil{\ A general Nullstellensatz for generalized spaces\ }};
+    \node (title) {\hil{A general Nullstellensatz for generalised spaces}};
     \begin{pgfonlayer}{background}
-    \draw[decoration={bumps,segment length=8pt}, decorate, very thick, draw=mypurple]
-      ($(title.south west) + (\R, 0)$) arc(270:180:\R) --
-      ($(title.north west) + (0, -\R)$) arc(180:90:\R) --
-      ($(title.north east) + (-\R, 0)$) arc(90:0:\R) --
-      ($(title.south east) + (0, \R)$) arc(0:-90:\R) --
-      cycle;
+      \draw[decoration={bumps,segment length=8pt}, decorate, very thick, draw=mypurple]
+        ($(title.south west) + (\R, 0)$) arc(270:180:\R) --
+        ($(title.north west) + (0, -\R)$) arc(180:90:\R) --
+        ($(title.north east) + (-\R, 0)$) arc(90:0:\R) --
+        ($(title.south east) + (0, \R)$) arc(0:-90:\R) --
+        cycle;
     \end{pgfonlayer}
   \end{tikzpicture}
 
@@ -307,12 +313,12 @@
   \textit{-- an invitation --}
   \bigskip
 
-  Ingo Blechschmidt \\
-  Università di Verona
+  6th Workshop on Formal Topology in Birmingham \\
+  April 11th, 2019
   \bigskip
 
-  6th Workshop on Formal Topology in Birmingham \\
-  April 11st, 2019
+  Ingo Blechschmidt \\
+  Università di Verona
   \par
 \end{frame}}
 
@@ -322,13 +328,15 @@
 \subsection{The mystery of nongeometric sequents}
 
 \begin{frame}{The mystery of nongeometric sequents}
-  Let~$\TT$ be a \explain{geometric theory}{4-}{red!20}{-1cm}{0cm}{0cm}{\begin{minipage}{4.3cm}
+  Let~$\TT$ be a \explain{geometric theory}{1-}{red!20}{-1cm}{0cm}{0cm}{\begin{minipage}{4.3cm}
+    \small
   sorts,
   function symbols,
   relation symbols,
   geometric sequents as axioms
   \end{minipage}}, for instance the
-  \explain{theory of rings}{4-}{blue!20}{-1cm}{0cm}{0cm}{\begin{minipage}{4.3cm}
+  \explain{theory of rings}{1-}{blue!20}{-1cm}{0cm}{0cm}{\begin{minipage}{4.3cm}
+    \small
     \begin{tabbing}
       fun. symb.: \= \kill
       sorts: \> $R$ \\
@@ -338,9 +346,19 @@
     \end{tabbing}
   \end{minipage}}.
 
-  % Illustration
-  \vspace{2.5cm}
+  \vspace*{1.8cm}
 
+  \begin{center}
+    \begin{tikzpicture}[ultra thick, node distance=7mm]
+      \node[rectangle, draw=blue!80, fill=blue!20] (a) {$\ZZ$};
+      \node[rectangle, draw=blue!80, fill=blue!20, right=of a] (b) {$\ZZ[X,Y,Z]/(X^n+Y^n-Z^n)$};
+      \node[regular polygon, regular polygon sides=5, draw=orange!80,
+      fill=orange!20, right=of b, inner sep=0cm] (c) {$\O_X$};
+      \node[star, star points=10, inner sep=0cm, draw=purple!80, fill=purple!20, right=of c] {$U_\TT$};
+    \end{tikzpicture}
+  \end{center}
+
+  \vspace*{-0.5cm}
   \pause
 
   \justifying
@@ -363,6 +381,7 @@
   %arbitrary models in arbitrary toposes.
 
   \textbf{Observation (Kock).} The generic local ring is a field:
+  \vspace*{-0.2cm}
   \[ (x = 0 \Rightarrow \bot) \vdash_{x:R} (\exists y\?R\_ xy = 1) \]
 \end{frame}
 
@@ -375,7 +394,7 @@
     \item the \hil{initial model} (think~$\ZZ$) or
     \item the \hil{free model on one generator} (think~$\ZZ[X]$).
   \end{itemize}
-  Set-theoretic models are \hil{too inflexible}.
+  Set-based models are \hil{too inflexible}.
 
   \textbf{Definition.} The \hil{syntactic site}~$\C_\TT$ has \ldots
   \begin{enumerate}
@@ -394,14 +413,14 @@
 \subsection{Going internal}
 
 \begin{frame}{Working internally to toposes}
-  \small
+  \justifying
   Let~$\C$ be a site. We recursively define
   \[
     U \models \varphi \quad
     \text{(``$\varphi$ holds on~$U$'')}
   \]
   for objects~$U \in \C$ and \squiggly{formulas}~$\varphi$.
-  Write~``$\Sh(\C) \models \varphi$'' to mean~$1_\CC \models \varphi$.
+  Write~``$\Sh(\C) \models \varphi$'' for~$1 \models \varphi$.
   \footnotesize
   \[ \renewcommand{\arraystretch}{1.08}\begin{array}{@{}l@{\ \ }c@{\ \ }l@{}}
   U \models \top &\Ll& \text{true} \\
@@ -435,8 +454,6 @@
   \end{array} \]
 \end{frame}
 
-
-% \begin{document}
 
 \section[Nongeometric properties]{A selection of nongeometric properties}
 
@@ -479,7 +496,7 @@
   \begin{columns}[t]
     \begin{column}{0.4\textwidth}
       $\xymatrix{
-        A \ar[rd] \ar[rrr]^\alpha &&& {\substack{\phantom{\text{local}}\\\text{\normalsize$R$}\\\text{local}}} \\
+        A \ar[rd] \ar[rrr]^f &&& {\substack{\phantom{\text{local}}\\\text{\normalsize$R$}\\\text{local}}} \\
         & {\substack{\text{\normalsize$A'$}\\\text{local}}} \ar@{-->}_[@!35]{\text{local}}[rru]
       }$
     \end{column}
@@ -487,7 +504,7 @@
     \begin{column}{0.50\textwidth}
       \small\justifying
       For a fixed ring~$R$, the localization $A' \defeq A[S^{-1}]$ with $S \defeq
-      \alpha^{-1}[R^\times]$ would do the job. ($S$ is a \emph{filter}.)
+      f^{-1}[R^\times]$ would do the job. ($S$ is a \emph{filter}.)
       \medskip
 
       Hence we need the \hil{generic filter}.
@@ -520,8 +537,6 @@
 \end{frame}
 
 
-% \begin{document}
-
 \section[A systematic source]{A systematic source of nongeometricity?}
 
 \begin{frame}{A systematic source of nongeometricity?}
@@ -547,7 +562,7 @@
 
   \visible<2>{\begin{tikzpicture}[overlay]
     \draw[fill=white, draw=white, opacity=0.95] (-1,1.4) rectangle (\paperwidth,5.4);
-    \node[anchor=south west,inner sep=0] (image) at (0,1.0) {\vbox{
+    \node[anchor=south west,inner sep=0] (image) at (0,0.9) {\vbox{
       \only<2>{
 	\centering
 	\includegraphics[width=0.9\textwidth]{wraith-some-recent-developments-in-topos-theory} \\
@@ -559,13 +574,13 @@
   \end{tikzpicture}}%
 
   \[ \xymatrix{
-    \text{$\TT$ proves~$\varphi$\;} \ar@/_1pc/@{=>}[r] &
-    \text{\;$\varphi$ holds for~$U_\TT$\;} \ar@/_1pc/@{=>}[r]
+    \text{$\TT$ proves~$\alpha$\;} \ar@/_1pc/@{=>}[r] &
+    \text{\;$\alpha$ holds for~$U_\TT$\;} \ar@/_1pc/@{=>}[r]
     \ar@/_1pc/@{=>}@[red][l]
-    |{\SelectTips{cm}{}\textbf{\scalebox{3}{\textcolor{red}{\texttimes}}}}|{} &
-    \text{\;$\varphi$ is~$\TT$-redundant}
+    |{\SelectTips{cm}{}\textbf{\scalebox{3}{\textcolor{red}{\!\texttimes\!}}}}|{} &
+    \text{\;$\alpha$ is~$\TT$-redundant}
     \ar@/_1pc/@{=>}@[red][l]
-    |{\SelectTips{cm}{}\textbf{\scalebox{3}{\textcolor{red}{\texttimes}}}}|{}
+    |{\SelectTips{cm}{}\textbf{\scalebox{3}{\textcolor{red}{\!\texttimes\!}}}}|{}
   } \]
 \end{frame}
 
@@ -576,7 +591,7 @@
   \justifying
   \textbf{Theorem.} Internally to~$\Set[\TT]$:
 
-  \begin{quote}\emph{\mbox{For any \explainstub{geometric$^\star$ sequent}{red!20}~$\sigma$ over
+  \begin{quote}\emph{\mbox{For any \explainstub{geometric$^\star$ sequent~$\sigma$}{red!20} over
   the \explainstub{signature of~$\ul{\TT}/U_\TT$}{blue!20},}
   if~\explainstub{$\sigma$ holds for~$U_\TT$}{yellow!70}, then~\explainstub{$\ul{\TT}/U_\TT$
   proves$^\star$~$\sigma$}{yellow!70}.}
@@ -622,11 +637,11 @@
   internal geometric theory of~\hil{$U_\TT$-algebras}, the theory which arises from~$\ul{\TT}$ by adding:
   \begin{enumerate}
     \justifying\small
-    \item for each element~$x : U_\TT$, a constant symbols~$e_x$,
-    \item for each function symbol~$f$ and~$n$-tuple~$(x_1,\ldots,x_n) \in (U_\TT)^n$, the axiom
+    \item for each element~$x : U_\TT$ a constant symbol~$e_x$,
+    \item for each function symbol~$f$ and~$n$-tuple~$(x_1,\ldots,x_n) \in (U_\TT)^n$ the axiom
     $(\top \vdash f(e_{x_1},\ldots,e_{x_n}) = e_{f(x_1,\ldots,x_n)})$,
     \item for each relation symbol~$R$ and~$n$-tuple~$(x_1,\ldots,x_n) \in (U_\TT)^n$ such
-    that~$R(x_1,\ldots,x_n)$, the axiom~$(\top \vdash R(e_{x_1},\ldots,e_{x_n}))$.
+    that~$R(x_1,\ldots,x_n)$ the axiom~$(\top \vdash R(e_{x_1},\ldots,e_{x_n}))$.
   \end{enumerate}
 
   \textbf{Remark.} Externalizing the internal classifying
@@ -634,18 +649,25 @@
   of~$\TT$-homomorphisms.
 \end{frame}
 
-\begin{frame}{Example applications}
+\begin{frame}{Revisiting the test cases}
   \nullstellensatz
+  \medskip
 
   \textbf{In the object classifier.}
-  Let~$x \? U_\TT$. Assume~$\neg(x = 0)$. By the Nullstellensatz~$\ul{\TT}/U_\TT$ proves~$(x = 0
-  \Rightarrow \bot)$. But this is false in the~$\ul{\TT}/U_\TT$-model~$(U_\TT
-  \amalg \{ \heartsuit \})$.
+%  Assume that~$U_\TT$ is empty, that is $\forall x \? U_\TT\_ (\top \Rightarrow
+%  \bot)$. By the Nullstellensatz~$\ul{\TT}/U_\TT$ proves~$(\top \seq{x} \bot)$.
+%  But this is false in the~$\ul{\TT}/U_\TT$-model~$U_\TT \amalg
+%  \{\heartsuit\}$.
+  Let~$x,y \? U_\TT$. Assume that~$\neg(x = y)$.
+  By the Nullstellensatz~$\ul{\TT}/U_\TT$ proves~$(e_x = e_y \vdash \bot)$.
+  But this is false in the~$\ul{\TT}/U_\TT$-model~$U_\TT/(x \sim y)$.
+  \medskip
 
   \textbf{In the ring classifier.}
   Let~$f,g \? U_\TT[X]$ such that any zero of~$f$ is a zero of~$g$.
   By the Nullstellensatz~$\ul{\TT}/U_\TT$ proves this fact.
-  Hence it holds in the~$\ul{\TT}/U_\TT$-model~$U_\TT[X]/(f)$. Hence~$g = 0$
+  Hence it holds in the~$\ul{\TT}/U_\TT$-model~$U_\TT[X]/(f)$. In this
+  model~$f$ has the zero~$[X]$. Hence also~$g([X]) = 0$
   in~$U_\TT[X]/(f)$, that is~$g = hf$ for some~$h \? U_\TT[X]$.
 \end{frame}
 
@@ -711,6 +733,9 @@
 % Comparison to the approach by Vickers?
 % When does a theory prove the Nullstellensatz?
 % Look up what Kock and Reyes used the wlog for.
+
+% An Tafel: geometric formula, local ring
+% Erwähnen: Marc Bezem, Ulrik Buchholtz, Thierry Coquand
 
 % Sei T eine Theorie, für die ein konservatives Modell in Set existiert.
 % Dann haben wir eine Surjektion Set --> Set[T]. Also existiert eine

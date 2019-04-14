@@ -1,10 +1,10 @@
 \documentclass[12pt,utf8,notheorems,compress,t]{beamer}
 \usepackage{etex}
 
-%\usepackage{pgfpages}
-%\setbeameroption{show notes on second screen}
-%\setbeamertemplate{note page}[plain]
-\newcommand{\jnote}[2]{}%\only<#1>{\note{\setlength\parskip{\medskipamount}\justifying\footnotesize#2\par}}}
+\usepackage{pgfpages}
+\setbeameroption{show notes on second screen}
+\setbeamertemplate{note page}[plain]
+\newcommand{\jnote}[2]{\only<#1>{\note{\setlength\parskip{\medskipamount}\justifying\footnotesize#2\par}}}
 
 % Workaround for the issue described at
 % https://tex.stackexchange.com/questions/164406/beamer-using-href-in-notes.
@@ -26,7 +26,7 @@
 \xyoption{rotate}
 \usepackage{tikz}
 \usetikzlibrary{calc,shapes,shapes.callouts,shapes.arrows,patterns,fit,backgrounds,decorations.pathmorphing,positioning}
-%\hypersetup{colorlinks=true}
+\hypersetup{colorlinks=true}
 
 \usepackage{pifont}
 \newcommand{\cmark}{\ding{51}}
@@ -261,7 +261,7 @@
 }
 \newcommand{\backupend}{
   \addtocounter{framenumberpreappendix}{-\value{framenumber}}
-  \addtocounter{framenumber}{\value{framenumberpreappendix}} 
+  \addtocounter{framenumber}{\value{framenumberpreappendix}}
 }
 
 \newcommand{\mynav}[3]{%
@@ -320,15 +320,29 @@
   Ingo Blechschmidt \\
   Università di Verona
   \par
+
+  \jnote{1}{\textcolor{red}{This set of slides will be updated soon with more
+  annotations.} Right now important references are not properly mentioned, including:
+  \begin{itemize}
+    \item Marc Bezem, Ulrik Buchholtz and Thierry Coquand. \emph{Syntactic forcing
+    models for coherent logic.}
+    \item Olivia Caramello. \emph{Universal models and definability.}
+    \item Carsten Butz and Peter Johnstone. \emph{Classifying toposes for
+    first-order theories.}
+  \end{itemize}}
 \end{frame}}
 
-{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\hspace*{-1.7cm}\includegraphics[height=\paperheight]{black-hole-m87}\end{minipage}}
+{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\hspace*{-1.7cm}\includegraphics[height=\paperheight,trim=0 0 16.9cm 0,clip]{black-hole-m87}\end{minipage}}
 \begin{frame}[plain]
-  \vspace*{\paperheight}\vspace*{-1cm}\scriptsize
+  \vspace*{\paperheight}\vspace*{-0.8cm}\scriptsize
   \centering
   \textcolor{white}{Fig.: The Event Horizon Telescope picture of the central black
   hole in the galaxy M87}
   \par
+
+  \jnote{1}{At this meeting we had lots of discussions on the notion of space.
+  Here is a picture of actual space, or rather the lack thereof, released only
+  yesterday.}
 \end{frame}}
 \addtocounter{framenumber}{-1}
 
@@ -338,12 +352,54 @@
 \subsection{The mystery of nongeometric sequents}
 
 \begin{frame}{The mystery of nongeometric sequents}
+  \jnote{1}{A \emph{geometric sequent} is a syntactical expression of the
+  form~$(\varphi \seq{x_1\?X_1,\ldots,x_n\?X_n} \psi)$,
+  where~$x_1\?X_1,\ldots,x_n\?X_n$ is a list of variable declarations,
+  the~$X_i$ ranging over the available sorts, and~$\varphi$ and~$\psi$ are
+  \emph{geometric formulas}. Often the variable context is abbreviated to~$\vec
+  x \? \vec X$ or even just~$\vec x$. Such a sequent is read as ``in the
+  context of variables~$\vec x$, $\varphi$ entails~$\psi$''.
+
+  Geometric formulas are built from atomic propositions (using equality or the
+  relation symbols) using the connectives~$\top$, $\bot$, $\wedge$, $\bigvee$
+  (set-indexed disjunction) and~$\exists$. Geometric formulas may not
+  contain~$\neg$, $\Rightarrow$, $\forall$.
+
+  There is a notion of a \emph{model} of a geometric theory in
+  a given topos. For instance, a ring in the usual sense is a model of the
+  theory of rings in the topos~$\Set$. The structure sheaf of a scheme~$X$ is a
+  model in the topos~$\Sh(X)$ of set-valued sheaves on~$X$.}
+
+  \jnote{2-}{Among all models in any topos, the \emph{universal} or
+  \emph{generic} one is special. It enjoys the universal property that any
+  model in any topos can be obtained from it by pullback along an essentially
+  unique geometric morphism. It is intriguing from a logical point of view
+  because it has exactly those properties which are shared by any model in any
+  topos.
+
+  One could argue, with a certain amount of success, that the generic model of
+  the theory of rings is what a mathematician implicitly refers to when she
+  utters the phrase ``Let~$R$ be a ring''. This point of view is fundamental to
+  the slogan \emph{continuity is geometricity}, as expounded for instance in
+  \fixedhref{http://www.cs.bham.ac.uk/~sjv/GeoAspects.pdf}{Continuity and
+  geometric logic} by Steve Vickers.}
+
+  \jnote{3-}{Crucially, the conservativity statement only pertains to
+  properties which can be put as geometric sequents. Generic models may have
+  additional nongeometric properties. Because conservativity does not apply to
+  them, they are not shared by all models in all toposes -- but any consequences
+  which can be put as geometric sequents are.
+
+  Hence one reason why these nongeometric sequents are interesting is because
+  they provide us with new reduction strategies (``without loss of
+  generality'').}
+
   Let~$\TT$ be a \explain{geometric theory}{1-}{red!20}{-1cm}{0cm}{0cm}{\begin{minipage}{4.3cm}
     \small
-  sorts,
-  function symbols,
-  relation symbols,
-  geometric sequents as axioms
+    sorts,
+    function symbols,
+    relation symbols,
+    geometric sequents as axioms
   \end{minipage}}, for instance the
   \explain{theory of rings}{1-}{blue!20}{-1cm}{0cm}{0cm}{\begin{minipage}{4.3cm}
     \small
@@ -417,6 +473,8 @@
   \end{enumerate}
   The topos of sheaves over~$\C_\TT$ is the \hil{classifying
   topos}~$\Set[\TT]$. The generic model interprets a sort~$X$ by~$\yon\{x\?X\_\top\}$.
+
+  \jnote{1-}{In case the theory~$\TT$ is a Horn theory, term algebras ... XXX}
 \end{frame}
 
 

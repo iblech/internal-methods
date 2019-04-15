@@ -390,6 +390,8 @@
   them, they are not shared by all models in all toposes -- but any consequences
   which can be put as geometric sequents are.
 
+  For instance, if we want to verify a geometric sequent for all local rings,
+  we may freely use the displayed field axiom.
   Hence one reason why these nongeometric sequents are interesting is because
   they provide us with new reduction strategies (``without loss of
   generality'').}
@@ -416,8 +418,8 @@
 
   \begin{center}
     \begin{tikzpicture}[ultra thick, node distance=7mm]
-      \node[rectangle, rounded corners=1pt, draw=blue!80, fill=blue!20] (a) {$\ZZ$};
-      \node[rectangle, rounded corners=1pt, draw=blue!80, fill=blue!20, right=of a] (b) {$\ZZ[X,Y,Z]/(X^n+Y^n-Z^n)$};
+      \node[rectangle, rounded corners=1pt, draw=lime!80, fill=lime!40] (a) {$\ZZ$};
+      \node[rectangle, rounded corners=1pt, draw=lime!80, fill=lime!40, right=of a] (b) {$\ZZ[X,Y,Z]/(X^n+Y^n-Z^n)$};
       \node[regular polygon, regular polygon sides=5, draw=orange!80,
       fill=orange!20, right=of b, rounded corners=1pt, inner sep=0cm] (c) {$\O_X$};
       \node[star, rounded corners=1pt, star points=10, inner sep=0cm, draw=purple!80, fill=purple!20, right=of c] {$U_\TT$};
@@ -474,7 +476,11 @@
   The topos of sheaves over~$\C_\TT$ is the \hil{classifying
   topos}~$\Set[\TT]$. The generic model interprets a sort~$X$ by~$\yon\{x\?X\_\top\}$.
 
-  \jnote{1-}{In case the theory~$\TT$ is a Horn theory, term algebras ... XXX}
+  \jnote{1-}{In case the theory~$\TT$ is a Horn theory (for instance if it is
+  an equational theory), the \emph{term algebra} (the set of terms in the
+  empty context modulo provable equality) is a model of~$\TT$. While such
+  models do enjoy some nice categorical properties, they are in general
+  \emph{not} the generic model.}
 \end{frame}
 
 

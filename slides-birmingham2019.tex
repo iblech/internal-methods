@@ -351,6 +351,8 @@
 
 \subsection{The mystery of nongeometric sequents}
 
+% \begin{document}
+
 \begin{frame}{The mystery of nongeometric sequents}
   \jnote{1}{A \emph{geometric sequent} is a syntactical expression of the
   form~$(\varphi \seq{x_1\?X_1,\ldots,x_n\?X_n} \psi)$,
@@ -368,7 +370,14 @@
   There is a notion of a \emph{model} of a geometric theory in
   a given topos. For instance, a ring in the usual sense is a model of the
   theory of rings in the topos~$\Set$. The structure sheaf of a scheme~$X$ is a
-  model in the topos~$\Sh(X)$ of set-valued sheaves on~$X$.}
+  model in the topos~$\Sh(X)$ of set-valued sheaves on~$X$.
+
+  With \emph{topos} we mean Grothendieck topos, and as metatheory we use a
+  constructive but impredicative flavour of English (which could be formalised
+  by what is supported by the internal language of elementary toposes with an NNO).
+  However the Nullstellensatz presented later makes no use of the
+  subobject classifier, hence the results can likely be generalised to hold in
+  a predicative metatheory or to hold for arithmetic universes.}
 
   \jnote{2-}{Among all models in any topos, the \emph{universal} or
   \emph{generic} one is special. It enjoys the universal property that any
@@ -476,11 +485,46 @@
   The topos of sheaves over~$\C_\TT$ is the \hil{classifying
   topos}~$\Set[\TT]$. The generic model interprets a sort~$X$ by~$\yon\{x\?X\_\top\}$.
 
-  \jnote{1-}{In case the theory~$\TT$ is a Horn theory (for instance if it is
+  \jnote{1}{In case the theory~$\TT$ is a Horn theory (for instance if it is
   an equational theory), the \emph{term algebra} (the set of terms in the
   empty context modulo provable equality) is a model of~$\TT$. While such
   models do enjoy some nice categorical properties, they are in general
-  \emph{not} the generic model.}
+  \emph{not} the generic model.
+
+  In general, the generic model cannot be realised as a set-based model (with
+  a set for each sort, a map for each function symbol and so on). Sets are too
+  constant for this purpose; the flexibility of sheaves (``variable sets'') is
+  required: The generic model lives in the topos of set-valued
+  sheaves over~$\C_\TT$.
+
+  A morphism~$A = \{\vec x\_ \varphi\} \to \{\vec y\_ \psi\} = B$ in~$\C_\TT$ is the
+  equivalence class (modulo provable equivalence) of a geometric
+  formula~$\theta$ such that~$\TT$ proves
+  \begin{enumerate}
+    \item ``$\theta$ is a relation on~$A \times B$'': $(\theta \seq{\vec x,
+    \vec y} \varphi \wedge \psi)$
+    \item ``$\theta$ is total'': $(\varphi \seq{\vec x} \exists \vec y\_
+    \theta)$
+    \item ``$\theta$ is single-valued'': $(\theta \wedge \theta[\vec y'/\vec y]
+    \seq{\vec x,\vec y,\vec y'} \vec y = \vec y')$
+  \end{enumerate}
+
+  \vspace*{-0.6em}
+  A family~$(\{ \vec x_i\_ \varphi_i \} \xrightarrow{[\theta_i]} \{ \vec y\_
+  \psi \})_i$ is a covering iff~$\TT$ proves~$(\psi \seq{\vec y} \bigvee_i
+  \exists \vec x_i\_ \theta_i)$.
+
+  The slides experiment with using the symbol~``$\yon$'' for the Yoneda
+  embedding~$\C_\TT \to \Set[\TT]$, as in \fixedhref{XXX}{Elements
+  of~$(\infty,1)$-category theory} by Emily Riehl and Dominic Verity.}
+
+  \jnote{2}{The special case that the generic model of a theory~$\TT$ can be realised as
+  a model in~$\Set$ occurs iff~$\TT$ is Morita-equivalent to the
+  empty theory, that is, iff~$\TT$ has exactly one model in any topos.
+
+  The special case that there exists at least some conservative~$\TT$-model
+  in~$\Set$ occurs iff~$\TT$ has a conservative geometric expansion to a theory
+  which is Morita-equivalent to the empty theory.}
 \end{frame}
 
 
@@ -526,6 +570,12 @@
   %\text{there exists a covering $(U_i \to U)_i$ such that for all~$i$:} \\
   %&& \quad\quad \text{there exists a sheaf~$F_0$ on $U_i$ such that $U_i \models \varphi(F_0)$}
   \end{array} \]
+
+  \jnote{1-}{
+    Using the internal language of a topos, we can import all$^\star$ of
+    constructive impredicative mathematics into the internal universe of a
+    topos. XXX
+  }
 \end{frame}
 
 

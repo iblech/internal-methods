@@ -571,10 +571,40 @@
   %&& \quad\quad \text{there exists a sheaf~$F_0$ on $U_i$ such that $U_i \models \varphi(F_0)$}
   \end{array} \]
 
-  \jnote{1-}{
-    Using the internal language of a topos, we can import all$^\star$ of
-    constructive impredicative mathematics into the internal universe of a
-    topos. XXX
+  \jnote{1}{
+    The internal language of a (Grothendieck or elementary) topos~$\E$ is a
+    device which allows us to speak and reason about the objects and morphisms
+    of~$\E$ in a naive element-based language close to the usual formal
+    mathematical language. Using this language, objects of~$\E$ look like plain
+    old sets [or types]; morphisms look like plain old maps between those sets;
+    epimorphisms look like surjections; group objects look like groups; and so on.
+
+    In particular, we can use the internal language to define when a
+    given~$\TT$-structure in~$\E$ is a model -- namely iff it looks like a
+    model from the internal point of view.
+
+    The internal language is implemented by the \emph{Kripke--Joyal semantics},
+    a translation procedure which converts formulas of the internal language
+    into external statements about the objects and morphisms of~$\E$. The slide
+    displays some of the translation rules in the case that~$\E$ is a
+    Grothendieck topos.
+
+    We can actually do mathematics internally because the Kripke--Joyal
+    semantics is sound with respect to intuitionistic logic: If~$\E \models
+    \varphi$ and if~$\varphi$ intuitionistically entails a further
+    formula~$\psi$, then~$\E \models \psi$.
+
+    An instructive special case is provided by the topos~$\Set$, because~$\Set
+    \models \varphi$ iff~$\varphi$ holds in the usual mathematical sense.
+    topos.
+  }
+
+  \jnote{2}{
+    The Kripke--Joyal semantics can be extended to interpret unbounded
+    quantification (``for all sets'' as opposed to ``for all elements of the
+    particular set~$X$'') and dependent types. With these extensions, we can
+    import all of everyday constructive impredicative mathematics into the
+    internal world of a topos.
   }
 \end{frame}
 
@@ -610,6 +640,63 @@
 %   the canonical map~$A \to (U_\TT)^{\Hom_{U_\TT}(A,U_\TT)}$
 %   is an isomorphism.
   \end{enumerate}
+
+  \jnote{1}{
+    The generic object, the generic model of the theory which has exactly one
+    sort and no function symbols, relations symbols or axioms, appears to be
+    slightly indecisive: On the one hand, up to a double negation, it is a
+    subsingleton; on the other hand, it is infinite. This observation is due to
+    Carsten Butz and Peter Johnstone (\fixedhref{XXX}{Classifying toposes for
+    first-order-theories}).
+
+    The generic ring, the generic model of the theory of rings, is similarly
+    indecisive. It is infinite in the following sense:
+    \[ \forall x_1,\ldots,x_n \? U_\TT\_
+      \bigl(\forall y \? U_\TT\_ \bigvee_{i=1}^n (y = x_i)\bigr) \Rightarrow
+      1 = 0. \]
+
+    The theory of local rings is the quotient theory of the theory of rings
+    obtained by adding the axioms~$(1 = 0 \vdash \bot)$ and~$((\exists z\_
+    (x+y)z = 1) \seq{x,y} (\exists z\_ xz = 1) \vee (\exists z\_ yz = 1))$.
+    (Assuming the Boolean prime ideal theorem, a ring is local in this sense
+    iff it local in the usual sense (has exactly one maximal ideal).)
+
+    The first displayed property of the generic local ring illustrates
+    that nongeometric sequents need not be inherited by quotient theories.
+  }
+
+  \jnote{2}{
+    All of the displayed properties give rise to reduction techniques:
+    If we want to verify a geometric sequent for all rings, it suffices to
+    verify it for the generic ring; but the generic ring has additional
+    nongeometric properties not shared by every ring, such as the two displayed
+    ones. (This was for instance used by XXX.)
+
+    However, we face some challenges when pursuing these techniques, including
+    the following:
+    \begin{enumerate}\justifying
+      \item It is not easy to determine interesting and useful properties of
+      the generic model.
+      \item The set of validated nongeometric sequents changes slightly
+      unpredictably when passing to quotient theories. For instance, when
+      proving that a geometric sequent holds for all rings, we may assume that
+      any element is \emph{not not} zero. But we may not assume this
+      simplification if we want to verify a geometric sequent for all local
+      rings (and exploit this locality in the proof).
+      \item There is only so much we want to state and prove in full generality
+      for all rings, all local rings, all modules, and so on. We are often much
+      more interested in properties of particular mathematical objects.
+    \end{enumerate}
+  }
+
+  \jnote{3}{
+    The firstly-mentioned problem on the previous page is alleviated by the
+    Nullstellensatz presented in this talk, which gives a systematic and
+    universal source of nongeometric sequents validated by the generic model.
+    However, manual work is still required to reduce this set of sequents to a
+    smaller, manageable one consisting of memorable properties while hopefully
+    still preserving universality.
+  }
 \end{frame}
 
 

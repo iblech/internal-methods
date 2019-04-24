@@ -682,7 +682,7 @@
       proving that a geometric sequent holds for all rings, we may assume that
       any element is \emph{not not} zero. But we may not assume this
       simplification if we want to verify a geometric sequent for all local
-      rings (and exploit this locality in the proof).
+      rings (and if we want to exploit the given locality in the proof).
       \item There is only so much we want to state and prove in full generality
       for all rings, all local rings, all modules, and so on. We are often much
       more interested in properties of particular mathematical objects.
@@ -696,13 +696,62 @@
     However, manual work is still required to reduce this set of sequents to a
     smaller, manageable one consisting of memorable properties while hopefully
     still preserving universality.
+
+    To counter the third problem, it's prudent to consider geometric theories
+    which depend on a given mathematical object of interest. For instance,
+    given a ring~$A$, we can consider the theory of prime ideals of~$A$, of
+    complemented prime ideals, of filters, and so on. The classifying toposes
+    of these theories are of independent interest -- in fact they are sheaf
+    toposes over certain important locales in algebraic geometry -- and
+    nongeometric sequents validated by their generic models bundle nontrivial
+    information about~$A$. More details are on the following slide.
   }
 \end{frame}
+
+% XXX prudent
 
 
 \section{Affine schemes}
 
 \begin{frame}{Affine schemes}
+  \jnote{1}{
+    A ring is \emph{local} iff every invertible sum contains an invertible
+    summand, that is if~$1 \neq 0$ and if~$x + y$ invertible implies~$x$
+    invertible or~$y$ invertible. Assuming the axiom of choice, this elementary
+    definition is equivalent to the textbook definition of a local ring (a ring
+    with exactly one maximal ideal). A ring homomorphism is \emph{local} iff it
+    reflects invertibility.
+
+    The notion of a \emph{filter} in a ring~$A$ is a direct axiomatisation of
+    what classically would be the complement of a prime ideal. The filter
+    axioms are: $1 \in F$, $(xy \in F) \Leftrightarrow ((x \in F) \wedge (y \in
+    F))$, $\neg(0 \in F)$, $(x+y \in F) \Rightarrow ((x \in F) \vee (y \in F))$.
+
+    A \emph{free local ring} over~$A$ is a homomorphism into a local
+    ring~$A'$ such that any homomorphism into a local ring~$R$ factors uniquely
+    over~$A'$ via a local homomorphism.
+
+    For any particular local ring~$A \xrightarrow{f} R$, the
+    localisation~$A[S^{-1}]$ with~$S = f^{-1}[R^\times]$ is a local ring which
+    fits into the displayed diagram. However, in general there is no single
+    choice of~$S$ which would work for any local ring~$R$. Indeed, classically
+    one can show that a free local ring over~$A$ exists if and only if~$A$
+    contains exactly one prime ideal, in which case~$A$ itself is the free
+    local ring.
+  }
+
+  \jnote{2-}{
+    If we want a free local ring to exist for any ring~$A$, we have to broaden
+    our notion of existence and embrace rings which live in toposes other
+    than~$\Set$. There is a notion of a homomorphism between rings living in
+    arbitrary toposes, and using this notion one can verify:
+
+    The free local ring over~$A$ can be built in the classifying topos of
+    filters of~$A$, as the localisation (in that topos) of~$A$ at the generic
+    filter (more precisely, the localisation of the mirror image of~$A$ in that
+    topos, that is the constant sheaf~$\underline{A}$).
+  }
+
   Let~$A$ be a ring. Is there a \hil{free local ring}~$A \to A'$ over~$A$?
   \begin{columns}[t]
     \begin{column}{0.4\textwidth}
@@ -714,7 +763,7 @@
 
     \begin{column}{0.50\textwidth}
       \small\justifying
-      For a fixed ring~$R$, the localization $A' \defeq A[S^{-1}]$ with $S \defeq
+      For a fixed ring~$R$, the localisation $A' \defeq A[S^{-1}]$ with $S \defeq
       f^{-1}[R^\times]$ would do the job. ($S$ is a \emph{filter}.)
       \medskip
 
@@ -924,7 +973,7 @@
 % * Examples for theories and nongeometric sequents with a focus on the wlog
 %   aspect
 % * Why we are interested in the generic models themselves
-%   * Universal localization
+%   * Universal localisation
 %   * Grothendieck's generic freeness lemma
 % * Synthetic quasicoherence
 % * Conservativity from the internal point as guiding question

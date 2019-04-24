@@ -740,7 +740,7 @@
     local ring.
   }
 
-  \jnote{2-}{
+  \jnote{2}{
     If we want a free local ring to exist for any ring~$A$, we have to broaden
     our notion of existence and embrace rings which live in toposes other
     than~$\Set$. There is a notion of a homomorphism between rings living in
@@ -748,8 +748,44 @@
 
     The free local ring over~$A$ can be built in the classifying topos of
     filters of~$A$, as the localisation (in that topos) of~$A$ at the generic
-    filter (more precisely, the localisation of the mirror image of~$A$ in that
-    topos, that is the constant sheaf~$\underline{A}$).
+    filter. (More precisely, as the localisation of the mirror image of~$A$ in that
+    topos, that is the constant sheaf~$\underline{A}$.)
+
+    The classifying topos of filters of~$A$ coincides with the topos of sheaves
+    over what's called the \emph{spectrum of~$A$} in algebraic geometry, and
+    under this equivalence the free local ring coincides with the structure
+    sheaf of spectrum. In fact the classifying topos serves as a good
+    constructive substitute for the classical spectrum construction,
+    enjoying the expected universal property even if the axiom of choice is not
+    available, which is why it is simply denoted~``$\Spec(A)$'' on the slide.
+
+    (The classifying topos of prime ideals of~$A$ is also interesting; it
+    coincides with the topos of sheaves over the spectrum of~$A$ equipped with
+    the constructible topology.)
+  }
+
+  \jnote{3}{
+    Assuming the Boolean prime ideal theorem, the geometric sequents
+    validated by~$A^\sim$ are easy to describe: They are precisely those which
+    are validated by all the stalks~$A_\ppp$ of~$A$.
+
+    But~$A^\sim$ enjoys further unique properties which are not shared by the
+    stalks of~$A$, other localisations of~$A$, quotients of~$A$ or indeed any
+    reasonable construction. Three of these are displayed on the slide.
+    (A ring is \emph{anonymously Noetherian} iff each of its ideals is
+    \emph{not not} finitely generated. Textbook proofs of Hilbert's basis theorem
+    are constructively acceptable for this Noetherian condition.)
+
+    The object~$A^\sim$ strikes a fine balance: On the one hand, it is still
+    close to~$A$, so that information learned about~$A^\sim$ teaches us
+    about~$A$; on the other hand, it enjoys a unique properties rendering it
+    simpler than~$A$.
+
+    This balance allows for a simple and conceptually satisfying proof of
+    \emph{Gro\-then\-dieck's generic freeness lemma}, an important theorem in
+    algebraic geometry. Details can be found in
+    \fixedhref{https://rawgit.com/iblech/internal-methods/master/slides-padova2018.pdf}{this
+    set of slides}.
   }
 
   Let~$A$ be a ring. Is there a \hil{free local ring}~$A \to A'$ over~$A$?
@@ -800,6 +836,52 @@
 \section[A systematic source]{A systematic source of nongeometricity?}
 
 \begin{frame}{A systematic source of nongeometricity?}
+  \jnote{1-2}{
+    Mimicking the synthetic approach to differential geometry, synthetic
+    algebraic geometry is a framework for algebraic geometry in which schemes
+    can be modelled by plain old sets, morphisms of schemes by plain old maps
+    between those sets, group schemes by plain old groups, and so on. Unlike
+    its close cousin, it is far less developed; some first steps are outlined
+    in Sections~19 and~20 of
+    \fixedhref{https://rawgit.com/iblech/internal-methods/master/notes.pdf}{these notes}.
+
+    Synthetic algebraic geometry is carried out internally to the \emph{big
+    Zariski topos} of a given base scheme; in the special case that the base
+    scheme is the terminal scheme~$\Spec(\ZZ)$, this topos is just the
+    classifying topos of local rings. The relevant generic model living in the
+    big Zariski topos is denoted~``$\affl$'' because it coincides with the
+    functor of points of the affine line.
+  }
+
+  \jnote{2}{
+    Marc Bezem, Ulrik Buchholtz and Thierry Coquand answered in their 2017 paper
+    \fixedhref{https://arxiv.org/abs/1712.07743}{Syntactic forcing
+    models for coherent logic} Gavin Wraith's question in the negative. (As
+    Thierry remarked during the talk, this is even if one takes care to phrase
+    the question in a way to exclude the trivial counterexamples given by any
+    instance of the law of excluded middle in the language of~$\TT$.) If the
+    answer had been positive, this would have given a neat, if somewhat hard to
+    check, characterisation of the formulas validated by the generic model.
+  }
+
+  \jnote{3}{
+    The topos-theoretic \emph{Nullstellensatz}, to be presented on the next
+    slides, answers the displayed three questions in the affirmative.
+
+    Briefly, the Nullstellensatz is a certain statement in the language of a
+    given geometric theory~$\TT$ which is
+    \begin{itemize}\justifying
+      \item validated by the generic~$\TT$-model,
+      \item typically not validated by other~$\TT$-models, and
+      \item such that any statement validated by the generic~$\TT$-model can be
+      deduced, in intuitionistic logic, from the axioms of~$\TT$ and the
+      Nullstellensatz.
+    \end{itemize}
+
+    We believe that this characterisation is as explicit as it can get, but
+    would be delighted to be surprised by a future improvement.
+  }
+
   \justifying
   \textbf{Empirical fact.}
   In \hil{synthetic algebraic geometry}, every known property of~$\affl$ followed from
@@ -827,7 +909,7 @@
 	\centering
 	\includegraphics[width=0.9\textwidth]{wraith-some-recent-developments-in-topos-theory} \\
 	\scriptsize
-        Gavin Wraith. Some recent developments in topos theory. \\ In:
+        Gavin Wraith. \emph{Some recent developments in topos theory.} \\ In:
         Proc.\@ of the ICM (Helsinki, 1978).
       }
     }};
@@ -860,6 +942,45 @@
 }
 
 \begin{frame}{A topos-theoretic Nullstellensatz}
+  \jnote{1-2}{
+    By~$\ul{\TT}$ we mean the geometric theory internal to~$\Set[\TT]$ obtained
+    by pulling back the set of sorts of~$\TT$, the set of function symbols and so on
+    along the unique geometric morphism~$\Set[\TT] \to \Set$. For instance,
+    if~$\TT$ is the theory of rings, then from the internal point of view
+    of~$\Set[\TT]$, the theory~$\ul{\TT}$ will again be the theory of rings.
+
+    The theory~$\ul{\TT}/U_\TT$ will be defined on the next slide. It is a certain
+    geometric theory internal to~$\Set[\TT]$.
+
+    The asterisks in \emph{geometric$^\star$ sequent} and
+    \emph{provability$^\star$} indicate that any infinities used to index
+    disjunctions have to be come from the base topos. This restriction is an important
+    subtlety, though not vital to this talk. If~$\TT$ is a coherent
+    theory, then for coherent sequents there is no difference between
+    provability in coherent logic, provability in geometric logic and
+    provability$^\star$.
+  }
+
+  \jnote{2}{
+    The algebraic Nullstellensatz states that, in some cases, algebraic truths
+    are witnessed by explicit \emph{algebraic certificates} -- syntactical
+    objects giving a priori reasons for why a given truth is to be expected.
+
+    In the topos-theoretic Nullstellensatz, algebraic truths are replaced by
+    arbitrary truths of the generic model, subject only to the condition that
+    they can be expressed as a geometric sequent, and algebraic certificates
+    are replaced by \emph{logical certificates}: proofs.
+  }
+
+  \jnote{3}{
+    While, as stated on slide 1/20, the generic model~$U_\TT$ is a
+    conservative~$\TT$-model, the classifying topos~$\Set[\TT]$ does not
+    believe this fact. That is, the statement~``$U_\TT$ is a
+    conservative~$\ul{\TT}$-model'' is not true internally to~$\Set[\TT]$.
+    What is true is the modified statement~``$U_\TT$ is a
+    conservative$^\star$~$\ul{\TT}/U_\TT$-model''.
+  }
+
   \nullstellensatz
 
   \pause
@@ -907,6 +1028,23 @@
   \textbf{Remark.} Externalising the internal classifying
   topos~$\Set[\TT][\ul{\TT}/U_\TT]$ yields the classifying topos
   of~$\TT$-homomorphisms.
+
+  \jnote{1}{
+    Just as locales internal to a topos~$\E$ can be externalised to yield
+    localic geometric morphisms into~$\E$, internal Grothendieck toposes can be
+    externalised to yield bounded geometric morphisms. Since the composition of
+    bounded geometric morphisms is bounded, the externalisation of a
+    Grothendieck topos internally to a Grothendieck topos is itself a
+    Grothendieck topos, hence the classifying topos of some geometric theory.
+
+    Constructing internally to~$\Set[\TT]$, where~$\ul{\TT}/U_\TT$ is just an
+    ordinary geometric theory, the classifying topos of that theory, and then
+    externalising the resulting Grothendieck topos results in the classifying
+    topos of~$\TT$-homomorphisms. There are two canonical geometric morphisms
+    from this topos to~$\Set[\TT]$, the morphism computing the domain and the
+    morphism computing the codomain, and the morphism obtained by the
+    externalisation procedure is the former.
+  }
 \end{frame}
 
 \begin{frame}{Revisiting the test cases}
@@ -929,6 +1067,36 @@
   Hence it holds in the~$\ul{\TT}/U_\TT$-model~$U_\TT[X]/(f)$. In this
   model~$f$ has the zero~$[X]$. Hence also~$g([X]) = 0$
   in~$U_\TT[X]/(f)$, that is~$g = hf$ for some~$h \? U_\TT[X]$.
+
+  \jnote{1}{
+    This slide gives two examples how to use the Nullstellensatz to deduce
+    properties of the generic model. A couple of remarks are in order.
+
+    The Nullstellensatz is trivial for sequents~$\sigma$ of the form~$(\top
+    \vdash \psi)$. The Nullstellensatz is only interesting in case
+    that~$\sigma$ has a nontrivial antecedent or is set in a nonempty context.
+
+    Since the converse direction in the Nullstellensatz also holds
+    (because~$U_\TT$ is a~$\ul{\TT}/U_\TT$-model), the
+    statements~$\speak{$\sigma$ holds for~$U_\TT$}$
+    and~$\speak{$\ul{\TT}/U_\TT$ proves$^\star$ $\sigma$}$ are equivalent. This
+    equivalence is intriguing from a logical point of view, since the former
+    statement is a geometric implication while the latter can be put as a
+    geometric formula. (Up to a subtle issue indicated on the next slide.)
+
+    To apply the Nullstellensatz, no description of a site defining~$\Set[\TT]$
+    is required.
+
+    Often when using the Nullstellensatz, we go from an (assumed) truth
+    of~$U_\TT$ via provability$^\star$ to another model~$M$
+    of~$\ul{\TT}/U_\TT$. That is, we use provability$^\star$ as a (one-way)
+    \emph{bridge}:
+    \[ \xymatrix{
+      & \text{$\ul{\TT}/U_\TT$ proves$^\star$ $\sigma$} \\
+      \text{$\sigma$ holds for $U_\TT$} \ar@/^1.1pc/@{<=>}[ur] &&
+      \text{$\sigma$ holds for $M$} \ar@/_1.1pc/@{<=}[ul]
+    } \]
+  }
 \end{frame}
 
 {\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{5.95cm}\hfill\mbox{\includegraphics[width=0.13\paperwidth]{hen}\;\;}\end{minipage}}
@@ -948,7 +1116,7 @@
     \emph{A geometric$^\star$ sequent~$\sigma$ with Horn consequent holds for~$U_{\TT'}$
     iff~$\ul{\TT}/U_\TT$ proves$^\star$~$\sigma$.}
   \end{quote}
-  \vspace*{-0.3em}
+  \vspace*{-1.6em}
 
   \textbf{Theorem.}
   % Let~$\mathrm{Form}^\star_{x\?X}(\ul{\TT}/U_\TT)/(\dashv\vdash_{x\?X})$ be the~$\Set[\TT]$-object of
@@ -962,6 +1130,32 @@
   \textbf{Theorem.} A higher-order formula holds for~$U_\TT$ iff it is
   provable in intuitionistic higher-order logic from the axioms of~$\TT$ and
   the higher-order Nullstellensatz scheme.
+
+  \jnote{1}{
+    The first theorem states that the source provided by the Nullstellensatz is
+    exhaustive. The notion of provability$^{\star\star}$ is a strengthening of
+    the notion of provability$^\star$, which in turn is a strengthening of the
+    ordinary notion of provability in geometric logic. We are using it here
+    because while the notion of provability$^\star$ can be expressed in the
+    internal language of a topos, it cannot be expressed in intuitionistic
+    logic.
+
+    The second theorem provides a useful variant of the Nullstellensatz. Its
+    assumptions are for instance satisfied if~$\TT$ is the theory of rings
+    and~$\TT'$ is the theory of local rings. When applicable, it can be used to
+    avoid doubly-internal toposes. It also explains, for instance, why in the
+    formulation of synthetic quasicoherence no local rings appear even though
+    the relevant topos is the classifying topos of local rings.
+
+    The third and fourth theorems generalise the Nullstellensatz to the
+    higher-order setting. The map~$\mathrm{ev}$ takes (the equivalence class
+    of) a~$\ul{\TT}/U_\TT$-provably$^\star$ geometric$^\star$ formula~$\theta$
+    in one free variable to the subset~$\{ x \? U_\TT \,|\, \theta(x) \}$.
+  }
+
+  \jnote{2}{
+    XXX future work
+  }
 \end{frame}}
 
 % Analogy with the harmonic oscillator in the study of physics

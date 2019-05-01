@@ -491,13 +491,18 @@
   models do enjoy some nice categorical properties, they are in general
   \emph{not} the generic model.
 
+  For instance, if~$\TT$ is the theory of rings, then the initial model
+  is~$\ZZ$. This model validates some geometric sequents which are not
+  validated by all rings, for instance~$(x^2 = 0 \seq{x:R} x = 0)$ or $(1 = 0
+  \vdash \bot)$.
+
   In general, the generic model cannot be realised as a set-based model (with
   a set for each sort, a map for each function symbol and so on). Sets are too
   constant for this purpose; the flexibility of sheaves (``variable sets'') is
   required: The generic model lives in the topos of set-valued
-  sheaves over~$\C_\TT$.
+  sheaves over~$\C_\TT$.}
 
-  A morphism~$A = \{\vec x\_ \varphi\} \to \{\vec y\_ \psi\} = B$ in~$\C_\TT$ is the
+  \jnote{2}{A morphism~$A = \{\vec x\_ \varphi\} \to \{\vec y\_ \psi\} = B$ in~$\C_\TT$ is the
   equivalence class (modulo provable equivalence) of a geometric
   formula~$\theta$ such that~$\TT$ proves
   \begin{enumerate}
@@ -515,10 +520,10 @@
   \exists \vec x_i\_ \theta_i)$.
 
   The slides experiment with using the symbol~``$\yon$'' for the Yoneda
-  embedding~$\C_\TT \to \Set[\TT]$, as in \fixedhref{XXX}{Elements
+  embedding~$\C_\TT \to \Set[\TT]$, as in \fixedhref{http://www.math.jhu.edu/~eriehl/elements.pdf}{Elements
   of~$(\infty,1)$-category theory} by Emily Riehl and Dominic Verity.}
 
-  \jnote{2}{The special case that the generic model of a theory~$\TT$ can be realised as
+  \jnote{3}{The special case that the generic model of a theory~$\TT$ can be realised as
   a model in~$\Set$ occurs iff~$\TT$ is Morita-equivalent to the
   empty theory, that is, iff~$\TT$ has exactly one model in any topos.
 
@@ -579,11 +584,11 @@
     old sets [or types]; morphisms look like plain old maps between those sets;
     epimorphisms look like surjections; group objects look like groups; and so on.
 
-    In particular, we can use the internal language to define when a
-    given~$\TT$-structure in~$\E$ is a model -- namely iff it looks like a
+    In particular, we can use the internal language to define what it means for a
+    given~$\TT$-structure in~$\E$ to be a model -- namely iff it looks like a
     model from the internal point of view.
 
-    The internal language is implemented by the \emph{Kripke--Joyal semantics},
+    The internal language can be implemented by the \emph{Kripke--Joyal semantics},
     a translation procedure which converts formulas of the internal language
     into external statements about the objects and morphisms of~$\E$. The slide
     displays some of the translation rules in the case that~$\E$ is a
@@ -596,15 +601,34 @@
 
     An instructive special case is provided by the topos~$\Set$, because~$\Set
     \models \varphi$ iff~$\varphi$ holds in the usual mathematical sense.
-    topos.
   }
 
   \jnote{2}{
     The Kripke--Joyal semantics can be extended to interpret unbounded
     quantification (``for all sets'' as opposed to ``for all elements of the
-    particular set~$X$'') and dependent types. With these extensions, we can
+    particular set~$X$'') and dependent types. The former are for instance
+    required to express universal properties (``for all groups'', ``for all
+    rings''), and the latter are all over the place, even if their use might
+    not be particularly highlighted.
+
+    With these extensions, we can
     import all of everyday constructive impredicative mathematics into the
     internal world of a topos.
+
+    Some illustrations of working with the internal language can be found in these
+    sets of slides:
+    \begin{itemize}
+      \item
+      \fixedhref{https://rawgit.com/iblech/internal-methods/master/slides-leipzig2018.pdf}{Slides
+      for Jürgen Jost's group seminar at the MPI Leipzig}
+      \item
+      \fixedhref{https://rawgit.com/iblech/internal-methods/master/slides-como2018.pdf}{Slides
+      for \emph{Toposes in Como}}
+      (recording
+      \fixedhref{https://www.youtube.com/watch?v=SuELfC5P_R8}{available})
+    \end{itemize}
+    A longer exposition, with pointers to the literature, can be found in Section~2 of
+    \fixedhref{https://rawgit.com/iblech/internal-methods/master/notes.pdf}{these notes}.
   }
 \end{frame}
 
@@ -646,8 +670,9 @@
     sort and no function symbols, relations symbols or axioms, appears to be
     slightly indecisive: On the one hand, up to a double negation, it is a
     subsingleton; on the other hand, it is infinite. This observation is due to
-    Carsten Butz and Peter Johnstone (\fixedhref{XXX}{Classifying toposes for
-    first-order-theories}).
+    Carsten Butz and Peter Johnstone
+    (\fixedhref{http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.16.4102&rep=rep1&type=pdf}{Classifying toposes for
+    first-order theories}).
 
     The generic ring, the generic model of the theory of rings, is similarly
     indecisive. It is infinite in the following sense:
@@ -670,9 +695,13 @@
     If we want to verify a geometric sequent for all rings, it suffices to
     verify it for the generic ring; but the generic ring has additional
     nongeometric properties not shared by every ring, such as the two displayed
-    ones. (This was for instance used by XXX.)
+    ones. (This was for instance used
+    \fixedhref{https://www.sciencedirect.com/science/article/pii/0022404976900025}{by
+    Anders Kock} and
+    \fixedhref{https://link.springer.com/chapter/10.1007\%2FBFb0061835}{by
+    Gonzalo Reyes}.)
 
-    However, we face some challenges when pursuing these techniques, including
+    However, we face some challenges when pursuing these reduction techniques, including
     the following:
     \begin{enumerate}\justifying
       \item It is not easy to determine interesting and useful properties of
@@ -702,13 +731,11 @@
     given a ring~$A$, we can consider the theory of prime ideals of~$A$, of
     complemented prime ideals, of filters, and so on. The classifying toposes
     of these theories are of independent interest -- in fact they are sheaf
-    toposes over certain important locales in algebraic geometry -- and
+    toposes over certain important spaces in algebraic geometry -- and
     nongeometric sequents validated by their generic models bundle nontrivial
     information about~$A$. More details are on the following slide.
   }
 \end{frame}
-
-% XXX prudent
 
 
 \section{Affine schemes}
@@ -778,7 +805,7 @@
 
     The object~$A^\sim$ strikes a fine balance: On the one hand, it is still
     close to~$A$, so that information learned about~$A^\sim$ teaches us
-    about~$A$; on the other hand, it enjoys a unique properties rendering it
+    about~$A$; on the other hand, it enjoys unique properties rendering it
     simpler than~$A$.
 
     This balance allows for a simple and conceptually satisfying proof of
@@ -858,10 +885,10 @@
     \fixedhref{https://arxiv.org/abs/1712.07743}{Syntactic forcing
     models for coherent logic} Gavin Wraith's question in the negative. (As
     Thierry remarked during the talk, this is even if one takes care to phrase
-    the question in a way to exclude the trivial counterexamples given by any
-    instance of the law of excluded middle in the language of~$\TT$.) If the
+    the question in a way to exclude the trivial counterexamples given by
+    instances of the law of excluded middle in the language of~$\TT$.) If the
     answer had been positive, this would have given a neat, if somewhat hard to
-    check, characterisation of the formulas validated by the generic model.
+    use in practice, characterisation of the formulas validated by the generic model.
   }
 
   \jnote{3}{
@@ -879,7 +906,12 @@
     \end{itemize}
 
     We believe that this characterisation is as explicit as it can get, but
-    would be delighted to be surprised by a future improvement.
+    would be delighted to be surprised by a future improvement. We stumbled on
+    it by playing with the synthetic quasicoherence statement, not least thanks
+    to encouragement by Alexander Oldenziel. However the route from that
+    statement to the Nullstellensatz is not quite direct; it turns out that
+    synthetic quasicoherence is a corollary of a specialisation of a
+    higher-order version of the Nullstellensatz to Horn theories.
   }
 
   \justifying
@@ -1151,6 +1183,10 @@
     higher-order setting. The map~$\mathrm{ev}$ takes (the equivalence class
     of) a~$\ul{\TT}/U_\TT$-provably$^\star$ geometric$^\star$ formula~$\theta$
     in one free variable to the subset~$\{ x \? U_\TT \,|\, \theta(x) \}$.
+
+    Details on all of this are slowly emerging at
+    \fixedhref{https://rawgit.com/iblech/internal-methods/master/paper-qcoh.pdf}{this
+    preprint}.
   }
 
   \jnote{2}{

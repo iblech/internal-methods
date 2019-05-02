@@ -320,16 +320,6 @@
   Ingo Blechschmidt \\
   Università di Verona
   \par
-
-  \jnote{1}{\textcolor{red}{This set of slides will be updated soon with more
-  annotations.} Right now important references are not properly mentioned, including:
-  \begin{itemize}
-    \item Marc Bezem, Ulrik Buchholtz and Thierry Coquand. \emph{Syntactic forcing
-    models for coherent logic.}
-    \item Olivia Caramello. \emph{Universal models and definability.}
-    \item Carsten Butz and Peter Johnstone. \emph{Classifying toposes for
-    first-order theories.}
-  \end{itemize}}
 \end{frame}}
 
 {\usebackgroundtemplate{\begin{minipage}{\paperwidth}\hspace*{-1.7cm}\includegraphics[height=\paperheight,trim=0 0 16.9cm 0,clip]{black-hole-m87}\end{minipage}}
@@ -350,8 +340,6 @@
 \section{The generic model}
 
 \subsection{The mystery of nongeometric sequents}
-
-% \begin{document}
 
 \begin{frame}{The mystery of nongeometric sequents}
   \jnote{1}{A \emph{geometric sequent} is a syntactical expression of the
@@ -681,9 +669,10 @@
       1 = 0. \]
 
     The theory of local rings is the quotient theory of the theory of rings
-    obtained by adding the axioms~$(1 = 0 \vdash \bot)$ and~$((\exists z\_
-    (x+y)z = 1) \seq{x,y} (\exists z\_ xz = 1) \vee (\exists z\_ yz = 1))$.
-    (Assuming the Boolean prime ideal theorem, a ring is local in this sense
+    obtained by adding the axioms
+    \[ (1 = 0 \vdash \bot) \ \text{and}\ ((\exists z\_
+    (x+y)z = 1) \seq{x,y} (\exists z\_ xz = 1) \vee (\exists z\_ yz = 1)). \]
+    (Assuming the axiom of choice, a ring is local in this sense
     iff it local in the usual sense (has exactly one maximal ideal).)
 
     The first displayed property of the generic local ring illustrates
@@ -1134,37 +1123,39 @@
 {\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{5.95cm}\hfill\mbox{\includegraphics[width=0.13\paperwidth]{hen}\;\;}\end{minipage}}
 \begin{frame}{Exhaustion and extensions}
   \justifying
-  \textbf{Theorem.} A first-order formula holds for~$U_\TT$ iff it is
+  \textbf{Theorem 1.} A first-order formula holds for~$U_\TT$ iff it is
   intuitionistically provable from the axioms of~$\TT$ and
   the scheme
   \begin{equation}\tag{Nullstellensatz} \speak{$\sigma$ holds} \implies \speak{$\ul{\TT}/U_\TT$
   proves$^{\star\star}$~$\sigma$}. \end{equation}
 
-  \textbf{Theorem.}
+  \textbf{Theorem 2.}
   Let~$\TT'$ be a quotient theory
   of~$\TT$. Assume that~$U_\TT$ is contained in the subtopos~$\Set[\TT']$. Then internally
   to~$\Set[\TT']$:
+
+  \vspace*{-0.4em}
   \begin{quote}
     \emph{A geometric$^\star$ sequent~$\sigma$ with Horn consequent holds for~$U_{\TT'}$
     iff~$\ul{\TT}/U_\TT$ proves$^\star$~$\sigma$.}
   \end{quote}
-  \vspace*{-1.6em}
 
-  \textbf{Theorem.}
+  \textbf{Theorem 3.}
   % Let~$\mathrm{Form}^\star_{x\?X}(\ul{\TT}/U_\TT)/(\dashv\vdash_{x\?X})$ be the~$\Set[\TT]$-object of
   % geometric$^\star$ formulas over the signature of~$\ul{\TT}/U_\TT$ in the
   % context~$x\?X$, where any two such formulas are identified if and only
   % if~$\ul{\TT}/U_\TT$ proves them equivalent.
-  The morphism~$\mathrm{ev}$ is an isomorphism.
-  \[ \mathrm{ev} : \mathrm{FunctFormulas}^\star(\ul{\TT}/U_\TT)/(\dashv\vdash)
-  \longrightarrow P(U_\TT) \]
+  The morphism~$\mathrm{ev}$ below is an isomorphism.
+  \begin{equation}\label{eq:hon}\tag{$\star$}
+    \mathrm{ev} : \mathrm{FunctFormulas}^\star(\ul{\TT}/U_\TT)/(\dashv\vdash) \longrightarrow P(U_\TT)
+  \end{equation}
 
-  \textbf{Theorem.} A higher-order formula holds for~$U_\TT$ iff it is
+  \textbf{Theorem 4.} A higher-order formula holds for~$U_\TT$ iff it is
   provable in intuitionistic higher-order logic from the axioms of~$\TT$ and
-  the higher-order Nullstellensatz scheme.
+  the higher-order Nullstellensatz scheme~($\star$).
 
   \jnote{1}{
-    The first theorem states that the source provided by the Nullstellensatz is
+    Theorem~1 states that the source provided by the Nullstellensatz is
     exhaustive. The notion of provability$^{\star\star}$ is a strengthening of
     the notion of provability$^\star$, which in turn is a strengthening of the
     ordinary notion of provability in geometric logic. We are using it here
@@ -1172,25 +1163,54 @@
     internal language of a topos, it cannot be expressed in intuitionistic
     logic.
 
-    The second theorem provides a useful variant of the Nullstellensatz. Its
+    Theorem~2 provides a useful variant of the Nullstellensatz. Its
     assumptions are for instance satisfied if~$\TT$ is the theory of rings
     and~$\TT'$ is the theory of local rings. When applicable, it can be used to
     avoid doubly-internal toposes. It also explains, for instance, why in the
     formulation of synthetic quasicoherence no local rings appear even though
     the relevant topos is the classifying topos of local rings.
 
-    The third and fourth theorems generalise the Nullstellensatz to the
-    higher-order setting. The map~$\mathrm{ev}$ takes (the equivalence class
+    Theorems~3 and~4 generalise the Nullstellensatz to the
+    higher-order setting. The map~$\mathrm{ev}$ maps (the equivalence class
     of) a~$\ul{\TT}/U_\TT$-provably$^\star$ geometric$^\star$ formula~$\theta$
     in one free variable to the subset~$\{ x \? U_\TT \,|\, \theta(x) \}$.
 
-    Details on all of this are slowly emerging at
-    \fixedhref{https://rawgit.com/iblech/internal-methods/master/paper-qcoh.pdf}{this
-    preprint}.
+    Written details on all of this are
+    \fixedhref{https://rawgit.com/iblech/internal-methods/master/paper-qcoh.pdf}{slowly
+    emerging}.
   }
 
   \jnote{2}{
-    XXX future work
+    The Nullstellensatz is related to several precursors. A corollary of the
+    Nullstellensatz is that, over the first-order theory validated by~$U_\TT$, any
+    first-order formula is in fact logically equivalent to a geometric formula.
+    This corollary has already been observed by Carsten Butz and Peter
+    Johnstone in their paper
+    \fixedhref{http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.16.4102&rep=rep1&type=pdf}{Classifying
+    toposes for first-order theories} (Lemma~4.2 there). At that point, a
+    characterisation of the first-order formulas in the general case, of the
+    form as in Theorem~1, was still missing.
+
+    Theorem~3 is a relativisation of Olivia Caramello's completeness theorem,
+    Theorem~2.4(ii) in her paper
+    \fixedhref{https://arxiv.org/abs/0906.3061}{Universal models and
+    definability}. The passage from the external to the internal phrasing
+    requires going from~$\TT$ to~$\ul{\TT}/U_\TT$.
+  }
+
+  \jnote{2}{
+    Plans for the future include:
+    \begin{itemize}\justifying
+      \item Developing an Agda library for dealing with the internal language
+      of toposes and related kinds of categories, employing Agda's
+      meta-programming facilities; with such a library at hand,
+      formalising the Nullstellensatz in Agda.
+      \item Exploring Nullstellensatz-style results for arithmetic universes.
+      \item Applying the Nullstellensatz in constructive algebra and algebraic
+      geometry, along the lines of generic freeness and synthetic algebraic
+      geometry. Most of the toposes in geometric use are actually uncharted
+      territory from a logical point of view.
+    \end{itemize}
   }
 \end{frame}}
 

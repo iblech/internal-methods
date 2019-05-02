@@ -72,5 +72,7 @@ No prior knowledge about topos theory or formal logic is assumed.
   for the [Münchenwiler Meeting Autumn 2018](http://mw.inf.unibe.ch/) in Münchenwiler
 * *[Slides (PDF)](https://rawgit.com/iblech/internal-methods/master/slides-padova2018.pdf)
   for the Logic Seminar in Padova*
+* *[Slides (PDF)](https://rawgit.com/iblech/internal-methods/master/slides-birmingham2019.pdf)
+  for the [6th Workshop on Formal Topology](https://www.cs.bham.ac.uk/~sjv/6WFTop/)
 
 ![Sheaves of rings look like ordinary rings from the internal point of view.](images/external-internal-small.png)

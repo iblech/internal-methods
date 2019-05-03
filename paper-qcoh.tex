@@ -2,7 +2,7 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
-\usepackage{amsthm,mathtools,stmaryrd,amssymb,graphicx}
+\usepackage{amsthm,mathtools,stmaryrd,amssymb,graphicx,color}
 \usepackage{booktabs}
 \usepackage[all]{xy}
 \usepackage[protrusion=true,expansion=true]{microtype}
@@ -104,20 +104,26 @@
   We give a general Nullstellensatz for the generic model of a
   geometric theory, useful as a source of nongeometric sequents validated by
   the generic model, and characterize the first-order and higher-order formulas validated by the
-  genetric model.
+  generic model.
 \end{abstract}
 
 \maketitle
 \thispagestyle{empty}
 
+\begin{center}
+  \textcolor{red}{\textbf{-- rough draft --}}
+
+  \emph{comments welcome at ingo.blechschmidt@univr.it}
+\end{center}
+
 \section{Introduction}
 \label{sect:introduction}
 
 \paragraph{Generic models} Let~$\TT$ be a geometric theory, such as the theory
-of rings, of local rings or of intervals. We follow Caramello's
+of rings, the theory of local rings or the theory of intervals. We follow Caramello's
 terminology~\cite{caramello:tst} to mean by \emph{geometric theory} a system
 given by a set of sorts, a set of finitary function symbols, a set of finitary
-relation symbols and a set of axioms, consisting of geometric sequents
+relation symbols and a set of axioms consisting of geometric sequents
 (sequents of the form~$\varphi \seq{\vec x} \psi$ where~$\varphi$ and~$\psi$
 are geometric formulas, that is formulas built from equality and the relation
 symbols by the logical connectives~${\top}\,{\bot}\,{\wedge}\,{\vee}\,{\exists}$
@@ -126,8 +132,9 @@ formula} we will mean a formula which may contain, additionally to the
 connectives allowed for geometric formulas, the connectives~${\Rightarrow}$
 and~${\forall}$.
 
-A fundamental result is that there is a \emph{generic model}~$U_\TT$ of~$\TT$,
-a model such that for any geometric sequent~$\sigma$, the following notions
+A fundamental result is that there is a \emph{generic model}~$U_\TT$ of~$\TT$.
+This model is \emph{conservative} in that
+for any geometric sequent~$\sigma$, the following notions
 coincide:
 \begin{enumerate}
 \item The sequent~$\sigma$ is provable modulo~$\TT$.
@@ -135,7 +142,11 @@ coincide:
 \item The sequent~$\sigma$ holds for~$U_\TT$.
 \end{enumerate}
 One could argue that it is this model which we
-implicitly refer to when we utter the phrase ``Let~$M$ be a~$\TT$-model.''. It can
+implicitly refer to when we utter the phrase ``Let~$M$ be
+a~$\TT$-model.''.\footnote{For instance, this point of view is fundamental to
+the slogan \emph{continuity is geometricity}, as stressed by
+Vickers~\cite{vickers:continuity}.}
+It can
 typically not be realized as a set-theoretic model, consisting of a set for
 each sort, a function for each function symbol and so on; instead it is a model
 in a custom-tailored syntactically constructed Grothendieck topos, the
@@ -167,10 +178,10 @@ theory of local rings. In this case, the classifying topos~$\Set[\TT]$ is also
 known as the \emph{big Zariski topos} of~$\Spec(\ZZ)$ from algebraic geometry,
 the topos of sheaves over the site of schemes locally of finite presentation,
 and the generic model is the functor~$\affl$ of points of the affine line, the
-functor which maps any (l.o.f.p.) scheme~$X$ to~$\Hom(X,\mathbb{A}^1) =
+functor which maps any (l.o.f.p.) scheme~$X$ to~$\Hom_\mathrm{Sch}(X,\mathbb{A}^1) =
 \O_X(X)$.
 
-From the point of view of the topos, the ring object~$\affl$ is not only a
+From the point of view of the Zariski topos, the ring object~$\affl$ is not only a
 local ring, but even a field in the sense that
 any nonzero element is invertible.
 As this condition is of nongeometric form, it is not inherited by arbitrary
@@ -178,14 +189,26 @@ local rings, which are indeed typically not fields. However, any intuitionistic
 consequence of this condition which is of geometric form is inherited
 by any local ring in any topos. Hence we may, when verifying a general fact
 about local rings which is expressible as a geometric sequent,
-suppose without loss of generality that the given ring is a
-field. This observation is due to Kock~\cite{kock:univ-proj-geometry}, who exploited it to
+suppose without loss of generality that the field axioms holds.
+This observation is due to Kock~\cite{kock:univ-proj-geometry}, who exploited it to
 develop projective geometry over local rings, and was further used by Reyes to
 prove a Jacobian criterion for étale morphisms~\cite{reyes:cramer}.
 
-A related nongeometric sequent is valid in the little Zariski topos of the
-spectrum of a ring~$A$, the classifying topos of local localizations of~$A$.
-If~$A$ is reduced, the generic model validates the dual condition that any
+We surmise that many more reduction techniques along these lines exist for
+other kinds of algebraic objects. However, when actually using such techniques
+in practice, we face the challenge that while we can use them to prove results
+about \emph{all} local rings, \emph{all} modules and so on, it is difficult to
+incorporate specific information about a particular local ring or a particular
+module at hand. This difficulty is compounded by the fact that interesting
+nongeometric properties are typically not inherited by the generic model of
+quotient theories -- for instance the generic ring validates the formula~$\forall
+x\?U_\TT\_ \neg\neg(x = 0)$ while the generic local ring does not.
+
+Hence it is useful to turn to geometric theories which refer to a given
+mathematical object. For instance, given a ring~$A$, there is the theory of
+local localizations of~$A$, and its classifying topos is known in algebraic
+geometry as the little Zariski topos of~$A$, the topos of sheaves over the
+spectrum of~$A$. If~$A$ is reduced, this topos validates the dual condition that any
 noninvertible element is zero. This property has been used to give a short and
 even constructive proof of Grothendieck's generic freeness lemma,
 substantially improving on previously published
@@ -218,10 +241,17 @@ algebraic geometry, the desire to carry out algebraic geometry in a language
 close to the simple language of the 19th and the beginning of the 20th century
 while still being fully rigorous and fully general, working over arbitrary base
 schemes instead of restricting to the field of complex numbers.
+
+Nontrivial nongeometric sequents are not an exclusive feature of sheaf toposes.
+The generic model of a theory of presheaf type typically also validates such
+sequents. For instance, all of the aforementioned properties of the generic
+local ring are shared by the generic ring, which lives in the presheaf
+topos~$[\mathrm{Ring}_\mathrm{fp}, \Set]$.
 \medskip
 
-\paragraph{Characterizing nongeometric sequents} Referring to one of the previous
-examples, Tierney remarked around the time that those sequents were first
+
+\paragraph{Characterizing nongeometric sequents} Referring to the field condition in the little Zariski topos,
+Tierney remarked around the time that those sequents were first
 studied that ``[it] is surely important, though its precise significance is
 still somewhat obscure---as is the case with many such nongeometric
 formulas''~\cite[p.~209]{tierney:spectrum}. In view of their importance, is
@@ -235,9 +265,16 @@ satisfies a sentence~$\alpha$ then any geometric consequence of $\TT + \alpha$ h
 consequence of~$\TT$. We might call~$\alpha$ $\TT$-redundant. Does the
 generic~$\TT$-model satisfy all~$\TT$-redundant sentences?}
 \end{quote}
-This question was recently answered in the negative by Bezem, Buchholtz and
-Coquand~\cite{bezem-buchholtz-coquand:syntactic-forcing-models}; hence the
-characterization we propose is necessarily more nuanced.
+Because classical logic is conservative over intuitionistic logic for geometric
+sequents, this question has a trivial negative answer: No, any instance of the
+law of excluded middle over the signature of~$\TT$ is~$\TT$-redundant but
+typically not validated by the generic~$\TT$-model. Moreover,
+Bezem, Buchholtz and
+Coquand recently showed that the answer is still negative even if appropriate
+care is taken to exclude these
+counterexamples~\cite{bezem-buchholtz-coquand:syntactic-forcing-models}. Hence our
+characterization of the first-order theory validated by the generic~$\TT$-model
+is necessarily more nuanced.
 
 Our starting point was the empirical
 observation~\cite[p.~164]{blechschmidt:phd} that in the case of the big
@@ -300,8 +337,8 @@ of~$\Set[\TT]$, the open subtopos coinciding with the classifying topos of
 the theory of rings of characteristic two.
 
 Intuitively, the problem is that while the meaning of~$\speak{$\ul{\TT}$
-proves~$\sigma$}$ is fixed, the meaning of~$\speak{$\sigma$ holds for~$U_\TT$}$ can vary
-with the slice. This problem can be solved by passing from~$\ul{\TT}$ to a
+proves~$\sigma$}$ is fixed, the meaning of~$\speak{$\sigma$ holds for~$U_\TT$}$ varies
+with the slice, as~$U_\TT$ changes form on different stages. This mismatch is solved by passing from~$\ul{\TT}$ to a
 varying theory, the internal theory~$\ul{\TT}/U_\TT$ defined in
 Section~\ref{sect:main}. If~$\TT$ is the theory of rings, then~$\ul{\TT}/U_\TT$
 is the~$\Set[\TT]$-theory of~$U_\TT$-algebras.
@@ -313,13 +350,13 @@ Section~\ref{sect:main}, the following general Nullstellensatz:
 Let~$\TT$ be a geometric theory. Then, internally to~$\Set[\TT]$:
 \begin{equation}\tag{$\dagger$}\label{eq:nullstellensatz0}
 \text{A geometric$^*$ sequent~$\sigma$ holds for~$U_\TT$ if and only
-if~$\ul{\TT}/U_\TT$ proves$^*$~$\sigma$.}
+if~$\ul{\TT}/U_\TT$ proves~$\sigma$.}
 \end{equation}
 \end{thm}
 
 To illustrate Theorem~\ref{thm:nullstellensatz0}, let~$\TT$ be the theory of
 rings and let~$\sigma$ be the sequent~$(f(x) = 0 \seq{x} g(x) = 0)$ for some
-polynomials~$f$ and~$g$. To say that~$\sigma$ holds for~$U_\TT$ amounts to
+polynomials~$f$ and~$g$ with coefficients in~$U_\TT$. To say that~$\sigma$ holds for~$U_\TT$ amounts to
 saying that any zero~$x \? U_\TT$ of~$f$ is also a zero of~$g$, and to say
 that~$\ul{\TT}/U_\TT$ proves~$\sigma$ amounts to saying that
 in~$U_\TT[X]/(f(X))$, the free~$U_\TT$-algebra on one generator~$X$ subject to
@@ -334,7 +371,8 @@ it is not to be expected that it passes from~$\Set[\TT]$ to a
 subtopos~$\Set[\TT']$ corresponding to a quotient theory~$\TT'$ of~$\TT$, and
 indeed in general it does not. However, there is still a useful substitute,
 which we formulate as Theorem~\ref{thm:nullstellensatz-horn}. This substitute
-substantially broadens the scope of the Nullstellensatz.
+broadens the scope of the Nullstellensatz and is, whenever applicable, useful
+for simplifying computations.
 
 Summarizing, the situation is as follows.
 \begin{itemize}
@@ -361,6 +399,11 @@ modulo the axioms of~$\TT$ and the additional axiom~\eqref{eq:nullstellensatz0}.
 \end{enumerate}
 \end{thm}
 
+It is not entirely obvious how to correctly phrase
+axiom~\eqref{eq:nullstellensatz0} in first-order logic, an issue
+which we will discuss when we restate Theorem~\ref{thm:characterization0} in
+the body of this note (Theorem~\ref{thm:characterization}).
+
 Theorem~\ref{thm:characterization0} characterizes the first-order formulas
 which hold for the generic model. We could of course wish for a more explicit
 characterization; but since even the characterization of geometric sequents
@@ -380,6 +423,73 @@ will again be recursively axiomatizable.
 \medskip
 
 
+% XXX: mention internal language in general, and SDG?
+\paragraph{Related work} The topos-theoretic Nullstellensatz is related to
+several precursors. A corollary of the Nullstellensatz is that, over the
+first-order theory validated by~$U_\TT$, any first-order formula is in fact
+logically equivalent to a geometric formula. This corollary has already been
+observed by Butz and Johnstone~\cite[Lemma~4.2]{butz-johnstone:first-order}. At
+that point, a characterisation of the first-order formulas in the general case,
+of the form as in Theorem~\ref{thm:characterization0}, was still missing.
+
+The higher-order variant of our Nullstellensatz
+(Theorem~\ref{thm:definability}) relativizes Cara\-mel\-lo's completeness
+theorem~\cite[Theorem~2.4(ii)]{caramello:definability}. Her theorem is the
+external statement that any subobject of~$U_\TT$ is given by the interpretation
+of a geometric formula over the signature of~$\TT$; our relativization states
+that, internally to~$\Set[\TT]$, any subset of~$U_\TT$ is given by a
+geometric$^\star$ formula over the signature of~$\ul{\TT}/U_\TT$. As in the
+first-order case, the passage from the external to the internal phrasing
+necessitates the switch from~$\TT$ to~$\ul{\TT}/U_\TT$.
+
+The Nullstellensatz yields for a given (perhaps conditional) truth about the
+generic model a proof modulo the axioms of~$\ul{\TT}/U_\TT$. As illustrated in
+Section~\ref{sect:applications}, the procedure we typically use to extract
+fruitful information from such a proof is to apply it to a
+further~$\ul{\TT}/U_\TT$-model which we specifically construct for the purposes
+at hand. Hence we go from truth in~$U_\TT$ via provability to truth in a
+further model, that is, we use provability as a (one-way) \emph{bridge}:
+\[ \xymatrix{
+  & \text{$\ul{\TT}/U_\TT$ proves $\sigma$} \\
+  \text{$\sigma$ holds for $U_\TT$} \ar@/^1.1pc/@{<=>}[ur] &&
+  \text{$\sigma$ holds for $M$} \ar@/_1.1pc/@{<=}[ul]
+} \]
+This perspective is inspired by Caramello's research
+program~\cite{caramello:tst}, though it is not an instance of her main technical
+device for establishing bridges, namely exploiting the fact that a single topos
+may admit descriptions using quite different sites.
+\medskip
+
+
+\paragraph{Outlook} The Nullstellensatz yields a description of the first-order
+and higher-order theory validated by the generic model of a geometric theory.
+As already indicated, with more examples and details to be given in
+Section~\ref{sect:applications}, this description explains and puts into
+perspective several established results and observations.
+
+From the point of view of applications, the main task for the future is to
+explore the description in the case of particular geometric theories of
+interest. Just as the reduction technique ``any reduced ring is a field'' --
+valid because the generic localization of a reduced ring is a field -- enabled
+a short and simple proof of Grothendieck's generic freeness
+lemma~\cite[Section~11.5]{blechschmidt:phd}, more reduction techniques along
+these lines should exist in a wide range of subjects. We hope that with the
+Nullstellensatz at hand, discovering such techniques can progress in a more
+systematic fashion.
+
+From the point of view of theory, the appropriate context for the
+Nullstellensatz should be determined. We formulate the Nullstellensatz in the
+context of geometric theories and their classifying Grothendieck toposes, but
+there should be analogues for the Nullstellensatz in other contexts where it
+makes sense to speak of ``classifying gadgets'', and these analogues should
+shed light on the topos-theoretic version and ideally even explain it from deeper
+principles. In particular, preliminary computations indicate that there is a
+version of the Nullstellensatz for arithmetic universes, the predicative cousin
+of toposes introduced by Joyal~\cite{XXX} and recently an important object of
+consideration by Maietti and Vickers~\cite{XXX}.
+\medskip
+
+
 \paragraph{Outline} In Section~\ref{sect:review}, we review background on the
 internal language of toposes, classifying toposes and internal geometric theories.
 Section~\ref{sect:main} contains proofs of the main theorems in the
@@ -396,6 +506,8 @@ interpreted internally to toposes.
 
 
 \paragraph{Acknowledgments} XXX
+% don't forget: Thierry, and Steve and Martín for 6WFTop; also of course
+% Alexander. Also include grant statement.
 
 
 \section{Background}
@@ -1291,7 +1403,7 @@ Remark~\ref{rem:definability-entails-nullstellensatz}.\end{proof}
 
 \subsection{Nongeometric sequents in the object classifier}
 
-Johnstone~\cite{XXX} lists several nongeometric sequents(XXX) holding in the
+Butz and Johnstone~\cite{butz-johnstone:first-order} list several nongeometric sequents holding in the
 classifying topos of the theory~$\OO$ of objects, the theory with a single sort and
 no function symbols, relations symbols or axioms, including:
 \begin{align*}
@@ -1409,9 +1521,6 @@ Theorem~\ref{thm:quasicoherence} can shed light on this discrepancy. % XXX
   algebras? Answer: It doesn't really! We do have that [U,U] is isomorphic to
   the free C^∞-ring on one generator. But this observation doesn't appear to be
   useful for further developments.
-
-* XXX Discuss related work, results which come close, especially: Olivia 6.1.3, ...
-  http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.16.4102 Lemma 4.2
 
 * XXX Cite Filip Bár?
 

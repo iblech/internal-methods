@@ -527,11 +527,11 @@ as~``$\vec x \? \vec X$'' or even just~``$\vec x$''.
 
 \begin{defn}The \emph{syntactic site}~$\C_\TT$ of a geometric theory~$\TT$ has:
 \begin{enumerate}
-\item as objects ``geometric formulas in contexts''~$\{x_1\?X_1,\ldots,x_n\?X_n\_
+\item as objects \emph{geometric formulas in contexts}~$\{x_1\?X_1,\ldots,x_n\?X_n\_
 \varphi\}$ where~$\varphi$ is a geometric formula over the signature of~$\TT$
 in the displayed context; \smallskip
-\item as set of morphisms~$\Hom_{\C_\TT}(\{\vec x\_
-\varphi\}, \{\vec y\_ \psi\})$ the set of formulas~$\theta$ in the
+\item as set~$\Hom_{\C_\TT}(\{\vec x\_ \varphi\}, \{\vec y\_ \psi\})$ of morphisms
+the set of formulas~$\theta$ in the
 context~$\vec x, \vec y$ which are~$\TT$-provably functional,
 modulo~$\TT$-provable equivalence of such formulas; \smallskip
 \item as covering families those families~$(\{\vec x_i\_ \varphi_i\} \xrightarrow{\theta_i}
@@ -543,7 +543,10 @@ modulo~$\TT$-provable equivalence of such formulas; \smallskip
 \begin{defn}The \emph{classifying topos}~$\Set[\TT]$ of a geometric
 theory~$\TT$ is the topos of set-valued sheaves on~$\C_\TT$.\end{defn}
 
-Writing~$\yon : \C_\TT \to \Set[\TT]$ for the Yoneda embedding, the \emph{generic
+Writing~$\yon : \C_\TT \to \Set[\TT]$ for the Yoneda embedding,\footnote{With
+this notational choice we are following Riehl and
+Verity~\cite{riehl-verity:elements}.}
+the \emph{generic
 model}~$U_\TT$ of~$\TT$ interprets a sort~$X$ of~$\TT$ as the sheaf~$\yon\{x\?X\_ \top\}$,
 a function symbol~$f : X_1 \cdots X_n \to Y$ as the morphism given by
 the~$\TT$-provably functional formula~$f(x_1,\ldots,x_n) = y$ and a relation
@@ -556,6 +559,9 @@ Grothendieck topos~$\E$, the functor
 \text{(category of~$\TT$-models in~$\E$)} \]
 given by~$f \mapsto f^*U_\TT$ is an equivalence of categories.
 \end{thm}
+
+\begin{proof}See, for instance,~\cite[Theorem~2.1.8]{caramello:tst}
+or~\cite[discussion before Proposition~D3.1.12]{johnstone:elephant}.\end{proof}
 
 \begin{prop}\label{prop:basic-truth}
 Let~$\alpha$ and~$\varphi$ be geometric formulas in a context~$\vec
@@ -597,7 +603,7 @@ elementary topos with a natural numbers object), we can successively build the
 object of contexts (the object of lists of sorts); the object of terms
 (equipped with a morphism to the object of contexts); the object of atomic
 propositions (again equipped with such a morphism); the object of geometric
-formulas (again so); the object of geometric sequents (again so). A internal
+formulas (again so); and the object of geometric sequents (again so). A internal
 geometric theory~$\TT$ over~$\Sigma$ is then given by a subobject of the object
 of geometric sequents, interpreted as the object of axioms of~$\TT$. Given such
 an internal theory~$\TT$, we can build the object of proof trees of~$\TT$.
@@ -686,11 +692,11 @@ That~(4) implies~(1) is a routine exercise exploiting that
 \end{proof}
 
 
-\section{Proofs of the main theorems}
+\section{The first-order Nullstellensatz}
 \label{sect:main}
 
 Given a geometric theory~$\TT$ with its generic model~$U_\TT$ in~$\Set[\TT]$,
-the main theorems reference a certain internal
+our main theorems will reference a certain internal
 theory~$\ul{\TT}/U_\TT$ internal to~$\Set[\TT]$. This theory is defined as
 follows.
 
@@ -727,15 +733,20 @@ to a bounded topos over~$\Set[\TT]$, hence to a Grothendieck topos. Using for
 instance the technique described
 in~\cite{blechschmidt-hutzler-oldenziel:composition}, one can show that this topos classifies the
 theory of homomorphisms between~$\TT$-models. It can also be obtained as the
-lax pullback~$(\Set[\TT] \Rightarrow_{\Set[\TT]} \Set[\TT])$.\end{rem}
+lax pullback~$(\Set[\TT] \Rightarrow_{\Set[\TT]} \Set[\TT])$.
+There are two canonical geometric morphisms from this topos to~$\Set[\TT]$, the
+morphism computing the domain and the morphism computing the codomain; the
+morphism obtained by externalizing the internal construction is the former.
+\end{rem}
 
 \begin{lemma}\label{lemma:truth-to-provability}
 Let~$\TT$ be a geometric theory. Let~$\alpha$ be a geometric formula over the
 signature of~$\TT$ in a context~$x_1\?X_1,\ldots,x_n\?X_n$. Then
 \[ \{ \vec x\_ \alpha \} \models \speak{$\ul{\TT}/U_\TT$ proves $(\top
 \vdash_{[]} \alpha)$}, \]
-where the free variables~$\vec x$ occurring in~$\alpha$ are interpreted as in
-Proposition~\ref{prop:basic-truth}.
+where the free variables~$\vec x$ occurring in~$\alpha$ are first interpreted as in
+Proposition~\ref{prop:basic-truth} and then regarded as the induced constant
+symbols.
 \end{lemma}
 
 \begin{proof}By induction on the structure of~$\alpha$. The cases
@@ -784,10 +795,11 @@ holds for~$U_\TT$} \}\bigr)$} \]
 which in turn can be checked on the covering~$(\{ \vec y_j\_ \alpha_j \}
 \xrightarrow{[\theta_j]} \{ \vec x\_ \alpha \})_j$, applying
 Lemma~\ref{lemma:truth-to-provability} and using that~$\TT$ (and
-hence~$\ul{\TT}$) proves~$(\exists \vec y_j\_ \theta_j) \wedge (\exists \vec
-y_k\_ \theta_k) \seq{\vec x} \bigvee \{ \top \,|\, j = k \}$. (This kind of
+hence~$\ul{\TT}$) proves~$((\exists \vec y_j\_ \theta_j) \wedge (\exists \vec
+y_k\_ \theta_k) \seq{\vec x} \bigvee \{ \top \,|\, j = k \})$. (This kind of
 reasoning also appears, for instance, in~\cite[p.~20]{blass:seven-trees}.)
 \end{proof}
+% XXX check last paragraph; change proves* to proves.
 
 \begin{thm}\label{thm:nullstellensatz}
 Let~$\TT$ be a geometric theory. Then, internally to~$\Set[\TT]$, for any
@@ -829,15 +841,17 @@ over~$A$), hence~$A \models \speak{$\ul{\TT}/U_\TT$ proves$^\star$~$(\varphi
 
 The force of the Nullstellensatz of Theorem~\ref{thm:nullstellensatz} is for
 sequents~$\sigma$ which are not of the form~$(\top \seq{[]} \varphi)$. Indeed,
-for such sequents, even~$\TT$ proves~$(\speak{$\sigma$ holds for~$U_\TT$}
+for those special sequents, even~$\TT$ proves~$(\speak{$\sigma$ holds for~$U_\TT$}
 \Rightarrow \speak{$\ul{\TT}/U_\TT$ proves~$(\top \seq{[]} \varphi)$})$, as can
 be seen by a simple induction on the structure of~$\varphi$. For more general
 sequents, Theorem~\ref{thm:nullstellensatz} expresses a nontrivial fact: that
-truth of a conditional, universally-quantified statement implies a single
-unconditional statement.
+truth of an universally-quantified conditional statement implies a single
+unquantified unconditional statement.
 
-\begin{rem}Theorem~\ref{thm:nullstellensatz} cannot be strengthened to
-arbitrary geometric sequents. For instance, in the case that~$\TT$ is the
+\begin{rem}The restriction in Theorem~\ref{thm:nullstellensatz} to
+geometric$^\star$ sequents cannot be lifted, that is the generalization
+of~Theorem~\ref{thm:nullstellensatz} to
+arbitrary internal geometric sequents is false. For instance, in the case that~$\TT$ is the
 theory of objects, the internal geometric sequent~$(\top \seq{x\?U_\TT}
 \bigvee_{a\?U_\TT} (x = e_a))$ trivially holds for~$U_\TT$. However, this sequent is not
 provable modulo~$\ul{\TT}/U_\TT$, as for instance the model~$U_\TT \amalg
@@ -888,7 +902,8 @@ big fppf topos.
 
 \begin{rem}In the case that the~$\Set[\TT']$ is a dense subtopos
 of~$\Set[\TT]$, Theorem~\ref{thm:nullstellensatz-horn} can be strengthened to
-allow~$\bot$ as consequent, since in this case~$(\nabla\bot) \Rightarrow \bot$.\end{rem}
+allow~$\bot$ as consequent, since in this case we have~$(\nabla\psi)
+\Rightarrow \psi$ also for~$\psi \equiv \bot$.\end{rem}
 
 Theorem~\ref{thm:nullstellensatz} cannot be strengthened to arbitrary
 first-order (or first-order$^\star$ or even just coherent) formulas in place of
@@ -1004,11 +1019,13 @@ Throughout this section, let~$\TT$ be a Horn theory. It is a basic result that
 Horn theories are of presheaf type, such that the classifying topos~$\Set[\TT]$
 can be taken as the topos of functors~$\Mod{\TT}_\mathrm{fp} \to \Set$,
 where~$\Mod{\TT}_\mathrm{fp}$ is the full subcategory of the category
-of~$\TT$-models (in~$\Set$) on the finitely presentable objects. The
+of~$\TT$-models (in~$\Set$) on the finitely presentable objects~\cite[Theorem~2.1.21]{caramello:tst}. The
 (underlying object of the) generic model is the tautologous functor~$U_\TT : T
 \mapsto T$. By~\emph{$U_\TT$-algebra} we mean, in analogy with the terminology in
 the case that~$\TT$ is the theory of rings, a~$\TT$-model~$M$ equipped with
 a~$\TT$-homomorphism~$U_\TT \to M$.
+
+% XXX: upgrade to cartesian case? maybe as a remark?
 
 \begin{lemma}\label{lemma:free-models}
 Let~$X$ be a set equipped with a morphism~$X \to S$ to the set of sorts
@@ -1023,11 +1040,11 @@ modulo the equivalence relation identifying two terms if and only if~$\TT + R$
 proves them to be equal. The function symbols~$f$ of~$\Sigma$ are interpreted
 by declaring~$\brak{f}([t_1],\ldots,[t_n]) = [f(t_1,\ldots,t_n)]$ and the
 relation symbols~$S$ are interpreted by declaring~$([t_1],\ldots,[t_n]) \in
-\brak{S} \Leftrightarrow (\TT + R \vdash S(t_1,\ldots,t_n))$.
+\brak{S} \Leftrightarrow (\TT + R \,\vdash S(t_1,\ldots,t_n))$.
 
 We omit the required verifications and only remark that while the same
 construction could be carried out if~$\TT$ was a general geometric theory, the
-resulting object would in general not be a model of~$\TT$.
+term algebra would in general not be a model of~$\TT$.
 \end{proof}
 
 \begin{lemma}Let~$\sigma = (\varphi_1 \wedge \cdots \wedge \varphi_n
@@ -1052,6 +1069,7 @@ Kuratowski-finite.
 
 \begin{proof}It is an instructive exercise to verify that models of the stated
 form are compact. Conversely, let a~$\TT$-model~$M$ be given. Then~$\TT$ is the
+% XXX cite Adamek/Rosicky
 filtered colimit of all models over~$M$ which are of the stated form. If~$M$ is
 compact, the identity on~$M$ factors over such a model. Hence~$M$ is a
 retract of such a model and hence itself isomorphic to a model of this form.
@@ -1114,8 +1132,8 @@ with~$\yon A$, the functor~$\Hom_{\Mod{\TT}}(A, \cdot)$.
 where~$[A^\sim,U_\TT]_{U_\TT}$ is the object of~$U_\TT$-algebra homomorphisms from~$A^\sim$
 to~$U_\TT$ (a subobject of the internal Hom~$(U_\TT)^{A^\sim}$); $\Hom_{U_\TT}$
 denotes the set of~$U_\TT$-algebra homomorphisms; $(U_\TT)^{\yon T}$ is the object of morphisms
-from~$\yon T$ to~$U_\TT$; and~$U_\TT|T$ is the functor~$U_\TT(T \times \cdot)$, that is~$S
-\mapsto T \otimes S$.
+from~$\yon T$ to~$U_\TT$; and~$U_\TT|T$ is the functor~$U_\TT(T \times \cdot)$, that is
+the functor~$S \mapsto T \otimes S$.
 
 An arbitrary element~$f \in (\yon A)(T)$, that is an arbitrary~$\TT$-model
 homomorphism~$f : A \to T$, induces a~$U_\TT$-algebra homomorphism~$g : A^\sim \to
@@ -1224,11 +1242,12 @@ a given signature, finite limits of sorts and set-indexed colimits of sorts. By
 we may also form powersorts. These derived sorts come with respective term
 constructors (tuple formers, coprojections, set comprehension) and the usual
 rules governing these constructors.
+% XXX cite some reference for these "usual rules", perhaps Milly?
 
 An \emph{extended geometric formula} is a formula of extended geometric logic built from equality and
 relation symbols by the logical
 connectives~${\top}\,{\bot}\,{\wedge}\,{\vee}\,{\exists}$
-and by arbitrary set-indexed disjunctions~$\bigvee$. The existential
+and by arbitrary set-indexed disjunctions~$\bigvee$. Existential
 quantification can be over any sorts of extended geometric logic, including the derived sorts. An
 \emph{extended geometric sequent} is a sequent of the form~$(\varphi
 \seq{\vec x} \psi)$ where~$\varphi$ and~$\psi$ are extended geometric
@@ -1301,6 +1320,7 @@ The proof of Theorem~\ref{thm:definability} used the Nullstellensatz
 of Theorem~\ref{thm:nullstellensatz}. Conversely, the internal statement of
 Theorem~\ref{thm:definability} entails the internal
 statement~\eqref{eq:nullstellensatz} of Theorem~\ref{thm:nullstellensatz} in
+% XXX "the internal statement"? be more clear...
 extended geometric logic. Indeed, leaving the translation to formal logic to
 the reader, let~$\sigma = (\varphi \seq{\vec x} \psi)$ be a
 geometric$^\star$ sequent over the signature of~$\ul{\TT}/U_\TT$ such
@@ -1343,15 +1363,15 @@ extended geometric$^\star$ sequent~$\sigma$ over the signature
 of~$\ul{\TT}/U$, the following statements are equivalent:
 \begin{enumerate}
 \item The sequent~$\sigma$ holds for~$U_\TT$. \smallskip
-\item The sequent~$\sigma$ is provable$^\star$ modulo~$\TT/U_\TT$ in extended
+\item The sequent~$\sigma$ is provable$^\star$ modulo~$\ul{\TT}/U_\TT$ in extended
 geometric logic.
 \end{enumerate}
 \end{thm}
 
 \begin{proof}The implication~$(2) \Rightarrow (1)$ is
-immediate since~$U_\TT$ is a model of~$\TT/U_\TT$. The converse direction is by
+immediate since~$U_\TT$ is a model of~$\ul{\TT}/U_\TT$. The converse direction is by
 Lemma~\ref{lemma:extended-conservative}, which holds internally in~$\Set[\TT]$
-as the proof we supplied is constructive, and the Nullstellensatz for ordinary
+as the proof we supplied is constructive, and by the Nullstellensatz for ordinary
 geometric logic of Theorem~\ref{thm:nullstellensatz}.
 \end{proof}
 
@@ -1368,6 +1388,7 @@ modulo the axioms of~$\TT$ and the additional axiom scheme
   \cdots \times X_n)$ is bijective},
 \end{equation}
 where~$X_1,\ldots,X_n$ is any list of sorts.
+% XXX think about variables...
 \end{enumerate}
 \end{thm}
 

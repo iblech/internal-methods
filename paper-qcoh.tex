@@ -286,6 +286,7 @@ classifying toposes~\cite[Speculation~22.1]{blechschmidt:phd}. This hope turned
 out to be true, in the sense we will now indicate.
 \medskip
 
+
 \paragraph{A general Nullstellensatz} To explain the relevant background, the
 somewhat vague question ``to which extent does the classifying
 topos~$\Set[\TT]$ realize that it is the classifying topos for~$\TT$?'' is a
@@ -356,7 +357,7 @@ if~$\ul{\TT}/U_\TT$ proves~$\sigma$.}
 
 To illustrate Theorem~\ref{thm:nullstellensatz0}, let~$\TT$ be the theory of
 rings and let~$\sigma$ be the sequent~$(f(x) = 0 \seq{x} g(x) = 0)$ for some
-polynomials~$f$ and~$g$ with coefficients in~$U_\TT$. To say that~$\sigma$ holds for~$U_\TT$ amounts to
+polynomials~$f$ and~$g$. To say that~$\sigma$ holds for~$U_\TT$ amounts to
 saying that any zero~$x \? U_\TT$ of~$f$ is also a zero of~$g$, and to say
 that~$\ul{\TT}/U_\TT$ proves~$\sigma$ amounts to saying that
 in~$U_\TT[X]/(f(X))$, the free~$U_\TT$-algebra on one generator~$X$ subject to
@@ -389,20 +390,21 @@ it is the universal such source in the sense that any first-order formula
 which holds for~$U_\TT$ can be deduced from~\eqref{eq:nullstellensatz0}:
 
 \begin{thm}\label{thm:characterization0}
-Let~$\TT$ be a geometric theory. Let~$\alpha$ be a first-order
+Let~$\TT$ be a geometric theory. Let~$\varphi$ be a first-order
 formula over the signature of~$\TT$. Then the following statements are
 equivalent.
 \begin{enumerate}
-\item The formula~$\alpha$ holds for~$U_\TT$. \smallskip
-\item The formula~$\alpha$ is provable in first-order intuitionistic logic
+\item The formula~$\varphi$ holds for~$U_\TT$. \smallskip
+\item The formula~$\varphi$ is provable in first-order intuitionistic logic
 modulo the axioms of~$\TT$ and the additional axiom~\eqref{eq:nullstellensatz0}.
 \end{enumerate}
 \end{thm}
 
-It is not entirely obvious how to correctly phrase
-axiom~\eqref{eq:nullstellensatz0} in first-order logic, an issue
-which we will discuss when we restate Theorem~\ref{thm:characterization0} in
-the body of this note (Theorem~\ref{thm:characterization}).
+It is not entirely obvious how to correctly formalize
+axiom~\eqref{eq:nullstellensatz0} in unadorned (XXX) first-order logic, and in
+fact, we do not believe that an entirely faithful formalization is possible.
+We will resolve this issue in the body of this note, where we will restate
+Theorem~\ref{thm:characterization0} in a more precise form (Theorem~\ref{thm:characterization}).
 
 Theorem~\ref{thm:characterization0} characterizes the first-order formulas
 which hold for the generic model. We could of course wish for a more explicit
@@ -553,6 +555,14 @@ the~$\TT$-provably functional formula~$f(x_1,\ldots,x_n) = y$ and a relation
 symbol~$R \rightarrowtail X_1 \cdots X_n$ by the subobject~$\yon\{\vec x\_ R(\vec
 x)\} \rightarrowtail \yon\{\vec x\_ \top\}$.
 
+\begin{rem}\label{rem:unique-descriptions}
+Sections of the sheaf~$\yon\{ y \? Y\_ \top \}$ over a stage~$A = \{ \vec x\_
+\varphi \} \in C_\TT$ are in one-to-one correspondence with ``unique
+descriptions'' over~$A$, that is formulas~$\theta$ in the context~$\vec x, y$
+such that~$\TT$ proves~$(\varphi \seq{\vec x} \exists!y\?Y\_ \theta)$, up to
+provable equivalence.
+\end{rem}
+
 \begin{thm}The generic model is universal in the sense that for any
 Grothendieck topos~$\E$, the functor
 \[ \text{(category of geometric morphisms~$\E \to \Set[\TT]$)} \longrightarrow
@@ -572,8 +582,8 @@ statements are equivalent:
 \smallskip
 \item $\{\vec x\_ \alpha\} \models \varphi$, where the free variables
 in~$\varphi$ are interpreted as their generic values over~$\{\vec
-x\_\alpha\}$, that is the projection maps~$\{ \vec x\_ \alpha \} \to \{
-x_i\?X_i\_ \top \})$. \smallskip
+x\_\alpha\}$, that is as the projection maps~$\{ \vec x\_ \alpha \} \to \{
+x_i\?X_i\_ \top \}$. \smallskip
 \item $\TT$ proves~$(\alpha \seq{\vec x} \varphi)$.
 \end{enumerate}
 \end{prop}
@@ -605,33 +615,56 @@ object of contexts (the object of lists of sorts); the object of terms
 propositions (again equipped with such a morphism); the object of geometric
 formulas (again so); and the object of geometric sequents (again so). A internal
 geometric theory~$\TT$ over~$\Sigma$ is then given by a subobject of the object
-of geometric sequents, interpreted as the object of axioms of~$\TT$. Given such
-an internal theory~$\TT$, we can build the object of proof trees of~$\TT$.
+of geometric sequents, interpreted as the object of axioms of~$\TT$.
+Given such an internal theory~$\TT$, we can build the subobject of the provable
+sequents.
 
-From the internal point of view of~$\E$, these objects can be obtained by
-simply carrying out the usual constructions of the set of contexts, the set of
-terms and so on. Having the object of proof trees at hand, we can define
-the notion of provability:
+For the most part, these objects can be obtained by simply carrying out the
+familiar constructions of the set of contexts, of the set of terms and so on in
+the internal language of~$\E$. Some care is required in constructing the
+object of geometric formulas: Inductively closing the object of basic
+propositions under the connectives of geometric logic will fail because of size
+issues -- even if we carry this out in~$\Set$, we will end up with a proper
+class. Instead the object of geometric formulas should be constructed so as to
+only contain geometric formulas in canonical form~(``$\bigvee \exists \cdots
+\exists\_ \varphi_1 \wedge \cdots \wedge \varphi_n$'' for atomic
+propositions~$\varphi_i$). There is no real loss in this restriction since in
+foundations where it makes sense to say this, any geometric formula is provably
+equivalent to a geometric formula in canonical form.
 
-\begin{defn}\label{defn:provability}
-Let~$\TT$ be a geometric theory internal to a Grothendieck topos~$\E$.
-Internally to~$\E$, an element~$\sigma$ of the object of geometric sequents is
-\emph{provable modulo~$\TT$} if and only if there is an element of the object
-of proof trees of~$\TT$ which has~$\sigma$ as its conclusion.\end{defn}
+% XXX similarily
+Similarly, we cannot construct the subobject of provable sequents by first
+constructing an object of raw (arbitrarily-branching) trees and then cutting
+down to an object of correctly formed proof trees. Instead, the subobject of
+provable sequents can be obtained by intersecting, internally to~$\E$, all
+subsets of the set of sequents which are closed under the rules of geometric
+logic.\footnote{Equivalently one can appeal to the Knaster--Tarski fixed point
+theorem, which is constructively valid in the form we require
+here~\cite{bauer-lumsdaine:bourbaki-witt}, to construct the least fixed point
+of the operator which, given a set~$M$ of geometric sequents, computes the set of
+geometric sequents which can be derived from those in~$M$ in at most one step.
+Details on how to carry out such kinds of inductive constructions can be found
+in~\cite{blass:induction} and more specifically in
+\cite[Chapter~III]{henry:phd}.}
+
+None of these complications arise when setting up the theory of internal
+coherent theories.
 
 \begin{ex}An ordinary geometric theory is the same as a geometric theory
 internal to the topos~$\Set$. A geometric sequent is provable in the ordinary
-sense if and only if, from the internal point of view of~$\Set$, it is provable
-in the sense of Definition~\ref{defn:provability}.\end{ex}
+sense if and only if, from the internal point of view of~$\Set$, it is
+contained in the object of provable sequents.\end{ex}
 
 \begin{ex}An ordinary geometric theory~$\TT$ over an ordinary
 signature~$\Sigma$ can be pulled back along a geometric morphism~$\E \to \Set$
 to yield an internal geometric theory~$\ul{\TT}$ over the internal
 signature~$\ul{\Sigma}$ in~$\E$. The object of sorts of~$\ul{\Sigma}$ is the pullback of
-the set of sorts of~$\Sigma$, and so on.\end{ex}
+the set of sorts of~$\Sigma$, the object of function symbols of~$\ul{\Sigma}$
+is the pullback of the set of function symbols of~$\Sigma$, and so on.\end{ex}
 
 Disjunctions appearing in internal geometric formulas may be indexed by
-arbitrary objects of the topos, just like disjunctions appearing in ordinary
+arbitrary objects of the topos (that is, disjunctions may be taken over
+arbitrary subobjects of disjuncts), just like disjunctions appearing in ordinary
 external geometric formulas over an ordinary signature may be indexed by
 arbitrary sets. If~$\Sigma$ is an internal signature in a Grothendieck topos~$\E$, the object of geometric
 formulas over~$\Sigma$ has an important
@@ -639,59 +672,14 @@ subobject, the subobject of those formulas such that locally, any appearing
 disjunction is indexed by a constant sheaf. Such internal geometric formulas
 will be called \emph{geometric$^\star$ formulas}.
 
-Correspondingly, there is a subobject of the object of proof trees, the object
-of~\emph{proof$^\star$ trees} where any occurring geometric formula is a
-geometric$^\star$ formula. The shape of such a proof$^\star$ tree is locally
-given by the shape of an ordinary external proof tree.
-
-\begin{defn}\label{defn:provability*}
-Let~$\TT$ be a geometric theory internal to a Grothendieck topos~$\E$.
-Internally to~$\E$, an element~$\sigma$ of the object of geometric$^\star$
-sequents is \emph{provable$^\star$ modulo~$\TT$} if and only if there is an
-element of the object of proof$^\star$ trees of~$\TT$ which has~$\sigma$ as its
-conclusion.\end{defn}
-
-The following lemma shows that for coherent theories, there is no difference
-between provability and provability$^*$.
-
-\begin{lemma}\label{lemma:provability-in-coherent-case}
-Let~$\E$ be a Grothendieck topos. Let~$\TT$ be a coherent theory
-internal to~$\E$. Let~$\sigma$ be a coherent sequent over the signature
-of~$\TT$. Then the following statements are equivalent.
-\begin{enumerate}
-\item $\E \models \speak{There is a~$\TT$-derivation of~$\sigma$ of externally
-finite shape}.$ \smallskip
-\item $\E \models \speak{There is a~$\TT$-derivation of~$\sigma$ of arbitrary
-external shape}$, that is~$\E \models \speak{$\sigma$ is provable$^\star$
-modulo~$\TT$}$. \smallskip
-\item $\E \models \speak{There is a~$\TT$-derivation of~$\sigma$ of arbitrary
-internal shape}$, that is~$\E \models \speak{$\sigma$ is provable
-modulo~$\TT$}$. \smallskip
-\item $\E \models \speak{There is a~$\TT$-derivation of~$\sigma$ of internally
-finite shape}.$
-\end{enumerate}
-\end{lemma}
-
-\begin{proof}It is trivial that~(1) implies~(2) implies~(3).
-
-To verify that~(3) implies~(4), we can mimic the usual proof of that for
-coherent sequents, being derivable in geometric logic implies being derivable
-in coherent logic, in
-the internal language of~$\E$: There is a variant of the syntactic
-site of~$\TT$ which is built using only coherent sequents and finitary
-derivability~\cite[Section~1.4]{caramello:tst}. The sheaf topos over this site
-is another model for the classifying topos of~$\TT$, and still validates, like
-any Grothendieck topos, full infinitary logic. Hence, if~$\sigma$
-is~$\TT$-derivable by a proof tree of arbitrary shape, then~$\sigma$ holds in
-this model of the classifying topos. By the analogue of
-Proposition~\ref{prop:basic-truth} for this model, we obtain
-that~$\sigma$ is~$\TT$-derivable by a proof tree of finite shape.
-
-That~(4) implies~(1) is a routine exercise exploiting that
-\[ \E \models \forall X\_ \speak{$X$ is Kuratowski-finite} \Leftrightarrow
-  \bigvee_{n \geq 0} \exists x_1,\ldots,x_n \? X\_
-  \forall x \? X\_ \bigvee_{i=1}^n x = x_i. \qedhere \]
-\end{proof}
+\begin{rem}A priori, there are two different notions of what it could mean that
+a geometric$^\star$ formula is provable: It could be provable when regarded as
+a geometric formula, or we could allow only geometric$^\star$ formulas as
+intermediate formulas in proofs. One can show that these two notions coincide,
+similarly to how a coherent sequent is provable in geometric logic if and only
+if it is provable in coherent logic. Since we do not require this fact in the
+course of this note, we omit a detailed verification.
+\end{rem}
 
 
 \section{The first-order Nullstellensatz}
@@ -748,7 +736,7 @@ signature of~$\TT$ in a context~$x_1\?X_1,\ldots,x_n\?X_n$. Then
 \vdash_{[]} \alpha)$}, \]
 where the free variables~$\vec x$ occurring in~$\alpha$ are first interpreted as in
 Proposition~\ref{prop:basic-truth} and then regarded as the induced constant
-symbols.
+symbols provided by the enlarged signature of~$\ul{\TT}/U_\TT$.
 \end{lemma}
 
 \begin{proof}By induction on the structure of~$\alpha$. The cases
@@ -762,7 +750,7 @@ Let~$\TT$ be a geometric theory.
 Let~$\varphi$ be a section of the sheaf of geometric$^\star$ formulas over the signature
 of~$\ul{\TT}/U_\TT$ over a stage~$A \in \C_\TT$. Then there is a covering~$(A_i \to A)_i$
 of~$A$ such that for each index~$i$, there is a formula~$\varphi_i$ over the signature
-of~$\TT/U_\TT(A_i)$ such that~$A_i \models \speak{$\ul{\TT}/U_\TT$ proves$^\star$
+of~$\TT/U_\TT(A_i)$ such that~$A_i \models \speak{$\ul{\TT}/U_\TT$ proves
 $(\varphi \dashv\vdash \varphi_i)$}$.
 \end{lemma}
 
@@ -785,14 +773,18 @@ locally constant maps, there is a covering~$(\{ \vec y_j\_ \alpha_j \}
 the desired formula~$\varphi'$, we replace any such occurrence~$R(\ldots)$
 in~$\varphi$ by
 \[ \bigvee_j \bigl((\exists \vec y_j\_ \theta_j) \wedge R_j(\ldots)\bigr). \]
+(The formulas~$\theta_j$ will typically contain instances of the
+variables~$\vec x$. When writing down this replacement, we treat these as in
+Lemma~\ref{lemma:truth-to-provability}. Hence this replacement is set in the
+same context as~$\varphi$, only that new constant symbols might occur.)
 In a similar vein we treat any occurrence of function symbols.
 
 The resulting formula~$\varphi'$ is a geometric formula over the signature
 of~$\TT/U_\TT(A)$.
-The verification of~$A \models \speak{$\ul{\TT}/U_\TT$ proves$^\star$
+The verification of~$A \models \speak{$\ul{\TT}/U_\TT$ proves
 $(\varphi \dashv\vdash \varphi')$}$ rests on the observation
-\[ A \models \speak{$\ul{\TT}/U_\TT$ proves$^\star$ $\bigl((\exists \vec y_k\_
-\theta_k) \seq{[]} \bigvee_\ell \{ \top \,|\, \text{$(\exists \vec y_\ell\_ \theta_\ell)$
+\[ A \models \speak{$\ul{\TT}/U_\TT$ proves $\bigl((\exists \vec y_k\_
+\theta_k) \seq{[]} \bigvee \{ \top \,|\, \text{$(\exists \vec y_k\_ \theta_k)$
 holds for~$U_\TT$} \}\bigr)$} \]
 which in turn can be checked on the covering~$(\{ \vec y_j\_ \alpha_j \}
 \xrightarrow{[\theta_j]} \{ \vec x\_ \alpha \})_j$, applying
@@ -801,7 +793,6 @@ hence~$\ul{\TT}$) proves~$((\exists \vec y_j\_ \theta_j) \wedge (\exists \vec
 y_k\_ \theta_k) \seq{\vec x} \bigvee \{ \top \,|\, j = k \})$. (This kind of
 reasoning also appears, for instance, in~\cite[p.~20]{blass:seven-trees}.)
 \end{proof}
-% XXX check last paragraph; change proves* to proves.
 
 \begin{thm}\label{thm:nullstellensatz}
 Let~$\TT$ be a geometric theory. Then, internally to~$\Set[\TT]$, for any
@@ -809,44 +800,45 @@ geometric$^\star$ sequent~$\sigma$ over the signature of~$\ul{\TT}/U_\TT$, the
 following statements are equivalent:
 \begin{enumerate}
 \item The sequent~$\sigma$ holds for~$U_\TT$. \smallskip
-\item The sequent~$\sigma$ is provable$^\star$ modulo~$\ul{\TT}/U_\TT$.
+\item The sequent~$\sigma$ is provable modulo~$\ul{\TT}/U_\TT$.
 \end{enumerate}
 \end{thm}
 
 \begin{proof}The direction~$(2) \Rightarrow (1)$ is immediate because~$U_\TT$ is, from the
-internal point of view of~$\Set[\TT]$, a~$\ul{\TT}/U_\TT$-model. Hence even the
-following stronger statement holds internally: \emph{For any geometric
-sequent~$\sigma$, if~$\ul{\TT}/U_\TT$ proves~$\sigma$, then~$\sigma$ holds
-for~$U_\TT$.}
+internal point of view of~$\Set[\TT]$, a~$\ul{\TT}/U_\TT$-model.
 
 For the direction~$(1) \Rightarrow (2)$ we have to verify that, given any
 stage~$A \in \C_\TT$ and any section~$\sigma$ of the sheaf of
 geometric$^\star$ sequents over~$A$, if~$A \models
 \speak{$\sigma$ holds for~$U_\TT$}$ then~$A \models
-\speak{$\ul{\TT}/U_\TT$ proves$^\star$~$\sigma$}$. By
+\speak{$\ul{\TT}/U_\TT$ proves~$\sigma$}$. By
 Lemma~\ref{lemma:locally-constant} we may suppose that~$\sigma$ is an
 (external) geometric sequent over the signature of~$\TT/U_\TT(A)$.
 
 Writing~$A = \{ \vec x\_ \alpha \}$ and~$\sigma = (\varphi \seq{\vec y} \psi)$,
-we have~$\{ \vec x\_ \alpha \} \models \forall \vec y\_ (\varphi \Rightarrow \psi)$,
-hence~$\{ \vec x, \vec y\_ \alpha \wedge \varphi \} \models \psi$. Thus~$\TT$
-proves~$(\alpha \wedge \varphi \seq{\vec x, \vec y} \psi)$. This proof can be
-pulled back from~$\Set$ to~$\Set[\TT]/\yon A$ to show~$A \models
-\speak{$\ul{\TT}/U_\TT$ proves$^\star$~$(\alpha
+we have~$\{ \vec x\_ \alpha \} \models \forall \vec y\_ (\varphi \Rightarrow \psi)$ by assumption,
+hence~$\{ \vec x, \vec y\_ \alpha \wedge \varphi \} \models \psi$ (where we
+inline any occurence of an element of~$U_\TT(A)$ as a constant symbol
+in~$\varphi$, recalling Remark~\ref{rem:unique-descriptions}).
+Thus~$\TT$
+proves~$(\alpha \wedge \varphi \seq{\vec x, \vec y} \psi)$ (where we now have
+to do the same inlining for~$\psi$ as well). This proof can be
+pulled back from~$\Set$ to~$\Set[\TT]/\yon A$ to obtain~$A \models
+\speak{$\ul{\TT}/U_\TT$ proves~$(\alpha
 \wedge \varphi \seq{\vec x, \vec y} \psi)$}$. By
 Lemma~\ref{lemma:truth-to-provability}, we also have~$A \models
-\speak{$\ul{\TT}/U_\TT$ proves$^\star$~$(\top \seq{[]} \alpha)$}$ (where the free
+\speak{$\ul{\TT}/U_\TT$ proves~$(\top \seq{[]} \alpha)$}$ (where the free
 variables occurring in~$\alpha$ are interpreted as the generic values available
-over~$A$), hence~$A \models \speak{$\ul{\TT}/U_\TT$ proves$^\star$~$(\varphi
+over~$A$), hence~$A \models \speak{$\ul{\TT}/U_\TT$ proves~$(\varphi
 \seq{\vec y} \psi)$}$.
 \end{proof}
 
 The force of the Nullstellensatz of Theorem~\ref{thm:nullstellensatz} is for
 sequents~$\sigma$ which are not of the form~$(\top \seq{[]} \varphi)$. Indeed,
-for those special sequents, even~$\TT$ proves~$(\speak{$\sigma$ holds for~$U_\TT$}
-\Rightarrow \speak{$\ul{\TT}/U_\TT$ proves~$(\top \seq{[]} \varphi)$})$, as can
-be seen by a simple induction on the structure of~$\varphi$. For more general
-sequents, Theorem~\ref{thm:nullstellensatz} expresses a nontrivial fact: that
+for those special sequents, the implication~$(\text{$\sigma$ holds for~$U_\TT$}
+\Rightarrow \text{$\ul{\TT}/U_\TT$ proves~$(\top \seq{[]} \varphi)$})$
+can be proven by a simple induction on the structure of~$\varphi$. Only for more general
+sequents does Theorem~\ref{thm:nullstellensatz} express a nontrivial fact: that
 truth of an universally-quantified conditional statement implies a single
 unquantified unconditional statement.
 
@@ -865,7 +857,7 @@ of~$\TT$. Assume that the generic model~$U_\TT$ is a sheaf for the topology
 on~$\Set[\TT]$ cutting out the subtopos~$\Set[\TT']$. Then the following
 statement holds internally to~$\Set[\TT']$:
 \[ \text{A geometric$^\star$ sequent~$\sigma$ with Horn consequent holds for~$U_{\TT'}$
-  iff~$\ul{\TT}/U_\TT$ proves$^\star$~$\sigma$.} \]
+  iff~$\ul{\TT}/U_\TT$ proves~$\sigma$.} \]
 \end{thm}
 
 \begin{proof}In general, the generic model of~$\TT'$ is the pullback of the
@@ -885,7 +877,7 @@ it hence suffices to verify, internally to~$\Set[\TT]$, that:
 \begin{multline*}
   \text{\emph{For any geometric$^\star$ sequent~$\sigma = (\varphi \seq{\vec x} \psi)$ where~$\psi$ is a Horn formula,}} \\
     \text{\emph{if~$\forall x_1,\ldots,x_n\?U_\TT\_ (\varphi \Rightarrow \nabla
-    \psi)$, then~$\ul{\TT}/U_\TT$ proves$^\star$~$\sigma$.}}
+    \psi)$, then~$\ul{\TT}/U_\TT$ proves~$\sigma$.}}
 \end{multline*}
 Since~$\nabla$ commutes with finite conjunctions and since the sheaf assumption
 implies that $\nabla(s = t)$ is equivalent
@@ -913,52 +905,70 @@ geometric$^\star$ sequents. For instance, in the case that~$\TT$ is the theory
 of rings, the generic model~$U_\TT$ validates the coherent
 formula~$\speak{any element~$x$ for which~$(x = 0 \Rightarrow 1 = 0)$ is invertible}$, but~$\ul{\TT}/U_\TT$
 does not prove this fact, as it is for instance not validated by the polynomial
-algebra~$U_\TT[X]$. However, Theorem~\ref{thm:nullstellensatz} still plays an
-important role in understanding first-order formulas:
+algebra~$U_\TT[X]$.
+
+However, Theorem~\ref{thm:nullstellensatz} still plays an
+important role in understanding first-order formulas, as it is at the core of
+our proposed characterization of the first-order formulas validated by the
+generic model.
+
+\begin{scholium}\label{scholium:nullstellensatz-more-specific}
+Let~$\TT$ be a geometric theory. Let~$\vec x$ be a context over the signature
+of~$\TT$. Let~$(\sigma_i)_i$ be a set of geometric sequents, where each context
+is of the form~$\vec x, \vec y_i$ for some additional list~$\vec y_i$.
+Write~$\sigma_i = (\varphi_i \seq{\vec x, \vec y_i} \psi_i)$. Then, internally
+to~$\Set[\TT]$, it holds that
+\[ \forall \vec x\_
+  \bigl(\bigwedge_i (\forall \vec y_i\_ \varphi_i \Rightarrow \psi_i)\bigr) \Longrightarrow
+  \bigvee_\alpha \alpha,
+\]
+where the disjunction ranges over all those geometric formulas~$\alpha$ in the
+context~$\vec x$ such that for each index~$i$, the theory~$\TT$ proves~$(\alpha
+\wedge \varphi_i \seq{\vec x, \vec y_i} \psi_i)$.
+\end{scholium}
+
+\begin{proof}Immediate from the proof of Theorem~\ref{thm:nullstellensatz}.
+\end{proof}
 
 \begin{thm}\label{thm:characterization}
-Let~$\TT$ be a geometric theory. Let~$\alpha$ be a first-order
+Let~$\TT$ be a geometric theory. Let~$\chi$ be a (finitary or infinitary) first-order
 formula over the signature of~$\TT$. Then the following statements are
 equivalent.
 \begin{enumerate}
-\item The formula~$\alpha$ holds for~$U_\TT$. \smallskip
-\item The formula~$\alpha$ is provable in first-order intuitionistic logic
-modulo the axioms of~$\TT$ and the additional axioms
+\item The formula~$\chi$ holds for~$U_\TT$. \smallskip
+\item The formula~$\chi$ is provable in infinitary first-order intuitionistic
+logic modulo the axioms of~$\TT$ adjoined by, for each geometric
+sequent~$\sigma = (\varphi \seq{\vec x, \vec y} \psi)$ and for each splitting
+of its context into two parts~$\vec x, \vec y$, the additional axiom
 \begin{equation}\label{eq:nullstellensatz}\tag{$\ddagger$}
-  \speak{$\sigma$ holds for~$U_\TT$} \Longrightarrow \speak{$\ul{\TT}/U_\TT$
-  proves$^\star$~$\sigma$}
+  \forall \vec x\_
+  \bigl((\forall \vec y\_ \varphi \Rightarrow \psi) \Longrightarrow
+  \bigvee_\alpha \alpha\bigr),
 \end{equation}
-where~$\sigma$ ranges over the geometric formulas over the signature of~$\TT$.
-% XXX include free variables
+where the disjunction ranges over all those geometric formulas~$\alpha$ in the
+context~$\vec x$ such that~$\TT$ proves~$(\alpha \wedge \varphi \seq{\vec x,\vec
+y} \psi)$.
 \end{enumerate}
 \end{thm}
 
-In stating the axiom scheme~\eqref{eq:nullstellensatz}, we are slightly abusing
-notation. At face value, this axiom scheme would only make sense in the internal
-language of~$\Set[\TT]$, where the generic model~$U_\TT$ actually lives.
-However, here we are interpreting it in a purely syntactic context; when
-writing~``$U_\TT$'', we actually mean the tautologous ``model'' in which any
-sort of~$\TT$ is interpreted by the sort itself. For instance, if~$\sigma =
-(\varphi \seq{x_1\!\?\!X_1,\ldots,x_n\!\?\!X_n} \psi)$ is a sequent,
-then~$\speak{$\sigma$ holds for~$U_\TT$}$ is to be interpreted as the
-formula~``$\forall x_1\?X_1\_ \ldots \forall x_n\?X_n\_ (\varphi \Rightarrow
-\psi)$''.
+To a first approximation, axiom scheme~\eqref{eq:nullstellensatz} is just a
+rendition of the (nontrivial direction of the) statement of the Nullstellensatz
+in infinitary first-order logic. However, the conclusion ``$\sigma$ is provable
+modulo~$\ul{\TT}/U_\TT$'' does not seem to be expressible in this logic.
+The conclusion~``$\bigvee_\alpha \alpha$'' of axiom
+scheme~\eqref{eq:nullstellensatz} is a strengthening of ``$\sigma$ is provable
+modulo~$\ul{\TT}/U_\TT$'' which can. We recall that in infinitary first-order
+formulas, we allow set-indexed disjunctions (but not set-indexed conjunctions).
 
+% XXX hyphenation scholium
 \begin{proof}[Proof of Theorem~\ref{thm:characterization}]
-The direction~$(2) \Rightarrow (1)$ is immediate, as the internal
-language of~$\Set[\TT]$ validates first-order intuitionistic logic and as it
-validates the
-axiom scheme~\eqref{eq:nullstellensatz} by Theorem~\ref{thm:nullstellensatz}.
-
-For the converse direction, we note that, given a geometric sequent~$\sigma$
-over the signature of~$\TT$, the statement~$\speak{$\ul{\TT}/U_\TT$
-proves$^\star$~$\sigma$}$ can be expressed as a geometric formula over the
-signature of~$\TT$. Applying this observation successively to subformulas
-of the given formula~$\alpha$, Theorem~\ref{thm:nullstellensatz} on the
-semantic side and the axiom scheme~\eqref{eq:nullstellensatz} on the syntactic side imply that we may
-assume that~$\alpha$ is in fact a geometric formula. Hence we are reduced to
-the basic fact that, for geometric formulas~$\varphi$, $\Set[\TT] \models
-\varphi$ implies that~$\TT$ proves~$\varphi$.
+Any infinitary first-order formula can be simplified to an equivalent geometric
+formula -- on the semantic side by repeatedly applying
+Scho\-lium~\ref{scholium:nullstellensatz-more-specific}, on the semantic side by
+repeatedly applying axiom scheme~\eqref{eq:nullstellensatz}. Hence we are
+reduced to the basic fact (Proposition~\ref{prop:basic-truth}) that, for
+geometric formulas~$\varphi$, $\Set[\TT] \models
+\varphi$ if and only if~$\TT$ proves~$\varphi$.
 \end{proof}
 
 The Nullstellensatz of Theorem~\ref{thm:nullstellensatz} and the
@@ -966,15 +976,14 @@ characterization of Theorem~\ref{thm:characterization} pertain to geometric
 logic and hence require some care in dealing with the flexibility of
 disjunctions. In particular, the internal statement of
 Theorem~\ref{thm:nullstellensatz} requires external ingredients in referring to
-geometric$^\star$ sequents and provability$^\star$. A natural question is
+geometric$^\star$ sequents. A natural question is
 therefore whether, in the case that~$\TT$ is a coherent theory, the statements
 of these two theorems can be simplified.
 
-As stated in Lemma~\ref{lemma:provability-in-coherent-case}, for coherent
-sequents modulo a coherent theory there is no difference between provability in
-geometric logic, provability$^\star$ in geometric logic and provability in
-coherent logic. However, while geometric logic is powerful enough to express
-provability$^\star$ in geometric logic, coherent logic is not powerful enough
+However, while geometric logic is powerful enough to express
+provability in geometric logic (or rather the strenghtening we employed in
+axiom scheme~\eqref{eq:nullstellensatz}),
+coherent logic is not powerful enough
 to express provability in coherent logic. ``Coherent logic cannot eat itself.''
 Hence the analogue of Theorem~\ref{thm:characterization} cannot be
 formulated for coherent logic.
@@ -983,12 +992,12 @@ A fragment of logic which is still finitary, but is powerful enough to express
 its own provability predicate, is \emph{coherent existential fixed-point
 logic}, coherent logic enriched by list sorts and the fixed-point operator of
 existential fixed-point logic~\cite{blass:topoi-and-computation,blass:existential-fixed-point-logic}.
-The list sorts are necessary to express raw terms, raw formulas and raw
-sequents; the fixed-point operator is then used to express well-formedness of
+The list sorts can be used to express raw terms, raw formulas and raw
+sequents; the fixed-point operator can then be used to express well-formedness of
 raw terms, raw formulas and raw sequents; and to express provability. For this
 fragment, we have the following characterization.
 
-\begin{scholium}Let~$\TT$ be a coherent theory (or more generally theory in coherent
+\begin{scholium}Let~$\TT$ be a coherent theory (or more generally a theory in coherent
 existential fixed-point logic). Let~$\alpha$ be a finitary first-order
 formula over the signature of~$\TT$. Then the following statements are
 equivalent.
@@ -1001,13 +1010,41 @@ modulo the axioms of~$\TT$ and the additional axioms
   proves~$\sigma$}
 \]
 where~$\sigma$ ranges over the formulas of coherent existential fixed-point
-logic over the signature of~$\TT$.
+logic over the signature of~$\TT$. (When referring to~``$U_\TT$'', we here mean
+the tautologous ``model'' in which any
+sort of~$\TT$ is interpreted by the sort itself. For instance, if~$\sigma =
+(\varphi \seq{x_1\!\?\!X_1,\ldots,x_n\!\?\!X_n} \psi)$ is a sequent,
+then~$\speak{$\sigma$ holds for~$U_\TT$}$ is to be interpreted as the
+formula~``$\forall x_1\?X_1\_ \ldots \forall x_n\?X_n\_ (\varphi \Rightarrow
+\psi)$''.)
 \end{enumerate}
 \end{scholium}
 
 \begin{proof}The proofs of Theorem~\ref{thm:nullstellensatz} and
 Theorem~\ref{thm:characterization} can be adapted to the setting of coherent
 existential fixed-point logic.
+\end{proof}
+
+On the other end, we can ask for a generalization of
+Theorem~\ref{thm:characterization} to the extension of infinitary first-order
+logic where we additionally allow set-indexed conjunctions. Such a
+generalization is given by the following scholium.
+
+\begin{scholium}
+Let~$\TT$ be a geometric theory. Let~$\chi$ be a formula in infinitary
+first-order formula enriched by set-indexed conjunctions over the signature
+of~$\TT$. Then the following statements are equivalent.
+\begin{enumerate}
+\item The formula~$\chi$ holds for~$U_\TT$. \smallskip
+\item The formula~$\chi$ is provable in infinitary first-order intuitionistic
+logic enriched by set-indexed conjunctions modulo the axioms of~$\TT$ adjoined
+by the displayed formulas of
+Scholium~\ref{scholium:nullstellensatz-more-specific}.
+\end{enumerate}
+\end{scholium}
+
+\begin{proof}The proof of Theorem~\ref{thm:characterization} carries over word
+for word.
 \end{proof}
 
 
@@ -1250,7 +1287,7 @@ An \emph{extended geometric formula} is a formula of extended geometric logic bu
 relation symbols by the logical
 connectives~${\top}\,{\bot}\,{\wedge}\,{\vee}\,{\exists}$
 and by arbitrary set-indexed disjunctions~$\bigvee$. Existential
-quantification can be over any sorts of extended geometric logic, including the derived sorts. An
+quantification can be over any of the sorts of extended geometric logic, including the derived sorts. An
 \emph{extended geometric sequent} is a sequent of the form~$(\varphi
 \seq{\vec x} \psi)$ where~$\varphi$ and~$\psi$ are extended geometric
 formulas and the sorts of the variables~$\vec x$ may be derived sorts.
@@ -1267,7 +1304,7 @@ geometric logic is just a thin layer over ordinary geometric logic.
 \begin{lemma}\label{lemma:extended-conservative}
 Let~$\sigma$ be an extended geometric sequent over the signature
 of a geometric theory~$\TT$. Then there is a set-indexed family~$(\sigma_i)_i$ of ordinary
-geometric sequents over the same signature, so that~$\sigma$ is provable in
+geometric sequents over the same signature such that~$\sigma$ is provable in
 extended geometric logic if and only if all the sequents~$\sigma_i$ are
 provable in ordinary geometric logic.\end{lemma}
 
@@ -1305,10 +1342,11 @@ geometric$^\star$ formulas over the signature of~$\ul{\TT}/U_\TT$ in the
 context~$\vec x$, where any two such formulas are identified if and only
 if~$\ul{\TT}/U_\TT$ proves them equivalent.
 Then the canonical morphism
-\[ \mathrm{Form}^\star_{\vec x}(\ul{\TT}/U_\TT)/(\dashv\vdash_{\vec x}) \longrightarrow P(X_1 \times
-\cdots \times X_n) \]
+\[ \mathrm{Form}^\star_{\vec x}(\ul{\TT}/U_\TT)/(\dashv\vdash_{\vec x})
+  \longrightarrow P(\yon X_1 \times \cdots \times \yon X_n) \]
 sending, internally speaking, the equivalence class of a geometric$^\star$
-formula~$\varphi$ to the subset~$\{ (x_1,\ldots,x_n) \,|\, \varphi \}$ is an isomorphism.
+formula~$\varphi$ to the subset~$\{ (x_1,\ldots,x_n) \,|\, \text{$\varphi$
+holds for~$(x_1,\ldots,x_n)$} \}$ is an isomorphism.
 \end{thm}
 
 \begin{proof}Injectivity is by the Nullstellensatz of
@@ -1319,24 +1357,21 @@ statement localizes well by Lemma~\ref{lemma:truth-to-provability}.
 
 \begin{rem}\label{rem:definability-entails-nullstellensatz}
 The proof of Theorem~\ref{thm:definability} used the Nullstellensatz
-of Theorem~\ref{thm:nullstellensatz}. Conversely, the internal statement of
-Theorem~\ref{thm:definability} entails the internal
-statement~\eqref{eq:nullstellensatz} of Theorem~\ref{thm:nullstellensatz} in
-% XXX "the internal statement"? be more clear...
-extended geometric logic. Indeed, leaving the translation to formal logic to
-the reader, let~$\sigma = (\varphi \seq{\vec x} \psi)$ be a
+of Theorem~\ref{thm:nullstellensatz}. Conversely,
+Theorem~\ref{thm:definability} implies Theorem~\ref{thm:nullstellensatz}.
+Indeed, arguing internally, let~$\sigma = (\varphi \seq{\vec x} \psi)$ be a
 geometric$^\star$ sequent over the signature of~$\ul{\TT}/U_\TT$ such
 that~$\sigma$ holds for~$U_\TT$. Then the subsets~$\{ (\vec x) \,|\, \varphi
 \}$ and~$\{ (\vec x) \,|\, \varphi \wedge \psi \}$ are equal. Hence the
 assumption implies that the formulas~$\varphi$
-and~$\varphi \wedge \psi$ are provably$^\star$ equivalent.
-Thus~$\ul{\TT}/U_\TT$ proves$^\star$~$(\varphi \seq{\vec x} \psi)$.
+and~$\varphi \wedge \psi$ are provably equivalent.
+Thus~$\ul{\TT}/U_\TT$ proves~$(\varphi \seq{\vec x} \psi)$.
 \end{rem}
 
 \begin{cor}Let~$\TT$ be a geometric theory. Let~$\{\vec x\_ \varphi\}$
 and~$\{\vec y\_ \psi\}$ be geometric formulas in given contexts. Then,
 internally to~$\Set[\TT]$, the canonical map from the set of equivalence classes
-of~$\ul{\TT}/U$-provably$^\star$ functional geometric$^\star$ formulas
+of~$\ul{\TT}/U$-provably functional geometric$^\star$ formulas
 from~$\{\vec x\_ \varphi\}$ to~$\{\vec y\_ \psi\}$ to the set of maps~$\{(\vec y)
 \,|\, \psi \}^{\{(\vec x) \,|\, \varphi\}}$ is a bijection.
 \end{cor}
@@ -1350,12 +1385,12 @@ For verifying surjectivity, let a map~$f : \{(\vec x) \,|\, \varphi\} \to
 \{(\vec y) \,|\, \psi \}$ be given. Then its graph is a subset of~$\vec X
 \times \vec Y$, hence by Theorem~\ref{thm:definability} given by a
 geometric$^\star$ formula~$\theta$. Because~$f$ is a map, this formula is
-functional; and by the Nullstellensatz, it is~$\ul{\TT}/U_\TT$-provably$^\star$ so.
+functional; and by the Nullstellensatz, it is~$\ul{\TT}/U_\TT$-provably so.
 
 For verifying injectivity, let~$\theta$ and~$\theta'$
-be~$\ul{\TT}/U_\TT$-provably$^\star$ functional formulas which give rise to
+be~$\ul{\TT}/U_\TT$-provably functional formulas which give rise to
 identical maps. Then they also give rise to identical graphs, hence
-are~$\ul{\TT}/U_\TT$-provably$^\star$ equivalent by
+are~$\ul{\TT}/U_\TT$-provably equivalent by
 Theorem~\ref{thm:definability}.
 \end{proof}
 
@@ -1365,7 +1400,7 @@ extended geometric$^\star$ sequent~$\sigma$ over the signature
 of~$\ul{\TT}/U$, the following statements are equivalent:
 \begin{enumerate}
 \item The sequent~$\sigma$ holds for~$U_\TT$. \smallskip
-\item The sequent~$\sigma$ is provable$^\star$ modulo~$\ul{\TT}/U_\TT$ in extended
+\item The sequent~$\sigma$ is provable modulo~$\ul{\TT}/U_\TT$ in extended
 geometric logic.
 \end{enumerate}
 \end{thm}
@@ -1378,11 +1413,11 @@ geometric logic of Theorem~\ref{thm:nullstellensatz}.
 \end{proof}
 
 \begin{thm}\label{thm:higher-order-characterization}
-Let~$\TT$ be a geometric theory. Let~$\alpha$ be a higher-order formula over
+Let~$\TT$ be a geometric theory. Let~$\chi$ be a higher-order formula over
 the signature of~$\TT$. Then the following statements are equivalent:
 \begin{enumerate}
-\item The formula~$\alpha$ holds for~$U_\TT$. \smallskip
-\item The formula~$\alpha$ is provable in higher-order intuitionistic logic
+\item The formula~$\chi$ holds for~$U_\TT$. \smallskip
+\item The formula~$\chi$ is provable in higher-order intuitionistic logic
 modulo the axioms of~$\TT$ and the additional axiom scheme
 \begin{equation}\label{eq:higher-order-nullstellensatz}\tag{$\P$}
   \speak{the map~$\mathrm{Form}^\star_{\vec
@@ -1396,7 +1431,7 @@ where~$X_1,\ldots,X_n$ is any list of sorts.
 
 \begin{proof}Theorem~\ref{thm:definability} on the semantic side and the axiom
 scheme~\eqref{eq:higher-order-nullstellensatz} on the syntactic side allow us to replace any mention of a
-powersort~$P(X)$ in~$\alpha$
+powersort~$P(X)$ in~$\chi$
 by~$\mathrm{Form}^\star_{x\!\?\!X}(\ul{\TT}/U_\TT)/({\dashv\vdash_x})$,
 similarly to how the proof of Lemma~\ref{lemma:extended-conservative} compiles
 extended geometric logic to ordinary geometric. Then we
@@ -1550,3 +1585,5 @@ Theorem~\ref{thm:quasicoherence} can shed light on this discrepancy. % XXX
 * XXX restrict to finitary first-order formulas in the scholium
 
 * XXX Upgrade Horn section to cartesian theories?
+
+* XXX fix "first-order" usage everywhere

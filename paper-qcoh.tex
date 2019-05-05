@@ -401,7 +401,7 @@ modulo the axioms of~$\TT$ and the additional axiom~\eqref{eq:nullstellensatz0}.
 \end{thm}
 
 It is not entirely obvious how to correctly formalize
-axiom~\eqref{eq:nullstellensatz0} in unadorned (XXX) first-order logic, and in
+axiom~\eqref{eq:nullstellensatz0} in unadorned first-order logic, and in
 fact, we do not believe that an entirely faithful formalization is possible.
 We will resolve this issue in the body of this note, where we will restate
 Theorem~\ref{thm:characterization0} in a more precise form (Theorem~\ref{thm:characterization}).
@@ -487,8 +487,8 @@ makes sense to speak of ``classifying gadgets'', and these analogues should
 shed light on the topos-theoretic version and ideally even explain it from deeper
 principles. In particular, preliminary computations indicate that there is a
 version of the Nullstellensatz for arithmetic universes, the predicative cousin
-of toposes introduced by Joyal~\cite{XXX} and recently an important object of
-consideration by Maietti and Vickers~\cite{XXX}.
+of toposes introduced by Joyal and recently an important object of
+consideration by Maietti and Vickers~\cite{maietti:au,maietti-vickers:induction,vickers:sketches}.
 \medskip
 
 
@@ -632,7 +632,6 @@ propositions~$\varphi_i$). There is no real loss in this restriction since in
 foundations where it makes sense to say this, any geometric formula is provably
 equivalent to a geometric formula in canonical form.
 
-% XXX similarily
 Similarly, we cannot construct the subobject of provable sequents by first
 constructing an object of raw (arbitrarily-branching) trees and then cutting
 down to an object of correctly formed proof trees. Instead, the subobject of
@@ -960,11 +959,10 @@ scheme~\eqref{eq:nullstellensatz} is a strengthening of ``$\sigma$ is provable
 modulo~$\ul{\TT}/U_\TT$'' which can. We recall that in infinitary first-order
 formulas, we allow set-indexed disjunctions (but not set-indexed conjunctions).
 
-% XXX hyphenation scholium
 \begin{proof}[Proof of Theorem~\ref{thm:characterization}]
 Any infinitary first-order formula can be simplified to an equivalent geometric
 formula -- on the semantic side by repeatedly applying
-Scho\-lium~\ref{scholium:nullstellensatz-more-specific}, on the semantic side by
+Scho\-li\-um~\ref{scholium:nullstellensatz-more-specific}, on the semantic side by
 repeatedly applying axiom scheme~\eqref{eq:nullstellensatz}. Hence we are
 reduced to the basic fact (Proposition~\ref{prop:basic-truth}) that, for
 geometric formulas~$\varphi$, $\Set[\TT] \models
@@ -1107,8 +1105,9 @@ Kuratowski-finite.
 \end{lemma}
 
 \begin{proof}It is an instructive exercise to verify that models of the stated
-form are compact. Conversely, let a~$\TT$-model~$M$ be given. Then~$\TT$ is the
-% XXX cite Adamek/Rosicky
+form are compact (in a slightly different context, this is done
+in~\cite[Theorem~3.12]{adamek-rosicky:presentable}). Conversely, let
+a~$\TT$-model~$M$ be given. Then~$\TT$ is the
 filtered colimit of all models over~$M$ which are of the stated form. If~$M$ is
 compact, the identity on~$M$ factors over such a model. Hence~$M$ is a
 retract of such a model and hence itself isomorphic to a model of this form.
@@ -1581,8 +1580,6 @@ Theorem~\ref{thm:quasicoherence} can shed light on this discrepancy. % XXX
   useful for further developments.
 
 * XXX Cite Filip Bár?
-
-* XXX restrict to finitary first-order formulas in the scholium
 
 * XXX Upgrade Horn section to cartesian theories?
 

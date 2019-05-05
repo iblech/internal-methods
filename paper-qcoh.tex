@@ -1223,13 +1223,24 @@ The generic~$\TT$-model is \emph{quasicoherent} in the following sense:
 From the point of view of~$\Set[\TT]$, for any finitely
 presentable~$U_\TT$-algebra~$A$ (finitely presentable object in the category
 of~$U_\TT$-algebras), the canonical~$U_\TT$-algebra homomorphism
-\[ A \longrightarrow (U_\TT)^{\Spec(A)} \]
+\[ A \longrightarrow (U_\TT)^{\Spec(A)},\ x \longmapsto -(x) \]
 is an isomorphism.
 \end{thm}
 
-% XXX justification name quasicoherent
+We use the term \emph{quasicoherent} in reference to algebraic geometry: For
+an~$\affl$-module~$M$ in the big Zariski topos of a scheme~$S$, where~$\affl$
+is the functor of points of the affine line over~$S$, there is a
+well-established notion of what it means that~$M$ is quasicoherent. This
+property can be characterized in the internal language: Such a module~$M$ is
+quasicoherent if and only if, from the internal point of view of the big
+Zariski topos, the canonical map~$A \otimes_\affl M \to M^{\Spec(A)}$ is an
+isomorphism for any finitely
+presented~$\affl$-algebra~$A$~\cite[Theorem~18.19]{blechschmidt:phd}.
+Specializing to the case~$M = \affl$, we obtain the quasicoherence condition of
+Theorem~\ref{thm:quasicoherence}.
 
-\begin{proof}The proof of Lemma~\ref{lemma:char-fp-models} is constructive and
+\begin{proof}[Proof of Theorem~\ref{thm:quasicoherence}]The proof of
+Lemma~\ref{lemma:char-fp-models} is constructive and
 thus valid in the internal language of~$\Set[\TT]$. Hence we can apply it,
 internally, to the theory~$\ul{\TT}/U_\TT$ to deduce that a~$U_\TT$-algebra~$A$
 is finitely presentable if and only if it is isomorphic to a~$U_\TT$-algebra of

@@ -1276,25 +1276,28 @@ the~$U_\TT$-algebra~$(\TT\langle
 e_1\?X_1,\ldots,e_n\?X_n \,|\, R_1,\ldots,R_m \rangle)^\sim$.
 \end{proof}
 
-% XXX The internal statement occurring in Theorem~\ref{thm:quasicoherent} is
-% higher-order, therefore
-
-\begin{cor}Let~$\TT'$ be a quotient theory of~$\TT$, not necessarily Horn.
-Assume that the generic model~$U_\TT$ is a sheaf for the topology
+\begin{thm}Let~$\TT'$ be a quotient theory of~$\TT$, not necessarily Horn.
+Assume that~$U_\TT$ is a sheaf for the topology
 on~$\Set[\TT]$ cutting out the subtopos~$\Set[\TT']$. Then, from the internal
 point of view of~$\Set[\TT']$, the canonical map~$A \to (U_{\TT'})^{\Spec(A)}$
 is an isomorphism of~$U_\TT$-algebras for every finitely
-presented~$U_\TT$-algebra~$A$. (By~``$\Spec(A)$'', we mean the set
+presented~$U_\TT$-algebra~$A$. (By~``$\Spec(A)$'', we here mean the set
 of~$U_\TT$-algebra homomorphisms from~$A$ to~$U_{\TT'}$.)
-\end{cor}
+\end{thm}
 
 \begin{proof}In general, the generic model~$U_{\TT'}$ is the sheafification
-of~$U_\TT$~\cite[Lemma~2.3]{caramello:definability}. By the sheaf
-assumption, the objects~$U_{\TT'}$ and~$U_\TT$ actually agree as functors
-on~$\Mod{\TT}_\mathrm{fp}$. Employing the lemma that computing the internal Hom
-to a sheaf commutes with sheafification twice, we see that
-the canonical isomorphism of Lemma~\ref{lemma:fp-double-dual} induces an
-isomorphism~$a(A^\sim) \to (U_{\TT'})^{\Spec(a(A^\sim))}$ ... XXX
+of~$U_\TT$~\cite[Lemma~2.3]{caramello:definability}. By the sheaf assumption,
+the objects~$U_{\TT'}$ and~$U_\TT$ actually agree as functors
+on~$\Mod{\TT}_\mathrm{fp}$.
+
+Following the Kripke--Joyal translation of the claim, similar as in the proof
+of Theorem~\ref{thm:quasicoherence}, it suffices to show that
+applying the sheafification functor to the isomorphisms provided by
+Lemma~\ref{lemma:fp-double-dual} (over arbitrary slices) results in
+isomorphisms of the same form. This fact follows from the lemma (applied twice)
+that computing the internal Hom to a sheaf commutes with sheafification and
+from the observation that the construction~``free~$U_\TT$-module modulo
+relations'' is geometric, hence in particular commutes with sheafification.
 \end{proof}
 
 

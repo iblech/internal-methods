@@ -108,7 +108,7 @@
   version of Aczel's relation reflection scheme. As
   applications, we give a new proof that relativized dependent choice is
   equivalent to the conjunction of the relation reflection scheme and dependent
-  choice and we present an intuitionistic version of Feferman's~$\ZFCS$, a
+  choice, and we present an intuitionistic version of Feferman's~$\ZFCS$, a
   conservative extension of~$\ZFC$ which is useful as a foundation for category
   theory.
 \end{abstract}
@@ -171,7 +171,7 @@ sets. The system~$\ZFCS$ is useful as a foundation for category theory because
 it supports, without requiring new set-theoretical commitments such as the
 existence of Grothendieck universes, a native treatment of large structures.
 For instance, the category of all small sets can be formed entirely
-within~$\ZFCS$, without resorting to classes. We invite the reader wanting
+within~$\ZFCS$, without resorting to classes. We invite the reader desiring
 to learn more about the merits of~$\ZFCS$ to study the survey by
 Shulman~\cite[Section~11]{shulman:sets}.
 
@@ -190,7 +190,8 @@ situation turned out to be more subtle, and we failed in our original goal of
 verifying the reflection principle in intuitionistic Zermelo--Fraenkel set
 theory~$\IZF$. The situation for~$\CZF$, the predicative subsystem of~$\IZF$
 commonly heralded as the largest common denominator of all flavors of
-constructive set theory, remains even more elusive.
+constructive set theory, remains even more elusive. (XXX, update: $\CZF$ does
+not, and cannot be expected to, verify the reflection principle.)
 
 However, we succeeded in verifying the reflection principle in only a slight
 extension of~$\IZF$:
@@ -219,10 +220,13 @@ classical proof of the reflection principle in the context of~$\ZF$ set theory.
 Section~\ref{sect:axioms} reviews Aczel's relation reflection scheme and its
 variants. Our main result is presented in Section~\ref{sect:constructive-proof}.
 We conclude in Section~\ref{sect:appl-rdc} and
-Section~\ref{sect:appl-smallness} with two short applications.
+Section~\ref{sect:appl-smallness} with two applications.
 
 \textbf{Acknowledgments.} We are grateful to Daniel Albert for his careful
 reading of earlier drafts. XXX
+
+% XXX briefly recall the language of IZF/ZF.
+% XXX state free variables more precisely
 
 
 \section{Review of the classical reflection principle}
@@ -271,11 +275,11 @@ iterated powersets. For addendum~(3), we change the definition of~$S_{k+1}$ to
 include one summand for each formula~$\varphi_i$.
 \end{proof}
 
-The proof of Lemma~\ref{lemma:zf-smallstep} is mostly constructive; however,
+The proof constructed by Lemma~\ref{lemma:zf-smallstep} is mostly constructive; however,
 there is one issue with nontrivial ramifications: While~$\IZF$ does show
 that the subclass~$X^\sim$ of a given class~$X$ is a set, it does not verify
 that~$X^\sim$ is inhabited if~$X$ is. This would amount to the constructive
-taboo that any inhabited set contains a rank-minimal element; and in fact, by
+taboo that any inhabited set contains a rank-minimal element. Moreover, by
 a result of Friedman and Scedrov~\cite{XXX}, no definable substitute
 for~$X^\sim$ exists. The remedy presented in
 Section~\ref{sect:constructive-proof} will construct~$X^\sim$ in a non-unique
@@ -309,7 +313,7 @@ universal quantifiers in~$\varphi$ have been rewritten
 as~``$\neg\exists\neg$''.
 
 The remaining case is where~$\varphi$ is of the form~$\varphi \equiv (\exists
-x\_ \psi(u_1,\ldots,u_m,x))$. In this case, the claim is that
+x\_ \psi(u_1,\ldots,u_m,x))$. In this case the claim is that
 \[ \forall u_1,\ldots,u_m \in S\_
   (\exists x\_ \psi(u_1,\ldots,u_m,x)) \Longleftrightarrow
   (\exists x \in S\_ \psi^S(u_1,\ldots,u_m,x)). \]
@@ -390,7 +394,10 @@ of that~$x_0 \in B$, that~$A \subseteq B$. This difference is immaterial, thanks
 one direction to the existence of singleton sets and in the other to strong
 collection. The same is true for~$\RRS_2$ and~$\MDC_2$, though the proof is not
 as easy.
+% XXX give the proof
 \end{rem}
+
+% XXX introduce CZF^-
 
 % First prove that in RRS_2^∈, we may suppose that not only a single given
 % element x0 is contained in B, but also a further given element x1.
@@ -539,11 +546,12 @@ any~$u_1,\ldots,u_n \in H$ there exists a set~$E \in X$ such that
   (\forall x\_ \varphi(u_1,\ldots,u_n,x)) &\Longleftarrow&
   (\forall x \in E\_ \varphi(u_1,\ldots,u_n,x)).
 \end{array} \]
-Hence the set~$H' \defeq M \cup \bigcup X$ has the required property.
+Hence the set~$H' \defeq H \cup \bigcup X$ has the required property.
 
 To ensure that~$H'$ is transitive and closed under subsets, we pass
 first to its transitive closure and then compute the union of all its
 finitely-iterated powersets.
+% XXX what do we need for this?
 
 In order to accommodate more than a single formula~$\varphi$, we add one summand
 in the definition of~$H'$ for each formula~$\varphi_i$.
@@ -582,10 +590,10 @@ for any~$H_1, H_2 \in B$, there is a set~$H' \in B$ such that~$H \defeq H_1
 \cup H_2$ and~$H'$ are related as in the conclusion of Lemma~\ref{lemma:izf-microstep}.
 
 We set~$S \defeq \bigcup B$. This set has the required property. To verify
-this, it is useful to observe that given~$u_1,\ldots,u_n \in S$, there is a
+this claim, it is useful to observe that given~$u_1,\ldots,u_n \in S$, there is a
 common set~$H \in B$ such that~$u_1,\ldots,u_n \in H$.
 
-In order to ensure addendum~(1) and~(2), we apply~$\RRS_2$ in a slightly
+In order to ensure addenda~(1) and~(2), we apply~$\RRS_2$ in a slightly
 different way to guarantee that for any sets~$H_1, H_2 \in B$, there is a
 set~$H' \in B$ such that~$H \defeq H_1 \cup H_2$ and~$H'$ are related as in the
 conclusion of Lemma~\ref{lemma:izf-microstep} and such that furthermore~$H'$ is
@@ -745,7 +753,7 @@ by~$\PRA$.
 An alternative is offered by~$\ZFCI$, $\ZFC$ plus the existence of a
 strongly inaccessible cardinal. In this system, there is a Grothendieck
 universe~$U$; we can form the category~$\Set_U$ of all sets in~$U$ as an honest
-set; can define truth in~$\Set_U$; and prove, within the system, that for any
+set; define truth in~$\Set_U$; and prove, within the system, that for any
 formula~$\varphi$, $(\Set_U \models \varphi) \Leftrightarrow (U \models
 \varphi)$. This even holds for formulas of the full infinitary language of
 toposes, which allows infinite disjunctions and infinite conjunctions; this

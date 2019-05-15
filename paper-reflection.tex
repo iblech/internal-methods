@@ -60,6 +60,7 @@
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\RR}{\mathbb{R}}
 \newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\CC}{\mathbb{C}}
 \renewcommand{\SS}{\mathbb{S}}
 \renewcommand{\P}{\mathcal{P}}
 \renewcommand{\O}{\mathcal{O}}
@@ -80,6 +81,7 @@
 \newcommand{\?}{\,{:}\,}
 \newcommand{\realizes}{\Vdash}
 \newcommand{\notnot}{\emph{not~not}\xspace}
+\newcommand{\speak}[1]{\ulcorner\text{\textnormal{#1}}\urcorner}
 
 \newcommand{\stacksproject}[1]{\cite[{\href{https://stacks.math.columbia.edu/tag/#1}{Tag~#1}}]{stacks-project}}
 
@@ -486,6 +488,36 @@ and assume~$R : X \rightrightarrows X$. By the reflection principle, there is a
 set~$S \ni x_0$ such that~$R : X \cap S \rightrightarrows X \cap S$. This
 concludes the proof as the class~$B \defeq X \cap S$ is a set by separation.
 \end{proof}
+
+Fourman and independently Hayashi have shown how to interpret~$\IZF$ in any
+Grothendieck topos~\cite{fourman:izf,hayashi:izf}. The following proposition
+shows that the axiom scheme~$\RRS_2$ passes from the metatheory to any such
+model:
+
+\begin{prop}Over~$\IZF + \RRS_2$, $\RRS_2$ holds in any Grothendieck topos.
+\end{prop}
+
+\begin{proof}We employ Streicher's version of the interpretation
+of~$\IZF$~\cite{streicher:forcizf}, and follow him also in the notation.
+
+Let~$\CC$ be a Grothendieck site, assumed without loss of generality to possess
+a terminal object~$1$ and pullbacks. Let~$V$ be the universe sheaf over~$\CC$. Let
+formulas~$\chi$ and~$\varrho$ be given, with parameters from~$V(1)$, defining
+classes~$X$ and~$R$ in~$\Sh(\CC)$. Let an element~$x_0 \in V(1)$ be given and assume
+\[ 1 \models \speak{$R \subseteq X \times X \times X$} \qquad\text{and}\qquad
+  1 \models \speak{$R : X \times X \rightrightarrows X$}, \]
+where the corner quotes indicate that translation to formal language is left to
+the reader.
+
+For an object~$I \in \CC$, let~$V_I$ be the (external) class of pairs~$(J
+\xrightarrow{u} I, x \in V(J))$. Define the (external) classes
+\begin{align*}
+  X' &\defeq \{ (I,F) \,|\, I \in \CC, F \in P(V_I), \mathrm{fst}[F] \in
+  \mathrm{Cov}(I), \forall (J \xrightarrow{u} I, x \in V(J)) \in F\_ J \models x \in X \}
+\end{align*}
+XXX
+\end{proof}
+
 
 \section{Constructivizing the reflection principle}
 \label{sect:constructive-proof}

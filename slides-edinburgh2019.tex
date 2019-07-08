@@ -12,6 +12,7 @@
 
 \usepackage[english]{babel}
 
+\usepackage{graphbox}
 \usepackage{mathtools}
 \usepackage{booktabs}
 \usepackage{stmaryrd}
@@ -326,17 +327,13 @@
   \par
 \end{frame}}
 
-{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\hspace*{-1.7cm}\includegraphics[height=\paperheight,trim=0 0 16.9cm 0,clip]{black-hole-m87}\end{minipage}}
-\begin{frame}[plain]
-  \vspace*{\paperheight}\vspace*{-0.8cm}\scriptsize
-  \centering
-  \textcolor{white}{Fig.: The Event Horizon Telescope picture of the central black
-  hole in the galaxy M87}
-  \par
-
-  \jnote{1}{At this meeting we had lots of discussions on the notion of space.
-  Here is a picture of actual space, or rather the lack thereof, released only
-  yesterday.}
+{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\hspace*{-1.7cm}\includegraphics[height=\paperheight]{arthurs-seat-4}\end{minipage}}
+\begin{frame}[plain]%
+  \vspace*{\paperheight}\vspace*{-2.35cm}\hspace*{-1cm}%
+  \includegraphics[width=\paperwidth/4]{arthurs-seat-7}%
+  \includegraphics[width=\paperwidth/4]{arthurs-seat-0}%
+  \includegraphics[width=\paperwidth/4]{arthurs-seat-5}%
+  \includegraphics[width=\paperwidth/4]{arthurs-seat-9}%
 \end{frame}}
 \addtocounter{framenumber}{-1}
 
@@ -467,15 +464,14 @@
 
   \textbf{Definition.} The \hil{syntactic site}~$\C_\TT$ has \ldots
   \begin{enumerate}
-    \item objects: $\{ x_1\?X_1, \ldots, x_n\?X_n\_ \varphi \}$ (shorter:
-    $\{ \vec x\_ \varphi \}$)
+    \item objects: \explainstub{formulas-in-contexts}{red!20} $\{ x_1\?X_1, \ldots, x_n\?X_n\_ \varphi \}$
     \item morphisms: eqv. classes of \explainstub{provably functional
-    formulas}{red!20}
+    formulas}{red!30}
     \item coverings: \explainstub{provably jointly surjective
     families}{purple!30}
   \end{enumerate}
   The topos of sheaves over~$\C_\TT$ is the \hil{classifying
-  topos}~$\Set[\TT]$. The generic model interprets a sort~$X$ by~$\yon\{x\?X\_\top\}$.
+  topos}~$\Set[\TT]$. The generic model interprets a sort~$X$ by the sheaf~$\yon\{x\?X\_\top\}$.
 
   \jnote{1}{In case the theory~$\TT$ is a Horn theory (for instance if it is
   an equational theory), the \emph{term algebra} (the set of terms in the
@@ -535,8 +531,8 @@
     \text{(``$\varphi$ holds on~$U$'')}
   \]
   for objects~$U \in \C$ and \squiggly{formulas}~$\varphi$.
-  Write~``$\Sh(\C) \models \varphi$'' for~$1 \models \varphi$.
-  \footnotesize
+  Write~``$\Sh(\C) \models \varphi$'' for~$U \models \varphi$ for all~$U$.
+  \only<1>{\footnotesize
   \[ \renewcommand{\arraystretch}{1.08}\begin{array}{@{}l@{\ \ }c@{\ \ }l@{}}
   U \models \top &\Ll& \text{true} \\
   U \models \bot &\Ll& \hcancel{\text{false}}{0pt}{3pt}{0pt}{-2pt}\ \text{the
@@ -566,7 +562,27 @@
   %&&
   %\text{there exists a covering $(U_i \to U)_i$ such that for all~$i$:} \\
   %&& \quad\quad \text{there exists a sheaf~$F_0$ on $U_i$ such that $U_i \models \varphi(F_0)$}
-  \end{array} \]
+  \end{array} \]}
+
+  \only<2>{
+    \bigskip
+    \begin{columns}[t]
+      \begin{column}{0.45\textwidth}\justifying
+        \textbf{Example.}
+        $\Set \models \varphi$ if and only if $\varphi$ is true.
+        \bigskip
+
+        \textbf{Theorem.}
+        If~$\Sh(\C) \models \varphi$ and if $\varphi$ intuitionistically
+        entails~$\psi$, then also~$\Sh(\C) \models \psi$.
+      \end{column}
+
+      \begin{column}{0.45\textwidth}
+        \includegraphics[width=\textwidth,align=t]{mike-shulman-stack-semantics}
+        \vspace*{1.5em}
+      \end{column}
+    \end{columns}
+  }
 
   \jnote{1}{
     The internal language of a (Grothendieck or elementary) topos~$\E$ is a
@@ -730,115 +746,12 @@
   }
 \end{frame}
 
+\begin{frame}{A different kind of example}
+  Let~$A$ be a reduced ring ($x^n = 0 \Rightarrow x = 0$).
 
-\section{Affine schemes}
+  The \hil{generic local localisation}~$A^\sim$ of~$A$ validates:
 
-\begin{frame}{Affine schemes}
-  \jnote{1}{
-    A ring is \emph{local} iff every invertible sum contains an invertible
-    summand, that is if~$1 \neq 0$ and if~$x + y$ invertible implies~$x$
-    invertible or~$y$ invertible. Assuming the axiom of choice, this elementary
-    definition is equivalent to the textbook definition of a local ring (a ring
-    with exactly one maximal ideal). A ring homomorphism is \emph{local} iff it
-    reflects invertibility.
-
-    The notion of a \emph{filter} in a ring~$A$ is a direct axiomatisation of
-    what classically would be the complement of a prime ideal. The filter
-    axioms are: $1 \in F$, $(xy \in F) \Leftrightarrow ((x \in F) \wedge (y \in
-    F))$, $\neg(0 \in F)$, $(x+y \in F) \Rightarrow ((x \in F) \vee (y \in F))$.
-
-    A \emph{free local ring} over~$A$ is a homomorphism into a local
-    ring~$A'$ such that any homomorphism into a local ring~$R$ factors uniquely
-    over~$A'$ via a local homomorphism.
-
-    For any particular local ring~$A \xrightarrow{f} R$, the
-    localisation~$A[S^{-1}]$ with~$S = f^{-1}[R^\times]$ is a local ring which
-    fits into the displayed diagram. However, in general there is no single
-    choice of~$S$ which would work for any local ring~$R$. Indeed, classically
-    one can show that a free local ring over~$A$ exists if and only if~$A$
-    contains exactly one prime ideal, in which case~$A$ itself is the free
-    local ring.
-  }
-
-  \jnote{2}{
-    If we want a free local ring to exist for any ring~$A$, we have to broaden
-    our notion of existence and embrace rings which live in toposes other
-    than~$\Set$. There is a notion of a homomorphism between rings living in
-    arbitrary toposes, and using this notion one can verify:
-
-    The free local ring over~$A$ can be built in the classifying topos of
-    filters of~$A$, as the localisation (in that topos) of~$A$ at the generic
-    filter. (More precisely, as the localisation of the mirror image of~$A$ in that
-    topos, that is the constant sheaf~$\underline{A}$.)
-
-    The classifying topos of filters of~$A$ coincides with the topos of sheaves
-    over what's called the \emph{spectrum of~$A$} in algebraic geometry, and
-    under this equivalence the free local ring coincides with the structure
-    sheaf of spectrum. In fact the classifying topos serves as a good
-    constructive substitute for the classical spectrum construction,
-    enjoying the expected universal property even if the axiom of choice is not
-    available, which is why it is simply denoted~``$\Spec(A)$'' on the slide.
-
-    (The classifying topos of prime ideals of~$A$ is also interesting; it
-    coincides with the topos of sheaves over the spectrum of~$A$ equipped with
-    the constructible topology.)
-  }
-
-  \jnote{3}{
-    Assuming the Boolean prime ideal theorem, the geometric sequents
-    validated by~$A^\sim$ are easy to describe: They are precisely those which
-    are validated by all the stalks~$A_\ppp$ of~$A$.
-
-    But~$A^\sim$ enjoys further unique properties which are not shared by the
-    stalks of~$A$, other localisations of~$A$, quotients of~$A$ or indeed any
-    reasonable construction. Three of these are displayed on the slide.
-    (A ring is \emph{anonymously Noetherian} iff each of its ideals is
-    \emph{not not} finitely generated. Textbook proofs of Hilbert's basis theorem
-    are constructively acceptable for this Noetherian condition.)
-
-    The object~$A^\sim$ strikes a fine balance: On the one hand, it is still
-    close to~$A$, so that information learned about~$A^\sim$ teaches us
-    about~$A$; on the other hand, it enjoys unique properties rendering it
-    simpler than~$A$.
-
-    This balance allows for a simple and conceptually satisfying proof of
-    \emph{Gro\-then\-dieck's generic freeness lemma}, an important theorem in
-    algebraic geometry. Details can be found in
-    \fixedhref{https://rawgit.com/iblech/internal-methods/master/slides-padova2018.pdf}{this
-    set of slides}.
-  }
-
-  Let~$A$ be a ring. Is there a \hil{free local ring}~$A \to A'$ over~$A$?
-  \begin{columns}[t]
-    \begin{column}{0.4\textwidth}
-      $\xymatrix{
-        A \ar[rd] \ar[rrr]^f &&& {\substack{\phantom{\text{local}}\\\text{\normalsize$R$}\\\text{local}}} \\
-        & {\substack{\text{\normalsize$A'$}\\\text{local}}} \ar@{-->}_[@!35]{\text{local}}[rru]
-      }$
-    \end{column}
-
-    \begin{column}{0.50\textwidth}
-      \small\justifying
-      For a fixed ring~$R$, the localisation $A' \defeq A[S^{-1}]$ with $S \defeq
-      f^{-1}[R^\times]$ would do the job. ($S$ is a \emph{filter}.)
-      \medskip
-
-      Hence we need the \hil{generic filter}.
-    \end{column}
-  \end{columns}
-
-  \pause
-
-  \justifying
-  The free local ring over~$A$ is~$A^\sim \defeq \ul{A}[F^{-1}]$,
-  where~$F$ is the generic filter, living in~$\Spec(A)$, the classifying topos
-  of filters of~$A$.
-
-  \pause
-
-  If~$A$ is reduced ($x^n = 0 \Rightarrow x = 0$):
-
-  \vspace*{-0.8em}
+  \vspace*{-1.8em}
   \setbeamercolor{block body}{bg=red!30}
   \setbeamercolor{structure}{fg=purple}
   \begin{varblock}{\textwidth}{}
@@ -850,7 +763,132 @@
 
     \mbox{$A^\sim$ is \hil{anonymously Noetherian}.}\\[-1.2em]
   \end{varblock}
+
+  Consequence: short and conceptual proof of Grothendieck's generic freeness
+  lemma
 \end{frame}
+
+
+%\section{Affine schemes}
+%
+%\begin{frame}{Affine schemes}
+%  \jnote{1}{
+%    A ring is \emph{local} iff every invertible sum contains an invertible
+%    summand, that is if~$1 \neq 0$ and if~$x + y$ invertible implies~$x$
+%    invertible or~$y$ invertible. Assuming the axiom of choice, this elementary
+%    definition is equivalent to the textbook definition of a local ring (a ring
+%    with exactly one maximal ideal). A ring homomorphism is \emph{local} iff it
+%    reflects invertibility.
+%
+%    The notion of a \emph{filter} in a ring~$A$ is a direct axiomatisation of
+%    what classically would be the complement of a prime ideal. The filter
+%    axioms are: $1 \in F$, $(xy \in F) \Leftrightarrow ((x \in F) \wedge (y \in
+%    F))$, $\neg(0 \in F)$, $(x+y \in F) \Rightarrow ((x \in F) \vee (y \in F))$.
+%
+%    A \emph{free local ring} over~$A$ is a homomorphism into a local
+%    ring~$A'$ such that any homomorphism into a local ring~$R$ factors uniquely
+%    over~$A'$ via a local homomorphism.
+%
+%    For any particular local ring~$A \xrightarrow{f} R$, the
+%    localisation~$A[S^{-1}]$ with~$S = f^{-1}[R^\times]$ is a local ring which
+%    fits into the displayed diagram. However, in general there is no single
+%    choice of~$S$ which would work for any local ring~$R$. Indeed, classically
+%    one can show that a free local ring over~$A$ exists if and only if~$A$
+%    contains exactly one prime ideal, in which case~$A$ itself is the free
+%    local ring.
+%  }
+%
+%  \jnote{2}{
+%    If we want a free local ring to exist for any ring~$A$, we have to broaden
+%    our notion of existence and embrace rings which live in toposes other
+%    than~$\Set$. There is a notion of a homomorphism between rings living in
+%    arbitrary toposes, and using this notion one can verify:
+%
+%    The free local ring over~$A$ can be built in the classifying topos of
+%    filters of~$A$, as the localisation (in that topos) of~$A$ at the generic
+%    filter. (More precisely, as the localisation of the mirror image of~$A$ in that
+%    topos, that is the constant sheaf~$\underline{A}$.)
+%
+%    The classifying topos of filters of~$A$ coincides with the topos of sheaves
+%    over what's called the \emph{spectrum of~$A$} in algebraic geometry, and
+%    under this equivalence the free local ring coincides with the structure
+%    sheaf of spectrum. In fact the classifying topos serves as a good
+%    constructive substitute for the classical spectrum construction,
+%    enjoying the expected universal property even if the axiom of choice is not
+%    available, which is why it is simply denoted~``$\Spec(A)$'' on the slide.
+%
+%    (The classifying topos of prime ideals of~$A$ is also interesting; it
+%    coincides with the topos of sheaves over the spectrum of~$A$ equipped with
+%    the constructible topology.)
+%  }
+%
+%  \jnote{3}{
+%    Assuming the Boolean prime ideal theorem, the geometric sequents
+%    validated by~$A^\sim$ are easy to describe: They are precisely those which
+%    are validated by all the stalks~$A_\ppp$ of~$A$.
+%
+%    But~$A^\sim$ enjoys further unique properties which are not shared by the
+%    stalks of~$A$, other localisations of~$A$, quotients of~$A$ or indeed any
+%    reasonable construction. Three of these are displayed on the slide.
+%    (A ring is \emph{anonymously Noetherian} iff each of its ideals is
+%    \emph{not not} finitely generated. Textbook proofs of Hilbert's basis theorem
+%    are constructively acceptable for this Noetherian condition.)
+%
+%    The object~$A^\sim$ strikes a fine balance: On the one hand, it is still
+%    close to~$A$, so that information learned about~$A^\sim$ teaches us
+%    about~$A$; on the other hand, it enjoys unique properties rendering it
+%    simpler than~$A$.
+%
+%    This balance allows for a simple and conceptually satisfying proof of
+%    \emph{Gro\-then\-dieck's generic freeness lemma}, an important theorem in
+%    algebraic geometry. Details can be found in
+%    \fixedhref{https://rawgit.com/iblech/internal-methods/master/slides-padova2018.pdf}{this
+%    set of slides}.
+%  }
+%
+%  Let~$A$ be a ring. Is there a \hil{free local ring}~$A \to A'$ over~$A$?
+%  \begin{columns}[t]
+%    \begin{column}{0.4\textwidth}
+%      $\xymatrix{
+%        A \ar[rd] \ar[rrr]^f &&& {\substack{\phantom{\text{local}}\\\text{\normalsize$R$}\\\text{local}}} \\
+%        & {\substack{\text{\normalsize$A'$}\\\text{local}}} \ar@{-->}_[@!35]{\text{local}}[rru]
+%      }$
+%    \end{column}
+%
+%    \begin{column}{0.50\textwidth}
+%      \small\justifying
+%      For a fixed ring~$R$, the localisation $A' \defeq A[S^{-1}]$ with $S \defeq
+%      f^{-1}[R^\times]$ would do the job. ($S$ is a \emph{filter}.)
+%      \medskip
+%
+%      Hence we need the \hil{generic filter}.
+%    \end{column}
+%  \end{columns}
+%
+%  \pause
+%
+%  \justifying
+%  The free local ring over~$A$ is~$A^\sim \defeq \ul{A}[F^{-1}]$,
+%  where~$F$ is the generic filter, living in~$\Spec(A)$, the classifying topos
+%  of filters of~$A$.
+%
+%  \pause
+%
+%  If~$A$ is reduced ($x^n = 0 \Rightarrow x = 0$):
+%
+%  \vspace*{-0.8em}
+%  \setbeamercolor{block body}{bg=red!30}
+%  \setbeamercolor{structure}{fg=purple}
+%  \begin{varblock}{\textwidth}{}
+%    $A^\sim$ is a \hil{field}: $\forall x\?A^\sim\_ (\neg(\exists y\?A^\sim\_
+%    xy = 1) \Rightarrow x = 0)$.
+%
+%    $A^\sim$ has \hil{$\boldsymbol{\neg\neg}$-stable equality}:
+%    $\forall x,y\?A^\sim\_ \neg\neg(x = y) \Rightarrow x = y$.
+%
+%    \mbox{$A^\sim$ is \hil{anonymously Noetherian}.}\\[-1.2em]
+%  \end{varblock}
+%\end{frame}
 
 
 \section[A systematic source]{A systematic source of nongeometricity?}
@@ -958,6 +996,7 @@
   \justifying
   \textbf{Theorem.} Internally to~$\Set[\TT]$:
 
+  \vspace*{-0.3em}
   \begin{quote}\emph{\mbox{For any \explainstub{geometric$^\star$ sequent~$\sigma$}{red!20} over
   the \explainstub{signature of~$\ul{\TT}/U_\TT$}{blue!20},}
   if~\explainstub{$\sigma$ holds for~$U_\TT$}{yellow!70}, then~\explainstub{$\ul{\TT}/U_\TT$
@@ -1044,9 +1083,9 @@
   \begin{enumerate}
     \justifying\small
     \item for each element~$x : U_\TT$ a constant symbol~$e_x$,
-    \item for each function symbol~$f$ and~$n$-tuple~$(x_1,\ldots,x_n) \in (U_\TT)^n$ the axiom
+    \item for each function symbol~$f$ and~$n$-tuple~$(x_1,\ldots,x_n) : (U_\TT)^n$ the axiom
     $(\top \vdash f(e_{x_1},\ldots,e_{x_n}) = e_{f(x_1,\ldots,x_n)})$,
-    \item for each relation symbol~$R$ and~$n$-tuple~$(x_1,\ldots,x_n) \in (U_\TT)^n$ such
+    \item for each relation symbol~$R$ and~$n$-tuple~$(x_1,\ldots,x_n) : (U_\TT)^n$ such
     that~$R(x_1,\ldots,x_n)$ the axiom~$(\top \vdash R(e_{x_1},\ldots,e_{x_n}))$.
   \end{enumerate}
 
@@ -1074,6 +1113,7 @@
 
 \begin{frame}{Revisiting the test cases}
   \nullstellensatz
+  \vspace*{-2em}
   \[ \xymatrix{
     & \text{$\ul{\TT}/U_\TT$ proves $\sigma$} \\
     \text{$\sigma$ holds for $U_\TT$} \ar@/^1.1pc/@{<=>}[ur] &&

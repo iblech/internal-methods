@@ -1,10 +1,10 @@
 \documentclass[12pt,utf8,notheorems,compress,t]{beamer}
 \usepackage{etex}
 
-%\usepackage{pgfpages}
-%\setbeameroption{show notes on second screen}
-%\setbeamertemplate{note page}[plain]
-\newcommand{\jnote}[2]{}
+\usepackage{pgfpages}
+\setbeameroption{show notes on second screen}
+\setbeamertemplate{note page}[plain]
+\newcommand{\jnote}[2]{\only<#1>{\note{\setlength\parskip{\medskipamount}\justifying\footnotesize#2\par}}}
 
 % Workaround for the issue described at
 % https://tex.stackexchange.com/questions/164406/beamer-using-href-in-notes.
@@ -325,15 +325,47 @@
   Ingo Blechschmidt \\
   Università di Verona
   \par
+
+  \jnote{1}{\textbf{This talk in a nutshell:}
+
+  There is a certain ring, the \emph{generic ring}, which is special in that
+  it is \emph{conservative}: It has exactly those properties which are shared
+  by any ring whatsoever. One could argue that it is this ring which we're
+  implicitly referring to when we utter the phrase ``Let~$R$ be a ring.''.
+
+  A surprising observation is that the generic ring is a field. This is not a
+  contradiction because conservativity only pertains to properties which can be
+  put in a certain syntactic form, dubbed \emph{geometric sequents}, and the
+  field condition is not of that form.
+
+  As a consequence, when verifying a geometric sequent for all rings, we may
+  freely assume the field condition: Our proof will apply to the generic ring,
+  because this ring happens to be a field, and its conclusion will spread to
+  any ring whatsoever thanks to its syntactic form.
+
+  An analogous story can be told for the generic group, the generic vector
+  space and quite generally for the generic model of any \emph{geometric
+  theory}. It is an interesting task to discover properties of such
+  generic models. This talk presents a source of such properties, the
+  \emph{topos-theoretic Nullstellensatz}, which is
+  universal in the sense that any such property is a logical consequence of the
+  Nullstellensatz.}
 \end{frame}}
 
-{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\hspace*{-1.7cm}\includegraphics[height=\paperheight]{arthurs-seat-4}\end{minipage}}
+{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\hspace*{-1.7cm}\includegraphics[height=\paperheight,trim=0 0 5.1cm 0,clip]{arthurs-seat-4}\end{minipage}}
 \begin{frame}[plain]%
   \vspace*{\paperheight}\vspace*{-2.35cm}\hspace*{-1cm}%
   \includegraphics[width=\paperwidth/4]{arthurs-seat-7}%
   \includegraphics[width=\paperwidth/4]{arthurs-seat-0}%
   \includegraphics[width=\paperwidth/4]{arthurs-seat-5}%
   \includegraphics[width=\paperwidth/4]{arthurs-seat-9}%
+  \jnote{1}{This talk owes a special debt to Alexander Oldenziel, who
+  repeatedly suggested that the topic of this talk should be studied.
+
+  The photos on the slide are of \emph{Arthur's Seat}, a beautiful extinct
+  volcano in Edinburgh. It gives an excellent view of the city and is very much
+  recommended for a hiking tour.
+  }%
 \end{frame}}
 \addtocounter{framenumber}{-1}
 
@@ -343,21 +375,19 @@
 \subsection{The mystery of nongeometric sequents}
 
 \begin{frame}{The mystery of nongeometric sequents}
-  \jnote{1}{A \emph{geometric sequent} is a syntactical expression of the
+  \jnote{1}{A \emph{geometric sequent} is a syntactic expression of the
   form~$(\varphi \seq{x_1\?X_1,\ldots,x_n\?X_n} \psi)$,
   where~$x_1\?X_1,\ldots,x_n\?X_n$ is a list of variable declarations,
   the~$X_i$ ranging over the available sorts, and~$\varphi$ and~$\psi$ are
-  \emph{geometric formulas}. Often the variable context is abbreviated to~$\vec
-  x \? \vec X$ or even just~$\vec x$. Such a sequent is read as ``in the
-  context of variables~$\vec x$, $\varphi$ entails~$\psi$''.
-
-  Geometric formulas are built from atomic propositions (using equality or the
-  relation symbols) using the connectives~$\top$, $\bot$, $\wedge$, $\bigvee$
+  \emph{geometric formulas}. Such a sequent is read as ``in the
+  context~$x_1\?X_1,\ldots,x_n\?X_n$, $\varphi$ entails $\psi$''.
+  Geometric formulas are built from atomic propositions (equality and the
+  available relation symbols) using the connectives~$\top$, $\bot$, $\wedge$, $\bigvee$
   (set-indexed disjunction) and~$\exists$. Geometric formulas may not
   contain~$\neg$, $\Rightarrow$, $\forall$.
 
   There is a notion of a \emph{model} of a geometric theory in
-  a given topos. For instance, a ring in the usual sense is a model of the
+  any given topos. For instance, a ring in the usual sense is a model of the
   theory of rings in the topos~$\Set$. The structure sheaf of a scheme~$X$ is a
   model in the topos~$\Sh(X)$ of set-valued sheaves on~$X$.
 
@@ -391,7 +421,7 @@
   For instance, if we want to verify a geometric sequent for all local rings,
   we may freely use the displayed field axiom.
   Hence one reason why these nongeometric sequents are interesting is because
-  they provide us with new reduction strategies (``without loss of
+  they provide us with new reduction strategies (proofs by ``without loss of
   generality'').}
 
   Let~$\TT$ be a \explain{geometric theory}{1-}{red!20}{-1cm}{0cm}{0cm}{\begin{minipage}{4.3cm}
@@ -475,8 +505,8 @@
 
   \jnote{1}{In case the theory~$\TT$ is a Horn theory (for instance if it is
   an equational theory), the \emph{term algebra} (the set of terms in the
-  empty context modulo provable equality) is a model of~$\TT$. While such
-  models do enjoy some nice categorical properties, they are in general
+  empty context modulo provable equality) is a model of~$\TT$. While the
+  term algebra does enjoy some nice categorical properties, it is in general
   \emph{not} the generic model.
 
   For instance, if~$\TT$ is the theory of rings, then the initial model
@@ -488,9 +518,14 @@
   a set for each sort, a map for each function symbol and so on). Sets are too
   constant for this purpose; the flexibility of sheaves (``variable sets'') is
   required: The generic model lives in the topos of set-valued
-  sheaves over~$\C_\TT$.}
+  sheaves over~$\C_\TT$, called the \emph{classifying topos} of~$\TT$.}
 
-  \jnote{2}{A morphism~$A = \{\vec x\_ \varphi\} \to \{\vec y\_ \psi\} = B$ in~$\C_\TT$ is the
+  \jnote{2}{The notation in the definition of the objects of~$\C_\TT$ is meant
+  to be suggestive, but should not be taken literally. The objects are
+  syntactic expressions consisting of a context and a geometric formula in that
+  context.
+
+  A morphism~$A = \{\vec x\_ \varphi\} \to \{\vec y\_ \psi\} = B$ in~$\C_\TT$ is the
   equivalence class (modulo provable equivalence) of a geometric
   formula~$\theta$ such that~$\TT$ proves
   \begin{enumerate}
@@ -601,17 +636,14 @@
     into external statements about the objects and morphisms of~$\E$. The slide
     displays some of the translation rules in the case that~$\E$ is a
     Grothendieck topos.
-
-    We can actually do mathematics internally because the Kripke--Joyal
-    semantics is sound with respect to intuitionistic logic: If~$\E \models
-    \varphi$ and if~$\varphi$ intuitionistically entails a further
-    formula~$\psi$, then~$\E \models \psi$.
-
-    An instructive special case is provided by the topos~$\Set$, because~$\Set
-    \models \varphi$ iff~$\varphi$ holds in the usual mathematical sense.
   }
 
   \jnote{2}{
+    We can actually \emph{do mathematics} internally to a topos because the
+    Kripke--Joyal semantics is sound with respect to intuitionistic logic:
+    If~$\E \models \varphi$ and if~$\varphi$ intuitionistically entails a
+    further formula~$\psi$, then~$\E \models \psi$.
+
     The Kripke--Joyal semantics can be extended to interpret unbounded
     quantification (``for all sets'' as opposed to ``for all elements of the
     particular set~$X$'') and dependent types. The former are for instance
@@ -675,7 +707,7 @@
 
   \jnote{1}{
     The generic object, the generic model of the theory which has exactly one
-    sort and no function symbols, relations symbols or axioms, appears to be
+    sort and no function symbols, relations symbols or axioms, is
     slightly indecisive: On the one hand, up to a double negation, it is a
     subsingleton; on the other hand, it is infinite. This observation is due to
     Carsten Butz and Peter Johnstone
@@ -746,7 +778,7 @@
   }
 \end{frame}
 
-\begin{frame}{A different kind of example}
+\begin{frame}{An application in commutative algebra}
   Let~$A$ be a reduced ring ($x^n = 0 \Rightarrow x = 0$).
 
   The \hil{generic local localisation}~$A^\sim$ of~$A$ validates:
@@ -764,131 +796,37 @@
     \mbox{$A^\sim$ is \hil{anonymously Noetherian}.}\\[-1.2em]
   \end{varblock}
 
-  Consequence: short and conceptual proof of Grothendieck's generic freeness
-  lemma
+  This observation unlocks a short and conceptual proof of Grothendieck's
+  generic freeness lemma.
+
+  \jnote{1}{A \emph{local localisation} of a ring~$A$ is a
+  localisation~$A[S^{-1}]$ which is a local ring. The classifying topos of
+  local localisations of~$A$ is none other than the topos of sheaves over the
+  spectrum of~$A$, as studied in algebraic geometry; and the generic model is
+  also known as the structure sheaf~$\O_{\operatorname{Spec}(A)}$.
+
+  Assuming the Boolean prime ideal theorem, the geometric sequents
+  validated by~$A^\sim$ are easy to describe: They are precisely those which
+  are validated by all the stalks~$A_\ppp$ of~$A$.
+
+  But~$A^\sim$ enjoys further unique properties which are not shared by the
+  stalks of~$A$, other localisations of~$A$, quotients of~$A$ or indeed any
+  reasonable construction. Three of these are displayed on the slide.
+  (A ring is \emph{anonymously Noetherian} iff each of its ideals is
+  \emph{not not} finitely generated. Textbook proofs of Hilbert's basis theorem
+  are constructively valid for this Noetherian condition.)
+
+  The object~$A^\sim$ strikes a fine balance: On the one hand, it is still
+  close to~$A$, so that information learned about~$A^\sim$ teaches us
+  about~$A$; on the other hand, it enjoys unique properties rendering it
+  simpler than~$A$.
+
+  This balance allows for a simple and conceptually satisfying proof of
+  \emph{Gro\-then\-dieck's generic freeness lemma}, an important theorem in
+  algebraic geometry. Details can be found in
+  \fixedhref{https://rawgit.com/iblech/internal-methods/master/slides-padova2018.pdf}{this
+  set of slides}.}
 \end{frame}
-
-
-%\section{Affine schemes}
-%
-%\begin{frame}{Affine schemes}
-%  \jnote{1}{
-%    A ring is \emph{local} iff every invertible sum contains an invertible
-%    summand, that is if~$1 \neq 0$ and if~$x + y$ invertible implies~$x$
-%    invertible or~$y$ invertible. Assuming the axiom of choice, this elementary
-%    definition is equivalent to the textbook definition of a local ring (a ring
-%    with exactly one maximal ideal). A ring homomorphism is \emph{local} iff it
-%    reflects invertibility.
-%
-%    The notion of a \emph{filter} in a ring~$A$ is a direct axiomatisation of
-%    what classically would be the complement of a prime ideal. The filter
-%    axioms are: $1 \in F$, $(xy \in F) \Leftrightarrow ((x \in F) \wedge (y \in
-%    F))$, $\neg(0 \in F)$, $(x+y \in F) \Rightarrow ((x \in F) \vee (y \in F))$.
-%
-%    A \emph{free local ring} over~$A$ is a homomorphism into a local
-%    ring~$A'$ such that any homomorphism into a local ring~$R$ factors uniquely
-%    over~$A'$ via a local homomorphism.
-%
-%    For any particular local ring~$A \xrightarrow{f} R$, the
-%    localisation~$A[S^{-1}]$ with~$S = f^{-1}[R^\times]$ is a local ring which
-%    fits into the displayed diagram. However, in general there is no single
-%    choice of~$S$ which would work for any local ring~$R$. Indeed, classically
-%    one can show that a free local ring over~$A$ exists if and only if~$A$
-%    contains exactly one prime ideal, in which case~$A$ itself is the free
-%    local ring.
-%  }
-%
-%  \jnote{2}{
-%    If we want a free local ring to exist for any ring~$A$, we have to broaden
-%    our notion of existence and embrace rings which live in toposes other
-%    than~$\Set$. There is a notion of a homomorphism between rings living in
-%    arbitrary toposes, and using this notion one can verify:
-%
-%    The free local ring over~$A$ can be built in the classifying topos of
-%    filters of~$A$, as the localisation (in that topos) of~$A$ at the generic
-%    filter. (More precisely, as the localisation of the mirror image of~$A$ in that
-%    topos, that is the constant sheaf~$\underline{A}$.)
-%
-%    The classifying topos of filters of~$A$ coincides with the topos of sheaves
-%    over what's called the \emph{spectrum of~$A$} in algebraic geometry, and
-%    under this equivalence the free local ring coincides with the structure
-%    sheaf of spectrum. In fact the classifying topos serves as a good
-%    constructive substitute for the classical spectrum construction,
-%    enjoying the expected universal property even if the axiom of choice is not
-%    available, which is why it is simply denoted~``$\Spec(A)$'' on the slide.
-%
-%    (The classifying topos of prime ideals of~$A$ is also interesting; it
-%    coincides with the topos of sheaves over the spectrum of~$A$ equipped with
-%    the constructible topology.)
-%  }
-%
-%  \jnote{3}{
-%    Assuming the Boolean prime ideal theorem, the geometric sequents
-%    validated by~$A^\sim$ are easy to describe: They are precisely those which
-%    are validated by all the stalks~$A_\ppp$ of~$A$.
-%
-%    But~$A^\sim$ enjoys further unique properties which are not shared by the
-%    stalks of~$A$, other localisations of~$A$, quotients of~$A$ or indeed any
-%    reasonable construction. Three of these are displayed on the slide.
-%    (A ring is \emph{anonymously Noetherian} iff each of its ideals is
-%    \emph{not not} finitely generated. Textbook proofs of Hilbert's basis theorem
-%    are constructively acceptable for this Noetherian condition.)
-%
-%    The object~$A^\sim$ strikes a fine balance: On the one hand, it is still
-%    close to~$A$, so that information learned about~$A^\sim$ teaches us
-%    about~$A$; on the other hand, it enjoys unique properties rendering it
-%    simpler than~$A$.
-%
-%    This balance allows for a simple and conceptually satisfying proof of
-%    \emph{Gro\-then\-dieck's generic freeness lemma}, an important theorem in
-%    algebraic geometry. Details can be found in
-%    \fixedhref{https://rawgit.com/iblech/internal-methods/master/slides-padova2018.pdf}{this
-%    set of slides}.
-%  }
-%
-%  Let~$A$ be a ring. Is there a \hil{free local ring}~$A \to A'$ over~$A$?
-%  \begin{columns}[t]
-%    \begin{column}{0.4\textwidth}
-%      $\xymatrix{
-%        A \ar[rd] \ar[rrr]^f &&& {\substack{\phantom{\text{local}}\\\text{\normalsize$R$}\\\text{local}}} \\
-%        & {\substack{\text{\normalsize$A'$}\\\text{local}}} \ar@{-->}_[@!35]{\text{local}}[rru]
-%      }$
-%    \end{column}
-%
-%    \begin{column}{0.50\textwidth}
-%      \small\justifying
-%      For a fixed ring~$R$, the localisation $A' \defeq A[S^{-1}]$ with $S \defeq
-%      f^{-1}[R^\times]$ would do the job. ($S$ is a \emph{filter}.)
-%      \medskip
-%
-%      Hence we need the \hil{generic filter}.
-%    \end{column}
-%  \end{columns}
-%
-%  \pause
-%
-%  \justifying
-%  The free local ring over~$A$ is~$A^\sim \defeq \ul{A}[F^{-1}]$,
-%  where~$F$ is the generic filter, living in~$\Spec(A)$, the classifying topos
-%  of filters of~$A$.
-%
-%  \pause
-%
-%  If~$A$ is reduced ($x^n = 0 \Rightarrow x = 0$):
-%
-%  \vspace*{-0.8em}
-%  \setbeamercolor{block body}{bg=red!30}
-%  \setbeamercolor{structure}{fg=purple}
-%  \begin{varblock}{\textwidth}{}
-%    $A^\sim$ is a \hil{field}: $\forall x\?A^\sim\_ (\neg(\exists y\?A^\sim\_
-%    xy = 1) \Rightarrow x = 0)$.
-%
-%    $A^\sim$ has \hil{$\boldsymbol{\neg\neg}$-stable equality}:
-%    $\forall x,y\?A^\sim\_ \neg\neg(x = y) \Rightarrow x = y$.
-%
-%    \mbox{$A^\sim$ is \hil{anonymously Noetherian}.}\\[-1.2em]
-%  \end{varblock}
-%\end{frame}
 
 
 \section[A systematic source]{A systematic source of nongeometricity?}
@@ -897,7 +835,7 @@
   \jnote{1-2}{
     Mimicking the synthetic approach to differential geometry, synthetic
     algebraic geometry is a framework for algebraic geometry in which schemes
-    can be modelled by plain old sets, morphisms of schemes by plain old maps
+    are modelled by plain old sets, morphisms of schemes by plain old maps
     between those sets, group schemes by plain old groups, and so on. Unlike
     its close cousin, it is far less developed; some first steps are outlined
     in Sections~19 and~20 of
@@ -915,7 +853,7 @@
     Marc Bezem, Ulrik Buchholtz and Thierry Coquand answered in their 2017 paper
     \fixedhref{https://arxiv.org/abs/1712.07743}{Syntactic forcing
     models for coherent logic} Gavin Wraith's question in the negative. (As
-    Thierry remarked during the talk, this is even if one takes care to phrase
+    Thierry remarked at 6WFTop, this is even if one takes care to phrase
     the question in a way to exclude the trivial counterexamples given by
     instances of the law of excluded middle in the language of~$\TT$.) If the
     answer had been positive, this would have given a neat, if somewhat hard to
@@ -1016,33 +954,44 @@
     The theory~$\ul{\TT}/U_\TT$ will be defined on the next slide. It is a certain
     geometric theory internal to~$\Set[\TT]$.
 
-    The asterisks in \emph{geometric$^\star$ sequent}
+    The asterisk in \emph{geometric$^\star$ sequent}
     indicate that any infinities used to index
-    disjunctions have to be come from the base topos. This restriction is an important
+    disjunctions have to come from the base topos. This restriction is an important
     subtlety, though not vital to this talk. If~$\TT$ is a coherent
-    theory, then for coherent sequents there is no difference between
-    provability in coherent logic, provability in geometric logic and
-    provability$^\star$.
+    theory, then we can restrict to coherent sequents and thereby vanquish the
+    subtlety.
   }
 
   \jnote{2}{
     The algebraic Nullstellensatz states that, in some cases, algebraic truths
-    are witnessed by explicit \emph{algebraic certificates} -- syntactical
+    are witnessed by explicit \emph{algebraic certificates} -- syntactic
     objects giving a priori reasons for why a given truth is to be expected.
 
     In the topos-theoretic Nullstellensatz, algebraic truths are replaced by
     arbitrary truths of the generic model, subject only to the condition that
-    they can be expressed as a geometric sequent, and algebraic certificates
+    they can be expressed as geometric sequents, and algebraic certificates
     are replaced by \emph{logical certificates}: proofs.
   }
 
   \jnote{3}{
-    While, as stated on slide 1/20, the generic model~$U_\TT$ is a
+    While, as stated on slide 1/10, the generic model~$U_\TT$ is a
     conservative~$\TT$-model, the classifying topos~$\Set[\TT]$ does not
     believe this fact. That is, the statement~``$U_\TT$ is a
     conservative~$\ul{\TT}$-model'' is not true internally to~$\Set[\TT]$.
     What is true is the modified statement~``$U_\TT$ is a
     conservative$^\star$~$\ul{\TT}/U_\TT$-model''.
+
+    To be more precise, the following is true: \\
+    \mbox{For any geometric sequent~$\sigma$, if~$\Set[\TT] \models
+    \speak{$\sigma$ holds for~$U_\TT$}$, then $\TT$ proves~$\sigma$.}
+
+    The following is false in general: \\
+    \mbox{$\Set[\TT] \models \speak{For any geometric$^\star$ sequent~$\sigma$,
+    if~$\sigma$ holds for~$U_\TT$, then $\ul{\TT}$ proves~$\sigma$}$.}
+
+    The following is true: \\
+    \mbox{$\Set[\TT] \models \speak{For any geometric$^\star$ sequent~$\sigma$,
+    if~$\sigma$ holds for~$U_\TT$, then $\ul{\TT}/U_\TT$ proves~$\sigma$}$.}
   }
 
   \nullstellensatz
@@ -1101,7 +1050,7 @@
     Grothendieck topos internally to a Grothendieck topos is itself a
     Grothendieck topos, hence the classifying topos of some geometric theory.
 
-    Constructing internally to~$\Set[\TT]$, where~$\ul{\TT}/U_\TT$ is just an
+    Constructing internally to~$\Set[\TT]$, where~$\ul{\TT}/U_\TT$ looks just like an
     ordinary geometric theory, the classifying topos of that theory, and then
     externalising the resulting Grothendieck topos results in the classifying
     topos of~$\TT$-homomorphisms. There are two canonical geometric morphisms
@@ -1126,9 +1075,11 @@
   %  \bot)$. By the Nullstellensatz~$\ul{\TT}/U_\TT$ proves~$(\top \seq{x} \bot)$.
   %  But this is false in the~$\ul{\TT}/U_\TT$-model~$U_\TT \amalg
   %  \{\heartsuit\}$.
-    Let~$x,y \? U_\TT$. Assume that~$\neg(x = y)$.
+    Let~$x,y \? U_\TT$. We want to verify~$\neg\neg(x = y)$. Hence assume that~$\neg(x = y)$.
     By the Nullstellensatz~$\ul{\TT}/U_\TT$ proves~$\sigma \defeq (e_x = e_y \vdash \bot)$.
-    But this is false in the~$\ul{\TT}/U_\TT$-model~$M \defeq U_\TT/(x \sim y)$.
+    Thus~$\sigma$ holds in any~$\ul{\TT}/U_\TT$-model.
+    But~$\sigma$ is false in the~$\ul{\TT}/U_\TT$-model~$M \defeq U_\TT/(x \sim
+    y)$. Hence~$\bot$.
   }
 
   \only<2->{
@@ -1141,7 +1092,7 @@
   }
 
   \jnote{1}{
-    This slide gives two examples how to use the Nullstellensatz to deduce
+    This slide gives an example how to use the Nullstellensatz to deduce
     properties of the generic model. A couple of remarks are in order.
 
     The Nullstellensatz is trivial for sequents~$\sigma$ of the form~$(\top
@@ -1159,15 +1110,10 @@
     To apply the Nullstellensatz, no description of a site defining~$\Set[\TT]$
     is required.
 
-    Often when using the Nullstellensatz, we go from an (assumed) truth
+    Often when using the Nullstellensatz, we go from a (perhaps assumed) truth
     of~$U_\TT$ via provability to another model~$M$
-    of~$\ul{\TT}/U_\TT$. That is, we use provability$^\star$ as a (one-way)
-    \emph{bridge}:
-    \[ \xymatrix{
-      & \text{$\ul{\TT}/U_\TT$ proves $\sigma$} \\
-      \text{$\sigma$ holds for $U_\TT$} \ar@/^1.1pc/@{<=>}[ur] &&
-      \text{$\sigma$ holds for $M$} \ar@/_1.1pc/@{<=}[ul]
-    } \]
+    of~$\ul{\TT}/U_\TT$. That is, we use provability as a (one-way)
+    \emph{bridge}.
   }
 \end{frame}
 
@@ -1196,12 +1142,8 @@
 
   \jnote{1}{
     Theorem~1 states that the source provided by the Nullstellensatz is
-    exhaustive. The notion of provability$^{\star\star}$ is a strengthening of
-    the notion of provability$^\star$, which in turn is a strengthening of the
-    ordinary notion of provability in geometric logic. We are using it here
-    because while the notion of provability$^\star$ can be expressed in the
-    internal language of a topos, it cannot be expressed in intuitionistic
-    logic.
+    exhaustive. It is possible, but not entirely obvious, how to formulate the
+    Nullstellensatz as an (infinitary) first-order formula.
 
     Theorem~2 provides a useful variant of the Nullstellensatz. Its
     assumptions are for instance satisfied if~$\TT$ is the theory of rings
@@ -1210,10 +1152,8 @@
     formulation of synthetic quasicoherence no local rings appear even though
     the relevant topos is the classifying topos of local rings.
 
-    Theorems~3 and~4 generalise the Nullstellensatz to the
-    higher-order setting. The map~$\mathrm{ev}$ maps (the equivalence class
-    of) a~$\ul{\TT}/U_\TT$-provably$^\star$ geometric$^\star$ formula~$\theta$
-    in one free variable to the subset~$\{ x \? U_\TT \,|\, \theta(x) \}$.
+    Theorems~3 indicates that the Nullstellensatz can be generalised to the
+    higher-order setting.
 
     Written details on all of this are
     \fixedhref{https://rawgit.com/iblech/internal-methods/master/paper-qcoh.pdf}{slowly
@@ -1231,14 +1171,14 @@
     characterisation of the first-order formulas in the general case, of the
     form as in Theorem~1, was still missing.
 
-    Theorem~3 is a relativisation of Olivia Caramello's completeness theorem,
+    Theorem~3 rests on a relativisation of Olivia Caramello's completeness theorem,
     Theorem~2.4(ii) in her paper
     \fixedhref{https://arxiv.org/abs/0906.3061}{Universal models and
     definability}. The passage from the external to the internal phrasing
     requires going from~$\TT$ to~$\ul{\TT}/U_\TT$.
   }
 
-  \jnote{2}{
+  \jnote{3}{
     Plans for the future include:
     \begin{itemize}\justifying
       \item Developing an Agda library for dealing with the internal language
@@ -1249,7 +1189,8 @@
       \item Applying the Nullstellensatz in constructive algebra and algebraic
       geometry, along the lines of generic freeness and synthetic algebraic
       geometry. Most of the toposes in geometric use are actually uncharted
-      territory from a logical point of view.
+      territory from a logical point of view. The talk by Matthias Hutzler will
+      present new results in that direction.
     \end{itemize}
   }
 \end{frame}}

@@ -74,5 +74,7 @@ No prior knowledge about topos theory or formal logic is assumed.
   for the Logic Seminar in Padova*
 * *[Slides (PDF)](https://rawgit.com/iblech/internal-methods/master/slides-birmingham2019.pdf)
   for the [6th Workshop on Formal Topology](https://www.cs.bham.ac.uk/~sjv/6WFTop/)
+* *[Slides (PDF)](https://rawgit.com/iblech/internal-methods/master/slides-edinburgh2019.pdf)
+  for [Category Theory 2019](http://conferences.inf.ed.ac.uk/ct2019/)
 
 ![Sheaves of rings look like ordinary rings from the internal point of view.](images/external-internal-small.png)

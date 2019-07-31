@@ -207,7 +207,10 @@ Since we want to develop an analogous theory for flabby objects in elementary
 toposes, it is worthwhile to analyze the logical and set-theoretic commitments
 which are required to establish these properties. The standard proofs of
 properties~(1),~(3a),~(3b) and~(3c) require Zorn's lemma to construct maximal
-extensions of given sections. The standard proof of property~(4b) requires the
+extensions of given sections.\footnote{We are careful to distinguish between
+the axiom of choice and Zorn's lemma. The former implies the latter, but the
+converse requires the law of excluded middle.}
+The standard proof of property~(4b) requires the
 law of excluded middle, to ensure that the Godement construction actually
 yields a flabby sheaf. Properties~(2) and~(4a) can be verified purely
 intuitionistically.
@@ -538,7 +541,7 @@ morphism~$K \to X$, there exists an epimorphism~$B \to A$ and a morphism~$B
   X
 } \]
 
-Instead of referencing arbitrary stages~$A \in \E$, one can also just reference
+Instead of referring to arbitrary stages~$A \in \E$, one can also just refer to
 the generic stage: Let~$\P_{\leq1}(X)$ denote the \emph{object of subterminals}
 of~$X$; this object is a certain subobject of~$\P(X) = [X,\Omega_\E]_\E$, the
 powerobject of~$X$. The subobject~$K_0$ of~$X \times \P_{\leq1}(X)$ classified by the
@@ -693,12 +696,12 @@ injective, then~$I$ is also internally injective. The converse holds if~$\E$ is
 localic and Zorn's lemma is available in the metatheory.
 \end{thm}
 
-\begin{proof}For the ``only if'' direction, let~$I$ be an object
+\begin{proof}Let~$I$ be an object
 which is externally injective. Then~$I$ satisfies Condition~(2) in
 Proposition~\ref{prop:notions-of-internal-injectivity}, even without having to
 pass to covers.
 
-For the ``if'' direction, let~$I$ be an internally
+For the converse direction, let~$I$ be an internally
 injective object. Let~$i : A \to B$ be a monomorphism in~$\E$ and let~$f :
 A \to I$ be an arbitrary morphism. We want to show that there exists an
 extension $B \to I$ of~$f$ along~$i$. To this end, we consider the object of

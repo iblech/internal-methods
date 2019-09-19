@@ -1,0 +1,416 @@
+\documentclass[12pt,utf8,notheorems,compress,t]{beamer}
+\usepackage{etex}
+
+%\usepackage{pgfpages}
+%\setbeameroption{show notes on second screen}
+%\setbeamertemplate{note page}[plain]
+%\newcommand{\jnote}[2]{\only<#1>{\note{\setlength\parskip{\medskipamount}\justifying\footnotesize#2\par}}}
+\newcommand{\jnote}[2]{}
+
+% Workaround for the issue described at
+% https://tex.stackexchange.com/questions/164406/beamer-using-href-in-notes.
+\newcommand{\fixedhref}[2]{\makebox[0pt][l]{\hspace*{\paperwidth}\href{#1}{#2}}\href{#1}{#2}}
+
+\usepackage[english]{babel}
+
+\usepackage{graphbox}
+\usepackage{mathtools}
+\usepackage{booktabs}
+\usepackage{stmaryrd}
+\usepackage{array}
+\usepackage{ragged2e}
+\usepackage{multicol}
+\usepackage{tabto}
+\usepackage{xstring}
+\usepackage{ifthen}
+\usepackage[normalem]{ulem}
+\usepackage[all]{xy}
+\xyoption{rotate}
+\usepackage{tikz}
+\usetikzlibrary{calc,shapes,shapes.callouts,shapes.arrows,patterns,fit,backgrounds,decorations.pathmorphing,positioning}
+\hypersetup{colorlinks=true}
+
+\usepackage{pifont}
+\newcommand{\cmark}{\ding{51}}
+\newcommand{\xmark}{\ding{55}}
+\DeclareSymbolFont{extraup}{U}{zavm}{m}{n}
+\DeclareMathSymbol{\varheart}{\mathalpha}{extraup}{86}
+
+\graphicspath{{images/}}
+
+\usepackage[protrusion=true,expansion=true]{microtype}
+
+\setlength\parskip{\medskipamount}
+\setlength\parindent{0pt}
+
+\title{Generalized spaces for constructive algebra}
+\author{Ingo Blechschmidt}
+\date{September 2019}
+
+\useinnertheme[shadow=true]{rounded}
+\setbeamerfont{block title}{size={}}
+
+\useinnertheme{rectangles}
+
+\usecolortheme{orchid}
+\usecolortheme{seahorse}
+\definecolor{mypurple}{RGB}{150,0,255}
+\setbeamercolor{structure}{fg=mypurple}
+\definecolor{myred}{RGB}{150,0,0}
+\setbeamercolor*{title}{bg=myred,fg=white}
+\setbeamercolor*{titlelike}{bg=myred,fg=white}
+\setbeamercolor{frame}{bg=black}
+
+\usefonttheme{serif}
+\usepackage[T1]{fontenc}
+\usepackage{libertine}
+
+% lifted from https://arxiv.org/abs/1506.08870
+\DeclareFontFamily{U}{min}{}
+\DeclareFontShape{U}{min}{m}{n}{<-> udmj30}{}
+\newcommand\yon{\!\text{\usefont{U}{min}{m}{n}\symbol{'210}}\!}
+
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\B}{\mathcal{B}}
+\renewcommand{\C}{\mathcal{C}}
+\newcommand{\M}{\mathcal{M}}
+\renewcommand{\AA}{\mathbb{A}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\F}{\mathcal{F}}
+\renewcommand{\G}{\mathcal{G}}
+\newcommand{\J}{\mathcal{J}}
+\newcommand{\GG}{\mathbb{G}}
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\K}{\mathcal{K}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\TT}{\mathbb{T}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\CC}{\mathbb{C}}
+\renewcommand{\P}{\mathcal{P}}
+\newcommand{\aaa}{\mathfrak{a}}
+\newcommand{\ppp}{\mathfrak{p}}
+\newcommand{\fff}{\mathfrak{f}}
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\defeqv}{\vcentcolon\equiv}
+\newcommand{\Sh}{\mathrm{Sh}}
+\newcommand{\GL}{\mathrm{GL}}
+\newcommand{\Zar}{\mathrm{Zar}}
+\newcommand{\op}{\mathrm{op}}
+\newcommand{\Set}{\mathrm{Set}}
+\newcommand{\Eff}{\mathrm{Ef{}f}}
+\newcommand{\Sch}{\mathrm{Sch}}
+\newcommand{\Aff}{\mathrm{Aff}}
+\newcommand{\Ring}{\mathrm{Ring}}
+\newcommand{\LocRing}{\mathrm{LocRing}}
+\newcommand{\LRS}{\mathrm{LRS}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\Spec}{\mathrm{Spec}}
+\newcommand{\lra}{\longrightarrow}
+\newcommand{\RelSpec}{\operatorname{Spec}}
+\renewcommand{\_}{\mathpunct{.}}
+\newcommand{\?}{\,{:}\,}
+\newcommand{\speak}[1]{\ulcorner\text{\textnormal{#1}}\urcorner}
+\newcommand{\ul}[1]{\underline{#1}}
+\newcommand{\affl}{\ensuremath{{\ul{\ensuremath{\AA}}^1}}}
+\newcommand{\Ll}{\text{iff}}
+\newcommand{\inv}{inv.\@}
+\newcommand{\seq}[1]{\mathrel{\vdash\!\!\!_{#1}}}
+\newcommand{\hg}{\mathbin{:}}  % homogeneous coordinates
+
+\setbeamertemplate{blocks}[rounded][shadow=false]
+
+\newenvironment{indentblock}{%
+  \list{}{\leftmargin\leftmargin}%
+  \item\relax
+}{%
+  \endlist
+}
+
+% Adapted from https://latex.org/forum/viewtopic.php?t=2251 (Stefan Kottwitz)
+\newenvironment<>{hilblock}{
+  \begin{center}
+    \begin{minipage}{9.05cm}
+      \setlength{\textwidth}{9.05cm}
+      \begin{actionenv}#1
+        \def\insertblocktitle{}
+        \par
+        \usebeamertemplate{block begin}}{
+        \par
+        \usebeamertemplate{block end}
+      \end{actionenv}
+    \end{minipage}
+  \end{center}}
+
+\newcommand{\bignumber}[1]{
+  \renewcommand{\insertenumlabel}{#1}\scalebox{1.5}{\usebeamertemplate{enumerate item}}
+}
+\newcommand{\bigheart}{\includegraphics{heart}}
+
+\newenvironment{changemargin}[2]{%
+  \begin{list}{}{%
+    \setlength{\topsep}{0pt}%
+    \setlength{\leftmargin}{#1}%
+    \setlength{\rightmargin}{#2}%
+    \setlength{\listparindent}{\parindent}%
+    \setlength{\itemindent}{\parindent}%
+    \setlength{\parsep}{\parskip}%
+  }%
+  \item[]}{\end{list}}
+
+\tikzset{
+  invisible/.style={opacity=0,text opacity=0},
+  visible on/.style={alt={#1{}{invisible}}},
+  alt/.code args={<#1>#2#3}{%
+    \alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}}}
+}
+
+\newcommand{\pointthis}[3]{%
+  \tikz[remember picture,baseline]{
+    \node[anchor=base,inner sep=0,outer sep=0] (#2) {#2};
+    \node[visible on=#1,overlay,rectangle callout,rounded corners,callout relative pointer={(0.3cm,0.5cm)},fill=blue!20] at ($(#2.north)+(-0.1cm,-1.1cm)$) {#3};
+  }%
+}
+
+\tikzset{
+  invisible/.style={opacity=0,text opacity=0},
+  visible on/.style={alt={#1{}{invisible}}},
+  alt/.code args={<#1>#2#3}{%
+    \alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}}}
+}
+
+\newcommand{\hcancel}[5]{%
+  \tikz[baseline=(tocancel.base)]{
+    \node[inner sep=0pt,outer sep=0pt] (tocancel) {#1};
+    \draw[red!80, line width=0.4mm] ($(tocancel.south west)+(#2,#3)$) -- ($(tocancel.north east)+(#4,#5)$);
+  }%
+}
+
+\newcommand{\explain}[7]{%
+  \tikz[remember picture,baseline]{
+    \node[anchor=base,inner sep=2pt,outer sep=0,fill=#3,rounded corners] (label) {#1};
+    \node[anchor=north,visible on=<#2>,overlay,rectangle callout,rounded corners,callout
+    relative pointer={(0.0cm,0.5cm)+(0.0cm,#6)},fill=#3] at ($(label.south)+(0,-0.3cm)+(#4,#5)$) {#7};
+  }%
+}
+
+\newcommand{\explainstub}[2]{%
+  \tikz[remember picture,baseline]{
+    \node[anchor=base,inner sep=2pt,outer sep=0,fill=#2,rounded corners] (label) {#1};
+  }%
+}
+
+\newcommand{\squiggly}[1]{%
+  \tikz[remember picture,baseline]{
+    \node[anchor=base,inner sep=0,outer sep=0] (label) {#1};
+    \draw[thick,color=red!80,decoration={snake,amplitude=0.5pt,segment
+    length=3pt},decorate] ($(label.south west) + (0,-2pt)$) -- ($(label.south east) + (0,-2pt)$);
+  }%
+}
+
+% Adapted from https://latex.org/forum/viewtopic.php?t=2251 (Stefan Kottwitz)
+\newenvironment<>{varblock}[2]{\begin{varblockextra}{#1}{#2}{}}{\end{varblockextra}}
+\newenvironment<>{varblockextra}[3]{
+  \begin{center}
+    \begin{minipage}{#1}
+      \begin{actionenv}#4
+        {\centering \hil{#2}\par}
+	\def\insertblocktitle{}%\centering #2}
+        \def\varblockextraend{#3}
+	\usebeamertemplate{block begin}}{
+        \par
+        \usebeamertemplate{block end}
+        \varblockextraend
+      \end{actionenv}
+    \end{minipage}
+  \end{center}}
+
+\setbeamertemplate{headline}{%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex]{}%
+    \insertsectionnavigationhorizontal{\paperwidth}{}{}%
+  \end{beamercolorbox}%
+  \vskip0pt%
+}
+
+\setbeamertemplate{frametitle}{%
+  \vskip0.4em%
+  \leavevmode%
+  \begin{beamercolorbox}[dp=1ex,center]{}%
+  %   \usebeamercolor[fg]{item}{\textbf{{\Large \insertframetitle}}}
+    \begin{tikzpicture}
+      \def\R{8pt}
+      \node (title) {\hil{\large\insertframetitle}};
+      \begin{pgfonlayer}{background}
+        \draw[decorate, very thick, draw=mypurple]
+          ($(title.south west) + (\R, 0)$) arc(270:180:\R) --
+          ($(title.north west) + (0, -\R)$) arc(180:90:\R) --
+          ($(title.north east) + (-\R, 0)$) arc(90:0:\R) --
+          ($(title.south east) + (0, \R)$) arc(0:-90:\R) --
+          cycle;
+      \end{pgfonlayer}
+    \end{tikzpicture}
+  \end{beamercolorbox}%
+  \vskip-0.6em%
+}
+
+\setbeamertemplate{navigation symbols}{}
+
+\newcounter{framenumberpreappendix}
+\newcommand{\backupstart}{
+  \setcounter{framenumberpreappendix}{\value{framenumber}}
+}
+\newcommand{\backupend}{
+  \addtocounter{framenumberpreappendix}{-\value{framenumber}}
+  \addtocounter{framenumber}{\value{framenumberpreappendix}}
+}
+
+\newcommand{\insertframeextra}{}
+\setbeamertemplate{footline}{%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex,dp=1ex,right,rightskip=1mm,leftskip=1mm]{}%
+    % \inserttitle
+    \hfill
+    \insertframenumber\insertframeextra\,/\,\inserttotalframenumber
+  \end{beamercolorbox}%
+  \vskip0pt%
+}
+
+
+\newcommand{\hil}[1]{{\usebeamercolor[fg]{item}{\textbf{#1}}}}
+\newcommand{\bad}[1]{\textcolor{red!90}{\textnormal{#1}}}
+
+\begin{document}
+
+\addtocounter{framenumber}{-1}
+
+\tikzstyle{topos} = [draw=mypurple, very thick, rectangle, rounded corners, inner sep=5pt, inner ysep=10pt]
+\tikzstyle{title} = [fill=mypurple, text=white]
+
+\input{images/primes.tex}
+%\renewcommand{\sieve}[2]{SIEVE}
+%\renewcommand{\fakesieve}[2]{SIEVE}
+
+\newcommand{\drawbox}[4]{
+  \node[topos, #4] [fit = #3] (#1) {};
+  \node[title] at (#1.north) {#2};
+}
+
+\newcommand{\muchstuff}{
+  \includegraphics[height=3em]{filmat}
+  \scalebox{0.5}{\sieve{14}{2}}
+}
+
+\newcommand{\muchstuffplaceholder}{
+  \includegraphics[height=3em]{filmat-placeholder}
+  \scalebox{0.5}{\fakesieve{14}{2}}
+}
+
+\newcommand{\fewstuff}{
+  \includegraphics[height=3em]{filmat}
+  \scalebox{0.5}{\sieve{7}{2}}
+}
+
+\newcommand{\threeblobs}{
+  \colorbox{mypurple}{\ \ }\quad
+  \colorbox{mypurple}{\ \ }\quad
+  \colorbox{mypurple}{\ \ }
+}
+
+%\setbeamertemplate{headline}{\mynav{gray}{gray}{gray}}
+
+{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{4.95cm}\includegraphics[width=\paperwidth]{topos-horses}\end{minipage}}
+\begin{frame}[c]
+  \centering
+
+  \begin{tikzpicture}
+    \def\R{8pt}
+    \node (title) {\hil{\,Generalized spaces for constructive algebra\,}};
+    \begin{pgfonlayer}{background}
+      \draw[decorate, very thick, draw=mypurple]
+        ($(title.south west) + (\R, 0)$) arc(270:180:\R) --
+        ($(title.north west) + (0, -\R)$) arc(180:90:\R) --
+        ($(title.north east) + (-\R, 0)$) arc(90:0:\R) --
+        ($(title.south east) + (0, \R)$) arc(0:-90:\R) --
+        cycle;
+    \end{pgfonlayer}
+  \end{tikzpicture}
+  \bigskip
+
+  \begin{columns}
+    \small
+    \begin{column}{0.35\textwidth}
+      \centering
+      \bignumber{1}
+      
+      \phantom{x}\hil{Locales}
+      \medskip
+
+      \includegraphics[height=4.5em]{phantoms.png}
+    \end{column}
+    \hspace*{0.5em}
+    \begin{column}{0.28\textwidth}
+      \centering
+      \bignumber{2}
+
+      \hil{Sheaf models}
+      \medskip
+
+      \begin{tikzpicture}
+        \node (overview) {
+          \scalebox{0.35}{\sieve{4}{3}}
+        };
+        \def\R{8pt}
+        \begin{pgfonlayer}{background}
+        \draw[decoration={bumps,segment length=8pt}, decorate, very thick, draw=mypurple]
+          ($(overview.south west) + (\R, 0)$) arc(270:180:\R) --
+          ($(overview.north west) + (0, -\R)$) arc(180:90:\R) --
+          ($(overview.north east) + (-\R, 0)$) arc(90:0:\R) --
+          ($(overview.south east) + (0, \R)$) arc(0:-90:\R) --
+          cycle;
+        \end{pgfonlayer}
+      \end{tikzpicture}
+    \end{column}
+    \begin{column}{0.4\textwidth}
+      \centering
+      \bignumber{3}
+      
+      \hil{Constructive algebra}
+      \medskip
+
+      \includegraphics[height=4.5em]{calabi-yau}
+    \end{column}
+  \end{columns}
+  \bigskip
+
+  \scriptsize
+  \textit{-- an invitation --}
+  \bigskip
+
+  Proof and Computation \\
+  September 20th to 26th, 2019
+  \bigskip
+
+  Ingo Blechschmidt \\
+  Università di Verona
+  \par
+
+\end{frame}}
+
+\end{document}
+
+% Grothendieck quote for the title picture:
+%
+% Ces “nuages probabilistes”, remplaçant les rassurantes particules matérielles
+% d’antan, me rappellent étrangement les élusifs “voisinages ouverts” qui
+% peuplent les topos, tels des fantômes évanescents, pour entourer des “points”
+% imaginaires, ...
+%
+% Diese "Wahrscheinlichkeitswolken", welche die beruhigenden materiellen
+% Partikel von früher ersetzen, erinnern mich irgendwie an die flüchtigen
+% "offenen Umgebungen" der Topoi -- wie dahinschwindende Phantome, um
+% die fiktiven "Punkte" zu umgeben, ...
+%
+% These “probability clouds”, replacing the reassuring material particles of
+% before, remind me strangely of the elusive “open neighborhoods” that populate
+% the topoi, like evanescent phantoms, to surround the imaginary “points”.

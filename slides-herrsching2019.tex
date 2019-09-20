@@ -119,6 +119,7 @@
 \newcommand{\inv}{inv.\@}
 \newcommand{\seq}[1]{\mathrel{\vdash\!\!\!_{#1}}}
 \newcommand{\hg}{\mathbin{:}}  % homogeneous coordinates
+\newcommand{\brak}[1]{{\llbracket{#1}\rrbracket}}
 
 \setbeamertemplate{blocks}[rounded][shadow=false]
 
@@ -241,7 +242,7 @@
   %   \usebeamercolor[fg]{item}{\textbf{{\Large \insertframetitle}}}
     \begin{tikzpicture}
       \def\R{8pt}
-      \node (title) {\hil{\large\insertframetitle}};
+      \node (title) {\hil{\large\,\!\insertframetitle}};
       \begin{pgfonlayer}{background}
         \draw[decorate, very thick, draw=mypurple]
           ($(title.south west) + (\R, 0)$) arc(270:180:\R) --
@@ -353,10 +354,10 @@
       \centering
       \bignumber{2}
 
-      \hil{Sheaf models}
+      \phantom{x}\hil{Sheaf models}
       \medskip
 
-      \begin{tikzpicture}
+      \phantom{x}\!\!\begin{tikzpicture}
         \node (overview) {
           \scalebox{0.35}{\sieve{4}{3}}
         };
@@ -387,8 +388,9 @@
   \textit{-- an invitation --}
   \bigskip
 
-  Proof and Computation \\
-  September 20th to 26th, 2019
+  Autumn schoon on Proof and Computation \\
+  September 20th to 26th, 2019 \\
+  Herrsching
   \bigskip
 
   Ingo Blechschmidt \\
@@ -402,34 +404,158 @@
 
 \section{Locales}
 
-\begin{frame}{Locales}
+\begin{frame}
+  \centering\bigskip
+  \includegraphics[height=9.5em]{phantoms}
+
+  \large Lecture I:
+  \hil{Locales}
+
+  \normalsize
+
   \begin{hilblock}Locales are a kind of space in which \hil{opens} instead of
   \hil{points} are fundamental.\end{hilblock}
 
-  \begin{columns}[t]
-    \begin{column}[t]{0.4\textwidth}
-      \textbf{Def.:} A \hil{topological space} consists of a \hil{set of
-      points}~$X$ together with a set~$\O(X)$ of point sets which are deemed
-      \hil{open} such that unions of XXX
-    \end{column}
+\end{frame}
 
-    \begin{column}[t]{0.6\textwidth}
-      \begin{tikzpicture}[sibling distance=8em, level distance=2.5em,
-        every node/.style = {shape=rectangle, rounded corners,
-          draw, align=center}]
-        \node {euclidean spaces} [grow=up]
-          child { node {metric spaces}
-            child { node {sober topological spaces}
-              child { node {locales}
-                child { node {toposes}
-                  child { node {$\infty$-toposes} } } }
-              child { node {topological spaces} } } };
-      \end{tikzpicture}
-    \end{column}
-  \end{columns}
+\begin{frame}{Locales in a nutshell}
+  \justifying
+  \textbf{Definition:} A \hil{topological space}~$X$ consists of a \hil{set of
+  points} together with a set~$\O(X)$ of point sets which are deemed
+  \hil{open} such that unions and finite intersections of open sets are open.
+  \bigskip
+
+  \centering\small
+  \begin{tikzpicture}[sibling distance=8em, level distance=2.5em,
+    every node/.style = {shape=rectangle, rounded corners,
+      draw, align=center}, semithick, draw=mypurple]
+    \node {euclidean spaces} [grow=up]
+      child { node {metric spaces}
+        child[dashed] { node [solid] {sober topological spaces}
+          child[solid] { node {locales}
+            child { node {toposes}
+              child { node {$\infty$-toposes} } } }
+          child[solid] { node {topological spaces} } } };
+  \end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Nontrivial spaces without points}
+  The following locales don't have any points and are nontrivial:
+  \begin{enumerate}
+    \item the locale of surjections $\NN \twoheadrightarrow \RR$
+    \item $\QQ \cap (\RR \setminus \QQ)$
+    \item the pairwise intersections in the Banach--Tarski paradox
+    \item Alex Simpson's locale of random binary sequences
+  \end{enumerate}
+
+  \begin{hilblock}
+    Relinquishing points increases flexibility.
+  \end{hilblock}
+
+  \centering
+  \includegraphics[height=5em]{banach-tarski}
+\end{frame}
+
+\begin{frame}{Issues of constructivity}
+  \begin{enumerate}\justifying
+    \item The unit interval~$[0,1]$ is \hil{compact}.
+    \bigskip
+
+    \item \hil{The fundamental theorem of Galois theory:}
+    Let~$L | k$ be a Galois extension. Then there is a bijection between
+    \[ \small\begin{array}{@{}rcl@{}}
+      \begin{minipage}{0.25\textwidth}\centering the intermediate extensions~$L|E|k$\end{minipage}
+      &\text{and}&
+      \begin{minipage}{0.33\textwidth}\centering the closed subgroups
+      of~$\mathrm{Aut}_k(L)$.\end{minipage} \\
+      \\
+      E &\longmapsto& \{ \sigma \in \mathrm{Aut}_k(L) \,|\, \sigma|_E = \operatorname{id} \} \\
+      L^H &\longmapsfrom& H
+    \end{array} \]
+    \medskip
+
+    \item \hil{Gelfand duality:} The categories of
+    \[ \small\begin{array}{@{}rcl@{}}
+      \begin{minipage}{0.38\textwidth}\centering compact Hausdorff spaces\end{minipage}
+      &\text{and}&
+      \left(\begin{minipage}{0.33\textwidth}\centering commutative $C^\star$-algebras with unit\end{minipage}\right)^{\mathrm{op}} \\[1.1em]
+      X &\longmapsto& \{ f : X \to \CC \,|\, \text{$f$ continuous} \}
+    \end{array} \]
+    are equivalent.
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{Localic basics}
+  \justifying
+  \textbf{Definition:} A \hil{topological space}~$X$ consists of a \hil{set of
+  points} together with a set~$\O(X)$ of point sets which are deemed
+  \hil{open} such that unions and finite intersections of open sets are open.
+
+  \textbf{Observation:} The partial order~$\O(X)$ of open sets has
+  \[ \small\begin{array}{@{}ccc@{}}
+    \text{arbitrary joins}
+    &\text{and}&
+    \text{finite meets}, \\
+    \bigvee && \wedge
+  \end{array} \]
+  and finite meets distribute over arbitrary joins:
+  \[ U \wedge \bigvee_i V_i = \bigvee_i (U \wedge V_i). \]
+  \vspace*{-1.2em}
+  \pause
+
+  \textbf{Definition:} A \hil{frame} is a partial order with arbitrary joins
+  and finite meets such that the distributive law holds.
+
+  \textbf{Definition:} A \hil{locale}~$X$ is given by a \hil{frame~$\O(X)$ of opens}.
+\end{frame}
+
+\begin{frame}{Locales presented by theories}
+  \justifying
+  \textbf{Definition:} A \hil{geometric signature} consists of
+  \begin{enumerate}
+    \item a set of sorts: $X$, $Y$, $Z$, \ldots
+    \item a set of function symbols: $f : X \times Y \to Z$, \ldots
+    \item a set of relation symbols: $R \hookrightarrow X \times Y \times Z$, \ldots
+  \end{enumerate}
+  % A geometric signature is \hil{propositional} iff its set
+  % of sorts is empty.
+  A \hil{geometric theory}~$\TT$ over a geometric
+  signature~$\Sigma$ consists of a set of axioms (geometric sequents
+  over~$\Sigma$).
+
+  \only<1>{
+    \textbf{Examples:}
+    \begin{enumerate}
+      \item the theory of rings
+      \item the theory of surjections~$\NN \twoheadrightarrow \RR$
+      \item the theory of Dedekind cuts
+    \end{enumerate}
+  }
+  \pause
+
+  \textbf{Definition:} A \hil{set-based model}~$M$ of a theory~$\TT$ consists of
+  \begin{enumerate}
+    \item a set~$\brak{X}$ for each sort~$X$,
+    \item a function~$\brak{f} : \brak{X_1} \times \cdots \times \brak{X_n} \to
+    \brak{Y}$ for \\
+    each function symbol~$f : X_1 \times \cdots \times X_n \to
+    Y$, and
+    \item a relation~$\brak{R} \subseteq \brak{X_1} \times \cdots \times
+    \brak{X_n}$ for \\
+    each relation symbol~$R \hookrightarrow X_1 \times \cdots \times X_n$
+  \end{enumerate}
+  such that~$M$ validates the axioms of~$\TT$.
 \end{frame}
 
 \end{document}
+
+    \begin{column}[t]{0.4\textwidth}
+      \justifying
+      \textbf{Contrast with:} A \hil{topological space} consists of a \hil{set of
+      points}~$X$ together with a set~$\O(X)$ of point sets which are deemed
+      \hil{open} such that \ldots
+    \end{column}
+
 
 % Grothendieck quote for the title picture:
 %

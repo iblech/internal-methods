@@ -1,11 +1,10 @@
 \documentclass[12pt,utf8,notheorems,compress,t]{beamer}
 \usepackage{etex}
 
-%\usepackage{pgfpages}
-%\setbeameroption{show notes on second screen}
-%\setbeamertemplate{note page}[plain]
-%\newcommand{\jnote}[2]{\only<#1>{\note{\setlength\parskip{\medskipamount}\justifying\footnotesize#2\par}}}
-\newcommand{\jnote}[2]{}
+\usepackage{pgfpages}
+\setbeameroption{show notes on second screen}
+\setbeamertemplate{note page}[plain]
+\newcommand{\jnote}[2]{\only<#1>{\note{\setlength\parskip{\medskipamount}\justifying\footnotesize#2\par}}}
 
 % Workaround for the issue described at
 % https://tex.stackexchange.com/questions/164406/beamer-using-href-in-notes.
@@ -120,6 +119,9 @@
 \newcommand{\seq}[1]{\mathrel{\vdash\!\!\!_{#1}}}
 \newcommand{\hg}{\mathbin{:}}  % homogeneous coordinates
 \newcommand{\brak}[1]{{\llbracket{#1}\rrbracket}}
+\newcommand{\pt}{\mathrm{pt}}
+\newcommand{\Loc}{\mathrm{Loc}}
+\newcommand{\Top}{\mathrm{Top}}
 
 \setbeamertemplate{blocks}[rounded][shadow=false]
 
@@ -388,7 +390,7 @@
   \textit{-- an invitation --}
   \bigskip
 
-  Autumn schoon on Proof and Computation \\
+  Autumn school on Proof and Computation \\
   September 20th to 26th, 2019 \\
   Herrsching
   \bigskip
@@ -416,11 +418,38 @@
   \begin{hilblock}Locales are a kind of space in which \hil{opens} instead of
   \hil{points} are fundamental.\end{hilblock}
 
+  \jnote{1}{
+    These ``probability clouds'', replacing the reassuring material particles of
+    before, remind me strangely of the elusive ``open neighborhoods'' that populate
+    the topoi, like evanescent phantoms, to surround the imaginary ``points''.
+
+    \hfill -- Alexander Grothendieck
+
+    \bigskip
+    \bigskip
+
+    References include:
+    \begin{enumerate}
+      \item Peter Johnstone.
+      \fixedhref{http://pointlesstopology.com/the-point-of-pointless-topology.pdf}{The point of pointless topology}, 1983.
+      \item Peter Johnstone.
+      \fixedhref{http://www.heldermann.de/R&E/RAE18/ctw06.pdf}{The art of
+      pointless thinking: a student's guide to the category of locales}, 1990.
+    \end{enumerate}
+
+    Our metatheory is a constructive (no law of excluded middle, no choice
+    principles of any kind) but impredicative (free use of the powerset axiom)
+    flavor of English. The contents of this course could be formalized in the
+    internal language of toposes or in~\textsc{izf}. The main ideas of this
+    course are far more robust than this particular presentation, in
+    particular, they can also be made sense of in a predicative setting (such
+    as~\textsc{czf} or the internal language of arithmetic universes).
+  }
 \end{frame}
 
-\begin{frame}{Locales in a nutshell}
+\begin{frame}{Locales in context}
   \justifying
-  \textbf{Definition:} A \hil{topological space}~$X$ consists of a \hil{set of
+  \textbf{Definition.} A \hil{topological space}~$X$ consists of a \hil{set of
   points} together with a set~$\O(X)$ of point sets which are deemed
   \hil{open} such that unions and finite intersections of open sets are open.
   \bigskip
@@ -454,6 +483,30 @@
 
   \centering
   \includegraphics[height=5em]{banach-tarski}
+
+  \jnote{1}{
+    The locale of surjections $\NN \twoheadrightarrow \RR$ doesn't have any
+    points, but it has lots of interesting opens, such as~$U_{n,x}$, the ``open of those
+    surjections~$f$ such that~$f(n) = x$. If~$x$ is a fixed real number and~$n$
+    ranges over the naturals, these opens cover the full locale.
+
+    The Banach--Tarski paradox is the unintuitive statement that a
+    three-dimensional solid ball of radius~$r$ can be partitioned into six
+    disjoint subsets in such a way that rearranging those subsets yields two
+    solid balls of radius~$r$ each. These subsets are not measurable and
+    require the axiom of choice for their construction.
+
+    The Banach--Tarski paradox can be resolved by adopting the axiom of
+    determinacy instead of the axiom of choice, which entails that all subsets
+    of~$\RR^3$ are measurable, or by passing from the topological space~$\RR^3$
+    to its localic cousin. The localic counterparts of the six pieces will
+    still not have any points in common, but their locale-theoretic pairwise
+    intersection will not be trivial.
+
+    Tom Leinster
+    \fixedhref{https://golem.ph.utexas.edu/category/2011/12/on_the_law_of_large_numbers_su.html}{published
+    an accessible exposition} of the locale of random sequences at the n-category café.
+  }
 \end{frame}
 
 \begin{frame}{Issues of constructivity}
@@ -483,15 +536,39 @@
     \end{array} \]
     are equivalent.
   \end{enumerate}
+
+  \jnote{1}{
+    By \emph{compact}, we mean any open covering has a (Kuratowski-)finite
+    subcovering. The topological space~$[0,1]$ fails to be compact in some
+    flavors of constructive mathematics, but the localic unit interval is
+    always compact.
+
+    In verifying the fundamental theorem of Galois theory, at some point one
+    has to extend a given~$k$-homomorphism~$E \to L$ which is defined on some
+    finite intermediate extension~$E$ to~$L$. One-step extensions to larger
+    intermediate extensions are no problem, but extending to all of~$L$
+    requires some form of choice. By passing from the topological Galois group
+    to its localic group, this issue vanishes. References include the papers
+    \fixedhref{https://core.ac.uk/download/pdf/82660137.pdf}{Galois theory in a topos} and
+    \fixedhref{http://www.numdam.org/article/CTGDC_1981__22_1_61_0.pdf}{Localic groups} by Gavin Wraith.
+    Olivia Caramello's paper
+    \fixedhref{https://arxiv.org/abs/1301.0300}{Topological galois theory} is
+    also relevant.
+
+    A similar issue arises with Gelfand duality. A fully constructive treatment
+    is possible by passing from compact Hausdorff (topological) spaces to
+    completely regular locales. This treatment unlocks the Bohr topos approach
+    to quantum mechanics.
+  }
 \end{frame}
 
 \begin{frame}{Localic basics}
   \justifying
-  \textbf{Definition:} A \hil{topological space}~$X$ consists of a \hil{set of
+  \textbf{Definition.} A \hil{topological space}~$X$ consists of a \hil{set of
   points} together with a set~$\O(X)$ of point sets which are deemed
   \hil{open} such that unions and finite intersections of open sets are open.
 
-  \textbf{Observation:} The partial order~$\O(X)$ of open sets has
+  \textbf{Observation.} The partial order~$\O(X)$ of open sets has
   \[ \small\begin{array}{@{}ccc@{}}
     \text{arbitrary joins}
     &\text{and}&
@@ -503,15 +580,78 @@
   \vspace*{-1.2em}
   \pause
 
-  \textbf{Definition:} A \hil{frame} is a partial order with arbitrary joins
+  \textbf{Definition.} A \hil{frame} is a partial order with arbitrary joins
   and finite meets such that the distributive law holds.
 
-  \textbf{Definition:} A \hil{locale}~$X$ is given by a \hil{frame~$\O(X)$ of opens}.
+  \textbf{Definition.} A \hil{locale}~$X$ is given by a \hil{frame~$\O(X)$ of opens}.
+
+  \jnote{2}{
+    \textbf{Example.} Any topological space~$Y$ induces a locale~$L(Y)$ by
+    setting~$\O(L(Y)) \defeq \O(Y)$.
+
+    \textbf{Example.} The \emph{one-point locale}~$\pt$ is the locale induced
+    by the one-point topological space~$\{\heartsuit\}$. Its frame of opens is
+    the powerset of~$\{\heartsuit\}$, also known as the set~$\Omega$ of truth
+    values. Its least element is~$\bot = \emptyset$ and its largest element
+    is~$\top = \{\heartsuit\}$.
+
+    \textbf{Definition.} A \emph{frame homomorphism}~$L \to L'$ is a monotone
+    map~$L \to L'$ which preserves arbitrary joins and finite meets.
+
+    \textbf{Example.} A continuous map~$f : Y \to Y'$ induces a frame
+    homomorphism~$\O(Y') \to \O(Y)$ by mapping~$U \mapsto f^{-1}[U]$.
+
+    \textbf{Definition.} A \emph{locale morphism}~$X \to X'$ is given by a
+    frame homomorphism~$\O(X') \to \O(X)$.
+
+    \textbf{Example.} A continuous map~$Y \to Y'$ induces a locale
+    morphism~$L(Y) \to L(Y')$ in the same direction.
+
+    \textbf{Definition.} A \emph{point} of a locale~$X$ is a locale
+    morphism~$\pt \to X$, or equivalently a completely prime filter of~$\O(X)$.
+    (A frame morphism~$\alpha : \O(X) \to \Omega$ gives rise to the completely prime
+    filter~$F \defeq \{ u \in \O(X) \,|\, \alpha(u) = \top \}$.)
+  }
+
+  \jnote{3}{
+    The set of points of a locale can be made into a topological space, giving
+    rise to a functor~$\pt : \Loc \to \Top$. This functor is right adjoint
+    to~$L$. A locale~$X$ is \emph{spatial} iff the canonical
+    morphism~$L(\pt(X)) \to X$ is an isomorphism, and a topological space~$Y$
+    is \emph{sober} iff the canonical morphism~$Y \to \pt(L(Y))$ is a
+    homeomorphism.
+  }
+\end{frame}
+
+
+\section{Sheaf models}
+
+\begin{frame}
+  \centering\bigskip
+  \begin{tikzpicture}
+    \node (overview) {
+      \scalebox{1.00}{\sieve{4}{3}}
+    };
+    \def\R{8pt}
+    \begin{pgfonlayer}{background}
+    \draw[decoration={bumps,segment length=8pt}, decorate, very thick, draw=mypurple]
+      ($(overview.south west) + (\R, 0)$) arc(270:180:\R) --
+      ($(overview.north west) + (0, -\R)$) arc(180:90:\R) --
+      ($(overview.north east) + (-\R, 0)$) arc(90:0:\R) --
+      ($(overview.south east) + (0, \R)$) arc(0:-90:\R) --
+      cycle;
+    \end{pgfonlayer}
+  \end{tikzpicture}
+
+  \large Lecture II:
+  \hil{Sheaf models}
+
+  \normalsize
 \end{frame}
 
 \begin{frame}{Locales presented by theories}
   \justifying
-  \textbf{Definition:} A \hil{geometric signature} consists of
+  \textbf{Definition.} A \hil{geometric signature} consists of
   \begin{enumerate}
     \item a set of sorts: $X$, $Y$, $Z$, \ldots
     \item a set of function symbols: $f : X \times Y \to Z$, \ldots
@@ -524,7 +664,7 @@
   over~$\Sigma$).
 
   \only<1>{
-    \textbf{Examples:}
+    \textbf{Examples.}
     \begin{enumerate}
       \item the theory of rings
       \item the theory of surjections~$\NN \twoheadrightarrow \RR$
@@ -533,7 +673,7 @@
   }
   \pause
 
-  \textbf{Definition:} A \hil{set-based model}~$M$ of a theory~$\TT$ consists of
+  \textbf{Definition.} A \hil{set-based model}~$M$ of a theory~$\TT$ consists of
   \begin{enumerate}
     \item a set~$\brak{X}$ for each sort~$X$,
     \item a function~$\brak{f} : \brak{X_1} \times \cdots \times \brak{X_n} \to
@@ -548,13 +688,6 @@
 \end{frame}
 
 \end{document}
-
-    \begin{column}[t]{0.4\textwidth}
-      \justifying
-      \textbf{Contrast with:} A \hil{topological space} consists of a \hil{set of
-      points}~$X$ together with a set~$\O(X)$ of point sets which are deemed
-      \hil{open} such that \ldots
-    \end{column}
 
 
 % Grothendieck quote for the title picture:

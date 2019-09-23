@@ -5,6 +5,7 @@
 \setbeameroption{show notes on second screen}
 \setbeamertemplate{note page}[plain]
 \newcommand{\jnote}[2]{\only<#1>{\note{\setlength\parskip{\medskipamount}\justifying\footnotesize#2\par}}}
+%\newcommand{\jnote}[2]{}
 
 % Workaround for the issue described at
 % https://tex.stackexchange.com/questions/164406/beamer-using-href-in-notes.
@@ -664,8 +665,6 @@
     \item a set of relation symbols: $R \hookrightarrow X \times Y \times Z$, \ldots
     \item a set of axioms: $\varphi \vdash_{x:X, y:Y} \psi$, \ldots
   \end{enumerate}
-  % A geometric signature is \hil{propositional} iff its set
-  % of sorts is empty.
 
   \only<1->{
     \textbf{Examples.}
@@ -689,11 +688,47 @@
   such that~$M$ validates the axioms of~$\TT$.
 
   \jnote{1}{
+    The formulas appearing to the left and the right of the turnstile in axioms
+    of a geometric theory have to be \emph{geometric formula}. A formula is
+    \emph{geometric} iff it is built using only~${=}\ {\top}\ {\wedge}\
+    {\bot}\ {\vee}\ {\bigvee}\ {\exists}$ (but no ${\Rightarrow}\
+    {\forall}$). Universal quantification and implication can to some extent be
+    emulated by using free variables or the turnstile; but this allows
+    universal quantification and implication only to be used once, on top
+    level, not in nested subformulas.
+
     A geometric theory is called \emph{propositional} iff its set of
     sorts is empty. Hence the only ingredients of a propositional geometric
     theory are a set of nullary relation symbols (atomic propositions) and a
     set of axioms.
+  }
 
+  \jnote{2}{
+    \textbf{Example.} The theory of rings has:
+    \begin{enumerate}
+      \item one sort: $R$
+      \item five constant symbols: $0$ and $1$ (nullary), $-$ (unary), $+$ and
+      $\cdot$ (binary)
+      \item no relation symbols
+      \item the usual axioms, such as $\top \vdash_{x:R,y:R} x + y = y + x$
+    \end{enumerate}
+
+    \textbf{Example.} The theory of surjections~$\NN \twoheadrightarrow \RR$ has:
+    \begin{enumerate}\justifying
+      \item no sorts
+      \item no function symbols
+      \item several nullary relation symbols, one for each pair~$\langle n,x
+      \rangle \in \NN \times \RR$, written~``$\varphi_{nx}$''
+      \item axioms: the axiom~$\top \vdash \bigvee_{x \in \RR} \varphi_{nx}$
+      for each~$n \in \NN$; the axiom~$\varphi_{nx} \wedge \varphi_{ny} \vdash
+      \bigvee\{ \top \,|\, x = y \}$ for each~$n \in \NN$, $x,y \in \RR$ (the
+      disjunction appearing in that axiom is over a subsingleton of formulas);
+      the axiom~$\top \vdash \bigvee_{n \in \NN} \varphi_{nx}$ for each~$x \in
+      \RR$
+    \end{enumerate}
+  }
+
+  \jnote{3}{
     Associated to any propositional geometric theory~$\TT$ is its
     \emph{Lindenbaum algebra}. This is the set of formulas over the signature
     of the theory modulo provable equivalence. Endowed with the partial order
@@ -706,6 +741,34 @@
     atomic propositions of~$\TT$ modulo the axioms of~$\TT$. The associated
     locale~$L(\TT)$ is the \emph{classifying locale of~$\TT$}. Its points are
     in canonical bijection with the set-based models of~$\TT$.
+
+    \textbf{Definition.} The \emph{localic real line} is the classifying locale
+    of the theory of Dedekind cuts.
+    The \emph{locale of surjections~$\NN \twoheadrightarrow \RR$} is the
+    classifying locale of the theory of surjections~$\NN \twoheadrightarrow
+    \RR$.
+    The \emph{empty locale} is the classifying locale of the \emph{inconsistent
+    theory} (which has no sorts, no function symbols, no relations symbols, and
+    one axiom, namely~$\top \vdash \bot$).
+
+    The points of the localic real line are in canonical bijection with
+    the Dedekind cuts, hence with the elements of the set of (Dedekind) real
+    numbers. The points of the locale of surjections~$\NN \twoheadrightarrow
+    \RR$ are in canonical bijection with the surjections~$\NN
+    \twoheadrightarrow \RR$. Assuming a classical metatheory, there are no such
+    points, but the locale is still nontrivial.
+  }
+
+  \jnote{4}{
+    Any locale is (isomorphic to) the classifying locale of some propositional
+    geometric theory, namely the ``theory of its points''. The same locale can
+    often be presented by widely different-looking theories, and the
+    topos-theoretic version of this observation is the basis for Olivia
+    Caramello's research program.
+
+    \textbf{Exercise.} Which explicit theory is the two-point locale (the
+    locale induced from the discrete topological space~$\{0,1\}$) the
+    classifying locale of?
   }
 \end{frame}
 
@@ -730,7 +793,22 @@
 
   \textbf{Non-example.} The \hil{presheaf of constant
   functions},~$\C_{\text{c}}(U) = \text{``the set of constant functions~$U \to
-  \RR$''}$, it usually not a sheaf.
+  \RR$''}$, is usually not a sheaf.
+
+  \jnote{1}{
+    All definitions on this slide literally also make sense for topological
+    spaces instead of locales, since only the notion of opens and their
+    inclusion relation is used.
+
+    The maps~$(\cdot)|^U_V$ are called \emph{restriction maps}. For the
+    sheaf~$\C$ of continuous real-valued functions, they are given by actual
+    restriction of functions to smaller domains, that is by
+    \[ \C(U) \longrightarrow \C(V),\ s \longmapsto s|_V. \]
+
+    \textbf{Exercise.} Find, in the case~$X = [0,1]$, a compatible family of
+    sections of the presheaf~$\C_\text{c}$ which shows that this
+    presheaf is not a sheaf.
+  }
 \end{frame}
 
 \begin{frame}{Sheaf semantics}
@@ -767,6 +845,20 @@
     {\exists}$) over the signature which has one sort for each sheaf~$F$, one
     constant symbol of sort~$F$ for each section~$s \in F(U)$, one function
     symbol~$f : F \to G$ for each morphism of sheaves, and so on.
+
+    \textbf{Proposition.} The sheaf semantics is monotone and local in the
+    following sense: If~$V \leq U$, then~$U \models \varphi$ implies~$V \models
+    \varphi$. If~$U = \bigvee_i U_i$ and if~$U_i \models \varphi$ for all~$i$,
+    then~$U \models \varphi$.
+
+    \textbf{Exercise.} For any formula~$\varphi$ over any open~$U$ of any
+    locale~$X$, there is a largest open~$V \leq U$ such that~$V \models
+    \varphi$. (Hint: Set~$V \defeq \bigvee\{ W \leq U \,|\, W \models \varphi \}$
+    and exploit the monotonicity and locality of the sheaf semantics.)
+
+    \textbf{Exercise.} For any formula~$\varphi$ over any open~$U$ of any
+    locale~$X$, $U \models \neg\neg\varphi$ iff there exists an open~$V \leq U$
+    which is dense in~$U$ such that~$V \models \varphi$.
   }
 \end{frame}
 

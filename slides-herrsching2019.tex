@@ -818,7 +818,7 @@
   \[ \footnotesize\renewcommand{\arraystretch}{1.08}\begin{array}{@{}l@{\ \ }c@{\ \ }l@{}}
   U \models \top &\Ll& \text{true} \\
   U \models \bot &\Ll& \hcancel{\text{false}}{0pt}{3pt}{0pt}{-2pt}\ U = \bot \\
-  U \models s = t &\Ll& \text{$s = t$ when evaluated as elements of~$F(U)$} \\
+  U \models s =_F t &\Ll& \text{$s = t$ when evaluated as elements of~$F(U)$} \\
   U \models \varphi \wedge \psi &\Ll&
   \text{$U \models \varphi$ and $U \models \psi$} \\
   U \models \varphi \vee \psi &\Ll&
@@ -1002,7 +1002,7 @@
       \end{varblock}
 
       \justifying
-      \textbf{Proof.} See [Stacks Project].
+      \textbf{Proof.} See \href{https://stacks.math.columbia.edu/tag/051Q}{[Stacks Project]}.
       \medskip
 
       \textbf{Proof.} The claim amounts to \mbox{$X \models

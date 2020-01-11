@@ -87,13 +87,146 @@ Strada le Grazie 15 \\
 \thispagestyle{empty}
 
 \noindent
+Toposes can be pictured as mathematical universes in which we can do
+mathematics in. Most mathematicians spend all their professional life in just a
+single topos, the so-called \emph{standard topos}. However, besides the
+standard topos, there is a colorful host of alternate toposes which are just as
+worthy of mathematical study and in which mathematics plays out slightly
+differently.
+
+For instance, there are toposes in which the axiom of choice and the
+intermediate value theorem from undergraduate calculus fail, toposes in which
+any function~$\RR \to \RR$ is continuous, toposes in which infinitesimal
+numbers exist and toposes whose properties depend on certain circumstances of
+our physical world.
+
+The purpose of this contribution is twofold.
+\begin{enumerate}
+\item We give a glimpse of the toposophic landscape, presenting several
+specific toposes and exploring their peculiar properties.
+
+\item We explicate how each topos provides a distinct lens through which the
+usual mathematical objects of the standard topos can be viewed.
+\end{enumerate}
+
+Viewed through such a lens, a given mathematical object can have different
+properties than it has when considered normally. In particular, it can have
+better properties for the purposes of specific applications, especially if
+the topos is custom-tailored to the object in question. This change of
+perspective has been used in mathematical practice and demonstrates that
+toposes go much beyond being logicians' testbeds. To give just a taste of what
+is possible, through the lens provided by an appropriate topos, any given ring
+can look like a field.
+
+We argue that toposes and specifically the change in perspective provided by
+toposes are ripe for philosophical analysis. In particular, there are the
+following connections with topics in the philosophy of mathematics:
+\begin{enumerate}
+\item Toposes enrich the realism/anti-realism debate in that they point the
+picture that the platonic heaven of mathematical objects is not unique: besides
+the standard heaven of the standard topos, we could fathom the alternate
+heavens of all other toposes, all embedded in a secord-order heaven.
+\item Mathematics is not only about studying mathematical objects, but also
+about studying the relations between mathematical objects. The distinct view
+on mathematical objects provided by any topos uncovers relations which
+otherwise remain hidden.
+\item In some cases, a mathematical relation can be expressed quite succinctly
+using the language of a specific topos and not so succinctly using the language
+of the standard topos. This phenomenon showcases the importance of
+\emph{appropriate language}.
+\item Toposes provide new impetus to study constructive mathematics and
+intuitionistic logic, in particular also to restrict to intuitionistic
+logic on the meta level and to consider the idea that the platonic heaven might
+be governed by intuitionistic logic.
+\end{enumerate}
+This note only touches on these topics and invites further research.
+
+\bigskip
+\paragraph{Acknowledgments} We are grateful to XXX for many invaluable
+discussions shaping this work and to XXX for their careful criticism of earlier
+drafts. XXX conference organizer and participants
 
 
-\section{Unsorted}
+\section{Toposes as alternate mathematical universes}
+
+Formally, a topos is a certain kind of \emph{category}, containing objects and
+morphisms between those objects. For instance, the standard topos contains all
+sets as its objects and all maps between sets as morphisms. 
+% The term \emph{standard topos} reflects that all objects of
+% mathematical study can be encoded as sets -- a group is a \emph{set} of
+% elements together ...
+% \begin{ex}The \emph{standard topos}~$\Set$ contains all
+% sets as its objects and all maps between sets as morphisms.\end{ex}
+A careful definition of the notion of a topos requires some amount
+of category theory, but, as will be outlined in the following sections,
+exploring the mathematical universe of a given topos does not.
+
+Put briefly, the axioms state that a topos should share several categorical
+properties with the category of sets (namely having finite limits, being
+cartesian closed and having a subobject classifier); they ensure that each topos contains its
+own versions of familiar mathematical objects such as natural numbers, real
+numbers, groups and manifolds, and is closed under the usual constructions
+such as cartesian products or quotients.
+
+Given a topos~$\E$, we write~``$\E \models \varphi$'' to denote that a
+mathematical statement~$\varphi$ \emph{holds in~$\E$}. The meaning of~``$\E \models
+\varphi$'' is defined by recursion on the structure of~$\varphi$ following the
+so-called \emph{Kripke--Joyal translation rules}. For instance, the rule for
+translating conjunction reads
+\[ \E \models (\alpha \wedge \beta) \qquad\text{iff}\qquad
+  \E \models \alpha \quad\text{and}\quad \E \models \beta. \]
+The remaining translation rules are more involved; we do not list them here for
+the case of a general topos~$\E$, but we will state them in the next sections
+for several specific toposes.
+
+In the definition of~$\E \models \varphi$, the statement~$\varphi$ can be any
+statement in the language of a general version of higher-order predicate
+calculus with dependent types. In practice almost any mathematical statement
+can be interpreted in a given topos.\footnote{The main exceptions are
+statements from set theory, which typically make substantial use of a global
+membership predicate~``$\in$''. Toposes only support a typed \emph{local}
+membership predicate, where we may write~``$x \in A$'' only in the context of
+some fixed sort type~$B$ such that~$x$ is of type~$B$ and~$A$ is of
+type~$P(B)$, the power type of~$B$.}
+
+It is by the Kripke--Joyal translation rules that we can access the alternate
+universe of a topos. In the special case of the standard topos~$\Set$, the
+definition of~``$\Set \models \varphi$'' unfolds to~$\varphi$ for any
+statement~$\varphi$. Hence a statement holds in the standard topos if and only
+if it holds in the usual mathematical sense.
+
+
+\subsection{The logic of toposes} By their definition as special kinds of
+categories, toposes are merely algebraic structures not unlike groups and
+vector spaces are. Hence we need to argue why we picture toposes as
+mathematical universes while we do not elevate other kinds of algebraic structures
+in the same way. For us, the reason is given by the following metatheorem:
+
+\begin{thm}Let~$\E$ be a topos and~$\varphi$ be a statement such that~$\E \models
+\varphi$. If~$\varphi$ intuitionistically entails a further statement~$\psi$,
+then~$\E \models \psi$.\end{thm}
+
+XXX explain intuitionistically
+
+XXX explain that this metatheorem allows us to \emph{reason} in a topos
+
+XXX include something like this: A natural question is this: \emph{Which of
+the familiar mathematical facts of the standard topos carry over to arbitrary
+toposes~$\E$?} For any given mathematical statement~$\varphi$ and topos~$\E$,
+we can unroll the definition of~$\E \models \varphi$ to try to check
+whether~$\varphi$ holds in~$\E$ on an individual case-by-case basis; but it
+turns out that there is a general metatheorem ...
+
+XXX Mathematicians are familiar with the fact that the usual objects of
+mathematical study are governed by the laws of ordinary \emph{classical
+reasoning}. ...
+
+
+\subsection{Models of set theory}
 
 Toposes can be pictured as ``universes in which we can do mathematics in'' in
 much the same way as models of set theory can be viewed in this way. In fact,
-to any model~$M$ of a set theory such as~$\mathbf{ZF}$ or~$\mathbf{ZFC}$, there
+to any model~$M$ of a set theory such as~\textsc{zf} or~\textsc{zfc}, there
 is a topos~$\Set_M$ such that a statement holds in the internal language
 of~$\Set_M$ if and only if it holds in~$M$.\footnote{The topos~$\Set_M$ can be
 described as follows: Its objects are the elements of~$M$, that is the things

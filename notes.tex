@@ -1295,10 +1295,10 @@ which~$\varphi$ holds, that is that~$\varphi$ holds \emph{nowhere}. In
 contrast, the statement~$\Sh(X) \not\models \varphi$ only means that~$\varphi$
 does \emph{not hold everywhere}.
 
-For instance, let~$X$ be a quasicompact scheme and let~$f \in
+For instance, let~$X$ be a scheme and let~$f \in
 \Gamma(X,\O_X)$ be a global function on~$X$. We will see in
 Section~\ref{sect:sheaves-of-rings} that ``$\Sh(X) \not\models \speak{$f$ is
-invertible}$'' means that~$f$ is not an invertible function in the
+invertible}$'' means that~$f$ is not an invertible element in the
 ring~$\Gamma(X,\O_X)$. In contrast,~``$\Sh(X) \models \neg(\speak{$f$ is
 invertible})$'' means that~$f$ is \emph{nowhere invertible}, not even on
 smaller non\-empty open subsets. This implies that~$f$ is nilpotent.
@@ -1338,7 +1338,7 @@ interpretation of internal \emph{statements}. The interpretation of internal
 
 \begin{defn}\label{defn:interpretation-internal-constructions}
 The interpretation of an internal construction~$T$
-is denoted by~$\brak{T} \in \Sh(X)$ and given by the following rules.
+is denoted by~$\brak{T} \in \Sh(X)$ and is given by the following rules.
 \begin{itemize}\item If~$\F$ and~$\G$ are sheaves, $\brak{\F \times \G}$ is the
 categorical product of~$\F$ and~$\G$ (\ie their product as presheaves).
 \item If~$\F$ and~$\G$ are sheaves, $\brak{\F \amalg \G}$ is the categorical
@@ -1395,7 +1395,7 @@ isomorphic.
 constructions}\label{sect:geometric-formulas-and-constructions}
 In formal and categorical logic so-called geometric formulas play a
 special role. They are named that way because, in a sense which can be made
-precise, their meaning is preserved under pullback with geometric morphisms.
+precise, their meaning is preserved under pullback along geometric morphisms.
 \begin{defn}\label{defn:geometric-formulas}
 A formula is \emph{geometric} if and only if it consists only of
 \[ {=} \quad {\in} \quad {\top} \quad {\bot} \quad {\wedge} \quad {\vee} \quad
@@ -1459,7 +1459,7 @@ morphism of sheaves is a monomorphism \resp an epimorphism if and only if it is
 stalkwise injective \resp surjective.\end{ex}
 
 A construction is \emph{geometric}\label{page:geometric-constructions} if and only if it commutes with pullback
-under arbitrary geometric morphisms. We do not want to discuss the notion of
+along arbitrary geometric morphisms. We do not want to discuss the notion of
 geometric morphisms here; suffice it to say that calculating the stalk at a
 point~$x \in X$ is an instance of such a pullback. Among others, the following
 constructions are geometric:

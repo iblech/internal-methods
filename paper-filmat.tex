@@ -168,8 +168,8 @@ numbers, groups and manifolds, and is closed under the usual constructions
 such as cartesian products or quotients.
 The prototypical topos is the standard topos:
 
-\begin{ex}The \emph{standard topos}~$\Set$ contains all
-sets as its objects and all maps between sets as morphisms.\end{ex}
+\begin{defn}The \emph{standard topos}~$\Set$ is the category which contains all
+sets as its objects and all maps between sets as morphisms.\end{defn}
 
 Given a topos~$\E$, we write~``$\E \models \varphi$'' to denote that a
 mathematical statement~$\varphi$ \emph{holds in~$\E$}. The meaning of~``$\E \models
@@ -271,16 +271,32 @@ excluded middle in presence of other axioms which are available in any topos.
 
 
 \subsection{Relation to models of set theory} In set theory, philosophy and
-logic, models of set theories ... XXX
+logic, models of set theories are studied. These are structures~$(M,\in)$
+validating the axioms of some set theory such as Zermelo--Fraenkel set theory
+with choice~\textsc{zfc}, and they can be pictured as ``universes in which we
+can do mathematics'' in much the same way as toposes.
 
-Toposes can be pictured as
-``universes in which we can do mathematics'' in much the same way as models of
-set theory. Just as using forcing and other techniques we can construct new
+In fact, to any model~$(M,\in)$ of a set theory such as~\textsc{zf}
+or~\textsc{zfc}, there is a topos~$\Set_M$ such that a statement holds
+in~$\Set_M$ if and only if it holds in~$M$.\footnote{The topos~$\Set_M$ can be
+described as follows: Its objects are the elements of~$M$, that is the entities
+which~$M$ believes to be sets, and its morphisms are those entities which~$M$
+believes to be maps. The topos~$\Set_M$ validates the axioms of
+\textsc{etcs}~\cite{XXX}, and models are elementarily equivalent if their
+associated toposes are equivalent as categories.}
+
+\begin{ex}The topos~$\Set_V$ associated to the universe~$V$ of all sets (if
+this structure is available in one's chosen ontology) coincides with the
+standard topos~$\Set$.\end{ex}
+
+In set theory, we use forcing and other techniques to construct new
 models of set theory from given ones, thereby exploring the set-theoretic
-multiverse, we can construct new toposes from given toposes.
+multiverse. There are similar techniques available for constructing new toposes
+from given ones, and some of these correspond to the techniques from set
+theory.
 
-However, there are important differences between the notion of mathematical
-universe as provided by toposes and as provided by models of set theory, both
+However, there are also important differences between the notion of mathematical
+universes as provided by toposes and as provided by models of set theory, both
 regarding the subject matter and the reasons for why we are interested in them.
 
 Firstly, toposes are more general than models of set theory. By definition, a
@@ -315,19 +331,6 @@ every topos -- and it is a beautiful and intriguing fact that with the sole
 exception of the law of excluded middle, the laws of logic apply to
 mathematical objects also when viewed through the lens of a specific topos.
 
-In fact,
-to any model~$M$ of a set theory such as~\textsc{zf} or~\textsc{zfc}, there
-is a topos~$\Set_M$ such that a statement holds in the internal language
-of~$\Set_M$ if and only if it holds in~$M$.\footnote{The topos~$\Set_M$ can be
-described as follows: Its objects are the elements of~$M$, that is the things
-which~$M$ believes to be sets, and its morphisms are those things which~$M$
-believes to be maps. The topos~$\Set_M$ validates the axioms of
-$\mathbf{ETCS}$~\cite{XXX}, and for models which are not elementarily
-equivalent, their associated toposes will not be equivalent.} This
-includes~$V$, the trivial inner model consisting of all sets there are, in case
-such a thing exists in one's chosen ontology; in this case the associated
-topos~$\Set_V$ is the category of all sets, and a statement holds in~$\Set_V$
-if and only if it's true in the ordinary mathematical sense.
 
 
 \section{Exploring the \effective topos}
@@ -512,8 +515,9 @@ wider class of \emph{realizability toposes}. These can be obtained by repeating
 the construction of the \effective topos with any other reasonable model of
 computation in place of Turing machines. The resulting toposes will in general
 not be equivalent and reflect higher-order properties of the employed models.
-Two of these further toposes are of special philosphical interest.
+Two of these further toposes are of special philosophical interest.
 
+\bigskip
 \paragraph{Hypercomputation}
 Firstly, in place of ordinary Turing machines, one can employ the
 \emph{infinite-time Turing machines} pioneered by Hamkins and
@@ -545,6 +549,7 @@ point of view of this topos the reals are still uncountable in the sense that
 there is no surjection~$\NN \to \RR$, there is an injection~$\RR \to
 \NN$~\cite{bauer:injection}.
 
+\bigskip
 \paragraph{Machines of the real physical world} A second variant of the
 \effective topos is obtained by using machines of the real physical world
 instead of abstract Turing machines in its construction. In doing so, we of
@@ -556,7 +561,7 @@ resulting topos.
 For instance, Andrej Bauer proved that inside this topos any function~$\RR \to
 \RR$ is continuous if, in the physical world, only finitely many computational
 steps can be carried out in finite time and if it is possible to form
-tamper-free private communication channels~\cite{XXX}.  % XXX: look up precise formulation
+tamper-free private communication channels~\cite{bauer:int-mathematics}.
 
 
 \section{Exploring toposes of sheaves}
@@ -600,7 +605,7 @@ actually a Turing machine computing arbitrarily-good consistent rational
 approximations. A similarly drastic shift in meaning, though in an orthogonal
 direction, occurs with~$\Sh(X)$. What~$\Sh(X)$ believes to be a (Dedekind) real
 number~$a$ is actually a continuous family of real numbers on~$X$, that is, a
-function~$a : X \to \RR$.
+continuous function~$a : X \to \RR$.
 
 Such a function is everywhere positive on~$X$ if and only if, from the internal point of
 view~$\Sh(X)$, the number~$a$ is positive; it is everywhere zero if and only

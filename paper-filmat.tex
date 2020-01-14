@@ -64,6 +64,7 @@ Universitätsstr. 14 \\
 \newcommand{\F}{\mathcal{F}}
 \newcommand{\B}{\mathcal{B}}
 \newcommand{\NN}{\mathbb{N}}
+\newcommand{\TT}{\mathbb{T}}
 \newcommand{\RR}{\mathbb{R}}
 \newcommand{\ZZ}{\mathbb{Z}}
 \renewcommand{\P}{\mathcal{P}}
@@ -83,6 +84,7 @@ Universitätsstr. 14 \\
 \newcommand{\?}{\,{:}\,}
 \newcommand{\realizes}{\Vdash}
 \newcommand{\notnot}{\emph{not~not}\xspace}
+\newcommand{\seq}[1]{\mathrel{\vdash\!\!\!_{#1}}}
 
 \newcommand{\stacksproject}[1]{\cite[{\href{https://stacks.math.columbia.edu/tag/#1}{Tag~#1}}]{stacks-project}}
 
@@ -440,12 +442,69 @@ mathematical objects also when viewed through the lens of a specific topos.
 
 
 \subsection{A glimpse of the toposophic landscape}
+XXX explanation of Figure 1
+
+\begin{enumerate}
+\item $\Set$, the \emph{standard topos}. A statement is true in~$\Set$ iff it is true
+in the ordinary mathematical sense.
+\item $\Set_M$ associated to any model~$(M,\in)$ of~\textsc{zf}.
+\item $\Eff$, the \emph{\effective topos}. A statement is true in~$\Eff$ iff
+if it has a \emph{computable witness} as detailed in
+Section~\ref{sect:effective-topos}. In~$\Eff$, any function~$\NN \to \NN$ is
+computable.
+\item $\Sh(X)$, the \emph{topos of sheaves} over any space~$X$. A statement is true
+in~$\Sh(X)$ iff it holds \emph{locally on~$X$}, as detailed in
+Section~\ref{sect:sheaf-toposes}. For most interesting choices of~$X$, the
+axiom of choice and the intermediate value theorem will fail for geometric
+reasons in~$\Sh(X)$.
+\item $\Zar(A)$, the \emph{Zariski topos} of a ring~$A$ presented in
+Section~\ref{sect:smooth}. This topos contains a mirror
+image of~$A$ which is a field, even if~$A$ is not.
+\item $\mathrm{Bohr}(A)$, the \emph{Bohr topos} associated to a noncommutative
+C\textsuperscript{*}\kern-.1ex-algebra~$A$. This topos contains a mirror image
+of~$A$ which is commutative. In this sense, quantum mechanical systems (which are
+described by noncommutative C\textsuperscript{*}\kern-.1ex-algebras) can be
+regarded as classical mechanical systems (which are described by commutative
+algebras)~\cite{butterfield-hamilton-isham:bohr,heunen-landsman-spitters:aqt}.
+\item $\Set[\TT]$, the \emph{classifying topos} of a geometric theory~$\TT$.\footnote{A
+geometric theory is a theory whose axioms can be put as \emph{geometric
+sequents}, sequents of the form~$\varphi \seq{\vec x} \psi$ where~$\varphi$
+and~$\psi$ are geometric formulas (formulas built from equality and specified
+relation symbols by the logical
+connectives~${\top}\,{\bot}\,{\wedge}\,{\vee}\,{\exists}$ and by arbitrary
+set-indexed disjunctions~$\bigvee$).} This topos contains the
+\emph{generic~$\TT$-model}. For instance, the classifying topos of the theory
+of groups contains the \emph{generic group}. This group has exactly those
+properties which are shared by any group whatsoever. It is arguably this group
+which we implicitly refer to when we utter the phrase ``Let~$G$ be a group.''. XXX
+\item $T(\mathcal{L}_0)$, the \emph{free topos}. A statement is true in the free topos iff it is
+intuitionistically provable. Lambek and Scott proposed that the free topos can
+reconcile moderate platonism (because this topos has a certain universal
+property which can be used to single it out among the plenitude of toposes),
+moderate formalism (because it is constructed in a purely syntactic way) and
+moderate logicism (because, as a topos, it supports an intuitionistic type
+theory)~\cite{lambek:incompatible,couture-lambek:reflections}.
+\end{enumerate}
+
+Constructions, given a topos~$\E$: XXX
+\begin{enumerate}
+\item Given an object~$X$ of~$\E$, the \emph{slice topos}~$\E/X$
+contains a \emph{generic element} of~$X$.
+\item The topos~$\E[\mathbb{O}]$ contains a \emph{generic object}.
+\item There is a ``smallest dense'' subtopos $\Sh_{\neg\neg}(\E)$. This topos
+is always boolean, even if~$\E$ is not. For a mathematician who employs
+intuitionistic logic on their meta level, XXX
+\item XXX ultrapower
+\end{enumerate}
 
 
 \section{Exploring the \effective topos}
+\label{sect:effective-topos}
 
-% XXX introduction
-% XXX mention connection to realizability
+XXX introduction: the objects of the effective topos are data types and the
+morphisms are computable maps.
+
+XXX mention connection to realizability
 
 \begin{tabular}{lll}
   \toprule
@@ -674,6 +733,7 @@ tamper-free private communication channels~\cite{bauer:int-mathematics}.
 
 
 \section{Exploring toposes of sheaves}
+\label{sect:sheaf-toposes}
 
 Associated to any topological space~$X$ (such as Euclidean space), there is the
 \emph{topos of sheaves over~$X$}, $\Sh(X)$. To a first approximation, a
@@ -811,7 +871,8 @@ the family in a continuous fashion. Figure~\ref{fig:ivt} shows a counterexample
 to this claim.
 
 
-\section{XXX ... infinitesimal numbers ...}
+\section{Exploring toposes adapted to synthetic differential geometry}
+\label{sect:smooth}
 
 The idea of \emph{infinitesimal numbers} -- numbers which lie between~$-\frac{1}{n}$
 and~$\frac{1}{n}$ for any natural number~$n$ -- has a long and rich history. They are
@@ -1075,7 +1136,6 @@ Outline:
 
 Stuff that should be mentioned:
 
-* Andrej's realizability in the real world
 * Cauchy vs. Dedekind numbers (physical quantities, ...)
 * Syntactical vs. semantical interpretation
 * phone call analogy
@@ -1083,22 +1143,14 @@ Stuff that should be mentioned:
   of set theory
 * quick overview of the several aspects of toposes (maybe at the end,
   as an outlook?)
-* enrichment of platonism debate (find better term for this!)
-* uncovering further relations between objects
 * allowing a switch of perspective
 * applications in mathematical practice
 * int. logic as common denominator
 * arbitrariness of the "standard axioms"
-* models of ZF yield toposes (models of ETCS), including a quick discussion of
-  equivalence
 * what giving up classical logic actually amounts to in practice
-* examples in Spec(A), "reifying all the individual localizations into a
-  single coherent entity which can be reasoned about as if it were a single
-  ring"
 * importance of having an adapted language
 * SDG (infinitesimals are well-studied in philosophy of mathematics)
 * quick remark on the internal language being based on types instead of sets
-* reference to Bohr topos approach
 * Source https://plato.stanford.edu/entries/category-theory/ for relevant
   literatur
 * the internal language as a generalized modal operator
@@ -1106,10 +1158,9 @@ Stuff that should be mentioned:
 * use the phrase "very rich and very deep" (or similarly) about set theory
 * PA doesn't have models
 * Sven(?)
-* Set[T]
-* free topos
 * semantic view vs. syntactic view
 * Kripke models
+* more pointers to topos literature
 
 Send to Georg.
 Also Giuseppe Cammarata.

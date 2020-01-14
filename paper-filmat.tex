@@ -2,6 +2,8 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage{amsthm,mathtools,stmaryrd,amssymb,graphicx}
+\usepackage{tikz}
+\usetikzlibrary{calc,shapes,shapes.callouts,shapes.arrows,patterns,fit,backgrounds,decorations.pathmorphing}
 \usepackage{booktabs}
 \usepackage[all]{xy}
 \usepackage[protrusion=true,expansion=true]{microtype}
@@ -16,6 +18,7 @@
 \usepackage{pifont}
 \newcommand{\cmark}{\ding{51}}
 \newcommand{\xmark}{\ding{55}}
+\definecolor{mypurple}{RGB}{150,0,255}
 
 \title[]{Exploring mathematical objects from custom-tailored mathematical universes}
 \author{Ingo Blechschmidt}
@@ -88,7 +91,7 @@ Universitätsstr. 14 \\
 \begin{document}
 
 \begin{abstract}
-  foo
+  XXX
 \end{abstract}
 
 \maketitle
@@ -100,7 +103,103 @@ mathematics. Most mathematicians spend all their professional life in just a
 single topos, the so-called \emph{standard topos}. However, besides the
 standard topos, there is a colorful host of alternate toposes which are just as
 worthy of mathematical study and in which mathematics plays out slightly
-differently.
+differently (Figure~\ref{fig:landscape}).
+
+\begin{figure}
+  \tikzstyle{topos} = [draw=mypurple, very thick, rectangle, rounded corners, inner sep=5pt, inner ysep=10pt]
+  \tikzstyle{title} = [fill=mypurple, text=white]
+
+  \input{images/primes.tex}
+
+  \newcommand{\drawbox}[4]{
+    \node[topos, #4] [fit = #3] (#1) {};
+    \node[title] at (#1.north) {#2};
+  }
+
+  \newcommand{\muchstuff}{
+    \includegraphics[height=3em]{filmat}
+    \scalebox{0.5}{\sieve{14}{2}}
+  }
+
+  \newcommand{\muchstuffplaceholder}{
+    \includegraphics[height=3em]{filmat-placeholder}
+    \scalebox{0.5}{\fakesieve{14}{2}}
+  }
+
+  \newcommand{\fewstuff}{
+    \includegraphics[height=3em]{filmat}
+    \scalebox{0.5}{\sieve{7}{2}}
+  }
+
+  \newcommand{\threeblobs}{
+    \colorbox{mypurple}{\ \ }\quad
+    \colorbox{mypurple}{\ \ }\quad
+    \colorbox{mypurple}{\ \ }
+  }
+
+  \begin{tikzpicture}
+    \node (objs-set0) at (0,0) {
+      \muchstuff
+    };
+    \node[scale=0.4] (objs-set1) at (-3.5,-2.5) {
+      \fewstuff
+    };
+    \node[scale=0.4] (objs-eff1) at (3.5,-2.5) {
+      \fewstuff
+    };
+    \node[scale=0.4] (objs-sh1)  at (0,-2.5) {
+      \fewstuff
+    };
+
+    \node (prop-set1) [below of=objs-set1, align=left] {
+      The usual laws \\
+      of logic hold.
+    };
+
+    \node (prop-eff1) [below of=objs-eff1, align=left] {
+      Every function \\
+      is computable.
+    };
+
+    \node (prop-sh1) [below of=objs-sh1, align=left] {
+      The axiom of \\
+      choice fails.
+    };
+
+    \node (more-eff1) [below of=prop-eff1] {
+      \threeblobs
+    };
+    \node (more-sh1)  [below of=prop-sh1] {
+      \threeblobs
+    };
+    \node (more-set1) [below of=prop-set1] {
+      \threeblobs
+    };
+
+    \drawbox{set1}{$\mathrm{Set}$}{(objs-set1) (prop-set1) (more-set1)}{}
+    \drawbox{eff1}{Ef{}f}{(objs-eff1) (prop-eff1) (more-eff1)}{tape}
+    \drawbox{sh1}{$\mathrm{Sh}\, X$}{(objs-sh1) (prop-sh1) (more-sh1)}{draw=none}
+    \def\R{8pt}
+    \begin{pgfonlayer}{background}
+    \draw[decoration={bumps,segment length=8pt}, decorate, very thick, draw=mypurple]
+      ($(sh1.south west) + (\R, 0)$) arc(270:180:\R) --
+      ($(sh1.north west) + (0, -\R)$) arc(180:90:\R) --
+      ($(sh1.north east) + (-\R, 0)$) arc(90:0:\R) --
+      ($(sh1.south east) + (0, \R)$) arc(0:-90:\R) --
+      cycle;
+    \end{pgfonlayer}
+    \drawbox{set0}{$\mathrm{Set}$}{(objs-set0) (set1) (eff1) (sh1)}{}
+  \end{tikzpicture}
+
+  \caption{\label{fig:landscape}A glimpse of the toposophic landscape,
+  displaying alongside the standard topos~$\Set$ two further toposes.}
+  % Each topos comes with its own copy of the natural numbers and all the other
+  % familiar mathematical objects.
+  % Toposes are still mathematical structures and hence part of the standard
+  % topos, which is why the standard topos is also drawn to encompass ...
+\end{figure}
+
+% \begin{document}
 
 For instance, there are toposes in which the axiom of choice and the
 intermediate value theorem from undergraduate calculus fail, toposes in which
@@ -131,7 +230,7 @@ We argue that toposes and specifically the change in perspective provided by
 toposes are ripe for philosophical analysis. In particular, there are the
 following connections with topics in the philosophy of mathematics:
 \begin{enumerate}
-\item Toposes enrich the realism/anti-realism debate in that they paint the
+\item Toposes enrich the realism/anti-realism debate in that they paint the larger
 picture that the platonic heaven of mathematical objects is not unique: besides
 the standard heaven of the standard topos, we could fathom the alternate
 heavens of all other toposes, all embedded in a secord-order heaven.
@@ -339,6 +438,8 @@ every topos -- and it is a beautiful and intriguing fact that with the sole
 exception of the law of excluded middle, the laws of logic apply to
 mathematical objects also when viewed through the lens of a specific topos.
 
+
+\subsection{A glimpse of the toposophic landscape}
 
 
 \section{Exploring the \effective topos}
@@ -710,12 +811,10 @@ the family in a continuous fashion. Figure~\ref{fig:ivt} shows a counterexample
 to this claim.
 
 
-% \begin{document}
-
 \section{XXX ... infinitesimal numbers ...}
 
-The idea of \emph{infinitesimal numbers} -- numbers which lie between~$-1/n$
-and~$1/n$ for any natural number~$n$ -- has a long and rich history. They are
+The idea of \emph{infinitesimal numbers} -- numbers which lie between~$-\frac{1}{n}$
+and~$\frac{1}{n}$ for any natural number~$n$ -- has a long and rich history. They are
 not part of today's standard setup of the reals, but they are still intriguing
 as calculational tools and as a device to bring mathematical intuition and
 mathematical formalism closer together.
@@ -964,8 +1063,7 @@ reals.
 
 \subsection{On the importance of language}
 
-XXX translation unwieldy, lens, view, ...
-
+XXX translation unwieldy, lens, view, illustrates custom-tailored, ...
 
 \printbibliography
 

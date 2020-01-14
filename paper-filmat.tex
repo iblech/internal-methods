@@ -1,4 +1,4 @@
-\documentclass[oneside]{amsart}
+\documentclass[oneside,reqno]{amsart}
 
 \usepackage[utf8]{inputenc}
 \usepackage{amsthm,mathtools,stmaryrd,amssymb,graphicx}
@@ -19,11 +19,11 @@
 
 \title[]{Exploring mathematical objects from custom-tailored mathematical universes}
 \author{Ingo Blechschmidt}
-\address{Università di Verona \\
-Department of Computer Science \\
-Strada le Grazie 15 \\
-37134 Verona, Italy}
-\email{iblech@speicherleck.de}
+\address{Universität Augsburg \\
+Institut für Mathematik \\
+Universitätsstr. 14 \\
+86159 Augsburg, Germany}
+\email{ingo.blechschmidt@math.uni-augsburg.de}
 
 \theoremstyle{definition}
 \newtheorem{defn}{Definition}[section]
@@ -42,6 +42,13 @@ Strada le Grazie 15 \\
 \newtheorem{speculation}[defn]{Speculation}
 \newtheorem{caveat}[defn]{Caveat}
 \newtheorem{conjecture}[defn]{Conjecture}
+
+\newenvironment{indentblock}{%
+  \list{}{\leftmargin\leftmargin}%
+  \item\relax
+}{%
+  \endlist
+}
 
 \newcommand{\xra}[1]{\xrightarrow{#1}}
 \newcommand{\XXX}[1]{\textbf{XXX: #1}}
@@ -64,6 +71,7 @@ Strada le Grazie 15 \\
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\Mod}{Mod}
 \DeclareMathOperator{\Sh}{Sh}
+\DeclareMathOperator{\Zar}{Zar}
 \DeclareMathOperator{\PSh}{PSh}
 \newcommand{\Set}{\mathrm{Set}}
 \newcommand{\Eff}{\mathrm{Ef{}f}}
@@ -313,7 +321,7 @@ reals need to exist? No, in models of~$\textsc{zf}+\textsc{ad}$,
 Zermelo--Fraenkel set theory plus the axiom of determinacy, it is a theorem that
 every subset of~$\RR^n$ is Lebesgue-measurable. Can the axiom of choice be
 added to the axioms of~\textsc{zf} without causing inconsistency? Yes, if~$M$
-is a model of~\textsc{zf} then~$L^M$, the set of definable sets of~$M$, is a
+is a model of~\textsc{zf} then~$L^M$, the constructible sets of~$M$ form a
 model of~\textsc{zfc}.  %~\cite{XXX, maybe SEP?}
 
 While toposes can be used for similar such purposes, and indeed have been,
@@ -638,16 +646,16 @@ with the unique zero of~$a$ removed.
     $U \models \bot$ \> iff~$U$ is the empty open. \\
     $U \models (\varphi \wedge \psi)$ \> iff~$U \models \varphi$ and~$U \models \psi$. \\
     $U \models (\varphi \vee \psi)$ \> iff there is an open covering~$U =
-    \bigcup_i U_i$ such that, \\ \> \qquad for each~$i$, $U_i \models \varphi$
+    \bigcup_i U_i$ such that, \\ \> \qquad for each index~$i$, $U_i \models \varphi$
     or $U_i \models \psi$. \\
     $U \models (\varphi \Rightarrow \psi)$ \> iff for every open~$V \subseteq U$,
     $V \models \varphi$ implies~$V \models \psi$. \\
-    $U \models (\forall a\?\RR\_ \varphi(x))$ \> iff for every open~$V
-    \subseteq U$ and any continuous function~$a_0 : V \to \RR$, $V \models
+    $U \models (\forall a\?\RR\_ \varphi(a))$ \> iff for every open~$V
+    \subseteq U$ and \\\>\qquad any continuous function~$a_0 : V \to \RR$, $V \models
     \varphi(a_0)$. \\
-    $U \models (\exists a\?\RR\_ \varphi(x))$ \> iff there is an open
-    covering~$U = \bigcup_i U_i$ such that, \\ \> \qquad for each~$i$,
-    there exists a continuous function~$a_0 : U_i \to \RR$ with~$U_i \models
+    $U \models (\exists a\?\RR\_ \varphi(a))$ \> iff there is an open
+    covering~$U = \bigcup_i U_i$ such that, \\ \> \qquad for each index~$i$,
+    there exists a \\\>\qquad continuous function~$a_0 : U_i \to \RR$ with~$U_i \models
     \varphi(a_0)$.
   \end{tabbing}
 
@@ -715,10 +723,12 @@ mathematical formalism closer together.
 For instance, employing numbers~$\varepsilon$ such that~$\varepsilon^2 = 0$, we can
 compute derivatives blithely as follows, without requiring the notion of
 limits:
-\begin{align*}
-  (x + \varepsilon)^2 - x^2 &= x^2 + 2x\varepsilon + \varepsilon^2 - x^2 = 2x\varepsilon \\
-  (x + \varepsilon)^3 - x^3 &= x^3 + 3x^2\varepsilon + 3x\varepsilon^2 + \varepsilon^3 - x^3 = 3x^2\varepsilon
-\end{align*}
+\begin{equation}\label{eq:derivative}\tag{$\star$}
+  \begin{aligned}
+    (x + \varepsilon)^2 - x^2 &= x^2 + 2x\varepsilon + \varepsilon^2 - x^2 = 2x\varepsilon \\
+    (x + \varepsilon)^3 - x^3 &= x^3 + 3x^2\varepsilon + 3x\varepsilon^2 + \varepsilon^3 - x^3 = 3x^2\varepsilon
+  \end{aligned}
+\end{equation}
 In each case, the derivative is visible as the coefficient of~$\varepsilon$ in
 the result. A further example is from geometry: Having a nontrivial
 set~$\Delta$ of infinitesimal numbers available allows us to define a
@@ -784,17 +794,177 @@ related to actual infinity. Instead of appealing to the axiom of choice to
 obtain a completed ultrafilter, cheap nonstandard analysis constructs larger
 and larger approximations to an ideal ultrafilter on the go.
 
-The following section presents the basics of \emph{synthetic differential
+The following section presents a topos used in \emph{synthetic differential
 geometry}~\cite{kock:sdg,kock:new-methods}. This is a further topos-theoretic
 approach to infinitesimals which is suited to illustrate the philosophy of toposes
 as lenses. Its stated goal is to devise a rigorous context in which the
-writings of Sophus Lie, who freely employed infinitesimals in his seminal work
-on differential geometry, can be effortlessly interpreted, staying close to the
-original.
+writings of Sophus Lie, who freely employed infinitesimals in his seminal
+works, can be effortlessly interpreted, staying close to the
+original and requiring no coding.
 
 
-\subsection{XXX ...}
+\subsection{The Zariski topos} The starting point is the observation that
+while the field~$\RR$ of ordinary real numbers doesn't contain infinitesimals
+(except for zero), the ring~$\RR[\varepsilon]/(\varepsilon^2)$ of \emph{dual
+numbers} does. This ring has the cartesian product~$\RR \times \RR$ as its
+underlying set and the ring operations are defined such
+that~$\varepsilon^2 = 0$, where~$\varepsilon \defeq \langle 0,1 \rangle$:
+\[
+  \langle a,b \rangle + \langle a',b' \rangle \defeq
+  \langle a+a', b+b' \rangle \qquad
+  \langle a,b \rangle \cdot \langle a',b' \rangle \defeq
+  \langle aa', ab'+a'b \rangle
+\]
+We write~$\langle a,b \rangle$ more clearly
+as~$a+b\varepsilon$.
 
+The dual numbers contain infinitesimal numbers, more precisely \emph{nilsquare
+numbers}, namely all numbers of the form~$b \varepsilon$ for~$b \in \RR$, and
+they are sufficient to rigorously reproduce derivative computations of
+polynomials such as~\eqref{eq:derivative}.
+
+However, the dual numbers are severely lacking in other aspects. Firstly, they
+don't contain any nilcubic numbers which are not already nilsquare. These are
+required in order to extend calculations like~\eqref{eq:derivative} to second
+derivatives, as in
+\[ (x+\varepsilon)^3 - x^3 = x^3 + 3x^2\varepsilon + \frac{1}{2!} 6x
+\varepsilon^2. \]
+Secondly, the dual numbers contain, up to scaling, only a single infinitesimal
+number. Further independent infinitesimals are required in order to deal with
+functions of several variables, as in
+\[ f(x+\varepsilon,y+\varepsilon') - f(x,y) = D_xf(x,y)\varepsilon +
+D_yf(x,y)\varepsilon'. \]
+Thirdly, and perhaps most importantly, the ring of dual numbers fails to be a
+field. The only invertible dual numbers are the numbers of the form~$a +
+b\varepsilon$ with~$a$ invertible in the reals; it is not true that any nonzero
+dual number is invertible.
+
+The first deficiency could be fixed by passing
+from~$\RR[\varepsilon]/(\varepsilon^2)$ to~$\RR[\varepsilon]/(\varepsilon^3)$
+(a ring whose elements are triples and whose ring operations are defined such
+that~$\langle0,0,1\rangle^3 = 0$) and the second by passing
+from~$\RR[\varepsilon]/(\varepsilon^2)$
+to~$\RR[\varepsilon,\varepsilon']/(\varepsilon^2,\varepsilon'^2,\varepsilon\varepsilon')$.
+In a sense, both of these proposed replacements are better \emph{stages} than
+the basic~$\RR[\varepsilon]/(\varepsilon)^2$ or even~$\RR$ itself. However,
+similar criticisms can be mounted against any of these better stages, and the
+problem that all these substitutes are not fields persists.
+
+\bigskip
+\paragraph{Introducing the topos}
+The \emph{Zariski topos of~$\RR$},~$\Zar(\RR)$, meets all of these challenges. It
+contains a ring~$R$, the so-called \emph{ring of smooth numbers}, which reifies
+the real numbers, the dual numbers, the two proposed better stages and indeed
+any finitely presented~$\RR$-algebra into a single coherent entity. The
+Kripke--Joyal translations rules of~$\Zar(\RR)$ are listed in
+Table~\ref{table:zariski}. Any evaluation of an internal statement starts out
+with the most basic stage of all, the ordinary reals~$\RR$; then, during the
+course of evaluation, the current stage is successively refined to better
+stages (further finitely presented~$\RR$-algebras).
+
+For instance, universal quantification~``$\forall x \? R$'' not only refers to
+all elements of the current stage, but also to any elements of any refinement
+of the current stage. Similarly, negation~``$\neg\varphi$'' does not only mean
+that~$\varphi$ would imply~$1 = 0$ in the current stage, but also that it does
+so at any later stage.
+
+For reference purposes only, we include the precise definition of the Zariski topos.
+\begin{defn}The \emph{Zariski topos of~$\RR$},~$\Zar(\RR)$, is the category of
+functors from finitely presented~$\RR$-algebras to sets. The object~$R$
+of~$\Zar(\RR)$ is the tautologous functor~$A \mapsto A$.
+\end{defn}
+
+\paragraph{Properties of the smooth numbers}
+As a concrete example, the Kripke--Joyal translation of the statement that~$R$ is a field,
+\[ \Zar(\RR) \models \forall x\?R\_ (\neg(x = 0) \Rightarrow \exists y\?R\_ xy = 1), \]
+is this:
+\begin{indentblock}
+For any stage~$A$ and any element~$x \in A$, \\
+${\qquad}$ if for any later stage~$B$ of~$A$ \\
+${\qquad\qquad}$ in which~$x = 0$ holds \\
+${\qquad\qquad}$ also~$1 = 0$ holds, \\
+${\qquad}$ then~$A$ can be covered by later stages~$B_i$ such that, for each
+index~$i$, \\
+${\qquad\qquad}$ there is an element~$y \in B_i$ such that~$xy = 1$ in~$B_i$.
+\end{indentblock}
+And indeed, this statement is true. Let a stage~$A$ (a finitely
+presented~$\RR$-algebra) and an element~$x \in A$ which fulfills the stated
+condition be given. Then~$x = 0$ holds in the refinement~$B \defeq A/(x)$.
+Hence~$1 = 0$ holds in~$B$. By elementary algebra, this means that~$x$ is
+invertible in~$A$. Hence the conclusion holds for the singleton covering
+of~$A$ by~$B_1 \defeq A$.
+
+Within~$\Zar(\RR)$, we set~$\Delta \defeq \{ \varepsilon \? R \,|\,
+\varepsilon^2 = 0 \}$. Then~$R$ has the following properties:
+\begin{enumerate}
+\item Law of cancellation: $\forall x \? R\_ \forall y \? R\_ \bigl((\forall
+\varepsilon \? \Delta\_ x\varepsilon = y\varepsilon)
+\Rightarrow x = y\bigr)$
+\item Axiom of micro-affinity: $\forall f \? R^\Delta\_ \exists! a \? R\_
+\forall \varepsilon \? \Delta\_ f(\varepsilon) = f(0) + a\varepsilon$
+\end{enumerate}
+The unique number~$a$ in the axiom of micro-affinity deserves to be
+called~``$f'(0)$''; this is how we synthetically define the derivative in
+synthetic differential geometry.
+
+Having motivated the Zariski topos by the desire to devise a universe with
+infinitesimals, the actual ontological status of the infinitesimal numbers in
+the Zariski topos is more nuanced. The law of cancellation implies that,
+within~$\Zar(\RR)$, it is not the case that zero is the only nilsquare number.
+However, this doesn't mean that there actually \emph{is} a nilsquare number
+in~$R$. In fact, any nilsquare number cannot be nonzero, as nonzero numbers are
+invertible while nilsquare numbers are not. Hence any nilsquare number in~$R$
+is \emph{not not} zero. This state of affairs is only possible in an
+intuitionistic context.
+
+\begin{rem}The ring~$R$ of smooth numbers does not coincide with the Cauchy reals,
+the Dedekind reals or indeed any well-known construction of the reals
+within~$\Zar(\RR)$. This observation explains why~$R$ can satisfy the law of
+cancellation even though it is an intuitionistic theorem that the only
+nilquadratic number in any flavor of the reals is zero.
+\end{rem}
+
+
+\subsection{Well-adapted models} The Zariski topos of~$\RR$ contains
+infinitesimals in a satisfying manner. However it is not suited as a home for
+synthetic differential geometry, a first indication being that in~$\Zar(\RR)$,
+any function~$R \to R$ is polynomial. Hence important functions such as the
+exponential function do not exist in~$\Zar(\RR)$. More comprehensively, the
+Zariski topos is not a well-adapted model in the sense of the following
+definition.
+
+\begin{defn}\label{defn:well-adapted}A \emph{well-adapted model} of synthetic
+differential geometry is a topos~$\E$ together with a ring~$R$ in~$\E$ such
+that:
+\begin{enumerate}
+\item The ring~$R$ is a field.
+\item The ring~$R$ validates the axiom of micro-affinity and several related
+axioms.
+\item There is a fully faithful functor~$i : \mathrm{Mnf} \to \E$ embedding the
+category of smooth manifolds into~$\E$.
+\item The ring~$R$ is coincides with~$i(\RR^1)$, the image of the real line
+in~$\E$.
+\end{enumerate}
+\end{defn}
+
+Is is then the culmination of a long line of research by several authors that
+several well-adapted models of synthetic differential geometry exist. By the
+conditions imposed by Definition~\ref{defn:well-adapted}, for any such
+topos~$\E$ the following transfer principle holds: If~$f,g : \RR \to \RR$ are
+smooth functions, then~$f' = g$ (in the ordinary sense of the derivative) if
+and only if~$i(f)' = i(g)$ in~$\E$ (in the synthetic sense of the derivative).
+
+Hence the nilquadratic infinitesimal numbers of synthetic differential geometry
+may freely be employed as a convenient fiction when computing derivatives.
+Because the theorem on the existence of well-adapted models has a constructive
+proof, any proof making using of these infinitesimals may mechanically be
+unwound to a (longer and more complex) proof which only refers to the ordinary
+reals.
+
+
+\subsection{On the importance of language}
+
+XXX translation unwieldy, lens, view, ...
 
 
 \printbibliography
@@ -838,6 +1008,10 @@ Stuff that should be mentioned:
 * use the phrase "very rich and very deep" (or similarly) about set theory
 * PA doesn't have models
 * Sven(?)
+* Set[T]
+* free topos
+* semantic view vs. syntactic view
+* Kripke models
 
 Send to Georg.
 Also Giuseppe Cammarata.

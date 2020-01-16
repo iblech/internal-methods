@@ -64,6 +64,7 @@ Universitätsstr. 14 \\
 \newcommand{\F}{\mathcal{F}}
 \newcommand{\B}{\mathcal{B}}
 \newcommand{\NN}{\mathbb{N}}
+\newcommand{\QQ}{\mathbb{Q}}
 \newcommand{\TT}{\mathbb{T}}
 \newcommand{\RR}{\mathbb{R}}
 \newcommand{\ZZ}{\mathbb{Z}}
@@ -205,18 +206,18 @@ differently (Figure~\ref{fig:landscape}).
 
 For instance, there are toposes in which the axiom of choice and the
 intermediate value theorem from undergraduate calculus fail, toposes in which
-any function~$\RR \to \RR$ is continuous, toposes in which infinitesimal
-numbers exist and toposes whose properties depend on certain circumstances of
-our physical world.
+any function~$\RR \to \RR$ is continuous and toposes in which infinitesimal
+numbers exist.
 
 The purpose of this contribution is twofold.
 \begin{enumerate}
 \item We give a glimpse of the toposophic landscape, presenting several
 specific toposes and exploring their peculiar properties.
 
-\item We explicate how each topos provides a distinct lens through which the
+\item We explicate how toposes provides distinct lenses through which the
 usual mathematical objects of the standard topos can be viewed.
 \end{enumerate}
+% XXX check everywhere
 
 Viewed through such a lens, a given mathematical object can have different
 properties than when considered normally. In particular, it can have
@@ -626,7 +627,7 @@ within~$1/(n+1)$ of the limit.
 
 A function~$f : \RR \to \RR$ in the \effective topos is therefore given by a
 Turing machine~$M$ which, given the description of such a Turing machine~$X$ as
-input, outputs the description of a similar such Turing machine~$Y$ as output.
+input, outputs the description of a similar such Turing machine~$Y$.
 To compute a rational approximation~$Y(n)$, the machine~$Y$ may simulate~$X$
 and can therefore determine arbitrarily many rational approximations~$X(m)$.
 However, within finite time, the machine~$Y$ can only acquire finitely many
@@ -695,7 +696,7 @@ computational steps are indexed by the ordinal numbers instead of the natural
 numbers. For instance, an infinite-time Turing machine can trivially decide the
 twin prime conjecture, by simply walking along the natural number line and
 recording any twin primes it finds. Then, on day~$\omega$, it can observe
-whether it has found finitely many twins or not.
+whether it has found infinitely many twins or not.
 
 In the realizability topos made using infinite-time Turing machines, the full
 law of excluded middle still fails, but some instances which are wrong in the
@@ -718,12 +719,12 @@ there is no surjection~$\NN \to \RR$, there is an injection~$\RR \to
 \NN$~\cite{bauer:injection}.
 
 \bigskip
-\paragraph{Machines of the real physical world} A second variant of the
+\paragraph{Machines of the physical world} A second variant of the
 \effective topos is obtained by using machines of the real physical world
 instead of abstract Turing machines in its construction. In doing so, we of
 course leave the realm of mathematics, as real-world machines are not objects
 of mathematical studies, but still it is interesting to see which commitments
-about the natural of the physical world imply which internal statements of the
+about the nature of the physical world imply which internal statements of the
 resulting topos.
 
 For instance, Andrej Bauer proved that inside this topos any function~$\RR \to
@@ -759,7 +760,7 @@ usually fails.
 The only case that the law of excluded middle does hold internally to~$\Sh(X)$
 is when the only dense open of~$X$ is~$X$ itself; assuming classical logic in
 the metatheory, this holds if and only if every open is also closed. This is
-for instance satisfied if~$X$ is discrete.
+essentially only satisfied if~$X$ is discrete.
 
 An important special case is when~$X$ is the one-point space. In this
 case~$\Sh(X)$ is equivalent (as categories and hence toposes) to the standard
@@ -948,9 +949,9 @@ possible there is no general procedure for doing so.
 
 \subsection{Topos-theoretic alternatives to the hyperreal numbers} Topos theory
 provides several constructive alternatives for realizing infinitesimals.
-One such is ``cheap nonstandard analysis'' by Terence Tao~\cite{tao:cheap-nsa}
-and is related to Robinson's nonstandard analysis like potential infinity is
-related to actual infinity. Instead of appealing to the axiom of choice to
+One such is ``cheap nonstandard analysis'' by Terence Tao~\cite{tao:cheap-nsa}.
+It is to Robinson's nonstandard analysis what potential infinity is
+to actual infinity. Instead of appealing to the axiom of choice to
 obtain a completed ultrafilter, cheap nonstandard analysis constructs larger
 and larger approximations to an ideal ultrafilter on the go.
 
@@ -1033,6 +1034,7 @@ For reference purposes only, we include the precise definition of the Zariski to
 functors from finitely presented~$\RR$-algebras to sets. The object~$R$
 of~$\Zar(\RR)$ is the tautologous functor~$A \mapsto A$.
 \end{defn}
+% XXX sheaf condition?
 
 \paragraph{Properties of the smooth numbers}
 As a concrete example, the Kripke--Joyal translation of the statement that~$R$ is a field,
@@ -1088,7 +1090,7 @@ nilquadratic number in any flavor of the reals is zero.
 \subsection{Well-adapted models} The Zariski topos of~$\RR$ contains
 infinitesimals in a satisfying manner. However it is not suited as a home for
 synthetic differential geometry, a first indication being that in~$\Zar(\RR)$,
-any function~$R \to R$ is polynomial. Hence important functions such as the
+any function~$R \to R$ is a polynomial function. Hence important functions such as the
 exponential function do not exist in~$\Zar(\RR)$. More comprehensively, the
 Zariski topos is not a well-adapted model in the sense of the following
 definition.
@@ -1102,7 +1104,7 @@ that:
 axioms.
 \item There is a fully faithful functor~$i : \mathrm{Mnf} \to \E$ embedding the
 category of smooth manifolds into~$\E$.
-\item The ring~$R$ is coincides with~$i(\RR^1)$, the image of the real line
+\item The ring~$R$ coincides with~$i(\RR^1)$, the image of the real line
 in~$\E$.
 \end{enumerate}
 \end{defn}
@@ -1117,7 +1119,7 @@ and only if~$i(f)' = i(g)$ in~$\E$ (in the synthetic sense of the derivative).
 Hence the nilquadratic infinitesimal numbers of synthetic differential geometry
 may freely be employed as a convenient fiction when computing derivatives.
 Because the theorem on the existence of well-adapted models has a constructive
-proof, any proof making using of these infinitesimals may mechanically be
+proof, any proof making use of these infinitesimals may mechanically be
 unwound to a (longer and more complex) proof which only refers to the ordinary
 reals.
 
@@ -1161,6 +1163,9 @@ Stuff that should be mentioned:
 * semantic view vs. syntactic view
 * Kripke models
 * more pointers to topos literature
+* A topos is more than its semantics
+* Check references everywhere (give good pointers)
+* Format rules in a better way
 
 Send to Georg.
 Also Giuseppe Cammarata.

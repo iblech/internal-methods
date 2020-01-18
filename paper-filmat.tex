@@ -101,6 +101,8 @@ Universitätsstr. 14 \\
 \maketitle
 \thispagestyle{empty}
 
+\tableofcontents
+
 \noindent
 Toposes can be pictured as mathematical universes in which we can do
 mathematics. Most mathematicians spend all their professional life in just a
@@ -273,7 +275,8 @@ does not.
 
 \begin{defn}A \emph{topos} (more precisely \emph{elementary topos} or
 \emph{logos} with a natural numbers object) is a category which has all finite
-limits, is cartesian closed and has a subobject classifier.\end{defn}
+limits, is cartesian closed, has a subobject classifier and contains a natural
+numbers object.\end{defn}
 
 Put briefly, these axioms state that a topos should share several categorical
 properties with the category of sets; they ensure that each topos contains its
@@ -304,7 +307,8 @@ statements from set theory, which typically make substantial use of a global
 membership predicate~``$\in$''. Toposes only support a typed \emph{local}
 membership predicate, where we may write~``$x \in A$'' only in the context of
 some fixed type~$M$ such that~$x$ is of type~$M$ and~$A$ is of
-type~$P(M)$, the power type of~$M$.}
+type~$P(M)$, the power type of~$M$. We refer to~\cite{XXX} for ways around this
+restriction.}
 
 It is by the Kripke--Joyal translation rules that we can access the alternate
 universe of a topos. In the special case of the standard topos~$\Set$, the
@@ -357,7 +361,7 @@ uncountable.
 
 That said, intuitionistic logic still allows for a considerable amount of
 freedom, and in many toposes statements are true which are baffling if one has
-only received training in classical logic. For instance, on first sight it
+only received training in mathematics based on classical logic. For instance, on first sight it
 looks like the signum function
 \[ \operatorname{sgn} : \RR \longrightarrow \RR,\ x \longmapsto \begin{cases}
   -1, & \text{if $x < 0$,} \\
@@ -374,7 +378,8 @@ coincide with~$\RR$.
 
 Sections~\ref{sect:effective-topos} to~\ref{sect:smooth} present several
 examples for such anti-classical statements and explain how to make sense of
-them.
+them. Some toposes are closer to the standard topos and do not validate such
+anti-classical statements:
 
 \begin{defn}A topos~$\E$ is \emph{boolean} if and only if the laws of classical
 logic are true in~$\E$.\end{defn}
@@ -477,6 +482,8 @@ topos. Each of these toposes tells a different story of mathematics, and any
 topos which is not the standard topos invites us to ponder alternative ways how
 mathematics could unfold.
 
+Some of the most prominent toposes are the following.
+
 \begin{enumerate}
 \item The \emph{trivial topos}. In the trivial topos, any statement whatsoever
 is true. The trivial topos is not interesting on its own, but its existence
@@ -488,7 +495,8 @@ in the ordinary mathematical sense.
 \item $\Eff$, the \emph{\effective topos}. A statement is true in~$\Eff$ iff
 if it has a \emph{computable witness} as detailed in
 Section~\ref{sect:effective-topos}. In~$\Eff$, any function~$\NN \to \NN$ is
-computable.
+computable, any function~$\RR \to \RR$ is continuous and the countable axiom of
+choice holds (even if it does not on the meta level).
 \item $\Sh(X)$, the \emph{topos of sheaves} over any space~$X$. A statement is true
 in~$\Sh(X)$ iff it holds \emph{locally on~$X$}, as detailed in
 Section~\ref{sect:sheaf-toposes}. For most choices of~$X$, the
@@ -544,8 +552,8 @@ For instance, the topos~$\Set/\QQ$ contains the generic rational number~$x_0$.
 Neither the statement~``$x_0$ is zero'' nor the statement~``$x_0$ is not zero''
 hold in~$\Set/\QQ$, as it is neither the case that any rational number
 in~$\Set$ is zero nor that any rational number in~$\Set$ is not zero. Like any
-rational number, the number~$x_0$ can be written as a fraction~$\frac{a}{b}$,
-where just as~$x_0$ itself, the numbers~$a$ and~$b$ are quite indetermined.
+rational number, the number~$x_0$ can be written as a fraction~$\frac{a}{b}$.
+Just as~$x_0$ itself, the numbers~$a$ and~$b$ are quite indetermined.
 \item Given a statement~$\varphi$ (which may contain objects of~$\E$ as
 parameters but which must be formalizable as a geometric sequent), there is a
 largest subtopos of~$\E$ in which~$\varphi$ holds. This construction is useful
@@ -555,7 +563,7 @@ topos is the trivial topos.
 % FUTURE: The topos~$\E[\mathbb{O}]$ contains a \emph{generic object}.
 \item There is a ``smallest dense'' subtopos $\Sh_{\neg\neg}(\E)$. This topos
 is always boolean, even if~$\E$ and the meta level are not. For a mathematician who employs
-intuitionistic logic on their meta level, non-constructive results by their
+intuitionistic logic on their meta level, the nonconstructive results of their
 classical colleagues do not appear to make sense in~$\Set$, but they hold
 in~$\Sh_{\neg\neg}(\Set)$. If classical logic holds on the meta level,
 then~$\Set$ and~$\Sh_{\neg\neg}(\Set)$ coincide.
@@ -576,7 +584,7 @@ coherent from the point of view of the standard topos, and the topos-theoretic
 multiverse which we have access to is just a small part of an even larger
 landscape.\footnote{This paragraph employs an overly narrow conception of
 ``mathematics'', for instance excluding any predicative flavors of mathematics.
-Toposes are impredicative in the sense that any object of a topos has a
+Toposes are impredicative in the sense that any object of a topos is required to have a
 powerobject. A predicative cousin of toposes are the \emph{arithmetic
 universes} introduced by Joyal which have recently been an important object of
 consideration by Maietti and
@@ -589,8 +597,8 @@ different than the picture which emerges from within the standard topos.
 For instance, from within the standard topos, we can write down the
 construction which yields the standard topos and the construction which yields
 the \effective topos~$\Eff$ and observe that the resulting toposes are not at
-all equivalent: If~$\Eff$, any function~$\RR \to \RR$ is continuous
-while~$\Set$ abounds with discontinuous functions (at least assuming a
+all equivalent: In~$\Eff$, any function~$\RR \to \RR$ is continuous
+while~$\Set$ abounds with discontinuous functions (at least if we assume a
 classical meta level). In contrast, if we carry out these two constructions
 from within the \effective topos, we obtain toposes which are elementarily
 equivalent. More precisely, for any statement~$\varphi$ of higher order
@@ -695,7 +703,7 @@ a prime number is, one can safely judge this statement to be true in
 the standard topos, since it is just an instance of the law of excluded middle.
 
 By the Kripke--Joyal semantics, stating that this statement is true in the \effective topos
-amounts to stating that there is a Turing machine which, given a natural
+amounts to stating that there is a Turing machine which, when given a natural
 number~$n$ as input, terminates with a correct judgment whether~$n$ is prime or
 not. Such a Turing machine indeed exists -- writing such a program is often a
 first exercise in programming courses. Hence the statement is also true in the
@@ -709,7 +717,7 @@ topos by any of the many proofs of this fact.
 
 % XXX external ...
 Its external meaning when interpreted in the \effective topos is that there exists
-a Turing machine which, given a natural number~$n$ as input, terminates with a
+a Turing machine which, when given a natural number~$n$ as input, terminates with a
 prime number~$p > n$ as output. Such a Turing machine exists, hence the
 statement is true in the \effective topos.
 
@@ -739,7 +747,7 @@ search only turned up zero values, it cannot come to any verdict -- it cannot
 rule out that a nonzero function value will show up in the as yet unexplored
 part of the function.
 
-A rigorous proof that such a machine~$M$ does not exist reduce its assumed
+A rigorous proof that such a machine~$M$ does not exist reduces its assumed
 existence to the undecidability of the halting problem.
 
 
@@ -768,10 +776,10 @@ machine~$F$ computing a function~$f : \NN \to \NN$, outputs a description of a
 Turing machine computing~$f$. It is trivial to program such a machine~$M$: the
 machine~$M$ simply has to echo its input back to the caller.
 
-To avert a paradox, we should point out where the classical proof of the
+To avert a paradox, we should point out where the usual proof of the
 existence of noncomputable functions theory employs nonconstructive reasoning, for if
 % XXX the introduction of this paragraph doesn't match the rest
-it would admit a constructive proof, it would also hold internally to the
+it would not go beyond intuitionistic reasoning, it would also hold internally to the
 \effective topos, in contradiction to the fact that it does not. The halting
 function~$h : \NN \to \NN$, defined using the case distinction
 \[ h : n \mapsto \begin{cases}
@@ -892,14 +900,14 @@ there is no surjection~$\NN \to \RR$, there is an injection~$\RR \to
 
 \bigskip
 \paragraph{Machines of the physical world} A second variant of the
-\effective topos is obtained by using machines of the real physical world
-instead of abstract Turing machines in its construction. In doing so, we of
+\effective topos is obtained by using machines of the physical world
+instead of abstract Turing machines. In doing so, we of
 course leave the realm of mathematics, as real-world machines are not objects
 of mathematical study, but still it is interesting to see which commitments
 about the nature of the physical world imply which internal statements of the
 resulting topos.
 
-For instance, Andrej Bauer proved that inside this topos any function~$\RR \to
+For instance, Andrej Bauer showed that inside this topos any function~$\RR \to
 \RR$ is continuous if, in the physical world, only finitely many computational
 steps can be carried out in finite time and if it is possible to form
 tamper-free private communication channels~\cite{bauer:int-mathematics}.
@@ -936,8 +944,8 @@ essentially only satisfied if~$X$ is discrete.
 
 An important special case is when~$X$ is the one-point space. In this
 case~$\Sh(X)$ is equivalent (as categories and hence toposes) to the standard
-topos. If mathematics within~$\Sh(X)$ can be described as ``mathematics
-over~$X$'', then this observation justifies the slogan that ``ordinary mathematics
+topos. To the extent that mathematics within~$\Sh(X)$ can be described as ``mathematics
+over~$X$'', this observation justifies the slogan that ``ordinary mathematics
 is mathematics over the point''.
 
 
@@ -957,7 +965,7 @@ only if, internally, the number~$a$ is negative.
 The law of trichotomy, stating that any real number is either negative, zero or
 positive, generally fails in~$\Sh(X)$. By the Kripke--Joyal semantics, the external
 % XXX external
-meaning of this internal statement is that for any continuous function~$a : U
+meaning of the internal statement~``$\forall a:\RR\_ a<0 \vee a=0 \vee a>0$'' is that for any continuous function~$a : U
 \to \RR$ defined on any open~$U$ of~$X$, there is an open covering~$U =
 \bigcup_i U_i$ such that on each member~$U_i$ of this covering, the function~$a$ is
 either everywhere negative on~$U_i$, everywhere zero on~$U_i$ or everywhere
@@ -1036,7 +1044,7 @@ overlaps~$U_i \cap U_j$, the zero-picking functions~$a$ need not agree.)
 
 From these observations we can deduce that the intermediate value theorem of
 undergraduate calculus does in general not hold in~$\Sh(X)$ and hence does not allow
-for an intuitionistic proof. This theorem states: ``If~$f : \RR \to \RR$
+for an intuitionistic proof. The intermediate value theorem states: ``If~$f : \RR \to \RR$
 is a continuous function such that~$f(-1) < 0$ and~$f(1) > 0$, there exists a
 number~$a$ such that~$f(a) = 0$.'' The external meaning of this statement is
 that in any continuous family~$(f_x)_x$ of continuous functions with~$f_x(-1) <
@@ -1080,7 +1088,7 @@ ultrafilter.
 
 The hyperreals contain an isomorphic copy of the ordinary reals as the
 so-called \emph{standard elements}, and they also contain infinitesimal numbers
-and their inverses, transfinite numbers, and support a powerful \emph{transfer
+and their inverses, transfinite numbers. Additionally, they support a powerful \emph{transfer
 principle}: Any statement which does not refer to standardness is true for the
 hyperreals if and only if it is true for the ordinary reals.
 
@@ -1116,7 +1124,7 @@ Non-principal ultrafilters cannot be described in explicit terms, and
 they are also not at all canonical structures: \textsc{zfc} proves that there
 are~$2^{2^{\aleph_0}}$ many~\cite{pospisil:ultrafilters}.
 
-A practical consequence of this non-constructivity is that it can be hard to
+A practical consequence of this nonconstructivity is that it can be hard to
 unwind proofs which employ hyperreal numbers to direct proofs, and even where
 possible there is no general procedure for doing so.
 
@@ -1125,14 +1133,15 @@ possible there is no general procedure for doing so.
 provides several constructive alternatives for realizing infinitesimals.
 One such is ``cheap nonstandard analysis'' by Terence Tao~\cite{tao:cheap-nsa}.
 It is to Robinson's nonstandard analysis what potential infinity is
-to actual infinity. Instead of appealing to the axiom of choice to
+to actual infinity: Instead of appealing to the axiom of choice to
 obtain a completed ultrafilter, cheap nonstandard analysis constructs larger
 and larger approximations to an ideal ultrafilter on the go.
 
-The following section presents a topos used in \emph{synthetic differential
-geometry}~\cite{kock:sdg,kock:new-methods}. This is a further topos-theoretic
+The following section presents a (variant of a) topos used in \emph{synthetic differential
+geometry}~\cite{kock:sdg,kock:new-methods}. This subject is a further topos-theoretic
 approach to infinitesimals which is suited to illustrate the philosophy of toposes
-as lenses. Its stated goal is to devise a rigorous context in which the
+as lenses. A major motivation for the development of synthetic differential
+geometry was to devise a rigorous context in which the
 writings of Sophus Lie, who freely employed infinitesimals in his seminal
 works, can be effortlessly interpreted, staying close to the
 original and requiring no coding.
@@ -1179,11 +1188,11 @@ dual number is invertible.
 The first deficiency could be fixed by passing
 from~$\RR[\varepsilon]/(\varepsilon^2)$ to~$\RR[\varepsilon]/(\varepsilon^3)$
 (a ring whose elements are triples and whose ring operations are defined such
-that~$\langle0,0,1\rangle^3 = 0$) and the second by passing
+that~$\langle0,1,0\rangle^3 = 0$) and the second by passing
 from~$\RR[\varepsilon]/(\varepsilon^2)$
 to~$\RR[\varepsilon,\varepsilon']/(\varepsilon^2,\varepsilon'^2,\varepsilon\varepsilon')$.
 In a sense, both of these proposed replacements are better \emph{stages} than
-the basic~$\RR[\varepsilon]/(\varepsilon)^2$ or even~$\RR$ itself. However,
+the basic ring~$\RR[\varepsilon]/(\varepsilon)^2$ or even~$\RR$ itself. However,
 similar criticisms can be mounted against any of these better stages, and the
 problem that all these substitutes are not fields persists.
 
@@ -1263,7 +1272,7 @@ nilquadratic number in any flavor of the reals is zero.
 \end{rem}
 
 
-\subsection{Well-adapted models} The Zariski topos of~$\RR$ contains
+\subsection{Well-adapted models} The Zariski topos of~$\RR$ allows to compute with
 infinitesimals in a satisfying manner. However it is not suited as a home for
 synthetic differential geometry, a first indication being that in~$\Zar(\RR)$,
 any function~$R \to R$ is a polynomial function. Hence important functions such as the
@@ -1285,9 +1294,9 @@ in~$\E$.
 \end{enumerate}
 \end{defn}
 
-Is is then the culmination of a long line of research by several authors that
+It is the culmination of a long line of research by several authors that
 several well-adapted models of synthetic differential geometry exist. By the
-conditions imposed by Definition~\ref{defn:well-adapted}, for any such
+conditions imposed in Definition~\ref{defn:well-adapted}, for any such
 topos~$\E$ the following transfer principle holds: If~$f,g : \RR \to \RR$ are
 smooth functions, then~$f' = g$ (in the ordinary sense of the derivative) if
 and only if~$i(f)' = i(g)$ in~$\E$ (in the synthetic sense of the derivative).
@@ -1347,6 +1356,7 @@ Stuff that should be mentioned:
 * XXX Format rules in a better way
 * XXX Format examples in Eff in a better way
 * XXX toposes are not small (Figure 1)
+* XXX hypercomputation or supercomputation?
 
 Send to Georg.
 Also Giuseppe Cammarata.

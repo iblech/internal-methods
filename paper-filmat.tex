@@ -82,6 +82,7 @@ Universitätsstr. 14 \\
 \newcommand{\Eff}{\mathrm{Ef{}f}}
 \renewcommand{\_}{\mathpunct{.}\,}
 \newcommand{\effective}{ef{}fective\xspace}
+\newcommand{\effectively}{ef{}fectively\xspace}
 \newcommand{\?}{\,{:}\,}
 \newcommand{\realizes}{\Vdash}
 \newcommand{\notnot}{\emph{not~not}\xspace}
@@ -600,13 +601,81 @@ In this sense the construction which yields the \effective topos is
 \emph{idempotent}.
 
 
-\section{Exploring the \effective topos}
+\section{The \effective topos, a convenient home for computability theory}
 \label{sect:effective-topos}
 
-XXX introduction: the objects of the effective topos are data types and the
-morphisms are computable maps.
+A basic question in computability theory is: Which computational tasks are
+solvable in principle by computer programs? For instance, there is an algorithm
+for computing the greatest common divisor of any pair of natural numbers, and
+hence we say ``any pair of natural numbers \emph{\effectively} has a greatest
+common divisor''  or ``the function~$\NN \times \NN \to \NN,\,(n,m) \mapsto
+\operatorname{gcd}(n,m)$ is \emph{computable}''.
+
+In such questions of computability, practical issues such as resource
+constraints and hardware malfunctions are ignored; we work with the theoretical
+notion of \emph{Turing machines}, a mathematical abstraction of the computers
+of the real world.
+
+A basic observation in computability theory is that there are computational tasks
+which are not solvable even for these idealized Turing machines. The paramount
+example is the \emph{halting problem}: Given a turing machine~$M$, determine
+whether~$M$ terminates (comes to a stop after having carried out a finite
+number of computational steps) or not.
+
+A Turing machine~$H$ which would solve this problem, that is read the
+description of a Turing machine~$M$ as input and output one or zero depending
+on whether~$M$ terminates or not, would be called a \emph{halting oracle}, and
+a basic result is that there are no halting oracles. If we fix some \effective
+enumeration of all Turing machines, then we can express the undecidability of
+the halting problem also by saying that the \emph{halting function}
+\[ h : \NN \longrightarrow \NN,\ n \longmapsto \begin{cases}
+  1, & \text{if the~$n$-th Turing machine terminates}, \\
+  0, & \text{otherwise,}
+\end{cases} \]
+is not computable.
+
+The \emph{\effective topos}~$\Eff$ is a convenient home for computability
+theory. A statement is true in~$\Eff$ if and only if it has a \emph{computable
+witness}. For instance, a computable witness of a statement of the
+form~``$\forall x\_ \exists y\_ \varphi(x,y)$'' is a Turing machine which, when
+given an input~$x$, computes an output~$y$ together with a computable witness
+for~$\varphi(x,y)$.
+
+Section~\ref{sect:eff-examples} presents several examples to convey an
+intuitive understanding of truth in the \effective topos; the precise
+translation rules are displayed in Table~\ref{table:eff}. A precise definition
+of the \effective topos requires notions of category theory which we do not
+want to suppose here; it is included only for reference.
+
+\begin{defn}\begin{enumerate}
+\item An \emph{assembly} is a set~$X$ together with a
+relation~$({\realizes_X}) \subseteq \NN \times X$ such that for every element~$x
+\in X$, there is a number~$n$ such that~$n \realizes_X x$.
+\item A \emph{morphism of
+assemblies}~$(X,{\realizes_X}) \to (Y,{\realizes_Y})$ is a map~$f : X \to Y$
+which is \emph{tracked} by a Turing machine, that is for which there exists a
+Turing machine~$M$ such that for any element~$x \in X$ and any number~$n$ such
+that~$n \realizes x$, the computation~$M(n)$ terminates and~$M(n) \realizes
+f(x)$.\end{enumerate}\end{defn}
+
+A number~$n$ such that~$n \realizes_X x$ is called a \emph{realizer} for~$x$
+and can be pictured as a concrete representation of the abstract element~$x$.
+The \emph{assembly of natural numbers} is the assembly~$(\NN,{=_\NN})$ and the
+\emph{assembly of functions~$\NN \to \NN$} is the
+assembly~$(X,{\realizes})$ where~$X$ is the set of computable functions~$\NN
+\to \NN$ and~$n \realizes f$ if and only if the~$n$-th Turing machine
+computes~$f$.
+
+\begin{defn}The \emph{\effective topos}~$\Eff$ is the ex/reg completion of the
+category of assemblies.\end{defn}
 
 XXX mention connection to realizability
+
+
+\subsection{Exploring the \effective topos}
+\label{sect:eff-examples}
+Due to its computational nature, truth in the \effective topos is quite
+different from truth in the standard topos. The following examples are XXX
 
 \begin{tabular}{lll}
   \toprule
@@ -743,11 +812,6 @@ even rough rational approximations of~$\operatorname{sgn}(x)$ require infinite
 precision in the input~$x$, do not exist in the \effective topos.
 
 
-\subsection{The formal translation rules} The previous examples were picked to
-convey an intuitive understanding of what statements in the \effective topos
-externally mean, and to showcase a variety of different situations. The
-formal translation rules are given in Table~\ref{table:eff}.
-
 \begin{table}
   \begin{tabbing}
     $e \models (\forall f\?\NN^\NN\_ \varphi(n))$ \= \kill
@@ -840,7 +904,7 @@ steps can be carried out in finite time and if it is possible to form
 tamper-free private communication channels~\cite{bauer:int-mathematics}.
 
 
-\section{Exploring toposes of sheaves}
+\section{Toposes of sheaves, a convenient home for local truth}
 \label{sect:sheaf-toposes}
 
 Associated to any topological space~$X$ (such as Euclidean space), there is the
@@ -981,7 +1045,7 @@ to this claim.
 % XXX create figure
 
 
-\section{Exploring toposes adapted to synthetic differential geometry}
+\section{Topos adapted to synthetic differential geometry}
 \label{sect:smooth}
 
 The idea of \emph{infinitesimal numbers} -- numbers which lie between~$-\frac{1}{n}$

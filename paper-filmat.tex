@@ -697,8 +697,12 @@ different from truth in the standard topos. The following examples are XXX
   Heyting arithmetic is categorical. & \xmark & \cmark \\
   \bottomrule
 \end{tabular}
+% XXX formatting
 
-\subsection{``Any natural number is prime or not.''} Even without knowing what
+\newcommand{\dotparagraph}[1]{\noindent\textbf{#1}}
+
+\bigskip
+\dotparagraph{``Any natural number is prime or not.''} Even without knowing what
 a prime number is, one can safely judge this statement to be true in
 the standard topos, since it is just an instance of the law of excluded middle.
 
@@ -710,7 +714,8 @@ first exercise in programming courses. Hence the statement is also true in the
 \effective topos, but for the nontrivial reason that such a machine exists.
 
 
-\subsection{``There are infinitely many primes.''} A first-order formalization
+\bigskip
+\dotparagraph{``There are infinitely many primes.''} A first-order formalization
 of this statement is ``for any natural number~$n$, there is a prime
 number~$p$ which is greater than~$n$'', and is known to be true in the standard
 topos by any of the many proofs of this fact.
@@ -722,7 +727,8 @@ prime number~$p > n$ as output. Such a Turing machine exists, hence the
 statement is true in the \effective topos.
 
 
-\subsection{``Any function~$\NN \to \NN$ is the zero function or not.''} More
+\bigskip
+\dotparagraph{``Any function~$\NN \to \NN$ is the zero function or not.''} More
 formally, the statement is
 \[ \forall f \? \NN^\NN\_
   \bigl((\forall n \? \NN\_ f(n) = 0) \vee
@@ -751,7 +757,8 @@ A rigorous proof that such a machine~$M$ does not exist reduces its assumed
 existence to the undecidability of the halting problem.
 
 
-\subsection{``Any function~$\NN \to \NN$ is computable by a Turing machine.''}
+\bigskip
+\dotparagraph{``Any function~$\NN \to \NN$ is computable by a Turing machine.''}
 The preceding examples give the impression that what is true in the
 \effective topos is simply a subset of what is true in the standard topos. The
 example of this subsection shows that the relation between the two toposes is more nuanced.
@@ -796,7 +803,8 @@ does not give rise to a well-defined counterexample within the \effective
 topos.
 
 
-\subsection{``Any function~$\RR \to \RR$ is continuous.''}\label{sect:eff-continuous}
+\bigskip
+\dotparagraph{``Any function~$\RR \to \RR$ is continuous.''}\label{sect:eff-continuous}
 In the standard topos, this statement is plainly false, with the signum and Heaviside functions
 being prominent counterexamples. In the \effective topos, this statement is
 true. A rigorous proof is not entirely straightforward~\cite{XXX}, but an intuitive
@@ -1350,25 +1358,17 @@ Outline:
 
 Stuff that should be mentioned:
 
-* XXX Cauchy vs. Dedekind numbers (physical quantities, ...)
 * XXX Syntactical vs. semantical interpretation
 * XXX phone call analogy
-* XXX detailed explanation of the pretty picture; analogy with "inner models"
-  of set theory
-* XXX quick overview of the several aspects of toposes (maybe at the end,
-  as an outlook?)
+* XXX quick overview of the several aspects of toposes (maybe at the end, as an outlook?)
 * XXX allowing a switch of perspective
 * XXX applications in mathematical practice
 * XXX int. logic as common denominator
 * XXX arbitrariness of the "standard axioms"
-* XXX what giving up classical logic actually amounts to in practice
 * XXX importance of having an adapted language
-* XXX SDG (infinitesimals are well-studied in philosophy of mathematics)
 * XXX quick remark on the internal language being based on types instead of sets
-* XXX Source https://plato.stanford.edu/entries/category-theory/ for relevant
-  literatur
+* XXX Source https://plato.stanford.edu/entries/category-theory/ for relevant literature
 * XXX the internal language as a generalized modal operator
-
 * XXX use the phrase "very rich and very deep" (or similarly) about set theory
 * XXX Sven(?)
 * XXX semantic view vs. syntactic view
@@ -1380,7 +1380,6 @@ Stuff that should be mentioned:
 * XXX Reference: Moerdijk
 * XXX Check references everywhere (give good pointers)
 * XXX Format rules in a better way
-* XXX Format examples in Eff in a better way
 * XXX toposes are not small (Figure 1)
 * XXX hypercomputation or supercomputation?
 

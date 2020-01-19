@@ -828,6 +828,39 @@ precision in the input~$x$, do not exist in the \effective topos.
 
 
 \bigskip
+\dotparagraph{``Markov's principle holds.''} Markov's principle is the
+following statement:
+\begin{equation}\label{eq:markov}\tag{MP}
+  \forall f \? \NN^\NN\_ \bigl((\neg\neg\exists n\?\NN\_ f(n) = 0)
+  \Longrightarrow \exists n\?\NN\_ f(n) = 0\bigr).
+\end{equation}
+It is an instance of the law of double negation elimination and hence trivially
+true in the standard topos, at least if we subscribe to classical logic on the
+meta level.
+
+The \effective topos inherits Markov's principle from the meta level.
+The statement~``$\Eff \models \text{\eqref{eq:markov}}$'' means that there is a
+Turing machine~$M$ which, when given the description of a Turing machine~$F$
+computing a function~$f : \NN \to \NN$, outputs the description of a Turing
+machine~$S_F$ which, when given a witness of~``$\neg\neg \exists n\?\NN\_ f(n)
+= 0$'', outputs a witness of~``$\exists n\?\NN\_ f(n) = 0$'' (up to trivial
+conversions, a number~$n$ such that~$f(n) = 0$).
+
+By the translation rules listed in Table~\ref{table:eff}, a number~$e$
+realizes~``$\neg\neg \exists n\?\NN\_ f(n) = 0$'' if and only if it is
+\emph{not not} the case that there is some number~$e'$ such that~$e'$
+realizes~``$\exists n\?\NN\_ f(n) = 0$''. Hence, if ``$\exists n\?\NN\_ f(n) =
+0$'' is realized at all, then any number is a witness of~``$\neg\neg
+\exists n\?\NN\_ f(n) = 0$''.
+
+As a consequence, the input given to machine~$S_F$ is entirely uninformative
+and~$S_F$ cannot make direct computational use of it, but it ensures that an
+\emph{unbounded search} will not fail: The machine~$S_F$ can simulate~$F$ in
+order to compute, in turn, the values~$f(0), f(1), f(2), \ldots$, and stop
+with output~$n$ as soon as it determines that some function value~$f(n)$ is zero.
+
+
+\bigskip
 \dotparagraph{``Heyting arithmetic is categorical.''} In addition to the standard
 model~$\NN$, the standard topos contains uncountably many nonstandard models of
 Peano arithmetic (at least if we assume a classical meta level). By a theorem
@@ -1383,5 +1416,4 @@ Stuff that should be mentioned:
 Send to Georg.
 Also Giuseppe Cammarata.
 
-* XXX Markov's principle
 * XXX formal Church--Turing thesis

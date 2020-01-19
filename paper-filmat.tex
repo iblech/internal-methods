@@ -763,21 +763,15 @@ The preceding examples give the impression that what is true in the
 \effective topos is simply a subset of what is true in the standard topos. The
 example of this subsection shows that the relation between the two toposes is more nuanced.
 
-% XXX explanation computable function
-
-The fundamental observation of computability theory is that, in the standard
-topos, there are functions~$\NN \to \NN$ which are not computable by a Turing
-machine. Explicit examples include the \emph{halting
-function}, which maps a number~$n$ to zero or one depending on whether
-the~$n$-th Turing machine (in some fixed enumeration of all Turing machines)
-terminates or not, and the \emph{busy beaver function}. Cardinality arguments
+As recalled above, in the standard topos there are functions~$\NN \to \NN$ which are not computable by a Turing
+machine. Cardinality arguments
 even show that most functions~$\NN \to \NN$ are not computable: There
 are~$\aleph_0^{\aleph_0} = 2^{\aleph_0}$ functions~$\NN \to \NN$, but
 only~$\aleph_0$ Turing machines and hence only~$\aleph_0$ functions which are
 computable by a Turing machine.
 
 In contrast, in the \effective topos, any function~$\NN \to \NN$ is computable
-by a Turing machine: The external meaning of this internal statement is that
+by a Turing machine. The external meaning of this internal statement is that
 there exists a Turing machine~$M$ which, when given a description of a Turing
 machine~$F$ computing a function~$f : \NN \to \NN$, outputs a description of a
 Turing machine computing~$f$. It is trivial to program such a machine~$M$: the
@@ -785,22 +779,22 @@ machine~$M$ simply has to echo its input back to the caller.
 
 To avert a paradox, we should point out where the usual proof of the
 existence of noncomputable functions theory employs nonconstructive reasoning, for if
-% XXX the introduction of this paragraph doesn't match the rest
-it would not go beyond intuitionistic reasoning, it would also hold internally to the
-\effective topos, in contradiction to the fact that it does not. The halting
-function~$h : \NN \to \NN$, defined using the case distinction
+the proof would not go beyond intuitionistic reasoning, it would also hold internally to the
+\effective topos, in contradiction to the fact that in the \effective topos
+all functions~$\NN \to \NN$ are computable.
+
+The usual proof sets up the halting function~$h : \NN \to \NN$, defined using
+the case distinction
 \[ h : n \mapsto \begin{cases}
   1, & \text{if the $n$-th Turing machine terminates}, \\
   0, & \text{if the $n$-th Turing machine does not terminate},
 \end{cases} \]
-cannot be given as a counterexample in the \effective topos since, in the
-\effective topos, it is not actually a total function from~$\NN$ to~$\NN$. It
-is only defined on those numbers~$n$ for which the~$n$-th Turing machine
+and proceeds to show that~$h$ is not computable. However, in the \effective
+topos, this definition does not give rise to a total function from~$\NN$
+to~$\NN$. The actual domain is the subset of those natural numbers~$n$
+for which the~$n$-th Turing machine
 terminates or does not terminate. Assuming the law of excluded middle, this is
-a trivial condition; but intuitionistically, it is not. The definition of the
-busy beaver function requires a similar case distinction and therefore also
-does not give rise to a well-defined counterexample within the \effective
-topos.
+a trivial condition; but intuitionistically, it is not.
 
 
 \bigskip
@@ -1366,7 +1360,6 @@ Stuff that should be mentioned:
 * XXX int. logic as common denominator
 * XXX arbitrariness of the "standard axioms"
 * XXX importance of having an adapted language
-* XXX quick remark on the internal language being based on types instead of sets
 * XXX Source https://plato.stanford.edu/entries/category-theory/ for relevant literature
 * XXX the internal language as a generalized modal operator
 * XXX use the phrase "very rich and very deep" (or similarly) about set theory

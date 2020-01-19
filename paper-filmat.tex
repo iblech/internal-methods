@@ -1,10 +1,10 @@
 \documentclass[oneside,reqno]{amsart}
 
 \usepackage[utf8]{inputenc}
-\usepackage{amsthm,mathtools,stmaryrd,amssymb,graphicx}
+\usepackage{amsthm,mathtools,stmaryrd,amssymb,graphicx,ragged2e}
 \usepackage{tikz}
 \usetikzlibrary{calc,shapes,shapes.callouts,shapes.arrows,patterns,fit,backgrounds,decorations.pathmorphing}
-\usepackage{booktabs}
+\usepackage{booktabs,framed}
 \usepackage[all]{xy}
 \usepackage[protrusion=true,expansion=true]{microtype}
 \usepackage{xspace}
@@ -53,16 +53,9 @@ Universitätsstr. 14 \\
   \endlist
 }
 
-\newcommand{\xra}[1]{\xrightarrow{#1}}
-\newcommand{\XXX}[1]{\textbf{XXX: #1}}
-\newcommand{\aaa}{\mathfrak{a}}
-\newcommand{\bbb}{\mathfrak{b}}
-\newcommand{\mmm}{\mathfrak{m}}
-\newcommand{\I}{\mathcal{I}}
-\newcommand{\J}{\mathcal{J}}
 \newcommand{\E}{\mathcal{E}}
-\newcommand{\F}{\mathcal{F}}
 \newcommand{\B}{\mathcal{B}}
+\newcommand{\BB}{\mathbb{B}}
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\QQ}{\mathbb{Q}}
 \newcommand{\TT}{\mathbb{T}}
@@ -217,7 +210,7 @@ The purpose of this contribution is twofold.
 \item We give a glimpse of the toposophic landscape, presenting several
 specific toposes and exploring their peculiar properties.
 
-\item We explicate how toposes provides distinct lenses through which the
+\item We explicate how toposes provide distinct lenses through which the
 usual mathematical objects of the standard topos can be viewed.
 \end{enumerate}
 % XXX check everywhere
@@ -263,6 +256,7 @@ This note touches on these topics and invites further research.
 \paragraph{Acknowledgments} We are grateful to XXX for many invaluable
 discussions shaping this work and to XXX for their careful criticism of earlier
 drafts. XXX conference organizer and participants
+% Todd Lehman for creating parts of Figure~1
 
 
 \section{Toposes as alternate mathematical universes}
@@ -307,8 +301,9 @@ statements from set theory, which typically make substantial use of a global
 membership predicate~``$\in$''. Toposes only support a typed \emph{local}
 membership predicate, where we may write~``$x \in A$'' only in the context of
 some fixed type~$M$ such that~$x$ is of type~$M$ and~$A$ is of
-type~$P(M)$, the power type of~$M$. We refer to~\cite{XXX} for ways around this
-restriction.}
+type~$P(M)$, the power type of~$M$. We refer
+to~\cite{fourman:sheaf-models,streicher:forcizf,awodey-butz-simpson-streicher:bist}
+for ways around this restriction.}
 
 It is by the Kripke--Joyal translation rules that we can access the alternate
 universe of a topos. In the special case of the standard topos~$\Set$, the
@@ -423,9 +418,8 @@ in~$\Set_M$ if and only if it holds in~$M$.\footnote{The topos~$\Set_M$ can be
 described as follows: Its objects are the elements of~$M$, that is the entities
 which~$M$ believes to be sets, and its morphisms are those entities which~$M$
 believes to be maps. The topos~$\Set_M$ validates the axioms of the structural
-set theory \textsc{etcs}~\cite{XXX}, and models are isomorphic if and only if their
+set theory \textsc{etcs}~\cite{mclarty:structuralism,marquis:foundations,barton-friedman:structures}, and models are isomorphic if and only if their
 associated toposes are equivalent as categories.}
-% XXX reference
 
 \begin{ex}The topos~$\Set_V$ associated to the universe~$V$ of all sets (if
 this structure is available in one's chosen ontology) coincides with the
@@ -460,7 +454,6 @@ model of~\textsc{zfc}.
 
 Toposes can be used for similar such purposes, and indeed have been,
 especially to explore the various intuitionistic notions of sets. However, an important
-% XXX reference: Fourman for IZF? Gambini?
 aspect of topos theory is that toposes are used to explore the \emph{standard}
 mathematical universe: truth in the \effective topos tells us what is
 computable; truth in sheaf toposes tells us what is true locally; toposes
@@ -568,10 +561,11 @@ classical colleagues do not appear to make sense in~$\Set$, but they hold
 in~$\Sh_{\neg\neg}(\Set)$. If classical logic holds on the meta level,
 then~$\Set$ and~$\Sh_{\neg\neg}(\Set)$ coincide.
 
-The topos~ $\Sh_{\neg\neg}(\E)$ is related to the \emph{double negation
+The topos~$\Sh_{\neg\neg}(\E)$ is related to the \emph{double negation
 translation}~$\varphi \mapsto \varphi^{\neg\neg}$ from classical logic into
 intuitionistic logic: A statement~$\varphi$ holds in~$\Sh_{\neg\neg}(\E)$ if
-and only if~$\varphi^{\neg\neg}$ holds in~$\E$. XXX reference
+and only if~$\varphi^{\neg\neg}$ holds
+in~$\E$~\cite[Theorem~6.31]{blechschmidt:phd}.
 % FUTURE: ultrapowers, gluing
 \end{enumerate}
 
@@ -764,12 +758,23 @@ part of the function.
 A rigorous proof that such a machine~$M$ does not exist reduces its assumed
 existence to the undecidability of the halting problem.
 
+\begin{rem}Quite surprisingly, there are infinite sets~$X$ for which any flavor of constructive
+mathematics, in particular the kind which is valid in any topos, verifies the
+\emph{omniscience principle}
+\[ \forall f\?\BB^X\_ \bigl((\exists x\?X\_ f(x) = 0) \vee (\forall x\?X\_ f(x)
+= 1)\bigr), \]
+where~$\BB = \{ 0, 1 \}$ is the set of booleans. This is not the case for~$X =
+\NN$, but it is for instance the case for the one-point compactification~$X =
+\NN_\infty$ of the naturals. This phenomenon has been thoroughly explored by
+Martin Escardó~\cite{escardo:omniscience}.\end{rem}
+
 
 \bigskip
 \dotparagraph{``Any function~$\NN \to \NN$ is computable.''}
 The preceding examples give the impression that what is true in the
 \effective topos is simply a subset of what is true in the standard topos. The
-example of this subsection shows that the relation between the two toposes is more nuanced.
+example of this subsection, the so-called \emph{formal Church--Turing thesis},
+shows that the relation between the two toposes is more nuanced.
 
 As recalled above, in the standard topos there are functions~$\NN \to \NN$ which are not computable by a Turing
 machine. Cardinality arguments
@@ -844,12 +849,16 @@ following statement:
 \end{equation}
 It is an instance of the law of double negation elimination and hence trivially
 true in the standard topos, at least if we subscribe to classical logic on the
-meta level.
+meta level. A useful consequence of Markov's principle is that Turing machines
+which do not run forever (that is, which do \emph{not not} terminate) actually
+terminate; this follows by applying Markov's principle to the function~$f : \NN
+\to \NN$ where~$f(n)$ is zero or one depending on whether a given Turing
+machine has terminated within~$n$ computational steps or not.
 
-The \effective topos inherits Markov's principle from the meta level.
+The \effective topos inherits Markov's principle from the meta level:
 The statement~``$\Eff \models \text{\eqref{eq:markov}}$'' means that there is a
 Turing machine~$M$ which, when given the description of a Turing machine~$F$
-computing a function~$f : \NN \to \NN$, outputs the description of a Turing
+computing a function~$f : \NN \to \NN$ as input, outputs the description of a Turing
 machine~$S_F$ which, when given a witness of~``$\neg\neg \exists n\?\NN\_ f(n)
 = 0$'', outputs a witness of~``$\exists n\?\NN\_ f(n) = 0$'' (up to trivial
 conversions, a number~$n$ such that~$f(n) = 0$).
@@ -862,9 +871,10 @@ realizes~``$\exists n\?\NN\_ f(n) = 0$''. Hence, if ``$\exists n\?\NN\_ f(n) =
 \exists n\?\NN\_ f(n) = 0$''.
 
 As a consequence, the input given to machine~$S_F$ is entirely uninformative
-and~$S_F$ cannot make direct computational use of it, but it ensures that an
-\emph{unbounded search} will not fail: The machine~$S_F$ can simulate~$F$ in
-order to compute, in turn, the values~$f(0), f(1), f(2), \ldots$, and stop
+and~$S_F$ cannot make direct computational use of it. But its existence ensures that an
+\emph{unbounded search} will not fail (and hence succeed, by an appeal to Markov's
+principle on the meta level): The machine~$S_F$ can simulate~$F$ to
+compute the values~$f(0), f(1), f(2), \ldots$ in turn, and stop
 with output~$n$ as soon as it determines that some function value~$f(n)$ is zero.
 
 
@@ -896,13 +906,16 @@ The reason for~(1) is related to the fact that no nonstandard model of
 Peano arithmetic in the standard topos is computable~\cite{tennenbaum:models}.
 
 \begin{table}
-  \begin{tabbing}
+  \begin{framed}\begin{tabbing}
     $e \models (\forall f\?\NN^\NN\_ \varphi(n))$ \= \kill
     $\Eff \models \varphi$ \> iff there is a natural number~$e$ such that~$e
     \realizes \varphi$. \\\\
-    \begin{minipage}{\textwidth}
-    In the following, we write~``$e \cdot n \downarrow$'' to mean that running
-    the~$e$-th Turing machine on input~$n$ terminates, and in this case denote
+    \begin{minipage}{1.04\textwidth}
+    A number~$e$ such that~$e \realizes \varphi$ is called a
+    \emph{realizer} for~$\varphi$. It is the precise version of what is called
+    \emph{computational witness} in the main text.
+    In the following, we write~``$e \cdot n \downarrow$'' to mean that
+    the~$e$-th Turing machine terminates on input~$n$, and in this case denote
     the result by~``$e \cdot n$''.\end{minipage} \\\\
     $e \realizes s = t$ \> iff $s = t$. \\
     $e \realizes \top$ \> iff $1 = 1$. \\
@@ -926,7 +939,8 @@ Peano arithmetic in the standard topos is computable~\cite{tennenbaum:models}.
     and~$e \cdot 1 \downarrow$ and
     the $(e \cdot 0)$-th Turing machine \\ \> \qquad computes a function~$f_0 : \NN \to \NN$
     and $e \cdot 1 \realizes \varphi(f_0)$.
-  \end{tabbing}
+  \end{tabbing}\end{framed}
+  \bigskip
 
   \caption{\label{table:eff} A (fragment of) the translation
   rules defining the meaning of statements internal to the \effective topos.}
@@ -1054,7 +1068,7 @@ given in Figure~\ref{fig:trichotomy}(c), this open~$U$ could be taken as~$X$
 with the unique zero of~$a$ removed.
 
 \begin{table}
-  \begin{tabbing}
+  \begin{framed}\begin{tabbing}
     $U \models (\forall x\?\RR\_ \varphi(x))$ \= \kill
     $\Sh(X) \models \varphi$ \> iff $X \models \varphi$. \\\\
     $U \models a = b$ \> iff~$a = b$ on~$U$. \\
@@ -1064,16 +1078,17 @@ with the unique zero of~$a$ removed.
     $U \models (\varphi \vee \psi)$ \> iff there is an open covering~$U =
     \bigcup_i U_i$ such that, \\ \> \qquad for each index~$i$, $U_i \models \varphi$
     or $U_i \models \psi$. \\
-    $U \models (\varphi \Rightarrow \psi)$ \> iff for every open~$V \subseteq U$,
+    $U \models (\varphi \Rightarrow \psi)$ \> iff for any open~$V \subseteq U$,
     $V \models \varphi$ implies~$V \models \psi$. \\
-    $U \models (\forall a\?\RR\_ \varphi(a))$ \> iff for every open~$V
+    $U \models (\forall a\?\RR\_ \varphi(a))$ \> iff for any open~$V
     \subseteq U$ and \\\>\qquad any continuous function~$a_0 : V \to \RR$, $V \models
     \varphi(a_0)$. \\
     $U \models (\exists a\?\RR\_ \varphi(a))$ \> iff there is an open
     covering~$U = \bigcup_i U_i$ such that, \\ \> \qquad for each index~$i$,
     there exists a \\\>\qquad continuous function~$a_0 : U_i \to \RR$ with~$U_i \models
     \varphi(a_0)$.
-  \end{tabbing}
+  \end{tabbing}\end{framed}
+  \bigskip
 
   \caption{\label{table:sheaf} A (fragment of) the translation rules defining
   the meaning of statements internal to~$\Sh(X)$, the topos of sheaves over a
@@ -1084,13 +1099,26 @@ with the unique zero of~$a$ removed.
   \includegraphics[height=3cm]{trichotomy-1}
   \includegraphics[height=3cm]{trichotomy-2}
   \includegraphics[height=3cm]{trichotomy-3}
-  \caption{\label{fig:trichotomy} Three examples for what the topos~$\Sh(X)$
+  \caption{\label{fig:trichotomy} Three examples of what the topos~$\Sh(X)$
   each believes to be a single real number, where the base space~$X$ is the
   unit interval. (a) A positive real number. (b) A negative real number. (c) A
   number which is neither negative nor zero nor positive. Externally speaking,
   there is no covering of the unit interval by open subsets on which the
   depicted function~$a$ is either everywhere negative, everywhere zero or everywhere
   positive.}
+\end{figure}
+
+\begin{figure}
+  \includegraphics[height=3cm]{zeros-in-families-still}
+  \caption{\label{fig:ivt} A single member~$f_{x_0}$ of a continuous
+  family~$(f_x)_{x \in X}$ of continuous functions~$f_x : \RR \to \RR$. The
+  parameter space is~$X = [0,1]$ (not shown) and the other functions~$f_x$ are
+  obtained from~$f_{x_0}$ by moving the horizontal plateau further up or further
+  down. The depicted member~$f_{x_0}$ has a unique
+  zero and there is an open neighborhood~$U$ of~$x_0$ on which zeros of the
+  functions~$f_x$, $x \in U$ can be picked continuously. However, there is no
+  such neighborhood of that particular parameter value~$x_1$ for which the
+  horizontal plateau lies on the $x$-axis.}
 \end{figure}
 
 
@@ -1124,7 +1152,6 @@ that in any continuous family~$(f_x)_x$ of continuous functions with~$f_x(-1) <
 0$ and~$f_x(1) > 0$ for all~$x \in X$, it is locally possible to pick zeros of
 the family in a continuous fashion. Figure~\ref{fig:ivt} shows a counterexample
 to this claim.
-% XXX create figure
 
 
 \section{Topos adapted to synthetic differential geometry}
@@ -1220,8 +1247,6 @@ works, can be effortlessly interpreted, staying close to the
 original and requiring no coding.
 
 
-% XXX remark for arbitrary rings
-% XXX table Zariski rules
 \subsection{The Zariski topos} The starting point is the observation that
 while the field~$\RR$ of ordinary real numbers does not contain infinitesimals
 (except for zero), the ring~$\RR[\varepsilon]/(\varepsilon^2)$ of \emph{dual
@@ -1272,7 +1297,7 @@ problem that all these substitutes are not fields persists.
 \bigskip
 \paragraph{Introducing the topos}
 The \emph{Zariski topos of~$\RR$},~$\Zar(\RR)$, meets all of these challenges. It
-contains a ring~$R$, the so-called \emph{ring of smooth numbers}, which reifies
+contains a ring~$\RR^\sim$, the so-called \emph{ring of smooth numbers}, which reifies
 the real numbers, the dual numbers, the two proposed better stages and indeed
 any finitely presented~$\RR$-algebra into a single coherent entity. The
 Kripke--Joyal translations rules of~$\Zar(\RR)$ are listed in
@@ -1281,46 +1306,95 @@ with the most basic stage of all, the ordinary reals~$\RR$; then, during the
 course of evaluation, the current stage is successively refined to better
 stages (further finitely presented~$\RR$-algebras).
 
-For instance, universal quantification~``$\forall x \? R$'' not only refers to
+For instance, universal quantification~``$\forall x \? \RR^\sim$'' not only refers to
 all elements of the current stage, but also to any elements of any refinement
 of the current stage. Similarly, negation~``$\neg\varphi$'' does not only mean
-that~$\varphi$ would imply~$1 = 0$ in the current stage, but also that it does
+that~$\varphi$ would imply~$\bot$ in the current stage, but also that it does
 so at any later stage.
 
 For reference purposes only, we include the precise definition of the Zariski topos.
-\begin{defn}The \emph{Zariski topos of~$\RR$},~$\Zar(\RR)$, is the category of
-functors from finitely presented~$\RR$-algebras to sets. The object~$R$
-of~$\Zar(\RR)$ is the tautologous functor~$A \mapsto A$.
+\begin{defn}The \emph{Zariski topos of~$\RR$},~$\Zar(\RR)$, is a certain full subcategory of
+the category functors from finitely presented~$\RR$-algebras to sets, namely of
+the \emph{Zariski sheaves}. The object~$\RR^\sim$ of~$\Zar(\RR)$ is the tautologous functor~$A \mapsto A$.
 \end{defn}
-% XXX sheaf condition?
+
+\begin{table}
+  \begin{framed}
+    \begin{tabbing}
+      $\Zar(\RR) \models (\forall f\?\NN^\NN\_ \varphi(n))$ \= \kill
+      $\Zar(\RR) \models \varphi$ \> iff $\RR \models \varphi$. \\\\
+      $A \models s = t$ \> iff $s = t$ as elements of~$A$. \\
+      $A \models \top$ \> iff $1 = 1$ in~$A$. \\
+      $A \models \bot$ \> iff $1 = 0$ in~$A$. \\
+      $A \models (\varphi \wedge \psi)$ \> iff~$A \models \varphi$ and~$A \models \psi$. \\
+      $A \models (\varphi \vee \psi)$ \> iff there exists a partition~$1 = f_1 + \cdots + f_n \in A$ such that, \\
+      \> \qquad for each index~$i$, $A[f_i^{-1}] \models \varphi$ or~$A[f_i^{-1}] \models \psi$. \\
+      $A \models (\varphi \Rightarrow \psi)$ \> iff for any finitely
+      presented~$A$-algebra~$B$, \\
+      \> \qquad $B \models \varphi$ implies~$B \models \psi$. \\
+      $A \models (\forall x\?\RR^\sim\_ \varphi(x))$ \> iff for any finitely
+      presented~$A$-algebra~$B$ and \\
+      \> \qquad any element~$x_0 \in B$, $B \models \varphi(x_0)$. \\
+      $A \models (\exists x\?\RR^\sim\_ \varphi(x))$ \> iff there exists a partition~$1 = f_1 + \cdots + f_n \in A$ such that, \\
+      \> \qquad for each index~$i$, there is an element~$x_0 \in A[f_i^{-1}]$ \\
+      \> \qquad such that $A[f_i^{-1}] \models \varphi(x_0)$.
+    \end{tabbing}
+
+    \bigskip
+    \justify
+    A \emph{covering} of an~$\RR$-algebra~$A$ is a family of~$A$-algebras of the
+    form~$(A[f_i^{-1}])_i$ such that~$1 = f_1 + \cdots + f_n \in A$.
+  \end{framed}
+  \bigskip
+
+  \caption{\label{table:zariski} A (fragment of) the Kripke--Joyal translation
+  rules of the Zariski topos~$\Zar(\RR)$.}
+\end{table}
+
 
 \paragraph{Properties of the smooth numbers}
-As a concrete example, the Kripke--Joyal translation of the statement that~$R$ is a field,
-\[ \Zar(\RR) \models \forall x\?R\_ (\neg(x = 0) \Rightarrow \exists y\?R\_ xy = 1), \]
+As a concrete example, the Kripke--Joyal translation of the statement that~$\RR^\sim$ is a field,
+\[ \Zar(\RR) \models \forall x\?\RR^\sim\_ (\neg(x = 0) \Rightarrow \exists y\?\RR^\sim\_ xy = 1), \]
 is this:
 \begin{indentblock}
 For any stage~$A$ and any element~$x \in A$, \\
-${\qquad}$ if for any later stage~$B$ of~$A$ \\
-${\qquad\qquad}$ in which~$x = 0$ holds \\
-${\qquad\qquad}$ also~$1 = 0$ holds, \\
-${\qquad}$ then~$A$ can be covered by later stages~$B_i$ such that, for each
-index~$i$, \\
-${\qquad\qquad}$ there is an element~$y \in B_i$ such that~$xy = 1$ in~$B_i$.
+${\qquad}$ for any later stage~$B$ of~$A$, \\
+${\qquad\qquad}$ if for any later stage~$C$ of~$B$ \\
+${\qquad\qquad\qquad}$ in which~$x = 0$ holds \\
+${\qquad\qquad\qquad}$ also~$1 = 0$ holds, \\
+${\qquad\qquad}$ then~$B$ can be covered by later stages~$C_i$ such that, \\
+${\qquad\qquad\qquad}$ for each
+index~$i$, there is an element~$y \in C_i$ with~$xy = 1$ in~$C_i$.
 \end{indentblock}
 And indeed, this statement is true. Let a stage~$A$ (a finitely
 presented~$\RR$-algebra) and an element~$x \in A$ which fulfills the stated
-condition be given. Then~$x = 0$ holds in the refinement~$B \defeq A/(x)$.
-Hence~$1 = 0$ holds in~$B$. By elementary algebra, this means that~$x$ is
-invertible in~$A$. Hence the conclusion holds for the singleton covering
-of~$A$ by~$B_1 \defeq A$.
+condition be given. Let~$B$ be any later stage of~$A$ (any finitely
+presented~$A$-algebra -- such an algebra is also finitely presented as
+an~$\RR$-algebra). Then~$x = 0$ holds in the refinement~$C \defeq B/(x)$.
+Hence~$1 = 0$ holds in~$C$. By elementary algebra, this means that~$x$ is
+invertible in~$B$. Hence the conclusion holds for the singleton covering
+of~$B$ by~$C_1 \defeq B$.
 
-Within~$\Zar(\RR)$, we set~$\Delta \defeq \{ \varepsilon \? R \,|\,
-\varepsilon^2 = 0 \}$. Then~$R$ has the following properties:
+\begin{rem}The Zariski topos can also be set up with an arbitrary commutative
+ring~$S$ in place of~$\RR$. The resulting topos~$\Zar(S)$ contains a mirror
+image~$S^\sim$ of~$S$, a reification of all finitely presented~$S$-algebras into a
+single entity. The computation we just carried out also applies in this
+more general context and shows that~$S^\sim$ is a field. It is in this sense that the
+topos~$\Zar(S)$ provides a lens through which~$S$ looks like a field.
+
+A small variant of this lens has been used to give a new proof of
+\emph{Grothendieck's generic freeness lemma}, a fundamental theorem in
+algebraic geometry. The new proof uses the lens to reduce to the case
+of fields, where the claim is trivial~\cite[Section~11.5]{blechschmidt:phd}.
+\end{rem}
+
+Within~$\Zar(\RR)$, we set~$\Delta \defeq \{ \varepsilon \? \RR^\sim \,|\,
+\varepsilon^2 = 0 \}$. Then~$\RR^\sim$ has the following properties:
 \begin{enumerate}
-\item Law of cancellation: $\forall x \? R\_ \forall y \? R\_ \bigl((\forall
+\item Law of cancellation: $\forall x \? \RR^\sim\_ \forall y \? \RR^\sim\_ \bigl((\forall
 \varepsilon \? \Delta\_ x\varepsilon = y\varepsilon)
 \Rightarrow x = y\bigr)$
-\item Axiom of micro-affinity: $\forall f \? R^\Delta\_ \exists! a \? R\_
+\item Axiom of micro-affinity: $\forall f \? {\RR^\sim}^\Delta\_ \exists! a \? \RR^\sim\_
 \forall \varepsilon \? \Delta\_ f(\varepsilon) = f(0) + a\varepsilon$
 \end{enumerate}
 The unique number~$a$ in the axiom of micro-affinity deserves to be
@@ -1332,14 +1406,14 @@ infinitesimals, the actual ontological status of the infinitesimal numbers in
 the Zariski topos is more nuanced. The law of cancellation implies that,
 within~$\Zar(\RR)$, it is not the case that zero is the only nilsquare number.
 However, this does not mean that there actually \emph{is} a nilsquare number
-in~$R$. In fact, any nilsquare number cannot be nonzero, as nonzero numbers are
-invertible while nilsquare numbers are not. Hence any nilsquare number in~$R$
+in~$\RR^\sim$. In fact, any nilsquare number cannot be nonzero, as nonzero numbers are
+invertible while nilsquare numbers are not. Hence any nilsquare number in~$\RR^\sim$
 is \emph{not not} zero. This state of affairs is only possible in an
 intuitionistic context.
 
-\begin{rem}The ring~$R$ of smooth numbers does not coincide with the Cauchy reals,
+\begin{rem}The ring~$\RR^\sim$ of smooth numbers does not coincide with the Cauchy reals,
 the Dedekind reals or indeed any well-known construction of the reals
-within~$\Zar(\RR)$. This observation explains why~$R$ can satisfy the law of
+within~$\Zar(\RR)$. This observation explains why~$\RR^\sim$ can satisfy the law of
 cancellation even though it is an intuitionistic theorem that the only
 nilquadratic number in any flavor of the reals is zero.
 \end{rem}
@@ -1348,27 +1422,27 @@ nilquadratic number in any flavor of the reals is zero.
 \subsection{Well-adapted models} The Zariski topos of~$\RR$ allows to compute with
 infinitesimals in a satisfying manner. However it is not suited as a home for
 synthetic differential geometry, a first indication being that in~$\Zar(\RR)$,
-any function~$R \to R$ is a polynomial function. Hence important functions such as the
+any function~$\RR^\sim \to \RR^\sim$ is a polynomial function. Hence important functions such as the
 exponential function do not exist in~$\Zar(\RR)$. More comprehensively, the
 Zariski topos is not a well-adapted model in the sense of the following
 definition.
 
 \begin{defn}\label{defn:well-adapted}A \emph{well-adapted model} of synthetic
-differential geometry is a topos~$\E$ together with a ring~$R$ in~$\E$ such
+differential geometry is a topos~$\E$ together with a ring~$\RR^\sim$ in~$\E$ such
 that:
 \begin{enumerate}
-\item The ring~$R$ is a field.
-\item The ring~$R$ validates the axiom of micro-affinity and several related
+\item The ring~$\RR^\sim$ is a field.
+\item The ring~$\RR^\sim$ validates the axiom of micro-affinity and several related
 axioms.
 \item There is a fully faithful functor~$i : \mathrm{Mnf} \to \E$ embedding the
 category of smooth manifolds into~$\E$.
-\item The ring~$R$ coincides with~$i(\RR^1)$, the image of the real line
+\item The ring~$\RR^\sim$ coincides with~$i(\RR^1)$, the image of the real line
 in~$\E$.
 \end{enumerate}
 \end{defn}
 
 It is the culmination of a long line of research by several authors that
-several well-adapted models of synthetic differential geometry exist. By the
+several well-adapted models of synthetic differential geometry exist~\cite{moerdijk-reyes:models}. By the
 conditions imposed in Definition~\ref{defn:well-adapted}, for any such
 topos~$\E$ the following transfer principle holds: If~$f,g : \RR \to \RR$ are
 smooth functions, then~$f' = g$ (in the ordinary sense of the derivative) if
@@ -1408,19 +1482,17 @@ Stuff that should be mentioned:
 * XXX the internal language as a generalized modal operator
 * XXX use the phrase "very rich and very deep" (or similarly) about set theory
 * XXX Sven(?)
-* XXX semantic view vs. syntactic view
 * XXX Kripke models
 * XXX more pointers to topos literature
 * XXX Reference for the effective topos
 * XXX A topos is more than its semantics
 * XXX Reference: Moerdijk
 * XXX Check references everywhere (give good pointers)
-* XXX Format rules in a better way
 * XXX toposes are not small (Figure 1)
-* XXX hypercomputation or supercomputation?
 * XXX internal/external
 
 Send to Georg.
 Also Giuseppe Cammarata.
 
-* XXX formal Church--Turing thesis
+* XXX Mike
+* XXX Hamkins multiverse

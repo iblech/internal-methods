@@ -821,6 +821,33 @@ even rough rational approximations of~$\operatorname{sgn}(x)$ require infinite
 precision in the input~$x$, do not exist in the \effective topos.
 
 
+\bigskip
+\dotparagraph{``Heyting arithmetic is categorical.''} In addition to the standard
+model~$\NN$, the standard topos contains uncountably many nonstandard models of
+Peano arithmetic (at least if we assume a classical meta level). By a theorem
+of Benno van den Berg and Jaap van Oosten, the situation
+is quite different in the \effective topos~\cite{XXX}:
+\begin{enumerate}
+\item Heyting arithmetic, the intuitionistic cousin of Peano arithmetic, has
+exactly one model up to isomorphism, namely~$\NN$.
+\item In fact, even the finitely axiomatizable subsystem of Heyting arithmetic
+where the induction scheme is restricted to~$\Sigma_1$-formulas has exactly one
+model up to isomorphism, again~$\NN$. As a consequence, Heyting arithmetic is
+finitely axiomatizable.
+\item Peano arithmetic is ``quasi-inconsistent'' in that it does not have any
+models, for any model of Peano arithmetic would also be a model of Heyting
+arithmetic, but the only model of Heyting arithmetic is~$\NN$ and~$\NN$ does
+not validate the theorem ``any Turing machine terminates or does not
+terminate'' of Peano arithmetic.
+\end{enumerate}
+As a consequence, Gödel's completeness theorem fails in the \effective topos:
+In the \effective topos, Peano arithmetic is consistent (because it is
+equiconsistent to Heyting arithmetic, which has a model) but does not have a
+model.
+
+The reason for~(1) is related to the fact that all the nonstandard models of
+Peano arithmetic in the standard topos are noncomputable~\cite{XXX}.
+
 \begin{table}
   \begin{tabbing}
     $e \models (\forall f\?\NN^\NN\_ \varphi(n))$ \= \kill
@@ -1343,7 +1370,6 @@ Stuff that should be mentioned:
 * XXX the internal language as a generalized modal operator
 
 * XXX use the phrase "very rich and very deep" (or similarly) about set theory
-* XXX PA doesn't have models
 * XXX Sven(?)
 * XXX semantic view vs. syntactic view
 * XXX Kripke models

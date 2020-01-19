@@ -677,27 +677,32 @@ computes~$f$.
 \begin{defn}The \emph{\effective topos}~$\Eff$ is the ex/reg completion of the
 category of assemblies.\end{defn}
 
-XXX mention connection to realizability
+% FUTURE (in separate notes about the effective topos): Relationship to
+% realizability
 
 
 \subsection{Exploring the \effective topos}
 \label{sect:eff-examples}
 Due to its computational nature, truth in the \effective topos is quite
-different from truth in the standard topos. The following examples are XXX
+different from truth in the standard topos. This section explores the following
+examples:
 
+\bigskip
+\begin{center}
 \begin{tabular}{lll}
   \toprule
   Statement & in $\Set$ & in $\Eff$ \\
   \midrule
-  Any natural number is prime or not prime. & \cmark{} (trivially so) & \cmark \\
+  Any natural number is prime or not prime. & \cmark{} (trivially) & \cmark \\
   There are infinitely many primes. & \cmark & \cmark \\
-  Any function $\NN \to \NN$ is the zero function or not. & \cmark{} (trivially so) & \xmark \\
-  Any function $\NN \to \NN$ is computable by a Turing machine. & \xmark & \cmark{} (trivially so) \\
+  Any function $\NN \to \NN$ is constantly zero or not. & \cmark{} (trivially) & \xmark \\
+  Any function $\NN \to \NN$ is computable. & \xmark & \cmark{} (trivially) \\
   Any function $\RR \to \RR$ is continuous. & \xmark & \cmark \\
+  Markov's principle holds. & \cmark{} (trivially) & \cmark \\
   Heyting arithmetic is categorical. & \xmark & \cmark \\
   \bottomrule
 \end{tabular}
-% XXX formatting
+\end{center}
 
 \newcommand{\dotparagraph}[1]{\noindent\textbf{#1}}
 
@@ -720,15 +725,18 @@ of this statement is ``for any natural number~$n$, there is a prime
 number~$p$ which is greater than~$n$'', and is known to be true in the standard
 topos by any of the many proofs of this fact.
 
-% XXX external ...
 Its external meaning when interpreted in the \effective topos is that there exists
-a Turing machine which, when given a natural number~$n$ as input, terminates with a
+a Turing machine~$M$ which, when given a natural number~$n$ as input, terminates with a
 prime number~$p > n$ as output. Such a Turing machine exists, hence the
-statement is true in the \effective topos.
+statement is true in the \effective topos.\footnote{More precisely, the
+machine~$M$ should also output the description of a Turing machine which
+witnesses that~$p$ is prime. However, the statement~``$p$ is prime''
+is~$\neg\neg$-stable (even decidable), and for those statements witnesses are
+redundant.}
 
 
 \bigskip
-\dotparagraph{``Any function~$\NN \to \NN$ is the zero function or not.''} More
+\dotparagraph{``Any function~$\NN \to \NN$ is constantly zero or not.''} More
 formally, the statement is
 \[ \forall f \? \NN^\NN\_
   \bigl((\forall n \? \NN\_ f(n) = 0) \vee
@@ -758,7 +766,7 @@ existence to the undecidability of the halting problem.
 
 
 \bigskip
-\dotparagraph{``Any function~$\NN \to \NN$ is computable by a Turing machine.''}
+\dotparagraph{``Any function~$\NN \to \NN$ is computable.''}
 The preceding examples give the impression that what is true in the
 \effective topos is simply a subset of what is true in the standard topos. The
 example of this subsection shows that the relation between the two toposes is more nuanced.
@@ -1030,7 +1038,6 @@ only if, internally, the number~$a$ is negative.
 
 The law of trichotomy, stating that any real number is either negative, zero or
 positive, generally fails in~$\Sh(X)$. By the Kripke--Joyal semantics, the external
-% XXX external
 meaning of the internal statement~``$\forall a:\RR\_ a<0 \vee a=0 \vee a>0$'' is that for any continuous function~$a : U
 \to \RR$ defined on any open~$U$ of~$X$, there is an open covering~$U =
 \bigcup_i U_i$ such that on each member~$U_i$ of this covering, the function~$a$ is
@@ -1411,6 +1418,7 @@ Stuff that should be mentioned:
 * XXX Format rules in a better way
 * XXX toposes are not small (Figure 1)
 * XXX hypercomputation or supercomputation?
+* XXX internal/external
 
 Send to Georg.
 Also Giuseppe Cammarata.

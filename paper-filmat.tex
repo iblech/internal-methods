@@ -1,7 +1,7 @@
 \documentclass[oneside,reqno]{amsart}
 
 \usepackage[utf8]{inputenc}
-\usepackage{amsthm,mathtools,stmaryrd,amssymb,graphicx,ragged2e}
+\usepackage{amsthm,mathtools,amssymb,graphicx,ragged2e,extpfeil}
 \usepackage{tikz}
 \usetikzlibrary{calc,shapes,shapes.callouts,shapes.arrows,patterns,fit,backgrounds,decorations.pathmorphing}
 \usepackage{booktabs,framed}
@@ -53,6 +53,7 @@ Universitätsstr. 14 \\
   \endlist
 }
 
+\newextarrow{\xbigtoto}{{20}{20}{20}{20}}{\bigRelbar\bigRelbar{\bigtwoarrowsleft\rightarrow\rightarrow}}
 \newcommand{\E}{\mathcal{E}}
 \newcommand{\B}{\mathcal{B}}
 \newcommand{\BB}{\mathbb{B}}
@@ -1336,14 +1337,19 @@ so at any later stage.
 
 For reference purposes only, we include the precise definition of the Zariski topos.
 \begin{defn}The \emph{Zariski topos of~$\RR$},~$\Zar(\RR)$, is a certain full subcategory of
-the category functors from finitely presented~$\RR$-algebras to sets, namely of
-the \emph{Zariski sheaves}. The object~$\RR^\sim$ of~$\Zar(\RR)$ is the tautologous functor~$A \mapsto A$.
+the category of functors from finitely presented~$\RR$-algebras to sets, namely of
+the Zariski sheaves. Such a functor is a \emph{Zariski sheaf} if and only if,
+for any covering~$(A[f_i^{-1}])_i$ of any finitely presented~$\RR$-algebra~$A$,
+the diagram
+\[ F(A) \longrightarrow \prod_i F(A[f_i^{-1}]) \xbigtoto{} \prod_{j,k}
+F(A[(f_jf_k)^{-1}]) \]
+is a coequalizer diagram. The object~$\RR^\sim$ of~$\Zar(\RR)$ is the tautologous functor~$A \mapsto A$.
 \end{defn}
 
 \begin{table}
   \begin{framed}
     \begin{tabbing}
-      $\Zar(\RR) \models (\forall f\?\NN^\NN\_ \varphi(n))$ \= \kill
+      $A \models (\exists x\?\RR^\sim\_ \varphi(x))$ \= \kill
       $\Zar(\RR) \models \varphi$ \> iff $\RR \models \varphi$. \\\\
       $A \models s = t$ \> iff $s = t$ as elements of~$A$. \\
       $A \models \top$ \> iff $1 = 1$ in~$A$. \\

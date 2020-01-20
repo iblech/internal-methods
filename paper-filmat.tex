@@ -351,7 +351,8 @@ The only caveat of Theorem~\ref{thm:reasoning} is that toposes generally only
 support intuitionistic reasoning, not the full power of the ordinary
 \emph{classical reasoning}. That is, within most toposes, the law of excluded
 middle ($\varphi \vee \neg\varphi$) and the law of double negation elimination
-($\neg\neg\varphi \Rightarrow \varphi$) are not available.
+($\neg\neg\varphi \Rightarrow \varphi$) are not available. It is intuitionistic
+logic and not classical logic which is the common denominator of all toposes.
 
 While it may appear that these two laws pervade any mathematical theory, in
 fact a substantial amount of mathematics can be developed intuitionistically
@@ -384,7 +385,7 @@ coincide with~$\RR$.
 
 Sections~\ref{sect:effective-topos} to~\ref{sect:smooth} present several
 examples for such anti-classical statements and explain how to make sense of
-them. Some toposes are closer to the standard topos and do not validate such
+them. There are also toposes which are closer to the standard topos and do not validate such
 anti-classical statements:
 
 \begin{defn}A topos~$\E$ is \emph{boolean} if and only if the laws of classical
@@ -547,11 +548,11 @@ moderate logicism (because, as a topos, it supports an intuitionistic type
 theory)~\cite{lambek:incompatible,couture-lambek:reflections}.
 \end{enumerate}
 
-There are several constructions which produce a new toposes from a given
+There are several constructions which produce new toposes from a given
 topos~$\E$. A non-exhaustive list is the following.
 \begin{enumerate}
 \item Given an object~$X$ of~$\E$, the \emph{slice topos}~$\E/X$
-contains a \emph{generic element}~$x_0$ of~$X$. This generic element can be
+contains the \emph{generic element}~$x_0$ of~$X$. This generic element can be
 pictured as the element we implicitly refer to when we utter the
 phrase~``Let~$x$ be an element of~$X$.''. A statement~$\varphi(x_0)$
 about~$x_0$ is true in~$\E/X$ if and only if in~$\E$ the statement~$\forall x
@@ -1444,8 +1445,8 @@ algebraic geometry. The new proof uses the lens to reduce to the case
 of fields, where the claim is trivial~\cite[Section~11.5]{blechschmidt:phd}.
 \end{rem}
 
-Within~$\Zar(\RR)$, we set~$\Delta \defeq \{ \varepsilon \? \RR^\sim \,|\,
-\varepsilon^2 = 0 \}$. Then~$\RR^\sim$ has the following properties:
+Within~$\Zar(\RR)$, we can construct the set~$\Delta \defeq \{ \varepsilon \? \RR^\sim \,|\,
+\varepsilon^2 = 0 \}$ of nilsquare numbers. Then~$\RR^\sim$ has the following properties:
 \begin{enumerate}
 \item Law of cancellation: $\forall x \? \RR^\sim\_ \forall y \? \RR^\sim\_ \bigl((\forall
 \varepsilon \? \Delta\_ x\varepsilon = y\varepsilon)
@@ -1528,12 +1529,10 @@ Stuff that should be mentioned:
 * XXX quick overview of the several aspects of toposes (maybe at the end, as an outlook?)
 * XXX allowing a switch of perspective
 * XXX applications in mathematical practice
-* XXX int. logic as common denominator
 * XXX arbitrariness of the "standard axioms"
 * XXX importance of having an adapted language
 * XXX the internal language as a generalized modal operator
 * XXX use the phrase "very rich and very deep" (or similarly) about set theory
-* XXX more pointers to topos literature
 * XXX A topos is more than its semantics
 * XXX Check references everywhere (give good pointers)
 * XXX internal/external

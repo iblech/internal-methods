@@ -766,7 +766,7 @@ a Turing machine~$M$ which, when given a natural number~$n$ as input, terminates
 prime number~$p > n$ as output. Such a Turing machine exists, hence the
 statement is true in the \effective topos.\footnote{More precisely, the
 machine~$M$ should also output the description of a Turing machine which
-witnesses that~$p$ is prime. However, the statement~``$p$ is prime''
+witnesses that~$p$ is prime and that~$p > n$. However, the statement~``$p$ is prime and~$p > n$''
 is~$\neg\neg$-stable (even decidable), and for those statements witnesses are
 redundant.}
 
@@ -1513,9 +1513,45 @@ unwound to a (longer and more complex) proof which only refers to the ordinary
 reals.
 
 
-\subsection{On the importance of language}
+\section{On the importance of language}
 
-XXX translation unwieldy, lens, view, illustrates custom-tailored, ...
+Having explored the alternate universes of several toposes in
+Sections~\ref{sect:effective-topos} to~\ref{sect:smooth}, we are now in a
+position to explain our view of toposes as lenses in more details.
+
+Toposes can be seen in two quite different ways:
+\begin{enumerate}
+\item (semantic view) A topos is an alternate mathematical universe. Any topos
+contains its own stock of mathematical objects. A ``transfer theorem'' relates
+properties of those objects with properties of objects of the standard topos: A
+statement~$\varphi$ about the objects of a topos~$\E$ holds in~$\E$ iff the
+statement~``$\E \models \varphi$'' holds in the standard topos.
+\item (syntactic view) A topos is merely an index to a syntactical translation
+process. Any topos~$\E$ gives rise to a ``generalized modal operator'' which
+turns a statement~$\varphi$ (about ordinary mathematical objects) into the
+statement~``$\E \models \varphi$'' of the same kind (again about ordinary
+mathematical objects).
+\end{enumerate}
+
+For instance, in the semantic view, the \effective topos is an alternative
+universe which contains its own version of the natural numbers. These naturals
+cannot be directly compared with the naturals of the standard topos, for they
+live in distinct universes, but by the transfer theorem they are still linked in a
+nontrivial way: For instance, the statement ``there are infinitely many primes
+in~$\Eff$'' (a statement about natural numbers in~$\Eff$) is equivalent to the statement
+``for any number~$n$, there \emph{\effectively} exists a prime number~$p > n$''
+(a statement about natural numbers and computability in the standard topos).
+
+In the syntactic view, the \effective topos merely provides a coherent way of
+adding the qualification ``\effective'' to mathematical statements, for
+instance turning the statement ``for any number~$n$, there exists a prime number~$p
+> n$'' into ``for any number~$n$, there \emph{\effectively} exists a prime
+number~$p > n$''. Similarly, a sheaf topos~$\Sh(X)$ provides a coherent way for
+turning statements about real numbers and real functions into statements about
+continuous~$X$-indexed families of real numbers and real functions.
+
+The crucial point is that the translation scheme provided by any topos is sound
+with respect to intuitionistic logic. XXX
 
 \printbibliography
 
@@ -1524,14 +1560,11 @@ XXX translation unwieldy, lens, view, illustrates custom-tailored, ...
 
 Stuff that should be mentioned:
 
-* XXX Syntactical vs. semantical interpretation
 * XXX phone call analogy
 * XXX quick overview of the several aspects of toposes (maybe at the end, as an outlook?)
 * XXX allowing a switch of perspective
 * XXX applications in mathematical practice
 * XXX arbitrariness of the "standard axioms"
-* XXX importance of having an adapted language
-* XXX the internal language as a generalized modal operator
 * XXX use the phrase "very rich and very deep" (or similarly) about set theory
 * XXX A topos is more than its semantics
 * XXX Check references everywhere (give good pointers)

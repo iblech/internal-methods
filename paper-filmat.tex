@@ -369,16 +369,16 @@ uncountable.
 That said, intuitionistic logic still allows for a considerable amount of
 freedom, and in many toposes statements are true which are baffling if one has
 only received training in mathematics based on classical logic. For instance, on first sight it
-looks like the signum function
+looks like the sign function
 \[ \operatorname{sgn} : \RR \longrightarrow \RR,\ x \longmapsto \begin{cases}
   -1, & \text{if $x < 0$,} \\
   0, & \text{if $x = 0$,} \\
   1, & \text{if $x > 0$,}
 \end{cases} \]
 is an obvious counterexample to the statement ``any map~$\RR \to \RR$ is
-continuous''. However, closer inspection reveals that the signum function
+continuous''. However, closer inspection reveals that the sign function
 cannot be proven to be a total function~$\RR \to \RR$ if only intuitionistic
-logic is available. The domain of the signum
+logic is available. The domain of the sign
 function is the subset~$\{ x \in \RR \,|\, x < 0 \vee x = 0 \vee x > 0 \}
 \subseteq \RR$, and in intuitionistic logic this subset cannot be shown to
 coincide with~$\RR$.
@@ -659,7 +659,7 @@ of the real world.
 
 A basic observation in computability theory is that there are computational tasks
 which are not solvable even for these idealized Turing machines. The paramount
-example is the \emph{halting problem}: Given a turing machine~$M$, determine
+example is the \emph{halting problem}: Given a Turing machine~$M$, determine
 whether~$M$ terminates (comes to a stop after having carried out a finite
 number of computational steps) or not.
 
@@ -854,7 +854,7 @@ a trivial condition; but intuitionistically, it is not.
 
 \bigskip
 \dotparagraph{``Any function~$\RR \to \RR$ is continuous.''}\label{sect:eff-continuous}
-In the standard topos, this statement is plainly false, with the signum and Heaviside functions
+In the standard topos, this statement is plainly false, with the sign and Heaviside functions
 being prominent counterexamples. In the \effective topos, this statement is
 true and independently due to
 Kreisel--Lacombe--Shoenfield~\cite{kreisel-lacombe-shoenfield:cont} and
@@ -877,7 +877,7 @@ input, outputs the description of a similar such Turing machine~$Y$.
 To compute a rational approximation~$Y(n)$, the machine~$Y$ may simulate~$X$
 and can therefore determine arbitrarily many rational approximations~$X(m)$.
 However, within in a finite amount of time, the machine~$Y$ can only learn finitely many
-such approximations. Hence a function such as the signum function, for which
+such approximations. Hence a function such as the sign function, for which
 even rough rational approximations of~$\operatorname{sgn}(x)$ require infinite
 precision in the input~$x$, do not exist in the \effective topos.
 
@@ -1047,6 +1047,8 @@ tamper-free private communication channels~\cite{bauer:int-mathematics}.
 
 \section{Toposes of sheaves, a convenient home for local truth}
 \label{sect:sheaf-toposes}
+
+% XXX introduction...
 
 Associated to any topological space~$X$ (such as Euclidean space), there is the
 \emph{topos of sheaves over~$X$}, $\Sh(X)$. To a first approximation, a
@@ -1250,7 +1252,7 @@ application of nonstandard analysis in symplectic geometry is due to Oliver
 Fabert~\cite{fabert:non-squeezing,fabert:floer}, who verified an
 infinite-dimensional analogue of the Arnold conjecture.
 
-However, the realization of the fiction of infinitesimal numbers in nonstandard analysis crucically rests on a non-principal
+However, the realization of the fiction of infinitesimal numbers in nonstandard analysis crucially rests on a non-principal
 ultrafilter, whose existence requires principles which go beyond the means of
 Zermelo--Fraenkel set theory~\textsc{zf}.\footnote{A hyperreal number is
 represented by an infinite sequence~$(x_0,x_1,x_2,\ldots)$ of ordinary real
@@ -1320,7 +1322,7 @@ they are sufficient to rigorously reproduce derivative computations of
 polynomials such as~\eqref{eq:derivative}.
 
 However, the dual numbers are severely lacking in other aspects. Firstly, they
-do not contain any nilcubic numbers which are not already nilsquare. These are
+do not contain any nilcube numbers which are not already nilsquare. These are
 required in order to extend calculations like~\eqref{eq:derivative} to second
 derivatives, as in
 \[ (x+\varepsilon)^3 - x^3 = 3x^2\varepsilon + \frac{1}{2!} 6x
@@ -1472,7 +1474,7 @@ intuitionistic context.
 the Dedekind reals or indeed any well-known construction of the reals
 within~$\Zar(\RR)$. This observation explains why~$\RR^\sim$ can satisfy the law of
 cancellation even though it is an intuitionistic theorem that the only
-nilquadratic number in any flavor of the reals is zero.
+nilsquare number in any flavor of the reals is zero.
 \end{rem}
 
 
@@ -1505,7 +1507,7 @@ topos~$\E$ the following transfer principle holds: If~$f,g : \RR \to \RR$ are
 smooth functions, then~$f' = g$ (in the ordinary sense of the derivative) if
 and only if~$i(f)' = i(g)$ in~$\E$ (in the synthetic sense of the derivative).
 
-Hence the nilquadratic infinitesimal numbers of synthetic differential geometry
+Hence the nilsquare infinitesimal numbers of synthetic differential geometry
 may freely be employed as a convenient fiction when computing derivatives.
 Because the theorem on the existence of well-adapted models has a constructive
 proof, any proof making use of these infinitesimals may mechanically be
@@ -1551,7 +1553,8 @@ turning statements about real numbers and real functions into statements about
 continuous~$X$-indexed families of real numbers and real functions.
 
 The crucial point is that the translation scheme provided by any topos is sound
-with respect to intuitionistic logic. XXX
+with respect to intuitionistic logic. Hence, independent of our position
+towards toposes as alternative universe, we XXX
 
 \printbibliography
 

@@ -122,6 +122,7 @@
 \paragraph{Generic models} Let~$\TT$ be a geometric theory, such as the theory
 of rings, the theory of local rings or the theory of intervals. We follow Caramello's
 terminology~\cite{caramello:tst} to mean by \emph{geometric theory} a system
+% XXX: The terminology is not due to Olivia, right? Find better expression
 given by a set of sorts, a set of finitary function symbols, a set of finitary
 relation symbols and a set of axioms consisting of geometric sequents
 (sequents of the form~$\varphi \seq{\vec x} \psi$ where~$\varphi$ and~$\psi$
@@ -178,7 +179,7 @@ theory of local rings. In this case, the classifying topos~$\Set[\TT]$ is also
 known as the \emph{big Zariski topos} of~$\Spec(\ZZ)$ from algebraic geometry,
 the topos of sheaves over the site of schemes locally of finite presentation,
 and the generic model is the functor~$\affl$ of points of the affine line, the
-functor which maps any (l.o.f.p.) scheme~$X$ to~$\Hom_\mathrm{Sch}(X,\mathbb{A}^1) =
+functor which maps any scheme~$X$ (l.o.f.p.) to~$\Hom_\mathrm{Sch}(X,\mathbb{A}^1) =
 \O_X(X)$.
 
 From the point of view of the Zariski topos, the ring object~$\affl$ is not only a
@@ -289,8 +290,8 @@ out to be true, in the sense we will now indicate.
 
 \paragraph{A general Nullstellensatz} To explain the relevant background, the
 somewhat vague question ``to which extent does the classifying
-topos~$\Set[\TT]$ realize that it is the classifying topos for~$\TT$?'' is a
-useful guiding principle. This is easiest to visualize with a concrete example
+topos~$\Set[\TT]$ realize that it is the classifying topos for~$\TT$?'' is useful as
+a guiding principle. This is easiest to visualize with a concrete example
 for~$\TT$, such as the theory of rings.
 
 Let~$A$ be a ring. A simple version of the classical Nullstellensatz states:
@@ -613,7 +614,7 @@ elementary topos with a natural numbers object), we can successively build the
 object of contexts (the object of lists of sorts); the object of terms
 (equipped with a morphism to the object of contexts); the object of atomic
 propositions (again equipped with such a morphism); the object of geometric
-formulas (again so); and the object of geometric sequents (again so). A internal
+formulas (again so); and the object of geometric sequents (again so). An internal
 geometric theory~$\TT$ over~$\Sigma$ is then given by a subobject of the object
 of geometric sequents, interpreted as the object of axioms of~$\TT$.
 Given such an internal theory~$\TT$, we can build the subobject of the provable
@@ -662,8 +663,7 @@ the set of sorts of~$\Sigma$, the object of function symbols of~$\ul{\Sigma}$
 is the pullback of the set of function symbols of~$\Sigma$, and so on.\end{ex}
 
 Disjunctions appearing in internal geometric formulas may be indexed by
-arbitrary objects of the topos (that is, disjunctions may be taken over
-arbitrary subobjects of disjuncts), just like disjunctions appearing in ordinary
+arbitrary objects of the topos, just like disjunctions appearing in ordinary
 external geometric formulas over an ordinary signature may be indexed by
 arbitrary sets. If~$\Sigma$ is an internal signature in a Grothendieck topos~$\E$, the object of geometric
 formulas over~$\Sigma$ has an important
@@ -922,7 +922,7 @@ to~$\Set[\TT]$, it holds that
   \bigvee_\alpha \alpha,
 \]
 where the disjunction ranges over all those geometric formulas~$\alpha$ in the
-context~$\vec x$ such that for each index~$i$, the theory~$\TT$ proves~$(\alpha
+context~$\vec x$ such that for every index~$i$, the theory~$\TT$ proves~$(\alpha
 \wedge \varphi_i \seq{\vec x, \vec y_i} \psi_i)$.
 \end{scholium}
 
@@ -962,7 +962,7 @@ formulas, we allow set-indexed disjunctions (but not set-indexed conjunctions).
 \begin{proof}[Proof of Theorem~\ref{thm:characterization}]
 Any infinitary first-order formula can be simplified to an equivalent geometric
 formula -- on the semantic side by repeatedly applying
-Scho\-li\-um~\ref{scholium:nullstellensatz-more-specific}, on the semantic side by
+Scho\-li\-um~\ref{scholium:nullstellensatz-more-specific}, on the syntactic side by
 repeatedly applying axiom scheme~\eqref{eq:nullstellensatz}. Hence we are
 reduced to the basic fact (Proposition~\ref{prop:basic-truth}) that, for
 geometric formulas~$\varphi$, $\Set[\TT] \models
@@ -1083,8 +1083,8 @@ it consists of the terms (in the empty context) of the signature~$\Sigma + X$
 modulo the equivalence relation identifying two terms if and only if~$\TT + R$
 proves them to be equal. The function symbols~$f$ of~$\Sigma$ are interpreted
 by declaring~$\brak{f}([t_1],\ldots,[t_n]) = [f(t_1,\ldots,t_n)]$ and the
-relation symbols~$S$ are interpreted by declaring~$([t_1],\ldots,[t_n]) \in
-\brak{S} \Leftrightarrow (\TT + R \,\vdash S(t_1,\ldots,t_n))$.
+relation symbols~$H$ are interpreted by declaring~$([t_1],\ldots,[t_n]) \in
+\brak{H} \Leftrightarrow (\TT + R \,\vdash H(t_1,\ldots,t_n))$.
 
 We omit the required verifications and only remark that while the same
 construction could be carried out if~$\TT$ was a general geometric theory, the
@@ -1271,6 +1271,7 @@ propositions over the signature of~$\ul{\TT}/U_\TT$ be given. By passing to a
 covering of~$T$, we may assume that the~$X_i$ are given by sorts of~$\TT$ and
 that the~$R_j$ are given by atomic propositions over the signature
 of~$\TT/U_\TT(T)$.
+% XXX: No passing to covers is necessary, as we're in a *pre*sheaf topos!
 
 Since the slice~$\Set[\TT]/\yon T$ is equivalent to~$\Set[\TT/T]$,
 hence again the classifying topos of a Horn theory, we may without loss of
@@ -1503,7 +1504,7 @@ Remark~\ref{rem:definability-entails-nullstellensatz}.\end{proof}
 
 Butz and Johnstone~\cite{butz-johnstone:first-order} list several nongeometric sequents holding in the
 classifying topos of the theory~$\OO$ of objects, the theory with a single sort and
-no function symbols, relations symbols or axioms, including:
+no function symbols, relation symbols or axioms, including:
 \begin{align*}
   \forall x,y\?U_\OO\_ \neg\neg(x = y) &&
   \forall x_1,\ldots,x_n\?U_\OO\_ \neg \forall y\?U_\OO\_ \bigvee_{i=1}^n (y = x_i)

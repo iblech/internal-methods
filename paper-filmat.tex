@@ -20,13 +20,13 @@
 \newcommand{\xmark}{\ding{55}}
 \definecolor{mypurple}{RGB}{150,0,255}
 
-\title[]{Exploring mathematical objects from custom-tailored mathematical universes}
-\author{Ingo Blechschmidt}
-\address{Universität Augsburg \\
-Institut für Mathematik \\
-Universitätsstr. 14 \\
-86159 Augsburg, Germany}
-\email{ingo.blechschmidt@math.uni-augsburg.de}
+%\title[]{Exploring mathematical objects from custom-tailored mathematical universes}
+%\author{Ingo Blechschmidt}
+%\address{Universität Augsburg \\
+%Institut für Mathematik \\
+%Universitätsstr. 14 \\
+%86159 Augsburg, Germany}
+%\email{ingo.blechschmidt@math.uni-augsburg.de}
 
 \theoremstyle{definition}
 \newtheorem{defn}{Definition}[section]
@@ -88,14 +88,25 @@ Universitätsstr. 14 \\
 
 \begin{document}
 
-\begin{abstract}
-  XXX
-\end{abstract}
+%\begin{abstract}
+%  XXX
+%\end{abstract}
 
-\maketitle
+%\maketitle
 \thispagestyle{empty}
 
-\tableofcontents
+\begin{center}
+  \begin{minipage}{0.6\textwidth}
+  \emph{To the anonymous referees:}
+  \bigskip
+
+  Thank you for your volunteer work. It is very much appreciated. I am looking
+  forward to your comments.
+
+  \hfill -- the anonymous author
+  \end{minipage}
+\end{center}
+\bigskip
 
 \noindent
 Toposes can be pictured as mathematical universes in which we can do
@@ -105,7 +116,7 @@ standard topos, there is a colorful host of alternate toposes which are just as
 worthy of mathematical study and in which mathematics plays out slightly
 differently (Figure~\ref{fig:landscape}).
 
-\begin{figure}
+\begin{figure}[b]
   \tikzstyle{topos} = [draw=mypurple, very thick, rectangle, rounded corners, inner sep=5pt, inner ysep=10pt]
   \tikzstyle{title} = [fill=mypurple, text=white]
 
@@ -268,6 +279,8 @@ language of toposes include~\cite[Chapter~VI]{moerdijk-maclane:sheaves-logic},
 discussions shaping this work and to XXX for their careful criticism of earlier
 drafts. XXX conference organizer and participants
 % Todd Lehman for creating parts of Figure~1
+
+\tableofcontents
 
 
 \section{Toposes as alternate mathematical universes}

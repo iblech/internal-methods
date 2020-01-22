@@ -61,6 +61,7 @@
 \newcommand{\QQ}{\mathbb{Q}}
 \newcommand{\TT}{\mathbb{T}}
 \newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
 \newcommand{\ZZ}{\mathbb{Z}}
 \renewcommand{\P}{\mathcal{P}}
 \renewcommand{\O}{\mathcal{O}}
@@ -89,7 +90,7 @@
 \begin{document}
 
 %\begin{abstract}
-%  XXX
+%  FUTURE: abstract
 %\end{abstract}
 
 %\maketitle
@@ -225,7 +226,6 @@ specific toposes and exploring their peculiar properties.
 \item We explicate how toposes provide distinct lenses through which the
 usual mathematical objects of the standard topos can be viewed.
 \end{enumerate}
-% XXX check everywhere
 
 Viewed through such a lens, a given mathematical object can have different
 properties than when considered normally. In particular, it can have
@@ -245,11 +245,19 @@ following connections with topics in the philosophy of mathematics:
 picture that the platonic heaven of mathematical objects is not unique: besides
 the standard heaven of the standard topos, we can fathom the alternate
 heavens of all other toposes, all embedded in a second-order heaven.
+\item To some extent, the mathematical landscape depends on the commonly agreed-upon rules of
+mathematics. These are not entirely absolute; for instance, it is conceivable
+that from the foundational crisis Brouwer's intuitionism would have emerged as
+the main school of thought and we would now all reject the law of excluded
+middle. Toposes allow us to explore alternatives to how history
+has played out.
 \item Mathematics is not only about studying mathematical objects, but also
 about studying the relations between mathematical objects. The distinct view
 on mathematical objects provided by any topos uncovers relations which
-otherwise remain hidden.
-% XXX: mention Olivia?
+otherwise remain hidden.\footnote{Olivia Caramello's research
+program~\cite{caramello:tst} provides a further topos-theoretic way for
+uncovering hidden relations, though not between objects but between mathematical
+theories.}
 \item In some cases, a mathematical relation can be expressed quite succinctly
 using the language of a specific topos and not so succinctly using the language
 of the standard topos. This phenomenon showcases the importance of
@@ -258,9 +266,6 @@ of the standard topos. This phenomenon showcases the importance of
 intuitionistic logic, in particular also to restrict to intuitionistic
 logic on the meta level and to consider the idea that the platonic heaven might
 be governed by intuitionistic logic.
-% XXX contingent: To some extent, what the commonly agreed-upon rules of
-% mathematics are is dependent on contingent historical factors. It is
-% conceivable, for instance, that the intuitionists ...
 \end{enumerate}
 We invite further research on these connections.
 
@@ -275,10 +280,16 @@ language of toposes include~\cite[Chapter~VI]{moerdijk-maclane:sheaves-logic},
 \cite[Chapter~6]{borceux:handbook3} and~\cite[Part~D]{johnstone:elephant}.
 
 \bigskip
-\paragraph{Acknowledgments} We are grateful to XXX for many invaluable
-discussions shaping this work and to XXX for their careful criticism of earlier
-drafts. XXX conference organizer and participants
-% Todd Lehman for creating parts of Figure~1
+\paragraph{Acknowledgments} We are grateful to Andrej Bauer, Martin
+Brandenburg, Sina Hazratpour, Matthias Hutzler, Marc Nieper-Wißkirchen and
+Alexander Oldenziel for invaluable discussions shaping this work, to Moritz
+Laudahn, Matthias Hutzler and Milan Zerbin for their careful criticism of
+earlier drafts and to Todd Lehman for preparing parts of
+Figure~\ref{fig:landscape}. We thank the organizers and all participants of the
+Mussomeli conference of the Italian Network for the Philosophy in Mathematics,
+where this work was presented, for creating an exceptionally beautiful meeting. In
+particular, we are grateful to Neil Barton, Danielle Macbeth, Gianluigi Oliveri
+and Lorenzo Rossi for valuable comments.
 
 \tableofcontents
 
@@ -316,7 +327,8 @@ translating conjunction reads
 The remaining translation rules are more
 involved~\cite[Section~VI.7]{moerdijk-maclane:sheaves-logic}; we do not list them here for
 the case of a general topos~$\E$, but we will state them in the next sections
-for several specific toposes.
+for several specific toposes. We refer to~``$\E \models \varphi$'' also as the
+``external meaning of the internal statement~$\varphi$''.
 
 In the definition of~$\E \models \varphi$, the statement~$\varphi$ can be any
 statement in the language of a general version of higher-order predicate
@@ -337,7 +349,8 @@ statement~$\varphi$. Hence a statement holds in the standard topos if and only
 if it holds in the usual mathematical sense.
 
 
-\subsection{The logic of toposes} By their definition as special kinds of
+\subsection{The logic of toposes}\label{sect:logic-of-toposes}
+By their definition as special kinds of
 categories, toposes are merely algebraic structures not unlike groups or vector
 spaces. Hence we need to argue why we picture toposes as mathematical universes
 while we do not elevate other kinds of algebraic structures in the same way.
@@ -431,6 +444,11 @@ excluded middle in presence of other axioms which are available in any topos.
 %Mathematicians are familiar with the fact that the usual objects of
 %mathematical study are governed by the laws of ordinary \emph{classical
 %reasoning}. ...
+
+At this point in the text, all prerequisites for exploring toposes have been
+introduced. The reader who wishes to develop, by explicit examples, intuition
+for working internally to toposes is invited to skip ahead to
+Section~\ref{sect:effective-topos}.
 
 
 \subsection{Relation to models of set theory} In set theory, philosophy and
@@ -798,11 +816,11 @@ examples:
   \bottomrule
 \end{tabular}
 \end{center}
+\bigskip
 
 \newcommand{\dotparagraph}[1]{\noindent\textbf{#1}}
 
-\bigskip
-\dotparagraph{``Any natural number is prime or not.''} Even without knowing what
+\begin{ex}\textbf{``Any natural number is prime or not.''} Even without knowing what
 a prime number is, one can safely judge this statement to be true in
 the standard topos, since it is just an instance of the law of excluded middle.
 
@@ -813,10 +831,9 @@ not. Such a Turing machine indeed exists -- writing such a program is often a
 first exercise in programming courses. Hence the statement is also true in the
 \effective topos, but for the nontrivial reason that primality can be
 algorithmically tested.
+\end{ex}
 
-
-\bigskip
-\dotparagraph{``There are infinitely many primes.''} A first-order formalization
+\begin{ex}\textbf{``There are infinitely many primes.''} A first-order formalization
 of this statement is ``for any natural number~$n$, there is a prime
 number~$p$ which is greater than~$n$'', and is known to be true in the standard
 topos by any of the many proofs of this fact.
@@ -829,10 +846,9 @@ machine~$M$ should also output the description of a Turing machine which
 witnesses that~$p$ is prime and that~$p > n$. However, the statement~``$p$ is prime and~$p > n$''
 is~$\neg\neg$-stable (even decidable), and for those statements witnesses are
 redundant.}
+\end{ex}
 
-
-\bigskip
-\dotparagraph{``Any function~$\NN \to \NN$ is constantly zero or not.''} Precisely,
+\begin{ex}\textbf{``Any function~$\NN \to \NN$ is constantly zero or not.''} Precisely,
 the statement is
 \[ \forall f \? \NN^\NN\_
   \bigl((\forall n \? \NN\_ f(n) = 0) \vee
@@ -859,6 +875,7 @@ part of the function.
 
 A rigorous proof that such a machine~$M$ does not exist reduces its assumed
 existence to the undecidability of the halting problem.
+\end{ex}
 
 \begin{rem}Quite surprisingly, there are infinite sets~$X$ for which any flavor of constructive
 mathematics, in particular the kind which is valid in any topos, verifies the
@@ -870,9 +887,7 @@ where~$\BB = \{ 0, 1 \}$ is the set of booleans. This is not the case for~$X =
 \NN_\infty$ of the naturals. This phenomenon has been thoroughly explored by
 Martin Escardó~\cite{escardo:omniscience}.\end{rem}
 
-
-\bigskip
-\dotparagraph{``Any function~$\NN \to \NN$ is computable.''}
+\begin{ex}\textbf{``Any function~$\NN \to \NN$ is computable.''}
 The preceding examples give the impression that what is true in the
 \effective topos is solely a subset of what is true in the standard topos. The
 example of this subsection, the so-called \emph{formal Church--Turing thesis},
@@ -910,17 +925,16 @@ to~$\NN$. The actual domain is the subset of those natural numbers~$n$
 for which the~$n$-th Turing machine
 terminates or does not terminate. Assuming the law of excluded middle, this is
 a trivial condition; but intuitionistically, it is not.
+\end{ex}
 
-
-\bigskip
-\dotparagraph{``Any function~$\RR \to \RR$ is continuous.''}\label{sect:eff-continuous}
+\begin{ex}\textbf{``Any function~$\RR \to \RR$ is continuous.''}\label{sect:eff-continuous}
 In the standard topos, this statement is plainly false, with the sign and Heaviside functions
 being prominent counterexamples. In the \effective topos, this statement is
 true and independently due to
 Kreisel--Lacombe--Shoenfield~\cite{kreisel-lacombe-shoenfield:cont} and
 Ceĭtin~\cite{ceitin:cont}. A rigorous proof is not entirely
 straightforward (a textbook reference
-is~\cite[Thm.~9.2.1]{longley-normann:higher-order-computability}), but an intuitive
+is~\cite[Theorem~9.2.1]{longley-normann:higher-order-computability}), but an intuitive
 explanation is as follows.
 
 What the \effective topos believes to be a real number is, from the external
@@ -940,10 +954,9 @@ However, within in a finite amount of time, the machine~$Y$ can only learn finit
 such approximations. Hence a function such as the sign function, for which
 even rough rational approximations of~$\operatorname{sgn}(x)$ require infinite
 precision in the input~$x$, do not exist in the \effective topos.
+\end{ex}
 
-
-\bigskip
-\dotparagraph{``Markov's principle holds.''} Markov's principle is the
+\begin{ex}\textbf{``Markov's principle holds.''} Markov's principle is the
 following statement:
 \begin{equation}\label{eq:markov}\tag{MP}
   \forall f \? \NN^\NN\_ \bigl((\neg\neg\exists n\?\NN\_ f(n) = 0)
@@ -978,10 +991,9 @@ and~$S_F$ cannot make direct computational use of it. But its existence ensures 
 principle on the meta level): The machine~$S_F$ can simulate~$F$ to
 compute the values~$f(0), f(1), f(2), \ldots$ in turn, and stop
 with output~$n$ as soon as it determines that some function value~$f(n)$ is zero.
+\end{ex}
 
-
-\bigskip
-\dotparagraph{``Heyting arithmetic is categorical.''} In addition to the standard
+\begin{ex}\textbf{``Heyting arithmetic is categorical.''} In addition to the standard
 model~$\NN$, the standard topos contains uncountably many nonstandard models of
 Peano arithmetic (at least if we assume a classical meta level). By a theorem
 of Benno van den Berg and Jaap van Oosten, the situation
@@ -1006,6 +1018,7 @@ model.
 
 The reason for~(1) is related to the fact that no nonstandard model of
 Peano arithmetic in the standard topos is computable~\cite{tennenbaum:models}.
+\end{ex}
 
 \begin{table}
   \begin{framed}\begin{tabbing}
@@ -1072,7 +1085,7 @@ whether it has found infinitely many twins or not.
 
 In the realizability topos constructed using infinite-time Turing machines, the full
 law of excluded middle still fails, but some instances which are wrong in the
-\effective topos do hold in this topos. For instance, the instance ``any
+\effective topos do hold in this topos. For example, the instance ``any
 function~$\NN \to \NN$ is the zero function or not'' does: Its external meaning
 is that there is an infinite-time Turing machine~$M$ which, when given the
 description of an infinite-time Turing machine~$F$ computing a function~$f :
@@ -1108,14 +1121,19 @@ tamper-free private communication channels~\cite{bauer:int-mathematics}.
 \section{Toposes of sheaves, a convenient home for local truth}
 \label{sect:sheaf-toposes}
 
-% XXX introduction...
-
 Associated to any topological space~$X$ (such as Euclidean space), there is the
 \emph{topos of sheaves over~$X$}, $\Sh(X)$. To a first approximation, a
 statement is true in~$\Sh(X)$ if and only if it ``holds locally on~$X$'';
 what~$\Sh(X)$ believes to be a set is a ``continuous family of sets, one set
 for each point of~$X$''. The precise rules of the Kripke--Joyal semantics
 of~$\Sh(X)$ are listed in Table~\ref{table:sheaf}.
+
+Just as the \effective topos provides a coherent setting for studying
+computability using a naive language, the sheaf topos~$\Sh(X)$ provides a
+coherent setting for studying continuous~$X$-indexed families of objects (sets,
+numbers, functions) as if they were single objects.
+% FUTURE: Explain better.
+% FUTURE: History, sites, flexibility
 
 
 \subsection{A geometric interpretation of double negation}
@@ -1143,13 +1161,13 @@ over~$X$'', this observation justifies the slogan that ``ordinary mathematics
 is mathematics over the point''.
 
 
-\subsection{Real numbers}
+\subsection{Reifying continuous families of real numbers as single real numbers}
 As detailed in Section~\ref{sect:eff-continuous}, what the \effective topos believes to be a real number is
 actually a Turing machine computing arbitrarily-good consistent rational
 approximations. A similarly drastic shift in meaning, though in an orthogonal
 direction, occurs with~$\Sh(X)$. What~$\Sh(X)$ believes to be a (Dedekind) real
 number~$a$ is actually a continuous family of real numbers on~$X$, that is, a
-continuous function~$a : X \to \RR$.
+continuous function~$a : X \to \RR$~\cite[Corollary~D4.7.5]{johnstone:elephant}.
 
 Such a function is everywhere positive on~$X$ if and only if, from the internal point of
 view~$\Sh(X)$, the number~$a$ is positive; it is everywhere zero if and only
@@ -1228,7 +1246,8 @@ with the unique zero of~$a$ removed.
 \end{figure}
 
 
-\subsection{Real functions} Let~$(f_x)_{x \in X}$ be a continuous family of
+\subsection{Reifying continuous families of real functions as single real functions}
+Let~$(f_x)_{x \in X}$ be a continuous family of
 continuous real-valued functions; that is, each of the individual
 functions~$f_x : \RR \to \RR$ should be continuous and moreover the map~$\RR
 \times X \to \RR, (a,x) \mapsto f_x(a)$ should be continuous.
@@ -1249,18 +1268,52 @@ covering~$X = \bigcup_i U_i$ such that, for each index~$i$, there is a continuou
 function~$a : U_i \to \RR$ such that~$f_x(a(x)) = 0$ for all~$x \in U_i$. (On
 overlaps~$U_i \cap U_j$, the zero-picking functions~$a$ need not agree.)
 
+\begin{ex}
 From these observations we can deduce that the intermediate value theorem of
 undergraduate calculus does in general not hold in~$\Sh(X)$ and hence does not allow
 for an intuitionistic proof. The intermediate value theorem states: ``If~$f : \RR \to \RR$
 is a continuous function such that~$f(-1) < 0$ and~$f(1) > 0$, there exists a
 number~$a$ such that~$f(a) = 0$.'' The external meaning of this statement is
-that in any continuous family~$(f_x)_x$ of continuous functions with~$f_x(-1) <
+that for any continuous family~$(f_x)_x$ of continuous functions with~$f_x(-1) <
 0$ and~$f_x(1) > 0$ for all~$x \in X$, it is locally possible to pick zeros of
 the family in a continuous fashion. Figure~\ref{fig:ivt} shows a counterexample
 to this claim.
 
+In contrast, the intermediate value theorem for monotone functions does have an
+intuitionistic proof and hence applies in the internal universe of~$\Sh(X)$.
+Thus for any continuous family~$(f_x)_x$ of continuous monotone functions
+with~$f_x(-1) < 0$ and~$f_x(1) > 0$ for all~$x \in X$, it is locally possible
+to pick zeros of the family in a continuous fashion.\footnote{While the
+Kripke--Joyal translation of~``$\exists$'' is by definition \emph{local
+existence}, one can show that the Kripke--Joyal translation of~``$\exists!$''
+is \emph{unique existence on all opens}, in particular \emph{unique global
+existence}. Because the conclusion of the intermediate value theorem for
+monotone functions can be strengthened from ``has a zero'' to ``has a unique
+zero'', this observation shows that the zeros can even globally be picked in a
+continuous fashion.}
+\end{ex}
 
-\section{Topos adapted to synthetic differential geometry}
+\begin{ex}The fundamental theorem of algebra generally fails in~$\Sh(X)$, even
+for quadratic polynomials. What~$\Sh(X)$ believes to be a (Dedekind)
+complex number is externally a continuous function~$X \to \CC$. Let~$X$ be the
+complex plane. Then the identity function~$\mathrm{id}_X$ is a single complex number from the
+internal point of view of~$\Sh(X)$. The fundamental theorem of algebra would
+predict~``$\Sh(X) \models \exists a\?\CC\_ a^2 - \mathrm{id}_X = 0$'',
+hence that there is an open covering~$X = \bigcup_i U_i$ such that on each
+open~$U_i$, there is a continuous function~$a : U_i \to \CC$ such that~$a(z)^2
+- z = 0$ for all~$z \in U_i$. However, it is a basic fact of complex analysis
+that such a function does not exist if~$0 \in U_i$.
+\end{ex}
+
+\begin{ex}The standard proof of Banach's fixed point theorem employs only
+intuitionistic reasoning, hence applies internally to~$\Sh(X)$. Interpreting the
+internal Banach fixed point theorem by the Kripke--Joyal translation rules
+yields the statement that fixed points of continuous families of contractions
+depend continuously on parameters.
+\end{ex}
+
+
+\section{Toposes adapted to synthetic differential geometry}
 \label{sect:smooth}
 
 The idea of \emph{infinitesimal numbers} -- numbers which lie between~$-\frac{1}{n}$
@@ -1615,14 +1668,10 @@ custom-tailored topos.
 Stuff that should be mentioned:
 
 * XXX phone call analogy
-* XXX quick overview of the several aspects of toposes (maybe at the end, as an outlook?)
-* XXX allowing a switch of perspective
-* XXX applications in mathematical practice
-* XXX arbitrariness of the "standard axioms"
-* XXX use the phrase "very rich and very deep" (or similarly) about set theory
+FUTURE: quick overview of the several aspects of toposes (maybe at the end, as an outlook?)
+FUTURE: use the phrase "very rich and very deep" (or similarly) about set theory
 * XXX A topos is more than its semantics
-* XXX Check references everywhere (give good pointers)
-* XXX internal/external
+FUTURE: Check references everywhere (give good pointers)
 
 Send to Georg.
 Also Giuseppe Cammarata.

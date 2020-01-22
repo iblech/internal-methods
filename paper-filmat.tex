@@ -251,7 +251,7 @@ be governed by intuitionistic logic.
 % mathematics are is dependent on contingent historical factors. It is
 % conceivable, for instance, that the intuitionists ...
 \end{enumerate}
-This note touches on these topics and invites further research.
+We invite further research on these connections.
 
 We intend this contribution to be self-contained and do not assume familiarity with
 topos theory or category theory. Readers who would like to learn more details
@@ -272,9 +272,9 @@ drafts. XXX conference organizer and participants
 
 \section{Toposes as alternate mathematical universes}
 
-Formally, a topos is a certain kind of \emph{category}, containing objects and
-morphisms between those objects. The formal definition, recorded here only for
-reference, requires some amount of category theory, but, as will be outlined in
+A topos is a certain kind of \emph{category}, containing objects and
+morphisms between those objects. The precise definition is recorded here only for
+reference. Appreciating it requires some amount of category theory, but, as will be demonstrated in
 the following sections, exploring the mathematical universe of a given topos
 does not.
 
@@ -290,7 +290,7 @@ numbers, groups and manifolds, and is closed under the usual constructions
 such as cartesian products or quotients.
 The prototypical topos is the standard topos:
 
-\begin{defn}The \emph{standard topos}~$\Set$ is the category which contains all
+\begin{defn}The \emph{standard topos}~$\Set$ is the category which has all
 sets as its objects and all maps between sets as morphisms.\end{defn}
 
 Given a topos~$\E$, we write~``$\E \models \varphi$'' to denote that a
@@ -300,7 +300,8 @@ so-called \emph{Kripke--Joyal translation rules}. For instance, the rule for
 translating conjunction reads
 \[ \E \models (\alpha \wedge \beta) \qquad\text{iff}\qquad
   \E \models \alpha \quad\text{and}\quad \E \models \beta. \]
-The remaining translation rules are more involved; we do not list them here for
+The remaining translation rules are more
+involved~\cite[Section~VI.7]{moerdijk-maclane:sheaves-logic}; we do not list them here for
 the case of a general topos~$\E$, but we will state them in the next sections
 for several specific toposes.
 
@@ -352,7 +353,8 @@ support intuitionistic reasoning, not the full power of the ordinary
 \emph{classical reasoning}. That is, within most toposes, the law of excluded
 middle ($\varphi \vee \neg\varphi$) and the law of double negation elimination
 ($\neg\neg\varphi \Rightarrow \varphi$) are not available. It is intuitionistic
-logic and not classical logic which is the common denominator of all toposes.
+logic and not classical logic which is the common denominator of all toposes;
+we cannot generally argue by contradiction in a topos.
 
 While it may appear that these two laws pervade any mathematical theory, in
 fact a substantial amount of mathematics can be developed intuitionistically
@@ -361,10 +363,10 @@ instance~\cite{mines-richman-ruitenburg:constructive-algebra,lombardi-quitte:con
 for constructive algebra,~\cite{bishop-bridges:constructive-analysis} for
 constructive analysis
 and~\cite{bauer:int-mathematics,bauer:video,melikhov:intuitionistic-logic} for
-further references) and hence the alternate universes provided by toposes
+accessible surveys on appreciating intuitionistic logic) and hence the alternate universes provided by toposes
 cannot be too strange: In any topos, there are infinitely many prime numbers,
-the square root of two is not rational and the powerset of the naturals is
-uncountable.
+the square root of two is not rational, the fundamental theorem of Galois
+theory holds and the powerset of the naturals is uncountable.
 
 That said, intuitionistic logic still allows for a considerable amount of
 freedom, and in many toposes statements are true which are baffling if one has
@@ -538,6 +540,7 @@ sequents. For arbitrary properties~$\varphi$, the statements~``the generic
 group has property~$\varphi$'' and~``all groups have property~$\varphi$'' need
 not be equivalent. This situation is explored
 in~\cite{blechschmidt:nullstellensatz}.}
+% FUTURE: Write just a little more on Set[T], that geom.impl. consequences spread.
 % FUTURE: Give Set[T] its own section.
 \item $T(\mathcal{L}_0)$, the \emph{free topos}. A statement is true in the free topos iff it is
 intuitionistically provable. Lambek and Scott proposed that the free topos can
@@ -602,8 +605,9 @@ all possible stories how mathematics could unfold, only those which appear
 coherent from the point of view of the standard topos, and the topos-theoretic
 multiverse which we have access to is just a small part of an even larger
 landscape.\footnote{This paragraph employs an overly narrow conception of
-``mathematics'', for instance excluding any predicative flavors of mathematics
-(Laura Crosilla's survey~\cite{crosilla:predicative} is an excellent introduction).
+``mathematics'', focusing only on those mathematical worlds which form toposes
+and for instance excluding any predicative flavors of mathematics
+(Laura Crosilla's survey~\cite{crosilla:predicativity} is an excellent introduction).
 Toposes are impredicative in the sense that any object of a topos is required to have a
 powerobject. A predicative cousin of toposes are the \emph{arithmetic
 universes} introduced by Joyal which have recently been an important object of
@@ -653,7 +657,7 @@ common divisor''  or ``the function~$\NN \times \NN \to \NN,\,(n,m) \mapsto
 \operatorname{gcd}(n,m)$ is \emph{computable}''.
 
 In such questions of computability, practical issues such as resource
-constraints and hardware malfunctions are ignored; we work with the theoretical
+constraints or hardware malfunctions are ignored; we employ the theoretical
 notion of \emph{Turing machines}, a mathematical abstraction of the computers
 of the real world.
 
@@ -736,6 +740,7 @@ examples:
   Any function $\RR \to \RR$ is continuous. & \xmark & \cmark \\
   Markov's principle holds. & \cmark{} (trivially) & \cmark \\
   Heyting arithmetic is categorical. & \xmark & \cmark \\
+  % FUTURE: Countable axiom of choice
   \bottomrule
 \end{tabular}
 \end{center}
@@ -752,7 +757,8 @@ amounts to stating that there is a Turing machine which, when given a natural
 number~$n$ as input, terminates with a correct judgment whether~$n$ is prime or
 not. Such a Turing machine indeed exists -- writing such a program is often a
 first exercise in programming courses. Hence the statement is also true in the
-\effective topos, but for the nontrivial reason that such a machine exists.
+\effective topos, but for the nontrivial reason that primality can be
+algorithmically tested.
 
 
 \bigskip
@@ -772,8 +778,8 @@ redundant.}
 
 
 \bigskip
-\dotparagraph{``Any function~$\NN \to \NN$ is constantly zero or not.''} More
-formally, the statement is
+\dotparagraph{``Any function~$\NN \to \NN$ is constantly zero or not.''} Precisely,
+the statement is
 \[ \forall f \? \NN^\NN\_
   \bigl((\forall n \? \NN\_ f(n) = 0) \vee
   \neg
@@ -814,7 +820,7 @@ Martin Escardó~\cite{escardo:omniscience}.\end{rem}
 \bigskip
 \dotparagraph{``Any function~$\NN \to \NN$ is computable.''}
 The preceding examples give the impression that what is true in the
-\effective topos is simply a subset of what is true in the standard topos. The
+\effective topos is solely a subset of what is true in the standard topos. The
 example of this subsection, the so-called \emph{formal Church--Turing thesis},
 shows that the relation between the two toposes is more nuanced.
 
@@ -830,7 +836,7 @@ by a Turing machine. The external meaning of this internal statement is that
 there exists a Turing machine~$M$ which, when given a description of a Turing
 machine~$F$ computing a function~$f : \NN \to \NN$, outputs a description of a
 Turing machine computing~$f$. It is trivial to program such a machine~$M$: the
-machine~$M$ simply has to echo its input back to the caller.
+machine~$M$ simply has to echo its input back to the user.
 
 To avert a paradox, we should point out where the usual proof of the
 existence of noncomputable functions theory employs nonconstructive reasoning, for if
@@ -1003,7 +1009,7 @@ Two of these further toposes are of special philosophical interest.
 Firstly, in place of ordinary Turing machines, one can employ the
 \emph{infinite-time Turing machines} pioneered by Hamkins and
 Lewis~\cite{hamkins-lewis:ittm}. These machines model \emph{hypercomputation}
-in that they can run for ``longer than infinity''; more precisely, the
+in that they can run for ``longer than infinity''; more precisely, their
 computational steps are indexed by the ordinal numbers instead of the natural
 numbers. For instance, an infinite-time Turing machine can trivially decide the
 twin prime conjecture, by simply walking along the natural number line and
@@ -1105,8 +1111,8 @@ either everywhere negative on~$U_i$, everywhere zero on~$U_i$ or everywhere
 positive on~$U_i$. But this statement is, for most base spaces~$X$, false.
 Figure~\ref{fig:trichotomy}(c) shows a counterexample.
 
-The weaker statement that for any real number~$a$ it is \notnot the case that~$a < 0$
-or~$a = 0$ or~$a > 0$ does hold in~$\Sh(X)$, for this statement is an
+The weaker statement ``for any real number~$a$ it is \notnot the case that~$a < 0$
+or~$a = 0$ or~$a > 0$'' does hold in~$\Sh(X)$, for this statement is an
 intuitionistic tautology. Its meaning is that there exists a
 dense open~$U$ such that~$U$ can be covered by opens on which~$a$ is either
 everywhere negative, everywhere zero or everywhere positive. In the example
@@ -1208,6 +1214,7 @@ and~$\frac{1}{n}$ for any natural number~$n$ -- has a long and rich history. The
 not part of today's standard setup of the reals, but they are still intriguing
 as calculational tools and as a device to bring mathematical intuition and
 mathematical formalism closer together.
+% FUTURE: Give references to philosophical accounts of infinitesimal numbers.
 
 For instance, employing numbers~$\varepsilon$ such that~$\varepsilon^2 = 0$, we can
 compute derivatives blithely as follows, without requiring the notion of
@@ -1239,7 +1246,7 @@ principle}: Any statement which does not refer to standardness is true for the
 hyperreals if and only if it is true for the ordinary reals.
 
 In the ``if'' direction, the transfer principle is useful for importing
-knowledge about the ordinary reals in the hyperreal realm. For instance,
+knowledge about the ordinary reals into the hyperreal realm. For instance,
 addition of hyperreals is commutative because addition of reals is.
 By the ``only if'' direction, a theorem established for the hyperreals also
 holds for the ordinary reals. In this way, the infinitesimal numbers of
@@ -1344,7 +1351,7 @@ that~$\langle0,1,0\rangle^3 = 0$) and the second by passing
 from~$\RR[\varepsilon]/(\varepsilon^2)$
 to~$\RR[\varepsilon,\varepsilon']/(\varepsilon^2,\varepsilon'^2,\varepsilon\varepsilon')$.
 In a sense, both of these proposed replacements are better \emph{stages} than
-the basic ring~$\RR[\varepsilon]/(\varepsilon)^2$ or even~$\RR$ itself. However,
+the basic ring~$\RR[\varepsilon]/(\varepsilon^2)$ or even~$\RR$ itself. However,
 similar criticisms can be mounted against any of these better stages, and the
 problem that all these substitutes are not fields persists.
 
@@ -1448,7 +1455,7 @@ of fields, where the claim is trivial~\cite[Section~11.5]{blechschmidt:phd}.
 \end{rem}
 
 Within~$\Zar(\RR)$, we can construct the set~$\Delta \defeq \{ \varepsilon \? \RR^\sim \,|\,
-\varepsilon^2 = 0 \}$ of nilsquare numbers. Then~$\RR^\sim$ has the following properties:
+\varepsilon^2 = 0 \}$ of nilsquare numbers. Then~$\RR^\sim$ validates the following laws:
 \begin{enumerate}
 \item Law of cancellation: $\forall x \? \RR^\sim\_ \forall y \? \RR^\sim\_ \bigl((\forall
 \varepsilon \? \Delta\_ x\varepsilon = y\varepsilon)
@@ -1519,7 +1526,7 @@ reals.
 
 Having explored the alternate universes of several toposes in
 Sections~\ref{sect:effective-topos} to~\ref{sect:smooth}, we are now in a
-position to explain our view of toposes as lenses in more details.
+position to explain our view of toposes as lenses in more detail.
 
 Toposes can be seen in two quite different ways:
 \begin{enumerate}
@@ -1529,7 +1536,7 @@ properties of those objects with properties of objects of the standard topos: A
 statement~$\varphi$ about the objects of a topos~$\E$ holds in~$\E$ iff the
 statement~``$\E \models \varphi$'' holds in the standard topos.
 \item (syntactic view) A topos is merely an index to a syntactical translation
-process. Any topos~$\E$ gives rise to a ``generalized modal operator'' which
+procedure. Any topos~$\E$ gives rise to a ``generalized modal operator'' which
 turns a statement~$\varphi$ (about ordinary mathematical objects) into the
 statement~``$\E \models \varphi$'' of the same kind (again about ordinary
 mathematical objects).

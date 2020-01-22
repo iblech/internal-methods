@@ -97,15 +97,22 @@
 \thispagestyle{empty}
 
 \begin{center}
-  \begin{minipage}{0.6\textwidth}
-  \emph{To the anonymous referees:}
-  \bigskip
+  \begin{tikzpicture}
+    \node (comment) at (0,0) {
+      \begin{minipage}{0.6\textwidth}
+      \emph{To the anonymous referees:}
+      \bigskip
 
-  Thank you for your volunteer work. It is very much appreciated. I am looking
-  forward to your comments.
+      Thank you for your volunteer work. It is very much appreciated. I am looking
+      forward to your comments.
+      \bigskip
 
-  \hfill -- the anonymous author
-  \end{minipage}
+      \hfill -- the anonymous author
+      \end{minipage}
+    };
+
+    \node[draw=mypurple, very thick, rectangle, rounded corners, inner sep=5pt] [fit = (comment)] (foo) {};
+  \end{tikzpicture}
 \end{center}
 \bigskip
 
@@ -193,12 +200,12 @@ differently (Figure~\ref{fig:landscape}).
     \drawbox{sh1}{$\mathrm{Sh}\, X$}{(objs-sh1) (prop-sh1) (more-sh1)}{draw=none}
     \def\R{8pt}
     \begin{pgfonlayer}{background}
-    \draw[decoration={bumps,segment length=8pt}, decorate, very thick, draw=mypurple]
-      ($(sh1.south west) + (\R, 0)$) arc(270:180:\R) --
-      ($(sh1.north west) + (0, -\R)$) arc(180:90:\R) --
-      ($(sh1.north east) + (-\R, 0)$) arc(90:0:\R) --
-      ($(sh1.south east) + (0, \R)$) arc(0:-90:\R) --
-      cycle;
+      \draw[decoration={bumps,segment length=8pt}, decorate, very thick, draw=mypurple]
+        ($(sh1.south west) + (\R, 0)$) arc(270:180:\R) --
+        ($(sh1.north west) + (0, -\R)$) arc(180:90:\R) --
+        ($(sh1.north east) + (-\R, 0)$) arc(90:0:\R) --
+        ($(sh1.south east) + (0, \R)$) arc(0:-90:\R) --
+        cycle;
     \end{pgfonlayer}
     \drawbox{set0}{$\mathrm{Set}$}{(objs-set0) (set1) (eff1) (sh1)}{}
   \end{tikzpicture}
@@ -248,7 +255,7 @@ heavens of all other toposes, all embedded in a second-order heaven.
 \item To some extent, the mathematical landscape depends on the commonly agreed-upon rules of
 mathematics. These are not entirely absolute; for instance, it is conceivable
 that from the foundational crisis Brouwer's intuitionism would have emerged as
-the main school of thought and we would now all reject the law of excluded
+the main school of thought and that we would now all reject the law of excluded
 middle. Toposes allow us to explore alternatives to how history
 has played out.
 \item Mathematics is not only about studying mathematical objects, but also
@@ -257,7 +264,8 @@ on mathematical objects provided by any topos uncovers relations which
 otherwise remain hidden.\footnote{Olivia Caramello's research
 program~\cite{caramello:tst} provides a further topos-theoretic way for
 uncovering hidden relations, though not between objects but between mathematical
-theories.}
+theories. \textbf{\textcolor{red}{NOTE TO EDITOR: Insert cross reference to Olivia's chapter of
+this book.}}}
 \item In some cases, a mathematical relation can be expressed quite succinctly
 using the language of a specific topos and not so succinctly using the language
 of the standard topos. This phenomenon showcases the importance of
@@ -347,6 +355,13 @@ universe of a topos. In the special case of the standard topos~$\Set$, the
 definition of~``$\Set \models \varphi$'' unfolds to~$\varphi$ for any
 statement~$\varphi$. Hence a statement holds in the standard topos if and only
 if it holds in the usual mathematical sense.
+
+% FUTURE:
+% \begin{rem}It might be helpful to picture mathematicians in a topos~$\E$. For
+% exchanging ideas, they use the same mathematical language like we do, but their
+% mathematical results seem unfamiliar or even wrong to us. Only when we remember
+% to switch on the Kripke--Joyal translation engine their claims start making
+% sense.\end{rem}
 
 
 \subsection{The logic of toposes}\label{sect:logic-of-toposes}
@@ -664,7 +679,7 @@ In this sense the construction which yields the \effective topos is
 \emph{idempotent}~\cite[Section~3.8.3]{oosten:realizability}.
 
 \begin{rem}The picture of a topos-theoretic multiverse is related to Hamkin's
-multiverse view in set theory~\ref{hamkins:multiverse}. In fact, the
+multiverse view in set theory~\cite{hamkins:multiverse}. In fact, the
 topos-theoretic multiverse can be regarded as an extension of the set-theoretic
 multiverse: While Hamkins proposes to embrace all models of set theory (not
 necessarily all of them not equally), we propose to embrace all toposes (again
@@ -1653,7 +1668,7 @@ One can always mechanically eliminate the topos machinery from such a proof, by
 translating all intermediate statements following the Kripke--Joyal translation
 rules and unwinding the constructive soundness proof of
 Theorem~\ref{thm:reasoning}. This unwinding typically turns transparent
-internal proofs into complex external proofs -- proofs which one may not have
+internal proofs into complex external proofs -- proofs which one might not have
 found without the problem-adapted internal language provided by a
 custom-tailored topos.
 
@@ -1667,10 +1682,9 @@ custom-tailored topos.
 
 Stuff that should be mentioned:
 
-* XXX phone call analogy
 FUTURE: quick overview of the several aspects of toposes (maybe at the end, as an outlook?)
 FUTURE: use the phrase "very rich and very deep" (or similarly) about set theory
-* XXX A topos is more than its semantics
+FUTURE: A topos is more than its semantics
 FUTURE: Check references everywhere (give good pointers)
 
 Send to Georg.

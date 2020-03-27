@@ -1,0 +1,344 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Theorem %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{ws-rv-thm}[2014/01/20 WSPC Theorem Style]
+%
+\newif\if@onethmnum
+\DeclareOption{onethmnum}{\@onethmnumtrue}
+\ProcessOptions
+%
+\def\@xthm#1#2{\@begintheorem{#2}{\csname the#1\endcsname}{}\ignorespaces}
+\def\@ythm#1#2[#3]{\@opargbegintheorem{#2}{\csname the#1\endcsname}{#3}\ignorespaces}
+\def\@opargbegintheorem#1#2#3{\trivlist
+      \item[\hskip \labelsep{\bfseries #1\ #2\ (#3).}]\csname#1font\endcsname}
+%
+\let\Algorithmfont\upshape
+\let\Answerfont\upshape
+\let\Assertionfont\upshape
+\let\Assumptionfont\upshape
+\let\Casefont\upshape
+\let\Commentfont\upshape
+\let\Conditionfont\upshape
+\let\Conventionfont\upshape
+\let\Criterionfont\upshape
+\let\Definitionfont\upshape
+\let\Notationfont\upshape
+\let\Notefont\upshape
+\let\Remarkfont\upshape
+\let\Examplefont\upshape
+\let\Propfont\upshape
+\let\Observationfont\upshape
+\let\Solutionfont\upshape
+\let\Stepfont\upshape
+\let\Summaryfont\upshape
+\let\Claimfont\itshape
+\let\Conjecturefont\itshape
+\let\Corollaryfont\itshape
+\let\Lemmafont\itshape
+\let\Theoremfont\itshape
+\let\Problemfont\itshape
+\let\Propositionfont\itshape
+\let\Questionfont\itshape
+%
+\let\Algorithmheadfont\bfseries
+\let\Answerheadfont\bfseries
+\let\Assertionheadfont\bfseries
+\let\Assumptionheadfont\bfseries
+\let\Caseheadfont\bfseries
+\let\Claimheadfont\bfseries
+\let\Commentheadfont\bfseries
+\let\Conditionheadfont\bfseries
+\let\Conjectureheadfont\bfseries
+\let\Conventionheadfont\bfseries
+\let\Corollaryheadfont\bfseries
+\let\Criterionheadfont\bfseries
+\let\Definitionheadfont\bfseries
+\let\Exampleheadfont\bfseries
+\let\Lemmaheadfont\bfseries
+\let\Notationheadfont\bfseries
+\let\Noteheadfont\bfseries
+\let\Observationheadfont\bfseries
+\let\Problemheadfont\bfseries
+\let\Propheadfont\bfseries
+\let\Propositionheadfont\bfseries
+\let\Questionheadfont\bfseries
+\let\Remarkheadfont\bfseries
+\let\Solutionheadfont\bfseries
+\let\Stepheadfont\bfseries
+\let\Summaryheadfont\bfseries
+\let\Theoremheadfont\bfseries
+%
+\def\@begintheorem#1#2#3{\par\addvspace{8pt plus3pt minus2pt}%
+              \noindent{\csname#1headfont\endcsname#1\ \ignorespaces#3 #2.}%
+              \csname#1font\endcsname\hskip.4em\ignorespaces}
+\def\@endtheorem{\par\addvspace{8pt plus3pt minus2pt}\@endparenv}
+%
+\def\inpthm{
+        \newtheorem{algorithm}{Algorithm}
+        \newtheorem{assertion}{Assertion}
+        \newtheorem{assumption}{Assumption}
+        \newtheorem{claim}{Claim}
+        \newtheorem{conjecture}{Conjecture}
+        \newtheorem{convention}{Convention}
+        \newtheorem{corollary}{Corollary}
+        \newtheorem{criterion}{Criterion}
+        \newtheorem{definition}{Definition}
+        \newtheorem{example}{Example}
+        \newtheorem{lemma}{Lemma}
+        \newtheorem{notation}{Notation}
+        \newtheorem{observation}{Observation}
+        \newtheorem{problem}{Problem}
+        \newtheorem{prop}{Prop}
+        \newtheorem{proposition}{Proposition}
+        \newtheorem{question}{Question}
+        \newtheorem{remark}{Remark}
+        }
+
+\def\indthm{
+        \newtheorem{algorithm}[theorem]{Algorithm}
+        \newtheorem{assertion}[theorem]{Assertion}
+        \newtheorem{assumption}[theorem]{Assumption}
+        \newtheorem{claim}[theorem]{Claim}
+        \newtheorem{conjecture}[theorem]{Conjecture}
+        \newtheorem{convention}[theorem]{Convention}
+        \newtheorem{corollary}[theorem]{Corollary}
+        \newtheorem{criterion}[theorem]{Criterion}
+        \newtheorem{definition}[theorem]{Definition}
+        \newtheorem{example}[theorem]{Example}
+        \newtheorem{lemma}[theorem]{Lemma}
+        \newtheorem{notation}[theorem]{Notation}
+        \newtheorem{observation}[theorem]{Observation}
+        \newtheorem{problem}[theorem]{Problem}
+        \newtheorem{prop}[theorem]{Prop}
+        \newtheorem{proposition}[theorem]{Proposition}
+        \newtheorem{question}[theorem]{Question}
+        \newtheorem{remark}[theorem]{Remark}
+        }
+
+\def\thmchap{
+        \newtheorem{algorithm}{Algorithm}[chapter]
+        \newtheorem{assertion}{Assertion}[chapter]
+        \newtheorem{assumption}{Assumption}[chapter]
+        \newtheorem{claim}{Claim}[chapter]
+        \newtheorem{conjecture}{Conjecture}[chapter]
+        \newtheorem{convention}{Convention}[chapter]
+        \newtheorem{corollary}{Corollary}[chapter]
+        \newtheorem{criterion}{Criterion}[chapter]
+        \newtheorem{definition}{Definition}[chapter]
+        \newtheorem{example}{Example}[chapter]
+        \newtheorem{lemma}{Lemma}[chapter]
+        \newtheorem{notation}{Notation}[chapter]
+        \newtheorem{observation}{Observation}[chapter]
+        \newtheorem{problem}{Problem}[chapter]
+        \newtheorem{prop}{Prop}[chapter]
+        \newtheorem{proposition}{Proposition}[chapter]
+        \newtheorem{question}{Question}[chapter]
+        \newtheorem{remark}{Remark}[chapter]
+        }
+%
+
+\if@addchapnum
+   \newtheorem{theorem}{Theorem}[chapter]
+    \if@onethmnum
+        \indthm
+        \def\deftheorem#1#2{\newtheorem{#1}[theorem]{#2}}
+    \else
+        \thmchap
+        \def\deftheorem#1#2{\newtheorem{#1}{#2}[chapter]}
+    \fi
+\else
+    \newtheorem{theorem}{Theorem}
+    \if@onethmnum
+        \indthm
+        \def\deftheorem#1#2{\newtheorem{#1}[theorem]{#2}\expandafter\renewcommand\csname the#1\endcsname{\arabic{#1}}}
+    \else
+        \inpthm
+        \def\deftheorem#1#2{\newtheorem{#1}{#2}[chapter]\expandafter\renewcommand\csname the#1\endcsname{\arabic{#1}}}
+    \fi
+\fi
+%
+\newenvironment{answer}[1][Answer]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1.}]}{\end{trivlist}}
+%
+\newenvironment{case}[1][Case]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1.}]}{\end{trivlist}}
+%
+\newenvironment{comment}[1][Comment]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1.}]}{\end{trivlist}}
+%
+\newenvironment{note}[1][Note]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1.}]}{\end{trivlist}}
+%
+\newenvironment{solution}[1][Solution]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1.}]}{\end{trivlist}}
+%
+\newenvironment{step}[1][Step]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1.}]}{\end{trivlist}}
+%
+\newenvironment{summary}[1][Summary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1.}]}{\end{trivlist}}
+%
+\DeclareRobustCommand{\qed}{%
+  \ifmmode \mathqed
+  \else
+    \leavevmode\unskip\penalty9999 \hbox{}\nobreak\hfill
+    \quad\hbox{\qedsymbol}%
+  \fi
+}
+\let\QED@stack\@empty
+\let\qed@elt\relax
+\newcommand{\pushQED}[1]{%
+  \toks@{\qed@elt{#1}}\@temptokena\expandafter{\QED@stack}%
+  \xdef\QED@stack{\the\toks@\the\@temptokena}%
+}
+\newcommand{\popQED}{%
+  \begingroup\let\qed@elt\popQED@elt \QED@stack\relax\relax\endgroup
+}
+\def\popQED@elt#1#2\relax{#1\gdef\QED@stack{#2}}
+\newcommand{\qedhere}{%
+  \begingroup \let\mathqed\math@qedhere
+    \let\qed@elt\setQED@elt \QED@stack\relax\relax \endgroup
+}
+\newif\ifmeasuring@
+\newif\iffirstchoice@ \firstchoice@true
+\def\setQED@elt#1#2\relax{%
+  \ifmeasuring@
+  \else \iffirstchoice@ \gdef\QED@stack{\qed@elt{}#2}\fi
+  \fi
+  #1%
+}
+\def\qed@warning{%
+  \PackageWarning{amsthm}{The \@nx\qedhere command may not work
+    correctly here}%
+}
+\newcommand{\mathqed}{\quad\hbox{\qedsymbol}}
+\def\linebox@qed{\hfil\hbox{\qedsymbol}\hfilneg}
+\@ifpackageloaded{amsmath}{%
+  \def\math@qedhere{%
+    \@ifundefined{\@currenvir @qed}{%
+      \qed@warning\quad\hbox{\qedsymbol}%
+    }{%
+      \@xp\aftergroup\csname\@currenvir @qed\endcsname
+    }%
+  }
+  \def\displaymath@qed{%
+    \relax
+    \ifmmode
+      \ifinner \aftergroup\linebox@qed
+      \else
+        \eqno
+        \let\eqno\relax \let\leqno\relax \let\veqno\relax
+        \hbox{\qedsymbol}%
+      \fi
+    \else
+       \aftergroup\linebox@qed
+    \fi
+  }
+  \@xp\let\csname equation*@qed\endcsname\displaymath@qed
+  \def\equation@qed{%
+    \iftagsleft@
+      \hbox{\phantom{\quad\qedsymbol}}%
+      \gdef\alt@tag{%
+        \rlap{\hbox to\displaywidth{\hfil\qedsymbol}}%
+        \global\let\alt@tag\@empty
+      }%
+    \else
+      \gdef\alt@tag{%
+        \global\let\alt@tag\@empty
+        \vtop{\ialign{\hfil####\cr
+                \tagform@\theequation\cr
+                \qedsymbol\cr}}%
+        \setbox\z@
+      }%
+    \fi
+  }
+  \def\qed@tag{%
+    \global\tag@true \nonumber
+    &\omit\setboxz@h {\strut@ \qedsymbol}\tagsleft@false
+    \place@tag@gather
+    \kern-\tabskip
+    \ifst@rred \else \global\@eqnswtrue \fi \global\advance\row@\@ne \cr
+  }
+  \def\split@qed{%
+    \def\endsplit{\crcr\egroup \egroup \ctagsplit@false \rendsplit@
+      \aftergroup\align@qed
+    }%
+  }
+  \def\align@qed{%
+    \ifmeasuring@ \tag*{\qedsymbol}%
+    \else \let\math@cr@@@\qed@tag
+    \fi
+  }
+  \@xp\let\csname align*@qed\endcsname\align@qed
+  \@xp\let\csname gather*@qed\endcsname\align@qed
+%% Needs some patching up for amsmath 1.2
+}{% end of amsmath branch, start plain LaTeX branch
+  \def\math@qedhere{%
+    \@ifundefined{\@currenvir @qed}{%
+      \qed@warning \aftergroup\displaymath@qed
+    }{%
+      \@xp\aftergroup\csname\@currenvir @qed\endcsname
+    }%
+  }
+  \def\displaymath@qed{%
+    \relax
+    \ifmmode
+      \ifinner \aftergroup\aftergroup\aftergroup\linebox@qed
+      \else
+        \eqno \def\@badmath{$$}%
+        \let\eqno\relax \let\leqno\relax \let\veqno\relax
+        \hbox{\qedsymbol}%
+      \fi
+    \else
+       \aftergroup\linebox@qed
+    \fi
+  }
+  \@ifundefined{ver@leqno.clo}{%
+    \def\equation@qed{\displaymath@qed \quad}%
+  }{%
+    \def\equation@qed{\displaymath@qed}%
+  }
+  \def\@tempa#1$#2#3\@nil{%
+    \def\[{#1$#2\def\@currenvir{displaymath}#3}%
+  }%
+  \expandafter\@tempa\[\@nil
+}
+\@ifpackageloaded{amstex}{%
+  \def\@tempa{TT}%
+}{%
+  \@ifpackageloaded{amsmath}{%
+    \def\@tempb#1 v#2.#3\@nil{#2}%
+    \ifnum\@xp\@xp\@xp\@tempb\csname ver@amsmath.sty\endcsname v0.0\@nil
+       <\tw@
+      \def\@tempa{TT}%
+    \else
+      \def\@tempa{TF}%
+    \fi
+  }{%
+    \def\@tempa{TF}
+  }%
+}
+\if\@tempa
+  \renewcommand{\math@qedhere}{\quad\hbox{\qedsymbol}}%
+\fi
+\newcommand{\openbox}{\leavevmode
+  \hbox to.77778em{%
+  \hfil\vrule
+  \vbox to.675em{\hrule width.6em\vfil\hrule}%
+  \vrule\hfil}}
+\DeclareRobustCommand{\textsquare}{%
+  \begingroup \usefont{U}{msa}{m}{n}\thr@@\endgroup
+}
+\providecommand{\qedsymbol}{\openbox}
+\newenvironment{proof}[1][\proofname]{\par
+  \pushQED{\qed}%
+  \normalfont \topsep6\p@\@plus6\p@\relax
+  \trivlist
+  \item[\hskip\labelsep
+        \bf
+    #1\@addpunct{.}]\ignorespaces
+}{%
+  \popQED\endtrivlist\@endpefalse
+}
+\providecommand{\proofname}{Proof}
+\endinput

@@ -1096,7 +1096,39 @@ The realizability topos given by infinite-time Turing machines provides an intri
 mathematical intuitions shaped by classical logic. For instance, while from the
 point of view of this topos the reals are still uncountable in the sense that
 there is no surjection~$\NN \to \RR$, there is an injection~$\RR \to
-\NN$~\cite{bauer:injection}.
+\NN$~\cite{bauer:injection}.\footnote{What the realizability topos
+given by infinite-time Turing machines believes to be a real number is, from
+the external point of view, an infinite-time Turing machine~$X$ which outputs,
+when called with a natural number~$n$ as input, a rational
+approximation~$X(n)$. As with the original \effective topos, these
+approximations have to be consistent in the sense that~$|X(n) - X(m)| \leq
+2^{-n} + 2^{-m}$, and two such machines~$X, X'$ represent the same real
+iff~$|X(n) - X'(m)| \leq 2^{-n} + 2^{-m}$ for all natural numbers~$n,m$.
+
+A map~$\RR \to \NN$ in this topos is hence given by an infinite-time
+Turing machine~$M$ which, when given the description of such an infinite-time
+Turing machine~$X$ as input, outputs a certain natural number~$M(X)$. If~$X$
+and~$X'$ represent the same real, then~$M(X)$ has to coincide with~$M(X')$.
+This map~$\RR \to \NN$ is injective iff conversely,~$M(X) = M(X')$ implies
+that~$X$ and~$X'$ represent the same real.
+
+We can program such a machine~$M$ as follows: Read the description of an
+infinite-time Turing machine~$X$ representing a real number as input. Then
+simulate, in a dovetailing fashion, all infinite-time Turing machines and
+compare their outputs with the outputs of~$X$. As soon as a machine~$X'$ is
+found which happens to terminate on all inputs in such a way that~$|X(n) -
+X'(m)| \leq 2^{-n} + 2^{-m}$ for all natural numbers~$n,m$, output the number
+of this machine (in the chosen enumeration of all infinite-time Turing
+machines) and halt.
+
+The number~$M(X)$ computed by~$M$ depends on the input/output behaviour of~$X$,
+the chosen order of infinite-time Turing machines, and on details of the
+interleaving simulation and comparison procedure -- but it does not depend on
+the implementation of~$X$ or on its specific choice of rational
+approximations~$X(n)$. The search terminates since there is at least one
+infinite-time Turing machine which represents the same real number as~$X$ does,
+namely~$X$ itself.}
+
 
 \bigskip
 \paragraph{Machines of the physical world} A second variant of the

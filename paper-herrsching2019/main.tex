@@ -1,9 +1,65 @@
 \documentclass{ws-rv9x6}
-\usepackage{ws-rv-thm}
+\usepackage[onethmnum]{ws-rv-thm}
 \usepackage{ws-rv-van}
+\usepackage{mathtools,stmaryrd}
 \makeindex
 %\newindex{aindx}{adx}{and}{Author Index}       % author index
 %\renewindex{default}{idx}{ind}{Subject Index}  % subject index
+
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\M}{\mathcal{M}}
+\renewcommand{\AA}{\mathbb{A}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\G}{\mathcal{G}}
+\newcommand{\J}{\mathcal{J}}
+\newcommand{\GG}{\mathbb{G}}
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\K}{\mathcal{K}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\TT}{\mathbb{T}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\CC}{\mathbb{C}}
+\renewcommand{\P}{\mathcal{P}}
+\newcommand{\aaa}{\mathfrak{a}}
+\newcommand{\ppp}{\mathfrak{p}}
+\newcommand{\fff}{\mathfrak{f}}
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\defeqv}{\vcentcolon\equiv}
+\newcommand{\Sh}{\mathrm{Sh}}
+\newcommand{\GL}{\mathrm{GL}}
+\newcommand{\Zar}{\mathrm{Zar}}
+\newcommand{\op}{\mathrm{op}}
+\newcommand{\Set}{\mathrm{Set}}
+\newcommand{\Eff}{\mathrm{Ef{}f}}
+\newcommand{\Sch}{\mathrm{Sch}}
+\newcommand{\Aff}{\mathrm{Aff}}
+\newcommand{\Ring}{\mathrm{Ring}}
+\newcommand{\LocRing}{\mathrm{LocRing}}
+\newcommand{\LRS}{\mathrm{LRS}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\Spec}{\mathrm{Spec}}
+\newcommand{\Gal}{\mathrm{Gal}}
+\newcommand{\lra}{\longrightarrow}
+\newcommand{\RelSpec}{\operatorname{Spec}}
+\renewcommand{\_}{\mathpunct{.}}
+\newcommand{\?}{\,{:}\,}
+\newcommand{\speak}[1]{\ulcorner\text{\textnormal{#1}}\urcorner}
+\newcommand{\ul}[1]{\underline{#1}}
+\newcommand{\affl}{\ensuremath{{\ul{\ensuremath{\AA}}^1}}}
+\newcommand{\Ll}{\text{iff}}
+\newcommand{\inv}{inv.\@}
+\newcommand{\seq}[1]{\mathrel{\vdash\!\!\!_{#1}}}
+\newcommand{\hg}{\mathbin{:}}  % homogeneous coordinates
+\newcommand{\brak}[1]{{\llbracket{#1}\rrbracket}}
+\newcommand{\pt}{\mathrm{pt}}
+\newcommand{\Loc}{\mathrm{Loc}}
+\newcommand{\Top}{\mathrm{Top}}
 
 \begin{document}
 
@@ -18,17 +74,323 @@ Universitätsstr. 14 \\
 86159 Augsburg, Germany}
 
 \begin{abstract}
-foo
+XXX
 \end{abstract}
-%\markright{Customized Running Head for Odd Page} % default is Chapter Title.
 \body
 
 %\tableofcontents
 
 \section{Locales}
 
+The notion of \emph{space} is fundamental to large parts of mathematics. It
+exists in various flavors, ranging from the basic cartesian spaces~$\RR^n$ to
+the more general metric and topological spaces and also including several more
+and slightly exotic flavors such as the diffeological spaces of differential topology.
+
+Common to all of the mentioned flavors of space is that \emph{points are their
+building blocks}: Cartesian, metric, topological and diffeological spaces are,
+first and foremost, sets of points. Their spatial structure -- a metric, a
+topology or a diffeology -- is additional data to the underlying set:
+
+\begin{definition}A \emph{metric space} consists of a set~$X$ of points
+together with a metric~$d : X \times X \to \RR_{\geq 0}$ satisfying the metric
+axioms. \end{definition}
+
+\begin{definition}A \emph{topological space} consists of a set~$X$ of points
+together with a set~$\O(X) \subseteq \P(X)$ of point sets which are deemed
+\emph{open} such that (arbitrary, set-indexed) unions and finite intersections
+of open sets are open.
+\end{definition}
+
+Locales are a further and particularly unique flavor of the notion of space
+which turn this classical picture upside down: Locales embrace \emph{opens
+instead of points as primitive building blocks}. With locales, points are a
+derived concept. In particular, the opens of a locale are not sets of points;
+in fact, they needn't be sets of anything in peculiar.
+
+The formal definition of a locale will be given below as
+Definition~\ref{defn:locale}, but before we will review examples and comment on
+the relevance of locales to constructive mathematics.
+
+
+\subsection{Spaces without points}
+\label{sect:examples-no-points}
+
+A metric or topological space without any points is not very interesting: It is
+empty, and up to isomorphism there is only one such space. In contrast, a
+locale can be nontrivial even if it does not contain any points. This
+phenomenon is one instance of the general guiding principle that relinquishing
+points increases flexibility.
+
+\paragraph{The locale of surjections~$\NN \twoheadrightarrow \RR$.} As is
+well-known, there are no surjections from~$\NN$ to~$\RR$.\footnote{More
+precisely, it is a theorem of classical mathematics that the reals are
+uncountable in the sense of admitting no surjection from the naturals. The
+situation is more subtle in constructive mathematics. Firstly, in the absence
+of countable choice, the reals bifurcate into several distinct flavors, hence
+one needs to state which flavor of the reals one is referring to. Secondly, all
+known proofs of the uncountability of the Cauchy and the Dedekind reals assume
+either the law of excluded middle or the axiom of countable choice. In the
+absence of either of these axioms, only the MacNeille reals are known to be
+uncountable~\cite{blechschmidt-hutzler:macneille}.} Hence there is no
+interesting topological space of those surjections. However, there is a
+well-defined and nontrivial locale~$X$ of those surjections.
+
+The points of~$X$ are in canonical one-to-one correspondence with the
+surjections~$\NN \twoheadrightarrow \RR$, hence~$X$ does not have any points.
+But this locale does have uncountably many basic opens~$U_{n,x}$, where~$n$
+ranges over the naturals and~$x$ ranges over the reals. We picture~$U_{n,x}$ as
+the open of those surjections~$f$ for which~$f(n) = x$, we can compute with
+these opens and consider functions on~$X$. For instance:
+\begin{enumerate}
+\item If~$x \neq y$, then the intersection of~$U_{n,x}$ with~$U_{n,y}$
+is truly empty.
+\item The union of the~$U_{n,x}$, where~$x$ is a fixed real
+number and~$n$ ranges over the naturals, is all of~$X$. No finite number
+of these opens covers~$X$, hence~$X$ is not compact.
+\item For any real~$x$, there is a well-defined continuous function from~$X$ to
+(the localic version of) the naturals which, on the level of points, would map
+a surjection~$f : \NN \to \RR$ to the smallest preimage of~$x$.
+\item There is a well-defined continuous function from~$X$ to (the localic
+version of) the reals which, on the level of points, would map a surjection~$f$
+to the number~$\sum_{n=0}^\infty 2^{-n} \arctan(f(n))$. Unlike the previous
+example, this function is not locally constant.
+\item\label{item:intersection-sublocales} The locale~$X$ is a sublocale of the
+locale~$Y$ of arbitrary functions~$\NN \to \RR$ (which can also be realized as
+a topological space). It can be obtained as the intersection of the uncountably
+many sublocales~$Y_x$, where~$Y_x$ is the sublocale of~$Y$ consisting of those
+functions which hit the real~$x$.
+\item A certain sublocale of~$X$, the locale~$X'$ of those functions~$\NN \to
+\RR$ for which any real has infinitely many preimages, has a fractal nature: It
+is covered by the~$U_{0,x}$, where~$x$ ranges over the reals; the pairwise
+intersection of these opens is (truly) empty; and they are each isomorphic
+to~$X'$ -- on the level of points, by mapping a surjection~$f$ in~$U_{0,x}$ to
+the surjection~$(n \mapsto f(n+1))$.
+\end{enumerate}
+
+There is nothing special about the real numbers which makes this example work;
+in fact, the example works just as well with any set~$M$ in place of the reals.
+For any set~$M$, there is a locale of surjections~$\NN \twoheadrightarrow M$,
+and this locale is trivial (isomorphic to the empty locale) if and only if~$M$
+is empty. Locales of these kind are used as an important reduction step in the
+extension of Grothendieck's Galois theory by Joyal and
+Tierney~\cite[Section~V.3]{joyal-tierney:galois-theory}.
+
+
+\paragraph{Intersection of dense sublocales.} In ordinary topology, the
+intersection of dense subspaces need not be dense. A simple example is the
+intersection of~$\QQ$ with its complement in~$\RR$. In contrast, the
+intersection of (even an arbitrary set of) dense sublocales is always again
+dense -- even if the intersection might well have no points.
+
+For instance, the locale-theoretic intersection of (the localic version
+of)~$\QQ$ with its complement does not have any points and is dense in (the
+localic version of) the reals. Intuitively, while these two sublocales do not
+have any points in common, there still is nontrivial ``localic glue''.
+
+% This basic fact about locale-theoretic denseness illustrates a more general
+% phenomenon of locales: Locales tend to enjoy better formal properties.
+
+Another example is given by item~(\ref{item:intersection-sublocales}) above:
+Each of the sublocales~$Y_x$ is dense in~$Y$, hence their intersection~$X$ is
+so as well.
+
+
+\paragraph{The Banach--Tarski paradox.} The Banach--Tarski paradox is the
+unintuitive statement that a three-dimensional solid ball in~$\RR^3$ of
+radius~$r$ can be partitioned into six disjoint subsets in such a way that
+rearranging those subsets using only euclidean motions yields two disjoint
+solid balls of radius~$r$ each. The axiom of choice is required to construct
+these subsets, and the Banach--Tarski paradox is not in
+contradiction with the basic properties of the (Lebesgue) measure in~$\RR^3$
+because these intermediate subsets are not measurable.
+
+The traditional way to avoid the Banach--Tarski paradox is to adopt the
+\emph{axiom of determinacy} instead of the axiom of choice. Just as the axiom
+of choice posits that a certain property of the finite domain also holds for the
+infinite, the axiom of determinacy is a certain statement whose finitary
+analogue is provable in unadorned Zermelo--Fraenkel set theory. It entails that
+all subsets of~$\RR^n$ are measurable.
+
+The Banach--Tarski paradox can also be avoided by adopting a localic point of
+view: While the localic counterparts of the six pieces do not have any points
+in common, the locale-theoretic pairwise intersections are still nontrivial.
+Hence one would not expect the rearrangement of these sublocales to have the
+same volume as the original solid ball. [XXX: give reference]
+
+
+\paragraph{Random sequences.} XXX
+
+
+\subsection{Constructive concerns}
+
+By relinquishing points, locales provide a more flexible notion of space.
+Section~\ref{sect:examples-no-points} illustrates[XXX:word] this observation
+with several examples of nontrivial locales without any points. Constructive
+mathematics gives a further, orthogonal motivation to study locales: There are
+situations in which the relevant spaces do have enough points, but only if one
+subscribes to the axiom of choice or similar non-constructive principles. In
+these situations, the pointfree approach allowed by locales can help to give
+constructive versions of classical results.
+
+XXX ideal objects
+
+
+\paragraph{Compactness of the unit interval.} The unit interval, when realized
+as a topological space, can fail to be be compact in constructive
+mathematics. For instance, it fails in the Russian school because the Kleene
+tree provides a computable open covering of~$[0,1]$ with no computable finite
+subcovering [XXX: reference].
+
+In contrast, the localic version of the unit interval is always compact. The
+proof is by an explicit computation with its basic opens. [XXX: reference]
+
+
+\paragraph{Galois theory.} Let~$L|k$ be a Galois extension. The
+fundamental theorem of Galois theory states that there is a bijection between
+the intermediate extensions~$L|E|k$ and the closed subgroups of the topological
+Galois group~$\Gal(L|k)$. The bijection maps an intermediate extension~$L|E|k$
+to the subgroup~$\Gal(L|E)$ and its inverse maps a closed subgroup~$H \subseteq
+\Gal(L|k)$ to the intermediate extension~$L^H$.
+
+Much of the proof of the fundamental theorem of Galois theory is constructive,
+but some parts use the law of excluded middle and Zorn's lemma in order to
+construct certain extensions of given field homomorphisms.\footnote{For
+instace, the statement~$E \subseteq L^{\Gal(L|E)}$ is trivial. For the converse
+inclusion, let~$x \in L^{\Gal(L|E)}$. Assume for the sake of contradiction
+that~$x \not\in E$. Using Zorn's lemma and the law of excluded middle, we find
+a homomorphism~$\sigma : L \to L$ with~$\sigma|_E = \operatorname{id}$
+and~$\sigma(x) \neq x$. This is a contradiction to~$x \in L^{\Gal(L|E)}$.}
+As a consequence, the fundamental theorem of Galois theory is not provable in
+constructive mathematics.
+
+However, this failure is not for fundamental Galois-theoretic reasons, but because of an
+unfortunate choice in the definitions. There is a notion of a localic group (a
+locale~$G$ equipped with continuous maps~$G \times G \xrightarrow{\circ} G$, $G
+\xrightarrow{(\cdot)^{-1}} G$, $1 \xrightarrow{e} G$ satisfying the group
+axioms), and the topological Galois group has a localic counterpart. The
+fundamental theorem can be reformulated to refer to this localic Galois group,
+and the proof of this reformulation is entirely constructive.
+[XXX: references]
+
+If one is so inclined, then one can obtain the topological version of the
+fundamental theorem as a corollary of the localic version; the required
+non-constructive principles for this step are neatly packaged up in the study
+of the relation of the localic Galois group with the topological one.
+
+\begin{remark}Incidentally, the fundamental theorem of Galois theory also
+showcases a related general phenomenon, namely that classical mathematics
+allows to push back topological concerns for longer than in constructive
+mathematics, whereas in constructive mathematics we have to embrace topology
+(in a sufficiently pointfree form such as locales) from the beginning.
+
+To be more specific, classically, the basic version of the fundamental theorem
+(intermediate extensions correspond to subgroups) only holds for finite Galois
+extensions. For infinite Galois extensions, we have to restrict to
+\emph{closed} subgroups. Constructively, the basic version cannot even be shown
+for finite extensions; we have to employ spatial language even for those, or
+else settle for a discrete version of the fundamental theorem: For finite field
+extensions, finite intermediate extensions correspond to finite subgroups.
+Classically, intermediate extensions of finite extensions and subgroups of
+finite groups are automatically finite, but constructively this can fail.
+\end{remark}
+
+
+\paragraph{Gelfand duality} XXX
+
+
+\subsection{The basics of the theory of locales}
+
+The starting point to arrive at the definition of a locale is the following
+fundamental observation: The partial order~$\O(X)$ of open subsets of a topological
+space~$X$ has
+\[ \begin{array}{@{}ccc@{}}
+\text{arbitrary joins}
+&\text{and}&
+\text{finite meets}, \\
+\bigvee && \wedge
+\end{array} \]
+and finite meets distribute over arbitrary joins:
+\[ U \wedge \bigvee_i V_i = \bigvee_i (U \wedge V_i). \]
+
+This observation motivates the following definition. [XXX: which abstracts...]
+\begin{definition}A \emph{frame} is a partial order with (arbitrary,
+set-indexed) joins and finite meets such that the distributive law
+holds. A \emph{frame homomorphism~$\alpha : A \to A'$} is a monotone map~$A
+\to A'$ which preserves arbitrary joins and finite meets.\end{definition}
+
+The notion of a frame is (infinitarily) algebraic. To obtain a geometric
+notion, we ``reverse the direction of the arrows'':
+
+\begin{definition}\label{defn:locale}
+A \emph{locale}~$X$ is given by a frame~$\O(X)$, the ``frame
+of opens of~$X$''. A \emph{morphism~$f : X \to X'$ of locales} (or ``continuous
+map of locales'') is a frame homomorphism~$\O(X') \to \O(X)$.\end{definition}
+
+In place of the open sets of points, locales have arbitrary \emph{opens}, the
+elements of their underlying frame. The opens of locales behave similar to the
+open sets in topology in that arbitrary unions and finite intersections make
+sense; but unlike before, they need not be sets of points.
+
+Examples for locales include the following.
+\begin{enumerate}
+\item Any topological space~$Y$ induces a locale~$L(Y)$ by
+setting~$\O(L(Y)) \defeq \O(Y)$. A continuous map~$f : Y \to Y'$ of topological
+spaces induces the frame homomorphism~$\O(Y') \to \O(Y),\,U \mapsto f^{-1}[U]$
+in the other direction and hence a morphism~$L(Y) \to L(Y')$ of locales in the
+same direction.
+\item The \emph{one-point locale}~$\pt$ is the locale induced
+by the one-point topological space~$\{\star\}$. Its frame of opens is
+the powerset of~$\{\star\}$, also known as the set~$\Omega$ of truth
+values. Its least element is~$\bot = \emptyset$ and its largest element
+is~$\top = \{\star\}$, and potentially not all elements of~$\Omega$ are equal
+to of these two.
+\item The locale of surjections~$\NN \twoheadrightarrow \RR$ and the localic
+version of the reals of Section~\ref{sect:examples-no-points} are best
+constructed as \emph{classifying locales}, a notion to be introduced below.
+\end{enumerate}
+
+Points do not appear in the definition of a locale, but they can be defined as
+a derived concept:
+\begin{definition}A \emph{point} of a locale~$X$ is a locale morphism~$\pt \to
+X$.\end{definition}
+
+The underlying frame homomorphism~$\alpha : \O(X) \to \Omega$ of a point~$x$
+of~$X$ can be pictured as mapping each open of~$X$ to the truth value to which
+extent~$x$ belongs to~$U$. Symbolically, we write~$x \inplus u$ iff~$\alpha(u)
+= \top$.
+
+The point~$x$ is completely determined by the
+set~$\{ u \in \O(X) \,|\, \alpha(u) = \top \}$. This set is a \emph{completely
+prime filter}, that is a subset~$\fff \subseteq \O(X)$ which is upward-closed,
+closed under finite meets and for which~$\bigvee_i u_i \in \fff$ implies~$u_i
+\in \fff$ for some index~$i$; and conversely, any such completely prime filter
+gives rise to a point of~$X$.
+
+\begin{definition}A locale~$X$ is \emph{spatial} if and only if its points
+suffice to distinguish its opens, that is if for any opens~$u, v \in \O(X)$,
+if~$x \inplus u \Leftrightarrow x \inplus v$ for all points~$x$ of~$X$, then~$u =
+v$.\end{definition}
+
+For instance, any locale induced by a topological space is spatial. The locale
+of surjections~$\NN \to \RR$ is a drastic example of a locale which fails to be
+spatial, and the localic real line is spatial in classical mathematics and can
+fail to be spatial in constructive mathematics.
+
+\begin{remark}The set of points of a locale~$X$ can be made into a topological space, giving
+rise to a functor~$\pt : \Loc \to \Top$. This functor is right adjoint
+to the functor~$L : \Top \to \Loc$. A locale~$X$ is spatial iff the canonical
+morphism~$L(\pt(X)) \to X$ is an isomorphism, and a topological space~$Y$
+is \emph{sober} iff the canonical morphism~$Y \to \pt(L(Y))$ is a
+homeomorphism. The space~$\pt(L(Y))$ is the \emph{sobrification} of~$Y$; for
+instance, the sobrification of any inhabited indiscrete space is the one-point
+space.\end{remark}
+
+
 \section{Sheaf models}
 
 \section{Applications in constructive algebra}
 
 \end{document} 
+
+XXX cite https://apcz.umk.pl/czasopisma/index.php/LLP/article/viewFile/LLP.2013.009/732

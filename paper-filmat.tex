@@ -399,7 +399,7 @@ looks like the sign function
   1, & \text{if $x > 0$,}
 \end{cases} \]
 is an obvious counterexample to the statement ``any map~$\RR \to \RR$ is
-continuous''. However, closer inspection reveals that the sign function
+continuous''. However, a closer inspection reveals that the sign function
 cannot be proven to be a total function~$\RR \to \RR$ if only intuitionistic
 logic is available. The domain of the sign
 function is the subset~$\{ x \in \RR \,|\, x < 0 \vee x = 0 \vee x > 0 \}
@@ -937,7 +937,7 @@ point of view, a Turing machine~$X$ which outputs, when called with a natural
 number~$n$ as input, a rational approximation~$X(n)$. These approximations are
 required to be \emph{consistent} in the sense that~$|X(n) - X(m)|
 \leq 2^{-n} + 2^{-m}$. Intuitively, such a machine~$X$ denotes the real
-number~$\lim_{n \to \infty} X(n)$, and the approximations~$X(n)$ must be
+number~$\lim_{n \to \infty} X(n)$, and each approximation~$X(n)$ must be
 within~$2^{-n}$ of the limit.
 
 A function~$f : \RR \to \RR$ in the \effective topos is therefore given by a
@@ -971,7 +971,7 @@ Turing machine~$M$ which, when given the description of a Turing machine~$F$
 computing a function~$f : \NN \to \NN$ as input, outputs the description of a Turing
 machine~$S_F$ which, when given a witness of~``$\neg\neg \exists n\?\NN\_ f(n)
 = 0$'', outputs a witness of~``$\exists n\?\NN\_ f(n) = 0$'' (up to trivial
-conversions, a number~$n$ such that~$f(n) = 0$).
+conversions, this is a number~$n$ such that~$f(n) = 0$).
 
 By the translation rules listed in Table~\ref{table:eff}, a number~$e$
 realizes~``$\neg\neg \exists n\?\NN\_ f(n) = 0$'' if and only if it is
@@ -1222,7 +1222,7 @@ with the unique zero of~$a$ removed.
   each believes to be a single real number, where the base space~$X$ is the
   unit interval. (a) A positive real number. (b) A negative real number. (c) A
   number which is neither negative nor zero nor positive. Externally speaking,
-  there is no covering of the unit interval by open subsets on which the
+  there is no covering of the unit interval by opens on which the
   depicted function~$a$ is either everywhere negative, everywhere zero or everywhere
   positive.}
 \end{figure}
@@ -1232,7 +1232,7 @@ with the unique zero of~$a$ removed.
   \caption{\label{fig:ivt} A single member~$f_{x_0}$ of a continuous
   family~$(f_x)_{x \in X}$ of continuous functions~$f_x : \RR \to \RR$. The
   parameter space is~$X = [0,1]$ (not shown) and the other functions~$f_x$ are
-  obtained from~$f_{x_0}$ by moving the horizontal plateau further up or further
+  obtained from~$f_{x_0}$ by moving the horizontal plateau further up or
   down. The depicted member~$f_{x_0}$ has a unique
   zero and there is an open neighborhood~$U$ of~$x_0$ on which zeros of the
   functions~$f_x$, $x \in U$ can be picked continuously. However, there is no
@@ -1274,7 +1274,7 @@ that for any continuous family~$(f_x)_x$ of continuous functions with~$f_x(-1) <
 the family in a continuous fashion. Figure~\ref{fig:ivt} shows a counterexample
 to this claim.
 
-In contrast, the intermediate value theorem for monotone functions does have an
+In contrast, the intermediate value theorem for (strictly) monotone functions does have an
 intuitionistic proof and hence applies in the internal universe of~$\Sh(X)$.
 Thus for any continuous family~$(f_x)_x$ of continuous monotone functions
 with~$f_x(-1) < 0$ and~$f_x(1) > 0$ for all~$x \in X$, it is locally possible
@@ -1335,7 +1335,7 @@ definition precisely captures the intuition that a tangent vector is an
 infinitesimal curve.
 
 
-\subsection{Hyperreal numbers} There are several ways for introducing
+\subsection{Hyperreal numbers} There are several ways of introducing
 infinitesimals into rigorous mathematics. One is Robinson's \emph{nonstandard
 analysis}, where we enlarge the field~$\RR$ of real numbers to a
 field~$^\star\RR$ of \emph{hyperreal numbers} by means of a non-principal
@@ -1481,8 +1481,8 @@ For reference purposes only, we include the precise definition of the Zariski to
 \begin{defn}The \emph{Zariski topos of~$\RR$},~$\Zar(\RR)$, is a certain full subcategory of
 the category of functors from finitely presented~$\RR$-algebras to sets, namely of
 the Zariski sheaves. Such a functor is a \emph{Zariski sheaf} if and only if,
-for any covering~$(A[f_i^{-1}])_i$ of any finitely presented~$\RR$-algebra~$A$,
-the diagram
+for any covering~$(A[f_i^{-1}])_i$ of any finitely presented~$\RR$-algebra~$A$
+(this notion is defined in Table~\ref{table:zariski}), the diagram
 \[ F(A) \longrightarrow \prod_i F(A[f_i^{-1}]) \xbigtoto{} \prod_{j,k}
 F(A[(f_jf_k)^{-1}]) \]
 is a coequalizer diagram. The object~$\RR^\sim$ of~$\Zar(\RR)$ is the tautologous functor~$A \mapsto A$.
@@ -1537,13 +1537,14 @@ ${\qquad\qquad\qquad}$ for each
 index~$i$, there is an element~$y \in C_i$ with~$xy = 1$ in~$C_i$.
 \end{indentblock}
 And indeed, this statement is true. Let a stage~$A$ (a finitely
-presented~$\RR$-algebra) and an element~$x \in A$ which fulfills the stated
-condition be given. Let~$B$ be any later stage of~$A$ (any finitely
+presented~$\RR$-algebra) and an element~$x \in A$
+be given. Let~$B$ be any later stage of~$A$ (any finitely
 presented~$A$-algebra -- such an algebra is also finitely presented as
-an~$\RR$-algebra). Then~$x = 0$ holds in the refinement~$C \defeq B/(x)$.
+an~$\RR$-algebra). Assume that for any later stage~$C$ of~$B$ in which~$x = 0$
+holds also~$1 = 0$ holds. Trivially,~$x = 0$ holds in the particular refinement~$C \defeq B/(x)$.
 Hence~$1 = 0$ holds in~$C$. By elementary algebra, this means that~$x$ is
 invertible in~$B$. Hence the conclusion holds for the singleton covering
-of~$B$ by~$C_1 \defeq B$.
+of~$B$ given by~$C_1 \defeq B$.
 
 \begin{rem}The Zariski topos can also be set up with an arbitrary commutative
 ring~$S$ in place of~$\RR$. The resulting topos~$\Zar(S)$ contains a mirror

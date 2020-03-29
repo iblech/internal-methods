@@ -2,6 +2,16 @@
 \usepackage[onethmnum]{ws-rv-thm}
 \usepackage{ws-rv-van}
 \usepackage{mathtools,stmaryrd}
+
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\newcommand{\hcancel}[5]{%
+  \tikz[baseline=(tocancel.base)]{
+    \node[inner sep=0pt,outer sep=0pt] (tocancel) {#1};
+    \draw[red!80, line width=0.4mm] ($(tocancel.south west)+(#2,#3)$) -- ($(tocancel.north east)+(#4,#5)$);
+  }%
+}
+
 \makeindex
 %\newindex{aindx}{adx}{and}{Author Index}       % author index
 %\renewindex{default}{idx}{ind}{Subject Index}  % subject index
@@ -27,6 +37,7 @@
 \newcommand{\CC}{\mathbb{C}}
 \renewcommand{\P}{\mathcal{P}}
 \newcommand{\aaa}{\mathfrak{a}}
+\newcommand{\bbb}{\mathfrak{b}}
 \newcommand{\ppp}{\mathfrak{p}}
 \newcommand{\fff}{\mathfrak{f}}
 \newcommand{\defeq}{\vcentcolon=}
@@ -199,7 +210,7 @@ so as well.
 \paragraph{The Banach--Tarski paradox.} The Banach--Tarski paradox is the
 unintuitive statement that a three-dimensional solid ball in~$\RR^3$ of
 radius~$r$ can be partitioned into six disjoint subsets in such a way that
-rearranging those subsets using only euclidean motions yields two disjoint
+rearranging those subsets using only Euclidean motions yields two disjoint
 solid balls of radius~$r$ each. The axiom of choice is required to construct
 these subsets, and the Banach--Tarski paradox is not in
 contradiction with the basic properties of the (Lebesgue) measure in~$\RR^3$
@@ -235,7 +246,6 @@ constructive versions of classical results.
 
 XXX ideal objects
 
-
 \paragraph{Compactness of the unit interval.} The unit interval, when realized
 as a topological space, can fail to be be compact in constructive
 mathematics. For instance, it fails in the Russian school because the Kleene
@@ -245,6 +255,11 @@ subcovering [XXX: reference].
 In contrast, the localic version of the unit interval is always compact. The
 proof is by an explicit computation with its basic opens. [XXX: reference]
 
+More generally, Tychonoff's theorem that the product of any number of compact
+topological spaces is again compact is equivalent to the axiom of choice. Its
+localic counterpart, the statement that the product of any number of compact
+locales is again compact, can be verified without any nonconstructive
+principles. [XXX: reference]
 
 \paragraph{Galois theory.} Let~$L|k$ be a Galois extension. The
 fundamental theorem of Galois theory states that there is a bijection between
@@ -295,7 +310,6 @@ Classically, intermediate extensions of finite extensions and subgroups of
 finite groups are automatically finite, but constructively this can fail.
 \end{remark}
 
-
 \paragraph{Gelfand duality} XXX
 
 
@@ -319,8 +333,10 @@ set-indexed) joins and finite meets such that the distributive law
 holds. A \emph{frame homomorphism~$\alpha : A \to A'$} is a monotone map~$A
 \to A'$ which preserves arbitrary joins and finite meets.\end{definition}
 
-The notion of a frame is (infinitarily) algebraic. To obtain a geometric
-notion, we ``reverse the direction of the arrows'':
+The least element of a frame (the empty join) is denoted~``$\bot$'' and the
+largest element (the empty meet)~``$\top$''. The notion of a frame is
+(infinitarily) algebraic. To obtain a geometric notion, we ``reverse the
+direction of the arrows'':
 
 \begin{definition}\label{defn:locale}
 A \emph{locale}~$X$ is given by a frame~$\O(X)$, the ``frame
@@ -350,31 +366,42 @@ version of the reals of Section~\ref{sect:examples-no-points} are best
 constructed as \emph{classifying locales}, a notion to be introduced below.
 \end{enumerate}
 
+Several notions in topology only refer to open sets and not to points. Such
+notions have an immediate counterpart in locale theory. For instance, a
+locale~$X$ is \emph{compact} iff for any family~$(U_i)_{i \in I}$ of opens
+of~$X$ such that~$\top = \bigvee_{i \in I} U_i$, there is a (Kuratowski-)finite
+subset~$I' \subseteq I$ such that~$\top = \bigvee_{i \in I'} U_i$. A
+topological space~$Y$ is compact iff its induced locale~$L(Y)$ is.
+
 Points do not appear in the definition of a locale, but they can be defined as
 a derived concept:
 \begin{definition}A \emph{point} of a locale~$X$ is a locale morphism~$\pt \to
 X$.\end{definition}
 
+This definition is inspired from the situation with topological spaces, where
+continuous maps from the one-point space to a topological space~$Y$ are in
+canonical bijection with the points of~$Y$.
+
 The underlying frame homomorphism~$\alpha : \O(X) \to \Omega$ of a point~$x$
-of~$X$ can be pictured as mapping each open of~$X$ to the truth value to which
-extent~$x$ belongs to~$U$. Symbolically, we write~$x \inplus u$ iff~$\alpha(u)
+of~$X$ can be pictured as mapping each open~$U$ of~$X$ to the truth value to which
+extent~$x$ belongs to~$U$. Symbolically, we write~$x \inplus U$ iff~$\alpha(U)
 = \top$.
 
 The point~$x$ is completely determined by the
-set~$\{ u \in \O(X) \,|\, \alpha(u) = \top \}$. This set is a \emph{completely
+set~$\{ U \in \O(X) \,|\, \alpha(U) = \top \}$. This set is a \emph{completely
 prime filter}, that is a subset~$\fff \subseteq \O(X)$ which is upward-closed,
-closed under finite meets and for which~$\bigvee_i u_i \in \fff$ implies~$u_i
+closed under finite meets and for which~$\bigvee_i U_i \in \fff$ implies~$U_i
 \in \fff$ for some index~$i$; and conversely, any such completely prime filter
 gives rise to a point of~$X$.
 
 \begin{definition}A locale~$X$ is \emph{spatial} if and only if its points
-suffice to distinguish its opens, that is if for any opens~$u, v \in \O(X)$,
-if~$x \inplus u \Leftrightarrow x \inplus v$ for all points~$x$ of~$X$, then~$u =
-v$.\end{definition}
+suffice to distinguish its opens, that is if for any opens~$U, V \in \O(X)$,
+if~$x \inplus U \Leftrightarrow x \inplus V$ for all points~$x$ of~$X$, then~$U =
+V$.\end{definition}
 
 For instance, any locale induced by a topological space is spatial. The locale
 of surjections~$\NN \to \RR$ is a drastic example of a locale which fails to be
-spatial, and the localic real line is spatial in classical mathematics and can
+spatial. The localic real line is spatial in classical mathematics and can
 fail to be spatial in constructive mathematics.
 
 \begin{remark}The set of points of a locale~$X$ can be made into a topological space, giving
@@ -389,8 +416,473 @@ space.\end{remark}
 
 \section{Sheaf models}
 
+\subsection{Geometric theories}
+
+\begin{definition}A \emph{geometric theory} consists of
+\begin{enumerate}
+  \item a set of sorts: $X$, $Y$, $Z$, \ldots
+  \item a set of function symbols: $f : X \times Y \to Z$, \ldots
+  \item a set of relation symbols: $R \hookrightarrow X \times Y \times Z$, \ldots
+  \item a set of geometric sequents as axioms: $\varphi \vdash_{x:X, y:Y} \psi$, \ldots
+\end{enumerate}
+A \emph{geometric sequent} (in some context~$x_1\?X_1,\ldots,x_n\?X_n$) is a
+formula built using only the ingredients ${=}\ {\top}\ {\wedge}\ {\bot}\
+{\vee}\ {\bigvee}\ {\exists}$ and the relation symbols (but no ${\Rightarrow}\
+{\forall}$). The symbol~``$\bigvee$'' refers to disjunctions of arbitrary
+set-indexed families of formulas.
+\end{definition}
+
+Even though superficially similar, geometric theories play a
+substantially different role than formal systems such as Peano arithmetic or
+Zermelo--Fraenkel set theory. There are a number of notable differences:
+\begin{enumerate}
+\item Formal systems are typically of foundational interest and can be
+fruitfully employed as metatheories. Geometric theories are more interesting
+for applications, for instance for presenting spaces. This aspect is discussed
+in Section~\ref{sect:presenting-frames}.
+\item Formal systems typically come with an intended model; geometric theories
+do not. For instance, the geometric theory of groups has all groups as models.
+\item Formal systems are typically required to be recursively
+axiomatizable. Many interesting geometric theories are not, and indeed contain
+an uncountable number of axioms. Geometric theories also allow for arbitrary
+set-indexed disjunctions; for this to make sense, the study of geometric
+theories can only be carried out in a sufficiently rich background theory.
+\item For formal systems, typically a version of Gödel's completeness theorem
+holds: A formula is derivable iff it holds in all models. In contrast,
+geometric theories can be consistent yet do not admit set-based models. An
+example is the geometric theory of surjections~$\NN \twoheadrightarrow \RR$
+reviewed below.
+\item Perhaps the most important difference to formal systems is that geometric
+theories often depend on given mathematical objects. For instance, for each
+ring~$A$, there is the geometric theory of prime ideals of~$A$.
+\end{enumerate}
+
+\begin{definition}A \emph{set-based model}~$M$ (or ``Tarski model'') of a
+geometric theory~$\TT$ consists of
+\begin{enumerate}
+  \item a set~$\brak{X}$ for each sort~$X$,
+  \item a function~$\brak{f} : \brak{X_1} \times \cdots \times \brak{X_n} \to
+  \brak{Y}$
+  for each function symbol~$f : X_1 \times \cdots \times X_n \to Y$ and
+  \item a relation~$\brak{R} \subseteq \brak{X_1} \times \cdots \times \brak{X_n}$
+  for each relation symbol~$R \hookrightarrow X_1 \times \cdots \times X_n$
+\end{enumerate}
+such that~$M$ validates the axioms of~$\TT$.
+\end{definition}
+
+\paragraph{The geometric theory of rings.} This theory has one sort, $R$; five function symbols:
+$0$ and $1$ (nullary), $-$ (unary), $+$ and $\cdot$ (binary); no relation
+symbols; the usual axioms, such as $\top \vdash_{x:R,y:R} x + y = y + x$.
+
+A set-based model of the theory of rings is an ordinary ring.
+
+In a similar vein, there is the geometric theory of monoids, of groups, and so
+on.
+
+\paragraph{The geometric theory of objects.} This theory has one sort, $X$, and no function
+symbols, relation symbols or axioms. A set-based model of this theory is just a
+set.
+
+A variant of this theory is the theory of inhabited objects, which has the
+axiom~$\top \vdash \exists x\?X\_ \top$. Its set-based models are precisely the
+inhabited sets.
+
+\paragraph{The geometric theory of surjections~$f : \NN \twoheadrightarrow
+\RR$.} This theory has no
+sorts; no function symbols; a nullary relation symbol~$\varphi_{nx}$ for each
+pair~$\langle n,x \rangle \in \NN \times \RR$ (to be read as~``$f$ maps~$n$
+to~$x$''); and the following axioms:
+\begin{enumerate}
+\item For each~$n \in \NN$, the axiom~$\top \vdash \bigvee_{x \in \RR}
+\varphi_{nx}$, expressing that~$f$ is total.
+\item For each~$n \in \NN$ and each~$x,y \in \RR$, the axiom~$\varphi_{nx}
+\wedge \varphi_{ny} \vdash \bigvee\{ \top \,|\, x = y \}$,
+expressing that~$f$ is single-valued.\footnote{The disjunction is taken over
+the set~$\{ \top \,|\, x = y \}$. This is a certain subsingleton set of
+formulas; it is inhabited (by the formula~$\top$) iff~$x = y$. Hence, if~$x =
+y$, this axiom reads~$\varphi_{nx}
+\wedge \varphi_{ny} \vdash \top$ and could also be omitted; if~$x \neq y$,
+this axiom reads~$\varphi_{nx} \wedge \varphi_{ny} \vdash \bot$.}
+\item For each~$x \in \RR$, the axiom~$\top \vdash \bigvee_{n \in \NN}
+\varphi_{nx}$, expressing that~$f$ is surjective.
+\end{enumerate}
+
+A model of this geometric theory consists of an~$(\NN \times \RR)$-indexed
+family of truth values, that is a subset~$G$ of~$\NN \times \RR$, satisfying
+precisely those axioms which render~$G$ the graph of a surjection~$\NN
+\twoheadrightarrow \RR$.
+
+\paragraph{The geometric theory of Dedekind cuts.} This theory has no sorts; no
+function symbols; nullary relation symbols~$\alpha_x$ and~$\beta_x$ for each
+rational number~$x$ (to be read as~``$x$ is contained in the lower respectively
+the upper cut''); and the following axioms, spelling out that the cut is bounded,
+rounded, open and located:
+\begin{align*}
+  \top &\vdash \textstyle\bigvee_{x \in \QQ} \alpha_x \\
+  \top &\vdash \textstyle\bigvee_{x \in \QQ} \beta_x \\
+  \alpha_y &\vdash \alpha_x & \text{(for each~$x,y \in \QQ$ such that~$x < y$)} \\
+  \beta_x &\vdash \beta_y & \text{(for each~$x,y \in \QQ$ such that~$x < y$)} \\
+  \alpha_x &\vdash \textstyle\bigvee_{y > x} \alpha_y & \text{(for each~$x \in \QQ$)} \\
+  \beta_y &\vdash \textstyle\bigvee_{x < y} \beta_x & \text{(for each~$y \in \QQ$)} \\
+  \alpha_x \wedge \beta_y &\vdash \bot & \text{(for each~$x,y \in \QQ$ such that~$x \geq y$)} \\
+  \top &\vdash \alpha_x \vee \beta_y & \text{(for each~$x,y \in \QQ$ such that~$x < y$)}
+\end{align*}
+
+A model of this geometric theory consists of two families of truth values, both
+indexed by the rational numbers, hence two subsets~$L,U \subseteq \QQ$, in such
+a way that~$\langle L,U \rangle$ is a Dedekind cut.
+
+\paragraph{The geometric theory of prime ideals of a given ring~$A$.} In classical
+commutative algebra, the notion of a \emph{prime ideal} of a ring~$A$ is
+fundamental. A prime ideal is a subset~$\ppp \subseteq A$ such that~$0 \in
+\ppp$, $(x \in \ppp) \wedge (y \in \ppp) \Rightarrow (x + y \in \ppp)$, $(x \in
+\ppp) \Rightarrow rx \in \ppp$ (for any~$r \in A$),~$1 \not\in \ppp$ and~$(xy
+\in \ppp) \Rightarrow (x \in \ppp) \vee (y \in \ppp)$.
+
+Correspondingly, the geometric theory of prime ideals has no sorts; no function
+symbols; one relation symbol~$\alpha_x$ for each element~$x \in A$; and the
+following axioms:
+\begin{align*}
+  \top &\vdash \alpha_0 \\
+  \alpha_x \wedge \alpha_y &\vdash \alpha_{x+y} & \text{(for each~$x,y \in A$)} \\
+  \alpha_x &\vdash \alpha_{rx} & \text{(for each~$r,x \in A$)} \\
+  \alpha_1 &\vdash \bot \\
+  \alpha_{xy} &\vdash \alpha_x \vee \alpha_y & \text{(for each~$x,y \in A$)}
+\end{align*}
+
+For many purposes, the theory of prime \emph{filters} is actually more
+relevant. Classically, a prime filter of a ring is simply the complement of a
+prime ideal; constructively, it is prudent to axiomatize this notion directly.
+Hence the theory of prime filters of~$A$ has no sorts, no function symbols, one
+relation symbol~$\alpha_x$ for each element~$x \in A$, and the following
+axioms:
+\begin{align*}
+  \alpha_0 &\vdash \bot \\
+  \alpha_{x+y} &\vdash \alpha_x \vee \alpha_y & \text{(for each~$x,y \in A$)} \\
+  \alpha_{rx} &\vdash \alpha_x & \text{(for each~$r,x \in A$)} \\
+  \top &\vdash \alpha_1 \\
+  \alpha_x \wedge \alpha_y &\vdash \alpha_{xy} & \text{(for each~$x,y \in A$)}
+\end{align*}
+
+\paragraph{The inconsistent geometric theory.} This theory has no sorts,
+function symbols or relations, but the single axiom $\top \vdash \bot$.
+This theory does not admit any set-based models.
+
+\paragraph{The empty geometric theory.} This theory does not have any sorts,
+function symbols, relations or axioms. There is exactly one set-based model of
+this theory, the empty structure.
+
+
+\subsection{Presenting frames by theories}
+\label{sect:presenting-frames}
+
+\begin{definition}A geometric theory~$\TT$ is \emph{propositional} if and only
+if its set of sorts is empty.\end{definition}
+
+As a consequence, a propositional geometric theory consists just of a set of
+nullary relation symbols and a set of axioms. Associated to any such
+theory~$\TT$ is its \emph{Lindenbaum algebra}: This is the partially ordered
+set of the formulas over the signature of~$\TT$ modulo~$\TT$-provable
+equivalence, equipped with the ordering~$[\varphi] \preceq [\psi]$ iff~$\TT$
+proves~$\varphi \vdash \psi$.
+
+The Lindenbaum algebra is a frame, with finite meets given by~$[\varphi] \wedge
+[\psi] = [\varphi \wedge \psi]$ and set-indexed joins given by~$\bigvee_i
+[\varphi_i] = [\bigvee_i \varphi_i]$;\footnote{This short description of the
+set-indexed joins picks representatives from each equivalence class and is
+hence only sensible in the presence of the axiom of choice. In a
+constructive metatheory, we should rather write~$\bigvee_{i \in I} M_i =
+[\bigvee_{\varphi \in K} \varphi]$, where~$K = \{ \varphi \,|\, \exists i \in
+I\_ \varphi \in M_i \}$.} we can regard the Lindenbaum algebra as the free
+frame generated by the nullary relation symbols of~$\TT$ modulo the axioms
+of~$\TT$. Our interest in the Lindenbaum algebra is because it gives rise to a
+locale:
+
+\begin{definition}The \emph{classifying locale}~$L(\TT)$ of a propositional
+geometric theory is the locale which has the Lindenbaum algebra of~$\TT$ as its
+underlying frame.\end{definition}
+
+It is an instructive exercise to verify that the points of~$L(\TT)$ are in
+canonical one-to-one correspondence with the set-based models of~$\TT$. This
+observation also explains why we cannot hope to construct classifying
+locales of arbitrary, nonpropositional, geometric theories: Any locale only has
+a set of points, but arbitrary geometric theories can have a proper class of
+set-based models.
+
+Many locales are fruitfully described as the classifying locale of a certain
+propositional geometric theory. For instance:
+\begin{enumerate}
+\item The \emph{localic real line} is the classifying locale of the theory of
+Dedekind cuts. Its points are the models of that theory, that is, the Dedekind
+reals, and the induced topology on the set of points coincides with the usual
+Euclidean topology on the reals.
+
+The localic open unit interval is the classifying locale of the
+same theory, but with the added axiom~$\top \vdash \alpha_0 \wedge \beta_1$.
+\item The \emph{locale of surjections~$\NN \twoheadrightarrow \RR$} is the
+classifying locale of the theory of surjections~$\NN \twoheadrightarrow \RR$.
+\item The \emph{spectrum} of a ring~$A$ is the classifying locale of the
+theory of prime filters of~$A$. The topological space of points of this locale
+is the Zariski spectrum as familiar from algebraic
+geometry.\footnote{Classicaly, the spectrum is usually defined as the
+topological space of prime ideals instead of prime filters. However,
+classically there is a canonical one-to-one correspondence between prime ideals
+and prime filters, hence one could just as well use filters instead of ideals
+in the definition. The classifying locale of prime ideals of~$A$ also exists,
+and has the prime ideals of~$A$ as its point, but the induced topology on its
+topological space of points is the \emph{flat topology} or \emph{co-Zariski
+topology}~\cite{tarizadeh:flat} instead of the ordinary
+Zariski topology~\cite[Proposition~4.5]{johnstone:rings-fields-and-spectra}.}
+\item The \emph{localic Galois group} of a field extension~$L|k$ is the
+classifying locale of the theory of ring automorphisms~$L \to L$ which fix~$k$.
+\item The \emph{empty locale} is the classifying locale of the inconsistent theory.
+\item The \emph{one-point locale} is the classifying locale of the empty theory.
+%\item The \emph{discrete locale on a set~$M$} is the classifying locale of the
+%theory which has one nullary relation symbol~$\varphi_x$ for each element~$x
+%\in M$, the axiom~$\top \vdash \bigvee_{x \in M} \varphi_x$ and for each~$x,y
+%\in M$ the axiom~$\varphi_x \wedge \varphi_y \vdash \bigvee\{ \top \,|\, x = y
+%\}$.
+\end{enumerate}
+
+Just as we often refer to a topological space only by its points (``the
+topological space of prime filters of~$A$''), not mentioning its topology, it is
+customary to abbreviate ``the classifying locale of the propositional geometric
+theory of prime filters of~$A$'' as ``the locale of prime filters of~$A$''.
+
+\begin{remark}The traditional way of constructing the real line or the Zariski
+spectrum as a topological space proceeds in three steps: (1) Write down the
+axioms (of Dedekind cuts respectively prime filter). (2) Using the powerset
+axiom and separation, construct the set of Dedekind reals respectively the set
+of prime filters. (3) Devise a useful topology on the resulting set.
+
+Locales provide us with a more economic and also more conceptual way of
+arriving at these topological spaces: They can be obtained as the topological
+space of points of the corresponding classifying locale. In particular,
+step~(3) of manually devising a topology is not necessary when pursuing the
+localic route.
+\end{remark}
+
+In general, different theories can give rise to isomorphic classifying locales;
+such theories are called \emph{Morita-equivalent}. A vast research program is
+built on this observation~\cite{caramello:tst}.
+
+Conversely, any locale~$X$ is the classifying locale of a certain theory, namely
+of the \emph{theory of points of~$X$}. This theory has one nullary relation
+symbol~$\varphi_u$ for each open~$U \in \O(X)$ (read as ``the point belongs
+to~$U$'') and the following axioms:
+\begin{align*}
+  \varphi_U &\vdash \varphi_V & \text{(for all~$U,V \in \O(X)$ such that~$U \preceq V$)} \\
+  \top &\vdash \varphi_\top \\
+  \varphi_U \wedge \varphi_V &\vdash \varphi_{U \wedge V} & \text{(for all~$U,V \in \O(X)$)} \\
+  \varphi_{\bigvee_i U_i} &\vdash \bigvee_i \varphi_{U_i} & \text{(for each set-indexed family~$(U_i)_i$ of opens)}
+\end{align*}
+These are exactly the axioms for a completely prime filter of~$\O(X)$. The
+isomorphism from~$\O(X)$ to the Lindenbaum algebra of this theory maps an
+open~$U$ to~$[\varphi_U]$.
+
+
+\subsection{Sheaves on locales}
+
+\begin{definition}\label{defn:presheaf}
+A \emph{presheaf}~$F$ on a locale~$X$ is a functor~$\O(X)^\op
+\to \Set$, that is
+\begin{enumerate}
+  \item a set~$F(U)$ for each open~$U \in \O(X)$ and
+  \item a map~$(\cdot)|^U_V : F(U) \to F(V)$ for each opens~$V \preceq U$
+\end{enumerate}
+such that $(\cdot)|^U_U = \operatorname{id}_{F(U)}$ for all~$U \in \O(X)$ and
+$(\cdot)|^V_W \circ (\cdot)|^U_V = (\cdot)|^U_W$ for all~$W \preceq V
+\preceq U$.\end{definition}
+
+Definition~\ref{defn:presheaf}, and also any other definition in this section,
+also makes sense for topological spaces instead of locales, since only the
+notion of opens and their inclusion relation is used. The elements of~$F(U)$ are
+called \emph{sections of~$F$ over~$U$} and the maps~$(\cdot)|^U_V$
+are called \emph{restriction maps}.
+
+When first learning about presheaves, one can get boggled down[XXX:wording] by the vast
+amount of data encoded in a single presheaf (one set for each open). The
+situation should be compared to Kripke models for a first-order language~$L$. The
+preorder~$W$ of nodes of such a model is like the frame of opens of a locale, and the
+family~$(M_w)_{w \in W}$ of~$L$-structures, one for each node, is like a
+presheaf. In fact, the notion of a locale can be generalized to that of a
+\emph{site} so that both locales and Kripke frames induce sites and that
+presheaves on sites can be defined; however, this shall not be pursued here.
+[XXX: reference]
+
+The prototypical example of a presheaf (and also a sheaf) is the presheaf~$\C$ of
+continuous real-valued functions on a space~$X$. For this presheaf, the
+set~$\C(U)$ is the set of continuous real-valued maps~$U \to \RR$, and the
+maps~$(\cdot)|^U_V$ are given by actual restriction of functions to smaller
+domains, that is by
+\[ \C(U) \longrightarrow \C(V),\ s \longmapsto s|_V. \]
+
+\begin{definition}
+\begin{enumerate}
+\item A \emph{compatible family} of a presheaf~$F$ with respect to an open
+covering~$U = \bigvee_i U_i$ is a family~$(s_i)_i$ of sections~$s_i \in F(U_i)$
+such that~$s_i|^{U_i}_{U_i \wedge U_j} = s_j|^{U_j}_{U_i \wedge U_j}$ for all
+indices~$i,j$.
+\item A presheaf~$F$ is a \emph{sheaf}
+iff for any compatible family~$(s_i)_i$ with respect to an open covering~$U =
+\bigvee_i U_i$ there is a unique section~$s \in F(U)$ such
+that~$s|^U_{U_i} = s_i$ for all~$i$.
+\end{enumerate}
+\end{definition}
+
+For instance, the presheaf~$\C$ of continuous real-valued functions is a sheaf,
+while its subpresheaf~$\C_\text{c}$ of constant real-valued functions is
+usually not a sheaf. For instance, on~$X = \RR$, the two constant functions~$f
+: (-1,0) \to \RR,\,x \mapsto -1$ and~$g : (0,1) \to \RR,\,x \mapsto 1$ agree on
+the intersection of their domains (which is empty), but there is no constant
+function~$h : (-1,0) \cup (0,1) \to \RR$ which restricts to~$f$ on~$(-1,0)$ and
+to~$g$ on~$(0,1)$.
+
+\begin{definition}A \emph{morphism of presheaves}~$\eta : F \to G$ on a
+locale~$X$ is a family~$(\eta_U)_{U \in \O(X)}$ of maps~$\eta_U : F(U) \to
+G(U)$ such that for all sections~$s \in F(U)$ and all opens~$V \preceq U$
+of~$X$, $\eta_U(s)|^U_V = \eta_V(s|^U_V)$. A \emph{morphism of sheaves} is a
+morphism of the underlying presheaves.
+\end{definition}
+
+
+\subsection{Sheaf semantics}
+
+Let~$X$ be a locale. A \emph{formula over an open~$U \in \O(X)$} is a
+first-order formula (made up using~${=}\ {\top}\ {\wedge}\ {\bot}\ {\vee}\
+{\Rightarrow}\ {\forall}\ {\exists}$) over the signature which has one sort for
+each sheaf~$F$, one constant symbol of sort~$F$ for each section~$s \in F(U)$,
+one function symbol~$f : F \to G$ for each morphism of sheaves, and so on.
+
+Table~\ref{table:sheaf-semantics} defines by recursion on the structure of
+formulas what it means for a formula~$\varphi$ over an open~$U$ to be
+\emph{forced} or \emph{true over~$U$}, written~``$U \models \varphi$''. The
+main differences with the perhaps more familiar Kripke semantics are marked.
+
+\begin{table}[ht]
+  \tbl{The (first-order fragment of) the sheaf semantics of a locale~$X$}{\begin{tabular}{@{}l@{\ \ }c@{\ \ }l@{}}
+    $U \models s =_F t$ &\Ll& $s = t$ when evaluated as elements of~$F(U)$ \\
+    $U \models \top$ &\Ll& true \\
+    $U \models \varphi \wedge \psi$ &\Ll& $U \models \varphi$ and $U \models \psi$ \\
+    $U \models \bot$ &\Ll& \hcancel{false}{0pt}{3pt}{0pt}{-2pt}\ $U = \bot$ \\
+    $U \models \varphi \vee \psi$ &\Ll& \hcancel{$U \models \varphi$ or $U \models \psi$}{0pt}{3pt}{0pt}{-2pt}\ there exists an open covering $U = \bigvee_i U_i$ \\
+    && \quad\quad such that for all~$i$: $U_i \models \varphi$ or $U_i \models \psi$ \\
+    $U \models \varphi \Rightarrow \psi$ &\Ll& for all~$V \preceq U$: $V \models \varphi$ implies $V \models \psi$ \\
+    $U \models \forall s \? F\_ \varphi(s)$ &\Ll& for all $V \preceq U$ and sections~$s_0 \in F(V)$: $V \models \varphi(s_0)$ \\
+    $U \models \exists s \? F\_ \varphi(s)$ &\Ll& \hcancel{there exists $s_0 \in F(U)$ such that $U \models \varphi(s_0)$}{0pt}{3pt}{0pt}{-2pt} \\
+    && there exists an open covering $U = \bigvee_i U_i$ such that for all~$i$: \\
+    && \quad\quad there exists~$s_0 \in F(U_i)$ such that $U_i \models \varphi(s_0)$
+  \end{tabular}}
+  \label{table:sheaf-semantics}
+\end{table}
+
+Some clauses in Table~\ref{table:sheaf-semantics} contain slight abuses of
+notation. Namely, if~$\varphi$ is a formula over an open~$U$ and if~$V$ is an
+open such that~$V \preceq U$, then~``$V \models \varphi$'' is officially not
+well-defined, as~$\varphi$ is not a formula over~$V$. When we still write~``$V
+\models \varphi$'', we mean that any constant symbol~$s \in F(U)$ appearing
+in~$\varphi$ should be interpreted as its restriction~$s|^U_V \in F(V)$, so
+that the resulting formula is a formula over~$V$.
+
+The principal properties of the sheaf semantics is that it is monotone, local
+and sound with respect to intuitionistic first-order logic:
+
+\begin{theorem}Let~$X$ be a locale. Let~$U$ be an open of~$X$. Let~$\varphi$ be
+a formula over~$U$.
+\begin{enumerate}
+\item If~$V$ is an open such that~$V \preceq U$, then~$U \models
+\varphi$ implies~$V \models \varphi$.
+\item Let~$U = \bigvee_i U_i$ be an open covering. If~$U_i \models
+\varphi$ for all~$i$, then~$U \models \varphi$.
+\item Let~$\psi$ be a further formula over~$U$. If~$U \models
+\varphi$ and if~$\varphi$ entails~$\psi$ intuitionistically, then also~$U
+\models \psi$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}The proof of~(1) is by a routine induction on the structure
+of~$\varphi$. For the clauses pertaining disjunction and existential
+quantification, the distributive law has to be used.
+
+The proof of~(2) is also a routine induction proof. For the clause pertaining
+equality, the sheaf condition has to be used.
+
+To verify statement~(3), it is prudent to generalize the claim slightly: An
+induction on the structure of derivations shows that if a sequent~$\varphi
+\seq{x_1{:}X_1,\ldots,x_n{:}X_n} \psi$ is derivable in intuitionistic first-order
+logic, then~$U \models \forall x_1\?X_1\_ \ldots \forall x_n\?X_n\_ (\varphi
+\Rightarrow \psi)$.
+\end{proof}
+
+\begin{definition}A \emph{sheaf model}~$M$ of a geometric theory~$\TT$ over a
+locale~$X$ consists of
+\begin{enumerate}
+  \item a sheaf~$\brak{S}$ on~$X$ for each sort~$S$,
+  \item a morphism~$\brak{f} : \brak{S_1} \times \cdots \times \brak{S_n} \to
+  \brak{T}$ of sheaves for each function symbol~$f : S_1 \times \cdots \times S_n \to T$ and
+  \item a subsheaf~$\brak{R} \subseteq \brak{S_1} \times \cdots \times \brak{S_n}$
+  for each relation symbol~$R \hookrightarrow S_1 \times \cdots \times S_n$
+\end{enumerate}
+such that~$M$ validates the axioms of~$\TT$, that is, such that the axioms
+of~$\TT$ are forced on~$\top \in \O(X)$.
+\end{definition}
+
+XXX ``internalizing parameter-dependence''
+
+
 \section{Applications in constructive algebra}
 
-\end{document} 
+XXX: just a stub
+
+Let~$A$ be a reduced ring ($x^n = 0 \Rightarrow x = 0$).
+Then there is a certain sheaf~$A^\sim$ of rings on a certain locale~$X$ such
+that \ldots
+
+{\centering $A^\sim$ is close to~$A$:\par}
+\begin{enumerate}
+\item There is a canonical bijection~$A \to A^\sim(X)$.
+\item $A^\sim$ inherits any property of~$A$ which is
+localization-stable.
+\item A geometric sequent holds for~$A^\sim$ iff$^\star$ it holds for all
+stalks~$A_{\mathfrak{f}}$.
+\end{enumerate}
+
+{\centering $A^\sim$ has better properties than~$A$:\par}
+\begin{enumerate}
+\item $A^\sim$ is a field: $\forall x\?A^\sim\_ (\neg(\exists y\?A^\sim\_
+  xy = 1) \Rightarrow x = 0)$.
+\item $A^\sim$ has $\neg\neg$-stable equality:
+$\forall x,y\?A^\sim\_ \neg\neg(x = y) \Rightarrow x = y$.
+\item $A^\sim$ is \emph{anonymously Noetherian}.
+\end{enumerate}
+
+{\centering This observation can be exploited to give \\ short, conceptual and
+constructive proofs.\par}
+
+\begin{theorem}Let~$A$ be a ring. The Lindenbaum algebra of the theory of prime
+filters of~$A$ is canonically isomorphic to the frame of radical ideals in~$A$.
+\end{theorem}
+
+\begin{proof}The set of radical ideals is ordered by inclusion. The meet~$\aaa
+\wedge \bbb$ of two radical ideals is their intersection and the
+join~$\bigvee_i \aaa_i$ of radical ideals is~$\sqrt{\sum_i \aaa_i}$.
+
+The desired isomorphism maps~$[\alpha_x]$ to~$\sqrt{(x)}$ and maps finite meets
+to finite meets and arbitrary joins to arbitrary joins, as it should be. A
+computation shows that it is well-defined and monotone. For instance, in the
+Lindenbaum algebra, we have~$[\alpha_x] \wedge [\alpha_y] \preceq
+[\alpha_{xy}]$, and indeed~$\sqrt{(x)} \cap \sqrt{(y)} \subseteq \sqrt{(xy)}$.
+XXX: surjective and order-reflecting
+\end{proof}
+
+XXX injective matrices
+
+XXX generic freeness
+
+XXX spell out details of field property
+
+\end{document}
 
 XXX cite https://apcz.umk.pl/czasopisma/index.php/LLP/article/viewFile/LLP.2013.009/732
+
+XXX include rules for geometric logic?

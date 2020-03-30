@@ -1,8 +1,9 @@
 \documentclass{ws-rv9x6}
 \usepackage[onethmnum]{ws-rv-thm}
 \usepackage{ws-rv-van}
-\usepackage{mathtools,stmaryrd}
+\usepackage{mathtools,stmaryrd,xspace}
 
+\usepackage[normalem]{ulem}
 \usepackage{tikz}
 \usetikzlibrary{calc}
 \newcommand{\hcancel}[5]{%
@@ -71,6 +72,7 @@
 \newcommand{\pt}{\mathrm{pt}}
 \newcommand{\Loc}{\mathrm{Loc}}
 \newcommand{\Top}{\mathrm{Top}}
+\newcommand{\BPIT}{\textsc{bpit}\xspace}
 
 \begin{document}
 
@@ -370,8 +372,8 @@ Several notions in topology only refer to open sets and not to points. Such
 notions have an immediate counterpart in locale theory. For instance, a
 locale~$X$ is \emph{compact} iff for any family~$(U_i)_{i \in I}$ of opens
 of~$X$ such that~$\top = \bigvee_{i \in I} U_i$, there is a (Kuratowski-)finite
-subset~$I' \subseteq I$ such that~$\top = \bigvee_{i \in I'} U_i$. A
-topological space~$Y$ is compact iff its induced locale~$L(Y)$ is.
+subset~$I' \subseteq I$ such that~$\top = \bigvee_{i \in I'} U_i$. For
+instance, a topological space~$Y$ is compact iff its induced locale~$L(Y)$ is.
 
 Points do not appear in the definition of a locale, but they can be defined as
 a derived concept:
@@ -400,7 +402,7 @@ if~$x \inplus U \Leftrightarrow x \inplus V$ for all points~$x$ of~$X$, then~$U 
 V$.\end{definition}
 
 For instance, any locale induced by a topological space is spatial. The locale
-of surjections~$\NN \to \RR$ is a drastic example of a locale which fails to be
+of surjections~$\NN \twoheadrightarrow \RR$ is a drastic example of a locale which fails to be
 spatial. The localic real line is spatial in classical mathematics and can
 fail to be spatial in constructive mathematics.
 
@@ -441,7 +443,9 @@ fruitfully employed as metatheories. Geometric theories are more interesting
 for applications, for instance for presenting spaces. This aspect is discussed
 in Section~\ref{sect:presenting-frames}.
 \item Formal systems typically come with an intended model; geometric theories
-do not. For instance, the geometric theory of groups has all groups as models.
+do not. For instance, the geometric theory of groups has all groups as models;
+when we are writing down the axioms of a group, we are not setting out to
+capture the properties of any one specific group.
 \item Formal systems are typically required to be recursively
 axiomatizable. Many interesting geometric theories are not, and indeed contain
 an uncountable number of axioms. Geometric theories also allow for arbitrary
@@ -534,12 +538,9 @@ a way that~$\langle L,U \rangle$ is a Dedekind cut.
 
 \paragraph{The geometric theory of prime ideals of a given ring~$A$.} In classical
 commutative algebra, the notion of a \emph{prime ideal} of a ring~$A$ is
-fundamental. A prime ideal is a subset~$\ppp \subseteq A$ such that~$0 \in
-\ppp$, $(x \in \ppp) \wedge (y \in \ppp) \Rightarrow (x + y \in \ppp)$, $(x \in
-\ppp) \Rightarrow rx \in \ppp$ (for any~$r \in A$),~$1 \not\in \ppp$ and~$(xy
-\in \ppp) \Rightarrow (x \in \ppp) \vee (y \in \ppp)$.
-
-Correspondingly, the geometric theory of prime ideals has no sorts; no function
+fundamental. Corresponding to the definition (recalled in
+Section~\ref{sect:algebraic-preliminaries}), the geometric theory of prime
+ideals has no sorts; no function
 symbols; one relation symbol~$\alpha_x$ for each element~$x \in A$; and the
 following axioms:
 \begin{align*}
@@ -554,7 +555,7 @@ For many purposes, the theory of prime \emph{filters} is actually more
 relevant. Classically, a prime filter of a ring is simply the complement of a
 prime ideal; constructively, it is prudent to axiomatize this notion directly.
 Hence the theory of prime filters of~$A$ has no sorts, no function symbols, one
-relation symbol~$\alpha_x$ for each element~$x \in A$, and the following
+relation symbol~$\alpha_x$ for each element~$x \in A$ and the following
 axioms:
 \begin{align*}
   \alpha_0 &\vdash \bot \\
@@ -629,7 +630,7 @@ topological space of prime ideals instead of prime filters. However,
 classically there is a canonical one-to-one correspondence between prime ideals
 and prime filters, hence one could just as well use filters instead of ideals
 in the definition. The classifying locale of prime ideals of~$A$ also exists,
-and has the prime ideals of~$A$ as its point, but the induced topology on its
+and has the prime ideals of~$A$ as its points, but the induced topology on its
 topological space of points is the \emph{flat topology} or \emph{co-Zariski
 topology}~\cite{tarizadeh:flat} instead of the ordinary
 Zariski topology~\cite[Proposition~4.5]{johnstone:rings-fields-and-spectra}.}
@@ -668,7 +669,7 @@ built on this observation~\cite{caramello:tst}.
 
 Conversely, any locale~$X$ is the classifying locale of a certain theory, namely
 of the \emph{theory of points of~$X$}. This theory has one nullary relation
-symbol~$\varphi_u$ for each open~$U \in \O(X)$ (read as ``the point belongs
+symbol~$\varphi_U$ for each open~$U \in \O(X)$ (read as ``the point belongs
 to~$U$'') and the following axioms:
 \begin{align*}
   \varphi_U &\vdash \varphi_V & \text{(for all~$U,V \in \O(X)$ such that~$U \preceq V$)} \\
@@ -688,13 +689,13 @@ A \emph{presheaf}~$F$ on a locale~$X$ is a functor~$\O(X)^\op
 \to \Set$, that is
 \begin{enumerate}
   \item a set~$F(U)$ for each open~$U \in \O(X)$ and
-  \item a map~$(\cdot)|^U_V : F(U) \to F(V)$ for each opens~$V \preceq U$
+  \item a map~$(\cdot)|^U_V : F(U) \to F(V)$ for each pair of opens~$V \preceq U$
 \end{enumerate}
 such that $(\cdot)|^U_U = \operatorname{id}_{F(U)}$ for all~$U \in \O(X)$ and
 $(\cdot)|^V_W \circ (\cdot)|^U_V = (\cdot)|^U_W$ for all~$W \preceq V
 \preceq U$.\end{definition}
 
-Definition~\ref{defn:presheaf}, and also any other definition in this section,
+Definition~\ref{defn:presheaf}, as well as any other definition in this section,
 also makes sense for topological spaces instead of locales, since only the
 notion of opens and their inclusion relation is used. The elements of~$F(U)$ are
 called \emph{sections of~$F$ over~$U$} and the maps~$(\cdot)|^U_V$
@@ -832,33 +833,199 @@ XXX ``internalizing parameter-dependence''
 
 \section{Applications in constructive algebra}
 
-XXX: just a stub
+Commutative algebra abounds with techniques to reduce given situations to
+simpler ones, for instance passing to a quotient or passing to a
+localization. These techniques facilitate short and elegant proofs, such as the
+following. (Section~\ref{sect:algebraic-preliminaries} contains some algebraic
+preliminaries.)
 
-Let~$A$ be a reduced ring ($x^n = 0 \Rightarrow x = 0$).
-Then there is a certain sheaf~$A^\sim$ of rings on a certain locale~$X$ such
-that \ldots
+\begin{quote}
+\textbf{Theorem.} Let~$M$ be an injective matrix with more columns than rows
+over a reduced ring~$A$. Then~$1 = 0$ in~$A$.
 
-{\centering $A^\sim$ is close to~$A$:\par}
+\textbf{Proof.} \uwave{Assume not.} Then there is a \uwave{minimal
+prime ideal} $\ppp \subseteq A$. The matrix~$M$ is also injective when
+considered as a matrix over the stalk~$A_\ppp$; since~$A_\ppp$ is a
+\uwave{field}, this is a contradiction to basic linear algebra. \qed
+\end{quote}
+
+However, these reduction techniques typically require \emph{transfinite
+methods}. The displayed proof contains three appeals to the transfinite:
+\begin{enumerate}
+\item The proof proceeds by contradiction, hence requires the law of excluded
+middle, the strongest of the omniscience principles.
+\item The proof then requires a minimal prime ideal. Such an ideal can be
+obtained in two steps: First, the Boolean Prime Ideal
+Theorem~\BPIT is invoked to obtain some prime ideal. Then
+Zorn's lemma fabricates a minimal one.\footnote{Standard textbooks prove the statement ``any nontrivial
+ring has a prime ideal'' by using Zorn's lemma, which
+in the presence of the law of excluded middle is equivalent to the full axiom
+of choice; however, the statement is actually equivalent to the weaker Boolean
+Prime Ideal Theorem [XXX: reference].
+
+The combined statement ``any ring has a minimal prime ideal'' is equivalent to
+the full axiom of choice. This observation might be folklore; we learned the
+following argument from Will Savin~[XXX: reference]: Let~$(M_i)_{i \in I}$ be a
+disjoint family of inhabited sets. We consider the free ring~$\ZZ[\bigcup_i M_i]$ and
+its ideal~$I$ generated by~$\{ ab \,|\, i \in I, a,b \in M_i, a \neq b \}$. Assume
+that the factor ring~$\ZZ[\bigcup_i M_i]/I$ contains a minimal prime ideal. Its
+preimage~$\ppp \subseteq \ZZ[\bigcup_i M_i]$ is then a prime ideal which is
+minimal among all prime ideals containing~$I$. By primality, for any index~$i$,
+there is at most one element of~$M_i$ not in~$\ppp$. By minimality, for each
+index~$i$, there is exactly one element of~$M_i$ not in~$\ppp$: If there were
+none, then pick an element~$a \in M_i$ XXX}
+% https://mathoverflow.net/questions/98731/minimal-prime-ideals-and-axiom-of-choicerevised-version
+\item Finally, the proof exploits that the stalks of reduced rings at minimal
+prime ideals are fields. This requires two further invokations
+of~\BPIT.\footnote{By~\BPIT, the intersection of all prime ideals of~$A_\ppp$
+is its nilradical. Since~$A_\ppp$ is reduced, the nilradical is the zero ideal.
+Since the prime ideals of~$A_\ppp$ are in bijection with those prime ideals
+of~$A$ which are contained in~$\ppp$, the ring~$A_\ppp$ has exactly one prime
+ideal. By~\BPIT, any noninvertible element of~$A_\ppp$ is contained in some
+prime ideal, hence in the zero ideal. Thus~$A_\ppp$ is a field.}
+\end{enumerate}
+
+This state of affairs is not satisfactory. A statement as simple as the
+displayed example should admit an explicit calculational proof, presenting a
+concrete method for transforming the given conditional equations expressing
+injectivity into the equation~$1 = 0$ without any appeals to the transfinite.
+
+The completeness theorem for coherent logic~[XXX: reference (Elephant)] even
+gives an a priori reason why (for a given matrix size) a finitary proof has to
+exist. However, since the proof of the completeness theorem itself uses~\BPIT
+(and indeed is equivalent to it), it does not give any indication how such a
+proof could be found. (Still, beautiful constructive proofs are known and
+presented, for instance, in a celebrated short note by Richman on nontrivial
+uses of trivial rings~\cite{richman:trivial-rings} and in the recent textbook by
+Lombardi and Quitté on constructive commutative
+algebra~\cite{lombardi-quitte:constructive-commutative-algebra}.)
+
+The key issue with the usual reduction techniques in commutative algebra is
+their dependence on \emph{ideal objects} such as prime or maximal ideals. In
+general, those objects can only be obtained by transfinite methods. However, in
+practice many arguments do not actually require completed ideal objects:
+Their computational core applies just as well to finite approximations of
+these ideal objects.
+
+It is then a challenging task in mathematical logic to devise efficient means to
+extract this hidden constructive content in a mostly mechanical manner. We
+envision to reinterpret any given classical proof employing ideal objects in a
+constructive fashion, realizing ideal objects as convenient fictions.
+
+Locales and sheaf models contribute to this program by providing new reduction
+techniques for commutative algebra. These techniques have a similar effect as the
+classical reduction techniques, but are powered by purely constructive
+underpinnings. In a nutshell, the idea is as follows.
+
+\begin{enumerate}
+\item Instead of replacing a given ring with another (for instance a ring~$A$ with
+one of its stalks~$A_\ppp$ at a minimal prime ideal), we replace a given ring
+with a \emph{sheaf of rings}.
+\item We then maintain the illusion that we are working with a plain old ring
+by employing the sheaf semantics.
+\end{enumerate}
+
+The goal of this section is to give a leisurely introduction to this procedure.
+We recall in Section~\ref{sect:algebraic-preliminaries} algebraic
+preliminaries. Section~\ref{sect:a-remarkable-sheaf} explores the sheaf to use.
+There is an interesting origin story to this sheaf, which we tell in
+Section~\ref{sect:origins}. Finally, we illustrate how to use the technique in
+a series of concrete examples in Section~\ref{sect:example-applications}.
+
+
+\subsection{Algebraic preliminaries}
+\label{sect:algebraic-preliminaries}
+
+By \emph{ring}, we mean commutative ring with unit. We do not require the unit
+to be distinct from the zero; indeed, trivial rings have intriguing
+applications~\cite{richman:trivial-rings}.
+
+A ring is \emph{reduced} iff zero is its only nilpotent; that is, if~$x^n = 0$
+implies~$x = 0$.
+
+An \emph{ideal} is a subset~$\aaa \subseteq A$ such that~$0 \in \aaa$, $(x \in
+\ppp) \wedge (y \in \ppp) \Rightarrow (x + y \in \ppp)$ and $(x \in
+\ppp) \Rightarrow (rx \in \ppp)$ (for any~$r \in A$).
+An ideal~$\ppp$ is \emph{prime} iff~$1 \not\in \ppp$ and~$(xy
+\in \ppp) \Rightarrow (x \in \ppp) \vee (y \in \ppp)$.
+
+A subset~$\fff \subseteq A$ is a \emph{prime filter} iff
+$0 \not\in \fff$, $(x + y \in \fff) \Rightarrow (x \in \fff) \vee (y \in
+\fff)$, $1 \in \fff$ and $(xy \in \fff) \Leftrightarrow (x \in \fff) \wedge (y
+\in \fff)$.
+
+An ideal~$\aaa \subseteq A$ is a \emph{radical ideal} iff~$x^n \in \aaa$
+implies~$x \in \aaa$ for any~$x \in A$ and natural number~$n$. The
+\emph{radical}~$\sqrt{\aaa}$ of an arbitrary ideal~$\aaa$ is the radical
+ideal~$\{ x \in A \,|\, \exists n \in \NN\_ x^n \in \aaa \}$.
+
+A ring is \emph{local} iff a finite sum is invertible only if one of its
+summands also is. More precisely, this means that~$1 \neq 0$ and that
+whenever~$a + b$ is invertible, $a$ is invertible or~$b$ is invertible.
+This definition is an elementary rephrasing of the textbook definition,
+according to which a ring is local iff it has exactly one maximal ideal. The
+elementary definition works better in constructive contexts.
+
+If~$S$ is a multiplicatively closed subset of a ring~$A$, the
+\emph{localization}~$A[S^{-1}]$ is the ring of formal fractions~$\frac{a}{s}$ with~$a
+\in A$ and~$s \in S$, where two such fractions~$\frac{a}{s}$ and~$\frac{b}{t}$ are deemed
+equivalent iff there is an element~$u \in S$ such that~$uta = usb$. We do not
+require that~$0 \not\in S$; instead we plainly observe that ~$A[S^{-1}]$ is the
+zero ring iff~$0 \in S$.
+
+An important special case is \emph{localizing away from an element}: If~$f$ is
+an element of~$A$, then~$A[f^{-1}]$ is~$A[\{1,f,f^2,f^3,\ldots\}^{-1}]$. This
+ring is the zero ring iff~$f$ is nilpotent.
+
+The \emph{stalk at a prime ideal}~$\ppp \subseteq A$ is the
+localization~$A_\ppp \defeq A[(A \setminus \ppp)^{-1}]$. Assuming de Morgan's
+laws, such stalks are local rings. The \emph{stalk at a filter}~$\fff \subseteq A$ is
+defined as~$A_\fff \defeq A[\fff^{-1}]$ and is a local ring even
+constructively. Conversely, if a localization~$A[S^{-1}]$ is local then~$S$ can
+be saturated to a filter.
+
+A property of rings is \emph{localization-stable} iff it is inherited by any
+localization. For instance, if~$A$ is a reduced ring, then so is any
+localization~$A[S^{-1}]$.
+
+
+\subsection{A remarkable sheaf}
+\label{sect:a-remarkable-sheaf}
+
+Let~$A$ be a reduced ring. Then there is a certain locale~$X$ which contains a
+certain ``mirror image'' of~$A$, a sheaf~$A^\sim$ of rings. On the one hand,
+this mirror image is ``close to~$A$'', such that studying~$A^\sim$ pays off for
+learning about~$A$. On the other hand, it has much better properties than~$A$
+has.
+
+\begin{center}
+\vbox{$A^\sim$ is close to~$A$: \\[0.6em]
+\framebox{\parbox{0.9\textwidth}{\vspace*{-0.7em}
 \begin{enumerate}
 \item There is a canonical bijection~$A \to A^\sim(X)$.
 \item $A^\sim$ inherits any property of~$A$ which is
 localization-stable.
 \item A geometric sequent holds for~$A^\sim$ iff$^\star$ it holds for all
 stalks~$A_{\mathfrak{f}}$.
-\end{enumerate}
+\end{enumerate}\vspace*{-0.7em}}}}
 
-{\centering $A^\sim$ has better properties than~$A$:\par}
+\vbox{$A^\sim$ has better properties than~$A$: \\[0.6em]
+\framebox{\parbox{0.9\textwidth}{\vspace*{-0.7em}
 \begin{enumerate}
-\item $A^\sim$ is a local ring: $\neg(1=0)$, $\forall x,y\?A^\sim_ x + y = 1 \Rightarrow
-(\exists z\?A^\sim\_ xz = 1) \vee (\exists z\?A^\sim\_ yz = 1)$.
+\item $A^\sim$ is a local ring:
+% $\neg(1=0)$, $\forall x,y\?A^\sim\_ x + y = 1 \Rightarrow (\exists z\?A^\sim\_ xz = 1) \vee (\exists z\?A^\sim\_ yz = 1)$.
 \item $A^\sim$ is a field: $\forall x\?A^\sim\_ (\neg(\exists y\?A^\sim\_ xy = 1) \Rightarrow x = 0)$.
 \item $A^\sim$ has $\neg\neg$-stable equality:
 $\forall x,y\?A^\sim\_ \neg\neg(x = y) \Rightarrow x = y$.
 \item $A^\sim$ is \emph{anonymously Noetherian}.
-\end{enumerate}
+\end{enumerate}\vspace*{-0.7em}}}}
+\end{center}
 
-{\centering This observation can be exploited to give \\ short, conceptual and
-constructive proofs.\par}
+%{\centering This observation can be exploited to give \\ short, conceptual and
+%constructive proofs.\par}
+
+XXX from here on just a stub
+
 
 \begin{proposition}The sheaf of rings~$A^\sim$ has $\neg\neg$-stable equality:
 \[ \Spec(A) \models \forall x,y\?A^\sim\_ \neg\neg(x = y) \Rightarrow x = y. \]
@@ -868,12 +1035,20 @@ constructive proofs.\par}
 that~$\neg\neg(x = y)$. We will verify that~$x - y$ is not invertible; by the
 field condition, this will imply~$x - y = 0$, hence~$x = y$.
 
-So assume that~$x - y$ is invertible. XXX\end{proof}
+So assume that~$x - y$ is invertible. Then~$\neg(x - y = 0)$, since if~$x - y =
+0$, then~$1 = (x-y) (x-y)^{-1} = 0$ in contradiction to~$1 \neq 0$. This is a
+contradiction to the assumption~$\neg\neg(x-y=0)$.\end{proof}
 
 \begin{proposition}The sheaf of rings~$A^\sim$ is anonymously
 Noetherian.\end{proposition}
 
-\begin{proof}We argue internally. Let~$\aaa \subseteq A^\sim$ be an ideal. XXX
+\begin{proof}We argue internally. Let~$\aaa \subseteq A^\sim$ be an ideal.
+Assume that~$\aaa$ is not finitely generated. We will verify that then~$\aaa =
+(0)$, hence that~$\aaa$ is finitely generated; contradiction.
+
+Let~$x \in \aaa$. If~$x$ is invertible, then~$\aaa = (1)$ is finitely
+generated. Hence~$x$ is not invertible. Thus~$x = 0$ because~$A^\sim$ is a
+field.
 \end{proof}
 
 \begin{theorem}Let~$A$ be a ring. The Lindenbaum algebra of the theory of prime

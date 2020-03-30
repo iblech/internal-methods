@@ -849,8 +849,9 @@ stalks~$A_{\mathfrak{f}}$.
 
 {\centering $A^\sim$ has better properties than~$A$:\par}
 \begin{enumerate}
-\item $A^\sim$ is a field: $\forall x\?A^\sim\_ (\neg(\exists y\?A^\sim\_
-  xy = 1) \Rightarrow x = 0)$.
+\item $A^\sim$ is a local ring: $\neg(1=0)$, $\forall x,y\?A^\sim_ x + y = 1 \Rightarrow
+(\exists z\?A^\sim\_ xz = 1) \vee (\exists z\?A^\sim\_ yz = 1)$.
+\item $A^\sim$ is a field: $\forall x\?A^\sim\_ (\neg(\exists y\?A^\sim\_ xy = 1) \Rightarrow x = 0)$.
 \item $A^\sim$ has $\neg\neg$-stable equality:
 $\forall x,y\?A^\sim\_ \neg\neg(x = y) \Rightarrow x = y$.
 \item $A^\sim$ is \emph{anonymously Noetherian}.
@@ -858,6 +859,22 @@ $\forall x,y\?A^\sim\_ \neg\neg(x = y) \Rightarrow x = y$.
 
 {\centering This observation can be exploited to give \\ short, conceptual and
 constructive proofs.\par}
+
+\begin{proposition}The sheaf of rings~$A^\sim$ has $\neg\neg$-stable equality:
+\[ \Spec(A) \models \forall x,y\?A^\sim\_ \neg\neg(x = y) \Rightarrow x = y. \]
+\end{proposition}
+
+\begin{proof}We argue internally. Let~$x,y \? A^\sim$ be given such
+that~$\neg\neg(x = y)$. We will verify that~$x - y$ is not invertible; by the
+field condition, this will imply~$x - y = 0$, hence~$x = y$.
+
+So assume that~$x - y$ is invertible. XXX\end{proof}
+
+\begin{proposition}The sheaf of rings~$A^\sim$ is anonymously
+Noetherian.\end{proposition}
+
+\begin{proof}We argue internally. Let~$\aaa \subseteq A^\sim$ be an ideal. XXX
+\end{proof}
 
 \begin{theorem}Let~$A$ be a ring. The Lindenbaum algebra of the theory of prime
 filters of~$A$ is canonically isomorphic to the frame of radical ideals in~$A$.

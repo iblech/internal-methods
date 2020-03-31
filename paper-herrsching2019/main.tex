@@ -4,6 +4,7 @@
 \usepackage{mathtools,stmaryrd,xspace}
 
 \usepackage[normalem]{ulem}
+\usepackage[all]{xy}
 \usepackage{tikz}
 \usetikzlibrary{calc}
 \newcommand{\hcancel}[5]{%
@@ -47,6 +48,7 @@
 \newcommand{\defeqv}{\vcentcolon\equiv}
 \newcommand{\Sh}{\mathrm{Sh}}
 \newcommand{\GL}{\mathrm{GL}}
+\newcommand{\ab}{\mathrm{ab}}
 \newcommand{\Zar}{\mathrm{Zar}}
 \newcommand{\op}{\mathrm{op}}
 \newcommand{\Set}{\mathrm{Set}}
@@ -59,6 +61,7 @@
 \newcommand{\Hom}{\mathrm{Hom}}
 \newcommand{\Spec}{\mathrm{Spec}}
 \newcommand{\Gal}{\mathrm{Gal}}
+\newcommand{\Rad}{\mathrm{Rad}}
 \newcommand{\lra}{\longrightarrow}
 \newcommand{\RelSpec}{\operatorname{Spec}}
 \renewcommand{\_}{\mathpunct{.}}
@@ -93,7 +96,7 @@ XXX
 \end{abstract}
 \body
 
-%\tableofcontents
+\tableofcontents
 
 \section{Locales}
 
@@ -687,20 +690,20 @@ isomorphism from~$\O(X)$ to the Lindenbaum algebra of this theory maps an
 open~$U$ to~$[\varphi_U]$.
 
 The question whether a given locale is spatial is intimately related with the
-existence of appropriate \emph{ideal objects}. Their existence typically hinges
-on the axiom of choice or some of its variants. For instance, there are the
-following results (where we allow ourselves a modicum in classical logic in
+existence of appropriate \emph{ideal objects} whose existence typically hinges
+on the axiom of choice or one of its variants. For instance, there are the
+following results (where we allow ourselves a modicum of classical logic in
 order to state the results in a familiar form).
 \begin{enumerate}
 \item The localic spectrum of a ring~$A$ is spatial iff every nontrivial ideal
 (of a certain class of rings related with~$A$) is contained in a prime ideal.
 \item The localic Galois group of a Galois extension~$L|k$ is spatial iff
 any~$k$-homomorphism~$\sigma : E \to L$ defined on a finite intermediate
-extension~$L|E|k$ can be extended to a~$k$-homomorphism~$L \to L$.
-\item The localic real line is spatial iff the every open covering of the
-set~$[0,1]$ of Dedekind reals has a Lebesgue number (that is, is Heine--Borel
-compact).
-\item The statement that any classifying locale of a propositional coherent
+extension~$L|E|k$ admits an extension to a~$k$-homomorphism~$L \to L$.
+\item The localic real line is spatial iff every open covering of the
+metric space~$[0,1]$ of Dedekind reals has a Lebesgue number (that is, if the
+metric space~$[0,1]$ is Heine--Borel compact).
+\item The statement that the classifying locale of any propositional coherent
 theory (that is, a propositional geometric theory in which only finite
 disjunctions occur) is spatial is equivalent to the Boolean Prime Ideal
 Theorem~\BPIT.
@@ -742,8 +745,7 @@ topology) are vital.
 \subsection{Sheaves on locales}
 
 \begin{definition}\label{defn:presheaf}
-A \emph{presheaf}~$F$ on a locale~$X$ is a functor~$\O(X)^\op
-\to \Set$, that is
+A \emph{presheaf}~$F$ on a locale~$X$ is a functor~$\O(X)^\op \to \Set$, that is
 \begin{enumerate}
   \item a set~$F(U)$ for each open~$U \in \O(X)$ and
   \item a map~$(\cdot)|^U_V : F(U) \to F(V)$ for each pair of opens~$V \preceq U$
@@ -1002,10 +1004,12 @@ implies~$x = 0$.
 
 An \emph{ideal} is a subset~$\aaa \subseteq A$ such that~$0 \in \aaa$, $(x \in
 \ppp) \wedge (y \in \ppp) \Rightarrow (x + y \in \ppp)$ and $(x \in
-\ppp) \Rightarrow (rx \in \ppp)$ (for any~$r \in A$).
+\ppp) \Rightarrow (rx \in \ppp)$ (for any~$r \in A$). A family~$(x_i)_i$ of
+ring elements generates an ideal, also denoted~``$(x_i)_i$'', consisting of
+(finite) sums of multiples of the~$x_i$.
+
 An ideal~$\ppp$ is \emph{prime} iff~$1 \not\in \ppp$ and~$(xy
 \in \ppp) \Rightarrow (x \in \ppp) \vee (y \in \ppp)$.
-
 A \emph{minimal prime ideal} is a prime ideal~$\ppp$ such that for any prime
 ideal~$\qqq$ with~$\qqq \subseteq \ppp$, $\qqq = \ppp$.
 
@@ -1039,10 +1043,10 @@ ring is the zero ring iff~$f$ is nilpotent.
 
 The \emph{stalk at a prime ideal}~$\ppp \subseteq A$ is the
 localization~$A_\ppp \defeq A[(A \setminus \ppp)^{-1}]$. Assuming de Morgan's
-laws, such stalks are local rings. The \emph{stalk at a filter}~$\fff \subseteq A$ is
+laws, such stalks are local rings. The \emph{stalk at a prime filter}~$\fff \subseteq A$ is
 defined as~$A_\fff \defeq A[\fff^{-1}]$ and is a local ring even
 constructively. Conversely, if a localization~$A[S^{-1}]$ is local then~$S$ can
-be saturated to a filter.
+be saturated to a prime filter.
 
 A property of rings is \emph{localization-stable} iff it is inherited by any
 localization. For instance, if~$A$ is a reduced ring, then so is any
@@ -1052,8 +1056,8 @@ localization~$A[S^{-1}]$.
 \subsection{A remarkable sheaf}
 \label{sect:a-remarkable-sheaf}
 
-Let~$A$ be a ring. Then there is a certain locale~$X$ which contains a
-certain ``mirror image'' of~$A$, a sheaf~$A^\sim$ of rings. On the one hand,
+Let~$A$ be a ring. Then there is a certain locale~$X$ on which a
+certain ``mirror image'' of~$A$ exists, a sheaf~$A^\sim$ of rings on~$X$. On the one hand,
 this mirror image is ``close to~$A$'', such that studying~$A^\sim$ pays off for
 learning about~$A$. On the other hand, it has much better properties than~$A$
 has.
@@ -1066,12 +1070,14 @@ has.
 There is a canonical isomorphism~$A \to A^\sim(X)$ of rings.
 \item\label{item:loc-stable}
 $A^\sim$ inherits any property of~$A$ which is
-localization-stable.
+localization-stable.$^\star$
 \item\label{item:stalks}
-A geometric sequent holds for~$A^\sim$ iff$^\star$ it holds for all
-stalks~$A_{\mathfrak{f}}$.
+A geometric sequent holds for~$A^\sim$ iff$^{\star\!\star}$ it holds for all
+stalks~$A_\fff$.
 \end{Alphlist}\vspace*{-0.7em}}}}
-\hfill $^\star$assuming \BPIT for the ``if'' direction{\quad}
+\hfill $^\star$precise formulation in
+Proposition~{\ref{prop:immediate-consequences}}{\quad}\phantom{\,\,}\\
+\hfill $^{\star\!\star}$assuming \BPIT for the ``if'' direction{\quad}
 \bigskip
 
 \vbox{$A^\sim$ has better properties than~$A$: \\[0.6em]
@@ -1096,7 +1102,8 @@ are implicitly using the sheaf semantics. For instance, when we say
 that~$A^\sim$ is a local ring, we actually mean
 \begin{multline*}
   \Sh(X) \models \neg(1 =_{A^\sim} 0) \quad\text{and} \\
-  \Sh(X) \models \forall x,y\?A^\sim\_ \bigl(x + y =_{A^\sim} 1 \Longrightarrow \\
+  \Sh(X) \models \forall x,y\?A^\sim\_ \bigl((\exists z\?A^\sim\_ (x + y)z
+  =_{A^\sim} 1) \Longrightarrow \\
   (\exists
   z\?A^\sim\_ xz =_{A^\sim} 1) \vee (\exists z\?A^\sim\_ yz =_{A^\sim} 1)\bigr).
 \end{multline*}
@@ -1137,7 +1144,7 @@ under consideration, statement~(\ref{item:loc-stable}) requires a semantic one.
 The fact that~$A^\sim$ is a field is where~$A^\sim$ derives its main usefulness
 from. While statements~(\ref{item:loc-stable}), (\ref{item:stalks}) and
 (\ref{item:local}) are immediate consequences of the way~$A^\sim$ is
-constructed (Section~\ref{sect:origins}), the field property~(\ref{item:field})
+constructed (Proposition~\ref{prop:immediate-consequences}), the field property~(\ref{item:field})
 requires an actual computation for its verification and was a surprising
 discovery by Mulvey in the 1970s.
 
@@ -1145,7 +1152,8 @@ Tierney commented around that time that the field property ``is surely important
 though its precise significance is still somewhat obscure---as is the case with
 many such nongeometric formulas''~\cite[p.~209]{tierney:spectrum}. Even though
 the property has been known for a long time, only recently was it put in a
-wider context and its its usefulness for constructive algebra
+wider context (recognizing it as a small shadow of algebraic geometry's
+\emph{quasicoherence}) and its its usefulness for constructive algebra
 appreciated~\cite[Sections~3.3 and~11.4]{blechschmidt:phd}.
 
 The field property is a unique feature of~$A^\sim$; it cannot be mimicked by
@@ -1216,29 +1224,300 @@ field.
 \end{proof}
 
 
-\subsection{The origins of the sheaf}
+\subsection{An algebraic origin story}
 \label{sect:origins}
-XXX better title
 
-XXX universal localization...
+The purpose of this section is to properly motivate the construction
+leading to~$A^\sim$. Briefly, the story is as follows, with details given
+below.
+\begin{enumerate}
+\item Given a ring~$A$, we set out to construct the \emph{free local ring}
+over~$A$.
+\item In the strict sense of the word, this endeavor will fail, but in a wider
+sense the quest will succeed and yield the sheaf~$A^\sim$.
+\item It is then a surprising observation that~$A^\sim$ is a field, even though
+we only set out to construct a local ring.
+\item There is general machinery for free constructions of this kind, and this
+machinery is \emph{not} applicable to construct free fields.
+\end{enumerate}
 
-XXX proofs of (B), (C), (D)
+\paragraph{Free constructions.}
+Let~$G$ be a group. Then there is a universal way to turn~$G$ into an abelian
+group~$G^\ab$ equipped with a group homomorphism~$G \to G^\ab$, the \emph{free
+abelian group over~$G$}. This abelianization has the universal property that
+for any homomorphism~$G \to M$ into an abelian group, there is exactly one
+group homomorphism~$G^\ab \to M$ rendering the diagram
+\[ \xymatrix{
+  G \ar[rd] \ar[rrr] &&& {\substack{\text{abelian}\\\text{\normalsize$\!M$}\\\phantom{\text{abelian}}}} \\
+  & {\substack{\text{\normalsize$G^\ab$}\\\text{abelian}}} \ar@{-->}_[@!29]{}[rru]
+} \]
+commutative. In textbooks, the abelianization is usually constructed as~$G^\ab
+= G/[N,N]$, that is as the quotient by the subgroup generated by the
+commutators. This explicit construction makes it appear that the abelianization
+of a group is specific result in algebra.
 
-\begin{theorem}Let~$A$ be a ring. The Lindenbaum algebra of the theory of prime
-filters of~$A$ is canonically isomorphic to the frame of radical ideals in~$A$.
+We can also cast the contruction in logical language, which will make it
+evident that abelianization is just a special case of a more general procedure.
+The free abelian group over~$G$ can be obtained as the \emph{term model} of the
+theory of abelian groups extended by one constant~$x_g$ for each element~$g \in
+G$ and the axioms
+\begin{align*}
+  \top &\vdash x_{g \circ h} = x_g \circ x_h & \text{(for each~$g,h \in G$)} \\
+  \top &\vdash x_g^{-1} = x_{g^{-1}} & \text{(for each~$g \in G$)} \\
+  \top &\vdash x_e = e
+\end{align*}
+That is, $G^\ab$ contains exactly those elements and exactly those
+identifications between elements such that~$G^\ab$ is an abelian group and such
+that~$G$ can be interpreted in it (that is, that there is a homomorphism~$G \to
+G^\ab$).
+
+In exactly the same manner, we can construct the free group over a monoid, the
+free~$\ZZ/(2)$-algebra over a ring, the free ring over a set or the free
+Heyting algebra over a partially ordered set. This is all well-understood; a
+particularly perspicious account in the general setting of partial Horn
+theories is due to Palmgren and Vickers~\cite{palmgren-vickers:partial-horn}.
+
+However, this procedure cannot be carried out for any pair of theories. For
+instance, there are no \emph{free fields}. The free field on a set~$X$ would be
+a field~$K$ together with a map~$X \to K$ such that any map~$X \to L$ factors
+over the given map~$X \to K$ by a unique field homomorphism~$K \to L$.
+% Exercise: proof this!
+
+For instance, in the case~$X = \{ t \}$, the field~$\QQ(t)$ of rational
+functions comes close, but fails because there are no field homomorphisms~$\QQ(t)
+\to L$ which could map~$t$ to an algebraic element. We could also try to
+concoct a term model, but the set of terms in the language of a field extended
+by a constant~$t$ modulo provable equivalence is only the ring~$\ZZ[t]$, not a
+field.
+
+The non-existence of free fields is explained by the observation that the
+theory of fields is, for any of its variants,\footnote{By ``theory of fields'',
+we could mean the theory of rings extended by either the coherent axiom~$\top
+\seq{x:R} x = 0 \vee (\exists y\?R\_ xy = 1)$ or by the axiom~$\neg(\exists
+y\?R\_ xy = 1) \seq{x:R} x = 0$ or by the axiom~$\neg(x = 0) \seq{x:R} \exists
+(y\?R\_ xy = 1)$.} not a partial Horn theory.
+XXX: Are general conditions known for existence of free models?
+
+\paragraph{Free local rings.} The theory of local rings, that is the theory of
+rings extended by the two coherent axioms
+\begin{align*}
+  1 = 0 &\vdash \bot \\
+  (\exists z\?R\_ (x+y)z = 1) &\seq{x:R,y:R} (\exists z\?R\_ xz = 1) \vee
+  (\exists z\?R\_ yz = 1),
+\end{align*}
+is also not a partial Horn theory. Hence there is no reason to expect that free
+local rings exist, and indeed, in general they do not. However, despite this
+negative outlook, we want to analyze the situation in more detail.
+
+The correct notion of a morphism between local rings is that of a \emph{local
+ring homomorphism}, a ring homomorphism~$f : R \to S$ which \emph{reflects
+invertibility}, that is for which~$f(x)$ being invertible implies that~$x$ is
+invertible.
+
+Hence a \emph{free local ring} over a ring~$A$ is to be a local ring~$A'$
+together with a ring homomorphism~$A \to A'$ such that the following universal
+property holds: Any ring homomorphism~$A \to B$ into a local ring uniquely
+factors via a local homomorphism over~$A \to A'$ as indicated in the diagram.
+\[ \xymatrix{
+  A \ar[rd] \ar[rrr] &&& {\substack{\text{local}\\\text{\normalsize$\!\!\!B$}\\\phantom{\text{local}}}} \\
+  & {\substack{\text{\normalsize$\!\!A'$}\\\text{local}}} \ar@{-->}_[@!31]{\text{local}}[rru]
+} \]
+
+To develop intuition for what this universal property requests, let a
+homomorphism~$f : A \to B$ into a local ring be given. The subset~$B^\times
+\subseteq B$ is then a \emph{prime filter}, due to the locality of~$B$. Its
+preimage~$\fff \defeq f^{-1}[B^\times]$ is a prime filter of~$A$. Hence the
+localization~$A_\fff = A[\fff^{-1}]$ is a local ring and~$f$ factors via the
+well-defined map~$f' : A_\fff \to B,\,\frac{x}{s} \mapsto f(s)^{-1}f(x)$ over
+the canonical morphism~$A \to A_\fff,\,x \mapsto \frac{x}{1}$. Furthermore,
+this map is local.
+
+Hence the stalks~$A_\fff$, where~$\fff$ ranges over the prime filters of~$A$,
+can be regarded as approximations to the hypothetical true local ring over~$A$.
+Each of these stalks is local, but might not validate the universal property
+for all homomorphisms~$A \to B$ into local rings. We are thus led to the
+following conclusions.
+
+\begin{enumerate}
+\item A free local ring~$A \to A'$ over~$A$ exists if~$A$ has exactly one prime
+filter. (The converse also holds.) In classical mathematics, this condition is
+satisfied if and only if~$A$ is local ring of Krull dimension zero. In this
+case, the unique prime filter is~$A^\times$ and the free local ring over~$A$ is given
+by~$A$ itself. Hence in general, the problem of constructing the free local
+ring over a given ring is not solvable.
+\item However, we could solve the problem in full generality if we would have a
+special prime filter~$\fff_0$ which could somehow shift shape, that is, turn into any
+specific prime filter~$\fff$ on demand.
+\end{enumerate}
+
+The existence of such a shape-shifting prime filter~$\fff_0$ is not a pipe dream.
+While it does not exist as a set, it can be incarnated as a \emph{sheaf}.
+
+\begin{definition}\label{defn:generic-prime-filter}
+The \emph{generic prime filter}~$\fff_0$ of a ring~$A$ is the
+generic model of the theory of prime filters of~$A$.\end{definition}
+
+According to this definition, the generic prime filter is a particular
+\emph{sheaf model} over the classifying locale of prime filters of~$A$, the
+\emph{spectrum} of~$A$. By localizing at the generic prime filter, we solve
+the problem of constructing the free local ring in a generalized sense: \emph{The
+free local ring over~$A$ exists as a certain sheaf of rings.} It has a
+universal property not only with respect to all ordinary rings, but also all
+sheaves of rings on arbitrary locales.
+
+\paragraph{Constructing the sheaf~$A^\sim$.} We recall that the given ring~$A$
+has a counterpart in the universe of sheaves over~$\Spec(A)$, namely the
+constant sheaf~$\underline{A}$. We construct the sheaf~$A^\sim$ as
+\[ A^\sim \defeq \underline{A}[\fff_0^{-1}], \]
+that is as the localization of~$\underline{A}$ at its prime
+filter~$\fff_0$.\footnote{This description contains a slight abuse of notation.
+According to Definition~\ref{defn:generic-prime-filter}, the generic prime
+filter $\fff_0$ is a model of the theory of prime filters, hence a
+family~$(U_x)_{x \in A}$ of opens of~$\Spec(A)$, one for each nullary relation
+symbol of the theory. In fact, by the construction of the generic model, the
+open~$U_x$ is simply the element~$[D(x)]$ of the Lindenbaum algebra. We
+turn this family into the subsheaf of~$\underline{A}$ given by $U \mapsto \{ g
+\in \Hom(U,A) \,|\, \forall x \in A\_ f^{-1}[\{a\}] \preceq [D(a)] \}$. Abusing
+notation, we denote this subsheaf also as~``$\fff_0$''. The
+statement~``$\fff_0$ is a prime filter'' is then validated by the sheaf semantics.}
+
+With this definition, a number of statements from
+Section~\ref{sect:a-remarkable-sheaf} are immediate.
+
+\begin{proposition}\label{prop:immediate-consequences}
+Let~$A$ be a ring. Then the statements~(\ref{item:loc-stable}), (\ref{item:stalks}) and
+(\ref{item:local}) displayed above hold:
+\begin{Alphlist}[(D)]
+\item[(\ref{item:loc-stable})]
+The ring~$A^\sim$ has every property~$\varphi$ that~$A$ has, assuming
+that~$\varphi$ is a property of rings which can be put in the formal
+higher-order language of toposes; that there is an intuitionistic proof
+that~$\varphi$ is localization-stable; and that every element of~$A$ is
+nilpotent or not.
+\item[(\ref{item:stalks})]
+If a geometric sequent holds for~$A^\sim$, then it also holds for all
+stalks~$A_\fff$ at prime filters. The converse holds if~$\Spec(A)$ is spatial,
+or instance if~\BPIT is available.
+\item[(\ref{item:local})] The ring~$A^\sim$ is local.
+\end{Alphlist}
+\end{proposition}
+
+\begin{proof}
+\begin{Alphlist}[(D)]
+\item[(\ref{item:local})] The ring~$A^\sim$ is local as it is the
+localization at a prime filter.
+\item[(\ref{item:loc-stable})] Any property of~$A$ passes to~$\underline{A}$
+(XXX: ref) and the ring~$A^\sim$ is a localization of~$\underline{A}$.
+\item[(\ref{item:stalks})] We recall that the points of~$\Spec(A)$ are
+precisely the prime filters of~$A$. The stalk of the constant
+sheaf~$\underline{A}$ at any point is precisely~$A$, and by construction, the
+stalk of the generic prime filter~$\fff_0$ (considered as a subsheaf
+of~$\underline{A}$) at a prime filter~$\fff$ is~$\fff$. Since localization is a
+geometric construction, it is preserved by the operation of computing
+(sheaf-theoretic) stalks. Hence the stalk of~$A^\sim$ at a point~$\fff$ is
+$A[\fff^{-1}]$, that is, the ring-theoretic stalk of~$A$ at~$\fff$. The claim
+therefore follows from Proposition~XXX.\qedhere
+\end{Alphlist}
+\end{proof}
+
+Furthermore, the sheaf~$A^\sim$ is the free local ring over~$A$ in the
+following sense. If~$R$ is a sheaf of rings on a locale~$X$ and~$S$ is a sheaf
+of rings on a locale~$Y$, then by a morphism~$R \to S$ we mean a pair
+consisting of a morphism~$f : Y \to X$ of locales together with a
+morphism~$f^\sharp : f^{-1}R \to S$ of sheaves of rings on~$Y$.
+In this way a category of sheaves of rings on arbitrary locales is set up, into
+which the category of ordinary rings embeds.
+
+For~$A^\sim$ to be the local ring over~$A$, there has to be a morphism~$A \to
+A^\sim$. For this we take the pair~$\langle g, g^\sharp \rangle$ where~$g :
+\Spec(A) \to \pt$ is the unique morphism into the one-point locale
+and~$g^\sharp : g^{-1}A = \underline{A} \to A^\sim$ is the localization
+morphism.
+
+If~$\langle f,f^\sharp \rangle : A \to B$ is a morphism into a local sheaf of
+rings on an arbitrary locale~$X$, we can construct, in the universe of sheaves
+over~$X$, the factorization~$\underline{A} \to
+\underline{A}[\fff^{-1}] \to B$ where~$\fff \defeq
+(f^\sharp)^{-1}[B^\times]$. Since~$\fff$ is a model of the theory of prime
+filters of~$A$, there is a unique morphism~$g : X \to \Spec(A)$ of locales such
+that~$g^{-1}\fff_0 = \fff$. Since~$g^{-1}A^\sim = \underline{A}[\fff^{-1}]$,
+the localization just constructed gives rise to a morphism~$A^\sim \to B$ of
+local sheaves of rings.
+
+
+\subsection{Understanding the sheaf model}
+
+In Section~\ref{sect:origins}, we constructed the sheaf~$A^\sim$ as the free
+local ring over~$A$, more specifically as the localization of the constant
+sheaf~$\underline{A}$ on~$\Spec(A)$ at the generic prime filter~$\fff_0$
+of~$A$. Several of the properties mentioned in
+Section~\ref{sect:a-remarkable-sheaf} are immediate consequences of this
+abstract description.
+
+However, for a more detailed identification of~$A^\sim$ -- especially for
+verifying its field property -- we require a more concrete description. In
+particular, we require a concrete description of the underlying frame
+of~$\Spec(A)$. Since this frame is defined as the Lindenbaum algebra of the
+theory of prime filters of~$A$, we need a thorough grasp of the consequences of
+this theory.
+
+Such an understanding is imparted by the following theorem. This theorem is the
+central workhorse of our approach.
+
+\begin{theorem}\label{thm:workhorse}
+Let~$A$ be a ring. The Lindenbaum algebra of the theory~$\TT$ of prime filters
+of~$A$ is canonically isomorphic to the frame of radical ideals in~$A$, via an
+isomorphism which maps
+\[ [D(f)] \longmapsto \sqrt{(f)}. \]
+In particular:
+\[
+  \textnormal{$\TT$ proves~$D(f) \vdash \bigvee_{i \in I} D(g_i)$} \quad\text{iff}\quad
+    f \in \sqrt{(g_i)_i}. \]
 \end{theorem}
 
-\begin{proof}The set of radical ideals is ordered by inclusion. The meet~$\aaa
-\wedge \bbb$ of two radical ideals is their intersection and the
-join~$\bigvee_i \aaa_i$ of radical ideals is~$\sqrt{\sum_i \aaa_i}$.
+\begin{proof}The set of radical ideals~$\Rad(A)$ is ordered by inclusion. Its
+least element is~$\sqrt{(0)}$, the meet~$\aaa \wedge \bbb$ of two radical
+ideals is their intersection and the join~$\bigvee_i \aaa_i$ of radical ideals
+is~$\sqrt{\sum_i \aaa_i}$. In this way the radical ideals form a frame.
 
-The desired isomorphism maps~$[\alpha_x]$ to~$\sqrt{(x)}$ and maps finite meets
-to finite meets and arbitrary joins to arbitrary joins, as it should be. A
-computation shows that it is well-defined and monotone. For instance, in the
-Lindenbaum algebra, we have~$[\alpha_x] \wedge [\alpha_y] \preceq
-[\alpha_{xy}]$, and indeed~$\sqrt{(x)} \cap \sqrt{(y)} \subseteq \sqrt{(xy)}$.
-XXX: surjective and order-reflecting
+The Lindenbaum algebra is the free frame generated by the symbols~$D(x)$,
+where~$x$ ranges over the elements of~$A$, modulo the axioms for a prime
+filter. Hence to give a frame homomorphism~$\O(\Spec(A)) \to \Rad(A)$, we need
+to specify images in~$\Rad(A)$ for each generator in such a way that the
+axioms for a prime filter are satisfied. This is achieved by declaring~$D(f)
+\mapsto \sqrt{(f)}$:
+\begin{align*}
+  D(0) &\vdash \bot & \sqrt{(0)} &\subseteq \sqrt{(0)} \\
+  D(f+g) &\vdash D(f) \vee D(g) & \sqrt{(f+g)} &\subseteq\textstyle \sqrt{\sqrt{(f)} + \sqrt{(g)}} \\
+  \top &\vdash D(1) & \sqrt{(1)} &\subseteq \sqrt{(1)} \\
+  D(f) \wedge D(g) \dashv\!&\vdash D(fg) & \sqrt{(f)} \cap \sqrt{(g)} &= \sqrt{(fg)}
+\end{align*}
+The most interesting of these radical inclusions is probably~$\sqrt{(f)} \cap
+\sqrt{(g)} \subseteq \sqrt{(fg)}$, as this illustrates why passing to the
+radical is vital; in general, we do not have~$(f) \cap (g) \subseteq (fg)$.
+
+The frame homomorphism obtained in this manner is surjective, since a preimage
+for a radical ideal~$\aaa$ is given by~$\bigvee_{f \in \aaa} [D(f)]$. It
+remains to show that the homomorphism reflects the ordering.
+
+To this end, let an element~$f \in A$ and a family~$(g_i)_i$ of elements be
+given and assume~$\sqrt{(f)} \subseteq \sqrt{\sum_i \sqrt{(g_i)}}$. Then there
+are values~$n,m \in \NN$, $i_1,\ldots,i_m \in \NN$ and~$u_1,\ldots,u_m \in
+A$ such that~$f^n = u_1 g_{i_1} + \cdots + u_m g_{i_m}$. We then have the
+following chain of entailments.
+\[
+  D(f) \vdash
+  D(f^n) \vdash
+  \bigvee_{k=1}^m D(u_k g_{i_k}) \vdash
+  \bigvee_{k=1}^m D(g_{i_k}) \vdash
+  \bigvee_i D(g_i). \qedhere
+\]
 \end{proof}
+
+Theorem~\ref{thm:workhorse} shows that any derivation in the theory of prime
+filters of~$A$ can be put into a \emph{normal form}. An expression of the
+form~``$f^n = u_1 g_{i_1} + \cdots + u_m g_{i_m}$'' can be regarded as an
+\emph{algebraic certificate} of the entailment~$D(f) \vdash \bigvee_i D(g_i)$.
 
 
 \subsection{Applications}
@@ -1258,3 +1537,6 @@ XXX cite https://apcz.umk.pl/czasopisma/index.php/LLP/article/viewFile/LLP.2013.
 XXX include rules for geometric logic?
 
 X \models phi
+
+  &\text{iff}\quad \bigvee_{n \in \NN} \exists m \in \NN\_ \exists i_1,\ldots,i_n \in I\_ \exists
+  u_1,\ldots,u_n \in A\_ f^m = \sum_{j=1}^n u_j g_{i_j}

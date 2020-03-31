@@ -40,6 +40,8 @@
 \newcommand{\aaa}{\mathfrak{a}}
 \newcommand{\bbb}{\mathfrak{b}}
 \newcommand{\ppp}{\mathfrak{p}}
+\newcommand{\qqq}{\mathfrak{q}}
+\newcommand{\mmm}{\mathfrak{m}}
 \newcommand{\fff}{\mathfrak{f}}
 \newcommand{\defeq}{\vcentcolon=}
 \newcommand{\defeqv}{\vcentcolon\equiv}
@@ -398,13 +400,16 @@ gives rise to a point of~$X$.
 
 \begin{definition}A locale~$X$ is \emph{spatial} if and only if its points
 suffice to distinguish its opens, that is if for any opens~$U, V \in \O(X)$,
-if~$x \inplus U \Leftrightarrow x \inplus V$ for all points~$x$ of~$X$, then~$U =
-V$.\end{definition}
+if~$x \inplus U \Rightarrow x \inplus V$ for all points~$x$ of~$X$, then~$U
+\preceq V$.\end{definition}
+
+An equivalent conditon is: if for any opens~$U, V \in \O(X)$, if~$x \inplus U
+\Leftrightarrow x \inplus V$ for all points~$x$ of~$X$, then~$U = V$.
 
 For instance, any locale induced by a topological space is spatial. The locale
 of surjections~$\NN \twoheadrightarrow \RR$ is a drastic example of a locale which fails to be
 spatial. The localic real line is spatial in classical mathematics and can
-fail to be spatial in constructive mathematics.
+fail to be spatial in constructive mathematics (Theorem~\ref{thm:spatiality-reals}).
 
 \begin{remark}The set of points of a locale~$X$ can be made into a topological space, giving
 rise to a functor~$\pt : \Loc \to \Top$. This functor is right adjoint
@@ -652,7 +657,7 @@ theory of prime filters of~$A$'' as ``the locale of prime filters of~$A$''.
 
 \begin{remark}The traditional way of constructing the real line or the Zariski
 spectrum as a topological space proceeds in three steps: (1) Write down the
-axioms (of Dedekind cuts respectively prime filter). (2) Using the powerset
+axioms (of Dedekind cuts respectively prime filters). (2) Using the powerset
 axiom and separation, construct the set of Dedekind reals respectively the set
 of prime filters. (3) Devise a useful topology on the resulting set.
 
@@ -680,6 +685,58 @@ to~$U$'') and the following axioms:
 These are exactly the axioms for a completely prime filter of~$\O(X)$. The
 isomorphism from~$\O(X)$ to the Lindenbaum algebra of this theory maps an
 open~$U$ to~$[\varphi_U]$.
+
+The question whether a given locale is spatial is intimately related with the
+existence of appropriate \emph{ideal objects}. Their existence typically hinges
+on the axiom of choice or some of its variants. For instance, there are the
+following results (where we allow ourselves a modicum in classical logic in
+order to state the results in a familiar form).
+\begin{enumerate}
+\item The localic spectrum of a ring~$A$ is spatial iff every nontrivial ideal
+(of a certain class of rings related with~$A$) is contained in a prime ideal.
+\item The localic Galois group of a Galois extension~$L|k$ is spatial iff
+any~$k$-homomorphism~$\sigma : E \to L$ defined on a finite intermediate
+extension~$L|E|k$ can be extended to a~$k$-homomorphism~$L \to L$.
+\item The localic real line is spatial iff the every open covering of the
+set~$[0,1]$ of Dedekind reals has a Lebesgue number (that is, is Heine--Borel
+compact).
+\item The statement that any classifying locale of a propositional coherent
+theory (that is, a propositional geometric theory in which only finite
+disjunctions occur) is spatial is equivalent to the Boolean Prime Ideal
+Theorem~\BPIT.
+\end{enumerate}
+These results explain why in classical mathematics, where all of these
+conditions are satisfied, we can blithely and fruitfully use the topological
+spectrum of a ring, the topological Galois group or the topological space of
+reals. In classical mathematics, employing the localic counterparts is merely
+for convenience or for aesthetic reasons; in constructive mathematics, the
+localic replacements (or similar replacements in other pointfree approaches to
+topology) are vital.
+
+%\begin{theorem}The localic real line is spatial if and only if the set~$[0,1]$ of
+%Dedekind real numbers is compact in the sense of Heine--Borel.
+%\end{theorem}
+%
+%\begin{proof}XXX\end{proof}
+
+%\begin{theorem}Let~$A$ be a ring and~$\Spec(A)$ its spectrum as defined above as the locale of
+%prime filters of~$A$. Then~$\Spec(A)$ is spatial if (the law of excluded middle and) the
+%Boolean Prime Ideal Theorem~\BPIT hold. More specifically, $\Spec(A)$ is
+%spatial if and only if for any ideal~$\aaa \subseteq A$ and any element~$x \in A$,
+%\[ x \in \sqrt{\aaa} \quad\textnormal{if}\quad
+%\textnormal{for all filters~$\fff \subseteq A$ with~$x \in \fff$, $\fff \between \aaa$}. \]
+%\end{theorem}
+%
+%The symbol~``$\between$'' denotes that the two sets have an element in common.
+%
+%\begin{proof}Assume that~$\Spec(A)$ is spatial. Let an ideal~$\aaa \subseteq A$
+%and an element~$x \in A$ be given such that for all filters~$\fff \subseteq A$
+%with~$x \in \fff$, $\fff \between \aaa$. Then for all filters~$\fff$, $\fff
+%\inplus \alpha_x \Rightarrow \fff \inplus \bigvee_{y\in \aaa} \alpha_y$.
+%Hence ...
+%Using the filter axioms, any open of~$\Spec(A)$ can be written
+%as~$[\bigvee_i \alpha_{x_i}]$.
+%\end{proof}
 
 
 \subsection{Sheaves on locales}
@@ -949,6 +1006,9 @@ An \emph{ideal} is a subset~$\aaa \subseteq A$ such that~$0 \in \aaa$, $(x \in
 An ideal~$\ppp$ is \emph{prime} iff~$1 \not\in \ppp$ and~$(xy
 \in \ppp) \Rightarrow (x \in \ppp) \vee (y \in \ppp)$.
 
+A \emph{minimal prime ideal} is a prime ideal~$\ppp$ such that for any prime
+ideal~$\qqq$ with~$\qqq \subseteq \ppp$, $\qqq = \ppp$.
+
 A subset~$\fff \subseteq A$ is a \emph{prime filter} iff
 $0 \not\in \fff$, $(x + y \in \fff) \Rightarrow (x \in \fff) \vee (y \in
 \fff)$, $1 \in \fff$ and $(xy \in \fff) \Leftrightarrow (x \in \fff) \wedge (y
@@ -992,7 +1052,7 @@ localization~$A[S^{-1}]$.
 \subsection{A remarkable sheaf}
 \label{sect:a-remarkable-sheaf}
 
-Let~$A$ be a reduced ring. Then there is a certain locale~$X$ which contains a
+Let~$A$ be a ring. Then there is a certain locale~$X$ which contains a
 certain ``mirror image'' of~$A$, a sheaf~$A^\sim$ of rings. On the one hand,
 this mirror image is ``close to~$A$'', such that studying~$A^\sim$ pays off for
 learning about~$A$. On the other hand, it has much better properties than~$A$
@@ -1001,31 +1061,131 @@ has.
 \begin{center}
 \vbox{$A^\sim$ is close to~$A$: \\[0.6em]
 \framebox{\parbox{0.9\textwidth}{\vspace*{-0.7em}
-\begin{enumerate}
-\item There is a canonical bijection~$A \to A^\sim(X)$.
-\item $A^\sim$ inherits any property of~$A$ which is
+\begin{Alphlist}[(C)]
+\item\label{item:iso}
+There is a canonical isomorphism~$A \to A^\sim(X)$ of rings.
+\item\label{item:loc-stable}
+$A^\sim$ inherits any property of~$A$ which is
 localization-stable.
-\item A geometric sequent holds for~$A^\sim$ iff$^\star$ it holds for all
+\item\label{item:stalks}
+A geometric sequent holds for~$A^\sim$ iff$^\star$ it holds for all
 stalks~$A_{\mathfrak{f}}$.
-\end{enumerate}\vspace*{-0.7em}}}}
+\end{Alphlist}\vspace*{-0.7em}}}}
+\hfill $^\star$assuming \BPIT for the ``if'' direction{\quad}
+\bigskip
 
 \vbox{$A^\sim$ has better properties than~$A$: \\[0.6em]
 \framebox{\parbox{0.9\textwidth}{\vspace*{-0.7em}
-\begin{enumerate}
-\item $A^\sim$ is a local ring:
-% $\neg(1=0)$, $\forall x,y\?A^\sim\_ x + y = 1 \Rightarrow (\exists z\?A^\sim\_ xz = 1) \vee (\exists z\?A^\sim\_ yz = 1)$.
-\item $A^\sim$ is a field: $\forall x\?A^\sim\_ (\neg(\exists y\?A^\sim\_ xy = 1) \Rightarrow x = 0)$.
-\item $A^\sim$ has $\neg\neg$-stable equality:
+\begin{Alphlist}[(D)]
+\addtocounter{enumi}{3}
+\item\label{item:local} $A^\sim$ is a local ring.
+\end{Alphlist}
+
+Assuming that~$A$ is reduced: \\[-1.8em]
+\begin{Alphlist}[(G)]
+\addtocounter{enumi}{4}
+\item\label{item:field} $A^\sim$ is a field: $\forall x\?A^\sim\_ (\neg(\exists y\?A^\sim\_ xy = 1) \Rightarrow x = 0)$.
+\item\label{item:negneg-stable} $A^\sim$ has $\neg\neg$-stable equality:
 $\forall x,y\?A^\sim\_ \neg\neg(x = y) \Rightarrow x = y$.
-\item $A^\sim$ is \emph{anonymously Noetherian}.
-\end{enumerate}\vspace*{-0.7em}}}}
+\item\label{item:noetherian} $A^\sim$ is \emph{anonymously Noetherian}.
+\end{Alphlist}\vspace*{-0.7em}}}}
 \end{center}
 
-%{\centering This observation can be exploited to give \\ short, conceptual and
-%constructive proofs.\par}
+Recall that when we ascribe some ring-theoretic property to~$A^\sim$, we
+are implicitly using the sheaf semantics. For instance, when we say
+that~$A^\sim$ is a local ring, we actually mean
+\begin{multline*}
+  \Sh(X) \models \neg(1 =_{A^\sim} 0) \quad\text{and} \\
+  \Sh(X) \models \forall x,y\?A^\sim\_ \bigl(x + y =_{A^\sim} 1 \Longrightarrow \\
+  (\exists
+  z\?A^\sim\_ xz =_{A^\sim} 1) \vee (\exists z\?A^\sim\_ yz =_{A^\sim} 1)\bigr).
+\end{multline*}
 
-XXX from here on just a stub
+The locale~$X$ on which this theater plays out is none other than the
+\emph{spectrum of~$A$} from algebraic geometry, and the sheaf~$A^\sim$ is the
+sheaf of regular functions. We will give details on its construction in
+Section~\ref{sect:origins}, but first want to reflect on the displayed
+statements.
 
+\paragraph{A reification of all stalks.}
+Statement~(\ref{item:stalks}) explains that, to a first approximation, the
+sheaf~$A^\sim$ is a reification of all the stalks of~$A$ into a single coherent
+entity: The sheaf~$A^\sim$ has exactly those properties which are shared by all
+the stalks~$A_\fff$. For instance, the sheaf~$A^\sim$ is an integral domain iff
+all the stalks are.
+
+But crucially, this metatheorem only pertains to properties which can be
+formulated as geometric sequents. Being an integral domain is such a property
+($1 = 0 \vdash \bot$, $xy = 0 \seq{x:R,y:R} x = 0 \vee y = 0$), but many others
+are not. The reductive power of harnessing~$A^\sim$ stems from the fact
+that~$A^\sim$ enjoys properties which are not shared by~$A$, its stalks or
+indeed any localizations or quotients.
+
+\paragraph{Back and forth.}
+Along with statement~(\ref{item:stalks}), statement~(\ref{item:iso}) is the main
+reason why results about~$A^\sim$ imply results about~$A$. For instance, if we
+want to show that a certain ring element~$x \in A$ is zero, we can just as well
+show that its mirror image in~$A^\sim$ is zero.
+
+For this step to be useful, we need to know what~$A^\sim$ looks like.
+Statements~(\ref{item:stalks}) and~(\ref{item:loc-stable}) both allow us to
+transfer our knowledge about~$A$ to~$A^\sim$; while
+statements~(\ref{item:stalks}) requires a syntactic restriction on the property
+under consideration, statement~(\ref{item:loc-stable}) requires a semantic one.
+
+\paragraph{The field property.}
+The fact that~$A^\sim$ is a field is where~$A^\sim$ derives its main usefulness
+from. While statements~(\ref{item:loc-stable}), (\ref{item:stalks}) and
+(\ref{item:local}) are immediate consequences of the way~$A^\sim$ is
+constructed (Section~\ref{sect:origins}), the field property~(\ref{item:field})
+requires an actual computation for its verification and was a surprising
+discovery by Mulvey in the 1970s.
+
+Tierney commented around that time that the field property ``is surely important,
+though its precise significance is still somewhat obscure---as is the case with
+many such nongeometric formulas''~\cite[p.~209]{tierney:spectrum}. Even though
+the property has been known for a long time, only recently was it put in a
+wider context and its its usefulness for constructive algebra
+appreciated~\cite[Sections~3.3 and~11.4]{blechschmidt:phd}.
+
+The field property is a unique feature of~$A^\sim$; it cannot be mimicked by
+classical techniques in commutative algebra. Several constructions come close,
+but fail in other ways:
+\begin{enumerate}
+\item The stalks~$A_\mmm$ at maximal ideals: These are not fields.
+\item The stalks~$A_\ppp$ at minimal prime ideals: These are fields, but a ring
+element~$x \in A$ which is zero in all these stalks~$A_\ppp$ is not necessarily
+zero in~$A$. Also, an~$A$-module~$M$ which is finitely generated and whose
+stalks~$M_\ppp$ at minimal prime ideals are free is ``free on a dense open'',
+but this is false without the finiteness hypothesis. The analogous statement
+for~$M^\sim$ and~$A^\sim$ holds in full generality (XXX reviewed below).
+\item The quotients~$A/\mmm$: These are fields, but an element~$x \in A$ which is
+zero in all these quotients~$A/\mmm$ is not necessarily zero in~$A$, and
+passing to~$A/\mmm$ is not exact (does not preserve injectivity of linear
+maps).
+\item The quotients~$A/\ppp$ modulo the prime ideals: These are merely integral
+domains.
+\end{enumerate}
+%\item If a ring element~$x \in A$ is zero in all stalk~$A_\mmm$ at maximal
+%ideals, then~$x$ is zero in~$A$. However, the rings~$A_\mmm$ are not fields.
+%\item The rings~$A/\mmm$ are fields, but a ring element~$x \in A$ which is zero
+%in all these quotients~$A/\mmm$ is not necessarily zero in~$A$.
+%\item If a ring element~$x \in A$ is zero in all quotients~$A/\ppp$,
+%where~$\ppp$ ranges over the prime ideals, then~$x$ is zero in~$A$. However,
+%the rings~$A/\ppp$ are merely integral domains.
+%\item The stalks~$A_\ppp$, where~$\ppp$ ranges over the minimal prime ideals,
+%are fields. However, a ring element~$x \in A$ which is zero
+%in all these stalks~$A_\ppp$ is not necessarily zero in~$A$.
+
+The field condition displayed in statement~(\ref{item:field}) is not the only
+such condition used in constructive algebra. For instance, a stronger condition
+is ``any element is zero or invertible'' and a further, incomparable, condition
+is ``any nonzero element is invertible''.
+
+XXX when those other conditions satisfied
+
+\paragraph{Double negation stability.}
+XXX explain that it is surprising and explain usefulness, then give proof
 
 \begin{proposition}The sheaf of rings~$A^\sim$ has $\neg\neg$-stable equality:
 \[ \Spec(A) \models \forall x,y\?A^\sim\_ \neg\neg(x = y) \Rightarrow x = y. \]
@@ -1039,6 +1199,10 @@ So assume that~$x - y$ is invertible. Then~$\neg(x - y = 0)$, since if~$x - y =
 0$, then~$1 = (x-y) (x-y)^{-1} = 0$ in contradiction to~$1 \neq 0$. This is a
 contradiction to the assumption~$\neg\neg(x-y=0)$.\end{proof}
 
+
+\paragraph{The Noetherian property.}
+XXX not shared by stalks; ``true constructivists would be offended''
+
 \begin{proposition}The sheaf of rings~$A^\sim$ is anonymously
 Noetherian.\end{proposition}
 
@@ -1050,6 +1214,15 @@ Let~$x \in \aaa$. If~$x$ is invertible, then~$\aaa = (1)$ is finitely
 generated. Hence~$x$ is not invertible. Thus~$x = 0$ because~$A^\sim$ is a
 field.
 \end{proof}
+
+
+\subsection{The origins of the sheaf}
+\label{sect:origins}
+XXX better title
+
+XXX universal localization...
+
+XXX proofs of (B), (C), (D)
 
 \begin{theorem}Let~$A$ be a ring. The Lindenbaum algebra of the theory of prime
 filters of~$A$ is canonically isomorphic to the frame of radical ideals in~$A$.
@@ -1067,6 +1240,11 @@ Lindenbaum algebra, we have~$[\alpha_x] \wedge [\alpha_y] \preceq
 XXX: surjective and order-reflecting
 \end{proof}
 
+
+\subsection{Applications}
+\label{sect:example-applications}
+XXX better title
+
 XXX injective matrices
 
 XXX generic freeness
@@ -1078,3 +1256,5 @@ XXX spell out details of field property
 XXX cite https://apcz.umk.pl/czasopisma/index.php/LLP/article/viewFile/LLP.2013.009/732
 
 XXX include rules for geometric logic?
+
+X \models phi

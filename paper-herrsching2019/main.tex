@@ -100,7 +100,7 @@ XXX
 
 \section{Locales}
 
-The notion of \emph{space} is fundamental to large parts of mathematics. It
+The notion of \emph{space} is fundamental to large parts of mathematics. This notion
 exists in various flavors, ranging from the basic cartesian spaces~$\RR^n$ to
 the more general metric and topological spaces and also including several more
 and slightly exotic flavors such as the diffeological spaces of differential topology.
@@ -110,15 +110,16 @@ building blocks}: Cartesian, metric, topological and diffeological spaces are,
 first and foremost, sets of points. Their spatial structure -- a metric, a
 topology or a diffeology -- is additional data to the underlying set:
 
-\begin{definition}A \emph{metric space} consists of a set~$X$ of points
+\begin{quote}
+\textbf{Definition.} A \emph{metric space} consists of a set~$X$ of points
 together with a metric~$d : X \times X \to \RR_{\geq 0}$ satisfying the metric
-axioms. \end{definition}
+axioms.
 
-\begin{definition}A \emph{topological space} consists of a set~$X$ of points
+\textbf{Definition.} A \emph{topological space} consists of a set~$X$ of points
 together with a set~$\O(X) \subseteq \P(X)$ of point sets which are deemed
 \emph{open} such that (arbitrary, set-indexed) unions and finite intersections
 of open sets are open.
-\end{definition}
+\end{quote}
 
 Locales are a further and particularly unique flavor of the notion of space
 which turn this classical picture upside down: Locales embrace \emph{opens
@@ -127,7 +128,7 @@ derived concept. In particular, the opens of a locale are not sets of points;
 in fact, they needn't be sets of anything in peculiar.
 
 The formal definition of a locale will be given below as
-Definition~\ref{defn:locale}, but before we will review examples and comment on
+Definition~\ref{defn:locale}, but we first want to review examples and comment on
 the relevance of locales to constructive mathematics.
 
 
@@ -137,7 +138,7 @@ the relevance of locales to constructive mathematics.
 A metric or topological space without any points is not very interesting: It is
 empty, and up to isomorphism there is only one such space. In contrast, a
 locale can be nontrivial even if it does not contain any points. This
-phenomenon is one instance of the general guiding principle that relinquishing
+phenomenon is one instance of a general guiding principle, namely that relinquishing
 points increases flexibility.
 
 \paragraph{The locale of surjections~$\NN \twoheadrightarrow \RR$.} As is
@@ -156,19 +157,19 @@ well-defined and nontrivial locale~$X$ of those surjections.
 
 The points of~$X$ are in canonical one-to-one correspondence with the
 surjections~$\NN \twoheadrightarrow \RR$, hence~$X$ does not have any points.
-But this locale does have uncountably many basic opens~$U_{n,x}$, where~$n$
-ranges over the naturals and~$x$ ranges over the reals. We picture~$U_{n,x}$ as
-the open of those surjections~$f$ for which~$f(n) = x$, we can compute with
-these opens and consider functions on~$X$. For instance:
+But this locale does have uncountably many basic opens~$U_{nx}$, where~$n$
+ranges over the naturals and~$x$ ranges over the reals. We picture~$U_{nx}$ as
+the ``open of those surjections~$f$ for which~$f(n) = x$'', we can compute with
+these opens, consider functions on~$X$ and ponder sublocales of~$X$. For instance:
 \begin{enumerate}
-\item If~$x \neq y$, then the intersection of~$U_{n,x}$ with~$U_{n,y}$
+\item If~$x \neq y$, then the intersection of~$U_{nx}$ with~$U_{ny}$
 is truly empty.
-\item The union of the~$U_{n,x}$, where~$x$ is a fixed real
+\item The union of the~$U_{nx}$, where~$x$ is a fixed real
 number and~$n$ ranges over the naturals, is all of~$X$. No finite number
 of these opens covers~$X$, hence~$X$ is not compact.
 \item For any real~$x$, there is a well-defined continuous function from~$X$ to
 (the localic version of) the naturals which, on the level of points, would map
-a surjection~$f : \NN \to \RR$ to the smallest preimage of~$x$.
+a surjection~$f : \NN \to \RR$ to the smallest preimage of~$x$ under~$f$.
 \item There is a well-defined continuous function from~$X$ to (the localic
 version of) the reals which, on the level of points, would map a surjection~$f$
 to the number~$\sum_{n=0}^\infty 2^{-n} \arctan(f(n))$. Unlike the previous
@@ -180,13 +181,13 @@ many sublocales~$Y_x$, where~$Y_x$ is the sublocale of~$Y$ consisting of those
 functions which hit the real~$x$.
 \item A certain sublocale of~$X$, the locale~$X'$ of those functions~$\NN \to
 \RR$ for which any real has infinitely many preimages, has a fractal nature: It
-is covered by the~$U_{0,x}$, where~$x$ ranges over the reals; the pairwise
+is covered by the (intersections with~$X'$ of the)~$U_{0x}$, where~$x$ ranges over the reals; the pairwise
 intersection of these opens is (truly) empty; and they are each isomorphic
-to~$X'$ -- on the level of points, by mapping a surjection~$f$ in~$U_{0,x}$ to
+to~$X'$ -- on the level of points, by mapping a surjection~$f$ in~$U_{0x}$ to
 the surjection~$(n \mapsto f(n+1))$.
 \end{enumerate}
 
-There is nothing special about the real numbers which makes this example work;
+There is nothing special about the real numbers in this example;
 in fact, the example works just as well with any set~$M$ in place of the reals.
 For any set~$M$, there is a locale of surjections~$\NN \twoheadrightarrow M$,
 and this locale is trivial (isomorphic to the empty locale) if and only if~$M$
@@ -220,7 +221,7 @@ radius~$r$ can be partitioned into six disjoint subsets in such a way that
 rearranging those subsets using only Euclidean motions yields two disjoint
 solid balls of radius~$r$ each. The axiom of choice is required to construct
 these subsets, and the Banach--Tarski paradox is not in
-contradiction with the basic properties of the (Lebesgue) measure in~$\RR^3$
+contradiction with the basic properties of the Lebesgue measure in~$\RR^3$
 because these intermediate subsets are not measurable.
 
 The traditional way to avoid the Banach--Tarski paradox is to adopt the
@@ -262,7 +263,7 @@ subcovering [XXX: reference].
 In contrast, the localic version of the unit interval is always compact. The
 proof is by an explicit computation with its basic opens. [XXX: reference]
 
-More generally, Tychonoff's theorem that the product of any number of compact
+Similarly, Tychonoff's theorem that the product of any number of compact
 topological spaces is again compact is equivalent to the axiom of choice. Its
 localic counterpart, the statement that the product of any number of compact
 locales is again compact, can be verified without any nonconstructive
@@ -278,13 +279,13 @@ to the subgroup~$\Gal(L|E)$ and its inverse maps a closed subgroup~$H \subseteq
 Much of the proof of the fundamental theorem of Galois theory is constructive,
 but some parts use the law of excluded middle and Zorn's lemma in order to
 construct certain extensions of given field homomorphisms.\footnote{For
-instace, the statement~$E \subseteq L^{\Gal(L|E)}$ is trivial. For the converse
+instance, the statement~$E \subseteq L^{\Gal(L|E)}$ is trivial. For the converse
 inclusion, let~$x \in L^{\Gal(L|E)}$. Assume for the sake of contradiction
 that~$x \not\in E$. Using Zorn's lemma and the law of excluded middle, we find
 a homomorphism~$\sigma : L \to L$ with~$\sigma|_E = \operatorname{id}$
 and~$\sigma(x) \neq x$. This is a contradiction to~$x \in L^{\Gal(L|E)}$.}
-As a consequence, the fundamental theorem of Galois theory is not provable in
-constructive mathematics.
+As a consequence, the fundamental theorem of Galois theory as stated is not
+provable in constructive mathematics.
 
 However, this failure is not for fundamental Galois-theoretic reasons, but because of an
 unfortunate choice in the definitions. There is a notion of a localic group (a
@@ -302,8 +303,8 @@ of the relation of the localic Galois group with the topological one.
 
 \begin{remark}Incidentally, the fundamental theorem of Galois theory also
 showcases a related general phenomenon, namely that classical mathematics
-allows to push back topological concerns for longer than in constructive
-mathematics, whereas in constructive mathematics we have to embrace topology
+allows to push back topological concerns for a bit longer,
+whereas in constructive mathematics we have to embrace topology
 (in a sufficiently pointfree form such as locales) from the beginning.
 
 To be more specific, classically, the basic version of the fundamental theorem
@@ -313,8 +314,12 @@ extensions. For infinite Galois extensions, we have to restrict to
 for finite extensions; we have to employ spatial language even for those, or
 else settle for a discrete version of the fundamental theorem: For finite field
 extensions, finite intermediate extensions correspond to finite subgroups.
+[XXX: reference]
 Classically, intermediate extensions of finite extensions and subgroups of
-finite groups are automatically finite, but constructively this can fail.
+finite groups are automatically finite, but constructively this can
+fail.\footnote{For instance, the field extension~$\QQ(\sqrt{2})|\QQ$ is finite.
+However, if the intermediate extension~$E \defeq \{ x \in \QQ(\sqrt{2}) \,|\, x
+\in \QQ \vee \varphi \}$ is finite, then~$\varphi \vee \neg\varphi$.}
 \end{remark}
 
 \paragraph{Gelfand duality} XXX
@@ -322,9 +327,9 @@ finite groups are automatically finite, but constructively this can fail.
 
 \subsection{The basics of the theory of locales}
 
-The starting point to arrive at the definition of a locale is the following
-fundamental observation: The partial order~$\O(X)$ of open subsets of a topological
-space~$X$ has
+The starting point of the theory of locales is the following
+observation. The set~$\O(X)$ of open subsets of a topological
+space~$X$ forms a partially ordered set which has
 \[ \begin{array}{@{}ccc@{}}
 \text{arbitrary joins}
 &\text{and}&
@@ -334,8 +339,10 @@ space~$X$ has
 and finite meets distribute over arbitrary joins:
 \[ U \wedge \bigvee_i V_i = \bigvee_i (U \wedge V_i). \]
 
-This observation motivates the following definition. [XXX: which abstracts...]
-\begin{definition}A \emph{frame} is a partial order with (arbitrary,
+The key idea of locales is to elevate this observation to a definition, in the
+process dropping the requirement for the elements of the ordered set to be sets
+of points:
+\begin{definition}A \emph{frame} is a partially ordered set with (arbitrary,
 set-indexed) joins and finite meets such that the distributive law
 holds. A \emph{frame homomorphism~$\alpha : A \to A'$} is a monotone map~$A
 \to A'$ which preserves arbitrary joins and finite meets.\end{definition}
@@ -367,7 +374,7 @@ by the one-point topological space~$\{\star\}$. Its frame of opens is
 the powerset of~$\{\star\}$, also known as the set~$\Omega$ of truth
 values. Its least element is~$\bot = \emptyset$ and its largest element
 is~$\top = \{\star\}$, and potentially not all elements of~$\Omega$ are equal
-to of these two.
+to one of these two.
 \item The locale of surjections~$\NN \twoheadrightarrow \RR$ and the localic
 version of the reals of Section~\ref{sect:examples-no-points} are best
 constructed as \emph{classifying locales}, a notion to be introduced below.
@@ -377,8 +384,8 @@ Several notions in topology only refer to open sets and not to points. Such
 notions have an immediate counterpart in locale theory. For instance, a
 locale~$X$ is \emph{compact} iff for any family~$(U_i)_{i \in I}$ of opens
 of~$X$ such that~$\top = \bigvee_{i \in I} U_i$, there is a (Kuratowski-)finite
-subset~$I' \subseteq I$ such that~$\top = \bigvee_{i \in I'} U_i$. For
-instance, a topological space~$Y$ is compact iff its induced locale~$L(Y)$ is.
+subset~$I' \subseteq I$ such that~$\top = \bigvee_{i \in I'} U_i$.
+With this definition, a topological space~$Y$ is compact iff its induced locale~$L(Y)$ is.
 
 Points do not appear in the definition of a locale, but they can be defined as
 a derived concept:
@@ -400,6 +407,7 @@ prime filter}, that is a subset~$\fff \subseteq \O(X)$ which is upward-closed,
 closed under finite meets and for which~$\bigvee_i U_i \in \fff$ implies~$U_i
 \in \fff$ for some index~$i$; and conversely, any such completely prime filter
 gives rise to a point of~$X$.
+% XXX exercise
 
 \begin{definition}A locale~$X$ is \emph{spatial} if and only if its points
 suffice to distinguish its opens, that is if for any opens~$U, V \in \O(X)$,
@@ -410,7 +418,7 @@ An equivalent conditon is: if for any opens~$U, V \in \O(X)$, if~$x \inplus U
 \Leftrightarrow x \inplus V$ for all points~$x$ of~$X$, then~$U = V$.
 
 For instance, any locale induced by a topological space is spatial. The locale
-of surjections~$\NN \twoheadrightarrow \RR$ is a drastic example of a locale which fails to be
+of surjections~$\NN \twoheadrightarrow \RR$ is a striking example of a locale which fails to be
 spatial. The localic real line is spatial in classical mathematics and can
 fail to be spatial in constructive mathematics (Theorem~\ref{thm:spatiality-reals}).
 
@@ -456,7 +464,7 @@ when we are writing down the axioms of a group, we are not setting out to
 capture the properties of any one specific group.
 \item Formal systems are typically required to be recursively
 axiomatizable. Many interesting geometric theories are not, and indeed contain
-an uncountable number of axioms. Geometric theories also allow for arbitrary
+an uncountable number of sorts, function symbols, relation symbols or axioms. Geometric theories also allow for arbitrary
 set-indexed disjunctions; for this to make sense, the study of geometric
 theories can only be carried out in a sufficiently rich background theory.
 \item For formal systems, typically a version of Gödel's completeness theorem
@@ -466,7 +474,8 @@ example is the geometric theory of surjections~$\NN \twoheadrightarrow \RR$
 reviewed below.
 \item Perhaps the most important difference to formal systems is that geometric
 theories often depend on given mathematical objects. For instance, for each
-ring~$A$, there is the geometric theory of prime ideals of~$A$.
+ring~$A$, there is the geometric theory of prime ideals of~$A$. This theory
+will play a crucial role in Section~\ref{sect:appl}.
 \end{enumerate}
 
 \begin{definition}A \emph{set-based model}~$M$ (or ``Tarski model'') of a
@@ -484,7 +493,7 @@ such that~$M$ validates the axioms of~$\TT$.
 
 \paragraph{The geometric theory of rings.} This theory has one sort, $R$; five function symbols:
 $0$ and $1$ (nullary), $-$ (unary), $+$ and $\cdot$ (binary); no relation
-symbols; the usual axioms, such as $\top \vdash_{x:R,y:R} x + y = y + x$.
+symbols; and the usual axioms, such as $\top \vdash_{x:R,y:R} x + y = y + x$.
 
 A set-based model of the theory of rings is an ordinary ring.
 
@@ -549,28 +558,28 @@ commutative algebra, the notion of a \emph{prime ideal} of a ring~$A$ is
 fundamental. Corresponding to the definition (recalled in
 Section~\ref{sect:algebraic-preliminaries}), the geometric theory of prime
 ideals has no sorts; no function
-symbols; one relation symbol~$\alpha_x$ for each element~$x \in A$; and the
+symbols; one relation symbol~``$V(x)$'' for each element~$x \in A$; and the
 following axioms:
 \begin{align*}
-  \top &\vdash \alpha_0 \\
-  \alpha_x \wedge \alpha_y &\vdash \alpha_{x+y} & \text{(for each~$x,y \in A$)} \\
-  \alpha_x &\vdash \alpha_{rx} & \text{(for each~$r,x \in A$)} \\
-  \alpha_1 &\vdash \bot \\
-  \alpha_{xy} &\vdash \alpha_x \vee \alpha_y & \text{(for each~$x,y \in A$)}
+  \top &\vdash V(0) \\
+  V(x) \wedge V(y) &\vdash V(x+y) & \text{(for each~$x,y \in A$)} \\
+  V(x) &\vdash V(xy) & \text{(for each~$x,y \in A$)} \\
+  V(1) &\vdash \bot \\
+  V(xy) &\vdash V(x) \vee V(y) & \text{(for each~$x,y \in A$)}
 \end{align*}
 
 For many purposes, the theory of prime \emph{filters} is actually more
 relevant. Classically, a prime filter of a ring is simply the complement of a
 prime ideal; constructively, it is prudent to axiomatize this notion directly.
 Hence the theory of prime filters of~$A$ has no sorts, no function symbols, one
-relation symbol~$\alpha_x$ for each element~$x \in A$ and the following
+relation symbol~``$D(x)$'' for each element~$x \in A$ and the following
 axioms:
 \begin{align*}
-  \alpha_0 &\vdash \bot \\
-  \alpha_{x+y} &\vdash \alpha_x \vee \alpha_y & \text{(for each~$x,y \in A$)} \\
-  \alpha_{rx} &\vdash \alpha_x & \text{(for each~$r,x \in A$)} \\
-  \top &\vdash \alpha_1 \\
-  \alpha_x \wedge \alpha_y &\vdash \alpha_{xy} & \text{(for each~$x,y \in A$)}
+  D(0) &\vdash \bot \\
+  D(x+y) &\vdash D(x) \vee D(y) & \text{(for each~$x,y \in A$)} \\
+  D(xy) &\vdash D(x) & \text{(for each~$x,y \in A$)} \\
+  \top &\vdash D(1) \\
+  D(x) \wedge D(y) &\vdash D(xy) & \text{(for each~$x,y \in A$)}
 \end{align*}
 
 \paragraph{The inconsistent geometric theory.} This theory has no sorts,
@@ -627,7 +636,7 @@ reals, and the induced topology on the set of points coincides with the usual
 Euclidean topology on the reals.
 
 The localic open unit interval is the classifying locale of the
-same theory, but with the added axiom~$\top \vdash \alpha_0 \wedge \beta_1$.
+same theory, but with the additional axiom~$\top \vdash \alpha_0 \wedge \beta_1$.
 \item The \emph{locale of surjections~$\NN \twoheadrightarrow \RR$} is the
 classifying locale of the theory of surjections~$\NN \twoheadrightarrow \RR$.
 \item The \emph{spectrum} of a ring~$A$ is the classifying locale of the
@@ -672,8 +681,8 @@ localic route.
 \end{remark}
 
 In general, different theories can give rise to isomorphic classifying locales;
-such theories are called \emph{Morita-equivalent}. A vast research program is
-built on this observation~\cite{caramello:tst}.
+such theories are called \emph{Morita-equivalent}. Olivia Caramello has built a vast research program
+on this observation~\cite{caramello:tst}.
 
 Conversely, any locale~$X$ is the classifying locale of a certain theory, namely
 of the \emph{theory of points of~$X$}. This theory has one nullary relation
@@ -762,7 +771,7 @@ are called \emph{restriction maps}.
 
 When first learning about presheaves, one can get boggled down[XXX:wording] by the vast
 amount of data encoded in a single presheaf (one set for each open). The
-situation should be compared to Kripke models for a first-order language~$L$. The
+situation should be compared to the perhaps more familiar Kripke models for a first-order language~$L$. The
 preorder~$W$ of nodes of such a model is like the frame of opens of a locale, and the
 family~$(M_w)_{w \in W}$ of~$L$-structures, one for each node, is like a
 presheaf. In fact, the notion of a locale can be generalized to that of a
@@ -784,9 +793,9 @@ covering~$U = \bigvee_i U_i$ is a family~$(s_i)_i$ of sections~$s_i \in F(U_i)$
 such that~$s_i|^{U_i}_{U_i \wedge U_j} = s_j|^{U_j}_{U_i \wedge U_j}$ for all
 indices~$i,j$.
 \item A presheaf~$F$ is a \emph{sheaf}
-iff for any compatible family~$(s_i)_i$ with respect to an open covering~$U =
+iff for any compatible family~$(s_i)_i$ with respect to any open covering~$U =
 \bigvee_i U_i$ there is a unique section~$s \in F(U)$ such
-that~$s|^U_{U_i} = s_i$ for all~$i$.
+that~$s|^U_{U_i} = s_i$ for all indices~$i$ (``compatible sections glue'').
 \end{enumerate}
 \end{definition}
 
@@ -838,7 +847,7 @@ main differences with the perhaps more familiar Kripke semantics are marked.
 
 Some clauses in Table~\ref{table:sheaf-semantics} contain slight abuses of
 notation. Namely, if~$\varphi$ is a formula over an open~$U$ and if~$V$ is an
-open such that~$V \preceq U$, then~``$V \models \varphi$'' is officially not
+open such that~$V \preceq U$, then~``$V \models \varphi$'' is formally not
 well-defined, as~$\varphi$ is not a formula over~$V$. When we still write~``$V
 \models \varphi$'', we mean that any constant symbol~$s \in F(U)$ appearing
 in~$\varphi$ should be interpreted as its restriction~$s|^U_V \in F(V)$, so
@@ -891,6 +900,7 @@ XXX ``internalizing parameter-dependence''
 
 
 \section{Applications in constructive algebra}
+\label{sect:appl}
 
 Commutative algebra abounds with techniques to reduce given situations to
 simpler ones, for instance passing to a quotient or passing to a
@@ -988,7 +998,9 @@ The goal of this section is to give a leisurely introduction to this procedure.
 We recall in Section~\ref{sect:algebraic-preliminaries} algebraic
 preliminaries. Section~\ref{sect:a-remarkable-sheaf} explores the sheaf to use.
 There is an interesting origin story to this sheaf, which we tell in
-Section~\ref{sect:origins}. Finally, we illustrate how to use the technique in
+Section~\ref{sect:origins}. For computations, it is vital to have an explicit
+description of this sheaf available; such a description is presented in
+Section~\ref{sect:understanding}. Finally, we illustrate how to use the technique in
 a series of concrete examples in Section~\ref{sect:example-applications}.
 
 
@@ -1057,7 +1069,7 @@ localization~$A[S^{-1}]$.
 \label{sect:a-remarkable-sheaf}
 
 Let~$A$ be a ring. Then there is a certain locale~$X$ on which a
-certain ``mirror image'' of~$A$ exists, a sheaf~$A^\sim$ of rings on~$X$. On the one hand,
+certain ``mirror image'' of~$A$ exists, a sheaf~$A^\sim$ of rings. On the one hand,
 this mirror image is ``close to~$A$'', such that studying~$A^\sim$ pays off for
 learning about~$A$. On the other hand, it has much better properties than~$A$
 has.
@@ -1129,8 +1141,8 @@ that~$A^\sim$ enjoys properties which are not shared by~$A$, its stalks or
 indeed any localizations or quotients.
 
 \paragraph{Back and forth.}
-Along with statement~(\ref{item:stalks}), statement~(\ref{item:iso}) is the main
-reason why results about~$A^\sim$ imply results about~$A$. For instance, if we
+Statement~(\ref{item:iso}) is a kind of conservativity result.
+For instance, if we
 want to show that a certain ring element~$x \in A$ is zero, we can just as well
 show that its mirror image in~$A^\sim$ is zero.
 
@@ -1153,7 +1165,7 @@ though its precise significance is still somewhat obscure---as is the case with
 many such nongeometric formulas''~\cite[p.~209]{tierney:spectrum}. Even though
 the property has been known for a long time, only recently was it put in a
 wider context (recognizing it as a small shadow of algebraic geometry's
-\emph{quasicoherence}) and its its usefulness for constructive algebra
+\emph{quasicoherence}) and its usefulness for constructive algebra
 appreciated~\cite[Sections~3.3 and~11.4]{blechschmidt:phd}.
 
 The field property is a unique feature of~$A^\sim$; it cannot be mimicked by
@@ -1237,8 +1249,9 @@ over~$A$.
 sense the quest will succeed and yield the sheaf~$A^\sim$.
 \item It is then a surprising observation that~$A^\sim$ is a field, even though
 we only set out to construct a local ring.
-\item There is general machinery for free constructions of this kind, and this
-machinery is \emph{not} applicable to construct free fields.
+\item The field property of~$A^\sim$ should be appropriately appreciated: While
+there is a general machinery for free constructions of this kind, this
+machinery is \emph{not} applicable for constructing free fields.
 \end{enumerate}
 
 \paragraph{Free constructions.}
@@ -1246,7 +1259,7 @@ Let~$G$ be a group. Then there is a universal way to turn~$G$ into an abelian
 group~$G^\ab$ equipped with a group homomorphism~$G \to G^\ab$, the \emph{free
 abelian group over~$G$}. This abelianization has the universal property that
 for any homomorphism~$G \to M$ into an abelian group, there is exactly one
-group homomorphism~$G^\ab \to M$ rendering the diagram
+homomorphism~$G^\ab \to M$ rendering the diagram
 \[ \xymatrix{
   G \ar[rd] \ar[rrr] &&& {\substack{\text{abelian}\\\text{\normalsize$\!M$}\\\phantom{\text{abelian}}}} \\
   & {\substack{\text{\normalsize$G^\ab$}\\\text{abelian}}} \ar@{-->}_[@!29]{}[rru]
@@ -1259,7 +1272,7 @@ of a group is specific result in algebra.
 We can also cast the contruction in logical language, which will make it
 evident that abelianization is just a special case of a more general procedure.
 The free abelian group over~$G$ can be obtained as the \emph{term model} of the
-theory of abelian groups extended by one constant~$x_g$ for each element~$g \in
+theory of abelian groups extended by a constant~$x_g$ for each element~$g \in
 G$ and the axioms
 \begin{align*}
   \top &\vdash x_{g \circ h} = x_g \circ x_h & \text{(for each~$g,h \in G$)} \\
@@ -1269,7 +1282,7 @@ G$ and the axioms
 That is, $G^\ab$ contains exactly those elements and exactly those
 identifications between elements such that~$G^\ab$ is an abelian group and such
 that~$G$ can be interpreted in it (that is, that there is a homomorphism~$G \to
-G^\ab$).
+G^\ab$), and nothing more.
 
 In exactly the same manner, we can construct the free group over a monoid, the
 free~$\ZZ/(2)$-algebra over a ring, the free ring over a set or the free
@@ -1281,7 +1294,7 @@ However, this procedure cannot be carried out for any pair of theories. For
 instance, there are no \emph{free fields}. The free field on a set~$X$ would be
 a field~$K$ together with a map~$X \to K$ such that any map~$X \to L$ factors
 over the given map~$X \to K$ by a unique field homomorphism~$K \to L$.
-% Exercise: proof this!
+% XXX Exercise: proof this!
 
 For instance, in the case~$X = \{ t \}$, the field~$\QQ(t)$ of rational
 functions comes close, but fails because there are no field homomorphisms~$\QQ(t)
@@ -1317,7 +1330,7 @@ invertible.
 Hence a \emph{free local ring} over a ring~$A$ is to be a local ring~$A'$
 together with a ring homomorphism~$A \to A'$ such that the following universal
 property holds: Any ring homomorphism~$A \to B$ into a local ring uniquely
-factors via a local homomorphism over~$A \to A'$ as indicated in the diagram.
+factors via a local ring homomorphism over~$A \to A'$ as indicated in the diagram.
 \[ \xymatrix{
   A \ar[rd] \ar[rrr] &&& {\substack{\text{local}\\\text{\normalsize$\!\!\!B$}\\\phantom{\text{local}}}} \\
   & {\substack{\text{\normalsize$\!\!A'$}\\\text{local}}} \ar@{-->}_[@!31]{\text{local}}[rru]
@@ -1329,7 +1342,7 @@ homomorphism~$f : A \to B$ into a local ring be given. The subset~$B^\times
 preimage~$\fff \defeq f^{-1}[B^\times]$ is a prime filter of~$A$. Hence the
 localization~$A_\fff = A[\fff^{-1}]$ is a local ring and~$f$ factors via the
 well-defined map~$f' : A_\fff \to B,\,\frac{x}{s} \mapsto f(s)^{-1}f(x)$ over
-the canonical morphism~$A \to A_\fff,\,x \mapsto \frac{x}{1}$. Furthermore,
+the localization morphism~$A \to A_\fff,\,x \mapsto \frac{x}{1}$. Furthermore,
 this map is local.
 
 Hence the stalks~$A_\fff$, where~$\fff$ ranges over the prime filters of~$A$,
@@ -1446,6 +1459,7 @@ local sheaves of rings.
 
 
 \subsection{Understanding the sheaf model}
+\label{sect:understanding}
 
 In Section~\ref{sect:origins}, we constructed the sheaf~$A^\sim$ as the free
 local ring over~$A$, more specifically as the localization of the constant
@@ -1519,6 +1533,95 @@ filters of~$A$ can be put into a \emph{normal form}. An expression of the
 form~``$f^n = u_1 g_{i_1} + \cdots + u_m g_{i_m}$'' can be regarded as an
 \emph{algebraic certificate} of the entailment~$D(f) \vdash \bigvee_i D(g_i)$.
 
+\begin{remark}An immediate corollary of Theorem~\ref{thm:workhorse} is
+that~$\Spec(A)$ is compact. However, the stronger result that~$\Spec(A)$ is
+even a \emph{coherent locale} can also be deduced from a general theorem (XXX: ref to
+exercise) since the theory of prime filters is a coherent theory.\end{remark}
+
+Having identified the underlying frame of~$\Spec(A)$, the second workhorse is
+an explicit description of the sheaf~$A^\sim$.
+
+\begin{proposition}\label{prop:identification}
+Let~$A$ be a ring. For any~$f \in A$, there is a canonical isomorphism
+\[ A[f^{-1}] \longrightarrow A^\sim([D(f)]). \]
+In particular, for~$f = 1$, we obtain statement~(\ref{item:iso}) from
+Section~\ref{sect:a-remarkable-sheaf}.
+\end{proposition}
+
+\begin{proof}For~$f \in A$, we set~$S_f \defeq \{ g \in A \,|\, \exists n \in
+\NN\_ \exists u \in A\_ f^n = ug \} \subseteq A$. This multiplicative system is
+the \emph{saturation} of~$\{ f^0, f^1, \ldots \}$. The localization~$A[S_f^{-1}]$
+is canonically isomorphic to~$A[f^{-1}]$, but has the advantage that for
+elements~$f,g \in A$ such that~$\sqrt{(f)} = \sqrt{(g)}$, the
+rings~$A[S_f^{-1}]$ and~$A[S_g^{-1}]$ are actually \emph{the same}
+while~$A[f^{-1}]$ and~$A[g^{-1}]$ are merely canonically isomorphic. This
+property eases formalization in set theory; it is otherwise not important.
+
+On the basis of~$\Spec(A)$, the opens of the form~$[D(f)]$, we define a partial
+presheaf by
+\[ [D(f)] \longmapsto A[S_f^{-1}]. \]
+This partial presheaf is, on the basis where it is defined, a sheaf. Unraveling
+the definitions, this claim boils down to the following basic result in
+commutative algebra:
+\begin{quote}
+Let~$B$ be a ring. Let~$1 = f_1 + \cdots + f_m \in B$ be a partition of unity. Let
+elements~$s_i \in B[f_i^{-1}]$ be given. Assume that~$s_i = s_j$
+in~$B[(f_if_j)^{-1}]$ for all pairs of indices. Then there is exactly one
+element~$s \in B$ such that, for all indices~$i$,~$s = s_i$ in~$B[f_i^{-1}]$.
+\end{quote}
+The remainder of the argument consists of sheaf-theoretic generalities.
+XXX
+\end{proof}
+
+More generally, for any~$A$-module~$M$, we can construct the
+localization~$M^\sim \defeq \underline{M}[\fff_0^{-1}]$. In the special case
+that~$M$ is~$A$, this definition coincides with our original definition
+of~$A^\sim$. The proof of Proposition~\ref{prop:identification} carries over to
+show that~$M^\sim([D(f)]) \cong M[f^{-1}]$.
+
+As a corollary of Theorem~\ref{thm:workhorse} and
+Proposition~\ref{prop:identification}, we can unwind the definitions to recast
+the sheaf semantics in entirely explicit algebraic terms, with no locales or
+sheaves in sight. By a \emph{formula over a ring element}~$f \in A$, we mean a
+first-order formula over the signature which has
+\begin{enumerate}
+\item a sort~``$A^\sim$'' and function symbols for the structure of a ring,
+\item for each~$A$-module~$M$, a sort~``$M^\sim$'' and function symbols for the
+structure of an~$A^\sim$-module,
+\item for each linear map~$M \to N$, a function symbol~$M^\sim \to N^\sim$,
+\item a constant of sort~$A^\sim$ for each element of~$A[f^{-1}]$ and
+\item for any~$A$-module~$M$, a constant of sort~$M^\sim$ for each element of~$M[f^{-1}]$.
+\end{enumerate}
+
+\begin{corollary}Let~$A$ be a ring. Let~$\varphi$ be a formula over~$f \in A$.
+Then~$[D(f)] \models \varphi$ in the sense of Definition~XXX if and only
+if~$f \models \varphi$ in the sense of Table~\ref{table:algebraic-kripke-joyal}.
+\end{corollary}
+
+\begin{proof}Induction on the structure of~$\varphi$, harnessing the explicit
+descriptions provided by Theorem~\ref{thm:workhorse} and
+Proposition~\ref{prop:identification}.\end{proof}
+
+\begin{table}[ht]
+  \tbl{A purely algebraic presentation of the sheaf semantics of~$\Spec(A)$}{\begin{tabular}{@{}l@{\ \ }c@{\ \ }l@{}}
+    $f \models \top$ &iff& true \\
+    $f \models \bot$ &iff& $f$ is nilpotent \\
+    $f \models x =_{M^\sim} y$ &iff& $x = y \in M[f^{-1}]$ \\
+    $f \models \varphi \wedge \psi$ &iff&
+      $f \models \varphi$ and $f \models \psi$ \\
+    $f \models \varphi \vee \psi$ &iff&
+      there exists a partition~$f^n = fg_1 + \cdots + fg_m$ such that, \\
+    &&\quad for each~$i$, $fg_i \models \varphi$ or $fg_i \models \psi$ \\
+    $f \models \varphi \Rightarrow \psi$ &iff&
+      for all~$g \in A$, $fg \models \varphi$ implies $fg \models \psi$ \\
+    $f \models \forall x\?A^\sim\_ \varphi(x)$ &iff&
+      for all~$g \in A$ and all $x_0 \in A[(fg)^{-1}]$, $fg \models \varphi(x_0)$ \\
+    $f \models \exists x\?A^\sim\_ \varphi(x)$ &iff&
+      there exists a partition~$f^n = fg_1 + \cdots + fg_m$ such that, \\
+    &&\quad for each~$i$, $fg_i \models \varphi(x_0)$ for some~$x_0 \in A[(fg_i)^{-1}]$
+  \end{tabular}}
+  \label{table:algebraic-kripke-joyal}
+\end{table}
 
 \subsection{Applications}
 \label{sect:example-applications}

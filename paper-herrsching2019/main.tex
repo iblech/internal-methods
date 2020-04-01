@@ -3,6 +3,14 @@
 \usepackage{ws-rv-van}
 \usepackage{mathtools,stmaryrd,xspace}
 
+\newlength{\exerciseskip}
+\setlength{\exerciseskip}{1.5em}
+\newcounter{exercisenr}
+\newenvironment{exercise}[1]{
+  \refstepcounter{exercisenr}
+  \noindent\textbf{Exercise \theexercisenr{}.} \emph{#1} \smallskip\par\noindent%
+}{\par\vspace{\exerciseskip}}
+
 \usepackage[normalem]{ulem}
 \usepackage[all]{xy}
 \usepackage{tikz}
@@ -75,9 +83,13 @@
 \newcommand{\hg}{\mathbin{:}}  % homogeneous coordinates
 \newcommand{\brak}[1]{{\llbracket{#1}\rrbracket}}
 \newcommand{\pt}{\mathrm{pt}}
+\newcommand{\Pt}{\mathrm{Pt}}
 \newcommand{\Loc}{\mathrm{Loc}}
 \newcommand{\Top}{\mathrm{Top}}
 \newcommand{\BPIT}{\textsc{bpit}\xspace}
+\newcommand{\notnot}{\emph{not not}\xspace}
+\newcommand{\negg}{\neg\!\!\!\neg}
+\newcommand{\bott}{\bot\!\!\!\!\bot}
 
 \begin{document}
 
@@ -423,13 +435,84 @@ spatial. The localic real line is spatial in classical mathematics and can
 fail to be spatial in constructive mathematics (Theorem~\ref{thm:spatiality-reals}).
 
 \begin{remark}The set of points of a locale~$X$ can be made into a topological space, giving
-rise to a functor~$\pt : \Loc \to \Top$. This functor is right adjoint
+rise to a functor~$\Pt : \Loc \to \Top$. This functor is right adjoint
 to the functor~$L : \Top \to \Loc$. A locale~$X$ is spatial iff the canonical
-morphism~$L(\pt(X)) \to X$ is an isomorphism, and a topological space~$Y$
-is \emph{sober} iff the canonical morphism~$Y \to \pt(L(Y))$ is a
-homeomorphism. The space~$\pt(L(Y))$ is the \emph{sobrification} of~$Y$; for
+morphism~$L(\Pt(X)) \to X$ is an isomorphism, and a topological space~$Y$
+is \emph{sober} iff the canonical morphism~$Y \to \Pt(L(Y))$ is a
+homeomorphism. The space~$\Pt(L(Y))$ is the \emph{sobrification} of~$Y$; for
 instance, the sobrification of any inhabited indiscrete space is the one-point
 space.\end{remark}
+
+\begin{remark}\label{rem:sober-embed}
+Since continuous maps between spaces induce locale morphisms, we
+have a canonical map~$\Hom_\Top(Y,Y') \to \Hom_\Loc(L(Y),L(Y'))$. If~$Y'$ is
+sober, then this map is a bijection. In particular, the set-theoretic points
+of~$Y'$ and the locale-theoretic points of~$L(Y')$ are in canonical
+one-to-one correspondence.
+\end{remark}
+
+
+\subsection{Exercises}
+
+\begin{exercise}{The topological space of points of a locale}%
+\label{ex:canonical-topology}%
+Devise a canonical topology on the set of points of a locale.
+\end{exercise}
+
+\begin{exercise}{On the embedding of sober topological spaces into locales}%
+Verify the statements in Remark~\ref{rem:sober-embed}.
+\end{exercise}
+
+\begin{exercise}{Isomorphisms of frames}%
+Show that a frame homomorphism~$\alpha : A \to A'$ is an isomorphism (that is,
+admits an inverse frame homomorphism) if and only if~$\alpha$ is surjective and
+reflects the ordering (that is,~$\alpha(U) \preceq \alpha(V) \Rightarrow U
+\preceq V$).
+\end{exercise}
+
+\begin{exercise}{Points as complete prime filters}%
+Verify that the points of a locale~$X$ are in canonical one-to-one correspondence
+with the completely prime filters of~$\O(X)$.
+\end{exercise}
+
+\begin{exercise}{Characterizing spatial locales}%
+Let~$X$ be a locale. Show that the following conditions are equivalent.
+\begin{enumerate}
+\item For any opens~$U, V \in \O(X)$: If~$x \inplus U \Rightarrow y \inplus V$
+for all points~$x$ of~$X$, then~$U \preceq V$.
+\item For any opens~$U, V \in \O(X)$: If~$x \inplus U \Leftrightarrow y \inplus V$
+for all points~$x$ of~$X$, then~$U = V$.
+\item There is a topological space~$Y$ and a surjective morphism~$L(Y) \to X$
+of locales. (A morphism of locales is \emph{surjective} iff its underlying
+frame homomorphism is injective.)
+\item The canonical morphism~$L(\Pt(X)) \to X$ is an isomorphism.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}{Coproducts of locales}%
+\begin{enumerate}
+\item Show that the category of frames has small products.
+\item Deduce that the category of locales has small coproducts.
+\item Let~$M$ be a set and endow it with the discrete topology. Show
+that~$L(M)$ is the coproduct~$\coprod_{x \in M} \pt$.
+\end{enumerate}
+The category of locales also has small products;
+Exercise~\ref{ex:products-of-locales} is devoted to this fact.
+\end{exercise}
+
+\begin{exercise}{Local locales}%
+A locale~$X$ is \emph{local} iff for any open covering~$\top = \bigvee_i U_i$,
+there is an index~$i$ such that~$\top = U_i$. (For instance, the spectrum of a
+ring~$A$ is local iff~$A$ is local.)
+Show that any local locale has a canonical point, the \emph{focal point}.
+\end{exercise}
+
+\begin{exercise}{Localic maps into discrete spaces}%
+Let~$X$ be a locale. Let~$A$ be a set and endow it with the discrete topology. Show
+that morphisms~$X \to L(A)$ are in canonical correspondence with
+families~$(U_a)_{a \in A}$ of opens of~$X$ such that~$\top = \bigvee_{a \in A}
+U_a$ and~$U_a \wedge U_b \preceq \bigvee\{ \top \,|\, a = b \}$.
+\end{exercise}
 
 
 \section{Sheaf models}
@@ -533,7 +616,8 @@ family of truth values, that is a subset~$G$ of~$\NN \times \RR$, satisfying
 precisely those axioms which render~$G$ the graph of a surjection~$\NN
 \twoheadrightarrow \RR$.
 
-\paragraph{The geometric theory of Dedekind cuts.} This theory has no sorts; no
+\paragraph{The geometric theory of Dedekind cuts.}\label{par:dedekind-cuts}
+This theory has no sorts; no
 function symbols; nullary relation symbols~$\alpha_x$ and~$\beta_x$ for each
 rational number~$x$ (to be read as~``$x$ is contained in the lower respectively
 the upper cut''); and the following axioms, spelling out that the cut is bounded,
@@ -780,7 +864,7 @@ presheaves on sites can be defined; however, this shall not be pursued here.
 [XXX: reference]
 
 The prototypical example of a presheaf (and also a sheaf) is the presheaf~$\C$ of
-continuous real-valued functions on a space~$X$. For this presheaf, the
+continuous real-valued functions on a topological space~$X$. For this presheaf, the
 set~$\C(U)$ is the set of continuous real-valued maps~$U \to \RR$, and the
 maps~$(\cdot)|^U_V$ are given by actual restriction of functions to smaller
 domains, that is by
@@ -898,6 +982,235 @@ of~$\TT$ are forced on~$\top \in \O(X)$.
 \end{definition}
 
 XXX ``internalizing parameter-dependence''
+
+
+\subsection{Exercises}
+
+\begin{exercise}{Discrete locales as classifying locales}%
+\begin{enumerate}
+\item Find a theory which is classified by the two-point locale (the locale
+associated to the discrete two-point topological space).
+\item Let~$M$ be a set and endow it with the discrete topology. Find a theory
+which is classified by~$L(M)$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}{The localic unit interval}%
+Extend the theory of Dedekind cuts in such a way that its models are those
+Dedekind reals which are elements of~$[0,1]$.
+\end{exercise}
+
+\begin{exercise}{More on exotic locales}
+\begin{enumerate}
+\item Define the locale of injections~$\RR \hookrightarrow \NN$.
+\item Define the locale of partial surjections~$\NN \twoheadrightarrow \NN^\NN$.
+
+{\scriptsize\emph{Note.} In Russian constructivism, as for instance reigning in
+the ef{}fective topos~\cite{XXX}, the Baire space~$\NN^\NN$ is subcountable.
+However, in this setting any function~$\NN \to \NN$ is computable.
+The universe of sheaves over this locale was the first example of a setting in
+which the Baire space is subcountable and still any external number-theoretic
+function can be imported~\cite[Section~4.3]{scedrov:forcing}.\par}
+\item Define the locale of ``open covers of~$[0,1]$ by intervals with rational
+endpoints such that the union of any finite number of those intervals has total
+Lebesgue measure less than~$\frac{1}{2}$''.
+
+{\scriptsize\emph{Note.} In the universe of sheaves over this locale, the set
+of unit interval Dedekind real numbers fails to be (Heine--Borel) compact and
+the localic real line fails to be
+spatial~\cite[Example~D4.7.13]{johnstohne:elephant}.\par}
+\item An open~$U$ of a locale~$X$ is \emph{complemented} iff there is an
+open~$V$ such that~$U \vee V = \top$ and~$U \wedge V = \bot$. A locale is
+\emph{zero-dimensional} iff any open is a join of complemented opens. Assuming
+that any two reals are equal or not, show that the locale of surjections~$\NN
+\to \RR$ is zero-dimensional.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}{Models of theories as points of the classifying locales}%
+Let~$\TT$ be a propositional geometric theory. Verify that the points
+of~$L(\TT)$ are in canonical bijection with the set-based models of~$\TT$.
+\end{exercise}
+
+\begin{exercise}{Products of locales}\label{ex:products-of-locales}%
+Let~$X$ and~$X'$ be locales, classifying some propositional geometric
+theory~$\TT$ respectively~$\TT'$. Let~$\TT + \TT'$ be the combined theory
+(whose set of sorts is the disjoint union of the sets of sorts of~$\TT$
+and~$\TT'$, and so on). Show that~$L(\TT + \TT')$ is the product of~$X$
+and~$X'$ in the category of locales.
+\end{exercise}
+
+\begin{exercise}{Coproducts of locales, revisited}%
+Let~$X$ and~$X'$ be locales, classifying some propositional geometric
+theory~$\TT$ respectively~$\TT'$. Find a theory in terms of~$\TT$
+and~$\TT'$ which is classified by~$X \amalg X'$.
+\end{exercise}
+
+\begin{exercise}{Spatiality of the localic reals}%
+\newcommand{\fa}{\ensuremath{(\!\cdot}}%
+\newcommand{\fb}{\ensuremath{\cdot\!)}}%
+Let~$\RR$ be the localic real line, defined as the classifying locale of the
+theory~$\TT$ of Dedekind cuts as as introduced on
+page~\pageref{par:dedekind-cuts}. For rational numbers~$x,y$, let~``$\fa x,y
+\fb$'' denote the formula~$\alpha_x \wedge \beta_y$. Let~$(x,y)$ denote the
+open interval~$\{ \xi \in \Pt(\RR) \,|\, x < \xi < y \}$ in the set of Dedekind reals.
+\begin{enumerate}
+\item Extend the notation to allow for~$x,y=\pm\infty$.
+\item Show that the canonical topology on~$\Pt(\RR)$, defined in
+Exercise~\ref{ex:canonical-topology}, coincides with the usual Euclidean
+topology.
+\item Show that any open of~$\RR$ can be written in the form~$\bigvee_i
+[\fa x_i,y_i \fb]$ with~$x_i,y_i \in \QQ \cup \{\pm\infty\}$.
+\item Let rational numbers be given such that~$(x,y) \subseteq \bigcup_i
+(x_i,y_i)$ in~$\Pt(\RR)$. Assume that this open covering has a Lebesgue number.
+Show that~$\TT$ proves~$\fa x,y \fb \vdash \bigvee_i \fa x_i,y_i \fb$.
+\item Assume that closed intervals in the set of Dedekind reals are
+(Heine--Borel) compact. Then redo part~(d), but without the assumption on the
+existence of a Lebesgue number.
+\item Under the same assumption as in part~(e), show that the localic real line
+is spatial.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}{The localic Galois group of a field extension}%
+Let~$L|k$ be a field extension. The \emph{localic Galois group}~$\Gal(L|k)$
+of~$L|k$ is the classifying locale of the theory which has one nullary relation
+symbol~``$\sigma_{xy}$'' for each pair~$\langle x,y \rangle \in L$ and the
+following axioms:
+\begin{align*}
+  \top &\vdash \bigvee_y \sigma_{xy} & \text{(for each~$x \in L$)} \\
+  \top &\vdash \bigvee_x \sigma_{xy} & \text{(for each~$y \in L$)} \\
+  \sigma_{xy} \wedge \sigma_{xy'} &\vdash \bigvee\{ \top \,|\, y = y' \} & \text{(for each~$x,y,y' \in L$)} \\
+  \sigma_{xy} \wedge \sigma_{x'y} &\vdash \bigvee\{ \top \,|\, x = x' \} & \text{(for each~$x,x',y' \in L$)} \\
+  \top &\vdash \sigma_{00} \\
+  \top &\vdash \sigma_{11} \\
+  \sigma_{xy} \wedge \sigma_{x'y'} &\vdash \sigma_{x+x',y+y'} & \text{(for each~$x,x',y,y' \in L$)} \\
+  \sigma_{xy} \wedge \sigma_{x'y'} &\vdash \sigma_{xx',yy'} & \text{(for each~$x,x',y,y' \in L$)} \\
+  \top &\vdash \sigma_{xx} & \text{(for each~$x \in k$)}
+\end{align*}
+\begin{enumerate}
+\item Explain how to obtain a morphism~$\Gal(L|k) \to \Gal(L|k)$ which on the
+level of points should send an automorphism~$\sigma$ to its inverse~$\sigma^{-1}$.
+\item Explain how to obtain a morphism~$\Gal(L|k) \times \Gal(L|k) \to \Gal(L|k)$ which on the
+level of points should send a pair~$\langle \sigma, \tau \rangle$ to~$\sigma \circ \tau$.
+\item Assume from now on that~$L$ is a \emph{geometric field} in the sense that any
+element is zero or invertible. Show that the axiom expressing injectivity can
+be dropped without changing the set of provable sequents.
+\item Let~$f \in k[X]$ be a monic polynomial such that~$f(X) =
+(X-x_1)\cdots(X-x_n)$ over~$L$. Let~$x$ be one of the zeros of~$f$. Show that
+the theory shows~$\top \vdash \bigvee_{i=1}^n \sigma_{x,x_i}$.
+\item Now furthermore assume that~$L$ is \emph{Galois over}~$k$ in the sense that
+any element of~$L$ is the zero of a monic polynomial~$f \in k[X]$ which is
+separable (that is,~$(f,f') = (1) \subseteq k[X]$) and splits over~$L$ into
+linear factors. Show that the axioms expressing surjectivity can be dropped.
+\item Show that the topological space of points of~$\Gal(L|k)$ is canonically
+homeomorphic to the topological Galois group of~$L|k$.
+\item Show that~$\Gal(L|k)$ is spatial in classical mathematics.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}{Coherent locales and coherent theories}%
+An open~$U$ of a locale is \emph{compact} iff, whenever~$U
+\preceq \bigvee_{i \in I} V_i$, there is a (Kuratowski-)finite subset~$I'
+\subseteq I$ such that~$U \preceq \bigvee_{i \in I'} V_i$. A locale is
+\emph{coherent} iff its compact opens are closed under finite meets and if
+every open is a join of compact opens. A geometric formula is \emph{coherent} iff only
+finite disjunctions occur in it. A geometric theory is \emph{coherent}
+iff all of its axioms consist of coherent formulas.
+\begin{enumerate}
+\item Show that any coherent locale classifies some coherent theory.
+\item Let~$\TT$ be a propositional coherent theory. Show that~$L(\TT)$ is
+coherent.
+
+{\scriptsize\emph{Hint.} For coherent formulas~$\alpha$ and geometric
+formulas~$\varphi$, define a semantics by the clauses below. Show by an induction on the
+structure of geometric derivations that, if~$\TT$ proves a geometric
+sequent~$\varphi \vdash \psi$, then for all coherent formulas~$\alpha$ such
+that~$\alpha \models \varphi$, $\alpha \models \psi$. Show for coherent
+formulas~$\alpha,\beta$ that~$\alpha \models \beta$ iff~$\TT$ proves~$\alpha
+\vdash \beta$. Use these ingredients to show that, if~$\alpha$ is a coherent
+formula and~$(\beta_i)_{i \in I}$ is a family of coherent formulas, if~$\TT$
+proves~$\alpha \vdash \bigvee_{i \in I} \beta_i$ then there is a
+(Kuratowski-)finite subset~$I' \subseteq I$ such that~$\TT$ proves~$\alpha
+\vdash \bigvee_{i \in I'} \beta_i$.
+
+\begin{center}\tablefont
+\begin{tabular}{@{}l@{\ \ }c@{\ \ }l@{}}
+  $\alpha \models \beta$ &iff& $\TT$ proves~$\alpha \vdash \beta$ \qquad(for~$\beta$ a nullary relation symbol) \\
+  $\alpha \models \top$ &iff& true \\
+  $\alpha \models \varphi \wedge \psi$ &iff& $\alpha \models \varphi$ and $\alpha \models \psi$ \\
+  $\alpha \models \bigvee_i \varphi_i$ &iff& there are coherent
+  formulas~$\alpha_1,\ldots,\alpha_n$ such that \\ &&\qquad $\TT$ proves~$\alpha \vdash
+  \alpha_1 \vee \cdots \vee \alpha_n$ and such for each~$k \in \{1,\ldots,n\}$,
+  \\ &&\qquad\qquad there is an index~$i \in I$ such that~$\alpha_k \models \varphi_i$
+\end{tabular}
+\end{center}}
+
+\item Show that an arbitrary (set-indexed) product of coherent locales is
+coherent.
+
+\item \emph{Deligne's completeness theorem} states that coherent locales (in
+fact, even coherent \emph{toposes}) are spatial. Show that Deligne's
+completeness theorem implies that propositional coherent theories
+without any set-based models are inconsistent.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}{A geometric interpretation of double negation}%
+An open~$U$ of a locale is \emph{dense} iff for any open~$V$, $U \wedge V =
+\bot$ implies~$U = \bot$. Let~$\varphi$ be a formula over a locale~$X$.
+\begin{enumerate}
+\item Show that there is a largest open,
+denoted~``$\llbracket\varphi\rrbracket$'', such that~$U \models \varphi$.
+
+{\scriptsize\emph{Hint.} Consider the join of all opens~$V$ such that~$V
+\models \varphi$.\par}
+
+\item Show that~$X \models \neg\neg\varphi$ iff~$\llbracket\varphi\rrbracket$
+is dense.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}{Unique local existence is global existence}%
+\label{ex:global-existence}%
+Let~$F$ be a sheaf on a locale~$X$. Let~$\varphi$ be a formula over~$X$. Assume
+that~$\Sh(X) \models \exists!s\?F\_ \varphi(s)$, that is
+\[ \Sh(X) \models \exists s\?F\_ \varphi(s) \quad\text{and}\quad
+  \Sh(X) \models \forall s\?F\_ \forall t\?F\_ (\varphi(s) \wedge \varphi(t)
+  \Rightarrow s = t). \]
+Show that for any open~$U \in \O(X)$, there is a unique section~$s \in F(U)$
+such that~$U \models \varphi(s)$.
+\end{exercise}
+
+\begin{exercise}{The sheaf of real functions as a field}%
+Let~$X$ be a topological space. Let~$\C$ be the sheaf of continuous real-valued
+functions on~$X$.
+\begin{enumerate}
+\item Let~$U$ be an open of~$X$. Let~$f \in \C(U)$. Show using the result
+of Exercise~\ref{ex:global-existence} that~$U \models (\exists g\?\C\_ fg =_\C
+1)$ iff there is a function~$g \in \C(U)$ such that~$fg = 1$.
+\item Show that~$\C$ is a field in that
+$X \models \forall f\?\C\_
+  \bigl(\neg(\exists g\?\C\_ fg = 1)\bigr) \Rightarrow f = 0$.
+\item Give an example of space~$X$ such that it is not the case that~$\C$ is a
+field in the stronger sense that
+$\Sh(X) \models \forall f\?\C\_ (\exists g\?\C\_ fg = 1) \vee f = 0$.
+\item Let~$X = \CC$ and let~$\O$ be the sheaf of holomorphic functions on~$X$.
+Show that, in classical mathematics, the sheaf~$\O$ is \emph{discrete} in that
+$\Sh(\CC) \models \forall f\?\O\_ \forall g\?\O\_ f = g \vee \neg(f = g)$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}{On the failure of the fundamental theorem of algebra}%
+Let~$F$ be the sheaf of continuous complex-valued functions on~$\CC$. Give an
+example of a function~$f : \CC \to \CC$ such that it is not the case that
+\[ \Sh(X) \models \exists z\?F\_ z^2 = f. \]
+{\scriptsize\emph{Note.} The sheaf~$F$ can be obtained by constructing, in the
+universe of sheaves on~$\CC$, the set of pairs of Dedekind reals. Hence the
+example demonstrates that the usual formulation of the fundamental theorem of
+algebra does not admit a constructive proof. However, there are replacements
+available~\cite{XXX}.\par}
+\end{exercise}
 
 
 \section{Applications in constructive algebra}
@@ -1645,8 +1958,8 @@ Proposition~\ref{prop:identification}.\end{proof}
 The analogue of Theorem~\ref{thm:basic-properties-sheaf-semantics} for the new
 formulation of the sheaf semantics reads as follows.
 
-\begin{theorem}Let~$A$ be a ring. Let~$f \in A$. Let~$\varphi$ be a formula
-over~$f$.
+\begin{theorem}\label{thm:basic-properties-sheaf-semantics-algebraic}
+Let~$A$ be a ring. Let~$f \in A$. Let~$\varphi$ be a formula over~$f$.
 \begin{enumerate}
 \item Let~$g \in A$. If~$f \models \varphi$, then~$fg \models \varphi$.
 \item Let~$f^n = fg_1 + \cdots + fg_m$. If~$fg_i \models \varphi$ for all
@@ -1735,26 +2048,217 @@ over a reduced ring~$A$. Then~$1 = 0$ in~$A$.
 \begin{proof}Since localization is exact, the matrix~$M$ is also injective when
 considered as a matrix over~$A^\sim$ (statement (\ref{item:loc-stable})).
 Since~$A^\sim$ is a field, this is a contradiction to basic (intuitionistic)
-linear algebra. In other words, $\Spec(A) \models \bot$. By
+linear algebra.\footnote{We are referencing the following theorem: ``Let~$M$ be
+an injective matrix with more columns than rows over a field~$k$ in the sense
+that any element of~$k$ is either zero or invertible. Then~$\bot$.'' This
+theorem is proven by repeatedly applying elementary row and column
+transformations until the matrix is of the
+form~$\left(\begin{smallmatrix}I&0\\0&0\end{smallmatrix}\right)$. By assumption
+on the size of~$M$, there is at least one zero column. This contradicts
+injectivity.
+
+However, since the ring~$A^\sim$ is only a field in the weaker sense that
+nonunits are zero, this theorem does not directly apply. We only have that any
+element of~$A^\sim$ is \emph{not not} zero or invertible. We hence employ a
+standard trick: In intuitionistic proofs of~$\bot$, we may use the law of
+excluded middle a finite number of times. This is because in intuitionistic
+(and even minimal) logic, we have~$\neg\neg(\varphi \vee \neg\varphi)$;
+$\neg\neg\varphi \wedge (\varphi \Rightarrow \neg\neg\psi) \Longrightarrow
+\neg\neg\psi$; and~$\neg\neg\bot \Leftrightarrow \bot$.}
+In other words, $\Spec(A) \models \bot$. By
 Remark~\ref{rem:consistency}, this amounts to~$1 = 0$ in~$A$.
 \end{proof}
 
-\begin{theorem}(Grothendieck's generic freeness lemma, simple version)
+%\begin{proposition}[McCoy's theorem]
+%Let~$M \in A^{n \times m}$ be an injective matrix over a reduced ring~$A$.
+%Then~$(\Lambda^m M)$, the ideal of~$m$-minors of~$M$, is regular.
+%\end{proposition}
+%
+%\begin{proof}Let~$x \in A$ such that~$x \cdot (\Lambda^M) = (0)$ be given. We
+%will show~$x = 0$~in~$A$ by verifying~$x = 0$ in~$A^\sim$ under the sheaf
+%semantics.
+%
+%To this end, it is prudent to introduce a variant of the usual
+%negation~$\neg\varphi \equiv (\varphi \Rightarrow \bot)$, namely~$\negg\varphi
+%\equiv (\varphi \Rightarrow a = 0)$. Our claim is then~$\bott \defeq
+%\negg\top$. As usual, the double negation of the law of excluded middle is
+%available, that is we have
+%\[ \forall x\?A^\sim\_ \negg\negg\bigl((\exists y\?A\_ xy = 1) \vee \negg(\exists
+%y\?A\_ xy = 1)\bigr), \]
+%and as our goal is~$\bott$, we may use with law of excluded middle a finite
+%number of times.
+%
+%Repeatedly exploiting that any matrix element is invertible or
+%$\negg\text{invertible}$ and applying elementary row and column
+%transformations, we may assume that~$M$ is of the
+%form~$\left(\begin{smallmatrix}I&0\\0&N\end{smallmatrix}\right)$ with all
+%elements of~$N$ $\negg\text{invertible}$.
+%
+%By Remark~\ref{XXX},
+%\end{proof}
+% XXX
+
+\begin{proposition}[Grothendieck's generic freeness lemma, simple version]
+\label{thm:baby-grothendieck}
 Let~$A$ be a reduced ring. Let~$M$ be a finitely generated~$A$-module.
 If~$f = 0$ is the only element of~$A$ such that~$M[f^{-1}]$ is a
 free~$A[f^{-1}]$-module, then~$1 = 0$ in~$A$.
-\end{theorem}
+\end{proposition}
 
 \begin{proof}The claim amounts to the statement that~$M^\sim$ is \emph{not not}
 free. Since~$A^\sim$ is a field, this follows from
-basic (intuitionistic) linear algebra.\footnote{XXX case distinction}\end{proof}
+basic (intuitionistic) linear algebra.\footnote{A standard result of linear
+algebra is: ``Any finitely generated vector space over a field is finite free
+(that is, has a finite basis).'' The proof proceeds by considering a given
+generating family and using the law of excluded middle to determine whether one
+of the generators can be expressed using the others or not. In the latter case,
+the family is linearly independent and hence a basis; in the former case, the
+proof removes the redundant generator and continues by induction.
+
+Intuitionistically, we only have the double negation of the law of excluded
+middle available; this is why intuitionistically we only have that finitely
+generated vector spaces are \notnot finite free. The field condition required
+by the proof is exactly the one satisfied by~$A^\sim$.}\end{proof}
+
+\begin{theorem}[generic freeness lemma, general version]
+Let~$A$ be a reduced ring. Let~$B$ be an~$A$-algebra of finite type. Let~$M$ be
+a finitely generated~$B$-module.
+If~$f = 0$ is the only element of~$A$ such that
+\begin{enumerate}
+\item $B[f^{-1}]$ and $M[f^{-1}]$ are free modules over $A[f^{-1}]$,
+\item $A[f^{-1}] \to B[f^{-1}]$ is of finite presentation and
+\item $M[f^{-1}]$ is finitely presented as a module over~$B[f^{-1}]$,
+\end{enumerate}
+then~$1 = 0$ in~$A$.
+\end{theorem}
+
+\begin{proof}One can check that the claim is the interpretation by the sheaf
+semantics of the following statement about the sheaves: It is \notnot the case that
+\begin{enumerate}
+  \item $B^\sim$ and $M^\sim$ are free modules over $A^\sim$ (by basic linear algebra),
+  \item $A^\sim \to B^\sim$ is of finite presentation, and
+  \item $M^\sim$ is finitely presented as a module over $B^\sim$,
+\end{enumerate}
+
+Item~(1) is by basic linear algebra as in the proof of
+Theorem~\ref{thm:baby-grothendieck}, but a bit more involved as we now need to
+deal with countable generating
+families~\cite[Theorem~11.16]{blechschmidt:phd}. Item~(2) is because finitely
+generated algebras over anonymously Noetherian rings are \notnot finitely
+presented (in a description of the form~$R[X_1,\ldots,X_n]/\aaa$, the
+ideal~$\aaa$ is \notnot finitely generated).
+Item~(3) is because finitely generated modules over anonymously Noetherian are
+\notnot finitely presented.
+\end{proof}
 
 XXX can be unwound, see ...; give pointers to existing proofs
+
+
+\subsection{Exercises}
+
+\begin{exercise}{Nontriviality of~$A^\sim$}%
+Let~$A$ be a ring. In Proposition~\ref{prop:immediate-consequences}, we gave an
+abstract proof that~$A^\sim$ is local and hence nontrivial in the sense that~$1
+\neq 0$ (even if~$A$ itself happens to be trivial). Give a new proof of this
+fact, by verifying directly~$1 \models \neg(1 =_{A^\sim} 0)$ using the
+semantics given in Table~\ref{table:algebraic-kripke-joyal}.
+\end{exercise}
+
+\begin{exercise}{A generalization of the field property}%
+Let~$A$ be a ring. We extend the sheaf semantics to infinitary first-order
+formulas by adding the following clauses to
+Table~\ref{table:algebraic-kripke-joyal}:
+\begin{center}\tablefont
+\begin{tabular}{@{}l@{\ \ }c@{\ \ }l@{}}
+  $f \models \bigwedge_{k \in K} \varphi_k$ &iff&
+    for all indices~$k \in K$, $f \models \varphi_k$ \\
+  $f \models \bigvee_{k \in K} \varphi_k$ &iff&
+    there exists a partition~$f^n = fg_1 + \cdots + fg_m$ such that, \\
+  &&\quad for each~$i$, there is an index~$k \in K$ such that~$fg_i \models \varphi_k$
+\end{tabular}
+\end{center}
+Theorem~\ref{thm:basic-properties-sheaf-semantics-algebraic}
+also apllies to this extension, and moreover, this extension in sound with
+respect to infinitary intuitionistic logic.
+\begin{enumerate}
+\item Prove that:
+\[ 1 \models \forall f\?A^\sim\_ \forall x\?A^\sim\_
+  \bigl((\exists z\?A^\sim\_ fz = 1) \Rightarrow x = 0\bigr) \Longrightarrow \bigvee_{n \in \NN} (f^n x = 0). \]
+\item Deduce that~$A^\sim$ is ``almost a field'' in the sense that any nonunit
+is nilpotent.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}{Bridging modules and their induced sheaves}%
+Let~$M$ be a module over a ring~$A$.
+\begin{enumerate}
+\item Show that~$M$ is finitely generated iff~$M^\sim$ is.
+\item Show that~$M$ is finite locally free (that is, that there is a
+partition~$1 = f_1 + \cdots + f_n$ such that each module~$M[f_i^{-1}]$ is
+finite free over~$A[f_i^{-1}]$) iff~$M^\sim$ is finite free.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}{Local injectivity and surjectivity}%
+Let~$M$ an~$N$ be modules over a ring~$A$. Let~$f : M \to N$ be a linear map.
+\begin{enumerate}
+\item Show that~$f$ is injective iff~$f^\sim : M^\sim \to N^\sim$ is injective.
+\item Show that~$f$ is surjective iff~$f^\sim : M^\sim \to N^\sim$ is surjective.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}{The units of~$A^\sim$}%
+Let~$A$ be a ring. Let~$f \in A$. Let~$x \in A[f^{-1}]$. Show using the result
+of Exercise~\ref{ex:global-existence} that~$f \models \exists y\?A^\sim\_ xy
+= 1$ if and only if~$x$ is invertible in~$A[f^{-1}]$.
+\end{exercise}
+
+\begin{exercise}{Identifying the triviality of the spectrum}%
+Let~$A$ be a ring. Verify, without assuming~\BPIT, that~$\Spec(A)$ is
+isomorphic to the one-point locale iff any element of~$A$ is either
+invertible or nilpotent.
+\end{exercise}
+
+\begin{exercise}{Prüfer domains as valuation domains}%
+An \emph{integral domain} is a ring such that~$1 \neq 0$ and such that~$xy = 0$
+implies~$x = 0$ or~$y = 0$. A \emph{valuation domain} is an integral domain
+such that for any two elements, one divides the other. A \emph{Prüfer domain}
+is an integral domain such that any finitely generated ideal is locally a
+principal ideal.
+\begin{enumerate}
+\item Let~$A$ be a ring. Show that, if~$A$ is an integral domain then so
+is~$A^\sim$. Does the converse hold?
+\item Let~$A$ be a valuation domain. Show that any matrix over~$A$ can be put
+into diagonal form by elementary row and column operations.
+\item Let~$A$ be an integral domain. Show that~$A$ is a Prüfer domain if and
+only if~$A^\sim$ is a valuation domain.
+\item Let~$A$ be a Prüfer domain. Show that any matrix over~$A$ can locally be
+put into diagonal form by elementary row and column operations, by applying the
+result of part~(b) to~$A^\sim$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}{A basic version of Kaplansky's theorem}
+\begin{enumerate}
+\item Let~$A$ be a local ring. Let~$\aaa \subseteq A$ be a finitely generated
+ideal such that~$\aaa^2 = \aaa$. Show that~$\aaa = (0)$ or~$\aaa = (1)$.
+\item Let~$A$ be a local ring. Let~$M \in A^{n \times n}$ be an idempotent
+matrix. Verify that~$M$ is similar to a diagonal matrix with entries zero and
+one by applying part~(a) to the ideals of~$k$-minors of~$M$. Deduce that the
+cokernel of~$M$ is finite free.
+\item Let~$A$ be an arbitrary ring. Let~$M \in A^{n \times n}$ be an idempotent
+matrix. Show that the cokernel of~$M$ is finite locally free, by applying the
+result of part~(b) to~$A^\sim$.
+\end{enumerate}
+\end{exercise}
 
 \end{document}
 
 XXX cite https://apcz.umk.pl/czasopisma/index.php/LLP/article/viewFile/LLP.2013.009/732
 
 XXX include rules for geometric logic?
+
+XXX Cite http://www.mat.uc.pt/~picado/covariant/contents.pdf
+http://www.mat.uc.pt/~picado/publicat/Chapter2.pdf
 
 X \models phi

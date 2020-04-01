@@ -856,7 +856,8 @@ that the resulting formula is a formula over~$V$.
 The principal properties of the sheaf semantics is that it is monotone, local
 and sound with respect to intuitionistic first-order logic:
 
-\begin{theorem}Let~$X$ be a locale. Let~$U$ be an open of~$X$. Let~$\varphi$ be
+\begin{theorem}\label{thm:basic-properties-sheaf-semantics}
+Let~$X$ be a locale. Let~$U$ be an open of~$X$. Let~$\varphi$ be
 a formula over~$U$.
 \begin{enumerate}
 \item If~$V$ is an open such that~$V \preceq U$, then~$U \models
@@ -913,8 +914,8 @@ preliminaries.)
 over a reduced ring~$A$. Then~$1 = 0$ in~$A$.
 
 \textbf{Proof.} \uwave{Assume not.} Then there is a \uwave{minimal
-prime ideal} $\ppp \subseteq A$. The matrix~$M$ is also injective when
-considered as a matrix over the stalk~$A_\ppp$; since~$A_\ppp$ is a
+prime ideal} $\ppp \subseteq A$. Since localization is exact, the matrix~$M$ is also injective when
+considered as a matrix over the stalk~$A_\ppp$. Since~$A_\ppp$ is a
 \uwave{field}, this is a contradiction to basic linear algebra. \qed
 \end{quote}
 
@@ -1046,8 +1047,9 @@ If~$S$ is a multiplicatively closed subset of a ring~$A$, the
 \emph{localization}~$A[S^{-1}]$ is the ring of formal fractions~$\frac{a}{s}$ with~$a
 \in A$ and~$s \in S$, where two such fractions~$\frac{a}{s}$ and~$\frac{b}{t}$ are deemed
 equivalent iff there is an element~$u \in S$ such that~$uta = usb$. We do not
-require that~$0 \not\in S$; instead we plainly observe that ~$A[S^{-1}]$ is the
-zero ring iff~$0 \in S$.
+require that~$0 \not\in S$; instead we plainly observe that~$A[S^{-1}]$ is the
+zero ring iff~$0 \in S$. We also remark that~$\frac{a}{s} = 0$ in~$A[S^{-1}]$
+iff~$ua = 0$ for some element~$u \in S$.
 
 An important special case is \emph{localizing away from an element}: If~$f$ is
 an element of~$A$, then~$A[f^{-1}]$ is~$A[\{1,f,f^2,f^3,\ldots\}^{-1}]$. This
@@ -1102,7 +1104,7 @@ Proposition~{\ref{prop:immediate-consequences}}{\quad}\phantom{\,\,}\\
 Assuming that~$A$ is reduced: \\[-1.8em]
 \begin{Alphlist}[(G)]
 \addtocounter{enumi}{4}
-\item\label{item:field} $A^\sim$ is a field: $\forall x\?A^\sim\_ (\neg(\exists y\?A^\sim\_ xy = 1) \Rightarrow x = 0)$.
+\item\label{item:field} $A^\sim$ is a field: $\forall x\?A^\sim\_ \Bigl((\neg(\exists y\?A^\sim\_ xy = 1)) \Rightarrow x = 0\bigr)$.
 \item\label{item:negneg-stable} $A^\sim$ has $\neg\neg$-stable equality:
 $\forall x,y\?A^\sim\_ \neg\neg(x = y) \Rightarrow x = y$.
 \item\label{item:noetherian} $A^\sim$ is \emph{anonymously Noetherian}.
@@ -1294,7 +1296,7 @@ However, this procedure cannot be carried out for any pair of theories. For
 instance, there are no \emph{free fields}. The free field on a set~$X$ would be
 a field~$K$ together with a map~$X \to K$ such that any map~$X \to L$ factors
 over the given map~$X \to K$ by a unique field homomorphism~$K \to L$.
-% XXX Exercise: proof this!
+% XXX Exercise: prove this!
 
 For instance, in the case~$X = \{ t \}$, the field~$\QQ(t)$ of rational
 functions comes close, but fails because there are no field homomorphisms~$\QQ(t)
@@ -1538,6 +1540,15 @@ that~$\Spec(A)$ is compact. However, the stronger result that~$\Spec(A)$ is
 even a \emph{coherent locale} can also be deduced from a general theorem (XXX: ref to
 exercise) since the theory of prime filters is a coherent theory.\end{remark}
 
+\begin{remark}\label{rem:consistency}
+A further corollary of Theorem~\ref{thm:workhorse} is that the theory of prime
+filters of~$A$ is inconsistent (that it, that it proves the sequent~$\top
+\vdash \bot$, which can also be written as~$D(1) \vdash D(0)$) if and only
+if~$A$ is the trivial ring. Contrapositively, if~$A$ is not the trivial ring,
+then the theory is consistent. This observation can be regarded as a finitary
+substitute for the statement (equivalent to~\BPIT in general) ``nontrivial rings contain prime filters''.
+\end{remark}
+
 Having identified the underlying frame of~$\Spec(A)$, the second workhorse is
 an explicit description of the sheaf~$A^\sim$.
 
@@ -1579,10 +1590,17 @@ that~$M$ is~$A$, this definition coincides with our original definition
 of~$A^\sim$. The proof of Proposition~\ref{prop:identification} carries over to
 show that~$M^\sim([D(f)]) \cong M[f^{-1}]$.
 
+\paragraph{An elementary reformulation.}
 As a corollary of Theorem~\ref{thm:workhorse} and
 Proposition~\ref{prop:identification}, we can unwind the definitions to recast
 the sheaf semantics in entirely explicit algebraic terms, with no locales or
-sheaves in sight. By a \emph{formula over a ring element}~$f \in A$, we mean a
+sheaves in sight. Notwithstanding the impredicative nature of locale theory,
+the resulting formulation will even make sense in a metatheories without a
+powerset operation such as~\textsc{czf} or arithmetic universes~\cite{XXX}. In
+fact, it is now a purely syntactic translation procedure which can be carried
+out within~\textsc{pra}.
+
+By a \emph{formula over a ring element}~$f \in A$, we mean a
 first-order formula over the signature which has
 \begin{enumerate}
 \item a sort~``$A^\sim$'' and function symbols for the structure of a ring,
@@ -1593,7 +1611,8 @@ structure of an~$A^\sim$-module,
 \item for any~$A$-module~$M$, a constant of sort~$M^\sim$ for each element of~$M[f^{-1}]$.
 \end{enumerate}
 
-\begin{corollary}Let~$A$ be a ring. Let~$\varphi$ be a formula over~$f \in A$.
+\begin{corollary}\label{cor:algebraic-reformulation}
+Let~$A$ be a ring. Let~$\varphi$ be a formula over~$f \in A$.
 Then~$[D(f)] \models \varphi$ in the sense of Definition~XXX if and only
 if~$f \models \varphi$ in the sense of Table~\ref{table:algebraic-kripke-joyal}.
 \end{corollary}
@@ -1623,15 +1642,114 @@ Proposition~\ref{prop:identification}.\end{proof}
   \label{table:algebraic-kripke-joyal}
 \end{table}
 
+The analogue of Theorem~\ref{thm:basic-properties-sheaf-semantics} for the new
+formulation of the sheaf semantics reads as follows.
+
+\begin{theorem}Let~$A$ be a ring. Let~$f \in A$. Let~$\varphi$ be a formula
+over~$f$.
+\begin{enumerate}
+\item Let~$g \in A$. If~$f \models \varphi$, then~$fg \models \varphi$.
+\item Let~$f^n = fg_1 + \cdots + fg_m$. If~$fg_i \models \varphi$ for all
+indices~$i$, then~$f \models \varphi$.
+\item Let~$\psi$ be a further formula over~$f$. If~$f \models
+\varphi$ and if~$\varphi$ entails~$\psi$ intuitionistically, then also~$f
+\models \psi$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}Combination of Theorem~\ref{thm:basic-properties-sheaf-semantics}
+and Corollary~\ref{cor:algebraic-reformulation}.\end{proof}
+
+
+\paragraph{The field property.} We are now in a position to verify
+statement~(\ref{item:field}) of Section~\ref{sect:a-remarkable-sheaf}.
+
+\begin{proposition}\label{prop:field-property}
+Let~$A$ be a reduced ring. Then~$A^\sim$ is a field in that
+\[ 1 \models \forall x\?A^\sim\_ \bigl((\neg(\exists y\?A^\sim\_ xy = 1)) \Rightarrow
+x = 0\bigr). \]
+\end{proposition}
+
+\begin{proof}By Table~\ref{table:algebraic-kripke-joyal}, we have to verify the
+following claim.
+\begin{quote}
+For any element~$f \in A$ and any element~$x \in A[f^{-1}]$, \\
+${\qquad}$ for any element~$g \in A$, \\
+${\qquad\qquad}$ if for any~$h \in A$, \\
+${\qquad\qquad\qquad}$ if there is~$(fgh)^n = \sum_{i=1}^m fghp_i$
+such that for each~$i$, \\
+${\qquad\qquad\qquad\qquad}$ there exists~$y \in
+A[(fghp_i)^{-1}]$ such that \\
+${\qquad\qquad\qquad\qquad\qquad}$ $xy = 1$ in~$A[(fghp_i)^{-1}]$, \\
+${\qquad\qquad\qquad}$ then~$fgh$ is nilpotent, \\
+${\qquad\qquad}$ then~$x = 0$ in~$A[(fg)^{-1}]$.
+\end{quote}
+Hence let elements~$f \in A$, $x \in A[f^{-1}]$ and~$g \in A$ be given and
+assume that for any~$h \in A$, the displayed condition holds. We are to show
+that~$x = 0$ in~$A[(fg)^{-1}]$.
+
+Write~$x = \frac{x'}{f}$. For~$h \defeq x'$, we have the
+partition~$(fgh)^1 = fgh \cdot 1$ with~$m = 1$ and~$p_1 = 1$. For~$y \defeq
+\frac{f}{x'} = \frac{f^2g}{fgh}$, we have~$xy = 1$ in~$A[(fghp_1)^{-1}]$.
+By assumption, the element~$fgh$ is nilpotent, hence zero. Thus~$x' = 0$
+in~$A[(fg)^{-1}]$. In particular, we have~$x = 0$ in~$A[(fg)^{-1}]$.
+\end{proof}
+
+The proof of Proposition~\ref{prop:field-property} visibly demonstrates that
+unwinding the definition of the sheaf semantics quickly results in formulas
+which are quite convoluted. This behavior is a basic consequence of the fact
+that, with the exception of the clauses for~``$\top$'' and~``$\wedge$'', all
+clauses in Table~\ref{table:algebraic-kripke-joyal} introduce additional
+quantifiers.
+
+This increase in complexity should be properly appreciated: The sheaf semantics
+allows us to harness convoluted properties in simple language. The unrolled
+monstrosity in the proof of Proposition~\ref{prop:field-property} is not
+memorable at all and unlikely to find its way into human-written proofs.
+However, in the form~``$A^\sim$ is a field'', it becomes easily accessible.
+
+This state of affairs is even more pronounced for higher-order formulas such as
+the condition to be anonymously Noetherian. For instance, XXX
+
+\begin{quote}
+For any element~$f \in A$ and any (not necessarily quasicoherent) sheaf of
+ideals~$\J \hookrightarrow A^\sim[X_1,\ldots,X_n]|_{D(f)}$: If
+\begin{quote}
+for any element~$g \in A$ the condition that
+\begin{quote}
+the sheaf~$\J$ is of finite type on~$D(g)$
+\end{quote}
+implies that~$g = 0$,
+\end{quote}
+then~$f = 0$.
+\end{quote}
+
 \subsection{Applications}
 \label{sect:example-applications}
 XXX better title
 
-XXX injective matrices
+\begin{proposition}Let~$M$ be an injective matrix with more columns than rows
+over a reduced ring~$A$. Then~$1 = 0$ in~$A$.
+\end{proposition}
 
-XXX generic freeness
+\begin{proof}Since localization is exact, the matrix~$M$ is also injective when
+considered as a matrix over~$A^\sim$ (statement (\ref{item:loc-stable})).
+Since~$A^\sim$ is a field, this is a contradiction to basic (intuitionistic)
+linear algebra. In other words, $\Spec(A) \models \bot$. By
+Remark~\ref{rem:consistency}, this amounts to~$1 = 0$ in~$A$.
+\end{proof}
 
-XXX spell out details of field property
+\begin{theorem}(Grothendieck's generic freeness lemma, simple version)
+Let~$A$ be a reduced ring. Let~$M$ be a finitely generated~$A$-module.
+If~$f = 0$ is the only element of~$A$ such that~$M[f^{-1}]$ is a
+free~$A[f^{-1}]$-module, then~$1 = 0$ in~$A$.
+\end{theorem}
+
+\begin{proof}The claim amounts to the statement that~$M^\sim$ is \emph{not not}
+free. Since~$A^\sim$ is a field, this follows from
+basic (intuitionistic) linear algebra.\footnote{XXX case distinction}\end{proof}
+
+XXX can be unwound, see ...; give pointers to existing proofs
 
 \end{document}
 
@@ -1640,6 +1758,3 @@ XXX cite https://apcz.umk.pl/czasopisma/index.php/LLP/article/viewFile/LLP.2013.
 XXX include rules for geometric logic?
 
 X \models phi
-
-  &\text{iff}\quad \bigvee_{n \in \NN} \exists m \in \NN\_ \exists i_1,\ldots,i_n \in I\_ \exists
-  u_1,\ldots,u_n \in A\_ f^m = \sum_{j=1}^n u_j g_{i_j}

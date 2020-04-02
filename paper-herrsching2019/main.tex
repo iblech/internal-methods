@@ -731,7 +731,7 @@ following axioms:
 
 For many purposes, the theory of prime \emph{filters} is actually more
 relevant. Classically, a prime filter of a ring is simply the complement of a
-prime ideal; constructively, it is prudent to axiomatize this notion directly.
+prime ideal; constructively, it is prudent to turn prime ideals upside down and axiomatize this notion directly.
 Hence the theory of prime filters of~$A$ has no sorts, no function symbols, one
 relation symbol~``$D(x)$'' for each element~$x \in A$ and the following
 axioms:
@@ -847,7 +847,8 @@ topological space of prime filters of~$A$''), not mentioning its topology, it is
 customary to abbreviate ``the classifying locale of the propositional geometric
 theory of prime filters of~$A$'' as ``the locale of prime filters of~$A$''.
 
-\begin{remark}The traditional way of constructing the real line or the Zariski
+\begin{remark}\label{rem:traditional-spaces}
+The traditional way of constructing the real line or the Zariski
 spectrum as a topological space proceeds in three steps: (1) Write down the
 axioms (of Dedekind cuts respectively prime filters). (2) Using the powerset
 axiom and separation, construct the set of Dedekind reals respectively the set
@@ -1172,8 +1173,24 @@ The story of generic models is at the same time tautologous and deep, and these
 short paragraphs do not do justice to this intriguing aspect of the interplay
 between topology (in the form of locales) and logic (in the form of
 propositional geometric theories). We strongly
-recommend the leisurely account by Steve Vickers~\ref{XXX} for a fuller
+recommend the accessible account by Steve Vickers~\ref{XXX} for a fuller
 picture.
+
+\begin{remark}The traditional way of constructing a map of topological spaces~$f : Y \to
+Y'$ proceeds in three steps: (1) Write down a map of the underlying sets. (2)
+Identify the preimages~$f^{-1}[U]$. (3) Verify that these preimages are open.
+
+Continuing Remark~\ref{rem:traditional-spaces}, locales provide more
+efficient means for constructing morphisms: To write down a morphism of
+locales~$X \to X'$, where~$X'$ is given as the classifying locale of some
+theory~$\TT$, we only need to specify a~$\TT$-model on~$X$; no separate
+verification of continuity is required.
+
+For instance, if~$f : A \to B$ is a ring homomorphism, we obtain a locale
+morphism~$\Spec(B) \to \Spec(A)$ by specifying the model~$([D(f(x))])_{x \in
+A}$ of the theory of prime filters of~$A$ on~$\Spec(B)$. On the level of
+points, this morphism induces the expected map~$\fff \mapsto f^{-1}[\fff]$.
+\end{remark}
 
 
 XXX ``internalizing parameter-dependence''

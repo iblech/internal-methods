@@ -587,7 +587,7 @@ Table~\ref{table:geometric-logic}.
     \phantom{a}\hfill
     \Axiom$\varphi \ \fCenter\seq{\vec x, y} \psi$
     \doubleLine
-    \UnaryInf$\exists y\?Y\_\! \varphi\ \fCenter\seq{\vec x} \psi$
+    \UnaryInf$\exists y\?Y\_ \varphi\ \fCenter\seq{\vec x} \psi$
     \DisplayProof
     \makebox[0pt]{\shifttext{\tiny ($y$ not free in~$\psi$)}}
     \hfill\phantom{a}
@@ -918,8 +918,10 @@ localic replacements (or similar replacements in other pointfree approaches to
 topology) are vital.
 
 \begin{remark}The case of the locale of surjections~$\NN \twoheadrightarrow
-\RR$ is slightly different in that there, even the strong existence axioms of
-classical mathematics do not suffice to materialize a point.
+\RR$ is particular in that there, even the strong existence axioms of
+classical mathematics do not suffice to materialize a point. In fact, already
+the law of excluded middle or the countable axiom of choice preclude the
+existence of points.
 \end{remark}
 
 
@@ -1032,7 +1034,46 @@ in~$\varphi$ should be interpreted as its restriction~$s|^U_V \in F(V)$, so
 that the resulting formula is a formula over~$V$.
 
 The principal properties of the sheaf semantics is that it is monotone, local
-and sound with respect to intuitionistic first-order logic:
+and sound with respect to intuitionistic first-order logic (which we fix for
+concreteness in Table~\ref{table:first-order-logic}):
+
+{\makeatletter
+\newcommand*{\shifttext}[1]{%
+  \settowidth{\@tempdima}{#1}%
+  \makebox[\@tempdima]{\hspace*{\@tempdima}#1}%
+}
+\makeatother
+\begin{table}[t]
+  \tbl{The rules of intuitionistic first-order logic}{\begin{minipage}{0.8\textwidth}
+    \centering
+    \medskip
+
+    (structural rules and rules for~${=}\ {\top}\ {\wedge}\ {\bot}\ {\vee}\
+    {\exists}$ as in Table~\ref{table:geometric-logic})
+    \medskip
+
+    \textnormal{double rule for implication} \\\smallskip
+    \phantom{a}\hfill
+    \Axiom$\varphi \wedge \psi\ \fCenter\seq{\vec x} \chi$
+    \doubleLine
+    \UnaryInf$\varphi\ \fCenter\seq{\vec x} \psi \Rightarrow \chi$
+    \DisplayProof
+    \phantom{a}\hfill
+    \bigskip
+
+    \textnormal{double rule for universal quantification} \\\smallskip
+    \phantom{a}\hfill
+    \Axiom$\varphi \ \fCenter\seq{\vec x, y} \psi$
+    \doubleLine
+    \UnaryInf$\varphi\ \fCenter\seq{\vec x} \forall y\?Y\_ \psi$
+    \DisplayProof
+    \makebox[0pt]{\shifttext{\tiny ($y$ not free in~$\varphi$)}}
+    \hfill\phantom{a}
+    \bigskip
+
+  \end{minipage}}
+  \label{table:first-order-logic}
+\end{table}}
 
 \begin{theorem}\label{thm:basic-properties-sheaf-semantics}
 Let~$X$ be a locale. Let~$U$ be an open of~$X$. Let~$\varphi$ be
@@ -2422,8 +2463,6 @@ result of part~(b) to~$A^\sim$.
 \end{document}
 
 XXX cite https://apcz.umk.pl/czasopisma/index.php/LLP/article/viewFile/LLP.2013.009/732
-
-XXX include rules for geometric logic?
 
 XXX Cite http://www.mat.uc.pt/~picado/covariant/contents.pdf
 http://www.mat.uc.pt/~picado/publicat/Chapter2.pdf

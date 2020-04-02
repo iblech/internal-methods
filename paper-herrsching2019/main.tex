@@ -112,6 +112,8 @@ XXX
 
 \section{Locales}
 
+% XXX \cite{belanger-marquis:pointless} and Johnstone, vickers:locales-toposes
+
 The notion of \emph{space} is fundamental to large parts of mathematics. This notion
 exists in various flavors, ranging from the basic cartesian spaces~$\RR^n$ to
 the more general metric and topological spaces and also including several more
@@ -245,9 +247,9 @@ all subsets of~$\RR^n$ are measurable.
 
 The Banach--Tarski paradox can also be avoided by adopting a localic point of
 view: While the localic counterparts of the six pieces do not have any points
-in common, the locale-theoretic pairwise intersections are still nontrivial.
-Hence one would not expect the rearrangement of these sublocales to have the
-same volume as the original solid ball. [XXX: give reference]
+in common, the locale-theoretic pairwise intersections are still nontrivial~\cite{simpson:measure}.
+Hence there is no paradox, as one would not expect an rearrangement of
+overlapping sublocales to preserve volume.
 
 
 \paragraph{Random sequences.} XXX
@@ -256,13 +258,14 @@ same volume as the original solid ball. [XXX: give reference]
 \subsection{Constructive concerns}
 
 By relinquishing points, locales provide a more flexible notion of space.
-Section~\ref{sect:examples-no-points} illustrates[XXX:word] this observation
+Section~\ref{sect:examples-no-points} substantiates this observation
 with several examples of nontrivial locales without any points. Constructive
 mathematics gives a further, orthogonal motivation to study locales: There are
 situations in which the relevant spaces do have enough points, but only if one
 subscribes to the axiom of choice or similar non-constructive principles. In
-these situations, the pointfree approach allowed by locales can help to give
-constructive versions of classical results.
+these situations, the pointfree approach allowed by locales help to give
+constructive versions of classical results. We will further discuss this theme
+in Section~\ref{sect:presenting-frames}.
 
 XXX ideal objects
 
@@ -270,16 +273,18 @@ XXX ideal objects
 as a topological space, can fail to be be compact in constructive
 mathematics. For instance, it fails in the Russian school because the Kleene
 tree provides a computable open covering of~$[0,1]$ with no computable finite
-subcovering [XXX: reference].
+subcovering (a self-contained exposition of this phenomenon is
+Ref.~\refcite{bauer:kleene-tree}).
 
 In contrast, the localic version of the unit interval is always compact. The
-proof is by an explicit computation with its basic opens. [XXX: reference]
+proof is by an explicit computation with its basic opens, exploiting the inductive
+nature of derivations~\cite{cederquist-negri:heine-borel}.
 
 Similarly, Tychonoff's theorem that the product of any number of compact
 topological spaces is again compact is equivalent to the axiom of choice. Its
 localic counterpart, the statement that the product of any number of compact
 locales is again compact, can be verified without any nonconstructive
-principles. [XXX: reference]
+principles~\cite{vickers:tychonoff}.
 
 \paragraph{Galois theory.} Let~$L|k$ be a Galois extension. The
 fundamental theorem of Galois theory states that there is a bijection between
@@ -300,13 +305,12 @@ As a consequence, the fundamental theorem of Galois theory as stated is not
 provable in constructive mathematics.
 
 However, this failure is not for fundamental Galois-theoretic reasons, but because of an
-unfortunate choice in the definitions. There is a notion of a localic group (a
+unfortunate choice in the definitions. There is a notion of a localic group~\cite{wraith:localic-groups} (a
 locale~$G$ equipped with continuous maps~$G \times G \xrightarrow{\circ} G$, $G
 \xrightarrow{(\cdot)^{-1}} G$, $1 \xrightarrow{e} G$ satisfying the group
 axioms), and the topological Galois group has a localic counterpart. The
 fundamental theorem can be reformulated to refer to this localic Galois group,
-and the proof of this reformulation is entirely constructive.
-[XXX: references]
+and the proof of this reformulation is entirely constructive~\cite{wraith:galois-topos}.
 
 If one is so inclined, then one can obtain the topological version of the
 fundamental theorem as a corollary of the localic version; the required
@@ -325,13 +329,16 @@ extensions. For infinite Galois extensions, we have to restrict to
 \emph{closed} subgroups. Constructively, the basic version cannot even be shown
 for finite extensions; we have to employ spatial language even for those, or
 else settle for a discrete version of the fundamental theorem: For finite field
-extensions, finite intermediate extensions correspond to finite subgroups.
-[XXX: reference]
+extensions, finite intermediate extensions correspond to finite
+subgroups~\cite[Theorem~8.8]{mines-richman-ruitenburg:constructive-algebra}.
 Classically, intermediate extensions of finite extensions and subgroups of
 finite groups are automatically finite, but constructively this can
 fail.\footnote{For instance, the field extension~$\QQ(\sqrt{2})|\QQ$ is finite.
 However, if the intermediate extension~$E \defeq \{ x \in \QQ(\sqrt{2}) \,|\, x
-\in \QQ \vee \varphi \}$ is finite, then~$\varphi \vee \neg\varphi$.}
+\in \QQ \vee \varphi \}$ is finite, then~$\varphi \vee \neg\varphi$. Using the
+sheaf semantics reviewed in Section~\ref{sect:sheaf-semantics}, this
+intermediate extension can be turned into a topological
+counterexample~\cite[page~65]{wraith:localic-groups}.}
 \end{remark}
 
 \paragraph{Gelfand duality} XXX
@@ -418,8 +425,7 @@ set~$\{ U \in \O(X) \,|\, \alpha(U) = \top \}$. This set is a \emph{completely
 prime filter}, that is a subset~$\fff \subseteq \O(X)$ which is upward-closed,
 closed under finite meets and for which~$\bigvee_i U_i \in \fff$ implies~$U_i
 \in \fff$ for some index~$i$; and conversely, any such completely prime filter
-gives rise to a point of~$X$.
-% XXX exercise
+gives rise to a point of~$X$ (Exercise~\ref{ex:points-as-filters}).
 
 \begin{definition}A locale~$X$ is \emph{spatial} if and only if its points
 suffice to distinguish its opens, that is if for any opens~$U, V \in \O(X)$,
@@ -432,7 +438,7 @@ An equivalent conditon is: if for any opens~$U, V \in \O(X)$, if~$x \inplus U
 For instance, any locale induced by a topological space is spatial. The locale
 of surjections~$\NN \twoheadrightarrow \RR$ is a striking example of a locale which fails to be
 spatial. The localic real line is spatial in classical mathematics and can
-fail to be spatial in constructive mathematics (Theorem~\ref{thm:spatiality-reals}).
+fail to be spatial in constructive mathematics (Exercise~\ref{ex:spatiality-reals}).
 
 \begin{remark}The set of points of a locale~$X$ can be made into a topological space, giving
 rise to a functor~$\Pt : \Loc \to \Top$. This functor is right adjoint
@@ -471,6 +477,7 @@ reflects the ordering (that is,~$\alpha(U) \preceq \alpha(V) \Rightarrow U
 \end{exercise}
 
 \begin{exercise}{Points as complete prime filters}%
+\label{ex:points-as-filters}%
 Verify that the points of a locale~$X$ are in canonical one-to-one correspondence
 with the completely prime filters of~$\O(X)$.
 \end{exercise}
@@ -945,15 +952,15 @@ called \emph{sections of~$F$ over~$U$} and the maps~$(\cdot)|^U_V$
 are called \emph{restriction maps}. Elements of~$F(\top)$ are called
 \emph{global sections}.
 
-When first learning about presheaves, one can get boggled down[XXX:wording] by the vast
+When first learning about presheaves, one may be intimidated by the vast
 amount of data encoded in a single presheaf (one set for each open). The
 situation should be compared to the perhaps more familiar Kripke models for a first-order language~$L$. The
 preorder~$W$ of nodes of such a model is like the frame of opens of a locale, and the
 family~$(M_w)_{w \in W}$ of~$L$-structures, one for each node, is like a
 presheaf. In fact, the notion of a locale can be generalized to that of a
 \emph{site} so that both locales and Kripke frames induce sites and that
-presheaves on sites can be defined; however, this shall not be pursued here.
-[XXX: reference]
+presheaves on sites can be defined; however, this shall not be pursued here,
+a textbook reference is Ref.~\refcite{moerdijk-maclane:sheaves-logic}.
 
 The prototypical example of a presheaf (and also a sheaf) is the presheaf~$\C$ of
 continuous real-valued functions on a topological space~$X$. For this presheaf, the
@@ -961,6 +968,11 @@ set~$\C(U)$ is the set of continuous real-valued maps~$U \to \RR$, and the
 maps~$(\cdot)|^U_V$ are given by actual restriction of functions to smaller
 domains, that is by
 \[ \C(U) \longrightarrow \C(V),\ s \longmapsto s|_V. \]
+
+Any set~$M$ gives rise to a presheaf~$\underline{M}^\mathrm{pre}$, by
+setting~$\underline{M}^\mathrm{pre}(U) = M$ for every open~$U$ and employing
+the identity map as restriction maps. In this way, the universe of sets embeds
+into the universe of presheaves.
 
 \begin{definition}
 \begin{enumerate}
@@ -982,6 +994,24 @@ usually not a sheaf. For instance, on~$X = \RR$, the two constant functions~$f
 the intersection of their domains (which is empty), but there is no constant
 function~$h : (-1,0) \cup (0,1) \to \RR$ which restricts to~$f$ on~$(-1,0)$ and
 to~$g$ on~$(0,1)$.
+
+There is a general construction called \emph{sheafification} which turns
+presheaves into sheaves. Applied to~$\C_\text{c}$, this process yields the
+sheaf of \emph{locally} constant real-valued functions. Similarly, the
+sheafification of the presheaf of bounded functions is the sheaf of locally
+bounded functions, and similarly for other properties of functions.
+
+The presheaf~$\underline{M}^\mathrm{pre}$ associated to a set~$M$ is almost
+never a presheaf. Its sheafification~$\underline{M}$ is the \emph{constant sheaf associated
+to~$M$}\label{page:constant-sheaf}. On an open~$U$, its sections are the locale
+morphisms~$U \to M$, where~$M$ is regarded as the induced locale associated to
+the discrete topological space~$M$ and~$U$ is regarded as a sublocale of~$X$.
+By the constant sheaf construction, the universe of sets maps to the universe
+of sheaves on~$X$. We will not require much more details on this construction.
+
+\begin{definition}A \emph{subsheaf} of a sheaf~$F$ on a locale~$X$ is a
+sheaf~$F'$ with~$F'(U) \subseteq F(U)$ for all opens~$U$ and the inherited
+restriction maps.\end{definition}
 
 \begin{definition}A \emph{morphism of presheaves}~$\eta : F \to G$ on a
 locale~$X$ is a family~$(\eta_U)_{U \in \O(X)}$ of maps~$\eta_U : F(U) \to
@@ -1124,7 +1154,7 @@ regarded as a model of the theory of objects.\end{example}
 \begin{example}\label{ex:sets-as-sheaf-models}
 Any set-based model of a geometric theory~$\TT$ gives rise to a
 sheaf model over the one-point locale, by employing the constant sheaf
-construction of XXX. Hence sheaf models are strictly more general than
+construction reviewed on page~\ref{page:constant-sheaf}. Hence sheaf models are strictly more general than
 set-based models.
 \end{example}
 
@@ -1159,13 +1189,13 @@ theory~$\TT$ is the sheaf model on~$L(\TT)$ given by~$U_\varphi \defeq
 [\varphi]$ for all nullary relation symbols~$\varphi$.\end{definition}
 
 Under the view of models as locale morphisms, the generic model~$U_\TT$
-corresponds to the identity morphism~$L(\TT) \to \L(\TT)$. If a~$\TT$-model~$M$ on
+corresponds to the identity morphism~$L(\TT) \to L(\TT)$. If a~$\TT$-model~$M$ on
 a locale~$X$ is given by a locale morphism~$f : X \to L(\TT)$, we also say
 that~``$M$ arises from~$U_\TT$ by pullback along~$f$''.
 
 For instance, there is the \emph{generic Dedekind cut}, the generic model of
 the theory~$\TT$ of Dedekind cuts on the classifying locale of~$\TT$, the
-localic real line. By Example~\ref{ex:sets-as-sheaves}, any specific Dedekind
+localic real line. By Example~\ref{ex:sets-as-sheaf-models}, any specific Dedekind
 real~$x$ (that is, any point~$x$ of~$L(\TT)$) gives rise to a model of~$\TT$ on
 the one-point locale~$\pt$, corresponding to the locale morphism~$x : \pt \to
 L(\TT)$.
@@ -1174,7 +1204,7 @@ The story of generic models is at the same time tautologous and deep, and these
 short paragraphs do not do justice to this intriguing aspect of the interplay
 between topology (in the form of locales) and logic (in the form of
 propositional geometric theories). We strongly
-recommend the accessible account by Steve Vickers~\ref{XXX} for a fuller
+recommend the accessible account by Steve Vickers~\ref{vickers:continuity} for a fuller
 picture.
 
 \begin{remark}The traditional way of constructing a map of topological spaces~$f : Y \to
@@ -1213,13 +1243,14 @@ Extend the theory of Dedekind cuts in such a way that its models are those
 Dedekind reals which are elements of~$[0,1]$.
 \end{exercise}
 
-\begin{exercise}{More on exotic locales}
+\begin{exercise}{More on exotic locales}%
+\label{ex:exotic-locales}%
 \begin{enumerate}
 \item Define the locale of injections~$\RR \hookrightarrow \NN$.
 \item Define the locale of partial surjections~$\NN \twoheadrightarrow \NN^\NN$.
 
 {\scriptsize\emph{Note.} In Russian constructivism, as for instance reigning in
-the ef{}fective topos~\cite{XXX}, the Baire space~$\NN^\NN$ is subcountable.
+the ef{}fective topos~\cite{hyland:effective-topos,phoa:effective,bauer:c2c}, the Baire space~$\NN^\NN$ is subcountable.
 However, in this setting any function~$\NN \to \NN$ is computable.
 The universe of sheaves over this locale was the first example of a setting in
 which the Baire space is subcountable and still any external number-theoretic
@@ -1231,7 +1262,7 @@ Lebesgue measure less than~$\frac{1}{2}$''.
 {\scriptsize\emph{Note.} In the universe of sheaves over this locale, the set
 of unit interval Dedekind real numbers fails to be (Heine--Borel) compact and
 the localic real line fails to be
-spatial~\cite[Example~D4.7.13]{johnstohne:elephant}.\par}
+spatial~\cite[Example~D4.7.13]{johnstone:elephant}.\par}
 \item An open~$U$ of a locale~$X$ is \emph{complemented} iff there is an
 open~$V$ such that~$U \vee V = \top$ and~$U \wedge V = \bot$. A locale is
 \emph{zero-dimensional} iff any open is a join of complemented opens. Assuming
@@ -1245,7 +1276,7 @@ Let~$\TT$ be a propositional geometric theory. Verify that the points
 of~$L(\TT)$ are in canonical bijection with the set-based models of~$\TT$.
 \end{exercise}
 
-\begin{exercise}{Products of locales}\label{ex:products-of-locales}%
+\begin{exercise}{Product of locales}\label{ex:products-of-locales}%
 Let~$X$ and~$X'$ be locales, classifying some propositional geometric
 theory~$\TT$ respectively~$\TT'$. Let~$\TT + \TT'$ be the combined theory
 (whose set of sorts is the disjoint union of the sets of sorts of~$\TT$
@@ -1253,13 +1284,14 @@ and~$\TT'$, and so on). Show that~$L(\TT + \TT')$ is the product of~$X$
 and~$X'$ in the category of locales.
 \end{exercise}
 
-\begin{exercise}{Coproducts of locales, revisited}%
+\begin{exercise}{Coproduct of locales, revisited}%
 Let~$X$ and~$X'$ be locales, classifying some propositional geometric
 theory~$\TT$ respectively~$\TT'$. Find a theory in terms of~$\TT$
 and~$\TT'$ which is classified by~$X \amalg X'$.
 \end{exercise}
 
 \begin{exercise}{Spatiality of the localic reals}%
+\label{ex:spatiality-reals}%
 \newcommand{\fa}{\ensuremath{(\!\cdot}}%
 \newcommand{\fb}{\ensuremath{\cdot\!)}}%
 Let~$\RR$ be the localic real line, defined as the classifying locale of the
@@ -1283,6 +1315,8 @@ existence of a Lebesgue number.
 \item Under the same assumption as in part~(e), show that the localic real line
 is spatial.
 \end{enumerate}
+{\scriptsize\emph{Note.} Exercise~\ref{ex:exotic-locales} lists settings in
+which the assumption in part~(e) is not satisfied.\par}
 \end{exercise}
 
 \begin{exercise}{The localic Galois group of a field extension}%
@@ -1311,6 +1345,7 @@ homeomorphic to the topological Galois group of~$L|k$.
 \end{exercise}
 
 \begin{exercise}{Coherent locales and coherent theories}%
+\label{ex:coherent}%
 An open~$U$ of a locale is \emph{compact} iff, whenever~$U
 \preceq \bigvee_{i \in I} V_i$, there is a (Kuratowski-)finite subset~$I'
 \subseteq I$ such that~$U \preceq \bigvee_{i \in I'} V_i$. A locale is
@@ -1354,6 +1389,17 @@ coherent.
 fact, even coherent \emph{toposes}) are spatial. Show that Deligne's
 completeness theorem implies that propositional coherent theories
 without any set-based models are inconsistent.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}{Subsheaves of the terminal sheaf}%
+\label{ex:subsheaves-1}%
+Let~$X$ be a locale.
+\begin{enumerate}
+\item Show that any subsheaf~$F \subseteq 1$ of the terminal sheaf on~$X$ gives rise
+to an open of~$X$ by gluing all its sections.
+\item Show that the construction of part~(a) yields a canonical bijection of
+the subsheaves of~$1$ and the opens of~$X$.
 \end{enumerate}
 \end{exercise}
 
@@ -1409,8 +1455,10 @@ example of a function~$f : \CC \to \CC$ such that it is not the case that
 {\scriptsize\emph{Note.} The sheaf~$F$ can be obtained by constructing, in the
 universe of sheaves on~$\CC$, the set of pairs of Dedekind reals. Hence the
 example demonstrates that the usual formulation of the fundamental theorem of
-algebra does not admit a constructive proof. However, there are replacements
-available~\cite{XXX}.\par}
+algebra does not admit a constructive proof. (However, there are replacements
+available~\cite{richman:fta}, and the fundamental theorem does apply to the
+Cauchy complex numbers~\cite{ruitenburg:roots} and under weak choice
+principles~\cite{bridges-richman-schuster:wcc}).\par}
 \end{exercise}
 
 
@@ -1445,7 +1493,7 @@ Zorn's lemma fabricates a minimal one.\footnote{Standard textbooks prove the sta
 ring has a prime ideal'' by using Zorn's lemma, which
 in the presence of the law of excluded middle is equivalent to the full axiom
 of choice; however, the statement is actually equivalent to the weaker Boolean
-Prime Ideal Theorem [XXX: reference].
+Prime Ideal Theorem~\cite{scott:bpit,banaschewski-harting:lattice-aspects}.
 
 The combined statement ``any ring has a minimal prime ideal'' is equivalent to
 the full axiom of choice. This observation might be folklore; we learned the
@@ -1474,7 +1522,7 @@ displayed example should admit an explicit calculational proof, presenting a
 concrete method for transforming the given conditional equations expressing
 injectivity into the equation~$1 = 0$ without any appeals to the transfinite.
 
-The completeness theorem for coherent logic~[XXX: reference (Elephant)] even
+The completeness theorem for coherent logic~\cite[Corollary~D1.5.10]{johnstone:elephant} even
 gives an a priori reason why (for a given matrix size) a finitary proof has to
 exist. However, since the proof of the completeness theorem itself uses~\BPIT
 (and indeed is equivalent to it), it does not give any indication how such a
@@ -1482,7 +1530,7 @@ proof could be found. (Still, beautiful constructive proofs are known and
 presented, for instance, in a celebrated short note by Richman on nontrivial
 uses of trivial rings~\cite{richman:trivial-rings} and in the recent textbook by
 Lombardi and Quitté on constructive commutative
-algebra~\cite{lombardi-quitte:constructive-commutative-algebra}.)
+algebra~\cite{lombardi-quitte:constructive-algebra}.)
 
 The key issue with the usual reduction techniques in commutative algebra is
 their dependence on \emph{ideal objects} such as prime or maximal ideals. In
@@ -1698,10 +1746,12 @@ but fail in other ways:
 \item The stalks~$A_\mmm$ at maximal ideals: These are not fields.
 \item The stalks~$A_\ppp$ at minimal prime ideals: These are fields, but a ring
 element~$x \in A$ which is zero in all these stalks~$A_\ppp$ is not necessarily
-zero in~$A$. Also, an~$A$-module~$M$ which is finitely generated and whose
-stalks~$M_\ppp$ at minimal prime ideals are free is ``free on a dense open'',
-but this is false without the finiteness hypothesis. The analogous statement
-for~$M^\sim$ and~$A^\sim$ holds in full generality (XXX reviewed below).
+zero in~$A$. Also, properties of the stalks tend to only spread to
+dense opens of the spectrum, if they do so at all, while properties of~$A^\sim$
+are in close connection with properties of~$A$. For instance, that all
+stalks~$M_\ppp$ of an~$A$-module~$M$ at minimal (or, for that matter, all) prime ideals are finitely
+generated does not imply that~$M$ is finitely generated, while finite
+generation of~$M^\sim$ does imply finite generation of~$M$.
 \item The quotients~$A/\mmm$: These are fields, but an element~$x \in A$ which is
 zero in all these quotients~$A/\mmm$ is not necessarily zero in~$A$, and
 passing to~$A/\mmm$ is not exact (does not preserve injectivity of linear
@@ -1745,6 +1795,50 @@ contradiction to the assumption~$\neg\neg(x-y=0)$.\end{proof}
 
 \paragraph{The Noetherian property.}
 XXX not shared by stalks; ``true constructivists would be offended''
+
+Noetherian conditions are notoriously tricky in constructive mathematics; XXX
+There are several proposals for constructively sensible definition of
+Noetherian rings in the literature on constructive algebra, each with unique
+advantages and
+disadvantages~\cite{richman:noetherian,mines-richman-ruitenburg:constructive-algebra,perdry:noetherian,perdry:lazy,perdry-schuster:noetherian,tennenbaum:hilbert}.
+Insightful comments on why this is so can be found in the introduction and more
+specifically on page~27 of the textbook by Henri Lombardi and Claude
+Quitté~\cite{lombardi-quitte:constructive-algebra}.
+
+A ring is \emph{anonymously Noetherian} if and only if any of its ideals is
+\notnot finitely generated.
+
+%\begin{ex}There is an intuitionistic proof that the ring~$\ZZ$ is anonymously
+%Noetherian: Let~$\aaa \subseteq \ZZ$ be any ideal. Under the assumption that
+%either there exists a nonzero element in~$\aaa$ or not, the ideal~$\aaa$ is
+%\notnot finitely generated, even \notnot principal: For in the first case, a
+%minimal element~$d$ of~$\aaa \cap \NN^+$ (which \notnot exists) witnesses~$\aaa
+%= (d)$. In the second case the ideal~$\aaa$ is the zero ideal. Since the
+%assumption is \notnot satisfied, the ideal~$\aaa$ is \notnot \notnot finitely
+%generated, so \notnot finitely generated. (We remark on this proof scheme on
+%page~\pageref{proof-scheme-boxed-statements}.) \end{ex}
+%
+%It appears that this Noetherian condition has not been studied in the
+%literature on constructive algebra. Indeed, from the philosophical and the
+%computational point of view on constructive mathematics, the notion of an anonymously
+%Noetherian ring is not very useful: From an intuitionistic proof that a given
+%ideal is finitely generated one can mechanically extract explicit generators,
+%thereby satisfying computational or philosophical demands (``the generators are
+%really there''). In contrast, an intuitionistic proof that a given ideal is
+%\notnot finitely generated doesn't contain computational content in general.
+%
+%Along the same lines, one could dismiss the fact (proved below) that Hilbert's
+%basis theorem, stating that~$A[X]$ is Noetherian if~$A$ is, holds for the
+%notion of anonymously Noetherian rings. In fact, one could feel mocked by this
+%version of Hilbert's basis theorem: It promises that any ideal of~$A[X]$
+%``has'' finitely many generators in some Platonic sense (without providing any
+%clue on how one might go on to find the generators -- they remain \emph{anonymous}), provided
+%that any ideal of~$A$ ``has'' finitely many generators in the same
+%sense.\footnote{We borrowed the term ``anonymous'' from type theory, where it
+%is used with a similar meaning (see for
+%instance~\cite{kraus-escardo-coquand-altenkirch:anonymous}). However, there is
+%a subtle difference: Unique and anonymous-in-the-sense-of-type-theory existence
+%implies existence, but \notnot existence does not.}
 
 \begin{proposition}The sheaf of rings~$A^\sim$ is anonymously
 Noetherian.\end{proposition}
@@ -1814,10 +1908,9 @@ particularly perspicious account in the general setting of partial Horn
 theories is due to Erik Palmgren and Steve Vickers~\cite{palmgren-vickers:partial-horn}.
 
 However, this procedure cannot be carried out for any pair of theories. For
-instance, there are no \emph{free fields}. The free field on a set~$X$ would be
-a field~$K$ together with a map~$X \to K$ such that any map~$X \to L$ factors
-over the given map~$X \to K$ by a unique field homomorphism~$K \to L$.
-% XXX Exercise: prove this!
+instance, there are no \emph{free fields}. The free field on a set~$M$ would be
+a field~$K$ together with a map~$M \to K$ such that any map~$M \to L$ into a field~$L$ factors
+over the given map~$M \to K$ by a unique field homomorphism~$K \to L$.
 
 For instance, in the case~$X = \{ t \}$, the field~$\QQ(t)$ of rational
 functions comes close, but fails because there are no field homomorphisms~$\QQ(t)
@@ -2058,8 +2151,9 @@ form~``$f^n = u_1 g_{i_1} + \cdots + u_m g_{i_m}$'' can be regarded as an
 
 \begin{remark}An immediate corollary of Theorem~\ref{thm:workhorse} is
 that~$\Spec(A)$ is compact. However, the stronger result that~$\Spec(A)$ is
-even a \emph{coherent locale} can also be deduced from a general theorem (XXX: ref to
-exercise) since the theory of prime filters is a coherent theory.\end{remark}
+even a \emph{coherent locale} can also be deduced from a general theorem
+since the theory of prime filters is a coherent theory
+(Exercise~\ref{ex:coherent}).\end{remark}
 
 \begin{remark}\label{rem:consistency}
 A further corollary of Theorem~\ref{thm:workhorse} is that the theory of prime
@@ -2117,7 +2211,8 @@ Proposition~\ref{prop:identification}, we can unwind the definitions to recast
 the sheaf semantics in entirely explicit algebraic terms, with no locales or
 sheaves in sight. Notwithstanding the impredicative nature of locale theory,
 the resulting formulation will even make sense in a metatheories without a
-powerset operation such as~\textsc{czf} or arithmetic universes~\cite{XXX}. In
+powerset operation such as~\textsc{czf}~\cite{crosilla:predicativity,aczel-rathjen:cst} or arithmetic
+universes~\cite{maietti:au,vickers:sketches}. In
 fact, it is now a purely syntactic translation procedure which can be carried
 out within~\textsc{pra}.
 
@@ -2134,7 +2229,7 @@ structure of an~$A^\sim$-module,
 
 \begin{corollary}\label{cor:algebraic-reformulation}
 Let~$A$ be a ring. Let~$\varphi$ be a formula over~$f \in A$.
-Then~$[D(f)] \models \varphi$ in the sense of Definition~XXX if and only
+Then~$[D(f)] \models \varphi$ in the sense of Table~\ref{table:sheaf-semantics} if and only
 if~$f \models \varphi$ in the sense of Table~\ref{table:algebraic-kripke-joyal}.
 \end{corollary}
 
@@ -2364,6 +2459,19 @@ XXX can be unwound, see ...; give pointers to existing proofs
 
 \subsection{Exercises}
 
+\begin{exercise}{Free fields}
+\begin{enumerate}
+\item A \emph{free field} over a set~$M$ would be
+a field~$K$ together with a map~$M \to K$ such that any map~$M \to L$ into a
+field~$L$ factors
+over the given map~$M \to K$ by a unique field homomorphism~$K \to L$. Prove
+that free fields exist for no set~$M$.
+\item Let~$k$ be a field. Devise a hypothetical notion of
+\emph{free~$k$-fields} (where a~$k$-field is a field together with a
+homomorphism from~$k$) and show that there are no free~$k$-fields.
+\end{enumerate}
+\end{exercise}
+
 \begin{exercise}{Nontriviality of~$A^\sim$}%
 Let~$A$ be a ring. In Proposition~\ref{prop:immediate-consequences}, we gave an
 abstract proof that~$A^\sim$ is local and hence nontrivial in the sense that~$1
@@ -2478,9 +2586,10 @@ result of part~(b) to~$A^\sim$.
 \end{enumerate}
 \end{exercise}
 
-\end{document}
+\bibliographystyle{ws-rv-van}
+\bibliography{generalized-spaces}
 
-XXX cite https://apcz.umk.pl/czasopisma/index.php/LLP/article/viewFile/LLP.2013.009/732
+\end{document}
 
 XXX Cite http://www.mat.uc.pt/~picado/covariant/contents.pdf
 http://www.mat.uc.pt/~picado/publicat/Chapter2.pdf

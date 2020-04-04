@@ -68,8 +68,10 @@
 \newcommand{\LRS}{\mathrm{LRS}}
 \newcommand{\Hom}{\mathrm{Hom}}
 \newcommand{\Spec}{\mathrm{Spec}}
+\newcommand{\Max}{\mathrm{Max}}
 \newcommand{\Gal}{\mathrm{Gal}}
 \newcommand{\Rad}{\mathrm{Rad}}
+\newcommand{\Idl}{\mathrm{Idl}}
 \newcommand{\lra}{\longrightarrow}
 \newcommand{\RelSpec}{\operatorname{Spec}}
 \renewcommand{\_}{\mathpunct{.}}
@@ -112,7 +114,8 @@ XXX
 
 \section{Locales}
 
-% XXX \cite{belanger-marquis:pointless} and Johnstone, vickers:locales-toposes
+% XXX \cite{belanger-marquis:pointless} and Johnstone, vickers:locales-toposes,
+% picado-pultr:frames-and-locales
 
 The notion of \emph{space} is fundamental to large parts of mathematics. This notion
 exists in various flavors, ranging from the basic cartesian spaces~$\RR^n$ to
@@ -124,6 +127,10 @@ building blocks}: Cartesian, metric, topological and diffeological spaces are,
 first and foremost, sets of points. Their spatial structure -- a metric, a
 topology or a diffeology -- is additional data to the underlying set:
 
+% NOTE TO EDITORS AND LAYOUTERS: It is on purpose that these two definitions
+% are not set using the usual theorem environment. This is because we are only
+% citing these definitions in order to reflect on them. We are not actually
+% introducing these two notions here for further use.
 \begin{quote}
 \textbf{Definition.} A \emph{metric space} consists of a set~$X$ of points
 together with a metric~$d : X \times X \to \RR_{\geq 0}$ satisfying the metric
@@ -263,7 +270,7 @@ with several examples of nontrivial locales without any points. Constructive
 mathematics gives a further, orthogonal motivation to study locales: There are
 situations in which the relevant spaces do have enough points, but only if one
 subscribes to the axiom of choice or similar non-constructive principles. In
-these situations, the pointfree approach allowed by locales help to give
+these situations, the pointfree approach allowed by locales helps to give
 constructive versions of classical results. We will further discuss this theme
 in Section~\ref{sect:presenting-frames}.
 
@@ -273,7 +280,7 @@ XXX ideal objects
 as a topological space, can fail to be be compact in constructive
 mathematics. For instance, it fails in the Russian school because the Kleene
 tree provides a computable open covering of~$[0,1]$ with no computable finite
-subcovering (a self-contained exposition of this phenomenon is
+subcovering (a self-contained exposition of this phenomenon is contained in
 Ref.~\refcite{bauer:kleene-tree}).
 
 In contrast, the localic version of the unit interval is always compact. The
@@ -317,6 +324,7 @@ fundamental theorem as a corollary of the localic version; the required
 non-constructive principles for this step are neatly packaged up in the study
 of the relation of the localic Galois group with the topological one.
 
+
 \begin{remark}Incidentally, the fundamental theorem of Galois theory also
 showcases a related general phenomenon, namely that classical mathematics
 allows to push back topological concerns for a bit longer,
@@ -341,7 +349,21 @@ intermediate extension can be turned into a topological
 counterexample~\cite[page~65]{wraith:localic-groups}.}
 \end{remark}
 
-\paragraph{Gelfand duality} XXX
+\paragraph{Gelfand duality.} The celebrated Gelfand correspondence states that
+the mapping
+\[ X \longmapsto \Hom(X, \CC) = \{ f : X \to \CC \,|\, \text{$f$ is continuous} \} \]
+defines a contravariant equivalence between compact Hausdorff spaces and
+commutative unital~$C^\star$-algebras. In the other direction,
+a~$C^\star$-algebra~$A$ is mapped to its \emph{maximal spectrum}~$\Max(A)$, the
+topological space of multiplicative linear functionals~$A \to \CC$.
+
+Some parts of the proof require the axiom of choice, (only) for fabricating
+appropriate elements of the maximal spectrum. But as with the fundamental
+theorem of infinite Galois theory, the Gelfand correspondence has a
+constructive core, and a pointfree reformulation unearths this constructive
+content: There is a contravariant equivalence between compact completely
+regular locales and commutative unital~$C^\star$-algebras.
+% XXX Barr
 
 
 \subsection{The basics of the theory of locales}
@@ -350,9 +372,9 @@ The starting point of the theory of locales is the following
 observation. The set~$\O(X)$ of open subsets of a topological
 space~$X$ forms a partially ordered set which has
 \[ \begin{array}{@{}ccc@{}}
-\text{arbitrary joins}
-&\text{and}&
-\text{finite meets}, \\
+\text{arbitrary joins (suprema)}
+&\quad\text{and}\quad&
+\text{finite meets (infima)}, \\
 \bigvee && \wedge
 \end{array} \]
 and finite meets distribute over arbitrary joins:
@@ -396,7 +418,11 @@ is~$\top = \{\star\}$, and potentially not all elements of~$\Omega$ are equal
 to one of these two.
 \item The locale of surjections~$\NN \twoheadrightarrow \RR$ and the localic
 version of the reals of Section~\ref{sect:examples-no-points} are best
-constructed as \emph{classifying locales}, a notion to be introduced below.
+constructed as \emph{classifying locales}, a notion to be introduced in
+Section~\ref{sect:presenting-frames}.
+\item The radical ideals of any ring~$A$ form a frame and hence give rise to a
+locale. We will identify this locale in Theorem~\ref{thm:workhorse} to be the
+\emph{spectrum} of~$A$ as studied in algebraic geometry.
 \end{enumerate}
 
 Several notions in topology only refer to open sets and not to points. Such
@@ -440,19 +466,26 @@ of surjections~$\NN \twoheadrightarrow \RR$ is a striking example of a locale wh
 spatial. The localic real line is spatial in classical mathematics and can
 fail to be spatial in constructive mathematics (Exercise~\ref{ex:spatiality-reals}).
 
-\begin{remark}The set of points of a locale~$X$ can be made into a topological space, giving
+\begin{remark}\label{rem:definition-sober}
+The set of points of a locale~$X$ can be made into a topological space, giving
 rise to a functor~$\Pt : \Loc \to \Top$. This functor is right adjoint
 to the functor~$L : \Top \to \Loc$. A locale~$X$ is spatial iff the canonical
 morphism~$L(\Pt(X)) \to X$ is an isomorphism, and a topological space~$Y$
 is \emph{sober} iff the canonical morphism~$Y \to \Pt(L(Y))$ is a
 homeomorphism. The space~$\Pt(L(Y))$ is the \emph{sobrification} of~$Y$; for
 instance, the sobrification of any inhabited indiscrete space is the one-point
-space.\end{remark}
+space.
+
+The adjunction~$L \dashv \Pt$ restricts to an equivalence between sober
+topological spaces and spatial locales. Assuming the law of excluded middle,
+both Hausdorff spaces and the schemes from algebraic geometry are sober
+(Exercise~\ref{ex:hausdorff-sober}), hence the spaces of a wide
+range of the mathematical landscape can be studied as locales.\end{remark}
 
 \begin{remark}\label{rem:sober-embed}
 Since continuous maps between spaces induce locale morphisms, we
 have a canonical map~$\Hom_\Top(Y,Y') \to \Hom_\Loc(L(Y),L(Y'))$. If~$Y'$ is
-sober, then this map is a bijection. In particular, the set-theoretic points
+sober, then this map is a bijection. In particular, in this case the set-theoretic points
 of~$Y'$ and the locale-theoretic points of~$L(Y')$ are in canonical
 one-to-one correspondence.
 \end{remark}
@@ -469,11 +502,58 @@ Devise a canonical topology on the set of points of a locale.
 Verify the statements in Remark~\ref{rem:sober-embed}.
 \end{exercise}
 
+\begin{exercise}{Hausdorff spaces are sober}%
+\label{ex:hausdorff-sober}%
+A \emph{meet-irreducible open subset} of a topological space~$Y$ is an
+open subset~$W \subseteq Y$ such that~$(U \cap V \subseteq W) \Rightarrow (U
+\subseteq W) \vee (V \subseteq W)$ for all open subsets~$U,V \subseteq Y$ and
+such that~$Y \not\subseteq W$.
+\begin{enumerate}
+\item Assuming the law of excluded middle, show that the completely prime
+filters of a topological space are in canonical one-to-one correspondence with
+the meet-irreducible open subsets.
+
+{\scriptsize\emph{Hint.} Given a completely prime filter~$\fff \subseteq
+\O(Y)$, the set~$\bigcup\{ U \in \O(Y) \,|\, U \not\in \fff \}$ is a
+meet-irreducible open subset.\par}
+\item Assuming the law of excluded middle, show that a topological space is
+sober in the sense of Remark~\ref{rem:definition-sober} if and only if for
+every meet-irreducible open subset~$W$ there is a unique point~$y \in Y$ such
+that~$W = Y \setminus \overline{\{y\}}$.
+(This is a classical definition of sobriety.)
+
+\item Assuming the law of excluded middle, show that Hausdorff topological
+spaces validate the condition stated in part~(b) and hence are sober.
+\end{enumerate}
+\end{exercise}
+
 \begin{exercise}{Isomorphisms of frames}%
 Show that a frame homomorphism~$\alpha : A \to A'$ is an isomorphism (that is,
 admits an inverse frame homomorphism) if and only if~$\alpha$ is surjective and
 reflects the ordering (that is,~$\alpha(U) \preceq \alpha(V) \Rightarrow U
 \preceq V$).
+\end{exercise}
+
+\begin{exercise}{On the covariant approach}%
+Let~$A$ be a frame.
+\begin{enumerate}
+\item Show that~$A$ contains arbitrary (set-indexed) meets (though they are not
+required to be preserved by frame homomorphisms), by the impredicative
+construction
+\[ \bigwedge_{i \in I} U_i = \bigvee\{ \text{$V \preceq U_i$ for all~$i \in I$}
+\}. \]
+\item What are the arbitrary meets in the frame of open subsets of a
+topological space?
+\item Show that for any frame homomorphism~$\alpha : A \to A'$ there exists a
+monotone map~$\beta : A' \to A$ such that~\emph{$\beta$ is right adjoint
+to~$\alpha$}, that is such that
+\[ \alpha(U) \preceq V \quad\text{iff}\quad U \preceq \beta(V) \]
+for all~$U \in A$ and~$V \in A'$.
+\end{enumerate}
+{\scriptsize\emph{Note.} Based on the observation in part~(c), a
+\emph{covariant approach} to locales can be developed, in which locale maps~$X
+\to X'$ are defined to be certain kinds of maps~$\O(X) \to
+\O(X')$~\cite{picado-pultr:covariant}.\par}
 \end{exercise}
 
 \begin{exercise}{Points as complete prime filters}%
@@ -496,6 +576,28 @@ frame homomorphism is injective.)
 \end{enumerate}
 \end{exercise}
 
+\begin{exercise}{The frame of radical ideals}%
+\label{ex:frame-of-radical-ideals}%
+Let~$A$ be a ring. We order the set~$\Idl(A)$ of ideals of~$A$ by inclusion.
+(See Section~\ref{sect:algebraic-preliminaries} for some algebraic
+preliminaries.)
+\begin{enumerate}
+\item Verify that~$\Idl(A)$ has arbitrary meets and joins, given by
+intersection and sum of ideals, but that it is in general not a frame.
+
+{\scriptsize\emph{Hint.} The distributive law fails in the polynomial ring~$\QQ[X,Y]$.\par}
+\item Show that the sub-poset~$\Rad(A)$ of radical ideals is a frame, with
+the same finite meets but with joins given by the radical of the join computed
+in~$\Idl(A)$.
+\item\label{item:join-top} Let~$\varphi$ be a truth value. Let~$\{\top\,|\,\varphi\}$ be the
+subsingleton subset of~$\Rad(A)$ which contains the top element~$\sqrt{(1)}$
+iff~$\varphi$. Verify that
+\[ \bigvee\{\top\,|\,\varphi\} = \{ f \in A \,|\, \text{$f$ is nilpotent
+or~$\varphi$} \} \]
+in~$\Rad(A)$.
+\end{enumerate}
+\end{exercise}
+
 \begin{exercise}{Coproducts of locales}%
 \begin{enumerate}
 \item Show that the category of frames has small products.
@@ -503,11 +605,12 @@ frame homomorphism is injective.)
 \item Let~$M$ be a set and endow it with the discrete topology. Show
 that~$L(M)$ is the coproduct~$\coprod_{x \in M} \pt$.
 \end{enumerate}
-The category of locales also has small products;
-Exercise~\ref{ex:products-of-locales} is devoted to this fact.
+{\scriptsize\emph{Note.} The category of locales also has small products;
+Exercise~\ref{ex:products-of-locales} is devoted to this fact.\par}
 \end{exercise}
 
 \begin{exercise}{Local locales}%
+\label{ex:local-locales}%
 A locale~$X$ is \emph{local} iff for any open covering~$\top = \bigvee_i U_i$,
 there is an index~$i$ such that~$\top = U_i$. (For instance, the spectrum of a
 ring~$A$ is local iff~$A$ is local.)
@@ -703,8 +806,8 @@ precisely those axioms which render~$G$ the graph of a surjection~$\NN
 \paragraph{The geometric theory of Dedekind cuts.}\label{par:dedekind-cuts}
 This theory has no sorts; no
 function symbols; nullary relation symbols~$\alpha_x$ and~$\beta_x$ for each
-rational number~$x$ (to be read as~``$x$ is contained in the lower respectively
-the upper cut''); and the following axioms, spelling out that the cut is bounded,
+rational number~$x$ (to be read as~``$x$ is contained in the lower (upper)
+cut''); and the following axioms, spelling out that the cut is bounded,
 rounded, open and located:
 \begin{align*}
   \top &\vdash \textstyle\bigvee_{x \in \QQ} \alpha_x \\
@@ -857,9 +960,9 @@ theory of prime filters of~$A$'' as ``the locale of prime filters of~$A$''.
 \begin{remark}\label{rem:traditional-spaces}
 The traditional way of constructing the real line or the Zariski
 spectrum as a topological space proceeds in three steps: (1) Write down the
-axioms (of Dedekind cuts respectively prime filters). (2) Using the powerset
-axiom and separation, construct the set of Dedekind reals respectively the set
-of prime filters. (3) Devise a useful topology on the resulting set.
+axioms (of Dedekind cuts or of prime filters, respectively). (2) Using the powerset
+axiom and separation, construct the set of Dedekind reals or the set
+of prime filters, respectively. (3) Devise a useful topology on the resulting set.
 
 Locales provide us with a more economic and also more conceptual way of
 arriving at these topological spaces: They can be obtained as the topological
@@ -1022,8 +1125,17 @@ morphism of the underlying presheaves.
 
 
 \subsection{Sheaf semantics}
+\label{sect:sheaf-semantics}
 
 % XXX Introduction...
+
+% XXX A sheaf may well be nontrivial even though it does not have any global
+% sections. This is for instance the case for the subsheaf of the sheaf of continuous
+% complex-valued functions on~$\CC$, given by~$U \mapsto \{ f : U \to \CC \,|\,
+% \text{$f$ is continuous and~$f(z)^2 = z$ for all~$z \in U$} \}$. This sheaf
+% has lots of local sections (local square root maps), but no global one.
+% This phenomenon is related to the failure of (a simple version of) the
+% fundamental theorem of algebra (Exercise~\ref{ex:fta}).
 
 Let~$X$ be a locale. A \emph{formula over an open~$U \in \O(X)$} is a
 first-order formula (made up using~${=}\ {\top}\ {\wedge}\ {\bot}\ {\vee}\
@@ -1204,7 +1316,7 @@ The story of generic models is at the same time tautologous and deep, and these
 short paragraphs do not do justice to this intriguing aspect of the interplay
 between topology (in the form of locales) and logic (in the form of
 propositional geometric theories). We strongly
-recommend the accessible account by Steve Vickers~\ref{vickers:continuity} for a fuller
+recommend the accessible account by Steve Vickers~\cite{vickers:continuity} for a fuller
 picture.
 
 \begin{remark}The traditional way of constructing a map of topological spaces~$f : Y \to
@@ -1267,7 +1379,7 @@ spatial~\cite[Example~D4.7.13]{johnstone:elephant}.\par}
 open~$V$ such that~$U \vee V = \top$ and~$U \wedge V = \bot$. A locale is
 \emph{zero-dimensional} iff any open is a join of complemented opens. Assuming
 that any two reals are equal or not, show that the locale of surjections~$\NN
-\to \RR$ is zero-dimensional.
+\twoheadrightarrow \RR$ is zero-dimensional.
 \end{enumerate}
 \end{exercise}
 
@@ -1276,17 +1388,17 @@ Let~$\TT$ be a propositional geometric theory. Verify that the points
 of~$L(\TT)$ are in canonical bijection with the set-based models of~$\TT$.
 \end{exercise}
 
-\begin{exercise}{Product of locales}\label{ex:products-of-locales}%
-Let~$X$ and~$X'$ be locales, classifying some propositional geometric
-theory~$\TT$ respectively~$\TT'$. Let~$\TT + \TT'$ be the combined theory
+\begin{exercise}{The product of locales}\label{ex:products-of-locales}%
+Let~$X$ and~$X'$ be locales, classifying propositional geometric
+theories~$\TT$ and~$\TT'$ respectively. Let~$\TT + \TT'$ be the combined theory
 (whose set of sorts is the disjoint union of the sets of sorts of~$\TT$
 and~$\TT'$, and so on). Show that~$L(\TT + \TT')$ is the product of~$X$
 and~$X'$ in the category of locales.
 \end{exercise}
 
-\begin{exercise}{Coproduct of locales, revisited}%
+\begin{exercise}{The coproduct of locales, revisited}%
 Let~$X$ and~$X'$ be locales, classifying some propositional geometric
-theory~$\TT$ respectively~$\TT'$. Find a theory in terms of~$\TT$
+theories~$\TT$ and~$\TT'$ respectively. Find a theory in terms of~$\TT$
 and~$\TT'$ which is classified by~$X \amalg X'$.
 \end{exercise}
 
@@ -1385,9 +1497,9 @@ proves~$\alpha \vdash \bigvee_{i \in I} \beta_i$ then there is a
 \item Show that an arbitrary (set-indexed) product of coherent locales is
 coherent.
 
-\item \emph{Deligne's completeness theorem} states that coherent locales (in
-fact, even coherent \emph{toposes}) are spatial. Show that Deligne's
-completeness theorem implies that propositional coherent theories
+\item \emph{Deligne's completeness theorem} states that coherent locales (and
+even coherent \emph{toposes}) are spatial. Show that Deligne's
+result implies that propositional coherent theories
 without any set-based models are inconsistent.
 \end{enumerate}
 \end{exercise}
@@ -1449,6 +1561,7 @@ $\Sh(\CC) \models \forall f\?\O\_ \forall g\?\O\_ f = g \vee \neg(f = g)$.
 \end{exercise}
 
 \begin{exercise}{On the failure of the fundamental theorem of algebra}%
+\label{ex:fta}%
 Let~$F$ be the sheaf of continuous complex-valued functions on~$\CC$. Give an
 example of a function~$f : \CC \to \CC$ such that it is not the case that
 \[ \Sh(X) \models \exists z\?F\_ z^2 = f. \]
@@ -2091,7 +2204,7 @@ of~$\Spec(A)$. Since this frame is defined as the Lindenbaum algebra of the
 theory of prime filters of~$A$, we need a thorough grasp of the consequences of
 this theory.
 
-Such an understanding is imparted by the following theorem. This theorem is the
+Such an understanding is imparted by the following theorem. It is the
 central workhorse of our approach.
 
 \begin{theorem}\label{thm:workhorse}
@@ -2468,14 +2581,15 @@ over the given map~$M \to K$ by a unique field homomorphism~$K \to L$. Prove
 that free fields exist for no set~$M$.
 \item Let~$k$ be a field. Devise a hypothetical notion of
 \emph{free~$k$-fields} (where a~$k$-field is a field together with a
-homomorphism from~$k$) and show that there are no free~$k$-fields.
+homomorphism from~$k$) and show that the only set~$M$ such that there is a
+free~$k$-field over~$M$ is the empty set.
 \end{enumerate}
 \end{exercise}
 
 \begin{exercise}{Nontriviality of~$A^\sim$}%
 Let~$A$ be a ring. In Proposition~\ref{prop:immediate-consequences}, we gave an
-abstract proof that~$A^\sim$ is local and hence nontrivial in the sense that~$1
-\neq 0$ (even if~$A$ itself happens to be trivial). Give a new proof of this
+abstract proof that~$A^\sim$ is (local and hence) nontrivial in the sense that~$1
+\neq 0$. This proof did not need to assume that~$A$ itself is nontrivial. Give a new proof of this
 fact, by verifying directly~$1 \models \neg(1 =_{A^\sim} 0)$ using the
 semantics given in Table~\ref{table:algebraic-kripke-joyal}.
 \end{exercise}
@@ -2502,6 +2616,7 @@ respect to infinitary intuitionistic logic.
   \bigl((\exists z\?A^\sim\_ fz = 1) \Rightarrow x = 0\bigr) \Longrightarrow \bigvee_{n \in \NN} (f^n x = 0). \]
 \item Deduce that~$A^\sim$ is ``almost a field'' in the sense that any nonunit
 is nilpotent.
+\item Show that~$A$ is reduced iff~$A^\sim$ is.
 \end{enumerate}
 \end{exercise}
 
@@ -2535,6 +2650,15 @@ of Exercise~\ref{ex:global-existence} that~$f \models \exists y\?A^\sim\_ xy
 Let~$A$ be a ring. Verify, without assuming~\BPIT, that~$\Spec(A)$ is
 isomorphic to the one-point locale iff any element of~$A$ is either
 invertible or nilpotent.
+
+{\noindent\scriptsize\emph{Hint.} Use the description of the unique map~$\O(\pt) \to
+\O(\Spec(A)),\,\varphi \mapsto \bigvee\{\top\,|\,\varphi\}$ computed in
+part~(\ref{item:join-top}) of Exercise~\ref{ex:frame-of-radical-ideals}.\par}
+\end{exercise}
+
+\begin{exercise}{Locality of the spectrum}%
+Let~$A$ be a ring. Show that~$\Spec(A)$ is local in the sense of
+Exercise~\ref{ex:local-locales} if and only if~$A$ is local as a ring.
 \end{exercise}
 
 \begin{exercise}{Spatiality of the spectrum}%
@@ -2557,11 +2681,13 @@ holds.
 An \emph{integral domain} is a ring such that~$1 \neq 0$ and such that~$xy = 0$
 implies~$x = 0$ or~$y = 0$. A \emph{valuation domain} is an integral domain
 such that for any two elements, one divides the other. A \emph{Prüfer domain}
-is an integral domain such that any finitely generated ideal is locally a
-principal ideal.
+is an integral domain such that any finitely generated ideal~$\aaa$ is locally a
+principal ideal (in the sense that there exists a partition~$1 = f_1 + \cdots +
+f_n$ such that, for each index~$i$, the ideal~$\aaa[f_i^{-1}]$ is finitely
+generated in~$A[f_i^{-1}]$).
 \begin{enumerate}
-\item Let~$A$ be a ring. Show that, if~$A$ is an integral domain then so
-is~$A^\sim$. Does the converse hold?
+\item Let~$A$ be a ring. Show that~$A^\sim$ is an integral domain if~$A$ is.
+Does the converse hold?
 \item Let~$A$ be a valuation domain. Show that any matrix over~$A$ can be put
 into diagonal form by elementary row and column operations.
 \item Let~$A$ be an integral domain. Show that~$A$ is a Prüfer domain if and
@@ -2593,6 +2719,8 @@ result of part~(b) to~$A^\sim$.
 
 XXX Cite http://www.mat.uc.pt/~picado/covariant/contents.pdf
 http://www.mat.uc.pt/~picado/publicat/Chapter2.pdf
+
+XXX Cite Frames and Locales: Topology Without Points
 
 X \models phi
 

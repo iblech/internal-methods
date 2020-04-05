@@ -14,7 +14,7 @@
 % NOTE TO EDITORS AND LAYOUTERS: This package increases the quality of the
 % typesetting. I personally recommebd using it, but my contribution does not
 % depend on it.
-\usepackage[expansion=true,protrusion=true]{microtype}
+%\usepackage[expansion=true,protrusion=true]{microtype}
 
 \newtheorem{ex}{Exercise}
 \let\Exercisefont\upshape
@@ -813,16 +813,26 @@ geometric theory~$\TT$ consists of
 such that~$M$ validates the axioms of~$\TT$.
 \end{definition}
 
-\paragraph{The geometric theory of rings.} This theory has one sort, $R$; five function symbols:
+We explicitly allow empty carriers, that is we do not demand that the
+sets~$\brak{X}$ are inhabited.
+Examples for geometric theories include the following.
+\begin{enumerate}
+\item \emph{The geometric theory of rings.} This theory has one sort, $R$; five function symbols:
 $0$ and $1$ (nullary), $-$ (unary), $+$ and $\cdot$ (binary); no relation
 symbols; and the usual axioms, such as $\top \vdash_{x:R,y:R} x + y = y + x$.
 
 A set-based model of the theory of rings is an ordinary ring.
 
 In a similar vein, there is the geometric theory of monoids, of groups, and so
-on.
+on. Some of these theories use the infinite disjunctions supported by geometric
+logic: For instance, the theory of fields of positive characteristic or the
+theory of torsion groups have among their axioms
+\[ \top \vdash \bigvee_{n \in \NN_{\geq 1}} (\underbrace{1 + \cdots + 1}_{\text{$n$ summands}} = 0)
+  \qquad
+  \top \seq{g:G} \bigvee_{n \in \NN} (g^n = e). \]
 
-\paragraph{The geometric theory of objects.} This theory has one sort, $X$, and no function
+\item \emph{The geometric theory of objects.}\label{item:theory-of-objects}
+This theory has one sort, $X$, and no function
 symbols, relation symbols or axioms. A set-based model of this theory is just a
 set.
 
@@ -830,7 +840,7 @@ A variant of this theory is the theory of inhabited objects, which has the
 axiom~$\top \vdash \exists x\?X\_ \top$. Its set-based models are precisely the
 inhabited sets.
 
-\paragraph{The geometric theory of surjections~$f : \NN \twoheadrightarrow
+\item \emph{The geometric theory of surjections~$f : \NN \twoheadrightarrow
 \RR$.} This theory has no
 sorts; no function symbols; a nullary relation symbol~$\varphi_{nx}$ for each
 pair~$\langle n,x \rangle \in \NN \times \RR$ (to be read as~``$f$ maps~$n$
@@ -855,7 +865,7 @@ family of truth values, that is a subset~$G$ of~$\NN \times \RR$, satisfying
 precisely those axioms which render~$G$ the graph of a surjection~$\NN
 \twoheadrightarrow \RR$.
 
-\paragraph{The geometric theory of Dedekind cuts.}\label{par:dedekind-cuts}
+\item \emph{The geometric theory of Dedekind cuts.}\label{par:dedekind-cuts}
 This theory has no sorts; no
 function symbols; nullary relation symbols~$\alpha_x$ and~$\beta_x$ for each
 rational number~$x$ (to be read as~``$x$ is contained in the lower (upper)
@@ -876,7 +886,7 @@ A model of this geometric theory consists of two families of truth values, both
 indexed by the rational numbers, hence two subsets~$L,U \subseteq \QQ$, in such
 a way that~$\langle L,U \rangle$ is a Dedekind cut.
 
-\paragraph{The geometric theory of prime ideals of a given ring~$A$.} In classical
+\item \emph{The geometric theory of prime ideals of a given ring~$A$.} In classical
 commutative algebra, the notion of a \emph{prime ideal} of a ring~$A$ is
 fundamental. Corresponding to the definition (recalled in
 Section~\ref{sect:algebraic-preliminaries}), the geometric theory of prime
@@ -905,7 +915,7 @@ axioms:
   D(x) \wedge D(y) &\vdash D(xy) & \text{(for each~$x,y \in A$)}
 \end{align*}
 
-\paragraph{The geometric theory of automorphisms of a field.}\label{par:theory-automorphisms}
+\item \emph{The geometric theory of automorphisms of a field.}\label{par:theory-automorphisms}
 Let~$L|k$ be a field
 extension. The classifying locale of automorphisms~$L \to L$ which fix~$k$ has
 one nullary relation symbol~``$\sigma_{xy}$'' for each pair~$\langle x,y
@@ -924,14 +934,137 @@ one nullary relation symbol~``$\sigma_{xy}$'' for each pair~$\langle x,y
 A model of this theory (can be reorganized to be) an element of the classical
 Galois group of~$L|k$.
 
-\paragraph{The inconsistent geometric theory.} This theory has no sorts,
+\item \emph{The inconsistent geometric theory.} This theory has no sorts,
 function symbols or relations, but the single axiom $\top \vdash \bot$.
 This theory does not admit any set-based models.
 
-\paragraph{The empty geometric theory.} This theory does not have any sorts,
+\item \emph{The empty geometric theory.} This theory does not have any sorts,
 function symbols, relations or axioms. There is exactly one set-based model of
 this theory, the empty structure.
+\end{enumerate}
 
+\paragraph{Extracting constructive content from classical proofs.} Geometric
+logic strikes a fine balance between being sufficiently expressive in order to
+have rich applications, but also sufficiently restrictive so that \emph{Barr's
+theorem} holds. This theorem comes in two versions, both concerned with
+eliminating classical reasoning from proofs of geometric sequents:
+\begin{enumerate}
+\item If infinitary classical logic proves a geometric sequent, then so does
+geometric logic.
+\item If a specific version of extensional type theory with the law of excluded
+middle and the axiom of choice proves a geometric sequent, then so does
+geometric logic.
+\end{enumerate}
+For instance, consider the theory of algebraically closed geometric fields,
+that is the theory of rings extended by the axioms
+\begin{align*}
+  \top &\seq{x:R} (x = 0) \vee (\exists y\?R\_ xy = 1) \\
+  \top &\seq{a_0:R,\ldots,a_{n-1}:R} \exists x\?R\_ x^n + a_{n-1}x^{n-1} +
+  \cdots + a_1x + a_0 = 0.
+\end{align*}
+The \emph{Nullstellensatz} is the statement that for any
+system~$f_1,\ldots,f_n \in K[X_1,\ldots,X_m]$ of polynomials over an
+algebraically closed field~$K$, either the polynomials~$f_i$ have a common zero
+or there are polynomials~$g_i$ such that~$1 = \sum_i f_i g_i$ (such an
+expression is an \emph{algebraic witness} of the nonexistence of a common
+zero).
+
+The Nullstellensatz is a theorem of classical mathematics, employing the
+axiom of choice. Since it can be formulated as a geometric sequent over the
+geometric theory of algebraically closed geometric fields, Barr's theorem
+implies that there is also a constructive proof, in fact even a purely
+geometric proof.
+
+The simpler version of Barr's theorem is constructive, and although we will not
+use it in the remainder of this text, we take the opportunity to give a
+self-contained proof.
+
+However, the more powerful version is not constructive. This puts us in the
+curious situation that we are promised, unconstructively, that there exists
+a constructive proof. The textbook argument~\cite[Theorem~7.57]{johnstone:topos-theory} establishing the more powerful
+version of Barr's theorem requires
+the axiom of choice, but recently Michael Rathjen showed that~\textsc{zf}
+suffices~\cite{rathjen:barr}.
+
+\begin{theorem}Let~$\TT$ be a geometric theory. Let~$\sigma$ be a geometric
+sequent over the signature of~$\TT$. Then the following statements are
+equivalent.
+\begin{enumerate}
+\item There is a~$\TT$-derivation of~$\sigma$ in geometric logic.
+\item There is a~$\TT$-derivation of~$\sigma$ in infinitary intuitionistic logic.
+\item There is a~$\TT$-derivation of~$\sigma$ in infinitary classical logic.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}It is immediate that~(1) implies~(3).
+
+To show that~(3) implies~(2), we combine the double negation translation
+with Friedman's trick. We give a sketch of the main thrust of the argument,
+omitting lengthy verifications. Let~$\sigma \equiv (\alpha \seq{\vec x} \beta)$.
+We introduce the operator~$\nabla$ with~$\nabla\varphi \defeqv
+((\varphi \Rightarrow \beta) \Rightarrow \beta)$, where care has to be taken to
+avoid capturing the variables~$\vec x$. This operator is a \emph{local
+operator} in the sense that for any formula~$\varphi$ in some context~$\vec y$,
+infinitary intuitionistic logic proves the sequents
+\[
+\top \seq{\vec x,\vec y} (\varphi \Rightarrow \nabla\varphi),\
+\top \seq{\vec x,\vec y} (\nabla\nabla\varphi \Rightarrow \nabla\varphi),\
+\top \seq{\vec x,\vec y} (\nabla\varphi \wedge \nabla\psi \Leftrightarrow \nabla(\varphi \wedge \psi)).
+\]
+We then set up the~\emph{$\nabla$-translation}~$\varphi \mapsto \varphi^\nabla$
+for infinitary first-order formulas over the signature of~$\TT$ as described in
+Table~\ref{table:nabla-translation}.
+Again, care has to be taken to ensure that there is no variable collision with the
+variables~$\vec x$. The chosen local operator is special in that
+the~$\nabla$-translation of the law of excluded middle,
+\[ \top \seq{\vec x,\vec y} \nabla(\varphi^\nabla \vee (\varphi^\nabla
+\Rightarrow \nabla\bot)) \]
+is intuitionistically provable. Straightforward inductions on the structure of
+formulas or derivations then establish the following properties.
+\begin{alphlist}
+\item For any infinitary first-order formula~$\varphi$ in some context~$\vec y$,
+infinitary intuitionistic logic proves~$\nabla(\varphi^\nabla) \seq{\vec x,\vec
+y} \varphi^\nabla$.
+\item For any geometric formula~$\varphi$ in some context~$\vec y$, infinitary
+intuitionistic logic proves~$\varphi^\nabla \mathrel{\dashv\vdash\!\!\!_{\vec x,\vec y}} \nabla\varphi$.
+\item For any derivation of a sequent~$\varphi \seq{\vec y} \psi$ in infinitary
+classical logic, there is a derivation of~$\varphi^\nabla \seq{\vec y}
+\psi^\nabla$ in infinitary intuitionistic logic.
+\end{alphlist}
+Combining these ingredients, the given derivation of~$\sigma \equiv (\alpha
+\seq{\vec x} \beta)$ in infinitary classical logic can be transformed to give a derivation of
+\begin{align*}
+  \alpha[\vec x'/\vec x] &\seq{\vec x,\vec x'}
+  \nabla(\alpha[\vec x'/\vec x]) \seq{\vec x,\vec x'}
+  (\alpha[\vec x'/\vec x])^\nabla \\
+  &\seq{\vec x,\vec x'}
+  (\beta[\vec x'/\vec x])^\nabla \seq{\vec x,\vec x'}
+  \nabla(\beta[\vec x'/\vec x]) \mathrel{\dashv\vdash\!\!\!_{\vec x,\vec x'}}
+  ((\beta[\vec x'/\vec x] \Rightarrow \beta) \Rightarrow \beta).
+\end{align*}
+in infinitary intuitionistic logic. Substituting~$\vec x'$ by~$\vec x$, we obtain
+\[ \alpha \seq{\vec x} ((\beta \Rightarrow \beta) \Rightarrow \beta) \seq{\vec
+x} \beta. \]
+
+To verify that~(2) implies~(1), XXX
+\end{proof}
+
+\begin{table}[ht]
+  \tbl{The definition of the~$\nabla$-translation}{\begin{minipage}{\textwidth}\begin{align*}
+    (x = y)^\nabla &\defeqv \nabla(x = y) \\
+    R(y_1,\ldots,y_m)^\nabla &\defeqv \nabla(R(y_1,\ldots,y_m)) \\
+    \top^\nabla &\defeqv \nabla\top \quad \\
+    \bot^\nabla &\defeqv \nabla\bot \\
+    (\varphi \wedge \psi)^\nabla &\defeqv \varphi^\nabla \wedge \psi^\nabla &
+    \textstyle (\bigwedge_i \varphi_i)^\nabla &\defeqv \textstyle \bigwedge_i \varphi_i^\nabla \\
+    (\varphi \vee \psi)^\nabla &\defeqv \nabla(\varphi^\nabla \vee \psi^\nabla) &
+    \textstyle (\bigvee_i \varphi_i)^\nabla &\defeqv \textstyle \nabla(\bigvee_i \varphi_i^\nabla) \\
+    (\varphi \Rightarrow \psi)^\nabla &\defeqv (\varphi^\nabla \Rightarrow \psi^\nabla) \\
+    (\forall x\?X\_ \varphi)^\nabla &\defeqv (\forall x\?X\_ \varphi^\nabla) &
+    (\exists x\?X\_ \varphi)^\nabla &\defeqv \nabla(\exists x\?X\_ \varphi^\nabla)
+  \end{align*}\end{minipage}}
+  \label{table:nabla-translation}
+\end{table}
 
 \subsection{Presenting frames by theories}
 \label{sect:presenting-frames}
@@ -1393,7 +1526,23 @@ XXX ``internalizing parameter-dependence''
 
 \subsection{Exercises}
 
-\begin{exercise}{Discrete locales as classifying locales}%
+\begin{exercise}{The theory of finite objects}%
+\begin{alphlist}[(c)]
+\item Extend the geometric theory of objects
+(page~\ref{item:theory-of-objects}) by relation symbols and axioms, but not by
+constant symbols, to ensure that the set-based models are precisely the
+two-element sets.
+\item Write down a geometric theory whose set-based models are precisely the
+(Kuratowski-)finite sets.\smallskip
+
+{\scriptsize\emph{Hint.} Employ countably many relation symbols~$R_n
+\hookrightarrow X \times \cdots \times X$, where~$R_n(x_1,\ldots,x_n)$ should
+signify that the elements~$x_1,\ldots,x_n$ exhaust all elements of~$X$. A
+solution is given in~\cite[Example~D1.1.7(k)]{johnstone:elephant}.\par}
+\end{alphlist}
+\end{exercise}
+
+\begin{exercise}{Discrete locales}%
 \begin{alphlist}[(b)]
 \item Find a theory which is classified by the two-point locale (the locale
 associated to the discrete two-point topological space).
@@ -1403,7 +1552,7 @@ which is classified by~$L(M)$.
 \end{exercise}
 
 \begin{exercise}{The localic unit interval}%
-Extend the theory of Dedekind cuts in such a way that its models are those
+Extend the theory of Dede\-kind cuts in such a way that its models are those
 Dedekind reals which are elements of~$[0,1]$.
 \end{exercise}
 

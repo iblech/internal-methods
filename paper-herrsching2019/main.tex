@@ -980,11 +980,11 @@ use it in the remainder of this text, we take the opportunity to give a
 self-contained proof.
 
 However, the more powerful version is not constructive. This puts us in the
-curious situation that we are promised, unconstructively, that there exists
-a constructive proof. The textbook argument~\cite[Theorem~7.57]{johnstone:topos-theory} establishing the more powerful
-version of Barr's theorem requires
-the axiom of choice, but recently Michael Rathjen showed that~\textsc{zf}
-suffices~\cite{rathjen:barr}.
+curious situation that we are promised, unconstructively, that there exist
+certain constructive proofs. The textbook
+argument~\cite[Theorem~7.57]{johnstone:topos-theory} establishing the more
+powerful version of Barr's theorem requires the axiom of choice, but recently
+Michael Rathjen lowered the required metatheory to~\textsc{zf}~\cite[Remark~4.2]{rathjen:barr}.
 
 \begin{theorem}Let~$\TT$ be a geometric theory. Let~$\sigma$ be a geometric
 sequent over the signature of~$\TT$. Then the following statements are
@@ -1000,16 +1000,20 @@ equivalent.
 
 To show that~(3) implies~(2), we combine the double negation translation
 with Friedman's trick. We give a sketch of the main thrust of the argument,
-omitting lengthy verifications. Let~$\sigma \equiv (\alpha \seq{\vec x} \beta)$.
+omitting lengthy verifications. Let~$\sigma \equiv (\alpha \seq{\vec a} \beta)$.
+For notational simplicity, we assume that the context~$\vec a$ is empty, though
+all of the following can be adapted to the nonempty case if care is taken to
+avoid variable capture.
+
 We introduce the operator~$\nabla$ with~$\nabla\varphi \defeqv
-((\varphi \Rightarrow \beta) \Rightarrow \beta)$, where care has to be taken to
-avoid capturing the variables~$\vec x$. This operator is a \emph{local
-operator} in the sense that for any formula~$\varphi$ in some context~$\vec y$,
-infinitary intuitionistic logic proves the sequents
+((\varphi \Rightarrow \beta) \Rightarrow \beta)$. This operator is a
+\emph{local operator}~\cite[Section~14.5]{goldblatt:topoi} in the sense that
+for any formula~$\varphi$ in some context~$\vec x$, infinitary intuitionistic
+logic proves the sequents
 \[
-\top \seq{\vec x,\vec y} (\varphi \Rightarrow \nabla\varphi),\
-\top \seq{\vec x,\vec y} (\nabla\nabla\varphi \Rightarrow \nabla\varphi),\
-\top \seq{\vec x,\vec y} (\nabla\varphi \wedge \nabla\psi \Leftrightarrow \nabla(\varphi \wedge \psi)).
+\top \seq{\vec x} (\varphi \Rightarrow \nabla\varphi),\
+\top \seq{\vec x} (\nabla\nabla\varphi \Rightarrow \nabla\varphi),\
+\top \seq{\vec x} (\nabla\varphi \wedge \nabla\psi \Leftrightarrow \nabla(\varphi \wedge \psi)).
 \]
 We then set up the~\emph{$\nabla$-translation}~$\varphi \mapsto \varphi^\nabla$
 for infinitary first-order formulas over the signature of~$\TT$ as described in
@@ -1017,36 +1021,37 @@ Table~\ref{table:nabla-translation}.
 Again, care has to be taken to ensure that there is no variable collision with the
 variables~$\vec x$. The chosen local operator is special in that
 the~$\nabla$-translation of the law of excluded middle,
-\[ \top \seq{\vec x,\vec y} \nabla(\varphi^\nabla \vee (\varphi^\nabla
-\Rightarrow \nabla\bot)) \]
+\[ \top \seq{\vec x} \nabla(\varphi^\nabla \vee (\varphi^\nabla \Rightarrow \nabla\bot)), \]
 is intuitionistically provable. Straightforward inductions on the structure of
 formulas or derivations then establish the following properties.
 \begin{alphlist}
 \item For any infinitary first-order formula~$\varphi$ in some context~$\vec y$,
-infinitary intuitionistic logic proves~$\nabla(\varphi^\nabla) \seq{\vec x,\vec
-y} \varphi^\nabla$.
-\item For any geometric formula~$\varphi$ in some context~$\vec y$, infinitary
-intuitionistic logic proves~$\varphi^\nabla \mathrel{\dashv\vdash\!\!\!_{\vec x,\vec y}} \nabla\varphi$.
-\item For any derivation of a sequent~$\varphi \seq{\vec y} \psi$ in infinitary
-classical logic, there is a derivation of~$\varphi^\nabla \seq{\vec y}
+infinitary intuitionistic logic proves~$\nabla(\varphi^\nabla) \seq{\vec x} \varphi^\nabla$.
+\item For any geometric formula~$\varphi$ in some context~$\vec x$, infinitary
+intuitionistic logic proves~$\varphi^\nabla \mathrel{\dashv\vdash\!\!\!_{\vec x}} \nabla\varphi$.
+\item For any derivation of a sequent~$\varphi \seq{\vec x} \psi$ in infinitary
+classical logic, there is a derivation of~$\varphi^\nabla \seq{\vec x}
 \psi^\nabla$ in infinitary intuitionistic logic.
 \end{alphlist}
 Combining these ingredients, the given derivation of~$\sigma \equiv (\alpha
-\seq{\vec x} \beta)$ in infinitary classical logic can be transformed to give a derivation of
-\begin{align*}
-  \alpha[\vec x'/\vec x] &\seq{\vec x,\vec x'}
-  \nabla(\alpha[\vec x'/\vec x]) \seq{\vec x,\vec x'}
-  (\alpha[\vec x'/\vec x])^\nabla \\
-  &\seq{\vec x,\vec x'}
-  (\beta[\vec x'/\vec x])^\nabla \seq{\vec x,\vec x'}
-  \nabla(\beta[\vec x'/\vec x]) \mathrel{\dashv\vdash\!\!\!_{\vec x,\vec x'}}
-  ((\beta[\vec x'/\vec x] \Rightarrow \beta) \Rightarrow \beta).
-\end{align*}
-in infinitary intuitionistic logic. Substituting~$\vec x'$ by~$\vec x$, we obtain
-\[ \alpha \seq{\vec x} ((\beta \Rightarrow \beta) \Rightarrow \beta) \seq{\vec
-x} \beta. \]
+\vdash \beta)$ in infinitary classical logic can be transformed to give a derivation of
+\[
+  \alpha \vdash
+  \nabla\alpha \vdash
+  \alpha^\nabla \vdash
+  \beta^\nabla \vdash
+  \nabla\beta \equiv
+  ((\beta \Rightarrow \beta) \Rightarrow \beta) \vdash
+  \beta
+\]
+in infinitary intuitionistic logic.
 
-To verify that~(2) implies~(1), XXX
+To verify that~(2) implies~(1), we define a semantics by the clauses in
+Table~\ref{table:classifying-topos}. The following properties of the semantics
+can then be established by induction:
+\begin{alphlist}[(d)]
+\item XXX % ...; idea: do only the propositional case
+\end{alphlist}
 \end{proof}
 
 \begin{table}[ht]
@@ -1065,6 +1070,20 @@ To verify that~(2) implies~(1), XXX
   \end{align*}\end{minipage}}
   \label{table:nabla-translation}
 \end{table}
+
+\begin{table}
+  \tbl{A syntactic model for XXX}{\begin{tabular}{@{}l@{\ \ }c@{\ \ }l@{}}
+    $\alpha \models \beta$ &iff& $\TT$ proves~$\alpha \vdash \beta$ \qquad(for~$\beta$ a relation symbol) \\
+    $\alpha \models \top$ &iff& true \\
+    $\alpha \models \varphi \wedge \psi$ &iff& $\alpha \models \varphi$ and $\alpha \models \psi$ \\
+    $\alpha \models \bigvee_i \varphi_i$ &iff& there are coherent
+    formulas~$\alpha_1,\ldots,\alpha_n$ such that \\ &&\qquad $\TT$ proves~$\alpha \vdash
+    \alpha_1 \vee \cdots \vee \alpha_n$ and such for each~$k \in \{1,\ldots,n\}$,
+    \\ &&\qquad\qquad there is an index~$i \in I$ such that~$\alpha_k \models \varphi_i$
+  \end{tabular}}
+  \label{table:classifying-topos}
+\end{table}
+
 
 \subsection{Presenting frames by theories}
 \label{sect:presenting-frames}

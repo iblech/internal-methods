@@ -1,20 +1,28 @@
 \documentclass{ws-rv9x6}
 \usepackage[onethmnum]{ws-rv-thm}
 \usepackage{ws-rv-van}
-\usepackage{mathtools,stmaryrd,xspace,bussproofs}
 
-\newlength{\exerciseskip}
-\setlength{\exerciseskip}{1.5em}
-\newcounter{exercisenr}
-\newenvironment{exercise}[1]{
-  \refstepcounter{exercisenr}
-  \noindent\textbf{Exercise \theexercisenr{}.} \emph{#1} \smallskip\par\noindent%
-}{\par\vspace{\exerciseskip}}
-
+% NOTE TO EDITORS AND LAYOUTERS: I require the following packages.
 \usepackage[normalem]{ulem}
 \usepackage[all]{xy}
 \usepackage{tikz}
 \usetikzlibrary{calc}
+\usepackage{mathtools,stmaryrd,xspace,bussproofs}
+
+\usepackage[english]{babel}
+
+% NOTE TO EDITORS AND LAYOUTERS: This package increases the quality of the
+% typesetting. I personally recommebd using it, but my contribution does not
+% depend on it.
+\usepackage[expansion=true,protrusion=true]{microtype}
+
+\newtheorem{ex}{Exercise}
+\let\Exercisefont\upshape
+\def\Exerciseheadfont{\bfseries}
+\newenvironment{exercise}[1]{
+  \begin{ex}[#1]
+}{\end{ex}}
+
 \newcommand{\hcancel}[5]{%
   \tikz[baseline=(tocancel.base)]{
     \node[inner sep=0pt,outer sep=0pt] (tocancel) {#1};
@@ -493,13 +501,13 @@ one-to-one correspondence.
 
 \subsection{Exercises}
 
-\begin{exercise}{The topological space of points of a locale}%
+\begin{exercise}{The space of points of a locale}%
 \label{ex:canonical-topology}%
-Devise a canonical topology on the set of points of a locale.
+Devise a canonical to\-po\-logy on the set of points of a locale.
 \end{exercise}
 
-\begin{exercise}{On the embedding of sober topological spaces into locales}%
-Verify the statements in Remark~\ref{rem:sober-embed}.
+\begin{exercise}{Embedding sober topological spaces into locales}%
+Verify the statements made in Remark~\ref{rem:sober-embed}.
 \end{exercise}
 
 \begin{exercise}{Hausdorff spaces are sober}%
@@ -508,10 +516,10 @@ A \emph{meet-irreducible open subset} of a topological space~$Y$ is an
 open subset~$W \subseteq Y$ such that~$(U \cap V \subseteq W) \Rightarrow (U
 \subseteq W) \vee (V \subseteq W)$ for all open subsets~$U,V \subseteq Y$ and
 such that~$Y \not\subseteq W$.
-\begin{enumerate}
+\begin{alphlist}[(c)]
 \item Assuming the law of excluded middle, show that the completely prime
 filters of a topological space are in canonical one-to-one correspondence with
-the meet-irreducible open subsets.
+the meet-irreducible open subsets.\smallskip
 
 {\scriptsize\emph{Hint.} Given a completely prime filter~$\fff \subseteq
 \O(Y)$, the set~$\bigcup\{ U \in \O(Y) \,|\, U \not\in \fff \}$ is a
@@ -524,7 +532,36 @@ that~$W = Y \setminus \overline{\{y\}}$.
 
 \item Assuming the law of excluded middle, show that Hausdorff topological
 spaces validate the condition stated in part~(b) and hence are sober.
-\end{enumerate}
+\end{alphlist}
+{\scriptsize\emph{Note.} Without the law of excluded middle, Hausdorff spaces
+and even metric spaces may fail to be sober. In fact, already the topological
+space of the rational numbers can fail to be
+sober~\cite[Example~8.14(iv)]{fourman-scott:sheaves-and-logic}.\par}
+\end{exercise}
+
+\begin{exercise}{Complete metric spaces are sober}
+A \emph{metric space} is a set~$Y$ together with a relation~$d \subseteq Y
+\times Y \times \QQ_{\geq0}$, written~``$d(x,y) \leq q$'', such that the
+following axioms are satisfied.
+\begin{align*}
+  d(x,y) \leq q \wedge q \leq r &\Longrightarrow d(x,y) \leq r \\
+  (\forall r \in \QQ_{> q}\_ d(x,y) \leq r) &\Longrightarrow d(x,y) \leq q \\
+  &\mathrel{\phantom{\Longrightarrow}} \exists q \in \QQ_{\geq0}\_ d(x,y) \leq q \\
+  &\mathrel{\phantom{\Longrightarrow}} d(x,x) \leq 0 \\
+  d(x,y) \leq 0 &\Longrightarrow x = y \\
+  d(x,y) \leq q &\Longrightarrow d(y,x) \leq q \\
+  d(x,y) \leq q \wedge d(y,z) \leq r &\Longrightarrow d(x,z) \leq q+r
+\end{align*}
+A \emph{Cauchy process} (or \emph{multi-valued modulated Cauchy sequence}) in a metric
+space~$Y$ is a map~$\alpha : \QQ_{>0} \to P(Y)$ such that all sets~$\alpha(q)$
+are inhabited and such that~$d(x,x') \leq q + q'$ for all~$q,q' \in \QQ_{>0}$
+and~$x \in \alpha(q), x' \in \alpha(q')$. Such a process \emph{converges
+to}~$x_0 \in Y$ iff~$d(x,x_0) \leq q$ for all~$q \in \QQ_{>0}$
+and~$x \in \alpha(q)$. A metric space~$Y$ is \emph{complete} iff every Cauchy
+process in~$Y$ converges.
+
+Verify, without using the law of excluded middle, that any complete metric
+space is sober.
 \end{exercise}
 
 \begin{exercise}{Isomorphisms of frames}%
@@ -534,9 +571,9 @@ reflects the ordering (that is,~$\alpha(U) \preceq \alpha(V) \Rightarrow U
 \preceq V$).
 \end{exercise}
 
-\begin{exercise}{On the covariant approach}%
+\begin{exercise}{The covariant approach to locales}%
 Let~$A$ be a frame.
-\begin{enumerate}
+\begin{alphlist}[(c)]
 \item Show that~$A$ contains arbitrary (set-indexed) meets (though they are not
 required to be preserved by frame homomorphisms), by the impredicative
 construction
@@ -549,7 +586,7 @@ monotone map~$\beta : A' \to A$ such that~\emph{$\beta$ is right adjoint
 to~$\alpha$}, that is such that
 \[ \alpha(U) \preceq V \quad\text{iff}\quad U \preceq \beta(V) \]
 for all~$U \in A$ and~$V \in A'$.
-\end{enumerate}
+\end{alphlist}
 {\scriptsize\emph{Note.} Based on the observation in part~(c), a
 \emph{covariant approach} to locales can be developed, in which locale maps~$X
 \to X'$ are defined to be certain kinds of maps~$\O(X) \to
@@ -564,7 +601,7 @@ with the completely prime filters of~$\O(X)$.
 
 \begin{exercise}{Characterizing spatial locales}%
 Let~$X$ be a locale. Show that the following conditions are equivalent.
-\begin{enumerate}
+\begin{alphlist}[(c)]
 \item For any opens~$U, V \in \O(X)$: If~$x \inplus U \Rightarrow y \inplus V$
 for all points~$x$ of~$X$, then~$U \preceq V$.
 \item For any opens~$U, V \in \O(X)$: If~$x \inplus U \Leftrightarrow y \inplus V$
@@ -573,7 +610,7 @@ for all points~$x$ of~$X$, then~$U = V$.
 of locales. (A morphism of locales is \emph{surjective} iff its underlying
 frame homomorphism is injective.)
 \item The canonical morphism~$L(\Pt(X)) \to X$ is an isomorphism.
-\end{enumerate}
+\end{alphlist}
 \end{exercise}
 
 \begin{exercise}{The frame of radical ideals}%
@@ -581,9 +618,10 @@ frame homomorphism is injective.)
 Let~$A$ be a ring. We order the set~$\Idl(A)$ of ideals of~$A$ by inclusion.
 (See Section~\ref{sect:algebraic-preliminaries} for some algebraic
 preliminaries.)
-\begin{enumerate}
+\begin{alphlist}[(b)]
 \item Verify that~$\Idl(A)$ has arbitrary meets and joins, given by
-intersection and sum of ideals, but that it is in general not a frame.
+intersection and sum of ideals, but that it is in general not a
+frame.\smallskip
 
 {\scriptsize\emph{Hint.} The distributive law fails in the polynomial ring~$\QQ[X,Y]$.\par}
 \item Show that the sub-poset~$\Rad(A)$ of radical ideals is a frame, with
@@ -595,16 +633,16 @@ iff~$\varphi$. Verify that
 \[ \bigvee\{\top\,|\,\varphi\} = \{ f \in A \,|\, \text{$f$ is nilpotent
 or~$\varphi$} \} \]
 in~$\Rad(A)$.
-\end{enumerate}
+\end{alphlist}
 \end{exercise}
 
 \begin{exercise}{Coproducts of locales}%
-\begin{enumerate}
+\begin{alphlist}[(c)]
 \item Show that the category of frames has small products.
 \item Deduce that the category of locales has small coproducts.
 \item Let~$M$ be a set and endow it with the discrete topology. Show
 that~$L(M)$ is the coproduct~$\coprod_{x \in M} \pt$.
-\end{enumerate}
+\end{alphlist}
 {\scriptsize\emph{Note.} The category of locales also has small products;
 Exercise~\ref{ex:products-of-locales} is devoted to this fact.\par}
 \end{exercise}
@@ -617,7 +655,7 @@ ring~$A$ is local iff~$A$ is local.)
 Show that any local locale has a canonical point, its \emph{focal point}.
 \end{exercise}
 
-\begin{exercise}{Localic maps into discrete spaces}%
+\begin{exercise}{Maps into discrete spaces}%
 Let~$X$ be a locale. Let~$A$ be a set and endow it with the discrete topology. Show
 that morphisms~$X \to L(A)$ are in canonical correspondence with
 families~$(U_a)_{a \in A}$ of opens of~$X$ such that~$\top = \bigvee_{a \in A}
@@ -1342,12 +1380,12 @@ XXX ``internalizing parameter-dependence''
 \subsection{Exercises}
 
 \begin{exercise}{Discrete locales as classifying locales}%
-\begin{enumerate}
+\begin{alphlist}[(b)]
 \item Find a theory which is classified by the two-point locale (the locale
 associated to the discrete two-point topological space).
 \item Let~$M$ be a set and endow it with the discrete topology. Find a theory
 which is classified by~$L(M)$.
-\end{enumerate}
+\end{alphlist}
 \end{exercise}
 
 \begin{exercise}{The localic unit interval}%
@@ -1357,9 +1395,9 @@ Dedekind reals which are elements of~$[0,1]$.
 
 \begin{exercise}{More on exotic locales}%
 \label{ex:exotic-locales}%
-\begin{enumerate}
+\begin{alphlist}[(d)]
 \item Define the locale of injections~$\RR \hookrightarrow \NN$.
-\item Define the locale of partial surjections~$\NN \twoheadrightarrow \NN^\NN$.
+\item Define the locale of partial surjections~$\NN \twoheadrightarrow \NN^\NN$.\smallskip
 
 {\scriptsize\emph{Note.} In Russian constructivism, as for instance reigning in
 the ef{}fective topos~\cite{hyland:effective-topos,phoa:effective,bauer:c2c}, the Baire space~$\NN^\NN$ is subcountable.
@@ -1369,7 +1407,7 @@ which the Baire space is subcountable and still any external number-theoretic
 function can be imported~\cite[Section~4.3]{scedrov:forcing}.\par}
 \item Define the locale of ``open covers of~$[0,1]$ by intervals with rational
 endpoints such that the union of any finite number of those intervals has total
-Lebesgue measure less than~$\frac{1}{2}$''.
+Lebesgue measure less than~$\frac{1}{2}$''.\smallskip
 
 {\scriptsize\emph{Note.} In the universe of sheaves over this locale, the set
 of unit interval Dedekind real numbers fails to be (Heine--Borel) compact and
@@ -1380,10 +1418,10 @@ open~$V$ such that~$U \vee V = \top$ and~$U \wedge V = \bot$. A locale is
 \emph{zero-dimensional} iff any open is a join of complemented opens. Assuming
 that any two reals are equal or not, show that the locale of surjections~$\NN
 \twoheadrightarrow \RR$ is zero-dimensional.
-\end{enumerate}
+\end{alphlist}
 \end{exercise}
 
-\begin{exercise}{Models of theories as points of the classifying locales}%
+\begin{exercise}{Models as points}%
 Let~$\TT$ be a propositional geometric theory. Verify that the points
 of~$L(\TT)$ are in canonical bijection with the set-based models of~$\TT$.
 \end{exercise}
@@ -1411,7 +1449,7 @@ theory~$\TT$ of Dedekind cuts as as introduced on
 page~\pageref{par:dedekind-cuts}. For rational numbers~$x,y$, let~``$\fa x,y
 \fb$'' denote the formula~$\alpha_x \wedge \beta_y$. Let~$(x,y)$ denote the
 open interval~$\{ \xi \in \Pt(\RR) \,|\, x < \xi < y \}$ in the set of Dedekind reals.
-\begin{enumerate}
+\begin{alphlist}[(f)]
 \item Extend the notation to allow for~$x,y=\pm\infty$.
 \item Show that the canonical topology on~$\Pt(\RR)$, defined in
 Exercise~\ref{ex:canonical-topology}, coincides with the usual Euclidean
@@ -1426,7 +1464,7 @@ Show that~$\TT$ proves~$\fa x,y \fb \vdash \bigvee_i \fa x_i,y_i \fb$.
 existence of a Lebesgue number.
 \item Under the same assumption as in part~(e), show that the localic real line
 is spatial.
-\end{enumerate}
+\end{alphlist}
 {\scriptsize\emph{Note.} Exercise~\ref{ex:exotic-locales} lists settings in
 which the assumption in part~(e) is not satisfied.\par}
 \end{exercise}
@@ -1435,7 +1473,7 @@ which the assumption in part~(e) is not satisfied.\par}
 Let~$L|k$ be a field extension. The \emph{localic Galois group}~$\Gal(L|k)$
 is the classifying locale of the theory of automorphisms~$L \to L$ which
 fix~$k$, as described on page~\pageref{par:theory-automorphisms}.
-\begin{enumerate}
+\begin{alphlist}[(g)]
 \item Explain how to obtain a morphism~$\Gal(L|k) \to \Gal(L|k)$ which on the
 level of points should send an automorphism~$\sigma$ to its inverse~$\sigma^{-1}$.
 \item Explain how to obtain a morphism~$\Gal(L|k) \times \Gal(L|k) \to \Gal(L|k)$ which on the
@@ -1453,7 +1491,7 @@ linear factors. Show that the axioms expressing surjectivity can be dropped.
 \item Show that the topological space of points of~$\Gal(L|k)$ is canonically
 homeomorphic to the topological Galois group of~$L|k$.
 \item Show that~$\Gal(L|k)$ is spatial in classical mathematics.
-\end{enumerate}
+\end{alphlist}
 \end{exercise}
 
 \begin{exercise}{Coherent locales and coherent theories}%
@@ -1465,10 +1503,10 @@ An open~$U$ of a locale is \emph{compact} iff, whenever~$U
 every open is a join of compact opens. A geometric formula is \emph{coherent} iff only
 finite disjunctions occur in it. A geometric theory is \emph{coherent}
 iff all of its axioms consist of coherent formulas.
-\begin{enumerate}
+\begin{alphlist}[(d)]
 \item Show that any coherent locale classifies some coherent theory.
 \item Let~$\TT$ be a propositional coherent theory. Show that~$L(\TT)$ is
-coherent.
+coherent.\smallskip
 
 {\scriptsize\emph{Hint.} For coherent formulas~$\alpha$ and geometric
 formulas~$\varphi$, define a semantics by the clauses below. Show by an induction on the
@@ -1501,33 +1539,33 @@ coherent.
 even coherent \emph{toposes}) are spatial. Show that Deligne's
 result implies that propositional coherent theories
 without any set-based models are inconsistent.
-\end{enumerate}
+\end{alphlist}
 \end{exercise}
 
 \begin{exercise}{Subsheaves of the terminal sheaf}%
 \label{ex:subsheaves-1}%
 Let~$X$ be a locale.
-\begin{enumerate}
+\begin{alphlist}[(b)]
 \item Show that any subsheaf~$F \subseteq 1$ of the terminal sheaf on~$X$ gives rise
 to an open of~$X$ by gluing all its sections.
 \item Show that the construction of part~(a) yields a canonical bijection of
 the subsheaves of~$1$ and the opens of~$X$.
-\end{enumerate}
+\end{alphlist}
 \end{exercise}
 
 \begin{exercise}{A geometric interpretation of double negation}%
 An open~$U$ of a locale is \emph{dense} iff for any open~$V$, $U \wedge V =
 \bot$ implies~$U = \bot$. Let~$\varphi$ be a formula over a locale~$X$.
-\begin{enumerate}
+\begin{alphlist}[(b)]
 \item Show that there is a largest open,
-denoted~``$\llbracket\varphi\rrbracket$'', such that~$U \models \varphi$.
+denoted~``$\llbracket\varphi\rrbracket$'', such that~$U \models \varphi$.\smallskip
 
 {\scriptsize\emph{Hint.} Consider the join of all opens~$V$ such that~$V
 \models \varphi$.\par}
 
 \item Show that~$X \models \neg\neg\varphi$ iff~$\llbracket\varphi\rrbracket$
 is dense.
-\end{enumerate}
+\end{alphlist}
 \end{exercise}
 
 \begin{exercise}{Unique local existence is global existence}%
@@ -1544,7 +1582,7 @@ such that~$U \models \varphi(s)$.
 \begin{exercise}{The sheaf of real functions as a field}%
 Let~$X$ be a topological space. Let~$\C$ be the sheaf of continuous real-valued
 functions on~$X$.
-\begin{enumerate}
+\begin{alphlist}[(d)]
 \item Let~$U$ be an open of~$X$. Let~$f \in \C(U)$. Show using the result
 of Exercise~\ref{ex:global-existence} that~$U \models (\exists g\?\C\_ fg =_\C
 1)$ iff there is a function~$g \in \C(U)$ such that~$fg = 1$.
@@ -1557,14 +1595,14 @@ $\Sh(X) \models \forall f\?\C\_ (\exists g\?\C\_ fg = 1) \vee f = 0$.
 \item Let~$X = \CC$ and let~$\O$ be the sheaf of holomorphic functions on~$X$.
 Show that, in classical mathematics, the sheaf~$\O$ is \emph{discrete} in that
 $\Sh(\CC) \models \forall f\?\O\_ \forall g\?\O\_ f = g \vee \neg(f = g)$.
-\end{enumerate}
+\end{alphlist}
 \end{exercise}
 
-\begin{exercise}{On the failure of the fundamental theorem of algebra}%
+\begin{exercise}{The failure of the fundamental theorem of algebra}%
 \label{ex:fta}%
 Let~$F$ be the sheaf of continuous complex-valued functions on~$\CC$. Give an
 example of a function~$f : \CC \to \CC$ such that it is not the case that
-\[ \Sh(X) \models \exists z\?F\_ z^2 = f. \]
+\[ \Sh(\CC) \models \exists z\?F\_ z^2 = f. \]
 {\scriptsize\emph{Note.} The sheaf~$F$ can be obtained by constructing, in the
 universe of sheaves on~$\CC$, the set of pairs of Dedekind reals. Hence the
 example demonstrates that the usual formulation of the fundamental theorem of
@@ -1980,7 +2018,7 @@ sense the quest will succeed and yield the sheaf~$A^\sim$.
 \item It is then a surprising observation that~$A^\sim$ is a field, even though
 we only set out to construct a local ring.
 \item The field property of~$A^\sim$ should be appropriately appreciated: While
-there is a general machinery for free constructions of this kind, this
+there is a general machinery for free constructions of this generalized kind, this
 machinery is \emph{not} applicable for constructing free fields.
 \end{enumerate}
 
@@ -2186,6 +2224,13 @@ that~$g^{-1}\fff_0 = \fff$. Since~$g^{-1}A^\sim = \underline{A}[\fff^{-1}]$,
 the localization just constructed gives rise to a morphism~$A^\sim \to B$ of
 local sheaves of rings.
 
+\begin{remark}There is general topos-theoretic machinery for generalized free
+constructions of this kind~\cite{coste:sheaf-representation,cole:spectra}, and
+this machinery can be used to construct several kinds of spectra, including the
+ordinary spectrum of a ring. However, this machinery does have limitations, and
+in particular it cannot be used to construct free fields.
+\end{remark}
+
 
 \subsection{Understanding the sheaf model}
 \label{sect:understanding}
@@ -2263,7 +2308,9 @@ form~``$f^n = u_1 g_{i_1} + \cdots + u_m g_{i_m}$'' can be regarded as an
 \emph{algebraic certificate} of the entailment~$D(f) \vdash \bigvee_i D(g_i)$.
 
 \begin{remark}An immediate corollary of Theorem~\ref{thm:workhorse} is
-that~$\Spec(A)$ is compact. However, the stronger result that~$\Spec(A)$ is
+that~$\Spec(A)$ is compact, since if~$f \in \sqrt{(g_i)_i}$ then also~$f \in
+\sqrt{(g_{i_1},\ldots,g_{i_n})}$ for suitable indices~$i_1,\ldots,i_n$.
+However, the stronger result that~$\Spec(A)$ is
 even a \emph{coherent locale} can also be deduced from a general theorem
 since the theory of prime filters is a coherent theory
 (Exercise~\ref{ex:coherent}).\end{remark}
@@ -2514,7 +2561,7 @@ Remark~\ref{rem:consistency}, this amounts to~$1 = 0$ in~$A$.
 %\end{proof}
 % XXX
 
-\begin{proposition}[Grothendieck's generic freeness lemma, simple version]
+\begin{proposition}[generic freeness lemma, simple version]
 \label{thm:baby-grothendieck}
 Let~$A$ be a reduced ring. Let~$M$ be a finitely generated~$A$-module.
 If~$f = 0$ is the only element of~$A$ such that~$M[f^{-1}]$ is a
@@ -2573,17 +2620,17 @@ XXX can be unwound, see ...; give pointers to existing proofs
 \subsection{Exercises}
 
 \begin{exercise}{Free fields}
-\begin{enumerate}
+\begin{alphlist}[(b)]
 \item A \emph{free field} over a set~$M$ would be
 a field~$K$ together with a map~$M \to K$ such that any map~$M \to L$ into a
 field~$L$ factors
 over the given map~$M \to K$ by a unique field homomorphism~$K \to L$. Prove
 that free fields exist for no set~$M$.
-\item Let~$k$ be a field. Devise a hypothetical notion of
+\item Let~$k$ be a field. Devise a notion of
 \emph{free~$k$-fields} (where a~$k$-field is a field together with a
 homomorphism from~$k$) and show that the only set~$M$ such that there is a
 free~$k$-field over~$M$ is the empty set.
-\end{enumerate}
+\end{alphlist}
 \end{exercise}
 
 \begin{exercise}{Nontriviality of~$A^\sim$}%
@@ -2608,48 +2655,48 @@ Table~\ref{table:algebraic-kripke-joyal}:
 \end{tabular}
 \end{center}
 Theorem~\ref{thm:basic-properties-sheaf-semantics-algebraic}
-also apllies to this extension, and moreover, this extension in sound with
+also applies to this extension, and moreover, this extension in sound with
 respect to infinitary intuitionistic logic.
-\begin{enumerate}
+\begin{alphlist}[(c)]
 \item Prove that:
 \[ 1 \models \forall f\?A^\sim\_ \forall x\?A^\sim\_
   \bigl((\exists z\?A^\sim\_ fz = 1) \Rightarrow x = 0\bigr) \Longrightarrow \bigvee_{n \in \NN} (f^n x = 0). \]
 \item Deduce that~$A^\sim$ is ``almost a field'' in the sense that any nonunit
 is nilpotent.
 \item Show that~$A$ is reduced iff~$A^\sim$ is.
-\end{enumerate}
+\end{alphlist}
 \end{exercise}
 
 \begin{exercise}{Bridging modules and their induced sheaves}%
 \label{ex:bridging-modules}%
 Let~$M$ be a module over a ring~$A$.
-\begin{enumerate}
+\begin{alphlist}[(c)]
 \item Show that~$M$ is finitely generated iff~$M^\sim$ is.
 \item Show that~$M$ is finite locally free (that is, that there is a
 partition~$1 = f_1 + \cdots + f_n$ such that each module~$M[f_i^{-1}]$ is
 finite free over~$A[f_i^{-1}]$) iff~$M^\sim$ is finite free.
 \item Show that~$M$ is finitely presented iff~$M^\sim$ is.
-\end{enumerate}
+\end{alphlist}
 \end{exercise}
 
 \begin{exercise}{Local injectivity and surjectivity}%
 Let~$M$ an~$N$ be modules over a ring~$A$. Let~$f : M \to N$ be a linear map.
-\begin{enumerate}
+\begin{alphlist}[(b)]
 \item Show that~$f$ is injective iff~$f^\sim : M^\sim \to N^\sim$ is injective.
 \item Show that~$f$ is surjective iff~$f^\sim : M^\sim \to N^\sim$ is surjective.
-\end{enumerate}
+\end{alphlist}
 \end{exercise}
 
-\begin{exercise}{The units of~$A^\sim$}%
+\begin{exercise}{Units of the sheaf model}%
 Let~$A$ be a ring. Let~$f \in A$. Let~$x \in A[f^{-1}]$. Show using the result
 of Exercise~\ref{ex:global-existence} that~$f \models \exists y\?A^\sim\_ xy
 = 1$ if and only if~$x$ is invertible in~$A[f^{-1}]$.
 \end{exercise}
 
-\begin{exercise}{Identifying the triviality of the spectrum}%
+\begin{exercise}{Triviality of the spectrum}%
 Let~$A$ be a ring. Verify, without assuming~\BPIT, that~$\Spec(A)$ is
 isomorphic to the one-point locale iff any element of~$A$ is either
-invertible or nilpotent.
+invertible or nilpotent.\smallskip
 
 {\noindent\scriptsize\emph{Hint.} Use the description of the unique map~$\O(\pt) \to
 \O(\Spec(A)),\,\varphi \mapsto \bigvee\{\top\,|\,\varphi\}$ computed in
@@ -2657,13 +2704,13 @@ part~(\ref{item:join-top}) of Exercise~\ref{ex:frame-of-radical-ideals}.\par}
 \end{exercise}
 
 \begin{exercise}{Locality of the spectrum}%
-Let~$A$ be a ring. Show that~$\Spec(A)$ is local in the sense of
+Let~$A$ be a ring. Show that the spectrum of~$A$ is local in the sense of
 Exercise~\ref{ex:local-locales} if and only if~$A$ is local as a ring.
 \end{exercise}
 
 \begin{exercise}{Spatiality of the spectrum}%
-Let~$A$ be a ring. Let~$\Spec(A)$ be its spectrum.
-\begin{enumerate}
+Let~$A$ be a ring.
+\begin{alphlist}[(c)]
 \item Verify that~$\Spec(A)$ is spatial if and only if for any element~$x \in
 A$ and any ideal~$\aaa \subseteq A$,
 \[ x \in \sqrt{\aaa} \quad\textnormal{if}\quad
@@ -2674,7 +2721,7 @@ and only if for any ideal~$\aaa \subseteq A$ the familiar identity
 \[ \sqrt{\aaa} = \bigcap_{\ppp \supseteq \aaa} \ppp \]
 holds.
 \item Conclude that the spectrum of any ring is spatial iff~\BPIT holds.
-\end{enumerate}
+\end{alphlist}
 \end{exercise}
 
 \begin{exercise}{Prüfer domains as valuation domains}%
@@ -2685,7 +2732,7 @@ is an integral domain such that any finitely generated ideal~$\aaa$ is locally a
 principal ideal (in the sense that there exists a partition~$1 = f_1 + \cdots +
 f_n$ such that, for each index~$i$, the ideal~$\aaa[f_i^{-1}]$ is finitely
 generated in~$A[f_i^{-1}]$).
-\begin{enumerate}
+\begin{alphlist}[(d)]
 \item Let~$A$ be a ring. Show that~$A^\sim$ is an integral domain if~$A$ is.
 Does the converse hold?
 \item Let~$A$ be a valuation domain. Show that any matrix over~$A$ can be put
@@ -2695,11 +2742,11 @@ only if~$A^\sim$ is a valuation domain.
 \item Let~$A$ be a Prüfer domain. Show that any matrix over~$A$ can locally be
 put into diagonal form by elementary row and column operations, by applying the
 result of part~(b) to~$A^\sim$.
-\end{enumerate}
+\end{alphlist}
 \end{exercise}
 
 \begin{exercise}{A basic version of Kaplansky's theorem}
-\begin{enumerate}
+\begin{alphlist}[(c)]
 \item Let~$A$ be a local ring. Let~$\aaa \subseteq A$ be a finitely generated
 ideal such that~$\aaa^2 = \aaa$. Show that~$\aaa = (0)$ or~$\aaa = (1)$.
 \item Let~$A$ be a local ring. Let~$M \in A^{n \times n}$ be an idempotent
@@ -2709,7 +2756,7 @@ cokernel of~$M$ is finite free.
 \item Let~$A$ be an arbitrary ring. Let~$M \in A^{n \times n}$ be an idempotent
 matrix. Show that the cokernel of~$M$ is finite locally free, by applying the
 result of part~(b) to~$A^\sim$.
-\end{enumerate}
+\end{alphlist}
 \end{exercise}
 
 \bibliographystyle{ws-rv-van}

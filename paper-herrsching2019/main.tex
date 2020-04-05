@@ -741,6 +741,20 @@ Table~\ref{table:geometric-logic}.
     \hfill\phantom{a}
     \bigskip
 
+    \textnormal{mixed rules (unnecessary in presence of the double rule for implication)} \\\smallskip
+    \vspace{-0.5em}
+    \phantom{a}\hfill
+    \AxiomC{$\phantom{\seq{\vec x}}$}
+    \UnaryInfC{$(\bigvee_i \varphi_i) \wedge \psi \seq{\vec x} \bigvee_i (\varphi_i \wedge \psi)$}
+    \DisplayProof
+    \hfill
+    \AxiomC{$\phantom{\seq{\vec x}}$}
+    \UnaryInfC{$(\exists y\?Y\_ \varphi) \wedge \psi \seq{\vec x} \exists y\?Y\_ (\varphi \wedge \psi)$}
+    \DisplayProof
+    \makebox[0pt]{\shifttext{\tiny ($y$ none of the~$\vec x$)}}
+    \hfill\phantom{a}
+    \bigskip
+
     \textnormal{rules for equality} \\\smallskip
     \vspace{-0.5em}
     \phantom{a}\hfill

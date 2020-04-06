@@ -267,7 +267,48 @@ Hence there is no paradox, as one would not expect an rearrangement of
 overlapping sublocales to preserve volume.
 
 
-\paragraph{Random sequences.} XXX
+\paragraph{Random sequences.} \emph{Cantor space} is the space~$2^\NN$ of
+infinite binary sequences, equipped with the product topology. A subset~$U
+\subseteq 2^\NN$ is open with respect to this topology if and only if for
+every~$\alpha \in U$, there is a number~$n \in \NN$ such that
+\[ \{ \beta \in 2^\NN \,|\, \forall i < n\_ \alpha(i) = \beta(i) \} \subseteq U. \]
+
+The open subsets of~$2^\NN$ are precisely those subsets which encode
+\emph{observable} (or \emph{semidecidable}) properties of binary sequences,
+those properties for which a finite record of digits suffices to verify that a
+sequence has it (but not necessarily to falsify it). For instance, the sets~$V
+= \{ \alpha \in 2^\NN \,|\, \alpha(0) = \alpha(1) = 1 \}$ and~$W = \{
+\alpha \in 2^\NN \,|\, \exists n\in\NN\_ \alpha(n) = 1 \}$ are open and the sets
+\begin{align*}
+  A &\defeq \{ \alpha \in 2^\NN \,|\, \forall n\in\NN\_ \alpha(n) = 0 \} \\
+  B &\defeq \Bigl\{ \alpha \in 2^\NN \,\Big|\, \lim_{n \to \infty} \frac{1}{n} \sum_{i=0}^{n-1} \alpha(i) = \frac{1}{2} \Bigr\}
+\end{align*}
+are not. With respect to the standard Lebesgue measure on~$2^\NN$, the sets~$V$
+and~$W$ have measure~$\frac{1}{4}$ and~$1$, respectively.
+
+Unlike a regular sequence such as~$(0,0,0,\ldots)$, we expect that, if the
+digits of a \emph{random sequence} are revealed step by step, we will
+eventually verify that it is an element of~$W$; and moreover, that it has any
+observable property~$U$ with Lebesgue measure~$1$.
+
+Elevating this expectation to a definition, it seems prudent to declare that a
+sequence is \emph{random} if and only if it is contained in the intersection of
+all open subsets~$U \subseteq 2^\NN$ with Lebesgue measure~$1$. One could then
+endeavor to setup a develop a theory of probability on this notion.
+
+However, the resulting theory will be trivial for the plain reason that
+according to this definition, there are no random sequences: For any
+sequence~$\alpha$, the set~$\{ \beta \in 2^\NN \,|\, \exists n \in \NN\_
+\alpha(n) \neq \beta(n) \}$ is open, has measure~$1$ and does not
+contain~$\alpha$.
+
+Despite this fundamental issue, one can still argue that this approach has
+merit~\cite{simpson:randomness}, and hence it is worthwhile to find a
+mathematical foundation which is capable of formalizing it. Topological
+spaces are too restrictive, but Alex Simpson observed that locales are
+sufficiently flexible: There is a \emph{locale of random sequences}, defined as
+the locale-theoretic intersection of all measure-$1$ opens of~$2^\NN$. This
+locale is nontrivial despite having no points.
 
 
 \subsection{Constructive concerns}

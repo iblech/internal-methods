@@ -2248,17 +2248,41 @@ contradiction to the assumption~$\neg\neg(x-y=0)$.\end{proof}
 \paragraph{The Noetherian property.}
 XXX not shared by stalks; ``true constructivists would be offended''
 
-Noetherian conditions are notoriously tricky in constructive mathematics; XXX
+Noetherian conditions are notoriously tricky in constructive algebra, not
+least because of their overuse in classical commutative algebra which render
+attempts to extract constructive content more challenging.
+
 There are several proposals for constructively sensible definition of
 Noetherian rings in the literature on constructive algebra, each with unique
 advantages and
 disadvantages~\cite{richman:noetherian,mines-richman-ruitenburg:constructive-algebra,perdry:noetherian,perdry:lazy,perdry-schuster:noetherian,tennenbaum:hilbert}.
 Insightful comments on why this is so can be found in the introduction and more
 specifically on page~27 of the textbook by Henri Lombardi and Claude
-Quitté~\cite{lombardi-quitte:constructive-algebra}.
+Quitté~\cite{lombardi-quitte:constructive-algebra}. To this list of conditions,
+we add the following.
 
+\begin{definition}
+\label{defn:anonymously-noetherian}
 A ring is \emph{anonymously Noetherian} if and only if any of its ideals is
 \notnot finitely generated.
+\end{definition}
+
+% Ex.: Z finitely generated
+
+This definition is at odds with the idea that constructive mathematics should
+be informative, because it only expresses that it is impossible for no finite
+generating family to exist without requiring that such a family should be given
+-- it may remain \emph{anonymous}.\footnote{We borrowed the term ``anonymous''
+from type theory, where it is used with a similar meaning (see for instance
+Ref.~\refcite{kraus-escardo-coquand-altenkirch:anonymous}). However, there is a
+subtle difference: The conjunction of ``there is at most one element~$x$'' and
+``there is anonymously an element~$x$ in the sense of type theory'' implies
+that there actually exists an element~$x$. In contrast, \notnot existence does
+not.}
+
+However, it is still useful in constructive algebra when interpreted by the
+sheaf semantics: If~$A$ is reduced, then~$A^\sim$ is anonymously Noetherian.
+XXX
 
 %\begin{ex}There is an intuitionistic proof that the ring~$\ZZ$ is anonymously
 %Noetherian: Let~$\aaa \subseteq \ZZ$ be any ideal. Under the assumption that
@@ -2286,11 +2310,7 @@ A ring is \emph{anonymously Noetherian} if and only if any of its ideals is
 %``has'' finitely many generators in some Platonic sense (without providing any
 %clue on how one might go on to find the generators -- they remain \emph{anonymous}), provided
 %that any ideal of~$A$ ``has'' finitely many generators in the same
-%sense.\footnote{We borrowed the term ``anonymous'' from type theory, where it
-%is used with a similar meaning (see for
-%instance~\cite{kraus-escardo-coquand-altenkirch:anonymous}). However, there is
-%a subtle difference: Unique and anonymous-in-the-sense-of-type-theory existence
-%implies existence, but \notnot existence does not.}
+%sense.\footnote{}
 
 \begin{proposition}The sheaf of rings~$A^\sim$ is anonymously
 Noetherian.\end{proposition}
@@ -2919,6 +2939,22 @@ XXX can be unwound, see ...; give pointers to existing proofs
 
 
 \subsection{Exercises}
+
+\begin{exercise}{Noetherian properties of the integers}%
+\begin{enumerate}
+\item Show that the law of excluded middle holds if the ring~$\ZZ$ of integers
+is Noetherian in the sense that any ideal is finitely generated.\smallskip
+
+{\scriptsize\emph{Hint.} For a truth value~$\varphi$, consider the ideal~$\{ x
+\in \ZZ \,|\, x = 0 \vee \varphi \}$.\par}
+\item Give an example of a space~$X$ and a subsheaf~$F$ of the constant
+sheaf~$\underline{\ZZ}$ such that, under the sheaf semantics, the subsheaf~$F$
+is an ideal, and such that it is not the case that, again under the sheaf
+semantics, the ideal~$F$ is finitely generated.
+\item Show that~$\ZZ$ is anonymously Noetherian in the sense of
+Definition~\ref{defn:anonymously-noetherian}.
+\end{enumerate}
+\end{exercise}
 
 \begin{exercise}{Free fields}
 \begin{alphlist}[(b)]

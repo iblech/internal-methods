@@ -2,6 +2,8 @@
 \usepackage[onethmnum]{ws-rv-thm}
 \usepackage{ws-rv-van}
 
+\usepackage[english]{babel}
+
 % NOTE TO EDITORS AND LAYOUTERS: I require the following packages.
 \usepackage[normalem]{ulem}
 \usepackage[all]{xy}
@@ -9,7 +11,8 @@
 \usetikzlibrary{calc}
 \usepackage{mathtools,stmaryrd,xspace,bussproofs}
 
-\usepackage[english]{babel}
+\usepackage{hyperref}
+
 
 % NOTE TO EDITORS AND LAYOUTERS: This package increases the quality of the
 % typesetting. I personally recommend using it, but my contribution does not
@@ -121,8 +124,7 @@ XXX
 
 \tableofcontents
 
-\section{Locales}
-
+\paragraph{Locales.}
 % XXX \cite{belanger-marquis:pointless} and Johnstone, vickers:locales-toposes,
 % picado-pultr:frames-and-locales
 
@@ -157,10 +159,167 @@ instead of points as primitive building blocks}. With locales, points are a
 derived concept. In particular, the opens of a locale are not sets of points;
 in fact, they need not be sets of anything in peculiar.
 
+Section~\ref{sect:locales} explores the basics of the theory of locales, with a
+focus on examples and issues for constructive mathematics.
+
+
+\paragraph{Geometric theories and sheaf models.} The most sensible solution to
+the task
+\begin{quote}
+Determine the continuous complex-valued functions~$f$ such that~$f(z)^2 = z$.
+\end{quote}
+is not the single set
+\[ \{ f : \CC \to \CC \,|\, \text{$f$ is continuous and $f(z)^2 = z$ for all~$z \in \CC$} \}. \]
+Rather, since the solvability of this functional equation varies with the
+domain on which~$f$ should be defined (having no global solution defined on all
+of~$\CC$ but two solutions on small disks not containing the origin), we should
+consider the family
+\[ (\{ f : U \to \CC \,|\, \text{$f$ is continuous and $f(z)^2 = z$ for all~$z
+\in \CC$} \})_{U \in \O(\CC)} \]
+of sets as the solution (or perhaps, since no solution was actually given, as
+an apt description) of the task.
+
+If we are building a prime ideal~$\ppp$ step by step, adding elements to it
+when the need arises, the most sensible answer to the question
+\begin{quote}
+Is~$x$ contained in the prime ideal~$\ppp$?
+\end{quote}
+is not a single truth value, but a family of truth values, parametrized by the
+possible stages of construction of~$\ppp$.
+
+Somewhat surprisingly, these two examples can be treated by a single theory,
+the \emph{theory of sheaves}. Sheaves help to organize such families in an
+efficient manner and reify them as single coherent entities; the first family
+is (part of) a \emph{sheaf of sets} and the second family is (part of) a
+\emph{sheaf of truth values}. Sheaves will be the subject of
+Sections~\ref{sect:sheaves}--\ref{sect:sheaf-semantics}.
+
+Sheaves interact particularly well with \emph{geometric theories}, which we
+review in Section~\ref{sect:geometric-theories}. Firstly, sheaves allow us to
+generalize our notion of a \emph{model} of a geometric theory. For instance, a
+set-based model of the geometric theory of rings is just an ordinary ring; but
+now we can also consider sheaves of rings as further models.
+
+Some geometric theories only really unfold in the world of sheaves. For
+instance, the geometric theory of surjections~$\NN \twoheadrightarrow \RR$
+reviewed on page~\pageref{item:theory-of-surjections} does not have any
+set-based models, but it is consistent and it does have nontrivial sheaf
+models. For the purpose of constructive algebra, sheaf models of some geometric
+theories play a vital role, as we will discuss in Section~\ref{sect:appl}.
+
+Secondly, geometric theories allow us to efficiently construct the spaces
+(locales) on which we want to study sheaves. This is because a fundamental
+feature of geometric theories (in contrast to, say, arbitrary first-order
+theories) is that their models naturally organize to form a space, the
+space (locale) of models reviewed in Section~\ref{sect:presenting-frames}.
+
+% A peculiar feature of geometric theories is that (Barr's theorem)
+% FUTURE
+
+
+\paragraph{Applications in constructive algebra.}
+Commutative algebra abounds with techniques to reduce given situations to
+simpler ones, for instance passing to a quotient or passing to a
+localization. These techniques facilitate short and elegant proofs, such as the
+following. (Section~\ref{sect:algebraic-preliminaries} contains some algebraic
+preliminaries.)
+
+\begin{quote}
+\textbf{Theorem.} Let~$M$ be an injective matrix with more columns than rows
+over a reduced ring~$A$. Then~$1 = 0$ in~$A$.
+
+\textbf{Proof.} \uwave{Assume not.} Then there is a \uwave{minimal
+prime ideal} $\ppp \subseteq A$. Since localization is exact, the matrix~$M$ is also injective when
+considered as a matrix over the stalk~$A_\ppp$. Since~$A_\ppp$ is a
+\uwave{field}, this is a contradiction to basic linear algebra. \qed
+\end{quote}
+
+However, these reduction techniques typically require \emph{transfinite
+methods}. The displayed proof appeals to the transfinite four times:
+\begin{enumerate}
+\item The proof proceeds by contradiction, hence requires the law of excluded
+middle, the strongest of the omniscience principles.
+\item The proof then requires a minimal prime ideal. Such an ideal can be
+obtained in two steps: First, the Boolean Prime Ideal
+Theorem~\BPIT is invoked to obtain some prime ideal. Then
+Zorn's lemma fabricates a minimal one.\footnote{Standard textbooks prove the statement ``any nontrivial
+ring has a prime ideal'' by using Zorn's lemma, which
+in the presence of the law of excluded middle is equivalent to the full axiom
+of choice; however, the statement is actually equivalent to the weaker Boolean
+Prime Ideal Theorem~\cite{scott:bpit,banaschewski-harting:lattice-aspects}.
+
+The combined statement ``any ring has a minimal prime ideal'' is equivalent to
+the full axiom of choice. This observation might be folklore; we learned the
+following argument from Will Savin~[XXX: reference]: Let~$(M_i)_{i \in I}$ be a
+disjoint family of inhabited sets. We consider the free ring~$\ZZ[\bigcup_i M_i]$ and
+its ideal~$I$ generated by~$\{ ab \,|\, i \in I, a,b \in M_i, a \neq b \}$. Assume
+that the factor ring~$\ZZ[\bigcup_i M_i]/I$ contains a minimal prime ideal. Its
+preimage~$\ppp \subseteq \ZZ[\bigcup_i M_i]$ is then a prime ideal which is
+minimal among all prime ideals containing~$I$. By primality, for any index~$i$,
+there is at most one element of~$M_i$ not in~$\ppp$. By minimality, for each
+index~$i$, there is exactly one element of~$M_i$ not in~$\ppp$: If there were
+none, then pick an element~$a \in M_i$ XXX}
+% https://mathoverflow.net/questions/98731/minimal-prime-ideals-and-axiom-of-choicerevised-version
+\item Finally, the proof exploits that the stalks of reduced rings at minimal
+prime ideals are fields. This requires two further invokations
+of~\BPIT.\footnote{By~\BPIT, the intersection of all prime ideals of~$A_\ppp$
+is its nilradical. Since~$A_\ppp$ is reduced, the nilradical is the zero ideal.
+Since the prime ideals of~$A_\ppp$ are in bijection with those prime ideals
+of~$A$ which are contained in~$\ppp$, the ring~$A_\ppp$ has exactly one prime
+ideal. By~\BPIT, any noninvertible element of~$A_\ppp$ is contained in some
+prime ideal, hence in the zero ideal. Thus~$A_\ppp$ is a field.}
+\end{enumerate}
+
+This state of affairs is not satisfactory. A statement as simple as the
+displayed example should admit an explicit calculational proof, presenting a
+concrete method for transforming the given conditional equations expressing
+injectivity into the equation~$1 = 0$ without any appeals to the transfinite.
+
+The completeness theorem for coherent logic~\cite[Corollary~D1.5.10]{johnstone:elephant} even
+gives an a priori reason why (for a given matrix size) a finitary proof has to
+exist. However, since the proof of the completeness theorem itself uses~\BPIT
+(and indeed is equivalent to it), it does not give any indication how such a
+proof could be found. (Still, beautiful constructive proofs are known and
+presented, for instance, in a celebrated short note by Fred Richman on nontrivial
+uses of trivial rings~\cite{richman:trivial-rings} and in the recent textbook by
+Henri Lombardi and Claude Quitté on constructive commutative
+algebra~\cite{lombardi-quitte:constructive-algebra}.)
+% FUTURE: Find precise reference.
+
+The key issue with the usual reduction techniques in commutative algebra is
+their dependence on \emph{ideal objects} such as prime or maximal ideals. In
+general, those objects can only be obtained by transfinite methods. However, in
+practice many arguments do not actually require completed ideal objects:
+Their computational core applies just as well to finite approximations of
+these ideal objects.
+
+It is then a challenging task in mathematical logic to devise efficient means to
+extract this obscured constructive content in a mostly mechanical manner. We
+envision to reinterpret any given classical proof employing ideal objects in a
+constructive fashion, realizing ideal objects as convenient fictions.
+
+Locales and sheaf models contribute to this program by providing new reduction
+techniques for commutative algebra. These techniques have a similar effect as the
+classical reduction techniques, but are powered by purely constructive
+underpinnings. In a nutshell, the idea is as follows.
+
+\begin{enumerate}
+\item Instead of replacing a given ring with another (for instance a ring~$A$ with
+one of its stalks~$A_\ppp$ at a minimal prime ideal), we replace a given ring
+with a \emph{sheaf of rings}.
+\item We then maintain the convenient illusion that we are working with a plain old ring
+instead of a sheaf by employing the sheaf semantics.
+\end{enumerate}
+
+In some cases, these new techniques XXX
+
+
+\section{Locales}
+\label{sect:locales}
+
 The formal definition of a locale will be given below as
 Definition~\ref{defn:locale}, but we first want to review examples and comment on
 the relevance of locales to constructive mathematics.
-
 
 \subsection{Spaces without points}
 \label{sect:examples-no-points}
@@ -738,6 +897,7 @@ U_a$ and~$U_a \wedge U_b \preceq \bigvee\{ \top \,|\, a = b \}$.
 \section{Geometric theories and sheaf models}
 
 \subsection{Geometric theories}
+\label{sect:geometric-theories}
 
 \begin{definition}A \emph{geometric theory} consists of
 \begin{enumerate}
@@ -976,7 +1136,7 @@ A variant of this theory is the theory of inhabited objects, which has the
 axiom~$\top \vdash \exists x\?X\_ \top$. Its set-based models are precisely the
 inhabited sets.
 
-\item \emph{The geometric theory of surjections~$f : \NN \twoheadrightarrow
+\item\label{item:theory-of-surjections} \emph{The geometric theory of surjections~$f : \NN \twoheadrightarrow
 \RR$.} This theory has no
 sorts; no function symbols; a nullary relation symbol~$\varphi_{nx}$ for each
 pair~$\langle n,x \rangle \in \NN \times \RR$ (to be read as~``$f$ maps~$n$
@@ -1235,7 +1395,10 @@ coincides with the sheaf semantics of the \emph{classifying locale} of~$\TT$
 reviewed in Section~\ref{sect:presenting-frames} and
 Section~\ref{sect:sheaf-semantics}. In the nonpropositional case, the semantics
 coincides with the slightly more general topos semantics of the
-\emph{classifying topos} of~$\TT$~\cite[Section~2]{caramello:tst}.\end{remark}
+\emph{classifying topos} of~$\TT$~\cite[Section~2]{caramello:tst}. The local
+operator defined in the proof cuts out a certain Boolean subtopos of the
+classifying topos.
+\end{remark}
 
 \begin{table}[ht]
   \tbl{The definition of the~$\nabla$-translation}{\begin{minipage}{\textwidth}\begin{align*}
@@ -1538,16 +1701,68 @@ morphism of the underlying presheaves.
 \subsection{Sheaf semantics}
 \label{sect:sheaf-semantics}
 
-% XXX Introduction...
+\paragraph{Motivating the sheaf semantics.} Let~$F$ be a sheaf on a locale~$X$.
+What is a sensible reading of the statement~``$\forall s\?F\_ (\varphi(s)
+\Rightarrow \psi(s))$''? A first answer is ``for any global section~$s \in
+F(X)$ such that~$\varphi(s)$,~$\psi(s)$''. However, this proposal does not do
+justice to the sheaf, whose interesting behavior may well only play out with
+its sections on small opens. Indeed, many important sheaves have no or few
+global sections. Hence a more sophisticated answer is ``for any open~$U \in
+\O(X)$ and any section~$s \in F(U)$ with~$\varphi(s)$,~$\psi(s)$'',
+where~``$\varphi(s)$'' and~``$\psi(s)$'' have to be interpreted in a similar
+vein.
 
-% XXX A sheaf may well be nontrivial even though it does not have any global
-% sections. This is for instance the case for the subsheaf of the sheaf of continuous
-% complex-valued functions on~$\CC$, given by~$U \mapsto \{ f : U \to \CC \,|\,
-% \text{$f$ is continuous and~$f(z)^2 = z$ for all~$z \in U$} \}$. This sheaf
-% has lots of local sections (local square root maps), but no global one.
-% This phenomenon is related to the failure of (a simple version of) the
-% fundamental theorem of algebra (Exercise~\ref{ex:fta}).
+Similarly, given a section~$s \in F(U)$, what should~``$\neg\varphi(s)$'' mean?
+Since a section may well validate additional properties when we zoom in to
+smaller opens, the sheaf-theoretically sensible answer is ``except for the
+empty open~$V = \bot$,~$s|^U_V$ does not have property~$\varphi$ for any
+open~$V \preceq U$'', where again~``$\varphi(s)$'' has to be understood in a
+sensible way.
 
+As a final motivating example, consider the statement~``$\exists s\?F\_
+\varphi(s)$''. This should mean that there is an open covering~$X = \bigvee_i
+U_i$ such that on each open~$U_i$, there is a section~$s \in F(U_i)$ such
+that~$\varphi(s)$, properly interpreted. We should not require these individual
+sections to agree on the intersections~$U_i \wedge U_j$ -- by the sheaf
+property, this would amount to saying that there is a global section~$s \in
+F(X)$ with~$\varphi(s)$.
+
+The \emph{sheaf semantics} formalizes the informal language agreement just
+outlined. A marvelous fact with wide-ranging applications is that this
+semantics is sound with respect to first-order intuitionistic logic (and even
+infinitary higher-order intuitionistic logic, and even a suitable version of
+extensional type theory, if the semantics is appropriately extended).
+
+That is, if we have established a property~$\varphi$ and if there is an
+intuitionistic proof that~$\varphi$ entails a further property~$\psi$, then we
+may conclude that also the interpretation of~$\psi$ with the sheaf semantics
+holds.
+
+Hence the sheaf semantics allows us to reason with sheaves in much the same way
+as we reason with sets, in a simple element-based language, and to import much
+of the already-existing results in constructive mathematics into the world of
+sheaves. For instance, any intuitionistic theorem about rings yields a
+corresponding theorem about sheaves of rings.
+
+There is only one caveat to keep in mind: Irrespective of its status in the
+metatheory, the interpretation of the law of excluded middle with the sheaf
+semantics is, for most locales~$X$, false (Example~\ref{ex:negneg}). People who
+are familiar with other flavors of constructive mathematics should also observe
+that the interpretation of any form of the axiom of choice, even countable
+choice or weak countable choice, is false for most locales~$X$. (For discrete
+locales, these axioms pass from the metatheory to the universe of sheaves.)
+
+Incidentally, that the sheaf semantics is not sound with respect to classical
+logic allows us to illustrate the failure of certain classical theorems in
+constructive mathematics by geometric counterexamples and thereby verify their
+unprovability in intuitionistic logic.
+
+We now begin the formal development of the sheaf semantics. More background and
+examples from theoretical computer science, analysis and differential geometry
+are contained in Ref.~\refcite{blechschmidt:custom-tailored}, which should be
+regarded as a companion paper to this contribution.
+
+\paragraph{Definition and basic properties of the sheaf semantics.}
 Let~$X$ be a locale. A \emph{formula over an open~$U \in \O(X)$} is an
 infinitary first-order formula (made up using~${=}\ {\top}\ {\wedge}\ \{\bigwedge\}\ {\bot}\ {\vee}\
 {\bigvee}\ {\Rightarrow}\ {\forall}\ {\exists}$) over the signature which has one sort for
@@ -1590,6 +1805,24 @@ well-defined, as~$\varphi$ is not a formula over~$V$. When we still write~``$V
 \models \varphi$'', we mean that any constant symbol~$s \in F(U)$ appearing
 in~$\varphi$ should be interpreted as its restriction~$s|^U_V \in F(V)$, so
 that the resulting formula is a formula over~$V$.
+
+\begin{example}\label{ex:negneg}
+For instance, let~$F$ be the sheaf
+\[ U \longmapsto \{ f : U \to \CC \,|\, \text{$f$ is continuous and~$f(z)^2 =
+z$ for all~$z \in U$} \} \]
+on~$X = \CC$. The interpretation of the statement~``$\exists s\?F\_ \top$'' is
+false, as on no open which contains the origin a continuous square root
+function exists), but the interpretation of~``$\neg\neg(\exists s\?F\_ \top)$''
+is true: Unrolling the definition, this statement expresses that
+\begin{quote}
+the only open~$U \preceq X$ which has the property that \\
+${\qquad}$ the only open~$V \preceq U$ which has the property that \\
+${\qquad\qquad}$ locally on~$V$, there exist continuous square root functions \\
+${\qquad}$ is~$V = \bot$ \\
+is~$U = \bot$.
+\end{quote}
+\end{example}
+
 
 The principal properties of the sheaf semantics is that it is monotone, local
 and sound with respect to (infinitary) intuitionistic first-order logic as
@@ -1638,6 +1871,8 @@ Section~\ref{sect:example-applications}.
 \end{remark}
 
 
+% FUTURE: Add an introductory sentence.
+\paragraph{Sheaf models.}
 \begin{definition}\label{defn:sheaf-model}
 A \emph{sheaf model} of a geometric theory~$\TT$ over a locale~$X$ consists of
 \begin{enumerate}
@@ -1695,6 +1930,28 @@ In other words, a model of a propositional geometric theory~$\TT$ over a
 locale~$X$ is the same as a frame homomorphism~$\O(L(\TT)) \to \O(X)$, hence a
 locale morphism~$X \to L(\TT)$.
 
+For further reference we state a proposition relating truth in a sheaf model
+with truth at all points.
+% FUTURE: Give better motivation
+
+\begin{proposition}Let~$\TT$ be a geometric theory. Let~$\TT_0$ be the same
+theory as~$\TT$ but without any axioms. Let~$M$ be a sheaf model
+of~$\TT_0$ on a locale~$X$ (hence just a \emph{sheaf structure}) and consider
+the structures~$M_x$ obtained by computing the stalks at points~$x \in \Pt(X)$.
+Let~$\sigma$ be a geometric sequent.
+Then:
+\begin{enumerate}
+\item If~$M$ validates~$\sigma$, then so does~$M_x$, for any point~$x \in \Pt(X)$.
+\item The converse holds if~$X$ is spatial.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}Omitted.\end{proof}
+
+In particular, the stalks of sheaf models of a geometric theory~$\TT$ are
+set-based models of~$\TT$.
+
+\paragraph{The generic model.}
 A geometric theory can well have no set-based models, but might still be
 consistent and allow for a diverse range of sheaf models on a host of different
 locales. In fact, any propositional geometric theory always has at least one,
@@ -1715,6 +1972,19 @@ localic real line. By Example~\ref{ex:sets-as-sheaf-models}, any specific Dedeki
 real~$x$ (that is, any point~$x$ of~$L(\TT)$) gives rise to a model of~$\TT$ on
 the one-point locale~$\pt$, corresponding to the locale morphism~$x : \pt \to
 L(\TT)$.
+
+For a geometric sequent~$\sigma$ over the signature of a geometric
+theory~$\TT$, the following statements are equivalent:
+\begin{enumerate}
+\item The generic model of~$\TT$ validates~$\sigma$.
+\item All sheaf models of~$\TT$ on arbitrary locales validate~$\sigma$.
+\item The theory~$\TT$ proves~$\sigma$:
+\end{enumerate}
+Hence we may understand the phrase~``Let~$M$ be a model of~$\TT$.'' to
+implicitly refer to the generic model. The first-order properties of the
+generic model need not be shared by all sheaf models and need not be provable
+by~$\TT$.
+% FUTURE: Explain more
 
 The story of generic models is at the same time tautologous and deep, and these
 short paragraphs do not do justice to this intriguing aspect of the interplay
@@ -2009,95 +2279,36 @@ Cauchy complex numbers~\cite{ruitenburg:roots} and under weak choice
 principles~\cite{bridges-richman-schuster:wcc}).\par}
 \end{exercise}
 
+\begin{exercise}{The least number principle}%
+\begin{alphlist}[(e)]
+\item A subset~$M \subseteq X$ of a set~$X$ is \emph{detachable} iff for any
+element~$x \in X$, either~$x \in M$ or~$x \not\in M$. Show that any inhabited
+detachable subset~$M \subseteq \NN$ contains a minimal element.
+\item Show that for any inhabited set~$M$ of natural numbers, it is \notnot the
+case that there is a number~$n \in M$ such that~$n \leq m$ for all~$m \in M$.
+\item Show that for every finitely generated vector space~$V$ over a field in the
+sense that nonunits are zero, it is \notnot the case that~$V$ has a basis.
+\item Verify that the assumption that any inhabited set of natural numbers
+contains a minimal element implies the law of excluded middle.\smallskip
+
+{\scriptsize\emph{Hint.} Consider a set of the form~$\{ n \in \NN \,|\, n = 1
+\vee \varphi \}$.\par}
+\item Give an explicit example of a subsheaf~$F$ of the constant
+sheaf~$\underline{\NN}$ on a topological space~$X$ such that
+\[ \Sh(X) \models \exists n\?F\_ \top
+  \quad\text{but}\quad
+  \Sh(X) \not\models \exists n\?F\_ \forall m\?F\_ n \leq m. \]
+\end{alphlist}
+\end{exercise}
+
+% FUTURE: Failure of IVT
+
 
 \section{Applications in constructive algebra}
 \label{sect:appl}
 
-Commutative algebra abounds with techniques to reduce given situations to
-simpler ones, for instance passing to a quotient or passing to a
-localization. These techniques facilitate short and elegant proofs, such as the
-following. (Section~\ref{sect:algebraic-preliminaries} contains some algebraic
-preliminaries.)
-
-\begin{quote}
-\textbf{Theorem.} Let~$M$ be an injective matrix with more columns than rows
-over a reduced ring~$A$. Then~$1 = 0$ in~$A$.
-
-\textbf{Proof.} \uwave{Assume not.} Then there is a \uwave{minimal
-prime ideal} $\ppp \subseteq A$. Since localization is exact, the matrix~$M$ is also injective when
-considered as a matrix over the stalk~$A_\ppp$. Since~$A_\ppp$ is a
-\uwave{field}, this is a contradiction to basic linear algebra. \qed
-\end{quote}
-
-However, these reduction techniques typically require \emph{transfinite
-methods}. The displayed proof appeals to the transfinite four times:
-\begin{enumerate}
-\item The proof proceeds by contradiction, hence requires the law of excluded
-middle, the strongest of the omniscience principles.
-\item The proof then requires a minimal prime ideal. Such an ideal can be
-obtained in two steps: First, the Boolean Prime Ideal
-Theorem~\BPIT is invoked to obtain some prime ideal. Then
-Zorn's lemma fabricates a minimal one.\footnote{Standard textbooks prove the statement ``any nontrivial
-ring has a prime ideal'' by using Zorn's lemma, which
-in the presence of the law of excluded middle is equivalent to the full axiom
-of choice; however, the statement is actually equivalent to the weaker Boolean
-Prime Ideal Theorem~\cite{scott:bpit,banaschewski-harting:lattice-aspects}.
-
-The combined statement ``any ring has a minimal prime ideal'' is equivalent to
-the full axiom of choice. This observation might be folklore; we learned the
-following argument from Will Savin~[XXX: reference]: Let~$(M_i)_{i \in I}$ be a
-disjoint family of inhabited sets. We consider the free ring~$\ZZ[\bigcup_i M_i]$ and
-its ideal~$I$ generated by~$\{ ab \,|\, i \in I, a,b \in M_i, a \neq b \}$. Assume
-that the factor ring~$\ZZ[\bigcup_i M_i]/I$ contains a minimal prime ideal. Its
-preimage~$\ppp \subseteq \ZZ[\bigcup_i M_i]$ is then a prime ideal which is
-minimal among all prime ideals containing~$I$. By primality, for any index~$i$,
-there is at most one element of~$M_i$ not in~$\ppp$. By minimality, for each
-index~$i$, there is exactly one element of~$M_i$ not in~$\ppp$: If there were
-none, then pick an element~$a \in M_i$ XXX}
-% https://mathoverflow.net/questions/98731/minimal-prime-ideals-and-axiom-of-choicerevised-version
-\item Finally, the proof exploits that the stalks of reduced rings at minimal
-prime ideals are fields. This requires two further invokations
-of~\BPIT.\footnote{By~\BPIT, the intersection of all prime ideals of~$A_\ppp$
-is its nilradical. Since~$A_\ppp$ is reduced, the nilradical is the zero ideal.
-Since the prime ideals of~$A_\ppp$ are in bijection with those prime ideals
-of~$A$ which are contained in~$\ppp$, the ring~$A_\ppp$ has exactly one prime
-ideal. By~\BPIT, any noninvertible element of~$A_\ppp$ is contained in some
-prime ideal, hence in the zero ideal. Thus~$A_\ppp$ is a field.}
-\end{enumerate}
-
-This state of affairs is not satisfactory. A statement as simple as the
-displayed example should admit an explicit calculational proof, presenting a
-concrete method for transforming the given conditional equations expressing
-injectivity into the equation~$1 = 0$ without any appeals to the transfinite.
-
-The completeness theorem for coherent logic~\cite[Corollary~D1.5.10]{johnstone:elephant} even
-gives an a priori reason why (for a given matrix size) a finitary proof has to
-exist. However, since the proof of the completeness theorem itself uses~\BPIT
-(and indeed is equivalent to it), it does not give any indication how such a
-proof could be found. (Still, beautiful constructive proofs are known and
-presented, for instance, in a celebrated short note by Fred Richman on nontrivial
-uses of trivial rings~\cite{richman:trivial-rings} and in the recent textbook by
-Henri Lombardi and Claude Quitté on constructive commutative
-algebra~\cite{lombardi-quitte:constructive-algebra}.)
-% FUTURE: Find precise reference.
-
-The key issue with the usual reduction techniques in commutative algebra is
-their dependence on \emph{ideal objects} such as prime or maximal ideals. In
-general, those objects can only be obtained by transfinite methods. However, in
-practice many arguments do not actually require completed ideal objects:
-Their computational core applies just as well to finite approximations of
-these ideal objects.
-
-It is then a challenging task in mathematical logic to devise efficient means to
-extract this obscured constructive content in a mostly mechanical manner. We
-envision to reinterpret any given classical proof employing ideal objects in a
-constructive fashion, realizing ideal objects as convenient fictions.
-
-Locales and sheaf models contribute to this program by providing new reduction
-techniques for commutative algebra. These techniques have a similar effect as the
-classical reduction techniques, but are powered by purely constructive
-underpinnings. In a nutshell, the idea is as follows.
-
+We recall from the introduction one way how locales and sheaves yield new
+reduction techniques for constructive algebra:
 \begin{enumerate}
 \item Instead of replacing a given ring with another (for instance a ring~$A$ with
 one of its stalks~$A_\ppp$ at a minimal prime ideal), we replace a given ring
@@ -2105,8 +2316,6 @@ with a \emph{sheaf of rings}.
 \item We then maintain the convenient illusion that we are working with a plain old ring
 instead of a sheaf by employing the sheaf semantics.
 \end{enumerate}
-
-In some cases, these new techniques XXX
 
 The goal of this section is to give a leisurely introduction to this procedure.
 We recall in Section~\ref{sect:algebraic-preliminaries} algebraic
@@ -2465,7 +2674,7 @@ theory of abelian groups extended by a constant~$x_g$ for each element~$g \in
 G$ and the axioms
 \begin{align*}
   \top &\vdash x_{g \circ h} = x_g \circ x_h & \text{(for each~$g,h \in G$)} \\
-  \top &\vdash x_g^{-1} = x_{g^{-1}} & \text{(for each~$g \in G$)} \\
+  \top &\vdash x_{g^{-1}} = x_g^{-1} & \text{(for each~$g \in G$)} \\
   \top &\vdash x_e = e
 \end{align*}
 That is, $G^\ab$ contains exactly those elements and exactly those
@@ -2651,6 +2860,36 @@ this machinery can be used to construct several kinds of spectra, including the
 ordinary spectrum of a ring. However, this machinery does have limitations, and
 in particular it cannot be used to construct free fields.
 \end{remark}
+
+\begin{remark}Given a ring~$A$, there is the geometric theory of \emph{local
+localizations} of~$A$. This is the theory of local rings extended by constants~$e_a$
+for each element~$a \in A$ and the following axioms:
+\begin{align*}
+  \top &\vdash e_0 = 0 \\
+  \top &\vdash e_1 = 1 \\
+  \top &\vdash e_{a + b} = e_a + e_b & \text{(for each~$a,b \in A$)} \\
+  \top &\vdash e_{ab} = e_a e_b & \text{(for each~$a,b \in A$)} \\
+  \top &\vdash e_{-a} = -e_a & \text{(for each~$a \in A$)} \\
+  \top &\vdash_{x:R} \bigvee_{a \in A} \bigvee_{s \in A} \bigl((\exists z\?R\_
+  e_s z = 1) \wedge e_s x = e_a\bigr) \\
+  e_a = 0 &\vdash \bigvee_{\substack{s \in A\\sa = 0}} (\exists z\?R\_ e_s z = 1) & \text{(for each~$a \in A$)}
+\end{align*}
+By the first five listed entries, a model~$R$ of this theory comes equipped
+with a ring homomorphism~$f : A \to R$. The remaining two entries ensure that~$R$ is
+a localization of~$A$, more precisely that it is the localization of~$A$
+at~$f^{-1}R^\times$.
+
+Since this theory is not propositional, Section~\ref{sect:presenting-frames}
+does not apply. There is, however, still a classifying topos of this theory, and it turns
+out that it coincides with the topos of sheaves over~$\Spec(A)$ -- mainly
+because the theory of local localizations of~$A$ is equivalent to the theory of
+prime filters of~$A$. Under this identification, the generic model of the local
+localization is precisely the sheaf~$A^\sim$, and it validates first-order
+sequents not expected from a local localization; as repeatedly stressed
+(statement~(\ref{item:field})), it is a field, even though the theory of local
+localizations does not prove the field condition.
+\end{remark}
+% FUTURE: Cite Nullstellensatz paper
 
 
 \subsection{Understanding the sheaf model}
@@ -3440,5 +3679,5 @@ XXX Cite Frames and Locales: Topology Without Points
 
 X \models phi
 
-FUTURE:
-* Why the name "geometric"?
+FUTURE: Why the name "geometric"?
+FUTURE: Forcing

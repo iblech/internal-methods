@@ -118,11 +118,57 @@ Strada le Grazie 15 \\
 37134 Verona, Italy}
 
 \begin{abstract}
-XXX abstract
+XXX This contribution gives an introduction to the theory of locales,
 \end{abstract}
 \body
 
 \tableofcontents
+\bigskip
+
+\noindent
+The purpose of this contribution is to give a coherent account of a particular
+narrative which links locales, geometric theories, sheaf semantics and
+constructive commutative algebra. We are hoping to convey a firm grasp of three
+ideas:
+
+\begin{enumerate}
+\item Locales are a kind of space in which opens instead of points are
+fundamental.
+% Any propositional geometric theory gives rise to a locale of models.
+\item Sheaf semantics allows us to explore mathematical objects from custom-tailored
+mathematical universes.
+\item Without loss of generality, any reduced ring is a field.
+\end{enumerate}
+
+Unlike some other texts on locales or sheaves, this text is set in a
+constructive but impredicative metatheory. We do not use the law of excluded
+middle nor any version of the axiom of choice, and we also do not adopt any
+nonclassical principles. We freely use powersets, but more for linguistic
+convenience than by necessity.
+
+In particular, the central idea presented in
+Section~\ref{sect:appl}, the reduction technique by which we can pretend that a
+given reduced ring is a field, is very robust with respect to the metatheory.
+Even though we chose a semantic point of view for its derivation, the final
+result is a pure syntactical transformation. As it stands, this text could be
+formalized in the kind of type theory which is valid in
+toposes~\cite{maietti:modular-correspondence} or in~\textsc{izf}~\cite{crosilla:cst-izf}.
+
+For readers familiar with the topics of this contribution, we would like to
+make a couple of remarks. We present a self-contained proof of the simple
+version of Barr's theorem as Theorem~\ref{thm:baby-barr}. For reducing
+intuitionistic provability to geometric provability, we employ (what amounts
+to) the syntactic site, similar to the refined completeness result
+by Thierry Coquand~\cite{coquand:site} but closer to the standard description
+of the syntactic site. For reducing classical provability to intuitionistic
+provability, we employ a variant of the double negation translation. We were
+not able to track down a reference to this approach in the context of
+infinitary logic, but the basic idea has long been known and summarized, for
+instance, in Ref.~\refcite{aczel:russell-prawitz}. % XXX first-order completion. We probably should introduce sites but don't
+
+
+\subsection*{Introduction}
+\addcontentsline{toc}{section}{Introduction}
 
 \paragraph{Locales.}
 
@@ -842,7 +888,7 @@ with the completely prime filters of~$\O(X)$.
 \begin{exercise}{Dense opens}%
 \label{ex:dense-opens}%
 An open~$U$ of a locale is \emph{dense} iff for any open~$V$, $U \wedge V =
-\bot$ implies~$U = \bot$. 
+\bot$ implies~$U = \bot$.
 \begin{alphlist}[(b)]
 \item Let~$M$ be a set and endow it with the discrete topology. Show that an
 open~$U \in \O(L(M))$ is dense iff for any element~$x \in M$, $\neg\neg(x \in
@@ -1775,11 +1821,13 @@ corresponding theorem about sheaves of rings.
 
 There is only one caveat to keep in mind: Irrespective of its status in the
 metatheory, the interpretation of the law of excluded middle with the sheaf
-semantics is, for most locales~$X$, false (Example~\ref{ex:negneg}). People who
-are familiar with other flavors of constructive mathematics should also observe
+semantics is, for most locales~$X$, false (Example~\ref{ex:negneg}).
+Practitioners of other flavors of constructive mathematics should also observe
 that the interpretation of any form of the axiom of choice, even countable
-choice or weak countable choice, is false for most locales~$X$. (For discrete
-locales, these axioms pass from the metatheory to the universe of sheaves.)
+choice or weak countable choice, is false for most locales~$X$. (About the only
+exception are locales induced from discrete topological spaces. For such
+locales, the law of excluded middle and countable, dependent or full choice
+pass from the metatheory to the universe of sheaves.)
 
 Incidentally, that the sheaf semantics is not sound with respect to classical
 logic allows us to illustrate the failure of certain classical theorems in

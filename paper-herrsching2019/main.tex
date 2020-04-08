@@ -2247,6 +2247,7 @@ the subsheaves of~$1$ and the opens of~$X$.
 \end{exercise}
 
 \begin{exercise}{A geometric interpretation of double negation}%
+\label{ex:negneg-interpretation}%
 Let~$\varphi$ be a formula over an open~$U$ of a locale~$X$.
 \begin{alphlist}[(c)]
 \item Show that there is a largest open,
@@ -2566,19 +2567,53 @@ is ``any nonzero element is invertible''.
 
 XXX when those other conditions satisfied
 
-\paragraph{Double negation stability.}
-XXX explain that it is surprising and explain usefulness, then give proof
+\paragraph{Double negation stability.} Generally in constructive mathematics,
+two elements being \notnot equal does not imply that they are actually equal:
+\begin{enumerate}
+\item Sheaves give counterexamples: The interpretation of the statement that
+two given sections of a sheaf are \notnot equal with the sheaf semantics is
+that they agree on a dense open (Exercise~\ref{ex:negneg-interpretation}). This
+does not generally imply that they agree on all of their domain.
+\item Realizability gives counterexamples: Realizers of negated statements are
+always uninformative; in the case that a statement~$\varphi$ has a realizer at
+all, the statement~$\neg\neg\varphi$ is realized by any number whatsoever.
+Only in certain cases, where a realizer can be algorithmically reconstructed
+from the mere promise that a realizer exists, is~$\neg\neg\varphi \Rightarrow
+\varphi$ realizable.
+\end{enumerate}
 
-\begin{proposition}The sheaf of rings~$A^\sim$ has $\neg\neg$-stable equality:
+Hence statement~(\ref{item:negneg-stable}) comes at a surprise. It is useful to
+import some of classical logic into the constructive setting of sheaves
+on~$\Spec(A)$. For instance, the law of excluded middle is constructively valid
+in the form
+\[ \neg\neg(\varphi \vee \neg\varphi). \]
+Combined with the observation
+\[ \bigl(\neg\neg\chi \wedge (\chi \Rightarrow \neg\neg\psi)\bigr) \Longrightarrow \neg\neg\psi \]
+we can hence freely use the law of excluded middle in constructive arguments --
+but at the price that the conclusion~$\neg\neg\psi$ is doubly negated, which is
+why typically this observation is not of much use.
+
+However, double negation stability of equality does allow us to conclude~$\psi$
+from the a~priori much weaker premiss~$\neg\neg\psi$, if~$\psi$ is of the
+form~$(s =_{A^\sim} t)$.
+
+This stability is a consequence of the field property. In case that the
+ring~$A$ is not reduced and hence~$A^\sim$ not a field, a substitute is given
+in Exercise~\ref{ex:local-global}. We stress that the proof of
+statement~(\ref{item:negneg-stable}) does not require double negation stability
+of~$A$ on the metalevel; in fact, it is fully constructive.
+
+\begin{proposition}If~$A$ is reduced, then the sheaf of rings~$A^\sim$ has $\neg\neg$-stable equality:
 \[ \Spec(A) \models \forall x,y\?A^\sim\_ \neg\neg(x = y) \Rightarrow x = y. \]
 \end{proposition}
 
-\begin{proof}We argue internally. Let~$x,y \? A^\sim$ be given such
+\begin{proof}We argue internally in the universe of sheaves, using the sheaf
+semantics. Let~$x,y \? A^\sim$ be given such
 that~$\neg\neg(x = y)$. We will verify that~$x - y$ is not invertible; by the
 field condition, this will imply~$x - y = 0$, hence~$x = y$.
 
 So assume that~$x - y$ is invertible. Then~$\neg(x - y = 0)$, since if~$x - y =
-0$, then~$1 = (x-y) (x-y)^{-1} = 0$ in contradiction to~$1 \neq 0$. This is a
+0$, then~$1 = (x-y) (x-y)^{-1} = 0$ in contradiction to~$1 \neq 0$. Hence we have a
 contradiction to the assumption~$\neg\neg(x-y=0)$.\end{proof}
 
 
@@ -2605,10 +2640,19 @@ A ring is \emph{anonymously Noetherian} if and only if any of its ideals is
 \notnot finitely generated.
 \end{definition}
 
-% Ex.: Z finitely generated
+\begin{example}The assumption that any ideal of~$\ZZ$ is finitely generated implies
+the law of excluded middle. But we can prove, constructively, that~$\ZZ$ is
+anonymously Noetherian: Let~$\aaa$ be an ideal of~$\ZZ$ and assume that~$\aaa$
+is not finitely generated. Then~$1 \not\in \aaa$, as else~$\aaa = (1)$ would be
+finitely generated. Also~$2 \not\in \aaa$, as else (noting
+that~$1\not\in\aaa$),~$\aaa = (2)$. Continuing in this manner, we may
+conclude~$n \not\in \aaa$ for every number~$n \geq 1$. Hence~$\aaa = (0)$. But
+this is a contradiction to the assumption that~$\aaa$ is not finitely
+generated.
+\end{example}
 
-This definition is at odds with the idea that constructive mathematics should
-be informative, because it only expresses that it is impossible for no finite
+Definition~\ref{defn:anonymously-noetherian} is at odds with the idea that constructive mathematics should
+be informative: It only expresses that it is impossible for no finite
 generating family to exist without requiring that such a family should be given
 -- it may remain \emph{anonymous}.\footnote{We borrowed the term ``anonymous''
 from type theory, where it is used with a similar meaning (see for instance
@@ -2616,44 +2660,28 @@ Ref.~\refcite{kraus-escardo-coquand-altenkirch:anonymous}). However, there is a
 subtle difference: The conjunction of ``there is at most one element~$x$'' and
 ``there is anonymously an element~$x$ in the sense of type theory'' implies
 that there actually exists an element~$x$. In contrast, \notnot existence does
-not.}
+not.} And while Hilbert's basis theorem, stating that if a ring~$B$ is
+Noetherian then so is the polynomial ring~$B[X]$, does have a constructive
+proof for the anonymous version of the Noetherian condition,\footnote{For
+instance, a careful reading of the textbook proof given
+in~\cite[Theorem~7.5]{atiyah-macdonald:commutative-algebra} shows that the
+basis theorem holds intuitionistically as stated.} this result seems empty: For
+it just transforms one unconcrete promise (generators of each ideal of~$B$
+exist somewhere, platonically) into another (generators for ideals of~$B[X]$
+exist somewhere, platonically).
 
-However, it is still useful in constructive algebra when interpreted by the
-sheaf semantics: If~$A$ is reduced, then~$A^\sim$ is anonymously Noetherian.
-XXX
+Curiously, the anonymous version of the Noetherian condition is still useful in
+constructive algebra when interpreted by the sheaf semantics: This is firstly
+because it just so happens that~$A^\sim$ is anonymously Noetherian if~$A$ is reduced,
+and secondly because the interpretation of double negation with the sheaf
+semantics does have nontrivial content (as evidenced by
+statement~(\ref{item:negneg-stable})).
 
-%\begin{ex}There is an intuitionistic proof that the ring~$\ZZ$ is anonymously
-%Noetherian: Let~$\aaa \subseteq \ZZ$ be any ideal. Under the assumption that
-%either there exists a nonzero element in~$\aaa$ or not, the ideal~$\aaa$ is
-%\notnot finitely generated, even \notnot principal: For in the first case, a
-%minimal element~$d$ of~$\aaa \cap \NN^+$ (which \notnot exists) witnesses~$\aaa
-%= (d)$. In the second case the ideal~$\aaa$ is the zero ideal. Since the
-%assumption is \notnot satisfied, the ideal~$\aaa$ is \notnot \notnot finitely
-%generated, so \notnot finitely generated. (We remark on this proof scheme on
-%page~\pageref{proof-scheme-boxed-statements}.) \end{ex}
-%
-%It appears that this Noetherian condition has not been studied in the
-%literature on constructive algebra. Indeed, from the philosophical and the
-%computational point of view on constructive mathematics, the notion of an anonymously
-%Noetherian ring is not very useful: From an intuitionistic proof that a given
-%ideal is finitely generated one can mechanically extract explicit generators,
-%thereby satisfying computational or philosophical demands (``the generators are
-%really there''). In contrast, an intuitionistic proof that a given ideal is
-%\notnot finitely generated doesn't contain computational content in general.
-%
-%Along the same lines, one could dismiss the fact (proved below) that Hilbert's
-%basis theorem, stating that~$A[X]$ is Noetherian if~$A$ is, holds for the
-%notion of anonymously Noetherian rings. In fact, one could feel mocked by this
-%version of Hilbert's basis theorem: It promises that any ideal of~$A[X]$
-%``has'' finitely many generators in some Platonic sense (without providing any
-%clue on how one might go on to find the generators -- they remain \emph{anonymous}), provided
-%that any ideal of~$A$ ``has'' finitely many generators in the same
-%sense.\footnote{}
-
-\begin{proposition}The sheaf of rings~$A^\sim$ is anonymously
+\begin{proposition}\label{prop:anon-noeth}
+If~$A$ is reduced, then the sheaf of rings~$A^\sim$ is anonymously
 Noetherian.\end{proposition}
 
-\begin{proof}We argue internally. Let~$\aaa \subseteq A^\sim$ be an ideal.
+\begin{proof}We argue internally, under the sheaf semantics. Let~$\aaa \subseteq A^\sim$ be an ideal.
 Assume that~$\aaa$ is not finitely generated. We will verify that then~$\aaa =
 (0)$, hence that~$\aaa$ is finitely generated; contradiction.
 
@@ -2661,6 +2689,14 @@ Let~$x \in \aaa$. If~$x$ is invertible, then~$\aaa = (1)$ is finitely
 generated. Hence~$x$ is not invertible. Thus~$x = 0$ because~$A^\sim$ is a
 field.
 \end{proof}
+
+\begin{remark}The condition for a ring to be (anonymously) Noetherian is a
+higher-order condition and hence out of scope of the first-order version of the
+sheaf semantics presented in Section~\ref{sect:sheaf-semantics}. However, the
+general version of the sheaf semantics is sound with respect to intuitionistic
+higher-order logic, hence the proof of Proposition~\ref{prop:anon-noeth} is
+valid.
+\end{remark}
 
 
 \subsection{An algebraic origin story}
@@ -3172,22 +3208,36 @@ allows us to harness convoluted properties in simple language. The unrolled
 monstrosity in the proof of Proposition~\ref{prop:field-property} is not
 memorable at all and unlikely to find its way into human-written proofs.
 However, in the form~``$A^\sim$ is a field'', it becomes easily accessible.
+This state of affairs is the more pronounced the more negations and especially
+double negations occur in the proof.
 
-This state of affairs is even more pronounced for higher-order formulas such as
-the condition to be anonymously Noetherian. For instance, XXX
+%\begin{quote}
+%For any element~$f \in A$ and any (not necessarily quasicoherent) sheaf of
+%ideals~$\J \hookrightarrow A^\sim[X_1,\ldots,X_n]|_{D(f)}$: If
+%\begin{quote}
+%for any element~$g \in A$ the condition that
+%\begin{quote}
+%the sheaf~$\J$ is of finite type on~$D(fg)$
+%\end{quote}
+%implies that~$fg$ is nilpotent,
+%\end{quote}
+%then~$f$ is nilpotent.
+%\end{quote}
 
+\begin{example}For future reference, and also for giving a different
+perspective on statement~(\ref{item:negneg-stable}), we unroll here the
+interpretation of~$f \models \neg\neg\varphi$. It is:
 \begin{quote}
-For any element~$f \in A$ and any (not necessarily quasicoherent) sheaf of
-ideals~$\J \hookrightarrow A^\sim[X_1,\ldots,X_n]|_{D(f)}$: If
-\begin{quote}
-for any element~$g \in A$ the condition that
-\begin{quote}
-the sheaf~$\J$ is of finite type on~$D(fg)$
+For any element~$g \in A$, \\
+${\qquad}$ if for any element~$h \in A$, \\
+${\qquad\qquad}$ if~$fgh \models \varphi$, \\
+${\qquad\qquad}$ then~$fgh$ is nilpotent, \\
+${\qquad}$ then~$fg$ is nilpotent.
 \end{quote}
-implies that~$fg$ is nilpotent,
-\end{quote}
-then~$f$ is nilpotent.
-\end{quote}
+In the case that~$A$ is reduced and~$f$ is the unit element of~$A$, this
+condition implies (by setting~$g \defeq 1$): ``If~$h = 0$ is the only element of~$A$
+such that~$h \models \varphi$, then~$1 = 0$ in~$A$.''
+\end{example}
 
 \subsection{Evaluating test cases}
 \label{sect:example-applications}

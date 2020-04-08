@@ -118,88 +118,19 @@ Strada le Grazie 15 \\
 37134 Verona, Italy}
 
 \begin{abstract}
-XXX This contribution gives an introduction to the theory of locales,
-\end{abstract}
-\body
-
-\tableofcontents
-\bigskip
-
-\noindent
 The purpose of this contribution is to give a coherent account of a particular
 narrative which links locales, geometric theories, sheaf semantics and
 constructive commutative algebra. We are hoping to convey a firm grasp of three
 ideas:
-
-\begin{enumerate}
-\item Locales are a kind of space in which opens instead of points are
+(1)~Locales are a kind of space in which opens instead of points are
 fundamental.
-% Any propositional geometric theory gives rise to a locale of models.
-\item Sheaf semantics allows us to explore mathematical objects from custom-tailored
+(2)~Sheaf semantics allows us to explore mathematical objects from custom-tailored
 mathematical universes.
-\item Without loss of generality, any reduced ring is a field.
-\end{enumerate}
+(3)~Without loss of generality, any reduced ring is a field.
+\end{abstract}
+\body
 
-Unlike some other texts on locales or sheaves, this text is set in a
-constructive (but impredicative) metatheory. We do not use the law of excluded
-middle nor any version of the axiom of choice, and we also do not adopt any
-nonclassical principles. We freely use powersets, but more for linguistic
-convenience than by necessity.
-
-In particular, the central idea presented in
-Section~\ref{sect:appl}, the reduction technique by which we can pretend that any
-given reduced ring is a field, is very robust with respect to the metatheory.
-Even though we chose a semantic point of view for its derivation, the final
-result is a purely syntactical transformation. As it stands, this text could be
-formalized in the kind of type theory which is valid in
-toposes~\cite{maietti:modular-correspondence} or in~\textsc{izf}~\cite{crosilla:cst-izf}.
-
-For readers familiar with the themes of this contribution, we would like to
-make a couple of remarks.
-\begin{enumerate}
-\item We present a self-contained proof of the simple
-version of Barr's theorem as Theorem~\ref{thm:baby-barr}. For reducing
-intuitionistic provability to geometric provability, we employ (what amounts
-to) the syntactic site, similar to the refined completeness result
-by Thierry Coquand~\cite{coquand:site} but closer to the standard description
-of the syntactic site. For reducing classical provability to intuitionistic
-provability, we employ a variant of the double negation translation. We were
-not able to track down a reference to this approach in the context of
-infinitary logic, but the basic idea has long been known and is summarized, for
-instance, in Ref.~\refcite{aczel:russell-prawitz}.
-\item In Section~\ref{sect:sheaves}, where we introduce sheaves, we should
-probably also introduce sites. They would fit the narrative well and allow for
-the construction of generic models of arbitrary geometric theories and not only
-propositional ones. They would also allow us to cut down on the metatheory,
-sitting comfortably within predicative environments such as arithmetic
-universes~\cite{maietti:au,vickers:sketches} or~\textsc{czf}.
-We do not, however, mainly to not presume
-prerequisites in category theory.
-\item The technique presented in Section~\ref{sect:appl} can be
-regarded as a first-order (and, if desired, higher-order) coating of an
-underlying geometric theory. We propose to take this coating seriously; in
-particular to make good use of surprising nongeometric sequents validated by the
-generic model; and, for ease of use by algebraists, to cast it in semantic terms,
-even though it is all syntax behind the scenes.\footnote{By now it is an established idea in constructive algebra that we should
-consider the theory of prime filters instead of the prime filters themselves,
-hoping that, for instance, a given mathematical proof of the statement~``no
-prime filter contains~$x$'' can also be cast in the
-geometric language of the theory, which then yields the nilpotency of~$x$
-constructively. If the given proof uses only geometric reasoning, this is
-immediate; if it uses intuitionistic reasoning, it can be compiled down (for
-instance precisely by the technique we use); and if it uses classical reasoning, a
-version of Barr's theorem might be applicable. The elusive actual prime filters
-of the ring are replaced with the concrete and purely syntactical generic prime
-filter.
-
-This approach misses that the generic model is interesting on its own and in
-particular that it satisfies peculiar nongeometric sequents such as ``nonunits
-are nilpotent'' and ``any ideal is \notnot finitely generated''. In this sense,
-the generic model is better than the actual models it aims to replace, and we
-believe that potential applications of this insight should be properly
-explored.}
-\end{enumerate}
-
+\tableofcontents
 
 \subsection*{Introduction}
 \addcontentsline{toc}{section}{Introduction}
@@ -404,6 +335,68 @@ mirror image~$M^\sim$ is \notnot free. This observation is the basis for a
 new proof of Grothendieck's generic freeness lemma, reviewed in
 Section~\ref{sect:example-applications}, which is shorter and arguably more
 perspicuous than all previously known classical proofs.
+
+
+\paragraph{Remark on the metatheory.}
+Unlike some other texts on locales or sheaves, this text is set in a
+constructive (but impredicative) metatheory. We do not use the law of excluded
+middle nor any version of the axiom of choice, and we also do not adopt any
+nonclassical principles. We freely use powersets, but more for linguistic
+convenience than by necessity.
+
+In particular, the central idea presented in
+Section~\ref{sect:appl}, the reduction technique by which we can pretend that any
+given reduced ring is a field, is very robust with respect to the metatheory.
+Even though we chose a semantic point of view for its derivation, the final
+result is a purely syntactical transformation. As it stands, this text could be
+formalized in the kind of type theory which is valid in
+toposes~\cite{maietti:modular-correspondence} or in~\textsc{izf}~\cite{crosilla:cst-izf}.
+
+
+\paragraph{Notes for readers familiar with the themes of this contribution.}
+We present a self-contained proof of the simple
+version of Barr's theorem as Theorem~\ref{thm:baby-barr}. For reducing
+intuitionistic provability to geometric provability, we employ (what amounts
+to) the syntactic site, similar to the refined completeness result
+by Thierry Coquand~\cite{coquand:site} but closer to the standard description
+of the syntactic site. For reducing classical provability to intuitionistic
+provability, we employ a variant of the double negation translation. We were
+not able to track down a reference to this approach in the context of
+infinitary logic, but the basic idea has long been known and is summarized, for
+instance, in Ref.~\refcite{aczel:russell-prawitz}.
+
+In Section~\ref{sect:sheaves}, where we introduce sheaves, we should
+probably also introduce sites. They would fit the narrative well and allow for
+the construction of generic models of arbitrary geometric theories and not only
+propositional ones. They would also allow us to cut down on the required metatheory,
+sitting comfortably within predicative environments such as arithmetic
+universes~\cite{maietti:au,vickers:sketches} or~\textsc{czf}.
+We do not, however, mainly to not require
+prerequisites in category theory.
+
+The technique presented in Section~\ref{sect:appl} can be
+regarded as a first-order (and, if desired, higher-order) coating of an
+underlying geometric theory. We propose to take this coating seriously; in
+particular to make good use of surprising nongeometric sequents validated by the
+generic model; and, for ease of use by algebraists, to cast it in semantic terms,
+even though it is all syntax behind the scenes.\footnote{By now it is an established idea in constructive algebra that we should
+consider the theory of prime filters instead of the prime filters themselves,
+hoping that, for instance, a given mathematical proof of the statement~``no
+prime filter contains~$x$'' can also be cast in the
+geometric language of the theory, which then yields the nilpotency of~$x$
+constructively. If the given proof uses only geometric reasoning, this is
+immediate; if it uses intuitionistic reasoning, it can be compiled down (for
+instance precisely by the technique we use); and if it uses classical reasoning, a
+version of Barr's theorem might be applicable. The elusive actual prime filters
+of the ring are replaced with the concrete and purely syntactical generic prime
+filter.
+
+This approach misses that the generic model is interesting on its own and in
+particular that it satisfies peculiar nongeometric sequents such as ``nonunits
+are nilpotent'' and ``any ideal is \notnot finitely generated''. In this sense,
+the generic model is better than the actual models it aims to replace, and we
+believe that potential applications of this insight should be properly
+explored.}
 
 
 \section{Locales}
@@ -1003,7 +996,8 @@ U_a$ and~$U_a \wedge U_b \preceq \bigvee\{ \top \,|\, a = b \}$.
 \subsection{Geometric theories}
 \label{sect:geometric-theories}
 
-\begin{definition}A \emph{geometric theory} consists of
+\begin{definition}\label{defn:geometric-theory}
+A \emph{geometric theory} consists of
 \begin{enumerate}
   \item a set of sorts: $X$, $Y$, $Z$, \ldots
   \item a set of function symbols: $f : X \times Y \to Z$, \ldots
@@ -1025,6 +1019,9 @@ subdeductions instead of requiring that subdeductions are given by a function.
 Details on the implementation in~\textsc{czf} can be found in
 Ref.~\cite[Definition~5.2]{rathjen:barr}.}
 \end{definition}
+
+We refer to Ref.~\cite[Section~D1.1]{johnstone:elephant} for a more detailed
+version of Definition~\ref{defn:geometric-theory}.
 
 {\makeatletter
 \newcommand*{\shifttext}[1]{%
@@ -1183,7 +1180,7 @@ example is the geometric theory of surjections~$\NN \twoheadrightarrow \RR$
 reviewed below.
 \item Perhaps the most important difference to formal systems is that geometric
 theories often depend on given mathematical objects. For instance, for each
-ring~$A$, there is the geometric theory of prime ideals of~$A$. This theory
+ring~$A$, there is the geometric theory of prime filters of~$A$. This theory
 will play a crucial role in Section~\ref{sect:appl}.
 \end{enumerate}
 
@@ -1364,7 +1361,7 @@ geometric logic.
 middle and the axiom of choice proves a geometric sequent, then so does
 geometric logic.
 \end{enumerate}
-Barr's theorem has ramifications to constructive algebra, as pointed out by
+Barr's theorem has ramifications for constructive algebra, as pointed out by
 Gavin Wraith~\cite{wraith:intuitionistic-algebra}.
 For instance, the \emph{Nullstellensatz} is the statement that for any
 system~$f_1,\ldots,f_n \in K[X_1,\ldots,X_m]$ of polynomials over an
@@ -1402,7 +1399,7 @@ these proofs could be found or what an upper bound on their length is.
 However, knowing that these proofs exist platonically is still worthwhile, as
 we can be assured that looking for these proofs is not bound to fail. Indeed,
 for the example of the Nullstellensatz, a constructive proof is given
-as~\cite[Theorem~9.7]{lombardi-quitte:constructive-algebra}.
+in Ref.~\cite[Theorem~9.7]{lombardi-quitte:constructive-algebra}.
 
 Also, if one is interested in constructive proofs not because of their
 algorithmic content or of the mathematical insights they communicate but more
@@ -1559,7 +1556,7 @@ if its set of sorts is empty.\end{definition}
 As a consequence, a propositional geometric theory consists just of a set of
 nullary relation symbols and a set of axioms. Associated to any such
 theory~$\TT$ is its \emph{Lindenbaum algebra}: This is the partially ordered
-set of the formulas over the signature of~$\TT$ modulo~$\TT$-provable
+set of the geometric formulas over the signature of~$\TT$ modulo~$\TT$-provable
 equivalence, equipped with the ordering given by~$[\varphi] \preceq [\psi]$ iff~$\TT$
 proves~$\varphi \vdash \psi$.
 
@@ -2067,9 +2064,8 @@ with truth at all points.
 % FUTURE: Give better motivation
 
 \begin{proposition}\label{prop:at-points}
-Let~$\TT$ be a geometric theory. Let~$\TT_0$ be the same
-theory as~$\TT$ but without any axioms. Let~$M$ be a sheaf model
-of~$\TT_0$ on a locale~$X$ (hence just a \emph{sheaf structure}) and consider
+Let~$\TT$ be a geometric theory without any axioms. Let~$M$ be a sheaf model
+of~$\TT$ on a locale~$X$ (hence just a \emph{sheaf structure}) and consider
 the structures~$M_x$ obtained by computing the stalks at points~$x \in \Pt(X)$.
 Let~$\sigma$ be a geometric sequent.
 Then:
@@ -2160,8 +2156,18 @@ two-element sets.
 {\scriptsize\emph{Hint.} Employ countably many relation symbols~$R_n
 \hookrightarrow X \times \cdots \times X$, where~$R_n(x_1,\ldots,x_n)$ should
 signify that the elements~$x_1,\ldots,x_n$ exhaust all elements of~$X$. A
-solution is given in~\cite[Example~D1.1.7(k)]{johnstone:elephant}.\par}
+solution is given in Ref.~\cite[Example~D1.1.7(k)]{johnstone:elephant}.\par}
 \end{alphlist}
+\end{exercise}
+
+\begin{exercise}{Issues of size}%
+Working in~\textsc{izf}, show that the Lindenbaum algebra of a propositional
+geometric theory~$\TT$ can be realized as a set, even though the class of
+geometric formulas is typically a proper class.\smallskip
+
+\noindent{\scriptsize\emph{Hint.} Use that any geometric formula is provably equivalent
+to one of the form~$\bigvee_i \varphi_i$, where each formula~$\varphi_i$ is a
+conjunction of nullary relation symbols.\par}
 \end{exercise}
 
 \begin{exercise}{Discrete locales}%

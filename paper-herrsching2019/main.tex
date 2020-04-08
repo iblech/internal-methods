@@ -631,7 +631,8 @@ map of locales'') is a frame homomorphism~$\O(X') \to \O(X)$.\end{definition}
 In place of the open sets of points, locales have arbitrary \emph{opens}, the
 elements of their underlying frame. The opens of locales behave similar to the
 open sets in topology in that arbitrary unions and finite intersections make
-sense; but unlike before, they need not be sets of points.
+sense; but unlike before, they need not be sets of points. Occasionally we
+abuse notation and denote the largest open of a locale~$X$ by~``$X$''.
 
 Examples for locales include the following.
 \begin{enumerate}
@@ -1792,6 +1793,9 @@ formulas what it means for a formula~$\varphi$ over an open~$U$ to be
 \emph{forced by~$U$} or \emph{true over~$U$}, written~``$U \models \varphi$''. The
 main differences with the perhaps more familiar Kripke semantics are marked.
 The sheaf semantics is also called \emph{Kripke--Joyal semantics}.
+
+For the special case that~$U$ is the largest open of~$X$ we also write~``$\Sh(X)
+\models \varphi$'' or~``$X \models \varphi$''.
 
 \begin{table}[ht]
   \tbl{The (first-order fragment of) the sheaf semantics of a locale~$X$}{\begin{tabular}{@{}l@{\ \ }c@{\ \ }l@{}}
@@ -3691,8 +3695,6 @@ Ref.~\refcite{blechschmidt:kaplansky}.\par}
 \bibliography{generalized-spaces}
 
 \end{document}
-
-X \models phi
 
 FUTURE: Why the name "geometric"?
 FUTURE: Forcing

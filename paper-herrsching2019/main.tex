@@ -200,17 +200,6 @@ believe that potential applications of this insight should be properly
 explored.}
 \end{enumerate}
 
-\paragraph{Acknowledgments.} We are grateful to Peter Arndt, Andrej Bauer,
-Martin Brandenburg, Thierry Coquand, Martín Escardó, Simon Henry, Matthias
-Hutzler, Milly Maietti, Marc Nieper-Wißkirchen, Alexander Oldenziel, Anja
-Petković, Peter Schuster, Helmut Schwichtenberg, Steve Vickers and Daniel
-Wessel for invaluable discussions shaping this work. We thank the
-organizers Klaus Mainzer, Peter Schuster and Helmut Schwich\-ten\-berg of
-\emph{Proof and Computation 2019}, where this work was presented, for their
-kind invitation and for creating a beautiful and stimulating meeting. We also
-express our thanks to the local coordinator Chuangjie Xu and to all
-participants of that meeting.
-
 
 \subsection*{Introduction}
 \addcontentsline{toc}{section}{Introduction}
@@ -1313,7 +1302,14 @@ following axioms:
 \end{align*}
 
 For many purposes, the theory of prime \emph{filters} is actually more
-relevant. Classically, a prime filter of a ring is simply the complement of a
+relevant.\footnote{This is not to say that all the issues with prime ideals in
+constructive mathematics evaporate when turning to prime filters. For a time it
+was believed that algebraic geometry could be developed constructively if only
+the spectrum of a ring was defined as the topological space of its prime
+filters~\cite[Section~3]{lawvere:icm-address}, but this hope turned out to be
+too naive. André Joyal gave an explicit example of a nontrivial sheaf model of
+the theory of rings without any prime filters~\cite[pp.~200f.]{tierney:spectrum}.}
+Classically, a prime filter of a ring is simply the complement of a
 prime ideal; constructively, it is prudent to turn prime ideals upside down and axiomatize this notion directly.
 Hence the theory of prime filters of~$A$ has no sorts, no function symbols, one
 relation symbol~``$D(x)$'' for each element~$x \in A$ and the following
@@ -1882,7 +1878,17 @@ unprovability in intuitionistic logic.
 We now begin the formal development of the sheaf semantics. More background and
 examples from theoretical computer science, analysis and differential geometry
 are contained in Ref.~\refcite{blechschmidt:custom-tailored}, which should be
-regarded as a companion paper to this contribution.
+regarded as a companion paper to this contribution. We also recommend
+Christopher Mulvey's tutorial~\cite{mulvey:repr}, which culminates in a proof
+of the Serre--Swan theorem using the sheaf semantics. Standard references for
+the sheaf semantics include Refs.
+\cite[Chapter~VI]{moerdijk-maclane:sheaves-logic},
+\cite[Chapter~14]{goldblatt:topoi},
+\cite[Section~5]{caramello:preliminaries},
+\cite[Sections~12--15]{streicher:ctcl},
+\cite[Chapter~6]{borceux:handbook3},
+\cite[Part~D]{johnstone:elephant} and~[\refcite{shulman:categorical-logic}],
+which also gives a detailed account of useful type theory.
 
 \paragraph{Definition and basic properties of the sheaf semantics.}
 Let~$X$ be a locale. A \emph{formula over an open~$U \in \O(X)$} is an
@@ -3853,6 +3859,23 @@ only if it is finite locally free.\smallskip
 Ref.~\refcite{blechschmidt:kaplansky}.\par}
 \end{alphlist}
 \end{exercise}
+
+
+\section*{Acknowledgments}
+
+We are grateful to Peter Arndt, Andrej Bauer,
+Martin Brandenburg, Thierry Coquand, Martín Escardó, Simon Henry, Matthias
+Hutzler, Milly Maietti, Marc Nieper-Wißkirchen, Alexander Oldenziel, Anja
+Petković, Peter Schuster, Helmut Schwichtenberg, Steve Vickers and Daniel
+Wessel for invaluable discussions shaping this work.
+
+We thank the
+organizers Klaus Mainzer, Peter Schuster and Helmut Schwich\-ten\-berg of
+\emph{Proof and Computation 2019}, where this work was presented, for their
+kind invitation and for creating a beautiful and stimulating meeting. We also
+express our thanks to the local coordinator Chuangjie Xu and to all
+participants of that meeting.
+
 
 \bibliographystyle{ws-rv-van}
 \bibliography{generalized-spaces}

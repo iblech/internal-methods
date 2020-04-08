@@ -141,21 +141,23 @@ mathematical universes.
 \end{enumerate}
 
 Unlike some other texts on locales or sheaves, this text is set in a
-constructive but impredicative metatheory. We do not use the law of excluded
+constructive (but impredicative) metatheory. We do not use the law of excluded
 middle nor any version of the axiom of choice, and we also do not adopt any
 nonclassical principles. We freely use powersets, but more for linguistic
 convenience than by necessity.
 
 In particular, the central idea presented in
-Section~\ref{sect:appl}, the reduction technique by which we can pretend that a
+Section~\ref{sect:appl}, the reduction technique by which we can pretend that any
 given reduced ring is a field, is very robust with respect to the metatheory.
 Even though we chose a semantic point of view for its derivation, the final
-result is a pure syntactical transformation. As it stands, this text could be
+result is a purely syntactical transformation. As it stands, this text could be
 formalized in the kind of type theory which is valid in
 toposes~\cite{maietti:modular-correspondence} or in~\textsc{izf}~\cite{crosilla:cst-izf}.
 
 For readers familiar with the topics of this contribution, we would like to
-make a couple of remarks. We present a self-contained proof of the simple
+make a couple of remarks.
+\begin{enumerate}
+\item We present a self-contained proof of the simple
 version of Barr's theorem as Theorem~\ref{thm:baby-barr}. For reducing
 intuitionistic provability to geometric provability, we employ (what amounts
 to) the syntactic site, similar to the refined completeness result
@@ -163,8 +165,40 @@ by Thierry Coquand~\cite{coquand:site} but closer to the standard description
 of the syntactic site. For reducing classical provability to intuitionistic
 provability, we employ a variant of the double negation translation. We were
 not able to track down a reference to this approach in the context of
-infinitary logic, but the basic idea has long been known and summarized, for
-instance, in Ref.~\refcite{aczel:russell-prawitz}. % XXX first-order completion. We probably should introduce sites but don't
+infinitary logic, but the basic idea has long been known and is summarized, for
+instance, in Ref.~\refcite{aczel:russell-prawitz}.
+\item In Section~\ref{sect:sheaves}, where we introduce sheaves, we should
+probably also introduce sites. They would fit the narrative well and allow for
+the construction of generic models of arbitrary geometric theories and not only
+propositional ones. They would also allow us to cut down on the metatheory,
+sitting comfortably within predicative environments such as arithmetic
+universes~\cite{maietti:au,vickers:sketches} or~\textsc{czf}.
+We do not, however, mainly to not presume
+prerequisites in category theory.
+\item The technique presented in Section~\ref{sect:appl} can be
+regarded as a first-order (and, if desired, higher-order) coating of an
+underlying geometric theory. We propose to take this coating seriously; in
+particular to make good use of surprising nongeometric sequents validated by the
+generic model; and, for ease of use by algebraists, to cast it in semantic terms,
+even though it is all syntax behind the scenes.\footnote{By now it is an established idea in constructive algebra that we should
+consider the theory of prime filters instead of the prime filters themselves,
+hoping that, for instance, a given mathematical proof of the statement~``no
+prime filter contains~$x$'' can also be cast in the
+geometric language of the theory, which then yields the nilpotency of~$x$
+constructively. If the given proof uses only geometric reasoning, this is
+immediate; if it uses intuitionistic reasoning, it can be compiled down (for
+instance precisely by the technique we use); and if it uses classical reasoning, a
+version of Barr's theorem might be applicable. The elusive actual prime filters
+of the ring are replaced with the concrete and purely syntactical generic prime
+filter.
+
+This approach misses that the generic model is interesting on its own and in
+particular that it satisfies peculiar nongeometric sequents such as ``nonunits
+are nilpotent'' and ``any ideal is \notnot finitely generated''. In this sense,
+the generic model is better than the actual models it aims to replace, and we
+believe that potential applications of this insight should be properly
+explored.}
+\end{enumerate}
 
 
 \subsection*{Introduction}

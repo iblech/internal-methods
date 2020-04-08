@@ -118,7 +118,7 @@ Strada le Grazie 15 \\
 37134 Verona, Italy}
 
 \begin{abstract}
-XXX
+XXX abstract
 \end{abstract}
 \body
 
@@ -286,9 +286,9 @@ exist. However, since the proof of the completeness theorem itself uses~\BPIT
 (and indeed is equivalent to it), it does not give any indication how such a
 proof could be found. (Still, beautiful constructive proofs are known and
 presented, for instance, in a celebrated short note by Fred Richman on nontrivial
-uses of trivial rings~\cite{richman:trivial-rings} and in the recent textbook by
-Henri Lombardi and Claude Quitté on constructive commutative
-algebra~\cite{lombardi-quitte:constructive-algebra}.)
+uses of trivial rings~\cite{richman:trivial-rings} and in the recent
+textbook~\cite{lombardi-quitte:constructive-algebra} by Henri Lombardi and
+Claude Quitté on constructive commutative algebra.)
 % FUTURE: Find precise reference.
 
 The key issue with the usual reduction techniques in commutative algebra is
@@ -316,7 +316,13 @@ with a \emph{sheaf of rings}.
 instead of a sheaf by employing the sheaf semantics.
 \end{enumerate}
 
-In some cases, these new techniques XXX
+In some cases, these new techniques go even beyond their classical role models.
+For instance, while a module need not be free ``on a dense open'' if all its
+stalks at minimal prime ideals are, a module~$M$ is free in that sense if its
+mirror image~$M^\sim$ is \notnot free. This observation is the basis for a
+new proof of Grothendieck's generic freeness lemma, reviewed in
+Section~\ref{sect:example-applications}, which is shorter and arguably more
+perspicious than all previously known classical proofs.
 
 
 \section{Locales}
@@ -1270,6 +1276,8 @@ geometric logic.
 middle and the axiom of choice proves a geometric sequent, then so does
 geometric logic.
 \end{enumerate}
+Barr's theorem has ramifications to constructive algebra, as pointed out by
+Gavin Wraith~\cite{wraith:intuitionistic-algebra}.
 For instance, the \emph{Nullstellensatz} is the statement that for any
 system~$f_1,\ldots,f_n \in K[X_1,\ldots,X_m]$ of polynomials over an
 algebraically closed field~$K$, either the polynomials~$f_i$ have a common zero

@@ -2310,6 +2310,7 @@ principles~\cite{bridges-richman-schuster:wcc}).\par}
 \end{exercise}
 
 \begin{exercise}{The least number principle}%
+\label{ex:least-number-principle}%
 \begin{alphlist}[(e)]
 \item A subset~$M \subseteq X$ of a set~$X$ is \emph{detachable} iff for any
 element~$x \in X$, either~$x \in M$ or~$x \not\in M$. Show that any inhabited
@@ -2549,6 +2550,7 @@ maps).
 \item The quotients~$A/\ppp$ modulo the prime ideals: These are merely integral
 domains.
 \end{enumerate}
+% FUTURE: A_min
 %\item If a ring element~$x \in A$ is zero in all stalk~$A_\mmm$ at maximal
 %ideals, then~$x$ is zero in~$A$. However, the rings~$A_\mmm$ are not fields.
 %\item The rings~$A/\mmm$ are fields, but a ring element~$x \in A$ which is zero
@@ -2561,11 +2563,11 @@ domains.
 %in all these stalks~$A_\ppp$ is not necessarily zero in~$A$.
 
 The field condition displayed in statement~(\ref{item:field}) is not the only
-field condition used in constructive algebra. For instance, a stronger condition
-is ``any element is zero or invertible'' and a further, incomparable, condition
-is ``any nonzero element is invertible''.
-
-XXX when those other conditions satisfied
+field condition used in constructive algebra. Perhaps the most important such
+condition is that any element is zero or invertible, not least because this
+condition can be expressed as a geometric formula. It is stronger than the
+condition that nonunits are zero and is satisfied by~$A^\sim$ iff~$A$ is reduced
+and of Krull dimension~$\leq 0$.
 
 \paragraph{Double negation stability.} Generally in constructive mathematics,
 two elements being \notnot equal does not imply that they are actually equal:
@@ -2639,7 +2641,7 @@ A ring is \emph{anonymously Noetherian} if and only if any of its ideals is
 \notnot finitely generated.
 \end{definition}
 
-\begin{example}The assumption that any ideal of~$\ZZ$ is finitely generated implies
+\begin{example}\label{ex:z-noeth}The assumption that any ideal of~$\ZZ$ is finitely generated implies
 the law of excluded middle. But we can prove, constructively, that~$\ZZ$ is
 anonymously Noetherian: Let~$\aaa$ be an ideal of~$\ZZ$ and assume that~$\aaa$
 is not finitely generated. Then~$1 \not\in \aaa$, as else~$\aaa = (1)$ would be
@@ -3372,7 +3374,7 @@ Item~(3) is because finitely generated modules over anonymously Noetherian are
 
 A variant of this proof where the reference to the Noetherian condition has
 been replaced by an explicit computation has been unwound in
-Ref.~\cite{blechschmidt:generic-freeness}.
+Ref.~\refcite{blechschmidt:generic-freeness}.
 
 
 \paragraph{McCoy's theorem.}\label{par:mccoy}
@@ -3500,8 +3502,9 @@ is Noetherian in the sense that any ideal is finitely generated.\smallskip
 sheaf~$\underline{\ZZ}$ such that, under the sheaf semantics, the subsheaf~$F$
 is an ideal, and such that it is not the case that, again under the sheaf
 semantics, the ideal~$F$ is finitely generated.
-\item Show that~$\ZZ$ is anonymously Noetherian in the sense of
-Definition~\ref{defn:anonymously-noetherian}.
+\item Give a proof that~$\ZZ$ is anonymously Noetherian which, unlike the proof
+given in Example~\ref{ex:z-noeth}, uses the anonymous version of the least
+numbr principle of Exercise~\ref{ex:least-number-principle}.
 \end{enumerate}
 \end{exercise}
 

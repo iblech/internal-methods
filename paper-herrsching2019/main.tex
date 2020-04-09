@@ -11,7 +11,6 @@
 \usetikzlibrary{calc}
 \usepackage{mathtools,stmaryrd,xspace,bussproofs}
 
-\usepackage{hyperref}
 
 
 % NOTE TO EDITORS AND LAYOUTERS: This package increases the quality of the
@@ -37,26 +36,14 @@
 %\newindex{aindx}{adx}{and}{Author Index}       % author index
 %\renewindex{default}{idx}{ind}{Subject Index}  % subject index
 
-\newcommand{\A}{\mathcal{A}}
-\newcommand{\B}{\mathcal{B}}
-\newcommand{\C}{\mathcal{C}}
-\newcommand{\M}{\mathcal{M}}
-\renewcommand{\AA}{\mathbb{A}}
-\newcommand{\E}{\mathcal{E}}
-\newcommand{\F}{\mathcal{F}}
-\newcommand{\G}{\mathcal{G}}
-\newcommand{\J}{\mathcal{J}}
-\newcommand{\GG}{\mathbb{G}}
-\renewcommand{\O}{\mathcal{O}}
-\newcommand{\K}{\mathcal{K}}
+\newcommand{\CCC}{\mathcal{C}}
+\newcommand{\OOO}{\mathcal{O}}
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\QQ}{\mathbb{Q}}
 \newcommand{\RR}{\mathbb{R}}
 \newcommand{\TT}{\mathbb{T}}
-\newcommand{\PP}{\mathbb{P}}
 \newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\CC}{\mathbb{C}}
-\renewcommand{\P}{\mathcal{P}}
 \newcommand{\aaa}{\mathfrak{a}}
 \newcommand{\bbb}{\mathfrak{b}}
 \newcommand{\ppp}{\mathfrak{p}}
@@ -66,35 +53,18 @@
 \newcommand{\defeq}{\vcentcolon=}
 \newcommand{\defeqv}{\vcentcolon\equiv}
 \newcommand{\Sh}{\mathrm{Sh}}
-\newcommand{\GL}{\mathrm{GL}}
 \newcommand{\ab}{\mathrm{ab}}
-\newcommand{\Zar}{\mathrm{Zar}}
 \newcommand{\op}{\mathrm{op}}
 \newcommand{\Set}{\mathrm{Set}}
-\newcommand{\Eff}{\mathrm{Ef{}f}}
-\newcommand{\Sch}{\mathrm{Sch}}
-\newcommand{\Aff}{\mathrm{Aff}}
-\newcommand{\Ring}{\mathrm{Ring}}
-\newcommand{\LocRing}{\mathrm{LocRing}}
-\newcommand{\LRS}{\mathrm{LRS}}
 \newcommand{\Hom}{\mathrm{Hom}}
 \newcommand{\Spec}{\mathrm{Spec}}
 \newcommand{\Max}{\mathrm{Max}}
 \newcommand{\Gal}{\mathrm{Gal}}
 \newcommand{\Rad}{\mathrm{Rad}}
 \newcommand{\Idl}{\mathrm{Idl}}
-\newcommand{\lra}{\longrightarrow}
-\newcommand{\RelSpec}{\operatorname{Spec}}
-\renewcommand{\_}{\mathpunct{.}}
+\newcommand{\+}{\mathpunct{.}}
 \newcommand{\?}{\,{:}\,}
-\newcommand{\speak}[1]{\ulcorner\text{\textnormal{#1}}\urcorner}
-\newcommand{\ul}[1]{\underline{#1}}
-\newcommand{\affl}{\ensuremath{{\ul{\ensuremath{\AA}}^1}}}
-\newcommand{\Ll}{\text{iff}}
-\newcommand{\inv}{inv.\@}
 \newcommand{\seq}[1]{\mathrel{\vdash\!\!\!_{#1}}}
-\newcommand{\hg}{\mathbin{:}}  % homogeneous coordinates
-\newcommand{\brak}[1]{{\llbracket{#1}\rrbracket}}
 \newcommand{\pt}{\mathrm{pt}}
 \newcommand{\Pt}{\mathrm{Pt}}
 \newcommand{\Loc}{\mathrm{Loc}}
@@ -104,6 +74,7 @@
 \newcommand{\notnot}{\emph{not not}\xspace}
 \newcommand{\negg}{\neg\!\!\!\neg}
 \newcommand{\bott}{\bot\!\!\!\!\bot}
+\newcommand{\brak}[1]{{\llbracket{#1}\rrbracket}}
 
 \begin{document}
 
@@ -171,7 +142,7 @@ together with a map~$d : X \times X \to \RR_{\geq 0}$ satisfying the metric
 axioms.
 
 \textbf{Definition.} A \emph{topological space} consists of a set~$X$ of points
-together with a set~$\O(X) \subseteq \P(X)$ of point sets which are deemed
+together with a set~$\OOO(X) \subseteq \P(X)$ of point sets which are deemed
 \emph{open} such that (arbitrary, set-indexed) unions and finite intersections
 of open sets are open.
 \end{quote}
@@ -205,7 +176,7 @@ domain on which~$f$ should be defined (having no global solution defined on all
 of~$\CC$ but two solutions on small disks not containing the origin), we should
 consider the family
 \[ (\{ f : U \to \CC \,|\, \text{$f$ is continuous and $f(z)^2 = z$ for all~$z
-\in \CC$} \})_{U \in \O(\CC)} \]
+\in \CC$} \})_{U \in \OOO(\CC)} \]
 of sets as the solution (or perhaps, since no solution was actually given, as
 an apt description) of the task.
 
@@ -547,16 +518,16 @@ overlapping sublocales to preserve volume.
 infinite binary sequences, equipped with the product topology. A subset~$U
 \subseteq 2^\NN$ is open with respect to this topology if and only if for
 every~$\alpha \in U$, there is a number~$n \in \NN$ such that
-\[ \{ \beta \in 2^\NN \,|\, \forall i < n\_ \alpha(i) = \beta(i) \} \subseteq U. \]
+\[ \{ \beta \in 2^\NN \,|\, \forall i < n\+ \alpha(i) = \beta(i) \} \subseteq U. \]
 
 The open subsets of~$2^\NN$ are precisely those subsets which encode
 \emph{observable} (or \emph{semidecidable}) properties of binary sequences,
 those properties for which a finite record of digits suffices to verify that a
 sequence has it (but not necessarily to falsify it). For instance, the sets~$V
 = \{ \alpha \in 2^\NN \,|\, \alpha(0) = \alpha(1) = 1 \}$ and~$W = \{
-\alpha \in 2^\NN \,|\, \exists n\in\NN\_ \alpha(n) = 1 \}$ are open and the sets
+\alpha \in 2^\NN \,|\, \exists n\in\NN\+ \alpha(n) = 1 \}$ are open and the sets
 \begin{align*}
-  A &\defeq \{ \alpha \in 2^\NN \,|\, \forall n\in\NN\_ \alpha(n) = 0 \} \\
+  A &\defeq \{ \alpha \in 2^\NN \,|\, \forall n\in\NN\+ \alpha(n) = 0 \} \\
   B &\defeq \Bigl\{ \alpha \in 2^\NN \,\Big|\, \lim_{n \to \infty} \frac{1}{n} \sum_{i=0}^{n-1} \alpha(i) = \frac{1}{2} \Bigr\}
 \end{align*}
 are not. With respect to the standard Lebesgue measure on~$2^\NN$, the sets~$V$
@@ -574,7 +545,7 @@ endeavor to setup a develop a theory of probability on this notion.
 
 However, the resulting theory will be trivial for the plain reason that
 according to this definition, there are no random sequences: For any
-sequence~$\alpha$, the set~$\{ \beta \in 2^\NN \,|\, \exists n \in \NN\_
+sequence~$\alpha$, the set~$\{ \beta \in 2^\NN \,|\, \exists n \in \NN\+
 \alpha(n) \neq \beta(n) \}$ is open, has measure~$1$ and does not
 contain~$\alpha$.
 
@@ -710,7 +681,7 @@ theorem}, to be reviewed on page~\pageref{par:barr}.\end{remark}
 \subsection{The basics of the theory of locales}
 
 The starting point of the theory of locales is the following
-observation. The set~$\O(X)$ of open subsets of a topological
+observation. The set~$\OOO(X)$ of open subsets of a topological
 space~$X$ forms a partially ordered set which has
 \[ \begin{array}{@{}ccc@{}}
 \text{arbitrary joins (suprema)}
@@ -735,9 +706,9 @@ largest element (the empty meet)~``$\top$''. The notion of a frame is
 direction of the arrows'':
 
 \begin{definition}\label{defn:locale}
-A \emph{locale}~$X$ is given by a frame~$\O(X)$, the ``frame
+A \emph{locale}~$X$ is given by a frame~$\OOO(X)$, the ``frame
 of opens of~$X$''. A \emph{morphism~$f : X \to X'$ of locales} (or ``continuous
-map of locales'') is a frame homomorphism~$\O(X') \to \O(X)$.\end{definition}
+map of locales'') is a frame homomorphism~$\OOO(X') \to \OOO(X)$.\end{definition}
 
 In place of the open sets of points, locales have arbitrary \emph{opens}, the
 elements of their underlying frame. The opens of locales behave similar to the
@@ -748,8 +719,8 @@ abuse notation and denote the largest open of a locale~$X$ by~``$X$''.
 Examples for locales include the following.
 \begin{enumerate}
 \item Any topological space~$Y$ induces a locale~$L(Y)$ by
-setting~$\O(L(Y)) \defeq \O(Y)$. A continuous map~$f : Y \to Y'$ of topological
-spaces induces the frame homomorphism~$\O(Y') \to \O(Y),\,U \mapsto f^{-1}[U]$
+setting~$\OOO(L(Y)) \defeq \OOO(Y)$. A continuous map~$f : Y \to Y'$ of topological
+spaces induces the frame homomorphism~$\OOO(Y') \to \OOO(Y),\,U \mapsto f^{-1}[U]$
 in the other direction and hence a morphism~$L(Y) \to L(Y')$ of locales in the
 same direction.
 \item The \emph{one-point locale}~$\pt$ is the locale induced
@@ -783,25 +754,25 @@ This definition is inspired from the situation with topological spaces, where
 continuous maps from the one-point space to a topological space~$Y$ are in
 canonical bijection with the points of~$Y$.
 
-The underlying frame homomorphism~$\alpha : \O(X) \to \Omega$ of a point~$x$
+The underlying frame homomorphism~$\alpha : \OOO(X) \to \Omega$ of a point~$x$
 of~$X$ can be pictured as mapping each open~$U$ of~$X$ to the truth value to which
 extent~$x$ belongs to~$U$. Symbolically, we write~$x \inplus U$ iff~$\alpha(U)
 = \top$.
 
 The point~$x$ is completely determined by the information to which opens it
-belongs, that is by the set {$\{ U \in \O(X) \,|\, \alpha(U) = \top \}$}. This set is a \emph{completely
-prime filter}, that is a subset~$\fff \subseteq \O(X)$ which is upward-closed,
+belongs, that is by the set {$\{ U \in \OOO(X) \,|\, \alpha(U) = \top \}$}. This set is a \emph{completely
+prime filter}, that is a subset~$\fff \subseteq \OOO(X)$ which is upward-closed,
 closed under finite meets and for which~$\bigvee_i U_i \in \fff$ implies~$U_i
 \in \fff$ for some index~$i$; and conversely, any such completely prime filter
 gives rise to a point of~$X$ (Exercise~\ref{ex:points-as-filters}).
 
 \begin{definition}A locale~$X$ is \emph{spatial} if and only if its points
-suffice to detect the inclusion relation on the opens of~$X$, that is if for any opens~$U, V \in \O(X)$,
+suffice to detect the inclusion relation on the opens of~$X$, that is if for any opens~$U, V \in \OOO(X)$,
 if~$x \inplus U \Rightarrow x \inplus V$ for all points~$x$ of~$X$, then~$U
 \preceq V$.\end{definition}
 
 An equivalent definition is: A locale~$X$ is \emph{spatial} if and only if its points
-suffice to distinguish its opens, that is if for any opens~$U, V \in \O(X)$, if~$x \inplus U
+suffice to distinguish its opens, that is if for any opens~$U, V \in \OOO(X)$, if~$x \inplus U
 \Leftrightarrow x \inplus V$ for all points~$x$ of~$X$, then~$U = V$.
 
 For instance, any locale induced by a topological space is spatial. The locale
@@ -859,7 +830,7 @@ filters of a topological space are in canonical one-to-one correspondence with
 the meet-irreducible open subsets.\smallskip
 
 {\scriptsize\emph{Hint.} Given a completely prime filter~$\fff \subseteq
-\O(Y)$, the set~$\bigcup\{ U \in \O(Y) \,|\, U \not\in \fff \}$ is a
+\OOO(Y)$, the set~$\bigcup\{ U \in \OOO(Y) \,|\, U \not\in \fff \}$ is a
 meet-irreducible open subset.\par}
 \item Assuming the law of excluded middle, show that a topological space is
 sober in the sense of Remark~\ref{rem:definition-sober} if and only if for
@@ -882,8 +853,8 @@ A \emph{metric space} is a set~$Y$ together with a relation~$d \subseteq Y
 following axioms are satisfied.
 \begin{align*}
   d(x,y) \leq q \wedge q \leq r &\Longrightarrow d(x,y) \leq r \\
-  (\forall r \in \QQ_{> q}\_ d(x,y) \leq r) &\Longrightarrow d(x,y) \leq q \\
-  &\mathrel{\phantom{\Longrightarrow}} \exists q \in \QQ_{\geq0}\_ d(x,y) \leq q \\
+  (\forall r \in \QQ_{> q}\+ d(x,y) \leq r) &\Longrightarrow d(x,y) \leq q \\
+  &\mathrel{\phantom{\Longrightarrow}} \exists q \in \QQ_{\geq0}\+ d(x,y) \leq q \\
   &\mathrel{\phantom{\Longrightarrow}} d(x,x) \leq 0 \\
   d(x,y) \leq 0 &\Longrightarrow x = y \\
   d(x,y) \leq q &\Longrightarrow d(y,x) \leq q \\
@@ -934,14 +905,14 @@ for all~$U \in A$ and~$V \in A'$.
 \end{alphlist}
 {\scriptsize\emph{Note.} Based on the observation in part~(c), a
 \emph{covariant approach} to locales can be developed, in which locale maps~$X
-\to X'$ are defined to be certain kinds of maps~$\O(X) \to
-\O(X')$~\cite{picado-pultr:covariant}.\par}
+\to X'$ are defined to be certain kinds of maps~$\OOO(X) \to
+\OOO(X')$~\cite{picado-pultr:covariant}.\par}
 \end{exercise}
 
 \begin{exercise}{Points as complete prime filters}%
 \label{ex:points-as-filters}%
 Verify that the points of a locale~$X$ are in canonical one-to-one correspondence
-with the completely prime filters of~$\O(X)$.
+with the completely prime filters of~$\OOO(X)$.
 \end{exercise}
 
 \begin{exercise}{Dense opens}%
@@ -950,7 +921,7 @@ An open~$U$ of a locale is \emph{dense} iff for any open~$V$, $U \wedge V =
 \bot$ implies~$U = \bot$.
 \begin{alphlist}[(b)]
 \item Let~$M$ be a set and endow it with the discrete topology. Show that an
-open~$U \in \O(L(M))$ is dense iff for any element~$x \in M$, $\neg\neg(x \in
+open~$U \in \OOO(L(M))$ is dense iff for any element~$x \in M$, $\neg\neg(x \in
 U)$.
 \item Let~$\varphi$ be a truth value, hence an open of the one-point
 locale~$\pt$. Show that~$\varphi$ is dense in~$\pt$ iff~$\neg\neg\varphi$.
@@ -960,9 +931,9 @@ locale~$\pt$. Show that~$\varphi$ is dense in~$\pt$ iff~$\neg\neg\varphi$.
 \begin{exercise}{Characterizing spatial locales}%
 Let~$X$ be a locale. Show that the following conditions are equivalent.
 \begin{alphlist}[(c)]
-\item For any opens~$U, V \in \O(X)$: If~$x \inplus U \Rightarrow y \inplus V$
+\item For any opens~$U, V \in \OOO(X)$: If~$x \inplus U \Rightarrow y \inplus V$
 for all points~$x$ of~$X$, then~$U \preceq V$.
-\item For any opens~$U, V \in \O(X)$: If~$x \inplus U \Leftrightarrow y \inplus V$
+\item For any opens~$U, V \in \OOO(X)$: If~$x \inplus U \Leftrightarrow y \inplus V$
 for all points~$x$ of~$X$, then~$U = V$.
 \item There is a topological space~$Y$ and a surjective morphism~$L(Y) \to X$
 of locales. (A morphism of locales is \emph{surjective} iff its underlying
@@ -1105,7 +1076,7 @@ version of Definition~\ref{defn:geometric-theory}.
     \phantom{a}\hfill
     \Axiom$\varphi \ \fCenter\seq{\vec x, y} \psi$
     \doubleLine
-    \UnaryInf$\exists y\?Y\_ \varphi\ \fCenter\seq{\vec x} \psi$
+    \UnaryInf$\exists y\?Y\+ \varphi\ \fCenter\seq{\vec x} \psi$
     \DisplayProof
     \makebox[0pt]{\shifttext{\tiny ($y$ not free in~$\psi$)}}
     \hfill\phantom{a}
@@ -1119,7 +1090,7 @@ version of Definition~\ref{defn:geometric-theory}.
     \DisplayProof
     \hfill
     \AxiomC{$\phantom{\seq{\vec x}}$}
-    \UnaryInfC{$(\exists y\?Y\_ \varphi) \wedge \psi \seq{\vec x} \exists y\?Y\_ (\varphi \wedge \psi)$}
+    \UnaryInfC{$(\exists y\?Y\+ \varphi) \wedge \psi \seq{\vec x} \exists y\?Y\+ (\varphi \wedge \psi)$}
     \DisplayProof
     \makebox[0pt]{\shifttext{\tiny ($y$ none of the~$\vec x$)}}
     \hfill\phantom{a}
@@ -1177,7 +1148,7 @@ version of Definition~\ref{defn:geometric-theory}.
     \phantom{a}\hfill
     \Axiom$\varphi \ \fCenter\seq{\vec x, y} \psi$
     \doubleLine
-    \UnaryInf$\varphi\ \fCenter\seq{\vec x} \forall y\?Y\_ \psi$
+    \UnaryInf$\varphi\ \fCenter\seq{\vec x} \forall y\?Y\+ \psi$
     \DisplayProof
     \makebox[0pt]{\shifttext{\tiny ($y$ not free in~$\varphi$)}}
     \hfill\phantom{a}
@@ -1240,10 +1211,10 @@ A set-based model of the theory of rings is an ordinary ring.
 
 By adding the axiom
 \begin{align*}
-  \top &\seq{x:R} (x = 0) \vee (\exists y\?R\_ xy = 1),
+  \top &\seq{x:R} (x = 0) \vee (\exists y\?R\+ xy = 1),
 \intertext{we describe \emph{geometric fields}, and by additionally adding for
 each natural number~$n \geq 1$ the axiom}
-  \top &\seq{a_0:R,\ldots,a_{n-1}:R} \exists x\?R\_ x^n + a_{n-1}x^{n-1} +
+  \top &\seq{a_0:R,\ldots,a_{n-1}:R} \exists x\?R\+ x^n + a_{n-1}x^{n-1} +
   \cdots + a_1x + a_0 = 0,
 \end{align*}
 we describe \emph{algebraically closed geometric fields}. (This field
@@ -1265,7 +1236,7 @@ symbols, relation symbols or axioms. A set-based model of this theory is just a
 set.
 
 A variant of this theory is the theory of inhabited objects, which has the
-axiom~$\top \vdash \exists x\?X\_ \top$. Its set-based models are precisely the
+axiom~$\top \vdash \exists x\?X\+ \top$. Its set-based models are precisely the
 inhabited sets.
 
 \item\label{item:theory-of-surjections} \emph{The geometric theory of surjections~$f : \NN \twoheadrightarrow
@@ -1556,8 +1527,8 @@ reduction, of which Barr's theorem is an example.
     (\varphi \vee \psi)^\nabla &\defeqv \nabla(\varphi^\nabla \vee \psi^\nabla) &
     \textstyle (\bigvee_i \varphi_i)^\nabla &\defeqv \textstyle \nabla(\bigvee_i \varphi_i^\nabla) \\
     (\varphi \Rightarrow \psi)^\nabla &\defeqv (\varphi^\nabla \Rightarrow \psi^\nabla) \\
-    (\forall x\?X\_ \varphi)^\nabla &\defeqv (\forall x\?X\_ \varphi^\nabla) &
-    (\exists x\?X\_ \varphi)^\nabla &\defeqv \nabla(\exists x\?X\_ \varphi^\nabla)
+    (\forall x\?X\+ \varphi)^\nabla &\defeqv (\forall x\?X\+ \varphi^\nabla) &
+    (\exists x\?X\+ \varphi)^\nabla &\defeqv \nabla(\exists x\?X\+ \varphi^\nabla)
   \end{align*}\end{minipage}}
   \label{table:nabla-translation}
 \end{table}
@@ -1598,7 +1569,7 @@ set-indexed joins picks representatives from each equivalence class and is
 hence only sensible in the presence of the axiom of choice. In a
 constructive metatheory, we should rather write~$\bigvee_{i \in I} M_i =
 [\bigvee_{\varphi \in K} \varphi]$, where~$K = \{ \varphi \,|\, \exists i \in
-I\_ \varphi \in M_i \}$.} we can regard the Lindenbaum algebra as the free
+I\+ \varphi \in M_i \}$.} we can regard the Lindenbaum algebra as the free
 frame generated by the nullary relation symbols of~$\TT$ modulo the axioms
 of~$\TT$. Our interest in the Lindenbaum algebra is because it gives rise to a
 locale:
@@ -1676,16 +1647,16 @@ on this observation~\cite{caramello:tst}.
 
 Conversely, any locale~$X$ is the classifying locale of a certain theory, namely
 the \emph{theory of points of~$X$}. This theory has one nullary relation
-symbol~$\varphi_U$ for each open~$U \in \O(X)$ (read as ``the point belongs
+symbol~$\varphi_U$ for each open~$U \in \OOO(X)$ (read as ``the point belongs
 to~$U$'') and the following axioms:
 \begin{align*}
-  \varphi_U &\vdash \varphi_V & \text{(for all~$U,V \in \O(X)$ such that~$U \preceq V$)} \\
+  \varphi_U &\vdash \varphi_V & \text{(for all~$U,V \in \OOO(X)$ such that~$U \preceq V$)} \\
   \top &\vdash \varphi_\top \\
-  \varphi_U \wedge \varphi_V &\vdash \varphi_{U \wedge V} & \text{(for all~$U,V \in \O(X)$)} \\
+  \varphi_U \wedge \varphi_V &\vdash \varphi_{U \wedge V} & \text{(for all~$U,V \in \OOO(X)$)} \\
   \varphi_{\bigvee_i U_i} &\vdash \bigvee_i \varphi_{U_i} & \text{(for each set-indexed family~$(U_i)_i$ of opens)}
 \end{align*}
-These are exactly the axioms for a completely prime filter of~$\O(X)$. The
-isomorphism from~$\O(X)$ to the Lindenbaum algebra of this theory maps an
+These are exactly the axioms for a completely prime filter of~$\OOO(X)$. The
+isomorphism from~$\OOO(X)$ to the Lindenbaum algebra of this theory maps an
 open~$U$ to~$[\varphi_U]$.
 
 The question whether a given locale is spatial is intimately related with the
@@ -1739,12 +1710,12 @@ existence of points.
 \label{sect:sheaves}
 
 \begin{definition}\label{defn:presheaf}
-A \emph{presheaf}~$F$ on a locale~$X$ is a functor~$\O(X)^\op \to \Set$, that is
+A \emph{presheaf}~$F$ on a locale~$X$ is a functor~$\OOO(X)^\op \to \Set$, that is
 \begin{enumerate}
-  \item a set~$F(U)$ for each open~$U \in \O(X)$ and
+  \item a set~$F(U)$ for each open~$U \in \OOO(X)$ and
   \item a map~$(\cdot)|^U_V : F(U) \to F(V)$ for each pair of opens~$V \preceq U$
 \end{enumerate}
-such that $(\cdot)|^U_U = \operatorname{id}_{F(U)}$ for all~$U \in \O(X)$ and
+such that $(\cdot)|^U_U = \operatorname{id}_{F(U)}$ for all~$U \in \OOO(X)$ and
 $(\cdot)|^V_W \circ (\cdot)|^U_V = (\cdot)|^U_W$ for all~$W \preceq V
 \preceq U$.\end{definition}
 
@@ -1765,12 +1736,12 @@ presheaf. In fact, the notion of a locale can be generalized to that of a
 presheaves on sites can be defined; however, this shall not be pursued here,
 a textbook reference is Ref.~\refcite{moerdijk-maclane:sheaves-logic}.
 
-The prototypical example of a presheaf (and also a sheaf) is the presheaf~$\C$ of
+The prototypical example of a presheaf (and also a sheaf) is the presheaf~$\CCC$ of
 continuous real-valued functions on a topological space~$X$. For this presheaf, the
-set~$\C(U)$ is the set of continuous real-valued maps~$U \to \RR$, and the
+set~$\CCC(U)$ is the set of continuous real-valued maps~$U \to \RR$, and the
 maps~$(\cdot)|^U_V$ are given by actual restriction of functions to smaller
 domains, that is by
-\[ \C(U) \longrightarrow \C(V),\ s \longmapsto s|_V. \]
+\[ \CCC(U) \longrightarrow \CCC(V),\ s \longmapsto s|_V. \]
 
 Any set~$M$ gives rise to a presheaf~$\underline{M}^\mathrm{pre}$, by
 setting~$\underline{M}^\mathrm{pre}(U) = M$ for every open~$U$ and employing
@@ -1790,8 +1761,8 @@ that~$s|^U_{U_i} = s_i$ for all indices~$i$ (``compatible sections glue'').
 \end{enumerate}
 \end{definition}
 
-For instance, the presheaf~$\C$ of continuous real-valued functions is a sheaf,
-while its subpresheaf~$\C_\text{c}$ of constant real-valued functions is
+For instance, the presheaf~$\CCC$ of continuous real-valued functions is a sheaf,
+while its subpresheaf~$\CCC_\text{c}$ of constant real-valued functions is
 usually not a sheaf. For instance, on~$X = \RR$, the two constant functions~$f
 : (-1,0) \to \RR,\,x \mapsto -1$ and~$g : (0,1) \to \RR,\,x \mapsto 1$ agree on
 the intersection of their domains (which is empty), but there is no constant
@@ -1799,7 +1770,7 @@ function~$h : (-1,0) \cup (0,1) \to \RR$ which restricts to~$f$ on~$(-1,0)$ and
 to~$g$ on~$(0,1)$.
 
 There is a general construction called \emph{sheafification} which turns
-presheaves into sheaves. Applied to the presheaf~$\C_\text{c}$, this process yields the
+presheaves into sheaves. Applied to the presheaf~$\CCC_\text{c}$, this process yields the
 sheaf of \emph{locally} constant real-valued functions. Similarly, the
 sheafification of the presheaf of bounded functions is the sheaf of locally
 bounded functions, and so on; this is a general principle.
@@ -1836,7 +1807,7 @@ sheaf~$F'$ with~$F'(U) \subseteq F(U)$ for all opens~$U$ and the inherited
 restriction maps.\end{definition}
 
 \begin{definition}A \emph{morphism of presheaves}~$\eta : F \to G$ on a
-locale~$X$ is a family~$(\eta_U)_{U \in \O(X)}$ of maps~$\eta_U : F(U) \to
+locale~$X$ is a family~$(\eta_U)_{U \in \OOO(X)}$ of maps~$\eta_U : F(U) \to
 G(U)$ such that for all sections~$s \in F(U)$ and all opens~$V \preceq U$
 of~$X$, $\eta_U(s)|^U_V = \eta_V(s|^U_V)$. A \emph{morphism of sheaves} is a
 morphism of the underlying presheaves.
@@ -1847,13 +1818,13 @@ morphism of the underlying presheaves.
 \label{sect:sheaf-semantics}
 
 \paragraph{Motivating the sheaf semantics.} Let~$F$ be a sheaf on a locale~$X$.
-What is a sensible reading of the statement~``$\forall s\?F\_ (\varphi(s)
+What is a sensible reading of the statement~``$\forall s\?F\+ (\varphi(s)
 \Rightarrow \psi(s))$''? A first answer is ``for any global section~$s \in
 F(X)$ such that~$\varphi(s)$,~$\psi(s)$''. However, this proposal does not do
 justice to the sheaf, whose interesting behavior may well only play out with
 its sections on small opens. Indeed, many important sheaves have no or few
 global sections. Hence a more sophisticated answer is ``for any open~$U \in
-\O(X)$ and any section~$s \in F(U)$ with~$\varphi(s)$,~$\psi(s)$'',
+\OOO(X)$ and any section~$s \in F(U)$ with~$\varphi(s)$,~$\psi(s)$'',
 where~``$\varphi(s)$'' and~``$\psi(s)$'' have to be interpreted in a similar
 vein.
 
@@ -1864,7 +1835,7 @@ empty open~$V = \bot$,~$s|^U_V$ does not have property~$\varphi$ for any
 open~$V \preceq U$'', where again~``$\varphi(s)$'' has to be understood in a
 sensible way.
 
-As a final motivating example, consider the statement~``$\exists s\?F\_
+As a final motivating example, consider the statement~``$\exists s\?F\+
 \varphi(s)$''. This should mean that there is an open covering~$X = \bigvee_i
 U_i$ such that on each open~$U_i$, there is a section~$s \in F(U_i)$ such
 that~$\varphi(s)$, properly interpreted. We should not require these individual
@@ -1920,7 +1891,7 @@ the sheaf semantics include Refs.
 which also gives a detailed account of useful type theory.
 
 \paragraph{Definition and basic properties of the sheaf semantics.}
-Let~$X$ be a locale. A \emph{formula over an open~$U \in \O(X)$} is an
+Let~$X$ be a locale. A \emph{formula over an open~$U \in \OOO(X)$} is an
 infinitary first-order formula (made up using~${=}\ {\top}\ {\wedge}\ \{\bigwedge\}\ {\bot}\ {\vee}\
 {\bigvee}\ {\Rightarrow}\ {\forall}\ {\exists}$) over the signature which has one sort for
 each sheaf~$F$, one constant symbol of sort~$F$ for each section~$s \in F(U)$,
@@ -1939,19 +1910,19 @@ For the special case that~$U$ is the largest open of~$X$ we also write~``$\Sh(X)
 
 \begin{table}[ht]
   \tbl{The (first-order fragment of) the sheaf semantics of a locale~$X$}{\begin{tabular}{@{}l@{\ \ }c@{\ \ }l@{}}
-    $U \models s =_F t$ &\Ll& $s = t$ when evaluated as elements of~$F(U)$ \\
-    $U \models R(s_1,\ldots,s_n)$ &\Ll& $\langle s_1,\ldots,s_n \rangle \in R(U)$ \\
-    $U \models \top$ &\Ll& true \\
-    $U \models \varphi \wedge \psi$ &\Ll& $U \models \varphi$ and $U \models \psi$ \\
-    $U \models \bigwedge_k \varphi_k$ &\Ll& for every index~$k$, $U \models \varphi_k$ \\
-    $U \models \bot$ &\Ll& \hcancel{false}{0pt}{3pt}{0pt}{-2pt}\ $U = \bot$ \\
-    $U \models \varphi \vee \psi$ &\Ll& \hcancel{$U \models \varphi$ or $U \models \psi$}{0pt}{3pt}{0pt}{-2pt}\ there exists an open covering $U = \bigvee_i U_i$ \\
+    $U \models s =_F t$ &iff& $s = t$ when evaluated as elements of~$F(U)$ \\
+    $U \models R(s_1,\ldots,s_n)$ &iff& $\langle s_1,\ldots,s_n \rangle \in R(U)$ \\
+    $U \models \top$ &iff& true \\
+    $U \models \varphi \wedge \psi$ &iff& $U \models \varphi$ and $U \models \psi$ \\
+    $U \models \bigwedge_k \varphi_k$ &iff& for every index~$k$, $U \models \varphi_k$ \\
+    $U \models \bot$ &iff& \hcancel{false}{0pt}{3pt}{0pt}{-2pt}\ $U = \bot$ \\
+    $U \models \varphi \vee \psi$ &iff& \hcancel{$U \models \varphi$ or $U \models \psi$}{0pt}{3pt}{0pt}{-2pt}\ there exists an open covering $U = \bigvee_i U_i$ \\
     && \quad\quad such that for all indices~$i$: $U_i \models \varphi$ or $U_i \models \psi$ \\
-    $U \models \bigvee_k \varphi_k$ &\Ll& \hcancel{for some index~$k$, $U \models \varphi_k$}{0pt}{3pt}{0pt}{-2pt}\ there exists an open covering $U = \bigvee_i U_i$ \\
+    $U \models \bigvee_k \varphi_k$ &iff& \hcancel{for some index~$k$, $U \models \varphi_k$}{0pt}{3pt}{0pt}{-2pt}\ there exists an open covering $U = \bigvee_i U_i$ \\
     && \quad\quad such that for each index~$i$, $U_i \models \varphi_k$ for some index~$k$ \\
-    $U \models \varphi \Rightarrow \psi$ &\Ll& for all~$V \preceq U$: $V \models \varphi$ implies $V \models \psi$ \\
-    $U \models \forall s \? F\_ \varphi(s)$ &\Ll& for all $V \preceq U$ and sections~$s_0 \in F(V)$: $V \models \varphi(s_0)$ \\
-    $U \models \exists s \? F\_ \varphi(s)$ &\Ll& \hcancel{there exists $s_0 \in F(U)$ such that $U \models \varphi(s_0)$}{0pt}{3pt}{0pt}{-2pt} \\
+    $U \models \varphi \Rightarrow \psi$ &iff& for all~$V \preceq U$: $V \models \varphi$ implies $V \models \psi$ \\
+    $U \models \forall s \? F\+ \varphi(s)$ &iff& for all $V \preceq U$ and sections~$s_0 \in F(V)$: $V \models \varphi(s_0)$ \\
+    $U \models \exists s \? F\+ \varphi(s)$ &iff& \hcancel{there exists $s_0 \in F(U)$ such that $U \models \varphi(s_0)$}{0pt}{3pt}{0pt}{-2pt} \\
     && there exists an open covering $U = \bigvee_i U_i$ such that for all~$i$: \\
     && \quad\quad there exists~$s_0 \in F(U_i)$ such that $U_i \models \varphi(s_0)$
   \end{tabular}}
@@ -1970,9 +1941,9 @@ that the resulting formula is a formula over~$V$.
 For instance, let~$F$ be the sheaf
 \[ U \longmapsto \{ f : U \to \CC \,|\, \text{$f$ is continuous and~$f(z)^2 =
 z$ for all~$z \in U$} \} \]
-on~$X = \CC$. The interpretation of the statement~``$\exists s\?F\_ \top$'' is
+on~$X = \CC$. The interpretation of the statement~``$\exists s\?F\+ \top$'' is
 false, as on no open which contains the origin a continuous square root
-function exists), but the interpretation of~``$\neg\neg(\exists s\?F\_ \top)$''
+function exists), but the interpretation of~``$\neg\neg(\exists s\?F\+ \top)$''
 is true: Unrolling the definition, this statement expresses that
 \begin{quote}
 the only open~$U \preceq X$ which has the property that \\
@@ -2012,7 +1983,7 @@ equality, the sheaf condition has to be used.
 To verify statement~(3), it is prudent to generalize the claim slightly: An
 induction on the structure of derivations shows that if a sequent~$\varphi
 \seq{x_1{:}X_1,\ldots,x_n{:}X_n} \psi$ is derivable in infinitary intuitionistic first-order
-logic, then~$U \models \forall x_1\?X_1\_ \ldots \forall x_n\?X_n\_ (\varphi
+logic, then~$U \models \forall x_1\?X_1\+ \ldots \forall x_n\?X_n\+ (\varphi
 \Rightarrow \psi)$.
 \end{proof}
 
@@ -2045,14 +2016,14 @@ A \emph{sheaf model} of a geometric theory~$\TT$ over a locale~$X$ consists of
 such that the axioms of~$\TT$ are validated under the sheaf semantics.
 \end{definition}
 
-\begin{example}The sheaf~$\C$ of continuous real-valued functions on any
+\begin{example}The sheaf~$\CCC$ of continuous real-valued functions on any
 locale~$X$ together with appropriate morphisms is a sheaf model of the theory
 of rings. For instance, the interpretation of the axiom
-\[ \forall f\?\C\_ \forall g\?\C\_ f + g = g + f \]
+\[ \forall f\?\CCC\+ \forall g\?\CCC\+ f + g = g + f \]
 with the sheaf semantics amounts to the condition
 \begin{quote}
-For any open~$U$ and any continuous function~$f \in \C(U)$, \\
-${\qquad}$ for any open~$V$ and any continuous function~$g \in \C(V)$, \\
+For any open~$U$ and any continuous function~$f \in \CCC(U)$, \\
+${\qquad}$ for any open~$V$ and any continuous function~$g \in \CCC(V)$, \\
 ${\qquad\qquad}$ $f|^U_V + g = g + f|^U_V$.
 \end{quote}
 and is readily seen to be fulfilled.
@@ -2087,7 +2058,7 @@ satisfied. For instance, that an axiom~``$\alpha \wedge \beta \vdash \bigvee_i
 U_{\gamma_i}$.
 
 In other words, a model of a propositional geometric theory~$\TT$ over a
-locale~$X$ is the same as a frame homomorphism~$\O(L(\TT)) \to \O(X)$, hence a
+locale~$X$ is the same as a frame homomorphism~$\OOO(L(\TT)) \to \OOO(X)$, hence a
 locale morphism~$X \to L(\TT)$.
 
 For further reference we state a proposition relating truth in a sheaf model
@@ -2413,30 +2384,30 @@ double negation elimination).
 \begin{exercise}{Unique local existence is global existence}%
 \label{ex:global-existence}%
 Let~$F$ be a sheaf on a locale~$X$. Let~$\varphi$ be a formula over~$X$. Assume
-that~$\Sh(X) \models \exists!s\?F\_ \varphi(s)$, that is
-\[ \Sh(X) \models \exists s\?F\_ \varphi(s) \quad\text{and}\quad
-  \Sh(X) \models \forall s\?F\_ \forall t\?F\_ (\varphi(s) \wedge \varphi(t)
+that~$\Sh(X) \models \exists!s\?F\+ \varphi(s)$, that is
+\[ \Sh(X) \models \exists s\?F\+ \varphi(s) \quad\text{and}\quad
+  \Sh(X) \models \forall s\?F\+ \forall t\?F\+ (\varphi(s) \wedge \varphi(t)
   \Rightarrow s = t). \]
-Show that for any open~$U \in \O(X)$, there is a unique section~$s \in F(U)$
+Show that for any open~$U \in \OOO(X)$, there is a unique section~$s \in F(U)$
 such that~$U \models \varphi(s)$.
 \end{exercise}
 
 \begin{exercise}{The sheaf of real functions as a field}%
-Let~$X$ be a topological space. Let~$\C$ be the sheaf of continuous real-valued
+Let~$X$ be a topological space. Let~$\CCC$ be the sheaf of continuous real-valued
 functions on~$X$.
 \begin{alphlist}[(d)]
-\item Let~$U$ be an open of~$X$. Let~$f \in \C(U)$. Show using the result
-of Exercise~\ref{ex:global-existence} that~$U \models (\exists g\?\C\_ fg =_\C
-1)$ iff there is a function~$g \in \C(U)$ such that~$fg = 1$.
-\item Show that~$\C$ is a field in that
-$X \models \forall f\?\C\_
-  \bigl(\neg(\exists g\?\C\_ fg = 1)\bigr) \Rightarrow f = 0$.
-\item Give an example of space~$X$ such that it is not the case that~$\C$ is a
+\item Let~$U$ be an open of~$X$. Let~$f \in \CCC(U)$. Show using the result
+of Exercise~\ref{ex:global-existence} that~$U \models (\exists g\?\CCC\+ fg =_\CCC
+1)$ iff there is a function~$g \in \CCC(U)$ such that~$fg = 1$.
+\item Show that~$\CCC$ is a field in that
+$X \models \forall f\?\CCC\+
+  \bigl(\neg(\exists g\?\CCC\+ fg = 1)\bigr) \Rightarrow f = 0$.
+\item Give an example of space~$X$ such that it is not the case that~$\CCC$ is a
 field in the stronger sense that
-$\Sh(X) \models \forall f\?\C\_ (\exists g\?\C\_ fg = 1) \vee f = 0$.
-\item Let~$X = \CC$ and let~$\O$ be the sheaf of holomorphic functions on~$X$.
-Show that, in classical mathematics, the sheaf~$\O$ is \emph{discrete} in that
-$\Sh(\CC) \models \forall f\?\O\_ \forall g\?\O\_ f = g \vee \neg(f = g)$.
+$\Sh(X) \models \forall f\?\CCC\+ (\exists g\?\CCC\+ fg = 1) \vee f = 0$.
+\item Let~$X = \CC$ and let~$\OOO$ be the sheaf of holomorphic functions on~$X$.
+Show that, in classical mathematics, the sheaf~$\OOO$ is \emph{discrete} in that
+$\Sh(\CC) \models \forall f\?\OOO\+ \forall g\?\OOO\+ f = g \vee \neg(f = g)$.
 \end{alphlist}
 \end{exercise}
 
@@ -2444,7 +2415,7 @@ $\Sh(\CC) \models \forall f\?\O\_ \forall g\?\O\_ f = g \vee \neg(f = g)$.
 \label{ex:fta}%
 Let~$F$ be the sheaf of continuous complex-valued functions on~$\CC$. Give an
 example of a function~$f : \CC \to \CC$ such that it is not the case that
-\[ \Sh(\CC) \models \exists z\?F\_ z^2 = f. \]
+\[ \Sh(\CC) \models \exists z\?F\+ z^2 = f. \]
 {\scriptsize\emph{Note.} The sheaf~$F$ can be obtained by constructing, in the
 universe of sheaves on~$\CC$, the set of pairs of Dedekind reals. Hence the
 example demonstrates that the usual formulation of the fundamental theorem of
@@ -2471,9 +2442,9 @@ contains a minimal element implies the law of excluded middle.\smallskip
 \vee \varphi \}$.\par}
 \item Give an explicit example of a subsheaf~$F$ of the constant
 sheaf~$\underline{\NN}$ on a topological space~$X$ such that
-\[ \Sh(X) \models \exists n\?F\_ \top
+\[ \Sh(X) \models \exists n\?F\+ \top
   \quad\text{but}\quad
-  \Sh(X) \not\models \exists n\?F\_ \forall m\?F\_ n \leq m. \]
+  \Sh(X) \not\models \exists n\?F\+ \forall m\?F\+ n \leq m. \]
 \end{alphlist}
 \end{exercise}
 
@@ -2532,7 +2503,7 @@ $0 \not\in \fff$, $(x + y \in \fff) \Rightarrow (x \in \fff) \vee (y \in
 An ideal~$\aaa \subseteq A$ is a \emph{radical ideal} iff~$x^n \in \aaa$
 implies~$x \in \aaa$ for any~$x \in A$ and natural number~$n$. The
 \emph{radical}~$\sqrt{\aaa}$ of an arbitrary ideal~$\aaa$ is the radical
-ideal~$\{ x \in A \,|\, \exists n \in \NN\_ x^n \in \aaa \}$.
+ideal~$\{ x \in A \,|\, \exists n \in \NN\+ x^n \in \aaa \}$.
 
 A ring is \emph{local} iff a finite sum is invertible only if one of its
 summands also is. More precisely, this means that~$1 \neq 0$ and that
@@ -2602,9 +2573,9 @@ Proposition~{\ref{prop:immediate-consequences}}{\quad}\phantom{\,\,}\\
 Assuming that~$A$ is reduced: \\[-1.8em]
 \begin{Alphlist}[(G)]
 \addtocounter{enumi}{4}
-\item\label{item:field} $A^\sim$ is a field: $\forall x\?A^\sim\_ \Bigl((\neg(\exists y\?A^\sim\_ xy = 1)) \Rightarrow x = 0\bigr)$.
+\item\label{item:field} $A^\sim$ is a field: $\forall x\?A^\sim\+ \Bigl((\neg(\exists y\?A^\sim\+ xy = 1)) \Rightarrow x = 0\bigr)$.
 \item\label{item:negneg-stable} $A^\sim$ has $\neg\neg$-stable equality:
-$\forall x,y\?A^\sim\_ \neg\neg(x = y) \Rightarrow x = y$.
+$\forall x,y\?A^\sim\+ \neg\neg(x = y) \Rightarrow x = y$.
 \item\label{item:noetherian} $A^\sim$ is \emph{anonymously Noetherian}.
 \end{Alphlist}\vspace*{-0.7em}}}}
 \end{center}
@@ -2614,15 +2585,15 @@ are implicitly using the sheaf semantics. For instance, when we say
 that~$A^\sim$ is a local ring, we actually mean
 \begin{multline*}
   \Sh(X) \models \neg(1 =_{A^\sim} 0) \quad\text{and} \\
-  \Sh(X) \models \forall x,y\?A^\sim\_ \bigl((\exists z\?A^\sim\_ (x + y)z
+  \Sh(X) \models \forall x,y\?A^\sim\+ \bigl((\exists z\?A^\sim\+ (x + y)z
   =_{A^\sim} 1) \Longrightarrow \\
   (\exists
-  z\?A^\sim\_ xz =_{A^\sim} 1) \vee (\exists z\?A^\sim\_ yz =_{A^\sim} 1)\bigr).
+  z\?A^\sim\+ xz =_{A^\sim} 1) \vee (\exists z\?A^\sim\+ yz =_{A^\sim} 1)\bigr).
 \end{multline*}
 
 The locale~$X$ on which this theater plays out is none other than the
 \emph{spectrum of~$A$} from algebraic geometry, and the sheaf~$A^\sim$ is the
-sheaf of regular functions, also denoted~``$\O_{\Spec(A)}$''. We will give details on its construction in
+sheaf of regular functions, also denoted~``$\OOO_{\Spec(A)}$''. We will give details on its construction in
 Section~\ref{sect:origins}, but first want to reflect on the displayed
 statements.
 
@@ -2752,7 +2723,7 @@ statement~(\ref{item:negneg-stable}) does not require double negation stability
 of~$A$ on the metalevel; in fact, it is fully constructive.
 
 \begin{proposition}If~$A$ is reduced, then the sheaf of rings~$A^\sim$ has $\neg\neg$-stable equality:
-\[ \Spec(A) \models \forall x,y\?A^\sim\_ \neg\neg(x = y) \Rightarrow x = y. \]
+\[ \Spec(A) \models \forall x,y\?A^\sim\+ \neg\neg(x = y) \Rightarrow x = y. \]
 \end{proposition}
 
 \begin{proof}We argue internally in the universe of sheaves, using the sheaf
@@ -2921,8 +2892,8 @@ theory of fields is, for any of its variants, not a partial Horn theory.
 rings extended by the two coherent axioms
 \begin{align*}
   1 = 0 &\vdash \bot \\
-  (\exists z\?R\_ (x+y)z = 1) &\seq{x:R,y:R} (\exists z\?R\_ xz = 1) \vee
-  (\exists z\?R\_ yz = 1),
+  (\exists z\?R\+ (x+y)z = 1) &\seq{x:R,y:R} (\exists z\?R\+ xz = 1) \vee
+  (\exists z\?R\+ yz = 1),
 \end{align*}
 is also not a partial Horn theory. Hence there is no reason to expect that free
 local rings exist, and indeed, in general they do not. However, despite this
@@ -2996,7 +2967,7 @@ family~$(U_x)_{x \in A}$ of opens of~$\Spec(A)$, one for each nullary relation
 symbol of the theory. In fact, by the construction of the generic model, the
 open~$U_x$ is simply the element~$[D(x)]$ of the Lindenbaum algebra. We
 turn this family into the subsheaf of~$\underline{A}$ given by $U \mapsto \{ g
-\in \Hom(U,A) \,|\, \forall x \in A\_ g^{-1}[\{a\}] \preceq [D(a)] \}$. Abusing
+\in \Hom(U,A) \,|\, \forall x \in A\+ g^{-1}[\{a\}] \preceq [D(a)] \}$. Abusing
 notation, we denote this subsheaf also as~``$\fff_0$''. The
 statement~``$\fff_0$ is a prime filter'' is then validated by the sheaf semantics.}
 
@@ -3083,9 +3054,9 @@ for each element~$a \in A$ and the following axioms:
   \top &\vdash e_{a + b} = e_a + e_b & \text{(for each~$a,b \in A$)} \\
   \top &\vdash e_{ab} = e_a e_b & \text{(for each~$a,b \in A$)} \\
   \top &\vdash e_{-a} = -e_a & \text{(for each~$a \in A$)} \\
-  \top &\vdash_{x:R} \bigvee_{a \in A} \bigvee_{s \in A} \bigl((\exists z\?R\_
+  \top &\vdash_{x:R} \bigvee_{a \in A} \bigvee_{s \in A} \bigl((\exists z\?R\+
   e_s z = 1) \wedge e_s x = e_a\bigr) \\
-  e_a = 0 &\vdash \bigvee_{\substack{s \in A\\sa = 0}} (\exists z\?R\_ e_s z = 1) & \text{(for each~$a \in A$)}
+  e_a = 0 &\vdash \bigvee_{\substack{s \in A\\sa = 0}} (\exists z\?R\+ e_s z = 1) & \text{(for each~$a \in A$)}
 \end{align*}
 By the first five listed entries, a model~$R$ of this theory comes equipped
 with a ring homomorphism~$f : A \to R$. The remaining two entries ensure that~$R$ is
@@ -3143,7 +3114,7 @@ is~$\sqrt{\sum_i \aaa_i}$. In this way the radical ideals form a frame.
 
 The Lindenbaum algebra of~$\TT$ is the free frame generated by the symbols~$D(x)$,
 where~$x$ ranges over the elements of~$A$, modulo the axioms for a prime
-filter. Hence to give a frame homomorphism~$\O(\Spec(A)) \to \Rad(A)$, we need
+filter. Hence to give a frame homomorphism~$\OOO(\Spec(A)) \to \Rad(A)$, we need
 to specify images in~$\Rad(A)$ for each generator in such a way that the
 axioms for a prime filter are satisfied. This is achieved by declaring~$D(f)
 \mapsto \sqrt{(f)}$:
@@ -3221,7 +3192,7 @@ Section~\ref{sect:a-remarkable-sheaf}.
 \end{proposition}
 
 \begin{proof}For~$f \in A$, we set~$S_f \defeq \{ g \in A \,|\, \exists n \in
-\NN\_ \exists u \in A\_ f^n = ug \} \subseteq A$. This multiplicative system is
+\NN\+ \exists u \in A\+ f^n = ug \} \subseteq A$. This multiplicative system is
 the \emph{saturation} of~$\{ f^0, f^1, \ldots \}$. The localization~$A[S_f^{-1}]$
 is canonically isomorphic to~$A[f^{-1}]$, but has the advantage that for
 elements~$f,g \in A$ such that~$\sqrt{(f)} = \sqrt{(g)}$, the
@@ -3302,9 +3273,9 @@ Proposition~\ref{prop:identification}.\end{proof}
     &&\quad for each~$i$, $fg_i \models \varphi$ or $fg_i \models \psi$ \\
     $f \models \varphi \Rightarrow \psi$ &iff&
       for all~$g \in A$, $fg \models \varphi$ implies $fg \models \psi$ \\
-    $f \models \forall x\?A^\sim\_ \varphi(x)$ &iff&
+    $f \models \forall x\?A^\sim\+ \varphi(x)$ &iff&
       for all~$g \in A$ and all $x_0 \in A[(fg)^{-1}]$, $fg \models \varphi(x_0)$ \\
-    $f \models \exists x\?A^\sim\_ \varphi(x)$ &iff&
+    $f \models \exists x\?A^\sim\+ \varphi(x)$ &iff&
       there exists a partition~$f^n = fg_1 + \cdots + fg_m$ such that, \\
     &&\quad for each~$i$, $fg_i \models \varphi(x_0)$ for some~$x_0 \in A[(fg_i)^{-1}]$
   \end{tabular}}
@@ -3337,7 +3308,7 @@ statement~(\ref{item:field}) of Section~\ref{sect:a-remarkable-sheaf}.
 
 \begin{proposition}\label{prop:field-property}
 Let~$A$ be a reduced ring. Then~$A^\sim$ is a field in that
-\[ 1 \models \forall x\?A^\sim\_ \bigl((\neg(\exists y\?A^\sim\_ xy = 1)) \Rightarrow
+\[ 1 \models \forall x\?A^\sim\+ \bigl((\neg(\exists y\?A^\sim\+ xy = 1)) \Rightarrow
 x = 0\bigr). \]
 \end{proposition}
 
@@ -3486,7 +3457,7 @@ see for instance Refs.~\cite[Lemme~6.9.2]{ega-4-2},
 \cite[Thm.~24.1]{matsumura:commutative-ring-theory} or
 \cite[Thm.~14.4]{eisenbud:commutative-algebra}, which only cover the case of
 Noetherian integral domains, or Refs.~[\refcite{staats:generic-freeness}],
-\cite[{\href{https://stacks.math.columbia.edu/tag/051Q}{Tag~051Q}}]{stacks-project}
+\cite[Tag~051Q]{stacks-project}
 which proceed in a series of intermediate steps, reducing to that case).\par
 \begin{quote}
 \textbf{Proof.} By Example~\ref{ex:negneg-interpretation} and
@@ -3729,8 +3700,8 @@ also applies to this extension, and moreover, this extension in sound with
 respect to infinitary intuitionistic logic.
 \begin{alphlist}[(c)]
 \item Prove that:
-\[ 1 \models \forall f\?A^\sim\_ \forall x\?A^\sim\_
-  \bigl((\exists z\?A^\sim\_ fz = 1) \Rightarrow x = 0\bigr) \Longrightarrow \bigvee_{n \in \NN} (f^n x = 0). \]
+\[ 1 \models \forall f\?A^\sim\+ \forall x\?A^\sim\+
+  \bigl((\exists z\?A^\sim\+ fz = 1) \Rightarrow x = 0\bigr) \Longrightarrow \bigvee_{n \in \NN} (f^n x = 0). \]
 \item Deduce that~$A^\sim$ is ``almost a field'' in the sense that any nonunit
 is nilpotent.
 \item Show that~$A$ is reduced iff~$A^\sim$ is.
@@ -3740,7 +3711,7 @@ is nilpotent.
 \begin{exercise}{A local--global principle}%
 \label{ex:local-global}%
 Let~$A$ be a ring. We introduce an operator~$\nabla$ by
-\[ \nabla\varphi \defeqv \bigl(\forall s\?A^\sim\_ ((\varphi \Rightarrow s = 0)
+\[ \nabla\varphi \defeqv \bigl(\forall s\?A^\sim\+ ((\varphi \Rightarrow s = 0)
 \Rightarrow s = 0\bigr).\]
 \begin{alphlist}[(f)]
 \item Verify that~$\nabla$ is a \emph{local operator}, that is verify that
@@ -3750,7 +3721,7 @@ Let~$A$ be a ring. We introduce an operator~$\nabla$ by
 \]
 hold under the sheaf semantics.
 \item Show that equality is~$\nabla$-stable in that
-\[ 1 \models \forall x\?A^\sim\_ \forall y\?A^\sim\_ \nabla(x = y) \Rightarrow x = y. \]
+\[ 1 \models \forall x\?A^\sim\+ \forall y\?A^\sim\+ \nabla(x = y) \Rightarrow x = y. \]
 
 {\scriptsize\emph{Note.} If~$A$ is reduced, then~$\nabla$ coincides
 with~$\neg\neg$ and the claim reduces to statement~(\ref{item:negneg-stable})
@@ -3759,16 +3730,16 @@ related to the notion of \emph{scheme-theoretic dense open
 subsets}~\cite[Lemma~9.11]{blechschmidt:phd}.\par}
 \item Verify that an element of~$A^\sim$ is regular iff it
 is~$\nabla$-invertible, that is:
-\[ 1 \models \forall f\?A^\sim\_
+\[ 1 \models \forall f\?A^\sim\+
   \bigl(
-    (\forall s\?A^\sim\_ fs = 0 \Rightarrow s = 0) \Longleftrightarrow
-    \nabla(\exists g\?A^\sim\_ fg = 1)
+    (\forall s\?A^\sim\+ fs = 0 \Rightarrow s = 0) \Longleftrightarrow
+    \nabla(\exists g\?A^\sim\+ fg = 1)
   \bigr)
 \]
 \item Verify the analogous statement for finitely generated ideals:
-\begin{multline*}1 \models \forall f_1\?A^\sim\_ \ldots \forall f_n\?A^\sim\_ \\
+\begin{multline*}1 \models \forall f_1\?A^\sim\+ \ldots \forall f_n\?A^\sim\+ \\
   \bigl(
-    (\forall s\?A^\sim\_ (\textstyle\bigwedge_{i=1}^n f_is = 0) \Rightarrow s = 0) \Longleftrightarrow
+    (\forall s\?A^\sim\+ (\textstyle\bigwedge_{i=1}^n f_is = 0) \Rightarrow s = 0) \Longleftrightarrow
     \nabla(1 \in (f_1,\ldots,f_n))
   \bigr) \end{multline*}
 \item Explain how the local--global principle ``if~$(f_1,\ldots,f_n)$ is a
@@ -3786,7 +3757,7 @@ Ref.~\cite[Theorem~2.4]{coquand-quitte:constructive-finite-free-resolutions}.
 Then~$(\Lambda^m M)$, the ideal of~$m$-minors of~$M$, is regular.
 
 \textbf{Proof.} We verify that, under~$\nabla$, there exists an
-invertible~$m$-minor, that is we verify~$\nabla(\bigvee_f (\exists g\?A^\sim\_
+invertible~$m$-minor, that is we verify~$\nabla(\bigvee_f (\exists g\?A^\sim\+
 fg=1))$, where the disjunction is over the~$m$-minors of~$M$.
 
 Since~$M$ is injective, the ideal generated by the first column is regular,
@@ -3825,7 +3796,7 @@ Let~$M$ and~$N$ be modules over a ring~$A$. Let~$f : M \to N$ be a linear map.
 
 \begin{exercise}{Units of the sheaf model}%
 Let~$A$ be a ring. Let~$f \in A$. Let~$x \in A[f^{-1}]$. Show using the result
-of Exercise~\ref{ex:global-existence} that~$f \models \exists y\?A^\sim\_ xy
+of Exercise~\ref{ex:global-existence} that~$f \models \exists y\?A^\sim\+ xy
 = 1$ if and only if~$x$ is invertible in~$A[f^{-1}]$.
 \end{exercise}
 
@@ -3864,8 +3835,8 @@ Let~$A$ be a ring. Verify, without assuming~\BPIT, that~$\Spec(A)$ is
 isomorphic to the one-point locale iff any element of~$A$ is either
 invertible or nilpotent.\smallskip
 
-{\noindent\scriptsize\emph{Hint.} Use the description of the unique map~$\O(\pt) \to
-\O(\Spec(A)),\,\varphi \mapsto \bigvee\{\top\,|\,\varphi\}$ computed in
+{\noindent\scriptsize\emph{Hint.} Use the description of the unique map~$\OOO(\pt) \to
+\OOO(\Spec(A)),\,\varphi \mapsto \bigvee\{\top\,|\,\varphi\}$ computed in
 part~(\ref{item:join-top}) of Exercise~\ref{ex:frame-of-radical-ideals}.\par}
 \end{exercise}
 

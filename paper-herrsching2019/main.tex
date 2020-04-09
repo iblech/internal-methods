@@ -132,7 +132,21 @@ mathematical universes.
 
 \tableofcontents
 
-\subsection*{Introduction}
+\subsection*{Introduction\footnote{
+Unlike some other texts on locales or sheaves, this text is set in a
+constructive (but impredicative) metatheory. We do not use the law of excluded
+middle nor any version of the axiom of choice, and we also do not adopt any
+nonclassical principles. We freely use powersets, but more for linguistic
+convenience than by necessity.
+In particular, the central idea presented in
+Section~\ref{sect:appl}, the reduction technique by which we can pretend that any
+given reduced ring is a field, is very robust with respect to the metatheory.
+Even though we chose a semantic point of view for its derivation, the final
+result is a purely syntactical transformation. As it stands, this text could be
+formalized in the kind of type theory which is valid in
+toposes~\cite{maietti:modular-correspondence} or
+in~\textsc{izf}~\cite{crosilla:cst-izf}.}}
+
 \addcontentsline{toc}{section}{Introduction}
 
 \paragraph{Locales.}
@@ -337,20 +351,35 @@ Section~\ref{sect:example-applications}, which is shorter and arguably more
 perspicuous than all previously known classical proofs.
 
 
-\paragraph{Remark on the metatheory.}
-Unlike some other texts on locales or sheaves, this text is set in a
-constructive (but impredicative) metatheory. We do not use the law of excluded
-middle nor any version of the axiom of choice, and we also do not adopt any
-nonclassical principles. We freely use powersets, but more for linguistic
-convenience than by necessity.
+\paragraph{Where to go from here.} The themes which this contribution touches
+on are embedded into a larger context, and we invite readers to follow those
+interesting tangents.
 
-In particular, the central idea presented in
-Section~\ref{sect:appl}, the reduction technique by which we can pretend that any
-given reduced ring is a field, is very robust with respect to the metatheory.
-Even though we chose a semantic point of view for its derivation, the final
-result is a purely syntactical transformation. As it stands, this text could be
-formalized in the kind of type theory which is valid in
-toposes~\cite{maietti:modular-correspondence} or in~\textsc{izf}~\cite{crosilla:cst-izf}.
+Regarding spaces, the notion of locales can be modified in several ways.
+Firstly, there are \emph{sites} and closely related
+\emph{toposes}.~\cite{leinster:introduction,moerdijk-maclane:sheaves-logic}.
+Given two opens~$U$ and~$V$ of a locale, there is only a truth value as to
+whether~$U$ is contained in~$V$; with sites and toposes, there can be a
+nontrivial \emph{set} of ways that~$U$ is contained in~$V$. In an orthogonal
+direction, there is the notion of a \emph{formal
+topology}~\cite{sambin:some-points,sambin:ifs}. These implement the idea of
+pointfree topology in predicative settings.
+
+Regarding sheaf semantics, Section~\ref{sect:sheaf-semantics} only presents
+the first-order case, but the theory can be extended include unbounded
+quantification~\cite{shulman:stack-semantics}, function types and power types
+and even a fully-fledged type theory~\cite{maietti:modular-correspondence}. The
+sheaf semantics of appropriate toposes has been used to give \emph{synthethic
+accounts} of several fields, such as differential geometry~\cite{kock:sdg},
+domain theory~\cite{hyland:synthetic-domain-theory} and computability
+theory~\cite{bauer:synthetic-computability-theory}.
+
+Regarding constructive algebra, there are by now several
+textbooks~\cite{mines-richman-ruitenburg:constructive-algebra,lombardi-quitte:constructive-algebra,yengui:constructive-commutative-algebra}
+on constructive algebra available and there is a vast literature on
+the intriguing subject of constructivizing classical commutative algebra.
+Starting points include
+Refs.~\refcite{coste-lombardi-roy:dynamical-method,coquand-lombardi:logical-approach,rinaldi-schuster-wessel:edde,cederquist-coquand:entrel}.
 
 
 \paragraph{Notes for readers familiar with the themes of this contribution.}
@@ -3912,3 +3941,6 @@ really necessary? Wouldn't it suffice to define~$\Spec(A)$ as the topological
 space of filters of~$A$? Indeed, for some time this was
 believed~\cite[Section~3]{lawvere:icm-address}; however, this hope turned out
 certain topos without any filters~\cite[pp.~200f.]{tierney:spectrum}, thus
+
+XXX: Two views on A~
+XXX: Direct definition of A~ possible

@@ -363,7 +363,9 @@ whether~$U$ is contained in~$V$; with sites and toposes, there can be a
 nontrivial \emph{set} of ways that~$U$ is contained in~$V$. In an orthogonal
 direction, there is the notion of a \emph{formal
 topology}~\cite{sambin:some-points,sambin:ifs}. These implement the idea of
-pointfree topology in predicative settings.
+pointfree topology in predicative settings. In this context also basics of
+algebraic geometry have been
+developed~\cite{schuster:formal-zariski,cls:spectral-schemes,cls:projective-spectrum}.
 
 Regarding sheaf semantics, Section~\ref{sect:sheaf-semantics} only presents
 the first-order case, but the theory can be extended include unbounded
@@ -3196,6 +3198,18 @@ then the theory is consistent. This observation can be regarded as a finitary
 substitute for the statement (equivalent to~\BPIT in general) ``nontrivial rings contain prime filters''.
 \end{remark}
 
+\begin{remark}Given the importance of Theorem~\ref{thm:workhorse}, it is
+natural to wonder where the proof stems from. Our proof proceeded in an ad hoc
+fashion, verifying that the frame of radical ideals has the required properties
+-- but where does the idea to use radical ideals come from? In general, determining the set
+of provable sequents of a geometric theory is a challenging problem. Our most
+efficient tool is probably the theory of \emph{entailment relations}. We refer
+to Refs.~\refcite{rinaldi-schuster-wessel:edde,cederquist-coquand:entrel} and
+the references therein and also strongly recommend the literature on dynamical
+methods in commutative
+algebra~\refcite{coste-lombardi-roy:dynamical-method,coquand-lombardi:logical-approach,coquand:site}.
+\end{remark}
+
 Having identified the underlying frame of~$\Spec(A)$, the second workhorse is
 an explicit description of the sheaf~$A^\sim$.
 
@@ -3246,6 +3260,14 @@ powerset operation such as~\textsc{czf}~\cite{crosilla:predicativity,aczel-rathj
 universes~\cite{maietti:au,vickers:sketches}. In
 fact, it is now a purely syntactic translation procedure which can be carried
 out within~\textsc{pra}.
+
+The approach using locales and sheaves provides two ingredients which go beyond
+mere syntax: Firstly, they give motivation for setting up the semantics in
+the way we do (Section~\ref{sect:origins}). Secondly, they
+conceptualize~$A^\sim$ as a single entity, just as rings like~$A/\mmm$
+or~$A_\ppp$ are single entities; nevertheless, after unrolling the definitions,
+any statement about~$A^\sim$ is merely a (logically more complex) statement
+about~$A$ and its localizations~$A[f^{-1}]$.
 
 By a \emph{formula over a ring element}~$f \in A$, we mean a
 first-order formula over the signature which has
@@ -3305,7 +3327,9 @@ indices~$i$, then~$f \models \varphi$.
 \end{theorem}
 
 \begin{proof}Combination of Theorem~\ref{thm:basic-properties-sheaf-semantics}
-and Corollary~\ref{cor:algebraic-reformulation}.\end{proof}
+and Corollary~\ref{cor:algebraic-reformulation}, or alternatively direct proof
+by induction without using any preliminaries from earlier sections of this
+contribution.\end{proof}
 
 
 \paragraph{The field property.} We are now in a position to verify
@@ -3935,12 +3959,4 @@ FUTURE: Why the name "geometric"?
 FUTURE: Forcing
 FUTURE: Grothendieck quote
 
-% schuster:formal-zariski
-% cls:spectral-schemes
-really necessary? Wouldn't it suffice to define~$\Spec(A)$ as the topological
-space of filters of~$A$? Indeed, for some time this was
-believed~\cite[Section~3]{lawvere:icm-address}; however, this hope turned out
-certain topos without any filters~\cite[pp.~200f.]{tierney:spectrum}, thus
-
-XXX: Two views on A~
-XXX: Direct definition of A~ possible
+FUTURE: Cite Duval and Joyal.

@@ -11,30 +11,31 @@
 \usetikzlibrary{calc}
 \usepackage{mathtools,stmaryrd,xspace,bussproofs}
 
-
-
 % NOTE TO EDITORS AND LAYOUTERS: This package increases the quality of the
 % typesetting. I personally recommend using it, but my contribution does not
 % depend on it.
-%\usepackage[expansion=true,protrusion=true]{microtype}
+\usepackage[expansion=true,protrusion=true]{microtype}
 
-\newtheorem{ex}{Exercise}
-\let\Exercisefont\upshape
-\def\Exerciseheadfont{\bfseries}
-\newenvironment{exercise}[1]{
-  \begin{ex}[#1]
-}{\end{ex}}
+\makeindex
+%\newindex{aindx}{adx}{and}{Author Index}       % author index
+%\renewindex{default}{idx}{ind}{Subject Index}  % subject index
 
+\begin{document}
+
+% NOTE TO TEX PERSONS: With the curly bracket, we are opening here a scope
+% which will close at the very end of this contribution. In this way our macros
+% do not pollute the namespace of the other contributions, that is after the
+% scope ends, our macros will no longer exist.
+{
 \newcommand{\hcancel}[5]{%
   \tikz[baseline=(tocancel.base)]{
     \node[inner sep=0pt,outer sep=0pt] (tocancel) {#1};
     \draw[black, line width=0.2mm] ($(tocancel.south west)+(#2,#3)$) -- ($(tocancel.north east)+(#4,#5)$);
   }%
 }
-
-\makeindex
-%\newindex{aindx}{adx}{and}{Author Index}       % author index
-%\renewindex{default}{idx}{ind}{Subject Index}  % subject index
+\newtheorem{exercise}{Exercise}
+\let\Exercisefont\upshape
+\def\Exerciseheadfont{\bfseries}
 
 \newcommand{\CCC}{\mathcal{C}}
 \newcommand{\OOO}{\mathcal{O}}
@@ -75,8 +76,6 @@
 \newcommand{\negg}{\neg\!\!\!\neg}
 \newcommand{\bott}{\bot\!\!\!\!\bot}
 \newcommand{\brak}[1]{{\llbracket{#1}\rrbracket}}
-
-\begin{document}
 
 \chapter{Generalized spaces for constructive algebra}
 
@@ -808,17 +807,17 @@ one-to-one correspondence.
 \subsection*{Exercises}
 \addcontentsline{toc}{subsection}{Exercises}
 
-\begin{exercise}{The space of points of a locale}%
+\begin{exercise}[The space of points of a locale]%
 \label{ex:canonical-topology}%
 Devise a canonical to\-po\-logy on the set of points of a locale.
 \end{exercise}
 
-\begin{exercise}{Sober topological spaces as locales}%
+\begin{exercise}[Sober topological spaces as locales]%
 Verify the statements made in Remark~\ref{rem:sober-embed}.
 \end{exercise}
 
 % FUTURE: Fix linebreak
-\begin{exercise}{Hausdorff spaces are sober}%
+\begin{exercise}[Hausdorff spaces are sober]%
 \label{ex:hausdorff-sober}%
 A \emph{meet-irreducible open subset} of a topological space~$Y$ is an
 open subset~$W \subseteq Y$ such that~$(U \cap V \subseteq W) \Rightarrow (U
@@ -847,7 +846,7 @@ space of rational numbers can fail to be
 sober~\cite[Example~8.14(iv)]{fourman-scott:sheaves-and-logic}.\par}
 \end{exercise}
 
-\begin{exercise}{Complete metric spaces are sober}
+\begin{exercise}[Complete metric spaces are sober]%
 A \emph{metric space} is a set~$Y$ together with a relation~$d \subseteq Y
 \times Y \times \QQ_{\geq0}$, written~``$d(x,y) \leq q$'', such that the
 following axioms are satisfied.
@@ -879,7 +878,7 @@ more generally any Cauchy process converges in the space of equivalence classes
 of Cauchy processes.\par}
 \end{exercise}
 
-\begin{exercise}{Isomorphisms of frames}%
+\begin{exercise}[Isomorphisms of frames]%
 \label{ex:isomorphisms-of-frames}%
 Show that a frame homomorphism~$\alpha : A \to A'$ is an isomorphism (that is,
 admits an inverse frame homomorphism) if and only if~$\alpha$ is surjective and
@@ -887,7 +886,7 @@ reflects the ordering (that is,~$\alpha(U) \preceq \alpha(V) \Rightarrow U
 \preceq V$).
 \end{exercise}
 
-\begin{exercise}{The covariant approach to locales}%
+\begin{exercise}[The covariant approach to locales]%
 Let~$A$ be a frame.
 \begin{alphlist}[(c)]
 \item Show that~$A$ contains arbitrary (set-indexed) meets (though they are not
@@ -909,13 +908,13 @@ for all~$U \in A$ and~$V \in A'$.
 \OOO(X')$~\cite{picado-pultr:covariant}.\par}
 \end{exercise}
 
-\begin{exercise}{Points as complete prime filters}%
+\begin{exercise}[Points as complete prime filters]%
 \label{ex:points-as-filters}%
 Verify that the points of a locale~$X$ are in canonical one-to-one correspondence
 with the completely prime filters of~$\OOO(X)$.
 \end{exercise}
 
-\begin{exercise}{Dense opens}%
+\begin{exercise}[Dense opens]%
 \label{ex:dense-opens}%
 An open~$U$ of a locale is \emph{dense} iff for any open~$V$, $U \wedge V =
 \bot$ implies~$U = \bot$.
@@ -928,7 +927,7 @@ locale~$\pt$. Show that~$\varphi$ is dense in~$\pt$ iff~$\neg\neg\varphi$.
 \end{alphlist}
 \end{exercise}
 
-\begin{exercise}{Characterizing spatial locales}%
+\begin{exercise}[Characterizing spatial locales]%
 Let~$X$ be a locale. Show that the following conditions are equivalent.
 \begin{alphlist}[(c)]
 \item For any opens~$U, V \in \OOO(X)$: If~$x \inplus U \Rightarrow y \inplus V$
@@ -942,7 +941,7 @@ frame homomorphism is injective.)
 \end{alphlist}
 \end{exercise}
 
-\begin{exercise}{The frame of radical ideals}%
+\begin{exercise}[The frame of radical ideals]%
 \label{ex:frame-of-radical-ideals}%
 Let~$A$ be a ring. We order the set~$\Idl(A)$ of ideals of~$A$ by inclusion.
 (See Section~\ref{sect:algebraic-preliminaries} for some algebraic
@@ -965,7 +964,7 @@ in~$\Rad(A)$.
 \end{alphlist}
 \end{exercise}
 
-\begin{exercise}{Coproduct of locales}%
+\begin{exercise}[Coproduct of locales]%
 \begin{alphlist}[(c)]
 \item Show that the category of frames has small products.
 \item Deduce that the category of locales has small coproducts.\smallskip
@@ -977,7 +976,7 @@ that~$L(M)$ is the coproduct~$\coprod_{x \in M} \pt$.
 \end{alphlist}
 \end{exercise}
 
-\begin{exercise}{Local locales}%
+\begin{exercise}[Local locales]%
 \label{ex:local-locales}%
 A locale~$X$ is \emph{local} iff for any open covering~$\top = \bigvee_i U_i$,
 there is an index~$i$ such that~$\top = U_i$. (For instance, the spectrum of a
@@ -985,7 +984,7 @@ ring~$A$ is local iff~$A$ is local.)
 Show that any local locale has a canonical point, its \emph{focal point}.
 \end{exercise}
 
-\begin{exercise}{Maps into discrete spaces}%
+\begin{exercise}[Maps into discrete spaces]%
 Let~$X$ be a locale. Let~$A$ be a set and endow it with the discrete topology. Show
 that morphisms~$X \to L(A)$ are in canonical correspondence with
 families~$(U_a)_{a \in A}$ of opens of~$X$ such that~$\top = \bigvee_{a \in A}
@@ -2146,7 +2145,7 @@ points, this morphism induces the expected map~$\fff \mapsto f^{-1}[\fff]$.
 \subsection*{Exercises}
 \addcontentsline{toc}{subsection}{Exercises}
 
-\begin{exercise}{The theory of finite objects}%
+\begin{exercise}[The theory of finite objects]%
 \begin{alphlist}[(c)]
 \item Extend the geometric theory of objects
 (page~\ref{item:theory-of-objects}) by relation symbols and axioms, but not by
@@ -2162,7 +2161,7 @@ solution is given in Ref.~\cite[Example~D1.1.7(k)]{johnstone:elephant}.\par}
 \end{alphlist}
 \end{exercise}
 
-\begin{exercise}{Issues of size}%
+\begin{exercise}[Issues of size]%
 Working in~\textsc{izf}, show that the Lindenbaum algebra of a propositional
 geometric theory~$\TT$ can be realized as a set, even though the class of
 geometric formulas is typically a proper class.\smallskip
@@ -2172,7 +2171,7 @@ to one of the form~$\bigvee_i \varphi_i$, where each formula~$\varphi_i$ is a
 conjunction of nullary relation symbols.\par}
 \end{exercise}
 
-\begin{exercise}{Discrete locales}%
+\begin{exercise}[Discrete locales]%
 \begin{alphlist}[(b)]
 \item Find a theory which is classified by the two-point locale (the locale
 associated to the discrete two-point topological space).
@@ -2181,12 +2180,12 @@ which is classified by~$L(M)$.
 \end{alphlist}
 \end{exercise}
 
-\begin{exercise}{The localic unit interval}%
+\begin{exercise}[The localic unit interval]%
 Extend the theory of Dede\-kind cuts in such a way that its models are those
 Dedekind reals which are elements of~$[0,1]$.
 \end{exercise}
 
-\begin{exercise}{More on exotic locales}%
+\begin{exercise}[More on exotic locales]%
 \label{ex:exotic-locales}%
 \begin{alphlist}[(d)]
 \item Define the locale of partial surjections~$\NN \twoheadrightarrow \NN^\NN$.\smallskip
@@ -2224,12 +2223,12 @@ that any two reals are equal or not, show that the locale of surjections~$\NN
 \end{alphlist}
 \end{exercise}
 
-\begin{exercise}{Models as points}%
+\begin{exercise}[Models as points]%
 Let~$\TT$ be a propositional geometric theory. Verify that the points
 of~$L(\TT)$ are in canonical bijection with the set-based models of~$\TT$.
 \end{exercise}
 
-\begin{exercise}{The product of locales}\label{ex:products-of-locales}%
+\begin{exercise}[The product of locales]\label{ex:products-of-locales}%
 Let~$X$ and~$X'$ be locales, classifying propositional geometric
 theories~$\TT$ and~$\TT'$ respectively. Let~$\TT + \TT'$ be the combined theory
 (whose set of sorts is the disjoint union of the sets of sorts of~$\TT$
@@ -2237,13 +2236,13 @@ and~$\TT'$, and so on). Show that~$L(\TT + \TT')$ is the product of~$X$
 and~$X'$ in the category of locales.
 \end{exercise}
 
-\begin{exercise}{The coproduct of locales, revisited}%
+\begin{exercise}[The coproduct of locales, revisited]%
 Let~$X$ and~$X'$ be locales, classifying some propositional geometric
 theories~$\TT$ and~$\TT'$ respectively. Find a theory in terms of~$\TT$
 and~$\TT'$ which is classified by~$X \amalg X'$.
 \end{exercise}
 
-\begin{exercise}{Spatiality of the localic reals}%
+\begin{exercise}[Spatiality of the localic reals]%
 \label{ex:spatiality-reals}%
 \newcommand{\fa}{\ensuremath{(\!\cdot}}%
 \newcommand{\fb}{\ensuremath{\cdot\!)}}%
@@ -2276,7 +2275,7 @@ not only Heine--Borel for countable covers as it is often studied in reverse
 mathematics~\cite{normann-sanders:uncountable}.\par}
 \end{exercise}
 
-\begin{exercise}{The localic Galois group of a field extension}%
+\begin{exercise}[The localic Galois group of a field extension]%
 Let~$L|k$ be a field extension. The \emph{localic Galois group}~$\Gal(L|k)$
 is the classifying locale of the theory of automorphisms~$L \to L$ which
 fix~$k$, as described on page~\pageref{par:theory-automorphisms}.
@@ -2301,7 +2300,7 @@ homeomorphic to the topological Galois group of~$L|k$.
 \end{alphlist}
 \end{exercise}
 
-\begin{exercise}{Coherent locales and coherent theories}%
+\begin{exercise}[Coherent locales and coherent theories]%
 \label{ex:coherent}%
 An open~$U$ of a locale is \emph{compact} if and only if, whenever~$U
 \preceq \bigvee_{i \in I} V_i$, there is a (Kuratowski-)finite subset~$I'
@@ -2351,7 +2350,7 @@ without any set-based models are inconsistent. (This is usually phrased as
 \end{alphlist}
 \end{exercise}
 
-\begin{exercise}{Subsheaves of the terminal sheaf}%
+\begin{exercise}[Subsheaves of the terminal sheaf]%
 \label{ex:subsheaves-1}%
 Let~$X$ be a locale.
 \begin{alphlist}[(b)]
@@ -2362,7 +2361,7 @@ the subsheaves of~$1$ and the opens of~$X$.
 \end{alphlist}
 \end{exercise}
 
-\begin{exercise}{A geometric interpretation of double negation}%
+\begin{exercise}[A geometric interpretation of double negation]%
 \label{ex:negneg-interpretation}%
 Let~$\varphi$ be a formula over an open~$U$ of a locale~$X$.
 \begin{alphlist}[(c)]
@@ -2381,7 +2380,7 @@ double negation elimination).
 \end{alphlist}
 \end{exercise}
 
-\begin{exercise}{Unique local existence is global existence}%
+\begin{exercise}[Unique local existence is global existence]%
 \label{ex:global-existence}%
 Let~$F$ be a sheaf on a locale~$X$. Let~$\varphi$ be a formula over~$X$. Assume
 that~$\Sh(X) \models \exists!s\?F\+ \varphi(s)$, that is
@@ -2392,7 +2391,7 @@ Show that for any open~$U \in \OOO(X)$, there is a unique section~$s \in F(U)$
 such that~$U \models \varphi(s)$.
 \end{exercise}
 
-\begin{exercise}{The sheaf of real functions as a field}%
+\begin{exercise}[The sheaf of real functions as a field]%
 Let~$X$ be a topological space. Let~$\CCC$ be the sheaf of continuous real-valued
 functions on~$X$.
 \begin{alphlist}[(d)]
@@ -2411,7 +2410,7 @@ $\Sh(\CC) \models \forall f\?\OOO\+ \forall g\?\OOO\+ f = g \vee \neg(f = g)$.
 \end{alphlist}
 \end{exercise}
 
-\begin{exercise}{The failure of the fundamental theorem of algebra}%
+\begin{exercise}[The failure of the fundamental theorem of algebra]%
 \label{ex:fta}%
 Let~$F$ be the sheaf of continuous complex-valued functions on~$\CC$. Give an
 example of a function~$f : \CC \to \CC$ such that it is not the case that
@@ -2425,7 +2424,7 @@ Cauchy complex numbers~\cite{ruitenburg:roots} and under weak choice
 principles~\cite{bridges-richman-schuster:wcc}).\par}
 \end{exercise}
 
-\begin{exercise}{The least number principle}%
+\begin{exercise}[The least number principle]%
 \label{ex:least-number-principle}%
 \begin{alphlist}[(e)]
 \item A subset~$M \subseteq X$ of a set~$X$ is \emph{detachable} iff for any
@@ -3642,7 +3641,7 @@ if desired, their proof can also be cast in the sheaf-theoretic framework
 \subsection*{Exercises}
 \addcontentsline{toc}{subsection}{Exercises}
 
-\begin{exercise}{Noetherian properties of the integers}%
+\begin{exercise}[Noetherian properties of the integers]%
 \begin{enumerate}
 \item Show that the law of excluded middle holds if the ring~$\ZZ$ of integers
 is Noetherian in the sense that any ideal is finitely generated.\smallskip
@@ -3659,7 +3658,7 @@ number principle of Exercise~\ref{ex:least-number-principle}.
 \end{enumerate}
 \end{exercise}
 
-\begin{exercise}{Free fields}
+\begin{exercise}[Free fields]%
 \begin{alphlist}[(b)]
 \item A \emph{free field} over a set~$M$ would be
 a field~$K$ together with a map~$M \to K$ such that any map~$M \to L$ into a
@@ -3673,7 +3672,7 @@ free~$k$-field over~$M$ is the empty set.
 \end{alphlist}
 \end{exercise}
 
-\begin{exercise}{Nontriviality of~$\boldsymbol{A^\sim}$}%
+\begin{exercise}[Nontriviality of~$\boldsymbol{A^\sim}$]%
 Let~$A$ be a ring. In Proposition~\ref{prop:immediate-consequences}, we gave an
 abstract proof that~$A^\sim$ is (local and hence) nontrivial in the sense that~$1
 \neq 0$. This proof did not need to assume that~$A$ itself is nontrivial. Give a new proof of this
@@ -3681,7 +3680,7 @@ fact, by verifying directly~$1 \models \neg(1 =_{A^\sim} 0)$ using the
 semantics given in Table~\ref{table:algebraic-kripke-joyal}.
 \end{exercise}
 
-\begin{exercise}{A generalization of the field property}%
+\begin{exercise}[A generalization of the field property]%
 \label{ex:gen-field-property}%
 Let~$A$ be a ring. We extend the sheaf semantics to infinitary first-order
 formulas by adding the following clauses to
@@ -3708,7 +3707,7 @@ is nilpotent.
 \end{alphlist}
 \end{exercise}
 
-\begin{exercise}{A local--global principle}%
+\begin{exercise}[A local--global principle]%
 \label{ex:local-global}%
 Let~$A$ be a ring. We introduce an operator~$\nabla$ by
 \[ \nabla\varphi \defeqv \bigl(\forall s\?A^\sim\+ ((\varphi \Rightarrow s = 0)
@@ -3774,7 +3773,7 @@ well.\qed
 \end{alphlist}
 \end{exercise}
 
-\begin{exercise}{Bridging modules and their induced sheaves}%
+\begin{exercise}[Bridging modules and their induced sheaves]%
 \label{ex:bridging-modules}%
 Let~$M$ be a module over a ring~$A$.
 \begin{alphlist}[(c)]
@@ -3786,7 +3785,7 @@ finite free over~$A[f_i^{-1}]$) iff~$M^\sim$ is finite free.
 \end{alphlist}
 \end{exercise}
 
-\begin{exercise}{Local injectivity and surjectivity}%
+\begin{exercise}[Local injectivity and surjectivity]%
 Let~$M$ and~$N$ be modules over a ring~$A$. Let~$f : M \to N$ be a linear map.
 \begin{alphlist}[(b)]
 \item Show that~$f$ is injective iff~$f^\sim : M^\sim \to N^\sim$ is injective.
@@ -3794,13 +3793,13 @@ Let~$M$ and~$N$ be modules over a ring~$A$. Let~$f : M \to N$ be a linear map.
 \end{alphlist}
 \end{exercise}
 
-\begin{exercise}{Units of the sheaf model}%
+\begin{exercise}[Units of the sheaf model]%
 Let~$A$ be a ring. Let~$f \in A$. Let~$x \in A[f^{-1}]$. Show using the result
 of Exercise~\ref{ex:global-existence} that~$f \models \exists y\?A^\sim\+ xy
 = 1$ if and only if~$x$ is invertible in~$A[f^{-1}]$.
 \end{exercise}
 
-\begin{exercise}{Decidability of invertibility}
+\begin{exercise}[Decidability of invertibility]%
 Show that it is not the case that any element of~$\ZZ^\sim$ is invertible or
 not invertible.\smallskip
 
@@ -3830,7 +3829,7 @@ relation between the dimension of~$A$ and the dimension of~$A^\sim$ are in
 Ref.~\cite[Section~3.4]{blechschmidt:phd}.\par}
 \end{exercise}
 
-\begin{exercise}{Triviality of the spectrum}%
+\begin{exercise}[Triviality of the spectrum]%
 Let~$A$ be a ring. Verify, without assuming~\BPIT, that~$\Spec(A)$ is
 isomorphic to the one-point locale iff any element of~$A$ is either
 invertible or nilpotent.\smallskip
@@ -3840,12 +3839,12 @@ invertible or nilpotent.\smallskip
 part~(\ref{item:join-top}) of Exercise~\ref{ex:frame-of-radical-ideals}.\par}
 \end{exercise}
 
-\begin{exercise}{Locality of the spectrum}%
+\begin{exercise}[Locality of the spectrum]%
 Let~$A$ be a ring. Show that the spectrum of~$A$ is local in the sense of
 Exercise~\ref{ex:local-locales} if and only if~$A$ is local as a ring.
 \end{exercise}
 
-\begin{exercise}{Spatiality of the spectrum}%
+\begin{exercise}[Spatiality of the spectrum]%
 Let~$A$ be a ring.
 \begin{alphlist}[(c)]
 \item Verify that~$\Spec(A)$ is spatial if and only if for any element~$x \in
@@ -3861,7 +3860,7 @@ holds.
 \end{alphlist}
 \end{exercise}
 
-\begin{exercise}{Prüfer domains as valuation domains}%
+\begin{exercise}[Prüfer domains as valuation domains]%
 An \emph{integral domain} is a ring such that~$1 \neq 0$ and such that~$xy = 0$
 implies~$x = 0$ or~$y = 0$. A \emph{valuation domain} is an integral domain
 such that for any two elements, one divides the other. A \emph{Prüfer domain}
@@ -3882,7 +3881,7 @@ result of part~(b) to~$A^\sim$.
 \end{alphlist}
 \end{exercise}
 
-\begin{exercise}{A basic version of Kaplansky's theorem}
+\begin{exercise}[A basic version of Kaplansky's theorem]%
 \begin{alphlist}[(c)]
 \item Let~$A$ be a local ring. Let~$\aaa \subseteq A$ be a finitely generated
 ideal such that~$\aaa^2 = \aaa$. Show that~$\aaa = (0)$ or~$\aaa = (1)$.\smallskip
@@ -3919,6 +3918,10 @@ organizers Klaus Mainzer, Peter Schuster and Helmut Schwich\-ten\-berg of
 kind invitation and for creating a beautiful and stimulating meeting. We also
 express our thanks to the local coordinator Chuangjie Xu and to all
 participants of that meeting.
+
+}
+% NOTE TO TEX PERSONS: This lonely brace closes the group opened at the very
+% beginning of this contribution.
 
 
 \bibliographystyle{ws-rv-van}

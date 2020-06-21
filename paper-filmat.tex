@@ -462,7 +462,8 @@ described as follows: Its objects are the elements of~$M$, that is the entities
 which~$M$ believes to be sets, and its morphisms are those entities which~$M$
 believes to be maps. The topos~$\Set_M$ validates the axioms of the structural
 set theory \textsc{etcs}~\cite{mclarty:structuralism,marquis:foundations,barton-friedman:structures}, and models are isomorphic if and only if their
-associated toposes are equivalent as categories.}
+associated toposes are equivalent as
+categories~\cite[Section~VI.10]{moerdijk-maclane:sheaves-logic}.}
 
 \begin{ex}The topos~$\Set_V$ associated to the universe~$V$ of all sets (if
 this structure is available in one's chosen ontology) coincides with the
@@ -478,9 +479,9 @@ However, there are also important differences between the notion of mathematical
 universes as provided by toposes and as provided by models of set theory, both
 regarding the subject matter and the reasons for why we are interested in them.
 
-Firstly, toposes are more general than models of set theory. By definition, a
-model of \textsc{zfc} will always satisfy the axioms of \textsc{zfc}; in
-contrast, most toposes do not even validate the law of excluded middle, much
+Firstly, toposes are more general than models of set theory. Every model of set
+theory gives rise to a topos, but not every topos is induced in this way from a model of set
+theory. Unlike models of~\textsc{zfc}, most toposes do not validate the law of excluded middle, much
 less so the axiom of choice.
 
 Secondly, there is a shift in emphasis. An important philosophical objective
@@ -1017,7 +1018,7 @@ In the \effective topos, Peano arithmetic is consistent (because it is
 equiconsistent to Heyting arithmetic, which has a model) but does not have a
 model.
 
-The reason for~(1) is related to the fact that no nonstandard model of
+Statement~(1) is reminiscent of the fact that no nonstandard model of
 Peano arithmetic in the standard topos is computable~\cite{tennenbaum:models}.
 \end{ex}
 
@@ -1294,9 +1295,10 @@ with the unique zero of~$a$ removed.
 
 \subsection{Reifying continuous families of real functions as single real functions}
 Let~$(f_x)_{x \in X}$ be a continuous family of
-continuous real-valued functions; that is, each of the individual
-functions~$f_x : \RR \to \RR$ should be continuous and moreover the map~$\RR
-\times X \to \RR, (a,x) \mapsto f_x(a)$ should be continuous.
+continuous real-valued functions; that is, not only should each of the individual
+functions~$f_x : \RR \to \RR$ be continuous, but the joint map~$\RR
+\times X \to \RR, (a,x) \mapsto f_x(a)$ should be continuous. (This stronger
+condition implies continuity of the individual functions.)
 From the point of view of~$\Sh(X)$, this family looks like a single continuous
 function~$f : \RR \to \RR$.
 

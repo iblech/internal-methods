@@ -665,8 +665,8 @@ In this sense the construction which yields the \effective topos is
 multiverse view in set theory~\cite{hamkins:multiverse}. In fact, the
 topos-theoretic multiverse can be regarded as an extension of the set-theoretic
 multiverse: While Hamkins proposes to embrace all models of set theory (not
-necessarily all of them not equally), we propose to embrace all toposes (again
-not necessarily all of them not equally). As every model~$M$ of set theory
+necessarily all of them equally -- we might prefer some models over others), we propose to embrace all toposes (again
+not necessarily all of them equally). As every model~$M$ of set theory
 gives rise to a topos~$\Set_M$, the set-theoretic multiverse is contained in the
 topos-theoretic one.
 
@@ -999,7 +999,8 @@ Peano arithmetic (at least if we assume a classical meta level). By a theorem
 of Benno van den Berg and Jaap van Oosten, the situation
 is quite different in the \effective topos~\cite{berg-oosten:arithmetic}:
 \begin{enumerate}
-\item Heyting arithmetic, the intuitionistic cousin of Peano arithmetic, has
+\item Heyting arithmetic, the intuitionistic cousin of Peano arithmetic, is
+categorical in the sense that it has
 exactly one model up to isomorphism, namely~$\NN$.
 \item In fact, even the finitely axiomatizable subsystem of Heyting arithmetic
 where the induction scheme is restricted to~$\Sigma_1$-formulas has exactly one
@@ -1605,8 +1606,18 @@ topos~$\Zar(S)$ provides a lens through which~$S$ looks like a field.
 
 A small variant of this lens has been used to give a new proof of
 \emph{Grothendieck's generic freeness lemma}, a fundamental theorem in
-algebraic geometry. The new proof uses the lens to reduce to the case
-of fields, where the claim is trivial~\cite[Section~11.5]{blechschmidt:phd}.
+algebraic geometry about the free locus of certain sheaves. The new proof uses the lens to reduce to the case
+of fields, where the claim is trivial~\cite[Section~11.5]{blechschmidt:phd},
+and improves in length on all previously known proofs, even if the topos
+machinery is eliminated by unrolling the appropriate
+definitions~\cite{blechschmidt:generic-freeness}.\footnote{This contribution is
+not the proper place for an exposition of Grothendieck's generic freeness
+lemma, but some aspects can already be appreciated on a syntactical level.
+Grothendieck's generic freeness lemma states that any finitely generated sheaf
+of modules on a reduced scheme is finite locally free \emph{on a dense open}.
+By employing the internal language, this statement is reduced to the following
+fact of intuitionistic linear algebra: Any finitely generated module over a
+field is \notnot finite free.}
 \end{rem}
 
 Within~$\Zar(\RR)$, we can construct the set~$\Delta \defeq \{ \varepsilon \? \RR^\sim \,|\,
@@ -1620,7 +1631,9 @@ Within~$\Zar(\RR)$, we can construct the set~$\Delta \defeq \{ \varepsilon \? \R
 \end{enumerate}
 The unique number~$a$ in the axiom of micro-affinity deserves to be
 called~``$f'(0)$''; this is how we synthetically define the derivative in
-synthetic differential geometry.
+synthetic differential geometry. (However, despite these properties the Zariski
+topos is not yet \emph{well-adapted} to synthetic differential geometry in the
+sense of Definition~\ref{defn:well-adapted} below.)
 
 Having motivated the Zariski topos by the desire to devise a universe with
 infinitesimals, the actual ontological status of the infinitesimal numbers in
@@ -1690,7 +1703,7 @@ mathematical practice from: In some cases, the easiest way to prove a result
 \begin{enumerate}
 \item to observe that the claim is
 equivalent to the Kripke--Joyal translation of a different (typically more
-perspicuous) claim about objects of some problem-specific relevant topos and
+transparent) claim about objects of some problem-specific relevant topos and
 then
 \item to verify this different claim, reasoning internally to the topos.
 \end{enumerate}
@@ -1702,8 +1715,6 @@ Theorem~\ref{thm:reasoning}. This unwinding typically turns transparent
 internal proofs into complex external proofs -- proofs which one might not have
 found without the problem-adapted internal language provided by a
 custom-tailored topos.
-
-% FUTURE: Cite blechschmidt:generic-freeness?
 
 
 \printbibliography

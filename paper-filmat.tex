@@ -8,6 +8,7 @@
 \usepackage[all]{xy}
 \usepackage[protrusion=true,expansion=true]{microtype}
 \usepackage{xspace}
+\usepackage{marginnote,animate,ocgx2}
 
 \usepackage[natbib=true,style=numeric,maxnames=10]{biblatex}
 \usepackage[babel]{csquotes}
@@ -1260,16 +1261,30 @@ with the unique zero of~$a$ removed.
 \end{figure}
 
 \begin{figure}
-  \includegraphics[height=3cm]{zeros-in-families-still}
-  \caption{\label{fig:ivt} A single member~$f_{x_0}$ of a continuous
+\marginnote{
+  \begin{ocg}[printocg=never]{layername}{layerid1}{on}
+    \vspace*{-12em}
+    \scalebox{0.2}{
+      \animategraphics[loop,autoplay]{60}{zeros-in-families-frames/}{0000}{0188}
+    }
+    \begin{minipage}{3cm}\scriptsize\noindent
+    In the online version of this contribution, a video of the
+    continuous family can be seen here.\end{minipage}
+  \end{ocg}}
+  \includegraphics[height=3cm]{zeros-in-families-still-1}
+  \includegraphics[height=3cm]{zeros-in-families-still-2}
+  \includegraphics[height=3cm]{zeros-in-families-still-3}
+
+  \caption{\label{fig:ivt}Three members~$f_{x_0}, f_{x_1}, f_{x_2}$ of a continuous
   family~$(f_x)_{x \in X}$ of continuous functions~$f_x : \RR \to \RR$. The
-  parameter space is~$X = [0,1]$ (not shown) and the other functions~$f_x$ are
-  obtained from~$f_{x_0}$ by moving the horizontal plateau further up or
-  down. The depicted member~$f_{x_0}$ has a unique
-  zero and there is an open neighborhood~$U$ of~$x_0$ on which zeros of the
-  functions~$f_x$, $x \in U$ can be picked continuously. However, there is no
+  parameter space is~$X = [0,1]$ (not shown). The functions~$f_x$ are
+  obtained by moving the horizontal plateau up or
+  down. The leftmost depicted member~$f_{x_0}$ has a unique
+  zero, and there is an open neighborhood~$U$ of~$x_0$ on which zeros of the
+  functions~$f_x$, $x \in U$ can be picked continuously. The same is true
+  for~$x_2$ (right figure). However, there is no
   such neighborhood of that particular parameter value~$x_1$ for which the
-  horizontal plateau lies on the $x$-axis.}
+  horizontal plateau lies on the $x$-axis (middle figure).}
 \end{figure}
 
 

@@ -9,8 +9,8 @@ set xzeroaxis ls 1 lw 4 linecolor rgb '#000000'
 set style line 1 linecolor rgb '#9600ff' linetype 1 linewidth 4
 set samples 10000
 
-! rm -rf video
-! mkdir video
+! rm -rf zeros-in-families-frames
+! mkdir zeros-in-families-frames
 
 f(a,x) = \
   x <= -0.5 ? 2*(1+a) * (x+1) - 1 : \
@@ -23,12 +23,12 @@ zer(a) = \
 do for [t=0:188] {
   print(t)
   a = cos(t/30.) * 0.7
-  filenamePNG=sprintf("video/%04d.png", t)
+  filenamePNG=sprintf("zeros-in-families-frames/%04d.png", t)
   set output filenamePNG
   plot f(a,x) t "" w l ls 1, "<" . sprintf("echo %f %f", zer(a), 0) t "" w p ps 5 pt 7 lc rgb "#4545ff", \
     abs(a) < 0.01 ? (x >= -0.5 && x <= 0.5 ? 0 : 1/0) : 1/0 t "" w l lw 60
 }
 
-! avconv -i video/%04d.png -vcodec copy video/video.mp4
-! qt-faststart video/video.mp4 zeros-in-families.mp4
-! rm -r video
+! avconv -i zeros-in-families-frames/%04d.png -vcodec copy zeros-in-families-frames/video.mp4
+! qt-faststart zeros-in-families-frames/video.mp4 zeros-in-families.mp4
+! rm zeros-in-families-frames/video.mp4

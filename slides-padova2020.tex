@@ -16,6 +16,7 @@
 \usepackage{mathtools}
 \usepackage{booktabs}
 \usepackage{stmaryrd}
+\usepackage{amssymb}
 \usepackage{array}
 \usepackage{ragged2e}
 \usepackage{multicol}
@@ -31,6 +32,31 @@
 
 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{%
   \node[shape=circle,draw,inner sep=1pt] (char) {#1};}}
+
+\DeclareFontFamily{U}{bbm}{}
+\DeclareFontShape{U}{bbm}{m}{n}
+   {  <5> <6> <7> <8> <9> <10> <12> gen * bbm
+      <10.95> bbm10%
+      <14.4>  bbm12%
+      <17.28><20.74><24.88> bbm17}{}
+\DeclareFontShape{U}{bbm}{m}{sl}
+   {  <5> <6> <7> bbmsl8%
+      <8> <9> <10> <12> gen * bbmsl
+      <10.95> bbmsl10%
+      <14.4> <17.28> <20.74> <24.88> bbmsl12}{}
+\DeclareFontShape{U}{bbm}{bx}{n}
+   {  <5> <6> <7> <8> <9> <10> <12> gen * bbmbx
+      <10.95> bbmbx10%
+      <14.4> <17.28> <20.74> <24.88> bbmbx12}{}
+\DeclareFontShape{U}{bbm}{bx}{sl}
+   {  <5> <6> <7> <8> <9> <10> <10.95> <12> <14.4> <17.28>%
+      <20.74> <24.88> bbmbxsl10}{}
+\DeclareFontShape{U}{bbm}{b}{n}
+   {  <5> <6> <7> <8> <9> <10> <10.95> <12> <14.4> <17.28>%
+      <20.74> <24.88> bbmb10}{}
+\DeclareMathAlphabet{\mathbbm}{U}{bbm}{m}{n}
+\SetMathAlphabet\mathbbm{bold}{U}{bbm}{bx}{n}
+
 
 \usepackage{pifont}
 \newcommand{\cmark}{\ding{51}}
@@ -77,6 +103,9 @@
 \renewcommand{\C}{\mathcal{C}}
 \newcommand{\M}{\mathcal{M}}
 \renewcommand{\AA}{\mathbb{A}}
+\newcommand{\BB}{\mathbb{B}}
+\newcommand{\pp}{\mathbbm{p}}
+\newcommand{\MM}{\mathbb{M}}
 \newcommand{\E}{\mathcal{E}}
 \newcommand{\F}{\mathcal{F}}
 \newcommand{\FF}{\mathbb{F}}
@@ -146,11 +175,6 @@
       \end{actionenv}
     \end{minipage}
   \end{center}}
-
-\newcommand{\bignumber}[1]{
-  \renewcommand{\insertenumlabel}{#1}\scalebox{1.5}{\usebeamertemplate{enumerate item}}
-}
-\newcommand{\bigheart}{\includegraphics{heart}}
 
 \newenvironment{changemargin}[2]{%
   \begin{list}{}{%
@@ -278,6 +302,11 @@
 \newcommand{\hil}[1]{{\usebeamercolor[fg]{item}{\textbf{#1}}}}
 \newcommand{\bad}[1]{\textcolor{red!90}{\textnormal{#1}}}
 
+\newcommand{\bignumber}[1]{%
+  \renewcommand{\insertenumlabel}{#1}\scalebox{1.2}{\usebeamertemplate{enumerate item}}
+}
+\newcommand{\bigheart}{\includegraphics{heart}}
+
 \begin{document}
 
 \addtocounter{framenumber}{-1}
@@ -359,7 +388,7 @@
 
   \textbf{Example B.} \only<5>{Is~$1 + 1 = 0$ in~$\AA$?}%
   \pause
-  \only<6->{It is \hil{not the case} that~$1 + 1 = 0$ in~$\AA$.} \\
+  \only<6->{It is \hil{not the case} that~$1 + 1 = 0$ in~$\AA$. \only<7->{But also:}} \\
   \pause
   \phantom{\textbf{Example B.}} It is \hil{not the case} that~$1 + 1 \neq 0$ in~$\AA$.
   \pause
@@ -367,6 +396,71 @@
   \textbf{Example C (Anders Kock).} The generic ring is a \hil{field}:
   \[ \forall x \in \AA\_ \bigl((x = 0 \Rightarrow 1 = 0) \Rightarrow (\exists y
   \in \AA\_ xy = 1)\bigr). \]
+\end{frame}
+
+\begin{frame}{A selection of nongeometric properties}
+  The \hil{generic object}~$\MM$ validates:
+  \begin{enumerate}
+    \item $\forall x,y \in \MM\_ \neg\neg(x = y)$.
+    \item $\forall x_1,\ldots,x_n \in \MM\_ \neg \forall y \in \MM\_
+    y = x_1 \vee \cdots \vee y = x_n$.
+  \end{enumerate}
+
+  The \hil{generic ring}~$\AA$ validates:
+  \begin{enumerate}
+    \item $\forall x \in \AA\_ (x = 0 \Rightarrow 1 = 0) \Rightarrow (\exists y \in \AA\_ xy = 1)$.
+    \item $\forall x \in \AA\_ \neg\neg(x = 0)$.
+  \end{enumerate}
+
+  The \hil{generic local ring}~$\AA'$ validates:
+  \begin{enumerate}
+    \item $\forall x \in \AA'\_ (x = 0 \Rightarrow 1 = 0) \Rightarrow (\exists y \in \AA'\_ xy = 1)$.
+    \item $\neg \forall x \in \AA'\_ \neg\neg(x = 0)$.
+    \item $\forall f \in \AA'[X]_{\text{degree} > 0}\_ \neg\neg \exists x \in \AA'\_ f(x) = 0$.
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{An application in commutative algebra}
+  \justifying
+  Let~$A$ be a reduced ring ($x^n = 0 \Rightarrow x = 0$).
+  Let~$\pp$ be the \hil{generic prime filter} of~$A$.
+  Then~$A_\pp \defeq A[\pp^{-1}]$ validates:
+
+  {\vspace*{-1.2em}
+  \setbeamercolor{block body}{bg=red!30}
+  \setbeamercolor{structure}{fg=purple}
+  \begin{varblock}{\textwidth}{}
+    $A_\pp$ is a \hil{field}: $\forall x \in A_\pp\_ (\neg(\exists y \in A_\pp\_
+    xy = 1) \Rightarrow x = 0)$.
+
+    $A_\pp$ has \hil{$\boldsymbol{\neg\neg}$-stable equality}:
+    $\forall x,y \in A_\pp\_ \neg\neg(x = y) \Rightarrow x = y$.
+
+    \mbox{$A_\pp$ is \hil{anonymously Noetherian}.}\\[-1.2em]
+  \end{varblock}}
+
+  This observation unlocks a short and conceptual proof of Grothen\-dieck's
+  \hil{generic freeness lemma} in algebraic geometry.
+
+  \textbf{Thm.} Let~$M$ be an~$A$-module. Then~\bignumber{1} implies~\bignumber{3}.
+
+  {\small
+  \begin{tabular}{@{}lc@{\ }l@{}}
+    \bignumber{1} $M$ is finitely generated &($\Longleftrightarrow$&
+    $M_\pp$ is finitely generated) \\
+    \bignumber{2} $M$ is locally free &($\Longleftrightarrow$&
+    $M_\pp$ is free) \\
+    \bignumber{3} $M$ is locally free \emph{on a dense open} &($\Longleftrightarrow$&
+    $M_\pp$ is \emph{not not} free) \\
+  \end{tabular}\par}
+
+  \textbf{Proof.} Elementary linear algebra over~$A_\pp$. \qed
+\end{frame}
+
+\begin{frame}{A systematic source}
+\end{frame}
+
+\begin{frame}{Arithmetic universes}
 \end{frame}
 
 \end{document}

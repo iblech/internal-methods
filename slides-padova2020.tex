@@ -2,9 +2,10 @@
 \usepackage{etex}
 
 \usepackage{pgfpages}
-\setbeameroption{show notes on second screen}
-\setbeamertemplate{note page}[plain]
-\newcommand{\jnote}[2]{\only<#1>{\note{\setlength\parskip{\medskipamount}\justifying\footnotesize#2\par}}}
+%\setbeameroption{show notes on second screen}
+%\setbeamertemplate{note page}[plain]
+%\newcommand{\jnote}[2]{\only<#1>{\note{\setlength\parskip{\medskipamount}\justifying\footnotesize#2\par}}}
+\newcommand{\jnote}[2]{}
 
 % Workaround for the issue described at
 % https://tex.stackexchange.com/questions/164406/beamer-using-href-in-notes.
@@ -71,7 +72,7 @@
 \setlength\parskip{\medskipamount}
 \setlength\parindent{0pt}
 
-\title{On the mystery of generic objects}
+\title{On the mystery of generic models}
 \author{Ingo Blechschmidt}
 \date{June 25th, 2020}
 
@@ -303,7 +304,7 @@
 \newcommand{\bad}[1]{\textcolor{red!90}{\textnormal{#1}}}
 
 \newcommand{\bignumber}[1]{%
-  \renewcommand{\insertenumlabel}{#1}\scalebox{1.2}{\usebeamertemplate{enumerate item}}
+  \renewcommand{\insertenumlabel}{#1}\scalebox{1.2}{\!\usebeamertemplate{enumerate item}\!}
 }
 \newcommand{\bigheart}{\includegraphics{heart}}
 
@@ -327,7 +328,7 @@
 
   \begin{tikzpicture}
     \def\R{8pt}
-    \node (title) {\hil{On the mystery of generic objects}};
+    \node (title) {\hil{On the mystery of generic models}};
     \begin{pgfonlayer}{background}
       \draw[decorate, very thick, draw=mypurple]
         ($(title.south west) + (\R, 0)$) arc(270:180:\R) --
@@ -356,8 +357,9 @@
 \subsection{The generic ring}
 
 \begin{frame}{The generic ring}
-  ``Let~$R$ be a ring.'' -- Which ring does this phrase refer to?
+  \visible<2->{``}Let~$R$ be a ring.\visible<2->{''} \visible<2->{-- Which ring does this phrase refer to?}
 
+  \vspace*{-0.6em}
   \begin{center}
     \begin{tikzpicture}[ultra thick, node distance=7mm]
       \node[rectangle, rounded corners=1pt, inner sep=5pt, draw=lime!80, fill=lime!40] (a) {$\ZZ$};
@@ -365,11 +367,13 @@
       \node[rectangle, rounded corners=1pt, draw=lime!80, fill=lime!40, right=of b] (c) {$\QQ[X]$};
       \node[regular polygon, regular polygon sides=6, draw=orange!80, fill=orange!40, right=of c, rounded corners=1pt] (d) {$\RR$};
       \node[regular polygon, regular polygon sides=5, draw=pink!80, fill=pink!40, right=of d, rounded corners=1pt, inner sep=0cm] (e) {$\O_X$};
-      \visible<2->{\node[star, rounded corners=1pt, star points=10, inner
+      \visible<3->{\node[star, rounded corners=1pt, star points=10, inner
       sep=2pt, draw=purple!80, fill=purple!30, right=of e] {$\AA$};}
     \end{tikzpicture}
   \end{center}
+  \vspace*{-0.6em}
 
+  \pause
   \pause
   \pause
 
@@ -386,9 +390,9 @@
   \textbf{Example A.} For any~$x,y,z \in \AA$, $x + (y + z) = (x + y) + z$.
   \pause
 
-  \textbf{Example B.} \only<5>{Is~$1 + 1 = 0$ in~$\AA$?}%
+  \textbf{Example B.} \only<6>{Is~$1 + 1 = 0$ in~$\AA$?}%
   \pause
-  \only<6->{It is \hil{not the case} that~$1 + 1 = 0$ in~$\AA$. \only<7->{But also:}} \\
+  \only<7->{It is \hil{not the case} that~$1 + 1 = 0$ in~$\AA$. \only<8->{But also:}} \\
   \pause
   \phantom{\textbf{Example B.}} It is \hil{not the case} that~$1 + 1 \neq 0$ in~$\AA$.
   \pause
@@ -396,9 +400,14 @@
   \textbf{Example C (Anders Kock).} The generic ring is a \hil{field}:
   \[ \forall x \in \AA\_ \bigl((x = 0 \Rightarrow 1 = 0) \Rightarrow (\exists y
   \in \AA\_ xy = 1)\bigr). \]
+
+  \pause
+  \vspace*{-0.6em}
+  \hil{Hence:} When verifying a coherent sequent for all rings, can without loss of
+  generality assume the field condition.
 \end{frame}
 
-\begin{frame}{A selection of nongeometric properties}
+\begin{frame}{A selection of noncoherent sequents}
   The \hil{generic object}~$\MM$ validates:
   \begin{enumerate}
     \item $\forall x,y \in \MM\_ \neg\neg(x = y)$.
@@ -423,7 +432,7 @@
 \begin{frame}{An application in commutative algebra}
   \justifying
   Let~$A$ be a reduced ring ($x^n = 0 \Rightarrow x = 0$).
-  Let~$\pp$ be the \hil{generic prime filter} of~$A$.
+  Let~$\pp$ be the \hil{generic prime ideal$^\star$} of~$A$.
   Then~$A_\pp \defeq A[\pp^{-1}]$ validates:
 
   {\vspace*{-1.2em}
@@ -442,7 +451,8 @@
   This observation unlocks a short and conceptual proof of Grothen\-dieck's
   \hil{generic freeness lemma} in algebraic geometry.
 
-  \textbf{Thm.} Let~$M$ be an~$A$-module. Then~\bignumber{1} implies~\bignumber{3}.
+  \mbox{\textbf{Thm.} (baby freeness) Let~$M$ be an~$A$-module. Then~\bignumber{1}
+  implies~\bignumber{3}.}
 
   {\small
   \begin{tabular}{@{}lc@{\ }l@{}}
@@ -458,9 +468,60 @@
 \end{frame}
 
 \begin{frame}{A systematic source}
+  \begin{center}
+    \includegraphics[width=0.8\textwidth]{wraith-some-recent-developments-in-topos-theory} \\
+    \scriptsize
+    Gavin Wraith. \emph{Some recent developments in topos theory.} \\ In:
+    Proc.\@ of the ICM (Helsinki, 1978).
+  \end{center}
+
+  \textbf{Thm. (Nullstellensatz):} The generic~$\TT$-model~$U_T$ validates:
+  For any coherent sequent~$\sigma$,
+  \[
+    \text{$\sigma$ holds for $U_\TT$} \quad\textcolor{purple}{\Longleftrightarrow}\quad
+    \text{$\ul{\TT}/U_\TT$ proves $\sigma$.}
+  \]
+
+  \justifying
+  \textbf{Thm. (universality):} The generic~$\TT$-model validates a first-order
+  formula~$P$ if and only if~$P$ is intuitionistically deducible from the
+  axioms of~$\TT$ and the Nullstellensatz.
 \end{frame}
 
 \begin{frame}{Arithmetic universes}
+  Places where we can do mathematics (among others):
+  \begin{multicols}{2}
+    \begin{enumerate}
+      \item $\Set$ (sets)
+      \item $\Eff$ (data types) \columnbreak
+      \item \mbox{$\mathrm{sSet}$ (simplicial sets)}
+      \item \mbox{$\Sh(X)$ (sheaves over~$X$)}
+    \end{enumerate}
+  \end{multicols}
+  \pause
+  \vspace*{-0.6em}
+  These are examples for \hil{arithmetic universes}.
+  \pause
+
+  \justifying
+  \textbf{Definition.} An \emph{arithmetic universe} is a category with finite
+  limits (``$\times$''), stable finite disjoint coproducts (``$\amalg$''),
+  stable ef{}fective quotients (``$X/{\sim}$'') and parametrized list objects
+  (``$\NN$'', ``$\mathrm{List}(X)$'').
+
+  \textbf{Thm.} Any statement which is provable in \hil{predicative constructive
+  mathematics} (no powersets, no $\varphi \vee \neg\varphi$, no
+  \mbox{$\neg\neg\varphi \Rightarrow \varphi$}, no axiom of choice) is true in any
+  arithmetic universe.
+  \pause
+
+  Further examples:
+
+  \begin{enumerate}
+    \addtocounter{enumi}{4}
+    \item the \hil{initial} arithmetic universe
+    \item the \hil{classifying} arithmetic universe for the theory of rings
+  \end{enumerate}
 \end{frame}
 
 \end{document}

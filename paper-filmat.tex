@@ -218,7 +218,7 @@ usual mathematical objects of the standard topos can be viewed.
 \end{enumerate}
 
 Viewed through such a lens, a given mathematical object can have different
-properties than when considered normally. In particular, it can have
+properties than when viewed normally. In particular, it can have
 better properties for the purposes of specific applications, especially if
 the topos is custom-tailored to the object in question. This change of
 perspective has been used in mathematical practice.
@@ -262,7 +262,7 @@ be governed by intuitionistic logic.
 We invite further research on these connections.
 
 We intend this contribution to be self-contained and do not assume familiarity with
-topos theory or category theory, having a diverse readership of philosophers of
+topos theory or category theory, having a diverse readership of people interested in philosophy of
 mathematics in mind. However, to make this text more substantial to
 categorically-inclined readers, some categorical definitions are included.
 These definitions can be skipped without impacting the main message of this contribution.
@@ -326,9 +326,10 @@ this language. Logically, the classifying topos of~$\TT$ can be regarded as a
 particular mathematical universe containing the \emph{generic~$\TT$-model}, a
 model which has exactly those properties which are shared by all models.
 
-Yet more views on toposes are fruitfully used --
-reference~\cite{johnstone:elephants} lists ten more -- but we shall not review
-them here.
+Yet more views on toposes are fruitfully employed --
+reference~\cite[pages~vii--viii]{johnstone:elephant} lists ten more -- but we shall not review
+them here. A historical survey can be found in
+reference~\cite{mclarty:history}.
 
 
 \bigskip
@@ -377,10 +378,14 @@ sets as its objects and all maps between sets as morphisms.\end{defn}
 Given a topos~$\E$, we write~``$\E \models \varphi$'' to denote that a
 mathematical statement~$\varphi$ \emph{holds in~$\E$}. The meaning of~``$\E \models
 \varphi$'' is defined by recursion on the structure of~$\varphi$ following the
-so-called \emph{Kripke--Joyal translation rules}. For instance, the rule for
-translating conjunction reads
-\[ \E \models (\alpha \wedge \beta) \qquad\text{iff}\qquad
-  \E \models \alpha \quad\text{and}\quad \E \models \beta. \]
+so-called \emph{Kripke--Joyal translation rules}. For instance, the rules for
+translating conjunction and falsity read
+\[ \begin{array}{lcl}
+  \E \models (\alpha \wedge \beta) &\qquad\text{iff}\qquad&
+  \E \models \alpha \quad\text{and}\quad \E \models \beta, \\[0.2em]
+  \E \models \bot &\qquad\text{iff}\qquad&
+  \text{$\E$ is the trivial topos}.
+\end{array} \]
 The remaining translation rules are more
 involved~\cite[Section~VI.7]{moerdijk-maclane:sheaves-logic}; we do not list them here for
 the case of a general topos~$\E$, but we will state them in the next sections
@@ -389,7 +394,8 @@ for several specific toposes. We refer to~``$\E \models \varphi$'' also as the
 
 In the definition of~$\E \models \varphi$, the statement~$\varphi$ can be any
 statement in the language of a general version of higher-order predicate
-calculus with dependent types. In practice almost any mathematical statement
+calculus with dependent types, with a base type for each object of~$\E$ and
+with a constant of type~$X$ for each morphism~$1 \to X$ in~$\E$. In practice almost any mathematical statement
 can be interpreted in a given topos.\footnote{The main exceptions are
 statements from set theory, which typically make substantial use of a global
 membership predicate~``$\in$''. Toposes only support a typed \emph{local}
@@ -397,7 +403,9 @@ membership predicate, where we may write~``$x \in A$'' only in the context of
 some fixed type~$M$ such that~$x$ is of type~$M$ and~$A$ is of
 type~$P(M)$, the power type of~$M$. We refer
 to~\cite{fourman:sheaf-models,streicher:forcizf,awodey-butz-simpson-streicher:bist}
-for ways around this restriction.}
+for ways around this restriction.} We refrain from giving a precise definition
+of the language here, but refer to the references~\cite[Section~7]{shulman:stack}
+and~\cite[Section~VI.7]{moerdijk-maclane:sheaves-logic} for details.
 
 It is by the Kripke--Joyal translation rules that we can access the alternate
 universe of a topos. In the special case of the standard topos~$\Set$, the
@@ -690,14 +698,16 @@ in~$\E$~\cite[Theorem~6.31]{blechschmidt:phd}.
 Toposes are still mathematical structures, and as long as we study
 toposes within the usual setup of mathematics, our toposes are all part of the
 standard topos. This is why Figure~\ref{fig:landscape} pictures the standard
-topos twice.\footnote{There is a fine print to consider. Technically, if we
+topos twice, once as a particular topos next to others, and once as the universe
+covering the entirety of our mathematical discourse.\footnote{There is a fine print to consider. Technically, if we
 work within~\textsc{zf} or its intuitionistic cousin~\textsc{izf}, most toposes
 of interest are proper classes, not sets. In particular~$\Set$ itself is a
 proper class. Hence Figure~\ref{fig:landscape} should not be interpreted as
 indicating that toposes are contained in~$\Set$ as objects, which most are not.
 In this regard toposes are similar to class-sized inner models in set theory.
-We believe that ``our toposes are all part of the standard topos'' is still an
-apt description of the situation.}
+We believe that the vague statement ``our toposes are all part of the standard topos'' is still an
+apt description of the situation. A possible formalization is (the trivial
+observation that) ``our toposes are all indexed categories over~$\Set$''.}
 The toposes which we can study in mathematics do not tell us
 all possible stories how mathematics could unfold, only those which appear
 coherent from the point of view of the standard topos, and the topos-theoretic

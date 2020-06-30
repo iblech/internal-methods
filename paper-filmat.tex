@@ -990,13 +990,22 @@ the case distinction
 \end{cases} \]
 and proceeds to show that~$h$ is not computable. However, in the \effective
 topos, this definition does not give rise to a total function from~$\NN$
-to~$\NN$. The actual domain is the subset of those natural numbers~$n$
+to~$\NN$. The actual domain is the subset~$M$ of those natural numbers~$n$
 for which the~$n$-th Turing machine
 terminates or does not terminate. This condition is trivial only assuming the
 law of excluded middle; intuitionistically, this condition is nontrivial and
 cuts out a nontrivial subset of~$\NN$.
 
-XXX: subsets...
+Subobjects in the \effective topos are more than mere subsets; to give an
+element of~$M$ in the \effective topos, we need not only give a natural
+number~$n$ such that the~$n$-th Turing machine terminates or does not
+terminate, but also a computational witness of either case. For any particular
+numeral~$n_0 \in \NN$, there is such a witness (appealing to the law of
+excluded middle on the meta level), and hence the statement~``$n_0
+\in M$'' holds in the \effective topos. However, there is no program which
+could compute such witnesses for any number~$n$, hence the statement~``$\forall
+n\?\NN\_ n \in M$'' is not true in~$\Eff$ and hence the \effective topos does not believe~$M$
+and~$\NN$ to be the same.
 \end{ex}
 
 \begin{ex}\textbf{``Any function~$\RR \to \RR$ is continuous.''}\label{sect:eff-continuous}

@@ -221,8 +221,9 @@ Viewed through such a lens, a given mathematical object can have different
 properties than when considered normally. In particular, it can have
 better properties for the purposes of specific applications, especially if
 the topos is custom-tailored to the object in question. This change of
-perspective has been used in mathematical practice and demonstrates that
-toposes go much beyond being logicians' testbeds. To give just a taste of what
+perspective has been used in mathematical practice.
+% and demonstrates that toposes go much beyond being logicians' testbeds.
+To give just a taste of what
 is possible, through the lens provided by an appropriate topos, any given ring
 can look like a field and hence mathematical techniques for fields also apply,
 through the lens, to rings.
@@ -270,13 +271,70 @@ language of toposes include~\cite[Chapter~VI]{moerdijk-maclane:sheaves-logic},
 \cite{caramello:preliminaries}, \cite{streicher:ctcl}, \cite{shulman:categorical-logic},
 \cite[Chapter~6]{borceux:handbook3} and~\cite[Part~D]{johnstone:elephant}.
 
+
+\bigskip
+\paragraph{Other aspects of toposes} This note focuses on just a single
+aspect of toposes, the view of toposes as alternate mathematical universes.
+This aspect is not the only one, nor did it historically come first.
+
+Toposes were originally conceived by Grothendieck in the early 1960s for the
+needs of algebraic geometry, as a general framework for constructing and
+studying invariants in classical and new geometric contexts, and it is in that
+subject that toposes saw their deepest applications. The proof of Fermat's Last
+Theorem is probably the most prominent such application, crucially resting on
+the cohomology and homotopy invariants provided by toposes.
+
+In the seminal work introducing
+toposes~\cite{artin-grothendieck-verdier:topos}, toposes are viewed as
+generalized kinds of spaces. Every topological space~$X$ gives rise to a topos,
+the \emph{topos of sheaves over~$X$}, and every continuous map gives rise to a
+\emph{geometric morphism} between the induced sheaf toposes, but not every
+topos is of this form. While the open sets of a topological space are required
+to be parts of the space, the opens of toposes are not; and while for open
+subsets~$U$ and~$V$ there is only a truth value as to whether~$U$ is contained
+in~$V$, in a general topos there can be many distinct ways how an open is
+contained in another one. This additional flexibility is required in situations
+where honest open subsets are rare, such as when studying the étale cohomology
+of a scheme~\cite{milne:etale}.
+
+That toposes could also be regarded as mathematical universes was realized only
+later, by Bill Lawvere and Myles Tierney at the end of the 1960s. They abstracted some of
+the most important categorical properties of Grothendieck's toposes into what
+is now known as the definition of an \emph{elementary topos}. Elementary
+toposes are considerably more general and less tied to geometry than the
+original toposes. The theory of elementary toposes has a substantially
+different, logical flavor, not least because a different notion of morphism
+plays an important role. To help disambiguate, there is a trend to rename
+elementary toposes to \emph{logoses}, but this text still follows the standard
+convention.
+
+A further perspective on toposes emerged in the early 1970s with the discovery
+that toposes can be regarded as embodiments of a certain kind of first-order
+theories, the \emph{geometric theories} briefly discussed on
+page~\pageref{item:classifying-topos}. The so-called \emph{classifying toposes}
+link geometrical and logical aspects and are fundamental to Olivia Caramello's
+bridge-building program~\cite{caramello:tst}. Geometrically, the classifying
+topos of a geometric theory~$\TT$ can be regarded as the generalized space of
+models of~$\TT$; this idea is due to Monique
+Hakim~\cite{hakim:relative-schemes}, though she did not cast her discovery in
+this language. Logically, the classifying topos of~$\TT$ can be regarded as a
+particular mathematical universe containing the \emph{generic~$\TT$-model}, a
+model which has exactly those properties which are shared by all models.
+
+Yet more views on toposes are fruitfully used --
+reference~\cite{johnstone:elephants} lists ten more -- but we shall not review
+them here.
+
+
 \bigskip
 \paragraph{Acknowledgments} We are grateful to Andrej Bauer, Martin
 Brandenburg, Sina Hazratpour, Matthias Hutzler, Marc Nieper-Wißkirchen and
 Alexander Oldenziel for invaluable discussions shaping this work, to Moritz
 Laudahn, Matthias Hutzler and Milan Zerbin for their careful criticism of
-earlier drafts and to Todd Lehman for preparing parts of
-Figure~\ref{fig:landscape}. We thank the organizers and all participants of the
+earlier drafts and to Todd Lehman for the code for parts of
+Figure~\ref{fig:landscape}. This note also profited substantially from the
+thorough review by the three anonymous referees, whose efforts are much
+appreciated and gladly acknowledged. We thank the organizers and all participants of the
 Mussomeli conference of the Italian Network for the Philosophy in Mathematics,
 where this work was presented, for creating an exceptionally beautiful meeting. In
 particular, we are grateful to Neil Barton, Danielle Macbeth, Gianluigi Oliveri
@@ -553,7 +611,7 @@ of~$A$ which is commutative. In this sense, quantum mechanical systems (which ar
 described by noncommutative C\textsuperscript{*}\kern-.1ex-algebras) can be
 regarded as classical mechanical systems (which are described by commutative
 algebras)~\cite{butterfield-hamilton-isham:bohr,heunen-landsman-spitters:aqt}.
-\item $\Set[\TT]$, the \emph{classifying topos} of a geometric theory~$\TT$.\footnote{A
+\item\label{item:classifying-topos}$\Set[\TT]$, the \emph{classifying topos} of a geometric theory~$\TT$.\footnote{A
 geometric theory is a theory in many-sorted first-order logic whose axioms can be put as \emph{geometric
 sequents}, sequents of the form~$\varphi \seq{\vec x} \psi$ where~$\varphi$
 and~$\psi$ are geometric formulas (formulas built from equality and specified
@@ -568,7 +626,7 @@ properties which are shared by any group whatsoever.\footnote{More precisely,
 this is only true for those properties which can be formulated as geometric
 sequents. For arbitrary properties~$\varphi$, the statements~``the generic
 group has property~$\varphi$'' and~``all groups have property~$\varphi$'' need
-not be equivalent. This situation is explored
+not be equivalent. This inbalance has mathematical applications and is explored
 in~\cite{blechschmidt:nullstellensatz}.}
 % FUTURE: Write just a little more on Set[T], that geom.impl. consequences spread.
 % FUTURE: Give Set[T] its own section.
@@ -1729,7 +1787,6 @@ custom-tailored topos.
 
 Stuff that should be mentioned:
 
-FUTURE: quick overview of the several aspects of toposes (maybe at the end, as an outlook?)
 FUTURE: use the phrase "very rich and very deep" (or similarly) about set theory
 FUTURE: A topos is more than its semantics
 FUTURE: Check references everywhere (give good pointers)

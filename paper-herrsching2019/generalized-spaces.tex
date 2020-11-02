@@ -127,7 +127,7 @@ the more general metric and topological spaces and also including several more
 and slightly exotic flavors such as the diffeological spaces from differential topology.
 
 Common to all of the mentioned flavors of space is that \emph{points are their
-building blocks}: Cartesian, metric, topological and diffeological spaces are,
+building blocks}: cartesian, metric, topological and diffeological spaces are,
 first and foremost, sets of points. Their spatial structure -- a metric, a
 topology or a diffeology -- is additional data to the underlying set:
 
@@ -204,7 +204,7 @@ Some geometric theories only really unfold in the world of sheaves. For
 instance, the geometric theory of surjections~$\NN \twoheadrightarrow \RR$
 reviewed on page~\pageref{item:theory-of-surjections} does not have any
 set-based models, but this theory is consistent and it does have nontrivial sheaf
-models. For the purpose of constructive algebra, sheaf models of some geometric
+models. For the purposes of constructive algebra, sheaf models of some geometric
 theories play a vital role, as we will discuss in Section~\ref{sect:appl}.
 
 Secondly, geometric theories allow us to efficiently construct the spaces
@@ -318,7 +318,7 @@ stalks at minimal prime ideals are, a module~$M$ is free in that sense if its
 mirror image~$M^\sim$ is \notnot free. This observation is the basis for a
 new proof of Grothendieck's generic freeness lemma, reviewed in
 Section~\ref{sect:example-applications}, which is shorter and arguably more
-perspicuous than all previously known classical proofs.
+perspicuous than the previously known classical proofs.
 
 
 \paragraph{Where to go from here.} The themes which this contribution touches
@@ -338,7 +338,7 @@ algebraic geometry have been
 developed~\cite{schuster:formal-zariski,cls:spectral-schemes,cls:projective-spectrum}.
 
 Regarding sheaf semantics, Section~\ref{sect:sheaf-semantics} only presents
-the first-order case, but the theory can be extended include unbounded
+the first-order case, but the theory can be extended to include unbounded
 quantification~\cite{shulman:stack-semantics}, function types and power types
 and even a fully-fledged type theory~\cite{maietti:modular-correspondence}. The
 sheaf semantics of appropriate toposes has been used to give \emph{synthethic
@@ -404,7 +404,7 @@ explored.}
 \label{sect:locales}
 
 The formal definition of a locale will be given below as
-Definition~\ref{defn:locale}, but we first want to review examples and comment on
+Definition~\ref{defn:locale}, but we first review examples and comment on
 the relevance of locales to constructive mathematics.
 
 \subsection{Spaces without points}
@@ -413,7 +413,7 @@ the relevance of locales to constructive mathematics.
 A metric or topological space without any points is not very interesting: It is
 empty, and up to isomorphism there is only one such space. In contrast, a
 locale can be nontrivial even if it does not contain any points. This
-phenomenon is one instance of a general guiding principle, namely that relinquishing
+phenomenon is an instance of a general guiding principle, namely that relinquishing
 points increases flexibility.
 
 \paragraph{The locale of surjections~$\NN \twoheadrightarrow \RR$.} As is
@@ -434,7 +434,7 @@ The points of~$X$ are in canonical one-to-one correspondence with the
 surjections~$\NN \twoheadrightarrow \RR$, hence~$X$ does not have any points.
 But this locale does have uncountably many basic opens~$U_{nx}$, where~$n$
 ranges over the naturals and~$x$ ranges over the reals. We picture~$U_{nx}$ as
-the ``open of those surjections~$f$ for which~$f(n) = x$'', we can compute with
+the ``open of those surjections~$f$ for which~$f(n) = x$'' and we can compute with
 these opens, consider functions on~$X$ and ponder sublocales of~$X$. For instance:
 \begin{enumerate}
 \item If~$x \neq y$, then the intersection of~$U_{nx}$ with~$U_{ny}$
@@ -549,7 +549,7 @@ sequence~$\alpha$, the set~$\{ \beta \in 2^\NN \,|\, \exists n \in \NN\+
 contain~$\alpha$.
 
 Despite this fundamental issue, one can still argue that this approach has
-merit~\cite{simpson:randomness}, and hence it is worthwhile to find a
+merit~\cite{simpson:measure}, and hence it is worthwhile to find a
 mathematical foundation which is capable of formalizing it. Topological
 spaces are too restrictive, but Alex Simpson observed that locales are
 sufficiently flexible: There is a \emph{locale of random sequences}, defined as
@@ -688,7 +688,7 @@ space~$X$ forms a partially ordered set which has
 \text{finite meets (infima)}, \\
 \bigvee && \wedge
 \end{array} \]
-and finite meets distribute over arbitrary joins:
+and where finite meets distribute over arbitrary joins:
 \[ U \wedge \bigvee_i V_i = \bigvee_i (U \wedge V_i). \]
 
 The key idea of locales is to elevate this observation to a definition, in the
@@ -755,7 +755,7 @@ canonical bijection with the points of~$Y$.
 
 The underlying frame homomorphism~$\alpha : \OOO(X) \to \Omega$ of a point~$x$
 of~$X$ can be pictured as mapping each open~$U$ of~$X$ to the truth value to which
-extent~$x$ belongs to~$U$. Symbolically, we write~$x \inplus U$ iff~$\alpha(U)
+extent~$x$ belongs to~$U$. Mnemonically, we write~$x \inplus U$ iff~$\alpha(U)
 = \top$.
 
 The point~$x$ is completely determined by the information to which opens it
@@ -793,7 +793,7 @@ The adjunction~$L \dashv \Pt$ restricts to an equivalence between sober
 topological spaces and spatial locales. Assuming the law of excluded middle,
 both Hausdorff spaces and the schemes from algebraic geometry are sober
 (Exercise~\ref{ex:hausdorff-sober}), hence the spaces of a wide
-range of the mathematical landscape can be studied as locales.\end{remark}
+range of the mathematical landscape can be faithfully studied as locales.\end{remark}
 
 \begin{remark}\label{rem:sober-embed}
 Since continuous maps between spaces induce locale morphisms, we
@@ -917,7 +917,7 @@ with the completely prime filters of~$\OOO(X)$.
 \begin{exercise}[Dense opens]%
 \label{ex:dense-opens}%
 An open~$U$ of a locale is \emph{dense} iff for any open~$V$, $U \wedge V =
-\bot$ implies~$U = \bot$.
+\bot$ implies~$V = \bot$.
 \begin{alphlist}[(b)]
 \item Let~$M$ be a set and endow it with the discrete topology. Show that an
 open~$U \in \OOO(L(M))$ is dense iff for any element~$x \in M$, $\neg\neg(x \in
@@ -1014,7 +1014,7 @@ set-indexed families of formulas. The theory \emph{proves} a sequent~$\sigma$ if
 only if there exists a \emph{derivation} of~$\sigma$, where the class of
 derivations is inductively generated by the axioms and the rules displayed in
 Table~\ref{table:geometric-logic}.\footnote{Because of the infinitary
-disjunctions, some care is needed to not ``built in'' the axiom of choice in
+disjunctions, some care is needed to not ``build in'' the axiom of choice in
 the definition of derivations. More specifically, we allow inhabited sets of
 subdeductions instead of requiring that subdeductions are given by a function.
 Details on the implementation in~\textsc{czf} can be found in
@@ -1371,7 +1371,7 @@ or there are polynomials~$g_i$ such that~$1 = \sum_i f_i g_i$ (such an
 expression is an \emph{algebraic witness} of the nonexistence of a common
 zero).
 
-The Nullstellensatz is a theorem of classical mathematics, employing the
+The Nullstellensatz is a theorem of classical mathematics whose usual proof employs the
 axiom of choice. Since it can be formulated as a geometric sequent over the
 geometric theory of algebraically closed geometric fields, Barr's theorem
 implies that there is also a constructive proof, in fact even a purely
@@ -1485,7 +1485,7 @@ The following properties of the semantics can then be established by induction:
 \begin{alphlist}[(d)]
 \item If~$\TT$ proves~$\beta \vdash \alpha$ (in geometric logic), then~$\alpha \models \varphi$ implies~$\beta
 \models \varphi$.
-\item If~$\TT$ proves~$\alpha \dashv\vdash \bigvee_i \beta_i$ (geometrically) and~$\beta_i \models \varphi$ for
+\item If~$\TT$ proves~$\alpha \dashv\vdash \bigvee_i \beta_i$ (geometrically) and if~$\beta_i \models \varphi$ for
 all indices~$i$, then~$\alpha \models \varphi$.
 \item\label{item:baby-geom} If~$\varphi$ is a geometric formula, then~$\alpha
 \models \varphi$ iff~$\TT$ proves~$\alpha \vdash \varphi$ (geometrically).
@@ -1567,8 +1567,8 @@ The Lindenbaum algebra is a frame, with finite meets given by~$[\varphi] \wedge
 set-indexed joins picks representatives from each equivalence class and is
 hence only sensible in the presence of the axiom of choice. In a
 constructive metatheory, we should rather write~$\bigvee_{i \in I} M_i =
-[\bigvee_{\varphi \in K} \varphi]$, where~$K = \{ \varphi \,|\, \exists i \in
-I\+ \varphi \in M_i \}$.} we can regard the Lindenbaum algebra as the free
+[\bigvee_{\varphi \in \bigcup_i M_i} \varphi]$.}
+we can regard the Lindenbaum algebra as the free
 frame generated by the nullary relation symbols of~$\TT$ modulo the axioms
 of~$\TT$. Our interest in the Lindenbaum algebra is because it gives rise to a
 locale:
@@ -1693,9 +1693,9 @@ The results mentioned above explain why we can, in classical mathematics, where 
 conditions are satisfied, blithely and fruitfully use the topological
 spectrum of a ring, the topological Galois group or the topological space of
 reals. In classical mathematics, employing their localic counterparts is merely
-for convenience or for aesthetic reasons; in constructive mathematics, the
-localic replacements (or similar replacements in other pointfree approaches to
-topology) are vital.
+for convenience or for aesthetic reasons; in constructive mathematics,
+localic replacement (or similar replacements in other pointfree approaches to
+topology) is vital.
 
 \begin{remark}The case of the locale of surjections~$\NN \twoheadrightarrow
 \RR$ is particular in that there, even the strong existence axioms of
@@ -1831,7 +1831,7 @@ Similarly, given a section~$s \in F(U)$, what should~``$\neg\varphi(s)$'' mean?
 Since a section may well validate additional properties when we zoom in to
 smaller opens, the sheaf-theoretically sensible answer is ``except for the
 empty open~$V = \bot$,~$s|^U_V$ does not have property~$\varphi$ for any
-open~$V \preceq U$'', where again~``$\varphi(s)$'' has to be understood in a
+open~$V \preceq U$'', where again~``$\varphi(s|^U_V)$'' has to be understood in a
 sensible way.
 
 As a final motivating example, consider the statement~``$\exists s\?F\+
@@ -1891,7 +1891,7 @@ which also gives a detailed account of useful type theory.
 
 \paragraph{Definition and basic properties of the sheaf semantics.}
 Let~$X$ be a locale. A \emph{formula over an open~$U \in \OOO(X)$} is an
-infinitary first-order formula (made up using~${=}\ {\top}\ {\wedge}\ \{\bigwedge\}\ {\bot}\ {\vee}\
+infinitary first-order formula (made up using~${=}\ {\top}\ {\wedge}\ {\bigwedge}\ {\bot}\ {\vee}\
 {\bigvee}\ {\Rightarrow}\ {\forall}\ {\exists}$) over the signature which has one sort for
 each sheaf~$F$, one constant symbol of sort~$F$ for each section~$s \in F(U)$,
 one function symbol~$f : F \to G$ for each morphism of sheaves, and so on. As
@@ -1900,7 +1900,7 @@ usual, we define~$\neg\varphi$ to be an abbreviation of~$(\varphi \Rightarrow
 
 Table~\ref{table:sheaf-semantics} defines by recursion on the structure of
 formulas what it means for a formula~$\varphi$ over an open~$U$ to be
-\emph{forced by~$U$} or \emph{true over~$U$}, written~``$U \models \varphi$''. The
+\emph{forced by~$U$} or to be \emph{true over~$U$}, written~``$U \models \varphi$''. The
 main differences with the perhaps more familiar Kripke semantics are marked.
 The sheaf semantics is also called \emph{Kripke--Joyal semantics}.
 
@@ -1943,7 +1943,7 @@ z$ for all~$z \in U$} \} \]
 on~$X = \CC$. The interpretation of the statement~``$\exists s\?F\+ \top$'' is
 false, as on no open which contains the origin a continuous square root
 function exists), but the interpretation of~``$\neg\neg(\exists s\?F\+ \top)$''
-is true: Unrolling the definition, this statement expresses that
+is true: Unrolling the definition, this statement expresses that\par
 \begin{quote}
 the only open~$U \preceq X$ which has the property that \\
 ${\qquad}$ the only open~$V \preceq U$ which has the property that \\
@@ -2034,7 +2034,7 @@ regarded as a sheaf model of the theory of objects.\end{example}
 \begin{example}\label{ex:sets-as-sheaf-models}
 Any set-based model~$M$ of a geometric theory~$\TT$ gives rise to a
 sheaf model over the one-point locale, by employing the constant sheaf
-construction reviewed on page~\ref{page:constant-sheaf}. An infinitary
+construction reviewed on page~\pageref{page:constant-sheaf}. An infinitary
 first-order formula holds for~$M$ iff it holds for the induced sheaf model.
 Hence sheaf models are strictly more general than set-based models.
 \end{example}
@@ -2050,7 +2050,7 @@ Subsheaves~$F \subseteq 1$ are in canonical bijection with the opens of~$X$
 With this in mind, we can rephrase Definition~\ref{defn:sheaf-model} in the
 special case of propositional theories in the following simpler form. A
 \emph{sheaf model} of a propositional geometric theory~$\TT$ over a locale~$X$
-consists of a family~$(U_\varphi)_\varphi$ of opens of~$X$, one for each
+consists of a family~$(U_\varphi)_\varphi$ of opens of~$X$, one open for each
 nullary relation symbol~$\varphi$ of~$\TT$, in such a way that the axioms are
 satisfied. For instance, that an axiom~``$\alpha \wedge \beta \vdash \bigvee_i
 \gamma_i$'' is satisfied means that~$U_\alpha \wedge U_\beta \preceq \bigvee_i
@@ -2071,7 +2071,7 @@ the structures~$M_x$ obtained by computing the stalks at points~$x \in \Pt(X)$.
 Let~$\sigma$ be a geometric sequent.
 Then:
 \begin{enumerate}
-\item If~$M$ validates~$\sigma$, then so does~$M_x$, for any point~$x \in \Pt(X)$.
+\item If~$M$ validates~$\sigma$, then so does~$M_x$ for any point~$x \in \Pt(X)$.
 \item The converse holds if~$X$ is spatial.
 \end{enumerate}
 \end{proposition}
@@ -2108,7 +2108,7 @@ theory~$\TT$, the following statements are equivalent:
 \begin{enumerate}
 \item The generic model of~$\TT$ validates~$\sigma$.
 \item All sheaf models of~$\TT$ on arbitrary locales validate~$\sigma$.
-\item The theory~$\TT$ proves~$\sigma$:
+\item The theory~$\TT$ proves~$\sigma$.
 \end{enumerate}
 Hence we may understand the phrase~``Let~$M$ be a model of~$\TT$.'' to
 implicitly refer to the generic model. The first-order properties of the
@@ -2148,7 +2148,7 @@ points, this morphism induces the expected map~$\fff \mapsto f^{-1}[\fff]$.
 \begin{exercise}[The theory of finite objects]%
 \begin{alphlist}[(c)]
 \item Extend the geometric theory of objects
-(page~\ref{item:theory-of-objects}) by relation symbols and axioms, but not by
+(page~\pageref{item:theory-of-objects}) by relation symbols and axioms, but not by
 constant symbols, to ensure that the set-based models are precisely the
 two-element sets.
 \item Write down a geometric theory whose set-based models are precisely the
@@ -2157,7 +2157,7 @@ two-element sets.
 {\scriptsize\emph{Hint.} Employ countably many relation symbols~$R_n
 \hookrightarrow X \times \cdots \times X$, where~$R_n(x_1,\ldots,x_n)$ should
 signify that the elements~$x_1,\ldots,x_n$ exhaust all elements of~$X$. A
-solution is given in Ref.~\cite[Example~D1.1.7(k)]{johnstone:elephant}.\par}
+solution to this exercise is given in Ref.~\cite[Example~D1.1.7(k)]{johnstone:elephant}.\par}
 \end{alphlist}
 \end{exercise}
 
@@ -2289,7 +2289,7 @@ element is zero or invertible. Show that the axiom expressing injectivity can
 be dropped without changing the set of provable sequents.
 \item Let~$f \in k[X]$ be a monic polynomial such that~$f(X) =
 (X-x_1)\cdots(X-x_n)$ over~$L$. Let~$x$ be one of the zeros of~$f$. Show that
-the theory shows~$\top \vdash \bigvee_{i=1}^n \sigma_{x,x_i}$.
+the theory proves~$\top \vdash \bigvee_{i=1}^n \sigma_{x,x_i}$.
 \item Now furthermore assume that~$L$ is \emph{Galois over}~$k$ in the sense that
 any element of~$L$ is the zero of a monic polynomial~$f \in k[X]$ which is
 separable (that is,~$(f,f') = (1) \subseteq k[X]$) and splits over~$L$ into
@@ -2456,7 +2456,7 @@ sheaf~$\underline{\NN}$ on a topological space~$X$ such that
 We recall from the introduction one way how locales and sheaves yield new
 reduction techniques for constructive algebra:
 \begin{enumerate}
-\item Instead of replacing a given ring with another (for instance a ring~$A$ with
+\item Instead of replacing a given ring with another ring (for instance a ring~$A$ with
 one of its stalks~$A_\ppp$ at a minimal prime ideal), we replace a given ring
 with a \emph{sheaf of rings}.
 \item We then maintain the convenient illusion that we are working with a plain old ring
@@ -2480,7 +2480,7 @@ By \emph{ring}, we mean commutative ring with unit. We do not require the unit
 to be distinct from the zero; indeed, trivial rings have intriguing
 applications~\cite{richman:trivial-rings}.
 
-A ring is \emph{reduced} iff zero is its only nilpotent; that is, if~$x^n = 0$
+A ring is \emph{reduced} iff zero is its only nilpotent element; that is, if~$x^n = 0$
 implies~$x = 0$.
 
 An \emph{ideal} is a subset~$\aaa \subseteq A$ such that~$0 \in \aaa$, $(x \in
@@ -2500,14 +2500,14 @@ $0 \not\in \fff$, $(x + y \in \fff) \Rightarrow (x \in \fff) \vee (y \in
 \in \fff)$.
 
 An ideal~$\aaa \subseteq A$ is a \emph{radical ideal} iff~$x^n \in \aaa$
-implies~$x \in \aaa$ for any~$x \in A$ and natural number~$n$. The
+implies~$x \in \aaa$ for any~$x \in A$ and any natural number~$n$. The
 \emph{radical}~$\sqrt{\aaa}$ of an arbitrary ideal~$\aaa$ is the radical
 ideal~$\{ x \in A \,|\, \exists n \in \NN\+ x^n \in \aaa \}$.
 
 A ring is \emph{local} iff a finite sum is invertible only if one of its
 summands also is. More precisely, this means that~$1 \neq 0$ and that
 whenever~$a + b$ is invertible, $a$ is invertible or~$b$ is invertible.
-This definition is an elementary rephrasing of the textbook definition,
+This definition is an elementary rephrasing of the textbook definition
 according to which a ring is local iff it has exactly one maximal ideal. The
 elementary definition works better in constructive contexts.
 
@@ -2837,7 +2837,7 @@ machinery is \emph{not} applicable for constructing free fields.
 \end{enumerate}
 
 \paragraph{Free constructions.}
-Let~$G$ be a group. Then there is a universal way to turn~$G$ into an abelian
+Let~$G$ be a group. Then there is a universal way of turning~$G$ into an abelian
 group~$G^\ab$ equipped with a group homomorphism~$G \to G^\ab$, the \emph{free
 abelian group over~$G$}. This abelianization has the universal property that
 for any homomorphism~$G \to M$ into an abelian group, there is exactly one
@@ -2847,7 +2847,7 @@ homomorphism~$G^\ab \to M$ rendering the diagram
   & {\substack{\text{\normalsize$G^\ab$}\\\text{abelian}}} \ar@{-->}_[@!29]{}[rru]
 } \]
 commutative. In textbooks, the abelianization is usually constructed as~$G^\ab
-= G/[N,N]$, that is as the quotient by the subgroup generated by the
+= G/[G,G]$, that is as the quotient by the subgroup generated by the
 commutators. This explicit construction makes it appear that abelianization
 is a specific result in algebra pertaining to groups.
 
@@ -2877,7 +2877,7 @@ instance, there are no \emph{free fields}. The free field on a set~$M$ would be
 a field~$K$ together with a map~$M \to K$ such that any map~$M \to L$ into a field~$L$ factors
 over the given map~$M \to K$ by a unique field homomorphism~$K \to L$.
 
-For instance, in the case~$X = \{ t \}$, the field~$\QQ(t)$ of rational
+For instance, in the case~$M = \{ t \}$, the field~$\QQ(t)$ of rational
 functions comes close, but fails because there are no field homomorphisms~$\QQ(t)
 \to L$ which could map~$t$ to an algebraic element. We could also try to
 concoct a term model, but the set of terms in the language of a field extended
@@ -2915,7 +2915,7 @@ factors via a local ring homomorphism over~$A \to A'$ as indicated in the diagra
 
 To develop intuition for what this universal property requests, let a
 homomorphism~$f : A \to B$ into a local ring be given. The subset~$B^\times
-\subseteq B$ is then a \emph{prime filter}, due to the locality of~$B$. Its
+\subseteq B$ is a \emph{prime filter}, due to the locality of~$B$. Its
 preimage~$\fff \defeq f^{-1}[B^\times]$ is a prime filter of~$A$. Hence the
 localization~$A_\fff = A[\fff^{-1}]$ is a local ring and~$f$ factors via the
 well-defined map~$f' : A_\fff \to B,\,\frac{x}{s} \mapsto f(s)^{-1}f(x)$ over
@@ -2952,7 +2952,7 @@ According to this definition, the generic prime filter is a particular
 \emph{spectrum}~$\Spec(A)$ of~$A$. By localizing at the generic prime filter, we solve
 the problem of constructing the free local ring in a generalized sense: \emph{The
 free local ring over~$A$ exists as a certain sheaf of rings.} It has a
-universal property not only with respect to all ordinary rings, but also all
+universal property not only with respect to all ordinary rings, but also with respect to all
 sheaves of rings on arbitrary locales.
 
 \paragraph{Constructing the sheaf~$A^\sim$.} We recall from Section~\ref{sect:sheaves} that the given ring~$A$
@@ -3064,7 +3064,7 @@ a localization of~$A$, more precisely that it is the localization of~$A$
 at~$f^{-1}R^\times$.
 
 Since this theory is not propositional, Section~\ref{sect:presenting-frames}
-does not apply. There is, however, still a classifying topos of this theory, and it turns
+does not apply. There is, however, still a classifying \emph{topos} of this theory, and it turns
 out that it coincides with the topos of sheaves over~$\Spec(A)$ -- mainly
 because the theory of local localizations of~$A$ is equivalent to the theory of
 prime filters of~$A$. Under this identification, the generic model of the local
@@ -3133,9 +3133,9 @@ for a radical ideal~$\aaa$ is given by~$\bigvee_{f \in \aaa} [D(f)]$. By
 Exercise~\ref{ex:isomorphisms-of-frames}, it
 remains to show that the homomorphism reflects the ordering.
 
-To this end, let an element~$f \in A$ and a family~$(g_i)_i$ of elements be
+To this end, let an element~$f \in A$ and a family~$(g_i)_{i \in I}$ of elements be
 given and assume~$\sqrt{(f)} \subseteq \sqrt{\sum_i \sqrt{(g_i)}}$. Then there
-are values~$n,m \in \NN$, $i_1,\ldots,i_m \in \NN$ and~$u_1,\ldots,u_m \in
+are values~$n,m \in \NN$, $i_1,\ldots,i_m \in I$ and~$u_1,\ldots,u_m \in
 A$ such that~$f^n = u_1 g_{i_1} + \cdots + u_m g_{i_m}$. We then have the
 following chain of entailments.
 \[
@@ -3166,7 +3166,7 @@ filters of~$A$ is inconsistent (that it, that it proves the sequent~$\top
 \vdash \bot$, which can also be written as~$D(1) \vdash D(0)$) if and only
 if~$A$ is the trivial ring. Contrapositively, if~$A$ is not the trivial ring,
 then the theory is consistent. This observation can be regarded as a finitary
-substitute for the statement (equivalent to~\BPIT in general) ``nontrivial rings contain prime filters''.
+substitute of the statement (equivalent to~\BPIT in general) ``nontrivial rings contain prime filters''.
 \end{remark}
 
 \begin{remark}Given the importance of Theorem~\ref{thm:workhorse}, it is
@@ -3205,11 +3205,11 @@ presheaf by
 \[ [D(f)] \longmapsto A[S_f^{-1}]. \]
 This partial presheaf is, on the basis where it is defined, a sheaf. Unraveling
 the definitions, this claim boils down to the following basic result in
-commutative algebra:
+commutative algebra:\par
 \begin{quote}
 Let~$B$ be a ring. Let~$1 = f_1 + \cdots + f_m \in B$ be a partition of unity. Let
-elements~$s_i \in B[f_i^{-1}]$ be given. Assume that~$s_i = s_j$
-in~$B[(f_if_j)^{-1}]$ for all pairs of indices. Then there is exactly one
+elements~$s_i \in B[f_i^{-1}]$ be given. Assume that~$s_j = s_k$
+in~$B[(f_jf_k)^{-1}]$ for all pairs of indices. Then there is exactly one
 element~$s \in B$ such that, for all indices~$i$,~$s = s_i$ in~$B[f_i^{-1}]$.
 \end{quote}
 The remainder of the argument is by sheaf-theoretic generalities.
@@ -3226,10 +3226,10 @@ As a corollary of Theorem~\ref{thm:workhorse} and
 Proposition~\ref{prop:identification}, we can unwind the definitions to recast
 the sheaf semantics in entirely explicit algebraic terms, with no locales or
 sheaves in sight. Notwithstanding the impredicative nature of locale theory,
-the resulting formulation will even make sense in a metatheories without a
+the resulting formulation will even make sense in metatheories without a
 powerset operation such as~\textsc{czf}~\cite{crosilla:predicativity,aczel-rathjen:cst} or arithmetic
 universes~\cite{maietti:au,vickers:sketches}. In
-fact, it is now a purely syntactic translation procedure which can be carried
+fact, it is then a purely syntactic translation procedure which can be carried
 out within~\textsc{pra}.
 
 The approach using locales and sheaves provides two ingredients which go beyond
@@ -3349,7 +3349,7 @@ allows us to harness convoluted properties in simple language. The unrolled
 monstrosity in the proof of Proposition~\ref{prop:field-property} is not
 memorable at all and unlikely to find its way into human-written proofs.
 However, in the form~``$A^\sim$ is a field'', it becomes easily accessible.
-This state of affairs is the more pronounced the more negations and especially
+This state of affairs becomes the more pronounced the more negations and especially
 double negations occur in the proof.
 
 %\begin{quote}
@@ -3386,7 +3386,7 @@ such that~$h \models \varphi$, then~$1 = 0$ in~$A$.''
 
 \paragraph{Size of injective and surjective matrices.}
 
-On page~\ref{par:appl-constr-alg}, we presented a classical proof of the
+On page~\pageref{par:appl-constr-alg}, we presented a classical proof of the
 following theorem.\par
 \begin{quote}
 \textbf{Theorem.} Let~$M$ be an injective matrix with more columns than rows
@@ -3508,7 +3508,7 @@ then~$1 = 0$ in~$A$.
 \textbf{Proof.} One can check that the claim is the interpretation by the sheaf
 semantics of the following statement about the sheaves: It is \notnot the case that
 \begin{enumerate}
-  \item $B^\sim$ and $M^\sim$ are free modules over $A^\sim$ (by basic linear algebra),
+  \item $B^\sim$ and $M^\sim$ are free modules over $A^\sim$,
   \item $A^\sim \to B^\sim$ is of finite presentation, and
   \item $M^\sim$ is finitely presented as a module over $B^\sim$,
 \end{enumerate}
@@ -3589,11 +3589,11 @@ Hence~$N = \left(\begin{smallmatrix}I\\0\end{smallmatrix}\right)$ and~$(1) =
 also be recast as follows. Instead of reducing to the factor ring~$A/\ann(x)$,
 we continue considering~$A$. Working under the sheaf semantics, we then
 introduce a variant of the usual negation~$\neg\varphi \equiv (\varphi
-\Rightarrow \bot)$, namely~$\negg\varphi \equiv (\varphi \Rightarrow a = 0)$.
+\Rightarrow \bot)$, namely~$\negg\varphi \equiv (\varphi \Rightarrow x = 0)$.
 We may still use the law of excluded middle for this new negation and hence
-exploit that any element~$x$ of~$A^\sim$ is invertible or ``not'' invertible. By
+exploit that any element~$f$ of~$A^\sim$ is invertible or ``not'' invertible. By
 Exercise~\ref{ex:gen-field-property}, this amounts to saying that some power
-of~$x$ annihilates~$a$. The remainder of the proof carries over with minor
+of~$f$ annihilates~$x$. The remainder of the proof carries over with minor
 modifications.
 \end{remark}
 
@@ -3611,7 +3611,7 @@ If~$m = 0$, the claim is immediate because in this case~$(1) = (\Lambda^m M) =
 Over the localized ring~$A[M_{ij}^{-1}]$, the matrix entry~$M_{ij}$ is
 invertible and hence~$M$ can be put into the
 form~$\left(\begin{smallmatrix}1&0\\0&M'\end{smallmatrix}\right)$ by elementary
-row and column transformation. The matrix~$M'$ is still injective,
+row and column transformations. The matrix~$M'$ is still injective,
 and~$(\Lambda^{m-1} M') = (\Lambda^m M)$, hence we may assume by induction
 that~$1 = 0$ in~$A[M_{ij}^{-1}]$.
 
@@ -3714,7 +3714,7 @@ Let~$A$ be a ring. We introduce an operator~$\nabla$ by
 \[ \nabla\varphi \defeqv \bigl(\forall s\?A^\sim\+ ((\varphi \Rightarrow s = 0)
 \Rightarrow s = 0\bigr).\]
 \begin{alphlist}[(f)]
-\item Verify that~$\nabla$ is a \emph{local operator}, that is verify that
+\item Verify that~$\nabla$ is a \emph{local operator}, that is that
 \[ (\varphi \Rightarrow \nabla\varphi), \quad
 (\nabla\nabla\varphi \Rightarrow \nabla\varphi) \quad\text{and}\quad
 ((\nabla\varphi \wedge \nabla\psi) \Leftrightarrow \nabla(\varphi \wedge \psi))
@@ -3795,8 +3795,8 @@ Let~$M$ and~$N$ be modules over a ring~$A$. Let~$f : M \to N$ be a linear map.
 \end{exercise}
 
 \begin{exercise}[Units of the sheaf model]%
-Let~$A$ be a ring. Let~$f \in A$. Let~$x \in A[f^{-1}]$. Show using the result
-of Exercise~\ref{ex:global-existence} that~$f \models \exists y\?A^\sim\+ xy
+Let~$A$ be a ring. Let~$f \in A$. Let~$x \in A[f^{-1}]$. Show using
+Exercise~\ref{ex:global-existence} that~$f \models \exists y\?A^\sim\+ xy
 = 1$ if and only if~$x$ is invertible in~$A[f^{-1}]$.
 \end{exercise}
 
@@ -3826,7 +3826,7 @@ found in Refs.~\refcite{coquand-ducos-lombardi-quitte:krull-integral,coquand-lom
 It has been used to give a short and constructive proof that~$\dim
 k[X_1,\ldots,X_n] = n$, where~$k$ is a geometric
 field~\cite{coquand-lombardi:krull-dim-polynomial-ring}. Proofs of the stated
-relation between the dimension of~$A$ and the dimension of~$A^\sim$ are in
+relation between the dimension of~$A$ and the dimension of~$A^\sim$ are recorded in
 Ref.~\cite[Section~3.4]{blechschmidt:phd}.\par}
 \end{exercise}
 

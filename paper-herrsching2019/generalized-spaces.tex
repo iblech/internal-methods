@@ -494,7 +494,7 @@ so as well.
 unintuitive statement that a three-dimensional solid ball in~$\RR^3$ of
 radius~$r$ can be partitioned into five disjoint subsets in such a way that
 rearranging those subsets using only Euclidean motions yields two disjoint
-solid balls of radius~$r$ each. The axiom of choice is required to construct
+solid balls of radius~$r$ each. The axiom of choice is required to procure
 these subsets, and the Banach--Tarski paradox is not in
 contradiction with the basic properties of the Lebesgue measure in~$\RR^3$
 because these intermediate subsets are not measurable.
@@ -1449,6 +1449,24 @@ logic proves the sequents
 We then set up the~\emph{$\nabla$-translation}~$\varphi \mapsto \varphi^\nabla$
 for infinitary first-order formulas over the signature of~$\TT$ as described in
 Table~\ref{table:nabla-translation}.
+
+\begin{table}[ht]
+  \tbl{The definition of the~$\nabla$-translation}{\begin{minipage}{\textwidth}\begin{align*}
+    (x = y)^\nabla &\defeqv \nabla(x = y) \\
+    R(x_1,\ldots,x_n)^\nabla &\defeqv \nabla(R(x_1,\ldots,x_n)) \\
+    \top^\nabla &\defeqv \top \quad \\
+    \bot^\nabla &\defeqv \nabla\bot \\
+    (\varphi \wedge \psi)^\nabla &\defeqv \varphi^\nabla \wedge \psi^\nabla &
+    \textstyle (\bigwedge_i \varphi_i)^\nabla &\defeqv \textstyle \bigwedge_i \varphi_i^\nabla \\
+    (\varphi \vee \psi)^\nabla &\defeqv \nabla(\varphi^\nabla \vee \psi^\nabla) &
+    \textstyle (\bigvee_i \varphi_i)^\nabla &\defeqv \textstyle \nabla(\bigvee_i \varphi_i^\nabla) \\
+    (\varphi \Rightarrow \psi)^\nabla &\defeqv (\varphi^\nabla \Rightarrow \psi^\nabla) \\
+    (\forall x\?X\+ \varphi)^\nabla &\defeqv (\forall x\?X\+ \varphi^\nabla) &
+    (\exists x\?X\+ \varphi)^\nabla &\defeqv \nabla(\exists x\?X\+ \varphi^\nabla)
+  \end{align*}\end{minipage}}
+  \label{table:nabla-translation}
+\end{table}
+
 Lengthy but straightforward computations by induction on the structure of
 formulas or derivations then establish the following properties.
 \begin{alphlist}
@@ -1514,23 +1532,6 @@ Ref.~\refcite{dyckhoff-negri:geometrisation}, and
 Ref.~\refcite{rathjen-toppel:reduction} for background on proof-theoretical
 reduction, of which Barr's theorem is an example.
 \end{remark}
-
-\begin{table}[ht]
-  \tbl{The definition of the~$\nabla$-translation}{\begin{minipage}{\textwidth}\begin{align*}
-    (x = y)^\nabla &\defeqv \nabla(x = y) \\
-    R(x_1,\ldots,x_n)^\nabla &\defeqv \nabla(R(x_1,\ldots,x_n)) \\
-    \top^\nabla &\defeqv \top \quad \\
-    \bot^\nabla &\defeqv \nabla\bot \\
-    (\varphi \wedge \psi)^\nabla &\defeqv \varphi^\nabla \wedge \psi^\nabla &
-    \textstyle (\bigwedge_i \varphi_i)^\nabla &\defeqv \textstyle \bigwedge_i \varphi_i^\nabla \\
-    (\varphi \vee \psi)^\nabla &\defeqv \nabla(\varphi^\nabla \vee \psi^\nabla) &
-    \textstyle (\bigvee_i \varphi_i)^\nabla &\defeqv \textstyle \nabla(\bigvee_i \varphi_i^\nabla) \\
-    (\varphi \Rightarrow \psi)^\nabla &\defeqv (\varphi^\nabla \Rightarrow \psi^\nabla) \\
-    (\forall x\?X\+ \varphi)^\nabla &\defeqv (\forall x\?X\+ \varphi^\nabla) &
-    (\exists x\?X\+ \varphi)^\nabla &\defeqv \nabla(\exists x\?X\+ \varphi^\nabla)
-  \end{align*}\end{minipage}}
-  \label{table:nabla-translation}
-\end{table}
 
 \begin{table}[ht]
   \tbl{The semantics of the \emph{classifying topos of~$\TT$} (propositional case)}{\begin{tabular}{@{}l@{\ \ }c@{\ \ }l@{}}
@@ -1776,7 +1777,7 @@ bounded functions, and so on; this is a general principle.
 
 \label{par:constant-sheaf}%
 The presheaf~$\underline{M}^\mathrm{pre}$ associated to a set~$M$ is almost
-never a presheaf. Its sheafification~$\underline{M}$ is the \emph{constant sheaf associated
+never a sheaf. Its sheafification~$\underline{M}$ is the \emph{constant sheaf associated
 to~$M$}\label{page:constant-sheaf}. On an open~$U$, its sections are the locale
 morphisms~$U \to M$, where~$M$ is regarded as the locale induced by
 the discrete topological space~$M$ and~$U$ is regarded as a sublocale of~$X$.
@@ -1910,7 +1911,10 @@ For the special case that~$U$ is the largest open of~$X$ we also write~``$\Sh(X)
 \begin{table}[ht]
   \tbl{The (first-order fragment of) the sheaf semantics of a locale~$X$}{\begin{tabular}{@{}l@{\ \ }c@{\ \ }l@{}}
     $U \models s =_F t$ &iff& $s = t$ when evaluated as elements of~$F(U)$ \\
-    $U \models R(s_1,\ldots,s_n)$ &iff& $\langle s_1,\ldots,s_n \rangle \in R(U)$ \\
+    $U \models R(s_1,\ldots,s_n)$ &iff& $\langle s_1,\ldots,s_n \rangle \in
+    R(U)$ \\
+    && \quad\quad \text{(where $R$ is the relation symbol corresponding to} \\
+    && \quad\quad\quad\quad \text{a subsheaf~$R \subseteq F_1 \times \cdots \times F_n$)} \\
     $U \models \top$ &iff& true \\
     $U \models \varphi \wedge \psi$ &iff& $U \models \varphi$ and $U \models \psi$ \\
     $U \models \bigwedge_k \varphi_k$ &iff& for every index~$k$, $U \models \varphi_k$ \\
@@ -2941,7 +2945,7 @@ specific prime filter~$\fff$ on demand.
 \end{enumerate}
 
 The existence of such a shape-shifting prime filter~$\fff_0$ is not a pipe dream.
-While it does not exist as a set, it can be incarnated as a \emph{sheaf}.
+While it does not exist as a set, it can be realized as a \emph{sheaf}.
 
 \begin{definition}\label{defn:generic-prime-filter}
 The \emph{generic prime filter}~$\fff_0$ of a ring~$A$ is the
@@ -3443,7 +3447,10 @@ be proven.
 \paragraph{Grothendieck's generic freeness lemma.} This theorem is a basic
 theorem in algebraic geometry, used for instance for developing the theory of
 moduli spaces. When phrased for the affine situation in a constructively
-sensible way, a simple version of this theorem reads as follows.\par
+sensible way, a simple version of this theorem reads as follows. We recall
+from Section~\ref{sect:algebraic-preliminaries} that
+the notation~$M[f^{-1}]$ makes sense for any element~$f \in A$; in case~$f$ is
+zero or nilpotent, this localized module will be the trivial module.\par
 \begin{quote}
 \textbf{Theorem.}
 Let~$A$ be a reduced ring. Let~$M$ be a finitely generated~$A$-module.

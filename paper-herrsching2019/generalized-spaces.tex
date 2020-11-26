@@ -239,7 +239,7 @@ However, these reduction techniques typically require \emph{transfinite
 methods}. The displayed proof appeals to the transfinite four times:
 \begin{enumerate}
 \item The proof proceeds by contradiction, hence requires the law of excluded
-middle, the strongest of the omniscience principles.
+middle.  % the strongest of the omniscience principles.
 \item The proof then requires a minimal prime ideal. Such an ideal can be
 obtained in two steps: First, the Boolean Prime Ideal
 Theorem~\BPIT is invoked to obtain some prime ideal. Then
@@ -248,7 +248,7 @@ ring has a prime ideal'' by using Zorn's lemma, which
 in the presence of the law of excluded middle is equivalent to the full axiom
 of choice; however, the statement is actually equivalent to the weaker Boolean
 Prime Ideal Theorem~\cite{scott:bpit,banaschewski-harting:lattice-aspects}.
-The combined statement ``any ring has a minimal prime ideal'' is equivalent to
+The combined statement ``any nontrivial ring has a minimal prime ideal'' is equivalent to
 the full axiom of choice~\cite{savin:minimal-prime-ideals}.}
 %FUTURE:
 %This observation might be folklore; we learned the
@@ -427,7 +427,9 @@ known proofs of the uncountability of the Cauchy and the Dedekind reals assume
 either the law of excluded middle or the axiom of countable choice. In the
 absence of either of these axioms, only the MacNeille reals are known to be
 uncountable~\cite{blechschmidt-hutzler:macneille}.} Hence there is no
-interesting topological space of those surjections. However, there is a
+interesting topological space of those surjections. The set~$\{ f : \NN
+\twoheadrightarrow \RR \,|\, \text{$f$ is a surjection} \}$ is empty, and there
+is not much more to say about this state of affairs. However, there is a
 well-defined and nontrivial locale~$X$ of those surjections.
 
 The points of~$X$ are in canonical one-to-one correspondence with the
@@ -444,7 +446,7 @@ number and~$n$ ranges over the naturals, is all of~$X$. No finite number
 of these opens covers~$X$, hence~$X$ is not compact.
 \item Assuming~$x = y \vee \neg(x = y)$ for any pair of reals, there is, for any real~$x$, a well-defined continuous function from~$X$ to
 (the localic version of) the naturals which, on the level of points, would map
-a surjection~$f : \NN \to \RR$ to the smallest preimage of~$x$ under~$f$.
+a surjection~$f : \NN \to \RR$ to the smallest number~$n$ such that~$f(n) = x$.
 \item There is a well-defined continuous function from~$X$ to (the localic
 version of) the reals which, on the level of points, would map a surjection~$f$
 to the number~$\sum_{n=0}^\infty 2^{-n} \arctan(f(n))$. Unlike the previous
@@ -532,7 +534,7 @@ sequence has it (but not necessarily to falsify it). For instance, the sets~$V
 are not. With respect to the standard Lebesgue measure on~$2^\NN$, the sets~$V$
 and~$W$ have measure~$\frac{1}{4}$ and~$1$, respectively.
 
-Unlike a regular sequence such as~$(0,0,0,\ldots)$, we expect that, if the
+Unlike a regular sequence such as~$(0,0,0,\ldots)$, we intuitively expect that, if the
 digits of a \emph{random sequence} are revealed step by step, we will
 eventually verify that it is an element of~$W$; and moreover, that it has any
 observable property~$U$ of Lebesgue measure~$1$.
@@ -741,7 +743,12 @@ Several notions in topology only refer to open sets and not to points. Such
 notions have an immediate counterpart in locale theory. For instance, a
 locale~$X$ is \emph{compact} iff for any family~$(U_i)_{i \in I}$ of opens
 of~$X$ such that~$\top = \bigvee_{i \in I} U_i$, there is a (Kuratowski-)finite
-subset~$I' \subseteq I$ such that~$\top = \bigvee_{i \in I'} U_i$.
+subset~$I' \subseteq I$ such that~$\top = \bigvee_{i \in I'} U_i$.\footnote{A
+set~$M$ is \emph{Kuratowski-finite} iff there is a surjection~$[n]
+\twoheadrightarrow M$, where~$[n] = \{1,2,\ldots,n\}$. In constructive
+mathematics, we distinguish this notion from the stronger condition for a
+set~$M$ to be \emph{Bishop-finite}, which requires that there is a
+bijection~$[n] \to M$.}
 With this definition, a topological space~$Y$ is compact iff its induced locale~$L(Y)$ is.
 
 Points do not appear in the definition of a locale, but they can be defined as
@@ -777,7 +784,11 @@ suffice to distinguish its opens, that is if for any opens~$U, V \in \OOO(X)$, i
 For instance, any locale induced by a topological space is spatial. The locale
 of surjections~$\NN \twoheadrightarrow \RR$ is a striking example of a locale which fails to be
 spatial. The localic real line is spatial in classical mathematics and can
-fail to be spatial in constructive mathematics (Exercise~\ref{ex:spatiality-reals}).
+fail to be spatial in constructive mathematics
+(Exercise~\ref{ex:spatiality-reals}). In this case, the locale induced by the
+topological space of reals should not be confused with the true localic real
+line. These locales have the same points, but the former might not be locally compact
+while the latter always is.
 
 \begin{remark}\label{rem:definition-sober}
 The set of points of a locale~$X$ can be made into a topological space, giving
@@ -1163,7 +1174,7 @@ Zermelo--Fraenkel set theory. There are a number of notable differences:
 \begin{enumerate}
 \item Formal systems are typically of foundational interest and can be
 fruitfully employed as metatheories. Geometric theories are more interesting
-for applications, for instance for presenting spaces. This aspect is discussed
+for specific applications, for instance for presenting spaces. This aspect is discussed
 in Section~\ref{sect:presenting-frames}.
 \item Formal systems typically come with an intended model; geometric theories
 do not. For instance, the geometric theory of groups has all groups as models;
@@ -1180,7 +1191,7 @@ geometric theories can be consistent yet do not admit any set-based models. An
 example is the geometric theory of surjections~$\NN \twoheadrightarrow \RR$
 reviewed below.
 \item Perhaps the most important difference to formal systems is that geometric
-theories often depend on given mathematical objects. For instance, for each
+theories, unlike formal systems, often depend on given mathematical objects. For instance, for each
 ring~$A$, there is the geometric theory of prime filters of~$A$. This theory
 will play a crucial role in Section~\ref{sect:appl}.
 \end{enumerate}
@@ -1356,7 +1367,8 @@ theorem} holds. This theorem is concerned with eliminating classical reasoning
 from proofs of geometric sequents, and it comes in a simple yet still useful
 and a more sophisticated version:
 \begin{enumerate}
-\item If infinitary classical logic proves a geometric sequent, then so does
+\item If infinitary classical logic (classical logic extended by set-indexed
+conjunctions and disjunctions) proves a geometric sequent, then so does
 geometric logic.
 \item If a specific version of extensional type theory with the law of excluded
 middle and the axiom of choice proves a geometric sequent, then so does
@@ -1960,7 +1972,8 @@ is~$U = \bot$.
 
 The principal properties of the sheaf semantics is that it is monotone, local
 and sound with respect to (infinitary) intuitionistic first-order logic as
-defined in Table~\ref{table:first-order-logic}:
+defined in Table~\ref{table:first-order-logic} on
+page~\pageref{table:first-order-logic}:
 
 \begin{theorem}\label{thm:basic-properties-sheaf-semantics}
 Let~$X$ be a locale. Let~$U$ be an open of~$X$. Let~$\varphi$ be
@@ -2080,7 +2093,7 @@ Then:
 \end{enumerate}
 \end{proposition}
 
-\begin{proof}Omitted.\end{proof}
+\begin{proof}See~\cite[Corollary~D1.2.14(ii)]{johnstone:elephant}.\end{proof}
 
 In particular, the stalks of sheaf models of a geometric theory~$\TT$ are
 set-based models of~$\TT$.
@@ -3444,13 +3457,23 @@ injectivity~$1 = 0$ in~$A$. \qed
 In exactly the same fashion, the dual statement about surjective matrices can
 be proven.
 
+Concluding, one can well ask what the computational content of the equation~$1
+= 0$ is. The answer depends on the ring in question. In rings where we know a
+priori that~$1 \neq 0$, the two statements are most useful in their
+contrapositive form. But in rings of the form~$R[f^{-1}]$ or~$R/(f)$, learning
+that~$1 = 0$ can indeed be useful: In the former case, this tells us that~$f$
+is nilpotent (and a computational witness of~$1 = 0$ can be transformed into a
+number~$n$ such that~$f^n = 0$), and in the latter case, this tells us that~$f$
+is invertible.
+
+
 \paragraph{Grothendieck's generic freeness lemma.} This theorem is a basic
 theorem in algebraic geometry, used for instance for developing the theory of
 moduli spaces. When phrased for the affine situation in a constructively
 sensible way, a simple version of this theorem reads as follows. We recall
 from Section~\ref{sect:algebraic-preliminaries} that
 the notation~$M[f^{-1}]$ makes sense for any element~$f \in A$; in case~$f$ is
-zero or nilpotent, this localized module will be the trivial module.\par
+zero or nilpotent, the localized module~$M[f^{-1}]$ will be the trivial module.\par
 \begin{quote}
 \textbf{Theorem.}
 Let~$A$ be a reduced ring. Let~$M$ be a finitely generated~$A$-module.
@@ -3918,7 +3941,9 @@ We are grateful to Peter Arndt, Andrej Bauer,
 Martin Brandenburg, Thierry Coquand, Martín Escardó, Simon Henry, Matthias
 Hutzler, Milly Maietti, Marc Nieper-Wißkirchen, Alexander Oldenziel, Anja
 Petković, Peter Schuster, Helmut Schwichtenberg, Steve Vickers and Daniel
-Wessel for invaluable discussions shaping this work.
+Wessel for invaluable discussions shaping this work. We are also grateful to
+the anonymous referee, whose comments suggested several improvements to the
+presentation.
 
 We thank the
 organizers Klaus Mainzer, Peter Schuster and Helmut Schwich\-ten\-berg of

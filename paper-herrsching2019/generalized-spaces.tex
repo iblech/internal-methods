@@ -1,6 +1,6 @@
 \documentclass{ws-rv9x6}
 \usepackage[onethmnum]{ws-rv-thm}
-\usepackage{ws-rv-van}
+\usepackage[square]{ws-rv-van}
 
 \usepackage[english]{babel}
 
@@ -76,6 +76,8 @@
 \newcommand{\negg}{\neg\!\!\!\neg}
 \newcommand{\bott}{\bot\!\!\!\!\bot}
 \newcommand{\brak}[1]{{\llbracket{#1}\rrbracket}}
+
+\newcommand{\bracketedrefcite}[1]{\citep{#1}}
 
 \chapter{Generalized spaces for constructive algebra}
 
@@ -155,11 +157,11 @@ in fact, they need not be sets of anything in peculiar.
 Section~\ref{sect:locales} explores the basics of the theory of locales, with a
 focus on examples and issues for constructive mathematics. Accessible
 introductions to the theory include
-Refs.~\refcite{johnstone:art,johnstone:point}. The interplay between logic and
+Refs.~\bracketedrefcite{johnstone:art,johnstone:point}. The interplay between logic and
 geometry is particularly stressed in
-Refs.~\refcite{vickers:continuity,vickers:locales-toposes}. We recommend
-Ref.~\refcite{belanger-marquis:pointless} for a historical guide and
-Ref.~\refcite{picado-pultr:frames-and-locales} for a comprehensive modern
+Refs.~\bracketedrefcite{vickers:continuity,vickers:locales-toposes}. We recommend
+Ref.~\bracketedrefcite{belanger-marquis:pointless} for a historical guide and
+Ref.~\bracketedrefcite{picado-pultr:frames-and-locales} for a comprehensive modern
 textbook on the subject.
 
 
@@ -351,7 +353,7 @@ textbooks~\cite{mines-richman-ruitenburg:constructive-algebra,lombardi-quitte:co
 on constructive algebra available and there is a vast literature on
 the intriguing subject of constructivizing classical commutative algebra.
 Starting points include
-Refs.~\refcite{coste-lombardi-roy:dynamical-method,coquand-lombardi:logical-approach,rinaldi-schuster-wessel:edde,cederquist-coquand:entrel}.
+Refs.~\bracketedrefcite{coste-lombardi-roy:dynamical-method,coquand-lombardi:logical-approach,rinaldi-schuster-wessel:edde,cederquist-coquand:entrel}.
 
 
 \paragraph{Notes for readers familiar with the themes of this contribution.}
@@ -364,7 +366,7 @@ of the syntactic site. For reducing classical provability to intuitionistic
 provability, we employ a variant of the double negation translation. We were
 not able to track down a reference to this approach in the context of
 infinitary logic, but the basic idea has long been known and is summarized, for
-instance, in Ref.~\refcite{aczel:russell-prawitz}.
+instance, in Ref.~\bracketedrefcite{aczel:russell-prawitz}.
 
 In Section~\ref{sect:sheaves}, where we introduce sheaves, we should
 probably also introduce sites. They would fit the narrative well and allow for
@@ -577,7 +579,7 @@ as a topological space, can fail to be compact in constructive
 mathematics. For instance, it fails in the Russian school because the Kleene
 tree provides a computable open covering of~$[0,1]$ with no computable finite
 subcovering (a self-contained exposition of this phenomenon is contained in
-Ref.~\refcite{bauer:kleene-tree}).
+Ref.~\bracketedrefcite{bauer:kleene-tree}).
 
 In contrast, the localic version of the unit interval is always compact. The
 proof is by an explicit computation with its basic opens, exploiting the inductive
@@ -1540,8 +1542,8 @@ coincides with the slightly more general topos semantics of the
 operator defined in the proof cuts out a certain Boolean subtopos of the
 classifying topos. An alternative proof proceeds by cut
 elimination~\cite[Section~6]{rathjen:barr}; see also
-Ref.~\refcite{dyckhoff-negri:geometrisation}, and
-Ref.~\refcite{rathjen-toppel:reduction} for background on proof-theoretical
+Ref.~\bracketedrefcite{dyckhoff-negri:geometrisation}, and
+Ref.~\bracketedrefcite{rathjen-toppel:reduction} for background on proof-theoretical
 reduction, of which Barr's theorem is an example.
 \end{remark}
 
@@ -1746,7 +1748,7 @@ family~$(M_w)_{w \in W}$ of~$L$-structures, one for each node, is like a
 presheaf. In fact, the notion of a locale can be generalized to that of a
 \emph{site} so that both locales and Kripke frames induce sites and that
 presheaves on sites can be defined; however, this shall not be pursued here,
-a textbook reference is Ref.~\refcite{moerdijk-maclane:sheaves-logic}.
+a textbook reference is Ref.~\bracketedrefcite{moerdijk-maclane:sheaves-logic}.
 
 The prototypical example of a presheaf (and also a sheaf) is the presheaf~$\CCC$ of
 continuous real-valued functions on a topological space~$X$. For this presheaf, the
@@ -1889,7 +1891,7 @@ unprovability in intuitionistic logic.
 
 We now begin the formal development of the sheaf semantics. More background and
 examples from theoretical computer science, analysis and differential geometry
-are contained in Ref.~\refcite{blechschmidt:custom-tailored}, which should be
+are contained in Ref.~\bracketedrefcite{blechschmidt:custom-tailored}, which should be
 regarded as a companion paper to this contribution. We also recommend
 Christopher Mulvey's tutorial~\cite{mulvey:repr}, which culminates in a proof
 of the Serre--Swan theorem using the sheaf semantics. Standard references for
@@ -1899,7 +1901,7 @@ the sheaf semantics include Refs.
 \cite[Section~5]{caramello:preliminaries},
 \cite[Sections~12--15]{streicher:ctcl},
 \cite[Chapter~6]{borceux:handbook3},
-\cite[Part~D]{johnstone:elephant} and~[\refcite{shulman:categorical-logic}],
+\cite[Part~D]{johnstone:elephant} and~\bracketedrefcite{shulman:categorical-logic},
 which also gives a detailed account of useful type theory.
 
 \paragraph{Definition and basic properties of the sheaf semantics.}
@@ -2791,7 +2793,7 @@ be informative: It only expresses that it is impossible for no finite
 generating family to exist without requiring that such a family should be given
 -- it may remain \emph{anonymous}.\footnote{We borrowed the term ``anonymous''
 from type theory, where it is used with a similar meaning (see for instance
-Ref.~\refcite{kraus-escardo-coquand-altenkirch:anonymous}). However, there is a
+Ref.~\bracketedrefcite{kraus-escardo-coquand-altenkirch:anonymous}). However, there is a
 subtle difference: The conjunction of ``there is at most one element~$x$'' and
 ``there is anonymously an element~$x$ in the sense of type theory'' implies
 that there actually exists an element~$x$. In contrast, \notnot existence does
@@ -3192,10 +3194,10 @@ fashion, verifying that the frame of radical ideals has the required properties
 -- but where does the idea to use radical ideals come from? In general, determining the set
 of provable sequents of a geometric theory is a challenging problem. Our most
 efficient tool is probably the theory of \emph{entailment relations}. We refer
-to Refs.~\refcite{rinaldi-schuster-wessel:edde,cederquist-coquand:entrel} and
+to Refs.~\bracketedrefcite{rinaldi-schuster-wessel:edde,cederquist-coquand:entrel} and
 the references therein and also strongly recommend the literature on dynamical
 methods in commutative
-algebra~\refcite{coste-lombardi-roy:dynamical-method,coquand-lombardi:logical-approach,coquand:site}.
+algebra~\bracketedrefcite{coste-lombardi-roy:dynamical-method,coquand-lombardi:logical-approach,coquand:site}.
 \end{remark}
 
 Having identified the underlying frame of~$\Spec(A)$, the second workhorse is
@@ -3486,7 +3488,7 @@ is much shorter and arguably more perspiciuous than classical proofs (for which
 see for instance Refs.~\cite[Lemme~6.9.2]{ega-4-2},
 \cite[Thm.~24.1]{matsumura:commutative-ring-theory} or
 \cite[Thm.~14.4]{eisenbud:commutative-algebra}, which only cover the case of
-Noetherian integral domains, or Refs.~[\refcite{staats:generic-freeness}],
+Noetherian integral domains, or Refs.~\bracketedrefcite{staats:generic-freeness},
 \cite[Tag~051Q]{stacks-project}
 which proceed in a series of intermediate steps, reducing to that case).\par
 \begin{quote}
@@ -3555,7 +3557,7 @@ Item~(3) is because finitely generated modules over anonymously Noetherian are
 \end{quote}
 A variant of this proof where the reference to the Noetherian condition has
 been replaced by an explicit computation has been unwound in
-Ref.~\refcite{blechschmidt:generic-freeness}.
+Ref.~\bracketedrefcite{blechschmidt:generic-freeness}.
 
 
 \paragraph{McCoy's theorem.}\label{par:mccoy}
@@ -3650,7 +3652,7 @@ lemma. \qed
 \end{quote}
 
 Other short and explicit proofs of McCoy's theorem are given in
-Refs.~\refcite{blocki:mccoy},
+Refs.~\bracketedrefcite{blocki:mccoy},
 \cite[Theorem~5.22]{lombardi-quitte:constructive-algebra} and
 \cite[Exercise~5.23A(3)]{lam:exercises}. The proof in
 Ref.~\cite[Proposition~III.8.2.3]{bourbaki:alg} employs the law of excluded
@@ -3852,7 +3854,7 @@ over~$\Spec(A)$ is governed by classical logic iff~$A^\sim$ is of Krull
 dimension~$\leq 0$.
 
 The for these purposes correct constructive notion of Krull dimension can be
-found in Refs.~\refcite{coquand-ducos-lombardi-quitte:krull-integral,coquand-lombardi-roy:char-krull}.
+found in Refs.~\bracketedrefcite{coquand-ducos-lombardi-quitte:krull-integral,coquand-lombardi-roy:char-krull}.
 It has been used to give a short and constructive proof that~$\dim
 k[X_1,\ldots,X_n] = n$, where~$k$ is a geometric
 field~\cite{coquand-lombardi:krull-dim-polynomial-ring}. Proofs of the stated
@@ -3930,7 +3932,7 @@ Noetherian, that an~$A$-module~$M$ is finitely generated and projective if and
 only if it is finite locally free.\smallskip
 
 {\scriptsize\emph{Note.} A self-contained solution is given in
-Ref.~\refcite{blechschmidt:kaplansky}.\par}
+Ref.~\bracketedrefcite{blechschmidt:kaplansky}.\par}
 \end{alphlist}
 \end{exercise}
 

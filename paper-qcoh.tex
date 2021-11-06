@@ -1309,6 +1309,8 @@ from the observation that the construction~``free~$U_\TT$-module modulo
 relations'' is geometric, hence in particular commutes with sheafification.
 \end{proof}
 
+% XXX explain how Nullstellensatz follows from the Horn version
+
 
 \section{The generalization to the higher-order case}
 \label{sect:higher-order}
@@ -1504,17 +1506,17 @@ Remark~\ref{rem:definability-entails-nullstellensatz}.\end{proof}
 
 Butz and Johnstone~\cite{butz-johnstone:first-order} list several nongeometric sequents holding in the
 classifying topos of the theory~$\OO$ of objects, the theory with a single sort and
-no function symbols, relation symbols or axioms, including:
+no function symbols, relation symbols or axioms, including the following ones.
 \begin{align*}
   \forall x,y\?U_\OO\_ \neg\neg(x = y) &&
   \forall x_1,\ldots,x_n\?U_\OO\_ \neg \forall y\?U_\OO\_ \bigvee_{i=1}^n (y = x_i)
 \end{align*}
-Intuitively, the first expresses that~$U_\OO$ is close to a subsingleton, while
+Intuitively, the first sequent expresses that~$U_\OO$ is close to a subsingleton, while
 the second expresses that~$U_\OO$ is close to being infinite. Using the
 Nullstellensatz, these formulas can be verified as follows.
 
 We argue internally to~$\Set[\OO]$. Let~$x,y\?U_\OO$ and assume~$\neg(x = y)$.
-Then~$\ul{\OO}/U_\OO$ proves~$(x = y \seq{[]} \bot)$. Hence this sequent holds
+By the Nullstellensatz, the theory~$\ul{\OO}/U_\OO$ proves~$(x = y \seq{[]} \bot)$. Hence this sequent holds
 of any model of~$\ul{\OO}/U_\OO$, in particular of the
 quotient~$U_\OO/(x \sim y)$. Hence~$\bot$ holds for this model, that is, we
 have a contradiction.

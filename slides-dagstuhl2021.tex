@@ -2,6 +2,7 @@
 \usepackage{etex}
 
 \usepackage{pgfpages}
+\usepackage[export]{adjustbox}
 %\setbeameroption{show notes on second screen}
 %\setbeamertemplate{note page}[plain]
 %\newcommand{\jnote}[2]{\only<#1>{\note{\setlength\parskip{\medskipamount}\justifying\footnotesize#2\par}}}
@@ -313,6 +314,9 @@ predicativity}
   \bigskip
   %\includegraphics[height=0.32\textwidth]{olivia-lattices}
   \bigskip
+  \bigskip
+  \bigskip
+  \bigskip
 
   \begin{tikzpicture}
     \def\R{8pt}
@@ -333,6 +337,8 @@ predicativity}
   \scriptsize
   \textit{-- an invitation --}
   \bigskip
+  \bigskip
+  \bigskip
 
   Dagstuhl Seminar 20202: \\
   Geometric Logic, Constructivisation, and Automated Theorem Proving \\
@@ -345,6 +351,7 @@ predicativity}
   \par
 \end{frame}}
 
+{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{5.95cm}\includegraphics[width=\paperwidth]{fr1}\end{minipage}}
 \begin{frame}{Algebraic geometry in a nutshell}
   Turn \hil{commutative rings} into \hil{spaces}, and \hil{glue} those
   spaces.
@@ -378,13 +385,14 @@ predicativity}
   \subhead{Concrete results}
   Fermat's Last Theorem: For~$n \geq 3$, no positive integers satisfy
   \[ a^n + b^n = c^n. \]
-\end{frame}
+\end{frame}}
 
-
+{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{3.95cm}\includegraphics[width=\paperwidth]{staircase}\end{minipage}}
 \begin{frame}{Transfinite methods}
-  The current presentation of algebraic geometry employs:
+  The current presentation of algebraic geometry hinges on:
   \begin{itemize}
     \item large structures: classes, large categories, universes, \ldots
+    \item powersets
     \item law of excluded middle
     \item axiom of choice
   \end{itemize}
@@ -393,9 +401,56 @@ predicativity}
   \subhead{despite:}
   \begin{enumerate}
     \item subject matter (in part) very concrete
-    \item computer algebra systems for computations exist
-    \item constructive algebra well-developed
+    \item practical computer algebra systems for computations
+    \item well-developed constructive algebra
   \end{enumerate}
+\end{frame}}
+
+\begin{frame}{Formalizing algebraic geometry}
+  \bigskip
+  \bigskip
+  \bigskip
+  \includegraphics[width=\textwidth]{schemes-in-lean2}
+
+  \vspace*{-17em}
+  \includegraphics[frame=0.1em,bb=0 170 610 625,width=0.3\textwidth]{schemes-in-coq}\hfill
+  \includegraphics[frame=0.1em,bb=0 170 610 625,width=0.3\textwidth]{schemes-in-lean}
+\end{frame}
+
+\begin{frame}{A trinitarian challenge}
+  \begin{center}\tiny $1^3 + \cdots + n^3 = (1 + \cdots + n)^2$\end{center}
+  \vspace*{-0.6em}
+
+  \begin{columns}
+    \begin{column}{0.33\textwidth}
+      \centering
+      \includegraphics[height=7em]{lem}
+
+      \hil{constructivity}
+      \par
+    \end{column}
+    \begin{column}{0.33\textwidth}
+      \centering
+      \includegraphics[height=7em]{sum-of-cubics}
+
+      \hil{elegance}
+      \par
+    \end{column}
+
+    \begin{column}{0.33\textwidth}
+      \centering
+      \includegraphics[height=7em]{proof-assistants}
+
+      \par
+      \hil{formalizability}
+    \end{column}
+  \end{columns}
+  \bigskip
+  \bigskip
+
+  \subhead{Thesis}
+  \centering
+  Elegant mathematics lends itself to rewarding formalization.
 \end{frame}
 
 \end{document}

@@ -73,7 +73,7 @@
 \setlength\parskip{\medskipamount}
 \setlength\parindent{0pt}
 
-\title{Bridging the foundational gap: updating algebraic geometry in
+\title{Bridging the foundational gap: Updating algebraic geometry in
 face of current challenges regarding formalizability, constructivity and
 predicativity}
 \author{Ingo Blechschmidt}
@@ -321,7 +321,7 @@ predicativity}
   \begin{tikzpicture}
     \def\R{8pt}
     \node (pretitle) {Bridging the foundational gap:};
-    \node (title) [below of=pretitle] {\vbox{\vspace*{-0.5em}updating \hil{algebraic
+    \node (title) [below of=pretitle] {\vbox{\vspace*{-0.5em}Updating \hil{algebraic
     geometry} in face of \hil{current challenges} regarding
     \hil{formalizability}, \hil{constructivity} and \hil{predicativity}}};
     \begin{pgfonlayer}{background}
@@ -364,18 +364,18 @@ predicativity}
     \item Gluing
     \begin{tikzpicture}[scale=0.2,baseline={([yshift=-.6ex]current bounding box.center)}]
       \draw (0,0) circle (1);
-      \draw [fill=white] (90:1) circle (0.2);
+      \draw [fill=white] (90:1) circle (0.3);
     \end{tikzpicture}
     with
     \begin{tikzpicture}[scale=0.2,baseline={([yshift=-.6ex]current bounding box.center)}]
       \draw (0,0) circle (1);
-      \draw [fill=white] (270:1) circle (0.2);
+      \draw [fill=white] (270:1) circle (0.3);
     \end{tikzpicture}
     along
     \begin{tikzpicture}[scale=0.2,baseline={([yshift=-.6ex]current bounding box.center)}]
       \draw (0,0) circle (1);
-      \draw [fill=white] (90:1) circle (0.2);
-      \draw [fill=white] (270:1) circle (0.2);
+      \draw [fill=white] (90:1) circle (0.3);
+      \draw [fill=white] (270:1) circle (0.3);
     \end{tikzpicture}
     yields
     $\PP^1$.
@@ -389,7 +389,7 @@ predicativity}
 
 {\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{3.95cm}\includegraphics[width=\paperwidth]{staircase}\end{minipage}}
 \begin{frame}{Transfinite methods}
-  The current presentation of algebraic geometry hinges on:
+  The standard presentation of algebraic geometry hinges on:
   \begin{itemize}
     \item large structures: classes, large categories, universes, \ldots
     \item powersets
@@ -401,8 +401,9 @@ predicativity}
   \subhead{despite:}
   \begin{enumerate}
     \item subject matter (in part) very concrete
-    \item practical computer algebra systems for computations
-    \item well-developed constructive algebra
+    \item computer algebra systems for computations practical
+    \item constructive algebra well-established
+    \item high-level proofs often constructive
   \end{enumerate}
 \end{frame}}
 
@@ -463,7 +464,7 @@ predicativity}
     %\item locally ringed spaces (or locales, distributive lattices, sites,
     %toposes, arithmetic universes), formal geometries
     \item locally ringed \ldots \\
-    \ldots{} spaces \tabto{4cm}-- \textit{unconstructive, hard to formalize} \\
+    \ldots{} topological spaces \tabto{4cm}-- \textit{unconstructive, hard to formalize} \\
     \ldots{} locales \tabto{4cm}-- \textit{impredicative, superfluous opens} \\
     \ldots{} distributive lattices \tabto{4cm}-- \textit{need extension from basis} \\
     \ldots{} sites \tabto{4cm}-- \textit{current favorite! morphisms intricate} \\
@@ -490,188 +491,16 @@ predicativity}
     \item Čech cohomology \tabto{4.5cm}-- \textit{ad hoc, but fine for}
     \tabto{4.5cm}\phantom{--} \textit{quasicompact separated schemes}
     \item injective resolutions \tabto{4.5cm}-- \textit{hopelessly unconstructive}
+    \item dynamical injectives \tabto{4.5cm}-- \textit{??}
     \item flabby resolutions \tabto{4.5cm}-- \textit{probably unconstructive}
-    \item pointwise Kan extensions \tabto{4.5cm}-- \textit{fine!}
+    \item pointwise Kan extensions \tabto{4.5cm}-- \textit{fine! partially
+    defined $\mathbb{R}\Gamma$;} \tabto{4.5cm}-- \textit{existence
+    verified for} \tabto{4.5cm}\phantom{--} \textit{quasicompact separated schemes;}
+    \tabto{4.5cm}\phantom{--} \textit{hyper coverings?}
   \end{itemize}
-  \bigskip
 
   \subhead{Étale cohomology}
   \textcolor{red!90}{??}
-\end{frame}
-
-\end{document}
-
-
-\section{The generic model}
-
-\subsection{The generic ring}
-
-\begin{frame}{The generic ring}
-  \visible<2->{``}Let~$R$ be a ring.\visible<2->{''} \visible<2->{-- Which ring does this phrase refer to?}
-
-  \vspace*{-0.6em}
-  \begin{center}
-    \begin{tikzpicture}[ultra thick, node distance=7mm]
-      \node[rectangle, rounded corners=1pt, inner sep=5pt, draw=lime!80, fill=lime!40] (a) {$\ZZ$};
-      \node[rectangle, rounded corners=1pt, draw=lime!80, fill=lime!40, right=of a] (b) {$\FF_2$};
-      \node[rectangle, rounded corners=1pt, draw=lime!80, fill=lime!40, right=of b] (c) {$\QQ[X]$};
-      \node[regular polygon, regular polygon sides=6, draw=orange!80, fill=orange!40, right=of c, rounded corners=1pt] (d) {$\RR$};
-      \node[regular polygon, regular polygon sides=5, draw=pink!80, fill=pink!40, right=of d, rounded corners=1pt, inner sep=0cm] (e) {$\O_X$};
-      \visible<3->{\node[star, rounded corners=1pt, star points=10, inner
-      sep=2pt, draw=purple!80, fill=purple!30, right=of e] {$\AA$};}
-    \end{tikzpicture}
-  \end{center}
-  \vspace*{-0.6em}
-
-  \pause
-  \pause
-  \pause
-
-  \justifying
-  \textbf{Thm.} For any$^\star$ property~$P$ of rings, the following are
-  equivalent: \\[0em]
-  \begin{enumerate}
-    \item The \hil{generic ring}~$\AA$ has property~$P$.
-    \item Every$^\star$ ring has property~$P$.
-    \item The ring axioms entail property~$P$.
-  \end{enumerate}
-  \pause
-
-  \textbf{Example A.} For any~$x,y,z \in \AA$, $x + (y + z) = (x + y) + z$.
-  \pause
-
-  \textbf{Example B.} \only<6>{Is~$1 + 1 = 0$ in~$\AA$?}%
-  \pause
-  \only<7->{It is \hil{not the case} that~$1 + 1 = 0$ in~$\AA$. \only<8->{But also:}} \\
-  \pause
-  \phantom{\textbf{Example B.}} It is \hil{not the case} that~$1 + 1 \neq 0$ in~$\AA$.
-  \pause
-
-  \textbf{Example C (Anders Kock).} The generic ring is a \hil{field}:
-  \[ \forall x \in \AA\_ \bigl((x = 0 \Rightarrow 1 = 0) \Rightarrow (\exists y
-  \in \AA\_ xy = 1)\bigr). \]
-
-  \pause
-  \vspace*{-0.6em}
-  \hil{Hence:} When verifying a coherent sequent for all rings, can without loss of
-  generality assume the field condition.
-\end{frame}
-
-\begin{frame}{A selection of noncoherent sequents}
-  The \hil{generic object}~$\MM$ validates:
-  \begin{enumerate}
-    \item $\forall x,y \in \MM\_ \neg\neg(x = y)$.
-    \item $\forall x_1,\ldots,x_n \in \MM\_ \neg \forall y \in \MM\_
-    y = x_1 \vee \cdots \vee y = x_n$.
-  \end{enumerate}
-
-  The \hil{generic ring}~$\AA$ validates:
-  \begin{enumerate}
-    \item $\forall x \in \AA\_ (x = 0 \Rightarrow 1 = 0) \Rightarrow (\exists y \in \AA\_ xy = 1)$.
-    \item $\forall x \in \AA\_ \neg\neg(x = 0)$.
-  \end{enumerate}
-
-  The \hil{generic local ring}~$\AA'$ validates:
-  \begin{enumerate}
-    \item $\forall x \in \AA'\_ (x = 0 \Rightarrow 1 = 0) \Rightarrow (\exists y \in \AA'\_ xy = 1)$.
-    \item $\neg \forall x \in \AA'\_ \neg\neg(x = 0)$.
-    \item $\forall f \in \AA'[X]_{\text{degree} > 0}\_ \neg\neg \exists x \in \AA'\_ f(x) = 0$.
-  \end{enumerate}
-\end{frame}
-
-\begin{frame}{An application in commutative algebra}
-  \justifying
-  Let~$A$ be a reduced ring ($x^n = 0 \Rightarrow x = 0$).
-  Let~$\pp$ be the \hil{generic prime ideal$^\star$} of~$A$.
-  Then~$A_\pp \defeq A[\pp^{-1}]$ validates:
-
-  {\vspace*{-1.2em}
-  \setbeamercolor{block body}{bg=red!30}
-  \setbeamercolor{structure}{fg=purple}
-  \begin{varblock}{\textwidth}{}
-    $A_\pp$ is a \hil{field}: $\forall x \in A_\pp\_ (\neg(\exists y \in A_\pp\_
-    xy = 1) \Rightarrow x = 0)$.
-
-    $A_\pp$ has \hil{$\boldsymbol{\neg\neg}$-stable equality}:
-    $\forall x,y \in A_\pp\_ \neg\neg(x = y) \Rightarrow x = y$.
-
-    \mbox{$A_\pp$ is \hil{anonymously Noetherian}.}\\[-1.2em]
-  \end{varblock}}
-
-  This observation unlocks a short and conceptual proof of Grothen\-dieck's
-  \hil{generic freeness lemma} in algebraic geometry.
-
-  \mbox{\textbf{Thm.} (baby freeness) Let~$M$ be an~$A$-module. Then~\bignumber{1}
-  implies~\bignumber{3}.}
-
-  {\small
-  \begin{tabular}{@{}lc@{\ }l@{}}
-    \bignumber{1} $M$ is finitely generated &($\Longleftrightarrow$&
-    $M_\pp$ is finitely generated) \\
-    \bignumber{2} $M$ is locally free &($\Longleftrightarrow$&
-    $M_\pp$ is free) \\
-    \bignumber{3} $M$ is locally free \emph{on a dense open} &($\Longleftrightarrow$&
-    $M_\pp$ is \emph{not not} free) \\
-  \end{tabular}\par}
-
-  \textbf{Proof.} Elementary linear algebra over~$A_\pp$. \qed
-\end{frame}
-
-\begin{frame}{A systematic source}
-  \begin{center}
-    \includegraphics[width=0.8\textwidth]{wraith-some-recent-developments-in-topos-theory} \\
-    \scriptsize
-    Gavin Wraith. \emph{Some recent developments in topos theory.} \\ In:
-    Proc.\@ of the ICM (Helsinki, 1978).
-  \end{center}
-
-  \textbf{Thm. (Nullstellensatz):} The generic~$\TT$-model~$U_T$ validates:
-  For any coherent sequent~$\sigma$,
-  \[
-    \text{$\sigma$ holds for $U_\TT$} \quad\textcolor{purple}{\Longleftrightarrow}\quad
-    \text{$\ul{\TT}/U_\TT$ proves $\sigma$.}
-  \]
-
-  \justifying
-  \textbf{Thm. (universality):} The generic~$\TT$-model validates a first-order
-  formula~$P$ if and only if~$P$ is intuitionistically deducible from the
-  axioms of~$\TT$ and the Nullstellensatz.
-\end{frame}
-
-\begin{frame}{Arithmetic universes}
-  Places where we can do mathematics (among others):
-  \begin{multicols}{2}
-    \begin{enumerate}
-      \item $\Set$ (sets)
-      \item $\Eff$ (data types) \columnbreak
-      \item \mbox{$\mathrm{sSet}$ (simplicial sets)}
-      \item \mbox{$\Sh(X)$ (sheaves over~$X$)}
-    \end{enumerate}
-  \end{multicols}
-  \pause
-  \vspace*{-0.6em}
-  These are examples for \hil{arithmetic universes}.
-  \pause
-
-  \justifying
-  \textbf{Definition.} An \emph{arithmetic universe} is a category with finite
-  limits (``$\times$''), stable finite disjoint coproducts (``$\amalg$''),
-  stable ef{}fective quotients (``$X/{\sim}$'') and parametrized list objects
-  (``$\NN$'', ``$\mathrm{List}(X)$'').
-
-  \textbf{Thm.} Any statement which is provable in \hil{predicative constructive
-  mathematics} (no powersets, no $\varphi \vee \neg\varphi$, no
-  \mbox{$\neg\neg\varphi \Rightarrow \varphi$}, no axiom of choice) is true in any
-  arithmetic universe.
-  \pause
-
-  Further examples:
-
-  \begin{enumerate}
-    \addtocounter{enumi}{4}
-    \item the \hil{initial} arithmetic universe
-    \item the \hil{classifying} arithmetic universe for the theory of rings
-  \end{enumerate}
 \end{frame}
 
 \end{document}

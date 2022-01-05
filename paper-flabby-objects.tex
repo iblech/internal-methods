@@ -70,7 +70,7 @@ Strada le Grazie 15 \\
 \begin{abstract}
   We introduce a general notion of \emph{flabby objects} in elementary toposes
   and study their basic properties. In the special case of localic toposes, this
-  notion reduces to the common notion of flabby sheaves, yielding a
+  notion reduces to the established notion of flabby sheaves, yielding a
   site-independent characterization of flabby sheaves. Continuing a line of
   research started by Roswitha Harting, we use flabby objects to
   show that an internal notion of injective objects coincides with the
@@ -107,7 +107,7 @@ technical overhead and justifies certain kinds of ``fast and loose reasoning''
 typical of informal algebraic geometry. As soon as we go beyond the fragment of
 geometric sequents and consider more involved first-order or even higher-order
 statements, also significant improvements in proof length and proof complexity
-can be gained. For instance, Grothendieck's generic freeness lemma admits a
+can be obtained. For instance, Grothendieck's generic freeness lemma admits a
 short and simple proof in this framework, while previously-published proofs
 proceed in a somewhat involved series of reduction steps and require a fair
 amount of prerequisites in commutative
@@ -141,7 +141,7 @@ extension of the usual internal language, his \emph{stack
 semantics}~\cite{shulman:stack-semantics}. This extension allows to internalize
 unbounded quantification, which among other things is required to express the
 internal injectivity condition and the internal construction of sheaf
-cohomology.
+cohomology via injective resolutions.
 
 A further motivation for this note was our desire to seek a constructive
 account of sheaf cohomology. Sheaf cohomology is commonly defined using
@@ -150,8 +150,8 @@ choice~\cite{blass:inj-proj-axc}, but flabby resolutions
 can also be used in their stead, making them the obvious candidate for a
 constructively sensible replacement of the usual definition. However, we show
 in Section~\ref{sect:in-eff} and in Section~\ref{sect:conclusion} that flabby
-resolutions present their own challenges, and in summary we failed to reach our
-goal. To the best of our knowledge, the problem of giving a constructive account
+resolutions present their own challenges, and in summary we failed to reach this
+goal. The problem of giving a constructive account
 of sheaf cohomology is still open.
 
 In view of almost 80 years of sheaf cohomology, this state of affairs is
@@ -218,11 +218,9 @@ intuitionistically.
 There is an alternative definition of flabbiness, to be introduced below, which
 is equivalent to the usual one in presence of Zorn's lemma and which
 requires different commitments: For the alternative definition,
-properties~(1),~(3b) and~(4a) can be verified purely intuitionistically.
+properties~(1),~(3b),~(4a) and~(4b) can be verified purely intuitionistically.
 There is a substitute for property~(3a) which can be verified purely
-intuitionistically. We do not know whether property~(4b) can be established
-purely intuitionistically, but we give a rudimentary analysis in
-Section~\ref{sect:conclusion}.
+intuitionistically.
 
 Both definitions can be generalized to yield notions of flabby objects in
 elementary toposes; but for toposes which are not localic, the two resulting
@@ -236,6 +234,7 @@ A sheaf~$F$ on a topological space (or locale)~$X$ is \emph{flabby}
 if and only if for all opens~$U$ and all sections~$s \in F(U)$, there is an
 open covering~$X = \bigcup_i U_i$ such that, for all~$i$, the section~$s$ can
 be extended to a section on~$U \cup U_i$.\end{defn}
+% XXX choice-free formulation
 
 % Take care: This paragraph is referenced in prop:global-elements.
 If~$F$ is a flabby sheaf in the traditional sense, then~$F$ is obviously also
@@ -303,7 +302,8 @@ the maximally undefined element and a singleton is a maximally defined element.
 A set is flabby if and only if any of its partially-defined elements can be
 refined to an honest element.
 
-\begin{rem}Although we will see in Section~\ref{sect:in-eff} that there is some
+\begin{rem}\label{rem:constant-flabby}
+Although we will see in XXX and in Section~\ref{sect:in-eff} that there is some
 relation between flabby sets and~$\neg\neg$-separated sets, neither notion
 encompasses the other. The set~$\Omega$ is flabby, but might fail to
 be~$\neg\neg$-separated; the set~$\ZZ$ is~$\neg\neg$-separated, even discrete,
@@ -338,18 +338,19 @@ the following properties are well-known:
 \begin{prop}\label{prop:basics-injective}
 \begin{enumerate}
 % Take care if numbering changes (referenced below)
-\item Any set embeds into an injective set.
+\item Any set embeds canonically (in a uniform fashion) into an injective set.
 \item Any injective module is also injective as a set.
-\item Assuming the axiom of choice, any module embeds into an
+\item Assuming Zorn's lemma (but not the law of excluded middle, hence not the
+axiom of choice), any module embeds into an
 injective module.
 \end{enumerate}\end{prop}
 
 \begin{proof}\begin{enumerate}
 \item One can check that, for instance, the full powerset~$\P(X)$ and the set of
 subterminals~$\P_{\leq 1}(X)$ are each injective.
-\item The forgetful functor from modules to sets possesses a monomorphism-preserving left
-adjoint. More explicitly, if~$i : A \to B$ is an injective map between sets and
-if~$f : A \to I$ is an arbitrary map, then the induced map~$R\langle A \rangle
+\item This statement follows from general abstract nonsense, since the forgetful functor from modules to sets possesses a monomorphism-preserving left
+adjoint. More explicitly, let~$I$ be an injective~$R$-module, let~$i : A \to B$ be an injective map between sets and
+let~$f : A \to I$ be an arbitrary map. Then the induced map~$R\langle A \rangle
 \to R\langle B \rangle$ between free modules is also injective, the given
 map~$f$ lifts to a linear map~$R\langle A \rangle \to I$, and an~$R$-linear
 extension~$R\langle B \rangle \to I$ induces an extension~$B \to I$ of~$f$.
@@ -369,7 +370,7 @@ to a map~$1 \to I$. The unique image~$x$ of that map has the property that~$K
 \subseteq \{x\}$.\end{proof}
 
 \begin{cor}\label{cor:enough-flabby-sets}
-Any set embeds into a flabby set.\end{cor}
+Any set canonically embeds into a flabby set.\end{cor}
 
 \begin{proof}Immediate by Proposition~\ref{prop:basics-injective}(1) and
 Proposition~\ref{prop:injective-flabby}.\end{proof}
@@ -379,13 +380,15 @@ statement ``any inhabited set is injective'' is a constructive taboo: If any
 inhabited set is injective, then any inhabited set is flabby, thus the law of
 excluded middle follows by Proposition~\ref{prop:taboo}.
 
-\begin{prop}Any singleton set is flabby. The cartesian product of flabby sets
+\begin{prop}Any singleton set is flabby. The binary cartesian product of flabby sets
 is flabby.\end{prop}
 
 \begin{proof}Immediate.\end{proof}
 
 Subsets of flabby sets are in general not flabby, as else any set would be
 flabby in view of Corollary~\ref{cor:enough-flabby-sets}.
+
+% XXX enough flabby modules
 
 \begin{prop}\label{prop:hom-flabby}
 \begin{enumerate}
@@ -481,7 +484,7 @@ preimages of~$s$ under~$p$ is flabby.
 element~$u_0 \in X$. The translated set~$K - u_0 \subseteq M$ is still a
 subterminal, and its preimage under~$i$ is as well. Since~$M'$ is flabby, there
 is an element~$v \in M'$ such that~$i^{-1}[K - u_0] \subseteq \{v\}$. We verify
-that~$K \subseteq \{u_0 + i(v)\}$.
+that~$K \subseteq \{u_0 + i(v)\}$:
 
 Thus let~$u \in K$ be given. Then~$p(u - u_0) = 0$, so by exactness the
 set~$i^{-1}[K - u_0]$ is inhabited. It therefore contains~$v$. Thus~$i(v) \in K
@@ -543,8 +546,8 @@ morphism~$K \to X$, there exists an epimorphism~$B \to A$ and a morphism~$B
 
 Instead of referring to arbitrary stages~$A \in \E$, one can also just refer to
 the generic stage: Let~$\P_{\leq1}(X)$ denote the \emph{object of subterminals}
-of~$X$; this object is a certain subobject of~$\P(X) = [X,\Omega_\E]_\E$, the
-powerobject of~$X$. The subobject~$K_0$ of~$X \times \P_{\leq1}(X)$ classified by the
+of~$X$; this object is a certain subobject of the powerobject~$\P(X) = [X,\Omega_\E]_\E$.
+The subobject~$K_0$ of~$X \times \P_{\leq1}(X)$ classified by the
 evaluation morphism~$X \times \P_{\leq1}(X) \to X \times \P(X) \to \Omega_\E$
 is the \emph{generic subterminal} of~$X$. The object~$X$ is flabby if and only
 if there exists an epimorphism~$B \to \P_{\leq1}(X)$ and a morphism~$B \to X$
@@ -582,6 +585,7 @@ F(V)$. Since~$F$ is flabby as a sheaf, there is an open covering~$X =
 to a section~$s_i$ of~$V \cup V_i$. The desired epimorphism is~$B \defeq
 \coprod_i \Hom(\cdot,(V \cup V_i) \cap U) \to A$, and the desired morphism~$B
 \to X$ is given by the sections~$s_i|_{(V \cup V_i) \cap U}$.
+% XXX choicefree
 
 As stated, the argument in the previous paragraph requires the axiom of choice
 to pick the extensions~$s_i$; this can be avoided by a standard trick of
@@ -599,6 +603,15 @@ Zorn's lemma is available in the metatheory, then~$X$ possesses a global element
 \begin{proof}This is a restatement of the discussion following
 Definition~\ref{defn:flabby-sheaf}.
 \end{proof}
+
+\begin{rem}\label{rem:flabby-global}
+Some condition on the topos is necessary for flabby objects to
+possess global elements. An example is given by the~$G$-set~$G$ (with the
+translation action), considered as an object of the topos~$BG$ of~$G$-sets,
+where~$G$ is a nontrivial group. This object is flabby (because it is inhabited
+and~$BG$ is a Boolean topos, assuming the law of excluded middle in the
+metatheory), but it does not have any global elements.
+\end{rem}
 
 \begin{prop}\label{prop:pushforward-of-flabby-objects}
 Let~$f : \F \to \E$ be a geometric morphism. If~$f_*$ preserves epimorphisms,
@@ -618,6 +631,12 @@ assumption.
 
 The assumption on~$f_*$ of Proposition~\ref{prop:pushforward-of-flabby-objects}
 is for instance satisfied if~$f$ is a local geometric morphism.
+
+\begin{rem}Pullbacks of flabby objects along geometric morphisms are usually
+not flabby. For instance, constant sheaves can fail to be flabby
+(Remark~\ref{rem:constant-flabby}) but arise as pullbacks along geometric
+morphisms to the topos~$\Set$, in which most objects are flabby (assuming the
+law of excluded middle).\end{rem}
 
 \begin{defn}An object~$I$ of an elementary topos~$\E$ is \emph{externally
 injective} if and only if for any monomorphism~$A \to B$ in~$\E$, the canonical
@@ -741,12 +760,12 @@ have:
 \begin{scholium}\label{scholium:properties-of-flabby-objects}
 For any elementary topos~$\E$:
 \begin{enumerate}
-\item Any object embeds into an internally injective object.
+\item Any object embeds canonically into an internally injective object.
 \item (If~$\E$ has a natural numbers object.) The underlying unstructured
 object of an internally injective module is internally injective.
 \item Any internally injective object is flabby.
-% Take care if numbering changes (referenced below).
-\item Any object embeds into a flabby object.
+\item Any object embeds canonically into a flabby object.
+\item Any internal module embeds canonically into an internal module which is flabby.
 \item The terminal object is flabby. The product of flabby objects is flabby.
 \item Let~$I$ be an internally injective object. Let~$T$ be an arbitrary
 object. Then~$[T,I]$ is a flabby object.
@@ -788,6 +807,9 @@ similar to how in constructive algebra often the existence of a sufficiently
 large field extension is good enough where one would classically blithely pass
 to an algebraic closure.
 
+% XXX If Zorn's lemma is not available but E is localic, ... is at least true
+% if E is compact.
+
 \begin{rem}A direct generalization of the traditional notion of a flabby sheaf, as
 opposed to our reimagining in Definition~\ref{defn:flabby-sheaf}, to
 elementary toposes is the following. An object~$X$ of an elementary topos~$\E$
@@ -796,14 +818,15 @@ in~$\E$, any morphism~$K \to X$ lifts to a morphism~$1 \to X$.
 
 One can verify, purely intuitionistically, that a sheaf~$F$ on a space~$T$ is
 flabby in the traditional sense if and only if~$F$ is a strongly flabby object
-of~$\Sh(T)$.
+in~$\Sh(T)$, if and only if~$F$ is a flabby object in the presheaf
+topos~$\PSh(T)$.
 
 The notion of strongly flabby objects is, however, not local (in the same sense
 that the notion of flabby objects is, as stated in
 Proposition~\ref{prop:basic-properties-of-flabby-objects})
 and therefore cannot be characterized in the internal language. A specific
-example is the~$G$-set~$G$ (with the translation action), considered as an
-object of the topos~$BG$ of~$G$-sets, where~$G$ is a nontrivial group.
+example is the~$G$-set~$G$ (with the translation action) as in
+Remark~\ref{rem:flabby-global}.
 This object is not strongly flabby, since the morphism~$\emptyset \to 1$ does
 not lift, but its pullback to the slice~$BG/G \simeq \Set$ is (assuming
 the law of excluded middle in the metatheory), and the unique morphism~$G \to
@@ -823,7 +846,7 @@ traditional way to define the \emph{higher direct images} of a sheaf~$E$
 of~$\O_Y$-modules is to pick an injective resolution~$0 \to E \to I^\bullet$
 and set~$R^n f_*(E) \defeq H^n(f_*(I^\bullet))$.
 
-Assuming the axiom of choice, there are enough injective sheaves of modules so
+Assuming Zorn's lemma, there are enough injective sheaves of modules so
 that this recipe can be carried out. The resulting sheaf
 of~$f_*\O_Y$-modules is well-defined in the following sense: Given a further
 injective resolution~$0 \to E \to J^\bullet$, there is up to homotopy precisely
@@ -838,7 +861,7 @@ internal sheaf cohomology.
 
 The details are as follows. The over-locale~$Y$ corresponds to a locale~$I(Y)$ internal to~$\Sh(X)$, in
 such a way that the category of internal sheaves over this internal locale
-coincides with~$\Sh(Y)$; in particular, a given sheaf~$E$ of~$\O_Y$-modules can
+coincides with~$\Sh(Y)$ [XXX give reference]; in particular, a given sheaf~$E$ of~$\O_Y$-modules can
 be regarded as a sheaf over~$I(Y)$. Under this equivalence, the morphism~$f : Y
 \to X$ corresponds to the unique morphism~$I(Y) \to \mathrm{pt}$ to the
 internal one-point locale. Hence it makes sense to construct, from the internal
@@ -875,22 +898,22 @@ accessible~\cite[Lemma~1.20]{blechschmidt:master}.) The equivalence~$\text{(3)}
 \Leftrightarrow \text{(4)}$ is by interpreting
 Theorem~\ref{thm:injectivity-external-internal} internally to~$\Sh(X)$. This
 requires Zorn's lemma to hold internally to~$\Sh(X)$; this is indeed the case
-since we assume Zorn's lemma in the metatheory and since the validity of Zorn's
+since we assume Zorn's lemma in the metatheory and the validity of Zorn's
 lemma passes from the metatheory to localic
 toposes~\cite[Proposition~D4.5.14]{johnstone:elephant}.
 \end{proof}
 
 \begin{thm}\label{thm:higher-direct-images-as-internal-sheaf-cohomology}
 Let~$f : Y \to X$ be a ringed locale over a locale~$X$. Let~$E$ be a sheaf of modules over~$Y$.
-Assuming the axiom of choice in the metatheory, the expression~``$H^n(I(Y), E)$''
+Assuming Zorn's lemma in the metatheory, the expression~``$H^n(I(Y), E)$''
 of the internal language of~$\Sh(X)$ denotes a globally-defined sheaf
-over~$X$, and this sheaf coincides with~$R^n f_*(E)$.\end{thm}
+on~$X$, and this sheaf coincides with~$R^n f_*(E)$.\end{thm}
 
 \begin{proof}By Lemma~\ref{lemma:notions-of-internal-injectivity} and by the
 fact that every sheaf of modules over~$Y$ admits an injective resolution, every sheaf
 of modules over~$I(Y)$ admits an injective resolution from the point of view
 of~$\Sh(X)$. Hence we can, internally to~$\Sh(X)$, carry out the construction of~$H^n(I(Y), E)$.
-Externally, this yields an open covering of~$X$ such that we have, for each
+Externally, this construction yields an open covering of~$X$ such that we have, for each
 member~$U$ of that covering
 \begin{itemize}
 \item a sheaf~$M$ over~$U$,
@@ -936,34 +959,20 @@ The notion of flabby objects originates from the notion of flabby sheaves and is
 therefore closely connected to Grothendieck toposes. Hence it is instructive
 to study flabby objects in elementary toposes which are not Grothendieck
 toposes, away from their original conceptual home. We begin this study with
-establishing the following observations on flabby objects in the \effective
+establishing the following observation on flabby objects in the \effective
 topos. We follow the terminology of Martin Hyland's survey on the \effective
 topos~\cite{hyland:effective-topos}.
 
 \begin{prop}\label{prop:flabby-effective-sets}
-Let~$X$ be a flabby object in the \effective topos. Let~$f : X \to X$
-be a morphism. If~$X$ is \effective, the statement ``$f$ has a fixed point''
-holds in the \effective topos.
+The only object in the \effective topos which is both flabby and \effective is the
+singleton object.
 \end{prop}
 
-\begin{prop}\label{prop:semienough-flabby-modules}
-Assuming the law of excluded middle in the metatheory, any~$\neg\neg$-separated
-module in the \effective topos embeds into a flabby module.
-\end{prop}
-
-% Δ(X) ist welk, falls X bewohnt.
-% Δ(X) ist separiert.
-% Ist A separierter Modul, so lässt sich A in einen welken Modul einbetten
-% (der seinerseits separiert ist, er ist nämlich Δ(Γ(A))).
-% Sind welke Mengen separiert? Nein: Omega.
-% Sind welke Moduln separiert? Nein: Ich denke mittlerweile, dass sich jeder
-% Modul in einen welken einbetten lässt, über etwas, was wie eine induktive
-% Konstruktion aussieht.
-
-% In Eff gilt: Jede negneg-separierte abelsche Gruppe bettet in eine injektive
+% XXX In Eff gilt: Jede negneg-separierte abelsche Gruppe bettet in eine injektive
 % ein. Nämlich A --> ΔΓA --> ΔI für ΓA --> I Einbettung in eine injektive
 % Gruppe.
 
+% XXX
 The intuitive
 reason for why Proposition~\ref{prop:flabby-effective-sets} holds is the
 following. Let~$X$ be a flabby object in the \effective topos. Then there is a
@@ -990,12 +999,11 @@ realizer for a given element~$K$. However, such realizers are not very
 informative. Metaphorically speaking, a procedure witnessing flabbiness has to
 conjure elements out of thin air.
 
-This problem does not manifest with objects~$X$ which are not \effective sets.
+This problem does not manifest with objects~$X$ which are not \effective
+objects such as double-negation sheaves.
 Reflexivity realizers for these objects are themselves not very informative;
 a procedure witnessing flabbiness therefore only has to turn one kind of
-non-informative realizers into another kind. The flabby modules featuring in
-the proof of Proposition~\ref{prop:semienough-flabby-modules} will accordingly
-not be \effective sets.
+non-informative realizers into another kind.
 
 \begin{proof}[Proof of Proposition~\ref{prop:flabby-effective-sets}]
 For any Turing machine~$e$, let~$v_e : |X| \to \Sigma$ be the nonstandard
@@ -1039,19 +1047,12 @@ realizer for~$f(x_{K_e})$. Thus the statement~``$f(x_{K_e}) \in K_e$'' is
 realized; hence~``$f(x_{K_e}) = x_{K_e}$'' is as well.
 \end{proof}
 
-\begin{proof}[Proof of Proposition~\ref{prop:semienough-flabby-modules}]
-Let~$(\Gamma \dashv \Delta) : \Set \to \Eff$ be the inclusion of the
-double-negation sheaves. For a~$\neg\neg$-separated module~$M$ in the \effective
-topos, the canonical morphism~$M \to \Delta(\Gamma(M))$ is a monomorphism; the
-set~$\Gamma(M)$ is flabby by virtue of being inhabited; and~$\Delta$ preserves
-flabby objects by Proposition~\ref{prop:pushforward-of-flabby-objects}.
-\end{proof}
-
-\begin{rem}The analogues of Proposition~\ref{prop:flabby-effective-sets} and
-Proposition~\ref{prop:semienough-flabby-modules} for the realizability topos
+\begin{rem}The analogue of Proposition~\ref{prop:flabby-effective-sets}
+for the realizability topos
 constructed using infinite time Turing
-machines~\cite{bauer:injection,hamkins-lewis:ittm} are true as well, with the
-same proofs.\end{rem}
+machines~\cite{bauer:injection,hamkins-lewis:ittm} is true as well, with the
+same proof.\end{rem}
+% XXX any PCA?
 
 
 \section{Conclusion}
@@ -1061,35 +1062,25 @@ We originally set out to develop an intuitionistic account of Grothendieck's
 sheaf cohomology. Čech methods can be carried out constructively, and
 there are constructive accounts of special cases, resulting even in
 efficient-in-practice algorithms~\cite{barakat-lh:homalg,barakat-lh:ext},
-but it appears that there is not a general framework for sheaf
+but there is no established general framework for sheaf
 cohomology which would work in an intuitionistic metatheory.
 
 The main obstacle preventing Grothendieck's theory of derived functors to be interpreted
 constructively is its reliance on injective resolutions. It is known that in
-the absence of the axiom of choice, much less in a purely intuitionistic
+the absence of Zorn's lemma, much less in a purely intuitionistic
 context, there might not be any nontrivial injective abelian
 group~\cite{blass:inj-proj-axc}.
 
-In principle, this problem could be remedied by employing flabby resolutions
-instead of injective ones. There are, however, two problems with this
+Can this issue be remedied by employing flabby resolutions
+instead of injective ones? Classically, it is known that they can be used in
+their stead. There are, however, two problems with this
 suggestion. Firstly, all proofs known to us that flabby sheaves are
 acyclic for the global sections functor require Zorn's lemma. This problem might
 be mitigated by relying on the substitute property discussed
-following Scholium~\ref{scholium:exact-as-presheaves}.
-But secondly, it is an open question whether
-one can show, purely intuitionistically, that any sheaf of modules embeds into
-a flabby sheaf of modules. The following is known about this problem:
+following Scholium~\ref{scholium:exact-as-presheaves}. XXX
 
 \begin{enumerate}
-\item There is a purely intuitionistic proof that any sheaf of sets embeds into
-a flabby sheaf of sets
-(Scholium~\ref{scholium:properties-of-flabby-objects}(4)).
-
-\item The existence of enough flabby modules, and even the existence of enough
-injective modules, is \emph{not} a constructive taboo, that is, these statements do not
-entail a classical principle like the law of excluded middle or the principle
-of omniscience. This is because assuming the axiom of choice, any
-Grothendieck topos has enough injective (and therefore flabby) modules. 
+\item XXX Reformulate as remark somewhere
 
 %\item There is a way of embedding any module into a flabby module if one is
 %prepared to ignore set-theoretical difficulties. Namely, let~$M$ be an~$R$-module.
@@ -1163,3 +1154,13 @@ derived functors.
 \enlargethispage{1em}
 
 \end{document}
+
+XXX cite more references for Eff, including
+Hyland §5
+Fourman-Scott 1979
+Johnstone 1977
+toposmoeder
+
+XXX quasicompact case
+
+XXX embed into flabby module

@@ -6,6 +6,7 @@
 \usepackage[protrusion=true,expansion=true]{microtype}
 \usepackage{hyperref}
 \usepackage{xspace}
+\usepackage{color}
 
 \usepackage[natbib=true,style=numeric,maxnames=10]{biblatex}
 \usepackage[babel]{csquotes}
@@ -38,7 +39,7 @@ Strada le Grazie 15 \\
 \newtheorem{conjecture}[defn]{Conjecture}
 
 \newcommand{\xra}[1]{\xrightarrow{#1}}
-\newcommand{\XXX}[1]{\textbf{XXX: #1}}
+\newcommand{\XXX}[1]{\textbf{\textcolor{red}{XXX: #1}}}
 \newcommand{\aaa}{\mathfrak{a}}
 \newcommand{\bbb}{\mathfrak{b}}
 \newcommand{\mmm}{\mathfrak{m}}
@@ -84,22 +85,22 @@ Strada le Grazie 15 \\
 \thispagestyle{empty}
 
 \noindent
-As is nowadays well-established, any topos supports an \emph{internal language}
+As is nowadays well-established, every topos supports an \emph{internal language}
 which can be used to reason about the objects and morphisms of the topos in a
 naive element-based language, allowing us to pretend that the objects are plain
 sets (or types) and that the morphisms are plain maps between those sets
 (\cite[Chapter~6]{borceux:handbook3}, \cite[Section~1.3]{caramello:ttt},
 \cite[Chapter~14]{goldblatt:topoi},
 \cite[Chapter~VI]{moerdijk-maclane:sheaves-logic}). The internal language is
-sound with respect to intuitionistic reasoning, whereby any intuitionistic
-theorem holds in any topos.
+sound with respect to intuitionistic reasoning, whereby every intuitionistic
+theorem holds in every topos.
 
 The internal language of a sheaf topos enables \emph{relativization by
 internalization}. For instance, by interpreting the
-proposition \begin{quote}``in any short exact sequence of modules, if the two
+proposition \begin{quote}``in every short exact sequence of modules, if the two
 outer ones are finitely generated then so is the middle one''\end{quote} of
 intuitionistic commutative algebra internally to the topos of sheaves over a
-space~$X$, we obtain the geometric analogue \begin{quote}``in any short exact
+space~$X$, we obtain the geometric analogue \begin{quote}``in every short exact
 sequence of sheaves of modules over~$X$, if the two outer ones are of finite
 type then so is the middle one''.\end{quote}
 This way of deducing geometric theorems provides conceptual clarity, reduces
@@ -199,8 +200,8 @@ presheaves.
 \item If~$F$ and~$H$ are flabby, then so is~$G$.
 \item If~$F$ and~$G$ are flabby, then so is~$H$.
 \end{enumerate}
-\item[(4a)] Any sheaf embeds into a flabby sheaf.
-\item[(4b)] Any sheaf of modules embeds into a flabby sheaf of modules.
+\item[(4a)] Every sheaf embeds canonically into a flabby sheaf.
+\item[(4b)] Every sheaf of modules embeds canonically into a flabby sheaf of modules.
 \end{enumerate}
 
 Since we want to develop an analogous theory for flabby objects in elementary
@@ -234,7 +235,7 @@ A sheaf~$F$ on a topological space (or locale)~$X$ is \emph{flabby}
 if and only if for all opens~$U$ and all sections~$s \in F(U)$, there is an
 open covering~$X = \bigcup_i U_i$ such that, for all~$i$, the section~$s$ can
 be extended to a section on~$U \cup U_i$.\end{defn}
-% XXX choice-free formulation
+\XXX{choice-free formulation}
 
 % Take care: This paragraph is referenced in prop:global-elements.
 If~$F$ is a flabby sheaf in the traditional sense, then~$F$ is obviously also
@@ -259,14 +260,14 @@ topos; we will speak about sets and maps between sets, but intend our arguments
 to be applied to objects and morphisms in toposes. We will therefore be careful
 to reason purely intuitionistically. We
 adopt the terminology of~\cite{kock:partial-maps} regarding subterminals and
-subsingletons: A subset~$K \subseteq X$ is \emph{subterminal} if and only if any given
+subsingletons: A subset~$K \subseteq X$ is \emph{subterminal} if and only if every given
 elements are equal ($\forall x,y \in K\_ x = y$), and it is a
 \emph{subsingleton} if and only if there is an element~$x \in X$ such that~$K
-\subseteq \{ x \}$. Any subsingleton is trivially subterminal, but the converse
+\subseteq \{ x \}$. Every subsingleton is trivially subterminal, but the converse
 might fail.
 
-\begin{defn}A set~$X$ is \emph{flabby} if and only if any subterminal subset
-of~$X$ is a subsingleton, that is, if and only if for any subset~$K \subseteq
+\begin{defn}A set~$X$ is \emph{flabby} if and only if every subterminal subset
+of~$X$ is a subsingleton, that is, if and only if for every subset~$K \subseteq
 X$ such that~$\forall x,y \in K\_ x = y$, there exists an element~$x \in X$
 such that~$K \subseteq \{ x \}$.
 \end{defn}
@@ -275,7 +276,7 @@ In the presence of the law of excluded middle, a set is flabby if and only if
 it is inhabited. This characterization is a constructive taboo:
 
 \begin{prop}\label{prop:taboo}
-If any inhabited set is flabby, then the law of excluded middle
+If every inhabited set is flabby, then the law of excluded middle
 holds.
 \end{prop}
 
@@ -299,11 +300,11 @@ final.
 The set~$\P_{\leq 1}(X)$ of subterminals of $X$ can be interpreted as the set
 of \emph{partially-defined elements} of $X$. In this view, the empty subset is
 the maximally undefined element and a singleton is a maximally defined element.
-A set is flabby if and only if any of its partially-defined elements can be
+A set is flabby if and only if every of its partially-defined elements can be
 refined to an honest element.
 
 \begin{rem}\label{rem:constant-flabby}
-Although we will see in XXX and in Section~\ref{sect:in-eff} that there is some
+Although we will see in \XXX{number} and in Section~\ref{sect:in-eff} that there is some
 relation between flabby sets and~$\neg\neg$-separated sets, neither notion
 encompasses the other. The set~$\Omega$ is flabby, but might fail to
 be~$\neg\neg$-separated; the set~$\ZZ$ is~$\neg\neg$-separated, even discrete,
@@ -316,10 +317,10 @@ flabby set from the internal point of view of~$\Sh(T)$.
 \end{rem}
 
 \begin{defn}\begin{enumerate}
-\item A set~$I$ is \emph{injective} if and only if, for any injection~$i
-: A \to B$, any map~$f : A \to I$ can be extended to a map~$B \to I$.
-\item An~$R$-module~$I$ is \emph{injective} if and only if, for any linear
-injection~$i : A \to B$ between~$R$-modules, any linear map~$f : A \to I$ can
+\item A set~$I$ is \emph{injective} if and only if, for every injection~$i
+: A \to B$, every map~$f : A \to I$ can be extended to a map~$B \to I$.
+\item An~$R$-module~$I$ is \emph{injective} if and only if, for every linear
+injection~$i : A \to B$ between~$R$-modules, every linear map~$f : A \to I$ can
 be extended to a linear map~$B \to I$, as in the diagram below.
 \end{enumerate}
 \[ \xymatrix{
@@ -338,10 +339,10 @@ the following properties are well-known:
 \begin{prop}\label{prop:basics-injective}
 \begin{enumerate}
 % Take care if numbering changes (referenced below)
-\item Any set embeds canonically (in a uniform fashion) into an injective set.
-\item Any injective module is also injective as a set.
+\item Every set embeds canonically (that is, in a uniform fashion) into an injective set.
+\item Every injective module is also injective as a set.
 \item Assuming Zorn's lemma (but not the law of excluded middle, hence not the
-axiom of choice), any module embeds into an
+axiom of choice), every module embeds into an
 injective module.
 \end{enumerate}\end{prop}
 
@@ -362,7 +363,7 @@ to~$R$-modules has a left exact left adjoint with monic unit. \qedhere
 \end{enumerate}\end{proof}
 
 \begin{prop}\label{prop:injective-flabby}
-Any injective set is flabby.\end{prop}
+Every injective set is flabby.\end{prop}
 
 \begin{proof}Let~$I$ be an injective set. Let~$K \subseteq I$ be a subterminal.
 The inclusion~$f : K \to I$ extends along the injection~$K \to 1 = \{\star\}$
@@ -370,25 +371,25 @@ to a map~$1 \to I$. The unique image~$x$ of that map has the property that~$K
 \subseteq \{x\}$.\end{proof}
 
 \begin{cor}\label{cor:enough-flabby-sets}
-Any set canonically embeds into a flabby set.\end{cor}
+Every set canonically embeds into a flabby set.\end{cor}
 
 \begin{proof}Immediate by Proposition~\ref{prop:basics-injective}(1) and
 Proposition~\ref{prop:injective-flabby}.\end{proof}
 
 A further corollary of Proposition~\ref{prop:injective-flabby} is that the
-statement ``any inhabited set is injective'' is a constructive taboo: If any
-inhabited set is injective, then any inhabited set is flabby, thus the law of
+statement ``every inhabited set is injective'' is a constructive taboo: If every
+inhabited set is injective, then every inhabited set is flabby, thus the law of
 excluded middle follows by Proposition~\ref{prop:taboo}.
 
-\begin{prop}Any singleton set is flabby. The binary cartesian product of flabby sets
+\begin{prop}Every singleton set is flabby. The binary cartesian product of flabby sets
 is flabby.\end{prop}
 
 \begin{proof}Immediate.\end{proof}
 
-Subsets of flabby sets are in general not flabby, as else any set would be
+Subsets of flabby sets are in general not flabby, as else every set would be
 flabby in view of Corollary~\ref{cor:enough-flabby-sets}.
 
-% XXX enough flabby modules
+\XXX{enough flabby modules}
 
 \begin{prop}\label{prop:hom-flabby}
 \begin{enumerate}
@@ -536,7 +537,7 @@ only if the statement~``$X$ is a flabby set'' holds in the stack semantics
 of~$\E$.\end{defn}
 
 This definition amounts to the following: An object~$X$ of an elementary
-topos~$\E$ is flabby if and only if, for any monomorphism~$K \to A$ and any
+topos~$\E$ is flabby if and only if, for every monomorphism~$K \to A$ and every
 morphism~$K \to X$, there exists an epimorphism~$B \to A$ and a morphism~$B
 \to X$ such that the following diagram commutes.
 \[ \xymatrix{
@@ -565,7 +566,7 @@ Let~$X$ and~$T$ be objects of an elementary topos~$\E$.
 \end{enumerate}
 \end{prop}
 
-\begin{proof}This holds for any property which can be defined
+\begin{proof}This holds for every property which can be defined
 in the stack semantics~\cite[Lemma~7.3]{shulman:stack-semantics}.
 \end{proof}
 
@@ -585,7 +586,7 @@ F(V)$. Since~$F$ is flabby as a sheaf, there is an open covering~$X =
 to a section~$s_i$ of~$V \cup V_i$. The desired epimorphism is~$B \defeq
 \coprod_i \Hom(\cdot,(V \cup V_i) \cap U) \to A$, and the desired morphism~$B
 \to X$ is given by the sections~$s_i|_{(V \cup V_i) \cap U}$.
-% XXX choicefree
+\XXX{choicefree}
 
 As stated, the argument in the previous paragraph requires the axiom of choice
 to pick the extensions~$s_i$; this can be avoided by a standard trick of
@@ -639,9 +640,9 @@ morphisms to the topos~$\Set$, in which most objects are flabby (assuming the
 law of excluded middle).\end{rem}
 
 \begin{defn}An object~$I$ of an elementary topos~$\E$ is \emph{externally
-injective} if and only if for any monomorphism~$A \to B$ in~$\E$, the canonical
+injective} if and only if for every monomorphism~$A \to B$ in~$\E$, the canonical
 map~$\Hom_\E(B,I) \to \Hom_\E(A,I)$ is surjective. It is \emph{internally
-injective} if and only if for any monomorphism~$A \to B$ in~$\E$, the canonical
+injective} if and only if for every monomorphism~$A \to B$ in~$\E$, the canonical
 morphism~$[B,I] \to [A,I]$ between Hom objects is an epimorphism in~$\E$.
 \end{defn}
 
@@ -658,12 +659,12 @@ object~$I \in \E$ are equivalent.
 % Take care if numbering changes (is referenced below).
 \begin{enumerate}
 \item[(1)] $I$ is internally injective.
-\item[(1')] For any morphism $p : A \to 1$ in $\E$, the object $p^*(I)$ has property~(1)
+\item[(1')] For every morphism $p : A \to 1$ in $\E$, the object $p^*(I)$ has property~(1)
 as an object of $\E/A$.
 \item[(2)] The functor~$[\cdot, I] : \E^\op \to \E$ maps monomorphisms in $\E$
-to morphisms for which any global element of the target locally (after change of
+to morphisms for which every global element of the target locally (after change of
 base along an epimorphism) possesses a preimage.
-\item[(2')] For any morphism $p : A \to 1$ in $\E$, the object $p^*(I)$ has property~(2)
+\item[(2')] For every morphism $p : A \to 1$ in $\E$, the object $p^*(I)$ has property~(2)
 as an object of $\E/A$.
 \item[(3)] The statement~``$I$ is an injective set'' holds in the stack
 semantics of~$\E$.
@@ -758,15 +759,15 @@ section carry over to flabby and internally injective objects. Specifically, we
 have:
 
 \begin{scholium}\label{scholium:properties-of-flabby-objects}
-For any elementary topos~$\E$:
+For every elementary topos~$\E$:
 \begin{enumerate}
-\item Any object embeds canonically into an internally injective object.
+\item Every object embeds canonically into an internally injective object.
 \item (If~$\E$ has a natural numbers object.) The underlying unstructured
 object of an internally injective module is internally injective.
-\item Any internally injective object is flabby.
-\item Any object embeds canonically into a flabby object.
-\item Any internal module embeds canonically into an internal module which is flabby.
-\item The terminal object is flabby. The product of flabby objects is flabby.
+\item Every internally injective object is flabby.
+\item Every object embeds canonically into a flabby object.
+\item Every internal module embeds canonically into an internal module which is flabby.
+\item The terminal object is flabby. The binary product of flabby objects is flabby.
 \item Let~$I$ be an internally injective object. Let~$T$ be an arbitrary
 object. Then~$[T,I]$ is a flabby object.
 \item (If~$\E$ has a natural numbers object.) Let~$I$ be an internally
@@ -807,14 +808,14 @@ similar to how in constructive algebra often the existence of a sufficiently
 large field extension is good enough where one would classically blithely pass
 to an algebraic closure.
 
-% XXX If Zorn's lemma is not available but E is localic, ... is at least true
-% if E is compact.
+\XXX{If Zorn's lemma is not available but E is localic, ... is at least true
+if E is compact.}
 
 \begin{rem}A direct generalization of the traditional notion of a flabby sheaf, as
 opposed to our reimagining in Definition~\ref{defn:flabby-sheaf}, to
 elementary toposes is the following. An object~$X$ of an elementary topos~$\E$
-is \emph{strongly flabby} if and only if, for any monomorphism~$K \to 1$
-in~$\E$, any morphism~$K \to X$ lifts to a morphism~$1 \to X$.
+is \emph{strongly flabby} if and only if, for every monomorphism~$K \to 1$
+in~$\E$, every morphism~$K \to X$ lifts to a morphism~$1 \to X$.
 
 One can verify, purely intuitionistically, that a sheaf~$F$ on a space~$T$ is
 flabby in the traditional sense if and only if~$F$ is a strongly flabby object
@@ -861,7 +862,7 @@ internal sheaf cohomology.
 
 The details are as follows. The over-locale~$Y$ corresponds to a locale~$I(Y)$ internal to~$\Sh(X)$, in
 such a way that the category of internal sheaves over this internal locale
-coincides with~$\Sh(Y)$ [XXX give reference]; in particular, a given sheaf~$E$ of~$\O_Y$-modules can
+coincides with~$\Sh(Y)$ [\XXX{give reference}]; in particular, a given sheaf~$E$ of~$\O_Y$-modules can
 be regarded as a sheaf over~$I(Y)$. Under this equivalence, the morphism~$f : Y
 \to X$ corresponds to the unique morphism~$I(Y) \to \mathrm{pt}$ to the
 internal one-point locale. Hence it makes sense to construct, from the internal
@@ -972,7 +973,7 @@ singleton object.
 % ein. Nämlich A --> ΔΓA --> ΔI für ΓA --> I Einbettung in eine injektive
 % Gruppe.
 
-% XXX
+\XXX{XXX}
 The intuitive
 reason for why Proposition~\ref{prop:flabby-effective-sets} holds is the
 following. Let~$X$ be a flabby object in the \effective topos. Then there is a
@@ -1052,7 +1053,7 @@ for the realizability topos
 constructed using infinite time Turing
 machines~\cite{bauer:injection,hamkins-lewis:ittm} is true as well, with the
 same proof.\end{rem}
-% XXX any PCA?
+\XXX{any PCA?}
 
 
 \section{Conclusion}
@@ -1077,10 +1078,10 @@ their stead. There are, however, two problems with this
 suggestion. Firstly, all proofs known to us that flabby sheaves are
 acyclic for the global sections functor require Zorn's lemma. This problem might
 be mitigated by relying on the substitute property discussed
-following Scholium~\ref{scholium:exact-as-presheaves}. XXX
+following Scholium~\ref{scholium:exact-as-presheaves}. \XXX{XXX}
 
 \begin{enumerate}
-\item XXX Reformulate as remark somewhere
+\item \XXX{Reformulate as remark somewhere}
 
 %\item There is a way of embedding any module into a flabby module if one is
 %prepared to ignore set-theoretical difficulties. Namely, let~$M$ be an~$R$-module.
@@ -1119,7 +1120,7 @@ if~$t,s,u \in T$ and~$r,r' \in R$, then~$t + (s + u) = (t + s) + u$, $t + s = s 
 However, it is an open question under which circumstances quotient inductive
 types can be shown to exist. Zermelo--Fraenkel with choice certainly suffices,
 while Zermelo--Fraenkel without choice does not~\cite[Section~9]{shulman-lumsdaine:hits},
-hence IZF also does not.\footnote{With quotient inductive types, any infinitary
+hence IZF also does not.\footnote{With quotient inductive types, every infinitary
 algebraic theory admits free algebras. However, it is consistent with
 Zermelo--Fraenkel set theory that some such theories do not admit free
 algebras~\cite{blass:free-algebras}.} The existence of quotient inductive types
@@ -1153,14 +1154,11 @@ derived functors.
 \printbibliography
 \enlargethispage{1em}
 
+\XXX{cite more: Hyland §5,
+Fourman-Scott 1979,
+Johnstone 1977,
+toposmoeder}
+
+\XXX{quasicompact case}
+
 \end{document}
-
-XXX cite more references for Eff, including
-Hyland §5
-Fourman-Scott 1979
-Johnstone 1977
-toposmoeder
-
-XXX quasicompact case
-
-XXX embed into flabby module

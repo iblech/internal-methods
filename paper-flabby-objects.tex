@@ -53,6 +53,7 @@ Strada le Grazie 15 \\
 \renewcommand{\P}{\mathcal{P}}
 \renewcommand{\O}{\mathcal{O}}
 \newcommand{\defeq}{\vcentcolon=}
+\newcommand{\defeqv}{\vcentcolon\equiv}
 \newcommand{\op}{\mathrm{op}}
 \DeclareMathOperator{\Spec}{Spec}
 \DeclareMathOperator{\Hom}{Hom}
@@ -393,6 +394,55 @@ Subsets of flabby sets are in general not flabby, as else every set would be
 flabby in view of Corollary~\ref{cor:enough-flabby-sets}.
 
 \XXX{enough flabby modules}
+
+\XXX{proper exposition}
+
+\begin{defn}\label{defn:functionally-flabby}
+A set~$X$ is \emph{functionally flabby} if and only if there is a
+map~$\varepsilon : \P_{\leq1}(X) \to X$ such that for all~$K \in
+\P_{\leq1}(X)$, $K \subseteq \{ \varepsilon(K) \}$.\end{defn}
+
+A map~$\varepsilon : \P_{\leq1}(X) \to X$ satisfies the condition in
+Definition~\ref{defn:functionally-flabby} if and only if it is a retraction of
+the canonical injection~$X \to \P_{\leq1}(X)$.
+
+\begin{prop}For a set~$X$, the following conditions are equivalent:
+\begin{enumerate}
+\item $X$ is injective.
+\item $X$ is functionally flabby.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}Let~$X$ be an injective set. Then the identity~$X \to X$ can be extended
+along the canonical inclusion~$X \to \P_{\leq1}(X)$ to a map~$\varepsilon :
+\P_{\leq1}(X) \to X$. This map witnesses that~$X$ is functionally flabby.
+
+Conversely, let~$X$ be a functionally flabby set with witness~$\varepsilon :
+\P_{\leq1}(X) \to X$. Let~$i : A \to B$ be an injection and let~$f : A \to X$
+be a map. Then~$x \mapsto \varepsilon(f[i^{-1}[\{x\}])$ is an extension of~$f$
+along~$i$.
+\end{proof}
+
+\begin{prop}Every module embeds canonically into a functionally flabby module.\end{prop}
+
+\begin{proof}Let~$M$ be a module. First we'll assume that~$M$
+is a sheaf for some modal operator~$\nabla$ such that for any
+formula~$\varphi$, $\nabla(\varphi \vee (\varphi \Rightarrow \nabla\bot))$. In
+this case, the module~$M$ is already functionally flabby: A witnessing choice
+function maps a subsingleton~$K \subseteq M$ to the unique element~$x \in M$
+such that~$\nabla(x \in K')$, where~$K' \defeq K \cup \{ 0 \,|\, \text{$K$
+inhabited} \Rightarrow \nabla\bot \}$. Since~$K'$ has the property
+that~$\nabla(\text{$K$ is a singleton})$, such an element~$x$ exists and is unique
+by the sheaf condition.
+
+Now let~$M$ be a module which is separated for some XXX modal operator~$\nabla$.
+Then its sheafification is a functionally flabby module into which~$M$ embeds.
+
+Finally, let~$M$ be an arbitrary module. For any element~$x \in M$,
+let~$\nabla_x$ be the modal operator with~$\nabla_x\varphi \defeqv ((\varphi \Rightarrow x
+= 0) \Rightarrow x = 0)$. The module~$M$ might not be~$\nabla_x$-separated for
+a particular element~$x$, but jointly XXX
+\end{proof}
 
 \begin{prop}\label{prop:hom-flabby}
 \begin{enumerate}

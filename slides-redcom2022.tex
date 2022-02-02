@@ -112,7 +112,6 @@
 \newcommand{\RelSpec}{\operatorname{Spec}}
 \renewcommand{\_}{\mathpunct{.}}
 \newcommand{\?}{\,{:}\,}
-\newcommand{\speak}[1]{\ulcorner\text{\textnormal{#1}}\urcorner}
 \newcommand{\ul}[1]{\underline{#1}}
 \newcommand{\affl}{\ensuremath{{\ul{\ensuremath{\AA}}^1}}}
 \newcommand{\Ll}{\text{iff}}
@@ -232,13 +231,6 @@
     \end{minipage}
   \end{center}}
 
-\setbeamertemplate{headline}{%
-  \begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex]{}%
-    \insertsectionnavigationhorizontal{\paperwidth}{}{}%
-  \end{beamercolorbox}%
-  \vskip0pt%
-}
-
 
 \setbeamertemplate{navigation symbols}{}
 
@@ -267,6 +259,8 @@
 
 \newcommand{\subhead}[1]{{\centering\textcolor{gray}{\hrulefill}\quad\textnormal{\hil{#1}}\quad\textcolor{gray}{\hrulefill}\par\vspace*{-0.6em}}}
 
+\newcommand{\speak}[1]{\textcolor{blue!80}{`#1'}}
+
 \begin{document}
 
 \addtocounter{framenumber}{-1}
@@ -278,22 +272,42 @@
   \bigskip
   %\includegraphics[width=0.4\textwidth]{external-internal-small}
   \bigskip
+  \bigskip
+  \bigskip
+  \bigskip
+  \bigskip
+  \bigskip
+  \bigskip
+  \bigskip
 
   \hil{Without loss of generality, \\ any reduced ring is a field}
 
   \scriptsize
-  \textit{-- interruptions welcome at any point --}
+  \textit{-- an invitation --}
+  \bigskip
+  \bigskip
+  \bigskip
+  \bigskip
+  \bigskip
+  \bigskip
   \bigskip
 
+  \color{blue!80}REDCOM: \\ \emph{Reducing complexity in algebra, logic, combinatorics} \\
+  \color{black}
+  \medskip
+  online via Università degli Studi di Verona \\
+  February 2nd, 2022
+
+  \bigskip
+  \bigskip
+
+  \color{black}
   Ingo Blechschmidt \\
   University of Augsburg
   \bigskip
   \bigskip
   \bigskip
 
-  REDCOM: Reducing complexity in algebra, logic, combinatorics \\
-  online via Università degli Studi di Verona \\
-  February 2nd, 2022
   \par
 \end{frame}}
 
@@ -311,6 +325,12 @@
   prime ideal} $\ppp \subseteq A$. The matrix is injective over the \bad{field}~$A_\ppp$;
   contradiction to basic linear algebra.\medskip
 
+  \only<1>{\centering\scalebox{0.8}{$\begin{pmatrix}
+    \cdot & \cdot & \cdot & \cdot & \cdot \\
+    \cdot & \cdot & \cdot & \cdot & \cdot \\
+    \cdot & \cdot & \cdot & \cdot & \cdot
+  \end{pmatrix}$}\par}
+
   \bigskip
   \pause
 
@@ -325,12 +345,15 @@
 
   \justifying
   \textbf{Proof.} See \href{https://stacks.math.columbia.edu/tag/051Q}{[Stacks Project]}.
+
+  \centering\includegraphics[width=0.3\textwidth]{generic-freeness}
 \end{frame}
 
+{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{5.95cm}\includegraphics[width=\paperwidth]{fr1}\end{minipage}}
 \begin{frame}{A remarkable sheaf}
   \justifying
   Let~$A$ be a reduced ring ($x^n = 0 \Rightarrow x = 0$).
-  Then there is a certain related ring~$A^\sim$ such that \ldots
+  Then there is a certain related \speak{ring}~$A^\sim$ such that \ldots
   \bigskip
 
   \subhead{$\boldsymbol{A^\sim}$ is close to~$\boldsymbol{A}$}
@@ -355,12 +378,51 @@
   \item \mbox{$A^\sim$ is \hil{anonymously Noetherian}.}\\[-1.2em]
   \end{enumerate}
 
-  \setbeamercolor{block body}{bg=red!30}
-
   \begin{varblock}{0.7\textwidth}{}
   {\centering This sheaf can be exploited to give short, \\ conceptual and
   constructive proofs.\par}
   \end{varblock}
+\end{frame}}
+
+
+\begin{frame}{The sheaf model as a local lens}
+  \vspace*{-1.2em}
+  \small
+  \renewcommand{\arraystretch}{1.3}
+  \begin{tabular}{p{0.31\textwidth}p{0.75\textwidth}}
+    \hil{sheaf model~$\boldsymbol{A^\sim}$} & \hil{ring~$\boldsymbol{A}$} \\
+    \speak{$\varphi \vee \psi$ on~$D(f)$} &
+      there is a partition~$f^n = fg_1{+}\cdots{+}fg_m$ s. th.
+      for each~$i$, \phantom{lolololl} \phantom{lololo}\speak{$\varphi$ on~$D(fg_i)$} or \speak{$\psi$ on~$D(fg_i)$} \\
+    \speak{$\varphi \Rightarrow \psi$ on~$D(f)$} &
+      for all~$g \in A$, \speak{$\varphi$ on~$D(fg)$} implies~\speak{$\psi$ on~$D(fg)$} \\
+    \speak{$(\forall x\?A^\sim\_ \varphi(x))$ on~$D(f)$} &
+      for all~$g \in A$ and~$x \in A[g^{-1}]$, \speak{$\varphi(x)$ on~$D(fg)$} \\
+    \speak{$\bot$ on~$D(f)$} & $f$ is nilpotent
+  \end{tabular}
+  \bigskip
+
+
+  \subhead{On the field property}
+
+  Let~$x \in A$ be such that
+  \[ \text{\speak{$x \in A^\sim$ is not invertible on~$D(1)$}}, \]
+  that is \pause
+  \[ \text{\speak{$(\text{$x \in A^\sim$ is invertible}) \Rightarrow \bot$ on~$D(1)$}}, \]
+  that is \pause
+  \[ \text{for all~$g \in A$, if \speak{$x \in A^\sim$ is invertible on~$D(g)$}
+  then~\speak{$\bot$ on~$D(g)$}}, \]
+  that is \pause
+  \[ \text{for all~$g \in A$, if $x$ is invertible in~$A[g^{-1}]$
+  then~$g$ is nilpotent}. \] \pause
+  Then, considering~$g \defeq x$, it follows that~$x = 0$ in~$A$.
+
+%  \begin{align*}
+%    & \text{\speak{$x$ is not invertible on~$D(1)$}, that is} \\
+%    & \text{\speak{$(\text{$x$ is invertible}) \Rightarrow \bot$ on~$D(1)$}, that is} \\
+%    & \text{for all~$g \in A$, if \speak{$x$ is invertible on~$D(g)$} then~\speak{$\bot$ on~$D(g)$}, that is} \\
+%    & \text{for all~$g \in A$, if $x$ is invertible in~$A[g^{-1}]$
+%  then~$g$ is nilpotent;}
 \end{frame}
 
 \begin{frame}{Revisiting the test cases}
@@ -377,9 +439,9 @@
   prime ideal} $\ppp \subseteq A$. The matrix is injective over the \bad{field}~$A_\ppp$;
   contradiction to basic linear algebra.\medskip
 
-  \textbf{Proof.} $M$ is also injective as a matrix over~$A^\sim$.
+  \textbf{Proof.} \speak{On~$D(1)$, $M$ is also injective as a matrix over~$A^\sim$.
   This is a contradiction by basic linear
-  algebra. Thus~$D(1) \models \bot$. This amounts to~$1 = 0$ in~$A$.
+  algebra.} Thus~\speak{$\bot$ on~$D(1)$}. This amounts to~$1 = 0$ in~$A$.
   \bigskip
   \pause
 
@@ -393,9 +455,35 @@
   \end{varblock}
 
   \justifying
-  \textbf{Proof.} The claim amounts to \mbox{$D(1) \models
-  \text{``$M^\sim$}$}$\text{ is \hil{not not} free''}$. This statement
+  \textbf{Proof.} The claim amounts to \speak{$M^\sim$ is \hil{not not} free
+  on~$D(1)$}. This statement
   follows from basic linear algebra over the field~$A^\sim$.
 \end{frame}
+
+
+\backupstart
+
+\begin{frame}{Forcing locality}
+  \begin{varblock}{\textwidth}{}
+    \justifying
+    \textbf{Definition.} A ring is \hil{local} iff~$1 \neq 0$ and~$x + y = 1$
+    implies that~$x$ is invertible or~$y$ is invertible.
+  \end{varblock}
+
+  \textbf{Examples:}\phantom{Non-}\,\! $k,\ k[[X]],\ \CC\{z\},\ \ZZ_{(p)}$ \\[0.2em]
+  \textbf{Non-examples:} $\ZZ,\ k[X],\ \ZZ/(pq)$
+
+  Not every ring~$A$ is local. But always: \speak{$A^\sim$ is local on~$D(1)$}
+
+  Locally, any ring is local: Let~$x + y = 1$ in a ring~$A$.
+  Then:
+  \begin{itemize}
+    \item The element $x$ is invertible in~$A[x^{-1}]$.
+    \item The element $y$ is invertible in~$A[y^{-1}]$.
+    \item $(D(x), D(y))$ \emph{covers}~$D(1)$.
+  \end{itemize}
+\end{frame}
+
+\backupend
 
 \end{document}

@@ -312,26 +312,39 @@
 \end{frame}}
 
 \begin{frame}{Transfinite methods in algebra?}
+  Let~$A$ be a ring which is reduced: If~$x^n = 0$, then~$x = 0$.
+
   \subhead{Injective matrices}
   \begin{varblock}{\textwidth}{Injective matrices}
     \justifying
     \textbf{Theorem.}
-    Let~$M$ be an injective matrix with more columns than rows over a ring~$A$.
+    Let~$M$ be an injective matrix with more columns than rows over~$A$.
     Then~$1 = 0$ in~$A$.
   \end{varblock}
 
   \justifying
-  \textbf{Proof.} \bad{Assume not.} Then there is a \bad{minimal
-  prime ideal} $\ppp \subseteq A$. The matrix is injective over the \bad{field}~$A_\ppp$;
-  contradiction to basic linear algebra.\medskip
+  \visible<2->{\textbf{Proof.} \bad{Assume not.}} \visible<3->{Then there is a \bad{minimal
+  prime ideal} $\ppp \subseteq A$.} \visible<4->{The matrix is injective over
+  the \bad{field}~$A_\ppp$;} \visible<5->{contradiction to basic linear algebra.}\medskip
+  \bigskip
 
-  \only<1>{\centering\scalebox{0.8}{$\begin{pmatrix}
+  \only<1-5>{\centering\bigskip\bigskip\scalebox{0.8}{$\begin{pmatrix}
     \cdot & \cdot & \cdot & \cdot & \cdot \\
     \cdot & \cdot & \cdot & \cdot & \cdot \\
     \cdot & \cdot & \cdot & \cdot & \cdot
   \end{pmatrix}$}\par}
 
-  \bigskip
+  \only<4-5>{
+    \begin{align*}
+      A_\ppp &= A[S^{-1}] = \{ \tfrac{x}{s} \,|\, x \in A, s \not\in \ppp \} && \text{where $S = A \setminus \ppp$} \\
+      A[f^{-1}] &= A[S^{-1}] = \{ \tfrac{x}{f^n} \,|\, x \in A, n \geq 0 \} && \text{where $S = \{f^0,f^1,\ldots\}$}
+    \end{align*}
+  }
+
+  \pause
+  \pause
+  \pause
+  \pause
   \pause
 
   \subhead{Grothendieck's generic freeness}
@@ -346,13 +359,13 @@
   \justifying
   \textbf{Proof.} See \href{https://stacks.math.columbia.edu/tag/051Q}{[Stacks Project]}.
 
-  \centering\includegraphics[width=0.3\textwidth]{generic-freeness}
+  \centering\includegraphics[width=0.25\textwidth]{generic-freeness}
 \end{frame}
 
 {\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{5.95cm}\includegraphics[width=\paperwidth]{fr1}\end{minipage}}
 \begin{frame}{A remarkable sheaf}
   \justifying
-  Let~$A$ be a reduced ring ($x^n = 0 \Rightarrow x = 0$).
+  Let~$A$ be a ring.
   Then there is a certain related \speak{ring}~$A^\sim$ such that \ldots
   \bigskip
 
@@ -368,6 +381,7 @@
   \bigskip
 
   \subhead{$\boldsymbol{A^\sim}$ is better than~$\boldsymbol{A}$}
+  {\small\centering(Now assume~$A$ reduced.)\par}
   \begin{enumerate}[a]
   \item $A^\sim$ is a \hil{field}: $\forall x\?A^\sim\_ (\neg(\exists y\?A^\sim\_
     xy = 1) \Rightarrow x = 0)$.
@@ -385,22 +399,28 @@
 \end{frame}}
 
 
+\newcommand{\eff}{\only<2->{f}}
+\newcommand{\ondf}{\only<2->{ on~$D(f)$}}
+\newcommand{\fone}{\only<1>{1}\only<2->{f}}
+\newcommand{\fonen}{\only<1>{1}\only<2->{f^n}}
 \begin{frame}{The sheaf model as a local lens}
   \vspace*{-1.2em}
   \small
   \renewcommand{\arraystretch}{1.3}
   \begin{tabular}{p{0.31\textwidth}p{0.75\textwidth}}
     \hil{sheaf model~$\boldsymbol{A^\sim}$} & \hil{ring~$\boldsymbol{A}$} \\
-    \speak{$\varphi \vee \psi$ on~$D(f)$} &
-      there is a partition~$f^n = fg_1{+}\cdots{+}fg_m$ s. th.
-      for each~$i$, \phantom{lolololl} \phantom{lololo}\speak{$\varphi$ on~$D(fg_i)$} or \speak{$\psi$ on~$D(fg_i)$} \\
-    \speak{$\varphi \Rightarrow \psi$ on~$D(f)$} &
-      for all~$g \in A$, \speak{$\varphi$ on~$D(fg)$} implies~\speak{$\psi$ on~$D(fg)$} \\
-    \speak{$(\forall x\?A^\sim\_ \varphi(x))$ on~$D(f)$} &
-      for all~$g \in A$ and~$x \in A[g^{-1}]$, \speak{$\varphi(x)$ on~$D(fg)$} \\
-    \speak{$\bot$ on~$D(f)$} & $f$ is nilpotent
+    \speak{$(\forall x\?A^\sim\_ \varphi(x))$\ondf} &
+      for all~$g \in A$ and~$x \in A[g^{-1}]$, \speak{$\varphi(x)$ on~$D(\eff g)$} \\
+    \speak{$\varphi \Rightarrow \psi$\ondf} &
+      for all~$g \in A$, \speak{$\varphi$ on~$D(\eff g)$} implies~\speak{$\psi$ on~$D(\eff g)$} \\
+    \speak{$\varphi \vee \psi$\ondf} &
+      there is a partition~$\fonen = \eff g_1{+}\cdots{+}\eff g_m$ s. th.
+      for each~$i$, \phantom{lolololl} \phantom{lololo}\speak{$\varphi$ on~$D(\eff g_i)$} or \speak{$\psi$ on~$D(\eff g_i)$} \\
+    \speak{$\bot$\ondf} & \only<1>{$1 = 0$ in~$A$}\only<2->{$\fone$ is nilpotent}
   \end{tabular}
   \bigskip
+  \pause
+  \pause
 
 
   \subhead{On the field property}
@@ -439,9 +459,9 @@
   prime ideal} $\ppp \subseteq A$. The matrix is injective over the \bad{field}~$A_\ppp$;
   contradiction to basic linear algebra.\medskip
 
-  \textbf{Proof.} \speak{On~$D(1)$, $M$ is also injective as a matrix over~$A^\sim$.
-  This is a contradiction by basic linear
-  algebra.} Thus~\speak{$\bot$ on~$D(1)$}. This amounts to~$1 = 0$ in~$A$.
+  \textbf{Proof.} \speak{$M$ is also injective as a matrix over~$A^\sim$.
+  This is a contradiction by basic intuitionistic linear
+  algebra.} Thus~\speak{$\bot$}. Hence~$1 = 0$ in~$A$.
   \bigskip
   \pause
 
@@ -455,9 +475,9 @@
   \end{varblock}
 
   \justifying
-  \textbf{Proof.} The claim amounts to \speak{$M^\sim$ is \hil{not not} free
-  on~$D(1)$}. This statement
-  follows from basic linear algebra over the field~$A^\sim$.
+  \textbf{Proof.} The claim amounts to \speak{$M^\sim$ is \hil{not not} free}.
+  This statement follows from basic intuitionistic linear algebra over the
+  field~$A^\sim$.
 \end{frame}
 
 

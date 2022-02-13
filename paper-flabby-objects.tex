@@ -900,14 +900,14 @@ the law of excluded middle in the metatheory), and the unique morphism~$G \to
 \section{Higher direct images as internal sheaf cohomology}
 \label{sect:higher-direct-images}
 
-Let~$X$ be a locale and let~$f : Y \to X$ be an over-locale. By the fundamental
+Let~$X$ be a locale and let~$Y$ be a locale over~$X$, that is, a morphism~$f : Y \to X$ of locales. By the fundamental
 relation between locales and topological spaces, this situation arises
 for instance, when given a sober topological space and a topological
 space over it, as is often the case in algebraic topology or algebraic
 geometry. Let a sheaf~$\O_Y$ of rings on~$Y$ be given. Then the
 traditional way to define the \emph{higher direct images} of a sheaf~$E$
 of~$\O_Y$-modules is to pick an injective resolution~$0 \to E \to I^\bullet$
-and set~$R^n f_*(E) \defeq H^n(f_*(I^\bullet))$.
+and set~$R^n f_*(E) \defeq H^n(f_*(I^\bullet))$~\cite[Tag~01DZ]{stacks-project}.
 
 Assuming Zorn's lemma, there are enough injective sheaves of modules so
 that this recipe can be carried out. The resulting sheaf
@@ -919,8 +919,8 @@ this morphism induces an isomorphism on cohomology.
 Higher direct images are pictured as a ``relative'' version of sheaf
 cohomology. Due to the result that injectivity of sheaves of modules can be
 characterized in the internal language, we can give a precise
-rendering of this slogan: We can understand higher direct images as
-internal sheaf cohomology.
+rendering of this slogan: \emph{Higher direct images are
+internal sheaf cohomology.}
 
 The details are as follows. The over-locale~$Y$ corresponds to a locale~$I(Y)$ internal to~$\Sh(X)$, in
 such a way that the category of internal sheaves over this internal locale

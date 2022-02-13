@@ -211,7 +211,7 @@ which are required to establish these properties. The standard proofs of
 properties~(1),~(3a),~(3b) and~(3c) require Zorn's lemma to construct maximal
 extensions of given sections.\footnote{We are careful to distinguish between
 the axiom of choice and Zorn's lemma. The former implies the latter, but the
-converse requires the law of excluded middle.}
+converse implication requires the law of excluded middle.}
 The standard proof of property~(4b) requires the
 law of excluded middle, to ensure that the Godement construction actually
 yields a flabby sheaf. Properties~(2) and~(4a) can be verified purely
@@ -235,8 +235,17 @@ alternative one as the official definition.
 A sheaf~$F$ on a topological space (or locale)~$X$ is \emph{flabby}
 if and only if for all opens~$U$ and all sections~$s \in F(U)$, there is an
 open covering~$X = \bigcup_i U_i$ such that, for all~$i$, the section~$s$ can
-be extended to a section on~$U \cup U_i$.\end{defn}
-\XXX{choice-free formulation}
+be extended to a section on~$U \cup U_i$.\footnote{Even in the absence of the
+axiom of choice it doesn't make a difference
+whether we are stipulating, as in the definition, for each index~$i \in I$ the mere
+existence of an extension~$t \in F(U \cup U_i)$, or whether we are stipulating
+the existence of a family~$(t_i)_i$ of extensions~$t_i \in F(U \cup U_i)$.
+Clearly, the existence of the family implies the existence of individual
+extensions. Conversely, if for each~$i \in I$ there exists an extension, there
+is a tautologous family of extensions over the enlarged index set~$I' \defeq \{
+(i,t) \,|\, i \in I, t \in F(U \cup U_i), t|_U = s \}$, and we still have~$X =
+\bigcup_{(i,t) \in I'} U_i$.}
+\end{defn}
 
 % Take care: This paragraph is referenced in prop:global-elements.
 If~$F$ is a flabby sheaf in the traditional sense, then~$F$ is obviously also

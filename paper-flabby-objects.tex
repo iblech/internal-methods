@@ -432,7 +432,8 @@ be a map. Then~$x \mapsto \varepsilon(f[i^{-1}[\{x\}])$ is an extension of~$f$
 along~$i$.
 \end{proof}
 
-\begin{prop}Every module embeds canonically into a functionally flabby module.\end{prop}
+\begin{thm}\label{thm:enough-flabby-modules}
+Every module embeds canonically into a functionally flabby module.\end{thm}
 
 \begin{proof}Let~$M$ be a module. First we'll assume that~$M$
 is a sheaf for some modal operator~$\nabla$ such that for any
@@ -1036,87 +1037,49 @@ singleton object.
 % ein. Nämlich A --> ΔΓA --> ΔI für ΓA --> I Einbettung in eine injektive
 % Gruppe.
 
-\XXX{XXX}
 The intuitive
 reason for why Proposition~\ref{prop:flabby-effective-sets} holds is the
 following. Let~$X$ be a flabby object in the \effective topos. Then there is a
-procedure which computes for any subterminal~$K \subseteq X$ an element~$x_K$
-such that~$K \subseteq \{ x_K \}$. This element might not depend extensionally
-on~$K$, but this fine point is not important for the present discussion. Let~$f : X \to X$
-be a morphism. We construct the self-referential subset~$K
-\defeq \{ f(x_K) \}$; the formal proof below will indicate how this can be
-done. Then~$K \subseteq \{ x_K \}$, so~$f(x_K) = x_K$.
-
-A corollary of Proposition~\ref{prop:flabby-effective-sets} is that the trivial
-module is the only flabby module in the \effective topos whose underlying
-unstructured object is an \effective set: Given such a flabby module~$M$, let~$v
-\in M$ be an arbitrary element. Then the morphism~$x \mapsto v + x$ has a fixed
-point; thus~$v + x = x$ for some element~$x$, and hence~$v = 0$.
-
-It is the self-referentiality which makes the proof of
-Proposition~\ref{prop:flabby-effective-sets} work, but the blame for the paucity
-of flabby objects in the \effective topos is to put on the realizers for
-statements of the form~``$K = K$'', where~$({=})$ is the nonstandard equality
-predicate of the powerobject~$\P(X)$. A procedure witnessing flabbiness has to
-compute a reflexivity realizer for a suitable element~$x_K$ from a reflexivity
-realizer for a given element~$K$. However, such realizers are not very
-informative. Metaphorically speaking, a procedure witnessing flabbiness has to
+procedure which computes for any (realizer of a) subterminal~$K \subseteq X$ a
+(realizer of an) element~$x_K$
+such that~$K \subseteq \{ x_K \}$. However, realizers for subsets are not very
+informative; the procedure cannot ask questions such as ``is a
+given element of~$X$ contained in~$K$?'' nor query its input in any way.
+Hence~$x_K$ will actually be the same element for any subterminal~$K$.
+Metaphorically speaking, a procedure witnessing flabbiness has to
 conjure elements out of thin air.
 
-This problem does not manifest with objects~$X$ which are not \effective
-objects such as double-negation sheaves.
-Reflexivity realizers for these objects are themselves not very informative;
-a procedure witnessing flabbiness therefore only has to turn one kind of
-non-informative realizers into another kind.
+This issue does not manifest with objects~$X$ which are not \effective objects
+such as double-negation sheaves. Realizers for elements of such objects are
+themselves not very informative; for those, a procedure witnessing flabbiness
+only has to turn one kind of non-informative realizers into another kind. This
+is why, in line with Theorem~\ref{thm:enough-flabby-modules}, it is still true
+in the \effective topos that any module of the \effective topos embeds into a
+flabby module.
 
 \begin{proof}[Proof of Proposition~\ref{prop:flabby-effective-sets}]
-For any Turing machine~$e$, let~$v_e : |X| \to \Sigma$ be the nonstandard
-predicate given by
-\begin{multline*}
-  v_e(x) = \{ m \in \NN \,|\,
-  \text{there is an element~$x_0 \in |X|$ such that} \\
-  \text{$e$ terminates with an element of~$\llbracket x_0 = x_0 \rrbracket$ and
-  $m \in \llbracket x = x_0 \rrbracket$} \}
-\end{multline*}
-and let~$K_e \in \Sigma^{|X| \times \Sigma}$ be the nonstandard predicate given by
-\[ K_e(x,u) = \llbracket (x = x) \wedge (u \leftrightarrow v_e(x)) \rrbracket. \]
-One can explicitly construct a realizer~$a_e$ of the statement~``$K_e = K_e$'',
-where~$({=})$ is the nonstandard equality predicate of the object~$\P_{\leq1}(X)$
-of subterminals of~$X$. This is where the assumption that~$X$ is \effective is
-important; without it, we could only verify~``$K_e = K_e$'' where~$({=})$ is
-the nonstandard equality predicate of the full powerobject~$\P(X)$.
-
-Since~$X$ is flabby, there is a realizer~$r$ for the statement~``$\forall K \in
-\P_{\leq1}(X)\_ \exists x \in X\_ \forall y \in X\_ (y \in K \Rightarrow y =
-x)$''. Let~$s$ be a realizer for the statement~``$\forall x \in X\_ \exists y
-\in Y\_ y = f(x)$''. Let~$e$ be the particular Turing machine which proceeds as
-follows:
-\begin{enumerate}
-\item[1.] Simulate~$r$ on input~$a_e$ in order to obtain a realizer~$b \in
-\llbracket x = x \rrbracket$ for some~$x \in |X|$.
-\item[2.] Simulate~$s$ on input~$b$ in order to obtain a realizer~$c \in \llbracket
-f(x) = f(x) \rrbracket$.
-\item[3.] Output~$c$.
-\end{enumerate}
-This description of the machine~$e$ makes use of the number~$e$ coding it;
-the recursion theorem yields a general reason why this self-referentiality is
-possible. Here we can even do without this theorem, since a close inspection of
-the construction of~$a_e$ shows that~$a_e$ is actually independent of~$e$. This
-should not come as a surprise, as reflexivity realizers of~$\P(X)$
-and~$\P_{\leq1}(X)$ are known to be not very informative.
-
-Passing~$a_e$ to~$r$ yields a reflexivity realizer of some element~$x_{K_e} \in
-|X|$. Therefore the Turing machine~$e$ does terminate, with a reflexivity
-realizer for~$f(x_{K_e})$. Thus the statement~``$f(x_{K_e}) \in K_e$'' is
-realized; hence~``$f(x_{K_e}) = x_{K_e}$'' is as well.
+Let~$X$ be an object of the \effective topos. Then the object~$P_{\leq1}(X)$ of
+subterminals of~$X$ is a uniform object in the sense
+of~\cite[Section~3.4]{moerdijk-oosten:topos-theory}, being a retract of the
+uniform object~$P(X)$ by the surjection
+\[ P(X) \longrightarrow P_{\leq1}(X),\
+  M \longmapsto \{ x \in X \,|\, M = \{ x \} \}. \]
+Hence if~$X$ is \effective, the uniformity principle~\cite[Proposition~15.1]{hyland:effective-topos}
+\[ \forall K \in P_{\leq1}(X)\_
+  \exists x \in X\_ K \subseteq \{x\} \quad\Longrightarrow\quad
+  \exists x_0 \in X\_ \forall K \in P_{\leq1}(X)\_ K \subseteq \{x_0\} \]
+applies. Thus, if~$X$ is \effective and flabby, there is
+an element~$x_0 \in X$ such that~$K \subseteq \{x_0\}$ for any subterminal~$K$
+of~$X$. The conclusion follows by considering, for any elements~$a,b \in X$,
+the subterminals~$\{a\}$ and~$\{b\}$.
 \end{proof}
 
-\begin{rem}The analogue of Proposition~\ref{prop:flabby-effective-sets}
-for the realizability topos
+\begin{rem}The analogue of Proposition~\ref{prop:flabby-effective-sets} is true
+as well for the realizability topos
 constructed using infinite time Turing
-machines~\cite{bauer:injection,hamkins-lewis:ittm} is true as well, with the
-same proof.\end{rem}
-\XXX{any PCA?}
+machines~\cite{bauer:injection,hamkins-lewis:ittm} and indeed for any realizability
+topos, with the same proof, as power objects are always
+uniform~\cite{johnstone:review-oosten}.\end{rem}
 
 
 \section{Conclusion}

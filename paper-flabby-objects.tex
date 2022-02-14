@@ -276,7 +276,7 @@ elements are equal ($\forall x,y \in K\_ x = y$), and it is a
 \subseteq \{ x \}$. Every subsingleton is trivially subterminal, but the converse
 might fail.
 
-\begin{defn}A set~$X$ is \emph{flabby} if and only if every subterminal subset
+\begin{defn}\label{defn:flabby-set}A set~$X$ is \emph{flabby} if and only if every subterminal subset
 of~$X$ is a subsingleton, that is, if and only if for every subset~$K \subseteq
 X$ such that~$\forall x,y \in K\_ x = y$, there exists an element~$x \in X$
 such that~$K \subseteq \{ x \}$.
@@ -402,15 +402,41 @@ is flabby.\end{prop}
 Subsets of flabby sets are in general not flabby, as else every set would be
 flabby in view of Corollary~\ref{cor:enough-flabby-sets}.
 
-\XXX{enough flabby modules}
 
-\XXX{proper exposition}
+\subsection{On the existence of enough flabby modules}
+
+For the intended application to the theory of sheaf cohomology, the existence
+of \emph{enough flabby sheaves of modules} is crucial: Any sheaf of modules
+embeds into a flabby sheaf of modules. In this section, we study the existence
+of enough flabby modules from the non-sheaf theoretic but constructive point of
+view.
+
+We have already established that every set embeds into a flabby set. However,
+the supersets suggested by the proof of Corollary~\ref{cor:enough-flabby-sets}
+do not carry a module structure even when the base set does. This deficit
+raises the following question: Given a module~$M$, does there exist a linear
+injection~$M \to M'$ into a set~$M'$ which simultaneously carries a module
+structure and is flabby?
+
+An earlier version of this text formulated this question as an open problem.
+The positive solution presented below rests on the intermediate notion of
+\emph{functionally flabby} sets and makes essential use of sheaves for modal
+operators. A short survey for the latter is contained
+in~\cite[Section~6]{blechschmidt:phd}; other references
+include~\cite[Sections~14.4f.]{goldblatt:topoi},~\cite{goldblatt:modality}
+\cite{vries:sheafification} and~\cite{fourman-scott:sheaves-and-logic}.\footnote{On page~5 of the
+preprint~\cite{vries:sheafification} there is a slight typing error:
+Fact~2.1(i) gives the characterization of~$j$-closedness, not~$j$-denseness.
+The correct characterization of~$j$-denseness in that context is~$\forall b \in
+B\_ j(b \in A)$.}
 
 \begin{defn}\label{defn:functionally-flabby}
 A set~$X$ is \emph{functionally flabby} if and only if there is a
 map~$\varepsilon : \P_{\leq1}(X) \to X$ such that for all~$K \in
 \P_{\leq1}(X)$, $K \subseteq \{ \varepsilon(K) \}$.\end{defn}
 
+Trivially, every functionally flabby set is flabby in the sense of
+Definition~\ref{defn:flabby-set}.
 A map~$\varepsilon : \P_{\leq1}(X) \to X$ satisfies the condition in
 Definition~\ref{defn:functionally-flabby} if and only if it is a retraction of
 the canonical injection~$X \to \P_{\leq1}(X)$.
@@ -435,24 +461,98 @@ along~$i$.
 \begin{thm}\label{thm:enough-flabby-modules}
 Every module embeds canonically into a functionally flabby module.\end{thm}
 
-\begin{proof}Let~$M$ be a module. First we'll assume that~$M$
-is a sheaf for some modal operator~$\nabla$ such that for any
+\begin{proof}We explain how to construct the required flabby envelopes
+in three steps.
+First, let~$M$ be a module which is a sheaf for some modal operator~$\nabla$
+with the property that for any
 formula~$\varphi$, $\nabla(\varphi \vee (\varphi \Rightarrow \nabla\bot))$. In
 this case, the module~$M$ is already functionally flabby: A witnessing choice
 function maps a subterminal~$K \subseteq M$ to the unique element~$x \in M$
 such that~$\nabla(x \in K')$, where~$K' \defeq K \cup \{ 0 \,|\, \text{$K$
-inhabited} \Rightarrow \nabla\bot \}$. Since~$K'$ has the property
-that~$\nabla(\text{$K$ is a singleton})$, such an element~$x$ exists and is unique
+inhabited} \Rightarrow \nabla\bot \}$. Since the set~$K'$ has, unlike~$K$, the property
+that~$\nabla(\text{$K'$ is a singleton})$, such an element~$x$ exists and is unique
 by the sheaf condition.
 
-Now let~$M$ be a module which is separated for some XXX modal operator~$\nabla$.
-Then its sheafification is a functionally flabby module into which~$M$ embeds.
+Second, let~$M$ be a module which is separated for some modal operator~$\nabla$
+as above. Then its sheafification is a functionally flabby module into
+which~$M$ embeds since the canonical map from~$M$ to its sheafification is
+injective by separatedness of~$M$.
 
 Finally, let~$M$ be an arbitrary module. For any element~$x \in M$,
 let~$\nabla_x$ be the modal operator with~$\nabla_x\varphi \defeqv ((\varphi \Rightarrow x
-= 0) \Rightarrow x = 0)$. The module~$M$ might not be~$\nabla_x$-separated for
-a particular element~$x$, but jointly XXX
+= 0) \Rightarrow x = 0)$. This is a modal operator of the kind as above.
+The module~$M$ might not be~$\nabla_x$-separated for
+any particular element~$x$, but it is jointly so: For all elements~$a,b\in M$,
+if~$\nabla_x(a = b)$ for all~$x \in M$, then~$a = b$ (considering~$x \defeq
+a-b$). Hence the canonical map~$M \to \prod_{x \in M} M^{+_x}$ into the product
+of the plus constructions with respect to all the modal operators~$\nabla_x$ is
+injective, and the desired injection is the composition
+\[ M \longrightarrow \prod_{x \in M} M^{+_x} \longrightarrow \prod_{x \in M}
+M^{+_x+_x} \]
+into the product of the sheafifications.
 \end{proof}
+
+\begin{rem}For the purpose of verifying that any module embeds into a flabby
+module, it is essential that in the first step of the proof of
+Theorem~\ref{thm:enough-flabby-modules} the module~$M$ is not only shown to be flabby,
+but even functionally flabby, and moreover in an explicit manner, explicitly
+presenting a witnessing map~$\P_{\leq1}(M) \to M$. This is because while an
+arbitrary product of flabby sets can fail to be flabby, an arbitrary product of
+functionally flabby sets with given witnesses is again so.
+\end{rem}
+
+Given the somewhat nontrivial nature of the construction in the proof of
+Theorem~\ref{thm:enough-flabby-modules}, a natural question is whether simpler
+constructions exist as well.
+There are a number of simple constructions which come close to providing
+flabby envelopes for arbitrary modules, but all such constructions known to the
+author fail in some manner. For instance, given a module~$M$, we could equip the set~$T
+\defeq \P_{\leq1}(M)/{\sim}$, where~$K \sim L$ if and only if~$K = L$ or~$K
+\cup L \subseteq \{0\}$, with a module structure given by~$0 \defeq [\{0\}]$,
+$[K]+[L] \defeq [K+L]$ and~$r [K] \defeq rK$. The resulting module admits a
+linear injection from~$M$, sending an element~$x$ to~$[\{x\}]$. However, it
+fails to be flabby. Given a subterminal~$E \subseteq \P_{\leq1}(M)/{\sim}$,
+there is the well-defined element~$v \defeq [\{x \in M\,|\,\text{$x \in K$ for
+some~$[K] \in E$}\}]$, but we cannot verify~$E \subseteq \{v\}$.
+
+That said, there is an alternative construction if sufficiently general
+\emph{quotient inductive types}, as suggested by Altenkirch and
+Kaposi~\cite{altenkirch-kaposi:qits}, are available. These generalize ordinary
+inductive~$W$-types, which exist in any
+topos~\cite{moerdijk-palmgren:wellfounded-trees,berg-moerdijk:w-types-in-sheaves,berg-kouwenhoven-gentil:w-types-in-eff}
+and whose existence
+can indeed be verified in an intuitionistic set theory like~\textsc{izf}, by allowing to
+give constructors and state identifications at the same time. More
+specifically, given an~$R$-module~$M$, we can construct a flabby envelope~$T$
+of~$M$ as the quotient inductive type generated by the following clauses,
+starting out as the construction of the free module over the underlying set
+of~$M$:~$0
+\in T$ (where~$0$ is a formal symbol); if~$t,s \in T$, then~$t + s \in T$;
+if~$t \in T$ and~$r \in R$, then~$rt \in T$; if~$x \in M$, then~$\underline{x}
+\in T$; if~$K : I \to T$ is a family of elements of~$T$ indexed by a subterminal, then~$\varepsilon_K \in T$;
+if~$t,s,u \in T$ and~$r,r' \in R$, then~$t + (s + u) = (t + s) + u$, $t + s = s + t$, $t + 0 = t
+= t + 0$, $0t = 0$, $1t = t$, $r(t+u) = rt + ru$, $(r+r')t = rt + r't$; if~$x,y
+\in M$ and~$r \in R$, then~$\underline{0} = 0$, $\underline{x + y} =
+\underline{x} + \underline{y}$, $\underline{rx} = r \underline{x}$; and if~$K :
+I \to T$ is a family such that~$I$ is inhabited by some element~$i_0$,
+then~$\varepsilon_{K} = K(i_0)$.
+
+However, there are two issues with this approach.
+Firstly, it is an open question under which circumstances quotient inductive
+types can be shown to exist. Zermelo--Fraenkel with choice certainly suffices,
+while Zermelo--Fraenkel without choice does not~\cite[Section~9]{shulman-lumsdaine:hits},
+hence~\textsc{izf} also does not.\footnote{With quotient inductive types, every infinitary
+algebraic theory admits free algebras. However, it is consistent with
+Zermelo--Fraenkel set theory that some such theories do not admit free
+algebras~\cite{blass:free-algebras}.} The existence of quotient inductive types
+seems to be, as the existence of enough injective modules, \emph{constructively
+neutral}.
+Secondly, by referencing arbitrary families of elements, the construction
+transcends the given type-theoretic or set-theoretic universe; the resulting
+object~$T$ is not manifestly small even if~$M$ is.
+
+
+\subsection{Exactness properties}
 
 \begin{prop}\label{prop:hom-flabby}
 \begin{enumerate}
@@ -1109,60 +1209,6 @@ following Scholium~\ref{scholium:exact-as-presheaves}. \XXX{XXX}
 \begin{enumerate}
 \item \XXX{Reformulate as remark somewhere}
 
-%\item There is a way of embedding any module into a flabby module if one is
-%prepared to ignore set-theoretical difficulties. Namely, let~$M$ be an~$R$-module.
-%Inductively construct a collection~$T$ of terms by the following clauses: $0
-%\in T$ (where~$0$ is a formal symbol);
-%if~$t,s \in T$, then~$t + s \in T$; if~$t \in T$ and~$r \in R$, then~$rt \in
-%T$; if~$x \in M$, then~$\underline{x} \in T$; if~$K \subseteq T$ is a
-%subterminal, then~$\varepsilon_K \in T$. Let~$({\sim})$ be
-%the finest equivalence relation on~$T$ such that~$t + (s + u) \sim (t + s) +
-%u$, $t + s \sim s + t$, $t + 0 \sim t \sim 0 + t$, $0t \sim 0$, $1t \sim t$, $r(t+s) \sim rt
-%+ rs$, $(r+r')t \sim rt + r't$ and such
-%that~$\underline{0} \sim 0$, $\underline{x+y} \sim \underline{x} + \underline{y}$, $\underline{rx} \sim
-%r \underline{x}$, and such that~$\varepsilon_{\{t\}} \sim
-%t$ for all terms~$t$. Then the quotient~$T/{\sim}$ is a flabby~$R$-module
-%into which~$M$ embeds. However, it is not clear that~$T/{\sim}$ is a set.
-
-\item There is a way of embedding any module into a flabby module if
-\emph{quotient inductive types}, as suggested by Altenkirch and
-Kaposi~\cite{altenkirch-kaposi:qits}, are available. These generalize ordinary
-inductive~$W$-types, which exist in any
-topos~\cite{moerdijk-palmgren:wellfounded-trees,berg-moerdijk:w-types-in-sheaves,berg-kouwenhoven-gentil:w-types-in-eff}
-and whose existence
-can indeed be verified in an intuitionistic set theory like IZF, by allowing to
-give constructors and state identifications at the same time. More
-specifically, given an~$R$-module~$M$, we can construct a flabby envelope~$T$
-of~$M$ as the quotient inductive type generated by the following clauses:~$0
-\in T$ (where~$0$ is a formal symbol); if~$t,s \in T$, then~$t + s \in T$;
-if~$t \in T$ and~$r \in R$, then~$rt \in T$; if~$x \in M$, then~$\underline{x}
-\in T$; if~$K \subseteq T$ is a subterminal, then~$\varepsilon_K \in T$;
-if~$t,s,u \in T$ and~$r,r' \in R$, then~$t + (s + u) = (t + s) + u$, $t + s = s + t$, $t + 0 = t
-= t + 0$, $0t = 0$, $1t = t$, $r(t+u) = rt + ru$, $(r+r')t = rt + r't$; if~$x,y
-\in M$ and~$r \in R$, then~$\underline{0} = 0$, $\underline{x + y} =
-\underline{x} + \underline{y}$, $\underline{rx} = r \underline{x}$; and if~$t
-\in T$, then~$\varepsilon_{\{t\}} = t$.
-
-However, it is an open question under which circumstances quotient inductive
-types can be shown to exist. Zermelo--Fraenkel with choice certainly suffices,
-while Zermelo--Fraenkel without choice does not~\cite[Section~9]{shulman-lumsdaine:hits},
-hence IZF also does not.\footnote{With quotient inductive types, every infinitary
-algebraic theory admits free algebras. However, it is consistent with
-Zermelo--Fraenkel set theory that some such theories do not admit free
-algebras~\cite{blass:free-algebras}.} The existence of quotient inductive types
-seems to be, as the existence of enough injective modules, \emph{constructively
-neutral}.
-
-\item There are a number of simple constructions which come close to providing
-flabby envelopes for arbitrary modules~$M$. For instance, we could equip the set~$T
-\defeq \P_{\leq1}(X)/{\sim}$, where~$K \sim L$ if and only if~$K = L$ or~$K
-\cup L \subseteq \{0\}$, with a module structure given by~$0 \defeq [\{0\}]$,
-$[K]+[L] \defeq [K+L]$ and~$r [K] \defeq rK$. The resulting module admits a
-linear injection from~$M$, sending an element~$x$ to~$[\{x\}]$. However, it
-fails to be flabby. Given a subterminal~$E \subseteq \P_{\leq1}(X)/{\sim}$,
-there is the well-defined element~$v \defeq [\{x \in M\,|\,\text{$x \in K$ for
-some~$[K] \in E$}\}]$, but we cannot verify~$E \subseteq \{v\}$.
-
 \item There appears to be some tension regarding the \effective topos:
 Proposition~\ref{prop:semienough-flabby-modules} shows that at
 least~$\neg\neg$-separated modules in the \effective topos always embed into
@@ -1196,3 +1242,7 @@ Cite! https://arxiv.org/pdf/2008.10677.pdf
 FUTURE:
 
 * Does "flabby sheaves are acyclic on all locales" imply Zorn?
+
+1. Zorn
+2. effective
+3. predicative, no AU's

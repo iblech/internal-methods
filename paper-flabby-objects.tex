@@ -154,7 +154,7 @@ constructively sensible replacement of the usual definition. However, we show
 in Section~\ref{sect:in-eff} and in Section~\ref{sect:conclusion} that flabby
 resolutions present their own challenges, and in summary we failed to reach this
 goal. The problem of giving a constructive account
-of sheaf cohomology is still open.
+of sheaf cohomology is still open~\cite{tenorio-mariano:cohomology}.
 
 In view of almost 80 years of sheaf cohomology, this state of affairs is
 slightly embarrassing, challenging the call that ``once [a] subject is better
@@ -1199,50 +1199,59 @@ group~\cite{blass:inj-proj-axc}.
 
 Can this issue be remedied by employing flabby resolutions
 instead of injective ones? Classically, it is known that they can be used in
-their stead. For instance, George Kempf developed the foundations of the
-cohomology of quasicoherent sheaves on this premise~\cite{kempf:cohomology}. There are, however, two problems with this
-suggestion. Firstly, all proofs known to us that flabby sheaves are
+their stead, and moreover George Kempf developed the foundations of the
+cohomology of quasicoherent sheaves on this premise~\cite{kempf:cohomology}. There are, however, three issues with this
+suggestion.
+
+Firstly, all proofs known to us that flabby sheaves are
 acyclic for the global sections functor require Zorn's lemma. This problem might
 be mitigated by relying on the substitute property discussed
-following Scholium~\ref{scholium:exact-as-presheaves}. \XXX{XXX}
+following Scholium~\ref{scholium:exact-as-presheaves}, but still acyclitity in
+the usual sense will most likely not be attainable.
 
-\begin{enumerate}
-\item \XXX{Reformulate as remark somewhere}
+Secondly, while we have shown in Theorem~\ref{thm:enough-flabby-modules} that
+enough flabby envelopes exist constructively, the analysis in Section~\ref{sect:in-eff}
+demonstrates that the presented envelopes are in a sense deeply uncomputable.
+Intuitionistic Zermelo--Fraenkel set theory~\cite{crosilla:cst-izf} and the
+type theory of toposes~\cite{maietti:modular} do verify that they exist, but
+only by virtue of excessive reliance on powersets, precluding concrete
+computations; the construction is highly \emph{impredicative}, not meeting the
+bar of \emph{predicative mathematics}~\cite{crosilla:predicativity}.
 
-\item There appears to be some tension regarding the \effective topos:
-Proposition~\ref{prop:semienough-flabby-modules} shows that at
-least~$\neg\neg$-separated modules in the \effective topos always embed into
-flabby modules, assuming the law of excluded middle in the metatheory, while
-Proposition~\ref{prop:flabby-effective-sets} shows that no nontrivial \effective
-module is flabby.
-\end{enumerate}
+As a result, thirdly, flabby resolutions do not generalize from toposes to the
+setting of \emph{arithmetic universes}, the predicative cousins of toposes
+introduced by André Joyal which have recently been an important object of
+consideration by Milly Maietti and
+Steve Vickers~\cite{maietti:au,maietti-vickers:induction,vickers:sketches}.
+These are not only interesting on their own and as a convenient foundation
+for ensuring predicativity (and hence computability in a strict sense), but also
+because they can be used to obtain base-independent proofs for the topos
+case~\cite{vickers:classifying,hazratpour:phd}: \emph{Computing cohomology of
+concrete spaces should not require fixing a universe of sets first.}
 
 We currently believe that it is not possible to give a constructive account of
 a global cohomology functor which would associate to any sheaf of modules its
 cohomology. However, it should be possible to do so for a restricted class of
 sheaves, while still preserving the good formal properties expected from
-derived functors.
+derived functors. To this end, a mix of the approaches using
+pointwise Kan extensions, as cogently argued for by Emily
+Riehl~\cite[Chapter~2]{riehl:cathtpy}, and ind-objects as presented in the Stacks
+Project~\cite[Tag~05S7]{stacks-project} seems promising.
+
+This framework is sufficiently flexible to not demand derived functors to be
+defined everywhere. Rather, they will be defined just for those objects for
+which we happen to have a suitable resolution. Only classically, by using
+injective or flabby sheaves, can we pretend that every object has such a
+resolution. We hope to report on details in future work.
 
 \printbibliography
 \enlargethispage{1em}
 
-\XXX{cite more: Hyland §5,
-Fourman-Scott 1979,
-Johnstone 1977}
-
-\XXX{quasicompact case}
-
 \end{document}
-
-XXX: injective as module implies functionally flabby
-
-Cite! https://arxiv.org/pdf/2008.10677.pdf
 
 
 FUTURE:
 
 * Does "flabby sheaves are acyclic on all locales" imply Zorn?
 
-1. Zorn
-2. effective
-3. predicative, no AU's
+* quasicompact/spectral case

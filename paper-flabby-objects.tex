@@ -354,8 +354,7 @@ the following properties are well-known:
 % Take care if numbering changes (referenced below)
 \item Every set embeds canonically (that is, in a uniform fashion) into an injective set.
 \item Every injective module is also injective as a set.
-\item Assuming Zorn's lemma (but not the law of excluded middle, hence not the
-axiom of choice), every module embeds into an
+\item Assuming the axiom of choice (so Zorn's lemma in combination with the law of excluded middle), every module embeds into an
 injective module.
 \end{enumerate}\end{prop}
 
@@ -374,6 +373,10 @@ The result for modules over arbitrary rings then follows purely
 formally, since the functor~$A \mapsto \Hom(R,A)$ from abelian groups
 to~$R$-modules has a left exact left adjoint with monic unit. \qedhere
 \end{enumerate}\end{proof}
+
+We note in passing that Remark~\ref{rem:enough-injective-modules-without-lem}
+below explains how to verify Proposition~\ref{prop:basics-injective}(3) also in
+the absence of the law of excluded middle (but still requiring Zorn's lemma).
 
 \begin{prop}\label{prop:injective-flabby}
 Every injective set is flabby.\end{prop}

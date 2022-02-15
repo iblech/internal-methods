@@ -50,6 +50,7 @@ Strada le Grazie 15 \\
 \newcommand{\B}{\mathcal{B}}
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
 \renewcommand{\P}{\mathcal{P}}
 \renewcommand{\O}{\mathcal{O}}
 \newcommand{\defeq}{\vcentcolon=}
@@ -368,15 +369,18 @@ let~$f : A \to I$ be an arbitrary map. Then the induced map~$R\langle A \rangle
 map~$f$ lifts to a linear map~$R\langle A \rangle \to I$, and an~$R$-linear
 extension~$R\langle B \rangle \to I$ induces an extension~$B \to I$ of~$f$.
 \item One verifies that any abelian group embeds into a divisible
-abelian group. By Baer's criterion (which requires the axiom of choice), divisible abelian groups are injective.
+abelian group. By Baer's criterion (which in this form requires the axiom of choice), divisible abelian groups are injective.
 The result for modules over arbitrary rings then follows purely
 formally, since the functor~$A \mapsto \Hom(R,A)$ from abelian groups
 to~$R$-modules has a left exact left adjoint with monic unit. \qedhere
 \end{enumerate}\end{proof}
 
-We note in passing that Remark~\ref{rem:enough-injective-modules-without-lem}
-below explains how to verify Proposition~\ref{prop:basics-injective}(3) also in
-the absence of the law of excluded middle (but still requiring Zorn's lemma).
+We note in passing that the multi-step technique of the proof of
+Theorem~\ref{thm:enough-flabby-modules} below can be used to verify
+Proposition~\ref{prop:basics-injective}(3) also in the absence of the law of
+excluded middle (but still requiring Zorn's lemma). Since this observation is of no
+further import for the purposes of this text, details are postponed to
+Section~\ref{sect:enough-injective-modules}.
 
 \begin{prop}\label{prop:injective-flabby}
 Every injective set is flabby.\end{prop}
@@ -1241,17 +1245,103 @@ cohomology. However, it should be possible to do so for a restricted class of
 sheaves, while still preserving the good formal properties expected from
 derived functors. To this end, a mix of the approaches using
 pointwise Kan extensions, as cogently argued for by Emily
-Riehl~\cite[Chapter~2]{riehl:cathtpy}, and ind-objects as presented in the Stacks
+Riehl~\cite[Chapter~2]{riehl:cathtpy} (see also~\cite{hinich:what-is,maltsiniotis:adjunction}), and ind-objects as presented in the Stacks
 Project~\cite[Tag~05S7]{stacks-project} seems promising.
 
 This framework is sufficiently flexible to not demand derived functors to be
 defined everywhere. Rather, they will be defined just for those objects for
 which we happen to have a suitable resolution. Only classically, by using
 injective or flabby sheaves, can we pretend that every object has such a
-resolution. We hope to report on details in future work.
+resolution. We hope to report on details in future work. Can perhaps even the
+rare cases where injective resolutions exceptionally do have some link to
+computations, as on projective spaces~\cite{huang:cohomology}, be given a
+proper constructive and predicative home?
 
 \printbibliography
 \enlargethispage{1em}
+
+\appendix
+
+% \begin{document}
+
+\section{On the existence of enough injective modules}
+\label{sect:enough-injective-modules}
+
+\begin{defn}\begin{enumerate}
+\item An abelian group~$I$ is \emph{divisible} if and only if for every
+element~$x \in I$ and every natural number~$n \geq 1$, there is an element~$y \in I$
+such that~$ny = x$.
+\item An abelian group~$I$ \emph{satisfies the Baer criterion} if and only if,
+for every ideal~$\aaa \subseteq \ZZ$, every ($\ZZ$-)linear map~$\aaa \to I$
+admits an extension along the inclusion to a linear map~$\ZZ \to I$.
+\end{enumerate}
+\end{defn}
+
+\begin{prop}
+\begin{enumerate}
+\item Assuming the law of excluded middle, divisible abelian groups satisfy
+the Baer criterion.
+\item Assuming Zorn's lemma, abelian groups which satisfy the Baer criterion
+are injective.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}Assuming the law of excluded middle, the only ideals of~$\ZZ$ are
+the principal ideals~$(n)$ where~$n \geq 0$. For~$n = 0$ existence of
+extensions is trivial and for~$n > 0$ existence of extensions follow from
+divisibility.
+
+Assuming Zorn's lemma, let~$I$ be an abelian group satisfying the Baer
+criterion, let~$i : A \to B$ be a linear injection and let~$f : A \to I$ be a
+linear map. The poset of partial extensions contains suprema of chains and
+hence a maximal partial extension~$f_0 : A_0 \to I$ with~$A \subseteq A_0
+\subseteq B$. To verify that~$A_0 = B$, let an element~$x \in B$ be given.
+By the Baer condition, the linear map~$g : (A_0 : x) \to I$ defined on the
+ideal~$(A_0 : x) = \{ n \in \ZZ \,|\, nx \in A_0 \} \subseteq \ZZ$ given by~$g(n) =
+f_0(nx)$ can be extended to a linear map~$\overline{g} : \ZZ \to I$.
+Hence~$f_0$ can be extended to the map~$A_0 + (x) \to I$ given by~$u + nx
+\mapsto f_0(u) + \overline{g}(n)$. By maximality~$A_0 + (x) = A_0$, hence~$x \in A_0$.
+\end{proof}
+
+\begin{prop}
+\begin{enumerate}
+\item Any abelian group embeds into a divisible abelian group.
+\item Any abelian group embeds into an abelian group satisfying the Baer
+condition.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}For the first part, an abelian group~$A$ embeds into the
+divisible group~$\QQ\langle A \rangle / K$, where~$\QQ\langle A \rangle$ is the
+underlying abelian group of the free~$\QQ$-vector space on~$A$ and~$K$ is the
+kernel of the canonical map~$\ZZ\langle A \rangle \to A$.
+
+The second part is more involved and requires, similar to the proof of
+Theorem~\ref{thm:enough-flabby-modules}, a strengthening of the Baer condition
+where the required extensions are explicitly given. As a first step, let~$A$ be
+an abelian group which is a sheaf for a modal operator~$\nabla$ such
+that~$\nabla(\varphi \vee (\varphi \Rightarrow \nabla\bot))$. Let~$i : \aaa
+\hookrightarrow \ZZ$ be the inclusion of an ideal of~$\ZZ$ and let~$f : \aaa
+\to A$ be a linear map. Applying the sheafification functor~$(\cdot)^{++}$, we
+have the following commutative diagram:
+\[ \xymatrix{
+  \aaa \ar@{^{(}->}[r]^i\ar[d]\ar@/_2pc/[dd]_f & \ZZ \ar[d] \\
+  \aaa^{++} \ar@{^{(}->}[r]^{i^{++}}\ar@{-->}[d] & \ZZ^{++}\ar@{-->}@/^/[ld]^{f'} \\
+  A
+} \]
+The given map~$f$ factors (uniquely) over the map~$\aaa \to \aaa^{++}$ since~$A$ is a
+sheaf. The map~$i^{++}$ is still injective as sheafification is exact. The two
+top vertical maps need not be injective, as~$\ZZ$ need not be separated
+for~$\nabla$; but this issue XXX
+\end{proof}
+
+\begin{prop}Assuming Zorn's lemma:
+\begin{enumerate}
+\item Any abelian group embeds into an injective abelian group.
+\item Any module embeds into an injective module.
+\item XXX Grothendieck topos?
+\end{enumerate}
+\end{prop}
 
 \end{document}
 
@@ -1259,6 +1349,7 @@ resolution. We hope to report on details in future work.
 TO DO:
 * enough injectives employing only Zorn
 * first names?
+* cite more from Barakat and friends?
 
 FUTURE:
 * Does "flabby sheaves are acyclic on all locales" imply Zorn?

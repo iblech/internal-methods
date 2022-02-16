@@ -1278,10 +1278,11 @@ admits an extension along the inclusion to a linear map~$\ZZ \to I$.
 \end{defn}
 
 \begin{prop}
+\label{prop:embed1}
 \begin{enumerate}
-\item Assuming the law of excluded middle, divisible abelian groups satisfy
+\item Assuming the law of excluded middle, all divisible abelian groups satisfy
 the Baer criterion.
-\item Assuming Zorn's lemma, abelian groups which satisfy the Baer criterion
+\item Assuming Zorn's lemma, all abelian groups which satisfy the Baer criterion
 are injective.
 \end{enumerate}
 \end{prop}
@@ -1295,7 +1296,9 @@ Assuming Zorn's lemma, let~$I$ be an abelian group satisfying the Baer
 criterion, let~$i : A \to B$ be a linear injection and let~$f : A \to I$ be a
 linear map. The poset of partial extensions contains suprema of chains and
 hence a maximal partial extension~$f_0 : A_0 \to I$ with~$A \subseteq A_0
-\subseteq B$. To verify that~$A_0 = B$, let an element~$x \in B$ be given.
+\subseteq B$.
+
+To verify that~$A_0 = B$, let an element~$x \in B$ be given.
 By the Baer condition, the linear map~$g : (A_0 : x) \to I$ defined on the
 ideal~$(A_0 : x) = \{ n \in \ZZ \,|\, nx \in A_0 \} \subseteq \ZZ$ given by~$g(n) =
 f_0(nx)$ can be extended to a linear map~$\overline{g} : \ZZ \to I$.
@@ -1303,11 +1306,58 @@ Hence~$f_0$ can be extended to the map~$A_0 + (x) \to I$ given by~$u + nx
 \mapsto f_0(u) + \overline{g}(n)$. By maximality~$A_0 + (x) = A_0$, hence~$x \in A_0$.
 \end{proof}
 
-\begin{prop}
+\begin{lemma}\label{lemma:q-mod-z}
+Let~$\nabla$ be a modal operator such
+that~$\nabla(\varphi \vee (\varphi \Rightarrow \nabla\bot))$ and
+let~$(\cdot)^+$ denote the plus construction with respect to~$\nabla$. Then:
 \begin{enumerate}
-\item Any abelian group embeds into a divisible abelian group.
-\item Any abelian group embeds into an abelian group satisfying the Baer
-condition.
+\item The sheafification~$(\QQ/\ZZ)^{++}$ satisfies the Baer condition.
+\item Assuming Zorn's lemma, given an element~$x$ of an abelian group~$A$,
+there is a linear map~$g : A \to (\QQ/\ZZ)^{++}$ such that~$g(x) = 0
+\Rightarrow \nabla(x=0)$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}Let~$i : \aaa \hookrightarrow \ZZ$ be the inclusion of an ideal
+and let~$f : \aaa \to A$ be a linear map as in the solid part of the following
+commutative diagram:
+\[ \xymatrix{
+  \aaa \ar@{^{(}->}[r]^i\ar[d]\ar@/_2pc/[dd]_f & \ZZ \ar[d] \\
+  \aaa^{++} \ar@{^{(}->}[r]^{i^{++}}\ar@{-->}[d] & \ZZ^{++}\ar@{-->}@/^/[ld]^{f'} \\
+  (\QQ/\ZZ)^{++}
+} \]
+The given map~$f$ factors (uniquely) over the map~$\aaa \to \aaa^{++}$
+since~$(\QQ/\ZZ)^{++}$ is a sheaf. The map~$i^{++}$ is still injective as
+sheafification is exact. (The two top vertical maps need not be injective,
+as~$\ZZ$ need not be separated for~$\nabla$.) Hence we are reduced to an
+extension problem in the subtopos of~$\nabla$-sheaves, which is solvable
+because this subtopos is Boolean (Proposition~\ref{prop:embed1}(1)). More
+explicitly, the extension~$f'$ maps~$1 \in \ZZ$ to the gluing of
+\begin{multline*}
+  \{ 0 \,|\, \forall x \in \aaa. \nabla(x = 0) \} \cup {}\\
+  \{ \tfrac{1}{d} v \,|\, d \geq 1, v \in [0,1),
+    f(d) = \underline{v}, \forall x \in \aaa. \nabla(x \in \aaa)
+    \Leftrightarrow \nabla(\exists n \in \ZZ. x = nd) \}.
+\end{multline*}
+
+For the second part, let~$A$ be an abelian group and let~$x \in A$ be an
+element. Let~$i : \ZZ/(0:x) \to A$ be the linear map with~$[1] \mapsto x$,
+where~$(0:x)$ is the ideal~$\{ n \in \ZZ \,|\, nx = 0 \}$. In the Boolean
+subtopos of~$\nabla$-sheaves, this ideal is either the zero ideal or the
+principal ideal~$(d)$ of some positive generator. Let~$h : \ZZ/(0:x) \to
+(\QQ/\ZZ)^{++}$ be the linear map sending~$[1]$ to the respective gluing such
+that in the first case~$h([1]) = [\tfrac{1}{2}]$ and in the second case~$h([1])
+= [\frac{1}{d}]$. Assuming Zorn's lemma such that
+Proposition~\ref{prop:embed1}(2) applies, there is an extension~$\overline{h} :
+A \to (\QQ/\ZZ)^{++}$. This map is the desired map. If~$\overline{h}(x) =
+h([1]) = 0$, then in the subtopos~$d = 1$, hence~$\nabla(x = 0)$.
+\end{proof}
+
+\begin{prop}\label{prop:embed2}
+\begin{enumerate}
+\item Every abelian group embeds canonically into a divisible abelian group.
+\item Every abelian group maps canonically to an abelian group functionally satisfying the Baer
+condition. Assuming Zorn's lemma, this map is an embedding.
 \end{enumerate}
 \end{prop}
 
@@ -1319,29 +1369,49 @@ kernel of the canonical map~$\ZZ\langle A \rangle \to A$.
 The second part is more involved and requires, similar to the proof of
 Theorem~\ref{thm:enough-flabby-modules}, a strengthening of the Baer condition
 where the required extensions are explicitly given. As a first step, let~$A$ be
-an abelian group which is a sheaf for a modal operator~$\nabla$ such
-that~$\nabla(\varphi \vee (\varphi \Rightarrow \nabla\bot))$. Let~$i : \aaa
-\hookrightarrow \ZZ$ be the inclusion of an ideal of~$\ZZ$ and let~$f : \aaa
-\to A$ be a linear map. Applying the sheafification functor~$(\cdot)^{++}$, we
-have the following commutative diagram:
-\[ \xymatrix{
-  \aaa \ar@{^{(}->}[r]^i\ar[d]\ar@/_2pc/[dd]_f & \ZZ \ar[d] \\
-  \aaa^{++} \ar@{^{(}->}[r]^{i^{++}}\ar@{-->}[d] & \ZZ^{++}\ar@{-->}@/^/[ld]^{f'} \\
-  A
-} \]
-The given map~$f$ factors (uniquely) over the map~$\aaa \to \aaa^{++}$ since~$A$ is a
-sheaf. The map~$i^{++}$ is still injective as sheafification is exact. The two
-top vertical maps need not be injective, as~$\ZZ$ need not be separated
-for~$\nabla$; but this issue XXX
+an abelian group which is separated for a modal operator~$\nabla$ such
+that~$\nabla(\varphi \vee (\varphi \Rightarrow \nabla\bot))$. The codomain of
+the canonical map
+\[ A \longrightarrow \prod_{g : A \to (\QQ/\ZZ)^{++}} (\QQ/\ZZ)^{++},\
+  x \longmapsto (g(x))_g \]
+is a product of abelian groups which functionally satisfy the Baer criterion by
+Lemma~\ref{lemma:q-mod-z}(1) and hence satisfies the Baer condition itself.
+Assuming Zorn's lemma, this map is injective by Lemma~\ref{lemma:q-mod-z}(2)
+and~$\nabla$-separatedness of~$A$.
+
+For the general case, let an abelian group~$A$ be given. Denoting
+by~$(\cdot)^{+_x}$ the plus construction with respect to the modal
+operator~$\nabla_x$ with~$\nabla_x\varphi \defeqv ((\varphi \Rightarrow x
+= 0) \Rightarrow x = 0)$, the codomain of the canonical map
+\[ A \longrightarrow \prod_{x \in A} \prod_{g : A \to (\QQ/\ZZ)^{+_x+_x}}
+(\QQ/\ZZ)^{+_x+_x} \]
+satisfies the Baer criterion and is injective as in the proof of
+Theorem~\ref{thm:enough-flabby-modules}.
 \end{proof}
 
 \begin{prop}Assuming Zorn's lemma:
 \begin{enumerate}
-\item Any abelian group embeds into an injective abelian group.
-\item Any module embeds into an injective module.
-\item XXX Grothendieck topos?
+\item Every abelian group embeds canonically into an injective abelian group.
+\item Every module embeds canonically into an injective module.
+\item Every module in any Grothendieck topos embeds canonically into an injective module.
 \end{enumerate}
 \end{prop}
+
+\begin{proof}The first claim is by Proposition~\ref{prop:embed2}.
+
+The second claim follows purely formally as in the proof of
+Proposition~\ref{prop:basics-injective}(3), using the adjunction between the
+category of modules and the category of abelian groups.
+
+For the third claim, let~$\E$ be a Grothendieck topos and let~$\pi : \F \to \E$ be its Barr
+covering \XXX{ref}. Zorn's lemma passes from the metatheory to~$\F$ since~$\F$ is a
+localic topos. Hence the first part applies in~$\F$. Purely formally, using the
+adjunction between~$\mathrm{Ab}(\F)$ and~$\mathrm{Ab}(\E)$, there are enough
+injective abelian groups in~$\E$. The existence of enough injective modules
+in~$\E$ follows from internalizing the second claim in~$\E$.
+\end{proof}
+
+\XXX{cite whom for the general argument?}
 
 \end{document}
 

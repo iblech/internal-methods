@@ -315,7 +315,9 @@ A set is flabby if and only if every of its partially-defined elements can be
 refined to an honest element.
 
 \begin{rem}\label{rem:constant-flabby}
-Although we will see in \XXX{number} and in Section~\ref{sect:in-eff} that there is some
+A set~$X$ is \emph{$\neg\neg$-separated} if and only
+if~$\neg\neg(x=y)\Rightarrow x=y$ for all elements~$x,y \in X$.
+Although Section~\ref{sect:enough-flabby-modules} presents some
 relation between flabby sets and~$\neg\neg$-separated sets, neither notion
 encompasses the other. The set~$\Omega$ is flabby, but might fail to
 be~$\neg\neg$-separated; the set~$\ZZ$ is~$\neg\neg$-separated, even discrete,
@@ -411,6 +413,7 @@ flabby in view of Corollary~\ref{cor:enough-flabby-sets}.
 
 
 \subsection{On the existence of enough flabby modules}
+\label{sect:enough-flabby-modules}
 
 For the intended application to the theory of sheaf cohomology, the existence
 of \emph{enough flabby sheaves of modules} is crucial: Any sheaf of modules
@@ -917,7 +920,7 @@ It is worth noting that, because the internal language machinery was at that
 point not as well-developed as it is today, Harting had to go to considerable
 length to construct internal direct sums of abelian group
 objects~\cite{harting:coproduct}, and in order to verify that taking internal
-direct sums is faithful she felt the need to employ Barr's
+direct sums is faithful she appealed to Barr's
 metatheorem~\cite[Theorem~1.7]{harting:effacements}. Nowadays we can verify
 both statements by simply carrying out an intuitionistic proof in the case of
 the topos of sets and then trusting the internal language to obtain the

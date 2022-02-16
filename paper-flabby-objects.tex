@@ -567,37 +567,51 @@ object~$T$ is not manifestly small even if~$M$ is.
 \begin{prop}\label{prop:hom-flabby}
 \begin{enumerate}
 \item Let~$I$ be an injective set. Let~$T$ be an arbitrary set. Then the
-set~$I^T$ of maps from~$T$ to~$I$ is flabby.
-\item Let~$I$ be an injective~$R$-module. Let~$T$ be an arbitrary~$R$-module. Then the
-set~$\Hom_R(T,I)$ of linear maps from~$T$ to~$I$ is flabby.
+set~$I^T$ of maps from~$T$ to~$I$ is injective.
+\item Let~$I$ be an injective~$R$-module. Let~$T$ be an arbitrary~$R$-module.
+If~$T$ is flat, then the module~$\Hom_R(T,I)$ of linear maps from~$T$ to~$I$ is
+injective. In the general case, it is at least flabby.
 \end{enumerate}\end{prop}
 
-\begin{proof}We first cover the case of sets. Let~$K \subseteq I^T$ be a
-subterminal. We consider the injectivity diagram
-\[ \xymatrix{
-  T' \ar@{^{(}->}[r]\ar[d] & T \ar@{-->}@/^/[ld] \\
-  I
-} \]
-where~$T'$ is the subset~$\{ s \in T \,|\, \text{$K$ is inhabited} \} \subseteq T$ and the
-solid vertical map sends~$s \in T'$ to~$g(s)$, where~$g$ is an arbitrary element
-of~$K$. This association is well-defined. Since~$I$ is injective, a dotted lift
-as indicated exists. If~$K$ is inhabited, this lift is an element of~$K$.
+\begin{proof}The first claim follows abstractly from the fact that the Hom
+functor~$(\cdot)^T$ has a monomorphism-preserving left adjoint, namely the
+product functor~$(\cdot) \times T$. Explicitly, an extension problem as in the
+left half of the diagram
+\[
+  \xymatrix{
+    A \ar@{^{(}->}[r]^i\ar[d]_f & B \ar@{-->}@/^/[ld]^{\overline{f}} \\
+    I^T
+  }
+  \qquad
+  \xymatrix{
+    A \times T \ar@{^{(}->}[r]^{i \times T}\ar[d]_{g \defeq f^t} & B \times T \ar@{-->}@/^/[ld]^{\overline{g}} \\
+    I
+  }
+\]
+can be transposed to the extension problem as in the right half. A
+solution~$\overline{g}$ gives rise to the solution~$\overline{f}$ of the
+original problem by the setting~$\overline{f}(x) = (t \mapsto
+\overline{g}(x,t))$.
 
-The same kind of argument applies to the case of modules. If~$K$ is a
-subterminal of~$\Hom_R(T,I)$, we define~$T'$ to be the submodule
-$\{ s \in T \,|\, \text{$s = 0$ or $K$ is inhabited} \}$ and consider the
-analogous injectivity diagram, where the solid vertical map~$f : T' \to I$ is now
-defined by cases: Let~$s \in T'$. If~$s = 0$, then we set~$f(s) = 0$; if~$K$ is
-inhabited, then we set~$f(s) \defeq g(s)$, where~$g$ is an arbitrary element
-of~$K$. This association is again well-defined, and a dotted lift yields the
-desired element of~$\Hom_R(T,I)$.
+The injectivity part of the second claim follows entirely analogously,
+employing the tensor product instead of the cartesian product.
+
+For the general statement, let~$K$ be a subterminal of~$\Hom_R(T,I)$. Let~$T'$
+be the submodule $\{ s \in T \,|\, \text{$s = 0$ or $K$ is inhabited} \}
+\subseteq T$ and let~$f : T' \to I$ be the linear map defined as follows:
+Let~$s \in T'$. If~$s = 0$, then we set~$f(s) = 0$; if~$K$ is inhabited, then
+we set~$f(s) \defeq g(s)$, where~$g$ is an arbitrary element of~$K$. This
+association is well-defined. Since~$I$ is injective as a module, there is a
+linear extension~$\overline{f} : T \to I$ of~$f$ along the inclusion~$T'
+\subseteq T$. If~$K$ is inhabited, this extension is an element of~$K$ as
+required.
 \end{proof}
 
-Proposition~\ref{prop:hom-flabby} can be used to give an alternative proof of
-Proposition~\ref{prop:injective-flabby} and to generalize
-Proposition~\ref{prop:injective-flabby} to modules: If~$I$ is an injective set,
-then the set~$I^1 \cong I$ is flabby. If~$I$ is an injective module, then the
-set~$\Hom_R(R,I) \cong I$ is flabby.
+%Proposition~\ref{prop:hom-flabby} can be used to give an alternative proof of
+%Proposition~\ref{prop:injective-flabby} and to generalize
+%Proposition~\ref{prop:injective-flabby} to modules: If~$I$ is an injective set,
+%then the set~$I^1 \cong I$ is flabby. If~$I$ is an injective module, then the
+%set~$\Hom_R(R,I) \cong I$ is flabby.
 
 \begin{lemma}\label{lemma:set-of-extensions-flabby}
 \begin{enumerate}
@@ -1264,8 +1278,6 @@ proper constructive and predicative home?
 \enlargethispage{1em}
 
 \appendix
-
-% \begin{document}
 
 \section{On the existence of enough injective modules}
 \label{sect:enough-injective-modules}

@@ -123,6 +123,7 @@
 \newcommand{\pt}{\mathrm{pt}}
 \newcommand{\Loc}{\mathrm{Loc}}
 \newcommand{\Top}{\mathrm{Top}}
+\newcommand{\effective}{ef{}fective\xspace}
 
 %\setbeamertemplate{blocks}[rectangles][shadow=false]
 
@@ -150,6 +151,9 @@
 
 \newcommand{\bignumber}[1]{
   \renewcommand{\insertenumlabel}{#1}\scalebox{1.5}{\usebeamertemplate{enumerate item}}
+}
+\newcommand{\normalnumber}[1]{
+  \renewcommand{\insertenumlabel}{#1}\scalebox{1.0}{\usebeamertemplate{enumerate item}}
 }
 \newcommand{\bigheart}{\includegraphics{heart}}
 
@@ -334,84 +338,271 @@
   \subhead{Examples}
   \bigskip
 
-  \begin{columns}[T]
-    \begin{column}{0.3\textwidth}
-      \centering\small
-      \includegraphics[height=5em]{zeta-function} \\
-      $\mathbb{C}$
-    \end{column}
-
-    \begin{column}{0.3\textwidth}
-      \centering\small
-      \includegraphics[height=5em]{3-adic-numbers} \\
-      $\mathbb{Q}_p$
-    \end{column}
-
-    \begin{column}{0.3\textwidth}
-      \centering\small
-      \includegraphics[height=5em]{bruyn-pope} \\
-      $\mathbb{F}_1$
-    \end{column}
-
-    \begin{column}{0.3\textwidth}
-      \centering\small
-      \includegraphics[height=5em]{hilbert-hotel} \\
-      $\infty$
-    \end{column}
-  \end{columns}
+  \mbox{\begin{minipage}{0.15\textwidth}
+    \centering\small
+    \includegraphics[height=5em]{zeta-function} \\
+    $\mathbb{C}$
+  \end{minipage}\quad
+  \begin{minipage}{0.20\textwidth}
+    \centering\small
+    \includegraphics[height=5em]{3-adic-numbers} \\
+    $\mathbb{Q}_p$
+  \end{minipage}\quad
+  \begin{minipage}{0.20\textwidth}
+    \centering\small
+    \includegraphics[height=5em]{bruyn-pope} \\
+    $\mathbb{F}_1$
+  \end{minipage}\quad
+  \begin{minipage}{0.42\textwidth}
+    \centering\small
+    \includegraphics[height=5em]{hilbert-hotel} \\
+    $\infty$
+  \end{minipage}}
 \end{frame}
 
-\begin{frame}{Generic models}
-  \subhead{The generic group $G_0$}
+\begin{frame}{The universal localization}
+  Let~$A$ be a commutative ring with unit.
+
   \begin{itemize}
-    \item ``Let $G$ be a group.'' \hfill -- \emph{thesis: this phrase references $G_0$}
-    \item $\forall g,h \in G_0\_ (gh)^{-1} = h^{-1}g^{-1}$ \hfill -- \emph{a property
-    shared by all groups}
-    \item Is $G_0$ abelian? \hfill -- \emph{nonclassical truth value}
+    \item Let~$S \subseteq A$ be multiplicatively closed. Then there
+    is the \hil{localization}
+    $A[S^{-1}] \defeq \{ \tfrac{x}{s} \,|\, x \in A, s \in S \}$.
+    \pause
+    \item\justifying Let~$\ppp \subseteq A$ be a prime filter.
+    Then the \hil{stalk}~$A_\ppp \defeq A[\ppp^{-1}]$
+    is a \hil{local ring}: If a finite sum of elements is invertible, then so is one
+    of the summands.
+    \pause
+    \item Is there a \hil{universal localization} of~$A$?
   \end{itemize}
 
-  \subhead{The generic prime ideal}
+  \begin{columns}[t]
+    \begin{column}{0.4\textwidth}
+      $\xymatrix{
+        A \ar[rd] \ar[rrr]^f &&& {\substack{\phantom{\text{local}}\\\text{\normalsize$R$}\\\text{local}}} \\
+        & {\substack{\text{\normalsize$A'$}\\\text{local}}} \ar@{-->}_[@!35]{\text{local}}[rru]
+      }$
+    \end{column}
 
-  \subhead{The generic surjection $\NN \to X$}
+    \pause
+    \begin{column}{0.50\textwidth}
+      \small\justifying
+      For a fixed local ring~$R$, the localization $A' \defeq A_\ppp$
+      where~$\ppp \defeq f^{-1}[R^\times]$ would do the job.
+      \medskip
+    \end{column}
+  \end{columns}
+  \pause
+
+  \textbf{Fact.} A universal localization exists iff~$A$ has exactly one prime
+  filter.
+  \pause
+
+  \textbf{Dream.} If only there was a \hil{generic prime filter}~$\ppp_0$,
+  we could always form the universal localization~$A' \defeq A_{\ppp_0}$!
 \end{frame}
 
 {\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{5.95cm}\includegraphics[width=\paperwidth]{fr1}\end{minipage}}
-\begin{frame}{The generic prime ideal}
-  \justifying
-  Let~$A$ be a ring. The stalk at its generic prime ideal, the localization
-  \[ A^\sim \defeq A_{\ppp_0} = A[S^{-1}], \quad\text{where $S = A \setminus
-  \ppp_0$}, \]
-  has remarkable properties \ldots
-  \bigskip
+\begin{frame}{The generic prime filter}
+  \mbox{For~$A$-modules~$M$, let~$M^\sim \defeq M_{\ppp_0}$ be
+  the stalk at the generic prime filter.}
 
-  \subhead{$\boldsymbol{A^\sim}$ is close to~$\boldsymbol{A}$}
-  \begin{enumerate}
-  \item
-    $A^\sim$ inherits any property of~$A$ which is
-    \hil{localization-stable}.
-  \item
-    A geometric sequent holds for~$A^\sim$ iff$^\star$ it holds for \hil{all
-    stalks}~$A_{\mathfrak{p}}$.
-  \end{enumerate}
+  {\centering\begin{tabular}{l@{$\quad\Longleftrightarrow\quad$}l}
+    $x \not\in \ppp_0$ & $x$ is nilpotent \\
+    $x \in \ppp_0 \Rightarrow y \in \ppp_0$ & $x \in \sqrt{(y)}$ \\
+    % $x$ is regular in~$A^\sim$ & $x$ is regular in~$A$ \\
+    $A^\sim$ is reduced & $A$ is reduced \\
+    $A^\sim$ is an integral domain & $A$ is an integral domain \\
+    $M^\sim = 0$ & $M = 0$ \\
+    $M^\sim$ is fin.\@ generated over $A^\sim$ & $M$ is fin.\@ generated over~$A$ \\
+    % $M^\sim$ is flat over~$A^\sim$ & $M$ is flat over~$A$ \\
+    $M^\sim \to N^\sim$ is injective & $M \to N$ is injective \\
+    $M^\sim \to N^\sim$ is surjective & $M \to N$ is surjective
+  \end{tabular}}
   \bigskip
-
+  \pause
+ 
   \subhead{$\boldsymbol{A^\sim}$ is better than~$\boldsymbol{A}$}
-  {\small\centering(Now assume~$A$ reduced.)\par}
+  {\small\centering(Assume~$A$ reduced.)\par}
   \begin{enumerate}[a]
-  \item $A^\sim$ is a \hil{field}: $\forall x\?A^\sim\_ (\neg(\exists y\?A^\sim\_
-    xy = 1) \Rightarrow x = 0)$.
+    \item $A^\sim$ is a \hil{field}: $\forall x\?A^\sim\_ (\neg(\exists y\?A^\sim\_
+      xy = 1) \Rightarrow x = 0)$.
 
-  \item $A^\sim$ has \hil{$\boldsymbol{\neg\neg}$-stable equality}:
-    $\forall x,y\?A^\sim\_ \neg\neg(x = y) \Rightarrow x = y$.
+    %\item $A^\sim$ has \hil{$\boldsymbol{\neg\neg}$-stable equality}:
+    %  $\forall x,y\?A^\sim\_ \neg\neg(x = y) \Rightarrow x = y$.
 
-  \item \mbox{$A^\sim$ is \hil{anonymously Noetherian}.}\\[-1.2em]
+    \item \mbox{$A^\sim$ is \hil{anonymously Noetherian}.}\\[-1.2em]
+  \end{enumerate}
+\end{frame}}
+
+\begin{frame}{Generic models}
+  \textbf{Theorem.} There is a \hil{generic ring}, a particular ring$^\star$
+  such that for every$^{\star\star}$
+  ring-theoretic statement~$\varphi$, the following are equivalent:
+  \begin{enumerate}
+    \item $\varphi$ holds for the generic ring.
+    \item $\varphi$ holds for every ring.
+    \item $\varphi$ is provable from the ring axioms.
   \end{enumerate}
 
-  \begin{varblock}{0.7\textwidth}{}
-  {\centering This sheaf can be exploited to give short, \\ conceptual and
-  constructive proofs.\par}
-  \end{varblock}
-\end{frame}}
+  \setlength\fboxsep{7pt}
+  \begin{minipage}{0.57\textwidth}
+    \centering
+    \colorbox{mypurple!30}{Is~$1 + 1 = 0$ in the generic ring?} \\
+    \scriptsize \phantom{y}nonclassical truth values\phantom{y}
+  \end{minipage}
+  \begin{minipage}{0.42\textwidth}
+    \centering
+    \colorbox{mypurple!50}{The generic ring is a field.}
+    \scriptsize mysterious nongeometric sequents
+  \end{minipage}
+  \bigskip
+
+  Similarly for every$^{\star\star\star}$ other theory in place of the theory of rings:
+  \begin{itemize}
+    \item[] \ldots{} the generic group, field, vector space, \ldots
+
+    %-- \emph{the generic ring is neither~$\ZZ$ nor~$\ZZ[X]$}
+    \item[] \ldots{} the generic prime ideal of a given ring~$A$ \ldots
+
+    %-- \emph{don't confuse with the zero ideal}
+    \item[] \ldots{} the generic surjection~$\NN \to X$ to a given set~$X$ \ldots
+
+    %-- \emph{particularly useful in case~$X$ is not countable}
+  \end{itemize}
+  \bigskip
+\end{frame}
+
+\begin{frame}[fragile]{Mathematical universes}
+%  \begin{itemize}
+%    \item The \hil{standard universe}~$V$
+%    \item Gödel's \hil{constructible universe}~$L$
+%    \item The \hil{ef{}fective topos}~$\Eff$
+%    \item The topos~$\Sh(X)$ of set-valued \hil{sheaves} on a space~$X$
+%    \item The \hil{classifying topos}~$\Set[\TT]$ of a geometric theory~$\TT$
+%  \end{itemize}
+
+  \tikzstyle{topos} = [draw=mypurple, very thick, rectangle, rounded corners, inner sep=5pt, inner ysep=10pt]
+  \tikzstyle{title} = [fill=mypurple, text=white]
+
+  \input{images/primes.tex}
+
+  \newcommand{\drawbox}[4]{
+    \node[topos, #4] [fit = #3] (#1) {};
+    \node[title] at (#1.north) {#2};
+  }
+
+  \newcommand{\muchstuff}{
+    \includegraphics[height=3em]{filmat}
+    \scalebox{0.5}{\sieve{14}{2}}
+  }
+
+  \newcommand{\muchstuffplaceholder}{
+    \includegraphics[height=3em]{filmat-placeholder}
+    \scalebox{0.5}{\fakesieve{14}{2}}
+  }
+
+  \newcommand{\fewstuff}{
+    \includegraphics[height=3em]{filmat}
+    \scalebox{0.5}{\sieve{7}{2}}
+  }
+
+  {\centering
+  \begin{tikzpicture}
+    \node[scale=0.4] (objs-set1) at (-3.5,-2.5) {
+      \fewstuff
+    };
+    \node[scale=0.4] (objs-eff1) at (3.5,-2.5) {
+      \fewstuff
+    };
+    \node[scale=0.4] (objs-sh1)  at (0,-2.5) {
+      \fewstuff
+    };
+
+    \node (prop-set1) [below of=objs-set1, align=left] {
+      The usual laws \\
+      of logic hold.
+    };
+
+    \node (prop-eff1) [below of=objs-eff1, align=left] {
+      Every function \\
+      is computable.
+    };
+
+    \node (prop-sh1) [below of=objs-sh1, align=left] {
+      The axiom of \\
+      choice fails.
+    };
+
+    \drawbox{set1}{$\mathrm{Set}$}{(objs-set1) (prop-set1)}{}
+    \drawbox{eff1}{Ef{}f}{(objs-eff1) (prop-eff1)}{tape}
+    \drawbox{sh1}{$\mathrm{Sh}(X)$}{(objs-sh1) (prop-sh1)}{draw=none}
+    \def\R{8pt}
+    \begin{pgfonlayer}{background}
+      \draw[decoration={bumps,segment length=8pt}, decorate, very thick, draw=mypurple]
+        ($(sh1.south west) + (\R, 0)$) arc(270:180:\R) --
+        ($(sh1.north west) + (0, -\R)$) arc(180:90:\R) --
+        ($(sh1.north east) + (-\R, 0)$) arc(90:0:\R) --
+        ($(sh1.south east) + (0, \R)$) arc(0:-90:\R) --
+        cycle;
+    \end{pgfonlayer}
+  \end{tikzpicture}
+  \par}
+
+  \begin{itemize}
+    \item For any topos~$\E$ and any statement~$\varphi$, we define the meaning of
+    ``$\E \models \varphi$'' (``$\varphi$ holds in the internal universe
+    of~$\E$'') using the \hil{Kripke--Joyal semantics}.
+    \bigskip
+    \item Any topos supports \hil{mathematical reasoning}:
+    \bigskip
+
+    If~$\E \models \varphi$ and if~$\varphi$ entails~$\psi$
+    \pointthis{<2>}{intuitionistically}{%
+      no $\varphi \vee \neg\varphi$,\ \
+      no $\neg\neg\varphi \Rightarrow \varphi$,\ \
+      no axiom of choice},
+    then~$\E \models \psi$.
+  \end{itemize}
+\end{frame}
+
+% \begin{document}
+
+\newcommand{\expl}[2]{
+  ``$\Eff \models \!\!\text{\normalnumber{#1}}$\!'' means: #2
+}
+
+\begin{frame}{Exploring the \effective topos}
+  \vspace*{-1em}
+  \begin{center}\includegraphics[width=0.4\textwidth]{turing-machine}\end{center}
+  \small
+  \begin{tabular}{@{\!\!\!\!\!\!\!\!}l@{\,}lll}
+    \toprule
+    & Statement & in $\Set$ & in $\Eff$ \\
+    \midrule
+    \normalnumber{1} & Every natural number is prime or not prime. & \cmark{} (trivially) & \cmark \\
+    \normalnumber{2} & There are infinitely many primes. & \cmark & \cmark \\
+    \normalnumber{3} & Every function $\NN \to \NN$ is constantly zero or not. & \cmark{} (trivially) & \xmark \\
+    \normalnumber{4} & Every function $\NN \to \NN$ is computable. & \xmark & \cmark{} (trivially) \\
+    \normalnumber{5} & Every function $\RR \to \RR$ is continuous. & \xmark & \cmark \\
+    %\normalnumber{6} & Markov's principle holds. & \cmark{} (trivially) & \cmark \\
+    %\normalnumber{7} & Heyting arithmetic is categorical. & \xmark & \cmark \\
+    \bottomrule
+  \end{tabular}
+  \medskip
+
+  \only<2>{\expl{1}{There is a machine which determines of any given
+  number whether it is prime or not.}}
+  \only<3>{\expl{2}{There is a machine producing arbitrarily many
+  primes.}}
+  \only<4>{\expl{3}{There is a machine which, given a machine
+  computing a function~$f : \NN \to \NN$, determines whether~$f$ is constantly
+  zero or not.}}
+  \only<5>{\expl{4}{There is a machine which, given a machine
+  computing a function~$f : \NN \to \NN$, outputs a machine
+  computing~$f$.}}
+\end{frame}
+
 
 \end{document}
 

@@ -1,6 +1,7 @@
 \documentclass[11pt,utf8,notheorems,compress,t]{beamer}
 \usepackage{etex}
 \usepackage{xspace}
+\usepackage{wrapfig}
 
 \usepackage{pgfpages}
 %\setbeameroption{show notes on second screen}
@@ -178,7 +179,7 @@
 \newcommand{\pointthis}[3]{%
   \tikz[remember picture,baseline]{
     \node[anchor=base,inner sep=0,outer sep=0] (#2) {#2};
-    \node[visible on=#1,overlay,rectangle callout,rounded corners,callout relative pointer={(0.3cm,0.5cm)},fill=blue!20] at ($(#2.north)+(-0.1cm,-1.1cm)$) {#3};
+    \node[visible on=#1,overlay,rectangle callout,callout relative pointer={(0.3cm,0.5cm)},fill=blue!20] at ($(#2.north)+(-0.1cm,-1.1cm)$) {#3};
   }%
 }
 
@@ -223,7 +224,7 @@
 % Adapted from https://latex.org/forum/viewtopic.php?t=2251 (Stefan Kottwitz)
 \newenvironment<>{varblock}[2]{\begin{varblockextra}{#1}{#2}{}}{\end{varblockextra}}
 \newenvironment<>{varblockextra}[3]{
-  \begin{center}
+  %\begin{center}
     \begin{minipage}{#1}
       \begin{actionenv}#4
 	\def\insertblocktitle{\vspace*{-1em}}
@@ -234,7 +235,8 @@
         \varblockextraend
       \end{actionenv}
     \end{minipage}
-  \end{center}}
+  }
+  %\end{center}}
 
 
 \setbeamertemplate{navigation symbols}{}
@@ -361,38 +363,70 @@
   \end{minipage}}
 \end{frame}
 
-\begin{frame}{The universal localization}
+{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{5.95cm}\includegraphics[width=\paperwidth]{fr1}\end{minipage}}
+\begin{frame}{The generic prime filter}
+  \begin{wrapfigure}{r}{0.18\textwidth}
+    \vspace*{-1.5em}
+    \includegraphics[width=0.20\textwidth]{miles-reid-frontispiece}
+    \vspace*{-1.5em}
+    \vspace*{-1.5em}
+  \end{wrapfigure}
+
+  \justifying
   Let~$A$ be a commutative ring with unit.
+  Let~$M$ be an $A$-module. For any prime filter~$\ppp \subseteq A$, let
+  \[ M_\ppp \defeq M[\ppp^{-1}] \defeq \{ \tfrac{x}{s} \,|\, x \in M, s \in \ppp \} \]
+  be the \hil{stalk} of~$M$ at~$\ppp$.
 
-  \begin{itemize}
-    \item Let~$S \subseteq A$ be multiplicatively closed. Then there
-    is the \hil{localization}
-    $A[S^{-1}] \defeq \{ \tfrac{x}{s} \,|\, x \in A, s \in S \}$.
-    \pause
-    \item\justifying Let~$\ppp \subseteq A$ be a prime filter.
-    Then the \hil{stalk}~$A_\ppp \defeq A[\ppp^{-1}]$
-    is a \hil{local ring}: If a finite sum of elements is invertible, then so is one
-    of the summands.
-    \pause
-    \item Is there a \hil{universal localization} of~$A$?
-  \end{itemize}
+  \visible<2->{\begin{varblock}{0.7\textwidth}{}
+    The generic prime filter
+    is a \hil{reification} of all prime filters into a single coherent
+    entity.
+  \end{varblock}}
 
-  \begin{columns}[t]
-    \begin{column}{0.4\textwidth}
-      $\xymatrix{
-        A \ar[rd] \ar[rrr]^f &&& {\substack{\phantom{\text{local}}\\\text{\normalsize$R$}\\\text{local}}} \\
-        & {\substack{\text{\normalsize$A'$}\\\text{local}}} \ar@{-->}_[@!35]{\text{local}}[rru]
-      }$
-    \end{column}
+  \only<3>{\textbf{Local-global principle.} \\\medskip
+  {\small\centering\begin{tabular}{l@{$\quad\text{iff$^\star$}\quad$}l}
+    % for all prime filters~$\ppp$, $A_\ppp$ is reduced & $A$ is reduced \\
+    $M = 0$ & for all prime filters~$\ppp$, $M_\ppp = 0$. \\
+    $M \to N$ is injective & for all prime filters~$\ppp$, $M_\ppp \to N_\ppp$ is injective. \\
+    $M \to N$ is surjective & for all prime filters~$\ppp$, $M_\ppp \to N_\ppp$ is surjective. \\
+    $f$ is nilpotent in~$A$ & for all prime filters~$\ppp$, $f \not\in \ppp$. \\
+    ??? & for all prime filters~$\ppp$, $M_\ppp$ is fin.\@ generated over~$A_\ppp$. \\
+    ???\!\!\!\!\!\!\!\!\phantom{$M$ is finite locally free} & for all prime filters~$\ppp$, $M_\ppp$ is finite free over~$A_\ppp$. \\
+  \end{tabular}}}
 
-    \pause
-    \begin{column}{0.50\textwidth}
-      \small\justifying
-      For a fixed local ring~$R$, the localization $A' \defeq A_\ppp$
-      where~$\ppp \defeq f^{-1}[R^\times]$ would do the job.
-      \medskip
-    \end{column}
-  \end{columns}
+  \only<4>{\textbf{Local-global principle.} Let~$\ppp_0$ be the \hil{generic prime filter}
+  of~$A$. \\\medskip
+  {\small\centering\begin{tabular}{l@{$\quad\text{iff}\quad$}l}
+    % for all prime filters~$\ppp$, $A_\ppp$ is reduced & $A$ is reduced \\
+    $M = 0$ & $M_{\ppp_0} = 0$. \\
+    $M \to N$ is injective & $M_{\ppp_0} \to N_{\ppp_0}$ is injective. \\
+    $M \to N$ is surjective & $M_{\ppp_0} \to N_{\ppp_0}$ is surjective. \\
+    $f$ is nilpotent in~$A$ & $f \not\in \ppp_0$. \\
+    $M$ is fin.\@ generated & $M_{\ppp_0}$ is fin.\@ generated. \\
+    $M$ is finite locally free & $M_{\ppp_0}$ is finite free.
+  \end{tabular}}}
+\end{frame}}
+
+\begin{frame}{The universal localization}
+  Let~$A$ be a ring.
+
+  The stalks~$A_\ppp$ are \hil{local rings}: If a finite sum of elements is
+  invertible, then so is one of the summands.
+
+  Is there a \hil{universal localization} of~$A$?
+  \pause
+  \[
+    \xymatrix{
+      A \ar[rd] \ar[rrr]^f &&& {\substack{\phantom{\text{local}}\\\text{\normalsize$R$}\\\text{local}}} \\
+      & {\substack{\text{\normalsize$A'$}\\\text{local}}} \ar@{-->}_[@!35]{\text{local}}[rru]
+    }
+  \]
+  \pause
+
+  \justifying
+  For a fixed local ring~$R$, the localization $A' \defeq A_\ppp$
+  where~$\ppp \defeq f^{-1}[R^\times]$ would do the job.
   \pause
 
   \textbf{Fact.} A universal localization exists iff~$A$ has exactly one prime
@@ -400,43 +434,44 @@
   \pause
 
   \textbf{Dream.} If only there was a \hil{generic prime filter}~$\ppp_0$,
-  we could always form the universal localization~$A' \defeq A_{\ppp_0}$!
+  the universal localization would always exist and be given by~$A' \defeq A_{\ppp_0}$!
 \end{frame}
 
-{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{5.95cm}\includegraphics[width=\paperwidth]{fr1}\end{minipage}}
-\begin{frame}{The generic prime filter}
-  \mbox{For~$A$-modules~$M$, let~$M^\sim \defeq M_{\ppp_0}$ be
-  the stalk at the generic prime filter.}
+%{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{5.95cm}\includegraphics[width=\paperwidth]{fr1}\end{minipage}}
+%\begin{frame}{The generic prime filter}
+%  \mbox{For~$A$-modules~$M$, let~$M^\sim \defeq M_{\ppp_0}$ be
+%  the stalk at the generic prime filter.}
+%
+%  {\centering\begin{tabular}{l@{$\quad\Longleftrightarrow\quad$}l}
+%    $x \not\in \ppp_0$ & $x$ is nilpotent \\
+%    $x \in \ppp_0 \Rightarrow y \in \ppp_0$ & $x \in \sqrt{(y)}$ \\
+%    % $x$ is regular in~$A^\sim$ & $x$ is regular in~$A$ \\
+%    $A^\sim$ is reduced & $A$ is reduced \\
+%    $A^\sim$ is an integral domain & $A$ is an integral domain \\
+%    $M^\sim = 0$ & $M = 0$ \\
+%    $M^\sim$ is fin.\@ generated over $A^\sim$ & $M$ is fin.\@ generated over~$A$ \\
+%    $M^\sim$ is finite free & $M$ is finite locally free \\
+%    % $M^\sim$ is flat over~$A^\sim$ & $M$ is flat over~$A$ \\
+%    $M^\sim \to N^\sim$ is injective & $M \to N$ is injective \\
+%    $M^\sim \to N^\sim$ is surjective & $M \to N$ is surjective
+%  \end{tabular}}
+%  \bigskip
+%  \pause
+% 
+%  \subhead{$\boldsymbol{A^\sim}$ is better than~$\boldsymbol{A}$}
+%  {\small\centering(Assume~$A$ reduced.)\par}
+%  \begin{enumerate}[a]
+%    \item $A^\sim$ is a \hil{field}: $\forall x\?A^\sim\_ (\neg(\exists y\?A^\sim\_
+%      xy = 1) \Rightarrow x = 0)$.
+%
+%    %\item $A^\sim$ has \hil{$\boldsymbol{\neg\neg}$-stable equality}:
+%    %  $\forall x,y\?A^\sim\_ \neg\neg(x = y) \Rightarrow x = y$.
+%
+%    \item \mbox{$A^\sim$ is \hil{anonymously Noetherian}.}\\[-1.2em]
+%  \end{enumerate}
+%\end{frame}}
 
-  {\centering\begin{tabular}{l@{$\quad\Longleftrightarrow\quad$}l}
-    $x \not\in \ppp_0$ & $x$ is nilpotent \\
-    $x \in \ppp_0 \Rightarrow y \in \ppp_0$ & $x \in \sqrt{(y)}$ \\
-    % $x$ is regular in~$A^\sim$ & $x$ is regular in~$A$ \\
-    $A^\sim$ is reduced & $A$ is reduced \\
-    $A^\sim$ is an integral domain & $A$ is an integral domain \\
-    $M^\sim = 0$ & $M = 0$ \\
-    $M^\sim$ is fin.\@ generated over $A^\sim$ & $M$ is fin.\@ generated over~$A$ \\
-    $M^\sim$ is finite free & $M$ is finite locally free \\
-    % $M^\sim$ is flat over~$A^\sim$ & $M$ is flat over~$A$ \\
-    $M^\sim \to N^\sim$ is injective & $M \to N$ is injective \\
-    $M^\sim \to N^\sim$ is surjective & $M \to N$ is surjective
-  \end{tabular}}
-  \bigskip
-  \pause
- 
-  \subhead{$\boldsymbol{A^\sim}$ is better than~$\boldsymbol{A}$}
-  {\small\centering(Assume~$A$ reduced.)\par}
-  \begin{enumerate}[a]
-    \item $A^\sim$ is a \hil{field}: $\forall x\?A^\sim\_ (\neg(\exists y\?A^\sim\_
-      xy = 1) \Rightarrow x = 0)$.
-
-    %\item $A^\sim$ has \hil{$\boldsymbol{\neg\neg}$-stable equality}:
-    %  $\forall x,y\?A^\sim\_ \neg\neg(x = y) \Rightarrow x = y$.
-
-    \item \mbox{$A^\sim$ is \hil{anonymously Noetherian}.}\\[-1.2em]
-  \end{enumerate}
-\end{frame}}
-
+{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{4.95cm}\includegraphics[width=\paperwidth]{topos-horses}\end{minipage}}
 \begin{frame}{Generic models}
   \textbf{Theorem.} There is a \hil{generic ring}, a particular ring$^\star$
   such that for every$^{\star\star}$
@@ -447,18 +482,6 @@
     \item $\varphi$ is provable from the ring axioms.
   \end{enumerate}
 
-  \setlength\fboxsep{7pt}
-  \begin{minipage}{0.57\textwidth}
-    \centering
-    \colorbox{mypurple!30}{Is~$1 + 1 = 0$ in the generic ring?} \\
-    \scriptsize \phantom{y}nonclassical truth values\phantom{y}
-  \end{minipage}
-  \begin{minipage}{0.42\textwidth}
-    \centering
-    \colorbox{mypurple!50}{The generic ring is a field.}
-    \scriptsize mysterious nongeometric sequents
-  \end{minipage}
-  \bigskip
 
   Similarly for every$^{\star\star\star}$ other theory in place of the theory of rings:
   \begin{itemize}
@@ -473,7 +496,19 @@
     %-- \emph{particularly useful in case~$X$ is not countable}
   \end{itemize}
   \bigskip
-\end{frame}
+  \setlength\fboxsep{7pt}
+  \visible<2->{\begin{minipage}{0.57\textwidth}
+    \centering
+    \colorbox{red!50}{Is~$1 + 1 = 0$ in the generic ring?} \\
+    \scriptsize\color{white} \phantom{y}nonclassical truth values\phantom{y}
+  \end{minipage}}
+  \visible<3->{\begin{minipage}{0.42\textwidth}
+    \centering
+    \colorbox{mypurple!50}{The generic ring is a field.}
+    \scriptsize\color{white} mysterious nongeometric sequents
+  \end{minipage}}
+  \bigskip
+\end{frame}}
 
 \begin{frame}[fragile]{Mathematical universes}
 %  \begin{itemize}
@@ -559,16 +594,14 @@
     \item Any topos supports \hil{mathematical reasoning}:
     \medskip
 
-    If~$\E \models \varphi$ and if~$\varphi$ entails~$\psi$
+    If~$\ \E \models \varphi\ $ and if~$\ \varphi$ entails~$\psi$
     \pointthis{<2>}{intuitionistically}{%
       no $\varphi \vee \neg\varphi$,\ \
       no $\neg\neg\varphi \Rightarrow \varphi$,\ \
       no axiom of choice},
-    then~$\E \models \psi$.
+    then~$\ \E \models \psi$.
   \end{itemize}
 \end{frame}
-
-% \begin{document}
 
 \newcommand{\expl}[2]{
   ``$\Eff \models \!\!\text{\normalnumber{#1}}$\!'' means: #2
@@ -660,11 +693,13 @@
     Let~$M$ be an injective matrix with more columns than rows over a ring~$A$.
     Then~$1 = 0$ in~$A$.
   \end{varblock}
+  \pause
 
   \justifying
   \textbf{Proof.} \bad{Assume not.} Then there is a \bad{minimal
   prime ideal} $\ppp \subseteq A$. The matrix is injective over the \bad{field}~$A_\ppp$;
   contradiction to basic linear algebra.\qed\medskip
+  \pause
 
   \textbf{Proof.} \simplespeak{$M$ is also injective as a matrix over~$A^\sim$.
   This is a contradiction by basic intuitionistic linear

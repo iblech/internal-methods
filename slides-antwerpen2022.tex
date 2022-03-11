@@ -266,7 +266,7 @@
 
 \newcommand{\subhead}[1]{{\centering\textcolor{gray}{\hrulefill}\quad\textnormal{\hil{#1}}\quad\textcolor{gray}{\hrulefill}\par\vspace*{-0.6em}}}
 
-\newcommand{\speak}[2]{\textcolor{blue!80}{$#1 \models \text{`$#2$'}$}}
+\newcommand{\speak}[2]{\textcolor{blue!80}{$#1 \models #2$}}
 \newcommand{\simplespeak}[1]{\textcolor{blue!80}{`#1'}}
 
 \newcommand{\triang}{\hil{$\blacktriangleright$}\xspace}
@@ -320,7 +320,7 @@
     \begin{column}{0.3\textwidth}
       \centering
       \includegraphics[width=\textwidth]{wraith-portrait} \\
-      \small
+      \scriptsize
       Gavin Wraith
     \end{column}
 
@@ -434,7 +434,7 @@
   \pause
 
   \textbf{Dream.} If only there was a \hil{generic prime filter}~$\ppp_0$,
-  the universal localization would always exist and be given by~$A' \defeq A_{\ppp_0}$!
+  the universal localization would always exist and be given by~$A^\sim \defeq A_{\ppp_0}$!
 \end{frame}
 
 %{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{5.95cm}\includegraphics[width=\paperwidth]{fr1}\end{minipage}}
@@ -546,10 +546,10 @@
 
   {\centering
   \begin{tikzpicture}
-    \node[scale=0.4] (objs-set1) at (-3.5,-2.5) {
+    \node[scale=0.4] (objs-set1) at (-4.0,-2.5) {
       \fewstuff
     };
-    \node[scale=0.4] (objs-eff1) at (3.5,-2.5) {
+    \node[scale=0.4] (objs-eff1) at (4.0,-2.5) {
       \fewstuff
     };
     \node[scale=0.4] (objs-sh1)  at (0,-2.5) {
@@ -638,10 +638,6 @@
   computing~$f$.}}
 \end{frame}
 
-\newcommand{\eff}{\only<2->{f}}
-\newcommand{\ondf}{\only<2->{ on~$D(f)$}}
-\newcommand{\fone}{\only<1>{1}\only<2->{f}}
-\newcommand{\fonen}{\only<1>{1}\only<2->{f^n}}
 \begin{frame}{The classifying topos as a local lens}
   \small
   \begin{itemize}
@@ -675,12 +671,12 @@
   \scriptsize
   \vspace*{-1.5em}
   \begin{align*}
-    & \text{\speak{D(1)}{\text{$x$ is not invertible}}}
-    \ \ \ \ \text{iff}\ \ \ \ \text{\speak{D(1)}{(\text{$x$ is invertible}) \Rightarrow \bot}} \\
-    \text{iff}\ \ \ \ & \text{for all~$g \in A$, if \speak{D(g)}{\text{$x$ is invertible}} then~\speak{D(g)}{\bot}} \\
+    & \text{\speak{D(1)}{\text{`$x$ is not invertible'}}}
+    \ \ \ \ \text{iff}\ \ \ \ \text{\speak{D(1)}{\text{`$x$ is invertible'} \Rightarrow \bot}} \\
+    \text{iff}\ \ \ \ & \text{for all~$g \in A$, if \speak{D(g)}{\text{`$x$ is invertible'}} then~\speak{D(g)}{\bot}} \\
     \text{iff}\ \ \ \ & \text{for all~$g \in A$, if $x$ is invertible in~$A[g^{-1}]$
   then~$g$ is nilpotent}
-    \ \ \ \ \text{iff}\ \ \ \ \text{$x$ is nilpotent}
+    \ \ \ \ \text{iff}\ \ \ \ \text{$x$ is nilpotent}.
   \end{align*}
 \end{frame}
 
@@ -701,7 +697,7 @@
   contradiction to basic linear algebra.\qed\medskip
   \pause
 
-  \textbf{Proof.} \simplespeak{$M$ is also injective as a matrix over~$A^\sim$.
+  \textbf{Proof.} \simplespeak{$M$ is also injective as a matrix over~$A^\sim = A_{\ppp_0}$.
   This is a contradiction by basic intuitionistic linear
   algebra.} Thus~\simplespeak{$\bot$}. Hence~$1 = 0$ in~$A$.\qed
   \bigskip

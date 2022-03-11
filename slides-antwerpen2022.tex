@@ -264,7 +264,8 @@
 
 \newcommand{\subhead}[1]{{\centering\textcolor{gray}{\hrulefill}\quad\textnormal{\hil{#1}}\quad\textcolor{gray}{\hrulefill}\par\vspace*{-0.6em}}}
 
-\newcommand{\speak}[1]{\textcolor{blue!80}{`#1'}}
+\newcommand{\speak}[2]{\textcolor{blue!80}{$#1 \models \text{`$#2$'}$}}
+\newcommand{\simplespeak}[1]{\textcolor{blue!80}{`#1'}}
 
 \newcommand{\triang}{\hil{$\blacktriangleright$}\xspace}
 
@@ -415,6 +416,7 @@
     $A^\sim$ is an integral domain & $A$ is an integral domain \\
     $M^\sim = 0$ & $M = 0$ \\
     $M^\sim$ is fin.\@ generated over $A^\sim$ & $M$ is fin.\@ generated over~$A$ \\
+    $M^\sim$ is finite free & $M$ is finite locally free \\
     % $M^\sim$ is flat over~$A^\sim$ & $M$ is flat over~$A$ \\
     $M^\sim \to N^\sim$ is injective & $M \to N$ is injective \\
     $M^\sim \to N^\sim$ is surjective & $M \to N$ is surjective
@@ -555,7 +557,7 @@
     of~$\E$'') using the \hil{Kripke--Joyal semantics}.
     \bigskip
     \item Any topos supports \hil{mathematical reasoning}:
-    \bigskip
+    \medskip
 
     If~$\E \models \varphi$ and if~$\varphi$ entails~$\psi$
     \pointthis{<2>}{intuitionistically}{%
@@ -603,6 +605,87 @@
   computing~$f$.}}
 \end{frame}
 
+\newcommand{\eff}{\only<2->{f}}
+\newcommand{\ondf}{\only<2->{ on~$D(f)$}}
+\newcommand{\fone}{\only<1>{1}\only<2->{f}}
+\newcommand{\fonen}{\only<1>{1}\only<2->{f^n}}
+\begin{frame}{The classifying topos as a local lens}
+  \small
+  \begin{itemize}
+    \item\justifying For ring elements~$f \in A$ and formulas~$\varphi$, we
+    define~\speak{D(f)}{\varphi} (``$\varphi$~holds on (and beyond)
+    stage~$D(f)$'') by the following clauses.
+    \item\justifying A formula~$\varphi$ holds in the classifying topos of the theory of
+    prime filters of~$A$ iff~\speak{D(1)}{\varphi}.
+  \end{itemize}
+
+  \renewcommand{\arraystretch}{1.3}
+  \begin{tabular}{p{0.31\textwidth}@{\ iff\ }p{0.75\textwidth}}
+    \speak{D(f)}{\forall x\?A^\sim\_ \varphi(x)} &
+      for all~$g \in A$ and~$x_0 \in A[g^{-1}]$, \speak{D(fg)}{\varphi(x_0)} \\
+    \speak{D(f)}{\varphi \Rightarrow \psi} &
+      for all~$g \in A$, \speak{D(fg)}{\varphi} implies~\speak{D(fg)}{\psi} \\
+    \speak{D(f)}{\varphi \vee \psi} &
+      there is a partition~$f^n = f g_1{+}\cdots{+}f g_m$ s.\@ th.\@
+      \phantom{lollollololllol}
+      \phantom{lol} for each~$i$,
+      \speak{D(fg_i)}{\varphi}
+      or \speak{D(fg_i)}{\psi} \\
+    \speak{D(f)}{\bot} & $f$ is nilpotent \\
+    \speak{D(f)}{x \in \ppp_0} & $f \in \sqrt{(x)}$
+  \end{tabular}
+  \bigskip
+  \pause
+
+
+  \textbf{Example.}\par
+  \scriptsize
+  \vspace*{-1.5em}
+  \begin{align*}
+    & \text{\speak{D(1)}{\text{$x$ is not invertible}}}
+    \ \ \ \ \text{iff}\ \ \ \ \text{\speak{D(1)}{(\text{$x$ is invertible}) \Rightarrow \bot}} \\
+    \text{iff}\ \ \ \ & \text{for all~$g \in A$, if \speak{D(g)}{\text{$x$ is invertible}} then~\speak{D(g)}{\bot}} \\
+    \text{iff}\ \ \ \ & \text{for all~$g \in A$, if $x$ is invertible in~$A[g^{-1}]$
+  then~$g$ is nilpotent}
+    \ \ \ \ \text{iff}\ \ \ \ \text{$x$ is nilpotent}
+  \end{align*}
+\end{frame}
+
+\begin{frame}{Applications of the generic prime filter}
+  \small
+  \subhead{Injective matrices}
+  \begin{varblock}{\textwidth}{Injective matrices}
+    \justifying
+    \textbf{Theorem.}
+    Let~$M$ be an injective matrix with more columns than rows over a ring~$A$.
+    Then~$1 = 0$ in~$A$.
+  \end{varblock}
+
+  \justifying
+  \textbf{Proof.} \bad{Assume not.} Then there is a \bad{minimal
+  prime ideal} $\ppp \subseteq A$. The matrix is injective over the \bad{field}~$A_\ppp$;
+  contradiction to basic linear algebra.\qed\medskip
+
+  \textbf{Proof.} \simplespeak{$M$ is also injective as a matrix over~$A^\sim$.
+  This is a contradiction by basic intuitionistic linear
+  algebra.} Thus~\simplespeak{$\bot$}. Hence~$1 = 0$ in~$A$.\qed
+  \bigskip
+  \pause
+
+  \subhead{Grothendieck's generic freeness}
+  \begin{varblock}{\textwidth}{Generic freeness\phantom{p}}
+    \justifying
+    \textbf{Theorem.}
+    Let~$M$ be a finitely generated~$A$-module.
+    If~$f = 0$ is the only element of~$A$ such that~$M[f^{-1}]$ is a
+    free~$A[f^{-1}]$-module, then~$1 = 0$ in~$A$.
+  \end{varblock}
+
+  \justifying
+  \textbf{Proof.} The claim amounts to \simplespeak{$M^\sim$ is \hil{not not} free}.
+  This statement follows from basic intuitionistic linear algebra over the
+  field~$A^\sim$.\qed
+\end{frame}
 
 \end{document}
 

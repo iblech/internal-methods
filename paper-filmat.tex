@@ -1,12 +1,12 @@
-%\documentclass[oneside,reqno]{amsart}
 \documentclass[graybox]{svmult}
+\pdfoutput=1
 
+\usepackage{amsmath,amssymb,etex,ifxetex}
 \usepackage{type1cm}
 \usepackage{graphicx}
 \usepackage{multicol}
 \usepackage[bottom]{footmisc}
-\usepackage{newtxtext}
-\usepackage{newtxmath}
+\usepackage{newtx}
 
 \usepackage[utf8]{inputenc}
 \usepackage{mathtools,ragged2e}
@@ -19,6 +19,11 @@
 \usepackage{marginnote,animate,ocgx2}
 
 \usepackage{natbib}
+
+\usepackage[{colorlinks,citecolor=[rgb]{0,0.1,0}}]{hyperref}
+
+%\usepackage{geometry}
+%\geometry{lmargin=4.6cm,rmargin=4.5cm}
 
 \graphicspath{{images/}}
 
@@ -90,7 +95,9 @@
 
 \begin{document}
 
-\title*{Exploring mathematical objects from custom-tailored mathematical universes}
+\addtocounter{chapter}{3}
+
+\title{Exploring mathematical objects from custom-tailored mathematical universes}
 \author{Ingo Blechschmidt}
 \institute{Ingo Blechschmidt \at Universität Augsburg, Institut für Mathematik,
 Universitätsstr. 14,
@@ -109,9 +116,9 @@ Universitätsstr. 14,
   landscape, presenting several specific toposes and exploring their peculiar
   properties, and to explicate how toposes provide distinct lenses through
   which the usual mathematical objects of the standard topos can be viewed.
-  \emph{Key words:} topos theory, realism debate, well-adapted language,
-  constructive mathematics
 }
+\keywords{topos theory, realism debate, well-adapted language,
+  constructive mathematics}
 \medskip
 
 \noindent
@@ -217,7 +224,7 @@ differently (Figure~\ref{fig:landscape}).
   % topos, which is why the standard topos is also drawn to encompass ...
 \end{figure}
 
-% \begin{document}
+%\newcommand{\RR}{\mathbb{R}}
 
 For instance, there are toposes in which the axiom of choice and the
 intermediate value theorem from undergraduate calculus fail, toposes in which
@@ -264,7 +271,7 @@ on mathematical objects provided by any topos uncovers relations which
 otherwise remain hidden.\footnote{The research
 program put forward by~\cite{caramello:tst} provides a further topos-theoretic way for
 uncovering hidden relations, though not between objects but between mathematical
-theories. \textbf{\textcolor{red}{NOTE TO EDITOR: Insert cross reference to Olivia's chapter of
+theories. \textit{\textcolor{red}{Note to editor: please insert cross reference to Olivia's chapter of
 this book.}}}
 \item In some cases, a mathematical relation can be expressed quite succinctly
 using the language of a specific topos and not so succinctly using the language
@@ -894,7 +901,7 @@ examples:
 
 \bigskip
 \begin{center}
-\begin{tabular}{lll}
+\begin{tabular}{ll@{\qquad}l}
   \toprule
   Statement & in $\Set$ & in $\Eff$ \\
   \midrule

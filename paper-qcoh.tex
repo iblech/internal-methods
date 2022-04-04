@@ -63,6 +63,7 @@
 \newcommand{\TT}{\mathbb{T}}
 \newcommand{\OO}{\mathbb{O}}
 \newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
 \renewcommand{\SS}{\mathbb{S}}
 \renewcommand{\O}{\mathcal{O}}
 \newcommand{\defeq}{\vcentcolon=}
@@ -1303,13 +1304,22 @@ Following the Kripke--Joyal translation of the claim, similar as in the proof
 of Theorem~\ref{thm:quasicoherence}, it suffices to show that
 applying the sheafification functor to the isomorphisms provided by
 Lemma~\ref{lemma:fp-double-dual} (over arbitrary slices) results in
-isomorphisms of the same form. This fact follows from the lemma (applied twice)
-that computing the internal Hom to a sheaf commutes with sheafification and
+isomorphisms of the same form. This fact follows from the fact that
+the presheaf Hom into a sheaf is already a sheaf itself and
 from the observation that the construction~``free~$U_\TT$-module modulo
 relations'' is geometric, hence in particular commutes with sheafification.
 \end{proof}
 
 % XXX explain how Nullstellensatz follows from the Horn version
+
+\begin{rem}The finite presentability condition in
+Lemma~\ref{lemma:fp-double-dual} cannot be dropped. For instance, in the case
+that~$\TT$ is the theory of commutative rings with unit and~$A$ is the
+ring~$\QQ$ of integers, we have~$\Spec(A^\sim) \cong \Spec(0^\sim)$, where~$0$
+is the zero ring, as~$\QQ$ allows ring homomorphisms only in those finitely
+presented rings in which~$1 = 0$ holds. Hence~$A^\sim$
+and~$(U_\TT)^{\Spec(A^\sim)} \cong (U_\TT)^{\Spec(0^\sim)} \cong 0^\sim$ do not coincide.
+\end{rem}
 
 
 \section{The generalization to the higher-order case}

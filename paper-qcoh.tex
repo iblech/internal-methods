@@ -308,7 +308,9 @@ We could try to generalize the Nullstellensatz to arbitrary geometric theories~$
 follows: \emph{For any geometric sequent~$\sigma$, if~$\sigma$ holds for a
 given~$\TT$-model~$M$ then~$\sigma$ is provable modulo~$\TT$.} In place of the
 algebraic certificate we now have a logical certificate, a \emph{proof}
-of~$\sigma$. However, this generalized statement is typically false, even for
+of~$\sigma$.
+
+However, this generalized statement is typically false, even for
 the generic model~$U_\TT$: The statement
 \begin{multline*}
   \qquad\qquad\qquad\Set[\TT] \models \ulcorner\text{for any geometric sequent~$\sigma$,} \\
@@ -341,7 +343,7 @@ the theory of rings of characteristic two.
 
 Intuitively, the problem is that while the meaning of~$\speak{$\ul{\TT}$
 proves~$\sigma$}$ is fixed, the meaning of~$\speak{$\sigma$ holds for~$U_\TT$}$ varies
-with the slice, as~$U_\TT$ changes form on different stages. This mismatch is solved by passing from~$\ul{\TT}$ to a
+with the slice, as~$U_\TT$ shifts shape on different stages. This mismatch is solved by passing from~$\ul{\TT}$ to a
 varying theory, the internal theory~$\ul{\TT}/U_\TT$ defined in
 Section~\ref{sect:main}. If~$\TT$ is the theory of rings, then~$\ul{\TT}/U_\TT$
 is the~$\Set[\TT]$-theory of~$U_\TT$-algebras.
@@ -364,6 +366,7 @@ saying that any zero~$x \? U_\TT$ of~$f$ is also a zero of~$g$, and to say
 that~$\ul{\TT}/U_\TT$ proves~$\sigma$ amounts to saying that
 in~$U_\TT[X]/(f(X))$, the free~$U_\TT$-algebra on one generator~$X$ subject to
 the relation~$f(X) = 0$, the relation~$g([X]) = 0$ holds. Hence we obtain
+an algebraic Nullstellensatz:
 \[ \Set[\TT] \models
   \forall f,g \? U_\TT[X]\_ \bigl(
     (\forall x \? U_\TT\_ f(x) = 0 \Rightarrow g(x) = 0) \Longleftrightarrow
@@ -478,7 +481,7 @@ valid because the generic localization of a reduced ring is a field -- enabled
 a short and simple proof of Grothendieck's generic freeness
 lemma~\cite[Section~11.5]{blechschmidt:phd}, more reduction techniques along
 these lines should exist in a wide range of subjects. We hope that with the
-Nullstellensatz at hand, discovering such techniques can progress in a more
+Nullstellensatz at hand, the discovery of such techniques can progress in a more
 systematic fashion.
 
 From the point of view of theory, the appropriate context for the
@@ -649,7 +652,7 @@ in~\cite{blass:induction} and more specifically in
 \cite[Chapter~III]{henry:phd}.}
 
 None of these complications arise when setting up the theory of internal
-coherent theories.
+coherent theories, where disjunctions are restricted to be finitary.
 
 \begin{ex}An ordinary geometric theory is the same as a geometric theory
 internal to the topos~$\Set$. A geometric sequent is provable in the ordinary
@@ -894,15 +897,15 @@ the theory of rings and~$\Set[\TT']$ is one of several well-known toposes in
 algebraic geometry such as the big Zariski topos, the big étale topos or the
 big fppf topos.
 
-\begin{rem}In the case that the~$\Set[\TT']$ is a dense subtopos
+\begin{rem}In the case that the subtopos~$\Set[\TT']$ is a dense subtopos
 of~$\Set[\TT]$, Corollary~\ref{corollary:nullstellensatz-horn} can be strengthened to
 allow~$\bot$ as consequent, since in this case we have~$(\nabla\psi)
 \Rightarrow \psi$ also for~$\psi \equiv \bot$.\end{rem}
 
 Theorem~\ref{thm:nullstellensatz} cannot be strengthened to arbitrary
-first-order (or first-order$^\star$ or even just coherent) formulas in place of
+first-order (or first-order$^\star$ or even finitary first-order) formulas in place of
 geometric$^\star$ sequents. For instance, in the case that~$\TT$ is the theory
-of rings, the generic model~$U_\TT$ validates the coherent
+of rings, the generic model~$U_\TT$ validates the finitary first-order
 formula~$\speak{any element~$x$ for which~$(x = 0 \Rightarrow 1 = 0)$ is invertible}$, but~$\ul{\TT}/U_\TT$
 does not prove this fact, as it is for instance not validated by the polynomial
 algebra~$U_\TT[X]$.
@@ -1060,7 +1063,7 @@ The purpose of this section is to redo the development in the special case of
 Horn theories. XXX
 
 Throughout this section, let~$\TT$ be a Horn theory. It is a basic result that
-Horn theories are of presheaf type, such that the classifying topos~$\Set[\TT]$
+Horn theories are of presheaf type, that is the classifying topos~$\Set[\TT]$
 can be taken as the topos of functors~$\Mod{\TT}_\mathrm{fp} \to \Set$,
 where~$\Mod{\TT}_\mathrm{fp}$ is the full subcategory of the category
 of~$\TT$-models (in~$\Set$) on the finitely presentable objects~\cite[Theorem~2.1.21]{caramello:tst}. The
@@ -1127,7 +1130,7 @@ cocomplete.\end{lemma}
 \begin{proof}Limits are computed as the limits of the underlying sets, colimits
 are computed by using the construction of Lemma~\ref{lemma:free-models}. For
 instance, the coproduct of~$\TT\langle X | R \rangle$ and~$\TT\langle X' | R'
-\rangle$ is~$\TT\langle X \amalg X' \,|\, R, R' \rangle$.\end{proof}
+\rangle$ is~$\TT\langle X \amalg X' \,|\, R \cup R' \rangle$.\end{proof}
 % XXX sagen, dass jedes Modell (beliebig) präsentiert wird
 
 Having the special case of the theory of rings in mind, we write the coproduct
@@ -1162,11 +1165,11 @@ of~$U_\TT$-algebra homomorphisms~$M \to U_\TT$.
 % \to M(T)$ and~$T \to T$.
 
 \begin{lemma}\label{lemma:spec-sim-representable}
-Let~$A$ be a~$\TT$-model. Then~$\Spec(A^\sim)$ coincides
+Let~$A$ be a~$\TT$-model (not necessarily finitely presentable). Then~$\Spec(A^\sim)$ coincides
 with~$\yon A$, the functor~$\Hom_{\Mod{\TT}}(A, \cdot)$.
 \end{lemma}
 
-\begin{proof}By the Yoneda lemma, the sections of the sheaf~$\Spec(A^\sim) :
+\begin{proof}By the Yoneda lemma, the sections of the presheaf~$\Spec(A^\sim) :
 \Mod{\TT}_\mathrm{fp} \to \Set$ on an object~$T$ are given by the set
 \begin{align*}
   \Spec(A^\sim)(T) &\cong \Hom(\yon T, \Spec(A^\sim)) =
@@ -1266,13 +1269,11 @@ e_1\?X_1,\ldots,e_n\?X_n \,|\, R_1,\ldots,R_m \rangle$ is an isomorphism.}
 
 Following the Kripke--Joyal translation of this statement, let a stage~$T \in
 \Mod{\TT}_\mathrm{fp}$,~$T$-elements~$X_1,\ldots,X_n$ of the object of sorts of
-the signature of~$\ul{\TT}/U_\TT$ (that is the constant sheaf on the set of
+the signature of~$\ul{\TT}/U_\TT$ (that is the constant presheaf on the set of
 sorts of~$\TT$), and~$T$-elements~$R_1,\ldots,R_m$ of the object of atomic
-propositions over the signature of~$\ul{\TT}/U_\TT$ be given. By passing to a
-covering of~$T$, we may assume that the~$X_i$ are given by sorts of~$\TT$ and
-that the~$R_j$ are given by atomic propositions over the signature
+propositions over the signature of~$\ul{\TT}/U_\TT$ be given. The~$X_i$ are given by sorts of~$\TT$ and
+the~$R_j$ are given by atomic propositions over the signature
 of~$\TT/U_\TT(T)$.
-% XXX: No passing to covers is necessary, as we're in a *pre*sheaf topos!
 
 Since the slice~$\Set[\TT]/\yon T$ is equivalent to~$\Set[\TT/T]$,
 hence again the classifying topos of a Horn theory, we may without loss of
@@ -1286,7 +1287,7 @@ the~$U_\TT$-algebra~$(\TT\langle
 e_1\?X_1,\ldots,e_n\?X_n \,|\, R_1,\ldots,R_m \rangle)^\sim$.
 \end{proof}
 
-\begin{thm}Let~$\TT'$ be a quotient theory of~$\TT$, not necessarily Horn.
+\begin{thm}Let~$\TT'$ be a geometric quotient theory of~$\TT$, not necessarily Horn.
 Assume that~$U_\TT$ is a sheaf for the topology
 on~$\Set[\TT]$ cutting out the subtopos~$\Set[\TT']$. Then, from the internal
 point of view of~$\Set[\TT']$, the canonical map~$A \to (U_{\TT'})^{\Spec(A)}$
@@ -1516,7 +1517,8 @@ Remark~\ref{rem:definability-entails-nullstellensatz}.\end{proof}
 
 Butz and Johnstone~\cite{butz-johnstone:first-order} list several nongeometric sequents holding in the
 classifying topos of the theory~$\OO$ of objects, the theory with a single sort and
-no function symbols, relation symbols or axioms, including the following ones.
+no function symbols, relation symbols or axioms. In particular, they present
+the following ones.
 \begin{align*}
   \forall x,y\?U_\OO\_ \neg\neg(x = y) &&
   \forall x_1,\ldots,x_n\?U_\OO\_ \neg \forall y\?U_\OO\_ \bigvee_{i=1}^n (y = x_i)

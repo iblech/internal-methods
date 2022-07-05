@@ -1,0 +1,283 @@
+\documentclass[10pt,reqno,a4paper,openany]{amsbook}
+\usepackage{etex}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{etoolbox,chngcntr}
+\usepackage{amsmath,amsthm,amssymb,array,stmaryrd,color,graphicx,mathtools,multirow,setspace}
+\usepackage{soul}\setul{0.3ex}{}
+\usepackage{bussproofs}
+\usepackage{xspace}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage[protrusion=true,expansion=true]{microtype}
+\usepackage[bookmarksdepth=2,pdfencoding=auto]{hyperref}
+
+\usepackage{libertine}
+
+% Hack to load extpfeil from https://tex.stackexchange.com/a/297109/32372
+\expandafter\def\csname opt@stmaryrd.sty\endcsname
+{only,shortleftarrow,shortrightarrow}
+\usepackage{extpfeil}
+\newextarrow{\xbigtoto}{{20}{20}{20}{20}}
+   {\bigRelbar\bigRelbar{\bigtwoarrowsleft\rightarrow\rightarrow}}
+
+\usepackage[all]{xy}
+\usepackage{tikz}
+\usetikzlibrary{calc,shapes.callouts,shapes.arrows,matrix,patterns}
+\newcommand{\hcancel}[5]{%
+    \tikz[baseline=(tocancel.base)]{
+        \node[inner sep=0pt,outer sep=0pt] (tocancel) {#1};
+        \draw[red, line width=0.3mm] ($(tocancel.south west)+(#2,#3)$) -- ($(tocancel.north east)+(#4,#5)$);
+    }%
+}
+
+\usepackage[natbib=true,style=numeric,maxnames=10]{biblatex}
+\usepackage[babel]{csquotes}
+\bibliography{bibliography}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{ex}[defn]{Example}
+
+\theoremstyle{plain}
+\newtheorem{prop}[defn]{Proposition}
+\newtheorem{cor}[defn]{Corollary}
+\newtheorem{lemma}[defn]{Lemma}
+\newtheorem{thm}[defn]{Theorem}
+\newtheorem{scholium}[defn]{Scholium}
+
+\theoremstyle{remark}
+\newtheorem{rem}[defn]{Remark}
+\newtheorem{question}[defn]{Question}
+\newtheorem{speculation}[defn]{Speculation}
+\newtheorem{caveat}[defn]{Caveat}
+\newtheorem{conjecture}[defn]{Conjecture}
+
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\FF}{\mathbb{F}}
+\renewcommand{\AA}{\mathbb{A}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\D}{\mathcal{D}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\G}{\mathcal{G}}
+\let\acuteH\H
+\newcommand{\konig}{K\acuteH onig}
+\renewcommand{\H}{\mathcal{H}}
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\K}{\mathcal{K}}
+\newcommand{\N}{\mathcal{N}}
+\newcommand{\M}{\mathcal{M}}
+\renewcommand{\L}{\mathcal{L}}
+\renewcommand{\P}{\mathcal{P}}
+\newcommand{\R}{\mathcal{R}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\I}{\mathcal{I}}
+\newcommand{\J}{\mathcal{J}}
+\renewcommand{\S}{\mathcal{S}}
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\V}{\mathcal{V}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\GG}{\mathbb{G}}
+\newcommand{\TT}{\mathbb{T}}
+\newcommand{\aaa}{\mathfrak{a}}
+\newcommand{\bbb}{\mathfrak{b}}
+\newcommand{\ccc}{\mathfrak{c}}
+\newcommand{\ppp}{\mathfrak{p}}
+\newcommand{\qqq}{\mathfrak{q}}
+\newcommand{\mmm}{\mathfrak{m}}
+\newcommand{\nnn}{\mathfrak{n}}
+\newcommand{\?}{\,{:}\,}
+
+\newenvironment{indentblock}{%
+  \list{}{\leftmargin\leftmargin}%
+  \item\relax
+}{%
+  \endlist
+}
+
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\defequiv}{\vcentcolon\equiv}
+\newcommand{\seq}[1]{\mathrel{\vdash\!\!\!_{#1}}}
+
+\definecolor{gray}{rgb}{0.7,0.7,0.7}
+
+\title{The curious world of constructive mathematics}
+\author{Ingo Blechschmidt}
+%\email{iblech@speicherleck.de}
+
+\makeatletter
+\counterwithout{section}{chapter}
+\counterwithout{footnote}{chapter}
+\counterwithout{table}{chapter}
+\counterwithout{figure}{chapter}
+\patchcmd{\@thm}{\let\thm@indent\indent}{\let\thm@indent\noindent}{}{}
+\patchcmd{\@thm}{\thm@headfont{\scshape}}{\thm@headfont{\bfseries}}{}{}
+\patchcmd{\@makechapterhead}{\chaptername}{Lecture}{}{}
+\patchcmd{\@chapter}{\chaptername}{Part}{}{}
+\patchcmd{\@schapter}{\chaptername}{Part}{}{}
+\addto\captionsenglish{\renewcommand\chaptername{Lecture}}
+\def\l@section{\@tocline{1}{0pt}{1pc}{}{}} % \bfseries}}
+\def\l@chapter{\@tocline{-1}{12pt}{0pt}{}{\bfseries}}
+\renewcommand\thechapter{\Roman{chapter}}
+\newcommand{\nocontentsline}[3]{}
+\newcommand{\tocless}[1]{\let\addcontentsline=\nocontentsline}
+\normalparindent=12pt
+\parindent=\normalparindent
+\renewenvironment{proof}[1][\proofname]{\par
+  \pushQED{\qed}%
+  \normalfont \topsep6\p@\@plus6\p@\relax
+  \trivlist
+  \item[\hskip\labelsep
+        \itshape
+    #1\@addpunct{.}]\ignorespaces
+}{%
+  \popQED\endtrivlist\@endpefalse
+}
+\let\@afterindenttrue\@afterindentfalse
+\def\subsection{\@startsection{subsection}{2}%
+  {0pt}{.5\linespacing\@plus.7\linespacing}{-.5em}%
+  {\normalfont\bfseries}}
+\makeatother
+
+\newenvironment{intro}{\begin{quote}}{\end{quote}}
+
+\begin{document}
+
+\begin{abstract}
+Constructive mathematics is a flavor of mathematics in which we use the
+axiom of choice and the technique of proof by contradiction only in
+certain special cases. The square root of two is constructively still
+irrational, but there might be vector spaces without a basis.
+
+As a result, proofs are more informative (for instance regarding
+bounds), finer distinctions can be made (for instance between positive
+existence and mere impossibility of non-existence) and results apply
+more generally: Every constructive result also has a geometric
+interpretation, where it applies to continuous families, and an
+algorithmic interpretation, yielding computational witnesses such as
+procedures for computing the objects whose existence has been shown.
+
+Relinquishing the axiom of choice and the law of excluded middle also
+allows us to explore axioms and notions which are incompatible with
+these classical laws, such as mathematical settings in which all
+functions are continuous or in which the intuitive idea of a ``generic
+ring'' can be put on a firm basis.
+\end{abstract}
+
+{
+\renewcommand{\newpage}{\ }
+\renewcommand{\vfill}{\ }
+\renewcommand{\vfil}{\ }
+\maketitle
+}
+
+\setcounter{tocdepth}{1}
+{
+\renewcommand{\newpage}{\ }
+\tableofcontents
+}
+
+
+\chapter{A first glimpse of constructive mathematics}
+
+\begin{intro}
+\it
+This lecture provides a first glimpse of constructive mathematics with a
+focus on applications of constructive mathematics and on providing
+intuition for quickly discerning which techniques and results hold
+constructively.
+\end{intro}
+
+\vfill
+{\small
+\begin{verbatim}
+- What constructive mathematics is about: finer distinctions, algorithmic
+  interpretation, geometric interpretation (including teaser on why we
+  might care)
+- Proof by and proof of a contradiction: powers of irrational numbers,
+  discreteness of N, Q, Qbar, failure of discreteness of R
+- Positive information from negative? de Morgan, minimums of sets of
+  natural numbers
+- Relation to classical mathematics
+- Finite sets and the axiom of choice
+- Axiomatic freedom: all functions continuous, all functions
+  computable, generic prime ideal
+\end{verbatim}
+}
+
+
+\chapter{On the constructive content of classical proofs}
+
+\begin{intro}
+Decades of experience in constructive mathematics show: \emph{Most results
+in classical mathematics, even those whose proof rests on
+non-constructive principles like the axiom of choice or the law of
+excluded middle, have a hidden constructive core.} With a mix of
+experience, seasoned tools and general metatheorems, this constructive
+content can be extracted from classical proofs. In this way we obtain
+constructive reformulations of classical results, especially
+if they are of a sufficiently concrete nature.
+
+For instance, while the existence of maximal ideals in arbitrary rings
+is equivalent to the axiom of choice, every first-order consequence of
+their existence for linear algebra over rings also holds constructively.
+
+This lecture illustrates the latent constructive nature of classical
+proofs with examples and presents two general metatheorems which
+elucidate proof mining for constructive content.
+\end{intro}
+
+
+\section{The double-negation translation}
+
+\section{Barr's theorem}
+
+\section{Examples from quadratic form theory}
+
+
+\chapter{Generic models and their applications}
+
+\begin{intro}
+Commutative algebra progressed when the intuitive but informal notion of
+``the generic element of a given field~$k$'' was reified in the form of the
+specific element~$X$ of the polyomial ring~$k[X]$. The caveat is, of course,
+that the expanded ring~$k[X]$ is no longer a field.
+
+A similar story unfolds one level up. \emph{Topos theory provides us with ``the
+generic ring'', the ring we are implicitly picturing when someone utters
+the phrase ``Let~$R$ be a ring''.} The generic ring has exactly those
+properties (of the large class of ``geometric implications'') which all rings
+have. To have the generic ring in our ontology,
+we need to broaden our notion of existence---the generic ring is not a
+ring in the usual sense of the word, but a ring object in an enlarged
+topos, and still close enough to the familiar rings in that all
+constructive theorems about rings apply to it.
+
+Bizarrely, the generic ring has the property (not formalizable as a
+geometric implication) that it is even a field. Hence, if we are to
+prove a geometric implication for all rings, we can just as well assume
+the field property.
+
+The lecture introduces the notion of topos-theoretic generic models in
+general, focussing on the generic ring, the generic prime ideal and
+concrete applications.
+\end{intro}
+
+\vfill{\small%
+\begin{verbatim}
+- Existence of generic models
+- Generic ring is a field
+- Generic prime ideal
+- Kripke–Joyal semantics
+\end{verbatim}
+}
+
+
+\end{document}

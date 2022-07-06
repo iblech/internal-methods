@@ -1292,18 +1292,20 @@ proper constructive and predicative home?
 \item An abelian group~$I$ is \emph{divisible} if and only if for every
 element~$x \in I$ and every natural number~$n \geq 1$, there is an element~$y \in I$
 such that~$ny = x$.
-\item An abelian group~$I$ \emph{satisfies the Baer criterion} if and only if,
+\item An abelian group~$I$ \emph{satisfies the Baer condition} if and only if,
 for every ideal~$\aaa \subseteq \ZZ$, every ($\ZZ$-)linear map~$\aaa \to I$
 admits an extension along the inclusion to a linear map~$\ZZ \to I$.
 \end{enumerate}
 \end{defn}
 
+Trivially, every group satisfying the Baer condition is also divisible.
+
 \begin{prop}
 \label{prop:embed1}
 \begin{enumerate}
 \item Assuming the law of excluded middle, all divisible abelian groups satisfy
-the Baer criterion.
-\item Assuming Zorn's lemma, all abelian groups which satisfy the Baer criterion
+the Baer condition.
+\item Assuming Zorn's lemma, all abelian groups which satisfy the Baer condition
 are injective.
 \end{enumerate}
 \end{prop}
@@ -1314,8 +1316,8 @@ extensions is trivial and for~$n > 0$ existence of extensions follow from
 divisibility.
 
 Assuming Zorn's lemma, let~$I$ be an abelian group satisfying the Baer
-criterion, let~$i : A \to B$ be a linear injection and let~$f : A \to I$ be a
-linear map. The poset of partial extensions contains suprema of chains and
+condition, let~$i : A \to B$ be a linear injection and let~$f : A \to I$ be a
+linear map. The poset of partial extensions of~$f$ contains suprema of chains and
 hence a maximal partial extension~$f_0 : A_0 \to I$ with~$A \subseteq A_0
 \subseteq B$.
 
@@ -1340,7 +1342,7 @@ there is a linear map~$g : A \to (\QQ/\ZZ)^{++}$ such that~$g(x) = 0
 \end{lemma}
 
 \begin{proof}Let~$i : \aaa \hookrightarrow \ZZ$ be the inclusion of an ideal
-and let~$f : \aaa \to A$ be a linear map as in the solid part of the following
+and let~$f : \aaa \to (\QQ/\ZZ)^{++}$ be a linear map as in the solid part of the following
 commutative diagram:
 \[ \xymatrix{
   \aaa \ar@{^{(}->}[r]^i\ar[d]\ar@/_2pc/[dd]_f & \ZZ \ar[d] \\
@@ -1395,7 +1397,7 @@ that~$\nabla(\varphi \vee (\varphi \Rightarrow \nabla\bot))$. The codomain of
 the canonical map
 \[ A \longrightarrow \prod_{g : A \to (\QQ/\ZZ)^{++}} (\QQ/\ZZ)^{++},\
   x \longmapsto (g(x))_g \]
-is a product of abelian groups which functionally satisfy the Baer criterion by
+is a product of abelian groups which functionally satisfy the Baer condition by
 Lemma~\ref{lemma:q-mod-z}(1) and hence satisfies the Baer condition itself.
 Assuming Zorn's lemma, this map is injective by Lemma~\ref{lemma:q-mod-z}(2)
 and~$\nabla$-separatedness of~$A$.
@@ -1406,7 +1408,7 @@ operator~$\nabla_x$ with~$\nabla_x\varphi \defeqv ((\varphi \Rightarrow x
 = 0) \Rightarrow x = 0)$, the codomain of the canonical map
 \[ A \longrightarrow \prod_{x \in A} \prod_{g : A \to (\QQ/\ZZ)^{+_x+_x}}
 (\QQ/\ZZ)^{+_x+_x} \]
-satisfies the Baer criterion and is injective as in the proof of
+satisfies the Baer condition and is injective as in the proof of
 Theorem~\ref{thm:enough-flabby-modules}.
 \end{proof}
 

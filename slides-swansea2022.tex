@@ -318,7 +318,8 @@ predicativity}
 
 
 \newcommand{\hil}[1]{{\usebeamercolor[fg]{item}{\textbf{#1}}}}
-\newcommand{\bad}[1]{\textcolor{red!90}{\textnormal{#1}}}
+\newcommand{\bad}[1]{\textcolor{red!90}{#1}}
+\newcommand{\neutral}[1]{{\usebeamercolor[fg]{item}{#1}}}
 
 \newcommand{\bignumber}[1]{%
   \renewcommand{\insertenumlabel}{#1}\scalebox{1.2}{\!\usebeamertemplate{enumerate item}\!}
@@ -326,6 +327,8 @@ predicativity}
 \newcommand{\bigheart}{\includegraphics{heart}}
 
 \newcommand{\subhead}[1]{{\centering\textcolor{gray}{\hrulefill}\quad\textnormal{#1}\quad\textcolor{gray}{\hrulefill}\par}}
+
+\newcommand{\triang}{\hil{$\blacktriangleright$}}
 
 \begin{document}
 
@@ -342,12 +345,11 @@ predicativity}
   \bigskip
   \bigskip
   \bigskip
-  \bigskip
+  \color{white}
 
   \begin{tikzpicture}
     \def\R{8pt}
-    \node (title) {\vbox{\vspace*{-0.5em} \textcolor{white}{Maximal ideals in
-    (countable) rings, constructively}}};
+    \node (title) {\phantom{qquad}\textcolor{white}{Maximal ideals in rings, constructively}\phantom{qquad}};
     \begin{pgfonlayer}{background}
       \draw[decorate, very thick, draw=white]
         ($(title.south west) + (\R, 0)$) arc(270:180:\R) --
@@ -358,21 +360,33 @@ predicativity}
     \end{pgfonlayer}
   \end{tikzpicture}
 
-  \color{white}
   \scriptsize
   \textit{-- an invitation --}
+
   \bigskip
-  \bigskip
-  \bigskip
+  %(Agda formalization available)
+  %\bigskip
 
   Computability in Europe 2022: \\
   \emph{Revolutions and Revelations in Computability} \\
   11--15 July 2022, Swansea
   \ \\
   \bigskip
+  \bigskip
+  \bigskip
 
-  Ingo Blechschmidt \\
-  University of Augsburg
+  \begin{columns}
+    \begin{column}{0.4\textwidth}
+      \centering
+      Ingo Blechschmidt \\
+      University of Augsburg
+    \end{column}
+    \begin{column}{0.4\textwidth}
+      \centering
+      Peter Schuster \\
+      University of Verona
+    \end{column}
+  \end{columns}
   \par
 \end{frame}}
 
@@ -416,6 +430,7 @@ predicativity}
   \end{columns}
 \end{frame}
 
+{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{4.95cm}\includegraphics[width=\paperwidth]{topos-horses}\end{minipage}}
 \begin{frame}{What others are saying}
   \begin{columns}
     \begin{column}{0.3\textwidth}
@@ -432,10 +447,9 @@ predicativity}
       \end{tikzpicture}
     \end{column}
   \end{columns}
-\end{frame}
+\end{frame}}
 
-% \begin{document}
-
+{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{5.95cm}\includegraphics[width=\paperwidth]{fr1}\end{minipage}}
 \begin{frame}{Transfinite methods in algebra}
   \vspace*{-1em}
 
@@ -483,56 +497,121 @@ predicativity}
   \pause
   \bigskip
   \centering
-  \emph{-- abstract proofs as blueprints for concrete ones --}
+  \colorbox{white!20}{\emph{Abstract proofs should be blueprints for concrete ones.}}
+\end{frame}}
+
+\begin{frame}{The status of maximal ideals}
+  \begin{itemize}
+    \item[\triang] In \bad{classical mathematics}, every ring has a maximal ideal.
+
+    \small
+    -- \emph{Zorn's lemma}
+    \bigskip\pause
+
+    \normalsize
+    \item[\triang] Without \bad{Zorn}, every \bad{countable} ring has a maximal ideal.
+
+    \small
+    \emph{\mbox{-- Iterative construction\only<-4>{ given
+    enumeration~$x_0,x_1,\ldots$}
+    [Krull 1929]\only<-4>{:}}}
+    \only<-4>{\begin{align*}
+      \mmm_0 &= \{ 0 \}, &
+      \mmm_{n+1} &= \begin{cases}
+        \mmm_n + (x_n), & \text{if $1 \not\in \mmm_n + (x_n)$}, \\
+        \mmm_n, & \text{else.}
+      \end{cases}
+      \intertext{\visible<3->{\mbox{\emph{-- Also constructively! [Krivine
+      1996], [Berardi--Valentini 2004]}}}}
+      \action<3->{\mmm_0 &= \{ 0 \}, &
+      \mmm_{n+1} &= \mmm_n + (\underbrace{\{ x_n \,|\, 1 \not\in \mmm_n + (x_n)
+      \}}_{\text{a certain subsingleton set}})}
+    \end{align*}}
+    \only<5->{\mbox{\emph{-- Also constructively! [Krivine
+      1996], [Berardi--Valentini 2004]}}}%
+    \pause
+    \pause
+
+    \mbox{\phantom{\emph{--}} $A/\mmm$ is a residue field: noninvertible
+    implies zero.}
+    \bigskip
+
+    \pause
+    \pause
+    \normalsize
+    \item[\triang] Constructively, \neutral{every} ring has a maximal ideal in
+    \mbox{\neutral{some extension of the base universe}.}
+
+    \small
+    \mbox{\emph{-- \neutral{First-order consequences} of its existence \neutral{pass
+    down} to the base.}}
+
+    \mbox{\emph{-- Obtained by applying K/B--V to the \neutral{generic surjection} $\NN
+    \twoheadrightarrow A$}}
+    \mbox{\emph{\phantom{--} [Joyal--Tierney 1984].}}
+  \end{itemize}
 \end{frame}
 
-\end{document}
+% \begin{document}
 
-\vspace*{-2em}
-\begin{tikzpicture}[every annotation/.style = {draw, font = \large}]
-    \path[
-      mindmap,
-      concept color=black!00,
-      %every node/.style={concept},
-      root/.style={concept color=black!00, font=\large\bfseries,text width=2em},
-      level 1 concept/.append style={sibling angle=72,text width=9.0em, level distance=8em,inner sep=0pt}
-    ]
-    node[root] {
-    } [counterclockwise from=180]
-      child[concept color=blue!00] {
-      }
-      child[concept color=blue!00] {
-        node {\includegraphics[width=2cm]{calabi-yau} \mbox{commutative algebra}}
-      }
-      child[concept color=blue!00] {
-        node {\includegraphics[width=2cm]{multiverse} \mbox{traveling} the \mbox{mathematical multiverse}}
-      }
-      child[concept color=blue!00] {
-      };
-  \end{tikzpicture}
+\begin{frame}{The generic surjection}
+  Let~$A$ be a (perhaps uncountable) set.
 
-  \vfill
+  \begin{itemize}
+    \item[\triang] Idea: Approximate the generic surjection $f : \NN
+    \twoheadrightarrow A$ by \neutral{dynamically growing} partial
+    functions $[x_0,\ldots,x_n]$.
 
+    {\small
+    \it
+    \mbox{-- As a proof runs its course and requires that some element~$a \in A$}
+    \mbox{\phantom{--} is contained in the image of~$f$, refine
+    $[x_0,\ldots,x_n]$ to $[x_0,\ldots,x_n,a]$.}}
+
+    \medskip\pause
+    \item[\triang] The finite approximations serve as the \neutral{generating
+    opens} of a \neutral{pointfree space}.
+
+    {\small
+    \it
+    \mbox{-- There is no fact of the matter whether ``$f(0) = x \wedge
+    f(1) = y$''.}
+
+    \phantom{--} Instead, this statement has the truth value~$[x,y]$.}
+
+    \medskip\pause
+    \item[\triang]\justify Boils down to parametrizing everything by the
+    current approximation and computing in the \textsf{Eventually} monad or its
+    coarser cousin, the \textsf{State} monad.
+  \end{itemize}
 \end{frame}
 
+\begin{frame}{Applications}
+  \emph{Conceptual:}
+  \begin{itemize}\small
+    \item[\triang] Case study for proofs in algebra with minimal logic
+    \item[\triang] New constructive proof of formal substitute for existence:
+
+    \mbox{\emph{If the theory of maximal ideals of~$A$ is inconsistent, then~$1 =
+    0$ in~$A$.}}
+    \item[\triang] Strengthening of the position of maximal ideals as useful
+    fictions
+    \item[\triang] Reification of dynamical algebra
+  \end{itemize}
+  \bigskip
+
+  \emph{Concrete:} New constructive proofs of \ldots
+  \begin{itemize}\small
+    \item[\triang] Krull's lemma and its corollaries
+    \item[\triang] basic results of linear algebra over rings
+    \item[\triang] Suslin's lemma (key to the solution of Serre's problem)
+  \end{itemize}
+\end{frame}
+
+{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\includegraphics[width=\paperwidth]{eventually-monad}\end{minipage}}
+\begin{frame}
+  \vspace*{\paperheight}\vspace*{-3.5em}\centering
+  \emph{Agda formalization available.}
+\end{frame}}
+
 \end{document}
-
-Consider: Thierry, Space of Valuations!
-
-"What to expect in this talk"
-- fractal
-- monadic side effects
-- proofs as programs
-- history of mathematics
-- rings
-- traveling multiverse
-- sheafs
-
-Applications
-- philosophical:
-  - inconsistent ⇒ 1 = 0
-  - maximal ideals as convenient fictions
-  - reification of dynamical algebra
-- concrete:
-  - surjective
-  - Suslin

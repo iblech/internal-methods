@@ -334,8 +334,6 @@ predicativity}
 
 \addtocounter{framenumber}{-1}
 
-%\setbeamertemplate{headline}{\mynav{gray}{gray}{gray}}
-
 {\usebackgroundtemplate{\begin{minipage}{\paperwidth}\includegraphics[width=\paperwidth]{swansea-bay}\end{minipage}}
 \begin{frame}[c]
   \centering
@@ -475,11 +473,48 @@ predicativity}
   \only<2>{\phantom{\textbf{Proof.} Elementary linear algebra. \qed}}%
   \pause\justify%
   \textbf{Proof.}
-  \bad{Assume not.} \pause Then there is~a \bad{maximal ideal} $\mmm$. \pause
-  The matrix is surjective over the field~$A/\mmm$. This is a contradiction to
-  basic linear algebra. \qed
+  \bad{Assume not.} \visible<4->{Then there is~a \bad{maximal ideal} $\mmm$.}
+  \visible<6->{The matrix is surjective over the field~$A/\mmm$. This is a contradiction to
+  basic linear algebra. \qed}
 
-  \pause
+  \only<5-6>{\par\centering\scalebox{0.9}{\begin{tikzpicture}
+    \node (0) at (0,1) {$(0) = \{0\}$};
+    \node (1) at (0,5) {$(1) = \ZZ$};
+    \node (2) at (-2,4) {$(2)$};
+    \node [right of=2] (3) {$(3)$};
+    \node [below of=2] (4) {$(4)$};
+    \node [below of=2, xshift=0.7cm] (6) {$(6)$};
+    \node [right of=3] (5) {$(5)$};
+    \node [right of=5] (7) {$(7)$};
+    \node [right of=7] (7d) {$\ldots$\phantom{(}};
+    \node [right of=7d, xshift=1cm, yshift=-1cm] (max)
+    {\small\it maximal among the proper ideals};
+    \node [below of=4] (8) {$(8)$};
+    \node [right of=8, xshift=3cm] (8d) {$\ldots$};
+    \draw (0) -- (8);
+    \draw (0) -- (8d);
+    \draw (0) -- (6);
+    \draw (2) -- (1);
+    \draw (3) -- (1);
+    \draw (5) -- (1);
+    \draw (7) -- (1);
+    \draw (7d) -- (1);
+    \draw (4) -- (2);
+    \draw (8) -- (4);
+    \draw (6) -- (2);
+    \draw (6) -- (3);
+    \draw [mypurple!30, thick, shorten <=-2pt, shorten >=-2pt, ->] (max) to [out=120, in=-30] (7d);
+    \begin{pgfonlayer}{background}
+      \draw[decorate, very thick, draw=mypurple!30]
+        ($(2.south west) + (8pt, 0)$) arc(270:180:8pt) --
+        ($(2.north west) + (0, -8pt)$) arc(180:90:8pt) --
+        ($(7d.north east) + (-8pt, 0)$) arc(90:0:8pt) --
+        ($(7d.south east) + (0, 8pt)$) arc(0:-90:8pt) --
+        cycle;
+    \end{pgfonlayer}
+  \end{tikzpicture}}\par}
+
+  \visible<7->{
   \textbf{Proof.}
   Write~$M = \left(\begin{smallmatrix}x\\y\end{smallmatrix}\right)$. By surjectivity,
   have~$u, v \in A$ with
@@ -492,12 +527,12 @@ predicativity}
   $
     1 = -\underbrace{(vy - 1)}_{=0} - vy \underbrace{(ux - 1)}_{=0} + vx
     \underbrace{(uy - 0)}_{=0} = 0
-  $. \qed
+  $. \qed}
 
-  \pause
+  \visible<8->{
   \bigskip
   \centering
-  \colorbox{white!20}{\emph{Abstract proofs should be blueprints for concrete ones.}}
+  \colorbox{white!20}{\emph{Abstract proofs should be blueprints for concrete ones.}}}
 \end{frame}}
 
 \begin{frame}{The status of maximal ideals}
@@ -551,8 +586,6 @@ predicativity}
     \mbox{\emph{\phantom{--} [Joyal--Tierney 1984].}}
   \end{itemize}
 \end{frame}
-
-% \begin{document}
 
 \begin{frame}{The generic surjection}
   Let~$A$ be a (perhaps uncountable) set.
@@ -608,10 +641,14 @@ predicativity}
   \end{itemize}
 \end{frame}
 
+\backupstart
+
 {\usebackgroundtemplate{\begin{minipage}{\paperwidth}\includegraphics[width=\paperwidth]{eventually-monad}\end{minipage}}
 \begin{frame}
-  \vspace*{\paperheight}\vspace*{-3.5em}\centering
+  \vspace*{\paperheight}\vspace*{-3.4em}\centering
   \emph{Agda formalization available.}
 \end{frame}}
+
+\backupend
 
 \end{document}

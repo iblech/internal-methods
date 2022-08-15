@@ -6,6 +6,7 @@
 \usepackage{amsmath,amsthm,amssymb,array,stmaryrd,color,graphicx,mathtools,multirow,setspace}
 \usepackage{soul}\setul{0.3ex}{}
 \usepackage{bussproofs}
+\usepackage{manfnt}
 \usepackage{xspace}
 \usepackage{longtable}
 \usepackage{booktabs}
@@ -36,7 +37,7 @@
 \bibliography{bibliography}
 
 \theoremstyle{definition}
-\newtheorem{defn}{Definition}[section]
+\newtheorem{defn}{Definition}[chapter]
 \newtheorem{ex}[defn]{Example}
 
 \theoremstyle{plain}
@@ -146,7 +147,10 @@
   {\normalfont\bfseries}}
 \makeatother
 
-\newenvironment{intro}{\begin{quote}}{\end{quote}}
+\newenvironment{intro}{\begin{quote}}{\end{quote}\bigskip}
+
+\newtheorem{exercise}[defn]{Exercise}
+\renewcommand{\theenumi}{\alph{enumi}}
 
 \begin{document}
 
@@ -194,6 +198,97 @@ focus on applications of constructive mathematics and on providing
 intuition for quickly discerning which techniques and results hold
 constructively.
 \end{intro}
+
+\begin{prop}There are irrational numbers~$x$ and~$y$ such that~$x^y$ is
+rational.
+\end{prop}
+\begin{proof}[First proof] The number~$\sqrt{2}^{\sqrt{2}}$ is rational or
+irrational. In the first case, set~$x \defeq \sqrt{2}$, $y \defeq \sqrt{2}$.
+In the second case, set~$x \defeq \sqrt{2}^{\sqrt{2}}$, $y \defeq \sqrt{2}$.
+\end{proof}
+\begin{proof}[Second proof] Set~$x \defeq \sqrt{2}$ and~$y \defeq \log_{\sqrt{2}} 3$.
+Then~$x^y = 3$ is rational. The verification that~$y$ is irrational is even
+easier than that of~$\sqrt{2}$.\footnote{Let~$y = p/q$ with~$p, q \in \ZZ$
+and~$q \neq 0$. Since~$y > 0$, we may assume~$p, q \in \NN$. Then~$3 =
+(\sqrt{2})^{p/q}$, hence~$3^{2q} = 2^p$. This is in contradiction to the
+uniqueness of the prime factor decomposition, since the factor~$3$ occurs on
+the left but not on the right.}
+\end{proof}
+
+The first proof is \emph{unconstructive}: It does not actually give us an
+example for a pair~$(x,y)$ as desired. In contrast, the second proof is
+constructive -- the existential claim is verified by an explicit construction
+of a suitable example.
+
+Of the many axioms and inference rules of classical logic, exactly one is
+responsible for enabling unconstructive arguments, namely the \emph{principle
+of excluded middle}:
+\[ \varphi \ \vee\ \neg\varphi. \]
+The first proof above used this principle in its very first step. In
+constructive mathematics, we abstain from this principle; we build
+constructive mathematics on \emph{intuitionistic logic}, which contains neither
+this principle nor the (equivalent) \emph{principle of double negation
+elimination} stating~$\neg\neg\varphi \Rightarrow \varphi$, and insofar as we
+layer a set theory on top of our logical foundation, we abstain from the axiom
+of choice (which in presence of other common set-theoretical axioms implies the
+principle of excluded middle, see Exercise~\ref{ex:diaconescu}).
+
+\marginpar{\dbend}
+In constructive mathematics, we do \emph{not} claim that the principle of
+excluded middle is false. Indeed, intuitionistic logic is downwardly compatible
+with classical logic (every intuitionistic proof is a fortiori also a classical
+proof), and some special instances of the principle of excluded middle are
+intuitionistically verifiable (an example is given in
+Proposition~\ref{prop:discreteness}). Instead, in constructive mathematics we
+merely do not use the principle of excluded middle.
+
+\begin{exercise}[Basics on negation]
+Recalling that negation is defined as implying absurdity,~$\neg\varphi
+\defequiv (\varphi \Rightarrow \bot)$, verify intuitionistically:
+\begin{enumerate}
+\item $\varphi \Rightarrow \neg\neg\varphi$
+\item $\neg\neg\neg\varphi \Leftrightarrow \neg\varphi$
+\item $\neg\neg(\varphi \vee \neg\varphi)$
+\item The principle of excluded middle, for all statements~$\varphi$, is
+equivalent to the principle of double negation elimination for all statements.
+
+{\noindent\scriptsize\emph{Hint.}
+Don't try to verify that double negation elimination for a specific
+statement~$\varphi$ implies the principle of excluded middle for that same
+statement~$\varphi$ -- this cannot be shown.\par}
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}[An epistemic riddle on transcendental numbers]
+Verify, using a proof by contradiction, that at least one of the numbers~$e +
+\pi$ and~$e - \pi$ is transcendental; and that at least one of the
+numbers~$e + \pi$ and~$e \cdot \pi$ is transcendental.
+\end{exercise}
+
+\begin{exercise}[Diaconescu's theorem]
+\label{ex:diaconescu}
+The axiom of choice can be put as: ``Every surjective map~$f$ has a
+section~$s$, that is a map in the other direction such that~$f \circ s =
+\mathrm{id}$.'' This exercise is on Diaconescu's theorem, stating that
+the axiom of choice implies the law of excluded middle. To this end, let~$\varphi$ be a
+statement and consider the subsets
+\begin{align*}
+  U &= \{ x \in X \,|\, (x = 0) \vee \varphi \} \\
+  V &= \{ x \in X \,|\, (x = 1) \vee \varphi \}
+\end{align*}
+of the discrete set~$X \defeq \{ 0,1 \}$.
+\begin{enumerate}
+\item Verify that~$U = V$ if and only if~$\varphi$.
+\item Using that~$x = y \vee x \neq y$ for all elements~$x,y \in X$, show that
+the existence of a section of the surjective map
+\[ \begin{array}{@{}rcl@{}}
+  X &\longrightarrow& \{U,V\} \\
+  0 &\longmapsto& U \\
+  1 &\longmapsto& V
+\end{array} \]
+implies~$\varphi \vee \neg\varphi$.
+\end{enumerate}
+\end{exercise}
 
 \vfill
 {\small

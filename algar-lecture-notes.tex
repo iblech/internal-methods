@@ -235,14 +235,218 @@ layer a set theory on top of our logical foundation, we abstain from the axiom
 of choice (which in presence of other common set-theoretical axioms implies the
 principle of excluded middle, see Exercise~\ref{ex:diaconescu}).
 
-\marginpar{\dbend}
 In constructive mathematics, we do \emph{not} claim that the principle of
-excluded middle is false. Indeed, intuitionistic logic is downwardly compatible
+excluded middle is false. \marginpar{\dbend}
+Indeed, intuitionistic logic is downwardly compatible
 with classical logic (every intuitionistic proof is a fortiori also a classical
 proof), and some special instances of the principle of excluded middle are
 intuitionistically verifiable (an example is given in
 Proposition~\ref{prop:discreteness}). Instead, in constructive mathematics we
 merely do not use the principle of excluded middle.
+
+Also, deducing from a statement of the form~``$\exists x \in X\_ \varphi(x)$''
+that there actually is an element~$x \in X$ such that~$\varphi(x)$, and then
+using this particular element in the rest of an argument, is intuitionistically a
+valid logical inference, just as it is in classical logic. The axiom of choice
+is unrelated to this kind of proof step, even though they are sometimes
+mistaken.
+
+
+\section{Proof by contradiction vs. proof of a negation}
+
+A rumor about constructive mathematics states that constructively, the term
+``contradiction'' would be generally forbidden. This is false. In fact, we need
+to distinguish between two distinct figures of proof which are often conflated
+in classical informal mathematics:
+
+\begin{enumerate}
+\item[1.] ``Assume~$\neg\varphi$. Then $\ldots$, a contradiction.
+Hence~$\neg\varphi$ was false and thus~$\varphi$ holds.''
+\item[2.] ``Assume~$\psi$. Then $\ldots$, a contradiction. Hence~$\neg\psi$.''
+\end{enumerate}
+
+Arguments of the first form are proper proofs by contradiction and hence not
+generally acceptable in constructive mathematics. What is established is
+only~$\neg(\neg\varphi)$, the impossibility of~$\neg\varphi$; constructively,
+this is weaker than a positive affirmation of~$\varphi$. Though there are
+situations in which~$\neg\neg\varphi$ implies~$\varphi$, generally it does not
+and hence intuitionistically arguments of the first form fail to
+estabilish~$\varphi$.
+
+In contrast, arguments of the second kind are fine from an intuitionistic point
+of view: They are not proper proofs by contradiction, but proofs of negated
+statements. That such proofs are valid follows directly from the definition of
+negation (which texts on classical logic often also adopt) as a certain
+implication:
+\[ \neg\psi \defequiv (\psi \Rightarrow \bot), \]
+where~``$\bot$'', pronounced ``bottom'', is \emph{absurdity}, a canonical false
+statement. (Informally, absurdity is also written as~``$\lightning$'' or~``$1 = 0$''.)
+Hence, to establish~$\neg\psi$, we may give a proof of~$\bot$ under
+the assumption~$\psi$, just as we may give a proof of~$\beta$ under the
+assumption~$\alpha$ if we want to prove~$\alpha \Rightarrow \beta$.
+
+The two proofs of the following fact from number theory demonstrate the
+difference:
+\begin{prop}\label{prop:sqrt2}The number~$\sqrt{2}$ is not rational.\end{prop}
+\begin{proof}[Proof (only valid classically)]
+Assume that the claim is false, that is, that the number~$\sqrt{2}$ is
+\emph{not not} rational. Then~$\sqrt{2}$ is rational. Hence there are
+integers~$a$ and~$b$ with~$\sqrt{2} = a / b$. Thus~$2b^2 = a^2$. This identity
+contradicts the uniqueness of the prime factor decomposition, since the
+factor~$2$ occurs an odd number of times on the left, but an even number of
+times on the right.
+\end{proof}
+\begin{proof}[Proof (also valid intuitionistically)]
+Assume that the number~$\sqrt{2}$ is rational. Then there are integers~$a$
+and~$b$, \ldots, a contradiction.
+[The theorem on the uniqueness of the prime factor decomposition admits an
+intuitionistic proof.]
+\end{proof}
+
+Constructively stronger than the statement that~$\sqrt{2}$ is merely
+\emph{not rational} is the statement that for every rational number~$x$
+the distance~$|\sqrt{2} - x|$ is positive. This stronger claim admits an
+intuitionistic proof as well (Exercise~\ref{ex:sqrt2}).
+
+
+\section{Constructive meaning of mathematical statements}
+
+By our training in classical mathematics, abstaining from the principle of
+excluded middle can feel peculiar, perhaps even outrageous: Isn't it obvious
+that every mathematical statement is true or false?
+
+This sense of bewilderment is resolved by observing that \emph{even though
+constructive mathematicians use the same logical symbols, they have a slightly
+different meaning in mind.} When a constructive mathematician argues for some
+statement~$\varphi$, they mean that they have an \emph{explicit witness}
+for~$\varphi$. This shift in meaning from the classical interpretation is
+elaborated by the \emph{Brouwer--Heyting--Kolmogorov interpretation} sketched
+below. It is informal and philosophical in nature, but still a useful guide to
+the constructive meaning of mathematical statements.
+
+
+\subsection*{The Brouwer--Heyting--Kolmogorov interpretation}
+
+The notion of witnesses is compositional in nature and begins with witnesses for \emph{atomic
+statements}, those not built from substatements using the logical
+connectives~$\wedge,\vee,\Rightarrow$ or the quantifiers~$\forall,\exists$. For
+instance, in formal number theory, the atomic statements are of the form
+``$s = t$'',
+where~$s$ and~$t$ are terms for natural numbers; statements of this form are so
+simple that we can check them directly so that witnesses don't need to supply
+particular additional information. We hence decree that true atomic statements
+have trivial witnesses and that false atomic statements have no witnesses at
+all.
+
+Table~\ref{table:bhk} explains what witnesses of compound statements are. For
+instance, a witness of a statement of the form
+\[ \forall n \? \NN\_ \bigl(\varphi(n) \Rightarrow \psi(n)\bigr) \]
+is a rule explaining how, for any natural number~$n : \NN$, witnesses
+for~$\varphi(n)$ give rise to witnesses for~$\psi(n)$.
+
+\begin{table}
+  \centering
+  \small
+  \renewcommand{\arraystretch}{1.3}
+  \begin{tabular}{@{}rp{5.9cm}p{6.5cm}@{}}
+    \toprule
+    & {klassische Logik} & {intuitionistische Logik}
+    \\\midrule
+    Aussage $\varphi$ & Die Aussage $\varphi$ gilt. & Wir haben Beleg für $\varphi$. \\
+    $\bot$ & Es stimmt Falschheit. & Wir haben Beleg für Falschheit. \\
+    $\varphi \wedge \psi$ & $\varphi$ und $\psi$ stimmen. & Wir haben Beleg für~$\varphi$ und für~$\psi$. \\
+    $\varphi \vee \psi$ & $\varphi$ oder $\psi$ stimmt. & Wir haben Beleg für~$\varphi$ oder für~$\psi$. \\
+    $\varphi \Rightarrow \psi$ & Sollte~$\varphi$ stimmen, dann auch~$\psi$. &
+    Aus Belegen für~$\varphi$ können wir (gleich\-mä\-ßig) Belege für~$\psi$ konstruieren. \\
+    $\neg\varphi$ &
+      $\varphi$ stimmt nicht. &
+      Es kann keinen Beleg für~$\varphi$ geben. \\
+    $\forall x\?X\_ \varphi(x)$ & Für alle $x : X$ stimmt jeweils~$\varphi(x).$ &
+      Wir können (gleichmäßig) für alle~$x : X$ Belege für~$\varphi(x)$ konstruieren. \\
+    $\exists x\?X\_ \varphi(x)$ & \raggedright Es gibt mindestens ein~$x : X$, für das~$\varphi(x)$
+    stimmt. & {\raggedright
+      Wir haben ein~$x : X$ zusammen mit Beleg für~$\varphi(x).$} \\
+    \bottomrule
+  \end{tabular}
+  \caption{\label{bhk}Informale rekursive Definition des Belegbegriffs.}
+\end{table}
+
+\begin{ex}
+According to the Brouwer--Heyting--Kolmogorov interpretation, the principle of
+excluded middle states that there is a rule for producing, for every~$\varphi$,
+either a witness for~$\varphi$ or a witness for~$\neg\varphi$. The BHK
+interpretation does not specify which kind of rule ...
+Unter dieser Interpretation meint das Prinzip vom ausgeschlossenen Dritten, dass wir für jede
+Aussage Beleg für sie oder ihre Negation haben. Das ist aber offensichtlich
+nicht der Fall.
+\end{ex}
+
+%\begin{bsp}
+Die Interpretation von~$\neg\neg\varphi$ ist, dass es keinen Beleg
+für~$\neg\varphi$ gibt. Daraus folgt natürlich noch nicht, dass wir tatsächlich
+Beleg für~$\varphi$ haben; gewissermaßen ist eine solche Aussage~$\varphi$ nur
+"`potenziell wahr"'.
+%\end{bsp}
+
+%\begin{bsp}
+Wenn wir wissen, dass sich unser Haustürschlüssel irgendwo in der
+Wohnung befinden muss (da wir ihn letzte Nacht verwendet haben, um die Tür
+aufzusperren), wir ihn momentan aber nicht finden, so können wir konstruktiv
+nur folgende doppelt negierte Aussage vertreten:
+\[ \neg\neg (\exists x\_ \text{der Schlüssel befindet sich an Position~$x$})
+\]
+%\end{bsp}
+
+%\begin{bsp}
+Wir stehen im Supermarkt und erinnern uns, dass wir unbedingt
+gewisse Zutaten einkaufen müssen. Leider fällt uns momentan keine einzige der
+Zutaten mehr ein. Dann können wir zwar die Aussage, dass die Menge der zu
+besorgenden Zutaten nicht leer ist, vertreten, nicht jedoch die stärkere
+Aussage, dass diese Menge ein Element enthält.
+%\end{bsp}
+
+%\begin{bsp}[\cite{sigfpe:katemoss,bbc:katemoss}]
+Es war ein Video aufgetaucht, dass Kate Moss beim Konsumieren von Drogen zeigte,
+und zwar entweder solche von einem Typ~A oder solche von einem Typ~B. Welcher
+Typ aber tatsächlich vorlag, konnte nicht entschieden werden. Also gab es für
+keine der beiden Straftaten einen Beleg, Kate Moss wurde daher nicht
+strafrechtlich verfolgt.
+%\end{bsp}
+
+%\begin{bem}Die Formulierung mit dem generischen \emph{Wir} in Tafel~\ref{bhk}
+ist etwas irreführend. Wie auch in klassischer Mathematik hängen
+intuitionistische Urteile nicht von \emph{uns} oder anderen Mathematikern ab.
+Aussagen, die bisher noch nicht konstruktiv bewiesen wurden, können
+durchaus einen (noch unbekannten) Beleg besitzen. Eine genauere Diskussion
+findet sich etwa in~\cite[Seite~42f.]{kohlenbach:applprooftheory}. Die
+Brouwer--Heyting--Kolmogorov-Interpretation kann im Rahmen der
+\emph{Realisierbarkeitstheorie} formalisiert werden~\cite{bauer:realizability};
+ohne eine solche Formalisierung gibt es gewisse weitere
+Probleme~\cite{artemov:bhk,sanz:piecha:critical-bhk,dalen:bhk}.
+%\end{bem}
+
+
+\subsubsection*{\ldots{} über Berechenbarkeit}
+
+Es gibt noch eine zweite Interpretation, die beim Verständnis der konstruktiven
+Sichtweise sehr hilfreich ist:
+%\listedmotto{konstruktiv-gdw-computer}{Eine Aussage gilt genau dann konstruktiv, wenn es ein
+%Computerprogramm gibt, welches sie in endlicher Zeit bezeugt.}
+Etwa ist mit dieser Interpretation klar, dass die formale Aussage
+\[ \forall n \in \NN\_ \exists p \geq n\_ \text{$p$ ist eine Primzahl}, \]
+eine Formulierung der Unendlichkeit der Primzahlen, auch konstruktiv
+stimmt: Denn man kann leicht ein Computerprogramm angeben, das eine natürliche
+Zahl~$n$ als Eingabe erwartet und dann, etwa über die Sieb-Methode von
+Eratosthenes, eine Primzahl~$p \geq n$ produziert (zusammen mit einem Nachweis,
+dass~$p$ tatsächlich prim ist).
+
+Das Motto kann man tatsächlich zu einem formalen Theorem
+präzisieren, das ist Gegenstand der gefeierten
+Curry--Howard-Korrespondenz (Abschnitt~\ref{curry-howard}).
+
+
+
+\section{Exercises}
 
 \begin{exercise}[Basics on negation]
 Recalling that negation is defined as implying absurdity,~$\neg\varphi

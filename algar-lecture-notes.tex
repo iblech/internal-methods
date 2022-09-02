@@ -13,6 +13,7 @@
 \usepackage[protrusion=true,expansion=true]{microtype}
 \usepackage[bookmarksdepth=2,pdfencoding=auto]{hyperref}
 
+\graphicspath{{images/}}
 \usepackage{libertine}
 
 % Hack to load extpfeil from https://tex.stackexchange.com/a/297109/32372
@@ -95,6 +96,7 @@
 \newcommand{\mmm}{\mathfrak{m}}
 \newcommand{\nnn}{\mathfrak{n}}
 \newcommand{\?}{\,{:}\,}
+\renewcommand{\_}{\mathpunct{.}\,}
 
 \newenvironment{indentblock}{%
   \list{}{\leftmargin\leftmargin}%
@@ -244,18 +246,57 @@ merely do not use the principle of excluded middle.
 
 \begin{exercise}[Basics on negation]
 Recalling that negation is defined as implying absurdity,~$\neg\varphi
-\defequiv (\varphi \Rightarrow \bot)$, verify intuitionistically:
+\defequiv (\varphi \Rightarrow \bot)$, verify intuitionistically without
+recourse to truth tables:
 \begin{enumerate}
 \item $\varphi \Rightarrow \neg\neg\varphi$
 \item $\neg\neg\neg\varphi \Leftrightarrow \neg\varphi$
 \item $\neg\neg(\varphi \vee \neg\varphi)$
-\item The principle of excluded middle, for all statements~$\varphi$, is
-equivalent to the principle of double negation elimination for all statements.
+\item $(\forall\psi\_ (\psi \vee \neg\psi))
+\Longleftrightarrow (\forall\psi\_ ((\neg\neg\psi) \Rightarrow
+\psi))$
 
 {\noindent\scriptsize\emph{Hint.}
 Don't try to verify that double negation elimination for a specific
-statement~$\varphi$ implies the principle of excluded middle for that same
-statement~$\varphi$ -- this cannot be shown.\par}
+statement~$\psi$ implies the principle of excluded middle for that same
+statement~$\psi$ -- this cannot be shown. There are subtleties regarding the
+quantification over $\psi$ (this is not expressible in pure first-order logic),
+however the exercise is still instructive if we gloss over this issue.\par}
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}[Constructive status of classical tautologies]
+Which of the following classical tautologies can reasonably be expected to
+admit constructive proofs?
+\begin{enumerate}
+\item $\neg(\alpha \vee \beta) \ \Longrightarrow\ \neg\alpha \wedge \neg\beta$
+\item $\neg(\alpha \wedge \beta) \ \Longrightarrow\ \neg\alpha \vee \neg\beta$
+\item $(\alpha \vee \beta) \wedge \neg\alpha \ \Longrightarrow\ \beta$
+\item $\forall M \in P(X)\_ (\exists x\?X\_ x \in M) \vee M = \emptyset$
+(already interesting for~$X = \{\star\}$)
+\item $\forall n\?\NN\_ (n = 0 \vee n \neq 0)$
+\item $\forall x\?\RR\_ (x = 0 \vee x \neq 0)$
+\item $\forall x\?\RR\_ (\neg(\exists y\?\RR\_ xy=1) \Rightarrow x = 0)$
+\item $\forall z\?\overline{\QQ}\_ (z = 0 \vee z \neq 0)$
+\item $\forall f \? \NN \to \{0,1\}\_ (\neg\neg\exists n \? \NN\_ f(n) = 0)
+\Rightarrow (\exists n \? \NN\_ f(n) = 0)$
+\item $\forall f \? \NN \to \{0,1\}\_ \exists n \? \NN\_ (f(n) = 1
+\Leftrightarrow (\forall m \? \NN\_ f(m) = 1))$
+\item $\forall f \? \NN \to \{0,1\}\_ (\exists n \? \NN\_ f(n) = 0) \vee
+(\forall n \? \NN\_ f(n) = 1)$
+\item $\forall f \? \NN_\infty \to \{0,1\}\_ (\exists n \? \NN_\infty\_ f(n) = 0) \vee
+(\forall n \? \NN_\infty\_ f(n) = 1)$
+
+{\noindent\scriptsize\emph{Remark.} The set~$\NN_\infty$ is the \emph{one-point
+compactification} of~$\NN$. A sensible definition in constructive mathematics
+is as the set of decreasing binary sequences~$(x_0,x_1,x_2,\ldots)$. The
+naturals embed into~$\NN_\infty$ by mapping~$n$ to the sequence~$1^n 0^\omega =
+(1,\ldots,1,0,\ldots,0)$, and an element not in the image of this embedding
+is~$\infty \defeq 1^\omega = (1,1,\ldots)$. Assuming the law of excluded
+middle (or already weaker principles), every element of~$\NN_\infty$ is of one
+of these two forms. Martín Escardó has worked extensively on unexpected
+instances of the principle of omniscience for searchable sets
+like~$\NN_\infty$~\cite{escardo:omniscient1,escardo:omniscient2}.\par}
 \end{enumerate}
 \end{exercise}
 
@@ -267,9 +308,9 @@ numbers~$e + \pi$ and~$e \cdot \pi$ is transcendental.
 
 \begin{exercise}[Diaconescu's theorem]
 \label{ex:diaconescu}
-The axiom of choice can be put as: ``Every surjective map~$f$ has a
-section~$s$, that is a map in the other direction such that~$f \circ s =
-\mathrm{id}$.'' This exercise is on Diaconescu's theorem, stating that
+The axiom of choice can be put as: ``Every surjective map has a
+section.'' (A \emph{section}~$s$ to a surjective map~$f$ is a map in the other direction such that~$f \circ s =
+\mathrm{id}$.) It is a theorem due to Diaconescu that
 the axiom of choice implies the law of excluded middle. To this end, let~$\varphi$ be a
 statement and consider the subsets
 \begin{align*}
@@ -288,6 +329,22 @@ the existence of a section of the surjective map
 \end{array} \]
 implies~$\varphi \vee \neg\varphi$.
 \end{enumerate}
+\end{exercise}
+
+\begin{exercise}[A stronger form of the irrationality of~$\sqrt{2}$]
+\label{ex:sqrt2}
+Mine the proof of Proposition~\ref{prop:sqrt2} to give an intuitionistic proof
+that for every rational number~$x$, the distance~$|\sqrt{2}-x|$ is positive.
+
+{\noindent\scriptsize\emph{Note.} Strictly speaking, this exercise presupposes
+familiarity with an intuitionistic account of the basics of undergraduate real
+analysis. Without it, one cannot really be expected to precisely think about
+these matters. One such account (though assuming the axiom of dependent choice)
+is~\cite{bridges}. However, this exercise is insightful even when carried out
+slightly informally. Keep in mind that, to show that a real number is positive,
+constructively it is not enough to merely verify that it cannot be zero or
+negative. A safe way to verify that a real number~$a$ is positive is to exhibit
+a rational number~$b$ such that~$a \geq b > 0$.\par}
 \end{exercise}
 
 \vfill
@@ -376,3 +433,9 @@ concrete applications.
 
 
 \end{document}
+
+omniscient1
+https://www.cs.bham.ac.uk/~mhe/.talks/dagstuhl2011/omniscient.pdf
+
+omniscient2
+https://www.ioc.ee/~tarmo/tsem16/escardo2605-slides.pdf

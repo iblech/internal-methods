@@ -35,7 +35,7 @@
 
 \usepackage[natbib=true,style=numeric,maxnames=10]{biblatex}
 \usepackage[babel]{csquotes}
-\bibliography{bibliography}
+\bibliography{algar-lecture-notes}
 
 \theoremstyle{definition}
 \newtheorem{defn}{Definition}[chapter]
@@ -422,7 +422,7 @@ findet sich etwa in~\cite[Seite~42f.]{kohlenbach:applprooftheory}. Die
 Brouwer--Heyting--Kolmogorov-Interpretation kann im Rahmen der
 \emph{Realisierbarkeitstheorie} formalisiert werden~\cite{bauer:realizability};
 ohne eine solche Formalisierung gibt es gewisse weitere
-Probleme~\cite{artemov:bhk,sanz:piecha:critical-bhk,dalen:bhk}.
+Probleme~\cite{artemov:bhk,sanz-piecha:critical-bhk,dalen:bhk}.
 %\end{bem}
 
 
@@ -500,7 +500,7 @@ is~$\infty \defeq 1^\omega = (1,1,\ldots)$. Assuming the law of excluded
 middle (or already weaker principles), every element of~$\NN_\infty$ is of one
 of these two forms. Martín Escardó has worked extensively on unexpected
 instances of the principle of omniscience for searchable sets
-like~$\NN_\infty$~\cite{escardo:omniscient1,escardo:omniscient2}.\par}
+like~$\NN_\infty$~\cite{escardo:omniscience1,escardo:omniscience2,escardo:omniscience}.\par}
 \end{enumerate}
 \end{exercise}
 
@@ -544,7 +544,7 @@ that for every rational number~$x$, the distance~$|\sqrt{2}-x|$ is positive.
 familiarity with an intuitionistic account of the basics of undergraduate real
 analysis. Without it, one cannot really be expected to precisely think about
 these matters. One such account (though assuming the axiom of dependent choice)
-is~\cite{bridges}. However, this exercise is insightful even when carried out
+is~\cite{bishop-bridges:bible}. However, this exercise is insightful even when carried out
 slightly informally. Keep in mind that, to show that a real number is positive,
 constructively it is not enough to merely verify that it cannot be zero or
 negative. A safe way to verify that a real number~$a$ is positive is to exhibit
@@ -589,6 +589,104 @@ This lecture illustrates the latent constructive nature of classical
 proofs with examples and presents two general metatheorems which
 elucidate proof mining for constructive content.
 \end{intro}
+
+\begin{thm}[Dickson's lemma]\label{thm:dickson}
+Let~$k \in \NN$. Let~$f : \NN \to \NN^k$ be an arbitrary map. Then there are
+indices~$i < j$ such that~$f(i) \leq f(j)$ (componentwise).
+\end{thm}
+
+\begin{proof}[Proof (classical)]The case~$k = 0$ is trivial and we omit the cases~$k
+\geq 2$, hence let~$k = 1$. In this case, the map~$f$ attains some minimal
+value. Set~$i$ to be (one of the) positions where this minimal value is
+attained. Set~$j \defeq i+1$. Then, trivially, $f(i) \leq f(j)$.
+\end{proof}
+
+\begin{thm}\label{thm:surjective-matrix}
+Let~$M$ be a surjective matrix with more rows than columns over a commutative
+ring~$A$ with unit. Then~$1 = 0$ in~$A$.
+\end{thm}
+
+\begin{proof}[Proof (classical)]Assume not. Then there is a maximal
+ideal~$\mmm \subseteq A$. The matrix~$M$ remains surjective when considered over
+the quotient ring~$A/\mmm$, and by maximality this quotient ring is a field.
+Hence we have a contradiction to basic linear algebra, namely to the basic fact
+that matrices over fields are not surjective if they have more rows than
+columns.\end{proof}
+
+What is the meaning of these non-effective proofs? Theorem~\ref{thm:dickson}
+claims the existence of a finite object with a decidable property (a
+pair~$(i,j)$ such that~$f(i) \leq f(j)$), but the given proof employs
+transfinite methods and gives no indication how we could compute or otherwise
+find this object. Instead, the classical proof asks us to grasp the infinitude
+of all values of~$f$ so we can determine the minimum. The issue is even more
+pronounced with Theorem~\ref{thm:surjective-matrix}, since the existence of
+maximal ideals in nontrivial rings requires the axiom of
+choice~\cite{scott:prime-ideals,hodges:krull,banaschewski:krull,erne:krull,howard-rubin:ac}.
+To add one more conundrum: Assume that we have a classical proof, using the law
+of excluded middle and the axiom of choice, that some given Turing machine
+terminates. Can we then constructively accept that the machine will halt? Do we
+have an upper bound for the number of computational steps the machine carries
+out before halting?
+
+Astoundingly, it is almost always the case that from classical proofs useful
+constructive content can be extracted. In fact, due to general metatheorems,
+in many cases there are even explicit mechanical procedures for extracting this
+hidden content, while other cases require more creativity for determining
+suitable constructive reformulations. For instance:
+
+% \begin{document}
+
+\begin{enumerate}
+\item \emph{Eliminating the axiom of choice by the~$L$-translation.} Can the
+axiom of choice ever help in proving arithmetical statements, those first-order
+statements in which all quantifiers range over the natural numbers? Well, it
+might. But a result of Gödel states that~\textsc{zfc} (Zermelo--Fraenkel set
+theory with the axiom of choice) is conservative over~\textsc{zf} (ZF set
+theory without it) for such statements -- hence all appeals to this axiom can
+be mechanically eliminated from a given proof. This is true even if the proof
+transcends the arithmetical realm and includes statements which are not
+arithmetical, only the asserted claim is required to be arithmetical. Hence we
+are free to use the axiom of choice, tranquil in knowing that we could always
+reformulate our proofs without it.\footnote{Zermelo--Fraenkel set theory with
+the axiom of choice is the go-to foundation of mathematics often cited as
+supporting ``almost all'' of current mathematics, one important exception being
+some (definitions and) results in category theory dealing with large
+structures~\cite{shulman:set-theory,feferman:set-foundations}. A fundamental
+result due to Gödel is that the axiom of choice ``holds in~$L$'', the
+\emph{constructible universe}, even if it might not hold in~$V$, the true
+universe of all sets. More precisely, if~\textsc{zfc} shows some
+statement~$\varphi$, then~\textsc{zf} shows its~$L$-relativized
+version~$\varphi^L$, where all quantifiers have been restricted to range
+over~$L$ instead of~$V$. The conservation result follows because the natural
+numbers ``are absolute between~$V$
+and~$L$''~\cite{goedel:ac-gch,schoenfield:predicativity}.}
+
+\item \emph{Eliminating the law of excluded middle by the double-negation
+translation and its variants.} At the price of
+slightly modifying the asserted claim, the law of excluded middle
+can always be mechanically eliminated from a given proof. This
+elimination procedure is facilitated by the \emph{double-negation translation}
+reviewed below. In some cases, a refined translation even allows to preserve the asserted
+claim exactly; this technique is variously known as \emph{Friedman's trick},
+\emph{nontrivial exit continuation} or (the baby version of) \emph{Barr's
+theorem}. To cite a concrete instance of this phenomenon, classical~\textsc{zf}
+set theory is conservative over its intuitionistic cousin~\textsc{izf}
+for~$\Pi^0_2$-statements (statements of the form~$\forall\ldots\forall\_
+\exists\ldots\exists\_ \%$, where all quantifiers in the final~``$\%$''
+are bounded).
+
+\item \emph{Embracing generic models.} A useful companion to both of the
+aforementioned techniques is to switch from referencing all models of a certain
+kind to referencing only the \emph{generic model}. For instance, Krull's lemma
+stating that a ring element is already nilpotent if it is contained in all
+prime ideals requires the Boolean Prime Ideal Theorem, a slightly weaker
+version of the axiom of choice but still ineffectiv and unconstructive.
+However, Krull's lemma is valid in the form that a ring element is nilpotent if
+it is contained in the \emph{generic prime ideal}. This particular example has
+received lots of attention (see the references
+in~\cite{blechschmidt-schuster:constructive-maximal-ideals}) and the general
+technique will be the object of the fourth lecture.
+\end{enumerate}
 
 
 \section{The double-negation translation}
@@ -635,11 +733,6 @@ concrete applications.
 \end{verbatim}
 }
 
+\printbibliography
 
 \end{document}
-
-omniscient1
-https://www.cs.bham.ac.uk/~mhe/.talks/dagstuhl2011/omniscient.pdf
-
-omniscient2
-https://www.ioc.ee/~tarmo/tsem16/escardo2605-slides.pdf

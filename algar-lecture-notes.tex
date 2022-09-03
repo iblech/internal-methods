@@ -449,27 +449,6 @@ Curry--Howard-Korrespondenz (Abschnitt~\ref{curry-howard}).
 
 \section{Exercises}
 
-\begin{exercise}[Basics on negation]
-Recalling that negation is defined as implying absurdity,~$\neg\varphi
-\defequiv (\varphi \Rightarrow \bot)$, verify intuitionistically without
-recourse to truth tables:
-\begin{enumerate}
-\item $\varphi \Rightarrow \neg\neg\varphi$
-\item $\neg\neg\neg\varphi \Leftrightarrow \neg\varphi$
-\item $\neg\neg(\varphi \vee \neg\varphi)$
-\item $(\forall\psi\_ (\psi \vee \neg\psi))
-\Longleftrightarrow (\forall\psi\_ ((\neg\neg\psi) \Rightarrow
-\psi))$
-
-{\noindent\scriptsize\emph{Hint.}
-Don't try to verify that double negation elimination for a specific
-statement~$\psi$ implies the principle of excluded middle for that same
-statement~$\psi$ -- this cannot be shown. There are subtleties regarding the
-quantification over $\psi$ (this is not expressible in pure first-order logic),
-however the exercise is still instructive if we gloss over this issue.\par}
-\end{enumerate}
-\end{exercise}
-
 \begin{exercise}[Constructive status of classical tautologies]
 Which of the following classical tautologies can reasonably be expected to
 admit constructive proofs?
@@ -505,10 +484,47 @@ like~$\NN_\infty$~\cite{escardo:omniscience1,escardo:omniscience2,escardo:omnisc
 \end{enumerate}
 \end{exercise}
 
+\begin{exercise}[Basics on negation]
+Recalling that negation is defined as implying absurdity,~$\neg\varphi
+\defequiv (\varphi \Rightarrow \bot)$, verify intuitionistically without
+recourse to truth tables:
+\begin{enumerate}
+\item $\varphi \Rightarrow \neg\neg\varphi$
+\item $\neg\neg\neg\varphi \Leftrightarrow \neg\varphi$
+\item $\neg\neg(\varphi \vee \neg\varphi)$
+\item $(\forall\psi\_ (\psi \vee \neg\psi))
+\Longleftrightarrow (\forall\psi\_ ((\neg\neg\psi) \Rightarrow
+\psi))$
+
+{\noindent\scriptsize\emph{Hint.}
+Don't try to verify that double negation elimination for a specific
+statement~$\psi$ implies the principle of excluded middle for that same
+statement~$\psi$ -- this cannot be shown. There are subtleties regarding the
+quantification over $\psi$ (this is not expressible in pure first-order logic),
+however the exercise is still instructive if we gloss over this issue.\par}
+\end{enumerate}
+\end{exercise}
+
 \begin{exercise}[An epistemic riddle on transcendental numbers]
 Verify, using a proof by contradiction, that at least one of the numbers~$e +
 \pi$ and~$e - \pi$ is transcendental; and that at least one of the
 numbers~$e + \pi$ and~$e \cdot \pi$ is transcendental.
+\end{exercise}
+
+\begin{exercise}[A stronger form of the irrationality of~$\sqrt{2}$]
+\label{ex:sqrt2}
+Mine the proof of Proposition~\ref{prop:sqrt2} to give an intuitionistic proof
+that for every rational number~$x$, the distance~$|\sqrt{2}-x|$ is positive.
+
+{\noindent\scriptsize\emph{Note.} Strictly speaking, this exercise presupposes
+familiarity with an intuitionistic account of the basics of undergraduate real
+analysis. Without it, one cannot really be expected to precisely think about
+these matters. One such account (though assuming the axiom of dependent choice)
+is~\cite{bishop-bridges:bible}. However, this exercise is insightful even when carried out
+slightly informally. Keep in mind that, to show that a real number is positive,
+constructively it is not enough to merely verify that it cannot be zero or
+negative. A safe way to verify that a real number~$a$ is positive is to exhibit
+a rational number~$b$ such that~$a \geq b > 0$.\par}
 \end{exercise}
 
 \begin{exercise}[Diaconescu's theorem]
@@ -534,22 +550,6 @@ the existence of a section of the surjective map
 \end{array} \]
 implies~$\varphi \vee \neg\varphi$.
 \end{enumerate}
-\end{exercise}
-
-\begin{exercise}[A stronger form of the irrationality of~$\sqrt{2}$]
-\label{ex:sqrt2}
-Mine the proof of Proposition~\ref{prop:sqrt2} to give an intuitionistic proof
-that for every rational number~$x$, the distance~$|\sqrt{2}-x|$ is positive.
-
-{\noindent\scriptsize\emph{Note.} Strictly speaking, this exercise presupposes
-familiarity with an intuitionistic account of the basics of undergraduate real
-analysis. Without it, one cannot really be expected to precisely think about
-these matters. One such account (though assuming the axiom of dependent choice)
-is~\cite{bishop-bridges:bible}. However, this exercise is insightful even when carried out
-slightly informally. Keep in mind that, to show that a real number is positive,
-constructively it is not enough to merely verify that it cannot be zero or
-negative. A safe way to verify that a real number~$a$ is positive is to exhibit
-a rational number~$b$ such that~$a \geq b > 0$.\par}
 \end{exercise}
 
 \vfill
@@ -706,7 +706,84 @@ of affairs; references include~\cite{crosilla:predicativity,aczel-rathjen:cst}.
 
 \section{Barr's theorem}
 
+Even though Barr's theorem has wide impact, there are definitive situations in
+which, provably so, no useful constructive content can be extracted.
+Exercise~\ref{ex:no-constructive-content} gives an example for this situation.
+
+
 \section{Examples from quadratic form theory}
+
+\section{Exercises}
+
+\begin{exercise}[Drinker's paradox]
+The Drinker's paradox is the tautology
+\[ \forall f \? \NN \to \{0,1\}\_ \exists n \? \NN\_ (f(n) = 1
+\Rightarrow (\forall m \? \NN\_ f(m) = 1)) \]
+of classical logic. A proof proceeds as follows: By the law of
+excluded middle, either there is a number~$n$ such that~$f(n) = 0$ or not. In
+the first case, we can take such a number~$n$ as the desired~$n$. In the second
+case, we can take~$n \defeq 0$.
+\begin{enumerate}
+\item Determine the double-negation translation of the Drinker's paradox.
+\item Tell a classical logic fairy tale for Drinker's paradox similar to the
+story for Dickson's lemma. The protagonist of the story will change their mind
+regarding the correct value of~$n$; what is their first choice?
+\item Connect the Drinker's paradox to the issue of minima of sets of natural
+numbers.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}[Stability of the axioms]
+Peano arithmetic (\textsc{pa}) is set in the language~$(0,S,+,\cdot)$ and has
+the following axioms (where leading universal quantifiers are supressed for
+brevity):
+\begin{enumerate}
+\renewcommand{\theenumi}{\arabic{enumi}}
+\item $Sx \neq 0$
+\item $Sx = Sy \Rightarrow x = y$
+\item $y = 0 \vee (\exists x\_ y = Sx)$
+\item $x + 0 = x$
+\item $x + Sy = S(x+y)$
+\item $x \cdot 0 = 0$
+\item $x \cdot Sy = (x \cdot y) + x$
+\item $P(0) \wedge (\forall n\_ P(n) \Rightarrow P(Sn)) \Longrightarrow
+(\forall n\_ P(n))$ (one axiom for each formula~$P(n)$)
+\end{enumerate}
+Heyting arithmetic~(\textsc{ha}) has exactly the same axioms, but is based on intuitionistic
+logic instead of classical logic.
+\begin{enumerate}
+\item Show that~\textsc{ha} proves the double-negation translation of each
+axiom of~\textsc{pa}.
+\item Convince yourself that~\textsc{izf} does not prove the double-negation
+translation of the axiom of choice. Hence the double-negation translation
+alone is insufficient to extract constructive content from proofs using the
+axiom of choice.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}[Details on the double-negation translation]
+Complete the verification of the fundamental properties of the double-negation
+translation.
+\end{exercise}
+
+\begin{exercise}[No constructive content]\label{ex:no-constructive-content}
+Let~$\textsf{Prf}(p)$ be a formula of arithmetic expressing that~$p$ is a
+correct encoding of a~\textsc{pa}-proof of~$\bot$. A consequence of Gödel's
+second incompleteness theorem is that there is no~\textsc{pa}-proof of
+\[ G \defequiv (\forall p\_ \neg\textsf{Prf}(p)), \]
+even though for each number~$p_0$ it is actually the case that (and~\textsc{pa}
+can verify that)~$p_0$ does not constitute a correct encoding of
+a~\textsc{pa}-proof of~$\bot$.
+\begin{enumerate}
+\item Give a~\textsc{pa}-proof, using the law of excluded middle, of the
+statement
+\[ \exists q\_ (\textsf{Prf}(q) \vee G). \]
+\item Show that for no number~$q_0 \in \NN$, the
+statement~``$\textsf{Prf}(\underline{q_0})
+\vee G$'' admits a \textsc{pa}-proof. In this sense no witness can be
+extracted from the classical proof in~(a).
+\end{enumerate}
+\end{exercise}
 
 
 \chapter{Generic models and their applications}
@@ -758,8 +835,7 @@ classical logic fairy tale
 Add Agda exercises
 Mention Dialectica
 something with minima (for negneg translation)
-Exercises: negneg proof, stability of the HA axioms, applications of Barr
-negneg drinker and CPS perspective
+Exercises: applications of Barr
 
 3
 Definition

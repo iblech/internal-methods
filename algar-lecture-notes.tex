@@ -181,7 +181,8 @@ ring'' can be put on a firm basis.
 \renewcommand{\newpage}{\ }
 \renewcommand{\vfill}{\ }
 \renewcommand{\vfil}{\ }
-{\centering\includegraphics[width=0.3\textwidth]{phantoms}\par}
+{\vspace*{-6em}\centering\includegraphics[width=0.3\textwidth]{phantoms}\par}
+\thispagestyle{empty}\enlargethispage{7em}
 \maketitle
 }
 
@@ -234,7 +235,8 @@ this principle nor the (equivalent) \emph{principle of double negation
 elimination} stating~$\neg\neg\varphi \Rightarrow \varphi$, and insofar as we
 layer a set theory on top of our logical foundation, we abstain from the axiom
 of choice (which in presence of other common set-theoretical axioms implies the
-principle of excluded middle, see Exercise~\ref{ex:diaconescu}).
+principle of excluded middle, see Exercise~\ref{ex:diaconescu}). As a
+consequence, we cannot generally reason by contradiction in constructive mathematics.
 
 In constructive mathematics, we do \emph{not} claim that the principle of
 excluded middle is false. \marginpar{\dbend}
@@ -275,10 +277,10 @@ and hence intuitionistically arguments of the first form fail to
 estabilish~$\varphi$.
 
 In contrast, arguments of the second kind are fine from an intuitionistic point
-of view: They are not proper proofs by contradiction, but proofs of negated
+of view: They do not constitute proper proofs by contradiction, but instead are proofs of negated
 statements. That such proofs are valid follows directly from the definition of
-negation (which texts on classical logic often also adopt) as a certain
-implication:
+negation as a certain
+implication (which, incidentally, texts on classical logic often also adopt):
 \[ \neg\psi \defequiv (\psi \Rightarrow \bot), \]
 where~``$\bot$'', pronounced ``bottom'', is \emph{absurdity}, a canonical false
 statement. (Informally, absurdity is also written as~``$\lightning$'' or~``$1 = 0$''.)
@@ -286,7 +288,7 @@ Hence, to establish~$\neg\psi$, we may give a proof of~$\bot$ under
 the assumption~$\psi$, just as we may give a proof of~$\beta$ under the
 assumption~$\alpha$ if we want to prove~$\alpha \Rightarrow \beta$.
 
-The two proofs of the following fact from number theory demonstrate the
+The two proofs below of the following fact from number theory demonstrate the
 difference:
 \begin{prop}\label{prop:sqrt2}The number~$\sqrt{2}$ is not rational.\end{prop}
 \begin{proof}[Proof (only valid classically)]
@@ -294,13 +296,13 @@ Assume that the claim is false, that is, that the number~$\sqrt{2}$ is
 \emph{not not} rational. Then~$\sqrt{2}$ is rational. Hence there are
 integers~$a$ and~$b$ with~$\sqrt{2} = a / b$. Thus~$2b^2 = a^2$. This identity
 contradicts the uniqueness of the prime factor decomposition, since the
-factor~$2$ occurs an odd number of times on the left, but an even number of
+factor~$2$ occurs an odd number of times on the left but an even number of
 times on the right.
 \end{proof}
 \begin{proof}[Proof (also valid intuitionistically)]
 Assume that the number~$\sqrt{2}$ is rational. Then there are integers~$a$
 and~$b$, \ldots, a contradiction.
-[The theorem on the uniqueness of the prime factor decomposition admits an
+[The requisite theorem on the uniqueness of the prime factor decomposition admits an
 intuitionistic proof.]
 \end{proof}
 
@@ -322,13 +324,14 @@ different meaning in mind.} When a constructive mathematician argues for some
 statement~$\varphi$, they mean that they have an \emph{explicit witness}
 for~$\varphi$. This shift in meaning from the classical interpretation is
 elaborated by the \emph{Brouwer--Heyting--Kolmogorov interpretation} sketched
-below. It is informal and philosophical in nature, but still a useful guide to
+below. It is informal and philosophical in nature and not without
+issues~\cite{artemov:bhk,sanz-piecha:critical-bhk,dalen:bhk}, but still a useful guide to
 the constructive meaning of mathematical statements.
 
 
 \subsection*{The Brouwer--Heyting--Kolmogorov interpretation}
 
-The notion of witnesses is compositional in nature and begins with witnesses for \emph{atomic
+The notion of witnesses is compositional in nature and starts out with witnesses for \emph{atomic
 statements}, those not built from substatements using the logical
 connectives~$\wedge,\vee,\Rightarrow$ or the quantifiers~$\forall,\exists$. For
 instance, in formal number theory, the atomic statements are of the form
@@ -342,7 +345,7 @@ all.
 Table~\ref{table:bhk} explains what witnesses of compound statements are. For
 instance, a witness of a statement of the form
 \[ \forall n \? \NN\_ \bigl(\varphi(n) \Rightarrow \psi(n)\bigr) \]
-is a rule explaining how, for any natural number~$n : \NN$, witnesses
+is a rule explaining how, for every natural number~$n : \NN$, witnesses
 for~$\varphi(n)$ give rise to witnesses for~$\psi(n)$.
 
 \begin{table}
@@ -449,12 +452,13 @@ Curry--Howard-Korrespondenz (Abschnitt~\ref{curry-howard}).
 
 \section{Exercises}
 
-\begin{exercise}[Constructive status of classical tautologies]
+\begin{exercise}[Constructive status of classical tautologies]\label{ex:tautologies}
 Which of the following classical tautologies can reasonably be expected to
 admit constructive proofs?
 \begin{enumerate}
 \item $\neg(\alpha \vee \beta) \ \Longrightarrow\ \neg\alpha \wedge \neg\beta$
 \item $\neg(\alpha \wedge \beta) \ \Longrightarrow\ \neg\alpha \vee \neg\beta$
+\item $(\alpha \Rightarrow \beta) \ \Longrightarrow\ (\neg\alpha \vee \beta)$
 \item $(\alpha \vee \beta) \wedge \neg\alpha \ \Longrightarrow\ \beta$
 \item $\forall M\?P(X)\_ (\exists x\?X\_ x \in M) \vee M = \emptyset$
 (already interesting for~$X = \{\star\}$)
@@ -492,6 +496,10 @@ recourse to truth tables:
 \item $\varphi \Rightarrow \neg\neg\varphi$
 \item $\neg\neg\neg\varphi \Leftrightarrow \neg\varphi$
 \item $\neg\neg(\varphi \vee \neg\varphi)$
+\item $\neg\neg(\alpha \wedge \beta) \Leftrightarrow (\neg\neg\alpha \wedge
+\neg\neg\beta)$
+\item $(\neg\neg\alpha \wedge (\alpha \Rightarrow \neg\neg\beta)) \Longrightarrow
+\neg\neg\beta$
 \item $(\forall\psi\_ (\psi \vee \neg\psi))
 \Longleftrightarrow (\forall\psi\_ ((\neg\neg\psi) \Rightarrow
 \psi))$
@@ -527,11 +535,52 @@ negative. A safe way to verify that a real number~$a$ is positive is to exhibit
 a rational number~$b$ such that~$a \geq b > 0$.\par}
 \end{exercise}
 
+\begin{exercise}[Brouwerian counterexamples]
+Show that each of the following statements implies the law of excluded middle,
+hence is not available in constructive mathematics.
+\begin{enumerate}
+\item Every ideal of~$\ZZ$ is finitely generated.
+
+{\noindent\scriptsize\emph{Hint.} Use that finitely generated ideals of~$\ZZ$
+are principal ideals and consider the ideal~$\aaa \defeq \{ x \in \ZZ
+\,|\, x = 0 \vee \varphi \}$.\par}
+
+{\noindent\scriptsize\emph{Remark.} The failure of every ideal of~$\ZZ$ to be
+finitely generated should not be misconstrued to exclaim that in constructive
+mathematics, there suddenly would be ideals of~$\ZZ$ of infinite rank. The
+failure is simply because, given an abstract ideal, we cannot pinpoint a finite
+system of generators.\par}
+
+\item Over every field, the polynomial~$X^2 + 1$ is either reducible or
+irreducible.
+
+{\noindent\scriptsize\emph{Hint.} Consider the field~$K \defeq \{ z \in \QQ(i)
+\,|\, z \in \QQ \vee \varphi \}$.\par}
+
+\item Subsets of Kuratowski-finite sets are Kuratowski-finite.
+
+{\noindent\scriptsize\emph{Note.} A set~$X$ is \emph{Kuratowski-finite} if and
+only if, for some number~$n \in \NN$, there is a surjective map~$[n] \to X$,
+where~$[n] = \{ 0,1,\ldots,n-1 \}$. More briefly, a set~$X$ is
+Kuratowski-finite iff its elements can be enumerated: $X = \{x_1,\ldots,x_n \}$.\par}
+\end{enumerate}
+Show that the following statement implies Markov's principle (from
+Exercise~\ref{ex:tautologies}):
+\begin{enumerate}
+\addtocounter{enumi}{3}
+\item Every real number which is not zero is invertible.
+\end{enumerate}
+\noindent
+More Brouwerian counterexamples can be
+found in~\cite{mandelkern:brouwerian-counterexamples} and
+in~\cite{mines-richman-ruitenburg:constructive-algebra}.
+\end{exercise}
+
 \begin{exercise}[Diaconescu's theorem]
 \label{ex:diaconescu}
 The axiom of choice can be put as: ``Every surjective map has a
 section.'' (A \emph{section}~$s$ to a surjective map~$f$ is a map in the other direction such that~$f \circ s =
-\mathrm{id}$.) It is a theorem due to Diaconescu that
+\mathrm{id}$.) A theorem of Diaconescu states that
 the axiom of choice implies the law of excluded middle. To this end, let~$\varphi$ be a
 statement and consider the subsets
 \begin{align*}
@@ -634,8 +683,6 @@ constructive content can be extracted. In fact, due to general metatheorems,
 in many cases there are even explicit mechanical procedures for extracting this
 hidden content, while other cases require more creativity for determining
 suitable constructive reformulations. For instance:
-
-% \begin{document}
 
 \begin{enumerate}
 \item \emph{Eliminating the axiom of choice by the~$L$-translation.} Can the
@@ -786,6 +833,20 @@ extracted from the classical proof in~(a).
 \end{exercise}
 
 
+\chapter{Toposes and their internal language}
+
+\section{Examples}
+\newpage
+
+\section{Definition}
+\newpage
+
+\section{The Kripke--Joyal semantics of sheaf toposes}
+\newpage
+
+\section{Exercises}
+
+
 \chapter{Generic models and their applications}
 
 \begin{intro}
@@ -813,6 +874,19 @@ The lecture introduces the notion of topos-theoretic generic models in
 general, focussing on the generic ring, the generic prime ideal and
 concrete applications.
 \end{intro}
+
+
+\section{A fantastical ring}
+\newpage
+
+\section{The generic prime filter}
+\newpage
+
+\section{Explicit construction}
+\newpage
+
+\section{Exercises}
+
 
 \vfill{\small%
 \begin{verbatim}
@@ -848,3 +922,5 @@ Exercises: dense, monotone IVT, ...
 The generic prime filter
 Explicit construction
 Exercises: (lift from Spiel & Spaß)
+
+Cite surveys of .bib

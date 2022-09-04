@@ -156,6 +156,9 @@
 
 \urlstyle{sf}
 
+\newcommand{\cl}{\mathrm{cl}}
+\newcommand{\notnot}{\emph{not~not}}
+
 \begin{document}
 
 \begin{abstract}
@@ -546,6 +549,7 @@ recourse to truth tables:
 \item $\neg\neg(\varphi \vee \neg\varphi)$
 \item $\neg\neg(\alpha \wedge \beta) \Leftrightarrow (\neg\neg\alpha \wedge
 \neg\neg\beta)$
+\item $\neg(\alpha \vee \beta) \Longleftrightarrow (\neg\alpha \wedge \neg\beta)$
 \item $(\neg\neg\alpha \wedge (\alpha \Rightarrow \neg\neg\beta)) \Longrightarrow
 \neg\neg\beta$
 \item $(\forall\psi\_ (\psi \vee \neg\psi))
@@ -685,7 +689,9 @@ their existence for linear algebra over rings also holds constructively.
 
 This lecture illustrates the latent constructive nature of classical
 proofs with examples and presents two general metatheorems which
-elucidate proof mining for constructive content.
+elucidate proof mining for constructive content. The author learned this
+material from diverse texts and slides of Thierry Coquand; the
+reference~\cite{coquand:classical} is a good start.
 \end{intro}
 
 \begin{thm}[Dickson's lemma]\label{thm:dickson}
@@ -693,7 +699,7 @@ Let~$k \in \NN$. Let~$f : \NN \to \NN^k$ be an arbitrary map. Then there are
 indices~$i < j$ such that~$f(i) \leq f(j)$ (componentwise).
 \end{thm}
 
-\begin{proof}[Proof (classical)]The case~$k = 0$ is trivial and we omit the cases~$k
+\begin{proof}[Proof (classical)]The case~$k = 0$ is trivial and we omit demonstrations of the cases~$k
 \geq 2$, hence let~$k = 1$. In this case, the map~$f$ attains some minimal
 value. Set~$i$ to be (one of the) positions where this minimal value is
 attained. Set~$j \defeq i+1$. Then, trivially, $f(i) \leq f(j)$.
@@ -716,7 +722,7 @@ claims the existence of a finite object with a decidable property (a
 pair~$(i,j)$ such that~$f(i) \leq f(j)$), but the given proof employs
 transfinite methods and gives no indication how we could compute or otherwise
 find this object. Instead, the classical proof asks us to grasp the infinitude
-of all values of~$f$ so we can determine the minimum. The issue is even more
+of all values of~$f$ and determine their minimum. The issue is even more
 pronounced with Theorem~\ref{thm:surjective-matrix}, since the existence of
 maximal ideals in nontrivial rings requires the axiom of
 choice~\cite{scott:prime-ideals,hodges:krull,banaschewski:krull,erne:krull,howard-rubin:ac}.
@@ -741,7 +747,7 @@ theory with the axiom of choice) is conservative over~\textsc{zf} (ZF set
 theory without it) for such statements -- hence all appeals to this axiom can
 be mechanically eliminated from a given proof. This is true even if the proof
 transcends the arithmetical realm and includes statements which are not
-arithmetical, only the asserted claim is required to be arithmetical. Hence we
+arithmetical; only the asserted claim is required to be arithmetical. Hence we
 are free to use the axiom of choice, tranquil in knowing that we could always
 reformulate our proofs without it.\footnote{Zermelo--Fraenkel set theory with
 the axiom of choice is the go-to foundation of mathematics often cited as
@@ -765,7 +771,7 @@ elimination procedure is facilitated by the \emph{double-negation translation}
 reviewed below. In some cases, a refined translation even allows to preserve the asserted
 claim exactly; this technique is variously known as \emph{Friedman's trick},
 \emph{nontrivial exit continuation} or (the baby version of) \emph{Barr's
-theorem}. To cite a concrete instance of this phenomenon, classical~\textsc{zf}
+theorem}. To cite a specific instance of this phenomenon, classical~\textsc{zf}
 set theory is conservative over its intuitionistic cousin~\textsc{izf}
 for~$\Pi^0_2$-statements (statements of the form~$\forall\ldots\forall\_
 \exists\ldots\exists\_ \%$, where all quantifiers in the final~``$\%$''
@@ -776,7 +782,7 @@ aforementioned techniques is to switch from referencing all models of a certain
 kind to referencing only the \emph{generic model}. For instance, Krull's lemma
 stating that a ring element is already nilpotent if it is contained in all
 prime ideals requires the Boolean Prime Ideal Theorem, a slightly weaker
-version of the axiom of choice but still ineffectiv and unconstructive.
+version of the axiom of choice but still ineffective and unconstructive.
 However, Krull's lemma is valid in the form that a ring element is nilpotent if
 it is contained in the \emph{generic prime ideal}. This particular example has
 received lots of attention (see the references
@@ -791,14 +797,123 @@ mathematics and doesn't receive nearly as much philosophical attention as the
 axiom of choice or the principle of excluded middle, it is this axiom which actually
 and substantially increases logical strength. While~\textsc{zfc}, \textsc{zf}
 and \textsc{izf} are equiconsistent (and in fact verify the same
-arithmetical~$\Pi^0_2$-statements), systems without it such as Kripke--Platek
+arithmetical~$\Pi^0_2$-statements), systems without the powerset axiom such as Kripke--Platek
 set theory~(\textsc{kp}) or constructive Zermelo--Fraenkel set
 theory~(\textsc{czf}) are much weaker. We will not discuss this curious state
-of affairs; references include~\cite{crosilla:predicativity,aczel-rathjen:cst}.
+of affairs and only note that rejecting the powerset axiom can be
+well-motivated and is the basis of \emph{predicative mathematics};
+references include~\cite{crosilla:predicativity,aczel-rathjen:cst}.
 
 
-\section{The double-negation translation}
-\newpage
+\section{The double-negation embedding of classical into constructive mathematics}
+
+The premier difference between constructive and classical mathematics is in the
+existential quantifier~``$\exists$'' and disjunction~``$\vee$''.
+Constructively, to verify an existential statement, it is not enough to verify
+the impossibility of nonexistence; and to verify a disjunction~$\alpha \vee
+\beta$, it is not enough to verify the impossibility of~$\neg\alpha \wedge
+\neg\beta$.
+
+That is not to say, however, that the more informative versions of~``$\exists$''
+and~``$\vee$'' of constructive mathematics would be in any senser ``better''
+than their classical counterparts: There are many situations in which the
+classical semantics is exactly the appropriate one. Should we somehow combine
+classical and intuitionistic logic to form a joint logic supporting
+both the informative connectives from intuitionistic logic and the ``platonic''
+connectives from classical mathematics?
+
+Perhaps surprisingly, it turns out that no such combination is necessary, for
+the classical connectives are already definable in intuitionistic logic:
+\begin{align*}
+  \exists^\cl x \? X\_ \varphi(x)
+    &\quad\defequiv\quad \neg\neg (\exists x\?X\_ \varphi(x))
+    && \text{(this is eqv. to $\neg(\forall x\?X\_ \neg\varphi(x))$)} \\
+  \alpha \vee^\cl \beta
+    &\quad\defequiv\quad \neg\neg (\alpha \vee \beta)
+    && \text{(this is eqv. to $\neg(\neg\alpha \wedge \neg\beta)$)}
+\end{align*}
+
+This observation is the starting point of the \emph{double-negation embedding}
+of classical logic into intuitionistic logic. This embedding translates any
+statement~$\varphi$ into a related statement~$\varphi^{\neg\neg}$, substituting
+all occurences of~``$\exists$'' and~``$\vee$'' by~``$\exists^\cl$''
+and~``$\vee^\cl$'' (and prefixing all atomic statements by~``$\neg\neg$'')
+as detailed in Table~\ref{table:negneg}. Crucially, while the principle of
+excluded middle cannot be verified for~``$\vee$'', the principle of excluded
+middle for~``$\vee^\cl$'' is an intuitionistic tautology:
+
+\begin{thm}For every statement~$\varphi$,
+$\neg\neg(\varphi \vee \neg\varphi)$.
+\end{thm}
+
+\begin{proof}By definition of negation, we are to prove
+\[ \underbrace{\bigl((\varphi \vee (\varphi\Rightarrow\bot)) \Longrightarrow
+\bot\bigr)}_{\equiv\vcentcolon\, \chi}
+\Longrightarrow \bot. \]
+So assume~$\chi$; we are to show~$\bot$.
+
+Hypothetically, if~$\varphi$, then in particular~$\varphi \vee
+(\varphi\Rightarrow\bot)$ and hence, by~$\chi$, $\bot$. This argument
+establishes~$\varphi \Rightarrow \bot$.
+
+Thus in particular we have~$\varphi \vee (\varphi \Rightarrow \bot)$ and hence,
+by~$\chi$ again, $\bot$.
+\end{proof}
+
+The fundamental properties of the double-negation translation are summarized by
+the following theorem.
+
+\begin{thm}\label{thm:negneg}
+For every statement~$\varphi$, \ldots
+\begin{enumerate}
+\item classical logic proves~$\varphi \Leftrightarrow \varphi^{\neg\neg}$,
+\item intuitionistic logic proves~$\neg\neg(\varphi^{\neg\neg}) \Rightarrow
+\varphi^{\neg\neg}$,
+\item (if~$\varphi$ is a geometric formula) intuitionistic logic
+proves~$\varphi^{\neg\neg} \Leftrightarrow \neg\neg\varphi$, and
+\item classical logic proves~$\varphi$ from some set~$\Gamma$ of assumptions
+if and only if intuitionistic logic proves~$\varphi^{\neg\neg}$ from the
+set~$\Gamma^{\neg\neg}$ of translated assumptions.
+\end{enumerate}
+\end{thm}
+
+\begin{proof}Instructive exercise.\end{proof}
+
+The double-negation embedding is not only conceptually pleasing, establishing
+that intuitionistic logic can serve as a common home for both classical and
+constructive mathematics, but also supplies us with a vast source of
+constructive results.
+
+\begin{ex}Classical linear algebra teaches us that every finite system of
+generators of a vector space over a residue field\footnote{Constructively, the
+notion of a field bifurcates into several nonequivalent notions: A nontrivial
+commutative ring with unit is a \ldots
+\begin{enumerate}
+\item a \emph{geometric field} or \emph{discrete field} iff
+every element is zero or
+invertible (as in~$\QQ$ or~$\overline{\QQ}$),
+\item a \emph{residue field} iff
+every element which is not invertible is zero (as in the Cauchy or Dedekind
+reals), and
+\item a \emph{field of fractions} iff
+every element which is not zero is invertible (as in the localization of the
+Cauchy or Dedekind reals at the set of non-zeros).
+\end{enumerate}These each have their
+uses~\cite{johnstone:rings-fields-and-spectra,mulvey:repr}.}
+can be thinned to a generating family in which no vector is redundant, hence to
+a basis. By slightly massaging the result obtained by the double-negation
+embedding, we obtain the constructive theorem that every finitely generated
+vector space over a residue field does \emph{not not} possess a basis.
+
+We will learn in Section~\ref{sect:generic-freeness} that this simple theorem
+immediately entails (a basic version of) \emph{Grothendieck's generic freeness
+lemma}, a result in algebraic geometry fundamental to the theory of moduli
+spaces, if applied after localizing at the ``generic prime filter'' (this
+requires passing to a more adapted topos). It is marvelous how large the impact
+of this simple theorem from undergraduate linear algebra is, if made to apply
+in arbitrary toposes by the double-negation embedding and then specializing to
+a particularly well-adapted one.\end{ex}
+
 
 \section{Barr's theorem}
 \newpage
@@ -861,7 +976,22 @@ axiom of choice.
 
 \begin{exercise}[Details on the double-negation translation]
 Complete the verification of the fundamental properties of the double-negation
-translation.
+translation stated as Theorem~\ref{thm:negneg}.
+\end{exercise}
+
+\begin{exercise}[Minima of sets of natural numbers]
+In Theorem~\ref{thm:min}(b) we showed that every inhabited set of natural
+numbers does \notnot contain a minimal element. Explain how this result follows
+from the double-negation embedding applied to the classical fact that every
+inhabited set of natural numbers directly contains a minimal element.
+
+{\noindent\scriptsize\emph{Hint.} It is not enough to just cite the
+double-negation embedding. The resulting constructive theorem has to be
+massaged a bit to yield Theorem~\ref{thm:min}(b).\par}
+\end{exercise}
+
+\begin{exercise}[Grothendieck's generic freeness lemma, part one]
+XXX
 \end{exercise}
 
 \begin{exercise}[No constructive content]\label{ex:no-constructive-content}
@@ -982,4 +1112,8 @@ The generic prime filter
 Explicit construction
 Exercises: (lift from Spiel & Spaß)
 
-Cite surveys of .bib
+\[
+  \forall x_1,\ldots,x_n\?V\_
+    \bigl(\forall x\?V\_ \exists a_1,\ldots,a_n\?K\_ x = \sum_i a_i x_i\bigr)
+      \Longrightarrow
+        \]

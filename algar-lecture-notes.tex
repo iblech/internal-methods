@@ -112,7 +112,7 @@
 \definecolor{gray}{rgb}{0.7,0.7,0.7}
 
 \title{The curious world of constructive mathematics}
-\author{Ingo Blechschmidt}
+\author{Ingo Blechschmidt \vspace*{-2em}}
 %\email{iblech@speicherleck.de}
 
 \makeatletter
@@ -154,6 +154,8 @@
 \newtheorem{exercise}[defn]{Exercise}
 \renewcommand{\theenumi}{\alph{enumi}}
 
+\urlstyle{sf}
+
 \begin{document}
 
 \begin{abstract}
@@ -170,7 +172,7 @@ interpretation, where it applies to continuous families, and an
 algorithmic interpretation, yielding computational witnesses such as
 procedures for computing the objects whose existence has been shown.
 
-Relinquishing the axiom of choice and the law of excluded middle also
+Relinquishing the axiom of choice and the principle of excluded middle also
 allows us to explore axioms and notions which are incompatible with
 these classical laws, such as mathematical settings in which all
 functions are continuous or in which the intuitive idea of a ``generic
@@ -181,8 +183,8 @@ ring'' can be put on a firm basis.
 \renewcommand{\newpage}{\ }
 \renewcommand{\vfill}{\ }
 \renewcommand{\vfil}{\ }
+\enlargethispage{7em}
 {\vspace*{-6em}\centering\includegraphics[width=0.3\textwidth]{phantoms}\par}
-\thispagestyle{empty}\enlargethispage{7em}
 \maketitle
 }
 
@@ -191,6 +193,7 @@ ring'' can be put on a firm basis.
 \renewcommand{\newpage}{\ }
 \tableofcontents
 }
+\thispagestyle{empty}
 
 
 \chapter{A first glimpse of constructive mathematics}
@@ -201,6 +204,14 @@ This lecture provides a first glimpse of constructive mathematics with a
 focus on applications of constructive mathematics and on providing
 intuition for quickly discerning which techniques and results hold
 constructively.
+
+This account is an update and translation of~\cite[Section~1]{blechschmidt:pizzaseminar}
+and references
+include~\cite{bauer:five-stages-video,bauer:five-stages-article,avigad:constructive,sep:intuitionistic-logic,dummett:basis,melikhov:intuitionistic-logic,streicher:constructive}
+or more
+specifically~\cite{mines-richman-ruitenburg:constructive-algebra,lombardi-quitte:constructive-algebra}
+for constructive algebra and~\cite{bishop-bridges:bible} for constructive
+analysis.
 \end{intro}
 
 \begin{prop}There are irrational numbers~$x$ and~$y$ such that~$x^y$ is
@@ -235,14 +246,17 @@ this principle nor the (equivalent) \emph{principle of double negation
 elimination} stating~$\neg\neg\varphi \Rightarrow \varphi$, and insofar as we
 layer a set theory on top of our logical foundation, we abstain from the axiom
 of choice (which in presence of other common set-theoretical axioms implies the
-principle of excluded middle, see Exercise~\ref{ex:diaconescu}). As a
-consequence, we cannot generally reason by contradiction in constructive mathematics.
+principle of excluded middle, see Exercise~\ref{ex:diaconescu}) and from Zorn's lemma. As a
+consequence, we cannot generally reason by contradiction in constructive
+mathematics, and to demonstrate the existence of an object
+it is not enough that its nonexistence would entail a contradiction.
 
-In constructive mathematics, we do \emph{not} claim that the principle of
+Importantly, in constructive mathematicics we do \emph{not} claim that the principle of
 excluded middle is false. \marginpar{\dbend}
 Indeed, intuitionistic logic is downwardly compatible
 with classical logic (every intuitionistic proof is a fortiori also a classical
-proof), and some special instances of the principle of excluded middle are
+proof), and some special instances of the principle of excluded middle and with
+it some special instances of proof by contradiction are
 intuitionistically verifiable (an example is given in
 Proposition~\ref{prop:discreteness}). Instead, in constructive mathematics we
 merely do not use the principle of excluded middle.
@@ -258,7 +272,7 @@ mistaken.
 \section{Proof by contradiction vs. proof of a negation}
 
 A rumor about constructive mathematics states that constructively, the term
-``contradiction'' would be generally forbidden. This is false. In fact, we need
+``contradiction'' would be generally forbidden. This rumor is false. In fact, we need
 to distinguish between two distinct figures of proof which are often conflated
 in classical informal mathematics:
 
@@ -269,7 +283,7 @@ Hence~$\neg\varphi$ was false and thus~$\varphi$ holds.''
 \end{enumerate}
 
 Arguments of the first form are proper proofs by contradiction and hence not
-generally acceptable in constructive mathematics. What is established is
+generally accepted in constructive mathematics. What they establish is
 only~$\neg(\neg\varphi)$, the impossibility of~$\neg\varphi$; constructively,
 this is weaker than a positive affirmation of~$\varphi$. Though there are
 situations in which~$\neg\neg\varphi$ implies~$\varphi$, generally it does not
@@ -329,9 +343,9 @@ issues~\cite{artemov:bhk,sanz-piecha:critical-bhk,dalen:bhk}, but still a useful
 the constructive meaning of mathematical statements.
 
 
-\subsection*{The Brouwer--Heyting--Kolmogorov interpretation}
+\subsection{The Brouwer--Heyting--Kolmogorov interpretation}
 
-The notion of witnesses is compositional in nature and starts out with witnesses for \emph{atomic
+The notion of witnesses is compositional in nature and starts out with the notion of witnesses for \emph{atomic
 statements}, those not built from substatements using the logical
 connectives~$\wedge,\vee,\Rightarrow$ or the quantifiers~$\forall,\exists$. For
 instance, in formal number theory, the atomic statements are of the form
@@ -342,7 +356,7 @@ particular additional information. We hence decree that true atomic statements
 have trivial witnesses and that false atomic statements have no witnesses at
 all.
 
-Table~\ref{table:bhk} explains what witnesses of compound statements are. For
+Table~\ref{table:bhk} explains how compound statements should be witnessed. For
 instance, a witness of a statement of the form
 \[ \forall n \? \NN\_ \bigl(\varphi(n) \Rightarrow \psi(n)\bigr) \]
 is a rule explaining how, for every natural number~$n : \NN$, witnesses
@@ -373,82 +387,115 @@ for~$\varphi(n)$ give rise to witnesses for~$\psi(n)$.
       We have a~$x \? X$ together with a witness for~$\varphi(x)$.} \\
     \bottomrule
   \end{tabular}
-  \caption{\label{bhk}Informale rekursive Definition des Belegbegriffs.}
+  \caption{\label{table:bhk}Informal recursive definition of the notion of witnesses.}
 \end{table}
 
 \begin{ex}
 According to the Brouwer--Heyting--Kolmogorov interpretation, the principle of
-excluded middle states that there is a rule for producing, for every~$\varphi$,
-either a witness for~$\varphi$ or a witness for~$\neg\varphi$. The BHK
-interpretation does not specify which kind of rule ...
-Unter dieser Interpretation meint das Prinzip vom ausgeschlossenen Dritten, dass wir für jede
-Aussage Beleg für sie oder ihre Negation haben. Das ist aber offensichtlich
-nicht der Fall.
+excluded middle states that we can construct, for every~$\varphi$,
+either a witness for~$\varphi$ or a witness for~$\neg\varphi$. This claim is
+obviously false.
 \end{ex}
 
-%\begin{bsp}
-Die Interpretation von~$\neg\neg\varphi$ ist, dass es keinen Beleg
-für~$\neg\varphi$ gibt. Daraus folgt natürlich noch nicht, dass wir tatsächlich
-Beleg für~$\varphi$ haben; gewissermaßen ist eine solche Aussage~$\varphi$ nur
-"`potenziell wahr"'.
-%\end{bsp}
+\begin{ex}
+The BHK interpretation of a doubly negated statement~$\neg\neg\varphi$ is that
+there is no witness for~$\neg\varphi$. This state of affairs does not entail
+that we actually have a witness for~$\varphi$; in a sense, the
+statement~$\varphi$ is only ``potentially true''.
+\end{ex}
 
-%\begin{bsp}
-Wenn wir wissen, dass sich unser Haustürschlüssel irgendwo in der
-Wohnung befinden muss (da wir ihn letzte Nacht verwendet haben, um die Tür
-aufzusperren), wir ihn momentan aber nicht finden, so können wir konstruktiv
-nur folgende doppelt negierte Aussage vertreten:
-\[ \neg\neg (\exists x\_ \text{der Schlüssel befindet sich an Position~$x$})
-\]
-%\end{bsp}
+\begin{ex}
+Assuming that we cannot find our apartment key, but know that it has to be
+somewhere (because we used it last night to unlock the door), constructively we
+can only defend the doubly negated statement
+\[ \neg\neg (\exists x\_ \text{the key is at position~$x$}). \]
+\end{ex}
 
-%\begin{bsp}
-Wir stehen im Supermarkt und erinnern uns, dass wir unbedingt
-gewisse Zutaten einkaufen müssen. Leider fällt uns momentan keine einzige der
-Zutaten mehr ein. Dann können wir zwar die Aussage, dass die Menge der zu
-besorgenden Zutaten nicht leer ist, vertreten, nicht jedoch die stärkere
-Aussage, dass diese Menge ein Element enthält.
-%\end{bsp}
+\begin{ex}
+We are running errands and are remembering that we need to fetch certain
+ingredients. Unfortunately we don't recall any of them right now. Then we can
+constructively defend the statement that the set of ingredients to fetch is not
+empty, not however the stronger statement that this set is inhabited.
+\end{ex}
 
-%\begin{bsp}[\cite{sigfpe:katemoss,bbc:katemoss}]
-Es war ein Video aufgetaucht, dass Kate Moss beim Konsumieren von Drogen zeigte,
-und zwar entweder solche von einem Typ~A oder solche von einem Typ~B. Welcher
-Typ aber tatsächlich vorlag, konnte nicht entschieden werden. Also gab es für
-keine der beiden Straftaten einen Beleg, Kate Moss wurde daher nicht
-strafrechtlich verfolgt.
-%\end{bsp}
+\begin{ex}[\cite{sigfpe:katemoss,bbc:katemoss}]
+A video surfaced depicting Kate Moss taking drugs, more precisely either drugs
+of some type~A or drugs of some type~B. However from the video it wasn't clear
+which type of drug it actually was. Hence there was no evidence for either type
+of consumption; Kate Moss wasn't prosecuted.
+\end{ex}
 
-%\begin{bem}Die Formulierung mit dem generischen \emph{Wir} in Tafel~\ref{bhk}
-ist etwas irreführend. Wie auch in klassischer Mathematik hängen
-intuitionistische Urteile nicht von \emph{uns} oder anderen Mathematikern ab.
-Aussagen, die bisher noch nicht konstruktiv bewiesen wurden, können
-durchaus einen (noch unbekannten) Beleg besitzen. Eine genauere Diskussion
-findet sich etwa in~\cite[Seite~42f.]{kohlenbach:applprooftheory}. Die
-Brouwer--Heyting--Kolmogorov-Interpretation kann im Rahmen der
-\emph{Realisierbarkeitstheorie} formalisiert werden~\cite{bauer:realizability};
-ohne eine solche Formalisierung gibt es gewisse weitere
-Probleme~\cite{artemov:bhk,sanz-piecha:critical-bhk,dalen:bhk}.
-%\end{bem}
+\begin{rem}The reference of an unspecified ``we'' in table~\ref{table:bhk}
+renders our account of the BHK interpretation not only informal, but is also
+somewhat misleading. As in classical mathematics, judgments of intuitionistic
+logic do not actually depend on you, me or other mathematicians. It's perfectly
+possible that statements which haven't yet been constructively verified admit
+(as yet unknown) witnesses. More details can be found
+in~\cite[pp.~42]{kohlenbach:applprooftheory} and
+in~\cite{artemov:bhk,sanz-piecha:critical-bhk,dalen:bhk}. The
+Brouwer--Heyting--Kolmogorov interpretation is made more formal and precise by
+\emph{realizability theory}~\cite{bauer:realizability,oosten:realizability}.
+\end{rem}
 
 
-\subsubsection*{\ldots{} über Berechenbarkeit}
+\subsection{The computability interpretation}
 
-Es gibt noch eine zweite Interpretation, die beim Verständnis der konstruktiven
-Sichtweise sehr hilfreich ist:
-%\listedmotto{konstruktiv-gdw-computer}{Eine Aussage gilt genau dann konstruktiv, wenn es ein
-%Computerprogramm gibt, welches sie in endlicher Zeit bezeugt.}
-Etwa ist mit dieser Interpretation klar, dass die formale Aussage
-\[ \forall n \in \NN\_ \exists p \geq n\_ \text{$p$ ist eine Primzahl}, \]
-eine Formulierung der Unendlichkeit der Primzahlen, auch konstruktiv
-stimmt: Denn man kann leicht ein Computerprogramm angeben, das eine natürliche
-Zahl~$n$ als Eingabe erwartet und dann, etwa über die Sieb-Methode von
-Eratosthenes, eine Primzahl~$p \geq n$ produziert (zusammen mit einem Nachweis,
-dass~$p$ tatsächlich prim ist).
+A second interpretation of mathematical statements suited for constructive
+mathematics is given by the following motto: In a certain sense, \emph{we
+accept a mathematical statement in constructive mathematics if and only if
+there is a computer program witnessing it in finite time.} For instance, that
+the statement
+\[ \forall n \? \NN\_ \exists p \? \NN\_ p \geq n \wedge \text{$p$ is prime} \]
+is valid in constructive mathematics corresponds to the fact that there is a
+computer program which reads a number~$n$ as input and then, after some
+computation, produces a prime number~$p \geq n$ as output (together with a
+witness that~$p$ is in fact greater or equal than~$n$ and that~$p$ is prime).
 
-Das Motto kann man tatsächlich zu einem formalen Theorem
-präzisieren, das ist Gegenstand der gefeierten
-Curry--Howard-Korrespondenz (Abschnitt~\ref{curry-howard}).
+For the motto to be correct, the notion of ``witnessed by a computer program''
+has to be interpreted in sufficiently generous manner, not least because
+uncountable and uncomputable structures have their place in constructive
+mathematics just as in classical mathematics. A more formal rendition is
+provided by the celebrated \emph{Curry--Howard correspondence} and
+\emph{propositions as (some) types}.
 
+
+\subsection{The geometric interpretation}
+
+A third interpretation of mathematical statements suited for constructive
+mathematics, and of a substantially different kind than the BHK and the
+computability interpretation, is provided by geometry. In a certain sense,
+\emph{we accept a mathematical statement in constructive mathematics if and
+only if it holds locally in continuous families}.
+
+For instance, while it is a fact of classical mathematics that every complex
+number has a square root, a fundamental observation in complex analysis is that
+such roots cannot be picked in a locally continuous manner. Hence the standard
+formulation of the fundamental theorem of algebra fails in constructive
+mathematics.\footnote{More precisely, the fundamental theorem of algebra fails
+for the complex numbers built from pairs of Dedekind reals. Constructively, the
+reals built using Dedekind cuts are not the same as the reals built using
+Cauchy sequences; in fact, the latter are a subset of the former and serve a
+different purpose. Such a bifurcation of classically equivalent notions is
+typical of constructive mathematics. The fundamental theorem of algebra is
+correct for the flavor of complex numbers built from Cauchy
+reals~\cite{ruitenburg:roots}, and also for the algebraic
+numbers~\cite[Section~VII.4]{mines-richman-ruitenburg:constructive-algebra}
+[XXX insert better references] and for complex polynomials (of either flavor)
+which are separable. Furthermore, the fundamental theorem of algebra holds in
+an approximate sense and in a multiset sense~\cite{richman:fta}, and the
+standard version only requires mild choice
+principles~\cite{bridges-richman-schuster:wcc}.} This example will be discussed
+in more detail in Section~\ref{sect:fta}.
+
+The geometric interpretation not only gives transparent explanations to the
+logical subtleties of constructive mathematics, but is in a more precise form
+also the workhorse of many modern applications of constructive mathematics to
+mathematics in general. We will hence dedicate ample of space to the geometric
+interpretation by devoting Lecture~\ref{lect:toposes} to it, and will discuss
+some of its more advanced applications in Lecture~\ref{lect:generic}.
+
+
+\section{Finer distinctions supported by constructive mathematics}
 
 
 \section{Exercises}
@@ -481,7 +528,7 @@ compactification} of~$\NN$. A sensible definition of it in constructive mathemat
 is as the set of decreasing binary sequences~$(x_0,x_1,x_2,\ldots)$. The
 naturals embed into~$\NN_\infty$ by mapping~$n$ to the sequence~$1^n 0^\omega =
 (1,\ldots,1,0,\ldots,0)$, and an element not in the image of this embedding
-is~$\infty \defeq 1^\omega = (1,1,\ldots)$. Assuming the law of excluded
+is~$\infty \defeq 1^\omega = (1,1,\ldots)$. Assuming the principle of excluded
 middle (or already weaker principles), every element of~$\NN_\infty$ is of one
 of these two forms. Martín Escardó has worked extensively on unexpected
 instances of the principle of omniscience for searchable sets
@@ -537,7 +584,7 @@ a rational number~$b$ such that~$a \geq b > 0$.\par}
 \end{exercise}
 
 \begin{exercise}[Brouwerian counterexamples]
-Show that each of the following statements implies the law of excluded middle,
+Show that each of the following statements implies the principle of excluded middle,
 hence is not available in constructive mathematics.
 \begin{enumerate}
 \item Every ideal of~$\ZZ$ is finitely generated.
@@ -572,9 +619,13 @@ Exercise~\ref{ex:tautologies}):
 \item Every real number which is not zero is invertible.
 \end{enumerate}
 \noindent
-More Brouwerian counterexamples can be
-found in~\cite{mandelkern:brouwerian-counterexamples} and
-in~\cite{mines-richman-ruitenburg:constructive-algebra}.
+Brouwerian counterexamples abound in constructive mathematics; when developing
+a constructive account of a theory, they help to clearly demarcate its limits.
+As such additional Brouwerian counterexamples can be found in most texts on
+constructive mathematics, such
+as~\cite{mines-richman-ruitenburg:constructive-algebra}; a compilation mainly
+from constructive analysis can be found
+in~\cite{mandelkern:brouwerian-counterexamples}.
 \end{exercise}
 
 \begin{exercise}[Diaconescu's theorem]
@@ -582,7 +633,7 @@ in~\cite{mines-richman-ruitenburg:constructive-algebra}.
 The axiom of choice can be put as: ``Every surjective map has a
 section.'' (A \emph{section}~$s$ to a surjective map~$f$ is a map in the other direction such that~$f \circ s =
 \mathrm{id}$.) A theorem of Diaconescu states that
-the axiom of choice implies the law of excluded middle. To this end, let~$\varphi$ be a
+the axiom of choice implies the principle of excluded middle. To this end, let~$\varphi$ be a
 statement and consider the subsets
 \begin{align*}
   U &= \{ x \in X \,|\, (x = 0) \vee \varphi \} \\
@@ -602,30 +653,26 @@ implies~$\varphi \vee \neg\varphi$.
 \end{enumerate}
 \end{exercise}
 
-\vfill
-{\small
-\begin{verbatim}
-- What constructive mathematics is about: finer distinctions, algorithmic
-  interpretation, geometric interpretation (including teaser on why we
-  might care)
-- Proof by and proof of a contradiction: powers of irrational numbers,
-  discreteness of N, Q, Qbar, failure of discreteness of R
-- Positive information from negative? de Morgan, minimums of sets of
-  natural numbers
-- Relation to classical mathematics
-- Finite sets and the axiom of choice
-- Axiomatic freedom: all functions continuous, all functions
-  computable, generic prime ideal
-\end{verbatim}
-}
+% - What constructive mathematics is about: finer distinctions, algorithmic
+%   interpretation, geometric interpretation (including teaser on why we
+%   might care)
+% - Proof by and proof of a contradiction: powers of irrational numbers,
+%   discreteness of N, Q, Qbar, failure of discreteness of R
+% - Positive information from negative? de Morgan, minimums of sets of
+%   natural numbers
+% - Relation to classical mathematics
+% - Finite sets and the axiom of choice
+% - Axiomatic freedom: all functions continuous, all functions
+%   computable, generic prime ideal
 
 
 \chapter{On the constructive content of classical proofs}
+\label{lect:constructive-content}
 
 \begin{intro}
 Decades of experience in constructive mathematics show: \emph{Most results
 in classical mathematics, even those whose proof rests on
-non-constructive principles like the axiom of choice or the law of
+non-constructive principles like the axiom of choice or the principle of
 excluded middle, have a hidden constructive core.} With a mix of
 experience, seasoned tools and general metatheorems, this constructive
 content can be extracted from classical proofs. In this way we obtain
@@ -673,7 +720,7 @@ of all values of~$f$ so we can determine the minimum. The issue is even more
 pronounced with Theorem~\ref{thm:surjective-matrix}, since the existence of
 maximal ideals in nontrivial rings requires the axiom of
 choice~\cite{scott:prime-ideals,hodges:krull,banaschewski:krull,erne:krull,howard-rubin:ac}.
-To add one more conundrum: Assume that we have a classical proof, using the law
+To add one more conundrum: Assume that we have a classical proof, using the principle
 of excluded middle and the axiom of choice, that some given Turing machine
 terminates. Can we then constructively accept that the machine will halt? Do we
 have an upper bound for the number of computational steps the machine carries
@@ -710,9 +757,9 @@ over~$L$ instead of~$V$. The conservation result follows because the natural
 numbers ``are absolute between~$V$
 and~$L$''~\cite{goedel:ac-gch,schoenfield:predicativity}.}
 
-\item \emph{Eliminating the law of excluded middle by the double-negation
+\item \emph{Eliminating the principle of excluded middle by the double-negation
 translation and its variants.} At the price of
-slightly modifying the asserted claim, the law of excluded middle
+slightly modifying the asserted claim, the principle of excluded middle
 can always be mechanically eliminated from a given proof. This
 elimination procedure is facilitated by the \emph{double-negation translation}
 reviewed below. In some cases, a refined translation even allows to preserve the asserted
@@ -741,7 +788,7 @@ Noticeably missing in this list is any technique for eliminating uses of the
 \emph{powerset axiom} stating that the collection of all subsets of a given
 set is again a set. While this axiom is uncontested by ordinary constructive
 mathematics and doesn't receive nearly as much philosophical attention as the
-axiom of choice or the law of excluded middle, it is this axiom which actually
+axiom of choice or the principle of excluded middle, it is this axiom which actually
 and substantially increases logical strength. While~\textsc{zfc}, \textsc{zf}
 and \textsc{izf} are equiconsistent (and in fact verify the same
 arithmetical~$\Pi^0_2$-statements), systems without it such as Kripke--Platek
@@ -751,8 +798,10 @@ of affairs; references include~\cite{crosilla:predicativity,aczel-rathjen:cst}.
 
 
 \section{The double-negation translation}
+\newpage
 
 \section{Barr's theorem}
+\newpage
 
 Even though Barr's theorem has wide impact, there are definitive situations in
 which, provably so, no useful constructive content can be extracted.
@@ -760,6 +809,7 @@ Exercise~\ref{ex:no-constructive-content} gives an example for this situation.
 
 
 \section{Examples from quadratic form theory}
+\newpage
 
 \section{Exercises}
 
@@ -767,7 +817,7 @@ Exercise~\ref{ex:no-constructive-content} gives an example for this situation.
 The Drinker's paradox is the tautology
 \[ \forall f \? \NN \to \{0,1\}\_ \exists n \? \NN\_ (f(n) = 1
 \Rightarrow (\forall m \? \NN\_ f(m) = 1)) \]
-of classical logic. A proof proceeds as follows: By the law of
+of classical logic. A proof proceeds as follows: By the principle of
 excluded middle, either there is a number~$n$ such that~$f(n) = 0$ or not. In
 the first case, we can take such a number~$n$ as the desired~$n$. In the second
 case, we can take~$n \defeq 0$.
@@ -823,7 +873,7 @@ even though for each number~$p_0$ it is actually the case that (and~\textsc{pa}
 can verify that)~$p_0$ does not constitute a correct encoding of
 a~\textsc{pa}-proof of~$\bot$.
 \begin{enumerate}
-\item Give a~\textsc{pa}-proof, using the law of excluded middle, of the
+\item Give a~\textsc{pa}-proof, using the principle of excluded middle, of the
 statement
 \[ \exists q\_ (\textsf{Prf}(q) \vee G). \]
 \item Show that for no number~$q_0 \in \NN$, the
@@ -835,20 +885,25 @@ extracted from the classical proof in~(a).
 
 
 \chapter{Toposes and their internal language}
+\label{lect:toposes}
 
 \section{Examples}
 \newpage
+\ \newpage
 
 \section{Definition}
 \newpage
+\ \newpage
 
 \section{The Kripke--Joyal semantics of sheaf toposes}
 \newpage
+\ \newpage
 
 \section{Exercises}
 
 
 \chapter{Generic models and their applications}
+\label{lect:generic}
 
 \begin{intro}
 Commutative algebra progressed when the intuitive but informal notion of
@@ -879,12 +934,15 @@ concrete applications.
 
 \section{A fantastical ring}
 \newpage
+\ \newpage
 
 \section{The generic prime filter}
 \newpage
+\ \newpage
 
 \section{Explicit construction}
 \newpage
+\ \newpage
 
 \section{Exercises}
 

@@ -407,7 +407,7 @@ that we actually have a witness for~$\varphi$; in a sense, the
 statement~$\varphi$ is only ``potentially true''.
 \end{ex}
 
-\begin{ex}
+\begin{ex}\label{ex:key}
 Assuming that we cannot find our apartment key, but know that it has to be
 somewhere (because we used it last night to unlock the door), constructively we
 can only defend the doubly negated statement
@@ -461,6 +461,14 @@ mathematics just as in classical mathematics. A more formal rendition is
 provided by the celebrated \emph{Curry--Howard correspondence} and
 \emph{propositions as (some) types}.
 
+\begin{rem}Constructive mathematics is emphatically not the same as computable
+mathematics; in particular, there are statements which do admit a witness by a
+computer program but which are rejected in (most schools of) constructive
+mathematics (see Exercise~\ref{ex:markov}). The apparent tension with the motto
+presented above is resolved in its more formal treatment. In any case, the two
+subjects are closely related and their connection provides useful
+intuition.\end{rem}
+
 
 \subsection{The geometric interpretation}
 
@@ -499,6 +507,164 @@ some of its more advanced applications in Lecture~\ref{lect:generic}.
 
 
 \section{Finer distinctions supported by constructive mathematics}
+
+By relinquishing the blanket principle of excluded middle, constructive
+mathematics allows us to make finer distinctions -- distinctions which are
+hidden in classical mathematics, but carry algorithmic and geometric
+significance. We have already seen one instance of this increased
+expressiveness in Example~\ref{ex:key}: In classical mathematics, we are
+trained to cancel double negations as soon as they arise, but constructively
+there is a substantial difference between actually having a mathematical object
+and merely knowing that its nonexistence is impossible.
+
+
+\subsection{Decidability of equality}
+
+A further examples pertains to the basic notion of equality. In classical
+mathematics, any given elements~$a,b$ of a set~$X$ are either equal or not --
+trivially so, by the principle of excluded middle. Constructively, the
+situation is more nuanced.
+
+Firstly, in a positive direction, we do have the following result.
+
+\begin{prop}\label{prop:discreteness}
+For every pair of natural numbers~$a$ and~$b$, either~$a = b$ or~$a \neq b$.\end{prop}
+
+\begin{proof}[Proof (constructive)]
+We spell out only the case~$b = 0$, that is, we only spell out a proof that
+every natural number~$a$ is either zero or not. To this end, we do a induction
+on~$a$.
+
+The base step~$a = 0$ is trivial, since if~$a = 0$ then also~$a = 0 \vee a \neq
+0$ (we can always weaken statements by addition additional disjuncts).
+
+In the inductive step~$a \to a + 1$, we have~$a + 1 \neq 0$ by one of the basic
+axioms of arithmetic (for a complete list, see
+Exercise~\ref{ex:stability-axioms}) and hence in particular~$a+1 = 0 \vee
+a+1\neq0$ by weakening. (This proof is one of the rare instances of a correct
+induction proof where the inductive step does not refer to the induction
+hypothesis.)
+\end{proof}
+
+As from any constructive proof, a computer program witnessing the asserted fact
+can be extracted. It will (roughly) have type $\mathsf{Nat} \times \mathsf{Nat}
+\to \mathsf{Bool}$, computing~$\mathsf{true}$ or~$\mathsf{false}$ depending on
+whether its input agree or are distinct. Because the presented proof proceeded
+by induction, the resulting program will proceed by recursion.
+
+Sets like the set of natural numbers for which equality is decidable have a
+special name in constructive mathematics, hinting at a connection with topology:
+\begin{defn}A set~$X$ is \emph{discrete} if and only if for every
+elements~$a,b \in X$, either~$a = b$ or~$a \neq b$.\end{defn}
+In classical mathematics, all sets are discrete. Constructively, discreteness
+is a nontrivial property, and although~$\NN$ is discrete and with it also~$\ZZ$
+and~$\QQ$, there are many important sets which constructively cannot be shown
+to be discrete:
+
+\begin{prop}Already in the case~$X = \{\star\}$ it holds that if the
+powerset~$P(X)$ is discrete, then the principle of excluded middle
+holds.\end{prop}
+
+\begin{proof}Let~$\varphi$ be a statement and consider the element~$K_\varphi
+\defeq \{ x \in X \,|\, \varphi \} \in P(X)$. If~$K_\varphi = X$,
+then~$\varphi$; and if~$K_\varphi \neq X$, then~$\neg\varphi$.\end{proof}
+
+\begin{prop}If the set of (any of the usual flavors of the) reals is discrete,
+then the principle of omniscience holds (XXX this has not been
+introduced).\end{prop}
+
+The failure of the discreteness of the set of real numbers can be explained in
+computational terms as follows. In computable mathematics, a real numbers is
+represented by a program computing better and better rational approximations.
+Given two such programs, we can simulate or execute them to obtain
+approximations to a desired precision, hoping to distinguish the two
+represented real numbers. However, in case that the two numbers actually agree,
+in finite time we will never verify this fact: Computably, we cannot rule out
+the possibility that a difference between the two numbers will only be detected
+in the as yet unexplored range of rational approximations.\footnote{This
+argument can be formalized using Turing machines and realizability theory;
+see~\cite[Section~4.2.1]{blechschmidt:filmat} for a review. The analysis
+dramatically changes (see~\cite[Section~4.2.2]{blechschmidt:filmat}) if we
+instead refer to the infinite-time Turing machines of Hamkins and
+Lewis~\cite{hamkins-lewis:ittm} which can carry out an infinite amount of
+computation before halting. A philosophically intriguing (and, by necessity,
+informal) account referring to machines in the real world as opposed to
+idealized Turing machines has been put forward by Andrej
+Bauer~\cite{bauer:int-mathematics}.}
+
+Lest an impression that only topologically simple domains can be shown to be
+discrete in constructive mathematics emerges, here is a more sophisticated
+example of a discrete set.
+
+\begin{prop}The set~$\overline{\QQ}$ of algebraic numbers is
+discrete.\end{prop}
+
+\begin{proof}See~\cite[Section~XXX]{mines-richman-ruitenburg:constructive-algebra}.\end{proof}
+
+
+\subsection{Minima of sets of natural numbers}
+
+As an approximate rule of thumb, in the author's personal experience, every
+result of classical mathematics which has received constructive scrutiny turned
+out to either
+\begin{enumerate}
+\item be manifestly and unsurprisingly unconstructive, or
+\item admit a constructive reformulation.
+\end{enumerate}
+Of course, the jury is still out on the many results not yet studied from a
+constructive point of view.
+
+The results ``every vector space has a basis'' and ``there exist
+nonmeasurable subsets of the reals'' are of the first kind. Such results often
+provide great abstract insight to the mathematical landscape -- it is
+comforting to know that there cannot be vector spaces so bizarre that they
+don't have a basis or that the notion of measurable subsets is not trivial.
+Such results also tend to not influence concrete situations too much: How could
+an infinite basis for which there is no hope that we ever learn any actual
+description of inform our computations? (Better uncover topological structure
+and look for a Schauder basis!)
+
+Indeed, there are even metatheorems, reported on in
+Lecture~\ref{lect:constructive-content}, to the effect that in sufficiently
+concrete and logically simple situations, the axiom of choice and the principle
+of excluded middle do not allow to prove results which couldn't be proven
+without them. And as further evidence, there is Friedman's \emph{grand
+conjecture}~\cite{XXX} -- informal but not yet challenged -- that every result
+published in the Annals by a mathematician not self-identifying as a set
+theorist or logician can be (reformulated to be) provable even in~\textsc{efa},
+a foundational system much weaker than~\textsc{zfc},~\textsc{zf} or even Peano
+arithmetic.
+
+An example of a result of type~(b) us the basic observation that every
+inhabited set of natural numbers contains a minimal element. This result is not
+available in constructive mathematics as stated, but there are two constructive
+substitutes.
+
+\begin{defn}A set~$X$ is \emph{inhabited} if and only if there exists an
+element of~$X$. (Constructively, this is stronger than~$X$ not being
+empty.)\end{defn}
+
+\begin{prop}If every inhabited set of natural numbers contains a minimal
+element, then the principle of excluded middle holds.\end{prop}
+
+To salvage the classical result, we can strengthen its assumption or weaken its
+conclusion.
+
+\begin{defn}A subset~$U \subseteq X$ is \emph{detachable} if and only if for
+every element~$x \in X$, either~$x \in U$ or~$x \not\in U$.\end{defn}
+
+For instance, the subset of~$\NN$ consisting of the prime numbers is detachable,
+while the subset of those numbers~$n$ such that the~$n$-th Turing machine
+terminates cannot constructively be shown to be detachable.\footnote{A
+computable witness to detachability of this subset would be a \emph{halting
+oracle}, but a basic fact of computability theory is that there no such
+oracles.}
+
+\begin{prop}\label{prop:minima}\begin{enumerate}
+\item Every detachable inhabited subset of~$\NN$ contains a minimum.
+\item Every inhabited subst of~$\NN$ does~\notnot contain a minimum.
+\end{enumerate}
+\end{prop}
 
 
 \section{Exercises}
@@ -630,6 +796,30 @@ constructive mathematics, such
 as~\cite{mines-richman-ruitenburg:constructive-algebra}; a compilation mainly
 from constructive analysis can be found
 in~\cite{mandelkern:brouwerian-counterexamples}.
+\end{exercise}
+
+\begin{exercise}[Markov's principle]\label{ex:markov}
+Markov's principle is the statement that
+\[ \forall f \? \NN \to \{0,1\}\_ (\neg\neg\exists n \? \NN\_ f(n) = 0)
+\Rightarrow (\exists n \? \NN\_ f(n) = 0). \]
+It is a simple instance of the classical principle of double-negation
+elimination, but not available in (most schools of) constructive mathematics.
+\begin{enumerate}
+\item Why does Markov's principle imply that programs which do not run forever
+actually halt?
+\item Explain why Markov's principle is witnessed by a computer program (even
+though it does not admit a constructive proof). Which assumption on your
+metatheory does your argument require?
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}[Minima of sets of natural numbers, part one]\label{ex:minima1}
+\begin{enumerate}
+\item Give a constructive proof of Proposition~\ref{prop:minima}(b).
+\item What does the computational witness extracted from the proof of
+Proposition~\ref{prop:minima}(a) look like? Can you devise a different proof
+corresponding to a different algorithm?
+\end{enumerate}
 \end{exercise}
 
 \begin{exercise}[Diaconescu's theorem]
@@ -946,7 +1136,7 @@ numbers.
 \end{enumerate}
 \end{exercise}
 
-\begin{exercise}[Stability of the axioms]
+\begin{exercise}[Stability of the axioms]\label{ex:stability-axioms}
 Peano arithmetic (\textsc{pa}) is set in the language~$(0,S,+,\cdot)$ and has
 the following axioms (where leading universal quantifiers are supressed for
 brevity):
@@ -979,15 +1169,23 @@ Complete the verification of the fundamental properties of the double-negation
 translation stated as Theorem~\ref{thm:negneg}.
 \end{exercise}
 
-\begin{exercise}[Minima of sets of natural numbers]
-In Theorem~\ref{thm:min}(b) we showed that every inhabited set of natural
-numbers does \notnot contain a minimal element. Explain how this result follows
+\begin{exercise}[Minima of sets of natural numbers, part two]
+In Proposition~\ref{prop:minima}(b) we showed that every inhabited set of natural
+numbers does \notnot contain a minimal element.
+\begin{enumerate}
+\item Redo Exercise~\ref{ex:minima1}(a) using the motto that in proofs of
+negated statements, we are allowed to use finitely many instances of the
+principle of excluded middle.
+\item Explain how Proposition~\ref{prop:minima}(b) follows
 from the double-negation embedding applied to the classical fact that every
 inhabited set of natural numbers directly contains a minimal element.
 
 {\noindent\scriptsize\emph{Hint.} It is not enough to just cite the
 double-negation embedding. The resulting constructive theorem has to be
-massaged a bit to yield Theorem~\ref{thm:min}(b).\par}
+massaged a bit to yield Proposition~\ref{prop:minima}(b).\par}
+\item Explain in computational terms how your proof of
+Proposition~\ref{prop:minima}(b) runs its course.
+\end{enumerate}
 \end{exercise}
 
 \begin{exercise}[Grothendieck's generic freeness lemma, part one]
@@ -1117,3 +1315,5 @@ Exercises: (lift from Spiel & Spaß)
     \bigl(\forall x\?V\_ \exists a_1,\ldots,a_n\?K\_ x = \sum_i a_i x_i\bigr)
       \Longrightarrow
         \]
+
+Comment on Zorn's lemma

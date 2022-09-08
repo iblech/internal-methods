@@ -33,6 +33,10 @@
     }%
 }
 
+\usepackage{pifont}
+\newcommand{\cmark}{\ding{51}}
+\newcommand{\xmark}{\ding{55}}
+
 \usepackage[natbib=true,style=numeric,maxnames=10]{biblatex}
 \usepackage[babel]{csquotes}
 \bibliography{algar-lecture-notes}
@@ -1255,6 +1259,18 @@ mathematics~\cite{lambek:incompatible,couture-lambek:reflections} will take
 place in more informal settings than the lecture.
 \end{intro}
 
+\newpage
+
+\begin{tabular}{@{}lp{0.83\textwidth}ll@{}}
+  \toprule
+  & statement & status \\\midrule
+  1a & Every continuous function~$f : [-1,1] \to \RR$ with~$f(-1) < 0$
+  and~$f(1) > 0$ has a zero. & \cmark/\xmark \\
+  1b & For every continuous function~$f : X \times [-1,1] \to \RR$
+  with~$f(\cdot,-1) < 0$ and~$f(\cdot,1) > 0$ there is an open covering~$X =
+  \bigcup_i U_i$ such that for each index~$i$, there is a continuous
+  zero-picking function~$z : U_i \to [-1,1]$
+\end{tabular}
 
 \section{Examples}
 \newpage

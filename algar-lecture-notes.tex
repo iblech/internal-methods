@@ -1316,6 +1316,45 @@ general, focussing on the generic ring, the generic prime ideal and
 concrete applications.
 \end{intro}
 
+The convergence radius of the Taylor series expansion of~$1/(1-x)$ around the
+origin, that is the geometric series
+$1 + x + x^2 + \cdots$,
+is~$1$. That the convergence radius isn't larger doesn't come too surprising in
+view of the fact that the function~$1/(1-x)$ has a non-removable discontinuity
+at~$x = 1$. But why is also the convergence radius of the expansion
+of~$1/(1+x^2)$,
+\[ 1/(1+x^2) = 1 - x^2 + x^4 - x^6 + \cdots, \]
+just~$1$? The function~$1/(1+x^2)$ is
+perfectly well-defined at~$\pm 1$, infinitely derivable on all of~$\RR$, neatly
+decaying for~$x \to \pm\infty$ and doesn't have any singularities.
+
+A rewarding explanation of this phenomenon is nowadays relayed in any course on
+complex analysis: The function~$1/(1+x^2)$ does have a singularity at
+distance~$1$ from the origin, namely at~$\pm i$ in the complex plane, and the disk
+of convergence is only so big that it merely touches the nearest singularity.
+
+This episode is one example of many how the ``imaginary unit''---once
+an elusive \emph{mathematical phantom}---affects the story of the real numbers even
+though it itself is not one of them. Like many mathematical phantoms before it,
+the imaginary unit obtruded its effects so convincingly that eventually we
+embraced it and broadened our notion of existence.
+
+Toposes allow us to bring further entities into being, entities which do not
+exist in the standard topos but which nevertheless affect the story of the
+standard topos. We will focus on:
+\begin{enumerate}
+\item The \emph{generic ring} -- which cryptically is also a field
+\item The \emph{generic prime filter}~$\ppp_\star$ of a given ring~$A$ -- which
+XXX
+\item The \emph{generic surjection}~$\NN \to X$ -- which exists also when~$X$
+is uncountable
+\end{enumerate}
+The complex numbers can be compiled down to pairs of real numbers and hence
+exhibit already in their very construction an intimate connection with the real
+numbers; in a similar vein, these topos-theoretic generic models can be
+compiled away in that proofs employing them can be unrolled, in a mechanical
+fashion even, so as to not mention them.
+
 
 \section{A fantastical ring}
 \newpage

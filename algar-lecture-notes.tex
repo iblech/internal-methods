@@ -153,7 +153,7 @@
   {\normalfont\bfseries}}
 \makeatother
 
-\newenvironment{intro}{\begin{quote}}{\end{quote}\bigskip}
+\newenvironment{intro}{\begin{quote}}{\end{quote}\bigskip\noindent}
 
 \newtheorem{exercise}{Exercise}[chapter]
 \renewcommand{\theenumi}{\alph{enumi}}
@@ -1091,7 +1091,8 @@ every element which is not invertible is zero (as in the Cauchy or Dedekind
 reals), and
 \item a \emph{field of fractions} iff
 every element which is not zero is invertible (as in the localization of the
-Cauchy or Dedekind reals at the set of non-zeros).
+Cauchy or Dedekind reals at the set of non-zeros or in the \emph{generic local
+ring} described in Lecture~\ref{lect:generic}).
 \end{enumerate}These each have their
 uses~\cite{johnstone:rings-fields-and-spectra,mulvey:repr}.}
 can be thinned to a generating family in which no vector is redundant, hence to

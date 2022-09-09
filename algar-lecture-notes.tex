@@ -64,7 +64,7 @@
 \renewcommand{\AA}{\mathbb{A}}
 \newcommand{\A}{\mathcal{A}}
 \newcommand{\B}{\mathcal{B}}
-\newcommand{\C}{\mathcal{C}}
+\newcommand{\CCC}{\mathcal{C}}
 \newcommand{\D}{\mathcal{D}}
 \newcommand{\E}{\mathcal{E}}
 \newcommand{\F}{\mathcal{F}}
@@ -72,7 +72,7 @@
 \let\acuteH\H
 \newcommand{\konig}{K\acuteH onig}
 \renewcommand{\H}{\mathcal{H}}
-\renewcommand{\O}{\mathcal{O}}
+\newcommand{\OOO}{\mathcal{O}}
 \newcommand{\K}{\mathcal{K}}
 \newcommand{\N}{\mathcal{N}}
 \newcommand{\M}{\mathcal{M}}
@@ -162,6 +162,7 @@
 
 \newcommand{\cl}{\mathrm{cl}}
 \newcommand{\notnot}{\emph{not~not}}
+\newcommand{\Sh}{\mathrm{Sh}}
 
 \begin{document}
 
@@ -739,6 +740,9 @@ however the exercise is still instructive if we gloss over this issue.\par}
 Verify, using a proof by contradiction, that at least one of the numbers~$e +
 \pi$ and~$e - \pi$ is transcendental; and that at least one of the
 numbers~$e + \pi$ and~$e \cdot \pi$ is transcendental.
+
+{\noindent\scriptsize\emph{Note.} At time of writing, for none of these numbers
+a (constructive or classical) proof of their transcendence is known.\par}
 \end{exercise}
 
 \begin{exercise}[A stronger form of the irrationality of~$\sqrt{2}$]
@@ -785,11 +789,26 @@ irreducible.
 only if, for some number~$n \in \NN$, there is a surjective map~$[n] \to X$,
 where~$[n] = \{ 0,1,\ldots,n-1 \}$. More briefly, a set~$X$ is
 Kuratowski-finite iff its elements can be enumerated: $X = \{x_1,\ldots,x_n \}$.\par}
+
+\item Every subset of the (Cauchy or Dedekind) reals which is inhabited and
+bounded from above has a supremum.
+
+{\noindent\scriptsize\emph{Note.} A \emph{supremum} of a set~$M$ of reals is a
+number~$s$ such that~$M \leq s$ (that is~$x \leq s$ for all~$x \in M$) and such
+that for every number~$s'$ with~$M \leq s'$, $s \leq s'$. In constructive
+mathematics, we can make finer distinctions between the classically equivalent
+constructions of the real numbers: The reals constructed using Cauchy
+sequences inject into the reals constructed using Dedekind cuts which in turn
+inject into the MacNeille reals, and each serve a different purpose. The Cauchy
+and Dedekind reals cannot constructively be shown to be complete in the sense
+of this exercise, while the MacNeille reals can. Conversely, the rationals can
+be shown to be dense in the first two kinds of reals but not in the MacNeille
+reals~\cite[Section~D4.7]{johnstone:elephant}.\par}
 \end{enumerate}
 Show that the following statement implies Markov's principle (from
 Exercise~\ref{ex:tautologies}):
 \begin{enumerate}
-\addtocounter{enumi}{3}
+\addtocounter{enumi}{4}
 \item Every real number which is not zero is invertible.
 \end{enumerate}
 \noindent
@@ -1079,7 +1098,7 @@ constructive mathematics, but also supplies us with a vast source of
 constructive results.
 
 \begin{ex}Classical linear algebra teaches us that every finite system of
-generators of a vector space over a residue field\footnote{Constructively, the
+generators of a vector space over a residue field\footnote{\label{fn:fields}Constructively, the
 notion of a field bifurcates into several nonequivalent notions: A nontrivial
 commutative ring with unit is a \ldots
 \begin{enumerate}
@@ -1260,6 +1279,8 @@ mathematics~\cite{lambek:incompatible,couture-lambek:reflections} will take
 place in more informal settings than the lecture.
 \end{intro}
 
+% \begin{document}
+
 \newpage
 
 \begin{tabular}{@{}lp{0.83\textwidth}ll@{}}
@@ -1286,6 +1307,70 @@ place in more informal settings than the lecture.
 \ \newpage
 
 \section{Exercises}
+
+\begin{exercise}[{The sheaf of real functions as a
+field~\cite[Exercise~28]{blechschmidt:generalized-spaces}}]
+Let~$X$ be a topological space. Let~$\CCC$ be the sheaf of continuous real-valued
+functions on~$X$.
+\begin{enumerate}
+\item Let~$U$ be an open of~$X$. Let~$f \in \CCC(U)$. Show that~$U \models (\exists g\?\CCC\_ fg =_\CCC
+1)$ iff there is a function~$g \in \CCC(U)$ such that~$fg = 1$.
+\item Show that~$\CCC$ is a \emph{residue field} in that
+$X \models \forall f\?\CCC\_
+  \bigl(\neg(\exists g\?\CCC\_ fg = 1)\bigr) \Rightarrow f = 0$.
+\item Give an example of space~$X$ such that it is not the case that~$\CCC$ is a
+field in the stronger sense that
+$\Sh(X) \models \forall f\?\CCC\_ (\exists g\?\CCC\_ fg = 1) \vee f = 0$.
+\item Let~$X = \CC$ and let~$\OOO$ be the sheaf of holomorphic functions on~$X$,
+that is~$\OOO(U) = \{ f : U \to \CC \,|\, \text{$f$ holomorphic} \}$.
+Show that, in classical mathematics, the sheaf~$\OOO$ is \emph{discrete} in that
+\[ \Sh(\CC) \models \forall f\?\OOO\_ \forall g\?\OOO\_ f = g \vee \neg(f = g).
+\]
+\end{enumerate}
+
+\end{exercise}
+\begin{exercise}[{The geometric interpretation of double
+negation~\cite[Exercise~26]{blechschmidt:generalized-spaces}}]
+Let~$\varphi$ be a formula over an open~$U$ of a topological space~$X$.
+\begin{enumerate}
+\item Show that there is a largest open,
+denoted~``$\llbracket\varphi\rrbracket$'', such
+that~$\llbracket\varphi\rrbracket \models \varphi$.\smallskip
+
+{\noindent\scriptsize\emph{Hint.} Consider the union of all opens~$V$ such that~$V
+\models \varphi$.\par}
+
+\item Show that~$X \models \neg\neg\varphi$ iff~$\llbracket\varphi\rrbracket$
+is dense.
+
+{\noindent\scriptsize\emph{Note.} A subset~$W \subseteq X$ is \emph{dense} iff
+for every open~$T \subseteq X$, if~$W \cap T = \emptyset$ then~$T =
+\emptyset$.\par}
+
+\item Give a condition on the topological space~$X$ such that the principle of
+excluded middle (or equivalently the principle of double negation elimination)
+is valid in~$\Sh(X)$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}[The fundamental properties of the sheaf semantics]
+Complete the proof of Proposition~\ref{prop:sheaf-semantics}, so verify
+monotonicity and locality of the sheaf semantics.
+\end{exercise}
+
+\begin{exercise}[{Unique local existence is global existence~\cite[Exercise~27]{blechschmidt:generalized-spaces}}]
+Let~$F$ be a sheaf on a topological space~$X$. Let~$\varphi$ be a formula over~$X$. Assume
+that~$\Sh(X) \models \exists!s\?F\_ \varphi(s)$, that is
+\[ \Sh(X) \models \exists s\?F\_ \varphi(s) \quad\text{and}\quad
+  \Sh(X) \models \forall s\?F\_ \forall t\?F\_ (\varphi(s) \wedge \varphi(t)
+  \Rightarrow s = t). \]
+Show that for any open~$U \subseteq X$, there is a unique section~$s \in F(U)$
+such that~$U \models \varphi(s)$.
+
+{\noindent\scriptsize\emph{Note.} If you do not know the general definition of
+a sheaf, then consider only the specific sheaf~$\CCC$ of continuous real-valued
+functions.\par}
+\end{exercise}
 
 
 \chapter{Generic models and their applications}
@@ -1371,15 +1456,66 @@ fashion even, so as to not mention them.
 
 \section{Exercises}
 
+\begin{exercise}[Anonymously Noetherian rings]
+A commutative ring~$A$ is \emph{anonymously Noetherian} if for every
+ideal~$\aaa \subseteq A$ it is \notnot the case that~$\aaa$ is finitely
+generated.
+\begin{enumerate}
+\item Show that residue fields in the sense of Footnote~\ref{fn:fields} are
+anonymously Noetherian.
+\item Verify that~$\ZZ$ is anonymously Noetherian.
 
-\vfill{\small%
-\begin{verbatim}
-- Existence of generic models
-- Generic ring is a field
-- Generic prime ideal
-- Kripke–Joyal semantics
-\end{verbatim}
-}
+{\noindent\scriptsize\emph{Note.} Either run a direct proof or use the
+anonymous least number principle of Proposition~\ref{prop:minima}(a).\par}
+\item Look up a proof of Hilbert's basis theorem, for instance the
+proof in~\cite[Theorem~7.5]{atiyah-macdonald:commutative-algebra}, and check
+that it can be massaged into a constructive proof of the statement that
+polynomial rings over anonymously Noetherian rings are anonymously Noetherian.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}[{Prüfer domains as valuation domains~\cite[Exercise~43]{blechschmidt:generalized-spaces}}]
+An \emph{integral domain} is a commutative ring such that~$1 \neq 0$ and such that~$xy = 0$
+implies~$x = 0$ or~$y = 0$. A \emph{valuation domain} is an integral domain
+such that for any two elements, one divides the other. A \emph{Prüfer domain}
+is an integral domain such that every finitely generated ideal~$\aaa$ is locally a
+principal ideal (in the sense that there exists a partition~$1 = f_1 + \cdots +
+f_n$ such that, for each index~$i$, the ideal~$\aaa[f_i^{-1}]$ is a principal
+ideal in~$A[f_i^{-1}]$).
+\begin{enumerate}
+\item Let~$A$ be a ring. Show that~$A^\sim$ is an integral domain if~$A$ is.
+Does the converse hold?
+\item Let~$A$ be a valuation domain. Show that any matrix over~$A$ can be put
+into diagonal form by elementary row and column operations.
+\item Let~$A$ be an integral domain. Show that~$A$ is a Prüfer domain if and
+only if~$A^\sim$ is a valuation domain.
+\item Let~$A$ be a Prüfer domain. Show that any matrix over~$A$ can locally be
+put into diagonal form by elementary row and column operations, by applying the
+result of part~(b) to~$A^\sim$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}[{A basic version of Kaplansky's theorem~\cite[Exercise~44]{blechschmidt:generalized-spaces}}]
+\begin{enumerate}
+\item Let~$A$ be a local ring. Let~$\aaa \subseteq A$ be a finitely generated
+ideal such that~$\aaa^2 = \aaa$. Show that~$\aaa = (0)$ or~$\aaa = (1)$.\smallskip
+
+{\noindent\scriptsize\emph{Hint.} Nakayama's lemma.\par}
+\item Let~$A$ be a local ring. Let~$M \in A^{n \times n}$ be an idempotent
+matrix. Verify that~$M$ is similar to a diagonal matrix with entries~$0$ and~$1$
+by applying part~(a) to the ideals of~$k$-minors of~$M$. Deduce that the
+cokernel of~$M$ is finite free.
+\item Let~$A$ be an arbitrary ring. Let~$M \in A^{n \times n}$ be an idempotent
+matrix. Show that the cokernel of~$M$ is finite locally free, by applying the
+result of part~(b) to~$A^\sim$.
+\item Verify, without using the law of excluded middle or that~$A$ is
+Noetherian, that an~$A$-module~$M$ is finitely generated and projective if and
+only if it is finite locally free.\smallskip
+
+{\noindent\scriptsize\emph{Note.} A self-contained solution is given in
+Ref.~\cite{blechschmidt:kaplansky}.\par}
+\end{enumerate}
+\end{exercise}
 
 \printbibliography
 

@@ -66,7 +66,7 @@
 \newcommand{\B}{\mathcal{B}}
 \newcommand{\CCC}{\mathcal{C}}
 \newcommand{\D}{\mathcal{D}}
-\newcommand{\E}{\mathcal{E}}
+\newcommand{\EEE}{\mathcal{E}}
 \newcommand{\F}{\mathcal{F}}
 \newcommand{\G}{\mathcal{G}}
 \let\acuteH\H
@@ -163,6 +163,7 @@
 \newcommand{\cl}{\mathrm{cl}}
 \newcommand{\notnot}{\emph{not~not}}
 \newcommand{\Sh}{\mathrm{Sh}}
+\newcommand{\Set}{\mathrm{Set}}
 
 \begin{document}
 
@@ -1430,7 +1431,7 @@ exist in the standard topos but which nevertheless affect the story of the
 standard topos. We will focus on:
 \begin{enumerate}
 \item The \emph{generic ring} -- which cryptically is also a field
-\item The \emph{generic prime filter}~$\ppp_\star$ of a given ring~$A$ -- which
+\item The \emph{generic prime filter} of a given ring~$A$ -- which
 XXX
 \item The \emph{generic surjection}~$\NN \to X$ -- which exists also when~$X$
 is uncountable
@@ -1440,6 +1441,81 @@ exhibit already in their very construction an intimate connection with the real
 numbers; in a similar vein, these topos-theoretic generic models can be
 compiled away in that proofs employing them can be unrolled, in a mechanical
 fashion even, so as to not mention them.
+
+
+\section{Ring-theoretic prelude: the method of indeterminates}
+
+The Cayley--Hamilton theorem of linear algebra states that every square matrix
+over every commutative ring is a root of its characteristic polynomial. Among
+its many proofs, the following one is particularly interesting from a logical
+point of view: It is enough to verify the claim for the \emph{ring-theoretic
+generic~$(n \times n)$-matrix}~$(A_{ij})_{ij}$ over the polynomial
+ring~$\ZZ[A_{ij}\,|\,i,j\in\{1,\ldots,n\}]$, since this matrix can specialize
+to every specific matrix over every commutative ring and this kind of specialization
+preserves the~$n^2$ polynomial identities expressing that the matrix is a root
+of its characteristic polynomial. Now to check this special case, it suffices to
+verify it for every choice of complex numbers~$a_{ij} \in \CC$ in place of the
+formal indeterminates~$A_{ij}$. For complex matrices, the claim follows from
+the observation that the claim is immediate for the diagonalizable complex
+matrices and that these are dense in the space of all complex matrices.
+
+This approach is known as the \emph{method of indeterminates} and is amenable
+to many situations. For instance, there is the
+\emph{ring-theoretic generic~$n$-th root} (over~$\ZZ[X]/(X^n-1)$), the
+\emph{ring-theoretic generic nilpotent element of index~$\leq n$}
+(over~$\ZZ[X]/(X^n)$), the \emph{ring-theoretic generic power series}
+(over~$\ZZ[A_0,A_1,\ldots]$), and many others. The central features of the
+method of indeterminates are:
+\begin{enumerate}
+\renewcommand{\theenumi}{\arabic{enumi}}
+\item We extend a certain base ring, often~$\ZZ$, to a larger ring~$R_0$ containing
+the \emph{generic instance} of the problem at hand.
+\item For every specific instance in every ring~$R$, there is a unique
+homomorphism~$R_0 \to R$ mapping the generic instance to that one.
+\item Since homomorphisms of rings preserve polynomial identities, every
+polynomial identity (and in fact even every property which can be expressed as a
+geometric formula in the language of rings) satisfied by the generic instance
+passes down to every specific instance. In fact, the generic instance satisfies
+exactly those polynomial identities which are provable from the ring axioms.
+\item Crucially, the generic instance is applicable to special techniques (for
+instance involving complex numbers) and has special properties which themselves
+do not pass down to every specific instance, but which are useful in
+establishing those that do.
+\end{enumerate}
+
+The generic models facilitated by topos theory generalize the ring-theoretic
+generic elements. The latter are restricted to those kinds of elements which
+can be described by polynomial identities (such as~$X^n - 1$ for~$n$-th roots).
+For example, there is no ring-theoretic generic non-nilpotent element
+or ring-theoretic generic regular element (a ring element~$x \in A$ is
+\emph{regular} if and only if for all~$y \in A$, $xy = 0$ implies~$y = 0$).
+The topos-theoretic generic models, in contrast, support arbitrary geometric
+implications as defining properties, and are not restricted to mere elements
+(or finite or infinite lists of elements): For instance, as elucidated in the
+next sections, there is the topos-theoretic \emph{generic ring} or the
+topos-theoretic \emph{generic prime filter} of any given ring.
+
+Briefly, for every geometric theory~$\TT$ (set of geometric implications as
+axioms) over any signature, there exists a topos-theoretic generic model
+of~$\TT$. The analogy with the generic elements of ring theory is as follows:
+\begin{enumerate}
+\renewcommand{\theenumi}{\arabic{enumi}}
+\item We extend the base universe, often the standard topos~$\Set$, to a larger
+topos~$\Set[\TT]$ containing the \emph{generic model}~$U_\TT$ of~$\TT$.
+\item For every specific~$\TT$-model~$M$ in any topos~$\EEE$, there is a unique
+map~$\Set[\TT] \to \EEE$ mapping~$U_\TT$ to~$M$.\footnote{To be more precise,
+the category of maps~$\mathrm{Hom}(\Set[\TT],\EEE)$ is equivalent to the
+category of~$\TT$-models in~$\EEE$, naturally in~$\EEE$. By ``map'', we mean
+what is called the ``inverse image part of geometric morphisms'' in topos
+theory.}
+\item Since such maps preserve geometric implications, every property
+which can be expressed as a geometric implication passes from~$U_\TT$ to every
+specific model. In fact, the generic model satisfies exactly those geometric
+implications which are provable from the axioms of~$\TT$.
+\item Crucially, the generic model is applicable to special techniques and has
+special properties which themselves do not pass down to every specific model,
+but which are useful in establishing those that do.
+\end{enumerate}
 
 
 \section{A fantastical ring}
@@ -1455,6 +1531,19 @@ fashion even, so as to not mention them.
 \ \newpage
 
 \section{Exercises}
+
+\begin{exercise}[Limitations of ring-theoretic generics]
+Show that each of the following hypothetical ring-theoretic generics do not
+exist:
+\begin{enumerate}
+\item the generic nilpotent element (of arbitrary index)
+\item the generic regular element
+\item the generic prime element
+\end{enumerate}
+That is, show that there is no ring~$R_0$ containing an element~$x_0$ of the
+desired kind such that for every such element~$x$ of every ring~$R$, there is a
+unique homomorphism~$R_0 \to R$ mapping~$x_0$ to~$x$.
+\end{exercise}
 
 \begin{exercise}[Anonymously Noetherian rings]
 A commutative ring~$A$ is \emph{anonymously Noetherian} if for every

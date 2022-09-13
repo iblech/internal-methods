@@ -161,7 +161,7 @@
 \urlstyle{sf}
 
 \newcommand{\cl}{\mathrm{cl}}
-\newcommand{\notnot}{\emph{not~not}}
+\newcommand{\notnot}{\emph{not~not}\xspace}
 \newcommand{\Sh}{\mathrm{Sh}}
 \newcommand{\Set}{\mathrm{Set}}
 
@@ -1284,16 +1284,50 @@ place in more informal settings than the lecture.
 
 \newpage
 
-\begin{tabular}{@{}lp{0.83\textwidth}ll@{}}
-  \toprule
-  & statement & status \\\midrule
-  1a & Every continuous function~$f : [-1,1] \to \RR$ with~$f(-1) < 0$
-  and~$f(1) > 0$ has a zero. & \cmark/\xmark \\
-  1b & For every continuous function~$f : X \times [-1,1] \to \RR$
-  with~$f(\cdot,-1) < 0$ and~$f(\cdot,1) > 0$ there is an open covering~$X =
-  \bigcup_i U_i$ such that for each index~$i$, there is a continuous
-  zero-picking function~$z : U_i \to [-1,1]$
-\end{tabular}
+\emph{Analysis:}
+\begin{enumerate}
+\item[\cmark/\xmark] Every continuous function~$f : [-1,1] \to \RR$ with~$f(-1) < 0$
+  and~$f(1) > 0$ has a zero.
+\item[\xmark/\xmark] Let~$X$ be a topological space and let~$f : X \times [-1,1] \to \RR$
+be a continuous function with~$f(\cdot,-1) < 0$ and~$f(\cdot,1) > 0$. Then
+there is an open covering~$X = \bigcup_i U_i$ such that for each index~$i$,
+there is a continuous zero-picking function~$z : U_i \to [-1,1]$.
+\end{enumerate}
+
+\emph{Linear algebra:}
+\begin{enumerate}
+\item[\cmark/\xmark] Every real symmetric matrix has an eigenvector.
+\item[\xmark/\xmark] Let~$X$ be a topological space and let~$A : X \to
+M^\text{sym}_n(\RR)$ be a continuous map to the space of symmetric~$(n \times
+n)$-matrices. Then there is an open covering~$X = \bigcup_{i \in I} U_i$ such
+that or all indices~$i \in I$, there is a continuous map~$v : U_i \to \RR^n$
+such that for each~$x \in U_i$, the vector~$v(x)$ is an eigenvector of~$A(x)$.
+\end{enumerate}
+
+\emph{Commutative algebra:}
+\begin{enumerate}
+\item[\cmark/\cmark] Let~$M$ be a finitely generated projective module over a local
+ring~$A$. Then~$M$ is finite free.
+\item[\cmark/\cmark] Let~$M$ be a finitely generated projective module over an
+arbitrary commutative ring~$A$. Then there is a partition~$1 = f_1 + \cdots +
+f_n \in A$ of unity such that, for each index~$i$, the localized
+module~$M[f_i^{-1}]$ is finite free over~$A[f_i^{-1}]$.
+\item[\cmark/\xmark] Let~$M$ be a finitely generated module over a (residue)
+field~$k$. Then~$M$ is finite free.
+\item[\xmark/\xmark] Let~$M$ be a finitely generated module over an
+arbitrary commutative ring~$A$. Then there is a partition~$1 = f_1 + \cdots +
+f_n \in A$ of unity such that, for each index~$i$, the localized
+module~$M[f_i^{-1}]$ is finite free over~$A[f_i^{-1}]$.
+\item[\cmark/\cmark] Let~$M$ be a finitely generated module over a (residue)
+field~$k$. Then~$M$ is \notnot finite free.
+\item[\cmark/\cmark] Let~$M$ be a finitely generated module over an
+arbitrary commutative ring~$A$. If~$f = 0$ is the only element of~$A$ such
+that~$M[f^{-1}]$ is finite free over~$A[f^{-1}]$, then~$1 = 0$ in~$A$.
+\item[\cmark/\cmark] If~$k$ is a (residue) field, there is no linear
+surjection~$k^n \to k^m$ with~$m > n$.
+\item[\cmark/\cmark] Let~$A$ be an arbitrary commutative ring. If there exists
+a linear surjection~$A^n \to A^m$ with~$m > n$, then~$1 = 0$ in~$A$.
+\end{enumerate}
 
 \section{Examples}
 \newpage
@@ -1418,13 +1452,13 @@ decaying for~$x \to \pm\infty$ and doesn't have any singularities.
 A rewarding explanation of this phenomenon is nowadays relayed in any course on
 complex analysis: The function~$1/(1+x^2)$ does have a singularity at
 distance~$1$ from the origin, namely at~$\pm i$ in the complex plane, and the disk
-of convergence is only so big that it merely touches the nearest singularity.
+of convergence is and can only be so big that it just touches the nearest singularity.
 
 This episode is one example of many how the ``imaginary unit''---once
 an elusive \emph{mathematical phantom}---affects the story of the real numbers even
 though it itself is not one of them. Like many mathematical phantoms before it,
 the imaginary unit obtruded its effects so convincingly that eventually we
-embraced it and broadened our notion of existence.
+embraced it and broadened our notion of existence~\cite{wraith:phantoms}.
 
 Toposes allow us to bring further entities into being, entities which do not
 exist in the standard topos but which nevertheless affect the story of the
@@ -1444,6 +1478,7 @@ fashion even, so as to not mention them.
 
 
 \section{Ring-theoretic prelude: the method of indeterminates}
+\label{sect:indeterminates}
 
 The Cayley--Hamilton theorem of linear algebra states that every square matrix
 over every commutative ring is a root of its characteristic polynomial. Among
@@ -1522,15 +1557,58 @@ but which are useful in establishing those that do.
 \newpage
 \ \newpage
 
+
 \section{The generic prime filter}
-\newpage
-\ \newpage
+
+A commutative ring~$A$ is often studied by its \emph{stalks}~$A_\ppp$ at prime
+filters~$\ppp \subseteq A$, those subsets of~$A$ which validate the conditions
+on the right:
+\begin{align*}
+  \top &\,\,\Longrightarrow\, 0 \in \ppp &
+  0 \in \ppp &\,\,\Longrightarrow\, \bot \\
+  x \in \ppp \wedge y \in \ppp &\,\,\Longrightarrow\, x + y \in \ppp &
+  x + y \in \ppp &\,\,\Longrightarrow\, x \in \ppp \vee y \in \ppp \\
+  1 \in \ppp &\,\,\Longrightarrow\, \bot &
+  \top &\,\,\Longrightarrow\, 1 \in\ppp \\
+  x \in \ppp \vee y \in \ppp &\,\Longleftrightarrow\, xy \in \ppp &
+  xy \in \ppp &\,\Longleftrightarrow\, x \in \ppp \wedge y \in \ppp
+\end{align*}
+The stalk~$A_\ppp$ is then the localization~$A[\ppp^{-1}]$, that is
+the ring of formal fractions~$x/s$ with~$x \in A$ and~$s \in \ppp$, where~$x/s
+= y/t$ iff there exists an element~$u \in \ppp$ such that~$utx = usy$.
+The set~$\ppp$ is multiplicatively closed (and saturated) by the last two
+conditions.\footnote{Textbooks on classical commutative algebra usually use
+\emph{prime ideals} instead of \emph{prime filters}, those subsets which
+validate the dual conditions on the left. In classical commutative algebra, we
+can freely pass between these two notions by taking complements, as the
+complement of a prime ideal is a prime filter and conversely. Constructivly,
+prime filters are more useful, and even classically they are slightly more
+convenient to work with.} Similarly, an~$A$-module~$M$ is often studied by its
+stalks~$M_\ppp = M[\ppp^{-1}]$.
+
+Stalks are interesting because they allow us to zoom in on ``local''
+situations---they tend to be simpler than the original ring or module, while
+still being intimately connected to the originals. For instance:
+\begin{enumerate}
+\item The stalks~$A_\ppp$ are always \emph{local
+rings},\label{page:local-rings} rings such that a finite sum is invertible only
+if one of its summands also is. (This amounts to~$1 \neq 0$ and that
+whenever~$x+y$ is invertible, $x$ is invertible or~$y$ is invertible; see
+Exercise~\ref{ex:local-rings}.)
+\item Classically, if~$A$ is reduced, the stalks~$A_\ppp$ at
+\emph{maximal} prime filters (equivalently minimal prime ideals) are even fields.
+\item Classically, an~$A$-module~$M$ is flat if and only if all of its stalks~$M_\ppp$ are.
+\end{enumerate}
 
 \section{Explicit construction}
 \newpage
 \ \newpage
 
 \section{Exercises}
+
+\begin{exercise}[Verifying polynomial identities]
+
+\end{exercise}
 
 \begin{exercise}[Limitations of ring-theoretic generics]
 Show that each of the following hypothetical ring-theoretic generics do not
@@ -1545,8 +1623,48 @@ desired kind such that for every such element~$x$ of every ring~$R$, there is a
 unique homomorphism~$R_0 \to R$ mapping~$x_0$ to~$x$.
 \end{exercise}
 
+\begin{exercise}[Local rings]\label{ex:local-rings}
+\begin{enumerate}
+\item Using the definition of local ring given on
+page~\pageref{page:local-rings}, verify that every geometric field in the sense
+of Footnote~\ref{fn:fields} is a local ring; that the (Cauchy or Dedekind)
+reals form a local ring; that for each prime number~$p$ the subring of~$\QQ$
+consisting of those fractions whose denominator is not divisible by~$p$ is a
+local ring; and that~$\ZZ$ and~$\QQ[X]$ are not local rings.
+
+{\noindent\scriptsize\emph{Note.} If~$a < b$ are real numbers, then for every
+real number~$x$, $x > a$ or~$x < b$.\par}
+
+\item Show that the stalk~$A_\ppp$ of a commutative ring~$A$ at a prime
+filter~$\ppp$ is a local ring. What goes wrong in case that~$\ppp$ is instead a
+prime ideal and one considers the localization~$A[(A\setminus\ppp)^{-1}]$?
+
+\item Verify in classical mathematics that a ring is local if and only if it
+has exactly one maximal ideal.
+
+{\noindent\scriptsize\emph{Hint.} Use that, in classical mathematics, every
+nonunit is contained in some maximal ideal.\par}
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}[Abstract existence of bounds from the method of
+indeterminates]
+\begin{enumerate}
+\item Using Krull's lemma in its unconstructive form, verify for every
+commutative ring~$A$ that if a polynomial~$f \in A[X]$ is nilpotent in~$A[X]$,
+all its coefficients are nilpotent in~$A$.
+\item Let~$f \in A[X]$ be a polynomial of degree~$d$ such that~$f^n = 0$.
+By the proof in~(a), there exists a number~$m$ such that the~$m$-th power of
+each of the coefficients of~$f$ vanishes. However, it is conceivable that~$m$
+depends not only on~$d$ and~$n$, but also on the ring~$A$ and the specific
+values of the coefficients. Explain how the method of indeterminates reviewed
+in Section~\ref{sect:indeterminates} can be used to establish that there exists
+some bound on~$m$ depending only on~$d$ and~$n$.
+\end{enumerate}
+\end{exercise}
+
 \begin{exercise}[Anonymously Noetherian rings]
-A commutative ring~$A$ is \emph{anonymously Noetherian} if for every
+A commutative ring~$A$ is \emph{anonymously Noetherian} iff for every
 ideal~$\aaa \subseteq A$ it is \notnot the case that~$\aaa$ is finitely
 generated.
 \begin{enumerate}

@@ -1,4 +1,4 @@
-\documentclass[11pt,utf8,notheorems,compress,t]{beamer}
+\documentclass[12pt,utf8,notheorems,compress,t]{beamer}
 \usepackage{etex}
 
 \usepackage{pgfpages}
@@ -73,7 +73,7 @@ constructive point of view}
 \author{Ingo Blechschmidt}
 \date{September ??th, 2022}
 
-\useinnertheme[shadow=true]{rounded}
+%\useinnertheme[shadow=true]
 \setbeamerfont{block title}{size={}}
 
 \useinnertheme{rectangles}
@@ -258,7 +258,18 @@ constructive point of view}
   \vskip0.5em%
   \leavevmode%
   \begin{beamercolorbox}[dp=1ex,center]{}%
-    \usebeamercolor[fg]{item}{\textbf{{\Large\insertframetitle}}}
+    \begin{tikzpicture}
+      \def\R{8pt}
+      \node (title) {\hil{{\large\,\!\insertframetitle}}};
+      \begin{pgfonlayer}{background}
+        \draw[decorate, very thick, draw=mypurple!30]
+          ($(title.south west) + (\R, 0)$) arc(270:180:\R) --
+          ($(title.north west) + (0, -\R)$) arc(180:90:\R) --
+          ($(title.north east) + (-\R, 0)$) arc(90:0:\R) --
+          ($(title.south east) + (0, \R)$) arc(0:-90:\R) --
+          cycle;
+      \end{pgfonlayer}
+    \end{tikzpicture}
   \end{beamercolorbox}%
   \vskip-0.2em%
 }
@@ -291,9 +302,14 @@ constructive point of view}
 \newcommand{\bignumber}[1]{%
   \renewcommand{\insertenumlabel}{#1}\scalebox{1.2}{\!\usebeamertemplate{enumerate item}\!}
 }
+\newcommand{\normalnumber}[1]{%
+  {\renewcommand{\insertenumlabel}{#1}\!\usebeamertemplate{enumerate item}\!}
+}
 \newcommand{\bigheart}{\includegraphics{heart}}
 
 \newcommand{\subhead}[1]{{\centering\textcolor{gray}{\hrulefill}\quad\textnormal{#1}\quad\textcolor{gray}{\hrulefill}\par}}
+
+\newcommand{\badbox}[1]{\colorbox{red!30}{#1}}
 
 \begin{document}
 
@@ -363,27 +379,70 @@ constructive point of view}
   Basic tool: \bad{injective resolutions}
 \end{frame}}
 
-\begin{frame}{Injective abelian groups}
-  \justifying
-  \hil{Def.}
-  An abelian group~$I$ is \hil{injective} iff for every injective morphism~$A
-  \hookrightarrow B$, every morphism~$A \to I$ can be extended to a morphism~$B \to I$:
-  \[ \xymatrix{
-    A \ar@{^{(}->}[r]^{\forall i} \ar[d]_{\forall f} & B
-    \ar@{-->}@/^/[ld]^{\exists \overline{f}} \\
-    I
-  } \]
+% \begin{document}
 
-  \justifying
-  \hil{Def.}
-  An abelian group~$I$ is \hil{divisible} iff for every element~$x \in I$ and
-  every~$n \in \NN_{>0}$ there is an element~$y \in I$ such that~$ny = x$.
+\begin{frame}{}%Injective and divisible abelian groups}
+  \begin{block}{}
+    \justifying
+    \textbf{Def.}
+    A group~$I$ is \hil{injective} iff for every injective map~\mbox{$A
+    \hookrightarrow B$}, every map~$A \to I$ can be extended to a map~$B \to I$:
 
-  \emph{Examples.} $\QQ$, $\QQ/\ZZ$, $\ZZ(p^\infty)$
+    \vspace*{-0.9em}
+    \[ \xymatrix{
+      A \ar@{^{(}->}[r]^{\forall i} \ar[d]_{\forall f} & B
+      \ar@{-->}@/^/[ld]^{\exists \overline{f}} \\
+      I
+    } \]
+  \end{block}
+  \vspace*{-0.6em}
+  \visible<6->{\small\justifying \ldots{} is \hil{Baer} iff extensions exist for all ideal
+  inclusions~$\aaa \hookrightarrow \ZZ$.\medskip\par}
+  \normalsize
+  \pause
 
-  \hil{Prop.} (LEM+AC) Every divisible group is injective.
+  \begin{block}{}
+    \justifying
+    \textbf{Def.}
+    A group~$I$ is \hil{divisible} iff for every element~$x \in I$ and
+    every~$n \in \NN_{>0}$, there is an element~$y \in I$ such that~$ny = x$.
+  \end{block}
+  \vspace*{-0.6em}
+  {\small\emph{Examples.} $\QQ$, $\QQ/\ZZ$, $\ZZ(p^\infty)$.\par}
+  \pause
+  \vspace*{-0.3em}
 
-  \hil{Prop.} Every finitely presented group embeds into a divisible one.
+  \textcolor{gray}{\hspace*{-3em}\hrulefill\hspace*{-3em}}
+  \begin{changemargin}{-2em}{-1.5em}
+  \begin{enumerate}
+    \only<1-4>{
+      \item \badbox{\textsc{lem}+\textsc{zorn}} \\ Every divisible group is injective.
+      \medskip
+    }
+    \only<5->{
+      \item \normalnumber{a} \badbox{\textsc{lem}} Every divisible group has the Baer
+      property. \\
+      \normalnumber{b} \badbox{\textsc{zorn}} Every group with the Baer property is
+      injective.
+      \only<7->{\\ \small\emph{Proof.} Let~$f_0 : B_0 \to I$ be an extension.
+      \visible<8->{\justifying Let~$x \in B$. \visible<9->{Set~\mbox{$\aaa = \{ n \in \ZZ \,|\, nx
+      \in B_0 \}$}. \visible<10->{The map~$g : \aaa \to I,\,n
+      \mapsto f_0(nx)$
+      can be extended to a map~$\overline{g} : \ZZ \to I$. \visible<11->{
+      Hence~$f_0$ can be extended to the map~$B_0 + (x) \to I,\, u + nx
+      \mapsto f_0(u) + \overline{g}(n)$.}}}}}
+      \medskip
+    }
+
+    \item\justifying There are models of~\textsc{zf} without
+    nontrivial injective groups. [Blass]
+    \medskip
+
+    \item Every group embeds into a divisible group.
+    \\\visible<4->{\emph{Proof.} If~$A = \ZZ\langle M \rangle/R$, then~$A
+    \hookrightarrow \QQ\langle M \rangle/R$.}
+  \end{enumerate}
+  \end{changemargin}
 \end{frame}
 
 \end{document}

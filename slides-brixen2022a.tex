@@ -310,6 +310,7 @@ constructive point of view}
 \newcommand{\subhead}[1]{{\centering\textcolor{gray}{\hrulefill}\quad\textnormal{#1}\quad\textcolor{gray}{\hrulefill}\par}}
 
 \newcommand{\badbox}[1]{\colorbox{red!30}{#1}}
+\newcommand{\grayline}{\textcolor{gray}{\hspace*{-3em}\hrulefill\hspace*{-3em}}}
 
 \begin{document}
 
@@ -412,7 +413,7 @@ constructive point of view}
   \pause
   \vspace*{-0.3em}
 
-  \textcolor{gray}{\hspace*{-3em}\hrulefill\hspace*{-3em}}
+  \grayline
   \begin{changemargin}{-2em}{-1.5em}
   \begin{enumerate}
     \only<1-4>{
@@ -443,6 +444,45 @@ constructive point of view}
     \hookrightarrow \QQ\langle M \rangle/R$.}
   \end{enumerate}
   \end{changemargin}
+\end{frame}
+
+\begin{frame}{Logical sheaves}
+  The set~$\NN$ is \hil{$\neg\neg$-separated} in that
+  \[ \forall x,y\?\NN\_ \neg\neg(x = y) \Rightarrow x = y, \]
+  but not a \hil{$\neg\neg$-sheaf}, which would mean
+  \[ \forall S \subseteq \NN\_ \neg\neg(\text{$S$ singleton}) \Rightarrow
+    \exists! x \? \NN\_ \neg\neg(x \in S). \]
+  We can \hil{sheafify}:
+  \[ \NN^+ = \{ S \subseteq \NN \,|\, \neg\neg(\text{$S$ singleton})
+  \}/{\sim}\
+  \text{with $S \sim T$ iff~$\neg\neg(S = T)$.} \]
+  \grayline
+
+  % Something about ¬¬-embedding, ideals of ℕ⁺
+
+  \begin{block}{}
+    \justifying
+    \textbf{Prop.}
+    The group~$(\QQ/\ZZ)^+$ has the Baer property.
+  \end{block}
+\end{frame}
+
+\begin{frame}{There are enough Baer groups}
+  \begin{block}{}
+    \justifying
+    \textbf{Def.}
+    A \hil{local operator}~$\nabla$ is an operator such that
+    \vspace*{-0.6em}
+    \begin{align*}
+      \varphi &\,\Longrightarrow \nabla\varphi \\
+      \nabla\nabla\varphi &\,\Longrightarrow \nabla\varphi \\
+      \nabla(\alpha \wedge \beta) &\Longleftrightarrow (\nabla\alpha) \wedge
+      (\nabla\beta).
+    \end{align*}
+  \end{block}
+  \vspace*{-0.6em}
+  {\small\emph{Examples.} $\neg\neg$, \quad $\alpha_0 \Rightarrow \cdot$, \quad
+  $\cdot \vee \beta_0$, \quad $((\cdot \Rightarrow \chi_0) \Rightarrow \chi_0)$.\par}
 \end{frame}
 
 \end{document}

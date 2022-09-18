@@ -255,7 +255,13 @@ for algebra and combinatorics}
     \end{minipage}
   \end{center}}
 
-\setbeamertemplate{headline}{}
+%\setbeamertemplate{headline}{}
+\setbeamertemplate{headline}{%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex]{}%
+    \insertsectionnavigationhorizontal{\paperwidth}{}{}%
+  \end{beamercolorbox}%
+  \vskip-7pt%
+}
 
 \setbeamertemplate{frametitle}{%
   \vskip0.5em%
@@ -335,32 +341,44 @@ for algebra and combinatorics}
   \bigskip
   \bigskip
   \bigskip
-  \bigskip
-
-  \begin{tikzpicture}
-    \def\R{8pt}
-    \node (title) {\vbox{\vspace*{-0.0em}Connecting \hil{inductive definitions},
-    \hil{generic models} and \\ a \hil{modal multiverse} for algebra and combinatorics
-    \\[0.8em]}};
-    \begin{pgfonlayer}{background}
-      \draw[decorate, very thick, draw=mypurple]
-        ($(title.south west) + (\R, 0)$) arc(270:180:\R) --
-        ($(title.north west) + (0, -\R)$) arc(180:90:\R) --
-        ($(title.north east) + (-\R, 0)$) arc(90:0:\R) --
-        ($(title.south east) + (0, \R)$) arc(0:-90:\R) --
-        cycle;
-    \end{pgfonlayer}
-  \end{tikzpicture}
 
   \scriptsize
   \textit{-- an invitation --}
+
+  \setbeamercolor{block body}{bg=black!100}
+  \begin{block}{}
+  \centering\normalsize\color{white}
+  Connecting \hil{inductive definitions},
+  \hil{generic models} and \\ a \hil{modal multiverse} for algebra and combinatorics
+  \end{block}
+
+%  \begin{tikzpicture}
+%    \def\R{8pt}
+%    \node (title) {\vbox{\vspace*{-0.0em}Connecting \hil{inductive definitions},
+%    \hil{generic models} and \\ a \hil{modal multiverse} for algebra and combinatorics
+%    \\[0.8em]}};
+%    \begin{pgfonlayer}{background}
+%      \draw[decorate, very thick, draw=mypurple]
+%        ($(title.south west) + (\R, 0)$) arc(270:180:\R) --
+%        ($(title.north west) + (0, -\R)$) arc(180:90:\R) --
+%        ($(title.north east) + (-\R, 0)$) arc(90:0:\R) --
+%        ($(title.south east) + (0, \R)$) arc(0:-90:\R) --
+%        cycle;
+%    \end{pgfonlayer}
+%  \end{tikzpicture}
+
+  \bigskip
+  \bigskip
+  \bigskip
+  \bigskip
   \bigskip
   \bigskip
   \bigskip
 
   REDCOM: \\
-  \emph{Reducing complexity in algebra, logic, combinatorics}
+  \emph{Reducing complexity in algebra, logic, combinatorics} \\
   \ \\
+  Brixen \\
   September 19th, 2022
   \bigskip
 
@@ -372,7 +390,8 @@ for algebra and combinatorics}
 \definecolor{mypurple}{RGB}{150,0,255}
 \setbeamercolor{structure}{fg=mypurple}
 
-% \begin{document}
+
+\section{Infinite data}
 
 \begin{frame}{Infinite data}
   \vspace*{-0.6em}
@@ -425,6 +444,9 @@ for algebra and combinatorics}
   \end{enumerate}
 \end{frame}
 
+
+\section{Constructive red flags}
+
 \begin{frame}{Constructive red flags}
   A transitive relation~$<$ on a set~$X$ is \ldots
   \begin{itemize}
@@ -476,7 +498,8 @@ for algebra and combinatorics}
 %  \emph{Proof.} By induction on~$x_0$.
 %\end{frame}
 
-% \begin{document}
+
+\section{The set-theoretic multiverse}
 
 {\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{3.59cm}\includegraphics[width=\paperwidth]{staircase}\end{minipage}}
 \begin{frame}{The set-theoretic multiverse}
@@ -519,8 +542,66 @@ for algebra and combinatorics}
   \end{itemize}
 \end{frame}}
 
-{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{4.95cm}\includegraphics[width=\paperwidth]{topos-horses-lighter}\end{minipage}}
-\begin{frame}{A topos-theoretic multiverse}
+
+\section{The topos-theoretic multiverse}
+
+{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{5.95cm}\includegraphics[width=\paperwidth]{fr1-lighter}\end{minipage}}
+\begin{frame}{Toposes and generic models}
+  \vspace*{-0.2em}
+  \begin{changemargin}{-1.2em}{-1.2em}
+  \begin{enumerate}
+    \item\justifying A \hil{(Grothendieck) topos} is a category of sheaves over some
+    \hil{site}.
+
+    {\small\emph{Examples.} $\Set$, $\Sh(X)$, $\Set[\TT]$.\par}
+    \bigskip
+    \pause
+
+    \item The \hil{Kripke--Joyal semantics} defines what it means for a
+    statement~$\varphi$ to hold ``internally in a topos~$\E$'', written~``$\E
+    \models \varphi$''. This semantics is sound with respect to intuitionistic
+    logic.
+
+%    {\small
+%    \begin{itemize}
+%    \item\justifying A statement holds in~$\Set$ iff it is true.
+%    \item A statement holds in the ``topos of double-negation sheaves'' iff its
+%    double-negation translation is true.
+%    \item A statement holds in~$\Sh(X)$ iff a globalized version of it holds for
+%    continuous families on the
+%    space~$X$.\end{itemize}\par}
+    \bigskip
+    \pause
+
+%    \item Every topos supports \hil{mathematical reasoning}: \\
+%    If~$\ \E \models \varphi\ $ and if~$\ \varphi$ entails~$\psi$
+%    intuitionistically,\, then~$\E \models \psi$.
+
+    \item Let~$\TT$ be a geometric theory. The \hil{classifying
+    topos}~$\Set[\TT]$ contains the \hil{generic~$\TT$-model}~$U_\TT$. It is
+    \hil{conservative} in that for geometric implications~$\varphi$, the
+    following are equivalent:
+    \begin{enumerate}
+      \item The statement~$\varphi$ holds for~$U_\TT$ in~$\Set[\TT]$.
+      \item The statement~$\varphi$ holds for every~$\TT$-model in every
+      topos.
+      \item The statement~$\varphi$ is provable modulo~$\TT$.
+    \end{enumerate}
+
+    \begin{center}
+      \begin{tikzpicture}[ultra thick, node distance=7mm]
+        \node[rectangle, rounded corners=1pt, draw=lime!80, fill=lime!40] (a) {$\ZZ$};
+        \node[rectangle, rounded corners=1pt, draw=lime!80, fill=lime!40, right=of a] (b) {$\ZZ[X,Y,Z]/(X^n+Y^n-Z^n)$};
+        \node[regular polygon, regular polygon sides=5, draw=orange!80,
+        fill=orange!20, right=of b, rounded corners=1pt, inner sep=0cm] (c) {$\O_X$};
+        \node[star, rounded corners=1pt, star points=10, inner sep=0cm, draw=purple!80, fill=purple!20, right=of c] {$U_\TT$};
+      \end{tikzpicture}
+    \end{center}
+  \end{enumerate}
+  \end{changemargin}
+\end{frame}}
+
+\begin{frame}{Modal algebra and combinatorics}
   \begin{block}{}
     \justifying
     \textbf{Def.} A statement~$\varphi$ holds \ldots
@@ -537,7 +618,7 @@ for algebra and combinatorics}
 
   \newcommand{\seqbad}{\only<3>{infinite descending sequence}\only<4->{bad set}}
   \begin{changemargin}{-2em}{-1.5em}
-  \begin{itemize}
+  \begin{enumerate}
   \small
     \item \justifying
     \only<1-4>{A relation is almost-full\textsubscript{ind} \\
@@ -552,7 +633,7 @@ for algebra and combinatorics}
     \only<3-4>{A relation is well-founded\textsubscript{ind} \\
     iff \emph{everywhere} there are no \seqbad s \\
     iff the \emph{generic \seqbad} validates~$\bot$ \\
-    iff the \emph{theory} of \seqbad s proves~$\bot$.}
+    iff the \emph{theory of \seqbad s} proves~$\bot$.}
     \only<5->{A relation is well-founded\textsubscript{ind} iff
     \emph{nowhere} there are \seqbad s.}
     \pause
@@ -562,7 +643,7 @@ for algebra and combinatorics}
     \item \only<2-6>{A ring element~$x$ is nilpotent \\
     iff \emph{everywhere} it is contained in all prime ideals \\
     iff it is contained in the \emph{generic prime ideal} \\
-    iff the \emph{theory} of prime ideals proves~$x \in \ppp$.}
+    iff the \emph{theory of prime ideals} proves~$x \in \ppp$.}
     \only<7->{\mbox{A ring element is nilpotent iff all prime
     ideals \emph{everywhere} contain it.}}
 
@@ -583,9 +664,9 @@ for algebra and combinatorics}
 
     \pause
     \item \emph{Somewhere,} the law of excluded middle holds.
-  \end{itemize}
+  \end{enumerate}
   \end{changemargin}
-\end{frame}}
+\end{frame}
 
 {\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{5.05cm}\includegraphics[width=\paperwidth]{agda-af-implies-wf}\end{minipage}}
 \begin{frame}{Extracting constructive content}
@@ -605,7 +686,6 @@ for algebra and combinatorics}
   \vfill
 \end{frame}}
 
-% \begin{document}
 \addtocounter{framenumber}{-1}
 \begin{frame}{Extracting constructive content}
   \begin{block}{}
@@ -617,25 +697,27 @@ for algebra and combinatorics}
 
   \vspace*{-0.3em}
   \emph{Proof.}\small
-  \vspace*{-0.6em}
+  \vspace*{-0.4em}
   \begin{enumerate}
-  \item\justifying It suffices to verify that the \emph{generic infinite
-  sequence}~$\gamma = (\alpha,\beta) : \NN \to X \times Y$ is good. \pause Since
-  being good can be put as a geometric implication (in fact, a geometric
-  formula) and since \textsc{lem} holds \emph{somewhere}, we may assume~\textsc{lem}.\pause
-  \item By \textsc{lem} and well-foundedness, there is a minimal value~$\alpha(i_0)$
-  among all values of~$\alpha$. \vspace*{-0.2em}\pause
-  Similarly, there is a minimal value~$\alpha(i_1)$ among~$(\alpha(n))_{n >
-  i_0}$, \pause a minimal value~$\alpha(i_2)$ among~$(\alpha(n))_{n > i_1}$, and so
-  on. \pause By \emph{proximal dependent choice}, we can proximally collect these indices
-  into a function~$i : \NN \to \NN$. \vspace*{-0.2em}\pause
-  \item Switching~\textsc{lem} on again, there is a minimal value~$\beta(i(k_0))$
-  among all values of~$\beta \circ i$. \pause Hence~$\gamma$ is good in view of
-  \begin{align*}
-    \alpha(i(k_0)) &\leq \alpha(i(k_0+1)), &
-    \beta(i(k_0)) &\leq \beta(i(k_0+1)).
-  \end{align*}
-  \end{enumerate}
+    \item\justifying It suffices to verify that the \emph{generic infinite
+    sequence}~$\gamma = (\alpha,\beta) : \NN \to X \times Y$ is good. \pause Since
+    being good can be put as a geometric implication (in fact, a geometric
+    formula) and since \textsc{lem} holds \emph{somewhere}, we may assume~\textsc{lem}.\pause
+
+    \item By \textsc{lem} and well-foundedness, there is a minimal value~$\alpha(i_0)$
+    among all values of~$\alpha$. \vspace*{-0.2em}\pause
+    Similarly, there is a minimal value~$\alpha(i_1)$ among~$(\alpha(n))_{n >
+    i_0}$, \pause a minimal value~$\alpha(i_2)$ among~$(\alpha(n))_{n > i_1}$, and so
+    on. \pause By \emph{proximal dependent choice}, we can proximally collect these indices
+    into a function~$i : \NN \to \NN$; this switches~\textsc{lem} off. \vspace*{-0.2em}\pause
+
+    \item Switching~\textsc{lem} on again, there is a minimal value~$\beta(i(k_0))$
+    among all values of~$\beta \circ i$. \pause Hence~$\gamma$ is good in view of
+    \begin{align*}
+      \alpha(i(k_0)) &\leq \alpha(i(k_0+1)), &
+      \beta(i(k_0)) &\leq \beta(i(k_0+1)).
+    \end{align*}
+    \end{enumerate}
 \end{frame}
 
 \end{document}
@@ -708,7 +790,7 @@ Attribution:
 Blass(?)
 Alexander
 Henry
-
+oE countable
 
 0: title
 * expectations: no new method for extracting constructive content, rather
@@ -725,4 +807,6 @@ Henry
 * to settle a question shown to be independent from ZFC is to
   understand how it behaves in the multiverse
 
-explanation of generic models
+4: topos and generic models
+* truth in Set, truth in double-negation sheaves, truth in Sh(X)
+* generic ring, generic group, ...

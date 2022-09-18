@@ -375,6 +375,7 @@ for algebra and combinatorics}
 % \begin{document}
 
 \begin{frame}{Infinite data}
+  \vspace*{-0.6em}
   \begin{block}{}
     \justifying
     \textbf{Def.} A set~$X$ together with a binary relation~$R$ is
@@ -384,18 +385,11 @@ for algebra and combinatorics}
   \end{block}
   \vspace*{-0.6em}
   {\mbox{\small\emph{Examples.} $(\NN,{\leq})$,\ \ $X \times Y$ [Dickson],\ \
-  $X^*$ [Higman],\ \ $\mathrm{Tree}(X)$ [Kruskal]} \\
+  $X^*$ [Higman],\ \ $\mathrm{Tree}(X)$ [Kruskal]} \\[-0.1em]
   \bad{Only classically.}
   \pause
   Constructive reformulation:
   \par}
-%  {\small\emph{Examples.}\vspace*{-0.8em}
-%  \begin{itemize}
-%    \item $(\NN,{\leq})$\vspace*{-0.6em}
-%    \item Cartesian products of almost-full sets (by \emph{Dickson's Lemma}) \vspace*{-0.6em}
-%    \item Finite lists over almost-full sets (by \emph{Higman's Lemma}) \vspace*{-0.6em}
-%    \item Finite trees over almost-full sets (by \emph{Kruskal's Tree Theorem})
-%  \end{itemize}}
 
   \begin{block}{}
     \justifying
@@ -405,9 +399,12 @@ for algebra and combinatorics}
     \[
       \infer{P \,|\, \sigma}{P(\sigma)}
       \qquad
-      \infer{P \,|\, \sigma}{\forall x \in X\_ P \,|\, (\sigma :: x)}
+      \infer{P \,|\, \sigma}{\forall x \in X\_\ P \,|\, (\sigma :: x)}
     \]
   \end{block}
+  \vspace*{-0.6em}
+  {\small\justifying ``No matter how the finite approximation~$\sigma$ to an infinite
+  sequence will \\[-0.1em] evolve to a better approximation, eventually~$P$ will hold.''\par}
   \pause
 
   \begin{block}{}
@@ -416,10 +413,10 @@ for algebra and combinatorics}
     $\mathsf{Good}(\sigma) \equiv (\exists i < j\_ \sigma[i] \mathrel{R}
     \sigma[j])$.
   \end{block}
-  \vspace*{-0.6em}
+  \vspace*{-0.8em}
   \begin{enumerate}
     \item Constructively, almost-full\textsubscript{ind} $\Rightarrow$
-    almost-full$_\infty$.
+    almost-full$_\infty$. \vspace*{-0.2em}
     \item With \badbox{\textsc{lem}+\textsc{dc}}, almost-full\textsubscript{ind} $\Leftarrow$
     almost-full$_\infty$.
     %\pause
@@ -429,18 +426,18 @@ for algebra and combinatorics}
 \end{frame}
 
 \begin{frame}{Constructive red flags}
-  \emph{Well-foundedness:} A transitive relation~$<$ on a set~$X$ is \ldots
+  A transitive relation~$<$ on a set~$X$ is \ldots
   \begin{itemize}
     \item \ \\[-1.2em]\mbox{\hil{well-founded$_\infty$} iff
     there is no \bad{\uwave{infinite chain}} $x_0 > x_1 > \cdots$.}
     \item \hil{well-founded'$_\infty$} iff
-    there is no \bad{\uwave{bad set}} (inhabited and for every member there is
+    there is no \bad{\uwave{bad set}} (inhabited and such that for every member there is
     a smaller member).
 
     \item<4-> \hil{well-founded\textsubscript{ind}} iff for every~$x \in X$,
     $\mathsf{Acc}(x)$: %, where~$\mathsf{Acc}$ is inductively defined by:
     \[
-      \infer{\mathsf{Acc}(x)}{\forall y < x\_ \mathsf{Acc}(y)}
+      \infer{\mathsf{Acc}(x)}{\forall y < x\_\ \mathsf{Acc}(y)}
     \]
     \vspace*{-1.3em}
   \end{itemize}
@@ -479,8 +476,16 @@ for algebra and combinatorics}
 %  \emph{Proof.} By induction on~$x_0$.
 %\end{frame}
 
+% \begin{document}
+
 {\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{3.59cm}\includegraphics[width=\paperwidth]{staircase}\end{minipage}}
 \begin{frame}{The set-theoretic multiverse}
+  \begin{tikzpicture}[remember picture,overlay]
+    \node[xshift=-1.5cm,yshift=-4cm] at (current page.north east)
+    {\includegraphics[width=2cm]{branching}};
+  \end{tikzpicture}
+  \vspace*{-2em}
+
   \begin{block}{}
     \justifying
     \textbf{Def.} A \hil{model of set theory} is a (perhaps class-sized) structure $(M,{\in})$
@@ -491,12 +496,13 @@ for algebra and combinatorics}
   \begin{itemize}
     \item $V$, the class of all sets \vspace*{-0.6em}
     \item $L$, Gödel's constructible universe \vspace*{-0.6em}
-    \item $V[G]$, a forcing extension containing a generic filter of~$G$ \vspace*{-0.6em}
+    \item $V[G]$, a forcing extension containing a generic filter~$G$ of \\ some
+    poset of forcing conditions \vspace*{-0.6em}
     \item Henkin/term models from consistency of (extensions of)~\textsc{zfc}
   \end{itemize}}
   \pause
 
-  {\centering\emph{Embracing all models of set theory:}\par}
+  %{\centering\emph{Embracing all models of set theory:}\par}
   \begin{block}{}
     \justifying
     \textbf{Def.} $\possible\varphi$ iff~$\varphi$ holds in \hil{some extension} of
@@ -504,6 +510,7 @@ for algebra and combinatorics}
     \phantom{\textbf{Def.}} $\necessary\varphi$ iff~$\varphi$ holds in \hil{all extensions}
     of the current universe.
   \end{block}
+  \vspace*{-0.6em}
   \begin{itemize}
     \item $\necessary(\possible\textsc{CH} \wedge \possible\neg\text{CH})$,
     the continuum hypothesis is a \hil{switch}
@@ -522,17 +529,27 @@ for algebra and combinatorics}
       it holds in every (Grothendieck) topos (over the current base topos).
       \item \hil{somewhere} ($\possible\varphi$) iff
       it holds in some positive topos.
-      \item \hil{subsequently} ($\xpossible\varphi$) iff
+      \item \hil{proximally} ($\xpossible\varphi$) iff
       it holds in some positive ouvert topos.
     \end{enumerate}
   \end{block}
   \pause
 
-  \newcommand{\seqbad}{\only<2>{infinite descending sequence}\only<3->{bad set}}
+  \newcommand{\seqbad}{\only<3>{infinite descending sequence}\only<4->{bad set}}
+  \begin{changemargin}{-2em}{-1.5em}
   \begin{itemize}
   \small
+    \item \justifying
+    \only<1-4>{A relation is almost-full\textsubscript{ind} \\
+    iff every infinite sequence \emph{everywhere} is good \\
+    iff the \emph{generic infinite sequence} is good \\
+    iff the \emph{theory of infinite sequences} proves goodness.\medskip}
+    \only<5->{A relation is almost-full\textsubscript{ind} iff every infinite
+    sequence \emph{everywhere} is good.}
+    \pause
+
     \item\justifying
-    \only<2-4>{A relation is well-founded\textsubscript{ind} \\
+    \only<3-4>{A relation is well-founded\textsubscript{ind} \\
     iff \emph{everywhere} there are no \seqbad s \\
     iff the \emph{generic \seqbad} validates~$\bot$ \\
     iff the \emph{theory} of \seqbad s proves~$\bot$.}
@@ -540,33 +557,116 @@ for algebra and combinatorics}
     \emph{nowhere} there are \seqbad s.}
     \pause
     \pause
+    \pause
 
-    \item \only<1-4>{A ring element~$x$ is nilpotent \\
+    \item \only<2-6>{A ring element~$x$ is nilpotent \\
     iff \emph{everywhere} it is contained in all prime ideals \\
     iff it is contained in the \emph{generic prime ideal} \\
-    iff the \emph{theory} of prime ideals proves~$x \not\in \ppp$.}
-    \only<5->{A ring element is nilpotent iff it is contained in all prime
-    ideals \emph{everywhere}.}
+    iff the \emph{theory} of prime ideals proves~$x \in \ppp$.}
+    \only<7->{\mbox{A ring element is nilpotent iff all prime
+    ideals \emph{everywhere} contain it.}}
 
     \pause
     \pause
-    \item Given a set~$X$, \emph{subsequently} there is a surjection~$\NN
+    \item Given a set~$X$, \emph{proximally} there is a surjection~$\NN
     \twoheadrightarrow X$. \\
     \hil{NB:} $(\possible\varphi) \Rightarrow \varphi$, if~$\varphi$ is a
     geometric implication. \\
     \phantom{\hil{NB:}} $(\xpossible\varphi) \Rightarrow \varphi$, if~$\varphi$
-    is first-order.
+    is first-order. \\
+    \phantom{\hil{NB:}} $\varphi \Rightarrow (\necessary\varphi)$,\, if~$\varphi$
+    is a geometric formula.
 
     \pause
-    \item Given~$(X,R,x_0)$ as in~\textsc{dc}, \emph{subsequently} there is an
+    \item Given~$(X,R,x_0)$ as in~\textsc{dc}, \emph{proximally} there is an
     infinite chain.
 
     \pause
-    \item Somewhere, the law of excluded middle holds.
+    \item \emph{Somewhere,} the law of excluded middle holds.
   \end{itemize}
+  \end{changemargin}
 \end{frame}}
 
+{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{5.05cm}\includegraphics[width=\paperwidth]{agda-af-implies-wf}\end{minipage}}
+\begin{frame}{Extracting constructive content}
+  \begin{block}{}
+    \justifying
+    \textbf{Prop.} Let~$({\leq})$ be a transitive almost-full\textsubscript{ind} relation.
+    Then~$({<})$, where~$x < y \equiv (x \leq y \wedge \neg(y \leq x))$,
+    is well-founded\textsubscript{ind}.
+  \end{block}
+  \vspace*{-0.5em}
+
+  \emph{Proof.} Everywhere, there can be no infinite descending chain, as any
+  such would also be good. \qed
+
+  \mbox{Unrolling this proof gives a program~$(\textsf{Good} \,|\, []) \to
+  \prod_{x \? X} \textsf{Acc}(x)$.}
+  \vfill
+\end{frame}}
+
+% \begin{document}
+\addtocounter{framenumber}{-1}
+\begin{frame}{Extracting constructive content}
+  \begin{block}{}
+    \justifying
+    \textbf{Prop.} [Dickson] If~$X$ and~$Y$ are almost-full\textsubscript{ind},
+    so is~$X \times Y$.
+  \end{block}
+  \pause
+
+  \vspace*{-0.3em}
+  \emph{Proof.}\small
+  \vspace*{-0.6em}
+  \begin{enumerate}
+  \item\justifying It suffices to verify that the \emph{generic infinite
+  sequence}~$\gamma = (\alpha,\beta) : \NN \to X \times Y$ is good. \pause Since
+  being good can be put as a geometric implication (in fact, a geometric
+  formula) and since \textsc{lem} holds \emph{somewhere}, we may assume~\textsc{lem}.\pause
+  \item By \textsc{lem} and well-foundedness, there is a minimal value~$\alpha(i_0)$
+  among all values of~$\alpha$. \vspace*{-0.2em}\pause
+  Similarly, there is a minimal value~$\alpha(i_1)$ among~$(\alpha(n))_{n >
+  i_0}$, \pause a minimal value~$\alpha(i_2)$ among~$(\alpha(n))_{n > i_1}$, and so
+  on. \pause By \emph{proximal dependent choice}, we can proximally collect these indices
+  into a function~$i : \NN \to \NN$. \vspace*{-0.2em}\pause
+  \item Switching~\textsc{lem} on again, there is a minimal value~$\beta(i(k_0))$
+  among all values of~$\beta \circ i$. \pause Hence~$\gamma$ is good in view of
+  \begin{align*}
+    \alpha(i(k_0)) &\leq \alpha(i(k_0+1)), &
+    \beta(i(k_0)) &\leq \beta(i(k_0+1)).
+  \end{align*}
+  \end{enumerate}
+\end{frame}
+
 \end{document}
+
+Mit LEM hat jede Sequenz α ein Minimum:
+Induktion über einen Wert, der vorkommt (zum Beispiel α(0)).
+
+Mit LEM gilt: ∃n. α(n) < x  oder  nicht.
+Im ersten Fall fertig nach IV.
+Im zweiten Fall:
+  Sei n beliebig. Weiß ¬(α(n) < x).
+  Also weiß: ¬(α(n) ≤ x) und ¬¬(x ≤ α(n)).
+  Mit LEM also x ≤ α(n).
+
+Mit DC bekomme Folge:
+i₀ so, dass α(i₀) Minimum.
+i₁ so, dass α(i₁) Minimum unter α(i₀+1), α(i₀+2), ...
+
+Betrachte Folge (β(iṉ))ṉ.
+Mit LEM finde Minimum: β(ik).
+Dann β(ik) ≤ β(i(k+1)) und natürlich auch α(ik) ≤ α(i(k+1)).
+
+
+x < y  heißt:  x ≤ y und ¬(y ≤ x)
+Behauptung: ≤ af und transitiv, dann < wf.
+
+Betrachte generische absteigende Folge.
+Da gut, habe x[i] ≤ x[j].
+Wegen Transitivität auch x[i] > x[j],
+also x[j] < x[i], also x[j] ≤ x[i] und ¬(x[i] ≤ x[j]).
+Widerspruch.
 
 DC
 Krull
@@ -608,3 +708,21 @@ Attribution:
 Blass(?)
 Alexander
 Henry
+
+
+0: title
+* expectations: no new method for extracting constructive content, rather
+  point of view for putting previous work in a uniform context;
+  philosophy turned mathematics
+
+1: infinite data
+* how much more general? multivalued sequences, "¬¬ sequences", ...
+* where do these definitions come from? conceptual answer
+
+3: set-theoretic multiverse
+* axioms of ZFC massively underspecify the concept of sets;
+  models for exploring the range of set-theoretic possibility
+* to settle a question shown to be independent from ZFC is to
+  understand how it behaves in the multiverse
+
+explanation of generic models

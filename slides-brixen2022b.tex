@@ -448,6 +448,7 @@ for algebra and combinatorics}
 \section{Constructive red flags}
 
 \begin{frame}{Constructive red flags}
+  \vspace*{-0.5em}
   A transitive relation~$<$ on a set~$X$ is \ldots
   \begin{itemize}
     \item \ \\[-1.2em]\mbox{\hil{well-founded$_\infty$} iff
@@ -616,7 +617,7 @@ for algebra and combinatorics}
   \end{block}
   \pause
 
-  \newcommand{\seqbad}{\only<3>{infinite descending sequence}\only<4->{bad set}}
+  \newcommand{\seqbad}{\only<3>{infinite descending chain}\only<4->{bad set}}
   \begin{changemargin}{-2em}{-1.5em}
   \begin{enumerate}
   \small
@@ -643,14 +644,14 @@ for algebra and combinatorics}
     \item \only<2-6>{A ring element~$x$ is nilpotent \\
     iff \emph{everywhere} it is contained in all prime ideals \\
     iff it is contained in the \emph{generic prime ideal} \\
-    iff the \emph{theory of prime ideals} proves~$x \in \ppp$.}
+    iff the \emph{theory of prime ideals} proves~``$x \in \ppp$''.}
     \only<7->{\mbox{A ring element is nilpotent iff all prime
     ideals \emph{everywhere} contain it.}}
 
     \pause
     \pause
-    \item Given a set~$X$, \emph{proximally} there is a surjection~$\NN
-    \twoheadrightarrow X$. \\
+    \item Given an inhabited set~$X$, \emph{proximally} there is a surjection~$\NN
+    \twoheadrightarrow X$ [J--T]. \\
     \hil{NB:} $(\possible\varphi) \Rightarrow \varphi$, if~$\varphi$ is a
     geometric implication. \\
     \phantom{\hil{NB:}} $(\xpossible\varphi) \Rightarrow \varphi$, if~$\varphi$
@@ -663,7 +664,7 @@ for algebra and combinatorics}
     infinite chain.
 
     \pause
-    \item \emph{Somewhere,} the law of excluded middle holds.
+    \item \emph{Somewhere,} the law of excluded middle holds. [Barr]
   \end{enumerate}
   \end{changemargin}
 \end{frame}
@@ -682,7 +683,7 @@ for algebra and combinatorics}
   such would also be good. \qed
 
   \mbox{Unrolling this proof gives a program~$(\textsf{Good} \,|\, []) \to
-  \prod_{x \? X} \textsf{Acc}(x)$.}
+  \prod_{x:X} \textsf{Acc}(x)$.}
   \vfill
 \end{frame}}
 
@@ -690,7 +691,7 @@ for algebra and combinatorics}
 \begin{frame}{Extracting constructive content}
   \begin{block}{}
     \justifying
-    \textbf{Prop.} [Dickson] If~$X$ and~$Y$ are almost-full\textsubscript{ind},
+    \textbf{Thm.} [Dickson] If~$X$ and~$Y$ are almost-full\textsubscript{ind},
     so is~$X \times Y$.
   \end{block}
   \pause
@@ -720,41 +721,36 @@ for algebra and combinatorics}
     \end{enumerate}
 \end{frame}
 
+% \begin{document}
+
+{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{4.95cm}\includegraphics[width=\paperwidth]{topos-horses-lighter}\end{minipage}}
+%{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{1.59cm}\includegraphics[width=\paperwidth]{forest-light}\end{minipage}}
+\begin{frame}{Outlook}
+  I learned the idea to study a modal multiverse of toposes from
+  \emph{Alexander Oldenziel}, circa 2016. Foreshadowing results:
+  \begin{itemize}
+    \scriptsize
+    \item[1984] André Joyal, Miles Tierney. \emph{An extension of the Galois theory of
+    Grothendieck.}
+    \item[1987] Andreas Blass. \emph{Well-ordering and induction in intuitionistic
+    logic and topoi.}
+    \item[2013] Shawn Henry. \emph{Classifying topoi and preservation of higher
+    order logic by geometric morphisms.}
+  \end{itemize}
+  Work by Milly Maietti and Steve Vickers on \emph{arithmetic universes} is
+  also closely connected. In progress:
+
+  \begin{itemize}
+    \item Develop details and formalize.
+    \item Determine the precise list of valid modal principles.
+    \item Carry out case studies with program extraction.
+    \item Incorporate the right adjoints of geometric morphisms.
+  \end{itemize}
+\end{frame}}
+
+\addtocounter{framenumber}{-1}
+
 \end{document}
-
-Mit LEM hat jede Sequenz α ein Minimum:
-Induktion über einen Wert, der vorkommt (zum Beispiel α(0)).
-
-Mit LEM gilt: ∃n. α(n) < x  oder  nicht.
-Im ersten Fall fertig nach IV.
-Im zweiten Fall:
-  Sei n beliebig. Weiß ¬(α(n) < x).
-  Also weiß: ¬(α(n) ≤ x) und ¬¬(x ≤ α(n)).
-  Mit LEM also x ≤ α(n).
-
-Mit DC bekomme Folge:
-i₀ so, dass α(i₀) Minimum.
-i₁ so, dass α(i₁) Minimum unter α(i₀+1), α(i₀+2), ...
-
-Betrachte Folge (β(iṉ))ṉ.
-Mit LEM finde Minimum: β(ik).
-Dann β(ik) ≤ β(i(k+1)) und natürlich auch α(ik) ≤ α(i(k+1)).
-
-
-x < y  heißt:  x ≤ y und ¬(y ≤ x)
-Behauptung: ≤ af und transitiv, dann < wf.
-
-Betrachte generische absteigende Folge.
-Da gut, habe x[i] ≤ x[j].
-Wegen Transitivität auch x[i] > x[j],
-also x[j] < x[i], also x[j] ≤ x[i] und ¬(x[i] ≤ x[j]).
-Widerspruch.
-
-DC
-Krull
-Countability
-Well
-Well-founded
 
 Choice:
 erst abzählbar machen,
@@ -785,12 +781,6 @@ Also e ∈ C_{n+1} ⊆ C, also e ≤ z.
 Also e = z.
 Problem: Kommt eher selten vor; Supremum wird oft nicht zur Menge gehören.
 Beispiel: Supremum von Menge endlich erzeugter Ideale ist nicht endlich erzeugt.
-
-Attribution:
-Blass(?)
-Alexander
-Henry
-oE countable
 
 0: title
 * expectations: no new method for extracting constructive content, rather

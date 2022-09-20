@@ -382,6 +382,52 @@ constructive point of view}
 
 % \begin{document}
 
+\begin{frame}{Integrated developments}
+  \begin{block}{}
+    \justifying
+    \textbf{Prop.}
+    There are \hil{irrational} numbers~$x,y$ with~$x^y$ \hil{rational}.
+  \end{block}
+  \vspace*{-0.5em}
+  {\small\emph{Proof.} Either~$\sqrt{2}^{\sqrt{2}}$ is rational or not.
+  %\begin{enumerate}
+    %\item
+    In the first case we are done.
+    %\item
+    In the second case we set~$x \defeq \sqrt{2}^{\sqrt{2}}$ and~$y \defeq
+    \sqrt{2}$. \qed\par}
+  %\end{enumerate}
+
+  \pause
+  \bad{No effective procedure described by the proof.}
+  \pause
+  Contrast with:
+  \begin{block}{}
+    \justifying
+    \textbf{Thm.}
+    Let~$A \in K^{n \times m}$,
+    $b \in K^n$. Then the set $\{ x \in K^m \,|\, Ax = b \}$
+    is either empty or of the form~$x_0 +
+    \operatorname{span}(v_1,\ldots,v_\ell)$.
+  \end{block}
+  \vspace*{-0.6em}
+  {\small\emph{Proof.} By elementary row transformations, we can \ldots\qed\par}
+  \pause
+
+  %\grayline
+
+  \begin{enumerate}
+    \item\justifying \hil{Constructively,} we work
+    without~\badbox{\textsc{lem}}, \badbox{\textsc{ac}} and
+    \badbox{\textsc{zorn}}.
+    \item\justifying Constructive proofs always yield \hil{algorithms} and
+    \hil{global versions} for continuous families.
+    \item\justifying \hil{Concrete} classical results can always be
+    \hil{constructivized}: If~\bad{\textsc{zfc}} proves an
+    arithmetical~$\Pi^0_2$-statement, so does~\textsc{izf}.
+  \end{enumerate}
+\end{frame}
+
 \begin{frame}{}%Injective and divisible abelian groups}
   \begin{block}{}
     \justifying
@@ -440,7 +486,7 @@ constructive point of view}
     \medskip
 
     \item Every group embeds into a divisible group.
-    \\\visible<4->{\emph{Proof.} If~$A = \ZZ\langle M \rangle/R$, then~$A
+    \\\visible<4->{\emph{Proof.} If~$A \cong \ZZ\langle M \rangle/R$, then~$A
     \hookrightarrow \QQ\langle M \rangle/R$.}
   \end{enumerate}
   \end{changemargin}

@@ -298,6 +298,7 @@ constructive point of view}
 
 \newcommand{\hil}[1]{{\usebeamercolor[fg]{item}{\textbf{#1}}}}
 \newcommand{\bad}[1]{\textcolor{red!90}{\textnormal{#1}}}
+\newcommand{\good}[1]{\textcolor{mypurple}{\textnormal{#1}}}
 
 \newcommand{\bignumber}[1]{%
   \renewcommand{\insertenumlabel}{#1}\scalebox{1.2}{\!\usebeamertemplate{enumerate item}\!}
@@ -310,6 +311,7 @@ constructive point of view}
 \newcommand{\subhead}[1]{{\centering\textcolor{gray}{\hrulefill}\quad\textnormal{#1}\quad\textcolor{gray}{\hrulefill}\par}}
 
 \newcommand{\badbox}[1]{\colorbox{red!30}{#1}}
+\newcommand{\infobox}[1]{\colorbox{yellow!70}{\color{black}#1}}
 \newcommand{\grayline}{\textcolor{gray}{\hspace*{-3em}\hrulefill\hspace*{-3em}}}
 
 \begin{document}
@@ -350,8 +352,9 @@ constructive point of view}
   \bigskip
 
   REDCOM: \\
-  \emph{Reducing complexity in algebra, logic, combinatorics}
+  \emph{Reducing complexity in algebra, logic, combinatorics} \\
   \ \\
+  Brixen \\
   September 21th, 2022
   \bigskip
 
@@ -365,6 +368,7 @@ constructive point of view}
 \newcommand{\smalltorus}{\ensuremath{\vcenter{\hbox{\includegraphics[height=1em]{torus}}}}}
 \begin{frame}{Cohomology}
   \centering
+  \vspace*{-0.5em}
 
   Is $\vcenter{\hbox{\includegraphics[height=0.1\textwidth]{sphere}}}$ homeomorphic to
   $\vcenter{\hbox{\includegraphics[height=0.1\textwidth]{torus}}}$? No:
@@ -377,12 +381,12 @@ constructive point of view}
     H^2(\smalltorus,\ZZ) & \cong \ZZ
   \end{align*}
 
-  Basic tool: \bad{injective resolutions}
+  \vspace*{-0.5em}
+  \mbox{\emph{Basic tool for sheaf cohomology and derived functors:}} \\
+  \bad{injective resolutions}
 \end{frame}}
 
-% \begin{document}
-
-\begin{frame}{Integrated developments}
+\begin{frame}{Integrated development}
   \begin{block}{}
     \justifying
     \textbf{Prop.}
@@ -426,6 +430,78 @@ constructive point of view}
     \hil{constructivized}: If~\bad{\textsc{zfc}} proves an
     arithmetical~$\Pi^0_2$-statement, so does~\textsc{izf}.
   \end{enumerate}
+\end{frame}
+
+% \begin{document}
+
+\begin{frame}{}
+  \medskip
+  {\centering\includegraphics[width=0.7\textwidth]{eigenvector}\par}
+  \small
+
+  \begin{changemargin}{-0.5em}{-1.5em}
+  \begin{enumerate}
+    \item[\infobox{local}]
+    \ \\[-1.2em]\mbox{``Every real symmetric matrix
+    does \only<4>{\hil{not not} }have an eigenvector.''
+    \good{\cmark}}
+    \medskip
+
+    \item[\infobox{global}] ``For every continuous family of symmetric
+    matrices, \only<4>{\\\hil{on a dense open} }eigenvectors can locally
+    be picked continuously.''
+    \only<1-2>{\includegraphics[height=0.7em]{question-mark}}%
+    \only<3>{\bad{\xmark}}%
+    \only<4>{\good{\cmark}}
+
+    \smallskip
+    \pause
+    \justifying
+    \scriptsize
+    ``Let~$X$ be a topological space and let~$A : X \to
+    M^\text{sym}_n(\RR)$ be a continuous map to the space of symmetric~$(n \times
+    n)$-matrices. Then there is an open covering~$\bigcup_{i \in I} U_i$
+    \only<1-3>{of~$X$}\only<4>{\hil{of a dense open subset}~$U \subseteq X$} such
+    that or all indices~$i \in I$, there is a continuous map~$v : U_i \to \RR^n$
+    such that for all~$x \in U_i$, the vector~$v(x)$ is an eigenvector
+    of~$A(x)$.''
+  \end{enumerate}
+  \end{changemargin}
+\end{frame}
+
+\addtocounter{framenumber}{-1}
+\begin{frame}{}
+  \medskip
+  {\centering\includegraphics[width=0.7\textwidth]{eigenvector}\par}
+  \small
+
+  \begin{changemargin}{-0.5em}{-1.5em}
+  \begin{enumerate}
+    \item[\infobox{local}]
+    \ \\[-1.2em]``Let~$M$ be a finitely generated module over a
+    field~$k$. \\ Then~$M$ is \only<4>{\hil{not not} }finite free.''
+    \good{\cmark}
+    \medskip
+
+    \item[\infobox{global}] ``Let~$M$ be a finitely generated module over a
+    ring~$A$. \\ Then~$M^\sim$ is finite locally
+    free\only<4>{ \hil{on a dense open}}.''
+    \only<1-2>{\includegraphics[height=0.7em]{question-mark}}%
+    \only<3>{\bad{\xmark}}%
+    \only<4>{\good{\cmark}}
+
+    \smallskip
+    \pause
+    \justifying
+    \scriptsize
+    ``Let~$M$ be a finitely generated module over an
+    arbitrary commutative ring~$A$. \only<1-3>{Then there is a partition~$1 = f_1 + \cdots +
+    f_n \in A$ of unity such that, for each index~$i$, the localized
+    module~$M[f_i^{-1}]$ is finite free over~$A[f_i^{-1}]$.}\only<4>{\hil{If~$f = 0$
+    is the only element of~$A$} such that~$M[f^{-1}]$ is finite free
+    over~$A[f^{-1}]$, \hil{then~$1 = 0$ in~$A$}.}''
+  \end{enumerate}
+  \end{changemargin}
 \end{frame}
 
 \begin{frame}{}%Injective and divisible abelian groups}

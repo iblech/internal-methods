@@ -13,7 +13,7 @@
 \usepackage{graphbox}
 \usepackage{mathtools}
 \usepackage{booktabs}
-\usepackage{stmaryrd}
+\usepackage{stmaryrd,wasysym}
 \usepackage{amssymb}
 \usepackage{array}
 \usepackage{ragged2e}
@@ -333,8 +333,9 @@ constructive point of view}
 
   \begin{tikzpicture}
     \def\R{8pt}
-    \node (title) {\vbox{\vspace*{-0.0em}Revisiting divisible, injective and
-    flabby abelian groups \\ from a constructive point of view\\[0.8em]}};
+    \node (title) {\vbox{\vspace*{-0.0em}Revisiting \hil{divisible},
+    \hil{injective} and \hil{flabby} abelian groups \\ from a \hil{constructive
+    point of view}\\[0.8em]}};
     \begin{pgfonlayer}{background}
       \draw[decorate, very thick, draw=mypurple]
         ($(title.south west) + (\R, 0)$) arc(270:180:\R) --
@@ -432,6 +433,7 @@ constructive point of view}
   \end{enumerate}
 \end{frame}
 
+\renewcommand{\insertframeextra}{a}
 \begin{frame}{}
   \medskip
   {\centering\includegraphics[width=0.7\textwidth]{eigenvector}\par}
@@ -468,6 +470,7 @@ constructive point of view}
 \end{frame}
 
 \addtocounter{framenumber}{-1}
+\renewcommand{\insertframeextra}{b}
 \begin{frame}{}
   \bigskip
   \bigskip
@@ -509,6 +512,7 @@ constructive point of view}
 \end{frame}
 
 \addtocounter{framenumber}{-1}
+\renewcommand{\insertframeextra}{c}
 {\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{-1em}\includegraphics[width=\paperwidth]{train-tracks-cropped}\end{minipage}}
 \begin{frame}{}
   \bigskip
@@ -557,6 +561,7 @@ constructive point of view}
   \end{changemargin}
 \end{frame}}
 
+\renewcommand{\insertframeextra}{}
 \begin{frame}{}%Injective and divisible abelian groups}
   \begin{block}{}
     \justifying
@@ -622,25 +627,78 @@ constructive point of view}
 \end{frame}
 
 \begin{frame}{Logical sheaves}
+  \vspace*{-0.8em}
+  \small
+
   The set~$\NN$ is \hil{$\neg\neg$-separated} in that
   \[ \forall x,y\?\NN\_ \neg\neg(x = y) \Rightarrow x = y, \]
+  {\vspace*{-1.7em}\\\centering\small\it ``continuous~$\NN$-valued functions
+  which \\ agree on a dense open agree everywhere''\par}
+  \pause
   but not a \hil{$\neg\neg$-sheaf}, which would mean
   \[ \forall S \subseteq \NN\_ \neg\neg(\text{$S$ singleton}) \Rightarrow
     \exists! x \? \NN\_ \neg\neg(x \in S). \]
-  We can \hil{sheafify}:
-  \[ \NN^+ = \{ S \subseteq \NN \,|\, \neg\neg(\text{$S$ singleton})
-  \}/{\sim}\
-  \text{with $S \sim T$ iff~$\neg\neg(S = T)$.} \]
+  {\vspace*{-1.7em}\\\centering\small\it ``continuous~$\NN$-valued functions
+  defined on a \\ dense open can be extended to all of the space''\par}
+  \pause
+
+  \mbox{\hil{Sheafify}:
+  $\NN^+ \defeq \{ S \subseteq \NN \,|\, \neg\neg(\text{$S$ singleton})
+  \}/{\sim}$
+  with $S \sim T \vcentcolon\Leftrightarrow \neg\neg(S = T)$.}
+
+  \vspace*{-0.3em}
   \grayline
+  \pause
 
   % Something about ¬¬-embedding, ideals of ℕ⁺
 
-  \begin{block}{}
-    \justifying
-    \textbf{Prop.}
-    The group~$(\QQ/\ZZ)^+$ has the Baer property.
-  \end{block}
+  \vspace*{-0.3em}
+  \begin{enumerate}
+    \item \justifying\textbf{Prop.}
+    The group~$(\QQ/\ZZ)^+$ has the Baer property. \vspace*{-0.6em}
+    \item \textbf{Lemma.}
+    \badbox{\textsc{zorn}} Let~$A$ be a group. Let~$x_0 \in A$. Then
+    there is an uncanonical map $i : A \to (\QQ/\ZZ)^+$ such that~\mbox{$i(x_0) = 0 \Rightarrow
+    \neg\neg(x_0=0)$.} \vspace*{-1.8em}
+    \item \textbf{Thm.}
+    Every group canonically maps to a Baer group, and with
+    \badbox{\textsc{zorn}}, this map is injective.
+  \end{enumerate}
 \end{frame}
+
+% \begin{document}
+
+\begin{frame}{Perspectives}
+  \centering
+  \vspace*{-0.5em}
+  \hil{\Huge \smiley} \\
+  The existence of enough injectives requires only \badbox{\textsc{zorn}}, \\
+  not \badbox{\textsc{lem}} or \badbox{\textsc{ac}}, and is hence
+  \hil{constructively neutral}.
+
+  Assuming \badbox{\textsc{zorn}} on the metalevel, \\
+  it also holds for continuous families.
+  \pause
+
+  \bigskip
+  \bad{\Huge \frownie} \\
+  Still not fully computational. \\
+  Cohomology still requires fixing a universe of sets.
+  \pause
+
+  \grayline
+
+  \emph{Plan:} \\
+  \hil{Resolve issue} by doing without injectives, \\
+  inspired by \hil{Emily Riehl}.
+
+  \vspace*{-4.62em}\hspace*{-25.5em}\includegraphics[height=6.5em]{cathtpy-pic}
+\end{frame}
+\addtocounter{framenumber}{-1}
+
+\end{document}
+
 
 \begin{frame}{There are enough Baer groups}
   \begin{block}{}
@@ -659,5 +717,3 @@ constructive point of view}
   {\small\emph{Examples.} $\neg\neg$, \quad $\alpha_0 \Rightarrow \cdot$, \quad
   $\cdot \vee \beta_0$, \quad $((\cdot \Rightarrow \chi_0) \Rightarrow \chi_0)$.\par}
 \end{frame}
-
-\end{document}

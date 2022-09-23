@@ -1,0 +1,161 @@
+\documentclass[oneside]{amsart}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm,mathtools,stmaryrd,amssymb}
+\usepackage[all]{xy}
+\usepackage[protrusion=true,expansion=true]{microtype}
+\usepackage{hyperref}
+\usepackage{xspace}
+\usepackage{color}
+
+\usepackage[natbib=true,style=numeric,maxnames=10]{biblatex}
+\usepackage[babel]{csquotes}
+\bibliography{paper-modal-multiverse.bib}
+
+\title{The topos-theoretic multiverse}
+\author{Ingo Blechschmidt}
+\address{Universität Augsburg \\
+Institut für Mathematik \\
+Universitätsstr. 14 \\
+86159 Augsburg, Germany}
+\email{ingo.blechschmidt@math.uni-augsburg.de}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{ex}[defn]{Example}
+
+\theoremstyle{plain}
+\newtheorem{prop}[defn]{Proposition}
+\newtheorem{cor}[defn]{Corollary}
+\newtheorem{lemma}[defn]{Lemma}
+\newtheorem{thm}[defn]{Theorem}
+\newtheorem{scholium}[defn]{Scholium}
+
+\theoremstyle{remark}
+\newtheorem{rem}[defn]{Remark}
+\newtheorem{question}[defn]{Question}
+\newtheorem{speculation}[defn]{Speculation}
+\newtheorem{caveat}[defn]{Caveat}
+\newtheorem{conjecture}[defn]{Conjecture}
+
+\newcommand{\xra}[1]{\xrightarrow{#1}}
+\newcommand{\XXX}[1]{\textbf{\textcolor{red}{XXX: #1}}}
+\newcommand{\aaa}{\mathfrak{a}}
+\newcommand{\bbb}{\mathfrak{b}}
+\newcommand{\mmm}{\mathfrak{m}}
+\newcommand{\nnn}{\mathfrak{n}}
+\newcommand{\I}{\mathcal{I}}
+\newcommand{\J}{\mathcal{J}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\renewcommand{\P}{\mathcal{P}}
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\defeqv}{\vcentcolon\equiv}
+\newcommand{\op}{\mathrm{op}}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Mod}{Mod}
+\DeclareMathOperator{\Sh}{Sh}
+\DeclareMathOperator{\PSh}{PSh}
+\newcommand{\Set}{\mathrm{Set}}
+\newcommand{\Eff}{\mathrm{Ef{}f}}
+\renewcommand{\_}{\mathpunct{.}\,}
+\newcommand{\effective}{ef{}fective\xspace}
+\newcommand{\notnot}{\emph{not~not}\xspace}
+
+\newcommand{\stacksproject}[1]{\cite[{\href{https://stacks.math.columbia.edu/tag/#1}{Tag~#1}}]{stacks-project}}
+
+\begin{document}
+
+\begin{abstract}
+  To help put earlier results in constructive algebra and constructive
+  combinatorics into perspective, explain a possible background for certain
+  inductive definitions and give a unified framework for certain techniques for
+  program extraction from classical proofs, we propose a modal study of the
+  topos-theoretic multiverse.
+\end{abstract}
+
+\maketitle
+\thispagestyle{empty}
+
+\noindent
+Thanks to the finer distinctions constructive mathematics offers, there is a
+host of principles which are available in classical mathematics but seem naive
+from a constructive point of view. A non-exhaustive list is:
+\begin{enumerate}
+\item A transitive relation is well-founded iff there is no infinite descending
+chain.
+\item A relation is almost-full iff every infinite sequence is good (meaning
+that some element is related to a later element in the sequence).
+\item \emph{Krull's lemma}: A ring element is nilpotent iff every prime
+ideal contains it.
+\item Every ring has a maximal ideal.\footnote{Here and in the following, by
+\emph{ring} we mean commutative ring with unit and by \emph{maximal ideal} we
+mean an ideal~$\mmm$ which is \emph{proper} in the sense that~$1 \in \mmm
+\Rightarrow 1 = 0$ and such that for every proper ideal~$\nnn$ with~$\mmm
+\subseteq \nnn$, $\mmm = \nnn$.}
+\item \emph{Markov's principle:} If a function~$\NN \to \NN$ does \notnot have
+a zero, then it actually has a zero.
+\item \emph{Dependent choice:} If every element of a set is related by some relation to some other
+element, every element can be completed to an infinite chain of related
+elements.
+\item The law of excluded middle holds.
+\end{enumerate}
+Constructive theorems always have a computational and geometric
+content---from every constructive proof, a corresponding algorithm can be
+extracted, and every constructive proof holds also for continuous families of
+the objects in question. But the listed classical principles have no
+computational witness or fail in continuous families, hence are not
+available in constructive mathematics.
+
+In the modal topos-theoretic multiverse, we have the following constructive
+replacements to these principles.
+\begin{enumerate}
+\item A transitive relation is well-founded iff \emph{everywhere} there is no infinite descending
+chain.
+\item A relation is almost-full iff every infinite sequence \emph{everywhere} is good (meaning
+that some element is related to a later element in the sequence).
+\item \emph{Krull's lemma}: A ring element is nilpotent iff all prime
+ideals \emph{everywhere} contain it.
+\item Every ring \emph{proximally} has a maximal ideal.
+\item If a function~$\NN \to \NN$ does \emph{everywhere} \notnot have
+a zero, then it actually has a zero.
+\item If every element of a set is related by some relation to some other
+element, every element can \emph{proximally} be completed to an infinite chain
+of related elements.
+\item \emph{Somewhere,} the law of excluded middle holds.
+\end{enumerate}
+
+Briefly, a statement is said to hold \emph{everywhere} iff it holds in every
+Grothendieck topos over the current base topos; a statement holds
+\emph{somewhere} iff it holds in some positive Grothendieck topos over the
+current base; and a statement holds \emph{proximally} iff it holds in some
+positive ouvert Grothendieck topos over the current base. More such
+\emph{modalities} are also useful and merit study.
+
+This modal language not only allows us to recover certain classical principles
+as above, but also makes certain powerful theorems about the topos-theoretic
+landscape easy to use:
+\begin{enumerate}
+\addtocounter{enumi}{7}
+\item For every (perhaps uncountable) set~$X$, \emph{proximally} there is a
+surjection~$\NN \twoheadrightarrow X$.
+\end{enumerate}
+We can also adopt the notion of \emph{switches} and \emph{buttons} from the
+modal study of the set-theoretic multiverse:
+\begin{enumerate}
+\addtocounter{enumi}{8}
+\item \emph{The law of excluded middle is a switch:} Everywhere it is the case
+that somewhere~\textsc{lem} holds and somewhere it does not.
+\item If Zorn's lemma holds, it is also everythere the case that it holds
+somewhere.
+\end{enumerate}
+
+\textbf{Acknowledgments.} Alexander Oldenziel, \ldots
+
+\end{document}

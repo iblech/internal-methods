@@ -361,6 +361,7 @@ constructive point of view}
 
 {\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{5.95cm}\includegraphics[width=\paperwidth]{fr1-lighter}\end{minipage}}
 \begin{frame}{}
+  \medskip
   \textbf{Thm.}
   For every number~$n \in \NN$, there is a prime larger than~$n$.
 
@@ -408,7 +409,8 @@ constructive point of view}
   {\emph{Proof.} By~\badbox{\textsc{lem}}, there is a minimal value~$\alpha(i)$.
   Set~$j \defeq i + 1$.\par}
 
-  {\centering\emph{``Every theorem has a computable witness.''}\par}
+  {\centering\emph{``Every theorem has a computable* witness.''} \\ \scriptsize
+  * with monadic side effects\par}
 \end{frame}}
 
 % \includegraphics[width=3cm]{lovelace-babbage}
@@ -562,7 +564,8 @@ constructive point of view}
     \item \hil{Unprovability results:}
     \medskip
 
-    There are instances of~\badbox{\textsc{lem}} which HA does not prove.
+    There are instances of~\badbox{\textsc{lem}} which HA does not prove,
+    such as ``every Turing machine terminates or does not terminate''.
     \bigskip
 
     \item \hil{Disjunction property:}
@@ -583,8 +586,8 @@ constructive point of view}
     \medskip\justifying
 
     If HA proves~$\forall x\?N\_ \exists y\?N\_ \varphi(x,y)$,
-    then there exists a function $f_0 : \NN \to \NN$ which is \hil{higher
-    primitive recursive} such that for all~$x_0 \in \NN$, HA proves
+    then there exists a \hil{higher primitive recursive} function $f_0 : \NN
+    \to \NN$ such that for all~$x_0 \in \NN$, HA proves
     $\varphi(\underline{x_0}, \underline{f_0(x_0)})$.
   \end{enumerate}
 \end{frame}

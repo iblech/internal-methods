@@ -141,7 +141,7 @@ constructive point of view}
 \newcommand{\Spec}{\mathrm{Spec}}
 \newcommand{\lra}{\longrightarrow}
 \newcommand{\RelSpec}{\operatorname{Spec}}
-\renewcommand{\_}{\mathpunct{.}}
+\renewcommand{\_}{\mathpunct{.}\,}
 \newcommand{\?}{\,{:}\,}
 \newcommand{\speak}[1]{\ulcorner\text{\textnormal{#1}}\urcorner}
 \newcommand{\ul}[1]{\underline{#1}}
@@ -435,7 +435,7 @@ constructive point of view}
   \begin{itemize}
     \item as its single sort: $N$
     \item as function symbols: $0$, $S$, $+$, $\cdot$
-    \item as relation symbols: $=$
+    \item as its single relation symbol: $=$
   \end{itemize}
 
   \hil{Heyting arithmetic} has as axioms (the universal closure of)
@@ -592,17 +592,38 @@ constructive point of view}
   \end{enumerate}
 \end{frame}
 
-\begin{frame}{Other machine models}
+\begin{frame}{Range of machine models}
   \begin{enumerate}
-    \item Turing machines
+    \item \hil{Turing machines}
 
-    \item Infinite-time Turing machines
+    \visible<2->{``Every function $\NN \to \NN$ is computable'' is realized by
+    \textsf{cat}.}
+    \medskip
 
-    \item Gödel's System T
+    \item \hil{Untyped lambda calculus}
 
-    \item Untyped lambda calculus
+    \visible<3->{``Every function $\NN \to \NN$ is computable'' is \emph{not}
+    realized.}
+    \medskip
 
-    \item Machines in the real world
+    \item \hil{Infinite-time Turing machines}
+
+    \visible<4->{``Every function $\NN \to \NN$ has a zero or not'' is realized by an
+    infinite search.}
+    \medskip
+
+    \item \hil{Gödel's System T}
+
+    \visible<5->{Markov's principle is not realized.}
+    \medskip
+
+    \item \hil{Machines in the real world} -- philosophical
+
+    \justifying
+    \visible<6->{``Every function $\RR \to \RR$ is continuous'' is realized if,
+    in the physical world, only finitely many computational
+    steps can be carried out in finite time and if it is possible to form
+    tamper-free private communication channels.}
   \end{enumerate}
 \end{frame}
 

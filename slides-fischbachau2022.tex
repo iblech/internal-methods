@@ -23,6 +23,7 @@
 \usepackage{tabto}
 \usepackage{xstring}
 \usepackage{ifthen}
+\usepackage{bbm}
 \usepackage[normalem]{ulem}
 \usepackage[all]{xy}
 \xyoption{rotate}
@@ -702,6 +703,48 @@ constructive point of view}
     steps can be carried out in finite time and if it is possible to form
     tamper-free private communication channels.}
   \end{enumerate}
+\end{frame}
+
+
+\section{Proof transformations}
+
+\begin{frame}
+  \centering\bigskip
+  \includegraphics[height=9.5em]{philosophers-stone}
+  \medskip
+
+  \large Lecture II: \\
+  \hil{Proof transformations}
+
+  \normalsize
+
+  \emph{for extracting constructive proofs from classical proofs}
+\end{frame}
+
+\begin{frame}{The double-negation embedding}
+  \textbf{Thm.} Every infinite sequence~$\alpha : \NN \to \NN$ is \emph{good}
+  in that there are numbers~$i < j$ such that~$\alpha(i) \leq \alpha(j)$.
+
+  {\emph{Proof.} By~\badbox{\textsc{lem}}, there is a minimal value~$\alpha(i)$.
+  Set~$j \defeq i + 1$.\par}
+
+  \textbf{Thm.} Every infinite binary sequence~$\alpha : \NN \to \mathbbm{2}$
+  contains repeating entries.
+
+  {\emph{Proof.} By the \bad{infinite box principle}, which follows
+  from~\badbox{\textsc{lem}}, the sequence contains infinitely many zeros or
+  infinitely many ones. In either case the claim follows.\par}
+
+  How to extract \good{constructive proofs} from these
+  \bad{classical proofs}?
+  \pause
+
+  \grayline
+
+  \textbf{Thm.} Let~$X$ be an inhabited set of natural numbers. Then~$X$
+  contains a minimal element.
+
+  {\emph{Proof.} By~\badbox{\textsc{lem}}, \ldots\par}
 \end{frame}
 
 \end{document}

@@ -722,29 +722,66 @@ constructive point of view}
 \end{frame}
 
 \begin{frame}{The double-negation embedding}
-  \textbf{Thm.} Every infinite sequence~$\alpha : \NN \to \NN$ is \emph{good}
-  in that there are numbers~$i < j$ such that~$\alpha(i) \leq \alpha(j)$.
+  \vspace*{-0.8em}
+  \mbox{How to extract \good{constructive proofs} from
+  \bad{classical proofs} as the following?}
 
-  {\emph{Proof.} By~\badbox{\textsc{lem}}, there is a minimal value~$\alpha(i)$.
-  Set~$j \defeq i + 1$.\par}
+  \begin{enumerate}
+    \item \textbf{Thm.} Every infinite sequence~$\alpha : \NN \to \NN$ is \emph{good}
+    in that there are numbers~$i < j$ such that~$\alpha(i) \leq \alpha(j)$.
+    \medskip
 
-  \textbf{Thm.} Every infinite binary sequence~$\alpha : \NN \to \mathbbm{2}$
-  contains repeating entries.
+    {\emph{Proof.} By~\badbox{\textsc{lem}}, there is a minimal value~$\alpha(i)$.
+    Set~$j \defeq i + 1$.\par}
+    \medskip
+    \pause
 
-  {\emph{Proof.} By the \bad{infinite box principle}, which follows
-  from~\badbox{\textsc{lem}}, the sequence contains infinitely many zeros or
-  infinitely many ones. In either case the claim follows.\par}
+    \item \textbf{Thm.} Every infinite binary sequence
+    contains repeated terms.
+    \medskip
 
-  How to extract \good{constructive proofs} from these
-  \bad{classical proofs}?
-  \pause
+    {\emph{Proof.} By the \bad{infinite box principle},
+    infinitely many terms are zeros or are ones. In either case the claim
+    follows.\par}
+    \pause
+  \end{enumerate}
+  \vspace*{-0.7em}
 
   \grayline
 
-  \textbf{Thm.} Let~$X$ be an inhabited set of natural numbers. Then~$X$
-  contains a minimal element.
+  \textbf{Thm.} Let~$X$ be an inhabited set of natural numbers.
+  \begin{enumerate}
+    \item If~\badbox{\textsc{lem}}, then~$X$ contains a minimal element.
+    \item<5-> If~$X$ is \hil{detachable}, then~$X$ contains a minimal element.
+    \item<7-> It is \notnot the case that~$X$ contains a minimal element.
+  \end{enumerate}
 
-  {\emph{Proof.} By~\badbox{\textsc{lem}}, \ldots\par}
+  \justifying
+  \only<1-3>{\ \\\ \\\ \\\ }
+  \only<4-5>{\emph{Proof of~\normalnumber{1}.} There is some~$n \in X$.
+  By~\badbox{\textsc{lem}}, either~$\exists k \in X\_ k < n$ \\ or not. In the
+  first case, we continue by induction. Else~$n$ is minimal.\\\ \par}
+  \only<6-7>{\mbox{\emph{Proof of~\normalnumber{2}.} There is some~$n \in X$.
+  By~\good{assumption}, either~$\exists k \in X\_ k < n$} or not. In the
+  first case, we continue by induction. Else~$n$ is minimal.\\\ \par}
+  \only<8>{\emph{Proof of~\normalnumber{3}.} There is some~$n \in X$. Assume that~$X$ does not
+  contain a minimum. Then it is not the case that~$\exists k \in X\_ k <
+  n$, as else~$\bot$ by induction. Hence~$n$ is minimal. This is a
+  contradiction.\par}
+\end{frame}
+
+
+\section{Proof transformations}
+
+\begin{frame}
+  \centering\bigskip
+  \includegraphics[height=9.5em]{phantoms}
+  \medskip
+
+  \large Lecture III: \\
+  \hil{Extracting constructive proofs from invalid* proofs}
+
+  \normalsize
 \end{frame}
 
 \end{document}
@@ -810,3 +847,22 @@ value~$\beta(i_{k_0})$ among all values of~$(\beta(i_k))_k$. Then
 $\alpha(i_{k_0}) \leq \alpha(i_{k_0+1})$ and
 $\beta(i_{k_0}) \leq \beta(i_{k_0+1})$. \qed
 \par}
+
+
+Claim: (∃n ∈ X) ⇒ X has a minimum.
+
+Classical proof:
+By LEM, ∃(k ∈ X). k < n or not.
+In the first case, we conclude by induction.
+In the second case, we conclude that n is minimal:
+  Given k ∈ X, we have k < n or n ≤ k.
+  In the first case, ⊥ and hence conclusion.
+  In the second case, good.
+
+Translated proof:
+Assume that X does not have a minimum, show ⊥.
+May conclude that ¬(∃(k ∈ X). k < n). For else, X inhabited by <n, so ⊥ by induction.
+Thus n is a minimum:
+  Given k ∈ X, we have k < n or n ≤ k.
+  In the first case, ⊥ and hence conclusion.
+  In the second case, good.

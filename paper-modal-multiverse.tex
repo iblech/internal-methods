@@ -416,7 +416,41 @@ been developed (xxx:language) by xxx~\cite{xxx}.\end{proof}
 \section{Extracting programs from multiverse proofs}
 \label{sect:program-extraction}
 
-xxx: examples from slides
+\begin{prop}Let~$({\leq})$ be a transitive almost-full relation.
+Then~$({<})$, where~$x < y \equiv (x \leq y \wedge \neg(y \leq x))$,
+is well-founded.\end{prop}
+
+\begin{proof}Everywhere, there can be no infinite descending chain, as any
+such would also be good.\end{proof}
+
+Unrolling this proof gives a program of type~$(\textsf{Good} \,|\, []) \to
+\prod_{x:X} \textsf{Acc}(x)$.
+
+\begin{thm}[Dickson's lemma] If~$X$ and~$Y$ are almost-full,
+so is~$X \times Y$.\end{thm}
+
+\begin{proof}
+  \begin{enumerate}
+    \item It suffices to verify that the \emph{generic infinite
+    sequence}~$\gamma = (\alpha,\beta) : \NN \to X \times Y$ is good. Since
+    being good can be put as a geometric implication (in fact, a geometric
+    formula) and since \textsc{lem} holds \emph{somewhere}, we may assume~\textsc{lem}.
+
+    \item By \textsc{lem} and well-foundedness, there is a minimal value~$\alpha(i_0)$
+    among all values of~$\alpha$. \vspace*{-0.2em}
+    Similarly, there is a minimal value~$\alpha(i_1)$ among~$(\alpha(n))_{n >
+    i_0}$, a minimal value~$\alpha(i_2)$ among~$(\alpha(n))_{n > i_1}$, and so
+    on. By \emph{proximal dependent choice}, we can proximally collect these indices
+    into a function~$i : \NN \to \NN$; this switches~\textsc{lem} off. \vspace*{-0.2em}
+
+    \item Switching~\textsc{lem} on again, there is a minimal value~$\beta(i(k_0))$
+    among all values of~$\beta \circ i$. Hence~$\gamma$ is good in view of
+    \begin{align*}
+      \alpha(i(k_0)) &\leq \alpha(i(k_0+1)), &
+      \beta(i(k_0)) &\leq \beta(i(k_0+1)). \qedhere
+    \end{align*}
+  \end{enumerate}
+\end{proof}
 
 
 \section{Perspectives}

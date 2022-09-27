@@ -15,6 +15,7 @@
 \usepackage{booktabs}
 \usepackage{stmaryrd,wasysym}
 \usepackage{bussproofs}
+\usepackage{xspace}
 \usepackage{amssymb}
 \usepackage{array}
 \usepackage{ragged2e}
@@ -314,6 +315,7 @@ constructive point of view}
 \newcommand{\badbox}[1]{\colorbox{red!30}{#1}}
 \newcommand{\infobox}[1]{\colorbox{yellow!70}{\color{black}#1}}
 \newcommand{\grayline}{\textcolor{gray}{\hspace*{-3em}\hrulefill\hspace*{-3em}}}
+\newcommand{\notnot}{\emph{not~not}\xspace}
 
 \begin{document}
 
@@ -558,6 +560,65 @@ constructive point of view}
   number~$e \in \NN$ such that~\only<1>{$e \realizes
   \varphi$}\only<2>{$\text{HA} \vdash (\underline{e} \realizes \varphi)$}.}
 \end{frame}
+
+% \begin{document}
+
+\newcommand{\expl}[2]{
+  \justifying
+  ``$\realizes \!\text{\normalnumber{#1}}$'' amounts to: #2
+}
+
+\newcommand{\qswitch}[3]{\only<1-#1>{\includegraphics[height=0.7em]{question-mark}}\only<#2->{#3}}
+\newcommand{\ccmark}{\good{\cmark}}
+\newcommand{\cxmark}{\bad{\xmark}}
+
+{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{0.00cm}\hfill\mbox{\includegraphics[width=0.2\textwidth]{turing-machine}\;\;}\end{minipage}}
+\begin{frame}{Exploring the realizability model}
+  \medskip
+  \medskip
+  \medskip
+  \begin{tabular}{@{\!\!\!\!\!\!\!}l@{\,}llp{1.8cm}}
+    \toprule
+    & Statement & classical? & realizable? \\
+    \midrule
+    \normalnumber{1} & Every number is prime or not prime. & \ccmark{}
+    (trivially) & \ccmark \\
+    \normalnumber{2} & After every number there is a prime. & \ccmark & \ccmark \\
+    \normalnumber{3} & Every map $\NN \to \NN$ has a zero or not. & \ccmark{} (trivially) & \cxmark \\
+    \normalnumber{4} & Every map $\NN \to \NN$ is computable. & \cxmark &
+    \qswitch{4}{5}{\ccmark}\only<1-4>{\,} \visible<5->{(trivially)} \\
+    \normalnumber{5} & Every map $\RR \to \RR$ is continuous. & \cxmark &
+    \qswitch{5}{6}{\ccmark} \\
+    \normalnumber{6} & Markov's principle holds. & \cmark{} (trivially) &
+    \qswitch{6}{7}{\ccmark{} (if MP)} \\
+    \normalnumber{7} & Countable choice holds. & \xmark &
+    \qswitch{7}{8}{\ccmark{} (always!)} \\
+    \normalnumber{8} & Heyting arithmetic is categorical. & \xmark &
+    \qswitch{8}{9}{\ccmark{} (if MP)} \\
+    \bottomrule
+  \end{tabular}
+  \medskip
+
+  \only<1>{\ \\\ \\\ \\\ }
+  \only<2>{\expl{1}{There is a machine which determines of any given
+  number whether it is prime or not. \\\ }}
+  \only<3>{\expl{2}{There is a machine which, given a number~$n$, computes a
+  prime larger than~$n$. \\\ \\\ }}
+  \only<4>{\expl{3}{There is a machine which, given a machine
+  computing a map~$f : \NN \to \NN$, determines whether~$f$ is constantly
+  zero or not. \\\ }}
+  \only<5>{\expl{4}{There is a machine which, given a machine
+  computing a map~$f : \NN \to \NN$, outputs a machine
+  computing~$f$. \\\ }}
+  \only<6>{\ \\\ \\\ \\\ }
+  \only<7>{\expl{6}{There is a machine which, given a machine
+  computing a map~$f : \NN \to \NN$ and given the promise that it is \notnot
+  the case that~$f$ has a zero, determines a zero of~$f$.}}
+  \only<8->{\expl{7}{\justifying There is a machine which, given a machine
+  computing for every~$x \in \NN$ some~$y \in A$ together with a realizer
+  of~$\varphi(x,y)$, outputs a machine computing a suitable choice
+  function~$\NN \to A$.}}
+\end{frame}}
 
 \begin{frame}{Metatheory of Heyting arithmetic}
   \begin{enumerate}

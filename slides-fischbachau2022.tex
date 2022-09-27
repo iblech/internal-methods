@@ -591,9 +591,9 @@ constructive point of view}
   \medskip
   \medskip
   \medskip
-  \begin{tabular}{@{\!\!\!\!\!\!\!}l@{\,}llp{1.8cm}}
+  \begin{tabular}{@{\!\!\!\!\!\!}l@{\,}llp{1.8cm}}
     \toprule
-    & Statement & classical? & realizable? \\
+    & statement & classical? & realizable? \\
     \midrule
     \normalnumber{1} & Every number is prime or not prime. & \ccmark{}
     (trivially) & \ccmark \\
@@ -619,7 +619,7 @@ constructive point of view}
   \only<3>{\expl{2}{There is a machine which, given a number~$n$, computes a
   prime larger than~$n$. \\\ \\\ }}
   \only<4>{\expl{3}{There is a machine which, given a machine
-  computing a map~$f : \NN \to \NN$, determines whether~$f$ is constantly
+  computing a map~$f : \NN \to \NN$, determines whether~$f$ has a
   zero or not. \\\ }}
   \only<5>{\expl{4}{There is a machine which, given a machine
   computing a map~$f : \NN \to \NN$, outputs a machine
@@ -671,20 +671,20 @@ constructive point of view}
   \begin{enumerate}
     \item \hil{Turing machines}
 
-    \visible<2->{``Every function $\NN \to \NN$ is computable'' is realized by
+    \visible<2->{``Every map $\NN \to \NN$ is computable'' is realized by
     \textsf{cat}.}
     \medskip
 
     \item \hil{Untyped lambda calculus}
 
-    \visible<3->{``Every function $\NN \to \NN$ is computable'' is \emph{not}
+    \visible<3->{``Every map $\NN \to \NN$ is computable'' is \emph{not}
     realized.}
     \medskip
 
     \item \hil{Infinite-time Turing machines}
 
-    \visible<4->{``Every function $\NN \to \NN$ has a zero or not'' is realized by
-    infinite search.}
+    \visible<4->{\mbox{``Every map $\NN \to \NN$ has a zero or not'' is realized by
+    infinite search.}\\[0em]}
     \medskip
 
     \item \hil{Gödel's System T}
@@ -695,7 +695,7 @@ constructive point of view}
     \item \hil{Machines in the real world} -- philosophical
 
     \justifying
-    \visible<6->{``Every function $\RR \to \RR$ is continuous'' is realized if,
+    \visible<6->{``Every map $\RR \to \RR$ is continuous'' is realized if,
     in the physical world, only finitely many computational
     steps can be carried out in finite time and if it is possible to form
     tamper-free private communication channels.}
@@ -704,6 +704,60 @@ constructive point of view}
 
 
 \section{Proof transformations}
+
+\addtocounter{framenumber}{-1}
+\begin{frame}[plain]\frametitle{A classical logic fairy tale}
+  \vspace*{-0.5em}
+  \begin{changemargin}{-1em}{-1em}
+    \setlength{\columnsep}{15pt}
+    \begin{multicols}{2}
+      \justifying
+      \scriptsize
+
+      \textbf{Narrator.} Once upon a time, in a kingdom far, far away, the
+      queen of the land and of all Möbius strips called for her royal
+      philosopher.
+
+      \textbf{Queen.} Philosopher! I ask you to carry out the following order.
+      Get me the Philosopher's Stone, or alternatively find out how one could
+      produce arbitrary amounts of gold with it!
+
+      \textbf{Philosopher.} But my queen! I haven't studied anything useful!
+      How could I fulfill this order?
+
+      \textbf{Queen.} That is not my concern. I'll see you again tomorrow.
+      Should you not accomplish the task, I will take your head off.
+
+      \textbf{Narrator.} After a long and wakeful night the philosopher was
+      called to the queen again.
+
+      \textbf{Queen.} Tell me! What do you have to report?
+
+      \textbf{Philosopher.} It was not easy and I needed to follow lots of
+      obscure references, but finally I actually found out how to use the
+      Philosopher's Stone to produce arbitrary amounts of gold. But only I can
+      conduct this procedure, your royal highness.
+
+      \textbf{Queen.}
+      Alright. So be it.
+
+      \textbf{Narrator.} And so years passed by, during which the philosopher
+      imagined herself to be safe. The queen searched for the stone on her own,
+      but as long as she hadn't found it, the philosopher didn't need to worry.
+      Yet one day the impossible happened: The queen has found the stone! And
+      promptly called for her philosopher.
+
+      \textbf{Queen.} Philosopher, look! I have found the Philosopher's Stone!
+      Now live up to your promise! \emph{[She hands over the stone.]}
+
+      \textbf{Philosopher.} Thank you. \emph{[She inspects the stone.]} This is
+      indeed the Philosopher's Stone. Many years ago you asked me to either
+      acquire the Philosopher's Stone or find out how to produce arbitrary
+      amounts of gold using it. Now it's my pleasure to present to you the
+      Philosopher's Stone. \emph{[She returns the stone.]}
+    \end{multicols}
+  \end{changemargin}
+\end{frame}
 
 \begin{frame}
   \centering\bigskip
@@ -810,8 +864,8 @@ constructive point of view}
     \item Minimally, $\varphi^{\neg\neg} \Leftrightarrow \neg\neg\varphi$ in
     case that~$\varphi$ is geometric
     ($R{\top}{\bot}{\wedge}{\vee}{\exists}{\bigvee}$).
-    \item Classical logic proves~$\varphi$ from~$\Gamma$
-    iff minimal logic proves~$\varphi^{\neg\neg}$ from~$\Gamma^{\neg\neg}$.
+    \item If~$\Gamma$ entails~$\varphi$ classically,
+    then~$\Gamma^{\neg\neg}$ entails~$\varphi^{\neg\neg}$ minimally.
   \end{enumerate}
   \pause
   \vspace*{-0.3em}

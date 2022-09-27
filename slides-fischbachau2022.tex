@@ -23,7 +23,6 @@
 \usepackage{tabto}
 \usepackage{xstring}
 \usepackage{ifthen}
-\usepackage{bbm}
 \usepackage[normalem]{ulem}
 \usepackage[all]{xy}
 \xyoption{rotate}
@@ -578,8 +577,6 @@ constructive point of view}
   \varphi$}\only<2>{$\text{HA} \vdash (\underline{e} \realizes \varphi)$}.}
 \end{frame}
 
-% \begin{document}
-
 \newcommand{\expl}[2]{
   \justifying
   ``$\realizes \!\text{\normalnumber{#1}}$'' amounts to: #2
@@ -721,7 +718,7 @@ constructive point of view}
   \emph{for extracting constructive proofs from classical proofs}
 \end{frame}
 
-\begin{frame}{The double-negation embedding}
+\begin{frame}{A case study in double negation}
   \vspace*{-0.8em}
   \mbox{How to extract \good{constructive proofs} from
   \bad{classical proofs} as the following?}
@@ -736,8 +733,7 @@ constructive point of view}
     \medskip
     \pause
 
-    \item \textbf{Thm.} Every infinite binary sequence
-    contains repeated terms.
+    \item \textbf{Thm.} Every infinite binary sequence contains repeated terms.
     \medskip
 
     {\emph{Proof.} By the \bad{infinite box principle},
@@ -751,9 +747,9 @@ constructive point of view}
 
   \textbf{Thm.} Let~$X$ be an inhabited set of natural numbers.
   \begin{enumerate}
-    \item If~\badbox{\textsc{lem}}, then~$X$ contains a minimal element.
+    \item Assuming~\badbox{\textsc{lem}}, the set~$X$ contains a minimal element.
     \item<5-> If~$X$ is \hil{detachable}, then~$X$ contains a minimal element.
-    \item<7-> It is \notnot the case that~$X$ contains a minimal element.
+    \item<7-> It is \hil{not~not} the case that~$X$ contains a minimal element.
   \end{enumerate}
 
   \justifying
@@ -770,8 +766,97 @@ constructive point of view}
   contradiction.\par}
 \end{frame}
 
+\newcommand{\hnegneg}{\hil{$\neg\neg$}}
+\newcommand{\negg}{{\neg}\!\!\!{\neg}}
+\newcommand{\neggv}{{\neg}\!\!\!\phantom{{\neg}}}
+\newcommand{\bott}{\bot\!\!\!\!\bot}
+\newcommand{\bottv}{\bot\!\!\!\!\phantom{\bot}}
 
-\section{Proof transformations}
+\begin{frame}{The double-negation embedding}
+  \justifying
+  \vspace*{-1em}
+  \small
+  \textbf{Def.} For formulas over a fixed first-order signature, the
+  \hil{$\neg\neg$-translation} $\varphi \mapsto \varphi^{\neg\neg}$ is defined
+  by the following clauses.
+  \begin{align*}
+    (\varphi_\text{atomic})^{\neg\neg} &\defeqv \hnegneg \varphi_\text{atomic} &
+    (\varphi \Rightarrow \psi)^{\neg\neg} &\defeqv (\varphi^{\neg\neg} \Rightarrow \psi^{\neg\neg}) \\
+    \bot^{\neg\neg} &\defeqv \hnegneg\bot &
+    \top^{\neg\neg} &\defeqv \top \\
+    (\varphi \vee \psi)^{\neg\neg} &\defeqv \hnegneg(\varphi^{\neg\neg} \vee \psi^{\neg\neg}) &
+    (\varphi \wedge \psi)^{\neg\neg} &\defeqv (\varphi^{\neg\neg} \wedge \psi^{\neg\neg}) \\
+    (\exists x\?X\_ \varphi)^{\neg\neg} &\defeqv \hnegneg{(\exists x\?X\_ \varphi^{\neg\neg})} &
+    (\forall x\?X\_ \varphi)^{\neg\neg} &\defeqv (\forall x\?X\_ \varphi^{\neg\neg}) \\
+  \end{align*}
+  \vspace*{-3em}
+
+  \mbox{\textbf{Ex.} $(\forall a{:}X\_\! \exists b{:}X\_\! a = b \vee \ldots)^{\neg\neg}
+  \equiv (\forall a{:}X\_\! \hnegneg\exists b{:}X\_\! \hnegneg(\hnegneg(a=b) \vee
+  (\ldots)^{\neg\neg})).$}
+  \pause
+
+  \textbf{Prop.} Classically, $\varphi \Leftrightarrow \varphi^{\neg\neg}$.
+  \pause
+  \vspace*{-0.5em}
+
+  \grayline
+
+  \textbf{Thm.} For every formula~$\varphi$ and set of formulas~$\Gamma$:
+  \vspace*{-0.6em}
+  \begin{enumerate}
+    \item Minimally, $\neg\neg(\varphi^{\neg\neg}) \Rightarrow
+    \varphi^{\neg\neg}$.
+    \item Minimally, $\varphi^{\neg\neg} \Leftrightarrow \neg\neg\varphi$ in
+    case that~$\varphi$ is geometric
+    ($R{\top}{\bot}{\wedge}{\vee}{\exists}{\bigvee}$).
+    \item Classical logic proves~$\varphi$ from~$\Gamma$
+    iff minimal logic proves~$\varphi^{\neg\neg}$ from~$\Gamma^{\neg\neg}$.
+  \end{enumerate}
+  \pause
+  \vspace*{-0.3em}
+
+  \textbf{Cor.} If PA proves~$\varphi$, then~HA proves~$\varphi^{\neg\neg}$.
+  \pause
+
+  \textbf{Rem.} Theorem and corollary hold for every \hil{local
+  operator}~$\nabla$ in place of~$\neg\neg$, in particular for~$\negg\negg\varphi \defeq
+  ((\varphi \Rightarrow \bott) \Rightarrow \bott)$ for some arbitrary
+  formula~$\bott$.
+\end{frame}
+
+\newcommand{\negx}{\hil{${\only<1>{\neggv}\only<2->{\negg}}$}}
+\newcommand{\botx}{\hil{${\only<1>{\bottv}\only<2>{\bott}\only<3->{\beta}}$}}
+
+\begin{frame}{Barr's theorem / Friedman's trick / A-translation}
+  \textbf{Thm.} Let~$\Gamma$ be a set of geometric sequents over a fixed
+  signature. Let~$\sigma$ be a geometric sequent. Then the following are
+  equivalent:
+  \begin{enumerate}
+    \addtocounter{enumi}{-1}
+    \item $\sigma$ holds for the \good{generic model} of~$\Gamma$ (in its
+    classifying topos).
+    \item $\sigma$ is provable from~$\Gamma$ in \good{geometric logic}.
+    \item $\sigma$ is provable from~$\Gamma$ in \good{intuitionistic logic}.
+    \item $\sigma$ is provable from~$\Gamma$ in \bad{classical logic}.
+    \item (Assuming \badbox{\textsc{ac}}) $\sigma$ is provable from~$\Gamma$ in
+    \bad{classical logic with~\textsc{ac}}.
+  \end{enumerate}
+
+  \emph{Proof of~``\,\,$\normalnumber{3} \Rightarrow \normalnumber{2}$''.}
+  Write~$\sigma \equiv (\alpha \seq{\vec x} \beta)$. Then intuitionistically,
+  \[ \alpha \Longrightarrow
+    \negx\negx\alpha \Longleftrightarrow
+    \alpha^{\negx\negx} \Longrightarrow
+    \beta^{\negx\negx} \Longleftrightarrow
+    \negx\negx\beta \equiv
+    ((\beta{\Longrightarrow}\botx){\Rightarrow}\botx)
+    \visible<4->{\Longrightarrow \beta.}
+  \]
+\end{frame}
+
+
+\section{Constructive proofs from invalid proofs}
 
 \begin{frame}
   \centering\bigskip
@@ -783,6 +868,8 @@ constructive point of view}
 
   \normalsize
 \end{frame}
+
+\addtocounter{framenumber}{-1}
 
 \end{document}
 
@@ -866,3 +953,16 @@ Thus n is a minimum:
   Given k ∈ X, we have k < n or n ≤ k.
   In the first case, ⊥ and hence conclusion.
   In the second case, good.
+
+\begin{tabular}{ll@{\qquad\qquad}ll}
+  \toprule
+  $\varphi$ & $\varphi^{\neg\neg}$ &
+  $\varphi$ & $\varphi^{\neg\neg}$ \\\midrule
+  $\alpha_\text{atomic}$ & $\hnegneg \alpha_\text{atomic}$ &
+  $\alpha \Rightarrow \beta$ & $\alpha^{\nabla} \Rightarrow \beta^{\nabla}$ \\
+  $\bot^{\neg\neg}$ & $\hnegneg\bot$ &
+  $\top^{\neg\neg}$ & $\top$ \\
+  $\alpha \vee \beta$ & $\hnegneg(\alpha^{\neg\neg} \vee \beta^{\neg\neg})$ &
+  $\alpha \wedge \beta$ & $\alpha^{\neg\neg} \wedge \beta^{\neg\neg}$ \\
+  \bottomrule
+\end{tabular}

@@ -15,6 +15,7 @@
 \usepackage{booktabs}
 \usepackage{stmaryrd,wasysym}
 \usepackage{bussproofs}
+\usepackage{proof}
 \usepackage{xspace}
 \usepackage{amssymb}
 \usepackage{array}
@@ -921,9 +922,40 @@ constructive point of view}
   \hil{Extracting constructive proofs from invalid* proofs}
 
   \normalsize
+  \pause
+
+  \emph{* higher-order proofs of first-order statements using the assumption \\
+  that a given (perhaps uncountable) set is countable}
 \end{frame}
 
-\addtocounter{framenumber}{-1}
+\begin{frame}{A quantifier for finite approximations}
+  By a \hil{finite approximation} to an infinite sequence~$\alpha : \NN \to X$,
+  we mean a \hil{finite prefix} of~$\alpha$. Notation:
+
+  \begin{itemize}
+    \item empty list $[]$
+    \item extension $[x_1,\ldots,x_n] ::^r x_{n+1} = [x_1,\ldots,x_n,x_{n+1}]$
+    \item we write~``$\tau \preceq \sigma$'' iff~$\tau$ is
+  a refinement of~$\sigma$: $[x_1,\ldots,x_n,x_{n+1},x_{n+m}] \preceq
+  [x_1,\ldots,x_n]$
+  \end{itemize}
+  \justifying
+
+  For monotone predicates~$P$ of finite lists, we introduce
+  a new quantifier~$\nabla$ such that~``$\nabla (\tau \preceq \sigma)\_
+  P(\tau)$'' expresses that \hil{no matter how~$\sigma$ evolves to a
+  better approximation~$\tau$, eventually~$P(\tau)$ will hold}.
+  \[
+    \infer[{\text{\scriptsize$(\sigma \in X^*)$}}]{\nabla (\tau \preceq \sigma)\_ P(\tau)}{P(\sigma)}
+    \qquad
+    \infer[{\text{\scriptsize$(\sigma \in X^*)$}}]{\nabla (\tau \preceq \sigma)\_ P(\tau)}{\forall(x \in X)\_\ \nabla(\tau
+    \preceq (\sigma ::^r x))\_ P(\tau)}
+  \]
+  \[
+    \infer[{\text{\scriptsize$(\sigma \in X^*, a \in X)$}}]{\nabla(\tau \preceq \sigma)\_ P(\tau)}{\forall(\tau \preceq \sigma)\_\
+    a \in \tau \Rightarrow \nabla(\upsilon \preceq \tau)\_ P(\upsilon)}
+  \]
+\end{frame}
 
 \end{document}
 

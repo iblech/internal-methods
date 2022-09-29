@@ -922,39 +922,105 @@ constructive point of view}
   \hil{Extracting constructive proofs from invalid* proofs}
 
   \normalsize
-  \pause
 
-  \emph{* higher-order proofs of first-order statements using the assumption \\
-  that a given (perhaps uncountable) set is countable}
+  \visible<3>{\emph{* higher-order proofs of first-order statements using the assumption \\
+  that a given (perhaps uncountable) set is countable}}
+
+  \pause
+  \vspace*{1em}
+  \mbox{\begin{minipage}{0.15\textwidth}
+    \centering\small
+    \includegraphics[height=5em]{zeta-function} \\
+    $\mathbb{C}$
+  \end{minipage}\quad
+  \begin{minipage}{0.20\textwidth}
+    \centering\small
+    \includegraphics[height=5em]{3-adic-numbers} \\
+    $\mathbb{Q}_p$
+  \end{minipage}\quad
+  \begin{minipage}{0.20\textwidth}
+    \centering\small
+    \includegraphics[height=5em]{bruyn-pope} \\
+    $\mathbb{F}_1$
+  \end{minipage}\quad
+  \begin{minipage}{0.42\textwidth}
+    \centering\small
+    \includegraphics[height=5em]{hilbert-hotel} \\
+    $\infty$
+  \end{minipage}}
 \end{frame}
 
 \begin{frame}{A quantifier for finite approximations}
-  By a \hil{finite approximation} to an infinite sequence~$\alpha : \NN \to X$,
-  we mean a \hil{finite prefix} of~$\alpha$. Notation:
+  Let~$X$ be a (perhaps uncountable) set. By a \hil{finite approximation} to a
+  surjection~$\NN \twoheadrightarrow X$, we mean a \hil{finite list} of
+  elements of~$X$. Notation:
 
   \begin{itemize}
-    \item empty list $[]$
-    \item extension $[x_1,\ldots,x_n] ::^r x_{n+1} = [x_1,\ldots,x_n,x_{n+1}]$
-    \item we write~``$\tau \preceq \sigma$'' iff~$\tau$ is
-  a refinement of~$\sigma$: $[x_1,\ldots,x_n,x_{n+1},x_{n+m}] \preceq
-  [x_1,\ldots,x_n]$
+    \item empty list: $[]$
+    \item extension: $[x_1,\ldots,x_n] ::^r x_{n+1} = [x_1,\ldots,x_n,x_{n+1}]$
+    \item refinement relation: $[x_1,\ldots,x_n,x_{n+1},x_{n+m}] \preceq [x_1,\ldots,x_n]$
+    \item element access: $\sigma[i] = \text{element at position~$i$
+    in~$\sigma$}$
   \end{itemize}
   \justifying
 
   For monotone predicates~$P$ of finite lists, we introduce
-  a new quantifier~$\nabla$ such that~``$\nabla (\tau \preceq \sigma)\_
+  a \hil{quantifier}~$\nabla$ such that~``$\nabla^{\tau \preceq \sigma}\_
   P(\tau)$'' expresses that \hil{no matter how~$\sigma$ evolves to a
   better approximation~$\tau$, eventually~$P(\tau)$ will hold}.
   \[
-    \infer[{\text{\scriptsize$(\sigma \in X^*)$}}]{\nabla (\tau \preceq \sigma)\_ P(\tau)}{P(\sigma)}
+    \infer[{\text{\scriptsize$(\sigma \in X^*)$}}]{\nabla^{\tau \preceq \sigma}\_ P(\tau)}{P(\sigma)}
     \qquad
-    \infer[{\text{\scriptsize$(\sigma \in X^*)$}}]{\nabla (\tau \preceq \sigma)\_ P(\tau)}{\forall(x \in X)\_\ \nabla(\tau
-    \preceq (\sigma ::^r x))\_ P(\tau)}
+    \infer[{\text{\scriptsize$(\sigma \in X^*)$}}]{\nabla^{\tau \preceq
+    \sigma}\_ P(\tau)}{\forall^{x \in X}\_\ \nabla^{\tau
+    \preceq (\sigma ::^r x)}\_ P(\tau)}
   \]
   \[
-    \infer[{\text{\scriptsize$(\sigma \in X^*, a \in X)$}}]{\nabla(\tau \preceq \sigma)\_ P(\tau)}{\forall(\tau \preceq \sigma)\_\
-    a \in \tau \Rightarrow \nabla(\upsilon \preceq \tau)\_ P(\upsilon)}
+    \infer[{\text{\scriptsize$(\sigma \in X^*, a \in X)$}}]{\nabla^{\tau
+    \preceq \sigma}\_ P(\tau)}{\forall^{\tau \preceq \sigma}\_\
+    a \in \tau \Rightarrow \nabla^{\upsilon \preceq \tau}\_ P(\upsilon)}
   \]
+\end{frame}
+
+\newcommand{\hnabla}{\hil{$\nabla$}}
+\newcommand{\genalpha}{\mbox{$\hspace{0.12em}\shortmid\hspace{-0.62em}\alpha$}}
+
+\begin{frame}{The generic surjection}
+  \vspace*{-0.6em}
+  \justifying
+  \textbf{Def.} The \hil{$\nabla$-translation} $\varphi \mapsto
+  \varphi^{\nabla}$ into formulas with a free variable $\sigma : X^*$ (denoting
+  the \hil{current stage}) is defined by the following clauses.
+  {\small
+  \begin{align*}
+    (\varphi_\text{atomic})^{\nabla} &\defeqv \hnabla^{\tau \preceq \sigma}\_
+    \varphi_\text{atomic} \\
+    \bot^{\nabla} &\defeqv \hnabla^{\tau\preceq\sigma}\_ \bot \\
+    (\varphi \vee \psi)^{\nabla} &\defeqv \hnabla^{\tau\preceq\sigma}\_
+      (\varphi^{\nabla}[\tau/\sigma] \vee \psi^{\nabla}[\tau/\sigma]) \\
+    (\exists^{x\?X}\_ \varphi)^{\nabla} &\defeqv
+    \hnabla^{\tau\preceq\sigma}\_(\exists^{x\?X}\_ \varphi^{\nabla}[\tau/\sigma]) \\
+    (\varphi \Rightarrow \psi)^{\nabla} &\defeqv
+      \forall^{\tau\preceq\sigma}\_ (\varphi^{\nabla}[\tau/\sigma] \Rightarrow
+      \psi^{\nabla}[\tau/\sigma]) \\
+    \top^{\nabla} &\defeqv \top \\
+    (\varphi \wedge \psi)^{\nabla} &\defeqv (\varphi^{\nabla} \wedge \psi^{\nabla}) \\
+    (\forall^{x\?X}\_ \varphi)^{\nabla} &\defeqv
+      (\forall^{x\?X}\_
+      \varphi^{\nabla}[\sigma/\tau]) \\
+    (\genalpha(n){=}x)^\nabla &\defeqv
+      (\hnabla^{\tau\preceq\sigma}\_ (\textsf{len}(\tau) > n \wedge \tau[n] = x))
+  \end{align*}}
+
+  \textbf{Ex.} $(\forall^{x\?X}\_ \exists^{n\?\NN}\_ \genalpha(n){=}x)^\nabla
+  \equiv$ \\
+  $\qquad\qquad
+    (\forall^{x\?X}\_ \nabla^{\tau\preceq\sigma}\_
+    \exists^{n\?\NN}\_
+    \nabla^{\upsilon\preceq\tau}\_ (\textsf{len}(\upsilon) > n \wedge \upsilon[n] = x))$
+
+  \textbf{Thm.} [Joyal--Tierney 1984] For \hil{first-order} formulas~$\varphi$,
+  $\varphi^\nabla \Rightarrow \varphi$.
 \end{frame}
 
 \end{document}

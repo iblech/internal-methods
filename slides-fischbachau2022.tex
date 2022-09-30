@@ -800,7 +800,7 @@ constructive point of view}
 
   \grayline
 
-  \textbf{Thm.} Let~$X$ be an inhabited set of natural numbers.
+  \textbf{Lemma.} Let~$X$ be an inhabited set of natural numbers.
   \begin{enumerate}
     \item Assuming~\badbox{\textsc{lem}}, the set~$X$ contains a minimal element.
     \item<5-> If~$X$ is \hil{detachable}, then~$X$ contains a minimal element.
@@ -963,6 +963,7 @@ constructive point of view}
     in~$\sigma$}$
   \end{itemize}
   \justifying
+  \pause
 
   For monotone predicates~$P$ of finite lists, we introduce
   a \hil{quantifier}~$\nabla$ such that~``$\nabla^{\tau \preceq \sigma}\_
@@ -1012,15 +1013,18 @@ constructive point of view}
       (\hnabla^{\tau\preceq\sigma}\_ (\textsf{len}(\tau) > n \wedge \tau[n] = x))
   \end{align*}}
 
+  \vspace*{-0.3em}
   \textbf{Ex.} $(\forall^{x\?X}\_ \exists^{n\?\NN}\_ \genalpha(n){=}x)^\nabla
   \equiv$ \\
   $\qquad\qquad
     (\forall^{x\?X}\_ \nabla^{\tau\preceq\sigma}\_
     \exists^{n\?\NN}\_
-    \nabla^{\upsilon\preceq\tau}\_ (\textsf{len}(\upsilon) > n \wedge \upsilon[n] = x))$
+    \nabla^{\upsilon\preceq\tau}\_ (\textsf{len}(\upsilon) > n \wedge \upsilon[n] = x)).$
 
-  \textbf{Thm.} [Joyal--Tierney 1984] For \hil{first-order} formulas~$\varphi$,
-  $\varphi^\nabla \Rightarrow \varphi$.
+  \vspace*{-0.3em}
+  \textbf{Thm.} [Joyal--Tierney 1984] For \hil{first-order} formulas~$\varphi$
+  not referring to~$\genalpha$, $\varphi^\nabla \Rightarrow \varphi$
+  intuitionistically.
 \end{frame}
 
 \end{document}

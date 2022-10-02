@@ -71,10 +71,13 @@
 \setlength\parskip{\medskipamount}
 \setlength\parindent{0pt}
 
-\title{Revisiting divisible, injective and flabby abelian groups from a
-constructive point of view}
+\title{Extraction of programs from proofs}
 \author{Ingo Blechschmidt}
 \date{September 21th, 2022}
+
+\setbeameroption{show notes on second screen}
+%\setbeamertemplate{note page}[plain, bg=white!90!black]
+\newcommand{\jnote}[2]{\only<#1>{\note{\setlength\parskip{\medskipamount}\footnotesize\justifying#2\par}}}
 
 %\useinnertheme[shadow=true]
 \setbeamerfont{block title}{size={}}
@@ -364,6 +367,60 @@ constructive point of view}
 
 {\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{5.95cm}\includegraphics[width=\paperwidth]{fr1-lighter}\end{minipage}}
 \begin{frame}{}
+  \jnote{1-5}{
+    From the displayed proof of Euclid's theorem, we can read off an algorithm
+    for computing arbitrarily large primes. There is a deeper reason to that:
+    The proof is \emph{constructive}, and from \emph{every} constructive proof
+    we can extract a corresponding program. One way to formally state and prove
+    this meta-statement is by \emph{realizability theory}, the subject of the
+    first lecture.
+  }
+
+  \jnote{4-5}{
+    In addition to the displayed applications of realizability theory,
+    personally I'm intrigued by it for mostly the following reasons:
+    (1)~Realizability elucidates the interplay between constructive and
+    computable mathematics. (2)~Realizability is a useful guide for pursuing
+    the question whether two given proofs are ``secretly the same'': Do they
+    have the same computational content? (3)~Realizability theory provides us
+    with a host of tantalizing anti-classical models of constructive
+    mathematics.
+  }
+
+  \jnote{5-5}{
+    In the second lecture, we will turn to extracting programs from
+    \emph{classical} proofs. We will do so by transforming classical proofs
+    into constructive ones and then applying the tools of the first lecture.
+    Amazingly, the displayed classical proof and others like it do have
+    constructive content---even though it is constructively and computably
+    impossible to determine minimal values of infinite sequences.
+  }
+
+  \jnote{6-}{
+    Finally, in the third lecture we will learn how to extract constructive
+    content from certain kinds of \emph{invalid} proofs---those which use the
+    preposterous assumption that every set is countable.
+
+    The methods presented in the second and in the third lecture are deeply
+    related to the \emph{dynamical approach to algebra} reported on in Stefan
+    Neuwirth's course. Coherent (and geometric) logic as in Marc Bezem's course
+    also plays an important role in this toolbox. It is greatly informed by a
+    categorical analysis as provided in Steve Awodey's course, particularly so
+    for the third lecture. The first and the second lecture overlap with
+    Chuangjie Xu's course, particularly in employing variants of the
+    double-negation translation.
+
+    This course is set in an informal constructive metatheory. Formalization
+    would both be possible in type theory as in Fredrik Nordvall-Forsberg's
+    course or in constructive set theory as in Hajime Ishihare's course.
+    All invocations of the transfinite such as by the law of excluded middle or
+    by the axiom of choice will be explicitly pointed out. For primers to
+    constructive mathematics, enjoy
+    \fixedhref{https://video.ias.edu/members/1213/0318-AndrejBauer}{Andrej
+    Bauer's 2013 IAS talk}, its \fixedhref{xxx}{written version} or
+    \fixedhref{xxx}{these course notes}.
+  }
+
   \medskip
   \textbf{Thm.}
   For every number~$n \in \NN$, there is a prime larger than~$n$.
@@ -412,7 +469,7 @@ constructive point of view}
   {\emph{Proof.} By~\badbox{\textsc{lem}}, there is a minimal value~$\alpha(i)$.
   Set~$j \defeq i + 1$.\par}
 
-  {\centering\emph{``Every theorem has a computable* witness.''} \\ \scriptsize
+  {\centering\emph{``\textnormal{Every} theorem has a computable* witness.''} \\ \scriptsize
   * with monadic side effects\par}
 \end{frame}}
 
@@ -431,6 +488,16 @@ constructive point of view}
 
     * 1815 \ \ † 1852
   \end{minipage}
+
+  \jnote{1}{
+    This year we will celebrate the 207th birthday of Ada Lovelace, pioneer in
+    computing.
+
+    It is astonishing what she started and which long way we have come!
+
+    Perhaps you would enjoy the graphic novel \emph{The Thrilling Adventures of
+    Lovelace and Babbage} in her honor.
+  }
 \end{frame}}
 
 
@@ -447,6 +514,14 @@ constructive point of view}
   \normalsize
 
   \emph{for extracting programs from constructive proofs}
+
+  \jnote{1}{
+    For a written primer to realizability theory, see
+    \fixedhref{http://math.andrej.com/asset/data/c2c.pdf}{Andrej Bauer's course
+    notes} and the notes by
+    \fixedhref{https://www2.mathematik.tu-darmstadt.de/~streicher/REAL/REAL.pdf}{Thomas
+    Streicher}.
+  }
 \end{frame}
 
 \begin{frame}{Heyting arithmetic}
@@ -473,6 +548,26 @@ constructive point of view}
     \varphi(S(x))\bigr) \quad\Longrightarrow\quad \forall x\?N\_ \varphi(x)
   \]
   and the rules of \hil{sequence calculus}.
+
+  \jnote{1}{
+    Heyting arithmetic is a convenient base theory for a constructive analysis
+    of arithmetic. It has exactly the same axioms as Peano arithmetic, only
+    that HA is set in intuitionistic logic while PA adds the law of excluded
+    middle.
+
+    As is common, we define negation~``$\neg\varphi$'' as a shorthand for the
+    implication~``$\varphi \Rightarrow \bot$''.
+
+    HA is often expanded to HA\textsuperscript{$\omega$}, \emph{higher-order
+    Heyting arithmetic}, which includes sorts, term constructors and
+    appropriate rules for function types such as~$N^N$ and $N^{(N^N)}$.
+
+    In its original form, realizability theory is only concernced with
+    extracting computational witnesses from HA-proofs; however it is fruitfully
+    extended to all of~HA\textsuperscript{$\omega$}, and we will also glimpse
+    into this higher-order extension. (NB: HA\textsuperscript{$\omega$} is
+    conservative over~HA, and one way to show this is by realizability.)
+  }
 \end{frame}
 
 \begin{frame}{Sequence calculus}
@@ -542,6 +637,67 @@ constructive point of view}
 \newcommand{\realizes}{\Vdash}
 
 \begin{frame}{Number realizability}
+  \jnote{1}{
+    A statement~$\varphi$ is \emph{realizable}, written~``$\realizes\varphi$'',
+    iff it has a \emph{realizer}, a number~$e \in \NN$ such that~$e \realizes
+    \varphi$. The recursive rules governing which numbers~$e$ are deemed to be
+    a realizer of~$\varphi$ make use of \emph{Kleene's original partial combinatory
+    algebra}, the natural numbers equipped with the following partial binary
+    operation~$({\cdot})$: $e \cdot n$ is the result of applying the
+    input~$n$ to the~$e$-th Turing machine (in some effective enumeration of all
+    Turing machines). We write~``$e \cdot n \downarrow$'' to signify that this
+    computation terminates.
+
+    Instead of Turing machines, we can also study other deterministic models of
+    computation by using different partial combinatory algebras, or even
+    nondeterministic and stateful models by a recent
+    \fixedhref{https://rosstate.org/publications/effectful/effectful-mfps19.pdf}{tantalizing
+    generalization} due to Liron Cohen and her coauthors Sofia Abreu Faro and
+    Ross Tate.
+
+    Realizability theory provides one way of formalizing the informal
+    Brouwer--Heyting--Kolmogorov interpretation of constructive mathematics.
+    For instance, that interpretation states that a witness of an
+    implication~$\varphi \Rightarrow \psi$ is a ``method'' for transforming
+    witnesses for~$\varphi$ into witnesses for~$\psi$. Realizability spells out
+    what ``method'' should mean: Turing machine.
+  }
+
+  \jnote{2}{
+    The clauses for disjunction and existential quantification require pairing
+    and unpairing. Given two numbers~$a$ and~$b$, there is a Turing
+    machine~$p_{a,b}$ which outputs~$a$ or~$b$ depending on whether its input
+    is zero or not zero. By~$\pi_1$ and~$\pi_2$, we mean (indices of) Turing
+    machines which, when called on input (an index of)~$p_{a,b}$, extract~$a$
+    repectively~$b$ by simulating its input on the input~$0$ or~$1$.
+
+    The soundness theorem is proven by an instructive induction on the
+    structure of~HA-proofs, verifying that if HA proves a sequent~$\varphi
+    \seq{\vec x} \psi$, then there is a realizer for~$\forall x_1\_ \ldots
+    \forall x_n\_ (\varphi \Rightarrow \psi)$. The core idea of the proof is to
+    verify that every axiom and every rule of~HA is realized. In this way,
+    computational content of every axiom and every rule is explicated.
+  }
+
+  \jnote{3}{
+    In the form ``$(\text{HA} \vdash \varphi) \Rightarrow
+    (\realizes\varphi)$'', the soundness theorem can be stated and proved in
+    most contexts in which the natural numbers exist as a complete entity, such
+    as constructive or classical set or type theories.
+
+    But in a sense, this is misleading: The mapping from proofs to realizers is
+    a computationally simple syntactical transformation. As such, already PRA
+    can prove the soundness theorem if we formulate it as~``$(\text{HA} \vdash
+    \varphi) \Rightarrow (\exists e\_ \text{HA} \vdash (e\realizes\varphi))$''.
+
+    NB: Some formulations of realizability state the clauses for disjunction
+    and existential quantification in a slighter simpler way, directly using
+    pairing and unpairing functions on the naturals. The price for this
+    simplification is that then the soundness theorem has to be formulated
+    as``$(\text{HA} \vdash \varphi) \Rightarrow (\exists e\_ \text{HA} \vdash
+    (e \realizes(\top \Rightarrow \varphi)))$''.
+  }
+
   \vspace*{-1em}
   \begin{changemargin}{-1.5em}{-0.5em}
   \begin{tabbing}
@@ -574,8 +730,8 @@ constructive point of view}
   \end{tabbing}\end{changemargin}
 
   \mbox{\textbf{Thm.} If~$\text{HA} \vdash \varphi$, then there is a
-  number~$e \in \NN$ such that~\only<1>{$e \realizes
-  \varphi$}\only<2>{$\text{HA} \vdash (\underline{e} \realizes \varphi)$}.}
+  number~$e \in \NN$ such that~\only<1-2>{$e \realizes
+  \varphi$}\only<3>{$\text{HA} \vdash (\underline{e} \realizes \varphi)$}.}
 \end{frame}
 
 \newcommand{\expl}[2]{
@@ -589,7 +745,82 @@ constructive point of view}
 
 {\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{0.00cm}\hfill\mbox{\includegraphics[width=0.2\textwidth]{turing-machine}\;\;}\end{minipage}}
 \begin{frame}{Exploring the realizability model}
-  \medskip
+  \jnote{5}{
+    The statement that every function~$\NN \to \NN$ is computable by a Turing
+    machine (or equivalently, by a lambda term) is known as the \emph{formal
+    Church--Turing thesis}. It is an example of a statement which is realizable
+    but not provable in~HA\textsuperscript{$\omega$}.
+
+    Many of the curious properties of the realizability model follow from the
+    formal Church--Turing thesis. In fact, a slight generalization called the
+    \emph{extended Church thesis} suffices to completely characterize the
+    (provably) realizable statements:
+    \[ \text{HA+ECT} \vdash \varphi \quad\text{iff}\quad
+      \text{HA} \vdash (\realizes \varphi). \]
+
+    In the realizability model built using lambda terms instead of Turing
+    machines, the formal Church--Turing thesis fails. This is because of
+    changed calling conventions: In the model built using lambda terms, a
+    realizer for a statement of the form~``$\forall f\?N^N\_ \varphi(f)$'' is a
+    lambda term~$e$ such that for every lambda term~$r$ computing a
+    function~$f : \NN \to \NN$, the term $er$ is a realizer for~$\varphi(f)$.
+    However, the term~$e$ cannot inspect the form (``source code'') of its
+    argument.
+  }
+
+  \jnote{6}{
+    Statement~5 is not a statement in the language of~HA or
+    of~HA\textsuperscript{$\omega$}, but in an extension in which we can also
+    support quotients (to make sense of the construction of the reals using
+    equivalence classes of Cauchy sequences) or powersets (to support the
+    construction using Dedekind cuts). A proper interpretation is possible in
+    the category of assemblies or in the ef{}fective topos.
+
+    An exposition of this continuity phenomenon is provided in
+    \fixedhref{https://arxiv.org/pdf/2204.00948.pdf}{this survey paper}
+    (Example~6 there).
+  }
+
+  \jnote{7}{
+    By \emph{Markov's principle}, we mean the statement
+    \[ \forall f\?N^N\_ (\neg\neg(\exists n\?N\_ f(n) = 0)) \Rightarrow
+    (\exists n\?N\_ f(n) = 0). \]
+    By the clauses for implication and negation, a number~$e$ is a realizer for
+    a negated statement~$\neg\psi$ iff there is no realizer for~$\psi$:
+    \begin{align*}
+      e \realizes \neg\psi &\quad\text{iff}\quad
+      \text{for every~$r \in \NN$ such that~$r \realizes \psi$, $e \cdot r
+      \downarrow$ and~$e \cdot r \realizes \bot$} \\
+      &\quad\text{iff}\quad \text{for every~$r \in \NN$ such that~$r \realizes \psi$, falsum holds} \\
+      &\quad\text{iff}\quad \text{there is no number~$r \in \NN$ such that~$r \realizes \psi$} \\
+      &\quad\text{iff}\quad \text{$\psi$ is not realized}
+    \end{align*}
+    In particular, if there exists a realizer for a negated statement at all,
+    every number whatsoever is a realizer. As a consequence, \emph{realizers for
+    negated statements are never informative;} and a number~$e$ is a realizer
+    for~$\neg\neg\varphi$ iff~$\varphi$ is \emph{not~not} realizable. Hence a
+    realizer for~$\neg\neg\varphi$ encodes the mere promise that somewhere,
+    there is a realizer for~$\varphi$, without giving any indication how to
+    find it.
+  }
+
+  \jnote{10}{
+    As the examples illustrate, realizability and truth do not at all coincide:
+    There are many statements which are realizable but not true from the point of
+    view of classical mathematics (such as the formal Church--Turing thesis)
+    and vice versa (such as the statement that every function~$\NN \to \NN$ has
+    a zero or not).
+
+    Within the realizability model, the situation is radically different.
+    For every statement~$\varphi$, the statement~``$\varphi \Leftrightarrow
+    (\realizes \varphi)$'' is realizable.
+
+    The multiverse of models of constructive mathematics can be explored from
+    the point of view of any base model, and from the point of view of the
+    realizability model it looks quite different that from the point of view of
+    classical mathematics.
+  }
+
   \medskip
   \medskip
   \begin{tabular}{@{\!\!\!\!\!\!}l@{\,}llp{1.8cm}}
@@ -603,39 +834,51 @@ constructive point of view}
     \normalnumber{4} & Every map $\NN \to \NN$ is computable. & \cxmark &
     \qswitch{4}{5}{\ccmark}\only<1-4>{\,} \visible<5->{(trivially)} \\
     \normalnumber{5} & Every map $\RR \to \RR$ is continuous. & \cxmark &
-    \qswitch{5}{6}{\ccmark} \\
+    \qswitch{5}{6}{\ccmark{} (if MP)} \\
     \normalnumber{6} & Markov's principle holds. & \ccmark{} (trivially) &
     \qswitch{6}{7}{\ccmark{} (if MP)} \\
     \normalnumber{7} & Countable choice holds. & \ccmark &
     \qswitch{7}{8}{\ccmark{} (always!)} \\
     \normalnumber{8} & Heyting arithmetic is categorical. & \cxmark &
     \qswitch{8}{9}{\ccmark{} (if MP)} \\
+    \normalnumber{9} & A statement holds iff it is realized. & \cxmark &
+    \qswitch{9}{10}{\ccmark} \\
     \bottomrule
   \end{tabular}
   \medskip
 
-  \only<1>{\ \\\ \\\ \\\ }
+  \only<1>{\color{white}There is a machine which determines of any given
+  number whether it is prime or not. \\\ \\\ }
   \only<2>{\expl{1}{There is a machine which determines of any given
-  number whether it is prime or not. \\\ }}
+  number whether it is prime or not. \\\ \\\ }}
   \only<3>{\expl{2}{There is a machine which, given a number~$n$, computes a
   prime larger than~$n$. \\\ \\\ }}
   \only<4>{\expl{3}{There is a machine which, given a machine
   computing a map~$f : \NN \to \NN$, determines whether~$f$ has a
-  zero or not. \\\ }}
+  zero or not. \\\ \\\ }}
   \only<5>{\expl{4}{There is a machine which, given a machine
   computing a map~$f : \NN \to \NN$, outputs a machine
-  computing~$f$. \\\ }}
+  computing~$f$. \\\ \\\ }}
   \only<6>{\ \\\ \\\ \\\ }
   \only<7>{\expl{6}{There is a machine which, given a machine
   computing a map~$f : \NN \to \NN$ and given the promise that it is \notnot
   the case that~$f$ has a zero, determines a zero of~$f$.}}
-  \only<8->{\expl{7}{\justifying There is a machine which, given a machine
+  \only<8>{\expl{7}{\justifying There is a machine which, given a machine
   computing for every~$x \in \NN$ some~$y \in A$ together with a realizer
   of~$\varphi(x,y)$, outputs a machine computing a suitable choice
   function~$\NN \to A$.}}
+  \only<9>{\ \\\ \\\ \\\ }
 \end{frame}}
 
 \begin{frame}{Metatheory of Heyting arithmetic}
+  \jnote{1}{
+    Variants of the realizability model can be used to establish several
+    metatheoretic properties of Heyting arithmetic. For the second and third
+    properties, the keyword is ``realizability with proof''; for the fourth,
+    using the variant of realizability built using System~T terms instead of
+    Turing machines.
+  }
+
   \begin{enumerate}
     \item \hil{Unprovability results:}
     \medskip
@@ -669,6 +912,21 @@ constructive point of view}
 \end{frame}
 
 \begin{frame}{Range of machine models}
+  \jnote{1-}{
+    Infinite time Turing machines were introduced
+    \fixedhref{https://arxiv.org/abs/math/9808093}{by Joel David Hamkins and
+    Andy Lewis}. Unlike ordinary Turing machines, they can carry out ``more
+    than infinitely many computational steps''. Where an ordinary Turing
+    machine fails to terminate, an infinite time Turing machine is put on
+    day~$\omega$ into a special limit state and can then meaningfully continue.
+
+    All functions in Gödel's System~T are unconditionally total. Hence
+    unbounded search cannot be implemented in System~T.
+
+    The idea to apply realizability to machines in the real world is
+    \fixedhref{http://math.andrej.com/2014/03/04/intuitionistic-mathematics-and-realizability-in-the-physical-world/}{due to Andrej Bauer}.
+  }
+
   \begin{enumerate}
     \item \hil{Turing machines}
 
@@ -693,7 +951,7 @@ constructive point of view}
     \visible<5->{Markov's principle is not realized.}
     \medskip
 
-    \item \hil{Machines in the real world} -- philosophical
+    \item \hil{Machines in the real world} -- \emph{philosophical}
 
     \justifying
     \visible<6->{``Every map $\RR \to \RR$ is continuous'' is realized if,
@@ -758,6 +1016,12 @@ constructive point of view}
       Philosopher's Stone. \emph{[She returns the stone.]}
     \end{multicols}
   \end{changemargin}
+
+  \jnote{1}{
+    Adapted from
+    \fixedhref{http://blog.ezyang.com/2013/04/a-classical-logic-fairy-tale/}{Edward
+    Yang's blog}.
+  }
 \end{frame}
 
 \begin{frame}
@@ -774,6 +1038,50 @@ constructive point of view}
 \end{frame}
 
 \begin{frame}{A case study in double negation}
+  \jnote{2-4}{
+    The two displayed proofs seem to be devoid of computational content:
+    Computationally, it is neither possible to determine the minimal element of
+    an infinite sequence nor to determine whether a binary sequence contains
+    infinitely many zeros or infinitely many ones. These claims have no
+    realizer.
+
+    However, contrary to expectations, the two proofs do contain an obscured
+    constructive core, and this core can be uncovered by the two logical
+    metatheorems presented in this lecture, the double-negation embedding and
+    \emph{Friedman's trick}. Details are in Thierry Coquand's
+    \fixedhref{https://www.lama.univ-savoie.fr/pagesmembres/ruyer/divers/lecturearticles/coquand/cor3.ps}{Computational
+    Content of Classical Logic}.
+  }
+
+  \jnote{3-4}{
+    To set the stage, we analyze the lemma used in the first proof. The
+    statement ``every inhabited set of natural numbers contains a minimal
+    element'' is not realizable and hence does not directly have
+    computational content. In fact, this statement is equivalent to the law of
+    excluded middle. Correspondingly, it seems that proofs using it cannot ever
+    be constructivized. However, as we will see, much more important for
+    extraction of constructive content is the form of the asserted claims than
+    the form of the used auxiliary lemmas.
+  }
+
+  \jnote{5-}{
+    A set~$X$ of natural numbers is \emph{detachable} if and only if for every
+    number~$n \in \NN$, either~$n \in X$ or~$n \not\in X$. In classical
+    mathematics, every set of natural numbers is detachable. Constructively,
+    detachability is a nontrivial and computationally meaningful condition. A
+    realizer for detachability of a set~$X$ is a machine which reads a
+    number~$n$ as input and determines whether~$n$ belongs to~$X$ or not
+    (together with corresponding realizers).
+  }
+
+  \jnote{7-}{
+    Instead of strengthening the assumption, we can also weaken the conclusion.
+    Statement~3 merely asserts that it is impossible that no minimum exists.
+    The \emph{double-negation embedding} reviewed on the next slide explains
+    why it can be expected a priori that this weakening allows us to give a
+    constructive proof.
+  }
+
   \vspace*{-0.8em}
   \mbox{How to extract \good{constructive proofs} from
   \bad{classical proofs} as the following?}
@@ -828,6 +1136,73 @@ constructive point of view}
 \newcommand{\bottv}{\bot\!\!\!\!\phantom{\bot}}
 
 \begin{frame}{The double-negation embedding}
+  \jnote{1-3}{
+    The starting point of the double-negation embedding is that, while the law
+    of excluded middle is not available in intuitionistic logic, the double
+    negation of every instance is: For every formula~$\varphi$, the formula
+    \[ \neg\neg(\varphi \vee \neg\varphi) \]
+    is an intuitionistic tautology:
+
+    \begin{quote}
+      In order to show~$\neg\neg(\varphi \vee \neg\varphi)$,
+      assume~$\neg(\varphi \vee \neg\varphi)$ and deduce~$\bot$.
+
+      As a preparatory step, we verify~$\neg\varphi$: If~$\varphi$, then in
+      particular~$\varphi \vee \neg\varphi$, hence~$\bot$ by assumption.
+
+      Having established~$\neg\varphi$, we notice that also~$\varphi \vee
+      \neg\varphi$, hence~$\bot$ by assumption.
+    \end{quote}
+
+%    This observation unlocks the following technique to transcribe a classical
+%    proof of a statement to an intuitionistic (and even minimal logic) proof of
+%    its translation. Most steps in the classical proof will also be acceptable
+%    in intuitionistic logic. We simply mimic these. When the classical proof
+%    appeals to~\textsc{lem}, we instead use the appropriate doubly negated
+%    instance. We
+%
+%    The difference between intuitionistic and classical logic is concentrated
+%    in their treatment of disjunction and existential quantification.
+%    Classically, to verify a disjunction~$\varphi \vee \psi$, it suffices to
+%    establish~$\neg(\neg\varphi \wedge \neg\psi)$--the intuitionistically
+%    weaker claim that it is not the case that neither~$\varphi$ nor~$\psi$
+%    hold; similarly, to verify an existential statement~$\exists x\?X\_
+%    \varphi(x)$, it suffices to establish~$\neg\forall x\?X\_
+%    \neg\varphi(x)$---the claim that nonexistence is impossible.
+  }
+
+  \jnote{3}{
+    The three parts of the theorem are each proven by induction, on the
+    structure of~$\varphi$ for the first two parts and on the structure of
+    derivations for the third part. Carrying this out is an instructive
+    exercise!
+  }
+
+  \jnote{4}{
+    The corollary follows from the theorem because HA proves the
+    double-negation translation of every axiom of PA. For instance, the
+    translation of the axiom
+    \[ \forall x\?N\_ x + 0 = x \]
+    is
+    \[ \forall x\?N\_ \neg\neg(x + 0 = x), \]
+    and this weaker statement is provable thanks to the intuitionistic (even
+    minimal) tautology~$\varphi \Rightarrow \neg\neg\varphi$.
+
+    Similarly, the translation of an instance of the induction scheme
+    \[
+      \varphi(0) \wedge \bigl(\forall x\?N\_ \varphi(x) \Rightarrow
+      \varphi(S(x))\bigr) \quad\Longrightarrow\quad \forall x\?N\_ \varphi(x)
+    \]
+    is again an instance of the induction scheme:
+    \[
+      \varphi(0)^{\neg\neg} \wedge \bigl(\forall x\?N\_ \varphi(x)^{\neg\neg} \Rightarrow
+      \varphi(S(x))^{\neg\neg}\bigr) \quad\Longrightarrow\quad \forall x\?N\_
+      \varphi(x)^{\neg\neg}
+    \]
+  }
+
+  % xxx importance of remark
+
   \justifying
   \vspace*{-1em}
   \small

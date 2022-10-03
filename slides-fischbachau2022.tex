@@ -407,13 +407,13 @@
     also plays an important role in this toolbox. It is greatly informed by a
     categorical analysis as provided in Steve Awodey's course, particularly so
     for the third lecture. The first and the second lecture overlap with
-    Chuangjie Xu's course, particularly in employing variants of the
+    Chuangjie Xu's course, particularly regarding the
     double-negation translation.
 
     This course is set in an informal constructive metatheory. Formalization
     would both be possible in type theory as in Fredrik Nordvall-Forsberg's
     course or in constructive set theory as in Hajime Ishihare's course.
-    All invocations of the transfinite such as by the law of excluded middle or
+    All appeals to the transfinite such as by the law of excluded middle or
     by the axiom of choice will be explicitly pointed out. For primers to
     constructive mathematics, enjoy
     \fixedhref{https://video.ias.edu/members/1213/0318-AndrejBauer}{Andrej
@@ -493,7 +493,7 @@
     This year we will celebrate the 207th birthday of Ada Lovelace, pioneer in
     computing.
 
-    It is astonishing what she started and which long way we have come!
+    It is astonishing what she started and what long way we have come!
 
     Perhaps you would enjoy the graphic novel \emph{The Thrilling Adventures of
     Lovelace and Babbage} in her honor.
@@ -516,6 +516,10 @@
   \emph{for extracting programs from constructive proofs}
 
   \jnote{1}{
+    Monika Seisenberger has
+    \fixedhref{https://www.proofsociety.org/wp-content/uploads/2018/09/ProgramExtraction_slides.pdf}{many
+    and more detailed} slides on this topic.
+
     For a written primer to realizability theory, see
     \fixedhref{http://math.andrej.com/asset/data/c2c.pdf}{Andrej Bauer's course
     notes} and the notes by
@@ -677,6 +681,12 @@
     \forall x_n\_ (\varphi \Rightarrow \psi)$. The core idea of the proof is to
     verify that every axiom and every rule of~HA is realized. In this way,
     computational content of every axiom and every rule is explicated.
+
+    For instance, the statement (with no free variables)
+    \[ \bot \Rightarrow \varphi \]
+    is realized by any number~$e \in \NN$ such that for every~$r \in \NN$
+    with~$r \realizes \varphi$ (this condition is never satisfied), $e \cdot r
+    \downarrow$ and~$e \cdot r \realizes \varphi$, so by any number whatsoever.
   }
 
   \jnote{3}{
@@ -804,6 +814,53 @@
     find it.
   }
 
+  \jnote{8}{
+    By \emph{countable choice}, we mean the statement
+    \[ (\forall x\?N\_ \exists y\?A\_ \varphi(x,y)) \Longrightarrow
+      (\exists f\?A^N\_ \forall x\?N\_ \varphi(x,f(x))). \]
+    Up to some repackaging, this statement is realized by the identity machine
+    which simply outputs its input unchanged.
+
+    Choice for higher type fails in the realizability model. For instance, the
+    statement
+    \[ (\forall f\?N^N\_ \exists y\?A\_ \varphi(f,y)) \Longrightarrow
+      (\exists \theta\?A^{N^N}\_ \forall f\?N^N\_ \varphi(f,\theta(f))) \]
+    is not realized. A realizer for the antecedent would be a machine which,
+    given an index for a Turing machine computing a total function~$f : \NN \to
+    \NN$, produces a code for a suitable element~$y$. However, this element~$y$
+    might not only depend on the extensional input/output behavior of~$f$, but
+    also on the specific index (source code), hence wouldn't describe an actual
+    function on the set of computable functions~$\NN \to \NN$.
+
+    This issue does not arise with countable choice, as natural numbers have
+    unique codes.
+  }
+
+  \jnote{9}{
+    Similar to Statement~5, Statement~8 can only be formulated in an extension
+    of the formal language used here.
+
+    It expresses that, up to unique isomorphism, there is just one model of
+    Heyting arithmetic, namely the standard model. This is in stark contrast
+    with the situation in classical mathematics, where Gödel's completeness
+    theorem/Henkin term models can be used to concoct a host of nonstandard
+    models.
+
+    As a consequence, Peano arithmetic is ``quasi-inconsistent'' from the point
+    of view of the realizability model, as it is consistent (being
+    equiconsistent with HA) but does not admit a model (every model of PA is
+    also a model of HA, but HA only has one model, and this does not validate
+    the PA-theorem ``every Turing machine terminates or does not terminate'').
+
+    Pointers to relevant literature are in
+    \fixedhref{https://arxiv.org/pdf/2204.00948.pdf}{this survey paper}
+    (Example~8 there). Also see
+    \fixedhref{https://www.ps.uni-saarland.de/Publications/documents/HermesKirst_2022_An-Analysis.pdf}{the
+    2022 paper by Marc Hermes and Dominik Kirst}, particularly also the final
+    paragraph of their Section~8.1 which alludes to a result in a different
+    direction.
+  }
+
   \jnote{10}{
     As the examples illustrate, realizability and truth do not at all coincide:
     There are many statements which are realizable but not true from the point of
@@ -817,7 +874,7 @@
 
     The multiverse of models of constructive mathematics can be explored from
     the point of view of any base model, and from the point of view of the
-    realizability model it looks quite different that from the point of view of
+    realizability model it looks quite different than from the point of view of
     classical mathematics.
   }
 
@@ -1060,8 +1117,8 @@
     computational content. In fact, this statement is equivalent to the law of
     excluded middle. Correspondingly, it seems that proofs using it cannot ever
     be constructivized. However, as we will see, much more important for
-    extraction of constructive content is the form of the asserted claims than
-    the form of the used auxiliary lemmas.
+    extraction of constructive content is the form of the asserted end results than
+    the form of auxiliary lemmas used in a proof.
   }
 
   \jnote{5-}{
@@ -1071,7 +1128,7 @@
     detachability is a nontrivial and computationally meaningful condition. A
     realizer for detachability of a set~$X$ is a machine which reads a
     number~$n$ as input and determines whether~$n$ belongs to~$X$ or not
-    (together with corresponding realizers).
+    (outputting also corresponding realizers).
   }
 
   \jnote{7-}{
@@ -1137,10 +1194,14 @@
 
 \begin{frame}{The double-negation embedding}
   \jnote{1-3}{
-    The starting point of the double-negation embedding is that, while the law
-    of excluded middle is not available in intuitionistic logic, the double
-    negation of every instance is: For every formula~$\varphi$, the formula
-    \[ \neg\neg(\varphi \vee \neg\varphi) \]
+    Minimal logic is intuitionistic logic minus \emph{ex falsum quodlibet}
+    ($\bot \seq{\vec x} \varphi$).
+
+    The double-negation embedding builds on a fundamental
+    observation: While the law
+    of excluded middle is not available in minimal or intuitionistic logic, the double
+    negation of every instance is---for every formula~$\varphi$, the formula
+    $\neg\neg(\varphi \vee \neg\varphi)$
     is an intuitionistic tautology:
 
     \begin{quote}
@@ -1154,24 +1215,18 @@
       \neg\varphi$, hence~$\bot$ by assumption.
     \end{quote}
 
-%    This observation unlocks the following technique to transcribe a classical
-%    proof of a statement to an intuitionistic (and even minimal logic) proof of
-%    its translation. Most steps in the classical proof will also be acceptable
-%    in intuitionistic logic. We simply mimic these. When the classical proof
-%    appeals to~\textsc{lem}, we instead use the appropriate doubly negated
-%    instance. We
-%
-%    The difference between intuitionistic and classical logic is concentrated
-%    in their treatment of disjunction and existential quantification.
-%    Classically, to verify a disjunction~$\varphi \vee \psi$, it suffices to
-%    establish~$\neg(\neg\varphi \wedge \neg\psi)$--the intuitionistically
-%    weaker claim that it is not the case that neither~$\varphi$ nor~$\psi$
-%    hold; similarly, to verify an existential statement~$\exists x\?X\_
-%    \varphi(x)$, it suffices to establish~$\neg\forall x\?X\_
-%    \neg\varphi(x)$---the claim that nonexistence is impossible.
+    \vspace*{-0.6em}
+    Also, a doubly negated statement is not a dead end. Instead, we can
+    continue reasoning, by the following tautology (``Kleisli extension'',
+    ``monadic bind'', ``nucleus axiom''):
+
+    \vspace*{-1.6em}
+    \[ (\neg\neg\varphi \wedge (\varphi \Rightarrow \neg\neg\psi))
+    \Longrightarrow \neg\neg\psi \]
   }
 
   \jnote{3}{
+    \vspace*{-0.8em}
     The three parts of the theorem are each proven by induction, on the
     structure of~$\varphi$ for the first two parts and on the structure of
     derivations for the third part. Carrying this out is an instructive
@@ -1201,7 +1256,31 @@
     \]
   }
 
-  % xxx importance of remark
+  \jnote{5}{
+    Live demo with
+    \fixedhref{https://agdapad.quasicoherent.io/~AgdaPadova/html/Dickson-pc2022.html}{Agda
+    code for the theorem on all infinite sequences of natural numbers being
+    good}:
+
+    \begin{enumerate}
+    \item\justifying The first proof there implements the classical proof,
+    postulating the law of excluded middle as an unprovable axiom. Thereby Agda
+    can verify the classical proof to be correct, however trying to run the
+    proof will get stuck on the postulated \textsc{lem}-oracle.
+
+    \item The second proof rewrites the statement of the theorem and its proof
+    by the double-negation translation. The result is a constructive proof
+    which doesn't rely on postulates; however there is still no direct
+    computational content, as the asserted claim is a (doubly) negated
+    statement.
+
+    \item In a logical sleight of hand, the third proof imports the
+    second proof but specializes~$\bot$, which was an arbitrary constant there,
+    to the asserted claim. The tautology~$\negg\negg\bott \Rightarrow \bott$ of
+    minimal logic is then used to escape the double-negation monad and obtain a
+    constructive proof of the full result.
+    \end{enumerate}
+  }
 
   \justifying
   \vspace*{-1em}
@@ -1259,6 +1338,37 @@
 \newcommand{\botx}{\hil{${\only<1>{\bottv}\only<2>{\bott}\only<3->{\beta}}$}}
 
 \begin{frame}{Barr's theorem / Friedman's trick / A-translation}
+  \jnote{4}{
+    The proof transformation for~``$3 \Rightarrow 2$'' is explicit in
+    nature, feasible in practice and increases the proof length only
+    polynomially. There is also an
+    \fixedhref{https://drops.dagstuhl.de/opus/volltexte/2022/16776/pdf/LIPIcs-TYPES-2021-7.pdf}{intriguing
+    alternative approach by Giulio Fellin, Sara Negri and Eugenio Orlandelli}
+    employing cut elimination (thereby increasing the proof length
+    substantially, but conceptually beneficial in other aspects). Furthermore,
+    this metatheorem can also be cast in semantic terms:
+
+    Every Grothendieck topos admits a cover (a surjective geometric morphism from
+    another Grothendieck topos) by a Grothendieck topos which is boolean. This
+    can be obtained by first adjoining a \emph{generic proposition}~$\chi$ and then
+    taking sheaves with respect to the modality~$(({\cdot} \Rightarrow \chi)
+    \Rightarrow \chi)$.
+
+    Applied to the classifying topos of~$\Gamma$, this insight yields a proof
+    of~``$3 \Rightarrow 0$'', since pullback along surjective geometric
+    morphisms reflects validity of geometric sequents.
+
+    Furthermore, every Grothendieck topos admits a cover by a Grothendieck
+    topos over a complete Boolean algebra. Assuming Zorn's lemma in the
+    metatheory, this topos validates~\textsc{lem} and~\textsc{zorn},
+    hence~\textsc{ac}. This shows~``$4 \Rightarrow 0$''.
+
+    An introduction to topos-theoretic generic models with a view towards
+    applications in constructive commutative algebra is contained in
+    \fixedhref{https://arxiv.org/abs/2012.13850}{this survey}.
+    \vspace*{2em}
+  }
+
   \textbf{Thm.} Let~$\Gamma$ be a set of geometric sequents over a fixed
   signature. Let~$\sigma$ be a geometric sequent. Then the following are
   equivalent:
@@ -1269,7 +1379,7 @@
     \item $\sigma$ is provable from~$\Gamma$ in \good{geometric logic}.
     \item $\sigma$ is provable from~$\Gamma$ in \good{intuitionistic logic}.
     \item $\sigma$ is provable from~$\Gamma$ in \bad{classical logic}.
-    \item (Assuming \badbox{\textsc{ac}}) $\sigma$ is provable from~$\Gamma$ in
+    \item (Assuming \badbox{\textsc{zorn}}) $\sigma$ is provable from~$\Gamma$ in
     \bad{classical logic with~\textsc{ac}}.
   \end{enumerate}
 
@@ -1289,6 +1399,43 @@
 \section{Constructive proofs from invalid proofs}
 
 \begin{frame}
+  \jnote{3}{
+    \textbf{Thm. 1.} From every proof~$p$ of a statement~$\varphi$ such that
+    \vspace*{-0.5em}
+    \begin{enumerate}
+      \item the assertion~$\varphi$ is a first-order statement,
+      \item the proof~$p$ is constructive,
+      \item the proof~$p$ is formulated in a certain higher-order system (in
+      particular, the proof may, unlike its end result, freely employ
+      higher-order notions) and
+      \item for a certain set~$X$ appearing in~$p$, the proof assumes that~$X$
+      is countable,
+    \end{enumerate}
+    \vspace*{-0.5em}
+    a constructive proof of the same statement~$\varphi$, set in the same
+    system, but \emph{without requiring the countability assumption} can be
+    extracted.
+  }
+
+  \jnote{4}{
+    \textbf{Thm. 2.} From every proof~$p$ of a statement~$\varphi$ such that
+    \vspace*{-0.5em}
+    \begin{enumerate}
+      \item the assertion~$\varphi$ is a geometric implication,
+      \item the proof~$p$ is classical (constructive + \textsc{lem}, but still no
+      \textsc{zorn}),
+      \item the proof~$p$ is formulated in a certain higher-order system (in
+      particular, the proof may, unlike its end result, freely employ
+      higher-order notions) and
+      \item for a certain set~$X$ appearing in~$p$, the proof assumes that~$X$
+      is countable,
+    \end{enumerate}
+    \vspace*{-0.5em}
+    a classical proof of the same statement~$\varphi$, set in the same
+    system, but \emph{without requiring the countability assumption} can be
+    extracted.
+  }
+
   \centering\bigskip
   \includegraphics[height=9.5em]{phantoms}
   \medskip
@@ -1298,7 +1445,7 @@
 
   \normalsize
 
-  \visible<3>{\emph{* higher-order proofs of first-order statements using the assumption \\
+  \visible<3->{\emph{* higher-order proofs of first-order statements using the assumption \\
   that a given (perhaps uncountable) set is countable}}
 
   \pause

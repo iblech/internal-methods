@@ -85,14 +85,14 @@ Universitätsstr. 14 \\
 \begin{document}
 
 \begin{abstract}
-  To help put earlier results in constructive algebra and constructive
+  To help put established results in constructive algebra and constructive
   combinatorics into perspective, give possible background for certain
   inductive definitions and form a unified framework for certain techniques for
   extracting programs from classical proofs, we propose a modal study of the
   topos-theoretic multiverse. Our proposal is inspired by the corresponding study
-  of the set-theoretic multiverse and focusses on applications in other
-  parts of mathematics.
-  % than the intriguing endeavour of exploring the range of set-theoretic possibility.
+  of the set-theoretic multiverse, but focuses less on exploring the range of
+  set/topos-theoretic possibility and more on concrete applications in
+  constructive mathematics.
 \end{abstract}
 
 \maketitle
@@ -107,8 +107,9 @@ from a constructive point of view. A non-exhaustive list is:
 \item A transitive relation is well-founded iff there is no infinite descending
 chain.
 \item A relation is almost-full iff every infinite sequence is good (meaning
-that some element is related to a later element in the sequence -- this
-notion has been studied in combinatorics~\cite{xxx} and found applications in
+that some term on the sequence is related to some later term -- the notion
+of almost-full relations
+has been studied in combinatorics~\cite{xxx} and found applications in
 termination checking~\cite{xxx}).
 \item \emph{Krull's lemma}: A ring element is nilpotent iff every prime
 ideal contains it.
@@ -126,8 +127,8 @@ elements.
 \end{enumerate}
 Constructive theorems always carry computational and geometric
 content---from every constructive proof, a corresponding algorithm can be
-extracted, and every constructive proof holds also for continuous families of
-the objects in question. But the listed classical principles have no
+extracted~\cite{bauer:c2c}, and every constructive proof holds also for continuous families of
+the objects in question~\cite[Section~4.3]{blechschmidt:filmat}. But the listed classical principles have no
 computational witness or fail in continuous families, hence are not
 available in constructive mathematics.
 
@@ -136,8 +137,7 @@ replacements to these principles.
 \begin{enumerate}
 \item A transitive relation is well-founded iff \emph{everywhere} there is no infinite descending
 chain.
-\item A relation is almost-full iff every infinite sequence \emph{everywhere} is good (meaning
-that some element is related to a later element in the sequence).
+\item A relation is almost-full iff every infinite sequence \emph{everywhere} is good.
 \item A ring element is nilpotent iff all prime
 ideals \emph{everywhere} contain it.
 \item Every ring \emph{proximally} has a maximal ideal.
@@ -160,7 +160,7 @@ some positive ouvert Grothendieck topos over the current base. More such
 given in Section~\ref{sect:defn-modalities}.
 
 The modal language not only allows us to recover classical principles
-as above, but also renders some powerful theorems about the topos-theoretic
+as above, but also makes some powerful theorems about the topos-theoretic
 landscape smoothly accessible:
 \begin{enumerate}
 \addtocounter{enumi}{7}
@@ -176,7 +176,7 @@ surjection~$\NN \twoheadrightarrow X$.
 An example application of the latter two principles
 has recently been studied in constructive
 commutative algebra~\cite{blechschmidt-schuster:constructive-maximal-ideals}.
-For countable rings, an explicit construction of an maximal ideal is available.
+For countable rings, an explicit construction of a maximal ideal is available.
 By item~(\ref{item:prox-countable}), this construction can also be carried out
 for arbitrary rings, though the result is not a maximal ideal in the narrow
 sense; rather, the resulting maximal ideal exists \emph{proximally}, in some
@@ -223,7 +223,8 @@ Shawn Henry, Andreas Blass ...
 the category of sheaves on a small site. A \emph{Grothendieck topos over a
 given (Grothendieck or elementary) topos}~$\B$ is ``a Grothendieck topos from
 the point of view of~$\B$''; using a sufficiently expressive form of the
-internal language of~$\B$, this amounts to a bounded geometric morphism~$\E \to
+internal language of~$\B$, which allows to make direct sense of the notion in
+scare quotes, this amounts to a bounded geometric morphism~$\E \to
 \B$, and this can be taken as the definition.
 \end{defn}
 
@@ -237,16 +238,21 @@ The xxx (use word of Hamkins) of a base~$\B$ is the collection of Grothendieck
 toposes over~$\B$ (which one should formalize in set-theoretic foundations more
 precisely as the proper class of small sites in~$\B$).
 
-\begin{rem}Perhaps arbitrary elementary toposes over the base, corresponding to
+\begin{rem}Perhaps arbitrary \emph{elementary} toposes over the base, corresponding to
 possibly unbounded geometric morphisms~$\E \to \B$ or even arbitrary
 fibrations/indexed categories over~$\B$ validating an appropriate form of the
 axioms of elementary toposes, should also be
-taken as part of the topos-theoretic multiverse. This first proposal of the
-modal multiverse sticks to Grothendieck toposes for ease of
+taken as part of the topos-theoretic multiverse. The first foray into the
+modal topos-theoretic multiverse outlined in this note
+sticks to Grothendieck toposes for ease of
 formalizability (``for every small site'' can be expressed also in the more
 standard flavors of the internal topos language, while ``for every elementary
-topos'' requires more elaborate versions) and because the restricted multiverse
-is already sufficiently rich for the intended applications.
+topos'' requires more elaborate versions); because the restricted multiverse
+is already sufficiently rich for the intended applications; and because we have
+a generalization to the predicative setting~\cite{crosilla:xxx} with arithmetic
+universes in mind. Predicatively, not even the category of sets might be an
+elementary topos, but they do form an arithmetic universe and sheaves over
+sites are a meaningful concept.
 \end{rem}
 
 
@@ -254,13 +260,13 @@ is already sufficiently rich for the intended applications.
 
 \begin{defn}A topos~$\E$ is \emph{positive} if and only if the geometric
 morphism~$f : \E \to \Set$ is surjective, that is iff~$f^*$ reflects
-isomorphisms..\end{defn}
+isomorphisms.\end{defn}
 
 \begin{ex}The topos of sheaves over a topological space~$X$ is positive if and
 only if~$X$ has a point; more generally, the topos of sheaves over a locale~$X$
 is positive if and only if every open covering of the top element of the frame
 of~$X$ is inhabited (xxx:verify). As such, positivity is a more informative
-version of the weaker property of being nontrivial (that is, that the top open
+version of the weaker property of being nontrivial (the property that the top open
 and the bottom open do not coincide).\end{ex}
 
 \begin{ex}The spectrum of a ring~$A$, that is the classifying topos of prime
@@ -305,15 +311,15 @@ chains is not particularly useful; while the chain condition is satisfied for
 the intended examples, by its negativity the condition is too weak to
 facilitate the intended proofs.
 
-The established substitute is to define a transitive relation~$({<})$ on a set~$X$ to
-be well-founded if and only if for every subset~$M \subseteq X$,
+The established substitute is to declare that a transitive relation~$({<})$ on a set~$X$
+is well-founded if and only if for every subset~$M \subseteq X$,
 \begin{equation}\label{eq:ho-wf}\tag{$\star$}
 \bigl(\forall x\?X\_ (\forall y\?X\_ y < x \Rightarrow y \in M) \Rightarrow x \in
 M\bigr) \Longrightarrow \bigl(\forall x\?X\_ x \in M\bigr).
 \end{equation}
 More economically, and preferably in predicative contexts where there is no
 single set or class of ``all subsets of~$X$'' but for instance a
-hierarchy of subsets of increasing universe level, a transitive relation~$({<})$ is
+hierarchy of subsets of increasing universe levels, a transitive relation~$({<})$ is
 well-founded if and only if every element of~$X$ is \emph{accessible}, where
 the accessibility predicate~$\mathsf{Acc}$ is inductively generated~\cite{xxx}
 by the following clause:
@@ -346,11 +352,11 @@ eventually~$P$ will hold, by the clauses
 \[
   \infer{P \,|\, \sigma}{P(\sigma)}
   \qquad
-  \infer{P \,|\, \sigma}{\forall x \in X\_\ P \,|\, (\sigma :: x)}
+  \infer{P \,|\, \sigma}{\forall x \? X\_\ P \,|\, (\sigma :: x)}
 \]
 and finally define that~$R$ is almost-full iff~``$\mathsf{Good} \,|\, []$''.
 With this inductive definition, expected properties of the class of almost-full
-relations such as being stable under cartesian products (Dickman's lemma),
+relations such as stability under cartesian products (Dickman's lemma),
 finite lists (Higman's lemma) or finitely-branching trees (Kruskal's theorem)
 can all be constructively verified~\cite{xxx}.
 
@@ -376,18 +382,19 @@ considerations? Also, constructively the inductive definitions are much
 stronger than their classical counterparts, equivalent only in presence
 of~\textsc{lem} and~\textsc{dc}. For instance, if a relation is almost-full in
 the inductive sense, not only is every infinite sequence good, but also every
-infinite ``multi-valued sequence''\footnote{xxx} or every infinite
+infinite ``multi-valued sequence''\footnote{xxx} and every infinite
 partially-defined sequence~$\alpha$ for which for every number~$n \in \NN$ it
-is \notnot the case that~$\alpha(n)$ exists. Can we pinpoint how much more
-general the inductive definitions are?
+is \notnot the case that~$\alpha(n)$ exists. Can we pinpoint how much stronger
+the inductive definitions are?
 
 The answers to both questions are positive (xxx:language), and the modal
 perspective fruitfully clarifies their connection.
 
-Namely, the theories of an infinite sequence or of an infinite descending chain
+Namely, the theories of an infinite sequence and of an infinite descending chain
 are geometric. As such, there exist their classifying toposes, containing the
 \emph{generic infinite sequence} respectively the \emph{generic infinite
-descending chain}. When is this good respectively validates~$\bot$?
+descending chain}, and we may ask: When is this sequence good respectively when
+does this chain validate~$\bot$?
 
 \begin{prop}\label{prop:gen-good}Let~$R$ be a relation on a set~$X$. The
 generic infinite sequence over~$X$ is good if and only if~$R$ is almost-full in
@@ -437,11 +444,13 @@ so is~$X \times Y$.\end{thm}
     formula) and since \textsc{lem} holds \emph{somewhere}, we may assume~\textsc{lem}.
 
     \item By \textsc{lem} and well-foundedness, there is a minimal value~$\alpha(i_0)$
-    among all values of~$\alpha$. \vspace*{-0.2em}
+    among all values of~$\alpha$.
     Similarly, there is a minimal value~$\alpha(i_1)$ among~$(\alpha(n))_{n >
     i_0}$, a minimal value~$\alpha(i_2)$ among~$(\alpha(n))_{n > i_1}$, and so
     on. By \emph{proximal dependent choice}, we can proximally collect these indices
-    into a function~$i : \NN \to \NN$; this switches~\textsc{lem} off. \vspace*{-0.2em}
+    into a function~$i : \NN \to \NN$;\footnote{We could also avoid dependent
+    choice by picking not some suitable indices~$i_0, i_1, \ldots$, but the
+    least such.} this switches~\textsc{lem} off.
 
     \item Switching~\textsc{lem} on again, there is a minimal value~$\beta(i(k_0))$
     among all values of~$\beta \circ i$. Hence~$\gamma$ is good in view of

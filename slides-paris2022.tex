@@ -311,6 +311,8 @@
 \DeclareMathOperator{\xpossible}{\text{\tikz[scale=.6ex/1cm,baseline=-.6ex,rotate=45,line width=.1ex]{\draw (-1,-1) rectangle (1,1); \draw[very thin] (-.6,-.6) rectangle (.6,.6);}}}
 \DeclareMathOperator{\xnecessary}{\text{\tikz[scale=.6ex/1cm,baseline=-.6ex,line width=.1ex]{\draw (-1,-1) rectangle (1,1); \draw[very thin] (-.6,-.6) rectangle (.6,.6);}}}
 
+\input{images/primes.tex}
+
 \begin{document}
 
 \addtocounter{framenumber}{-1}
@@ -365,59 +367,77 @@
 
 {\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{5.95cm}\includegraphics[width=\paperwidth]{fr1-lighter}\end{minipage}}
 \begin{frame}{Three proofs}
-  \begin{center}\bignumber{1}\end{center}
-  \vspace*{-1.3em}
-  \begin{varblock}{\textwidth}{}
-    \justifying
-    \textbf{Theorem.}
-    For every number~$n$, there is a prime larger than~$n$.
-  \end{varblock}
-  \vspace*{-0.4em}
-  {\emph{Proof.} Any prime factor of~$n! + 1$ will do. \qed}
+  \begin{columns}[c]
+    \begin{column}{0.15\textwidth}
+      \scalebox{0.23}{\sieve{6}{6}}
+    \end{column}
+    \begin{column}{0.85\textwidth}
+      \begin{varblock}{\textwidth}{}
+        \justifying
+        \textbf{Thm.}
+        For every~$n$, there is a prime larger than~$n$.
+      \end{varblock}
+      \vspace*{-0.4em}
+      \emph{Proof.} Any prime factor of~$n! + 1$ will do. \qed
+    \end{column}
+  \end{columns}
   \pause
-  \medskip
 
-  \begin{center}\bignumber{2}\end{center}
-  \vspace*{-1.3em}
-  \begin{varblock}{\textwidth}{}
-    \justifying
-    \textbf{Theorem.}
-    Every infinite sequence~$\alpha : \NN \to \NN$ is \emph{good}
-    in that there are numbers~$i < j$ such that~$\alpha(i) \leq \alpha(j)$.
-  \end{varblock}
-  \vspace*{-0.4em}
-  {\emph{Proof.} By~\badbox{\textsc{lem}}, there is a minimal value~$\alpha(i)$.
-  Set~$j \defeq i + 1$.\qed}
+  \begin{columns}[c]
+    \begin{column}{0.15\textwidth}
+      \includegraphics[width=\textwidth,valign=t]{monad}
+    \end{column}
+    \begin{column}{0.85\textwidth}
+      \begin{varblock}{\textwidth}{}
+        \justifying
+        \textbf{Thm.}
+        Every infinite sequence~$\alpha : \NN \to \NN$ is \emph{good}
+        in that there are numbers~$i < j$ such that~$\alpha(i) \leq \alpha(j)$.
+      \end{varblock}
+      \vspace*{-0.4em}
+      \mbox{\emph{Proof.} There is a \bad{minimal value}~$\alpha(i)$.
+      Set~$j \defeq i{+}1$.\qed}
+    \end{column}
+  \end{columns}
   \pause
-  \medskip
 
-  \begin{center}\bignumber{3}\end{center}
-  \vspace*{-1.3em}
-  \begin{varblock}{\textwidth}{}
-    \justifying
-    \textbf{Theorem.}
-    Let~$M$ be a surjective matrix with more rows than columns over a
-    commutative ring~$A$.
-    Then~$1 = 0$ in~$A$.
-  \end{varblock}
-  \vspace*{-0.4em}
-  {\justifying\emph{Proof.}
-  \only<3>{\bad{Assume not.} Then there is~a \bad{maximal ideal} $\mmm$.
-  The matrix is surjective over~$A/\mmm$, contradicting
-  basic linear algebra.}\only<4>{Write~$M = \left(\begin{smallmatrix}x\\y\end{smallmatrix}\right)$. By surjectivity,
-  have~$u, v$ with
-  $
-    u \left(\begin{smallmatrix}x\\y\end{smallmatrix}\right) = \left(\begin{smallmatrix}1\\0\end{smallmatrix}\right)
-  $ and $
-    v \left(\begin{smallmatrix}x\\y\end{smallmatrix}\right) = \left(\begin{smallmatrix}0\\1\end{smallmatrix}\right).
-  $
-  Hence
-  $
-    1 = (vy) (ux) = (uy) (vx) = 0
-  $.}
-  \qed\par}
+  \begin{columns}[c]
+    \begin{column}{0.15\textwidth}
+      \includegraphics[width=\textwidth,valign=t]{calabi-yau}
+    \end{column}
+    \begin{column}{0.85\textwidth}
+      \begin{varblock}{\textwidth}{}
+        \justifying
+        \textbf{Thm.}
+        Let~$M$ be a surjective matrix with more rows than columns over a
+        ring~$A$. Then~$1 = 0$ in~$A$.
+      \end{varblock}
+      \vspace*{-0.4em}
+      \justifying\emph{Proof.}
+      \only<3>{\bad{Assume not.} Then there is~a \bad{maximal ideal} $\mmm$.
+      The matrix is surjective over~$A/\mmm$. Since~$A/\mmm$ is a field, this
+      is a contradiction to basic linear algebra. \\[1.3em]\ }\only<4>{Write~$M =
+      \left(\begin{smallmatrix}x\\y\end{smallmatrix}\right)$. By surjectivity,
+      have~$u, v$ with
+      \vspace*{-0.6em}
+      \[
+        u \left(\begin{smallmatrix}x\\y\end{smallmatrix}\right) = \left(\begin{smallmatrix}1\\0\end{smallmatrix}\right)
+        \quad\text{and}\quad
+        v \left(\begin{smallmatrix}x\\y\end{smallmatrix}\right) = \left(\begin{smallmatrix}0\\1\end{smallmatrix}\right).
+      \]
+
+      \vspace*{-0.6em}
+      Hence
+      $
+        1 = (vy) (ux) = (uy) (vx) = 0
+      $.}
+      \qed
+    \end{column}
+  \end{columns}
 \end{frame}}
 % XXX: chart of ideals of ℤ
+
+% \begin{document}
 
 \begin{frame}{Three take-aways}
   \bigskip
@@ -454,10 +474,16 @@
       \includegraphics[width=\textwidth,valign=c]{multiverse}
     \end{column}
     \begin{column}{0.75\textwidth}
-      There is a \hil{rich multiverse} of \\
+      There is a \hil{rich modal multiverse} of \\
       flavors of parametrized mathematics.
     \end{column}
   \end{columns}
+
+  \visible<3->{\begin{tikzpicture}[overlay]
+    \node[anchor=south east,inner sep=0] (image) at (10.8,0.3) {
+      \reflectbox{\includegraphics[width=1em]{butterfly}}
+    };
+  \end{tikzpicture}}
 \end{frame}
 
 \end{document}

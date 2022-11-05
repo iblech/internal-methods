@@ -125,6 +125,7 @@
 \newcommand{\CC}{\mathbb{C}}
 \renewcommand{\P}{\mathcal{P}}
 \newcommand{\aaa}{\mathfrak{a}}
+\newcommand{\ccc}{\mathfrak{c}}
 \newcommand{\ppp}{\mathfrak{p}}
 \newcommand{\fff}{\mathfrak{f}}
 \newcommand{\mmm}{\mathfrak{m}}
@@ -292,6 +293,7 @@
 
 \newcommand{\hil}[1]{{\usebeamercolor[fg]{item}{\textbf{#1}}}}
 \newcommand{\bad}[1]{\textcolor{red!90}{\textnormal{#1}}}
+\newcommand{\good}[1]{\textcolor{mypurple}{\textnormal{#1}}}
 
 \newcommand{\bignumber}[1]{%
   \renewcommand{\insertenumlabel}{#1}\scalebox{1.2}{\!\usebeamertemplate{enumerate item}\!}
@@ -304,6 +306,7 @@
 \newcommand{\subhead}[1]{{\centering\textcolor{gray}{\hrulefill}\quad\textnormal{#1}\quad\textcolor{gray}{\hrulefill}\par}}
 
 \newcommand{\badbox}[1]{\colorbox{red!30}{#1}}
+\newcommand{\infobox}[1]{\colorbox{yellow!70}{\color{black}#1}}
 
 % taken from JDH "The modal logic of arithmetic potentialism and the universal algorithm"
 \DeclareMathOperator{\possible}{\text{\tikz[scale=.6ex/1cm,baseline=-.6ex,rotate=45,line width=.1ex]{\draw (-1,-1) rectangle (1,1);}}}
@@ -486,6 +489,287 @@
   \end{tikzpicture}}
 \end{frame}
 
+% \begin{document}
+
+
+\section{The set-theoretic multiverse}
+
+{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{3.59cm}\includegraphics[width=\paperwidth]{staircase}\end{minipage}}
+\begin{frame}{A brief timeline}
+  \begin{itemize}
+    \item[18xx] Cantor studies the \hil{continuum hypothesis}, the claim
+    that~$2^{\aleph_0} = \aleph_1$.
+    \item[19xx] Zermelo and Fraenkel offer the axioms of~\textsc{zfc}.
+    \item[1938] Gödel proves: If~\textsc{zfc} is consistent, then so
+    is~\textsc{zfc}+\textsc{ch}.
+    \item[1963] Cohen proves: If~\textsc{zfc} is consistent, then so
+    is~\textsc{zfc}+$\neg$\textsc{ch}.
+    \item[since 1963 and ongoing] Set theorists pursue additional axioms to
+    settle~\textsc{ch} (one way or another).  % XXX persue?
+    \item[201x] Hamkins offers his paper on the \hil{multiverse position} in
+    the philosophy of set theory, arguing that the program of pursing
+    additional axioms (while successful in many ways) is doomed to fail in
+    settling~\textsc{ch}.
+  \end{itemize}
+\end{frame}
+\begin{frame}{The set-theoretic multiverse}
+  \begin{tikzpicture}[remember picture,overlay]
+    \node[xshift=-1.5cm,yshift=-3.5cm] at (current page.north east)
+    {\includegraphics[width=2cm]{branching}};
+  \end{tikzpicture}
+  \vspace*{-1.5em}
+
+  \begin{block}{}
+    \justifying
+    \textbf{Def.} A \hil{model of set theory} is a (perhaps class-sized) structure $(M,{\in})$
+    satisfying axioms such as those of~\textsc{zfc}.
+  \end{block}
+  \vspace*{-0.6em}
+  {\small\emph{Examples.}\vspace*{-0.9em}
+  \begin{itemize}
+    \item $V$, the class of all sets \vspace*{-0.6em}
+    \item $L$, Gödel's constructible universe \vspace*{-0.6em}
+    \item $V[G]$, a forcing extension containing a generic filter~$G$ of \\ some
+    poset of forcing conditions \vspace*{-0.6em}
+    \item Henkin/term models from consistency of (extensions of)~\textsc{zfc}
+  \end{itemize}}
+  \pause
+
+  %{\centering\emph{Embracing all models of set theory:}\par}
+  \begin{block}{}
+    \justifying
+    \textbf{Def.} $\possible\varphi$ iff~$\varphi$ holds in \hil{some extension} of
+    the current universe. \\
+    \phantom{\textbf{Def.}} $\necessary\varphi$ iff~$\varphi$ holds in \hil{all extensions}
+    of the current universe.
+  \end{block}
+  \vspace*{-0.6em}
+  \begin{itemize}
+    \item $\necessary(\possible\textsc{CH} \wedge \possible\neg\text{CH})$,
+    the continuum hypothesis is a \hil{switch}
+    \item \ \\[-1.2em]\mbox{$\necessary\possible\necessary(\text{$X$ is countable})$,
+    existence of an enumeration is a \hil{button}}
+  \end{itemize}
+  \pause
+  \medskip
+
+  \textbf{NB.} In the multiverse of extensions of a given field~$K$,
+
+  \vspace*{-0.5em}
+  \begin{itemize}
+    \item ``there is a square root of~$-1$'' is a button and
+    \item ``every polynomial splits into linear factors'' is a switch.
+  \end{itemize}
+\end{frame}}
+
+
+% \begin{document}
+
+\section{Parametrized mathematics}
+
+\renewcommand{\insertframeextra}{a}
+\begin{frame}{Parametrized mathematics}
+  \medskip
+  {\centering\includegraphics[width=0.7\textwidth]{eigenvector}\par}
+  \small
+
+  \begin{changemargin}{-0.5em}{-1.5em}
+  \begin{enumerate}
+    \item[\infobox{local}]
+    \ \\[-1.2em]\mbox{``Every real symmetric matrix
+    does \only<4>{\hil{not not} }have an eigenvector.''
+    \good{\cmark}}
+    \medskip
+
+    \item[\infobox{global}] ``For every continuous family of symmetric
+    matrices, \\\only<4>{\hil{on a dense open} }eigenvectors can locally
+    be picked continuously.''
+    \only<1-2>{\includegraphics[height=0.7em]{question-mark}}%
+    \only<3>{\bad{\xmark}}%
+    \only<4>{\good{\cmark}}
+
+    \smallskip
+    \pause
+    \justifying
+    \scriptsize
+    ``Let~$X$ be a topological space and let~$A : X \to
+    M^\text{sym}_n(\RR)$ be a continuous map to the space of symmetric~$(n \times
+    n)$-matrices. Then there is an open covering~$\bigcup_{i \in I} U_i$
+    \only<1-3>{of~$X$}\only<4>{\hil{of a dense open subset}~$U \subseteq X$} such
+    that or all indices~$i \in I$, there is a continuous map~$v : U_i \to \RR^n$
+    such that for all~$x \in U_i$, the vector~$v(x)$ is an eigenvector
+    of~$A(x)$.''
+  \end{enumerate}
+  \end{changemargin}
+\end{frame}
+
+\addtocounter{framenumber}{-1}
+\renewcommand{\insertframeextra}{b}
+\begin{frame}{Parametrized mathematics}
+  \bigskip
+  \bigskip
+  {\centering
+    \includegraphics[height=9em]{damian-gvirtz-moduli-1}
+    \quad
+    \includegraphics[height=9em]{damian-gvirtz-moduli-2}
+    \par}
+  \small
+  \bigskip
+
+  \begin{changemargin}{-0.5em}{-1.5em}
+  \begin{enumerate}
+    \item[\infobox{local}]
+    \ \\[-1.2em]``Let~$M$ be a finitely generated module over a
+    field~$k$. \\ Then~$M$ is \only<4>{\hil{not not} }finite free.''
+    \good{\cmark}
+    \medskip
+
+    \item[\infobox{global}] ``Let~$M$ be a finitely generated module over a
+    ring~$A$. \\ Then~$M^\sim$ is finite locally
+    free\only<4>{ \hil{on a dense open}}.''
+    \only<1-2>{\includegraphics[height=0.7em]{question-mark}}%
+    \only<3>{\bad{\xmark}}%
+    \only<4>{\good{\cmark}}
+
+    \smallskip
+    \pause
+    \justifying
+    \scriptsize
+    ``Let~$M$ be a finitely generated module over an
+    arbitrary commutative ring~$A$. \only<1-3>{Then there is a partition~$1 = f_1 + \cdots +
+    f_n \in A$ of unity such that, for each index~$i$, the localized
+    module~$M[f_i^{-1}]$ is finite free over~$A[f_i^{-1}]$.}\only<4>{\hil{If~$f = 0$
+    is the only element of~$A$} such that~$M[f^{-1}]$ is finite free
+    over~$A[f^{-1}]$, \hil{then~$1 = 0$ in~$A$}.}''
+  \end{enumerate}
+  \end{changemargin}
+\end{frame}
+
+\addtocounter{framenumber}{-1}
+\renewcommand{\insertframeextra}{c}
+{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{-1em}\includegraphics[width=\paperwidth]{train-tracks-cropped}\end{minipage}}
+\begin{frame}{Parametrized mathematics}
+  \bigskip
+  \bigskip
+  \bigskip
+  \bigskip
+  \bigskip
+  \bigskip
+  \bigskip
+  \bigskip
+  \bigskip
+  \bigskip
+  \bigskip
+  \bigskip
+  \bigskip
+  \bigskip
+  \small
+
+  \begin{changemargin}{-0.5em}{-1.5em}
+  \begin{enumerate}
+    \item[\infobox{local}]
+    \ \\[-1.2em]``Let $R$ be a ring.
+    Let $n \geq 0$ be an integer.
+    We have
+    $$
+    H^q(\mathbf{P}^n, \mathcal{O}_{\mathbf{P}^n_R}(d)) = \textit{(omitted)}
+    $$
+    as $R$-modules.''
+    \good{\cmark}
+    \medskip
+
+    \item[\infobox{global}] ``Let $S$ be a scheme. Let $n \geq 1$.
+    Let $\mathcal{E}$ be a finite locally
+    free $\mathcal{O}_S$-module of constant rank $n + 1$.
+    For the structure morphism
+    $
+    \pi : \mathbf{P}(\mathcal{E}) \longrightarrow S,
+    $
+    we have
+    $$
+    R^q\pi_*(\mathcal{O}_{\mathbf{P}(\mathcal{E})}(d)) =
+    \textit{(omitted)}
+    $$
+    as sheaves of~$\mathcal{O}_S$-modules.'' \good{\cmark}
+  \end{enumerate}
+  \end{changemargin}
+\end{frame}}
+
+% \begin{document}
+
+\renewcommand{\insertframeextra}{}
+{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{4.95cm}\includegraphics[width=\paperwidth]{topos-horses-lighter}\end{minipage}}
+\begin{frame}{Sites and toposes}
+  For every \hil{site}~$\C$, the
+  \hil{sheaves} on~$\C$ form a \hil{topos}. \emph{Notable sites:}
+  \begin{enumerate}
+    \item The \hil{site of opens} of a topological space
+    \item The \hil{Zariski site} of a ring
+    \item The \hil{site of finite approximations} of surjections~$\NN
+    \twoheadrightarrow X$
+    \item The \hil{classifying site} of a geometric theory
+  \end{enumerate}
+  \pause
+
+  Every topos supports an \hil{internal language},
+  and this language is sound with respect to \hil{intuitionistic
+  logic}.
+  \pause
+
+  \begin{block}{}
+    \justifying
+    \textbf{Def.} A statement~$\varphi$ holds \ldots
+    \begin{itemize}
+      \item\small \hil{everywhere} ($\necessary\varphi$) iff
+      it holds in every (Grothendieck) topos (over the current base topos).
+      \item \hil{somewhere} ($\possible\varphi$) iff
+      it holds in some positive topos.
+      \item \hil{proximally} ($\xpossible\varphi$) iff
+      it holds in some positive ouvert topos.
+    \end{itemize}
+  \end{block}
+\end{frame}
+\begin{frame}{The multiverse of parametrized mathematics}
+  \begin{block}{}
+    \justifying
+    \textbf{Def.} A statement~$\varphi$ holds \ldots
+    \begin{itemize}
+      \item\small \hil{everywhere} ($\necessary\varphi$) iff
+      it holds in every (Grothendieck) topos (over the current base topos).
+      \item \hil{somewhere} ($\possible\varphi$) iff
+      it holds in some positive topos.
+      \item \hil{proximally} ($\xpossible\varphi$) iff
+      it holds in some positive ouvert topos.
+    \end{itemize}
+  \end{block}
+
+  \begin{changemargin}{-1.2em}{-1.2em}
+    \small
+    \begin{enumerate}
+      %\item If a function~$\NN \to \NN$ does \emph{everywhere} \emph{not~not} have
+      %a zero, then it actually has a zero.
+      \item \emph{Somewhere,} the law of
+      excluded middle holds. \emph{In fact, we even have:} \\
+      It is \emph{everywhere} the case that the law of
+      excluded middle holds \emph{somewhere}.
+      \smallskip
+      \item Assuming Zorn's lemma, it is
+      everywhere the case that it the axiom of choice holds
+      somewhere. [Barr]
+      \smallskip
+      \item If a geometric implication holds \emph{somewhere}, then it holds already here.
+      \smallskip
+      \item If a first-order statement holds \emph{proximally}, then it holds already here.
+      \smallskip
+      \item For every set~$X$, \emph{proximally} there is a
+      surjection~$\NN \twoheadrightarrow X$.
+      \smallskip
+      \item Every ring \emph{proximally} has a maximal ideal.
+    \end{enumerate}
+  \end{changemargin}
+\end{frame}}
+
+
 \end{document}
 
 A modal logical multiverse for commutative algebra and combinatorics
@@ -525,6 +809,8 @@ axioms, embrace multiverse of models
 Switches and buttons
 
 Analogy with field extensions
+
+Menagerie of properties of the multiverse
 
 
 === Relaxation to topos-theoretic case

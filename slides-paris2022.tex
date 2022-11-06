@@ -440,8 +440,6 @@
 \end{frame}}
 % XXX: chart of ideals of ℤ
 
-% \begin{document}
-
 \begin{frame}{Three take-aways}
   \bigskip
   \begin{columns}[c]
@@ -495,22 +493,40 @@
 \section{The set-theoretic multiverse}
 
 {\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{3.59cm}\includegraphics[width=\paperwidth]{staircase}\end{minipage}}
+% https://tex.stackexchange.com/a/198372/32372
+\newcommand\ytl[2]{%
+  \parbox[b]{4.5em}{\hfill{#1}~$\cdots\cdots$~}%
+  \makebox[0pt][c]{\color{mypurple}$\bullet$}{\color{mypurple}\vrule}\quad%
+  \parbox[c]{8.4cm}{\vspace{7pt}\raggedright#2\\[7pt]}%
+  \\[-2.0pt]}
 \begin{frame}{A brief timeline}
-  \begin{itemize}
-    \item[18xx] Cantor studies the \hil{continuum hypothesis}, the claim
-    that~$2^{\aleph_0} = \aleph_1$.
-    \item[19xx] Zermelo and Fraenkel offer the axioms of~\textsc{zfc}.
-    \item[1938] Gödel proves: If~\textsc{zfc} is consistent, then so
-    is~\textsc{zfc}+\textsc{ch}.
-    \item[1963] Cohen proves: If~\textsc{zfc} is consistent, then so
-    is~\textsc{zfc}+$\neg$\textsc{ch}.
-    \item[since 1963 and ongoing] Set theorists pursue additional axioms to
-    settle~\textsc{ch} (one way or another).  % XXX persue?
-    \item[201x] Hamkins offers his paper on the \hil{multiverse position} in
-    the philosophy of set theory, arguing that the program of pursing
-    additional axioms (while successful in many ways) is doomed to fail in
-    settling~\textsc{ch}.
-  \end{itemize}
+  \vspace*{-1.0em}
+  \parbox[b]{4.5em}{\hfill\phantom{x}}\makebox[0pt][c]{\phantom{b}}{\color{mypurple}\vrule}\\[-3.5pt]
+  \ytl{1878}{Cantor advances the \hil{continuum hypothesis}, the claim
+  that~$2^{\aleph_0} = \aleph_1$.}
+  \pause
+  \ytl{1910s}{Zermelo--Fraenkel set theory emerges.}
+  \pause
+  \ytl{1920s}{Set theorists pursue additional axioms to
+  settle~\textsc{ch} (one way or another).}
+  \pause
+  \ytl{1938}{Gödel proves: If~\textsc{zfc} is consistent, so
+  is~\textsc{zfc}+\textsc{ch}.}
+  \pause
+  \ytl{1963}{Cohen proves: If~\textsc{zfc} is consistent, so
+  is~\textsc{zfc}+$\neg$\textsc{ch}.}
+  \pause
+  \ytl{2011}{Hamkins offers his paper on the \hil{multiverse position} in
+  the philosophy of set theory.}
+  \pause
+  %arguing that the program of pursuing
+  %additional axioms (while successful in many ways) is doomed to fail
+  %to settle~\textsc{ch}.}
+  \ytl{2016}{Oldenziel proposes to study the modal multiverse of parametrized
+  mathematics.}
+  \parbox[b]{4.5em}{\hfill\phantom{x}}\makebox[0pt][c]{\phantom{b}}{\color{mypurple}\vrule}\\[-6.5pt]
+  \parbox[b]{4.5em}{\hfill\phantom{x}}\makebox[0pt][c]{\phantom{b}}{\color{mypurple}\vrule}\\[-6.5pt]
+  \parbox[b]{4.5em}{\hfill\phantom{x}}\makebox[0pt][c]{\phantom{b}}{\color{mypurple}\vrule}\\[-6.5pt]
 \end{frame}
 \begin{frame}{The set-theoretic multiverse}
   \begin{tikzpicture}[remember picture,overlay]
@@ -562,8 +578,6 @@
   \end{itemize}
 \end{frame}}
 
-
-% \begin{document}
 
 \section{Parametrized mathematics}
 
@@ -694,8 +708,6 @@
   \end{enumerate}
   \end{changemargin}
 \end{frame}}
-
-% \begin{document}
 
 \renewcommand{\insertframeextra}{}
 {\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{4.95cm}\includegraphics[width=\paperwidth]{topos-horses-lighter}\end{minipage}}

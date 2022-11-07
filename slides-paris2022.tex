@@ -320,14 +320,11 @@
 
 \addtocounter{framenumber}{-1}
 
-%\setbeamertemplate{headline}{\mynav{gray}{gray}{gray}}
-
 {\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{1.59cm}\includegraphics[width=\paperwidth]{forest-light}\end{minipage}}
 \begin{frame}[c]
   \centering
 
   \bigskip
-  %\includegraphics[height=0.32\textwidth]{olivia-lattices}
   \bigskip
   \bigskip
   \bigskip
@@ -443,7 +440,7 @@
 \begin{frame}{Three take-aways}
   \bigskip
   \begin{columns}[c]
-    \begin{column}{0.25\textwidth}
+    \begin{column}{0.2\textwidth}
       \includegraphics[width=\textwidth,valign=c]{turing-machine}
     \end{column}
     \begin{column}{0.75\textwidth}
@@ -455,7 +452,7 @@
   \bigskip
 
   \begin{columns}[c]
-    \begin{column}{0.25\textwidth}
+    \begin{column}{0.2\textwidth}
       \includegraphics[width=\textwidth,valign=c]{3-adic-numbers}
     \end{column}
     \begin{column}{0.75\textwidth}
@@ -471,7 +468,7 @@
   \bigskip
 
   \begin{columns}[c]
-    \begin{column}{0.25\textwidth}
+    \begin{column}{0.2\textwidth}
       \includegraphics[width=\textwidth,valign=c]{multiverse}
     \end{column}
     \begin{column}{0.75\textwidth}
@@ -487,13 +484,27 @@
   \end{tikzpicture}}
 \end{frame}
 
-% \begin{document}
-
 
 \section{The set-theoretic multiverse}
 
 {\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{3.59cm}\includegraphics[width=\paperwidth]{staircase}\end{minipage}}
 % https://tex.stackexchange.com/a/198372/32372
+% \includegraphics[width=3cm]{lovelace-babbage}
+% \includegraphics[width=3cm]{first-program}
+\addtocounter{framenumber}{-1}
+{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\includegraphics[height=\paperheight,valign=t]{ada-lovelace}\includegraphics[width=8cm,valign=t]{first-program}\end{minipage}}
+\begin{frame}[plain]
+  \vspace*{6cm}\hspace*{6cm}\begin{minipage}{4.7cm}
+    \Large\hil{Ada Lovelace},
+
+    \large
+    the world's first \\
+    computer programmer
+    \medskip
+
+    * 1815 \ \ † 1852
+  \end{minipage}
+\end{frame}}
 \newcommand\ytl[2]{%
   \parbox[b]{4.5em}{\hfill{#1}~$\cdots\cdots$~}%
   \makebox[0pt][c]{\color{mypurple}$\bullet$}{\color{mypurple}\vrule}\quad%
@@ -654,7 +665,7 @@
     f_n \in A$ of unity such that, for each index~$i$, the localized
     module~$M[f_i^{-1}]$ is finite free over~$A[f_i^{-1}]$.}\only<4>{\hil{If~$f = 0$
     is the only element of~$A$} such that~$M[f^{-1}]$ is finite free
-    over~$A[f^{-1}]$, \hil{then~$1 = 0$ in~$A$}.}''
+    over~$A[f^{-1}]$, \hil{then~$1 = 0$ in~$A$}.}''\only<4>{\\\ }
   \end{enumerate}
   \end{changemargin}
 \end{frame}
@@ -781,6 +792,15 @@
   \end{changemargin}
 \end{frame}}
 
+\backupstart
+
+{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\includegraphics[width=\paperwidth]{eventually-monad}\end{minipage}}
+\begin{frame}
+  \vspace*{\paperheight}\vspace*{-3.4em}\centering
+  \emph{Agda formalization available.}
+\end{frame}}
+
+\backupend
 
 \end{document}
 

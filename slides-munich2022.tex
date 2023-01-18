@@ -496,8 +496,9 @@
     \}}_{\text{a certain subsingleton set}})}
   \end{align*}
   \pause
+  \pause
   \vspace*{-2em}
-  \only<3>{\begin{columns}
+  \only<4>{\begin{columns}
     \begin{column}{0.3\textwidth}
       \begin{tikzpicture}
         \node (inner) at (17.3mm,-20mm) {\textit{``a bad joke''}};
@@ -522,6 +523,7 @@
 
 % \begin{document}
 
+{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{4.95cm}\includegraphics[width=\paperwidth]{topos-horses-lighter}\end{minipage}}
 \begin{frame}{Forcing}
   \begin{itemize}
     \item[\triang] \hil{Forcing in commutative algebra}
@@ -555,8 +557,87 @@
       $V \leadsto V[\TT]$ & adjoining a generic~$\TT$-model
     \end{tabular}}
   \end{itemize}
+\end{frame}}
+
+\renewcommand{\insertframeextra}{a}
+\begin{frame}{Parametrized mathematics}
+  \medskip
+  {\centering\includegraphics[width=0.7\textwidth]{eigenvector}\par}
+  \small
+
+  \begin{changemargin}{-0.5em}{-1.5em}
+  \begin{enumerate}
+    \item[\infobox{local}]
+    \ \\[-1.2em]\mbox{``Every real symmetric matrix
+    does \only<4>{\hil{not not} }have an eigenvector.''
+    \good{\cmark}}
+    \medskip
+
+    \item[\infobox{global}] ``For every continuous family of symmetric
+    matrices, \\\only<4>{\hil{on a dense open} }eigenvectors can locally
+    be picked continuously.''
+    \only<1-2>{\includegraphics[height=0.7em]{question-mark}}%
+    \only<3>{\bad{\xmark}}%
+    \only<4>{\good{\cmark}}
+
+    \smallskip
+    \pause
+    \justifying
+    \scriptsize
+    ``Let~$X$ be a topological space and let~$A : X \to
+    M^\text{sym}_n(\RR)$ be a continuous map to the space of symmetric~$(n \times
+    n)$-matrices. Then there is an open covering~$\bigcup_{i \in I} U_i$
+    \only<1-3>{of~$X$}\only<4>{\hil{of a dense open subset}~$U \subseteq X$} such
+    that or all indices~$i \in I$, there is a continuous map~$v : U_i \to \RR^n$
+    such that for all~$x \in U_i$, the vector~$v(x)$ is an eigenvector
+    of~$A(x)$.''
+  \end{enumerate}
+  \end{changemargin}
 \end{frame}
 
+\addtocounter{framenumber}{-1}
+\renewcommand{\insertframeextra}{b}
+\begin{frame}{Parametrized mathematics}
+  \bigskip
+  \bigskip
+  {\centering
+    \includegraphics[height=9em]{damian-gvirtz-moduli-1}
+    \quad
+    \includegraphics[height=9em]{damian-gvirtz-moduli-2}
+    \par}
+  \small
+  \bigskip
+
+  \begin{changemargin}{-0.5em}{-1.5em}
+  \begin{enumerate}
+    \item[\infobox{local}]
+    \ \\[-1.2em]``Let~$M$ be a finitely generated module over a
+    field~$k$. \\ Then~$M$ is \only<4>{\hil{not not} }finite free.''
+    \good{\cmark}
+    \medskip
+
+    \item[\infobox{global}] ``Let~$M$ be a finitely generated module over a
+    ring~$A$. \\ Then~$M^\sim$ is finite locally
+    free\only<4>{ \hil{on a dense open}}.''
+    \only<1-2>{\includegraphics[height=0.7em]{question-mark}}%
+    \only<3>{\bad{\xmark}}%
+    \only<4>{\good{\cmark}}
+
+    \smallskip
+    \pause
+    \justifying
+    \scriptsize
+    ``Let~$M$ be a finitely generated module over an
+    arbitrary commutative ring~$A$. \only<1-3>{Then there is a partition~$1 = f_1 + \cdots +
+    f_n \in A$ of unity such that, for each index~$i$, the localized
+    module~$M[f_i^{-1}]$ is finite free over~$A[f_i^{-1}]$.}\only<4>{\hil{If~$f = 0$
+    is the only element of~$A$} such that~$M[f^{-1}]$ is finite free
+    over~$A[f^{-1}]$, \hil{then~$1 = 0$ in~$A$}.}''\only<4>{\\\ }
+  \end{enumerate}
+  \end{changemargin}
+\end{frame}
+
+\renewcommand{\insertframeextra}{}
 \begin{frame}{Finite approximations to ideal objects}
   \fontsize{10pt}{12}\selectfont
   \begin{itemize}
@@ -658,5 +739,15 @@
   If~$\Gamma \vdash \varphi$,
   then~$\Gamma^\nabla \vdash \varphi^\nabla$.
 \end{frame}
+
+\backupstart
+
+{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\includegraphics[width=\paperwidth]{eventually-monad}\end{minipage}}
+\begin{frame}
+  \vspace*{\paperheight}\vspace*{-3.4em}\centering
+  \emph{Agda formalization available.}
+\end{frame}}
+
+\backupend
 
 \end{document}

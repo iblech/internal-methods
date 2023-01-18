@@ -642,6 +642,21 @@
     \item If~$P \mid \sigma \concat \tau$ for all~$\tau \in X^*$ such that~$x
     \in \sigma \concat \tau$, then~$P \mid \sigma$.
   \end{enumerate}
+
+  \hil{Notation.} Write~``$\nabla \sigma\_ P(\sigma)$'' for~$P \mid \sigma$.
+
+  \hil{Examples.} (in case~$X = \RR$)
+  \begin{itemize}
+    \item[\cmark] $\nabla\sigma\_ \mathsf{length}(\sigma) \geq 5$
+    \item[\xmark] $\nabla\sigma\_ \mathsf{length}(\sigma) \geq 2 \wedge \sigma[0] = \sigma[1]$
+    \item[\cmark] \ \\[-1.2em]\mbox{$\forall x \in \RR\_ \nabla\sigma\_ \exists n \in \NN\_
+    \sigma[n] = x \wedge (\nabla\sigma\_ \exists m \in \NN\_ \sigma[m] =
+    \sin(n))$}
+  \end{itemize}
+
+  \hil{Soundness of the~$\nabla$-translation.}
+  If~$\Gamma \vdash \varphi$,
+  then~$\Gamma^\nabla \vdash \varphi^\nabla$.
 \end{frame}
 
 \end{document}

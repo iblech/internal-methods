@@ -11537,13 +11537,25 @@ therefore not be characterized by any formula in the internal language of a
 big Zariski topos whose site is sufficiently encompassing.
 
 However, coherence is stable under pullback along locally finitely presented
-morphisms. Therefore we do have the following result.
-
-\begin{prop}\label{prop:coherent-big-zariski}
-Let~$\E$ be an~$\O_S$-module. If the induced~$\affl$-module~$\E^\Zar$ is
+morphisms. This observation misled me to erroneously state in an earlier
+version of this text, as Proposition~\ref{prop:coherent-big-zariski}:
+``Let~$\E$ be an~$\O_S$-module. If the induced~$\affl$-module~$\E^\Zar$ is
 coherent from the internal point of view of~$\Zar(S)$, then~$\E$ is coherent.
-The converse holds if~$\Zar(S)$ is defined using one of the parsimonious sites.
+The converse holds if~$\Zar(S)$ is defined using one of the parsimonious sites.``
+
+However, as Felix Cherubini and Matthias Hutzler have pointed out, this claim
+is false. In contrast, we have:
+\begin{prop}\label{prop:coherent-big-zariski}
+From the point of view of~$\Zar(S)$ (irrespective of whether~$S$ can be covered
+by spectra of coherent rings), it is \emph{not} the case that~$\affl$ is coherent.
 \end{prop}
+
+The issue is that kernels and tensor products do not commute (but kernels and
+localization do, explaining why we have
+Proposition~\ref{prop:finite-type-and-co} for the little Zariski topos) and
+hence already kernels of linear maps~$\affl \to \affl$ fail to be finitely
+generated. Details are provided in a forthcoming paper on internal algebraic
+geometry by Felix Cherubini, Thierry Coquand and Matthias Hutzler.
 
 \begin{prop}\label{prop:affl-modules-fully-faithful}
 The inclusion functor

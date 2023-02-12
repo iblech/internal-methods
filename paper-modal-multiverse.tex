@@ -1,7 +1,8 @@
-\documentclass[oneside,reqno]{amsart}
+\documentclass[envcountsect,envcountsame,runningheads]{llncs}
 
 \usepackage[utf8]{inputenc}
-\usepackage{amsthm,mathtools,stmaryrd,amssymb}
+\usepackage[english]{babel}
+\usepackage{amsmath,mathtools,stmaryrd,amssymb}
 \usepackage[all]{xy}
 \usepackage[protrusion=true,expansion=true]{microtype}
 \usepackage{tikz}
@@ -10,35 +11,7 @@
 \usepackage{xspace}
 \usepackage{color}
 
-\usepackage[natbib=true,style=numeric,maxnames=10]{biblatex}
-\usepackage[babel]{csquotes}
-\bibliography{paper-modal-multiverse.bib}
-
-\title{The topos-theoretic multiverse: a modal approach}
-\author{Ingo Blechschmidt}
-\address{Universität Augsburg \\
-Institut für Mathematik \\
-Universitätsstr. 14 \\
-86159 Augsburg, Germany}
-\email{ingo.blechschmidt@math.uni-augsburg.de}
-
-\theoremstyle{definition}
-\newtheorem{defn}{Definition}[section]
-\newtheorem{ex}[defn]{Example}
-
-\theoremstyle{plain}
-\newtheorem{prop}[defn]{Proposition}
-\newtheorem{cor}[defn]{Corollary}
-\newtheorem{lemma}[defn]{Lemma}
-\newtheorem{thm}[defn]{Theorem}
-\newtheorem{scholium}[defn]{Scholium}
-
-\theoremstyle{remark}
-\newtheorem{rem}[defn]{Remark}
-\newtheorem{question}[defn]{Question}
-\newtheorem{speculation}[defn]{Speculation}
-\newtheorem{caveat}[defn]{Caveat}
-\newtheorem{conjecture}[defn]{Conjecture}
+\title{The topos-theoretic multiverse: \\ a modal approach for computation}
 
 \newcommand{\xra}[1]{\xrightarrow{#1}}
 \newcommand{\XXX}[1]{\textbf{\textcolor{red}{XXX: #1}}}
@@ -84,6 +57,8 @@ Universitätsstr. 14 \\
 
 \begin{document}
 
+\maketitle
+
 \begin{abstract}
   To help put established results in constructive algebra and constructive
   combinatorics into perspective, construct an origin story for certain
@@ -94,9 +69,6 @@ Universitätsstr. 14 \\
   set/topos-theoretic possibility and more on concrete applications in
   constructive mathematics.
 \end{abstract}
-
-\maketitle
-\thispagestyle{empty}
 
 \noindent
 Thanks to the finer distinctions constructive mathematics offers, there is a
@@ -226,14 +198,14 @@ kind of language supported by toposes.
 \section{Modal operators}
 \label{sect:defn-modalities}
 
-\begin{defn}A \emph{Grothendieck topos} is a category equivalent to
+\begin{definition}A \emph{Grothendieck topos} is a category equivalent to
 the category of sheaves on a small site. A \emph{Grothendieck topos over a
 given (Grothendieck or elementary) topos}~$\B$ is ``a Grothendieck topos from
 the point of view of~$\B$''; using a sufficiently expressive form of the
 internal language of~$\B$, which allows us to make direct sense of the notion in
 scare quotes, this amounts to a bounded geometric morphism~$\E \to
 \B$, and this notion can be taken as the definition.
-\end{defn}
+\end{definition}
 
 Henceworth, by the unqualified word ``topos'' we will mean ``Grothendieck topos
 over the current base'', and the current base topos will be denoted~``$\Set$''.
@@ -245,7 +217,7 @@ The xxx (use word of Hamkins) of a base~$\B$ is the collection of Grothendieck
 toposes over~$\B$ (which in set-theoretic foundations should more precisely be
 formalized as the proper class of small sites in~$\B$).
 
-\begin{rem}Perhaps arbitrary \emph{elementary} toposes over the base, corresponding to
+\begin{remark}Perhaps arbitrary \emph{elementary} toposes over the base, corresponding to
 possibly unbounded geometric morphisms~$\E \to \B$, or even arbitrary
 fibrations/indexed categories over~$\B$ (XXX: are these the same?) validating an appropriate form of the
 axioms of elementary toposes, should also be
@@ -260,48 +232,48 @@ a generalization to the predicative setting~\cite{crosilla:xxx} with arithmetic
 universes in mind. Predicatively, not even the category of sets might be an
 elementary topos, but the category of sets and categories of sheaves are still
 arithmetic universes.
-\end{rem}
+\end{remark}
 
 
 \subsection{Positive toposes}
 
-\begin{defn}A topos~$\E$ is \emph{positive} if and only if the geometric
+\begin{definition}A topos~$\E$ is \emph{positive} if and only if the geometric
 morphism~$f : \E \to \Set$ is surjective (that is~$f^*$ reflects
-isomorphisms).\end{defn}
+isomorphisms).\end{definition}
 
-\begin{ex}The topos of sheaves over a topological space~$X$ is positive if and
+\begin{example}The topos of sheaves over a topological space~$X$ is positive if and
 only if~$X$ has a point; more generally, the topos of sheaves over a locale~$X$
 is positive if and only if every open covering of the top element of the frame
 of~$X$ is inhabited. As such, positivity is a more informative
 version of the constructively weaker property of being nontrivial (the property that the top open
-and the bottom open do not coincide).\end{ex}
+and the bottom open do not coincide).\end{example}
 
-\begin{ex}The spectrum of a ring~$A$, that is the classifying topos of prime
+\begin{example}The spectrum of a ring~$A$, that is the classifying topos of prime
 filters of~$A$ (or equivalently the topos of sheaves over the classifying
-locale of prime filters of~$A$) is positive iff~$1 \neq 0$ in~$A$.\end{ex}
+locale of prime filters of~$A$) is positive iff~$1 \neq 0$ in~$A$.\end{example}
 
-\begin{ex}A sufficient criterion for the classifying topos of a geometric
-theory~$\TT$ to be positive is that xxx.\end{ex}
+\begin{example}A sufficient criterion for the classifying topos of a geometric
+theory~$\TT$ to be positive is that xxx.\end{example}
 
 
 \subsection{Ouvert toposes}
 
-\begin{defn}A topos~$\E$ is \emph{ouvert} if and only if the geometric
+\begin{definition}A topos~$\E$ is \emph{ouvert} if and only if the geometric
 morphism~$f : \E \to \Set$ is open, that is~$f^*$ preserves the interpretation of
-first-order formulas.\end{defn}
+first-order formulas.\end{definition}
 
-\begin{ex}The topos of sheaves over a topological space is always ouvert. More
+\begin{example}The topos of sheaves over a topological space is always ouvert. More
 generally, the topos of sheaves over a locale~$X$ is ouvert iff there exists a
 \emph{positivity predicate} on its frame of opens in the sense of~\cite{xxx}.
-With~\textsc{lem}, every locale is ouvert~\cite{xxx}.\end{ex}
+With~\textsc{lem}, every locale is ouvert~\cite{xxx}.\end{example}
 
-\begin{ex}The spectrum of a ring~$A$ is ouvert iff every element of~$A$ is
-nilpotent or not~\cite[Proposition~12.51]{blechschmidt:phd}.\end{ex}
+\begin{example}The spectrum of a ring~$A$ is ouvert iff every element of~$A$ is
+nilpotent or not~\cite[Proposition~12.51]{blechschmidt:phd}.\end{example}
 
-\begin{ex}A sufficient criterion for the classifying topos of a geometric
+\begin{example}A sufficient criterion for the classifying topos of a geometric
 theory~$\TT$ being ouvert is that the indexing sets of all disjunctions
 appearing on the right hand side of turnstiles, in a normal form presentation
-of~$\TT$, are inhabited~\cite{xxx}.\end{ex}
+of~$\TT$, are inhabited~\cite{xxx}.\end{example}
 
 
 \subsection{Modal operators}
@@ -403,9 +375,9 @@ are geometric. As such, there exist their classifying toposes, containing the
 descending chain}, and we may ask: When is this sequence good respectively when
 does this chain validate~$\bot$?
 
-\begin{prop}\label{prop:gen-good}Let~$R$ be a relation on a set~$X$. The
+\begin{proposition}\label{prop:gen-good}Let~$R$ be a relation on a set~$X$. The
 generic infinite sequence over~$X$ is good if and only if~$R$ is almost-full in
-the inductive sense.\end{prop}
+the inductive sense.\end{proposition}
 
 \begin{proof}The classifying topos of the theory of an infinite sequence
 over~$X$ can be presented as the topos of sheaves over the site given by the
@@ -417,9 +389,9 @@ covering~$\U$ of~$[]$ such that for every open~$U \in \U$, xxx. This precisely
 amounts to~$R$ being almost-full in the inductive sense.
 \end{proof}
 
-\begin{cor}\label{cor:modal-good}Let~$R$ be a relation on a set~$X$. Then~$R$
+\begin{corollary}\label{cor:modal-good}Let~$R$ be a relation on a set~$X$. Then~$R$
 is almost-full in the inductive sense if and only if everywhere, every infinite
-sequence is good.\end{cor}
+sequence is good.\end{corollary}
 
 \begin{proof}For the ``if'' direction, if every infinite sequence everywhere is
 good, then in particular the generic infinite sequence is. By
@@ -435,18 +407,18 @@ under pullback along geometric morphisms and hence passes from the base topos
 to every topos. Hence (the pullback of)~$R$ is almost-full in every topos and
 hence every infinite sequence in every topos is good.\end{proof}
 
-\begin{prop}Let~$({<})$ be a transitive relation on a set~$X$. The generic
+\begin{proposition}Let~$({<})$ be a transitive relation on a set~$X$. The generic
 infinite descending chain over~$X$ validates~$\bot$ (that is, the classifying
 topos of such chains is trivial) if and only if the relation is well-founded in
-the inductive sense.\end{prop}
+the inductive sense.\end{proposition}
 
 \begin{proof}Similar as the proof of Proposition~\ref{prop:gen-good}. Details
 for the variant of ``bad sets'' instead of ``infinite descending chains'' have
 been developed (xxx:language) by xxx~\cite{xxx}.\end{proof}
 
-\begin{cor}A transitive relation is well-founded in the inductive sense
+\begin{corollary}A transitive relation is well-founded in the inductive sense
 if and only if everywhere, it is not the case that there exists an infinite
-descending chain.\end{cor}
+descending chain.\end{corollary}
 
 \begin{proof}Analogous to the proof of
 Corollary~\ref{cor:modal-good}.\end{proof}
@@ -455,9 +427,9 @@ Corollary~\ref{cor:modal-good}.\end{proof}
 \section{Extracting programs from multiverse proofs}
 \label{sect:program-extraction}
 
-\begin{prop}\label{prop:af-wf}Let~$({\leq})$ be a transitive almost-full relation.
+\begin{proposition}\label{prop:af-wf}Let~$({\leq})$ be a transitive almost-full relation.
 Then~$({<})$, where~$x < y \equiv (x \leq y \wedge \neg(y \leq x))$,
-is well-founded.\end{prop}
+is well-founded.\end{proposition}
 
 \begin{proof}Everywhere, there can be no infinite descending chain, as any
 such would also be good.\end{proof}
@@ -465,14 +437,14 @@ such would also be good.\end{proof}
 Unrolling this proof gives a program of type~$(\textsf{Good} \,|\, []) \to
 \prod_{x:X} \textsf{Acc}(x)$.
 
-\begin{rem}For the proof of Proposition~\ref{prop:af-wf}, it is not relevant
+\begin{remark}For the proof of Proposition~\ref{prop:af-wf}, it is not relevant
 that pullback along geometric morphisms typically fails to preserve the
 negation occuring in the definition of~$({<})$, basically because we still
 have~$f^*(\llbracket x > y \rrbracket) \wedge f^*(\llbracket x \leq y
-\rrbracket) \Rightarrow f^*(\llbracket\bot\rrbracket) = \bot$.\end{rem}
+\rrbracket) \Rightarrow f^*(\llbracket\bot\rrbracket) = \bot$.\end{remark}
 
-\begin{thm}[Dickson's lemma] If~$X$ and~$Y$ are almost-full,
-so is~$X \times Y$.\end{thm}
+\begin{theorem}[Dickson's lemma] If~$X$ and~$Y$ are almost-full,
+so is~$X \times Y$.\end{theorem}
 
 \begin{proof}
   \begin{enumerate}
@@ -494,7 +466,7 @@ so is~$X \times Y$.\end{thm}
     among all values of~$\beta \circ i$. Hence~$\gamma$ is good in view of
     \begin{align*}
       \alpha(i(k_0)) &\leq \alpha(i(k_0+1)), &
-      \beta(i(k_0)) &\leq \beta(i(k_0+1)). \qedhere
+      \beta(i(k_0)) &\leq \beta(i(k_0+1)).
     \end{align*}
   \end{enumerate}
 \end{proof}
@@ -509,6 +481,9 @@ xxx: more case studies
 xxx: don't forget right adjoints
 
 xxx: predicative
+
+\bibliographystyle{splncs04}
+\bibliography{mapaper-modal-multiverse}
 
 \end{document}
 

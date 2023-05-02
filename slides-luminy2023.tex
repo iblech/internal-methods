@@ -350,7 +350,37 @@
 
 \begin{document}
 
-\addtocounter{framenumber}{-1}
+\addtocounter{framenumber}{-2}
+
+{
+\definecolor{mypurple}{RGB}{150,0,255}
+\setbeamercolor{structure}{fg=mypurple}
+\begin{frame}{}
+  \begin{center}\includegraphics[width=0.2\textwidth]{eigenvector}\end{center}
+
+  Let a continuous family of symmetric matrices be given:
+  \[
+  \begin{pmatrix}a_{11}(t)&\cdots&a_{1n}(t)\\\vdots&&\vdots\\a_{n1}(t)&\cdots&a_{nn}(t)\end{pmatrix}
+  \]
+
+  There for every parameter value~$t$, classically there is
+
+  \hil{$\blacktriangleright$} a full list of eigenvalues~$\lambda_1(t),\ldots,\lambda_n(t)$ and \\
+  \hil{$\blacktriangleright$} an eigenvector basis~$(v_1(t),\ldots,v_n(t))$.
+  \bigskip
+
+  \begin{columns}[c]
+    \begin{column}{0.01\textwidth}
+      \includegraphics[height=2.4em]{question-mark}
+    \end{column}
+    \begin{column}{0.9\textwidth}
+      \mbox{Can locally the functions~$\lambda_i$ be chosen to be continuous?
+      \only<2->{\hil{Yes.}}} \\
+      How about the~$v_i$? \only<2->{\hil{No.}}
+    \end{column}
+  \end{columns}
+\end{frame}
+}
 
 {\usebackgroundtemplate{\begin{minipage}{\paperwidth}\includegraphics[height=\paperheight]{night-sky}\end{minipage}}
 \begin{frame}[c]
@@ -447,7 +477,7 @@
       \begin{minipage}{6cm}
         \begin{columns}
           \begin{column}{0.15\textwidth}
-            \hspace*{1.2em}\color{white}\dbend
+            \hspace*{1.0em}\color{white}\dbend
           \end{column}
           \begin{column}{0.95\textwidth}
             \color{white}\footnotesize
@@ -495,7 +525,7 @@
   \emph{Proof.} An infinite strictly descending chain would also be good. \qed
   \pause
 
-  \emph{Can we extract a constructive proof that well implies well-founded?}
+  Can we extract a constructive proof that well preorders are well-founded?
 \end{frame}
 
 {\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{5.95cm}\includegraphics[width=\paperwidth]{fr1}\end{minipage}}
@@ -580,7 +610,7 @@
       \mmm_{n+1} &= \mmm_n + (\underbrace{\{ x \in A \,|\, x = x_n \wedge
         1 \not\in \mmm_n + (x_n) \}}_{\text{a certain subsingleton set}})
     \end{align*}}
-    \vspace*{4.5em}
+    \vspace*{3.5em}
     \visible<11>{{
       \centering
       \raisebox{0pt}[0pt][0pt]{
@@ -599,7 +629,7 @@
     }}
     \pause
     \pause
-    \vspace*{-4.5em}
+    \vspace*{-3.5em}
 
     \item In the general case: \bad{No}, but the \emph{first-order
     consequences} of the existence of a maximal ideal \good{do hold}.
@@ -608,7 +638,7 @@
 
 \begin{frame}{Questions}
   \begin{enumerate}
-    \item \!Why was the inductive revolution so powerful?
+    \item \!Why has the inductive revolution been so powerful?
     \bigskip
 
     \item \!Why do proofs using Zorn's maximal ideals work so well in constructive algebra?
@@ -733,7 +763,7 @@
   \phantom{\hil{$\blacktriangleright$}} {\footnotesize -- e.g. the ``Barr cover''.\par}
 
   \hil{$\blacktriangleright$}
-  For \hil{positive open} extensions, they are equivalent for bounded first-order formulas. \\
+  For \hil{positive overt} extensions, they are equivalent for bounded first-order formulas. \\
   \phantom{\hil{$\blacktriangleright$}} {\footnotesize -- e.g. $V^\nabla$ containing
   the generic surjection~$\NN \twoheadrightarrow X$, if~$X$ is inhabited.\par}
   \bigskip}
@@ -750,22 +780,52 @@
     it holds in some positive overt extension.
   \end{enumerate}
   \bigskip
+
+  \visible<2>{\begin{tikzpicture}[overlay]
+    \node[anchor=south east,inner sep=0] (image) at (14.8,-0.8) {
+      \includegraphics[width=0.2\textwidth]{branching}
+    };
+  \end{tikzpicture}\vspace*{-1.6em}}
+  \visible<3>{\begin{tikzpicture}[overlay]
+    \node[anchor=south east,inner sep=0] (image) at (14.8,0.9) {
+      \includegraphics[width=0.2\textwidth]{multiverse}
+    };
+  \end{tikzpicture}\vspace*{-0.3em}}
+
+  \only<2>{\scriptsize Foreshadowed by:
+  \begin{itemize}
+    \scriptsize
+    \item[1984\phantom{s}] André Joyal, Miles Tierney. \emph{An extension of the Galois theory of
+    Grothendieck.}
+    \item[1987\phantom{s}] Andreas Blass. \emph{Well-ordering and induction in intuitionistic
+    logic and topoi.}
+    \item[2010s] Milly Maietti, Steve Vickers. Ongoing work on arithmetic
+    universes.
+    \item[2011\phantom{s}] Joel David Hamkins. \emph{The set-theoretic multiverse.}
+    \item[2013\phantom{s}] Shawn Henry. \emph{Classifying topoi and preservation of higher
+    order logic by geometric morphisms.}
+  \end{itemize}}
   \pause
 
   \small
   \begin{multicols}{2}
     For every set~$X$, \emph{proximally} \\
     there is an enumeration~$\NN \twoheadrightarrow X$.
+    \bigskip
 
     A preorder is well iff \emph{everywhere}, \\
     every sequence is good.
+    \bigskip
 
     A ring element is nilpotent iff \\
     all prime ideals \emph{everywhere} contain it.
+    \bigskip
 
     For every ring, \emph{proximally} \\ there is a maximal ideal.
+    \bigskip
 
     A relation is well-founded iff \emph{everywhere}, there is no descending chain.
+    \bigskip
 
     \emph{Somewhere}, \\ the law of excluded middle holds.
   \end{multicols}
@@ -773,7 +833,7 @@
 
 \begin{frame}{The multiverse perspective}
   \begin{enumerate}
-    \item \!\emph{Why was the inductive revolution so powerful?}
+    \item \!\emph{Why has the inductive revolution been so powerful?}
 
     Because the inductive conditions
     are equivalent to truth in \emph{all} forcing extensions.
@@ -803,7 +863,7 @@
 {\usebackgroundtemplate{\begin{minipage}{\paperwidth}\includegraphics[width=\paperwidth]{eventually-monad-cropped}\end{minipage}}
 \begin{frame}
   \vspace*{\paperheight}\vspace*{-2.05em}\centering
-  \emph{Agda formalization available.}
+  \emph{Partial Agda formalization available.}
 \end{frame}}
 
 \backupend

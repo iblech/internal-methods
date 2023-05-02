@@ -29,7 +29,7 @@
 \usepackage[all]{xy}
 \xyoption{rotate}
 \usepackage{tikz}
-\usetikzlibrary{calc,shapes,shapes.callouts,shapes.arrows,patterns,fit,backgrounds,decorations.pathmorphing,positioning,svg.path,fadings}
+\usetikzlibrary{calc,shapes,shapes.callouts,shapes.arrows,patterns,fit,backgrounds,decorations.pathmorphing,positioning,svg.path}
 \hypersetup{colorlinks=true}
 
 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{%
@@ -429,10 +429,21 @@
 
 \section{Motivation}
 
-\begin{tikzfadingfrompicture}[name=fade bottom]
-  \shade[top color=transparent!0,
-    bottom color=transparent!50] (0,0) rectangle (2,2);
-    \end{tikzfadingfrompicture}
+\begin{frame}{Questions}
+  \begin{enumerate}
+    \item \!Why has the inductive revolution been so powerful?
+    \bigskip
+
+    \item \!Why do proofs using Zorn's maximal ideals work so well in constructive algebra?
+    \bigskip
+
+    \item \!Why are elements of~$\bigcap_\ppp \ppp$ not necessarily nilpotent?
+    \bigskip
+
+    \item How can we extract computational content from classical proofs?
+  \end{enumerate}
+\end{frame}
+
 
 {\usebackgroundtemplate{\begin{minipage}{\paperwidth}\includegraphics[height=\paperheight]{sea-of-clouds-2}\end{minipage}}
 \begin{frame}{Infinite data}
@@ -596,8 +607,8 @@
     \item \good{Yes}, if~$A$ is countable and membership of finitely generated ideals is decidable:
     {\footnotesize
     \begin{align*}
-      \mmm_0 &= \{ 0 \}, &
-      \mmm_{n+1} &= \begin{cases}
+      \mmm_0 &\defeq \{ 0 \}, &
+      \mmm_{n+1} &\defeq \begin{cases}
         \mmm_n + (x_n), & \text{if $1 \not\in \mmm_n + (x_n)$}, {\qquad\quad\quad\!\!}\\
         \mmm_n, & \text{else.}
       \end{cases}
@@ -606,8 +617,8 @@
 
     \item \good{Yes}, if~$A$ is countable (irrespective of membership decidability):
     {\footnotesize\begin{align*}
-      \mmm_0 &= \{ 0 \}, &
-      \mmm_{n+1} &= \mmm_n + (\underbrace{\{ x \in A \,|\, x = x_n \wedge
+      \mmm_0 &\defeq \{ 0 \}, &
+      \mmm_{n+1} &\defeq \mmm_n + (\underbrace{\{ x \in A \,|\, x = x_n \wedge
         1 \not\in \mmm_n + (x_n) \}}_{\text{a certain subsingleton set}})
     \end{align*}}
     \vspace*{3.5em}
@@ -631,7 +642,7 @@
     \pause
     \vspace*{-3.5em}
 
-    \item In the general case: \bad{No}, but the \emph{first-order
+    \item In the general case: \bad{No}\pause, \\ but \emph{first-order
     consequences} of the existence of a maximal ideal \good{do hold}.
   \end{enumerate}
 \end{frame}}
@@ -668,18 +679,16 @@
   if~$\sigma \in F$, then~$\tau \in F$ for some~$\tau \in R$.}}\only<3>{\textsuperscript{\phantom{2}}}
   \pause
 
-  {\centering\footnotesize\begin{tabular}{lll}
+  {\centering\footnotesize\begin{tabular}{llll}
     \toprule
-    preorder~$L$ & coverings of an element~$\sigma \in L$ & filters of~$L$ \\
+    & preorder~$L$ & coverings of an element~$\sigma \in L$ & filters of~$L$ \\
     \midrule
-    $X^*$ & $\{ \sigma x \,|\, x \in X \}$ & maps~$\NN \to X$ \\
-    $X^*$ & $\{ \sigma x \,|\, x \in X \}$,\ \
-    $\{ \sigma\tau \,|\, \tau \in X^*, a \in \sigma\tau \}$ for each~$a \in X$ & surjections~$\NN \twoheadrightarrow X$ \\
-    f.g. ideals & --- & ideals \\
-    f.g. ideals & $\{ \sigma+(a), \sigma+(b) \}$ for each~$ab \in \sigma$,\ \
-    $\{\}$ if~$1 \in \sigma$ & prime ideals \\
-    opens & $\mathcal{U}$ such that~$\sigma = \bigcup \mathcal{U}$ & points \\
-    $\{\star\}$ & $\{ \star \,|\, \varphi \} \cup \{ \star \,|\, \neg\varphi \}$ &
+    \normalnumber{1} & $X^*$ & $\{ \sigma x \,|\, x \in X \}$ & maps~$\NN \to X$ \\
+    \normalnumber{2} & $X^*$ & $\{ \sigma x \,|\, x \in X \}$,\ \ $\{ \sigma\tau \,|\, \tau \in X^*, a \in \sigma\tau \}$ for each~$a \in X$ & surjections~$\NN \twoheadrightarrow X$ \\
+    \normalnumber{3} & f.g. ideals & --- & ideals \\
+    \normalnumber{4} & f.g. ideals & $\{ \sigma+(a), \sigma+(b) \}$ for each~$ab \in \sigma$,\ \ $\{\}$ if~$1 \in \sigma$ & prime ideals \\
+    \normalnumber{5} & opens & $\mathcal{U}$ such that~$\sigma = \bigcup \mathcal{U}$ & points \\
+    \normalnumber{6} & $\{\star\}$ & $\{ \star \,|\, \varphi \} \cup \{ \star \,|\, \neg\varphi \}$ &
     witnesses of~\textsc{lem}
     \\
     \bottomrule
@@ -702,6 +711,7 @@
 \begin{frame}{Constructive forcing (= Grothendieck toposes)}
   A forcing notion is a template for a \hil{forcing extension}~$V^\nabla$
   of the base universe~$V$:
+  \medskip
 
   \begin{center}\begin{tikzpicture}[remember picture,overlay]
     \node[thick, draw=mypurpledark, rectangle, inner sep=0.3em] (kj) {
@@ -809,7 +819,7 @@
 
   \small
   \begin{multicols}{2}
-    For every set~$X$, \emph{proximally} \\
+    For every inhabited set~$X$, \emph{proximally} \\
     there is an enumeration~$\NN \twoheadrightarrow X$.
     \bigskip
 

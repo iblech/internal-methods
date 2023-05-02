@@ -143,6 +143,7 @@
 \newcommand{\Sch}{\mathrm{Sch}}
 \newcommand{\Aff}{\mathrm{Aff}}
 \newcommand{\Ring}{\mathrm{Ring}}
+\newcommand{\Cov}{\mathrm{Cov}}
 \newcommand{\LocRing}{\mathrm{LocRing}}
 \newcommand{\LRS}{\mathrm{LRS}}
 \newcommand{\Hom}{\mathrm{Hom}}
@@ -345,7 +346,7 @@
 \newcommand{\astikznodecircled}[3]{\tikz[baseline,remember picture]{\node[anchor=base,circle,draw=#2,thick,inner sep=0,outer sep=0.05em] (#1) {#3};}}
 \newcommand{\astikznodetransparentlycircled}[2]{\tikz[baseline,remember picture]{\node[anchor=base,circle,opacity=0,draw=white,text opacity=1,thick,inner sep=0,outer sep=0.05em] (#1) {#2};}}
 
-\setbeamersize{text margin left=2.0em,text margin right=2.0em}
+\setbeamersize{text margin left=1.60em,text margin right=1.60em}
 
 \begin{document}
 
@@ -387,15 +388,14 @@
   May 2nd, 2023
   \bigskip
 
-  Ingo Blechschmidt
+  Ingo Blechschmidt \\
+  j.w.w. Alexander Oldenziel
   \par
 \end{frame}}
 
 \definecolor{mypurple}{RGB}{150,0,255}
 \setbeamercolor{structure}{fg=mypurple}
 
-
-% \begin{document}
 
 \section{Motivation}
 
@@ -465,13 +465,13 @@
   \textbf{Def.} For a predicate~$P$ on finite lists over a set~$X$, inductively
   define:
   \[
-    \infer{P \,|\, \sigma}{P(\sigma)}
+    \infer{P \,|\, \sigma}{P\sigma}
     \qquad
     \infer{P \,|\, \sigma}{\forall(x \in X)\_\ P \,|\, \sigma x}
   \]
 
   \textbf{Def.} A preorder is \hil{well} iff~$\mathsf{Good} \,|\, [\,]$, where
-  $\mathsf{Good}(\sigma) \defeqv (\exists(i < j)\_ \sigma[i] \leq \sigma[j])$.
+  $\mathsf{Good}\,\sigma \defeqv (\exists(i < j)\_ \sigma[i] \leq \sigma[j])$.
 \end{frame}}
 
 \begin{frame}{Computational content from classical proofs}
@@ -489,14 +489,16 @@
   \vspace*{-1em}
   \pause
 
-  \textbf{Prop.} Let~$(X,{\leq})$ be preorder. Let~$x < y$ mean~$x \leq y \wedge \neg(y \leq x)$. \\
+  \textbf{Prop.} Let~$(X,{\leq})$ be preorder. Let~``$x < y$'' mean~$x \leq y \wedge \neg(y \leq x)$. \\
   Then: If~$X$ is well$^\star$, then~$({<})$ is well-founded$^\star$.
 
   \emph{Proof.} An infinite strictly descending chain would also be good. \qed
+  \pause
 
   \emph{Can we extract a constructive proof that well implies well-founded?}
 \end{frame}
 
+{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{5.95cm}\includegraphics[width=\paperwidth]{fr1}\end{minipage}}
 \begin{frame}{Maximal ideals}
   \only<1-7>{\textbf{Thm.}
   Let~$M$ be a surjective matrix with more rows than columns over a
@@ -507,7 +509,7 @@
   \visible<5->{The matrix is surjective over~$A/\mmm$.}
   \visible<6->{Since~$A/\mmm$ is a field, this is a contradiction to basic linear algebra.\qed}}
 
-  \only<4-7>{\bigskip\par\centering\scalebox{0.9}{\begin{tikzpicture}
+  \only<4-7>{\bigskip\par\centering\scalebox{0.9}{\centering\begin{tikzpicture}
     \node (0) at (0,1) {$(0) = \{0\}$};
     \node (1) at (0,5) {$(1) = \ZZ$};
     \node (2) at (-2,4) {$(2)$};
@@ -543,7 +545,7 @@
         ($(7d.south east) + (0, 8pt)$) arc(0:-90:8pt) --
         cycle;
     \end{pgfonlayer}
-  \end{tikzpicture}}\par}
+  \end{tikzpicture}\par}\par}
 
   \pause
   \pause
@@ -558,7 +560,7 @@
   \pause
   \begin{enumerate}
     \item \good{Yes}, if \bad{Zorn's lemma} is available.
-    \medskip
+    \bigskip
     \pause
 
     \item \good{Yes}, if~$A$ is countable and membership of finitely generated ideals is decidable:
@@ -578,19 +580,229 @@
       \mmm_{n+1} &= \mmm_n + (\underbrace{\{ x \in A \,|\, x = x_n \wedge
         1 \not\in \mmm_n + (x_n) \}}_{\text{a certain subsingleton set}})
     \end{align*}}
-    \vspace*{-0.5em}
+    \vspace*{4.5em}
+    \visible<11>{{
+      \centering
+      \raisebox{0pt}[0pt][0pt]{
+        \hspace*{1.5em}
+        \begin{tikzpicture}
+          \node (inner) at (17.3mm,-20mm) {\textit{``a bad joke''}};
+          \path (0,0) pic{laurel-wreath};
+        \end{tikzpicture}
+        \hspace*{-3em}
+        \begin{tikzpicture}
+          \node (inner) at (17.5mm,-18mm) {\vbox{\small\centering\textit{``non- \\informative''}}};
+          \path (0,0) pic{laurel-wreath};
+        \end{tikzpicture}
+      }
+      \par
+    }}
     \pause
+    \pause
+    \vspace*{-4.5em}
 
-    \item In the general case: \bad{No}, but we \good{do have} the first-order
-    consequences of the existence of a maximal ideal.
+    \item In the general case: \bad{No}, but the \emph{first-order
+    consequences} of the existence of a maximal ideal \good{do hold}.
+  \end{enumerate}
+\end{frame}}
+
+\begin{frame}{Questions}
+  \begin{enumerate}
+    \item \!Why was the inductive revolution so powerful?
+    \bigskip
+
+    \item \!Why do proofs using Zorn's maximal ideals work so well in constructive algebra?
+    \bigskip
+
+    \item \!Why are elements of~$\bigcap_\ppp \ppp$ not necessarily nilpotent?
+    \bigskip
+
+    \item How can we extract computational content from classical proofs?
+  \end{enumerate}
+\end{frame}
+
+\renewcommand{\insertframeextra}{a}
+{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{3.23cm}\includegraphics[width=\paperwidth]{topos-horses-lighter-lighter}\end{minipage}}
+\begin{frame}{Constructive forcing (= Grothendieck toposes)}
+  \justifying
+  Let~$L$ be a \hil{forcing notion}, a preorder equipped
+  with a \hil{covering system}.\only<1-2>{\footnote{\scriptsize A covering system consists of a
+  set~$\Cov(\sigma) \subseteq P({\downarrow}\sigma)$ of \emph{coverings} for
+  each element~$\sigma \in L$ subject only to the following simulation
+  condition: If~$\tau \preccurlyeq \sigma$ and~$R \in \Cov(\sigma)$, there
+  should be a covering~$S \in \Cov(\tau)$ such that~$S \subseteq
+  {\downarrow}R$.}}\only<3->{\textsuperscript{\phantom{1}}}
+  \hil{Filters}~$F \subseteq L$ are subsets which are upward-closed,
+  downward-directed and split the covering system.\only<1-2>{\footnote{\scriptsize
+  A subset~$F$ splits the covering system iff for every~$\sigma \in L$ and~$R \in \Cov(\sigma)$,
+  if~$\sigma \in F$, then~$\tau \in F$ for some~$\tau \in R$.}}\only<3>{\textsuperscript{\phantom{2}}}
+  \pause
+
+  {\centering\footnotesize\begin{tabular}{lll}
+    \toprule
+    preorder~$L$ & coverings of an element~$\sigma \in L$ & filters of~$L$ \\
+    \midrule
+    $X^*$ & $\{ \sigma x \,|\, x \in X \}$ & maps~$\NN \to X$ \\
+    $X^*$ & $\{ \sigma x \,|\, x \in X \}$,\ \
+    $\{ \sigma\tau \,|\, \tau \in X^*, a \in \sigma\tau \}$ for each~$a \in X$ & surjections~$\NN \twoheadrightarrow X$ \\
+    f.g. ideals & --- & ideals \\
+    f.g. ideals & $\{ \sigma+(a), \sigma+(b) \}$ for each~$ab \in \sigma$,\ \
+    $\{\}$ if~$1 \in \sigma$ & prime ideals \\
+    opens & $\mathcal{U}$ such that~$\sigma = \bigcup \mathcal{U}$ & points \\
+    $\{\star\}$ & $\{ \star \,|\, \varphi \} \cup \{ \star \,|\, \neg\varphi \}$ &
+    witnesses of~\textsc{lem}
+    \\
+    \bottomrule
+  \end{tabular}\par}
+  \bigskip
+
+  \only<3>{\textbf{Def.} Given a monotone predicate~$P$
+  on~$L$, inductively define:
+  \[
+    \infer{P \,|\, \sigma}{P\sigma}
+    \qquad
+    \infer[{\small(R \in \Cov(\sigma))}]{P \,|\, \sigma}{\forall(\tau \in R)\_\ P \,|\, \tau}
+  \]
+  We use quantifier-like notation: ``$\nabla\sigma\_ P\sigma$'' means~$P \,|\, \sigma$.}
+\end{frame}}
+
+\addtocounter{framenumber}{-1}
+\renewcommand{\insertframeextra}{b}
+{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{3.23cm}\includegraphics[width=\paperwidth]{topos-horses-lighter-lighter}\end{minipage}}
+\begin{frame}{Constructive forcing (= Grothendieck toposes)}
+  A forcing notion is a template for a \hil{forcing extension}~$V^\nabla$
+  of the base universe~$V$:
+
+  \begin{center}\begin{tikzpicture}[remember picture,overlay]
+    \node[thick, draw=mypurpledark, rectangle, inner sep=0.3em] (kj) {
+      \begin{minipage}{0.6\textwidth}
+        \centering
+        \emph{When we say that a statement \hil{holds in~$V^\nabla$},} \\
+        we mean that its~$\nabla$-translation is true.\par
+        \vspace*{0.3em}
+      \end{minipage}
+    };
+  \end{tikzpicture}\end{center}
+  \bigskip
+  \pause
+
+  \textbf{Examples.}
+  \begin{enumerate}
+  \justifying
+  \item For~$L = \{\star\}$, ``every number is zero or a successor'' holds
+  in~$V^\nabla$ because
+
+  \vspace*{-1em}
+  \[ \forall(n \in \NN)\_ \neg\neg\bigl(\neg\neg(n = 0) \vee
+    \neg\neg(\exists(m \in \NN)\_ \neg\neg(n = S(m)))\bigr). \]
+
+  \pause
+  \item For~$L$ associated to a space, ``every symmetric matrix has an
+  eigenvector'' holds in~$V^\nabla$ iff for every continuous family of
+  symmetric matrices, locally there is a continuous eigenvector-picking
+  function.
+  \pause
+  \medskip
+
+  \item For any~$L$, ``there is a filter of~$L$'' holds in~$V^\nabla$,
+  witnessed by the \hil{generic filter} of~$L$.
+  \pause
+  \medskip
+
+  \item Let~$X$ be a preorder. Then:
+
+  \hil{$\blacktriangleright$} $X$ is well iff the generic sequence~$\NN \to X$
+  is good.
+
+  \hil{$\blacktriangleright$} $({<})$ is well-founded iff the generic strictly
+  descending chain validates~$\bot$.
+  \end{enumerate}
+\end{frame}}
+
+\renewcommand{\insertframeextra}{}
+\begin{frame}{The modal multiverse}
+  \only<1-2>{In general, ``$\varphi$ holds in~$V^\nabla$'' and~``$\varphi$ holds in~$V$''
+  are \emph{not} equivalent.
+
+  \hil{$\blacktriangleright$}
+  For \hil{positive} extensions, they are equivalent for coherent implications.\\
+  %\footnote{bounded first-order formulas of the
+  %form~$\forall\ldots\forall\_(\ldots\Rightarrow\ldots)$,
+  %where antecedent and succedent do not contain~``$\forall$''
+  %and~``${\Rightarrow}$''}.
+  \phantom{\hil{$\blacktriangleright$}} {\footnotesize -- e.g. the ``Barr cover''.\par}
+
+  \hil{$\blacktriangleright$}
+  For \hil{positive open} extensions, they are equivalent for bounded first-order formulas. \\
+  \phantom{\hil{$\blacktriangleright$}} {\footnotesize -- e.g. $V^\nabla$ containing
+  the generic surjection~$\NN \twoheadrightarrow X$, if~$X$ is inhabited.\par}
+  \bigskip}
+  \pause
+
+  \textbf{Def.} A statement~$\varphi$ holds \ldots
+  \begin{enumerate}
+    \small
+    \item[$\blacktriangleright$] \hil{everywhere} ($\necessary\varphi$) iff
+    it holds in every extension.
+    \item[$\blacktriangleright$] \hil{somewhere} ($\possible\varphi$) iff
+    it holds in some positive extension.
+    \item[$\blacktriangleright$] \hil{proximally} ($\xpossible\varphi$) iff
+    it holds in some positive overt extension.
+  \end{enumerate}
+  \bigskip
+  \pause
+
+  \small
+  \begin{multicols}{2}
+    For every set~$X$, \emph{proximally} \\
+    there is an enumeration~$\NN \twoheadrightarrow X$.
+
+    A preorder is well iff \emph{everywhere}, \\
+    every sequence is good.
+
+    A ring element is nilpotent iff \\
+    all prime ideals \emph{everywhere} contain it.
+
+    For every ring, \emph{proximally} \\ there is a maximal ideal.
+
+    A relation is well-founded iff \emph{everywhere}, there is no descending chain.
+
+    \emph{Somewhere}, \\ the law of excluded middle holds.
+  \end{multicols}
+\end{frame}
+
+\begin{frame}{The multiverse perspective}
+  \begin{enumerate}
+    \item \!\emph{Why was the inductive revolution so powerful?}
+
+    Because the inductive conditions
+    are equivalent to truth in \emph{all} forcing extensions.
+    \bigskip
+
+    \item \!\emph{Why do proofs using Zorn's maximal ideals work so well in constructive algebra?}
+
+    Because every ring proximally has a maximal ideal.
+    \bigskip
+
+    \item \!\emph{Why are elements of~$\bigcap_\ppp \ppp$ not necessarily nilpotent?}
+
+    Because we forgot the prime ideals in forcing extensions.
+    \bigskip
+
+    \item \emph{How can we extract computational content from classical proofs?}
+
+    By traveling the multiverse (upwards, keeping ties to the base), exploiting
+    that \\
+    -- \textsc{lem} holds \emph{somewhere} and \\
+    -- \textsc{dc} holds \emph{proximally}.
   \end{enumerate}
 \end{frame}
 
 \backupstart
 
-{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\includegraphics[width=\paperwidth]{eventually-monad}\end{minipage}}
+{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\includegraphics[width=\paperwidth]{eventually-monad-cropped}\end{minipage}}
 \begin{frame}
-  \vspace*{\paperheight}\vspace*{-3.4em}\centering
+  \vspace*{\paperheight}\vspace*{-2.05em}\centering
   \emph{Agda formalization available.}
 \end{frame}}
 

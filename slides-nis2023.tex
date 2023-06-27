@@ -356,8 +356,10 @@ emerging synthetic account of algebraic geometry}
 \definecolor{mypurple}{RGB}{150,0,255}
 \setbeamercolor{structure}{fg=mypurple}
 
+%{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{-1.25cm}\includegraphics[width=\paperwidth]{nis}\end{minipage}}
 \begin{frame}[c]
   \centering
+  %\color{white}
 
   \bigskip
   \bigskip
@@ -365,8 +367,15 @@ emerging synthetic account of algebraic geometry}
   \bigskip
   \bigskip
 
+  %\setbeamercolor{block body}{bg=black!100}
+  %\begin{minipage}{0.8\textwidth}
+  %  \begin{block}{}
+  %\color{white}
+  %\centering
   Constructive mathematics for mathematical phantoms: \\
   \hil{synthetic algebraic geometry}
+  %\end{block}
+  %\end{minipage}
 
   \scriptsize
   \textit{-- an invitation --}
@@ -393,12 +402,12 @@ emerging synthetic account of algebraic geometry}
   ``Can we weaken the decidability assumption?''
   \bigskip
 
-  ``What if there are not enough points?''
+  ``Can pointfree topology help?''
 
   \vspace*{0.2cm}
 
   \centering
-  \includegraphics[width=0.3\textwidth]{confusion}
+  \qquad\quad\includegraphics[width=0.3\textwidth]{confusion}
 \end{frame}
 
 \begin{frame}[t]{Mathematical phantoms}
@@ -414,11 +423,11 @@ emerging synthetic account of algebraic geometry}
       \emph{One of the recurring themes of mathematics,
       and one that I have always found seductive,
       is that of \\\medskip
-      \triang the nonexistent entity which ought to be there \\
-      \phantom{\triang}but apparently is not; \\\medskip
-      \triang which nevertheless obtrudes its effects so
+      \triang{} the nonexistent entity which ought to be there \\
+      \phantom{\triang{}} but apparently is not; \\\medskip
+      \triang{} which nevertheless obtrudes its effects so
       convincingly that \\
-      \phantom{\triang}one is forced to concede
+      \phantom{\triang{}} one is forced to concede
       a broader notion of existence.}
     \end{column}
   \end{columns}
@@ -448,70 +457,156 @@ emerging synthetic account of algebraic geometry}
 \end{frame}
 
 {\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{5.95cm}\includegraphics[width=\paperwidth]{fr1}\end{minipage}}
-\begin{frame}{Algebraic geometry in a nutshell}
-  Turn \hil{algebras} into \hil{spaces}, and \hil{glue} those
-  spaces.
-  \bigskip
+\begin{frame}{A glimpse of algebraic geometry}
+  Algebraic geometry studies \hil{solution sets} of polynomial systems of equations, \\
+  and spaces obtained by \hil{gluing} such sets:
 
-  \subhead{Examples}
-  \begin{enumerate}
-    \item $\Spec(R[X_1,\ldots,X_n]) = \AA^n$.
-    \item $\Spec(R[X,Y]/(Y-X^2)) = \text{standard parabola}$.
-    \item Gluing
-    \begin{tikzpicture}[scale=0.2,baseline={([yshift=-.6ex]current bounding box.center)}]
-      \draw (0,0) circle (1);
-      \draw [fill=white] (90:1) circle (0.3);
-    \end{tikzpicture}
-    with
-    \begin{tikzpicture}[scale=0.2,baseline={([yshift=-.6ex]current bounding box.center)}]
-      \draw (0,0) circle (1);
-      \draw [fill=white] (270:1) circle (0.3);
-    \end{tikzpicture}
-    along
-    \begin{tikzpicture}[scale=0.2,baseline={([yshift=-.6ex]current bounding box.center)}]
-      \draw (0,0) circle (1);
-      \draw [fill=white] (90:1) circle (0.3);
-      \draw [fill=white] (270:1) circle (0.3);
-    \end{tikzpicture}
-    yields
-    $\PP^1$.
-  \end{enumerate}
-  \bigskip
+  \begin{center}
+    \includegraphics[angle=90,width=0.5\textwidth]{algebraic-surfaces}
 
-  \subhead{Concrete results}
-  Fermat's Last Theorem: For~$n \geq 3$, no positive integers satisfy
+    \scriptsize C. Stussak, P. Schenzel. Interactive visualisation of algebraic surfaces as a tool for shape creation. \\ Int. J. Arts Technol. 4:2 (2011), pp. 216--218
+  \end{center}
+
+  Concrete results such as Fermat's Last Theorem: For~$n \geq 3$, no positive integers satisfy
   \[ a^n + b^n = c^n. \]
 \end{frame}}
 
-{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{3.95cm}\includegraphics[width=\paperwidth]{staircase}\end{minipage}}
-\begin{frame}{Transfinite methods}
-  The standard presentation of algebraic geometry hinges on:
-  \begin{itemize}
-    \item large structures: classes, large categories, universes, \ldots
-    \item powersets
-    \item law of excluded middle
-    \item axiom of choice
-  \end{itemize}
-  despite \ldots
-  \begin{enumerate}
-    \item concrete subject matter (in part)
-    \item practical computer algebra systems for computations
-    \item well-established constructive algebra
-    \item high-level proofs often constructive
-  \end{enumerate}
+{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{5.95cm}\includegraphics[width=\paperwidth]{fr1}\end{minipage}}
+\begin{frame}{Mathematics vs. algebraic geometry}
+  Let~$k$ be a base field,
+  e.g. $\QQ$, $\FF_p$, \ldots
+  \bigskip
 
+  \subhead{Functions}
+  Which functions~$k^2 \to k$ are there?
+  \vspace*{-1em}
+
+  \begin{columns}[c]
+    \begin{column}{0.4\textwidth}
+      \centering
+      \[ (x,y) \mapsto x^3 + xy^2 - y^4 \]
+
+      \ \\
+      \cmark{} polynomial
+    \end{column}
+    \begin{column}{0.4\textwidth}
+      \centering
+      \[ (x,y) \mapsto \begin{cases}
+	1, & \text{if $x = 0$,} \\
+	0, & \text{else.}
+      \end{cases} \]
+
+      \xmark{} non-polynomial
+    \end{column}
+  \end{columns}
   \pause
-  \subhead{Thesis}
-  Algebraic geometry can alternatively be developed from just the three postulates of a
-  \hil{quasicoherent} \hil{local ring} with \hil{Zariski-choice}.
+  \bigskip
+
+  \subhead{Implications}
+  \begin{columns}[c]
+    \begin{column}{0.4\textwidth}
+      \centering
+      \[
+	\left.\begin{array}{@{}r@{\ }c@{\ }l@{}}
+	  1+x^2 &=& 0 \\
+	  1+x^2+x^4 &=& 0
+	\end{array}\right\} \Rightarrow 1 = 0
+      \]
+      \visible<3->{\cmark{} algebraic certificate:
+      \vspace*{-1em}
+      \[ 1 = (-x^2)\cdot(1+x^2) + 1\cdot(1+x^2+x^4)\]}
+    \end{column}
+    \begin{column}{0.4\textwidth}
+      \centering
+      \[ \left.\begin{array}{@{}l@{}}\phantom{x^2}\\\phantom{x^2}\end{array}\right.\!\!\!\!
+      x^2 = 0 \Rightarrow x = 0 \]
+
+      \visible<4->{\xmark{} no algebraic certificate:
+      \vspace*{-1em}
+      \[ x = \ldots x^2 \ldots?! \]}
+    \end{column}
+  \end{columns}
+
 \end{frame}}
 
-\begin{frame}{A simple spectrum construction}
-  The \hil{space} associated to an~$R$~\hil{algebra}~$A$ is
-  \[ \Spec(A) \defeq \Hom_R(A,R) = \{ \varphi : A \to R \,|\, \text{$\varphi$ is an~$R$-algebra homomorphism} \}. \]
-  Every element~$f \in A$ gives rise to a function~$\mathrm{ev}_f$ on~$\Spec(A)$:
-  \[ \mathrm{ev}_f : \Spec(A) \to R,\ \varphi \mapsto \varphi(f). \]
-\end{frame}
+{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{3.95cm}\includegraphics[width=\paperwidth]{staircase}\end{minipage}}
+\begin{frame}{Transfinite methods?}
+  The standard road to algebraic geometry:
+  \begin{enumerate}
+    \item Invent topological spaces.
+    \item Put the Zariski topology on~$k^n$.
+    \item Add non-maximal prime ideals to soberify the space.
+    \item Invent sheaves.
+    \item Construct the structure sheaf.
+  \end{enumerate}
+  \pause
+  This requires \ldots
+  \begin{multicols}{2}
+    \begin{itemize}
+      \item large structures
+      \item powersets
+      \item law of excluded middle
+      \item axiom of choice
+    \end{itemize}
+  \end{multicols}
+  \pause
+  \vspace*{-0.5em}
+  despite:
+  \begin{itemize}
+    \item concrete subject matter
+    \item practical computer algebra systems for computations
+    %\item well-established constructive algebra
+    \item high-level proofs often constructive
+  \end{itemize}
+\end{frame}}
+
+{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{3.23cm}\includegraphics[width=\paperwidth]{topos-horses-lighter-lighter}\end{minipage}}
+\begin{frame}{Synthetic algebraic geometry}
+  \hil{Postulate.}
+  %Algebraic geometry can alternatively be developed from just
+  %three postulates:
+  We have a~$k$-algebra~$R$ such that
+  \begin{enumerate}
+    \item $R$ is local%
+    \only<2->{: \emph{if a sum is invertible, then so is one of the summands}},
+
+    \item $R$ is \hil{quasicoherent}%
+    \only<3->{: \emph{the map~$A \to R^{\Spec(A)}$ is bijective for every f.p.~$R$-algebra $A$}},
+  \end{enumerate}
+  and such that we have
+  \begin{enumerate}
+    \addtocounter{enumi}{2}
+    \item \hil{Zariski-choice}.
+  \end{enumerate}
+  \medskip
+
+  \pause
+  \pause
+  \pause
+  \textbf{Def.} $\Spec(A) \defeq \Hom_R(A,R) = \{ \varphi : A \to R \,|\, \text{$\varphi$ is an~$R$-algebra homomorphism} \}$.
+  \pause
+
+  \textbf{Ex.} $\Spec(R[X_1,\ldots,X_n]) \cong R^n$\pause,\quad
+  $\Spec(R) \cong R^0 = \{ () \}$\pause,\quad
+  $\Spec(R/(x)) \cong \{ () \,|\, x = 0 \}$.
+  \pause
+
+  \textbf{Prop.} $R^{(R^n)} \cong R[X_1,\ldots,X_n]$.
+  \pause
+
+  \textbf{Prop.} If~$\Spec(A) = \emptyset$, then~$A = 0$.
+  \pause
+
+  \textbf{Cor.} For all~$x \in R$, if~$x \neq 0$, then~$x$ is invertible.
+  \pause
+
+  \textbf{Prop.} It is \emph{not the case} that for every~$\varepsilon \in R$,
+  if~$\varepsilon^2 = 0$ then~$\varepsilon = 0$.
+  \pause
+
+  \textbf{Cor.} It is \emph{not the case} that for every~$x \in R$,
+  either~$x = 0$ or~$x \neq 0$.
+\end{frame}}
 
 
 %\begin{frame}{Formalizing algebraic geometry}
@@ -526,3 +621,7 @@ emerging synthetic account of algebraic geometry}
 %\end{frame}
 
 \end{document}
+  The \hil{space} associated to an~$R$~\hil{algebra}~$A$ is
+  \[ \Spec(A) \defeq \Hom_R(A,R) = \{ \varphi : A \to R \,|\, \text{$\varphi$ is an~$R$-algebra homomorphism} \}. \]
+  Every element~$f \in A$ gives rise to a function~$\mathrm{ev}_f$ on~$\Spec(A)$:
+  \[ \mathrm{ev}_f : \Spec(A) \to R,\ \varphi \mapsto \varphi(f). \]

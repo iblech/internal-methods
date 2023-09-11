@@ -128,6 +128,7 @@
 \newcommand{\CC}{\mathbb{C}}
 \renewcommand{\P}{\mathcal{P}}
 \newcommand{\aaa}{\mathfrak{a}}
+\newcommand{\bbb}{\mathfrak{b}}
 \newcommand{\ccc}{\mathfrak{c}}
 \newcommand{\ppp}{\mathfrak{p}}
 \newcommand{\fff}{\mathfrak{f}}
@@ -780,6 +781,63 @@
 
 \section{Basics of forcing}
 
+% \begin{document}
+
+\begin{frame}{Ingredients for forcing}
+  To construct a forcing extension, we require:
+  \begin{enumerate}
+    \item a base universe~$V$
+    \item a preorder~$L$ of \hil{forcing conditions} in~$V$\!,
+    pictured as \hil{finite approximations}
+
+    (\emph{convention:} $\tau \preccurlyeq \sigma$ means that~$\tau$ is a
+    better finite approximation than~$\sigma$)
+    \item a \hil{covering system} governing how finite approximations evolve to
+    better ones
+
+    (for each~$\sigma \in L$, a set~$\Cov(\sigma) \subseteq
+    P({\downarrow}\sigma)$, with a simulation condition)
+  \end{enumerate}
+  In the forcing extension, there will then be a \hil{generic filter} (ideal
+  object).
+  \pause
+
+  \vspace*{-1em}
+  \begin{columns}
+    \begin{column}{0.49\textwidth}
+      \small
+      \begin{block}{For the generic surjection~$\NN \twoheadrightarrow X$}
+        \justifying
+        Use \hil{finite lists}~$\sigma \in X^*$ as forcing conditions,
+        where $\tau \preccurlyeq \sigma$ iff~$\sigma$ is an initial segment of~$\tau$,
+        and be prepared to grow~$\sigma$ to \ldots
+        \footnotesize
+        \begin{enumerate}
+          \item[(a)] one of~$\{ \sigma x \,|\, x \in X \}$, to make~$\sigma$ more defined
+          \item[(b)] one of~$\{ \sigma \tau \,|\, \tau \in X^*, a \in
+          \sigma\tau \}$, for any~$a \in X$, to make~$\sigma$ more surjective
+        \end{enumerate}
+      \end{block}
+    \end{column}
+    \pause
+
+    \begin{column}{0.45\textwidth}
+      \small
+      \begin{block}{For the generic prime ideal of a ring~$A$}
+        \justifying
+        Use \hil{f.g.\@ ideals} as forcing conditions, where $\bbb \preccurlyeq
+        \aaa$ iff~$\bbb \supseteq \aaa$, and be prepared to grow~$\aaa$ to \ldots
+        \footnotesize
+        \begin{enumerate}
+          \item[(a)] one of~$\emptyset$, if~$1 \in \aaa$, to make~$\aaa$ more proper
+          \item[(b)] one of~$\{ \aaa+(x), \aaa+(y) \}$, if~$xy \in \aaa$, to
+          make~$\aaa$ more prime
+        \end{enumerate}
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
 \begin{frame}{Forcing notions}
   \small
   \textbf{Def.} A \hil{forcing notion} consists of
@@ -819,7 +877,6 @@
     \item $F$ splits the covering system: if~$\sigma \in F$ and~$R \in
     \Cov(\sigma)$, then~$\tau \in F$ for some~$\tau \in R$.
   \end{enumerate}
-
 \end{frame}
 
 \end{document}

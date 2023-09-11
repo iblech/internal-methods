@@ -402,7 +402,7 @@
   \begin{pmatrix}a_{11}(t)&\cdots&a_{1n}(t)\\\vdots&&\vdots\\a_{n1}(t)&\cdots&a_{nn}(t)\end{pmatrix}
   \]
 
-  Then for every parameter value~$t$, classically there is
+  Then for every parameter value~$t \in \Omega$, classically there is
 
   \hil{$\blacktriangleright$} a full list of eigenvalues~$\lambda_1(t),\ldots,\lambda_n(t)$ and \\
   \hil{$\blacktriangleright$} an eigenvector basis~$(v_1(t),\ldots,v_n(t))$.
@@ -415,7 +415,8 @@
     \begin{column}{0.9\textwidth}
       \mbox{Can locally the functions~$\lambda_i$ be chosen to be continuous?
       \only<2->{\hil{Yes.}}} \\
-      How about the~$v_i$? \only<2->{\hil{No.}}
+      How about the~$v_i$? \only<2->{\hil{No}\only<3->{, but \hil{yes} on a dense
+      open subset of~$\Omega$.}}
     \end{column}
   \end{columns}
 \end{frame}
@@ -504,14 +505,17 @@
   \end{enumerate}
 \end{frame}}
 
+
+\section{What can forcing do for you?}
+
 \begin{frame}{What can forcing do for you?}
   \vspace*{-0.5em}
 
   \begin{columns}
     \begin{column}{0.45\textwidth}
       \begin{block}{1. Explore foundational possibility}
-        There are forcing extensions with~\textsc{ch}, $\neg$\textsc{ch},
-        \textsc{lem}, $\neg$\textsc{lem}, \ldots
+        There are forcing extensions with \\
+        \textsc{ch}, $\neg$\textsc{ch}, \textsc{lem}, $\neg$\textsc{lem}, \ldots
       \end{block}
     \end{column}
     \pause
@@ -734,17 +738,73 @@
   \end{tikzpicture}
   \pause
 
-  \textbf{Def.} For a predicate~$P$ on finite lists over a set~$X$, inductively
-  define:
-  \[
-    \infer{P \,|\, \sigma}{P\sigma}
-    \qquad
-    \infer{P \,|\, \sigma}{\forall(x \in X)\_\ P \,|\, \sigma x}
-  \]
+  \textbf{Def.} A preorder is \hil{well} iff any of the following equivalent
+  conditions hold:
+  \begin{enumerate}
+    \item The \hil{generic sequence} $\NN \to X$ is good.
+    \pause
+    \item Every sequence $\NN \to X$ \hil{in every forcing extension} is good.
+    \pause
+    \item There is a \hil{well-founded tree} witnessing universal goodness.
+  \end{enumerate}
 
-  \textbf{Def.} A preorder is \hil{well} iff~$\mathsf{Good} \,|\, [\,]$, where
-  $\mathsf{Good}\,[\sigma_1,\ldots,\sigma_n] \defeqv (\exists(i < j)\_ \sigma_i \leq \sigma_j)$.
+%  $\mathsf{Good}\,[\sigma_1,\ldots,\sigma_n] \defeqv (\exists(i < j)\_ \sigma_i \leq \sigma_j)$.
+%  \textbf{Def.} For a predicate~$P$ on finite lists over a set~$X$, inductively
+%  define:
+%  \[
+%    \infer{P \,|\, \sigma}{P\sigma}
+%    \qquad
+%    \infer{P \,|\, \sigma}{\forall(x \in X)\_\ P \,|\, \sigma x}
+%  \]
+%
+%  \textbf{Def.} A preorder is \hil{well} iff~$\mathsf{Good} \,|\, [\,]$, where
+%  $\mathsf{Good}\,[\sigma_1,\ldots,\sigma_n] \defeqv (\exists(i < j)\_ \sigma_i \leq \sigma_j)$.
 \end{frame}}
+
+
+\section{Basics of forcing}
+
+\begin{frame}{Forcing notions}
+  \small
+  \textbf{Def.} A \hil{forcing notion} consists of
+  a preorder~$L$ of \hil{forcing conditions}, and
+  for every~$\sigma \in L$, a set~$\Cov(\sigma) \subseteq
+  P({\downarrow}\sigma)$ of \hil{coverings} of~$\sigma$
+  such that: If~$\tau \preccurlyeq \sigma$ and~$R \in \Cov(\sigma)$, there
+  should be a covering~$S \in \Cov(\tau)$ such that~$S \subseteq
+  {\downarrow}R$.
+  \bigskip
+
+  {\centering\footnotesize\begin{tabular}{llll}
+    \toprule
+    & preorder~$L$ & coverings of an element~$\sigma \in L$ & filters of~$L$ \\
+    \midrule
+    \normalnumber{1} & $X^*$ & $\{ \sigma x \,|\, x \in X \}$ & maps~$\NN \to X$ \\
+    \normalnumber{2} & $X^*$ & $\{ \sigma x \,|\, x \in X \}$,\ \ $\{ \sigma\tau \,|\, \tau \in X^*, a \in \sigma\tau \}$ for each~$a \in X$ & surjections~$\NN \twoheadrightarrow X$ \\
+    \normalnumber{3} & f.g. ideals & --- & ideals \\
+    \normalnumber{4} & f.g. ideals & $\{ \sigma+(a), \sigma+(b) \}$ for each~$ab \in \sigma$,\ \ $\{\}$ if~$1 \in \sigma$ & prime ideals \\
+    \normalnumber{5} & opens & $\mathcal{U}$ such that~$\sigma = \bigcup \mathcal{U}$ & points \\
+    \normalnumber{6} & $\{\star\}$ & $\{ \star \,|\, \varphi \} \cup \{ \star \,|\, \neg\varphi \}$ &
+    witnesses of~\textsc{lem}
+    \\
+    \bottomrule
+  \end{tabular}\par}
+  \bigskip
+
+  \textbf{Def.} A \emph{filter} of a forcing notion~$(L,\mathrm{Cov})$
+  is a subset~$F \subseteq L$ such that
+  \vspace*{-0.4em}
+  \begin{enumerate}
+    \scriptsize
+    \item $F$ is upward-closed: if~$\tau \preccurlyeq \sigma$ and if~$\tau \in F$, then~$\sigma \in F$; \\[-3.0em]
+    \item $F$ is downward-directed: $F$ is inhabited, and if~$\alpha,\beta \in F$,
+    then there is a common refinement~$\sigma \preccurlyeq \alpha,\beta$ such
+    that~$\sigma \in F$; and \\[-2.0em]
+    \item $F$ splits the covering system: if~$\sigma \in F$ and~$R \in
+    \Cov(\sigma)$, then~$\tau \in F$ for some~$\tau \in R$.
+  \end{enumerate}
+
+\end{frame}
 
 \end{document}
 
@@ -775,3 +835,9 @@ in the context of and for the purposes of constructive mathematics
 without requiring knowledge of
 
 set theory, topos theory, category theory, sheaves.
+
+
+Forschungsfrage: Klassische Basen sind ja schon ziemlich maximal in dem Sinn,
+als dass etwa der Raum der Funktionen ℕ → ℕ genügend Punkte hat. Wie wäre es,
+in einer Welt zu arbeiten, in der auch der Raum der Surjektionen ℕ → X genügend
+Punkte hat?

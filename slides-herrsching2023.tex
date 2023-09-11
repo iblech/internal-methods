@@ -676,9 +676,25 @@
     \emph{first-order consequences} of its existence there \good{do hold} in
     the base universe.
   \end{enumerate}
-\end{frame}}
+\end{frame}
 
-% \begin{document}
+\begin{frame}{Maximal ideals}
+  \textbf{Thm.}
+  Let~$M$ be a surjective matrix with more rows than columns over a
+  ring~$A$. Then~$1 = 0$ in~$A$.
+
+  \emph{Proof.} (special case) Write~$M = \left(\begin{smallmatrix}x\\y\end{smallmatrix}\right)$. By surjectivity,
+  have~$u, v$ with
+  \[
+    u \left(\begin{smallmatrix}x\\y\end{smallmatrix}\right) = \left(\begin{smallmatrix}1\\0\end{smallmatrix}\right)
+    \quad\text{and}\quad
+    v \left(\begin{smallmatrix}x\\y\end{smallmatrix}\right) = \left(\begin{smallmatrix}0\\1\end{smallmatrix}\right).
+  \]
+  Hence
+  $
+    1 = (vy) (ux) = (uy) (vx) = 0
+  $. \qed
+\end{frame}}
 
 {\usebackgroundtemplate{\begin{minipage}{\paperwidth}\includegraphics[height=\paperheight]{sea-of-clouds-2}\end{minipage}}
 \begin{frame}{Infinite data}
@@ -835,6 +851,10 @@ in the context of and for the purposes of constructive mathematics
 without requiring knowledge of
 
 set theory, topos theory, category theory, sheaves.
+
+
+Dominique Duval
+
 
 
 Forschungsfrage: Klassische Basen sind ja schon ziemlich maximal in dem Sinn,

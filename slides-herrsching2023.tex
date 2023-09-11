@@ -349,6 +349,12 @@
 
 \setbeamersize{text margin left=1.60em,text margin right=1.60em}
 
+\newlength\stextwidth
+\newcommand\makesamewidth[3][c]{%
+  \settowidth{\stextwidth}{#2}%
+  \makebox[\stextwidth][#1]{#3}%
+}
+
 \begin{document}
 
 \addtocounter{framenumber}{-1}
@@ -798,7 +804,7 @@
     (for each~$\sigma \in L$, a set~$\Cov(\sigma) \subseteq
     P({\downarrow}\sigma)$, with a simulation condition)
   \end{enumerate}
-  In the forcing extension, there will then be a \hil{generic filter} (ideal
+  In the forcing extension~$V^\nabla$, there will then be a \hil{generic filter} (ideal
   object).
   \pause
 
@@ -838,7 +844,70 @@
   \end{columns}
 \end{frame}
 
-\begin{frame}{Forcing notions}
+\begin{frame}{The eventually monad}
+  Let~$L$ be a forcing notion.
+
+  Let~$P$ be a monotone predicate on~$L$
+  (if $\tau \preccurlyeq \sigma$, then $P\sigma \Rightarrow P\tau$). \\
+  For instance, in the case~$L = X^*$:
+  \begin{itemize}
+    \item $\mathsf{Repeats}\, x_0\ldots x_{n-1} \defeqv \exists i\_ \exists j\_ i < j \wedge x_i = x_j$
+    \item $\mathsf{Good}\, \,\,\,\,\,\,x_0\ldots x_{n-1} \defeqv \exists i\_ \exists j\_ i < j \wedge x_i \leq x_j$
+  \end{itemize}
+
+  We then define~``\hil{$P \mid \sigma$}'' (``$P$ bars~$\sigma$'') inductively by the clauses:
+  \begin{enumerate}
+    \item If~$P\sigma$, then~$P \mid \sigma$.
+    \item If~$P \mid \tau$ for all~$\tau \in R$, where~$R$ is some covering
+    of~$\sigma$, then~$P \mid \sigma$.
+  \end{enumerate}
+  So~$P \mid \sigma$ expresses in a direct inductive fashion that no matter
+  how~$\sigma$ evolves to a better approximation~$\tau$, eventually~$P\tau$
+  will hold.
+
+  We use quantifier-like notation: ``$\nabla(\tau \preccurlyeq \sigma)\_
+  P\tau$'' means ``$P \mid \sigma$''.
+\end{frame}
+% BOARD:
+% - examples for P | σ
+% - abuse of notation
+
+\begin{frame}{Proof translations}
+  \textbf{Thm.} Every~\textsc{iqc}-proof remains correct, with at most a
+  polynomial increase in length, if throughout we
+  replace
+  \[\begin{array}{rcl@{\quad\text{where}\quad}rcl}
+    \exists & \leadsto & \exists_\mathrm{class},
+    & \exists_\mathrm{class} &\defeqv& \neg\neg\exists, \\
+    \vee & \leadsto & \vee_\mathrm{class},
+    & \alpha \vee_\mathrm{class} \beta &\defeqv& \neg\neg(\alpha \vee \beta), \\
+    = & \leadsto & =_\mathrm{class},
+    & s =_\mathrm{class} t &\defeqv& \neg\neg(s = t).
+  \end{array} \]
+  \pause
+
+  \begin{columns}[c]
+    \begin{column}{0.01\textwidth}
+      \includegraphics[height=2.4em]{sheafification-man-2}
+    \end{column}
+    \quad
+    \begin{column}{0.9\textwidth}
+      \hil{When we say:}\ \ some statement ``holds in~$V^{\neg\neg}$'', \\
+      \makesamewidth[l]{\hil{When we say:}}{\hil{we mean:}}\ \ its translation holds in~$V$.
+    \end{column}
+  \end{columns}
+  \bigskip
+
+  Similarly for arbitrary forcing extensions~$V^\nabla$, ``just with~$\nabla$
+  instead of~$\neg\neg$''.
+  \bigskip
+
+  \pause
+  \textbf{Ex.} As~$\neg\neg(\varphi \vee \neg\varphi)$ is a theorem
+  of~\textsc{iqc}, the law of excluded middle holds in~$V^{\neg\neg}$.
+\end{frame}
+
+\begin{frame}{Formalities}
   \small
   \textbf{Def.} A \hil{forcing notion} consists of
   a preorder~$L$ of \hil{forcing conditions}, and
@@ -918,3 +987,7 @@ Forschungsfrage: Klassische Basen sind ja schon ziemlich maximal in dem Sinn,
 als dass etwa der Raum der Funktionen ℕ → ℕ genügend Punkte hat. Wie wäre es,
 in einer Welt zu arbeiten, in der auch der Raum der Surjektionen ℕ → X genügend
 Punkte hat?
+
+
+Fun:
+- Modale Dinge

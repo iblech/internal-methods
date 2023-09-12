@@ -160,6 +160,7 @@
 \newcommand{\inv}{inv.\@}
 \newcommand{\seq}[1]{\mathrel{\vdash\!\!\!_{#1}}}
 \newcommand{\hg}{\mathbin{:}}  % homogeneous coordinates
+\newcommand{\forces}{\vDash}
 
 \setbeamertemplate{blocks}[rounded][shadow=false]
 
@@ -853,7 +854,9 @@
   \begin{itemize}
     \item $\mathsf{Repeats}\, x_0\ldots x_{n-1} \defeqv \exists i\_ \exists j\_ i < j \wedge x_i = x_j$
     \item $\mathsf{Good}\, \,\,\,\,\,\,x_0\ldots x_{n-1} \defeqv \exists i\_ \exists j\_ i < j \wedge x_i \leq x_j$
+    \quad (for some preorder~$\leq$ on~$X$)
   \end{itemize}
+  \pause
 
   We then define~``\hil{$P \mid \sigma$}'' (``$P$ bars~$\sigma$'') inductively by the clauses:
   \begin{enumerate}
@@ -861,9 +864,11 @@
     \item If~$P \mid \tau$ for all~$\tau \in R$, where~$R$ is some covering
     of~$\sigma$, then~$P \mid \sigma$.
   \end{enumerate}
-  So~$P \mid \sigma$ expresses in a direct inductive fashion that no matter
+  So~$P \mid \sigma$ expresses in a \hil{direct inductive fashion}:
+  \[ \text{``No matter
   how~$\sigma$ evolves to a better approximation~$\tau$, eventually~$P\tau$
-  will hold.
+  will hold.''} \]
+  \pause
 
   We use quantifier-like notation: ``$\nabla(\tau \preccurlyeq \sigma)\_
   P\tau$'' means ``$P \mid \sigma$''.
@@ -905,6 +910,64 @@
   \pause
   \textbf{Ex.} As~$\neg\neg(\varphi \vee \neg\varphi)$ is a theorem
   of~\textsc{iqc}, the law of excluded middle holds in~$V^{\neg\neg}$.
+\end{frame}
+
+\newcommand{\defeqvi}{\quad iff\quad}
+\begin{frame}{The $\nabla$-translation}
+  \small
+  For bounded first-order formulas over the (large) first-order signature which has
+  \begin{enumerate}
+    \scriptsize
+    \item one sort~$\underline{X}$ for each set~$X$ in the base universe,
+    \\[-1.2em]
+    \item one~$n$-ary function symbol~$\underline{f} : \underline{X_1} \times
+    \cdots \times \underline{X_n} \to \underline{Y}$ for each map~$f : X_1 \times
+    \cdots \times X_n \to Y$,
+    \\[-1.2em]
+    \item one~$n$-ary relation symbol~$\underline{R} \hookrightarrow
+    \underline{X_1} \times \cdots \times \underline{X_n}$ for each relation~$R
+    \subseteq X_1 \times \cdots \times X_n$, and
+    \\[-1.2em]
+    \item an additional unary relation symbol~$G \hookrightarrow \underline{L}$
+    (for the \emph{generic filter} of~$L$),
+  \end{enumerate}
+  we recursively define:
+  \scriptsize
+  \begin{tabbing}
+    \quad \= $\sigma \forces \forces \forall(x\?\underline{X})\_ \varphi$ \=
+    \defeqvi $\textcolor{gray}{\forall(\tau \preccurlyeq \sigma)\_}\
+    \forall(x_0 \in X)\_ \tau \forces \varphi[\underline{x_0}/x]$.\qquad\quad \=
+    $\sigma \forces \exists(x\?\underline{X})\_ \varphi$
+    \= $\sigma \forces \underline{R}(\underline{s_1},\ldots,\underline{s_n})$ \= \defeqvi $s = t$. \= \kill
+
+    \> $\sigma \forces s = t$
+    \> \defeqvi $\nabla \sigma\_ \llbracket s \rrbracket = \llbracket t \rrbracket$.
+    \> $\sigma \forces \underline{R}(s_1,\ldots,s_n)$
+    \> \defeqvi $\nabla\sigma\_ R(\llbracket s_1 \rrbracket,\ldots,\llbracket s_n \rrbracket)$. \\[0.3em]
+
+    \> $\sigma \forces \varphi \Rightarrow \psi$
+    \> \defeqvi $\textcolor{gray}{\forall(\tau \preccurlyeq \sigma)\_}\ (\tau \forces \varphi) \Rightarrow
+    (\tau \forces \psi)$.
+    \> $\sigma \forces G\tau$
+    \> \defeqvi $\nabla\sigma\_ \sigma \preccurlyeq \llbracket\tau\rrbracket$. \\[0.3em]
+
+    \> $\sigma \forces \top$ \> \defeqvi $\top$.
+    \> $\sigma \forces \bot$ \> \defeqvi $\hil{$\nabla\sigma\_$}\ \bot$ \\[0.3em]
+
+    \> $\sigma \forces \varphi \wedge \psi$
+    \> \defeqvi $(\sigma \forces \varphi) \wedge (\sigma \forces \psi)$.
+    \> $\sigma \forces \varphi \vee \psi$
+    \> \defeqvi $\hil{$\nabla\sigma\_$}\ (\sigma \forces \varphi) \vee (\sigma \forces \psi)$. \\[0.3em]
+
+    \> $\sigma \forces \forall(x\?\underline{X})\_ \varphi$
+    \> \defeqvi $\textcolor{gray}{\forall(\tau \preccurlyeq \sigma)\_}\ \forall(x_0 \in X)\_ \tau \forces
+    \varphi[\underline{x_0}/x]$.
+    \> $\sigma \forces \exists(x\?\underline{X})\_ \varphi$
+    \> \defeqvi $\hil{$\nabla\sigma\_$}\ \exists(x_0 \in X)\_ \sigma \forces \varphi[\underline{x_0}/x]$.
+  \end{tabbing}
+  \small
+  Finally, we say that~$\varphi$ ``holds in~$V^\nabla$'' iff for all~$\sigma
+  \in L$, $\sigma \forces \varphi$.
 \end{frame}
 
 \begin{frame}{Formalities}

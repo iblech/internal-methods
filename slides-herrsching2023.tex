@@ -1,5 +1,4 @@
 \documentclass[12pt,utf8,notheorems,compress,t,aspectratio=169]{beamer}
-%\documentclass[12pt,utf8,notheorems,compress,t]{beamer}
 \usepackage{etex}
 
 \usepackage{pgfpages}
@@ -12,7 +11,6 @@
 \usepackage[english]{babel}
 
 \usepackage[normalem]{ulem}
-\usepackage{graphbox}
 \usepackage{mathtools}
 \usepackage{booktabs}
 \usepackage{stmaryrd}
@@ -24,8 +22,6 @@
 \usepackage{tabto}
 \usepackage{xstring}
 \usepackage{proof}
-\usepackage{ifthen}
-\usepackage[normalem]{ulem}
 \usepackage[all]{xy}
 \xyoption{rotate}
 \usepackage{tikz}
@@ -87,9 +83,6 @@
 \definecolor{mypurple}{RGB}{253,73,34}
 \definecolor{mypurpledark}{RGB}{100,0,150}
 \setbeamercolor{structure}{fg=mypurple}
-\definecolor{myred}{RGB}{150,0,0}
-%\setbeamercolor*{title}{bg=myred,fg=white}
-%\setbeamercolor*{titlelike}{bg=myred,fg=white}
 \setbeamercolor*{title}{bg=mypurple,fg=white}
 \setbeamercolor*{titlelike}{bg=mypurple,fg=white}
 \setbeamercolor{frame}{bg=black}
@@ -135,31 +128,11 @@
 \newcommand{\mmm}{\mathfrak{m}}
 \newcommand{\defeq}{\vcentcolon=}
 \newcommand{\defeqv}{\vcentcolon\equiv}
-\newcommand{\Sh}{\mathrm{Sh}}
-\newcommand{\GL}{\mathrm{GL}}
-\newcommand{\Zar}{\mathrm{Zar}}
-\newcommand{\op}{\mathrm{op}}
-\newcommand{\Set}{\mathrm{Set}}
-\newcommand{\Eff}{\mathrm{Ef{}f}}
-\newcommand{\Sch}{\mathrm{Sch}}
-\newcommand{\Aff}{\mathrm{Aff}}
-\newcommand{\Ring}{\mathrm{Ring}}
 \newcommand{\Cov}{\mathrm{Cov}}
-\newcommand{\LocRing}{\mathrm{LocRing}}
-\newcommand{\LRS}{\mathrm{LRS}}
-\newcommand{\Hom}{\mathrm{Hom}}
-\newcommand{\Spec}{\mathrm{Spec}}
-\newcommand{\lra}{\longrightarrow}
-\newcommand{\RelSpec}{\operatorname{Spec}}
 \renewcommand{\_}{\mathpunct{.}}
 \newcommand{\?}{\,{:}\,}
 \newcommand{\speak}[1]{\ulcorner\text{\textnormal{#1}}\urcorner}
-\newcommand{\ul}[1]{\underline{#1}}
-\newcommand{\affl}{\ensuremath{{\ul{\ensuremath{\AA}}^1}}}
-\newcommand{\Ll}{\text{iff}}
 \newcommand{\inv}{inv.\@}
-\newcommand{\seq}[1]{\mathrel{\vdash\!\!\!_{#1}}}
-\newcommand{\hg}{\mathbin{:}}  % homogeneous coordinates
 \newcommand{\forces}{\vDash}
 
 \setbeamertemplate{blocks}[rounded][shadow=false]
@@ -313,7 +286,6 @@
   \end{beamercolorbox}%
   \vskip0pt%
 }
-
 
 \newcommand{\hil}[1]{{\usebeamercolor[fg]{item}{\textbf{#1}}}}
 \newcommand{\hill}[1]{{\usebeamercolor[fg]{item}{#1}}}
@@ -479,7 +451,7 @@
   \end{columns}
 \end{frame}
 
-{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{4.95cm}\includegraphics[width=\paperwidth]{topos-horses}\end{minipage}}
+{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{3.35cm}\includegraphics[width=\paperwidth]{topos-horses-lighter}\end{minipage}}
 \begin{frame}{Constructive forcing}
   \medskip
   \begin{columns}[t]
@@ -841,6 +813,7 @@
   \end{columns}
 \end{frame}
 
+{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{-1cm}\includegraphics[width=\paperwidth]{forest-light-colored}\end{minipage}}
 \begin{frame}{The eventually monad}
   Let~$L$ be a forcing notion.
 
@@ -868,7 +841,7 @@
   \pause
   We use quantifier-like notation: ``$\nabla(\tau \preccurlyeq \sigma)\_
   P\tau$'' means ``$P \mid \sigma$''.
-\end{frame}
+\end{frame}}
 % BOARD:
 % - examples for P | σ
 % - abuse of notation
@@ -908,8 +881,6 @@
   of~\textsc{iqc}, the law of excluded middle holds in~$V^{\neg\neg}$.
 \end{frame}
 
-% \begin{document}
-
 \newcommand{\defeqvi}{\quad iff\quad}
 \begin{frame}{The $\nabla$-translation}
   \small
@@ -931,6 +902,7 @@
   \end{enumerate}
   we recursively define:}
   \scriptsize
+  \only<2->{\vspace*{-0.4em}}
   \begin{tabbing}
     \quad \= $\sigma \forces \forces \forall(x\?\underline{X})\_ \varphi$ \=
     \defeqvi $\textcolor{gray}{\forall(\tau \preccurlyeq \sigma)\_}\
@@ -974,12 +946,12 @@
     \midrule
     surjection $\NN \twoheadrightarrow X$ &
     ``the gen.\@ surj.\@ is surjective'' &
-    $\forall(a{\in}X)\_ \forall(\sigma{\in}X^*)\_ \nabla(\tau{\preccurlyeq}\sigma)\_ \exists(n{\in}\NN)\_ \tau[n] = a$. \\[0.5em]
+    $\forall(a{\in}X)\_ \forall(\sigma{\in}X^*)\_ \nabla(\tau{\preccurlyeq}\sigma)\_ \exists(n{\in}\NN)\_ \tau[n] = a$. \\[0.4em]
     \pause
 
     map $\NN \to X$ &
     ``the gen.\@ sequence is good'' &
-    $\mathsf{Good} \mid [\,]$. \\[0.5em]
+    $\mathsf{Good} \mid [\,]$. \\[0.4em]
 
     frame of opens &
     ``every complex number has a square root'' &
@@ -991,8 +963,64 @@
     big Zariski &
     ``$x \neq 0 \Rightarrow \text{$x$ inv.}$'' &
     If the only f.p.\@ $k$-algebra in which~$x = 0$ is the zero algebra,
-    then~$x$ is invertible in~$k$.
+    then~$x$ is invertible in~$k$.\\[1.5em]
+    \pause
+
+    little Zariski &
+    ``every f.g. vector space does \emph{not not} have a basis'' &
+    \makesamewidth[l]{}{\phantom{x}}\hil{Grothendieck's generic freeness lemma}
   \end{tabular}
+\end{frame}
+
+\begin{frame}{Outlook}
+  \begin{block}{Passing to and from extensions}
+    \justifying\small
+    \textbf{Thm.} Let~$\varphi$ be a \hil{bounded first-order formula} not
+    mentioning~$G$. In each of the following situations, we have that
+    $\varphi$ holds in~$V^\nabla$ iff~$\varphi$
+    holds in $V$:
+
+    \vspace*{-0.5em}
+    \begin{enumerate}
+      \item $L$ and all coverings are inhabited (proximality). \\[-1em]
+      \item $L$ contains a top element, every covering of the
+      top element is inhabited, and~$\varphi$ is a coherent implication
+      (positivity).
+    \end{enumerate}
+  \end{block}
+
+  \vspace*{-1em}
+  \begin{columns}
+    \begin{column}{0.46\textwidth}
+      \begin{block}{The mystery of nongeometric sequents}
+        \justifying
+        The \hil{generic ideal} of a ring is maximal:
+        \vspace*{-1em}
+        \[ (x \in \aaa \Rightarrow 1 \in \aaa) \Longrightarrow 1 \in \aaa + (x). \]
+
+        The \hil{generic ring} is a field:
+        \vspace*{-0.7em}
+        \[ (x = 0 \Rightarrow 1 = 0) \Longrightarrow (\exists y\_ xy = 1). \]
+      \end{block}
+
+    \end{column}
+
+    \begin{column}{0.50\textwidth}
+      \begin{block}{Traveling the multiverse \ldots}
+        \textsc{lem} is a \hil{switch} and \hil{holds positively};
+        being countable is a \hil{button}.
+        \medskip
+
+        Every instance of \textsc{dc} \hil{holds proximally}.
+        \medskip
+
+        A geometric implication is provable iff it holds \hil{everywhere}.
+      \end{block}
+      \vspace*{-0.3em}
+      \hfill\footnotesize\ldots{} upwards, but always keeping ties to the
+      base.{\ }
+    \end{column}
+  \end{columns}
 \end{frame}
 
 \begin{frame}{Formalities}

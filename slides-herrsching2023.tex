@@ -878,12 +878,12 @@
   polynomial increase in length, if throughout we
   replace
   \[\begin{array}{rcl@{\quad\text{where}\quad}rcl}
-    \exists & \leadsto & \exists_\mathrm{class},
-    & \exists_\mathrm{class} &\defeqv& \neg\neg\exists, \\
-    \vee & \leadsto & \vee_\mathrm{class},
-    & \alpha \vee_\mathrm{class} \beta &\defeqv& \neg\neg(\alpha \vee \beta), \\
-    = & \leadsto & =_\mathrm{class},
-    & s =_\mathrm{class} t &\defeqv& \neg\neg(s = t).
+    \exists & \leadsto & \exists^\mathrm{cl},
+    & \exists^\mathrm{cl} &\defeqv& \neg\neg\exists, \\
+    \vee & \leadsto & \vee^\mathrm{cl},
+    & \alpha \vee^\mathrm{cl} \beta &\defeqv& \neg\neg(\alpha \vee \beta), \\
+    = & \leadsto & =^\mathrm{cl},
+    & s =^\mathrm{cl} t &\defeqv& \neg\neg(s = t).
   \end{array} \]
   \pause
 
@@ -968,7 +968,7 @@
   \in L$, $\sigma \forces \varphi$.}
 
   \footnotesize
-  \begin{tabular}{@{}lp{0.27\textwidth}p{0.48\textwidth}}
+  \begin{tabular}{@{}lp{0.27\textwidth}p{0.48\textwidth}@{}}
     \toprule
     forcing notion & statement about~$V^\nabla$ & external meaning \\
     \midrule
@@ -986,12 +986,12 @@
     For every open~$U \subseteq X$ and every cont.\@
     function $f : U \to \CC$, there is an open covering $U = \bigcup_i U_i$ such
     that for each index~$i$, there is a cont.\@ function $g : U_i \to \CC$
-    such that~$g^2 = f$. \\[4.5em]
+    such that~$g^2 = f$. \\[4.3em]
 
-    Zariski &
+    big Zariski &
     ``$x \neq 0 \Rightarrow \text{$x$ inv.}$'' &
-    if the only f.p.\@ $k$-algebra in which~$x = 0$ is the zero algebra,
-    then~$x$ is invertible in~$k$
+    If the only f.p.\@ $k$-algebra in which~$x = 0$ is the zero algebra,
+    then~$x$ is invertible in~$k$.
   \end{tabular}
 \end{frame}
 
@@ -1083,6 +1083,8 @@ Fun:
 - Modale Dinge
 - structure sheaf A~, field property etc. (like in redcom slides), generic freeness
 - nongeometric surprises
+
+außerdem: Konservativität.
 
 
 \newcommand{\Good}{\mathsf{Good}}

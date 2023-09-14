@@ -542,7 +542,7 @@ every natural number~$a$ is either zero or not. To this end, we do a induction
 on~$a$.
 
 The base step~$a = 0$ is trivial, since if~$a = 0$ then also~$a = 0 \vee a \neq
-0$ (we can always weaken statements by addition additional disjuncts).
+0$ (we can always weaken statements by adding additional disjuncts).
 
 In the inductive step~$a \to a + 1$, we have~$a + 1 \neq 0$ by one of the basic
 axioms of arithmetic (for a complete list, see
@@ -555,7 +555,7 @@ hypothesis.)
 As from any constructive proof, a computer program witnessing the asserted fact
 can be extracted. It will (roughly) have type $\mathsf{Nat} \times \mathsf{Nat}
 \to \mathsf{Bool}$, computing~$\mathsf{true}$ or~$\mathsf{false}$ depending on
-whether its input agree or are distinct. Because the presented proof proceeded
+whether its two inputs agree or are distinct. Because the presented proof proceeded
 by induction, the resulting program will proceed by recursion.
 
 Sets like the set of natural numbers for which equality is decidable have a
@@ -641,14 +641,17 @@ theorist or logician can be (reformulated to be) provable even in~\textsc{efa},
 a foundational system much weaker than~\textsc{zfc},~\textsc{zf} or even Peano
 arithmetic.
 
-An example of a result of type~(b) us the basic observation that every
+An example of a result of type~(b) uses the basic observation that every
 inhabited set of natural numbers contains a minimal element. This result is not
 available in constructive mathematics as stated, but there are two constructive
 substitutes.
 
 \begin{defn}A set~$X$ is \emph{inhabited} if and only if there exists an
-element of~$X$. (Constructively, this is stronger than~$X$ not being
-empty.)\end{defn}
+element of~$X$.\end{defn}
+
+Constructively, the condition that a set~$X$ is inhabited is stronger than~$X$
+merely not being empty. The latter is equivalent to the statement that it is
+\notnot the case that~$X$ is inhabited.
 
 \begin{prop}If every inhabited set of natural numbers contains a minimal
 element, then the principle of excluded middle holds.\end{prop}
@@ -904,7 +907,7 @@ their existence for linear algebra over rings also holds constructively.
 This lecture illustrates the latent constructive nature of classical
 proofs with examples and presents two general metatheorems which
 elucidate proof mining for constructive content. The author learned this
-material from diverse texts and slides of Thierry Coquand; the
+material mostly from diverse texts and slides of Thierry Coquand; the
 reference~\cite{coquand:classical} is a good start.
 \end{intro}
 
@@ -955,7 +958,7 @@ suitable constructive reformulations. For instance:
 \begin{enumerate}
 \item \emph{Eliminating the axiom of choice by the~$L$-translation.} Can the
 axiom of choice ever help in proving arithmetical statements, those first-order
-statements in which all quantifiers range over the natural numbers? Well, it
+statements in which all quantifiers range over the natural numbers? Well, it surely
 might. But a result of Gödel states that~\textsc{zfc} (Zermelo--Fraenkel set
 theory with the axiom of choice) is conservative over~\textsc{zf} (ZF set
 theory without it) for such statements -- hence all appeals to this axiom can
@@ -982,7 +985,7 @@ translation and its variants.} At the price of
 slightly modifying the asserted claim, the principle of excluded middle
 can always be mechanically eliminated from a given proof. This
 elimination procedure is facilitated by the \emph{double-negation translation}
-reviewed below. In some cases, a refined translation even allows to preserve the asserted
+reviewed below. In some cases, a refined translation even allows us to preserve the asserted
 claim exactly; this technique is variously known as \emph{Friedman's trick},
 \emph{nontrivial exit continuation} or (the baby version of) \emph{Barr's
 theorem}. To cite a specific instance of this phenomenon, classical~\textsc{zf}

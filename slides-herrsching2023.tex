@@ -72,10 +72,10 @@
 \setlength\parskip{\medskipamount}
 \setlength\parindent{0pt}
 
-\title{New modal operators for constructive mathematics}
+\title{Constructive forcing}
 
 \author{Ingo Blechschmidt}
-\date{May 2nd, 2023}
+\date{September 20th to September 16th, 2023}
 
 %\useinnertheme[shadow=true]
 \setbeamerfont{block title}{size={}}
@@ -574,8 +574,6 @@
   \end{columns}
 \end{frame}
 
-% \begin{document}
-
 {\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{5.95cm}\includegraphics[width=\paperwidth]{fr1}\end{minipage}}
 \begin{frame}{Maximal ideals}
   \only<1-7>{\textbf{Thm.}
@@ -692,7 +690,7 @@
   ring~$A$. Then~$1 = 0$ in~$A$.
 
   \emph{Proof.} (special case) Write~$M = \left(\begin{smallmatrix}x\\y\end{smallmatrix}\right)$. By surjectivity,
-  have~$u, v$ with
+  have~$u, v \in A$ with
   \[
     u \left(\begin{smallmatrix}x\\y\end{smallmatrix}\right) = \left(\begin{smallmatrix}1\\0\end{smallmatrix}\right)
     \quad\text{and}\quad
@@ -788,8 +786,6 @@
 
 \section{Basics of forcing}
 
-% \begin{document}
-
 \begin{frame}{Ingredients for forcing}
   To construct a forcing extension, we require:
   \begin{enumerate}
@@ -858,7 +854,7 @@
   \end{itemize}
   \pause
 
-  We then define~``\hil{$P \mid \sigma$}'' (``$P$ bars~$\sigma$'') inductively by the clauses:
+  We then define~``\hil{$P \mid \sigma$}'' (``$P$ bars~$\sigma$'') inductively by the following clauses:
   \begin{enumerate}
     \item If~$P\sigma$, then~$P \mid \sigma$.
     \item If~$P \mid \tau$ for all~$\tau \in R$, where~$R$ is some covering
@@ -868,8 +864,8 @@
   \[ \text{``No matter
   how~$\sigma$ evolves to a better approximation~$\tau$, eventually~$P\tau$
   will hold.''} \]
-  \pause
 
+  \pause
   We use quantifier-like notation: ``$\nabla(\tau \preccurlyeq \sigma)\_
   P\tau$'' means ``$P \mid \sigma$''.
 \end{frame}
@@ -912,10 +908,12 @@
   of~\textsc{iqc}, the law of excluded middle holds in~$V^{\neg\neg}$.
 \end{frame}
 
+% \begin{document}
+
 \newcommand{\defeqvi}{\quad iff\quad}
 \begin{frame}{The $\nabla$-translation}
   \small
-  For bounded first-order formulas over the (large) first-order signature which has
+  \only<1>{For bounded first-order formulas over the (large) first-order signature which has
   \begin{enumerate}
     \scriptsize
     \item one sort~$\underline{X}$ for each set~$X$ in the base universe,
@@ -931,7 +929,7 @@
     \item an additional unary relation symbol~$G \hookrightarrow \underline{L}$
     (for the \emph{generic filter} of~$L$),
   \end{enumerate}
-  we recursively define:
+  we recursively define:}
   \scriptsize
   \begin{tabbing}
     \quad \= $\sigma \forces \forces \forall(x\?\underline{X})\_ \varphi$ \=
@@ -966,8 +964,35 @@
     \> \defeqvi $\hil{$\nabla\sigma\_$}\ \exists(x_0 \in X)\_ \sigma \forces \varphi[\underline{x_0}/x]$.
   \end{tabbing}
   \small
-  Finally, we say that~$\varphi$ ``holds in~$V^\nabla$'' iff for all~$\sigma
-  \in L$, $\sigma \forces \varphi$.
+  \only<1>{Finally, we say that~$\varphi$ ``holds in~$V^\nabla$'' iff for all~$\sigma
+  \in L$, $\sigma \forces \varphi$.}
+
+  \footnotesize
+  \begin{tabular}{@{}lp{0.27\textwidth}p{0.48\textwidth}}
+    \toprule
+    forcing notion & statement about~$V^\nabla$ & external meaning \\
+    \midrule
+    surjection $\NN \twoheadrightarrow X$ &
+    ``the gen.\@ surj.\@ is surjective'' &
+    $\forall(a{\in}X)\_ \forall(\sigma{\in}X^*)\_ \nabla(\tau{\preccurlyeq}\sigma)\_ \exists(n{\in}\NN)\_ \tau[n] = a$. \\[0.5em]
+    \pause
+
+    map $\NN \to X$ &
+    ``the gen.\@ sequence is good'' &
+    $\mathsf{Good} \mid [\,]$. \\[0.5em]
+
+    frame of opens &
+    ``every complex number has a square root'' &
+    For every open~$U \subseteq X$ and every cont.\@
+    function $f : U \to \CC$, there is an open covering $U = \bigcup_i U_i$ such
+    that for each index~$i$, there is a cont.\@ function $g : U_i \to \CC$
+    such that~$g^2 = f$. \\[4.5em]
+
+    Zariski &
+    ``$x \neq 0 \Rightarrow \text{$x$ inv.}$'' &
+    if the only f.p.\@ $k$-algebra in which~$x = 0$ is the zero algebra,
+    then~$x$ is invertible in~$k$
+  \end{tabular}
 \end{frame}
 
 \begin{frame}{Formalities}
@@ -1010,6 +1035,8 @@
     \Cov(\sigma)$, then~$\tau \in F$ for some~$\tau \in R$.
   \end{enumerate}
 \end{frame}
+
+\addtocounter{framenumber}{-1}
 
 \end{document}
 
@@ -1056,3 +1083,36 @@ Fun:
 - Modale Dinge
 - structure sheaf A~, field property etc. (like in redcom slides), generic freeness
 - nongeometric surprises
+
+
+\newcommand{\Good}{\mathsf{Good}}
+\newcommand{\vinfer}[2]{\left.#1\quad\middle|\quad\begin{array}{l}#2\end{array}\right.}
+\begin{frame}[plain]
+  \scriptsize
+  \[
+    \renewcommand{\arraystretch}{1.3}
+    \vinfer{\Good \mid [\,]}{
+      \vinfer{\Good \mid 0}{
+        \vinfer{\Good \mid 00}{\Good\ 00} \\[1em]
+        \vinfer{\Good \mid 01}{\Good\ 01} \\[1em]
+        \vinfer{\Good \mid 02}{\Good\ 02} \\
+        \vdots
+      } \\[1em]
+      \ \\[0.5em]
+      \vinfer{\Good \mid 1}{
+        \vinfer{\Good \mid 10}{
+          \vinfer{\Good \mid 100}{\Good\ 100} \\[1em]
+          \vinfer{\Good \mid 101}{\Good\ 101} \\[1em]
+          \vinfer{\Good \mid 102}{\Good\ 102} \\
+          \vdots
+        } \\[1em]
+        \vinfer{\Good \mid 11}{\Good\ 11} \\[1em]
+        \vinfer{\Good \mid 12}{\Good\ 12} \\[1em]
+        \vdots
+      } \\[1em]
+      \ \\[0.5em]
+      \vinfer{\Good \mid 2}{} \\[1em]
+      \vdots
+    }
+  \]
+\end{frame}

@@ -73,6 +73,9 @@
 \author{Ingo Blechschmidt}
 \date{September 20th to September 16th, 2023}
 
+\setbeameroption{show notes on second screen=bottom}
+\newcommand{\jnote}[2]{\only<#1>{\note{\setlength\parskip{\medskipamount}\footnotesize\justifying#2\par}}}
+
 %\useinnertheme[shadow=true]
 \setbeamerfont{block title}{size={}}
 
@@ -334,6 +337,11 @@
 
 {\usebackgroundtemplate{\begin{minipage}{\paperwidth}\centering\includegraphics[height=\paperheight]{multiverse-faded-169}\end{minipage}}
 \begin{frame}[c]
+  \jnote{1}{These are the slides for a three-part lecture series for the autumn school
+  \fixedhref{https://www.mathematik.uni-muenchen.de/~schwicht/pc23.php}{\emph{Proof and Computation}}
+  organized by Klaus Mainzer, Peter Schuster and Helmut Schwichtenberg, held in
+  Herrsching from September 20th to September 16th, 2023.}
+
   \centering
   \color{white}
 
@@ -360,21 +368,38 @@
   \bigskip
   \bigskip
   \bigskip
-
-%  \colorbox{black!50}{Autumn school on} \\
-%  \colorbox{black!50}{\emph{Proof and Computation}} \\
-%  \colorbox{black!50}{in Herrsching} \\
-%  \ \\
-%  \colorbox{black!50}{September 20th to September 16th, 2023}
-%
-%  \colorbox{black!50}{Ingo Blechschmidt} \\
-%  \par
 \end{frame}}
 
 \definecolor{mypurple}{RGB}{150,0,255}
 \setbeamercolor{structure}{fg=mypurple}
 
 \begin{frame}{}
+  \jnote{3}{
+    The slide presents a question on calculus. Constructive forcing
+    establishes a connection with constructive linear algebra; we will understand
+    that:
+    \begin{enumerate}\justifying
+      \item The eigenvalues (defined as the zeros of the characteristic
+      polynomial) locally depend continuously on the parameter \hil{because}
+      it is a theorem of constructive linear algebra that symmetric matrices have
+      a full list of eigenvalues.
+
+      \item The eigenvectors can \hil{not} be expected to locally depend
+      continuously \hil{because} it is \hil{not} a theorem of constructive
+      linear algebra that symmetric matrices have an eigenvector basis.
+
+      \item There is a dense open subset of the parameter space which restores
+      continuous dependence \hil{because} it \hil{is} a theorem of constructive
+      linear algebra that every symmetric matrix does \emph{not~not} have an
+      eigenvector basis.
+    \end{enumerate}
+
+    A simple example where the eigenvectors cannot be chosen to locally depend
+    continuously on the parameter is
+    \fixedhref{https://mathoverflow.net/a/60563/31233}{recorded here}. Removing
+    the origin there yields a suitable dense open subset.
+  }
+
   \begin{center}\includegraphics[width=0.2\textwidth]{eigenvector}\end{center}
 
   Let a continuous family of symmetric matrices be given:
@@ -401,14 +426,61 @@
   \end{columns}
 \end{frame}
 
-% \begin{document}
-
 \newcommand\ytl[2]{%
   \parbox[b]{4.5em}{\hfill{#1}~$\cdots\cdots$~}%
   \makebox[0pt][c]{\color{mypurple}$\bullet$}{\color{mypurple}\vrule}\quad%
   \parbox[c]{9.3cm}{\vspace{7pt}\raggedright#2\\[7pt]}%
   \\[-2.0pt]}
 \begin{frame}{A brief timeline}
+  \jnote{4}{
+    Gödel's proof is by the \hil{$L$-translation}, where $L$ is the
+    ``constructible universe''. This translation ``relativizes quantification
+    to~$L$'', for instance the~$L$-translation of
+    \[ \varphi \defeqv \bigl(\forall x\_ \exists y\_ \ldots\bigr) \qquad\text{is}\qquad
+    \varphi^L \equiv \bigl(\forall(x \in L)\_ \exists(y \in L)\_ (\ldots)^L\bigr). \]
+    We can then verify, in a weak metatheory such as~\textsc{pra}, that for
+    every formula~$\varphi$ in the language of set theory,
+    \[ \text{if $\textsc{zfc} \vdash \varphi$, then $\textsc{zf} \vdash
+    \varphi^L$}. \]
+    Specializing to~$\varphi \defeqv \bot$ we obtain: If~\textsc{zfc} is
+    inconsistent, then so is~\textsc{zf}. The axiom of choice does not
+    introduce new inconsistencies.
+
+    In modern semantic language: While the axiom of choice might fail in the
+    base universe~$V$ (= the class of all sets), it always holds in~$L$.
+    Gödel's~$L$ was the first \emph{inner model} (= class-sized model of set
+    theory) explicitly studied, nowadays we know many.
+  }
+
+  \jnote{5}{
+    For his proof, Cohen invented the technique of \emph{forcing}, situated in
+    classical mathematics where the base universe~$V$ is assumed to validate
+    the axioms of~\textsc{zfc}.
+
+    Just as a given ring~$R$ or group can be extended in various ways, to include
+    ``generic elements'' as in~$R[X]$ or elements with prescribed relations as
+    in~$R[X]/(X^2+1) =\vcentcolon R[i]$. The idea of forcing is to construct
+    similar such extensions, but of universes (traditionally set-sized models
+    of~\textsc{zfc}, but also class-sized models of~\textsc{zfc}, or models
+    of intuitionistic set theories, or models of type theories, or even models
+    of arithmetic) instead of rings.
+
+    In semantic language, from a high level the idea is the following: Whether
+    the base universe~$V$ contains a cardinal number intermediate
+    between~$\aleph_0$ and~$2^{\aleph_0}$ is uncertain. But there is a certain
+    extension of the base universe---constructed by forcing---which does
+    contain such a number. Like the base~$V$, this forcing extension still
+    validates the axioms of~\textsc{zfc}. Hence there cannot be a
+    \textsc{zfc}-proof of~\textsc{ch}, as in Cohen's extension~$\neg\textsc{ch}$
+    holds.
+
+    Syntactically, Cohen's forcing provides us with an explicit formula
+    translation~$\varphi \mapsto \varphi^C$ such that~\textsc{pra} proves:
+    For every formula~$\varphi$, if~$\textsc{zfc}{\text{+}}\neg\textsc{ch} \vdash \varphi$
+    then~$\textsc{zfc} \vdash \varphi^C$.
+    \bigskip
+  }
+
   \begin{columns}[t]
     \begin{column}{0.80\textwidth}
       \ytl{1878}{Cantor advances the \hil{continuum hypothesis}, the claim

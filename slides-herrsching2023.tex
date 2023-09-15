@@ -335,12 +335,20 @@
 
 \addtocounter{framenumber}{-1}
 
-{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\centering\includegraphics[height=\paperheight]{multiverse-faded-169}\end{minipage}}
+{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\centering\includegraphics[height=\paperheight]{multiverse-faded}\end{minipage}}
 \begin{frame}[c]
-  \jnote{1}{These are the slides for a three-part lecture series for the autumn school
-  \fixedhref{https://www.mathematik.uni-muenchen.de/~schwicht/pc23.php}{\emph{Proof and Computation}}
-  organized by Klaus Mainzer, Peter Schuster and Helmut Schwichtenberg, held in
-  Herrsching from September 20th to September 16th, 2023.}
+  \jnote{1}{
+    These are the slides for a three-part lecture series for the autumn school
+    \fixedhref{https://www.mathematik.uni-muenchen.de/~schwicht/pc23.php}{\emph{Proof and Computation}}
+    organized by Klaus Mainzer, Peter Schuster and Helmut Schwichtenberg, held in
+    Herrsching from September 20th to September 16th, 2023.
+
+    We explore, in a constructive metatheory, the ``Kripke--Joyal semantics of
+    the internal language of Grothendieck toposes over sites given by
+    preorders'' together with applications in constructive algebra and
+    combinatorics, but without presupposing familiarity with or using language
+    from topos or category theory.
+  }
 
   \centering
   \color{white}
@@ -439,15 +447,16 @@
     \[ \varphi \defeqv \bigl(\forall x\_ \exists y\_ \ldots\bigr) \qquad\text{is}\qquad
     \varphi^L \equiv \bigl(\forall(x \in L)\_ \exists(y \in L)\_ (\ldots)^L\bigr). \]
     We can then verify, in a weak metatheory such as~\textsc{pra}, that for
-    every formula~$\varphi$ in the language of set theory,
-    \[ \text{if $\textsc{zfc} \vdash \varphi$, then $\textsc{zf} \vdash
-    \varphi^L$}. \]
-    Specializing to~$\varphi \defeqv \bot$ we obtain: If~\textsc{zfc} is
+    every formula~$\varphi$ in the language of set theory:
+    If $\textsc{zfc}\text{+}\textsc{ch} \vdash \varphi$, then $\textsc{zf} \vdash
+    \varphi^L$.
+
+    Specializing to~$\varphi \defeqv \bot$ we obtain in particular: If~\textsc{zfc} is
     inconsistent, then so is~\textsc{zf}. The axiom of choice does not
     introduce new inconsistencies.
 
-    In modern semantic language: While the axiom of choice might fail in the
-    base universe~$V$ (= the class of all sets), it always holds in~$L$.
+    In modern semantic language: While the axiom of choice and~\textsc{ch} might fail in the
+    base universe~$V$ (= the class of all sets), they always hold in~$L$.
     Gödel's~$L$ was the first \emph{inner model} (= class-sized model of set
     theory) explicitly studied, nowadays we know many.
   }
@@ -457,15 +466,15 @@
     classical mathematics where the base universe~$V$ is assumed to validate
     the axioms of~\textsc{zfc}.
 
-    Just as a given ring~$R$ or group can be extended in various ways, to include
+    Recall that a given ring~$R$ or group can be extended in various ways, to include
     ``generic elements'' as in~$R[X]$ or elements with prescribed relations as
     in~$R[X]/(X^2+1) =\vcentcolon R[i]$. The idea of forcing is to construct
-    similar such extensions, but of universes (traditionally set-sized models
-    of~\textsc{zfc}, but also class-sized models of~\textsc{zfc}, or models
+    similar such extensions, but not of rings but of universes (traditionally set-sized models
+    of~\textsc{zf} or~\textsc{zfc}, but also class-sized models of~\textsc{zfc}, or models
     of intuitionistic set theories, or models of type theories, or even models
-    of arithmetic) instead of rings.
+    of arithmetic).
 
-    In semantic language, from a high level the idea is the following: Whether
+    In semantic language, from a high level the idea of Cohen's independency proof is the following: Whether
     the base universe~$V$ contains a cardinal number intermediate
     between~$\aleph_0$ and~$2^{\aleph_0}$ is uncertain. But there is a certain
     extension of the base universe---constructed by forcing---which does
@@ -476,9 +485,45 @@
 
     Syntactically, Cohen's forcing provides us with an explicit formula
     translation~$\varphi \mapsto \varphi^C$ such that~\textsc{pra} proves:
-    For every formula~$\varphi$, if~$\textsc{zfc}{\text{+}}\neg\textsc{ch} \vdash \varphi$
+    For every formula~$\varphi$, if~$\textsc{zfc}{\text{+}}\neg\textsc{ch} \vdash \varphi$,
     then~$\textsc{zfc} \vdash \varphi^C$.
     \bigskip
+  }
+
+  \jnote{6}{
+    Joel David Hamkins argues: In view of our rich experience with worlds which
+    validate~\textsc{ch} and worlds which don't, we shouldn't be surprised that
+    no proposed new axiom for settling~\textsc{ch} is ultimately convincing.
+
+    Instead, we should embrace the multiverse of all models of set theory and
+    explore how the truth value of statements of interest change when we
+    travel the multiverse (for instance, by passing from some universe to one
+    of its forcing extensions).
+
+    In this generalized sense, the continuum hypothesis is settled: We have a
+    good understanding of the stability properties of~\textsc{ch} under
+    important constructions. In particular, for a certain precise meaning of
+    ``universe'' and ``extension'', we know that~\textsc{ch} is a
+    \emph{switch}: $\necessary(\possible\textsc{ch} \wedge
+    \possible\neg\textsc{ch})$; in words: Every universe can be extended both to a
+    universe in which~\textsc{ch} holds and to a universe in
+    which~$\neg\textsc{ch}$ holds.
+
+    An exposition and references for further reading about the multiverse
+    position can be found
+    \fixedhref{https://www.speicherleck.de/iblech/stuff/multiverse.pdf}{here}.
+  }
+
+  \jnote{8}{
+    J. Roitman, The uses of set theory, \emph{Math.\@ Intelligencer}
+    \textbf{14}(1) (1992), 63--69.
+
+    Forcing is useful not only to explore the range of foundational
+    possibility; it has many more applications across several subjects of
+    mathematics.
+
+    In particular, we will discuss applications of the constructive version of
+    classical set-theoretic forcing in constructive algebra and combinatorics.
   }
 
   \begin{columns}[t]
@@ -561,6 +606,82 @@
 \section{What can forcing do for you?}
 
 \begin{frame}{What can forcing do for you?}
+  \jnote{1}{
+    Forcing~$\neg\textsc{ch}$ was the historical use case for forcing.
+
+    With constructive forcing, where we do not blanketly assume that the base
+    universe validates~\textsc{lem}, we can inquire the status of~\textsc{lem};
+    a result in this direction is that~\textsc{lem} is, like~\textsc{ch} in
+    the context of~\textsc{zfc}, a \emph{switch}:
+
+    The base universe can always be extended in such a way as to
+    force~$\neg\textsc{lem}$ (in fact, most forcing extensions will
+    falsify~\textsc{lem} even in case the base universe validates it), and also
+    in such a way to force~\textsc{lem}. The latter provides us with a semantic
+    view of one of the techniques for extracting constructive content from
+    classical proofs, namely the
+    \fixedhref{https://www.speicherleck.de/iblech/stuff/slides-fischbachau2022.pdf}{double-negation
+    translation combined by the continuation trick}.
+  }
+
+  \jnote{2}{
+    We will discuss the particular example of the (naive formulation of the)
+    fundamental theorem of algebra below.
+
+    Forcing has been used to construct countermodels to various questions of
+    constructive (reverse) mathematics, too many to list here. To give just one
+    pointer, a countermodel for the classical implication ``if there is no
+    infinite descending chain, then the partial order is inductively
+    well-founded'' is presented here:
+    A. Blass, Well-ordering and induction in intuitionistic logic and topoi,
+    in: \emph{Mathematical Logic and Theoretical Computer Science}. Ed.\@ by
+    D.\@ Kueker, E.\@ Lopez-Escobar, and C.\@ Smith. Vol.\@ 106. Lect.\@ Notes
+    Pure Appl. Math. Marcel Dekker, 1987, pp.\@ 29--48.
+  }
+
+  \jnote{3}{
+    The real numbers don't contain a number~$i$ such that~$i^2 = 0$. Still, for
+    many results in real analysis, it is convenient to broaden our notion of
+    existence and pass to the complex numbers; the imaginary unit is a
+    \emph{mathematical phantom} in the
+    \fixedhref{http://www.wra1th.plus.com/gcw/math/MathPhant.html}{sense of
+    Gavin Wraith}, a useful tool helping us deduce results about real numbers.
+    Nowadays there are few ontological concerns about the imaginary unit: We
+    understand that, in the end, every statement about complex numbers can be
+    recast as a statement about pairs of real numbers.
+
+    In exactly the same fashion, the objects furnished by forcing can be
+    understood as useful fictions. We will discuss how statements about
+    the forcing extension can be recast as statements about the base universe.
+
+    Given an inhabited set~$X$ in the base universe, most pronouncedly a set
+    which is uncountable or for which no surjection~$\NN \twoheadrightarrow X$
+    can be efficiently evaluated, a particularly tantalizing fiction is the
+    \emph{generic surjection}~$\NN \twoheadrightarrow X$. It exists in a
+    custom-tailored forcing extension of the base universe and is useful to
+    apply tools made for the countable setting to the uncountable; we will
+    discuss an example on the next slide.
+  }
+
+  \jnote{4}{
+    Typically there are already plenty of maps~$\NN \to X$ in the base
+    universe; hence constructing a forcing extension which contains a ``fresh''
+    such map---the so-called \emph{generic sequence}---is not something which
+    would usually be contemplated in classical set-theoretic forcing.
+
+    In the context of constructive mathematics, however, the generic sequence
+    turns out to be quite useful. It can be used to cast in a familiar naive
+    language---the language of infinite sequences---definitions, results and
+    proofs which use constructively more appropriate inductively defined
+    notions. We will discuss an example below.
+  }
+
+  \jnote{6}{
+    Slides by Matthias Hutzler:
+    \fixedhref{https://matthias-hutzler.de/pc23/slides.pdf}{Introduction to
+    synthetic algebraic geometry}
+  }
+
   \vspace*{-0.5em}
 
   \begin{columns}

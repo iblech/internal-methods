@@ -470,7 +470,7 @@
     ``generic elements'' as in~$R[X]$ or elements with prescribed relations as
     in~$R[X]/(X^2+1) =\vcentcolon R[i]$. The idea of forcing is to construct
     similar such extensions, but not of rings but of universes (traditionally set-sized models
-    of~\textsc{zf} or~\textsc{zfc}, but also class-sized models of~\textsc{zfc}, or models
+    of~\textsc{zf} or~\textsc{zfc}, but also class-sized models, or models
     of intuitionistic set theories, or models of type theories, or even models
     of arithmetic).
 
@@ -496,8 +496,8 @@
     no proposed new axiom for settling~\textsc{ch} is ultimately convincing.
 
     Instead, we should embrace the multiverse of all models of set theory and
-    explore how the truth value of statements of interest change when we
-    travel the multiverse (for instance, by passing from some universe to one
+    explore how the truth values of statements of interest change when we
+    travel the multiverse (for instance, by passing from a universe to one
     of its forcing extensions).
 
     In this generalized sense, the continuum hypothesis is settled: We have a
@@ -642,7 +642,7 @@
   \jnote{3}{
     The real numbers don't contain a number~$i$ such that~$i^2 = 0$. Still, for
     many results in real analysis, it is convenient to broaden our notion of
-    existence and pass to the complex numbers; the imaginary unit is a
+    existence and pass to the complex plane; the imaginary unit is a
     \emph{mathematical phantom} in the
     \fixedhref{http://www.wra1th.plus.com/gcw/math/MathPhant.html}{sense of
     Gavin Wraith}, a useful tool helping us deduce results about real numbers.
@@ -672,8 +672,8 @@
     In the context of constructive mathematics, however, the generic sequence
     turns out to be quite useful. It can be used to cast in a familiar naive
     language---the language of infinite sequences---definitions, results and
-    proofs which use constructively more appropriate inductively defined
-    notions. We will discuss an example below.
+    proofs from constructive combinatorics which use constructively more
+    appropriate inductively defined notions. We will discuss an example below.
   }
 
   \jnote{6}{
@@ -741,6 +741,32 @@
 
 {\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{5.95cm}\includegraphics[width=\paperwidth]{fr1}\end{minipage}}
 \begin{frame}{Maximal ideals}
+  \jnote{1-}{
+    The theorem on the slide is a generalization of a fact from undergraduate
+    linear algebra: Over a field, no surjective matrix can have more rows than
+    columns. (``Surjective'' here means that the induced linear map is
+    surjective.)
+  }
+
+  \jnote{6-}{
+    The slide presents a standard proof as offered by most textbooks on
+    commutative algebra. The proof is quite efficient from a viewpoint of
+    mathematical organization, as it quickly succeeds in reducing to the field
+    situation. As such, it is short and memorable.
+
+    However, the proof can also be critized for appealing to the transfinite
+    two times; the methods of the proof are at odds with the concreteness of
+    the statement of the theorem---from given equations witnessing
+    surjectivity,~$Mv_i = e_i$, we are asked to deduce the equation~$1 = 0$.
+
+    For this reason, the theorem and its classical proof are often used as case
+    studies for tools and techniques aiming to extract constructive content
+    from classical proofs. One such technique employs constructive forcing.
+    The first(?) constructive proof, found directly without using extraction
+    techniques, is laid out in a
+    \fixedhref{https://www.ams.org/journals/proc/1988-103-04/S0002-9939-1988-0954974-5/S0002-9939-1988-0954974-5.pdf}{beautiful short note by Richman}.
+  }
+
   \only<1-7>{\textbf{Thm.}
   Let~$M$ be a surjective matrix with more rows than columns over a
   ring~$A$. Then~$1 = 0$ in~$A$.
@@ -762,7 +788,7 @@
     \node [right of=7] (7d) {$\ldots$\phantom{(}};
     \node [right of=7d, xshift=3cm, yshift=-2cm] (max)
     {\vbox{\small{\it maximal among the proper ideals} \\ \medskip \hspace*{-6.75em}\textbullet \quad $\neg(1 \in
-    \mmm)$ \\ \medskip \textbullet \quad $x \in \mmm \quad\vee\quad 1 \in \mmm + (x)$}};
+    \mmm)$ \\ \medskip \textbullet \quad $\neg\bigl(1 \in \mmm + (x)\bigr) \Rightarrow x \in \mmm$}};
     \node [below of=4] (8) {$(8)$};
     \node [right of=8, xshift=3cm] (8d) {$\ldots$};
     \draw (0) -- (8);

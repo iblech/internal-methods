@@ -739,16 +739,19 @@
   \end{columns}
 \end{frame}
 
+% \begin{document}
+
+
 {\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{5.95cm}\includegraphics[width=\paperwidth]{fr1}\end{minipage}}
 \begin{frame}{Maximal ideals}
-  \jnote{1-}{
+  \jnote{1-7}{
     The theorem on the slide is a generalization of a fact from undergraduate
     linear algebra: Over a field, no surjective matrix can have more rows than
     columns. (``Surjective'' here means that the induced linear map is
     surjective.)
   }
 
-  \jnote{6-}{
+  \jnote{6-7}{
     The slide presents a standard proof as offered by most textbooks on
     commutative algebra. The proof is quite efficient from a viewpoint of
     mathematical organization, as it quickly succeeds in reducing to the field
@@ -762,9 +765,33 @@
     For this reason, the theorem and its classical proof are often used as case
     studies for tools and techniques aiming to extract constructive content
     from classical proofs. One such technique employs constructive forcing.
-    The first(?) constructive proof, found directly without using extraction
+    The first(?)\@ constructive proof, found directly without using extraction
     techniques, is laid out in a
     \fixedhref{https://www.ams.org/journals/proc/1988-103-04/S0002-9939-1988-0954974-5/S0002-9939-1988-0954974-5.pdf}{beautiful short note by Richman}.
+  }
+
+  \jnote{11}{
+    The iterative construction in the countable case without decidability
+    assumptions is due to Krivine; it was later clarified by Berardi and
+    Valentini. It is a parlor trick, resulting in a subset which formally
+    verifies the axioms for a maximal ideal but without carrying out any actual
+    work. Indeed, the resulting ideal will in general not be a detachable
+    subset of the ring.
+
+    Surprisingly, there is still computational content in this construction, as
+    explored in \fixedhref{https://arxiv.org/abs/2207.03873}{this joint paper
+    with Peter Schuster}; one interpretation of our observation is that classical
+    proofs don't ``really'' require a maximal ideal; they just use that notion
+    for structuring hidden computations.
+  }
+
+  \jnote{13-}{
+    In a suitable forcing extension, the ring appears countable. Hence we can
+    carry out the iterative maximal ideal construction there. The resulting ideal
+    will not be part of the base universe (instead, from the point of view of
+    the base universe we will just have constructed a certain sheaf of ideals on a
+    certain pointfree space), but bounded first-order consequences of its
+    existence still pass down to the base.
   }
 
   \only<1-7>{\textbf{Thm.}
@@ -870,18 +897,25 @@
     \vspace*{-3.5em}
 
     \item In the general case: \bad{No}\pause, but \good{yes} in a \emph{suitable forcing extension}\pause, and \\
-    \emph{first-order consequences} of its existence there \good{do hold} in
+    \emph{bounded first-order consequences} of its existence there \good{do hold} in
     the base universe.
   \end{enumerate}
 \end{frame}
 
 \begin{frame}{Maximal ideals}
+  \jnote{1}{
+    Unwinding all the definitions from constructive forcing and from the
+    iterative maximal ideal construction, and eliminating the application
+    of~\textsc{lem} from the classical proof presented before, we mechanically
+    arrive at the constructive direct proof presented on the slide.
+  }
+
   \textbf{Thm.}
   Let~$M$ be a surjective matrix with more rows than columns over a
   ring~$A$. Then~$1 = 0$ in~$A$.
 
   \emph{Proof.} (special case) Write~$M = \left(\begin{smallmatrix}x\\y\end{smallmatrix}\right)$. By surjectivity,
-  have~$u, v \in A$ with
+  we have~$u, v \in A$ with
   \[
     u \left(\begin{smallmatrix}x\\y\end{smallmatrix}\right) = \left(\begin{smallmatrix}1\\0\end{smallmatrix}\right)
     \quad\text{and}\quad
@@ -893,8 +927,29 @@
   $. \qed
 \end{frame}}
 
+% \begin{document}
+
 {\usebackgroundtemplate{\begin{minipage}{\paperwidth}\includegraphics[height=\paperheight]{sea-of-clouds-2}\end{minipage}}
 \begin{frame}{Infinite data}
+  \jnote{5-}{
+    The presented proof rests on the law of excluded middle and hence cannot
+    immediately be interpreted as a program for finding suitable indices~$i < j$.
+    However, constructive proofs are also possible (for instance by
+    induction on the value of a given term of the sequence), and furthermore
+    constructive proofs can be extracted from the presented classical proof.
+  }
+
+  \jnote{7-}{
+    The class of well preorders is stable under cartesian products, lists and
+    trees, by Dickson's Lemma, Higson's Lemma and Kruskal's Theorem,
+    respectively. However, in their naive formulations, these are merely
+    theorems of classical mathematics. For general constructive results, the
+    definition of ``well'' needs to be improved.
+
+    Classical texts often employ needless negations in their definitions; this
+    is an XXX
+  }
+
   \vspace*{-1em}
   \[ \astikznodetransparentlycircled{xm}{7}\!,
     \quad \astikznodetransparentlycircled{x0}{4}\!,

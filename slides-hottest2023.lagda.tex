@@ -449,7 +449,7 @@
 
   \emph{A naive formalization attempt:}
 
-  \textbf{Def.} $\displaystyle\mathsf{Well}_0(X,{\leq}) \defeq
+  \textbf{Def.} $\displaystyle\mathsf{Well}_\infty(X,{\leq}) \defeq
     \prod\limits_{\alpha \? \NN \to X} \, \Bigl\|\sum\limits_{i \? \NN} \sum\limits_{j \? \NN}
       i < j \times \alpha\,i \leq \alpha\,j\Bigr\|_{-1}$
   \pause
@@ -556,7 +556,7 @@
 \begin{frame}{Well quasiorders revisited}
   \emph{A naive formalization attempt:}
 
-  \textbf{Def.} $\displaystyle\mathsf{Well}_0(X,{\leq}) \defeq
+  \textbf{Def.} $\displaystyle\mathsf{Well}_\infty(X,{\leq}) \defeq
     \prod\limits_{\alpha \? \NN \to X} \, \Bigl\|\sum\limits_{i \? \NN} \sum\limits_{j \? \NN}
       i < j \times \alpha\,i \leq \alpha\,j\Bigr\|_{-1}$
   \pause
@@ -566,7 +566,9 @@
   \emph{An inductive rephrasing:}
 
   \textbf{Def.} $\displaystyle\mathsf{Well}(X,{\leq}) \defeq
-    \nabla \mathsf{Good} \, \varepsilon$, where
+    \nabla \mathsf{Good} \, \varepsilon$, where~$\mathsf{Good}\,x_0 \ldots
+    x_{n-1} \defeq \mathop{\exists}\limits_{i:\NN}\mathop{\exists}\limits_{j:\NN} (i < j \times x_i \leq
+    x_j)$ and
   {\vspace*{-0.7em}\small\begin{code}
     data ∇ (P : X* → Prop) (σ : X*) : Prop where
       now : P σ → ∇ P σ
@@ -584,8 +586,400 @@
   \end{block}
 
   \dnote{We have~$\mathsf{Well}(X,{\leq}) \to
-  \mathsf{Well}_0(X,{\leq})$, but the converse only holds in presence of \hil{bar
+  \mathsf{Well}_\infty(X,{\leq})$, but the converse only holds in presence of \hil{bar
   induction}. \emph{How much stronger exactly is the inductive rephrasing?}}
+\end{frame}
+
+{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{4.95cm}\includegraphics[width=\paperwidth]{topos-horses}\end{minipage}}
+\begin{frame}{Slide about toposes}
+  (something about overloading of the logical connectives)
+\end{frame}}
+
+{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{5.95cm}\includegraphics[width=\paperwidth]{fr1}\end{minipage}}
+\begin{frame}{Maximal ideals as convenient fictions}
+  \jnote{1}{
+    The theorem on the slide is a generalization of a fact from undergraduate
+    linear algebra: Over a field, no surjective matrix can have more rows than
+    columns. (``Surjective'' here means that the induced linear map is
+    surjective.)
+  }
+
+  \jnote{6-7}{
+    The slide presents a standard proof as offered by most textbooks on
+    commutative algebra. The proof is quite efficient from a viewpoint of
+    mathematical organization, as it quickly succeeds in reducing to the field
+    situation. As such, it is short and memorable.
+
+    However, the proof can also be critized for appealing to the transfinite
+    two times; the methods of the proof are at odds with the concreteness of
+    the statement of the theorem---from given equations witnessing
+    surjectivity,~$Mv_i = e_i$, we are asked to deduce the equation~$1 = 0$.
+
+    For this reason, the theorem and its classical proof are often used as case
+    studies for tools and techniques aiming to extract constructive content
+    from classical proofs. One such technique employs constructive forcing.
+    The first(?)\@ constructive proof, found directly without using extraction
+    techniques, is laid out in a
+    \fixedhref{https://www.ams.org/journals/proc/1988-103-04/S0002-9939-1988-0954974-5/S0002-9939-1988-0954974-5.pdf}{beautiful short note by Richman}.
+  }
+
+  \jnote{8-9}{
+    For the countable case, there is an iterative construction of a maximal
+    ideal, making do without any decidability assumptions (due to Krivine,
+    later later clarified by Berardi and Valentini). It is a parlor trick,
+    resulting in a subset which formally verifies the axioms for a maximal
+    ideal but without carrying out any actual work. Indeed, the resulting ideal
+    will in general not be a detachable subset of the ring.
+
+    Surprisingly, there is still computational content in this construction, as
+    explored in \fixedhref{https://arxiv.org/abs/2207.03873}{this joint paper
+    with Peter Schuster}; one interpretation of our observation is that classical
+    proofs don't ``really'' require a maximal ideal; they just use that notion
+    for structuring hidden computations.
+  }
+
+  \jnote{9}{
+    In a suitable topos, the ring appears countable. Hence we can
+    carry out the iterative maximal ideal construction there. The resulting ideal
+    will not be part of the base universe (instead, from the point of view of
+    the base universe we will just have constructed a certain sheaf of ideals on a
+    certain pointfree space), but bounded first-order consequences of its
+    existence still pass down to the base.
+  }
+
+  \jnote{10}{
+    Unwinding all the definitions from toposes and from the
+    iterative maximal ideal construction, and eliminating the application
+    of~\textsc{lem} from the classical proof presented before, we mechanically
+    arrive at the constructive direct proof presented on the slide.
+  }
+
+  \begin{block}{}
+    \textbf{Thm.}
+    Let~$M$ be a surjective matrix with more rows than columns over a
+    commutative ring~$A$. Then~$1 = 0$ in~$A$.
+  \end{block}
+
+  \only<1-9>{
+    \visible<2->{\emph{Proof.} (classical) \bad{Assume not.}}
+    \visible<3->{Then there is~a \bad{maximal ideal} $\mmm$.}
+    \visible<5->{The matrix is surjective over~$A/\mmm$.}
+    \visible<6->{Since~$A/\mmm$ is a field, this is a contradiction to basic linear algebra.\qed}
+  }
+
+  \only<4-9>{\medskip\par\centering\scalebox{0.9}{\centering\begin{tikzpicture}
+    \node (0) at (0,1) {$(0) = \{0\}$};
+    \node (1) at (0,5) {$(1) = \ZZ$};
+    \node (2) at (-2,4) {$(2)$};
+    \node [right of=2] (3) {$(3)$};
+    \node [below of=2] (4) {$(4)$};
+    \node [below of=2, xshift=0.7cm] (6) {$(6)$};
+    \node [right of=3] (5) {$(5)$};
+    \node [right of=5] (7) {$(7)$};
+    \node [right of=7] (7d) {$\ldots$\phantom{(}};
+    \node [right of=7d, xshift=3cm, yshift=-2cm] (max)
+    {\vbox{\small{\it maximal among the proper ideals} \\ \medskip \hspace*{-6.75em}\textbullet \quad $\neg(1 \in
+    \mmm)$ \\ \medskip \textbullet \quad $\neg\bigl(1 \in \mmm + (x)\bigr) \Rightarrow x \in \mmm$}};
+    \node [below of=4] (8) {$(8)$};
+    \node [right of=8, xshift=3cm] (8d) {$\ldots$};
+    \draw (0) -- (8);
+    \draw (0) -- (8d);
+    \draw (0) -- (6);
+    \draw (2) -- (1);
+    \draw (3) -- (1);
+    \draw (5) -- (1);
+    \draw (7) -- (1);
+    \draw (7d) -- (1);
+    \draw (4) -- (2);
+    \draw (8) -- (4);
+    \draw (6) -- (2);
+    \draw (6) -- (3);
+    \draw [mypurple!30, thick, shorten <=-2pt, shorten >=-2pt, ->] (max) to [out=120, in=-30] (7d);
+    \begin{pgfonlayer}{background}
+      \draw[decorate, very thick, draw=mypurple!30]
+        ($(2.south west) + (8pt, 0)$) arc(270:180:8pt) --
+        ($(2.north west) + (0, -8pt)$) arc(180:90:8pt) --
+        ($(7d.north east) + (-8pt, 0)$) arc(90:0:8pt) --
+        ($(7d.south east) + (0, 8pt)$) arc(0:-90:8pt) --
+        cycle;
+    \end{pgfonlayer}
+  \end{tikzpicture}\par}\par}
+
+  \pause
+  \pause
+  \pause
+  \pause
+  \pause
+  \pause
+  \raggedright
+
+  \only<7-9>{
+    \emph{Does there exist a maximal ideal?}
+    \pause
+    \good{Yes}, if~$A$ is countable.
+    In the general case: \bad{No}\pause, but \good{yes} in a \emph{suitable topos}, and
+    \emph{bounded first-order consequences} of its existence there \good{do hold} in
+    the base.
+    \pause
+  }
+
+  \only<10>{
+    \emph{Proof.} (constructive, special case) Write~$M =
+    \left(\begin{smallmatrix}x\\y\end{smallmatrix}\right)$. By surjectivity,
+    we have~$u, v \? A$ with
+    \[
+      u \left(\begin{smallmatrix}x\\y\end{smallmatrix}\right) = \left(\begin{smallmatrix}1\\0\end{smallmatrix}\right)
+      \quad\text{and}\quad
+      v \left(\begin{smallmatrix}x\\y\end{smallmatrix}\right) = \left(\begin{smallmatrix}0\\1\end{smallmatrix}\right).
+    \]
+    Hence
+    $
+      1 = (vy) (ux) = (uy) (vx) = 0
+    $. \qed
+  }
+\end{frame}}
+
+\newcommand\ytl[2]{%
+  \parbox[b]{4.5em}{\hfill{#1}~$\cdots\cdots$~}%
+  \makebox[0pt][c]{\color{mypurple}$\bullet$}{\color{mypurple}\vrule}\quad%
+  \parbox[c]{9.3cm}{\vspace{7pt}\raggedright#2\\[7pt]}%
+  \\[-2.0pt]}
+\begin{frame}{A brief timeline}
+  \jnote{4}{
+    Gödel's proof is by the \hil{$L$-translation}, where $L$ is the
+    ``constructible universe''. This translation ``relativizes quantification
+    to~$L$'', for instance the~$L$-translation of
+    \[ \varphi \defeqv \bigl(\forall x\_ \exists y\_ \ldots\bigr) \qquad\text{is}\qquad
+    \varphi^L \equiv \bigl(\forall(x \in L)\_ \exists(y \in L)\_ (\ldots)^L\bigr). \]
+    We can then verify, in a weak metatheory such as~\textsc{pra}, that for
+    every formula~$\varphi$ in the language of set theory:
+    If $\textsc{zfc}\text{+}\textsc{ch} \vdash \varphi$, then $\textsc{zf} \vdash
+    \varphi^L$.
+
+    Specializing to~$\varphi \defeqv \bot$ we obtain in particular: If~\textsc{zfc} is
+    inconsistent, then so is~\textsc{zf}. The axiom of choice does not
+    introduce new inconsistencies.
+
+    In modern semantic language: While the axiom of choice and~\textsc{ch} might fail in the
+    base universe~$V$ (= the class of all sets), they always hold in~$L$.
+    Gödel's~$L$ was the first \emph{inner model} (= class-sized model of set
+    theory) explicitly studied, nowadays we know many.
+  }
+
+  \jnote{5}{
+    For his proof, Cohen invented the technique of \emph{forcing}, situated in
+    classical mathematics where the base universe~$V$ is assumed to validate
+    the axioms of~\textsc{zfc}.
+
+    Recall that a given ring~$R$ or group can be extended in various ways, to include
+    ``generic elements'' as in~$R[X]$ or elements with prescribed relations as
+    in~$R[X]/(X^2+1) =\vcentcolon R[i]$. The idea of forcing is to construct
+    similar such extensions, but not of rings but of universes (traditionally set-sized models
+    of~\textsc{zf} or~\textsc{zfc}, but also class-sized models, or models
+    of intuitionistic set theories, or models of type theories, or even models
+    of arithmetic).
+
+    In semantic language, from a high level the idea of Cohen's independency proof is the following: Whether
+    the base universe~$V$ contains a cardinal number intermediate
+    between~$\aleph_0$ and~$2^{\aleph_0}$ is uncertain. But there is a certain
+    extension of the base universe---constructed by forcing---which does
+    contain such a number. Like the base~$V$, this forcing extension still
+    validates the axioms of~\textsc{zfc}. Hence there cannot be a
+    \textsc{zfc}-proof of~\textsc{ch}, as in Cohen's extension~$\neg\textsc{ch}$
+    holds.
+
+    Syntactically, Cohen's forcing provides us with an explicit formula
+    translation~$\varphi \mapsto \varphi^C$ such that~\textsc{pra} proves:
+    For every formula~$\varphi$, if~$\textsc{zfc}{\text{+}}\neg\textsc{ch} \vdash \varphi$,
+    then~$\textsc{zfc} \vdash \varphi^C$.
+    \bigskip
+  }
+
+  \jnote{6}{
+    Joel David Hamkins argues: In view of our rich experience with worlds which
+    validate~\textsc{ch} and worlds which don't, we shouldn't be surprised that
+    no proposed new axiom for settling~\textsc{ch} is ultimately convincing.
+
+    Instead, we should embrace the multiverse of all models of set theory and
+    explore how the truth values of statements of interest change when we
+    travel the multiverse (for instance, by passing from a universe to one
+    of its forcing extensions).
+
+    In this generalized sense, the continuum hypothesis is settled: We have a
+    good understanding of the stability properties of~\textsc{ch} under
+    important constructions. In particular, for a certain precise meaning of
+    ``universe'' and ``extension'', we know that~\textsc{ch} is a
+    \emph{switch}: $\necessary(\possible\textsc{ch} \wedge
+    \possible\neg\textsc{ch})$; in words: Every universe can be extended both to a
+    universe in which~\textsc{ch} holds and to a universe in
+    which~$\neg\textsc{ch}$ holds.
+
+    An exposition and references for further reading about the multiverse
+    position can be found
+    \fixedhref{https://www.speicherleck.de/iblech/stuff/multiverse.pdf}{here}.
+  }
+
+  \jnote{8}{
+    J. Roitman, The uses of set theory, \emph{Math.\@ Intelligencer}
+    \textbf{14}(1) (1992), 63--69.
+
+    Forcing is useful not only to explore the range of foundational
+    possibility; it has many more applications across several subjects of
+    mathematics.
+  }
+
+  \begin{columns}[t]
+    \begin{column}{0.80\textwidth}
+      \ytl{1878}{Cantor advances the \hil{continuum hypothesis}, the claim
+      that~$2^{\aleph_0} = \aleph_1$.}
+      \pause
+      \ytl{1910s}{Zermelo--Fraenkel set theory emerges.}
+      \pause
+      \ytl{1920s}{Set theorists pursue additional axioms to
+      settle~\textsc{ch} \\ (one way or another).}
+      \pause
+      \ytl{1938}{Gödel proves: If~\textsc{zfc} is consistent, so
+      is~\textsc{zfc}+\textsc{ch}.}
+      \pause
+      \ytl{1963}{Cohen proves: If~\textsc{zfc} is consistent, so
+      is~\textsc{zfc}+$\neg$\textsc{ch}.}
+      \pause
+      \ytl{2011}{Hamkins offers his paper on the \hil{multiverse position} in
+      the philosophy of set theory.}
+      \pause
+      %arguing that the program of pursuing
+      %additional axioms (while successful in many ways) is doomed to fail
+      %to settle~\textsc{ch}.}
+      \ytl{2016}{Oldenziel proposes to study the modal multiverse of parametrized
+      mathematics.}
+      \parbox[b]{4.5em}{\hfill\phantom{x}}\makebox[0pt][c]{\phantom{b}}{\color{mypurple}\vrule}\\[-6.5pt]
+      \parbox[b]{4.5em}{\hfill\phantom{x}}\makebox[0pt][c]{\phantom{b}}{\color{mypurple}\vrule}\\[-6.5pt]
+      \parbox[b]{4.5em}{\hfill\phantom{x}}\makebox[0pt][c]{\phantom{b}}{\color{mypurple}\vrule}\\[-6.5pt]
+    \end{column}
+
+    \begin{column}{0.20\textwidth}
+      \pause
+      \centering\includegraphics[width=\textwidth,valign=t]{roitman}
+
+      \scriptsize Judith Roitman %(* 1945)
+      \medskip
+
+      \emph{Mainstream mathematics is beginning to see results using
+      modern set theoretic techniques.}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{3.59cm}\includegraphics[width=\paperwidth]{staircase}\end{minipage}}
+\begin{frame}{The modal set-theoretic multiverse}
+  \begin{tikzpicture}[remember picture,overlay]
+    \node[xshift=-2.5cm,yshift=-4cm] at (current page.north east)
+    {\includegraphics[width=3cm]{branching}};
+  \end{tikzpicture}
+  \justifying
+  \vspace*{-2em}
+
+  \textbf{Def.} A \hil{model of set theory} is a (perhaps class-sized) structure $(M,{\in})$
+  satisfying axioms such as those of~\textsc{zfc}.
+
+  {\small\emph{Examples.}\vspace*{-0.8em}
+  \begin{itemize}
+    \item $V$, the class of all sets \vspace*{-0.6em}
+    \item $L$, Gödel's constructible universe \vspace*{-0.6em}
+    \item $V[G]$, a forcing extension containing a generic filter~$G$ of \\ some
+    poset of forcing conditions \vspace*{-0.6em}
+    \item Henkin/term models from consistency of (extensions of)~\textsc{zfc}
+  \end{itemize}}
+  \pause
+
+  \emph{We embrace all models of set theory:}
+
+  \textbf{Def.} $\possible\varphi$ iff~$\varphi$ holds in \hil{some extension} of
+  the current universe. \\
+  \phantom{\textbf{Def.}} $\necessary\varphi$ iff~$\varphi$ holds in \hil{all extensions}
+  of the current universe.
+  \begin{itemize}
+    \item $\necessary(\possible\textsc{CH} \wedge \possible\neg\text{CH})$,
+    the continuum hypothesis is a \hil{switch}.
+    \item $\necessary\possible\necessary(\text{$X$ is countable})$,
+    existence of an enumeration is a \hil{button}.
+  \end{itemize}
+\end{frame}}
+
+\begin{frame}{The modal topos-theoretic multiverse}
+  \textbf{Def.} A statement~$\varphi$ holds \ldots
+  \begin{enumerate}
+    \small
+    \item \hil{everywhere} ($\necessary\varphi$) iff it holds in every topos
+    (over the current base).
+    \item \hil{somewhere} ($\possible\varphi$) iff it holds in some positive topos.
+    \item \hil{proximally} ($\xpossible\varphi$) iff it holds in some positive overt topos.
+  \end{enumerate}
+  \bigskip
+
+  \begin{tikzpicture}[overlay]
+    \node[anchor=south east,inner sep=0] (image) at (14.8,0.2) {
+      \includegraphics[width=0.2\textwidth]{multiverse}
+    };
+  \end{tikzpicture}\vspace*{-2.3em}
+
+  \pause
+
+  \small
+  \begin{multicols}{2}
+    For every inhabited set~$X$, \emph{proximally} \\
+    there is an enumeration~$\NN \twoheadrightarrow X$.
+    \medskip
+
+    A quasiorder is well iff \emph{everywhere}, \\
+    every sequence is good.
+    \medskip
+
+    A ring element is nilpotent iff \\
+    all prime ideals \emph{everywhere} contain it.
+    \medskip
+
+    For every ring, \emph{proximally} \\ there is a maximal ideal.
+    \medskip
+
+    A relation is well-founded iff \emph{everywhere}, \\ there is no descending chain.
+    \medskip
+
+    \emph{Somewhere}, \\ the law of excluded middle holds.
+  \end{multicols}
+  \pause
+
+  \begin{block}{}
+    \justifying
+    \textbf{Prop.} Let~$(X,{\leq})$ be a well quasiorder.
+    Then~$({<})$, where~$x < y \equiv (x \leq y \wedge \neg(y \leq x))$,
+    is well-founded.
+  \end{block}
+  \vspace*{-0.5em}
+
+  \emph{Proof.} Everywhere, there can be no infinite descending chain, as any
+  such would also be good. \qed
+
+  Unrolling this proof gives a program~$\nabla\mathsf{Good}\,\varepsilon \to
+  \prod_{x:X} \mathsf{Acc}\,x$.
+\end{frame}
+
+\begin{frame}{The modal type-theoretic multiverse?}
+  \emph{As I understand it, \ldots}
+
+  For extensional type theory, similar picture as with toposes:
+  Given a model of extensional type theory and a Grothendieck site~$\mathcal{C}$ in it, there
+  is a model of extensional type theory deserving the name~``sheaf model
+  over~$\mathcal{C}$''. This sheaf model is just a thin translation layer of
+  the base model.
+  \pause
+
+  For HoTT-like theories, given a ``presheaf model'' we know how to construct a
+  ``sheaf model'', but we do not know how to construct presheaf models in the
+  first place.
+  \pause
+
+  Still, can pragmatically use~$\nabla$ and feel philosophically inspired.
 \end{frame}
 
 \end{document}

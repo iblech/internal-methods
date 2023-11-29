@@ -419,27 +419,24 @@
   \textbf{Def.} (classically) A preorder~$X$ is \hil{well} iff every sequence~$\NN \to X$ is good.
 
   \textbf{Examples.} (classically)\ $(\NN,{\leq}),\ \ X \times Y,\ \ X^*,\ \ \mathrm{Tree}(X).$
-  \medskip
+  \bigskip
   \pause
 
-  \subhead{\emph{A naive formalization attempt}}
+  %\subhead{\emph{A naive formalization attempt}}
+  \emph{A naive formalization attempt:}
 
-  \textbf{Def.} $\mathsf{Well}(X,{\leq}) \defeq
+  \textbf{Def.} $\displaystyle\mathsf{Well}(X,{\leq}) \defeq
     \prod\limits_{\alpha \? \NN \to X} \, \Bigl\|\sum\limits_{i \? \NN} \sum\limits_{j \? \NN}
       i < j \times \alpha(i) \leq \alpha(j)\Bigr\|_{-1}$
   \pause
+  \qquad\scalebox{2}{\dbend}
+  \medskip
 
-  \begin{multicols}{2}
   \begin{itemize}
-    \item[\cmark] short
-    \item[\cmark] sweet
-    \item[\cmark] immediate
-    \columnbreak
-    \item[\xmark] philosophically strenuous  %: needless reference of the transfinite
-    \item[\xmark] not practical  %: cannot verify closure properties
-    \item[\xmark] not faithful(?)  %: missing out on some sequences
+    \item[\bad{\xmark}] philosophically~strenuous  %: needless reference of the transfinite
+    \item[\bad{\xmark}] not practical  %: cannot verify closure properties
+    \item[\bad{\xmark}] not faithful(?)  %: missing out on some sequences
   \end{itemize}
-  \end{multicols}
 \end{frame}}
 
 \end{document}

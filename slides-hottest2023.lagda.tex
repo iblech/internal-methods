@@ -339,6 +339,20 @@
   \par
 }
 
+\newcommand{\genalpha}{\mbox{$\hspace{0.12em}\shortmid\hspace{-0.62em}\alpha$}}
+
+\usepackage{newunicodechar}
+
+\newunicodechar{∇}{\ensuremath{\nabla}}
+\newunicodechar{λ}{\ensuremath{\lambda}}
+\newunicodechar{σ}{\ensuremath{\sigma}}
+\newunicodechar{τ}{\ensuremath{\tau}}
+\newunicodechar{∷}{\ensuremath{\!\!\!}}
+\newunicodechar{⧺}{\ensuremath{\!\!\!}}
+\newunicodechar{₁}{\ensuremath{_1}}
+\newunicodechar{₂}{\ensuremath{_2}}
+\newunicodechar{∈}{\ensuremath{\in}}
+
 \begin{document}
 
 \addtocounter{framenumber}{-1}
@@ -433,14 +447,13 @@
   \bigskip
   \pause
 
-  %\subhead{\emph{A naive formalization attempt}}
   \emph{A naive formalization attempt:}
 
-  \textbf{Def.} $\displaystyle\mathsf{Well}(X,{\leq}) \defeq
+  \textbf{Def.} $\displaystyle\mathsf{Well}_0(X,{\leq}) \defeq
     \prod\limits_{\alpha \? \NN \to X} \, \Bigl\|\sum\limits_{i \? \NN} \sum\limits_{j \? \NN}
       i < j \times \alpha\,i \leq \alpha\,j\Bigr\|_{-1}$
   \pause
-  \qquad\scalebox{2}{\dbend}
+  \qquad\scalebox{1.5}{\dbend}
   \medskip
 
   \begin{itemize}
@@ -489,12 +502,12 @@
 
 \begin{frame}{Sequences depending on an environment}
   Let~$X$ be an hset such that there is no surjection~$\NN \twoheadrightarrow X$.
-  Then the type~$\NN \to X$ misses the \hil{generic enumeration} of~$X$.
+  Then the type~$\NN \to X$ misses the \hil{generic enumeration}~$\genalpha$ of~$X$.
   \medskip
   \pause
 
-  \emph{Idea:} Approximate a (fictitious) surjection~$\NN \twoheadrightarrow X$
-  by finite sequences~$\sigma = x_0 \ldots x_{n-1} \? X^*$. Over time, such an
+  \emph{Idea:} Approximate (fictitious) surjections~$\NN \twoheadrightarrow X$
+  by finite sequences~$\sigma = x_0 \ldots x_{n-1} \? X^*$. \\ Over time, such an
   approximation can grow to
   \begin{enumerate}
     \item one of $\sigma y$, where~$y \? X$, so it becomes \emph{more defined}; or
@@ -504,7 +517,75 @@
   \medskip
   \pause
 
-  Formally, we have the type~$\nabla\underline{X}$ of stage-dependent values of~$X$:
+  For~$k : \NN$ and~$a : X$, the expression~``$\genalpha\,k = a$'' does not
+  denote a proposition but rather a \hil{stage-dependent proposition}~$X^* \to
+  \mathsf{Prop}$, namely $\lambda x_0 \ldots x_{n-1}.\ k < n \times x_k = a$.
+  \medskip
+  \pause
+
+  Given a stage-dependent proposition~$P$, $\hil{$\nabla P$}\,\sigma$ expresses that no
+  matter how~$\sigma$ evolves to a better approximation~$\tau$,
+  eventually~$P\,\tau$ will hold:
+  \AgdaHide{
+  \begin{code}
+    {-# OPTIONS --no-prop --no-import-sorts --allow-unsolved-metas #-}
+    open import Agda.Primitive using (Set)
+    Prop = Set
+    postulate
+      X : Set
+      X* : Set
+      [] : X*
+      _∷_ : X* → X → X*
+      _⧺_ : X* → X* → X*
+      _∈_ : X → X* → Prop
+    module Foo where
+  \end{code}
+  }
+  {\small\begin{code}
+      data ∇ (P : X* → Prop) (σ : X*) : Prop where
+        now : P σ → ∇ P σ
+        later₁ : ((y : X) → ∇ P (σ ∷ y)) → ∇ P σ
+        later₂ : (a : X) → ((τ : X*) → a ∈ (σ ⧺ τ) → ∇ P (σ ⧺ τ)) → ∇ P σ
+  \end{code}}
+
+  \vspace*{-0.8em}
+  For instance, for~$P\,x_0 \ldots x_{n-1} \defeq \exists_{k : \NN} (k < n
+  \times x_k = a)$, we have~$\nabla P \, \varepsilon$. \quad ``$\genalpha$ is surjective''
+\end{frame}
+
+\begin{frame}{Well quasiorders revisited}
+  \emph{A naive formalization attempt:}
+
+  \textbf{Def.} $\displaystyle\mathsf{Well}_0(X,{\leq}) \defeq
+    \prod\limits_{\alpha \? \NN \to X} \, \Bigl\|\sum\limits_{i \? \NN} \sum\limits_{j \? \NN}
+      i < j \times \alpha\,i \leq \alpha\,j\Bigr\|_{-1}$
+  \pause
+  \qquad\scalebox{1.0}{\dbend}
+  \bigskip 
+
+  \emph{An inductive rephrasing:}
+
+  \textbf{Def.} $\displaystyle\mathsf{Well}(X,{\leq}) \defeq
+    \nabla \mathsf{Good} \, \varepsilon$, where
+  {\vspace*{-0.7em}\small\begin{code}
+    data ∇ (P : X* → Prop) (σ : X*) : Prop where
+      now : P σ → ∇ P σ
+      later : ((y : X) → ∇ P (σ ∷ y)) → ∇ P σ
+  \end{code}}
+
+  \vspace*{-0.8em}
+  In other words: \emph{A quasiorder~$X$ is well iff the generic sequence~$\NN \to X$
+  is good.}
+
+  \begin{block}{}
+    \justifying
+    \textbf{Prop.} Let~$X$ and~$Y$ be well quasiorders.
+    \good{Without} assuming~\bad{\textsc{lem}},~$X \times Y$ is well.
+  \end{block}
+
+  \dnote{We have~$\mathsf{Well}(X,{\leq}) \to
+  \mathsf{Well}_0(X,{\leq})$, but the converse only holds in presence of \hil{bar
+  induction}. \emph{How much stronger exactly is the inductive rephrasing?}}
 \end{frame}
 
 \end{document}

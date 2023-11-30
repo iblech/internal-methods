@@ -333,7 +333,7 @@
 }
 
 \newcommand{\dnote}[1]{%
-  \begin{tabular}{@{}m{2em}@{}m{0.80\textwidth}@{}}%
+  \begin{tabular}{@{}m{2em}@{}m{0.83\textwidth}@{}}%
     \textdbend &#1%
   \end{tabular}%
   \par
@@ -443,7 +443,7 @@
 
   \textbf{Def.} (classically) A quasiorder~$X$ is \hil{well} iff every sequence~$\NN \to X$ is good.
 
-  \textbf{Examples.} (classically)\ $(\NN,{\leq}),\ \ X \times Y,\ \ X^*,\ \ \mathrm{Tree}(X).$
+  \textbf{Examples.} (classically)\ \ $(\NN,{\leq}),\ \ X \times Y,\ \ X^*,\ \ \mathrm{Tree}(X).$
   \bigskip
   \pause
 
@@ -472,11 +472,10 @@
     subsequence~$\alpha\,i_0 \leq \alpha\,i_1 \leq \cdots$.
   \end{block}
   \vspace*{-0.6em}
-  \emph{Proof.} The set
-  \[ I \defeq \{ i \in \NN \,|\, \neg\mathop{\exists}\limits_{j \in \NN} i < j \times \alpha\,i \leq \alpha\,j
-  \} \]
+  \emph{Proof.} The type
+  \[ I \defeq \sum_{i \? \NN} \neg\sum_{j \? \NN} i < j \times \alpha\,i \leq \alpha\,j \]
   cannot be in bijection with~$\NN$, as else the~$I$-extracted subsequence
-  of~$\alpha$ would not be good. By~\bad{\textsc{lem}}, the set~$I$ is finite.
+  of~$\alpha$ would not be good. By~\bad{\textsc{lem}}, the type~$I$ is finite.
   Any index~$i_0$ larger than all the indices in~$I$ is a suitable starting
   point for a monotonic subsequence. \qed
   \medskip
@@ -507,7 +506,8 @@
   \pause
 
   \emph{Idea:} Approximate (fictitious) surjections~$\NN \twoheadrightarrow X$
-  by finite sequences~$\sigma = x_0 \ldots x_{n-1} \? X^*$. \\ Over time, such an
+  by finite sequences~$\sigma = x_0 \ldots x_{n-1} \? X^*$. \\
+  Starting with the empty sequence~$\varepsilon$, over time, such an
   approximation can grow to
   \begin{enumerate}
     \item one of $\sigma y$, where~$y \? X$, so it becomes \emph{more defined}; or
@@ -531,6 +531,7 @@
     {-# OPTIONS --no-prop --no-import-sorts --allow-unsolved-metas #-}
     open import Agda.Primitive using (Set)
     Prop = Set
+    infixl 5 _∈_
     postulate
       X : Set
       X* : Set
@@ -545,12 +546,12 @@
       data ∇ (P : X* → Prop) (σ : X*) : Prop where
         now : P σ → ∇ P σ
         later₁ : ((y : X) → ∇ P (σ ∷ y)) → ∇ P σ
-        later₂ : (a : X) → ((τ : X*) → a ∈ (σ ⧺ τ) → ∇ P (σ ⧺ τ)) → ∇ P σ
+        later₂ : (a : X) → ((τ : X*) → a ∈ σ ⧺ τ → ∇ P (σ ⧺ τ)) → ∇ P σ
   \end{code}}
 
   \vspace*{-0.8em}
-  For instance, for~$P\,x_0 \ldots x_{n-1} \defeq \exists_{k : \NN} (k < n
-  \times x_k = a)$, we have~$\nabla P \, \varepsilon$. \quad ``$\genalpha$ is surjective''
+  For instance, for~$P_a\,\sigma \defeq (a \in \sigma)$,
+  we have~$\nabla P_a \, \varepsilon$. \quad ``$\genalpha$ is surjective''
 \end{frame}
 
 \begin{frame}{Well quasiorders revisited}
@@ -561,7 +562,7 @@
       i < j \times \alpha\,i \leq \alpha\,j\Bigr\|_{-1}$
   \pause
   \qquad\scalebox{1.0}{\dbend}
-  \bigskip 
+  \bigskip
 
   \emph{An inductive rephrasing:}
 
@@ -590,9 +591,33 @@
   induction}. \emph{How much stronger exactly is the inductive rephrasing?}}
 \end{frame}
 
-{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{4.95cm}\includegraphics[width=\paperwidth]{topos-horses}\end{minipage}}
-\begin{frame}{Slide about toposes}
-  (something about overloading of the logical connectives)
+{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{4.95cm}\includegraphics[width=\paperwidth]{topos-horses-lighter}\end{minipage}}
+\begin{frame}{Topos for reifying generic models}
+  Grothendieck toposes (= categories of sheaves over sites) are mathematical universes:
+  \begin{itemize}
+    \item The \hil{generic sequence} is an honest function~$\NN \to X$
+    \hil{in} a certain topos~$\mathcal{E}$.
+    \item The \hil{generic surjection} is an honest surjection \hil{in} an
+    appropriate subtopos of~$\mathcal{E}$.
+    \item In the \emph{double-negation subtopos} of the base, a predicate~$Q : \NN
+    \to \mathsf{Prop}$ such that
+    \[ Q\,x \times Q\,y \longrightarrow x = y \quad\text{and}\quad
+      \neg\neg \sum_{n\?\NN} Q\,n \]
+    looks like an ordinary natural number.
+  \end{itemize}
+
+  A statement holds in a topos iff a certain topos-directed translation holds
+  in the base. For instance, for the double-negation subtopos the translation
+  substitutes
+  \[\begin{array}{rcl@{\quad\text{where}\quad}rcl}
+    \exists & \leadsto & \exists^\mathrm{cl},
+    & \exists^\mathrm{cl} &\defeqv& \neg\neg\exists, \\
+    \vee & \leadsto & \vee^\mathrm{cl},
+    & \alpha \vee^\mathrm{cl} \beta &\defeqv& \neg\neg(\alpha \vee \beta), \\
+    = & \leadsto & =^\mathrm{cl},
+    & s =^\mathrm{cl} t &\defeqv& \neg\neg(s = t).
+  \end{array} \]
+  In general, stage-dependent~$\nabla$ instead of~$\neg\neg$.
 \end{frame}}
 
 {\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{5.95cm}\includegraphics[width=\paperwidth]{fr1}\end{minipage}}
@@ -718,7 +743,7 @@
     \pause
     \good{Yes}, if~$A$ is countable.
     In the general case: \bad{No}\pause, but \good{yes} in a \emph{suitable topos}, and
-    \emph{bounded first-order consequences} of its existence there \good{do hold} in
+    \emph{bounded first-order consequences} of its existence there \good{pass down} to
     the base.
     \pause
   }
@@ -820,7 +845,7 @@
   }
 
   \jnote{8}{
-    J. Roitman, The uses of set theory, \emph{Math.\@ Intelligencer}
+    Judith Roitman. ``The uses of set theory''. \emph{Math.\@ Intelligencer}
     \textbf{14}(1) (1992), 63--69.
 
     Forcing is useful not only to explore the range of foundational
@@ -925,59 +950,81 @@
 
   \pause
 
-  \small
-  \begin{multicols}{2}
-    For every inhabited set~$X$, \emph{proximally} \\
-    there is an enumeration~$\NN \twoheadrightarrow X$.
-    \medskip
-
-    A quasiorder is well iff \emph{everywhere}, \\
-    every sequence is good.
-    \medskip
-
-    A ring element is nilpotent iff \\
-    all prime ideals \emph{everywhere} contain it.
-    \medskip
-
-    For every ring, \emph{proximally} \\ there is a maximal ideal.
-    \medskip
-
-    A relation is well-founded iff \emph{everywhere}, \\ there is no descending chain.
-    \medskip
-
-    \emph{Somewhere}, \\ the law of excluded middle holds.
-  \end{multicols}
+  \emph{Traveling the multiverse:}
+  \begin{itemize}
+    \item For every inhabited set~$X$, \emph{proximally} there is an enumeration~$\NN \twoheadrightarrow X$.
+    \item A quasiorder is well iff \emph{everywhere}, every sequence is good.
+    \item A ring element is nilpotent iff all prime ideals \emph{everywhere} contain it.
+    \item For every ring, \emph{proximally} there is a maximal ideal.
+    \item A relation is well-founded iff \emph{everywhere}, there is no descending chain.
+    \item \emph{Somewhere}, the law of excluded middle holds.
+  \end{itemize}
   \pause
 
-  \begin{block}{}
-    \justifying
-    \textbf{Prop.} Let~$(X,{\leq})$ be a well quasiorder.
-    Then~$({<})$, where~$x < y \equiv (x \leq y \wedge \neg(y \leq x))$,
-    is well-founded.
-  \end{block}
-  \vspace*{-0.5em}
+  \only<1-3>{
+    \small
+    \begin{block}{}
+      \justifying
+      \textbf{Prop.} Let~$(X,{\leq})$ be a well quasiorder.
+      Then~$({<})$, where~$x < y \equiv (x \leq y \wedge \neg(y \leq x))$,
+      is well-founded.
+    \end{block}
+    \vspace*{-0.5em}
 
-  \emph{Proof.} Everywhere, there can be no infinite descending chain, as any
-  such would also be good. \qed
+    \emph{Proof.} Everywhere, there can be no infinite descending chain, as any
+    such would also be good. \qed
 
-  Unrolling this proof gives a program~$\nabla\mathsf{Good}\,\varepsilon \to
-  \prod_{x:X} \mathsf{Acc}\,x$.
+    Unrolling this proof gives a program~$\nabla\mathsf{Good}\,\varepsilon \to
+    \prod_{x:X} \mathsf{Acc}\,x$.
+  }
+  \pause
+
+  \scriptsize
+  \emph{Foreshadowed by:}
+  \begin{itemize}
+    \item[1984\phantom{s}] André Joyal, Miles Tierney. ``An extension of the Galois theory of Grothendieck''.
+    \item[1987\phantom{s}] Andreas Blass. ``Well-ordering and induction in intuitionistic logic and topoi''.
+    \item[2010s] Milly Maietti, Steve Vickers. Ongoing work on arithmetic universes.
+    \item[2011\phantom{s}] Joel David Hamkins. ``The set-theoretic multiverse''.
+    \item[2013\phantom{s}] Shawn Henry. ``Classifying topoi and preservation of higher order logic by geometric morphisms''.
+  \end{itemize}
 \end{frame}
 
-\begin{frame}{The modal type-theoretic multiverse?}
-  \emph{As I understand it, \ldots}
+\begin{frame}{Towards the modal type-theoretic multiverse}
+  \small
+  \good{\cmark{}} \emph{There are type-theoretic multiverses,} such as
+  \begin{itemize}
+    \item the collection of all $\mathrm{PSh}(\mathcal{C} \times \mathcal{B})$,
+    where~$\mathcal{B}$ ranges over cube categories and~$\mathcal{C}$ over
+    arbitrary small categories, and their corresponding sheaf models
 
-  For extensional type theory, similar picture as with toposes:
-  Given a model of extensional type theory and a Grothendieck site~$\mathcal{C}$ in it, there
-  is a model of extensional type theory deserving the name~``sheaf model
-  over~$\mathcal{C}$''. This sheaf model is just a thin translation layer of
-  the base model.
+    {\scriptsize
+    Coquand. ``A survey of constructive presheaf models of univalence''. \emph{ACM SIGLOG News}, 5.3 (2018).
+    \par}
+  \end{itemize}
+  \medskip
   \pause
 
-  For HoTT-like theories, given a ``presheaf model'' we know how to construct a
-  ``sheaf model'', but we do not know how to construct presheaf models in the
-  first place.
-  \pause
+  \bad{\xmark} \emph{Accessing the multiverse from within type theory is tricky:}
+  \begin{itemize}
+    \item Given a model of $\mathfrak{s}$CIC and a category~$\mathcal{C}$ in
+    it, we have a syntactic presheaf model of CIC.
+
+    {\scriptsize
+    Coquand, Jaber. ``A note on forcing and type theory''. \emph{Fundamenta Informaticae 100} (2010).
+    Jaber, Lewertowski, Pédrot, Sozeau, Tabareau. ``The definitional side of the forcing''. \emph{Proceedings of LICS '16} (2016). \\
+    Pédrot. ``Russian constructivism in a prefascist theory''. \emph{Proceedings of LICS '20} (2020). \\
+    \par}
+    \item Given a suitable lex modality, we have a syntactic sheaf model (model of modal types).
+
+    {\scriptsize
+    Coquand, Ruch, Sattler. ``Constructive sheaf models of type theory.'' \emph{Math. Struct. Comput. Sci.} 31.9 (2021).
+    Escardó, Xu. ``Sheaf models of type theory in type theory''. Unpublished (2016). \\
+    Quirin. ``Lawvere--Tierney sheafification in Homotopy Type Theory''. PhD thesis (2016). \\
+    \par}
+    \item (I believe) we have syntactic sheaf models in certain special cases,
+    when no coherence issues arise in defining the notion of presheaves.
+  \end{itemize}
 
   Still, can pragmatically use~$\nabla$ and feel philosophically inspired.
 \end{frame}

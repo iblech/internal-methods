@@ -491,12 +491,12 @@
   given. Write~$\gamma\,k = (\alpha\,k,\beta\,k)$. By the lemma, there is a
   monotonic subsequence~$\alpha\,i_0 \leq \alpha\,i_1 \leq \cdots$. Because~$Y$
   is well, there are indices~$n < m$ such that~$\beta\,i_n \leq \beta\,i_m$. As
-  also~$\alpha\,i_n \leq \alpha\,i_m$, the sequence~$\gamma$ is good.
+  also~$\alpha\,i_n \leq \alpha\,i_m$, the sequence~$\gamma$ is good. \qed
   \medskip
   \pause
 
   \dnote{\emph{We cannot trust~\bad{\textsc{lem}}-provided sequences to be
-  available in the type~$\NN \to \NN$. Similarly with~\bad{\textsc{dc}}.}}
+  available in the type~$\NN \to X$. Similarly with~\bad{\textsc{dc}}.}}
 \end{frame}
 
 \begin{frame}{Sequences depending on an environment}
@@ -551,7 +551,14 @@
 
   \vspace*{-0.8em}
   For instance, for~$P_a\,\sigma \defeq (a \in \sigma)$,
-  we have~$\nabla P_a \, \varepsilon$. \quad ``$\genalpha$ is surjective''
+  we have~$\nabla P_a \, \varepsilon$. \quad ``$\genalpha$ is surjective'':
+  \AgdaSymbol{(}\AgdaBound{a}\AgdaSpace{}%
+  \AgdaSymbol{:}\AgdaSpace{}%
+  \AgdaPostulate{X}\AgdaSymbol{)}\AgdaSpace{}%
+  \AgdaSymbol{→}\AgdaSpace{}%
+  \AgdaDatatype{∇}\AgdaSpace{}%
+  \AgdaBound{P$_a$}\AgdaSpace{}%
+  \AgdaBound{$\varepsilon$}
 \end{frame}
 
 \begin{frame}{Well quasiorders revisited}
@@ -585,6 +592,7 @@
     \textbf{Prop.} Let~$X$ and~$Y$ be well quasiorders.
     \good{Without} assuming~\bad{\textsc{lem}},~$X \times Y$ is well.
   \end{block}
+  \pause
 
   \dnote{We have~$\mathsf{Well}(X,{\leq}) \to
   \mathsf{Well}_\infty(X,{\leq})$, but the converse only holds in presence of \hil{bar
@@ -601,7 +609,7 @@
     appropriate subtopos of~$\mathcal{E}$.
     \item In the \emph{double-negation subtopos} of the base, a predicate~$Q : \NN
     \to \mathsf{Prop}$ such that
-    \[ Q\,x \times Q\,y \longrightarrow x = y \quad\text{and}\quad
+    \[ Q\,x \times Q\,y \,\longrightarrow\, x = y \quad\text{and}\quad
       \neg\neg \sum_{n\?\NN} Q\,n \]
     looks like an ordinary natural number.
   \end{itemize}
@@ -875,8 +883,9 @@
       %arguing that the program of pursuing
       %additional axioms (while successful in many ways) is doomed to fail
       %to settle~\textsc{ch}.}
-      \ytl{2016}{Oldenziel proposes to study the modal multiverse of parametrized
-      mathematics.}
+      \ytl{2016}{Oldenziel proposes to study the modal multiverse of toposes.}
+      \parbox[b]{4.5em}{\hfill\phantom{x}}\makebox[0pt][c]{\phantom{b}}{\color{mypurple}\vrule}\\[-6.5pt]
+      \parbox[b]{4.5em}{\hfill\phantom{x}}\makebox[0pt][c]{\phantom{b}}{\color{mypurple}\vrule}\\[-6.5pt]
       \parbox[b]{4.5em}{\hfill\phantom{x}}\makebox[0pt][c]{\phantom{b}}{\color{mypurple}\vrule}\\[-6.5pt]
       \parbox[b]{4.5em}{\hfill\phantom{x}}\makebox[0pt][c]{\phantom{b}}{\color{mypurple}\vrule}\\[-6.5pt]
       \parbox[b]{4.5em}{\hfill\phantom{x}}\makebox[0pt][c]{\phantom{b}}{\color{mypurple}\vrule}\\[-6.5pt]
@@ -1011,16 +1020,16 @@
     it, we have a syntactic presheaf model of CIC.
 
     {\scriptsize
-    Coquand, Jaber. ``A note on forcing and type theory''. \emph{Fundamenta Informaticae 100} (2010).
+    Coquand, Jaber. ``A note on forcing and type theory''. \emph{Fundamenta Informaticae 100} (2010). \\
     Jaber, Lewertowski, Pédrot, Sozeau, Tabareau. ``The definitional side of the forcing''. \emph{Proceedings of LICS '16} (2016). \\
-    Pédrot. ``Russian constructivism in a prefascist theory''. \emph{Proceedings of LICS '20} (2020). \\
+    Pédrot. ``Russian constructivism in a prefascist theory''. \emph{Proceedings of LICS '20} (2020).
     \par}
     \item Given a suitable lex modality, we have a syntactic sheaf model (model of modal types).
 
     {\scriptsize
-    Coquand, Ruch, Sattler. ``Constructive sheaf models of type theory.'' \emph{Math. Struct. Comput. Sci.} 31.9 (2021).
+    Coquand, Ruch, Sattler. ``Constructive sheaf models of type theory.'' \emph{Math. Struct. Comput. Sci.} 31.9 (2021). \\
     Escardó, Xu. ``Sheaf models of type theory in type theory''. Unpublished (2016). \\
-    Quirin. ``Lawvere--Tierney sheafification in Homotopy Type Theory''. PhD thesis (2016). \\
+    Quirin. ``Lawvere--Tierney sheafification in Homotopy Type Theory''. PhD thesis (2016).
     \par}
     \item (I believe) we have syntactic sheaf models in certain special cases,
     when no coherence issues arise in defining the notion of presheaves.

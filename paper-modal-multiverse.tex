@@ -14,6 +14,7 @@
 \title{The topos-theoretic multiverse: \\ a modal approach for computation}
 
 \newcommand{\xra}[1]{\xrightarrow{#1}}
+\newcommand{\xxx}[1]{}
 \newcommand{\XXX}[1]{\textbf{\textcolor{red}{XXX: #1}}}
 \newcommand{\aaa}{\mathfrak{a}}
 \newcommand{\bbb}{\mathfrak{b}}
@@ -57,7 +58,22 @@
 
 \begin{document}
 
+\author{Ingo Blechschmidt\inst{1} \and Alexander Gietelink Oldenziel\inst{2}}
+\institute{Arberstr. 5, 86159 Augsburg, Germany
+\email{iblech@speicherleck.de}
+\and University College London, Gower Street, London, WC1E 6BT
+\email{a.f.d.a.gietelinkoldenziel@gmail.com}}
+
 \maketitle
+
+\xxx{explain somewhere that just as $\neg\neg$ is visible constructively but not classically and that $\neg\neg$ enriches our understanding, so do the new modal operators. Especially in view of the fact that if LEM holds, then $\varphi \Leftrightarrow \necessary\varphi$ for bounded first-order formulas, as in the presence of LEM every topos is overt.}
+
+\xxx{state (and ponder more) the example that every field has a separable closure somewhere}
+
+\xxx{Alexander:
+- it is not the case that for every topos E and every field k in E there is a separable closure k_s / k i don't think. what is a counterexample?
+- it should be the case that for every (geometric field?)
+-> it is positive (since it the etale topos of a field is Galois over the base so the pullback reflects isomorphisms I think: the pullback is a constant sheaf functor which sends a set to the trivial G-set on that set.)}
 
 \begin{abstract}
   To help put established results in constructive algebra and constructive
@@ -78,11 +94,10 @@ from a constructive point of view. A non-exhaustive list is:
 \renewcommand{\theenumi}{\arabic{enumi}*}
 \item A transitive relation is well-founded iff there is no infinite descending
 chain.
-\item A relation is almost-full iff every infinite sequence is good (meaning
-that some term on the sequence is related to some later term -- the notion
+\item A relation is almost-full iff every infinite sequence is good.\footnote{An infinite sequence is \emph{good} iff some term of the sequence is related to some later term. The notion
 of almost-full relations
-has been studied in combinatorics~\cite{xxx} and found applications in
-termination checking~\cite{xxx}).
+has been studied in combinatorics~\cite{vytiniotis-coquand-wahlstedt:af,carroy-pequignot:well,lescanne:well} and found applications in
+termination checking~\cite{blass-gurevich:well}.}
 \item \emph{Krull's lemma}: A ring element is nilpotent iff every prime
 ideal contains it.
 \item Every ring has a maximal ideal.\footnote{Here and in the following, by
@@ -100,12 +115,11 @@ elements.
 Constructive theorems always carry computational and geometric
 content---from every constructive proof, a corresponding algorithm can be
 extracted~\cite{bauer:c2c}, and every constructive proof holds also for continuous families of
-the objects in question~\cite[Section~4.3]{blechschmidt:filmat}. In contrast, listed classical principles above have no
+the objects in question~\cite[Section~4.3]{blechschmidt:filmat}. In contrast, the listed classical principles above have no
 computational witness and/or fail in continuous families, hence are not
 available in constructive mathematics.
 
-In the modal topos-theoretic multiverse, we have the following constructive
-replacements to these principles.
+In the modal topos-theoretic multiverse, we have the following constructive replacements to these principles.
 \begin{enumerate}
 \item A transitive relation is well-founded iff \emph{everywhere} there is no infinite descending
 chain.
@@ -124,12 +138,11 @@ excluded middle holds.
 
 Briefly, a statement~$\varphi$ is said to hold \emph{everywhere}
 ($\necessary\varphi$) iff it holds in every Grothendieck topos over the
-current base topos (makng use of the \emph{internal language} of
-toposes~\cite{xxx}, where required in the form of the \emph{sheaf semantics} in
-order to support unbounded quantification~\cite{xxx}); a statement holds \emph{somewhere} ($\possible\varphi$)
+current base topos (making use of the \emph{internal language} of
+toposes~\cite{borceux:handbook3,streicher:ctcl,maietti:modular});\footnote{In order to support unbounded quantification we occasionally make use of the extension of the usual Kripke--Joyal semantics in the form of \emph{stack semantics}~\cite{shulman:stack-semantics})} a statement holds \emph{somewhere} ($\possible\varphi$)
 iff it holds in some positive Grothendieck topos over the current base; and a
 statement holds \emph{proximally} ($\xpossible\varphi$) iff it holds in
-some positive ouvert Grothendieck topos over the current base. More such
+some positive overt Grothendieck topos over the current base. More such
 \emph{modalities} are also useful and merit study; the precise definitions are
 given in Section~\ref{sect:defn-modalities}.
 
@@ -140,32 +153,32 @@ landscape smoothly accessible:
 \addtocounter{enumi}{7}
 \item \emph{Barr's theorem, full version:} If Zorn's lemma holds, it is
 everywhere the case that it (and even the full axiom of choice) hold somewhere.
-\item If a geometric implication holds \emph{somewhere}, then it holds already here.
+\item If a geometric sequent $\wedge_{i=1}^n \phi_i \vdash \bigvee_{j\in J}\psi_j$ holds \emph{somewhere}, then it holds already here.
 \item \label{item:prox-descends}
-If a first-order statement holds \emph{proximally}, then it holds already here.
+If a bounded first-order statement holds \emph{proximally}, then it holds already here.
 \item \label{item:prox-countable}
 For every (perhaps uncountable) inhabited set~$X$, \emph{proximally} there is a
 surjection~$\NN \twoheadrightarrow X$.
 \end{enumerate}
 An example application of the latter two principles
 has recently been studied in constructive
-commutative algebra~\cite{blechschmidt-schuster:constructive-maximal-ideals}.
-For countable rings, an explicit construction of a maximal ideal is available.
-By Item~(\ref{item:prox-countable}), this construction can also be carried out
+commutative algebra~\cite{blechschmidt-schuster:constructive-maximal-ideals}:
+For countable rings, an explicit iterative construction of a maximal ideal is available.
+By Item~\ref{item:prox-countable}, this construction can also be carried out
 for arbitrary rings, though the result is not a maximal ideal in the narrow
 sense; rather, the resulting maximal ideal exists \emph{proximally}, in some
-positive ouvert Grothendieck topos. However, the first-order consequences of
+positive overt Grothendieck topos. However, the first-order consequences of
 its existence, pertaining for instance to concrete statements about polynomials
-or matrices, pass down to the base topos by Item~(\ref{item:prox-descends}).
+or matrices, pass down to the base topos by Item~\ref{item:prox-descends}.
 The resulting maximal ideal can be regarded as a mathematical
-phantom in the sense of Gavin Wraith~\cite{xxx}, not existing in a narrow
+phantom in the sense of Gavin Wraith~\cite{wraith:phantoms}, not existing in a narrow
 sense (in the base topos), but existing proximally and hence encouraging us to broaden our notion of
 existence because it promises us to work wonders.
 
 We can also adopt the notions of \emph{switches} and \emph{buttons} from the
-modal study of the set-theoretic multiverse~\cite[xxx]{xxx}. Switches are
+modal study of the set-theoretic multiverse~\cite{hamkins:modal}. Switches are
 statements~$\varphi$ such that~$\necessary(\possible\varphi \wedge
-\possible\neg\varphi)$ and buttons are statements~$\varphi$ such
+\possible\neg\varphi)$, while buttons are statements~$\varphi$ such
 that~$\necessary\possible\necessary\varphi$; switches can be toggled on and off
 like a light switch, while buttons once pressed cannot be unpressed:
 \begin{enumerate}
@@ -173,27 +186,28 @@ like a light switch, while buttons once pressed cannot be unpressed:
 \item \emph{The law of excluded middle is a switch:} Everywhere it is the case
 that somewhere~\textsc{lem} holds and somewhere it does not.
 \item \emph{Being countable is a button:} For every set~$X$, everywhere it is
-the case that somewhere (even proximally) it is case that everywhere~$X$ is
+the case that somewhere (even proximally) it is the case that everywhere~$X$ is
 countable.
 \end{enumerate}
 
-We argue that the modal operators~$\necessary,\possible,\xpossible$ and more
-suggested are natural extensions and refinements of the
+We argue that the proposed modal operators~$\necessary,\possible,\xpossible$ and more are natural extensions and refinements of the
 familiar double-negation modality~$\neg\neg$ in constructive mathematics.
 
-\textbf{Acknowledgments.} Alexander Oldenziel, \ldots
-% xxx: Iosif
+\paragraph{Related work.}
+The idea of a mathematical multiverse is arguably basic to topos theory. We aim to present a more systematic study of the modal nature of the multiverse with a focus on applications in constructive mathematics. Specific precursors to XXX
 
-xxx: idea of multiverse not new, but arguably basic to topos theory; new is systematic
-study of its modal nature with the focus on applications
+In the airy reaches of classical set theory a related philosophy is put forward, with a number of striking results, concentrating on exploring the range of set-theoretic possibility~\cite{hamkins:multiverse,gitman-hamkins:multiverse,hamkins:constructibility,maddy-meadows:reconstruction,barton:forcing}.
 
-xxx: related work: Hamkins, Victoria Gitman, ... concentrates on exploring
+\xxx{related work: Hamkins, Victoria Gitman, ... concentrates on exploring
 range of set-theoretic possibility, obtaining beautiful results such as ...
-Shawn Henry, Andreas Blass ...
+Shawn Henry, Andreas Blass ...}
 
-xxx: This text is set in the context of constructive mathematics.
-Our definitions and results can be formalized in~\textsc{izf} or in the
-kind of language supported by toposes.
+This text is set in the context of constructive mathematics.
+Our definitions and results can be formalized in~\textsc{izf} or in the kind of language supported by toposes.
+
+\paragraph{Acknowledgments.} We gratefully acknowledge numerous discussions and worthwhile input by Thierry Coquand, Matthias Hutzler, Ivan Di Liberti, Milly Maietti, Iosif Petrakis, Peter Schuster, and also the organizers and participants of the ItaCa Fest 2022 and the 2022 REDCOM workshop in Brixen, where this work was presented. XXX
+
+
 
 \section{Modal operators}
 \label{sect:defn-modalities}
@@ -211,17 +225,17 @@ Henceworth, by the unqualified word ``topos'' we will mean ``Grothendieck topos
 over the current base'', and the current base topos will be denoted~``$\Set$''.
 The base topos might be the ``true category of sets'', assuming that this
 concept is available in one's ontology, or also some other elementary topos
-such as the free topos~\cite{xxx} or the ef{}fective topos~\cite{xxx}.
+such as the free topos~\cite{lambek:1980intuitionist} or the ef{}fective topos~\cite{hyland:effective-topos}. The reader is reminded that the nature of the base topos can have profound consequences for the truths of the internal language.
 
-The xxx (use word of Hamkins) of a base~$\B$ is the collection of Grothendieck
+The topos-theoretic multiverse of a base~$\B$ is the collection of Grothendieck
 toposes over~$\B$ (which in set-theoretic foundations should more precisely be
 formalized as the proper class of small sites in~$\B$).
 
 \begin{remark}Perhaps arbitrary \emph{elementary} toposes over the base, corresponding to
 possibly unbounded geometric morphisms~$\E \to \B$, or even arbitrary
-fibrations/indexed categories over~$\B$ (XXX: are these the same?) validating an appropriate form of the
+fibrations/indexed categories over~$\B$ validating an appropriate form of the
 axioms of elementary toposes, should also be
-taken as part of the topos-theoretic multiverse. The first foray into the
+taken as part of the topos-theoretic multiverse. [XXX check fibrational characterization] The first foray into the
 modal topos-theoretic multiverse outlined in this note
 sticks to Grothendieck toposes for ease of
 formalizability (``for every small site'' can be expressed also in the more
@@ -237,7 +251,7 @@ arithmetic universes.
 
 \subsection{Positive toposes}
 
-\begin{definition}A topos~$\E$ is \emph{positive} if and only if the geometric
+\begin{definition}A topos~$\E$ is \emph{positive} if and only if the unique geometric
 morphism~$f : \E \to \Set$ is surjective (that is~$f^*$ reflects
 isomorphisms).\end{definition}
 
@@ -252,33 +266,33 @@ and the bottom open do not coincide).\end{example}
 filters of~$A$ (or equivalently the topos of sheaves over the classifying
 locale of prime filters of~$A$) is positive iff~$1 \neq 0$ in~$A$.\end{example}
 
-\begin{example}A sufficient criterion for the classifying topos of a geometric
-theory~$\TT$ to be positive is that xxx.\end{example}
+\begin{example}A necessary and sufficient criterion for the classifying topos of a geometric
+theory~$\TT$ to be positive is that whenever~$\top \vdash \bigvee_{i \in I} \varphi_i$ modulo~$\TT$, then~$I$ is inhabited.\end{example}
 
 
-\subsection{Ouvert toposes}
+\subsection{Overt toposes}
 
-\begin{definition}A topos~$\E$ is \emph{ouvert} if and only if the geometric
-morphism~$f : \E \to \Set$ is open, that is~$f^*$ preserves the interpretation of
-first-order formulas.\end{definition}
+\begin{definition}A topos~$\E$ is \emph{overt} if and only if the unique geometric
+morphism~$f : \E \to \Set$ is open (that is~$f^*$ preserves the interpretation of
+bounded first-order formulas).\end{definition}
 
-\begin{example}The topos of sheaves over a topological space is always ouvert. More
-generally, the topos of sheaves over a locale~$X$ is ouvert iff there exists a
+\begin{example}The topos of sheaves over a topological space is always overt. More
+generally, the topos of sheaves over a locale~$X$ is overt iff there exists a
 \emph{positivity predicate} on its frame of opens in the sense of~\cite{xxx}.
-With~\textsc{lem}, every locale is ouvert~\cite{xxx}.\end{example}
+With~\textsc{lem}, every locale and indeed every topos is overt~\cite{xxx}.\end{example}
 
-\begin{example}The spectrum of a ring~$A$ is ouvert iff every element of~$A$ is
+\begin{example}The spectrum of a ring~$A$ is overt iff every element of~$A$ is
 nilpotent or not~\cite[Proposition~12.51]{blechschmidt:phd}.\end{example}
 
 \begin{example}A sufficient criterion for the classifying topos of a geometric
-theory~$\TT$ being ouvert is that the indexing sets of all disjunctions
+theory~$\TT$ being overt is that the indexing sets of all disjunctions
 appearing on the right hand side of turnstiles, in a normal form presentation
-of~$\TT$, are inhabited~\cite{xxx}.\end{example}
+of~$\TT$, are inhabited~\cite[Proposition~V.3.2]{joyal-tierney:grothendieck}.\end{example}
 
 
 \subsection{Modal operators}
 
-xxx: properly define language
+\xxx{properly define language}
 
 
 \section{Generic models and inductive definitions}
@@ -313,15 +327,15 @@ Similar inductive notions are used to reformulate other classical definitions
 in a constructively more sensible way. For instance, the classical definition
 of a binary relation~$R$ on a set~$X$ being \emph{almost-full} is ``every
 infinite sequence~$\alpha : \NN \to X$ is \emph{good} in the sense that there
-exist numbers~$i < j$ such that~$\alpha(i) \mathrel{R} \alpha(j)$''.
+exist indices~$i < j$ such that~$\alpha(i) \mathrel{R} \alpha(j)$''.
 For a constructive reformulation, we shift to finite approximations of
 infinite sequences (finite lists of elements of~$X$) and define when such an
 approximation is deemed good:\footnote{By~``$\sigma[n]$'', we mean the element
 at position~$n$ of the finite list~$\sigma$. This notation is only meaningful
-if the length of~$\sigma$ is at least~$n+1$. By~``$\sigma :: x$'' we mean the
-enlarged list which has~$x$ as an extra element at its tail end, and by~``$[]$'' we
+if the length of~$\sigma$ is at least~$n+1$. By~``$\sigma x$'' we mean the
+enlarged list which has~$x$ as an extra element at its tail end, and by~``$[\,]$'' we
 denote the empty list. In computer science practice, it is often more efficient
-to prepend (``$x :: \sigma$'') instead of append, but this detail shall not
+to prepend (``$x \sigma$'') instead of append, but this detail shall not
 concern us here.}
 \[ \mathsf{Good}(\sigma) \defeqv (\exists i<j\_ \sigma[i] \mathrel{R} \sigma[j]). \]
 We then inductively generate a relation~``$P \,|\, \sigma$'' for monotonous
@@ -331,7 +345,7 @@ eventually~$P$ will hold, by the clauses
 \[
   \infer{P \,|\, \sigma}{P(\sigma)}
   \qquad
-  \infer{P \,|\, \sigma}{\forall x \? X\_\ P \,|\, (\sigma :: x)}
+  \infer{P \,|\, \sigma}{\forall x \? X\_\ P \,|\, \sigma x}
 \]
 and finally define that~$R$ is almost-full iff~``$\mathsf{Good} \,|\, []$''.
 With this inductive definition, expected properties of the class of almost-full
@@ -339,20 +353,20 @@ relations such as stability under cartesian products (Dickman's lemma),
 finite lists (Higman's lemma) or finitely-branching trees (Kruskal's theorem)
 can all be constructively verified~\cite{xxx}.
 
-A similar such definition has been proposed by XXX and XXX in commutative
-algebra for expressing that a ring is Noetherian~\cite{xxx}; the classical
+A similar such definition has been proposed by Thierry Coquand, Henry Lombardi and Henrik Persson in commutative
+algebra for expressing that a ring is Noetherian~\cite{coquand-persson:groebner,coquand-lombardi:krull,coquand:invariant}; the classical
 definition ``every ascending chain of ideals stabilizes'' and also the more
 meaningful and classically equivalent characterization as ``every ascending
 chain of finitely generated ideals stalls''\footnote{A chain~$\aaa_0 \subseteq
-\aaa_1 \subseteq \cdots$ \emph{stalls} iff for some number~$n \in \NN$,
+\aaa_1 \subseteq \cdots$ \emph{stalls} iff for some index~$n \in \NN$,
 $\aaa_{n+1} = \aaa_n$. We are grateful to Matthias Hutzler for proposing this
 terminology.} are constructively too weak; firstly, without the axiom of
-dependent choice we can often not construct such chains~\cite{richman:xxx} (but only
+dependent choice we can often not construct such chains~\cite{richman:noetherian} (but only
 ``multi-valued chains'' as in~\cite[Section~3.9]{blechschmidt:phd}; but also
-see~\cite{richman:xxx}), and secondly, being able to inspect suitable inductive
-witnesses enables us to prove the Hilbert basis theorem~\cite{xxx}. XXX and XXX
+see~\cite[Section~4]{richman:noetherian}), and secondly, being able to inspect suitable inductive
+witnesses enables us to prove the Hilbert basis theorem~\cite[Corollary~16]{coquand-persson:groebner}. Coquand, Lombardi and Persson
 hence propose to call a ring \emph{Noetherian} if and only if~$\mathsf{Stalls}
-\,|\, []$, where~$\mathsf{Stalls}$ is the predicate on finite lists of finitely
+\,|\, [\,]$, where~$\mathsf{Stalls}$ is the predicate on finite lists of finitely
 generated ideals expressing xxx.
 
 Is there a deeper explanation where these inductive definitions come from,
@@ -382,7 +396,7 @@ the inductive sense.\end{proposition}
 \begin{proof}The classifying topos of the theory of an infinite sequence
 over~$X$ can be presented as the topos of sheaves over the site given by the
 partially ordered set of finite lists of elements of~$X$ with coverage given
-by xxx (see Appendix xxx). The Kripke--Joyal semantics states that the
+by xxx (see Appendix xxx)~\cite[Example~4.3]{blechschmidt-schuster:reifying}, \cite[xxx]{joyal-tierny:xxx}. The Kripke--Joyal semantics states that the
 statement ``$\alpha_0$ is good'', where~$\alpha_0$ is the generic infinite
 sequence, holds in the classifying topos if and only if there is a
 covering~$\U$ of~$[]$ such that for every open~$U \in \U$, xxx. This precisely
@@ -414,7 +428,7 @@ the inductive sense.\end{proposition}
 
 \begin{proof}Similar as the proof of Proposition~\ref{prop:gen-good}. Details
 for the variant of ``bad sets'' instead of ``infinite descending chains'' have
-been developed (xxx:language) by xxx~\cite{xxx}.\end{proof}
+been developed (xxx:language) by Blass~\cite{blass:induction}.\end{proof}
 
 \begin{corollary}A transitive relation is well-founded in the inductive sense
 if and only if everywhere, it is not the case that there exists an infinite
@@ -453,37 +467,28 @@ so is~$X \times Y$.\end{theorem}
     being good can be put as a geometric implication (in fact, a geometric
     formula) and since \textsc{lem} holds \emph{somewhere}, we may assume~\textsc{lem}.
 
-    \item By \textsc{lem} and well-foundedness, there is a minimal value~$\alpha(i_0)$
-    among all values of~$\alpha$.
-    Similarly, there is a minimal value~$\alpha(i_1)$ among~$(\alpha(n))_{n >
-    i_0}$, a minimal value~$\alpha(i_2)$ among~$(\alpha(n))_{n > i_1}$, and so
-    on. By \emph{proximal dependent choice}, we can proximally collect these indices
-    into a function~$i : \NN \to \NN$;\footnote{We could also avoid dependent
-    choice by picking not some suitable indices~$i_0, i_1, \ldots$, but the
-    least such.} this switches~\textsc{lem} off.
+    \item (A ``Ramsey-style argument''.) The set~$I \defeq \{ n \in \NN \,|\, \neg\exists m > n\_ \alpha(n) \leq \alpha(m) \}$ is not in bijection with~$\NN$, as else the~$I$-extracted subsequence of~$\alpha$ would be an $X$-sequence which is not good. Hence, by \textsc{lem}, the set~$I$ is finite. Every index larger than all the indices in~$I$ is a suitable starting point for an infinite ascending chain~$\alpha(i_0) \leq \alpha(i_1) \leq \ldots$.\footnote{We can avoid dependent
+    choice here by always picking the
+    least possible next index.}
 
-    \item Switching~\textsc{lem} on again, there is a minimal value~$\beta(i(k_0))$
-    among all values of~$\beta \circ i$. Hence~$\gamma$ is good in view of
-    \begin{align*}
-      \alpha(i(k_0)) &\leq \alpha(i(k_0+1)), &
-      \beta(i(k_0)) &\leq \beta(i(k_0+1)).
-    \end{align*}
+    \item Because~$Y$ is almost-full, the sequence~$\beta(i_0),\beta(i_1),\ldots$ is good, that is there exists a pair of indices~$n < m$ such that~$\beta(i_n) \leq \beta(i_m)$. As also~$\alpha(i_n) \leq \alpha(i_m)$, the sequence~$\gamma$ is good.
+    % XXX: this only holds in the transitive case
   \end{enumerate}
 \end{proof}
 
 
 \section{Perspectives}
 
-xxx: determine modal laws
+\xxx{determine modal laws}
 
-xxx: more case studies
+\xxx{more case studies}
 
-xxx: don't forget right adjoints
+\xxx{don't forget right adjoints}
 
-xxx: predicative
+\xxx{predicative}
 
 \bibliographystyle{splncs04}
-\bibliography{mapaper-modal-multiverse}
+\bibliography{paper-modal-multiverse}
 
 \end{document}
 
@@ -498,5 +503,45 @@ Trees generically absolute as in
 https://www.math.uci.edu/~twilson/slides/UCLA-LSC-2013.pdf#page=11
 
 cite https://math.andrej.com/2012/10/03/am-i-a-constructive-mathematician/
+
+simpler logical form
+(every prime ideal vs. nilpotent)
+
+cite https://www.cse.chalmers.se/~coquand/potential.pdf page 41
+
+cite https://webspace.science.uu.nl/~ooste110/veldmanabstract.pdf
+("perhaps" operator)
+
+
+cite:
+https://arxiv.org/pdf/2108.10259.pdf
+https://arxiv.org/abs/2311.00581
+
+cite:
+Slides-What-if-your-potentialism-is-implicitly-actualist-Oxford-March-2024.pdf, slide 74 (Joel David Hamkins)
+
+check:
+https://www.youtube.com/watch?v=TpPQHS_wUsg, Giraud topos
+
+cite:
+https://arxiv.org/abs/2206.03169
+
+because of representation theorem,
+to say "for all Grothendieck toposes",
+suffices to say "for all localic toposes".
+Similarly for overt and positive
+
+cite
+https://arxiv.org/pdf/1712.04864
+for internal language of toposes
+
+show that inductive-wqo implies Berardi-wqo
+show the theorem displayed at https://ncatlab.org/nlab/show/well-quasi-order
+
+https://math.stackexchange.com/questions/4552108/does-the-inverse-image-part-of-a-geometric-morphism-preserve-transitive-set-obj
+wf preserved
+
+https://mathoverflow.net/questions/288789/constructive-proofs-of-existence-in-analysis-using-locales/290421?noredirect=1#comment1248291_290421
+Simon suggests "proper and surjective" as an interesting class.
 
 Completeness: If sequent holds for all models everywhere, then provable.

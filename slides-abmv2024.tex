@@ -29,9 +29,6 @@
 \usetikzlibrary{calc,shapes,shapes.callouts,shapes.arrows,patterns,fit,backgrounds,decorations.pathmorphing,positioning,svg.path}
 \hypersetup{colorlinks=true}
 
-\newcommand*\circled[1]{\tikz[baseline=(char.base)]{%
-  \node[shape=circle,draw,inner sep=1pt] (char) {#1};}}
-
 \DeclareFontFamily{U}{bbm}{}
 \DeclareFontShape{U}{bbm}{m}{n}
    {  <5> <6> <7> <8> <9> <10> <12> gen * bbm
@@ -324,8 +321,8 @@
 \newcommand{\concat}{\mathbin{{+}\mspace{-8mu}{+}}}
 
 \newcommand{\astikznode}[2]{\tikz[baseline,remember picture]{\node[anchor=base,inner sep=0,outer sep=0.1em] (#1) {#2};}}
-\newcommand{\astikznodecircled}[3]{\tikz[baseline,remember picture]{\node[anchor=base,circle,draw=#2,thick,inner sep=0,outer sep=0.05em] (#1) {#3};}}
-\newcommand{\astikznodetransparentlycircled}[2]{\tikz[baseline,remember picture]{\node[anchor=base,circle,opacity=0,draw=white,text opacity=1,thick,inner sep=0,outer sep=0.05em] (#1) {#2};}}
+\newcommand{\astikznodecircled}[3]{\tikz[baseline,remember picture]{\node[anchor=base,circle,draw=#2,thick,inner sep=0.05em,outer sep=0.05em] (#1) {#3};}}
+\newcommand{\astikznodetransparentlycircled}[2]{\tikz[baseline,remember picture]{\node[anchor=base,circle,opacity=0,draw=white,text opacity=1,thick,inner sep=0.05em,outer sep=0.05em] (#1) {#2};}}
 
 \setbeamersize{text margin left=1.60em,text margin right=1.60em}
 
@@ -429,7 +426,24 @@
 
         \hfill\color{gray}offensive?
       \end{block}
+      \only<2-4>{
+        \vspace*{-2em}
+        \[ \astikznodetransparentlycircled{xm}{7}\!,
+        \quad \astikznodetransparentlycircled{x0}{4}\!,
+        \quad \astikznodecircled{t1}{mypurple}{3}\!,
+        \quad \astikznodetransparentlycircled{x1}{1}\!,
+        \quad \astikznodecircled{t2}{mypurple}{8}\!,
+        \quad \astikznodetransparentlycircled{x2}{2}\!,
+        \quad \ldots \]
+      {\centering\begin{tikzpicture}[remember picture,overlay]
+        \node[draw=mypurple, circle, thick, inner sep=0.1em] (t3) {\scriptsize$\leq$};
+        \path[draw=mypurple,thick]
+          (t1)
+          to [out=-90, in=180] (t3)
+          to [out=0, in=-90] (t2);
+      \end{tikzpicture}\par}}
     \end{column}
+
     \pause
 
     \begin{column}{0.50\textwidth}

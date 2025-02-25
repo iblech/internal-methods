@@ -779,36 +779,105 @@
 
     \textbf{Def.} A (Grothendieck) \hil{topos} is a category equivalent to the
     category of sheaves over a small site.
+    \pause
 
-    \textbf{Examples for toposes.}
-    \begin{itemize}
-      \item $\mathrm{Set}$, the category of sets and maps.
-      \item The category of sets and maps which are \hil{defined up to~$\boldsymbol\neg\neg$}.
-      \item $\mathrm{Set}[G]$, the extension obtained by adding a \hil{generic
-      filter} of a \hil{forcing notion} (a quasi-order equipped with a
-      coverage).
-    \end{itemize}
-    The following are \bad{not} toposes:
-    \begin{itemize}
-      \item The category of sets and partially defined maps.
-      \item The category of abelian groups.
-    \end{itemize}
+    \only<2>{
+      \textbf{Examples for toposes.}
+      \begin{itemize}
+        \item $\mathrm{Set}$, the category of sets and maps.
+        \item The category of sets and maps which are \hil{defined up to~$\boldsymbol\neg\neg$}.
+        \item $\mathrm{Set}[G]$, the extension obtained by adding a \hil{generic
+        filter} of a \hil{forcing notion} (a quasi-order equipped with a
+        coverage).
+      \end{itemize}
+      The following are \bad{not} toposes:
+      \begin{itemize}
+        \item The category of sets and partially defined maps.
+        \item The category of abelian groups.
+      \end{itemize}
+    }
 
-    \begin{enumerate}
-      \item A quasiorder is well\ind iff \emph{everywhere}, every sequence is good.
-      \medskip
-      \item A ring element is nilpotent iff all prime ideals \emph{everywhere} contain it.
-      \medskip
-      \item For every inhabited set~$X$, \emph{proximally} there exists an
-      enumeration~$\NN \twoheadrightarrow X$.
-      \medskip
+    \only<3->{
+      \hil{Multiversal yoga:}
+      \begin{enumerate}
+        \item A quasiorder is well\ind iff \emph{everywhere}, every sequence is good.
+        \smallskip
+        \item A ring element is nilpotent iff all prime ideals \emph{everywhere} contain it.
+        \smallskip
+        \item For every inhabited set~$X$, \emph{proximally} there exists an
+        enumeration~$\NN \twoheadrightarrow X$.
+        \smallskip
 
-      \item For every ring, \emph{proximally} there exists a maximal ideal.
-      \medskip
+        \item For every ring, \emph{proximally} there exists a maximal ideal.
+        \smallskip
 
-      \item \emph{Somewhere}, the law of excluded middle holds.
-    \end{enumerate}
+        \item \emph{Somewhere}, the law of excluded middle holds.
+      \end{enumerate}
+    }
   \end{changemargin}
+\end{frame}}
+
+\begin{frame}{Toposophic constructive combinatorics}
+  \justifying
+  \textbf{Prop.} Let~$X$ and~$Y$ be well\ind quasi-orders. Then~$X \times Y$
+  is well$\ind$.
+
+  \emph{Proof.} Let~$\alpha = (\beta,\gamma) : \NN \to X \times Y$ be a sequence in an
+  arbitrary topos. We need to show that~$\alpha$ is good, so find indices~$n < m$ such that
+  \[ \beta\,n \leq \beta\,m \quad\text{and}\quad \gamma\,n \leq \gamma\,m. \]
+
+  It suffices to prove that \emph{somewhere}, $\alpha$ is good, as goodness is
+  a geometric implication (in fact even a geometric formula). Hence without loss of
+  generality, we may suppose~\textsc{lem}.
+
+  Thus there is an infinite increasing subsequence
+  \[ \beta\,k_0 \leq \beta\,k_1 \leq \ldots. \]
+  As~$Y$ is well\ind, the sequence~$(\gamma\,k_0, \gamma\,k_1, \ldots)$
+  is good, so there exist~$i < j$ with~$\gamma\,k_i \leq \gamma\,k_j$. Since we
+  also have~$\beta\,k_i \leq \beta\,k_j$, we are done. \qed
+\end{frame}
+
+{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{5.95cm}\includegraphics[width=\paperwidth]{fr1}\end{minipage}}
+\begin{frame}{Toposophic constructive algebra}
+  \justifying
+  \textbf{Thm.}
+  Let~$M$ be a surjective matrix with more rows than columns over a
+  ring~$A$. Then~$1 = 0$ in~$A$.
+
+  \emph{Classical proof.}
+  \bad{Assume not.} Then there is~a \bad{maximal ideal} $\mmm$.
+  The matrix~$M$ is surjective over~$A/\mmm$. Since~$A/\mmm$ is a field, this
+  is a contradiction to basic linear algebra. \qed
+  \pause
+
+  \emph{Multiversal constructive proof.}
+  We may work \emph{somewhere} where \good{\textsc{lem}} holds. So \good{assume not}.
+  \emph{Proximally,} there is a \good{maximal ideal}~$\mmm$.
+  The matrix~$M$ is still surjective \emph{there}, and also over~$A/\mmm$. Since~$A/\mmm$ is a field, this
+  is a contradiction to basic linear algebra. \qed
+  \pause
+
+  \emph{Unrolled constructive proof (special case).}
+  Write~$M =
+  \left(\begin{smallmatrix}x\\y\end{smallmatrix}\right)$. By surjectivity,
+  have~$u, v$ with
+  \vspace*{-0.6em}
+  \[
+    u \left(\begin{smallmatrix}x\\y\end{smallmatrix}\right) = \left(\begin{smallmatrix}1\\0\end{smallmatrix}\right)
+    \quad\text{and}\quad
+    v \left(\begin{smallmatrix}x\\y\end{smallmatrix}\right) = \left(\begin{smallmatrix}0\\1\end{smallmatrix}\right).
+  \]
+  Hence
+  $
+    1 = (vy) (ux) = (uy) (vx) = 0
+  $.
+  \qed
+  \pause
+
+  \centering
+  \emph{\href{https://iblech.github.io/constructive-maximal-ideals/}{Agda
+  formalization available.}}
+  \par
 \end{frame}}
 
 \end{document}

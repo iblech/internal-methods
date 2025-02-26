@@ -444,11 +444,11 @@
     methods is already present in one of basic observations of this theory:
 
     \textbf{Lemma.} Let~$X$ be well\sinf. Let~$\alpha : \NN \to X$. Then there
-    is an increasing subsequence~$\alpha\,i_0 \leq \alpha\,i_1 \leq
+    is an infinite increasing subsequence~$\alpha\,i_0 \leq \alpha\,i_1 \leq
     \ldots$.
 
     \emph{Proof.} Let~$K \defeq \{ n \in \NN \,|\, \neg \exists m > n\_
-    \alpha\,n \leq \alpha\,m \}$ the set of indices of those terms which cannot
+    \alpha\,n \leq \alpha\,m \}$ be the set of indices of those terms which cannot
     appear as the first component of a good pair. If~$K$ is in bijection
     with~$\NN$, there is a subsequence~$\alpha\,k_0 \leq \alpha\,k_1 \leq
     \ldots$ with~$k_0, k_1, \ldots \in K$. As~$X$ is well\sinf, this sequence
@@ -549,11 +549,11 @@
     is defined on the input~$n$. If~\bad{\textsc{lem}} is available, then a
     partial map such that~$\neg\neg(\alpha\,n\,\downarrow)$ for all~$n \in \NN$
     is already a total map, but without~\bad{\textsc{lem}} the hypothesis
-    well\sinf does not have anything to say about such a partially-defined
+    well\sinf{} does not have anything to say about such a partially-defined
     sequence.
 
     If~\bad{\textsc{dc}} is available, then every multivalued map contains a
-    singlevalued map, but again without~\bad{\textsc{dc}} the hypothesis well\sinf
+    singlevalued map, but again without~\bad{\textsc{dc}} the hypothesis well\sinf{}
     does not have anything to say about multivalued sequences.
   }
 
@@ -628,7 +628,7 @@
       \begin{block}{Key stability results}
         \justifying
         \only<1-5>{Assuming~\badbox{\textsc{lem}}
-        and~\badbox{\textsc{dc}}}\only<6->{Constructively}, \ldots
+        and~\badbox{\textsc{dc}}}\only<6->{\good{Constructively}}, \ldots
 
         \hil{Dickson:} \tabto{1.8cm} If~$X$ and~$Y$ are well\only<4-5>{\sinf}\only<6->{\ind}, so is~$X \times Y$. \\
         \hil{Higman:}  \tabto{1.8cm} If~$X$ is well\only<4-5>{\sinf}\only<6->{\ind}, so is~$X^\star$. \\
@@ -741,28 +741,6 @@
     generic prime ideal as an actual prime ideal in a suitable forcing extension.
   }
 
-  \jnote{4}{
-    Here is an example how the modal language helps us to give a constructive
-    proof (for well\ind) of Dickson's lemma. In a similar vein Higman's lemma
-    and Kruskal's theorem can be proven; with the exception of a preparatory
-    first paragraph the original proofs can be copied word for word.
-
-    \textbf{Prop.} Let~$X$ and~$Y$ be well\ind quasi-orders. Then~$X \times Y$
-    is well.
-
-    \emph{Lemma.} Let~$\alpha = (\beta,\gamma) : \NN \to X \times Y$ be a sequence in an
-    arbitrary topos. We need to show that~$\alpha$ is good. It suffices to
-    prove that \emph{somewhere}, $\alpha$ is good, as goodness is a geometric
-    implication (in fact even a geometric formula). Without loss of generality,
-    we may suppose~\textsc{lem} as it holds \emph{somewhere}.
-
-    Hence there is an infinite increasing subsequence
-    \[ \beta\,k_0 \leq \beta\,k_1 \leq \ldots. \]
-    As~$Y$ is well\ind, the sequence~$\gamma\,k_0, \gamma\,k_1, \ldots$
-    is good, so there exist~$i < j$ with~$\gamma\,k_i \leq \gamma\,k_j$. Since we
-    also have~$\beta\,k_i \leq \beta\,k_j$, we are done. \qed
-  }
-
   \begin{changemargin}{7.5em}{-0.5em}
     \textbf{Def.} A statement~$\varphi$ holds \ldots
     \vspace*{-0.3em}
@@ -785,7 +763,7 @@
       \textbf{Examples for toposes.}
       \begin{itemize}
         \item $\mathrm{Set}$, the category of sets and maps.
-        \item The category of sets and maps which are \hil{defined up to~$\boldsymbol\neg\neg$}.
+        \item The category of sets and maps which are \hil{defined up to~$\boldsymbol{\neg\neg}$}.
         \item $\mathrm{Set}[G]$, the extension obtained by adding a \hil{generic
         filter} of a \hil{forcing notion} (a quasi-order equipped with a
         coverage).
@@ -797,14 +775,14 @@
       \end{itemize}
     }
 
-    \only<3->{
+    \visible<3->{
       \hil{Multiversal yoga:}
       \begin{enumerate}
         \item A quasiorder is well\ind iff \emph{everywhere}, every sequence is good.
         \smallskip
-        \item A ring element is nilpotent iff all prime ideals \emph{everywhere} contain it.
+        \item A ring element is nilpotent iff \\ all prime ideals \emph{everywhere} contain it.
         \smallskip
-        \item For every inhabited set~$X$, \emph{proximally} there exists an
+        \item For every inhabited set~$X$, \\ \emph{proximally} there exists an
         enumeration~$\NN \twoheadrightarrow X$.
         \smallskip
 
@@ -817,13 +795,14 @@
   \end{changemargin}
 \end{frame}}
 
-\begin{frame}{Toposophic constructive combinatorics}
+{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{-4.68em}\includegraphics[width=1.2\paperwidth]{wqo-faded}\end{minipage}}
+\begin{frame}{Multiversal constructive combinatorics}
   \justifying
   \textbf{Prop.} Let~$X$ and~$Y$ be well\ind quasi-orders. Then~$X \times Y$
   is well$\ind$.
 
-  \emph{Proof.} Let~$\alpha = (\beta,\gamma) : \NN \to X \times Y$ be a sequence in an
-  arbitrary topos. We need to show that~$\alpha$ is good, so find indices~$n < m$ such that
+  \emph{Multiversal constructive proof.} Let~$\alpha = (\beta,\gamma) : \NN \to X \times Y$ be a sequence in an
+  arbitrary topos. We need to show that~$\alpha$ is good, i.\,e.\@ find indices~$n < m$ such that
   \[ \beta\,n \leq \beta\,m \quad\text{and}\quad \gamma\,n \leq \gamma\,m. \]
 
   It suffices to prove that \emph{somewhere}, $\alpha$ is good, as goodness is
@@ -835,19 +814,21 @@
   As~$Y$ is well\ind, the sequence~$(\gamma\,k_0, \gamma\,k_1, \ldots)$
   is good, so there exist~$i < j$ with~$\gamma\,k_i \leq \gamma\,k_j$. Since we
   also have~$\beta\,k_i \leq \beta\,k_j$, we are done. \qed
-\end{frame}
+\end{frame}}
 
 {\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{5.95cm}\includegraphics[width=\paperwidth]{fr1}\end{minipage}}
-\begin{frame}{Toposophic constructive algebra}
+\begin{frame}{Multiversal constructive algebra}
   \justifying
   \textbf{Thm.}
   Let~$M$ be a surjective matrix with more rows than columns over a
   ring~$A$. Then~$1 = 0$ in~$A$.
+  \medskip
 
   \emph{Classical proof.}
   \bad{Assume not.} Then there is~a \bad{maximal ideal} $\mmm$.
   The matrix~$M$ is surjective over~$A/\mmm$. Since~$A/\mmm$ is a field, this
   is a contradiction to basic linear algebra. \qed
+  \medskip
   \pause
 
   \emph{Multiversal constructive proof.}
@@ -855,6 +836,7 @@
   \emph{Proximally,} there is a \good{maximal ideal}~$\mmm$.
   The matrix~$M$ is still surjective \emph{there}, and also over~$A/\mmm$. Since~$A/\mmm$ is a field, this
   is a contradiction to basic linear algebra. \qed
+  \medskip
   \pause
 
   \emph{Unrolled constructive proof (special case).}
@@ -879,6 +861,325 @@
   formalization available.}}
   \par
 \end{frame}}
+
+
+\backupstart
+
+\section{Basics of forcing}
+
+\begin{frame}{Ingredients for forcing}
+  \vspace*{-0.3em}
+  To construct a forcing extension, we require:
+  \begin{enumerate}
+    \item a base universe~$V$
+    \item a preorder~$L$ of \hil{forcing conditions} in~$V$\!,
+    pictured as \hil{finite approximations}
+
+    (\emph{convention:} $\tau \preccurlyeq \sigma$ means that~$\tau$ is a
+    better finite approximation than~$\sigma$)
+    \item a \hil{covering system} governing how finite approximations evolve to
+    better ones
+
+    (for each~$\sigma \in L$, a set~$\Cov(\sigma) \subseteq
+    P({\downarrow}\sigma)$, with a simulation condition)
+  \end{enumerate}
+  In the forcing extension~$V^\nabla$, there will then be a \hil{generic filter} (ideal
+  object).
+  \pause
+
+  \vspace*{-1em}
+  \begin{columns}
+    \begin{column}{0.49\textwidth}
+      \small
+      \begin{block}{For the generic surjection~$\NN \twoheadrightarrow X$}
+        \justifying
+        Use \hil{finite lists}~$\sigma \in X^*$ as forcing conditions,
+        where $\tau \preccurlyeq \sigma$ iff~$\sigma$ is an initial segment of~$\tau$,
+        and be prepared to grow~$\sigma$ to \ldots
+        \footnotesize
+        \begin{enumerate}
+          \item[(a)] one of~$\{ \sigma x \,|\, x \in X \}$, to make~$\sigma$ more defined
+          \item[(b)] one of~$\{ \sigma \tau \,|\, \tau \in X^*, a \in
+          \sigma\tau \}$, for any~$a \in X$, to make~$\sigma$ more surjective
+        \end{enumerate}
+        \vspace*{-0.4em}
+      \end{block}
+    \end{column}
+    \pause
+
+    \begin{column}{0.45\textwidth}
+      \small
+      \begin{block}{For the generic prime ideal of a ring~$A$}
+        \justifying
+        Use \hil{f.g.\@ ideals} as forcing conditions, where $\bbb \preccurlyeq
+        \aaa$ iff~$\bbb \supseteq \aaa$, and be prepared to grow~$\aaa$ to \ldots
+        \footnotesize
+        \begin{enumerate}
+          \item[(a)] one of~$\emptyset$, if~$1 \in \aaa$, to make~$\aaa$ more proper
+          \item[(b)] one of~$\{ \aaa+(x), \aaa+(y) \}$, if~$xy \in \aaa$, to
+          make~$\aaa$ more prime
+        \end{enumerate}
+        \vspace*{-0.4em}
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{-1cm}\includegraphics[width=\paperwidth]{forest-light-colored}\end{minipage}}
+\begin{frame}{The eventually monad}
+  Let~$L$ be a forcing notion.
+
+  Let~$P$ be a monotone predicate on~$L$
+  (if $\tau \preccurlyeq \sigma$, then $P\sigma \Rightarrow P\tau$). \\
+  For instance, in the case~$L = X^*$:
+  \begin{itemize}
+    \item $\mathsf{Repeats}\, x_0\ldots x_{n-1} \defeqv \exists i\_ \exists j\_ i < j \wedge x_i = x_j$
+    \item $\mathsf{Good}\, \,\,\,\,\,\,x_0\ldots x_{n-1} \defeqv \exists i\_ \exists j\_ i < j \wedge x_i \leq x_j$
+    \quad (for some preorder~$\leq$ on~$X$)
+  \end{itemize}
+  \pause
+
+  We then define~``\hil{$P \mid \sigma$}'' (``$P$ bars~$\sigma$'') inductively by the following clauses:
+  \begin{enumerate}
+    \item If~$P\sigma$, then~$P \mid \sigma$.
+    \item If~$P \mid \tau$ for all~$\tau \in R$, where~$R$ is some covering
+    of~$\sigma$, then~$P \mid \sigma$.
+  \end{enumerate}
+  So~$P \mid \sigma$ expresses in a \hil{direct inductive fashion}:
+  \[ \text{``No matter
+  how~$\sigma$ evolves to a better approximation~$\tau$, eventually~$P\tau$
+  will hold.''} \]
+
+  \pause
+  We use quantifier-like notation: ``$\nabla(\tau \preccurlyeq \sigma)\_
+  P\tau$'' means ``$P \mid \sigma$''.
+\end{frame}}
+% BOARD:
+% - examples for P | σ
+% - abuse of notation
+
+\begin{frame}{Proof translations}
+  \textbf{Thm.} Every~\textsc{iqc}-proof remains correct, with at most a
+  polynomial increase in length, if throughout we
+  replace
+  \[\begin{array}{rcl@{\quad\text{where}\quad}rcl}
+    \exists & \leadsto & \exists^\mathrm{cl},
+    & \exists^\mathrm{cl} &\defeqv& \neg\neg\exists, \\
+    \vee & \leadsto & \vee^\mathrm{cl},
+    & \alpha \vee^\mathrm{cl} \beta &\defeqv& \neg\neg(\alpha \vee \beta), \\
+    = & \leadsto & =^\mathrm{cl},
+    & s =^\mathrm{cl} t &\defeqv& \neg\neg(s = t).
+  \end{array} \]
+  \pause
+
+  \begin{columns}[c]
+    \begin{column}{0.01\textwidth}
+      \includegraphics[height=2.4em]{sheafification-man-2}
+    \end{column}
+    \quad
+    \begin{column}{0.9\textwidth}
+      \hil{When we say:}\ \ some statement ``holds in~$V^{\neg\neg}$'', \\
+      \makesamewidth[l]{\hil{When we say:}}{\hil{we mean:}}\ \ its translation holds in~$V$.
+    \end{column}
+  \end{columns}
+  \bigskip
+
+  Similarly for arbitrary forcing extensions~$V^\nabla$, ``just with~$\nabla$
+  instead of~$\neg\neg$''.
+  \bigskip
+
+  \pause
+  \textbf{Ex.} As~$\neg\neg(\varphi \vee \neg\varphi)$ is a theorem
+  of~\textsc{iqc}, the law of excluded middle holds in~$V^{\neg\neg}$.
+\end{frame}
+
+\newcommand{\defeqvi}{\quad iff\quad}
+\begin{frame}{The $\nabla$-translation}
+  \small
+  \only<1>{For bounded first-order formulas over the (large) first-order signature which has
+  \begin{enumerate}
+    \scriptsize
+    \item one sort~$\underline{X}$ for each set~$X$ in the base universe,
+    \\[-1.2em]
+    \item one~$n$-ary function symbol~$\underline{f} : \underline{X_1} \times
+    \cdots \times \underline{X_n} \to \underline{Y}$ for each map~$f : X_1 \times
+    \cdots \times X_n \to Y$,
+    \\[-1.2em]
+    \item one~$n$-ary relation symbol~$\underline{R} \hookrightarrow
+    \underline{X_1} \times \cdots \times \underline{X_n}$ for each relation~$R
+    \subseteq X_1 \times \cdots \times X_n$, and
+    \\[-1.2em]
+    \item an additional unary relation symbol~$G \hookrightarrow \underline{L}$
+    (for the \emph{generic filter} of~$L$),
+  \end{enumerate}
+  we recursively define:}
+  \scriptsize
+  \only<2->{\vspace*{-0.4em}}
+  \begin{tabbing}
+    \quad \= $\sigma \forces \forces \forall(x\?\underline{X})\_ \varphi$ \=
+    \defeqvi $\textcolor{gray}{\forall(\tau \preccurlyeq \sigma)\_}\
+    \forall(x_0 \in X)\_ \tau \forces \varphi[\underline{x_0}/x]$.\qquad\quad \=
+    $\sigma \forces \exists(x\?\underline{X})\_ \varphi$
+    \= $\sigma \forces \underline{R}(\underline{s_1},\ldots,\underline{s_n})$ \= \defeqvi $s = t$. \= \kill
+
+    \> $\sigma \forces s = t$
+    \> \defeqvi $\nabla \sigma\_ \llbracket s \rrbracket = \llbracket t \rrbracket$.
+    \> $\sigma \forces \underline{R}(s_1,\ldots,s_n)$
+    \> \defeqvi $\nabla\sigma\_ R(\llbracket s_1 \rrbracket,\ldots,\llbracket s_n \rrbracket)$. \\[0.3em]
+
+    \> $\sigma \forces \varphi \Rightarrow \psi$
+    \> \defeqvi $\textcolor{gray}{\forall(\tau \preccurlyeq \sigma)\_}\ (\tau \forces \varphi) \Rightarrow
+    (\tau \forces \psi)$.
+    \> $\sigma \forces G\tau$
+    \> \defeqvi $\nabla\sigma\_ \sigma \preccurlyeq \llbracket\tau\rrbracket$. \\[0.3em]
+
+    \> $\sigma \forces \top$ \> \defeqvi $\top$.
+    \> $\sigma \forces \bot$ \> \defeqvi $\hil{$\nabla\sigma\_$}\ \bot$ \\[0.3em]
+
+    \> $\sigma \forces \varphi \wedge \psi$
+    \> \defeqvi $(\sigma \forces \varphi) \wedge (\sigma \forces \psi)$.
+    \> $\sigma \forces \varphi \vee \psi$
+    \> \defeqvi $\hil{$\nabla\sigma\_$}\ (\sigma \forces \varphi) \vee (\sigma \forces \psi)$. \\[0.3em]
+
+    \> $\sigma \forces \forall(x\?\underline{X})\_ \varphi$
+    \> \defeqvi $\textcolor{gray}{\forall(\tau \preccurlyeq \sigma)\_}\ \forall(x_0 \in X)\_ \tau \forces
+    \varphi[\underline{x_0}/x]$.
+    \> $\sigma \forces \exists(x\?\underline{X})\_ \varphi$
+    \> \defeqvi $\hil{$\nabla\sigma\_$}\ \exists(x_0 \in X)\_ \sigma \forces \varphi[\underline{x_0}/x]$.
+  \end{tabbing}
+  \small
+  \only<1>{Finally, we say that~$\varphi$ ``holds in~$V^\nabla$'' iff for all~$\sigma
+  \in L$, $\sigma \forces \varphi$.}
+
+  \footnotesize
+  \begin{tabular}{@{}lp{0.27\textwidth}p{0.48\textwidth}@{}}
+    \toprule
+    forcing notion & statement about~$V^\nabla$ & external meaning \\
+    \midrule
+    surjection $\NN \twoheadrightarrow X$ &
+    ``the gen.\@ surj.\@ is surjective'' &
+    $\forall(\sigma{\in}X^*)\_ \forall(a{\in}X)\_ \nabla(\tau{\preccurlyeq}\sigma)\_ \exists(n{\in}\NN)\_ \tau[n] = a$. \\[0.4em]
+    \pause
+
+    map $\NN \to X$ &
+    ``the gen.\@ sequence is good'' &
+    $\mathsf{Good} \mid [\,]$. \\[0.4em]
+
+    frame of opens &
+    ``every complex number has a square root'' &
+    For every open~$U \subseteq X$ and every cont.\@
+    function $f : U \to \CC$, there is an open covering $U = \bigcup_i U_i$ such
+    that for each index~$i$, there is a cont.\@ function $g : U_i \to \CC$
+    such that~$g^2 = f$. \\[4.3em]
+
+    big Zariski &
+    ``$x \neq 0 \Rightarrow \text{$x$ inv.}$'' &
+    If the only f.p.\@ $k$-algebra in which~$x = 0$ is the zero algebra,
+    then~$x$ is invertible in~$k$.\\[1.5em]
+    \pause
+
+    little Zariski &
+    ``every f.g. vector space does \emph{not not} have a basis'' &
+    \makesamewidth[l]{}{\phantom{x}}\hil{Grothendieck's generic freeness lemma}
+  \end{tabular}
+\end{frame}
+
+\begin{frame}{Outlook}
+  \begin{block}{Passing to and from extensions}
+    \justifying\small
+    \textbf{Thm.} Let~$\varphi$ be a \hil{bounded first-order formula} not
+    mentioning~$G$. In each of the following situations, we have that
+    $\varphi$ holds in~$V^\nabla$ iff~$\varphi$
+    holds in $V$:
+
+    \vspace*{-0.5em}
+    \begin{enumerate}
+      \item $L$ and all coverings are inhabited (proximality). \\[-1em]
+      \item $L$ contains a top element, every covering of the
+      top element is inhabited, and~$\varphi$ is a coherent implication
+      (positivity).
+    \end{enumerate}
+    \vspace*{-0.8em}
+  \end{block}
+
+  \vspace*{-1.5em}
+  \begin{columns}
+    \begin{column}{0.46\textwidth}
+      \begin{block}{The mystery of nongeometric sequents}
+        \justifying
+        The \hil{generic ideal} of a ring is maximal:
+        \vspace*{-1em}
+        \[ (x \in \aaa \Rightarrow 1 \in \aaa) \Longrightarrow 1 \in \aaa + (x). \]
+
+        The \hil{generic ring} is a field:
+        \vspace*{-0.7em}
+        \[ (x = 0 \Rightarrow 1 = 0) \Longrightarrow (\exists y\_ xy = 1). \]
+        \vspace*{-1.4em}
+      \end{block}
+
+    \end{column}
+
+    \begin{column}{0.50\textwidth}
+      \begin{block}{Traveling the multiverse \ldots}
+        \textsc{lem} is a \hil{switch} and \hil{holds positively};
+        being countable is a \hil{button}.
+        \medskip
+
+        Every instance of \textsc{dc} \hil{holds proximally}.
+        \medskip
+
+        A geometric implication is provable iff it holds \hil{everywhere}.
+        \vspace*{-0.2em}
+      \end{block}
+      \vspace*{-0.3em}
+      \hfill\footnotesize\ldots{} upwards, but always keeping ties to the
+      base.{\ }
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{More on forcing notions}
+  \small
+  \textbf{Def.} A \hil{forcing notion} consists of
+  a preorder~$L$ of \hil{forcing conditions}, and
+  for every~$\sigma \in L$, a set~$\Cov(\sigma) \subseteq
+  P({\downarrow}\sigma)$ of \hil{coverings} of~$\sigma$
+  such that: If~$\tau \preccurlyeq \sigma$ and~$R \in \Cov(\sigma)$, there
+  should be a covering~$S \in \Cov(\tau)$ such that~$S \subseteq
+  {\downarrow}R$.
+  \bigskip
+
+  {\centering\footnotesize\begin{tabular}{llll}
+    \toprule
+    & preorder~$L$ & coverings of an element~$\sigma \in L$ & filters of~$L$ \\
+    \midrule
+    \normalnumber{1} & $X^*$ & $\{ \sigma x \,|\, x \in X \}$ & maps~$\NN \to X$ \\
+    \normalnumber{2} & $X^*$ & $\{ \sigma x \,|\, x \in X \}$,\ \ $\{ \sigma\tau \,|\, \tau \in X^*, a \in \sigma\tau \}$ for each~$a \in X$ & surjections~$\NN \twoheadrightarrow X$ \\
+    \normalnumber{3} & f.g. ideals & --- & ideals \\
+    \normalnumber{4} & f.g. ideals & $\{ \sigma+(a), \sigma+(b) \}$ for each~$ab \in \sigma$,\ \ $\{\}$ if~$1 \in \sigma$ & prime ideals \\
+    \normalnumber{5} & opens & $\mathcal{U}$ such that~$\sigma = \bigcup \mathcal{U}$ & points \\
+    \normalnumber{6} & $\{\star\}$ & $\{ \star \,|\, \varphi \} \cup \{ \star \,|\, \neg\varphi \}$ &
+    witnesses of~\textsc{lem}
+    \\
+    \bottomrule
+  \end{tabular}\par}
+  \bigskip
+
+  \textbf{Def.} A \emph{filter} of a forcing notion~$(L,\mathrm{Cov})$
+  is a subset~$F \subseteq L$ such that
+  \vspace*{-0.4em}
+  \begin{enumerate}
+    \scriptsize
+    \item $F$ is upward-closed: if~$\tau \preccurlyeq \sigma$ and if~$\tau \in F$, then~$\sigma \in F$; \\[-3.0em]
+    \item $F$ is downward-directed: $F$ is inhabited, and if~$\alpha,\beta \in F$,
+    then there is a common refinement~$\sigma \preccurlyeq \alpha,\beta$ such
+    that~$\sigma \in F$; and \\[-2.0em]
+    \item $F$ splits the covering system: if~$\sigma \in F$ and~$R \in
+    \Cov(\sigma)$, then~$\tau \in F$ for some~$\tau \in R$.
+  \end{enumerate}
+\end{frame}
+
+\backupend
 
 \end{document}
 

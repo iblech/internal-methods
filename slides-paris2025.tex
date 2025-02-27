@@ -71,7 +71,7 @@
 \author{Ingo Blechschmidt}
 \date{November 30th, 2024}
 
-%\setbeameroption{show notes on second screen=bottom}
+\setbeameroption{show notes on second screen=bottom}
 \newcommand{\jnote}[2]{\only<#1>{\note{\setlength\parskip{\medskipamount}\footnotesize\justifying#2\par}}}
 
 %\useinnertheme[shadow=true]
@@ -410,6 +410,11 @@
 
 {\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{2.1em}\includegraphics[height=\paperheight]{sea-of-clouds-1}\end{minipage}}
 \begin{frame}{Well quasi-orders}
+  \jnote{1}{
+    Well quasi-orders are an important notion in proof theory and termination
+    analysis.
+  }
+
   \jnote{2-3}{
     The presented proof rests on the law of excluded middle and hence cannot
     immediately be interpreted as a program for finding suitable indices~$i <
@@ -440,8 +445,9 @@
   }
 
   \jnote{4}{
+    \vspace*{-1em}
     The dependence of the theory on well quasi-orders on classical transfinite
-    methods is already present in one of basic observations of this theory:
+    methods is already present in one of the first and central observations of this theory:
 
     \textbf{Lemma.} Let~$X$ be well\sinf. Let~$\alpha : \NN \to X$. Then there
     is an infinite increasing subsequence~$\alpha\,i_0 \leq \alpha\,i_1 \leq
@@ -463,7 +469,7 @@
 
     The appeal to dependent choice can be removed by always picking the
     smallest possible next index in~$\NN \setminus K$, doable by yet another
-    invocation of~\bad{\textsc{lem}}, but the result remains fundamentally
+    invocation of~\bad{\textsc{lem}}. But the result remains fundamentally
     noneffective---in the special case~$X = (\{ 0, 1 \}, {=})$, the statement
     of the lemma implies the infinite pigeonhole principle.
   }
@@ -695,7 +701,7 @@
     holds in the base universe. For positive overt toposes~$\E$, we even have
     that a bounded first-order formula holds in~$\E$ iff it holds in the base.
     Hence, for the purpose of verifying a bounded first-order assertion about
-    the base, we can freely pass to a positiv overt topos with problem-adapted
+    the base, we can freely pass to a positive overt topos with problem-adapted
     better higher-order properties (such as that some uncountable set from the
     base now appears countable, or that an infinite sequence whose existence is
     predicted by failing dependent choice now actually exists).
@@ -738,7 +744,8 @@
     is not actually an honest prime ideal of the ring~$A$ in the base
     universe, but a certain combinatorial notion (efficiently dealt with using
     \emph{entailment relations}). Constructive forcing allows us to reify the
-    generic prime ideal as an actual prime ideal in a suitable forcing extension.
+    generic prime ideal as an actual prime ideal in a suitable forcing extension,
+    so in a suitable topos (der little Zariski topos of the ring).
   }
 
   \begin{changemargin}{7.5em}{-0.5em}
@@ -797,6 +804,21 @@
 
 {\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{-4.68em}\includegraphics[width=1.2\paperwidth]{wqo-faded}\end{minipage}}
 \begin{frame}{Multiversal constructive combinatorics}
+  \jnote{1}{
+    The displayed multiversal proof closely mimics the classical proof (for well\sinf), but
+    is fully constructive (for well\ind). It would be possible to streamline
+    this proof and unroll the topos-theoretic machinery, to obtain an explicit
+    algorithm of type
+    \[ \mathsf{Good} \mid_X [\,] \times \mathsf{Good} \mid_Y [\,] \ \longrightarrow\
+      \mathsf{Good} \mid_{X \times Y} [\,].
+    \]
+
+    The modal language was recently used to answer a question by Stefano
+    Berardi, Gabriele Buriola and Peter Schuster, see
+    \href{https://www.speicherleck.de/iblech/stuff/slides-abmv2024.pdf\#page=16}{this
+    set of slides}.
+  }
+
   \justifying
   \textbf{Prop.} Let~$X$ and~$Y$ be well\ind quasi-orders. Then~$X \times Y$
   is well$\ind$.
@@ -818,6 +840,23 @@
 
 {\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{5.95cm}\includegraphics[width=\paperwidth]{fr1}\end{minipage}}
 \begin{frame}{Multiversal constructive algebra}
+  \jnote{1-}{
+    The displayed classical proof is quite efficient from the point of view of
+    organizing mathematical knowledge, as it quickly reduces the general
+    situation of dealing with an arbitrary ring to dealing with a field.
+    Alas, read literally, it is hopeless ineffective.
+  }
+
+  \jnote{2-}{
+    By employing modal language, we can closely mimic the original proof and be
+    fully constructive at the same time.
+  }
+
+  \jnote{3-}{
+    By unwinding all modal definitions, the modal proof can be unrolled to a
+    fully explicit computation.
+  }
+
   \justifying
   \textbf{Thm.}
   Let~$M$ be a surjective matrix with more rows than columns over a
@@ -864,6 +903,10 @@
 
 
 \backupstart
+
+\begin{frame}
+  \emph{Backup slides.}
+\end{frame}
 
 \section{Basics of forcing}
 

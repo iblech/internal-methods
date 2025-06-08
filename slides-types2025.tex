@@ -1,0 +1,122 @@
+- General structure like in HoTTest / ABMV?
+
+- Proof of Berardi–Buriola–Schuster conjecture
+- Higher-order functions defined everywhere (in every topos): dialogue trees
+- Generic sequence is good = inductively good
+- Fun properties of generic surjection
+
+- Let's play Agda
+
+---
+
+1. Hilbert's program
+   - basics about wqo's
+   - subsequence lemma
+   - Dickson
+   - inductive reimagination
+   - questions: where from? why work? how much stronger?
+
+2. Where do our most cherished definitions come from?
+   - a familiar business: enlarging mathematical structures
+   - adjoining generic function, surjection, prime ideal, ...
+   - observations:
+     - well iff generic sequence is good iff everywhere, every sequence is good
+       (in particular, every multivalued and every up-to-¬¬-defined sequence is good)
+     - wellfounded iff for the generic decreasing sequence, ⊥ iff ...
+   - fun facts about generic gadgets
+
+3. Modal language for harnessing the multiverse
+   - definition
+   - examples
+   - implicational wellness
+   - dialogue
+
+4. Implementation
+   - idea: realize generic gadget as some kind of limit of approximations from
+     the base
+   - reinterpret, in a mechanic fashion, assertions about generic objects as
+     assertions about approximations
+     - ex.: "the generic function is defined on input n" as "no matter how the
+       empty list evolves over a time to a better approximation xs, eventually
+       xs will have length at least succ n"
+   - crucially, this interpretation is sound with respect to intuitionistic
+     reasoning
+
+---
+
+Towards topological type theory for decrypting transfinite methods in classical mathematics
+
+In constructive mathematics, an ongoing challenge is to extracting
+computational content from infinitary arguments in classical
+mathematics—especially those that yield concrete results via abstract tools
+such as minimal bad sequences or maximal ideals. Today, a wide range of such
+techniques exists, constituting a late partial fulfillment of Hilbert's
+program.
+
+This talk presents work in progress on porting the modal operators "everywhere"
+and "somewhere", as developed in set theory by Joel David Hamkins, Victoria
+Gitman and their collaborators, into type theory. This modal enrichment
+provides a uniform language for expressing several established
+constructivization techniques, and is at the core of a relatively recent new
+technique that offers insights on the origins of some of our most cherished
+inductive definitions. These developments are closely connected to recent
+advances in type-theoretic presheaf and sheaf models, dialogue
+continuity, synthetic algebraic geometry and well-quasi-order theory.
+
+---
+
+Which functions are we excluding when we form the type of all functions between
+two types? Does every field have an algebraic closure?
+
+Inspired by the modal approach to the set-theoretic multiverse of Joel David
+Hamkins, Victoria Gitman and their collaborators, we aim to introduce the modal
+operators "everywhere" and "somewhere" to homotopy type theory, proposing a
+multiversal perspective on these motivating questions.
+
+---
+
+Well quasi-orders are a combinatorial notion with featureful applications in
+graph theory, termination checking, commutative algebra and other subjects.
+However, their classical definition, though concise and elegant, poses
+significant challenges in constructive mathematics and frameworks that lack
+function sets. In response, several constructive substitutes have been
+developed, most recently an implicational definition by Stefano Berardi,
+Gabriele Buriola and Peter Schuster. In this talk, we investigate how a modal
+approach can reinterpret classical proofs involving transfinite methods as
+blueprints for constructive proofs grounded in these alternatives, thereby
+combining the best of both worlds: Short and abstract proofs, but with
+constructive content. We also indicate how the modal approach allows us to
+compare the implicational definition with an earlier inductive one.
+
+---
+
+Combinatorics and commutative algebra abound with situations where we prove
+quite concrete results by quite abstract transfinite methods, such as minimal
+bad sequences or maximal ideals. Amazingly, such infinitary arguments can often
+be understood as blueprints for quite explicit computations—as called for by
+Hilbert’s programme. In this talk, we will travel the modal toposophic
+multiverse to facilitate this kind of mining abstract proofs for refined
+quantitative results. We will use a celebrated theorem from order theory about
+sequences N→N that everybody can relate with as a running example.
+
+---
+
+Where do some of our most cherished inductive definitions come from? Which
+functions are we excluding when we form the type of all functions between two
+types? Does every field have an algebraic closure?
+
+Inspired by the modal approach to the set-theoretic multiverse of Joel David
+Hamkins, Victoria Gitman and their collaborators, we aim to introduce the modal
+operators "everywhere" and "somewhere" to homotopy type theory, proposing a
+multiversal perspective on these motivating questions.
+
+Unlike the set-theoretic role model, we focus less on exploring the range of
+foundational possibility and more on concrete applications in constructive
+mathematics, with the goal of porting results of classical mathematics to
+homotopy type theory. It will turn out that every field has an algebraic
+closure somewhere; that a transitive relation is well-founded iff nowhere there
+is an infinite descending chain; and that somewhere, the law of excluded middle
+holds.
+
+This is ongoing joint work with Alexander Oldenziel and connected to the recent
+advances with type-theoretic presheaf models and sheaf models.

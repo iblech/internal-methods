@@ -637,23 +637,33 @@
   \begin{enumerate}
     \item $\mathsf{Well}\ind(X,{\le}) \Longleftrightarrow
     \necessary\mathsf{Well}\sinf(X,{\le})$. \formalized
-    \item $(\possible\varphi) \Longrightarrow \varphi$,
+    \item $(\possible\varphi) \Longleftrightarrow \varphi$,
     if $\varphi$ is a geometric implication (``$\forall\ldots\forall (\%
     \Rightarrow \%)$'', with no~$\forall$ nor~$\Rightarrow$
     in~$\%$).~\formalized
-    \item $(\xpossible\varphi) \Longrightarrow \varphi$,
+    \item $(\xpossible\varphi) \Longleftrightarrow \varphi$,
     if~$\varphi$ is a bounded first-order statement. \formalized
-    \item For every inhabited type~$X$, $\xpossible\exists f : \NN
-    \to X\_ \mathsf{Surjective}(f)$. \formalized
+    \item For every inhabited type~$X$, $\xpossible\necessary
+    \mathsf{Countable}(X)$, where~$\mathsf{Countable}(X) \defeqv (\exists f : \NN
+    \to X\_ \mathsf{Surjective}(f))$. \formalized
+
+    So being countable is a \hil{button}.
     \item $\possible \badbox{\textsc{lem}}$.
     (Baby Barr / Friedman's trick / nontrivial exit continuation)
+
+    In fact, \badbox{\textsc{lem}} is a \hil{switch}:
+    $\necessary\bigl((\possible\badbox{\textsc{lem}}) \wedge
+    (\possible\neg\badbox{\textsc{lem}})\bigr)$
+
+    \item $\badbox{\textsc{zorn}} \Rightarrow
+    \necessary\possible\badbox{\textsc{ac}}$. (Great Barr)
   \end{enumerate}
 \end{frame}}
 
 \begin{frame}{The plain combinatorics of toposes}
   \begin{enumerate}\justifying
     \item Realize a generic gadget as some kind of limit of \hil{approximations}
-    from the base universe. For the generic function $\NN \to X$:
+    from the base universe. For the generic function $f_0 : \NN \to X$:
 
     \AgdaHide{
       \begin{code}
@@ -674,8 +684,16 @@ L = List X
 
     \pause
     \item \hil{Reinterpret}, in a mechanical fashion, assertions about the generic
-    gadget as assertions about its approximations~(\formalized). Be prepared to evolve
-    approximations.
+    gadget as assertions about its approximations~(\formalized).
+
+    {\small\begin{itemize}
+    \item We have the \hil{stage-dependent proposition} ``$f_0\,n = x$'',
+    a certain function $L \to \mathsf{Prop}$: $\lambda \sigma.\
+    (\mathsf{lookupMaybe}\,\sigma\,n = \mathsf{just}\,x)$\end{itemize}}
+    \medskip
+
+    \pause
+    \item Be prepared to evolve approximations (\formalized).
 
     {\small\begin{code}
 data ∇ (P : L → Prop) : L → Prop where
@@ -685,12 +703,10 @@ data ∇ (P : L → Prop) : L → Prop where
 
     \begin{itemize}
     \item
-    For a \hil{stage-dependent proposition}~$P : L \to \mathsf{Prop}$, $\nabla\,P\,\sigma$ expresses
+    For a stage-dependent proposition~$P : L \to \mathsf{Prop}$, $\nabla\,P\,\sigma$ expresses
     that no matter how~$\sigma$ will evolve over a time to a better
     approximation~$\tau$, eventually~$P\,\tau$ will hold.
   % later₂ : (a : X) → ((τ : X*) → a ∈ σ ⧺ τ → ∇ P (σ ⧺ τ)) → ∇ P σ
-    \item We have the stage-dependent proposition ``$f_0\,n = x$'',
-    where~$f_0$ is the generic function.
     \item That~$f_0$ is defined on input~$n$ can be expressed
     as~$\nabla\,P\,[\,]$ where~$P\,\sigma \defeqv (\mathsf{length}\,\sigma > n)$.\end{itemize}}
     \medskip
@@ -701,6 +717,46 @@ data ∇ (P : L → Prop) : L → Prop where
   \end{enumerate}
 \end{frame}
 
+\begin{frame}{Formal metatheory}
+  \small
+  \good{\cmark{}} \emph{There are type-theoretic multiverses,} such as
+  \begin{itemize}
+    \item the collection of all $\mathrm{PSh}(\mathcal{C} \times \mathcal{B})$,
+    where~$\mathcal{B}$ ranges over cube categories and~$\mathcal{C}$ over
+    arbitrary small categories, and their corresponding sheaf models
+
+    {\scriptsize
+    Coquand. ``A survey of constructive presheaf models of univalence''. \emph{ACM SIGLOG News}, 5.3 (2018).
+    \par}
+  \end{itemize}
+  \medskip
+  \pause
+
+  \bad{\xmark} \emph{Accessing the multiverse from within intensional type theory is tricky:}
+  \begin{itemize}
+    \item Given a model of $\mathfrak{s}$CIC and a category~$\mathcal{C}$ in
+    it, we have a syntactic presheaf model of CIC.
+
+    {\scriptsize
+    Coquand, Jaber. ``A note on forcing and type theory''. \emph{Fundamenta Informaticae 100} (2010). \\
+    Jaber, Lewertowski, Pédrot, Sozeau, Tabareau. ``The definitional side of the forcing''. \emph{Proceedings of LICS '16} (2016). \\
+    Pédrot. ``Russian constructivism in a prefascist theory''. \emph{Proceedings of LICS '20} (2020).
+    \par}
+    \item Given a suitable lex modality, we have a syntactic sheaf model (model of modal types).
+
+    {\scriptsize
+    Coquand, Ruch, Sattler. ``Constructive sheaf models of type theory.'' \emph{Math. Struct. Comput. Sci.} 31.9 (2021). \\
+    Escardó, Xu. ``Sheaf models of type theory in type theory''. Unpublished (2016). \\
+    Quirin. ``Lawvere--Tierney sheafification in Homotopy Type Theory''. PhD thesis (2016).
+    \par}
+    \item (I believe) we have syntactic sheaf models in certain special cases,
+    when no coherence issues arise in defining the notion of presheaves.
+  \end{itemize}
+
+  Note: We can use~$\nabla$ even without a proper metatheoretic backing.
+\end{frame}
+
+{\renewcommand{\insertframeextra}{a}
 \begin{frame}{Increasing subsequences as convenient fictions}
   \justifying
   Let~$X$ be a quasi-order.
@@ -732,9 +788,11 @@ data ∇ (P : L → Prop) : L → Prop where
   has a prefix validating~$B$ by monotonicity \emph{there}. So
   \emph{somewhere} there is a finite prefix validating~$B$. Thus there
   actually is a finite prefix validating~$B$. \qed\par}
-\end{frame}
+\end{frame}}
 
+\addtocounter{framenumber}{-1}
 {\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{5.95cm}\includegraphics[width=\paperwidth]{fr1}\end{minipage}}
+\renewcommand{\insertframeextra}{b}
 \begin{frame}{Maximal ideals as convenient fictions}
   \justifying
   Let~$A$ be a commutative ring with unit.
@@ -813,44 +871,7 @@ data ∇ (P : L → Prop) : L → Prop where
   \qed
 \end{frame}}
 
-\begin{frame}{Formal metatheory}
-  \small
-  \good{\cmark{}} \emph{There are type-theoretic multiverses,} such as
-  \begin{itemize}
-    \item the collection of all $\mathrm{PSh}(\mathcal{C} \times \mathcal{B})$,
-    where~$\mathcal{B}$ ranges over cube categories and~$\mathcal{C}$ over
-    arbitrary small categories, and their corresponding sheaf models
-
-    {\scriptsize
-    Coquand. ``A survey of constructive presheaf models of univalence''. \emph{ACM SIGLOG News}, 5.3 (2018).
-    \par}
-  \end{itemize}
-  \medskip
-  \pause
-
-  \bad{\xmark} \emph{Accessing the multiverse from within intensional type theory is tricky:}
-  \begin{itemize}
-    \item Given a model of $\mathfrak{s}$CIC and a category~$\mathcal{C}$ in
-    it, we have a syntactic presheaf model of CIC.
-
-    {\scriptsize
-    Coquand, Jaber. ``A note on forcing and type theory''. \emph{Fundamenta Informaticae 100} (2010). \\
-    Jaber, Lewertowski, Pédrot, Sozeau, Tabareau. ``The definitional side of the forcing''. \emph{Proceedings of LICS '16} (2016). \\
-    Pédrot. ``Russian constructivism in a prefascist theory''. \emph{Proceedings of LICS '20} (2020).
-    \par}
-    \item Given a suitable lex modality, we have a syntactic sheaf model (model of modal types).
-
-    {\scriptsize
-    Coquand, Ruch, Sattler. ``Constructive sheaf models of type theory.'' \emph{Math. Struct. Comput. Sci.} 31.9 (2021). \\
-    Escardó, Xu. ``Sheaf models of type theory in type theory''. Unpublished (2016). \\
-    Quirin. ``Lawvere--Tierney sheafification in Homotopy Type Theory''. PhD thesis (2016).
-    \par}
-    \item (I believe) we have syntactic sheaf models in certain special cases,
-    when no coherence issues arise in defining the notion of presheaves.
-  \end{itemize}
-
-  Note: We can use~$\nabla$ even without a proper metatheoretic backing.
-\end{frame}
+\backupstart
 
 \begin{frame}[plain]
   \begin{columns}[c]
@@ -867,8 +888,6 @@ data ∇ (P : L → Prop) : L → Prop where
     \end{column}
   \end{columns}
 \end{frame}
-
-\backupstart
 
 \begin{frame}
   \emph{Backup slides.}

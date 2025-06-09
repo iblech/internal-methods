@@ -693,7 +693,7 @@ L = List X
     \medskip
 
     \pause
-    \item Be prepared to evolve approximations (\formalized).
+    \item Be prepared to \hil{evolve approximations} (\formalized).
 
     {\small\begin{code}
 data ∇ (P : L → Prop) : L → Prop where
@@ -870,6 +870,43 @@ data ∇ (P : L → Prop) : L → Prop where
   $.
   \qed
 \end{frame}}
+
+\addtocounter{framenumber}{-1}
+{\renewcommand{\insertframeextra}{c}
+\begin{frame}{Stabilization as convenient fiction}
+  A commutative ring~$A$ with unit is \ldots
+  \begin{itemize}
+    \item Noetherian\sinf{} iff for every sequence~$x_0,x_1,\ldots$ of ring elements,
+    there is a number~$n : \NN$ such that~$x_n,x_{n+1},x_{n+2},\ldots \in
+    (x_0,\ldots,x_{n-1})$.
+    \item Noetherian\ensuremath{_\text{RS}} iff for every sequence~$x_0,x_1,\ldots$ of ring elements,
+    there is a number~$n : \NN$ such that~$x_n \in
+    (x_0,\ldots,x_{n-1})$.
+    \item Noetherian\ind{} iff a certain inductively defined condition holds
+    [Coquand–Persson].
+  \end{itemize}
+
+  We then have:
+  \begin{align*}
+    \mathsf{Noetherian\ind}(A) &\Longleftrightarrow
+    \necessary\mathsf{Noetherian}_\text{RS}(A) \\
+    &\Longleftrightarrow
+    \necessary\bigl(\badbox{\textsc{lem}} \Rightarrow
+    \mathsf{Noetherian}\sinf(A)\bigr) \\
+    &\Longleftrightarrow
+    \necessary\possible\mathsf{Noetherian}\sinf(A).
+  \end{align*}
+
+  Hence, from the corresponding classical proofs, we can extract
+  constructive proofs of:
+  \begin{enumerate}
+    \item Hilbert's basis theorem: If $A$ is Noetherian\ind, then so is $A[X]$.
+    \item Locality: If~$1 = f_1+\ldots+f_n$ and if each
+    ring~$A[f_i^{-1}]$ is Noetherian\ind, then so is~$A$. \\
+    (As a consequence, $A$ is Noetherian\ind
+    iff~$\mathcal{O}_{\mathrm{Spec}(A)}$ is.)
+  \end{enumerate}
+\end{frame}
 
 \backupstart
 

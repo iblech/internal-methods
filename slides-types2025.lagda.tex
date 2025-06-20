@@ -1,3 +1,4 @@
+% compile using: agda --latex; result will then be in the latex/ subfolder
 \documentclass[11pt,utf8,notheorems,compress,t,aspectratio=169]{beamer}
 \usepackage{etex}
 
@@ -6,7 +7,7 @@
 
 % Workaround for the issue described at
 % https://tex.stackexchange.com/questions/164406/beamer-using-href-in-notes.
-\newcommand{\fixedhref}[2]{\makebox[0pt][l]{\hspace*{\paperwidth}\href{#1}{#2}}\href{#1}{#2}}
+\newcommand{\fixedhref}[2]{\parbox[t][0pt][t]{0pt}{\vspace*{-\paperheight}\vspace*{-0.6em}\href{#1}{#2}}\href{#1}{#2}}
 
 \usepackage[english]{babel}
 
@@ -68,13 +69,56 @@
 \setlength\parskip{\medskipamount}
 \setlength\parindent{0pt}
 
-\title{Modal operators for a constructive account of well quasi-orders}
+\title{Towards topological type theory for decrypting transfinite methods in classical mathematics}
 
 \author{Ingo Blechschmidt}
-\date{November 30th, 2024}
+\date{June 9th, 2025}
 
-%\setbeameroption{show notes on second screen=bottom}
+\setbeameroption{show notes on second screen=bottom}
 \newcommand{\jnote}[2]{\only<#1>{\note{\setlength\parskip{\medskipamount}\footnotesize\justifying#2\par}}}
+\makeatletter
+\setbeamertemplate{note page}
+{%
+  {%
+    \scriptsize
+    \insertvrule{.25\paperheight}{white!90!black}
+    \vskip-.25\paperheight
+    \nointerlineskip
+    \vbox{
+      %\hfill\insertslideintonotes{0.25}\hskip-\Gm@rmargin\hskip0pt%
+      %\vskip-0.25\paperheight%
+      %\nointerlineskip
+      \begin{pgfpicture}{0cm}{0cm}{0cm}{0cm}
+        \begin{pgflowlevelscope}{\pgftransformrotate{90}}
+          {\pgftransformshift{\pgfpoint{-2cm}{0.2cm}}%
+          \pgftext[base,left]{\footnotesize\the\year-\ifnum\month<10\relax0\fi\the\month-\ifnum\day<10\relax0\fi\the\day}}
+        \end{pgflowlevelscope}
+      \end{pgfpicture}}
+    \nointerlineskip
+    \vbox to .25\paperheight{\vskip0.5em
+      \hbox{\insertshorttitle[width=8cm]}%
+      \setbox\beamer@tempbox=\hbox{\insertsection}%
+      \hbox{\ifdim\wd\beamer@tempbox>1pt{\hskip4pt\raise3pt\hbox{\vrule
+            width0.4pt height7pt\vrule width 9pt
+            height0.4pt}}\hskip1pt\hbox{\begin{minipage}[t]{7.5cm}\def\breakhere{}\insertsection\end{minipage}}\fi%
+      }%
+      \setbox\beamer@tempbox=\hbox{\insertsubsection}%
+      \hbox{\ifdim\wd\beamer@tempbox>1pt{\hskip17.4pt\raise3pt\hbox{\vrule
+            width0.4pt height7pt\vrule width 9pt
+            height0.4pt}}\hskip1pt\hbox{\begin{minipage}[t]{7.5cm}\def\breakhere{}\insertsubsection\end{minipage}}\fi%
+      }%
+      \setbox\beamer@tempbox=\hbox{\insertshortframetitle}%
+      \hbox{\ifdim\wd\beamer@tempbox>1pt{\hskip30.8pt\raise3pt\hbox{\vrule
+            width0.4pt height7pt\vrule width 9pt
+            height0.4pt}}\hskip1pt\hbox{\insertshortframetitle[width=7cm]}\fi%
+      }%
+      \vfil}%
+  }%
+  \vskip.25em
+  \nointerlineskip
+  \insertnote
+}
+\makeatother
 
 %\useinnertheme[shadow=true]
 \setbeamerfont{block title}{size={}}
@@ -350,7 +394,7 @@
 \newunicodechar{λ}{\ensuremath{\lambda}}
 \newunicodechar{σ}{\ensuremath{\sigma}}
 \newunicodechar{τ}{\ensuremath{\tau}}
-\newunicodechar{∷}{\ensuremath{::}}
+\newunicodechar{∷}{\ensuremath{\dblcolon}}
 \newunicodechar{⧺}{\ensuremath{\!\!\!}}
 \newunicodechar{₁}{\ensuremath{_1}}
 \newunicodechar{₂}{\ensuremath{_2}}
@@ -415,8 +459,186 @@
 \definecolor{mypurple}{RGB}{150,0,255}
 \setbeamercolor{structure}{fg=mypurple}
 
+\addtocounter{framenumber}{-1}
+\begin{frame}\frametitle{A classical logic fairy tale}
+  \centering\bigskip\bigskip\bigskip
+  \includegraphics[height=9.5em]{philosophers-stone}
+
+  \jnote{1}{
+    \vspace*{-1em}
+    \begin{changemargin}{-1.5em}{-1.5em}
+      \setlength{\columnsep}{15pt}
+      \begin{multicols}{2}
+        \justifying
+        \scriptsize
+
+        \textbf{Narrator.} Once upon a time, in a kingdom far, far away, the
+        queen of the country and of all Möbius strips called for her royal
+        philosopher.
+
+        \textbf{Queen.} Philosopher! I ask you to carry out the following order.
+        Get me the Philosopher's Stone, or alternatively find out how one could
+        produce arbitrary amounts of gold with it!
+
+        \textbf{Philosopher.} But my queen! I haven't studied anything useful!
+        How could I fulfill this order?
+
+        \textbf{Queen.} That is not my concern. I'll see you again tomorrow.
+        Should you not accomplish the task, I will take your head off.
+
+        \textbf{Narrator.} After a long and wakeful night the philosopher was
+        called to the queen again.
+
+        \textbf{Queen.} Tell me! What do you have to report?
+
+        \textbf{Philosopher.} It was not easy and I needed to follow lots of
+        obscure references, but finally I actually found out how to use the
+        Philosopher's Stone to produce arbitrary amounts of gold. But only I can
+        conduct this procedure, your royal highness.
+
+        \textbf{Queen.}
+        Alright. So be it.
+
+        \textbf{Narrator.} And so years passed by, during which the philosopher
+        imagined herself to be safe. The queen searched for the stone on her own,
+        but as long as she hadn't found it, the philosopher didn't need to worry.
+        Yet one day the impossible happened: The queen has found the stone! And
+        promptly called for her philosopher.
+
+        \textbf{Queen.} Philosopher, look! I have found the Philosopher's Stone!
+        Now live up to your promise! \emph{[She hands over the stone.]}
+
+        \textbf{Philosopher.} Thank you. \emph{[She inspects the stone.]} This is
+        indeed the Philosopher's Stone. Many years ago you asked me to either
+        acquire the Philosopher's Stone or find out how to produce arbitrary
+        amounts of gold using it. Now it's my pleasure to present to you the
+        Philosopher's Stone. \emph{[She returns the stone.]}
+      \end{multicols}
+    \end{changemargin}
+  }
+
+  \jnote{2}{
+    Adapted from
+    \fixedhref{http://blog.ezyang.com/2013/04/a-classical-logic-fairy-tale/}{Edward
+    Yang's blog}.
+
+    The idea conveyed in the fairy tale is at the core of the
+    \emph{constructive} proof of $\neg\neg(A \vee \neg A)$. While the law of
+    excluded middle (\textsc{lem}) is not available in constructive
+    mathematics, up to a double negation every instance of it is.
+
+    This observation gives rise to the double negation translation, a
+    transformation of (statements and) proofs in classical logic to proofs in
+    intuitionistic logic, at the only expense of introducing double negations;
+    by following this up with Friedman's trick with the nontrivial exit
+    continuation (``Baby Barr Theorem''), we can in many cases even get rid of
+    these double negations in a second step.
+
+    Getting rid of applications of the law of excluded middle is in many
+    contexts (an amazing mind-boggingly wonder at first, but then) a routine
+    matter---see \href{https://rt.quasicoherent.io/}{here} for more details and
+    pointers to the literature.
+  }
+\end{frame}
+
 {\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{1.7em}\includegraphics[height=\paperheight]{sea-of-clouds-1}\end{minipage}}
 \begin{frame}{A case study in Hilbert's program}
+  \jnote{1}{
+    Well quasi-orders are an important notion in proof theory and termination
+    analysis.
+  }
+
+  \jnote{2-3}{
+    \vspace*{-0.5em}
+    The presented proof rests on the law of excluded middle and hence cannot
+    immediately be interpreted as a program for finding suitable indices~$i <
+    j$. However, constructive proofs are also possible (for instance by
+    induction on the value of a given term of the sequence, see
+    \href{https://www.math.lmu.de/~petrakis/Dickson.pdf}{Constructive
+    combinatorics of Dickson's Lemma} by Iosif Petrakis for several fine
+    quantitative results). And even more:
+    There is a procedure for regarding this proof---and many others in the
+    theory of well quasi-orders---as \emph{blueprints} for more informative
+    constructive proofs. This shall be our motto for today:
+
+    \emph{Do not take classical proofs literally, instead ask which
+    constructive proofs they are blueprints for.}
+  }
+
+  \jnote{3}{
+    The displayed stability results, along with several others, provide a
+    flexible toolbox for constructing new well quasi-orders from given ones.
+    However, with the classical formulation of \emph{well},
+    shortly to be renamed~``well\sinf'', these results are
+    \href{https://lets-play-agda.quasicoherent.io/Padova2025.Explorations.Forcing.Orthogonal.html}{inherently
+    classical} (even the weaker claim ``the product of two streamless sets is
+    streamless'' admits countermodels).
+
+    (In Higman's lemma, the set~$X^*$ of finite lists of elements of~$X$ is
+    equipped with the following ordering: We have~$(x_0 \dblcolon \ldots
+    \dblcolon x_{n-1} \dblcolon [\,]) \leq (y_0 \dblcolon \ldots \dblcolon
+    y_{m-1} \dblcolon [\,])$ iff there is an increasing injection~$f : \{
+    0,\ldots,n-1 \} \to \{ 0,\ldots,m-1 \}$ such that~$x_i \leq y_{f(i)}$ for all~$i < n$.
+    Kruskal's theorem is the result behind the celebrated enormous number
+    $\mathsf{TREE}(3)$.)
+  }
+
+  \jnote{7}{
+    Thanks to work by Thierry Coquand, Daniel Fridlender and Monika
+    Seisenberger, a constructive substitute is available, the notion well\ind.
+    In classical mathematics (where bar induction is available), this notion is
+    equivalent to well\sinf.
+
+    The predicate~$\mathsf{Good}$ of finite lists~$\sigma = (x_0 \dblcolon
+    \ldots \dblcolon x_{n-1} \dblcolon [\,])$ appearing in the definition
+    of~$G$ expresses that some earlier term is at most some later term,
+    i.\,e.\@ that there merely exist~$i < j$ such that~$x_i \leq x_j$.
+
+    The operator $\dblcolon^r$ is adding an element at the end.
+  }
+
+  \jnote{8}{
+    \begin{columns}[t]
+      \begin{column}{0.65\textwidth}
+        The original notion well\sinf:
+        \begin{itemize}
+          \justifying
+          \item[\cmark] short and simple
+          \\[-1.3em]
+          \item[\cmark] constructively satisfied for the main examples (but
+          only because of the theory around well\ind)
+          \\[-1.3em]
+          \item[\cmark] concise abstract proofs (albeit employing transfinite methods)
+          \\[-1.3em]
+          \item[\xmark] main results not constructively attainable
+          \\[-1.3em]
+          \item[\xmark] philosophically strenuous by the quantification over all sequences
+          \\[-1.3em]
+          \item[\xmark] not stable under ``change of base''---a forcing extension
+          of the universe may well contain more sequences than the base universe
+          \\[-1.3em]
+          \item[\xmark] negative (universal) condition
+        \end{itemize}
+      \end{column}
+
+      \begin{column}{0.33\textwidth}
+        The constructive substitute well\ind:
+        \begin{itemize}
+          \justifying
+          \item[\cmark] main results constructive
+          \\[-1.3em]
+          \item[\cmark] stable under change of base
+          \\[-1.3em]
+          \item[\cmark] positive (existential) condition
+          \\[-1.3em]
+          \item[\xmark] proofs intriguing, but also somewhat alien, not just some
+          trivial reshuffling of the classical arguments; classical sequence
+          language cannot be used
+        \end{itemize}
+      \end{column}
+    \end{columns}
+  }
+
   \textbf{Def.} Let~$(X,{\leq})$ be a quasi-order.
   \vspace*{-0.3em}
   \begin{itemize}
@@ -484,7 +706,7 @@
     \small
     \infer{\mathsf{now}\,p : G\,\sigma}{p : \mathsf{Good}\,\sigma}
     \qquad
-    \infer{\mathsf{later}\,f : G\,\sigma}{f : (x : X) \to G\,(\sigma ::^r x)}
+    \infer{\mathsf{later}\,f : G\,\sigma}{f : (x : X) \to G\,(\sigma \dblcolon^r x)}
   \]
   \vspace*{-1.3em}
 
@@ -499,15 +721,26 @@
       \end{column}
     \end{columns}
   }
-
-  \only<9>{
-    \vspace*{-0.0em}
-    \hil{Central insight:} A quasi-order $X$ is well\ind iff $\hil{$\necessary$}\,\forall\alpha : \NN \to
-    X\_ \exists i < j\_ \alpha\,i \leq \alpha\,j$.
-  }
 \end{frame}}
 
 \begin{frame}{Missing functions in the type of all functions?}
+  \jnote{1}{
+    The double negation translation technique fails to constructivize the two
+    proofs presented on the slide.
+
+    The reason is that, after applying the translation, the ``$I$-extracted
+    subsequence'' appearing in the proof on the left will no longer actually be
+    a function~$\NN \to X$. Instead, it will be a partially defined function
+    with the property that each number~$n$ does \emph{not~not} belong to the
+    domain. However, the assumption that~$X$ is well\sinf{} does not apply to
+    these kinds of generalized sequences.
+
+    In contrast, the notion well\ind{} is much stronger. If~$X$ is well\ind,
+    then not only will every actual sequence~$\NN \to X$ be good, but (in a
+    suitable sense) so will every up-to-$\neg\neg$-partially-defined sequence,
+    every multivalued sequence and many more kinds of generalized sequences.
+  }
+
   \begin{columns}[t]
     \begin{column}{0.57\textwidth}
       \begin{block}{Behold: A transfinite tool \ldots\phantom{g}}
@@ -589,10 +822,13 @@
     In set and type theory, we can also enlarge \hil{the mathematical universe}:
     \begin{itemize}
       \small
-      \item Force a \hil{generic sequence} $\NN \to X$. \formalized
+      \item Force a \hil{generic sequence} $\NN \to X$.
+            \fixedhref{https://lets-play-agda.quasicoherent.io/Padova2025.Explorations.Forcing.Cohen.html}{\formalized}
       \item Force a \hil{generic enumeration} $\NN \twoheadrightarrow X$
-            (even if $X$ is uncountable). \formalized
-      \item Force a \hil{generic prime ideal} of a given ring. \formalized
+            (even if $X$ is uncountable).
+            \fixedhref{https://lets-play-agda.quasicoherent.io/Padova2025.Explorations.Forcing.Levy.html}{\formalized}
+      \item Force a \hil{generic prime ideal} of a given ring.
+            \fixedhref{https://iblech.github.io/constructive-maximal-ideals/Forcing.Prime.html}{\formalized}
     \end{itemize}
     \pause
 
@@ -600,11 +836,14 @@
     \begin{itemize}
       \small
       \item A quasi-order~$X$ is well\ind iff the generic sequence~$\NN \to X$
-      is good. \formalized
+      is good.
+      \item A set is Noetherian iff the generic sequence~$\NN \to X$
+      has two repeated terms.
       \item A relation is well-founded iff for the generic descending chain,
-      $\bot$. \formalized
+      $\bot$.
       \item A ring element is nilpotent iff it is contained in the generic
-      prime ideal. \formalized
+      prime ideal.
+      \fixedhref{https://iblech.github.io/constructive-maximal-ideals/Forcing.Prime.html\#corollary}{\formalized}
     \end{itemize}
     \pause
 
@@ -613,13 +852,117 @@
     \small
       \item The generic ring is a field.
       \item \ \\[-1.2em]\mbox{For the generic surjection $f : \NN \twoheadrightarrow \RR$,
-      $\neg\neg \exists n \? \NN\_ f(n) = \pi \wedge f(n+1) = e$. \formalized}
+      $\neg\neg \exists n \? \NN\_ f(n) = \pi \wedge f(n+1) = e$.
+      \fixedhref{https://lets-play-agda.quasicoherent.io/Padova2025.Explorations.Forcing.Levy.html}{\formalized}}
     \end{itemize}
   \end{changemargin}
+
+  \jnote{1}{
+    The technique for enlarging the mathematical universe is called
+    \emph{forcing} and was originally pioneered by Paul Cohen. Set theorists
+    use forcing to construct new models of set theory from given ones, in order
+    to explore the range of set-theoretic possibility. For instance, by forcing
+    we can construct models of~\textsc{zfc} validating the continuum hypothesis
+    and also models which falsify it.
+
+    We here refer to a simplification of original forcing which is useful in a
+    constructive metatheory. At its core, every forcing extension is just a
+    formula and proof translation of a certain form. For instance, there is a
+    forcing extension validating~\bad{\textsc{lem}} even if the base universe
+    does not; this forcing extension is not a deep mystery, for a statement holds
+    in that forcing extension iff its double negation translation holds in the
+    base universe and it is well-known that the double negation translation
+    of every instance of~\bad{\textsc{lem}} is an intuitionistic tautology.
+
+    \href{https://www.speicherleck.de/iblech/stuff/slides-herrsching2023.pdf}{Here
+    is a set of slides on constructive forcing}, and Section~4 of
+    \href{https://raw.githubusercontent.com/iblech/constructive-maximal-ideals/master/tex/extended.pdf}{this
+    joint paper with Peter Schuster} contains a written summary of constructive
+    forcing.
+  }
+
+  \jnote{2}{
+    Forcing the existence of a new function~$\NN \to X$ is also called
+    \emph{Cohen forcing}. Forcing the existence of a new surjection is called
+    \emph{Lévy collapse}. Forcing the existence of a prime ideal does not have
+    an established name, perhaps it should be called \emph{Zariski forcing}; it
+    has been explored by Thierry Coquand and others of the constructive algebra
+    crew.
+
+    The multiversal yoga allows us to reason with the good notion well\ind{}
+    using the simple language of well\sinf, and similarly with several other
+    notions.
+  }
+
+  \jnote{3}{
+    For more on the mystery of nongeometric sequents, see
+    \href{https://www.speicherleck.de/iblech/stuff/slides-birmingham2019.pdf}{this
+    set of slides}.
+  }
 \end{frame}}
 
 {\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{4.95cm}\includegraphics[width=\paperwidth]{topos-horses-lighter}\end{minipage}}
 \begin{frame}{A modal language for harnessing the multiverse}
+  \jnote{1}{
+    By \emph{topos}, we mean \emph{Grothendieck topos}. In constructive
+    forcing, a ``forcing extension of the base universe'' is exactly the same
+    thing as a Grothendieck topos.
+
+    A particular member of the rich and varied landscape of toposes is the
+    \emph{trivial topos}, in which every statement whatsoever holds. By
+    restricting to positive toposes, we exclude this special case.
+
+    For positive toposes~$\E$, a geometric implication holds in~$\E$ iff it
+    holds in the base universe. For positive overt toposes~$\E$, we even have
+    that a bounded first-order formula holds in~$\E$ iff it holds in the base.
+    Hence, for the purpose of verifying a bounded first-order assertion about
+    the base, we can freely pass to a positive overt topos with problem-adapted
+    better higher-order properties (such as that some uncountable set from the
+    base now appears countable, or that an infinite sequence whose existence is
+    predicted by failing dependent choice now actually exists).
+
+    \href{https://www.speicherleck.de/iblech/stuff/early-draft-modal-multiverse.pdf}{Here
+    is a rough early draft of a preprint with more details about the modal
+    multiverse.}
+  }
+
+  \jnote{2}{
+    The idea to study the modal multiverse of toposes in a principled manner
+    was proposed by Alexander Oldenziel in 2016. \emph{Foreshadowed by:}
+    \begin{itemize}
+      \item[1984\phantom{s}] André Joyal, Miles Tierney. ``An extension of the Galois theory of Grothendieck''.
+      \\[-1em]
+      \item[1987\phantom{s}] Andreas Blass. ``Well-ordering and induction in intuitionistic logic and topoi''.
+      \\[-1em]
+      \item[2010s] Milly Maietti, Steve Vickers. Ongoing work on arithmetic universes.
+      \\[-1em]
+      \item[2011\phantom{s}] Joel David Hamkins. ``The set-theoretic multiverse''.
+      \\[-1em]
+      \item[2013\phantom{s}] Shawn Henry. ``Classifying topoi and preservation of higher order logic by geometric morphisms''.
+    \end{itemize}
+  }
+
+  \jnote{3}{
+    With the modal language we seek to provide an accessible and modular
+    framework for constructivization results.
+
+    For instance, conservativity of classical logic over intuitionistic logic
+    for geometric implications (known under various names such as Barr's
+    theorem, Friedman's trick, escaping the continuation monad, \ldots) is
+    packaged up by the observation that \emph{somewhere}, the law of excluded
+    middle holds.
+
+    Another example:
+    In the community around Krull's lemma, it is well-known that
+    we can constructively infer that a given ring element~$x \in A$ is nilpotent from
+    knowing that it is contained in the \emph{generic prime ideal} of~$A$. This entity
+    is not actually an honest prime ideal of the ring~$A$ in the base
+    universe, but a certain combinatorial notion (efficiently dealt with using
+    \emph{entailment relations}). Constructive forcing allows us to reify the
+    generic prime ideal as an actual prime ideal in a suitable forcing extension,
+    so in a suitable topos (a version of the little Zariski topos of the ring).
+  }
+
   \textbf{Def.} A statement~$\varphi$ holds \ldots
   \vspace*{-0.3em}
   \begin{itemize}
@@ -636,16 +979,18 @@
   We then have:
   \begin{enumerate}
     \item $\mathsf{Well}\ind(X,{\le}) \Longleftrightarrow
-    \necessary\mathsf{Well}\sinf(X,{\le})$. \formalized
+    \necessary\mathsf{Well}\sinf(X,{\le})$.
     \item $(\possible\varphi) \Longleftrightarrow \varphi$,
     if $\varphi$ is a geometric implication (``$\forall\ldots\forall (\%
     \Rightarrow \%)$'', with no~$\forall$ nor~$\Rightarrow$
-    in~$\%$).~\formalized
+    in~$\%$).~\fixedhref{https://iblech.github.io/constructive-maximal-ideals/Forcing.Semantics.html\#CoherentEquivalence}{\formalized}
     \item $(\xpossible\varphi) \Longleftrightarrow \varphi$,
-    if~$\varphi$ is a bounded first-order statement. \formalized
+    if~$\varphi$ is a bounded first-order statement.
+    \fixedhref{https://iblech.github.io/constructive-maximal-ideals/Forcing.Semantics.html\#1\%CB\%A2\%E1\%B5\%97OrderEquivalence}{\formalized}
     \item For every inhabited type~$X$, $\xpossible\necessary
     \mathsf{Countable}(X)$, where~$\mathsf{Countable}(X) \defeqv (\exists f : \NN
-    \to X\_ \mathsf{Surjective}(f))$. \formalized
+    \to X\_ \mathsf{Surjective}(f))$.
+    \fixedhref{https://lets-play-agda.quasicoherent.io/Padova2025.Explorations.Forcing.Levy.html}{\formalized}
 
     So being countable is a \hil{button}.
     \item $\possible \badbox{\textsc{lem}}$.
@@ -661,6 +1006,13 @@
 \end{frame}}
 
 \begin{frame}{The plain combinatorics of toposes}
+  \jnote{3-}{
+    Proofs (about the base universe) are (pure) programs; proofs about a forcing
+    extension are effectful programs unfolding in the~$\nabla$ monad.
+
+    The $\nabla$ monad is a refinement of the (monotonic) state monad.
+  }
+
   \begin{enumerate}\justifying
     \item Realize a generic gadget as some kind of limit of \hil{approximations}
     from the base universe. For the generic function $f_0 : \NN \to X$:
@@ -684,7 +1036,8 @@ L = List X
 
     \pause
     \item \hil{Reinterpret}, in a mechanical fashion, assertions about the generic
-    gadget as assertions about its approximations~(\formalized).
+    gadget as assertions about its
+    approximations~(\fixedhref{https://iblech.github.io/constructive-maximal-ideals/Forcing.Semantics.html}{\formalized}).
 
     {\small\begin{itemize}
     \item We have the \hil{stage-dependent proposition} ``$f_0\,n = x$'',
@@ -693,7 +1046,8 @@ L = List X
     \medskip
 
     \pause
-    \item Be prepared to \hil{evolve approximations} (\formalized).
+    \item Be prepared to \hil{evolve approximations}
+    (\fixedhref{https://iblech.github.io/constructive-maximal-ideals/Forcing.Base.html}{\formalized}).
 
     {\small\begin{code}
 data ∇ (P : L → Prop) : L → Prop where
@@ -718,6 +1072,12 @@ data ∇ (P : L → Prop) : L → Prop where
 \end{frame}
 
 \begin{frame}{Formal metatheory}
+  \jnote{2}{
+    \href{https://msp.cis.strath.ac.uk/types2025/slides/TYPES2025-slides57.pdf}{Exciting
+    ongoing work on split type theory} by Martin Baillon, Assia Mahboubi and
+    Pierre-Marie Pédrot!
+  }
+
   \small
   \good{\cmark{}} \emph{There are type-theoretic multiverses,} such as
   \begin{itemize}
@@ -758,6 +1118,27 @@ data ∇ (P : L → Prop) : L → Prop where
 
 {\renewcommand{\insertframeextra}{a}
 \begin{frame}{Increasing subsequences as convenient fictions}
+  \jnote{1}{
+    On this slide~$\nabla$ is the monad described on slide 5,
+    and~$\nabla^\nnearrow$ is the variant where lists are only allowed to grow
+    in a monotonically increasing manner; so~$\nabla$ is the monad for the
+    generic sequence~$\NN \to X$, while~$\nabla^\nnearrow$ is the monad for the
+    generic increasing sequence~$\NN \to X$.
+
+    The displayed multiversal proof gives a positive answer to a question posed
+    by Stefano Berardi, Gabriele Buriola and Peter Schuster, see
+    \href{https://www.speicherleck.de/iblech/stuff/slides-abmv2024.pdf\#page=16}{this
+    set of slides}.
+
+    At the end of the day, this proof yields a concrete algorithm (see
+    \href{https://www.speicherleck.de/iblech/stuff/dickson/implicational.pl}{here}
+    for manually-extracted Perl code). Given an infinite sequence, this
+    algorithm seeks, in a certain systematic but not exhaustive manner, a
+    sufficiently long monotonic subsequence, making judicious use of
+    backtracking. This search terminates, though this fact is not obvious just
+    by looking at the algorithm.
+  }
+
   \justifying
   Let~$X$ be a quasi-order.
   Let~$B : \mathsf{List}\,X \to \mathsf{Prop}$ be a monotone predicate.
@@ -777,7 +1158,8 @@ data ∇ (P : L → Prop) : L → Prop where
 
   \begin{block}{Constructive reimagination}
     \textbf{Thm.} If~$X$ is well\ind and if~$\nabla^\nnearrow\,B\,[\,]$,
-    then~$\nabla\,B\,[\,]$. \formalized
+    then~$\nabla\,B\,[\,]$.
+    \fixedhref{https://www.speicherleck.de/iblech/stuff/dickson//Dickson.html}{\formalized}
   \end{block}
   \vspace*{-0.4em}
   {\small\emph{Proof.} Let~$\alpha : \NN \to X$ be a sequence (in an arbitrary topos).
@@ -794,6 +1176,23 @@ data ∇ (P : L → Prop) : L → Prop where
 {\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{5.95cm}\includegraphics[width=\paperwidth]{fr1}\end{minipage}}
 \renewcommand{\insertframeextra}{b}
 \begin{frame}{Maximal ideals as convenient fictions}
+  \jnote{1-}{
+    The displayed classical proof is quite efficient from the point of view of
+    organizing mathematical knowledge, as it quickly reduces the general
+    situation of dealing with an arbitrary ring to dealing with a field.
+    Alas, read literally, it is hopeless ineffective.
+  }
+
+  \jnote{2-}{
+    By employing modal language, we can closely mimic the original proof and be
+    fully constructive at the same time.
+  }
+
+  \jnote{3-}{
+    By unwinding all modal definitions, the modal proof can be unrolled to a
+    fully explicit computation.
+  }
+
   \justifying
   Let~$A$ be a commutative ring with unit.
 
@@ -848,13 +1247,15 @@ data ∇ (P : L → Prop) : L → Prop where
 
   \emph{Multiversal constructive proof.}
   We may work \emph{somewhere} where \good{\textsc{lem}} holds. So \good{assume not}.
-  \emph{Proximally,} there is a \good{maximal ideal}~$\mmm$~(\formalized).
+  \emph{Proximally,} there is a \good{maximal
+  ideal}~$\mmm$~(\fixedhref{https://iblech.github.io/constructive-maximal-ideals/index.html\#§4.§4-4}{\formalized}).
   The matrix~$M$ is still surjective \emph{there}, and also over~$A/\mmm$. Since~$A/\mmm$ is a field, this
   is a contradiction to basic linear algebra. \qed
   \medskip
   \pause
 
-  \emph{Unrolled constructive proof (special case).}
+  \emph{Unrolled constructive proof (special case,
+  \fixedhref{https://iblech.github.io/constructive-maximal-ideals/index.html\#§4.TestCase}{\formalized}).}
   Write~$M =
   \left(\begin{smallmatrix}x\\y\end{smallmatrix}\right)$. By surjectivity,
   have~$u, v$ with
@@ -883,7 +1284,7 @@ data ∇ (P : L → Prop) : L → Prop where
     there is a number~$n : \NN$ such that~$x_n \in
     (x_0,\ldots,x_{n-1})$.
     \item Noetherian\ind{} iff a certain inductively defined condition holds
-    [Coquand–Persson].
+    \fixedhref{https://dl.acm.org/doi/10.5555/646538.696017}{[Coquand–Persson]}.
   \end{itemize}
 
   We then have:
@@ -897,20 +1298,32 @@ data ∇ (P : L → Prop) : L → Prop where
     \necessary\possible\mathsf{Noetherian}\sinf(A).
   \end{align*}
 
-  Hence, from the corresponding classical proofs, we can extract
+  With this observation, from their classical counterparts, we can extract
   constructive proofs of:
   \begin{enumerate}
     \item Hilbert's basis theorem: If $A$ is Noetherian\ind, then so is $A[X]$.
     \item Locality: If~$1 = f_1+\ldots+f_n$ and if each
     ring~$A[f_i^{-1}]$ is Noetherian\ind, then so is~$A$. \\
     (As a consequence, $A$ is Noetherian\ind
-    iff~$\mathcal{O}_{\mathrm{Spec}(A)}$ is.)
+    iff algebraic geometry's~$\mathcal{O}_{\mathrm{Spec}(A)}$ is.)
   \end{enumerate}
 \end{frame}
 
 \backupstart
 
 \begin{frame}[plain]
+  \jnote{1}{
+    \href{https://lets-play-agda.quasicoherent.io/}{Let's play Agda}, an
+    interactive course on Agda, complementing the
+    \href{https://agdapad.quasicoherent.io/}{Agdapad}.
+
+    \href{https://www.uni-augsburg.de/en/fakultaet/mntf/math/prof/geom/workshop-aimath/}{AI
+    Transforms Maths Research}, a workshop in Augsburg.
+
+    \href{https://conferences.cirm-math.fr/3377.html}{Synthetic mathematics}, a
+    conference in Luminy.
+  }
+
   \begin{columns}[c]
     \begin{column}{0.45\textwidth}
       \includegraphics[width=0.95\textwidth]{lets-play-agda}

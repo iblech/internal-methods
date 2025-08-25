@@ -563,7 +563,7 @@
     \textbf{Scholium
     \fixedhref{https://www2.mathematik.tu-darmstadt.de/~kohlenbach/inconsistentfeasibility.pdf}{[Kohlenbach
     2018]}.} In this situation, let~$b$ be an upper bound on the norm of~$x$ and let~$K$ be an
-    upper bound for the norm of~$N$ arbitrary points $c_i \in C_i$. Then
+    upper bound on the norm of~$N$ arbitrary points $c_i \in C_i$. Then
     \[ \forall \varepsilon > 0\_
       \forall n \geq \phi(\varepsilon,N,b,K)\_
       \|T^{n+1}x - T^nx\| < \varepsilon, \]
@@ -596,6 +596,26 @@
   \end{mining}
 \end{frame}
 
+\begin{frame}{Backed by logical metatheorems?}
+  \hil{Metatheorems} have been and are being developed which \ldots
+  \begin{enumerate}
+    \item guarantee the \hil{extractability} of suitable numerical information in principle
+    (bounds on norms, convergence rates, moduli of uniqueness, rates of
+    asymptotic regularity, \ldots),
+    \item describe an \hil{algorithm} for carrying out the extraction and
+    \item support \hil{modular treatments} of auxiliary lemmas,
+  \end{enumerate}
+  \bad{\textbf{provided}} the input proof is supplied in a
+  certain \hil{formal system}.
+
+  NB: The \hil{quality} of the extracted data depends on the
+  \hil{sophistication} of the \hil{logical~principles} used in the proof
+  (Heine--Borel, Bolzano--Weierstraß, \ldots).
+
+  \bad{\textbf{In practice (2025):}} Algorithms \bad{\textbf{not}} used, only followed
+  as \bad{\textbf{rough guidelines}}, combined with hand-rolled optimizations.
+\end{frame}
+
 \end{document}
 
 Beyond verified correctness and collaborative proof engineering: Proofs as programs?
@@ -611,13 +631,12 @@ engineering. In the talk, we will explore a case study from commutative algebra
 on this kind of proof mining, obtained in joint work with Peter Schuster.
 
 - Start:
-
   - classical logic fairy tale?
   - overview as in Swansea talk
 
 - A glimpse of proof mining
   - Euclid proof
-  - Gauß proof
+  - Euler proof
   - Successes of proof mining in diverse fields
   - Example: running Euclid
 
@@ -639,3 +658,7 @@ on this kind of proof mining, obtained in joint work with Peter Schuster.
 
 - Agda icons
 - convenient fictions
+
+- formulation problem
+- infinite objects
+- proving = programming

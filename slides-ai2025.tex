@@ -587,7 +587,7 @@
   Let~$n \in \NN$. Let~$P_n$ be the space of polynomials of degree at most~$n$. \\
   Let~$f \in C[0,1]$ be a continuous function.
 
-  \textbf{Theorem.} There is a \hil{unique} best~$L_1$-approximation of~$f$ in~$P_n$.
+  \textbf{Theorem.} There is a \hil{unique} best~$L^1$-approximation of~$f$ in~$P_n$.
   \pause
 
   Let~$\omega$ be a \hil{modulus of uniform continuity} for~$f$,
@@ -610,26 +610,29 @@
 \renewcommand{\insertframeextra}{}
 
 \begin{frame}{Backed by logical metatheorems?}
-  \hil{Metatheorems} have been and are being developed which \ldots
+  \hil{Metatheorems} for backing proof mining have been and are being developed which \ldots
   \begin{enumerate}
-    \item guarantee the \hil{extractability} of suitable numerical information in principle
-    (bounds on norms, convergence rates, moduli of uniqueness, rates of
-    asymptotic regularity, \ldots),
-    \item describe an \hil{algorithm} for carrying out the extraction and
-    \item support \hil{modular treatments} of auxiliary lemmas,
+    \small
+    \item[{\includegraphics[height=1em,valign=c]{emoji-abacus}}] guarantee the
+    \hil{extractability} of suitable numerical information in principle \\
+    (bounds, convergence rates, moduli of uniqueness, rates of asymptotic
+    regularity, \ldots),
+    \item[{\includegraphics[height=1em,valign=c]{emoji-robot}}] describe an \hil{algorithm} for carrying out the extraction and
+    \item[{\includegraphics[height=1em,valign=c]{emoji-package}}] support \hil{modular treatments} of auxiliary lemmas,
   \end{enumerate}
-  \bad{\textbf{provided}} the input proof is supplied in a
-  certain \hil{formal system}.
-  \pause
-
-  NB: The \hil{quality} of the extracted data depends on the
-  \hil{sophistication} of the \hil{logical~principles} used in the proof
-  (Heine--Borel, Bolzano--Weierstraß, \ldots).
+  \bad{\textbf{provided}} the input proof is \hil{formally} supplied in a
+  \hil{certain system}.
+  \fixedhref{https://www2.mathematik.tu-darmstadt.de/~kohlenbach/novikov.pdf}{[Kohlenbach--Oliva 2002]}
   \pause
 
   \bad{\textbf{In practice (2025):}} Algorithms \bad{\textbf{not}} used, only followed
   as \bad{\textbf{rough guidelines}}, combined with hand-rolled optimizations.
   \hil{Let us explore tool support!}
+  \pause
+
+  NB: The \hil{quality} of the extracted data depends on the
+  \hil{sophistication} of the \hil{logical~principles} used in the proof
+  (Heine--Borel, Bolzano--Weierstraß, \ldots).
 \end{frame}
 
 {\usebackgroundtemplate{\begin{minipage}{\paperwidth}\centering\vspace*{-0em}\includegraphics[width=\paperwidth]{curry-howard-faded}\end{minipage}}
@@ -644,7 +647,8 @@
     stating a claim & \connection{emoji-megaphone} & writing down a type signature \\
     using a lemma & \connection{emoji-link} & calling a function \\
     {\ \ \ \ \,}coming up with an auxiliary lemma & \connection{emoji-lightbulb} & coming up with an auxiliary function \\
-    committing a logical fallacy & \connection{emoji-cross} & committing a type error \\
+    committing a logical error & \connection{emoji-cross} & committing a type error \\
+    reasoning circularly & \connection{emoji-cyclone} & getting stuck in an infinite loop \\
     \pause
     --- & \connection{emoji-explosion} & encountering a runtime bug
   \end{tabular}
@@ -657,6 +661,7 @@
   \end{hilblock}
 \end{frame}}
 
+\newcommand{\laterbad}[1]{\only<1>{#1}\only<2->{\bad{#1}}}
 \begin{frame}{Three case studies}
   \bigskip
   \begin{columns}[c]
@@ -668,6 +673,7 @@
         \justifying
         \textbf{Theorem.}
         For every natural number~$n$, there is a prime larger than~$n$.
+        \fixedhref{https://unimath.github.io/agda-unimath/elementary-number-theory.infinitude-of-primes.html}{\formalized}
       \end{simpleblock}
       \\[0.3em]
 
@@ -685,10 +691,11 @@
         \textbf{Theorem.}
         Every infinite sequence~$f : \NN \to \NN$ is \emph{good}
         in that there are numbers $i < j$ such that~$f(i) \leq f(j)$.
+        \fixedhref{https://lets-play-agda.quasicoherent.io/Padova2025.ComputationalContent.Dickson.html}{\formalized}
       \end{simpleblock}
       \\[0.3em]
 
-      \emph{Proof.} There is a \bad{minimal value}~$f(i)$. Set~$j \defeq i+1$. \qed
+      \emph{Proof.} There is a \laterbad{minimal value}~$f(i)$. Set~$j \defeq i+1$. \qed
     \end{column}
   \end{columns}
   \bigskip
@@ -703,16 +710,133 @@
         \textbf{Theorem.}
         Let~$M$ be a surjective matrix with more rows than columns over a
         commutative ring~$A$. Then~$1 = 0$ in~$A$.
+        \fixedhref{https://iblech.github.io/constructive-maximal-ideals/Krull.Dynamical.html\#example}{\formalized}
       \end{simpleblock}
       \\[0.3em]
 
       \justifying\emph{Proof.}
-      \bad{Assume not.} Then there is~a \bad{maximal ideal} $\mmm$.
+      \laterbad{Assume not.} Then there is a \laterbad{maximal ideal}~$\mmm$.
       The matrix is still surjective over~$A/\mmm$. Since~$A/\mmm$ is a field, this
       is a contradiction to basic linear algebra. \qed
     \end{column}
   \end{columns}
 \end{frame}
+
+\renewcommand{\insertframeextra}{a}
+\begin{frame}{A case study in commutative algebra}
+  \begin{simpleblock}
+    \textbf{Theorem.}
+    Let~$M$ be a surjective matrix with more rows than columns over a
+    commutative ring~$A$. Then~$1 = 0$ in~$A$.
+    \fixedhref{https://iblech.github.io/constructive-maximal-ideals/Krull.Dynamical.html\#example}{\formalized}
+  \end{simpleblock}
+  \\[0.3em]
+
+  \justifying\emph{Proof.}
+  \bad{Assume not.} Then there is a \bad{maximal ideal}~$\mmm$.
+  The matrix is still surjective over~$A/\mmm$. Since~$A/\mmm$ is a field, this
+  is a contradiction to basic linear algebra. \qed
+
+  {\centering\scalebox{0.9}{\begin{tikzpicture}
+    \node (0) at (0,1) {$(0) = \{0\}$};
+    \node (1) at (0,5) {$(1) = \ZZ$};
+    \node (2) at (-2,4) {$(2)$};
+    \node [right of=2] (3) {$(3)$};
+    \node [below of=2] (4) {$(4)$};
+    \node [below of=2, xshift=0.7cm] (6) {$(6)$};
+    \node [right of=3] (5) {$(5)$};
+    \node [right of=5] (7) {$(7)$};
+    \node [right of=7] (7d) {$\ldots$\phantom{(}};
+    \node [right of=7d, xshift=1cm, yshift=-1cm] (max)
+    {\small\it maximal among the proper ideals};
+    \node [below of=4] (8) {$(8)$};
+    \node [right of=8, xshift=3cm] (8d) {$\ldots$};
+    \draw (0) -- (8);
+    \draw (0) -- (8d);
+    \draw (0) -- (6);
+    \draw (2) -- (1);
+    \draw (3) -- (1);
+    \draw (5) -- (1);
+    \draw (7) -- (1);
+    \draw (7d) -- (1);
+    \draw (4) -- (2);
+    \draw (8) -- (4);
+    \draw (6) -- (2);
+    \draw (6) -- (3);
+    \draw [mypurple!30, thick, shorten <=-2pt, shorten >=-2pt, ->] (max) to [out=120, in=-30] (7d);
+    \begin{pgfonlayer}{background}
+      \draw[decorate, very thick, draw=mypurple!30]
+        ($(2.south west) + (8pt, 0)$) arc(270:180:8pt) --
+        ($(2.north west) + (0, -8pt)$) arc(180:90:8pt) --
+        ($(7d.north east) + (-8pt, 0)$) arc(90:0:8pt) --
+        ($(7d.south east) + (0, 8pt)$) arc(0:-90:8pt) --
+        cycle;
+    \end{pgfonlayer}
+  \end{tikzpicture}}\par}
+  \pause
+
+  \begin{mining}[0.8\textwidth]\emph{Proof.}
+  Write~$M = \left(\begin{smallmatrix}x\\y\end{smallmatrix}\right)$. By surjectivity,
+  have~$u, v \in A$ with
+  $
+    u \left(\begin{smallmatrix}x\\y\end{smallmatrix}\right) = \left(\begin{smallmatrix}1\\0\end{smallmatrix}\right)
+  $ and $
+    v \left(\begin{smallmatrix}x\\y\end{smallmatrix}\right) = \left(\begin{smallmatrix}0\\1\end{smallmatrix}\right)
+  $.
+  Hence
+  $
+    1 = (vy)(ux) = (uy)(vx) = 0
+  $. \qed
+  \end{mining}
+\end{frame}
+
+\addtocounter{framenumber}{-1}
+\renewcommand{\insertframeextra}{b}
+\begin{frame}{Maximal ideals as convenient fictions?}
+  \begin{itemize}
+    \item[\triang] In \bad{classical mathematics}, every ring has a maximal ideal
+    by \bad{Zorn's lemma}.
+    \bigskip\pause
+
+    \item[\triang] Without \bad{Zorn}, at least every \bad{countable} ring
+    $A = \{ x_0, x_1, \ldots \}$ has a maximal ideal.
+
+    \small
+    -- Iterative construction given
+    an ideal membership test
+    \fixedhref{https://link.springer.com/article/10.1007/BF01454872}{[Krull
+    1929]}:
+    \begin{align*}
+      \mmm_0 &= \{ 0 \}, &
+      \mmm_{n+1} &= \begin{cases}
+        \mmm_n + (x_n), & \text{if $1 \not\in \mmm_n + (x_n)$}, \\
+        \mmm_n, & \text{else.}
+      \end{cases}
+      \intertext{\visible<3->{-- Also without membership test!
+      \fixedhref{https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=a7ff57cacdad6735040459dcf450b231948dbb2f}{[Krivine
+      1996]},
+      \fixedhref{https://www.sciencedirect.com/science/article/pii/S0168007204000181}{[Berardi--Valentini
+      2004]}}}
+      \action<3->{\mmm_0 &= \{ 0 \}, &
+      \mmm_{n+1} &= \mmm_n + (\underbrace{\{ x_n \,|\, 1 \not\in \mmm_n + (x_n)
+      \}}_{\text{a certain subsingleton set}})}
+    \end{align*}
+    \bigskip
+    \pause
+    \pause
+
+    \normalsize
+    \justifying
+    \item[\triang] Without \bad{Zorn}, \hil{every} ring has a maximal ideal in
+    a ``suitable \hil{forcing extension} of the universe''
+    \fixedhref{https://raw.githubusercontent.com/iblech/constructive-maximal-ideals/master/tex/extended.pdf}{[B.--Schuster
+    2024]}.
+    In plain terms:
+    \hil{Approximate} a (perhaps non-existing) surjection~$\NN \twoheadrightarrow A$
+    by partial functions which can \hil{grow on demand}.
+  \end{itemize}
+\end{frame}
+\renewcommand{\insertframeextra}{}
 
 \end{document}
 
@@ -754,9 +878,3 @@ on this kind of proof mining, obtained in joint work with Peter Schuster.
   - support for refactoring proofs (for instance for inserting ¬¬'s)
   - resulting constructive proofs/algorithms can look "alien" (= artificial intelligence)
 
-- Agda icons
-- convenient fictions
-
-- formulation problem
-- infinite objects
-- proving = programming

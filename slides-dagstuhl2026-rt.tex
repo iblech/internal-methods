@@ -1,0 +1,531 @@
+\documentclass[12pt,utf8,notheorems,compress,t,aspectratio=169]{beamer}
+\usepackage{etex}
+
+\usepackage{pgfpages}
+\usepackage[export]{adjustbox}
+
+% Workaround for the issue described at
+% https://tex.stackexchange.com/questions/164406/beamer-using-href-in-notes.
+\newcommand{\fixedhref}[2]{\makebox[0pt][l]{\hspace*{\paperwidth}\href{#1}{#2}}\href{#1}{#2}}
+
+\usepackage[english]{babel}
+
+\usepackage{mathtools}
+\usepackage{xspace}
+\usepackage{booktabs}
+\usepackage{stmaryrd}
+\usepackage{amssymb}
+\usepackage{manfnt}
+\usepackage{array}
+\usepackage{ragged2e}
+\usepackage{multicol}
+\usepackage{tabto}
+\usepackage{xstring}
+\usepackage{proof}
+\usepackage[all]{xy}
+\xyoption{rotate}
+\usepackage{tikz}
+\usetikzlibrary{calc,shapes,shapes.callouts,shapes.arrows,patterns,fit,backgrounds,decorations.pathmorphing,positioning,svg.path}
+\hypersetup{colorlinks=true}
+
+\DeclareFontFamily{U}{bbm}{}
+\DeclareFontShape{U}{bbm}{m}{n}
+   {  <5> <6> <7> <8> <9> <10> <12> gen * bbm
+      <10.95> bbm10%
+      <14.4>  bbm12%
+      <17.28><20.74><24.88> bbm17}{}
+\DeclareFontShape{U}{bbm}{m}{sl}
+   {  <5> <6> <7> bbmsl8%
+      <8> <9> <10> <12> gen * bbmsl
+      <10.95> bbmsl10%
+      <14.4> <17.28> <20.74> <24.88> bbmsl12}{}
+\DeclareFontShape{U}{bbm}{bx}{n}
+   {  <5> <6> <7> <8> <9> <10> <12> gen * bbmbx
+      <10.95> bbmbx10%
+      <14.4> <17.28> <20.74> <24.88> bbmbx12}{}
+\DeclareFontShape{U}{bbm}{bx}{sl}
+   {  <5> <6> <7> <8> <9> <10> <10.95> <12> <14.4> <17.28>%
+      <20.74> <24.88> bbmbxsl10}{}
+\DeclareFontShape{U}{bbm}{b}{n}
+   {  <5> <6> <7> <8> <9> <10> <10.95> <12> <14.4> <17.28>%
+      <20.74> <24.88> bbmb10}{}
+\DeclareMathAlphabet{\mathbbm}{U}{bbm}{m}{n}
+\SetMathAlphabet\mathbbm{bold}{U}{bbm}{bx}{n}
+
+\usepackage{pifont}
+\newcommand{\cmark}{\ding{51}}
+\newcommand{\xmark}{\ding{55}}
+\DeclareSymbolFont{extraup}{U}{zavm}{m}{n}
+\DeclareMathSymbol{\varheart}{\mathalpha}{extraup}{86}
+
+\graphicspath{{images/}}
+
+\usepackage[protrusion=true,expansion=true]{microtype}
+
+\setlength\parskip{\medskipamount}
+\setlength\parindent{0pt}
+
+\title{Realizability theory}
+
+\author{Ingo Blechschmidt}
+\date{March 2025}
+
+%\setbeameroption{show notes on second screen=bottom}
+\newcommand{\jnote}[2]{\only<#1>{\note{\setlength\parskip{\medskipamount}\footnotesize\justifying#2\par}}}
+
+%\useinnertheme[shadow=true]
+\setbeamerfont{block title}{size={}}
+
+\useinnertheme{rectangles}
+
+\usecolortheme{orchid}
+\usecolortheme{seahorse}
+\definecolor{mypurple}{RGB}{150,0,255}
+\definecolor{mypurpledark}{RGB}{100,0,150}
+\setbeamercolor{structure}{fg=mypurple}
+\setbeamercolor*{title}{bg=mypurple,fg=white}
+\setbeamercolor*{titlelike}{bg=mypurple,fg=white}
+\setbeamercolor{frame}{bg=black}
+
+\usefonttheme{serif}
+\usepackage[T1]{fontenc}
+\usepackage{libertine}
+
+% lifted from https://arxiv.org/abs/1506.08870
+\DeclareFontFamily{U}{min}{}
+\DeclareFontShape{U}{min}{m}{n}{<-> udmj30}{}
+\newcommand\yon{\!\text{\usefont{U}{min}{m}{n}\symbol{'210}}\!}
+
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\M}{\mathcal{M}}
+\renewcommand{\AA}{\mathbb{A}}
+\newcommand{\BB}{\mathbb{B}}
+\newcommand{\pp}{\mathbbm{p}}
+\newcommand{\MM}{\mathbb{M}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\G}{\mathcal{G}}
+\newcommand{\J}{\mathcal{J}}
+\newcommand{\GG}{\mathbb{G}}
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\K}{\mathcal{K}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\TT}{\mathbb{T}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\CC}{\mathbb{C}}
+\renewcommand{\P}{\mathcal{P}}
+\newcommand{\aaa}{\mathfrak{a}}
+\newcommand{\bbb}{\mathfrak{b}}
+\newcommand{\ccc}{\mathfrak{c}}
+\newcommand{\ppp}{\mathfrak{p}}
+\newcommand{\fff}{\mathfrak{f}}
+\newcommand{\mmm}{\mathfrak{m}}
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\defeqv}{\vcentcolon\equiv}
+\newcommand{\Cov}{\mathrm{Cov}}
+\renewcommand{\_}{\mathpunct{.}}
+\newcommand{\?}{\,{:}\,}
+\newcommand{\speak}[1]{\ulcorner\text{\textnormal{#1}}\urcorner}
+\newcommand{\inv}{inv.\@}
+\newcommand{\forces}{\vDash}
+\newcommand{\ind}{\ensuremath{_\text{ind}}\xspace}
+\newcommand{\sinf}{\ensuremath{_\infty}}
+\newcommand{\impl}{\ensuremath{_\text{impl}}\xspace}
+
+\setbeamertemplate{blocks}[shadow=false]
+
+\newenvironment{indentblock}{%
+  \list{}{\leftmargin\leftmargin}%
+  \item\relax
+}{%
+  \endlist
+}
+
+% Adapted from https://latex.org/forum/viewtopic.php?t=2251 (Stefan Kottwitz)
+\newenvironment<>{hilblock}{
+  \begin{center}
+    \begin{minipage}{9.05cm}
+      \setlength{\textwidth}{9.05cm}
+      \begin{actionenv}#1
+        \def\insertblocktitle{}
+        \par
+        \usebeamertemplate{block begin}}{
+        \par
+        \usebeamertemplate{block end}
+      \end{actionenv}
+    \end{minipage}
+  \end{center}}
+
+\newenvironment{changemargin}[2]{%
+  \begin{list}{}{%
+    \setlength{\topsep}{0pt}%
+    \setlength{\leftmargin}{#1}%
+    \setlength{\rightmargin}{#2}%
+    \setlength{\listparindent}{\parindent}%
+    \setlength{\itemindent}{\parindent}%
+    \setlength{\parsep}{\parskip}%
+  }%
+  \item[]}{\end{list}}
+
+\tikzset{
+  invisible/.style={opacity=0,text opacity=0},
+  visible on/.style={alt={#1{}{invisible}}},
+  alt/.code args={<#1>#2#3}{%
+    \alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}}}
+}
+
+\newcommand{\pointthis}[3]{%
+  \tikz[remember picture,baseline]{
+    \node[anchor=base,inner sep=0,outer sep=0] (#2) {#2};
+    \node[visible on=#1,overlay,rectangle callout,rounded corners,callout relative pointer={(0.3cm,0.5cm)},fill=blue!20] at ($(#2.north)+(-0.1cm,-1.1cm)$) {#3};
+  }%
+}
+
+\newcommand{\hcancel}[5]{%
+  \tikz[baseline=(tocancel.base)]{
+    \node[inner sep=0pt,outer sep=0pt] (tocancel) {#1};
+    \draw[red!80, line width=0.4mm] ($(tocancel.south west)+(#2,#3)$) -- ($(tocancel.north east)+(#4,#5)$);
+  }%
+}
+
+\newcommand{\explain}[7]{%
+  \tikz[remember picture,baseline]{
+    \node[anchor=base,inner sep=2pt,outer sep=0,fill=#3,rounded corners] (label) {#1};
+    \node[anchor=north,visible on=<#2>,overlay,rectangle callout,rounded corners,callout
+    relative pointer={(0.0cm,0.5cm)+(0.0cm,#6)},fill=#3] at ($(label.south)+(0,-0.3cm)+(#4,#5)$) {#7};
+  }%
+}
+
+\newcommand{\explainstub}[2]{%
+  \tikz[remember picture,baseline]{
+    \node[anchor=base,inner sep=2pt,outer sep=0,fill=#2,rounded corners] (label) {#1};
+  }%
+}
+
+\newcommand{\squiggly}[1]{%
+  \tikz[remember picture,baseline]{
+    \node[anchor=base,inner sep=0,outer sep=0] (label) {#1};
+    \draw[thick,color=red!80,decoration={snake,amplitude=0.5pt,segment
+    length=3pt},decorate] ($(label.south west) + (0,-2pt)$) -- ($(label.south east) + (0,-2pt)$);
+  }%
+}
+
+% Adapted from https://latex.org/forum/viewtopic.php?t=2251 (Stefan Kottwitz)
+\newenvironment<>{varblock}[2]{\begin{varblockextra}{#1}{#2}{}}{\end{varblockextra}}
+\newenvironment<>{varblockextra}[3]{
+  \begin{center}
+    \begin{minipage}{#1}
+      \begin{actionenv}#4
+        {\centering \hil{#2}\par}
+	\def\insertblocktitle{}%\centering #2}
+        \def\varblockextraend{#3}
+	\usebeamertemplate{block begin}}{
+        \par
+        \usebeamertemplate{block end}
+        \varblockextraend
+      \end{actionenv}
+    \end{minipage}
+  \end{center}}
+
+\setbeamertemplate{headline}{}
+
+\setbeamertemplate{frametitle}{%
+  \leavevmode%
+  \vskip-1.6em%
+  \begin{beamercolorbox}[dp=1ex,center,wd=\paperwidth,ht=2.25ex]{title}%
+    \vskip0.5em%
+    \bf\insertframetitle
+  \end{beamercolorbox}%
+
+  \vskip-0.77em\hspace*{-2em}%
+  \textcolor{mypurpledark}{\rule[0em]{1.1\paperwidth}{2.4pt}}
+
+  \vskip-0.4em%
+}
+
+\setbeamertemplate{navigation symbols}{}
+
+\newcounter{framenumberpreappendix}
+\newcommand{\backupstart}{
+  \setcounter{framenumberpreappendix}{\value{framenumber}}
+}
+\newcommand{\backupend}{
+  \addtocounter{framenumberpreappendix}{-\value{framenumber}}
+  \addtocounter{framenumber}{\value{framenumberpreappendix}}
+}
+
+\newcommand{\insertframeextra}{}
+\setbeamertemplate{footline}{%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex,dp=1ex,right,rightskip=1mm,leftskip=1mm]{}%
+    % \inserttitle
+    \hfill
+    \insertframenumber\insertframeextra\,/\,\inserttotalframenumber
+  \end{beamercolorbox}%
+  \vskip0pt%
+}
+
+\newcommand{\hil}[1]{{\usebeamercolor[fg]{item}{\textbf{#1}}}}
+\newcommand{\hill}[1]{{\usebeamercolor[fg]{item}{#1}}}
+\newcommand{\bad}[1]{\textcolor{red!90}{\textnormal{#1}}}
+\newcommand{\good}[1]{\textcolor{mypurple}{\textnormal{#1}}}
+
+\newcommand{\bignumber}[1]{%
+  \renewcommand{\insertenumlabel}{#1}\scalebox{1.2}{\!\usebeamertemplate{enumerate item}\!}
+}
+\newcommand{\normalnumber}[1]{%
+  {\renewcommand{\insertenumlabel}{#1}\!\usebeamertemplate{enumerate item}\!}
+}
+\newcommand{\bigheart}{\includegraphics{heart}}
+
+\newcommand{\subhead}[1]{{\centering\textcolor{gray}{\hrulefill}\quad\textnormal{#1}\quad\textcolor{gray}{\hrulefill}\par}}
+
+\newcommand{\badbox}[1]{\colorbox{red!30}{#1}}
+\newcommand{\infobox}[1]{\colorbox{yellow!70}{\color{black}#1}}
+
+\newcommand{\astikznode}[2]{\tikz[baseline,remember picture]{\node[anchor=base,inner sep=0,outer sep=0.1em] (#1) {#2};}}
+\newcommand{\astikznodecircled}[3]{\tikz[baseline,remember picture]{\node[anchor=base,circle,draw=#2,thick,inner sep=0.05em,outer sep=0.05em] (#1) {#3};}}
+\newcommand{\astikznodetransparentlycircled}[2]{\tikz[baseline,remember picture]{\node[anchor=base,circle,opacity=0,draw=white,text opacity=1,thick,inner sep=0.05em,outer sep=0.05em] (#1) {#2};}}
+
+\setbeamersize{text margin left=1.60em,text margin right=1.60em}
+
+\newlength\stextwidth
+\newcommand\makesamewidth[3][c]{%
+  \settowidth{\stextwidth}{#2}%
+  \makebox[\stextwidth][#1]{#3}%
+}
+
+\newcommand{\dnote}[1]{%
+  \begin{tabular}{@{}m{2em}@{}m{0.83\textwidth}@{}}%
+    \textdbend &#1%
+  \end{tabular}%
+  \par
+}
+
+% Additional macros from slides-fischbachau2022
+\newcommand{\seq}[1]{\mathrel{\vdash\!\!\!_{#1}}}
+\newcommand{\grayline}{\textcolor{gray}{\hspace*{-3em}\hrulefill\hspace*{-3em}}}
+\newcommand{\notnot}{\emph{not~not}\xspace}
+\newcommand{\realizes}{\Vdash}
+
+% Additional macros from superturingmaschinen/slides-paris2025
+\newcommand{\Set}{\mathrm{Set}}
+\newcommand{\Eff}{\mathrm{Eff}}
+\newcommand{\TM}{\mathrm{TM}}
+\newcommand{\ITTM}{\mathrm{ITTM}}
+
+\begin{document}
+
+%\definecolor{mypurpleblack}{RGB}{30,0,50}
+\setbeamercolor{structure}{fg=black}
+
+%%% Slide 2: Teaser slide (from slides-fischbachau2022)
+%\definecolor{mypurple}{RGB}{253,73,34}
+\setbeamercolor{structure}{fg=mypurple}
+
+{\usebackgroundtemplate{\begin{minipage}{\paperwidth}\vspace*{5.95cm}\includegraphics[width=\paperwidth]{fr1-lighter}\end{minipage}}
+\begin{frame}{}
+  \medskip
+  \textbf{Thm.}
+  For every number~$n \in \NN$, there is a prime larger than~$n$.
+
+  {\emph{Proof.} Any prime factor of~$n! + 1$ will do.\par}
+  \medskip
+  \pause
+
+  {\centering{``Every \hil{constructive theorem} has a \hil{computable witness}.''}
+  \pause
+  \[
+    \begin{array}{c@{\qquad}c@{\qquad}c}
+      \mathrm{HA} \vdash \varphi &\Longrightarrow&
+      \exists e\_ e \Vdash \varphi \\
+      \text{\small constructive proof} &\longmapsto&
+      \text{\small realizer}
+    \end{array}
+  \]}
+  \pause
+  \vspace*{-0.8em}
+
+  \begin{itemize}
+    \item Integrated developments: \emph{SAT checking, \ldots}
+    \item Computability theory: \emph{induction $\widehat{=}$ recursion, \ldots}
+    \item Metatheory of constructive systems: \emph{provability results, \ldots}
+    \item Philosophy of proof and computation: \emph{realizability in the real world, \ldots}
+  \end{itemize}
+  \vspace*{-0.8em}
+
+  \grayline
+  \pause
+
+  \justifying
+  \textbf{Thm.} Every function~$\alpha : \NN \to \NN$ is \emph{good}
+  in that there are~$i < j$ such that~$\alpha(i) \leq \alpha(j)$.
+
+  {\emph{Proof.} By~\badbox{\textsc{lem}}, there is a minimal value~$\alpha(i)$.
+  Set~$j \defeq i + 1$.\par}
+
+  {\centering{``\hil{Every} theorem has a \hil{computable* witness}.''} \\ \scriptsize
+  * with monadic side effects\par}
+\end{frame}}
+
+%%% Slide 3: Number realizability (from slides-fischbachau2022)
+\begin{frame}{Number realizability}
+  %\begin{changemargin}{-1.5em}{-0.5em}
+  \small
+  \begin{tabbing}
+    $e \models (\forall f\?\NN^\NN\_ \varphi(n))$ \= \kill
+    $e \realizes s = t$ \> iff $s = t$. \\
+    $e \realizes \top$ \> iff true. \\
+    $e \realizes \bot$ \> iff false. \\
+    $e \realizes (\varphi \wedge \psi)$ \> iff~$\pi_1 \cdot e \downarrow$
+    and~$\pi_2 \cdot e \downarrow$ and $\pi_1 \cdot e \realizes \varphi$
+    and~$\pi_2 \cdot e \realizes \psi$. \\
+    $e \realizes (\varphi \vee \psi)$ \> iff~$\pi_1 \cdot e \downarrow$,
+    $\pi_2 \cdot e \downarrow$, if~$\pi_1 \cdot e = 0$
+    then~$\pi_2 \cdot e \realizes
+    \varphi$, and if~$\pi_1 \cdot e \neq 0$ then~$\pi_2 \cdot e \realizes \psi$. \\
+    $e \realizes (\varphi \Rightarrow \psi)$ \> iff for every~$r \in \NN$
+    such that~$r \realizes \varphi$, $e \cdot r \downarrow$ and~$e \cdot r \realizes \psi$. \\
+    $e \realizes (\forall n\?N\_ \varphi(n))$ \> iff for every~$n_0
+    \in \NN$, $e \cdot n_0 \downarrow$ and~$e \cdot n_0 \realizes \varphi(n_0)$. \\
+    $e \realizes (\exists n\?N\_ \varphi(n))$ \> iff~$\pi_1 \cdot e
+    \downarrow$ and~$\pi_2 \cdot e \downarrow$
+    and~$\pi_2 \cdot e \realizes \varphi(\pi_1 \cdot e)$. \\
+    $e \realizes (\forall f\?N^N\_ \varphi(f))$ \> iff for every~$f_0
+    : \NN \to \NN$ and every~$r_0 \in \NN$ such that \\ \> \qquad $f_0$ is computed by the~$r_0$-th
+    machine, \\ \> \qquad
+    $e \cdot r_0 \downarrow$ and~$e \cdot r_0 \realizes \varphi(f_0)$. \\
+    $e \realizes (\exists f\?N^N\_ \varphi(f))$ \> iff~$\pi_1 \cdot e \downarrow$
+    and~$\pi_2 \cdot e \downarrow$ and
+    the $(\pi_1 \cdot e)$-th machine \\ \> \qquad computes a function~$f_0 : \NN \to \NN$
+    and $\pi_2 \cdot e \realizes \varphi(f_0)$.
+  \end{tabbing}
+  %\end{changemargin}
+
+  \mbox{\textbf{Thm.} If~$\text{HA} \vdash \varphi$, then there is a
+  number~$e \in \NN$ such that~\only<1>{$e \realizes
+  \varphi$}\only<2>{$\text{HA} \vdash (\underline{e} \realizes \varphi)$}.}
+\end{frame}
+
+%%% Slide 4: The effective topos (from superturingmaschinen/slides-paris2025)
+\newcommand{\expl}[2]{
+  \justifying
+  ``$\mathrm{Eff}(\mathrm{TM}) \models \!\text{\normalnumber{#1}}$'' amounts to: #2
+}
+\newcommand{\sexpl}[2]{
+  \justifying
+  ``$\mathrm{Eff}(\mathrm{ITTM}) \models \!\text{\normalnumber{#1}}$'' amounts to: #2
+}
+\newcommand{\qswitch}[3]{\only<1-#1>{\includegraphics[height=0.7em]{question-mark}}\only<#2->{#3}}
+\newcommand{\ccmark}{\good{\cmark}}
+\newcommand{\cxmark}{\bad{\xmark}}
+
+\begin{frame}{The ef{}fective topos}
+  \vspace*{1em}
+  \fontsize{11pt}{13.2pt}\selectfont
+  %\begin{changemargin}{-1.5em}{-0.5em}
+  {\centering\begin{tabular}{@{\!\!\!\!\!\!}l@{\,}lp{2.0cm}p{2.0cm}p{2.0cm}}
+    \toprule
+    & statement & in~$\Set$ & in~$\Eff(\TM)$ & in~$\Eff(\ITTM)$ \\
+    \midrule
+    \normalnumber{1} & Every number is prime or not prime. & \ccmark{}
+    (trivially) & \ccmark & \ccmark \\
+    \normalnumber{2} & Beyond every number there is a prime. & \ccmark & \ccmark & \ccmark \\
+    \normalnumber{3} & Every map $\NN \to \NN$ has a zero or not. & \ccmark{} (trivially) & \cxmark & \ccmark \\
+    \normalnumber{4} & Every map $\NN \to \NN$ is computable. & \cxmark &
+    \qswitch{4}{5}{\ccmark}\only<1-4>{\,} \visible<5->{(trivially)} &
+    \qswitch{5}{6}{\cxmark} \\
+    \normalnumber{5} & Every map $\RR \to \RR$ is continuous. & \cxmark &
+    \qswitch{6}{7}{\ccmark{} (if MP)} & \qswitch{7}{8}{\cxmark} \\
+    \normalnumber{6} & Markov's principle holds. & \ccmark{} (trivially) &
+    \qswitch{8}{9}{\ccmark{} (if MP)} & \qswitch{9}{10}{\ccmark{} (if MP)} \\
+    \normalnumber{7} & Countable choice holds. & \ccmark &
+    \qswitch{10}{11}{\ccmark{} (always!)} &
+    \qswitch{11}{12}{\ccmark{} (always!)} \\
+    \normalnumber{8} & There is an injection $\RR \hookrightarrow \NN$. & \cxmark &
+    \qswitch{12}{13}{\cxmark} &
+    \qswitch{13}{14}{\ccmark} \\
+    \bottomrule
+  \end{tabular}\par}
+  \medskip
+
+  \only<1>{\color{white}There is a Turing machine which determines of any given
+  number whether it is prime or not. \\\ \\\ }
+  \only<2>{\expl{1}{There is a Turing machine which determines of any given
+  number whether it is prime or not. \\\ \\\ }}
+  \only<3>{\expl{2}{There is a Turing machine which, given a number~$n$, computes a
+  prime larger than~$n$. \\\ \\\ }}
+  \only<4>{\expl{3}{There is a Turing machine which, given a Turing machine
+  computing a map~$f : \NN \to \NN$, determines whether~$f$ has a
+  zero or not. \\\ \\\ }}
+  \only<5>{\expl{4}{There is a Turing machine which, given a Turing machine
+  computing a map~$f : \NN \to \NN$, outputs a Turing machine
+  computing~$f$. \\\ \\\ }}
+  \only<6>{\sexpl{4}{There is an infinite time Turing machine which, given an \emph{infinite time} Turing machine
+  computing a map~$f : \NN \to \NN$, outputs an (\emph{ordinary}) Turing machine
+  computing~$f$. \\\ \\\ }}
+  \only<7-8>{\justifying A real number of~$\Eff(\TM)$ is externally represented by a Turing
+  machine~$M$ which on input~$n$ outputs a rational approximation~$M(n)$.
+  These approximations need to be compatible in
+  that~$|M(n)-M(m)|\leq2^{-n}+2^{-m}$ for all~$n,m$. \par\medskip Two such machines~$M$
+  and~$M'$ represent the same real number iff~$|M(n)-M'(m)|\leq2^{-n}+2^{-m}$
+  for all~$n,m$.}
+  \only<9-10>{
+    Markov's principle states: $\forall f : \NN \to \NN\_ \neg\neg(\exists n
+    \in \NN\_ f(n) = 0) \Rightarrow (\exists n \in \NN\_ f(n) = 0)$. \par\medskip
+    \expl{6}{There is a Turing machine which, given a Turing machine
+    computing a map~$f : \NN \to \NN$ and given the promise that it is \notnot
+    the case that~$f$ has a zero, determines a zero of~$f$.}}
+  \only<11-12>{
+    \mbox{Countable choice states: $\bigl(\forall x \in \NN\_ \exists y \in A\_
+    \varphi(x,y)\bigr) \Rightarrow \bigl(\exists f : \NN \to A\_ \forall x \in
+    \NN\_ \varphi(x,f(x))\bigr)$.}\par\medskip
+    \expl{7}{\justifying There is a Turing machine which, given a Turing machine
+    computing for every~$x \in \NN$ some~$y \in A$ together with a witness
+    of~$\varphi(x,y)$, outputs a Turing machine computing a suitable choice
+    function~$\NN \to A$.}}
+  \only<13>{\ \\\ \\\ \\\ }
+  %\end{changemargin}
+\end{frame}
+
+\newcommand{\code}[1]{%
+  \begin{center}%
+    \setlength{\fboxrule}{1pt}%
+    \setlength{\fboxsep}{8pt}%
+    {\fbox{\parbox{0.81\textwidth}{#1}}}%
+  \end{center}%
+}
+
+\newcommand{\explanation}[2]{
+  #1 \\
+  \qquad means: \\[0.4em]
+  \qquad\qquad \begin{minipage}{0.84\textwidth}
+  #2
+  \end{minipage}
+}
+
+\begin{frame}{Curious size phenomena}
+  \vspace*{0.5em}
+  \explanation{$\Eff(\ITTM) \models \text{``There exists an injection~$\RR \hookrightarrow
+  \NN$.''}$}{There is an infinite time Turing machine which inputs the source of an
+  infinite time Turing machine~$A$ representing a real number and
+  outputs a natural number~$n(A)$ such that~$n(A) = n(B)$ if and only if~$A$ and~$B$
+  represent the same real.}
+  \pause
+  \bigskip
+
+  This statement is witnessed by following infinite time Turing machine:
+  \code{
+    Read the source of an infinite time Turing machine~$A$ from the tape.
+    Simulate all infinite time Turing machines in a dovetailing fashion.
+    As soon as a machine is found which represents the same real
+    as~$A$, output the index of this machine and halt.
+  }
+\end{frame}
+
+\end{document}

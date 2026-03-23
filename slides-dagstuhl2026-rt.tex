@@ -321,8 +321,42 @@
 
 \begin{document}
 
-%\definecolor{mypurpleblack}{RGB}{30,0,50}
+\definecolor{mypurpleblack}{RGB}{30,0,50}
 \setbeamercolor{structure}{fg=black}
+
+{\usebackgroundtemplate{\includegraphics[width=\paperwidth]{lost-melody-2}}
+\addtocounter{framenumber}{-1}
+\begin{frame}[plain,c]
+  \centering
+
+  \bigskip
+  \bigskip
+  \bigskip
+  \bigskip
+
+  \color{white}
+
+  \color{black}
+  \scriptsize
+  \color{white}
+
+  \vspace*{-0.5em}
+
+  \setbeamercolor{block body}{bg=mypurpleblack!100}
+  \begin{minipage}{0.65\textwidth}\begin{block}{}
+    \centering\normalsize\color{white}
+    \bf
+    A 4-slide primer to
+    traditional realizability \\[0.3em]
+  \end{block}\end{minipage}
+
+  \bigskip
+  \bigskip
+  \bigskip
+  \bigskip
+  \bigskip
+  \bigskip
+\end{frame}}
 
 %%% Slide 2: Teaser slide (from slides-fischbachau2022)
 %\definecolor{mypurple}{RGB}{253,73,34}
@@ -375,6 +409,7 @@
 
 %%% Slide 3: Number realizability (from slides-fischbachau2022)
 \begin{frame}{Number realizability}
+  \vspace*{-0.5em}
   %\begin{changemargin}{-1.5em}{-0.5em}
   \small
   \begin{tabbing}
@@ -385,10 +420,9 @@
     $e \realizes (\varphi \wedge \psi)$ \> iff~$\pi_1 \cdot e \downarrow$
     and~$\pi_2 \cdot e \downarrow$ and $\pi_1 \cdot e \realizes \varphi$
     and~$\pi_2 \cdot e \realizes \psi$. \\
-    $e \realizes (\varphi \vee \psi)$ \> iff~$\pi_1 \cdot e \downarrow$,
-    $\pi_2 \cdot e \downarrow$, if~$\pi_1 \cdot e = 0$
-    then~$\pi_2 \cdot e \realizes
-    \varphi$, and if~$\pi_1 \cdot e \neq 0$ then~$\pi_2 \cdot e \realizes \psi$. \\
+    $e \realizes (\varphi \vee \psi)$ \> iff~$\pi_1 \cdot e \downarrow$ and
+    $\pi_2 \cdot e \downarrow$ and \\ \>\qquad if~$\pi_1 \cdot e = 0$
+    then~$\pi_2 \cdot e \realizes \varphi$, and \\ \>\qquad if~$\pi_1 \cdot e \neq 0$ then~$\pi_2 \cdot e \realizes \psi$. \\
     $e \realizes (\varphi \Rightarrow \psi)$ \> iff for every~$r \in \NN$
     such that~$r \realizes \varphi$, $e \cdot r \downarrow$ and~$e \cdot r \realizes \psi$. \\
     $e \realizes (\forall n\?N\_ \varphi(n))$ \> iff for every~$n_0

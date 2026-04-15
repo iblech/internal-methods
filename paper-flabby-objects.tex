@@ -464,7 +464,7 @@ along the canonical inclusion~$X \to \P_{\leq1}(X)$ to a map~$\varepsilon :
 
 Conversely, let~$X$ be a functionally flabby set with witness~$\varepsilon :
 \P_{\leq1}(X) \to X$. Let~$i : A \to B$ be an injection and let~$f : A \to X$
-be a map. Then~$x \mapsto \varepsilon(f[i^{-1}[\{x\}])$ is an extension of~$f$
+be a map. Then~$x \mapsto \varepsilon(f[i^{-1}[\{x\}]])$ is an extension of~$f$
 along~$i$.
 \end{proof}
 
@@ -524,6 +524,7 @@ linear injection from~$M$, sending an element~$x$ to~$[\{x\}]$. However, it
 fails to be flabby. Given a subterminal~$E \subseteq \P_{\leq1}(M)/{\sim}$,
 there is the well-defined element~$v \defeq [\{x \in M\,|\,\text{$x \in K$ for
 some~$[K] \in E$}\}]$, but we cannot verify~$E \subseteq \{v\}$.
+(\XXX{already not a module})
 
 That said, there is an alternative construction if sufficiently general
 \emph{quotient inductive types}, as suggested by Altenkirch and
@@ -541,7 +542,7 @@ of~$M$:~$0
 if~$t \in T$ and~$r \in R$, then~$rt \in T$; if~$x \in M$, then~$\underline{x}
 \in T$; if~$K : I \to T$ is a family of elements of~$T$ indexed by a subterminal, then~$\varepsilon_K \in T$;
 if~$t,s,u \in T$ and~$r,r' \in R$, then~$t + (s + u) = (t + s) + u$, $t + s = s + t$, $t + 0 = t
-= t + 0$, $0t = 0$, $1t = t$, $r(t+u) = rt + ru$, $(r+r')t = rt + r't$; if~$x,y
+= 0 + t$, $0t = 0$, $1t = t$, $r(t+u) = rt + ru$, $(r+r')t = rt + r't$; if~$x,y
 \in M$ and~$r \in R$, then~$\underline{0} = 0$, $\underline{x + y} =
 \underline{x} + \underline{y}$, $\underline{rx} = r \underline{x}$; and if~$K :
 I \to T$ is a family such that~$I$ is inhabited by some element~$i_0$,

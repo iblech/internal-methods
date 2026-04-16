@@ -1,4 +1,3 @@
-% compile using: agda --latex; result will then be in the latex/ subfolder
 \documentclass[11pt,utf8,notheorems,compress,t,aspectratio=169]{beamer}
 \usepackage{etex}
 
@@ -72,7 +71,7 @@
 \title{Towards topological type theory for decrypting transfinite methods in classical mathematics}
 
 \author{Ingo Blechschmidt}
-\date{June 9th, 2025}
+\date{April 16th, 2026}
 
 %\setbeameroption{show notes on second screen=bottom}
 \newcommand{\jnote}[2]{\only<#1>{\note{\setlength\parskip{\medskipamount}\footnotesize\justifying#2\par}}}
@@ -474,9 +473,9 @@
   Function types are \bad{brittle}.
 
   \renewcommand{\arraystretch}{1.05}
-  \begin{tabular}{@{\!\!\!\!\!\!}l@{\,}l@{\,\,\,\,\,}l@{\,\,\,\,}l@{\,}l@{\!\!\!\!}l@{}}
+  \begin{tabular}{@{\!\!\!\!\!\!\!}l@{\,}l@{\,\,\,\,\,}l@{\,\,\,\,}l@{\,}l@{\!\!\!\!}l@{}}
     \toprule
-    & statement & cl. & sp. & in $\mathrm{Eff}$ \\\midrule
+    & (naive) statement & cl. & sp. & in $\mathrm{Eff}$ \\\midrule
     \normalnumber{0} & Every function is computable. & \cxmark & \qmark & \ccmark \\
     \normalnumber{1} & Every function has a zero or not. & \ccmark & \qmark & \cxmark \\
     \normalnumber{2} & Every path leaves the Kleene tree. & \cxmark & \qmark & \ccmark \\
@@ -530,7 +529,7 @@
 
   \visible<3->{
     \raggedright
-    For suitable~$E$, $E$-valued points of~$X^\NN$ are for instance:
+    For suitable spaces~$E$, $E$-valued points of~$X^\NN$ are for instance:
     \begin{itemize}
       \item Partially defined functions~$f : \NN \rightharpoonup X$ such that
       for all~$n$, the value~$f(n)$ is \emph{not not} defined
@@ -599,7 +598,7 @@
 \end{frame}
 
 \begin{frame}{Elephant functions}
-  \textbf{Def.} An \hil{elephant function} from~$X$ to~$Y$ consists of
+  \textbf{Def.} Let~$X$ and~$Y$ be spaces. An \hil{elephant function} from~$X$ to~$Y$ consists of
   \begin{itemize}
     \item for each space~$E$, a function~$f_E : \mathrm{Pt}_E(X) \to \mathrm{Pt}_E(Y)$
     between the sets of~$E$-valued points
@@ -649,11 +648,11 @@
   \begin{itemize}
     \small
     \item \hil{everywhere} \tabto{1.96cm}($\necessary\varphi$)\tabto{2.86cm}
-    iff it holds \hil{over every space}
-    (over the current base).
+    iff it holds \hil{over every space}.
     \item \hil{somewhere} \tabto{1.96cm}($\possible\varphi$)\tabto{2.86cm} iff
-    it holds \hil{over some positive space}
-    (a space such that every open covering of it is inhabited).
+    it holds \hil{over some positive space}.
+
+    (A space is \emph{positive} iff every open covering of its top open is inhabited).
     \item \hil{proximally} \tabto{1.96cm}($\xpossible\varphi$)\tabto{2.86cm}
     iff it holds \hil{over some positive overt space}.
   \end{itemize}
@@ -748,6 +747,8 @@
   \end{tabular}
 \end{frame}
 
+\addtocounter{framenumber}{-1}
+\renewcommand{\insertframeextra}{a}
 \begin{frame}{Taming the infinite}
   \textbf{Def.} Let~$A$ be a ring.
   \begin{itemize}
@@ -756,7 +757,7 @@
     \item A finite list~$[x_0,\ldots,x_{m-1}]$ \emph{stalls} iff there is a
     number~$n < m$ with~$x_n \in (x_0,\ldots,x_{n-1})$.
 
-    Notation: ``$\mathrm{Stalls}\,[x_0,\ldots,x_{m-1}]$''
+    Notation: ``$\mathrm{Stalls}_A\,[x_0,\ldots,x_{m-1}]$''
   \end{itemize}
 
   \textbf{Def.} A ring~$A$ is \ldots
@@ -768,21 +769,23 @@
     Equivalently: $\necessary(\text{$A$ is Noetherian\sinf})$.
   \end{itemize}
 
-  \textbf{Thm (classical).} Let~$A$ be a Noetherian\sinf ring. Then~$A[X]$ is Noetherian\ind as well.
+  \textbf{Thm. (classical)} Let~$A$ be a Noetherian\sinf ring. Then~$A[X]$ is Noetherian\sinf as well.
 
   \emph{Proof.} See [Hilbert 1890].
-  \emph{This is not mathematics, it is theology!}
+  \bad{\emph{This is not mathematics, it is theology!}}
   \qed
 
-  \textbf{Thm (constructive).} Let~$A$ be a Noetherian\ind ring. Then~$A[X]$ is Noetherian\ind as well.
+  \textbf{Thm.} Let~$A$ be a Noetherian\ind ring. Then~$A[X]$ is Noetherian\ind as well.
 
   \justifying
   \emph{Proof.} Let an arbitrary sequence of elements of~$A[X]$ be given (over an arbitrary space).
   It suffices to verify that it stalls \emph{somewhere}.
-  \emph{Somewhere,} \textsc{lem} holds and crucially~$A$ is still Noetherian\sinf.
+  \emph{Somewhere,} \textsc{lem} holds, and---crucially---\emph{there}~$A$ is still Noetherian\sinf.
   So \emph{there} the sequence stalls by the classical proof. \qed
 \end{frame}
 
+\addtocounter{framenumber}{-1}
+\renewcommand{\insertframeextra}{b}
 \begin{frame}{Answering a question by Berardi--Buriola--Schuster}
   \small
   \textbf{Def.} Let~$(X,{\leq})$ be a quasi-order.
@@ -802,9 +805,9 @@
     (equivalently: \emph{everywhere}, $X$ is well\sinf).
     \item well\impl\tabto{1.3cm} iff for every monotone predicate~$B$
     of finite lists, $B \mid_{\text{incr}} [\,]$ implies $B \mid [\,]$
-    (equivalently: if everywhere every \emph{increasing} infinite
-    sequence~$\alpha : \NN \to X$ has a finite prefix validating~$B$, then so
-    does every \emph{arbitrary} infinite sequence everywhere).
+    (equivalently: if, everywhere, every \emph{increasing} infinite
+    sequence~$\alpha : \NN \to X$ has a finite prefix validating~$B$, then,
+    everywhere, every infinite sequence does).
   \end{itemize}
 
   \textbf{Thm.} Let~$X$ be a well\ind quasi-order. Then~$X$ is well\impl.
@@ -815,8 +818,67 @@
   \emph{Somewhere,} \textsc{lem} holds. By a classical lemma, \emph{there} we
   have an increasing infinite subsequence~$x_{i_0}, x_{i_1}, \ldots$. By
   assumption, \emph{there} we have a finite prefix with~$B\,[x_{i_0},\ldots,
-  x_{i_n}]$. As~$B$ is monotone, \emph{there} we also have~$B\,[x_0,x_1,\ldots
+  x_{i_n}]$. As~$B$ is monotone, \emph{there} we also have~$B\,[x_0,x_1,\ldots,
   x_{i_n}]$. \qed
 \end{frame}
+
+\renewcommand{\insertframeextra}{}
+\begin{frame}{Mismatches}
+  Let~$A$ be a ring.
+
+  \begin{enumerate}
+    \item Let~$M$ be an~$A$-module.
+    \medskip
+
+    The (robust) statement ``\emph{everywhere}, for every prime filter~$\ppp$
+    the stalk~$M_\ppp$ is finitely generated'' is classically \bad{not
+    equivalent} (but stronger) than its single-worlded unmodal counterpart
+    ``for every absolute prime filter~$\ppp$, the stalk~$M_\ppp$ is finitely
+    generated''.
+    \bigskip
+
+    \item Let~$f : A \to B$ be a homomorphism.
+    \medskip
+
+    The status of the (robust) statement ``\emph{everywhere}, the preimage of
+    every maximal ideal of~$B$ is maximal in~$A$'' is \bad{currently unclear}.
+    \medskip
+
+    It might unfortunately be strictly stronger, classically, than ``the
+    preimage of every maximal ideal of~$B$ is maximal in~$A$''.
+    \medskip
+
+    (Compare with Ryota Kuroki's pioneering work on the Nullstellensatz and
+    Jacobson rings in constructive algebra.)
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{Embracing implication as a useful fiction}
+  (Bonus slide for people who are intrigued by arithmetic universes.)
+
+  Let~$\TT$ be a geometric theory. Let~$U_\TT$ be
+  the generic~$\TT$-model in~$\mathrm{Sh}(\C_\TT)$.
+
+  Let~$\TT/U_\TT$ be the theory (in~$\mathrm{Sh}(\C_\TT)$) of~$U_\TT$-algebras.
+
+  Let~$A$ and~$B$ be geometric formulas in the language of~$\TT/U_\TT$
+  in a context~$\vec x$. Then the assertion
+  \[ \text{``$\forall \vec x\_ (A \Rightarrow B)$''} \]
+  \bad{makes use of implication} and can therefore
+  only be represented in~$\mathrm{Sh}(\C_\TT)$ if~$\mathrm{Set}$ supports implication.
+  (It references the \bad{just one point} of the classifying space
+  of~$\TT/U_\TT$, the initial one.)
+
+  In contrast, the assertion
+  \[ \text{``$\TT/U_\TT \vdash (\forall \vec x\_ (A \Rightarrow B))$''} \]
+  \good{is positive} (a geometric formula)
+  and hence available even if implication is not.
+  (It can be understood as referencing the \hil{generic point} of the classifying space of~$\TT/U_\TT$.)
+
+  Curiously, these two assertions are equivalent (in a metatheory with implication). \\
+  \emph{So use the latter as a proxy for the
+  former!}
+\end{frame}
+\addtocounter{framenumber}{-1}
 
 \end{document}

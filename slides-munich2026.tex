@@ -577,7 +577,7 @@
       \end{block}
     \end{column}
   \end{columns}
-  That is, a set~$X$ is Noetherian iff equivalently
+  That is, a set~$X$ is Noetherian iff equivalently \ldots
   \vspace*{-0.5em}
   \begin{enumerate}
     \item there is a \good{dialogue tree} arguing,
@@ -636,7 +636,7 @@
   Recall the \hil{Brouwer--Heyting--Kolmogorov interpretation}:
   \begin{itemize}
     \small
-    \item A witness of~$P \wedge Q$ is a pair~$(a,b)$ consisting of a witness
+    \item A witness of~$P \wedge Q$ is a pair consisting of a witness
     of~$P$ and a witness of~$Q$.
     \item A witness of~$P \Rightarrow Q$ is a \bad{construction} which converts
     witnesses of~$P$ into witnesses of~$Q$.
@@ -645,24 +645,26 @@
   \end{itemize}
   But what is a \bad{construction}?
   \bigskip
+  \pause
 
   \begin{block}{Kleene realizability}
     Use \hil{Turing machines} as ``constructions''. \\
-    A Turing machine~$e$ realizes~$P$, denoted $e \Vdash P$, iff \ldots
+    A \emph{machine~$e$ realizes~$P$}, denoted $e \Vdash P$, iff \ldots
   \end{block}
 
   \begin{block}{Stateful realizability}
     Use (an appropriate flavor of) \hil{stateful Turing machines} as
     ``constructions''. \\
-    A stateful Turing machine~$e$ realizes~$P$ in state~$s$, denoted $s \mid e \Vdash P$,
+    A \emph{machine~$e$ realizes~$P$ in state~$s$}, denoted $s \mid e \Vdash P$,
     iff \ldots
   \end{block}
   \vspace*{-1em}
   Here: States are pairs~$(R,S)$ of finite lists of natural numbers such that~$R^*$
-  and~$S^*$ are orthogonal, allowed to be extended.
+  and~$S^*$ are orthogonal, allowed to be extended (but not shortened).
 \end{frame}
 
 \begin{frame}{Unique choice}
+  \fontsize{10pt}{12}\selectfont
   \begin{block}{In the stateful realizability tripos}
     \justifying
     In a state~$s$, a function~$\NN \to \NN$
@@ -674,12 +676,15 @@
     for every number~$n \in \NN$, the application~$e \cdot n$ should terminate
     with the numeral for~$f(n)$.
   \end{block}
+  \vspace*{-0.5em}
+  Such kinds of functions are $R$-good and~$S$-good by design.
+  \medskip
 
   \begin{block}{In the stateful realizability topos}
     \justifying
     In a state~$s$, a function~$\NN \to \NN$ is
     \begin{enumerate}
-      \item a relation~$F$: $s' \mid e \Vdash F(x,y)$
+      \item a relation~$F$, denoted $s' \mid e \Vdash F(x,y)$
       (in state~$s'$, machine~$e$ is a realizer of~$x$ being mapped to~$y$)
     \end{enumerate}
     together with
@@ -695,6 +700,29 @@
   \vspace*{-0.5em}
   Our particular model validates unique choice for \hil{nontrivial
   combinatorial reasons}.
+\end{frame}
+
+\begin{frame}{Perspectives}
+  A set~$X$ is \good{Noetherian} iff the \hil{generic} function~$\NN \to X$ has
+  duplicate values.
+
+  \begin{block}{A robust definition}
+    A ring~$A$ is \good{Noetherian} iff for the \hil{generic} function~$f : \NN \to A$,
+    there exists a number~$n \in \NN$ such that
+    $f(n) \in (f(0), \ldots, f(n-1))$.
+  \end{block}
+
+  Then:
+
+  \begin{enumerate}
+    \item \good{Without} any decidability or coherence assumptions, if~$A$ is
+    Noetherian so is~$A[X]$. \\ \emph{By the classical proof!}
+    \item Let~$1 = f_1 + \ldots + f_n$ in~$A$. Then~$A$ is Noetherian iff all
+    localizations~$A[f_i^{-1}]$ are.
+    \item A ring~$A$ is Noetherian iff~$\mathcal{O}_{\mathrm{Spec}\,A}$ is.
+  \end{enumerate}
+
+
 \end{frame}
 
 \end{document}
@@ -793,125 +821,6 @@
   \end{columns}
 \end{frame}
 
-\begin{frame}{Elephant functions}
-  \textbf{Def.} Let~$X$ and~$Y$ be spaces. An \hil{elephant function} from~$X$ to~$Y$ consists of
-  \begin{itemize}
-    \item for each space~$E$, a function~$f_E : \mathrm{Pt}_E(X) \to \mathrm{Pt}_E(Y)$
-    between the sets of~$E$-valued points
-  \end{itemize}
-  such that
-  \vspace*{-2em}
-  \begin{itemize}
-    \item for each morphism~$g : F \to E$, the diagram
-    $
-      \vcenter{\xymatrix{
-        \mathrm{Pt}_E(X) \ar[r]^{f_E} \ar[d]_{\mathop{\circ} g} & \mathrm{Pt}_E(Y) \ar[d]^{\mathop{\circ} g} \\
-        \mathrm{Pt}_F(X) \ar[r]_{f_F} & \mathrm{Pt}_F(Y) 
-      }}
-    $
-    commutes.
-  \end{itemize}
-  \textcolor{gray}{So a natural transformation~$\yon X \to \yon Y$,
-  so equivalently a morphism~$X \to Y$ of spaces.}
-  \bigskip
-  \pause
-
-  \begin{columns}
-    \begin{column}{0.5\textwidth}
-      \textbf{Prop.} For a function~$f : (\NN \to \mathbbm{2}) \to \NN$, TFAE:
-      \begin{enumerate}
-        \item $f$ can be extended to an elephant function from~$\mathbbm{2}^\NN$
-        to~$\NN$.
-        \item $f$ is uniformly continuous.
-        \item $f$ is eloquent (i.\@e. given by a dialogue).
-      \end{enumerate}
-    \end{column}
-
-    \begin{column}{0.5\textwidth}
-      \textbf{Prop.} For a function~$f : [0,1] \to \RR$, TFAE:
-      \begin{enumerate}
-        \item $f$ can be extended to an elephant function from~$[0,1]$ to~$\RR$.
-        \item $f$ is uniformly continuous.
-        \item $f$ is eloquent (in a suitable real-number-oracle querying sense).
-      \end{enumerate}
-    \end{column}
-  \end{columns}
-\end{frame}
-
-\begin{frame}{Modal language for embracing points}
-  \textbf{Def.} A statement~$\varphi$ holds \ldots
-  \vspace*{-0.3em}
-  \begin{itemize}
-    \small
-    \item \hil{everywhere} \tabto{1.96cm}($\necessary\varphi$)\tabto{2.86cm}
-    iff it holds \hil{over every space}.
-    \item \hil{somewhere} \tabto{1.96cm}($\possible\varphi$)\tabto{2.86cm} iff
-    it holds \hil{over some positive space}.
-
-    (A space is \emph{positive} iff every open covering of its top open is inhabited).
-    \item \hil{proximally} \tabto{1.96cm}($\xpossible\varphi$)\tabto{2.86cm}
-    iff it holds \hil{over some positive overt space}.
-  \end{itemize}
-  \pause
-  \vspace*{-1em}
-  \small
-
-  \begin{columns}
-    \begin{column}{0.48\textwidth}
-      \begin{block}{A brittle definition}
-        A set~$X$ is \bad{streamless} iff \\
-        for every function~$f : \NN \to X$, \\
-        there are numbers~$i < j$
-        such that~$f(i) = f(j)$.
-      \end{block}
-    \end{column}
-
-    \begin{column}{0.48\textwidth}
-      \begin{block}{A robust definition}
-        A set~$X$ is \good{Noetherian} iff
-        $\mathrm{R} \mid [\,]$, \\
-        where $\mathrm{R}\,[x_0,\ldots,x_{n-1}]$ iff \\
-        there are numbers~$i < j$ such that~$x_i = x_j$.
-      \end{block}
-      \vspace*{-0.5em}
-
-      \hil{Equivalently:} $\necessary(\text{$X$ is streamless})$.
-    \end{column}
-  \end{columns}
-  \pause
-
-  \begin{columns}
-    \begin{column}{0.48\textwidth}
-      \begin{block}{A brittle definition}
-        A relation~$R$ is \bad{well-founded\sinf} iff \\
-        for every decreasing sequence~$f : \NN \to X$,
-        $\bot$.
-      \end{block}
-    \end{column}
-
-    \begin{column}{0.48\textwidth}
-      \begin{block}{A robust definition}
-        A relation~$R$ is \good{well-founded\ind} iff
-        $\mathrm{Acc}(R)$.
-      \end{block}
-      \vspace*{-0.5em}
-
-      \hil{Equivalently:} $\necessary(\text{$R$ is well-founded\sinf})$.
-    \end{column}
-  \end{columns}
-  \normalsize
-
-  \begin{enumerate}
-    \item $(\possible\varphi) \Longleftrightarrow \varphi$,
-    if $\varphi$ is a geometric implication (``$\forall\ldots\forall (\%
-    \Rightarrow \%)$'', with no~$\forall$ nor~$\Rightarrow$
-    in~$\%$).~\fixedhref{https://iblech.github.io/constructive-maximal-ideals/Forcing.Semantics.html\#CoherentEquivalence}{\formalized}
-    \item $(\xpossible\varphi) \Longleftrightarrow \varphi$,
-    if~$\varphi$ is a bounded first-order statement.
-    \fixedhref{https://iblech.github.io/constructive-maximal-ideals/Forcing.Semantics.html\#1\%CB\%A2\%E1\%B5\%97OrderEquivalence}{\formalized}
-  \end{enumerate}
-\end{frame}
-
 \begin{frame}{Harmonized results}
   \small
   \centering
@@ -980,101 +889,8 @@
   So \emph{there} the sequence stalls by the classical proof. \qed
 \end{frame}
 
-\addtocounter{framenumber}{-1}
-\renewcommand{\insertframeextra}{b}
-\begin{frame}{Answering a question by Berardi--Buriola--Schuster}
-  \small
-  \textbf{Def.} Let~$(X,{\leq})$ be a quasi-order.
-  \vspace*{-0.5em}
-  \begin{itemize}
-    \item An infinite sequence~$x_0,x_1,\ldots$ is \emph{good} iff there are numbers~$i < j$ with~$x_i \leq x_j$.
-    \item A finite list~$[x_0,\ldots,x_{m-1}]$ is \emph{good} iff there are numbers~$i < j < m$ with~$x_i \leq x_j$.
-
-    Notation: ``$\mathrm{Good}\,[x_0,\ldots,x_{m-1}]$''
-  \end{itemize}
-
-  \textbf{Def.} A quasi-order~$X$ is \ldots
-  \vspace*{-0.5em}
-  \begin{itemize}
-    \item well\sinf\tabto{1.3cm} iff every infinite sequence is good.
-    \item well\ind\tabto{1.3cm} iff $\mathrm{Good} \mid [\,]$
-    (equivalently: \emph{everywhere}, $X$ is well\sinf).
-    \item well\impl\tabto{1.3cm} iff for every monotone predicate~$B$
-    of finite lists, $B \mid_{\text{incr}} [\,]$ implies $B \mid [\,]$
-    (equivalently: if, everywhere, every \emph{increasing} infinite
-    sequence~$\alpha : \NN \to X$ has a finite prefix validating~$B$, then,
-    everywhere, every infinite sequence does).
-  \end{itemize}
-
-  \textbf{Thm.} Let~$X$ be a well\ind quasi-order. Then~$X$ is well\impl.
-
-  \emph{Proof.} Let~$B$ be a monotone predicate. Let~$x_0,x_1,\ldots$ be an
-  infinite sequence (over an arbitrary space).
-  It suffices that it has a finite~$B$-prefix \emph{somewhere}.
-  \emph{Somewhere,} \textsc{lem} holds. By a classical lemma, \emph{there} we
-  have an increasing infinite subsequence~$x_{i_0}, x_{i_1}, \ldots$. By
-  assumption, \emph{there} we have a finite prefix with~$B\,[x_{i_0},\ldots,
-  x_{i_n}]$. As~$B$ is monotone, \emph{there} we also have~$B\,[x_0,x_1,\ldots,
-  x_{i_n}]$. \qed
-\end{frame}
-
-\renewcommand{\insertframeextra}{}
-\begin{frame}{Mismatches}
-  Let~$A$ be a ring.
-
-  \begin{enumerate}
-    \item Let~$M$ be an~$A$-module.
-    \medskip
-
-    The (robust) statement ``\emph{everywhere}, for every prime filter~$\ppp$
-    the stalk~$M_\ppp$ is finitely generated'' is classically \bad{not
-    equivalent} (but stronger) than its single-worlded unmodal counterpart
-    ``for every absolute prime filter~$\ppp$, the stalk~$M_\ppp$ is finitely
-    generated''.
-    \bigskip
-
-    \item Let~$f : A \to B$ be a homomorphism.
-    \medskip
-
-    The status of the (robust) statement ``\emph{everywhere}, the preimage of
-    every maximal ideal of~$B$ is maximal in~$A$'' is \bad{currently unclear}.
-    \medskip
-
-    It might unfortunately be strictly stronger, classically, than ``the
-    preimage of every maximal ideal of~$B$ is maximal in~$A$''.
-    \medskip
-
-    (Compare with Ryota Kuroki's pioneering work on the Nullstellensatz and
-    Jacobson rings in constructive algebra.)
-  \end{enumerate}
-\end{frame}
-
-\begin{frame}{Embracing implication as a useful fiction}
-  (Bonus slide for people who are intrigued by arithmetic universes.)
-
-  Let~$\TT$ be a geometric theory. Let~$U_\TT$ be
-  the generic~$\TT$-model in~$\mathrm{Sh}(\C_\TT)$.
-
-  Let~$\TT/U_\TT$ be the theory (in~$\mathrm{Sh}(\C_\TT)$) of~$U_\TT$-algebras.
-
-  Let~$A$ and~$B$ be geometric formulas in the language of~$\TT/U_\TT$
-  in a context~$\vec x$. Then the assertion
-  \[ \text{``$\forall \vec x\_ (A \Rightarrow B)$''} \]
-  \bad{makes use of implication} and can therefore
-  only be represented in~$\mathrm{Sh}(\C_\TT)$ if~$\mathrm{Set}$ supports implication.
-  (It references the \bad{just one point} of the classifying space
-  of~$\TT/U_\TT$, the initial one.)
-
-  In contrast, the assertion
-  \[ \text{``$\TT/U_\TT \vdash (\forall \vec x\_ (A \Rightarrow B))$''} \]
-  \good{is positive} (a geometric formula)
-  and hence available even if implication is not.
-  (It can be understood as referencing the \hil{generic point} of the classifying space of~$\TT/U_\TT$.)
-
-  Curiously, these two assertions are equivalent (in a metatheory with implication). \\
-  \emph{So use the latter as a proxy for the
-  former!}
-\end{frame}
-\addtocounter{framenumber}{-1}
-
 \end{document}
+
+TO DO:
+- Citations
+- Bonus slides: harmonized results, realizability semantics

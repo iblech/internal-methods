@@ -379,7 +379,7 @@
 }
 
 \newcommand{\dnote}[1]{%
-  \begin{tabular}{@{}m{2em}@{}m{0.83\textwidth}@{}}%
+  \begin{tabular}{@{}m{2em}@{}m{0.70\textwidth}@{}}%
     \textdbend &#1%
   \end{tabular}%
   \par
@@ -480,9 +480,18 @@
   \begin{itemize}
     \item Classically, streamless $\Longleftrightarrow$ finite.
     \item Constructively, (finitely enumerable $\vee$ subfinite) $\Longrightarrow$
-    streamless $\Longrightarrow$ not infinite.
+    streamless $\Longrightarrow$ $\neg$Dedekind-infinite.
   \end{itemize}
   \bigskip
+
+  \only<1>{
+    Recall: A set~$X$ is \ldots
+    \begin{itemize}
+      \item finitely enumerable iff it is a quotient of a set of the form~$[n] = \{ k \in \NN \,|, k < n \}$,
+      \item subfinite iff it embeds into a set of the form~$[n]$,
+      \item Dedekind-infinite iff~$\NN$ embeds into it.
+    \end{itemize}
+  }
   \pause
 
   \begin{block}{A question}
@@ -519,10 +528,10 @@
     \normalnumber{0} & Every function is computable. & \cxmark & \qmark & \ccmark \\
     \normalnumber{1} & Every function has a zero or not. & \ccmark & \qmark & \cxmark \\
     \normalnumber{2} & Every path leaves the Kleene tree. & \cxmark & \qmark & \ccmark \\
-    \normalnumber{3} & There is no surjection $\NN \twoheadrightarrow \RR$. &
-    \ccmark & \qmark & \ccmark & False in parametrized realizability. \\
-    \normalnumber{4} & There are $\aleph_1$ many functions $\NN \to \mathbbm{2}$. &
-    \qmark & \qmark & \qmark \\
+    \normalnumber{3} & There is a surjection $\NN \twoheadrightarrow \RR$. &
+    \cxmark & \qmark & \cxmark & True in parametrized realizability. \\
+    \normalnumber{4} & The continuum hypothesis holds. &
+    \qmark & \qmark & \cxmark \\
     \pause
     \\
     \multicolumn{6}{c}{With \bad{adverse effects} throughout mathematics:} \\[0.1em]
@@ -540,8 +549,6 @@
     {``If $x \in L^{\mathrm{Aut}_K(L)}$, then~$x \in K$.''}
   \end{tabular}
 \end{frame}
-
-% \begin{document}
 
 \begin{frame}{The formal space of functions}
   \medskip
@@ -581,10 +588,12 @@
   \vspace*{-0.5em}
   \begin{enumerate}
     \item there is a \good{dialogue tree} arguing,
-    \hil{just from querying} a black box~$f : \NN \to X$, that there exist
-    numbers~$i < j$ with~$f(i) = f(j)$.
-    \item \emph{everywhere,} for every function~$f : \NN \to X$ there exist
-    numbers~$i < j$ with~$f(i) = f(j)$.
+    \hil{just from querying} a \hil{black box}~$f : \NN \to X$, \\
+    that there exist numbers~$i < j$ with~$f(i) = f(j)$;
+    \item \hil{everywhere,} for every function~$f : \NN \to X$ there exist
+    numbers~$i < j$ with~$f(i) = f(j)$;
+    \item $\mathsf{Dup}$ bars the empty sequence, where~$\mathsf{Dup}\,x_0
+    \ldots x_{n-1} \vcentcolon\equiv (\exists i < j\_ x_i = x_j)$.
   \end{enumerate}
   \medskip
 
@@ -642,17 +651,30 @@
     witnesses of~$P$ into witnesses of~$Q$.
     \item A witness of~$\forall x \in \NN\_ P(x)$ is a \bad{construction} which
     converts numbers~$x$ into witnesses of~$P(x)$.
+    \item A witness of~$\exists x \in \NN\_ P(x)$ is a pair consisting of a
+    number~$x$ and a witness of~$P(x)$.
   \end{itemize}
   But what is a \bad{construction}?
   \bigskip
   \pause
 
-  \begin{block}{Kleene realizability}
+  \only<2-3>{
+    Is there a witness of the \bad{axiom of choice}?
+    \[ \bigl(\forall x \in A\_ \exists y \in B\_ R(x,y)\bigr) \Longrightarrow
+      \bigl(\exists f : A \to B\_ \forall x \in A\_ R(x, f(x))\bigr) \]
+    Can every \bad{construction} which converts~$x$'s into~$y$'s
+    be converted into a suitable \emph{function}~$A \to B$?
+    \bigskip
+  }
+  \pause
+
+  \begin{block}{Kleene realizability \href{https://www.jstor.org/stable/2269016}{[Kleene 1945]}}
     Use \hil{Turing machines} as ``constructions''. \\
     A \emph{machine~$e$ realizes~$P$}, denoted $e \Vdash P$, iff \ldots
   \end{block}
+  \pause
 
-  \begin{block}{Stateful realizability}
+  \begin{block}{Stateful realizability \href{https://www.coalg.org/calco-mfps-2019/files/2019/05/mfps19-cohen-abreu_faro-tate.pdf}{[Cohen--Faro--Tate 2019]}}
     Use (an appropriate flavor of) \hil{stateful Turing machines} as
     ``constructions''. \\
     A \emph{machine~$e$ realizes~$P$ in state~$s$}, denoted $s \mid e \Vdash P$,
@@ -715,14 +737,21 @@
   Then:
 
   \begin{enumerate}
-    \item \good{Without} any decidability or coherence assumptions, if~$A$ is
-    Noetherian so is~$A[X]$. \\ \emph{By the classical proof!}
+    \item \good{Without} any decidability or coherence assumptions: \\
+    If~$A$ is Noetherian so is~$A[X]$. \href{https://link.springer.com/chapter/10.1007/3-540-48167-2_3}{[Coquand--Persson 2001]} \\
+    \emph{By the classical proof!}
+    \href{https://www.speicherleck.de/iblech/stuff/slides-7wftop.pdf}{[B. 2026]}
     \item Let~$1 = f_1 + \ldots + f_n$ in~$A$. Then~$A$ is Noetherian iff all
     localizations~$A[f_i^{-1}]$ are.
+    \href{https://www.speicherleck.de/iblech/stuff/slides-7wftop.pdf}{[B. 2026]}
     \item A ring~$A$ is Noetherian iff~$\mathcal{O}_{\mathrm{Spec}\,A}$ is.
+    \href{https://www.speicherleck.de/iblech/stuff/slides-7wftop.pdf}{[B. 2026]}
   \end{enumerate}
+  \pause
+  \bigskip
 
-
+  \dnote{\justifying For almost no metric space~$X$ does the \hil{generic} (modulated)
+  Cauchy sequence~$\NN \to X$ converge.}
 \end{frame}
 
 \end{document}

@@ -485,9 +485,9 @@
   \bigskip
 
   \only<1>{
-    Recall: A set~$X$ is \ldots
+    Recall: A set is \ldots
     \begin{itemize}
-      \item finitely enumerable iff it is a quotient of a set of the form~$[n] = \{ k \in \NN \,|, k < n \}$,
+      \item finitely enumerable iff it is a quotient of a set of the form~$[n] = \{ k \in \NN \,|\, k < n \}$,
       \item subfinite iff it embeds into a set of the form~$[n]$,
       \item Dedekind-infinite iff~$\NN$ embeds into it.
     \end{itemize}
@@ -588,7 +588,7 @@
   \vspace*{-0.5em}
   \begin{enumerate}
     \item there is a \good{dialogue tree} arguing,
-    \hil{just from querying} a \hil{black box}~$f : \NN \to X$, \\
+    just from querying a \hil{black box}~$f : \NN \to X$, \\
     that there exist numbers~$i < j$ with~$f(i) = f(j)$;
     \item \hil{everywhere,} for every function~$f : \NN \to X$ there exist
     numbers~$i < j$ with~$f(i) = f(j)$;
@@ -655,15 +655,14 @@
     number~$x$ and a witness of~$P(x)$.
   \end{itemize}
   But what is a \bad{construction}?
-  \bigskip
   \pause
 
   \only<2-3>{
     Is there a witness of the \bad{axiom of choice}?
     \[ \bigl(\forall x \in A\_ \exists y \in B\_ R(x,y)\bigr) \Longrightarrow
       \bigl(\exists f : A \to B\_ \forall x \in A\_ R(x, f(x))\bigr) \]
-    Can every \bad{construction} which converts~$x$'s into~$y$'s
-    be converted into a suitable \emph{function}~$A \to B$?
+    \mbox{Can every \bad{construction} which converts~$x$'s into~$y$'s
+    be converted into a suitable \emph{function}~$A \to B$?}\\[-0.3em]
     \bigskip
   }
   \pause
@@ -672,10 +671,14 @@
     Use \hil{Turing machines} as ``constructions''. \\
     A \emph{machine~$e$ realizes~$P$}, denoted $e \Vdash P$, iff \ldots
   \end{block}
+  \vspace*{-0.8em}
+  \justifying
+  Choice is Kleene-realized for those sets~$A$ for
+  which canonical realizers can be computed.
   \pause
 
   \begin{block}{Stateful realizability \href{https://www.coalg.org/calco-mfps-2019/files/2019/05/mfps19-cohen-abreu_faro-tate.pdf}{[Cohen--Faro--Tate 2019]}}
-    Use (an appropriate flavor of) \hil{stateful Turing machines} as
+    Use (a specified flavor of) \hil{stateful Turing machines} as
     ``constructions''. \\
     A \emph{machine~$e$ realizes~$P$ in state~$s$}, denoted $s \mid e \Vdash P$,
     iff \ldots
